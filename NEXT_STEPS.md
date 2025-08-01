@@ -12,12 +12,15 @@
 
 ## 🔄 Phase 2 En Cours : Intégrations Multi-outils
 
-### Priorité 1 : Configuration HubSpot
-- [ ] Créer un compte HubSpot développeur
-- [ ] Générer les clés API HubSpot
-- [ ] Configurer le tracking HubSpot
-- [ ] Setup des formulaires HubSpot natifs
-- [ ] Configuration du blog HubSpot
+### Priorité 1 : Configuration HubSpot ✅
+- [x] Créer un compte HubSpot développeur
+- [x] Générer les clés API HubSpot
+- [x] Configurer le tracking HubSpot
+- [x] Setup des formulaires HubSpot natifs
+- [x] Configuration du blog HubSpot
+- [x] Script de suivi configuré (Portail 26878201)
+- [x] Composant HubSpotTracking intégré
+- [x] Hook useHubSpot pour événements personnalisés
 
 ### Priorité 2 : Configuration Tally
 - [ ] Créer un compte Tally
