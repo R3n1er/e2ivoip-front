@@ -103,6 +103,39 @@
 - Rapports de conversion
 - Suivi du parcours client
 
+### 7. Intégration URLR
+
+#### 7.1 Raccourcissement de liens d'articles
+
+- **Automatisation** : Raccourcissement automatique des liens d'articles du blog HubSpot
+- **Format des liens** : Inclusion du préfixe "e2ivoip" dans les URLs raccourcies
+- **Exemple** : `urlr.me/e2ivoip-article-123` au lieu de l'URL complète HubSpot
+- **API URLR** : Intégration avec l'API URLR v1 pour la création de liens raccourcis
+- **Authentification** : Utilisation des access tokens URLR pour l'authentification API
+
+#### 7.2 Fonctionnalités URLR
+
+- **Création automatique** : Génération automatique de liens raccourcis lors de la publication d'articles
+- **Métadonnées** : Ajout de métadonnées personnalisées (titre, description, image) pour les partages sociaux
+- **Statistiques** : Suivi des clics et performances des liens raccourcis
+- **QR Codes** : Génération automatique de QR codes pour les articles (optionnel)
+- **Tags** : Organisation des liens avec des tags pour faciliter la gestion
+
+#### 7.3 Workflow d'intégration
+
+1. **Publication article HubSpot** → Déclenchement webhook
+2. **Récupération URL article** → Extraction de l'URL complète
+3. **Création lien raccourci** → Appel API URLR avec préfixe "e2ivoip"
+4. **Mise à jour article** → Ajout du lien raccourci dans les métadonnées HubSpot
+5. **Partage automatique** → Utilisation du lien raccourci pour les partages sociaux
+
+#### 7.4 Configuration URLR
+
+- **Access Token** : Configuration des tokens d'accès URLR
+- **Team ID** : Configuration de l'espace de travail URLR
+- **Format personnalisé** : Préfixe "e2ivoip" pour tous les liens d'articles
+- **Métadonnées** : Configuration des métadonnées par défaut pour les partages
+
 ### 8. Intégration Tally
 
 - Intégrer des formulaires Tally (Devis Trunk SIP, Devis 3CX, Devis Yeastar, Projet Voip)
@@ -140,6 +173,7 @@
 - **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
 - **Animations** : Framer Motion + ReactBits https://www.reactbits.dev/text-animations/split-text
 - **CMS** : HubSpot pour le blog, gestion commerciale, devis, base de contact clients et leads prospects
+- **Raccourcissement de liens** : URLR API v1 pour les liens d'articles du blog
 - **Tests unitaires** : Vitest et scripts personnalisés
 - **Hosting** : Vercel
 - **CI/CD** : Github

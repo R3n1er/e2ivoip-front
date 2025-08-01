@@ -36,6 +36,16 @@
   - [ ] Import automatique CRM HubSpot
   - [ ] Création transactions HubSpot
 
+### Priorité 4 : Configuration URLR
+- [ ] Créer un compte URLR
+- [ ] Configurer les variables d'environnement URLR
+- [ ] Tester l'authentification API URLR
+- [ ] Configurer le workflow automatique :
+  - [ ] HubSpot article published → URLR link creation
+  - [ ] Génération automatique de liens avec préfixe "e2ivoip"
+  - [ ] Création optionnelle de QR codes
+  - [ ] Mise à jour des métadonnées HubSpot avec le lien raccourci
+
 ## 📋 Phase 3 Prévue : Développement Core
 
 ### Structure et Navigation
