@@ -81,9 +81,9 @@ gantt
 #### Semaine 2 : Structure Optimisée Multi-Device
 
 - [ ] **Layout principal optimisé**
-  - [ ] Header responsive MacBook Pro optimisé
-  - [ ] Navigation avec breadcrumbs
-  - [ ] Footer avec partenaires + légal + RGPD
+  - [x] Header responsive MacBook Pro optimisé
+  - [x] Navigation avec breadcrumbs
+  - [x] Footer avec partenaires + légal + RGPD
 - [ ] **Page d'accueil modernisée**
   - [ ] Hero section nouveau design
   - [ ] Section services restructurée
