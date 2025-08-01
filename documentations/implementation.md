@@ -111,7 +111,9 @@
   - [x] Formulaire devis portabilité
   - [x] Formulaire devis 3CX
   - [x] Formulaire devis Yeastar/PBX
-- [ ] **Automatisations n8n** :
+- [x] Webhooks Tally configurés
+- [x] Clé API Tally intégrée dans env.local
+- [x] Intégration prête pour n8n- [ ] **Automatisations n8n** :
   - [ ] Webhook Tally → n8n
   - [ ] Notification email équipe commerciale
   - [ ] Import automatique dans HubSpot CRM

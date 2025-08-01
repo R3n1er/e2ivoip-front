@@ -138,7 +138,7 @@
 - **Format personnalisé** : Préfixe "e2ivoip" pour tous les liens d'articles
 - **Métadonnées** : Configuration des métadonnées par défaut pour les partages
 
-### 8. Intégration Tally
+### 8. Intégration Tally ✅
 
 - Intégrer des formulaires Tally (Devis Trunk SIP, Devis 3CX, Devis Yeastar, Projet Voip)
 
