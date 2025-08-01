@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        // MacBook Pro breakpoints
+        "macbook13": "1280px",
+        "macbook14": "1440px", 
+        "macbook15": "1680px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
