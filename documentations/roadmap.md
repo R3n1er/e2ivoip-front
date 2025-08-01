@@ -61,7 +61,7 @@ gantt
 - [x] **NOUVEAU** : Setup Tally (formulaires de devis) ✅
   - [x] Clé API Tally configurée
   - [x] 4 formulaires de devis spécialisés créés
-  - [x] Webhooks Tally configurés- [ ] **NOUVEAU** : Configuration n8n (automatisations)
+  - [x] Webhooks Tally configurés- [x] **NOUVEAU** : Configuration n8n (automatisations) ✅
 - [x] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot ✅
 - [ ] **NOUVEAU** : Configuration chatbot (à définir)
 - [ ] Tests de connexions toutes intégrations
@@ -120,10 +120,10 @@ gantt
   - [x] Tally spécialisés (4 types de devis)
   - [x] Webhooks configurés
   - [x] Clé API Tally intégrée- [ ] **Automatisations n8n**
-  - [ ] Webhook Tally → n8n
-  - [ ] Notifications email commerciaux
-  - [ ] Import automatique HubSpot CRM
-  - [ ] Création transactions HubSpot
+  - [x] Webhook Tally → n8n
+  - [x] Notifications email commerciaux
+  - [x] Import automatique HubSpot CRM
+  - [x] Création transactions HubSpot
 
 #### Jour 3-4 : Blog + Chatbot
 

@@ -16,11 +16,11 @@
 - [x] Setup des formulaires HubSpot natifs ✅
 - [x] Configuration du blog HubSpot ✅
 - [x] Script de suivi HubSpot configuré (Portail 26878201) ✅
-- [ ] **NOUVEAU** : Configuration Tally pour formulaires de devis
-- [ ] **NOUVEAU** : Setup webhook Tally → n8n → HubSpot
-- [ ] **NOUVEAU** : Configuration n8n pour automatisations
+- [x] **NOUVEAU** : Configuration Tally pour formulaires de devis
+- [x] **NOUVEAU** : Setup webhook Tally → n8n → HubSpot
+- [x] **NOUVEAU** : Configuration n8n pour automatisations
 
-### 1.3 Assets et contenu
+### 1.3 Assets et contenu (En cours)
 
 - [ ] Optimisation des images existantes (WebP)
 - [ ] Collecte des logos clients
@@ -113,12 +113,12 @@
   - [x] Formulaire devis Yeastar/PBX
 - [x] Webhooks Tally configurés
 - [x] Clé API Tally intégrée dans env.local
-- [x] Intégration prête pour n8n- [ ] **Automatisations n8n** :
-  - [ ] Webhook Tally → n8n
-  - [ ] Notification email équipe commerciale
-  - [ ] Import automatique dans HubSpot CRM
-  - [ ] Création de transactions HubSpot
-  - [ ] Récupération données essentielles
+- [x] Intégration prête pour n8n- [x] **Automatisations n8n** ✅ :
+  - [x] Webhook Tally → n8n
+  - [x] Notification email équipe commerciale
+  - [x] Import automatique dans HubSpot CRM
+  - [x] Création de transactions HubSpot
+  - [x] Récupération données essentielles
 
 ### 3.3 Blog dynamique HubSpot ✅
 

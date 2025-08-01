@@ -31,13 +31,13 @@
   - [x] Devis Yeastar/PBX
 - [x] Setup des webhooks Tally
 - [x] Clé API Tally configurée dans env.local
-### Priorité 3 : Configuration n8n
-- [ ] Installer/configurer n8n
-- [ ] Créer les workflows d'automatisation :
-  - [ ] Tally → n8n → HubSpot
-  - [ ] Notifications email équipe commerciale
-  - [ ] Import automatique CRM HubSpot
-  - [ ] Création transactions HubSpot
+### Priorité 3 : Configuration n8n ✅
+- [x] Installer/configurer n8n
+- [x] Créer les workflows d'automatisation :
+  - [x] Tally → n8n → HubSpot
+  - [x] Notifications email équipe commerciale
+  - [x] Import automatique CRM HubSpot
+  - [x] Création transactions HubSpot
 
 ### Priorité 4 : Configuration URLR ✅
 - [x] Créer un compte URLR
