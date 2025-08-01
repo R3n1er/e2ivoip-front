@@ -11,10 +11,11 @@
 
 ### 1.2 Intégrations multiples
 
-- [ ] Configuration du compte HubSpot
-- [ ] Génération des clés API HubSpot
-- [ ] Setup des formulaires HubSpot natifs
-- [ ] Configuration du blog HubSpot
+- [x] Configuration du compte HubSpot ✅
+- [x] Génération des clés API HubSpot ✅
+- [x] Setup des formulaires HubSpot natifs ✅
+- [x] Configuration du blog HubSpot ✅
+- [x] Script de suivi HubSpot configuré (Portail 26878201) ✅
 - [ ] **NOUVEAU** : Configuration Tally pour formulaires de devis
 - [ ] **NOUVEAU** : Setup webhook Tally → n8n → HubSpot
 - [ ] **NOUVEAU** : Configuration n8n pour automatisations
@@ -90,18 +91,18 @@
 
 ## Phase 3 : Intégrations avancées (Semaine 4)
 
-### 3.1 Intégration HubSpot étendue
+### 3.1 Intégration HubSpot étendue ✅
 
-- [ ] **Formulaires HubSpot natifs** :
-  - [ ] Formulaire de contact principal
-  - [ ] Tracking avancé des visiteurs
-  - [ ] Lead scoring automatique
-- [ ] **Tracking étendu** :
-  - [ ] Pixel de suivi HubSpot
-  - [ ] Events personnalisés
-  - [ ] Attribution des sources
-  - [ ] Campagnes marketing
-  - [ ] Statistiques de visite détaillées
+- [x] **Formulaires HubSpot natifs** :
+  - [x] Formulaire de contact principal
+  - [x] Tracking avancé des visiteurs
+  - [x] Lead scoring automatique
+- [x] **Tracking étendu** :
+  - [x] Pixel de suivi HubSpot (Portail 26878201)
+  - [x] Events personnalisés
+  - [x] Attribution des sources
+  - [x] Campagnes marketing
+  - [x] Statistiques de visite détaillées
 
 ### 3.2 Intégration Tally + n8n
 
@@ -117,14 +118,15 @@
   - [ ] Création de transactions HubSpot
   - [ ] Récupération données essentielles
 
-### 3.3 Blog dynamique HubSpot
+### 3.3 Blog dynamique HubSpot ✅
 
-- [ ] API de récupération des articles HubSpot
-- [ ] Pages de listing avec pagination
-- [ ] Pages individuelles d'articles
-- [ ] Système de catégories et tags
-- [ ] SEO automatique des articles
-- [ ] Commentaires désactivés
+- [x] API de récupération des articles HubSpot
+- [x] Pages de listing avec pagination
+- [x] Pages individuelles d'articles
+- [x] Système de catégories et tags
+- [x] SEO automatique des articles
+- [x] Commentaires désactivés
+- [x] Intégration URLR pour raccourcissement automatique
 
 ### 3.4 Chatbot intelligent
 
@@ -219,7 +221,9 @@
 
 - [ ] Google Analytics 4 avec événements personnalisés
 - [ ] Google Search Console
-- [ ] HubSpot Analytics + campagnes
+- [x] HubSpot Analytics + campagnes ✅
+  - [x] Script de suivi configuré (Portail 26878201)
+  - [x] Tracking visiteurs actif
 - [ ] Monitoring erreurs (Sentry)
 - [ ] **NOUVEAU** : Analytics chatbot
 - [ ] **NOUVEAU** : Suivi conversions Tally

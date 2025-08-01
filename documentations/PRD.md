@@ -82,26 +82,28 @@
 
 ### 6. Intégration HubSpot
 
-#### 6.1 CRM
+#### 6.1 CRM ✅
 
-- Tracking des visiteurs
-- Lead scoring automatique
-- Attribution des sources
-- Formulaires natifs HubSpot
-- Articles du blog
+- [x] Tracking des visiteurs (Portail 26878201)
+- [x] Lead scoring automatique
+- [x] Attribution des sources
+- [x] Formulaires natifs HubSpot
+- [x] Articles du blog
 
-#### 6.2 Blog
+#### 6.2 Blog ✅
 
-- Synchronisation automatique des articles
-- Catégories et tags
-- SEO optimisé
-- Commentaires désactivés
+- [x] Synchronisation automatique des articles
+- [x] Catégories et tags
+- [x] SEO optimisé
+- [x] Commentaires désactivés
+- [x] Intégration URLR pour raccourcissement automatique
 
-#### 6.3 Analytics
+#### 6.3 Analytics ✅
 
-- Tableaux de bord personnalisés
-- Rapports de conversion
-- Suivi du parcours client
+- [x] Tableaux de bord personnalisés
+- [x] Rapports de conversion
+- [x] Suivi du parcours client
+- [x] Script de suivi configuré (Portail 26878201)
 
 ### 7. Intégration URLR
 

@@ -54,7 +54,10 @@ gantt
 
 #### Jour 3-4 : Intégrations Multi-outils
 
-- [ ] Configuration HubSpot (CRM + Blog + Analytics)
+- [x] Configuration HubSpot (CRM + Blog + Analytics) ✅
+  - [x] Clé API HubSpot configurée
+  - [x] Portail ID 26878201 configuré
+  - [x] Script de suivi HubSpot intégré
 - [ ] **NOUVEAU** : Setup Tally (formulaires de devis)
 - [ ] **NOUVEAU** : Configuration n8n (automatisations)
 - [ ] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot
@@ -107,10 +110,12 @@ gantt
 
 #### Jour 1-2 : HubSpot + Tally + n8n
 
-- [ ] **Formulaires hybrides**
-  - [ ] HubSpot natifs (contact principal)
+- [x] **Formulaires HubSpot** ✅
+  - [x] HubSpot natifs (contact principal)
+  - [x] Tracking visiteurs avancé
+  - [x] Script de suivi configuré (Portail 26878201)
+- [ ] **Formulaires Tally**
   - [ ] Tally spécialisés (4 types de devis)
-  - [ ] Tracking visiteurs avancé
 - [ ] **Automatisations n8n**
   - [ ] Webhook Tally → n8n
   - [ ] Notifications email commerciaux
@@ -119,11 +124,12 @@ gantt
 
 #### Jour 3-4 : Blog + Chatbot
 
-- [ ] **Blog HubSpot dynamique**
-  - [ ] API récupération articles
-  - [ ] Pages listing + individuelles
-  - [ ] SEO automatique
-  - [ ] Catégories + tags
+- [x] **Blog HubSpot dynamique** ✅
+  - [x] API récupération articles
+  - [x] Pages listing + individuelles
+  - [x] SEO automatique
+  - [x] Catégories + tags
+  - [x] Intégration URLR pour raccourcissement automatique
 - [ ] **Chatbot intelligent**
   - [ ] Base de connaissances entreprise
   - [ ] Collecte infos contact (nom, prénom, entreprise, mobile, email)
@@ -204,7 +210,9 @@ gantt
 #### Jour 1-2 : Monitoring Multi-outils
 
 - [ ] **Google Analytics 4** + événements personnalisés
-- [ ] **HubSpot Analytics** + campagnes marketing
+- [x] **HubSpot Analytics** + campagnes marketing ✅
+  - [x] Script de suivi configuré (Portail 26878201)
+  - [x] Tracking visiteurs actif
 - [ ] **Tally Analytics** + conversions
 - [ ] **Analytics chatbot** + performance
 - [ ] Google Search Console optimisé
