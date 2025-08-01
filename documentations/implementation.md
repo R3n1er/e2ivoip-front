@@ -130,17 +130,21 @@
 - [x] Commentaires désactivés
 - [x] Intégration URLR pour raccourcissement automatique
 
-### 3.4 Chatbot intelligent
+### 3.4 Chatbot intelligent Tawk.to ✅
 
-- [ ] **Développement chatbot** :
-  - [ ] Base de connaissances entreprise
-  - [ ] Réponses automatiques aux questions fréquentes
-  - [ ] Collecte d'informations de contact :
-    - [ ] Nom, prénom
-    - [ ] Nom de l'entreprise
-    - [ ] Numéro de téléphone portable
-    - [ ] Adresse email
+- [x] **Intégration Tawk.to** :
+  - [x] Widget Tawk.to configuré (ID: 688d3cc109ef001928d4773f/1j1jrald3)
+  - [x] Exclusion pages /contact et /devis-en-ligne
+  - [x] Chargement dynamique selon la page
+  - [x] Composant React optimisé
+  - [x] Tests unitaires créés
+- [x] **Collecte d'informations de contact** :
+  - [x] Nom, prénom
+  - [x] Nom de l'entreprise
+  - [x] Numéro de téléphone portable
+  - [x] Adresse email
 - [ ] **Intégration chatbot → n8n → HubSpot** :
+  - [ ] Webhook Tawk.to → n8n
   - [ ] Export automatique des contacts
   - [ ] Création de leads dans HubSpot
   - [ ] Attribution source "chatbot"

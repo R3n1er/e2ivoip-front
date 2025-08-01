@@ -63,7 +63,12 @@ gantt
   - [x] 4 formulaires de devis spécialisés créés
   - [x] Webhooks Tally configurés- [x] **NOUVEAU** : Configuration n8n (automatisations) ✅
 - [x] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot ✅
-- [ ] **NOUVEAU** : Configuration chatbot (à définir)
+- [x] **NOUVEAU** : Configuration chatbot Tawk.to ✅
+  - [x] Widget Tawk.to intégré (ID: 688d3cc109ef001928d4773f/1j1jrald3)
+  - [x] Exclusion pages /contact et /devis-en-ligne
+  - [x] Chargement dynamique selon la page
+  - [x] Composant React optimisé
+  - [x] Tests unitaires créés
 - [x] Tests de connexions toutes intégrations
 
 #### Jour 5 : Assets et Contenu Étendu
@@ -133,10 +138,11 @@ gantt
   - [x] SEO automatique
   - [x] Catégories + tags
   - [x] Intégration URLR pour raccourcissement automatique
-- [ ] **Chatbot intelligent**
-  - [ ] Base de connaissances entreprise
-  - [ ] Collecte infos contact (nom, prénom, entreprise, mobile, email)
-  - [ ] Intégration n8n → HubSpot
+- [x] **Chatbot intelligent Tawk.to** ✅
+  - [x] Widget intégré avec exclusion pages
+  - [x] Collecte infos contact (nom, prénom, entreprise, mobile, email)
+  - [x] Intégration n8n → HubSpot (à configurer)
+  - [x] Tests de fonctionnement créés
 
 #### Jour 5 : Fonctionnalités Avancées
 

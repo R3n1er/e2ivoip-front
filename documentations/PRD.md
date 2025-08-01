@@ -55,7 +55,7 @@
 - **Analytics** : Google Analytics 4, HubSpot tracking
 - **Formulaires** : Intégration HubSpot native et Hook depuis formulaire tally avec des automatisme n8n déja mis en place. Ces automatismes permettent de notamment notifier lorsqu'un formulaire a été répondu, de récupérer les informations essentielles et transmettre une notification au groupe des commerciaux par mail et également intégrer les informations de contact dans le CRM HubSpot et également de créer des transactions dans HubSpot.
 - **Blog** : Synchronisation automatique avec HubSpot CMS
-- **Chatbot** : intégrer un chatbot qui permettrait en fournissant des informations de la société de répondre aux questions qu'il est possible et surtout récupérer les informations de contact du client, c'est-à-dire nom, prénom, nom de l'entreprise, numéro de téléphone portable et adresse mail. et ensuite il y aurait effectivement un automatisation avec n8n qui permettrait d'importer ces informations de contact dans le CRM HubSpot.
+- **Chatbot** : Intégration Tawk.to avec exclusion des pages contact et devis en ligne. Récupération automatique des informations de contact (nom, prénom, entreprise, téléphone, email) et automatisation n8n pour import dans HubSpot CRM.
 
 ### 5. Charte graphique
 
@@ -142,34 +142,58 @@
 
 - Intégrer des formulaires Tally (Devis Trunk SIP, Devis 3CX, Devis Yeastar, Projet Voip)
 
-### 8. Critères d'acceptation
+### 9. Intégration Tawk.to ✅
 
-#### 8.1 Performance
+#### 9.1 Chatbot intelligent
+
+- **Solution** : Intégration Tawk.to avec widget personnalisé
+- **Widget ID** : 688d3cc109ef001928d4773f/1j1jrald3
+- **Pages exclues** : /contact et /devis-en-ligne
+- **Fonctionnalités** : Chat en direct, réponses automatiques, transfert vers commercial
+- **Récupération données** : Nom, prénom, entreprise, téléphone, email
+
+#### 9.2 Intégration n8n
+
+- **Webhook Tawk.to** → n8n → HubSpot CRM
+- **Automatisation** : Import automatique des contacts dans HubSpot
+- **Notifications** : Alertes email pour nouveaux leads
+- **Qualification** : Scoring automatique des leads selon l'activité
+
+#### 9.3 Configuration technique
+
+- **Chargement dynamique** : Script chargé uniquement sur les pages autorisées
+- **Gestion d'état** : Affichage/masquage selon la page
+- **Performance** : Pas d'impact sur les Core Web Vitals
+- **Responsive** : Widget adaptatif mobile/desktop
+
+### 10. Critères d'acceptation
+
+#### 10.1 Performance
 
 - Page Speed Insights > 90
 - Core Web Vitals dans le vert
 - Temps de chargement < 2s
 
-#### 8.2 SEO
+#### 10.2 SEO
 
 - Score Lighthouse SEO > 95
 - Meta descriptions optimisées
 - Structured data implementée
 
-#### 8.3 Responsive
+#### 10.3 Responsive
 
 - Tests sur iOS/Android
 - Test Macbook Pro 13'', 14'', 15''
 - Breakpoints : 320px, 868px, 1024px, 1440px
 - Navigation tactile optimisée
 
-#### 8.4 Accessibilité
+#### 10.4 Accessibilité
 
 - WCAG 2.1 niveau AA
 - Contraste des couleurs validé
 - Navigation au clavier
 
-### 9. Contraintes techniques
+### 11. Contraintes techniques
 
 - **Framework** : Next.js 15
 - **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
@@ -181,7 +205,7 @@
 - **CI/CD** : Github
 - **Domaine** : e2i-voip.com
 
-### 10. Risques et mitigation
+### 12. Risques et mitigation
 
 | Risque                       | Impact | Probabilité | Mitigation                        |
 | ---------------------------- | ------ | ----------- | --------------------------------- |
@@ -189,7 +213,7 @@
 | Performance mobile           | Élevé  | Faible      | Optimisation images, lazy loading |
 | Migration SEO                | Moyen  | Faible      | Redirections 301, sitemap         |
 
-### 11. Métriques de succès
+### 13. Métriques de succès
 
 - **Trafic organique** : +40% en 6 mois
 - **Taux de conversion** : +25%
