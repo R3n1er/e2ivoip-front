@@ -22,15 +22,15 @@
 - [x] Composant HubSpotTracking intégré
 - [x] Hook useHubSpot pour événements personnalisés
 
-### Priorité 2 : Configuration Tally
-- [ ] Créer un compte Tally
-- [ ] Configurer les formulaires de devis spécialisés :
-  - [ ] Devis Trunk SIP
-  - [ ] Devis portabilité
-  - [ ] Devis 3CX
-  - [ ] Devis Yeastar/PBX
-- [ ] Setup des webhooks Tally
-
+### Priorité 2 : Configuration Tally ✅
+- [x] Créer un compte Tally
+- [x] Configurer les formulaires de devis spécialisés :
+  - [x] Devis Trunk SIP
+  - [x] Devis portabilité
+  - [x] Devis 3CX
+  - [x] Devis Yeastar/PBX
+- [x] Setup des webhooks Tally
+- [x] Clé API Tally configurée dans env.local
 ### Priorité 3 : Configuration n8n
 - [ ] Installer/configurer n8n
 - [ ] Créer les workflows d'automatisation :

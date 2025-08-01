@@ -106,11 +106,11 @@
 
 ### 3.2 Intégration Tally + n8n
 
-- [ ] **Formulaires Tally spécialisés** :
-  - [ ] Formulaire devis Trunk SIP
-  - [ ] Formulaire devis portabilité
-  - [ ] Formulaire devis 3CX
-  - [ ] Formulaire devis Yeastar/PBX
+- [x] **Formulaires Tally spécialisés** ✅ :
+  - [x] Formulaire devis Trunk SIP
+  - [x] Formulaire devis portabilité
+  - [x] Formulaire devis 3CX
+  - [x] Formulaire devis Yeastar/PBX
 - [ ] **Automatisations n8n** :
   - [ ] Webhook Tally → n8n
   - [ ] Notification email équipe commerciale

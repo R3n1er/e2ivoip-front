@@ -58,11 +58,9 @@ gantt
   - [x] Clé API HubSpot configurée
   - [x] Portail ID 26878201 configuré
   - [x] Script de suivi HubSpot intégré
-- [x] **NOUVEAU** : Setup Tally (formulaires de devis) ✅
-  - [x] Clé API Tally configurée
-  - [x] 4 formulaires de devis spécialisés créés
-  - [x] Webhooks Tally configurés- [ ] **NOUVEAU** : Configuration n8n (automatisations)
-- [x] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot ✅
+- [ ] **NOUVEAU** : Setup Tally (formulaires de devis)
+- [ ] **NOUVEAU** : Configuration n8n (automatisations)
+- [ ] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot
 - [ ] **NOUVEAU** : Configuration chatbot (à définir)
 - [ ] Tests de connexions toutes intégrations
 
@@ -116,10 +114,9 @@ gantt
   - [x] HubSpot natifs (contact principal)
   - [x] Tracking visiteurs avancé
   - [x] Script de suivi configuré (Portail 26878201)
-- [x] **Formulaires Tally** ✅
-  - [x] Tally spécialisés (4 types de devis)
-  - [x] Webhooks configurés
-  - [x] Clé API Tally intégrée- [ ] **Automatisations n8n**
+- [ ] **Formulaires Tally**
+  - [ ] Tally spécialisés (4 types de devis)
+- [ ] **Automatisations n8n**
   - [ ] Webhook Tally → n8n
   - [ ] Notifications email commerciaux
   - [ ] Import automatique HubSpot CRM
