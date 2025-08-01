@@ -64,7 +64,7 @@ gantt
   - [x] Webhooks Tally configurés- [x] **NOUVEAU** : Configuration n8n (automatisations) ✅
 - [x] **NOUVEAU** : Setup webhooks Tally → n8n → HubSpot ✅
 - [ ] **NOUVEAU** : Configuration chatbot (à définir)
-- [ ] Tests de connexions toutes intégrations
+- [x] Tests de connexions toutes intégrations
 
 #### Jour 5 : Assets et Contenu Étendu
 
