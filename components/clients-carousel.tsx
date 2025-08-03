@@ -58,7 +58,7 @@ export function ClientsCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % clients.length)
-    }, 9000) // Change toutes les 9 secondes (3x plus lent)
+    }, 15000) // Change toutes les 15 secondes (encore plus lent)
 
     return () => clearInterval(interval)
   }, [])
@@ -96,7 +96,7 @@ export function ClientsCarousel() {
               x: [0, -1000, -2000, -3000, -4000, -5000, -6000, -7000, -8000]
             }}
             transition={{
-              duration: 90, // 3x plus lent (30 * 3 = 90 secondes)
+              duration: 180, // 6x plus lent que l'original (30 * 6 = 180 secondes)
               repeat: Infinity,
               ease: "linear"
             }}
@@ -109,7 +109,7 @@ export function ClientsCarousel() {
                 transition={{ duration: 0.2 }}
                 className="flex-shrink-0"
               >
-                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
                   <div className="relative w-32 h-16 lg:w-40 lg:h-20">
                     <Image
                       src={client.logo}
@@ -126,21 +126,6 @@ export function ClientsCarousel() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-
-        {/* Indicateurs de progression */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {clients.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-red-primary' : 'bg-gray-300'
-              }`}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
         </div>
 
         {/* Statistiques de confiance */}

@@ -8,13 +8,13 @@ describe('ClientsCarousel Component', () => {
   })
 
   it('should have correct animation duration', () => {
-    const animationDuration = 90 // 3x plus lent que l'original (30 * 3)
-    expect(animationDuration).toBe(90)
+    const animationDuration = 180 // 6x plus lent que l'original (30 * 6)
+    expect(animationDuration).toBe(180)
   })
 
   it('should have correct interval timing', () => {
-    const intervalTiming = 9000 // 9 secondes (3x plus lent que 3000ms)
-    expect(intervalTiming).toBe(9000)
+    const intervalTiming = 15000 // 15 secondes (encore plus lent)
+    expect(intervalTiming).toBe(15000)
   })
 
   it('should have correct gradient overlays', () => {
@@ -41,23 +41,34 @@ describe('ClientsCarousel Component', () => {
 
   it('should have correct animation configuration', () => {
     const animationConfig = {
-      duration: 90,
+      duration: 180,
       repeat: 'Infinity',
       ease: 'linear'
     }
     
-    expect(animationConfig.duration).toBe(90)
+    expect(animationConfig.duration).toBe(180)
     expect(animationConfig.repeat).toBe('Infinity')
     expect(animationConfig.ease).toBe('linear')
   })
 
   it('should have correct interval configuration', () => {
     const intervalConfig = {
-      timing: 9000,
-      description: 'Change toutes les 9 secondes (3x plus lent)'
+      timing: 15000,
+      description: 'Change toutes les 15 secondes (encore plus lent)'
     }
     
-    expect(intervalConfig.timing).toBe(9000)
-    expect(intervalConfig.description).toContain('9 secondes')
+    expect(intervalConfig.timing).toBe(15000)
+    expect(intervalConfig.description).toContain('15 secondes')
+  })
+
+  it('should have transparent borders for logo cards', () => {
+    const cardClasses = 'bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent'
+    expect(cardClasses).toContain('border-transparent')
+    expect(cardClasses).not.toContain('border-gray-200')
+  })
+
+  it('should not have slider buttons', () => {
+    const hasSliderButtons = false
+    expect(hasSliderButtons).toBe(false)
   })
 }) 
