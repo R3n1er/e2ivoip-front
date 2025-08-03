@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { AboutSection } from "@/components/about-section"
+import { ClientsCarousel } from "@/components/clients-carousel"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
 
@@ -19,6 +20,7 @@ export default function HomePage() {
           <HeroSection />
           <AboutSection />
           <ServicesSection />
+          <ClientsCarousel />
           <TestimonialsSection />
           <ContactSection />
         </div>
