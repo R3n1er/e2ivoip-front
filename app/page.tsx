@@ -1,15 +1,12 @@
-import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { AboutSection } from "@/components/about-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white">
-      <Header />
       <main className="relative">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -26,7 +23,6 @@ export default function HomePage() {
           <ContactSection />
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

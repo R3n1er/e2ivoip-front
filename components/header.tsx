@@ -63,7 +63,7 @@ export function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-          : 'bg-white/10 backdrop-blur-sm border-b border-white/20'
+          : 'bg-white/80 backdrop-blur-sm border-b border-white/30'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,18 +76,18 @@ export function Header() {
               transition={{ duration: 0.2 }}
             >
               <div className="text-xl lg:text-2xl font-bold">
-                <span className={`group-hover:text-red-primary transition-colors ${isScrolled ? 'text-red-primary' : 'text-white'}`}>
+                <span className={`group-hover:text-red-primary transition-colors ${isScrolled ? 'text-red-primary' : 'text-gray-800'}`}>
                   E
                 </span>
-                <span className={isScrolled ? 'text-blue-marine' : 'text-white'}>2</span>
-                <span className={`group-hover:text-red-primary transition-colors ${isScrolled ? 'text-red-primary' : 'text-white'}`}>
+                <span className={isScrolled ? 'text-blue-marine' : 'text-gray-800'}>2</span>
+                <span className={`group-hover:text-red-primary transition-colors ${isScrolled ? 'text-red-primary' : 'text-gray-800'}`}>
                   I
                 </span>
               </div>
             </motion.div>
             <div className="hidden sm:block">
               <div className={`text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] transition-colors ${
-                isScrolled ? 'text-gray-secondary' : 'text-white/90'
+                isScrolled ? 'text-gray-secondary' : 'text-gray-600'
               }`}>
                 Solutions de Téléphonie IP
                 <br />
@@ -105,13 +105,13 @@ export function Header() {
                   className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
                     isScrolled 
                       ? 'text-gray-700 hover:text-red-primary' 
-                      : 'text-white/95 hover:text-white'
+                      : 'text-gray-700 hover:text-red-primary'
                   }`}
                 >
                   {item.name}
                   {item.submenu && (
                     <ChevronDown className={`w-3 h-3 ml-1 transition-transform ${
-                      isScrolled ? 'text-gray-600' : 'text-white/80'
+                      isScrolled ? 'text-gray-600' : 'text-gray-600'
                     } group-hover:rotate-180`} />
                   )}
                 </Link>
@@ -160,7 +160,7 @@ export function Header() {
                 whileTap={{ scale: 0.9 }}
                 className="lg:hidden p-2 rounded-lg transition-colors"
               >
-                <Menu className={`h-5 w-5 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+                <Menu className={`h-5 w-5 ${isScrolled ? 'text-gray-700' : 'text-gray-700'}`} />
               </motion.button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white/95 backdrop-blur-md">
