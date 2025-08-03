@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Phone, Mail, Clock, CheckCircle, Users, Shield, Zap, Star } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { TrunkSIPTallyLink, PortabiliteTallyLink, VoIP3CXTallyLink, ProjetPBXTallyLink } from "@/components/tally-tracking"
 import { FullContactForm } from "@/components/hubspot-contact-form"
 import { AnimatedHero, AnimatedSection, AnimatedCard, AnimatedGrid } from "@/components/devis-animations"
@@ -88,14 +87,12 @@ export default function DevisEnLignePage() {
       <section className="pt-32 pb-16 relative bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/photos/man-oniphone-business-min.jpg" 
-            alt="Homme d'affaires sur téléphone"
-            fill
-            className="object-cover opacity-25"
-            priority
-            sizes="100vw"
-          />
+          <div 
+            className="w-full h-full bg-cover bg-center bg-no-repeat opacity-25"
+            style={{
+              backgroundImage: 'url(/images/photos/man-oniphone-business-min.jpg)'
+            }}
+          ></div>
           <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 via-red-primary/80 to-blue-marine/90"></div>
         </div>
         

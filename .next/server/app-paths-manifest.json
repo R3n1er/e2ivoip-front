@@ -1,3 +1,4 @@
 {
-  "/devis-en-ligne/page": "app/devis-en-ligne/page.js"
+  "/devis-en-ligne/page": "app/devis-en-ligne/page.js",
+  "/page": "app/page.js"
 }
