@@ -1,70 +1,70 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const clients = [
   {
     name: "APAJH Guyane",
     logo: "/images/logos-clients/LogoAPAJHGuyane-black-optimize.png",
-    alt: "Logo APAJH Guyane"
+    alt: "Logo APAJH Guyane",
   },
   {
     name: "SFR",
     logo: "/images/logos-clients/lofo-SFR-black-optimize.png",
-    alt: "Logo SFR"
+    alt: "Logo SFR",
   },
   {
     name: "Cateco",
     logo: "/images/logos-clients/cateco-logo-black.png",
-    alt: "Logo Cateco"
+    alt: "Logo Cateco",
   },
   {
     name: "Groupe Lang",
     logo: "/images/logos-clients/Logo_GroupeLang_black.png",
-    alt: "Logo Groupe Lang"
+    alt: "Logo Groupe Lang",
   },
   {
     name: "Zoo Guadeloupe",
     logo: "/images/logos-clients/logo-zoo-guadeloupe-black.png",
-    alt: "Logo Zoo Guadeloupe"
+    alt: "Logo Zoo Guadeloupe",
   },
   {
     name: "Callas Paris",
     logo: "/images/logos-clients/logo-callas-paris-black.png",
-    alt: "Logo Callas Paris"
+    alt: "Logo Callas Paris",
   },
   {
     name: "Zoo Martinique",
     logo: "/images/logos-clients/logo-Zoo-de-Martinique-black.png",
-    alt: "Logo Zoo de Martinique"
+    alt: "Logo Zoo de Martinique",
   },
   {
     name: "Zoo Guyane",
     logo: "/images/logos-clients/logo-zoo-guyane-black.png",
-    alt: "Logo Zoo Guyane"
+    alt: "Logo Zoo Guyane",
   },
   {
     name: "Eurogold",
     logo: "/images/logos-clients/logo-eurogold.png",
-    alt: "Logo Eurogold"
-  }
-]
+    alt: "Logo Eurogold",
+  },
+];
 
 export function ClientsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % clients.length)
-    }, 15000) // Change toutes les 15 secondes (encore plus lent)
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % clients.length);
+    }, 15000); // Change toutes les 15 secondes (encore plus lent)
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   // Dupliquer les clients pour un défilement infini
-  const duplicatedClients = [...clients, ...clients, ...clients]
+  const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
     <section className="py-16 bg-white">
@@ -80,7 +80,8 @@ export function ClientsCarousel() {
             Ils nous font <span className="text-red-primary">confiance</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Découvrez les entreprises qui nous font confiance pour leurs solutions de téléphonie IP
+            Découvrez les entreprises qui nous font confiance pour leurs
+            solutions de téléphonie IP
           </p>
         </motion.div>
 
@@ -93,12 +94,12 @@ export function ClientsCarousel() {
           {/* Carousel */}
           <motion.div
             animate={{
-              x: [0, -1000, -2000, -3000, -4000, -5000, -6000, -7000, -8000]
+              x: [0, -1000, -2000, -3000, -4000, -5000, -6000, -7000, -8000],
             }}
             transition={{
               duration: 180, // 6x plus lent que l'original (30 * 6 = 180 secondes)
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
             className="flex items-center space-x-16 lg:space-x-24"
           >
@@ -137,20 +138,26 @@ export function ClientsCarousel() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="text-3xl font-bold text-red-primary mb-2">500+</div>
+              <div className="text-3xl font-bold text-red-primary mb-2">
+                100+
+              </div>
               <div className="text-gray-600">Clients satisfaits</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="text-3xl font-bold text-blue-marine mb-2">15+</div>
+              <div className="text-3xl font-bold text-blue-marine mb-2">
+                15+
+              </div>
               <div className="text-gray-600">Années d'expérience</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="text-3xl font-bold text-green-600 mb-2">99.9%</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">
+                99.9%
+              </div>
               <div className="text-gray-600">Taux de satisfaction</div>
             </div>
           </div>
         </motion.div>
       </div>
     </section>
-  )
-} 
+  );
+}

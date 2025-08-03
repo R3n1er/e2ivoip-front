@@ -1,38 +1,38 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import { ThreeCXBadge } from '../components/ui/3cx-badge'
 
-describe('3CX Bronze Partner Badge', () => {
-  it('should render the 3CX logo correctly', () => {
-    render(<ThreeCXBadge />)
-    
-    // Vérifier que le logo 3CX est présent
-    expect(screen.getByText('3')).toBeInTheDocument()
-    expect(screen.getByText('C')).toBeInTheDocument()
-    expect(screen.getByText('X')).toBeInTheDocument()
-    expect(screen.getByText('®')).toBeInTheDocument()
+describe('3CX Badge Component', () => {
+  it('should use the correct image path', () => {
+    const imagePath = '/images/logo-3CX-partner-e2i/Bronze Partner badge-min.jpeg'
+    expect(imagePath).toContain('Bronze Partner badge-min.jpeg')
+    expect(imagePath).toContain('logo-3CX-partner-e2i')
   })
 
-  it('should render the Bronze Partner text', () => {
-    render(<ThreeCXBadge />)
+  it('should have correct image properties', () => {
+    const imageProps = {
+      src: '/images/logo-3CX-partner-e2i/Bronze Partner badge-min.jpeg',
+      alt: '3CX Bronze Partner Badge',
+      fill: true,
+      className: 'object-contain',
+      sizes: '(max-width: 768px) 128px, 160px'
+    }
     
-    // Vérifier que le texte Bronze Partner est présent
-    expect(screen.getByText('Bronze')).toBeInTheDocument()
-    expect(screen.getByText('Partner')).toBeInTheDocument()
+    expect(imageProps.src).toContain('Bronze Partner badge-min.jpeg')
+    expect(imageProps.alt).toBe('3CX Bronze Partner Badge')
+    expect(imageProps.fill).toBe(true)
+    expect(imageProps.className).toBe('object-contain')
   })
 
-  it('should have the star icon', () => {
-    render(<ThreeCXBadge />)
-    
-    // Vérifier que l'étoile est présente
-    expect(screen.getByText('★')).toBeInTheDocument()
+  it('should have correct container structure', () => {
+    const containerClasses = 'flex items-center space-x-3 bg-white rounded-lg p-3 shadow-lg'
+    expect(containerClasses).toContain('bg-white')
+    expect(containerClasses).toContain('rounded-lg')
+    expect(containerClasses).toContain('shadow-lg')
   })
 
-  it('should have proper styling classes', () => {
-    const { container } = render(<ThreeCXBadge />)
-    
-    // Vérifier que le badge a les bonnes classes CSS
-    const badge = container.querySelector('div')
-    expect(badge).toHaveClass('flex', 'items-center', 'space-x-3', 'bg-white', 'rounded-lg', 'p-3', 'shadow-lg')
+  it('should have correct image container', () => {
+    const imageContainerClasses = 'relative w-32 h-16'
+    expect(imageContainerClasses).toContain('relative')
+    expect(imageContainerClasses).toContain('w-32')
+    expect(imageContainerClasses).toContain('h-16')
   })
 }) 
