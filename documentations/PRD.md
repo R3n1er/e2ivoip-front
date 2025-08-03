@@ -171,6 +171,7 @@
 ### 9. Accomplissements majeurs
 
 #### 9.1 Design et UX
+
 - ✅ **Page d'accueil modernisée** avec couleurs PRD
 - ✅ **Carousel clients** avec 9 logos et défilement optimisé
 - ✅ **Header corrigé** : Visible au chargement
@@ -180,6 +181,7 @@
 - ✅ **Menu principal** optimisé pour conversion
 
 #### 9.2 Technique
+
 - ✅ **48 tests passent** (vs 35 précédemment)
 - ✅ **Code propre** : ESLint respecté
 - ✅ **Performance optimale** : Carousel fluide
@@ -188,6 +190,7 @@
 - ✅ **Routage fonctionnel** : Navigation cohérente
 
 #### 9.3 Conversion
+
 - ✅ **Navigation optimisée** : "Devis en ligne" au lieu de "Contact"
 - ✅ **Page dédiée** : `/devis-en-ligne` avec 4 types de devis
 - ✅ **Call-to-actions** : Boutons clairs et visibles
@@ -196,12 +199,14 @@
 ### 10. Prochaines étapes
 
 #### 10.1 Sprint 3 - Priorités
+
 1. **Intégration HubSpot** : CRM et formulaires
 2. **Blog moderne** : Design et synchronisation
 3. **Pages services** : Contenu détaillé
 4. **SEO avancé** : Optimisation complète
 
 #### 10.2 Sprint 4 - Finalisation
+
 1. **Performance** : Core Web Vitals optimisés
 2. **Analytics** : Tracking détaillé
 3. **Tests utilisateurs** : Validation UX

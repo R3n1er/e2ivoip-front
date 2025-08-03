@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Phone, Mail, Clock, CheckCircle, Users, Shield, Zap, Star } from "lucide-react"
 import Link from "next/link"
+import { TrunkSIPTallyLink, PortabiliteTallyLink, VoIP3CXTallyLink, ProjetPBXTallyLink } from "@/components/tally-tracking"
+import { FullContactForm } from "@/components/hubspot-contact-form"
 
 export default function DevisEnLignePage() {
   const devisTypes = [
@@ -143,11 +145,34 @@ export default function DevisEnLignePage() {
                         </div>
                       ))}
                     </div>
-                    <Link href={devis.href}>
-                      <Button className="w-full bg-red-primary hover:bg-red-600 text-white">
-                        Demander un devis
-                      </Button>
-                    </Link>
+                    {devis.title === "Devis Trunk SIP" && (
+                      <TrunkSIPTallyLink>
+                        <Button className="w-full bg-red-primary hover:bg-red-600 text-white">
+                          Demander un devis
+                        </Button>
+                      </TrunkSIPTallyLink>
+                    )}
+                    {devis.title === "Devis Portabilité" && (
+                      <PortabiliteTallyLink>
+                        <Button className="w-full bg-red-primary hover:bg-red-600 text-white">
+                          Demander un devis
+                        </Button>
+                      </PortabiliteTallyLink>
+                    )}
+                    {devis.title === "Devis VoIP 3CX" && (
+                      <VoIP3CXTallyLink>
+                        <Button className="w-full bg-red-primary hover:bg-red-600 text-white">
+                          Demander un devis
+                        </Button>
+                      </VoIP3CXTallyLink>
+                    )}
+                    {devis.title === "Devis Projet PBX" && (
+                      <ProjetPBXTallyLink>
+                        <Button className="w-full bg-red-primary hover:bg-red-600 text-white">
+                          Demander un devis
+                        </Button>
+                      </ProjetPBXTallyLink>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -254,6 +279,33 @@ export default function DevisEnLignePage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Formulaire de contact HubSpot */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Contactez notre équipe
+            </h2>
+            <p className="text-xl text-gray-600">
+              Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <FullContactForm />
+          </motion.div>
         </div>
       </section>
 

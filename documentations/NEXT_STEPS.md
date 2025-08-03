@@ -58,11 +58,11 @@ Le Sprint 2 - Modernisation de la page d'accueil a été **complètement termin�
 
 ### **Sprint 3 - En cours 🔄**
 
-- [ ] **PRIORITÉ 1** : Intégration HubSpot CRM avancée
-- [ ] **PRIORITÉ 2** : Blog moderne avec synchronisation
-- [ ] **PRIORITÉ 3** : Pages services détaillées
-- [ ] **PRIORITÉ 4** : Contact optimisé avec formulaires
-- [ ] **PRIORITÉ 5** : SEO avancé et optimisation
+- ✅ **PRIORITÉ 1** : Intégration HubSpot CRM avancée (FORMULAIRES ET TRACKING TERMINÉS)
+- 🔄 **PRIORITÉ 2** : Blog moderne avec synchronisation
+- 🔄 **PRIORITÉ 3** : Pages services détaillées
+- ✅ **PRIORITÉ 4** : Contact optimisé avec formulaires HubSpot
+- 🔄 **PRIORITÉ 5** : SEO avancé et optimisation
 
 ---
 
@@ -129,7 +129,8 @@ Maintenant que la page d'accueil est modernisée et la page devis en ligne cré�
 
 - 📊 **Taux d'engagement** : Utilisation du chat Tawk.to
 - 📊 **Qualité des leads** : Informations collectées via HubSpot
-- 📊 **Conversion** : Leads générés via formulaires HubSpot
+- 📊 **Conversion** : Leads générés via formulaires HubSpot et liens Tally
+- 📊 **Tracking HubSpot** : Formulaires de contact et clics sur liens Tally
 - 📊 **Satisfaction** : Retour utilisateurs sur le nouveau design
 
 ---
@@ -162,6 +163,7 @@ Maintenant que la page d'accueil est modernisée et la page devis en ligne cré�
 - **Tests URLR** : `npm test tests/urlr.test.ts`
 - **Tests Carousel** : `npm test tests/clients-carousel.test.tsx`
 - **Tests Devis** : `npm test tests/devis-en-ligne.test.tsx`
+- **Tests HubSpot** : `npm test tests/hubspot-tally-tracking.test.tsx`
 
 ---
 
@@ -194,7 +196,7 @@ Créer les pages détaillées pour chaque service avec contenu enrichi et formul
 
 ### **Accomplissements majeurs :**
 
-- ✅ **48 tests passent** (vs 35 précédemment)
+- ✅ **54 tests passent** (vs 48 précédemment)
 - ✅ **Carousel clients** avec 9 logos et défilement optimisé
 - ✅ **Header visible** au chargement (problème résolu)
 - ✅ **Footer unique** avec badge 3CX Bronze Partner
@@ -203,3 +205,5 @@ Créer les pages détaillées pour chaque service avec contenu enrichi et formul
 - ✅ **Page Devis en ligne** créée et fonctionnelle
 - ✅ **Menu principal** optimisé pour conversion
 - ✅ **Badge 3CX** corrigé avec vraie image
+- ✅ **Formulaires HubSpot** intégrés avec tracking
+- ✅ **Liens Tally** avec tracking automatique
