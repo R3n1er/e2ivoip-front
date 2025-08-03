@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -6,6 +5,7 @@ import { Phone, Mail, Clock, CheckCircle, Users, Shield, Zap, Star } from "lucid
 import Link from "next/link"
 import { TrunkSIPTallyLink, PortabiliteTallyLink, VoIP3CXTallyLink, ProjetPBXTallyLink } from "@/components/tally-tracking"
 import { FullContactForm } from "@/components/hubspot-contact-form"
+import { AnimatedHero, AnimatedSection, AnimatedCard, AnimatedGrid } from "@/components/devis-animations"
 
 export default function DevisEnLignePage() {
   const devisTypes = [
@@ -86,12 +86,7 @@ export default function DevisEnLignePage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-r from-red-primary to-blue-marine">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center text-white"
-          >
+          <AnimatedHero className="text-center text-white">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
               Devis Rapide et Gratuit
             </Badge>
@@ -108,7 +103,7 @@ export default function DevisEnLignePage() {
             <p className="text-lg text-white/80 mb-8">
               Choisissez ci-dessous le type de devis souhaité.
             </p>
-          </motion.div>
+          </AnimatedHero>
         </div>
       </section>
 
@@ -117,11 +112,9 @@ export default function DevisEnLignePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {devisTypes.map((devis, index) => (
-              <motion.div
+              <AnimatedCard
                 key={devis.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                delay={index * 0.1}
               >
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-white">
                   <CardHeader className="text-center">
@@ -175,7 +168,7 @@ export default function DevisEnLignePage() {
                     )}
                   </CardContent>
                 </Card>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -184,11 +177,7 @@ export default function DevisEnLignePage() {
       {/* Contact Urgent */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Un projet urgent ?
             </h2>
@@ -205,30 +194,23 @@ export default function DevisEnLignePage() {
                 contact@e2i-voip.com
               </Button>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Avantages */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Pourquoi demander un devis auprès de E2I VOIP ?
             </h2>
-          </motion.div>
+          </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {avantages.map((avantage, index) => (
-              <motion.div
+              <AnimatedCard
                 key={avantage.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                delay={index * 0.1}
                 className="text-center"
               >
                 <div className="mx-auto mb-4 p-3 bg-red-primary/10 rounded-full w-fit">
@@ -242,7 +224,7 @@ export default function DevisEnLignePage() {
                 <p className="text-gray-600">
                   {avantage.description}
                 </p>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -251,23 +233,16 @@ export default function DevisEnLignePage() {
       {/* FAQ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               F.A.Q
             </h2>
-          </motion.div>
+          </AnimatedSection>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <motion.div
+              <AnimatedCard
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                delay={index * 0.1}
                 className="bg-white rounded-lg p-6 shadow-sm border border-gray-200"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
@@ -276,7 +251,7 @@ export default function DevisEnLignePage() {
                 <p className="text-gray-600 leading-relaxed">
                   {faq.answer}
                 </p>
-              </motion.div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -285,38 +260,25 @@ export default function DevisEnLignePage() {
       {/* Formulaire de contact HubSpot */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Contactez notre équipe
             </h2>
             <p className="text-xl text-gray-600">
               Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
             </p>
-          </motion.div>
+          </AnimatedSection>
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <AnimatedSection delay={0.2}>
             <FullContactForm />
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Certification */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Nous sommes certifiés !
             </h2>
@@ -333,7 +295,7 @@ export default function DevisEnLignePage() {
                 />
               </div>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
     </div>
