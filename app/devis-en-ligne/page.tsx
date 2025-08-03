@@ -84,23 +84,33 @@ export default function DevisEnLignePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-r from-red-primary to-blue-marine">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-16 relative bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/man-oniphone-business-min.jpg" 
+            alt="Homme d'affaires sur téléphone"
+            className="w-full h-full object-cover opacity-15"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/95 via-red-primary/85 to-blue-marine/95"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <AnimatedHero className="text-center text-white">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
               Devis Rapide et Gratuit
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               Recevez un devis personnalisé
               <br />
-              <span className="text-yellow-400">en moins de 24h</span>
+              <span className="text-white font-bold drop-shadow-lg">en moins de 24h</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-white/95 max-w-4xl mx-auto mb-8 drop-shadow-md">
               Que vous cherchiez à mettre en place un Trunk SIP professionnel, une solution 3CX VoIP dédiée ou mutualisée, 
               installer une solution Yeastar ou à porter vos numéros existants sur nos Trunk SIP opérateur, 
               notre équipe vous accompagne.
             </p>
-            <p className="text-lg text-white/80 mb-8">
+            <p className="text-lg text-white/90 mb-8 drop-shadow-md">
               Choisissez ci-dessous le type de devis souhaité.
             </p>
           </AnimatedHero>
