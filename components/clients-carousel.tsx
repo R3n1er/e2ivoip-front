@@ -58,7 +58,7 @@ export function ClientsCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % clients.length)
-    }, 3000) // Change toutes les 3 secondes
+    }, 9000) // Change toutes les 9 secondes (3x plus lent)
 
     return () => clearInterval(interval)
   }, [])
@@ -67,7 +67,7 @@ export function ClientsCarousel() {
   const duplicatedClients = [...clients, ...clients, ...clients]
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de section */}
         <motion.div
@@ -87,8 +87,8 @@ export function ClientsCarousel() {
         {/* Carousel Container */}
         <div className="relative overflow-hidden">
           {/* Gradient overlays pour effet de fondu */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
 
           {/* Carousel */}
           <motion.div
@@ -96,7 +96,7 @@ export function ClientsCarousel() {
               x: [0, -1000, -2000, -3000, -4000, -5000, -6000, -7000, -8000]
             }}
             transition={{
-              duration: 30,
+              duration: 90, // 3x plus lent (30 * 3 = 90 secondes)
               repeat: Infinity,
               ease: "linear"
             }}

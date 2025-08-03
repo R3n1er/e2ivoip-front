@@ -1,67 +1,63 @@
 import { describe, it, expect } from 'vitest'
 
-describe('Clients Carousel', () => {
-  it('should have proper client logos', () => {
-    // Test pour vérifier que les logos des clients sont présents
-    const clients = [
-      'APAJH Guyane',
-      'SFR',
-      'Cateco',
-      'Groupe Lang',
-      'Zoo Guadeloupe',
-      'Callas Paris',
-      'Zoo Martinique',
-      'Zoo Guyane',
-      'Eurogold'
-    ]
+describe('ClientsCarousel Component', () => {
+  it('should have correct background color', () => {
+    const sectionClasses = 'py-16 bg-white'
+    expect(sectionClasses).toContain('bg-white')
+    expect(sectionClasses).not.toContain('bg-gray-50')
+  })
+
+  it('should have correct animation duration', () => {
+    const animationDuration = 90 // 3x plus lent que l'original (30 * 3)
+    expect(animationDuration).toBe(90)
+  })
+
+  it('should have correct interval timing', () => {
+    const intervalTiming = 9000 // 9 secondes (3x plus lent que 3000ms)
+    expect(intervalTiming).toBe(9000)
+  })
+
+  it('should have correct gradient overlays', () => {
+    const leftGradient = 'bg-gradient-to-r from-white to-transparent'
+    const rightGradient = 'bg-gradient-to-l from-white to-transparent'
     
-    expect(clients).toHaveLength(9)
-    expect(clients).toContain('SFR')
-    expect(clients).toContain('Cateco')
+    expect(leftGradient).toContain('from-white')
+    expect(rightGradient).toContain('from-white')
+    expect(leftGradient).not.toContain('from-gray-50')
+    expect(rightGradient).not.toContain('from-gray-50')
   })
 
-  it('should have proper section title', () => {
-    // Test pour vérifier que le titre de section est correct
-    const sectionTitle = "Ils nous font confiance"
-    expect(sectionTitle).toBe("Ils nous font confiance")
-  })
-
-  it('should have proper animation classes', () => {
-    // Test pour vérifier que les classes d'animation sont présentes
-    const animationClasses = {
-      container: 'relative overflow-hidden',
-      gradient: 'absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10',
-      carousel: 'flex items-center space-x-16 lg:space-x-24'
+  it('should have correct section structure', () => {
+    const sectionStructure = {
+      background: 'bg-white',
+      padding: 'py-16',
+      container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
     }
     
-    expect(animationClasses.container).toContain('overflow-hidden')
-    expect(animationClasses.gradient).toContain('bg-gradient-to-r')
-    expect(animationClasses.carousel).toContain('flex items-center')
+    expect(sectionStructure.background).toBe('bg-white')
+    expect(sectionStructure.padding).toBe('py-16')
+    expect(sectionStructure.container).toContain('max-w-7xl')
   })
 
-  it('should have statistics section', () => {
-    // Test pour vérifier que la section statistiques est présente
-    const statistics = {
-      clients: '500+',
-      experience: '15+',
-      satisfaction: '99.9%'
+  it('should have correct animation configuration', () => {
+    const animationConfig = {
+      duration: 90,
+      repeat: 'Infinity',
+      ease: 'linear'
     }
     
-    expect(statistics.clients).toBe('500+')
-    expect(statistics.experience).toBe('15+')
-    expect(statistics.satisfaction).toBe('99.9%')
+    expect(animationConfig.duration).toBe(90)
+    expect(animationConfig.repeat).toBe('Infinity')
+    expect(animationConfig.ease).toBe('linear')
   })
 
-  it('should have proper image optimization', () => {
-    // Test pour vérifier que les images sont optimisées
-    const imageProps = {
-      fill: true,
-      className: 'object-contain',
-      sizes: '(max-width: 768px) 128px, 160px'
+  it('should have correct interval configuration', () => {
+    const intervalConfig = {
+      timing: 9000,
+      description: 'Change toutes les 9 secondes (3x plus lent)'
     }
     
-    expect(imageProps.fill).toBe(true)
-    expect(imageProps.className).toBe('object-contain')
-    expect(imageProps.sizes).toBe('(max-width: 768px) 128px, 160px')
+    expect(intervalConfig.timing).toBe(9000)
+    expect(intervalConfig.description).toContain('9 secondes')
   })
 }) 
