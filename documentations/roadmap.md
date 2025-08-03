@@ -59,6 +59,8 @@
 - ✅ **Carousel clients optimisé** : Vitesse ralentie, bordures transparentes
 - ✅ **Badge 3CX corrigé** : Utilisation de la vraie image
 - ✅ **Routage fonctionnel** : Navigation cohérente
+- ✅ **Images de background** : Pexels sur homepage + man-on-phone sur devis
+- ✅ **Composants héros optimisés** : Gestion de chargement et transitions
 
 #### **Livrables**
 
@@ -240,14 +242,16 @@
 
 ### **Technique**
 
-- ✅ **54 tests passent** (vs 48 précédemment)
+- ✅ **78 tests passent** (vs 54 précédemment)
 - ✅ **Code propre** : ESLint respecté
-- ✅ **Performance optimale** : Carousel fluide
+- ✅ **Performance optimale** : Images optimisées avec preload
 - ✅ **Design cohérent** : Intégration parfaite
 - ✅ **Badge 3CX** corrigé avec vraie image
 - ✅ **Routage fonctionnel** : Navigation cohérente
 - ✅ **HubSpot CRM** : Formulaires et tracking implémentés
 - ✅ **Liens Tally** : Tracking automatique des clics
+- ✅ **Images de background** : Homepage Pexels + Devis man-on-phone
+- ✅ **Composants optimisés** : Gestion intelligente du chargement d'images
 
 ### **Conversion**
 

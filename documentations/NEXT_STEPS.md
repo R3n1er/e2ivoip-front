@@ -196,7 +196,7 @@ Créer les pages détaillées pour chaque service avec contenu enrichi et formul
 
 ### **Accomplissements majeurs :**
 
-- ✅ **54 tests passent** (vs 48 précédemment)
+- ✅ **78 tests passent** (vs 54 précédemment)
 - ✅ **Carousel clients** avec 9 logos et défilement optimisé
 - ✅ **Header visible** au chargement (problème résolu)
 - ✅ **Footer unique** avec badge 3CX Bronze Partner
@@ -207,3 +207,5 @@ Créer les pages détaillées pour chaque service avec contenu enrichi et formul
 - ✅ **Badge 3CX** corrigé avec vraie image
 - ✅ **Formulaires HubSpot** intégrés avec tracking
 - ✅ **Liens Tally** avec tracking automatique
+- ✅ **Images de background** : Homepage Pexels + Devis man-on-phone
+- ✅ **Composants héros optimisés** : Gestion intelligente du chargement

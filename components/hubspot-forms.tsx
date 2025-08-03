@@ -22,7 +22,7 @@ export function HubSpotForm({
   const { trackEvent } = useHubSpot();
 
   useEffect(() => {
-    if (window.hbspt && formRef.current) {
+    if ((window as any).hbspt && formRef.current) {
       // Supprimer le formulaire existant s'il y en a un
       const existingForm = formRef.current.querySelector(".hs-form");
       if (existingForm) {
@@ -30,7 +30,7 @@ export function HubSpotForm({
       }
 
       // Créer le formulaire HubSpot
-      window.hbspt.forms.create({
+      ;(window as any).hbspt.forms.create({
         portalId,
         formId,
         region,

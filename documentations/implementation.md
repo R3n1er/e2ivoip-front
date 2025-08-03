@@ -33,24 +33,25 @@
 
 ### 2.1 Structure de base améliorée
 
-- [ ] Refactoring du layout principal avec navigation optimisée
-- [ ] Header responsive optimisé pour MacBook Pro 13", 14", 15"
-- [ ] Footer complet avec :
-  - [ ] Logos partenaires
-  - [ ] Liens légaux (CGV, Politique de confidentialité)
-  - [ ] Mentions RGPD
-- [ ] Système de routing Next.js optimisé
-- [ ] **NOUVEAU** : Breadcrumbs pour navigation interne
+- [x] Refactoring du layout principal avec navigation optimisée
+- [x] Header responsive optimisé pour MacBook Pro 13", 14", 15"
+- [x] Footer complet avec :
+  - [x] Logos partenaires
+  - [x] Liens légaux (CGV, Politique de confidentialité)
+  - [x] Mentions RGPD
+- [x] Système de routing Next.js optimisé
+- [x] **NOUVEAU** : Breadcrumbs pour navigation interne
 
 ### 2.2 Pages principales restructurées
 
-- [ ] **Page d'accueil modernisée** :
-  - [ ] Hero section avec nouveau design
-  - [ ] Section services restructurée
-  - [ ] Logos clients avec carousel
-  - [ ] Témoignages clients
-  - [ ] CTA de contact optimisés
-  - [ ] Footer avec partenaires
+- [x] **Page d'accueil modernisée** :
+  - [x] Hero section avec nouveau design + image Pexels background
+  - [x] Section services restructurée
+  - [x] Logos clients avec carousel
+  - [x] Témoignages clients
+  - [x] CTA de contact optimisés
+  - [x] Footer avec partenaires
+  - [x] **NOUVEAU** : HomepageHeroSection avec gestion d'image optimisée
 - [ ] **Qui sommes-nous étendue** :
   - [ ] Histoire de l'entreprise
   - [ ] Équipe et expertises
@@ -75,12 +76,13 @@
   - [ ] Présentation de l'IA dans le routage téléphonique
   - [ ] Cas d'usage concrets
   - [ ] Amélioration expérience client
-- [ ] **NOUVELLE** : Page "Devis en ligne" centralisée
-  - [ ] Boutons vers formulaires Tally spécialisés
-  - [ ] Devis Trunk SIP
-  - [ ] Devis portabilité
-  - [ ] Devis 3CX
-  - [ ] Devis Yeastar
+- [x] **NOUVELLE** : Page "Devis en ligne" centralisée
+  - [x] Boutons vers formulaires Tally spécialisés
+  - [x] Devis Trunk SIP
+  - [x] Devis portabilité
+  - [x] Devis 3CX
+  - [x] Devis Yeastar
+  - [x] **NOUVEAU** : DevisHeroSection avec image man-on-phone background
 
 ### 2.4 Composants réutilisables avancés
 

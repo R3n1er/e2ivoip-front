@@ -131,6 +131,10 @@
 - ✅ **Carousel clients optimisé** : Vitesse ralentie, bordures transparentes
 - ✅ **Badge 3CX corrigé** : Utilisation de la vraie image
 - ✅ **Routage fonctionnel** : Navigation cohérente
+- ✅ **Images de background professionnelles** : 
+  - Homepage : Image Pexels `pexels-ketut-subiyanto-4559714-min.jpg`
+  - Page devis : Image `man-oniphone-business-min.jpg`
+- ✅ **Composants héros optimisés** : Gestion intelligente du chargement d'images
 
 #### 7.4 Sprint 3 - Fonctionnalités Avancées 🔄 EN COURS
 
@@ -182,12 +186,14 @@
 
 #### 9.2 Technique
 
-- ✅ **48 tests passent** (vs 35 précédemment)
+- ✅ **78 tests passent** (vs 48 précédemment)
 - ✅ **Code propre** : ESLint respecté
-- ✅ **Performance optimale** : Carousel fluide
+- ✅ **Performance optimale** : Images optimisées avec preload
 - ✅ **Design cohérent** : Intégration parfaite
 - ✅ **Badge 3CX** corrigé avec vraie image
 - ✅ **Routage fonctionnel** : Navigation cohérente
+- ✅ **Images de background** : Gestion intelligente du chargement
+- ✅ **Composants optimisés** : HomepageHeroSection et DevisHeroSection
 
 #### 9.3 Conversion
 

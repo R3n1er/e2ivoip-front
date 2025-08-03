@@ -1,4 +1,4 @@
-import { HeroSection } from "@/components/hero-section"
+import { HomepageHeroSection } from "@/components/homepage-hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { AboutSection } from "@/components/about-section"
 import { ClientsCarousel } from "@/components/clients-carousel"
@@ -17,7 +17,7 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10">
-          <HeroSection />
+          <HomepageHeroSection />
           <AboutSection />
           <ServicesSection />
           <ClientsCarousel />
