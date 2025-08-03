@@ -30,11 +30,13 @@ describe('HubSpot CRM Integration with Tally Tracking', () => {
   it('should have correct HubSpot portal configuration', () => {
     const hubspotConfig = {
       portalId: '26878201',
+      formId: '312a9f67-e613-4651-9690-4586646554a0',
       region: 'eu1',
       scriptUrl: '//js-eu1.hs-scripts.com/26878201.js'
     }
     
     expect(hubspotConfig.portalId).toBe('26878201')
+    expect(hubspotConfig.formId).toBe('312a9f67-e613-4651-9690-4586646554a0')
     expect(hubspotConfig.region).toBe('eu1')
     expect(hubspotConfig.scriptUrl).toContain('26878201')
   })

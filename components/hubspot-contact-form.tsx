@@ -13,7 +13,7 @@ interface HubSpotContactFormProps {
 
 export function HubSpotContactForm({ 
   portalId = "26878201", 
-  formId = "contact-form", // À remplacer par l'ID réel du formulaire HubSpot
+  formId = "312a9f67-e613-4651-9690-4586646554a0", // Form ID réel du formulaire HubSpot
   region = "eu1",
   onFormSubmitted,
   className = ""
@@ -93,6 +93,7 @@ export function QuickContactForm() {
         Notre équipe d'experts est là pour vous accompagner
       </p>
       <HubSpotContactForm 
+        formId="312a9f67-e613-4651-9690-4586646554a0"
         onFormSubmitted={handleFormSubmitted}
         className="w-full"
       />
@@ -121,6 +122,7 @@ export function FullContactForm() {
         Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
       </p>
       <HubSpotContactForm 
+        formId="312a9f67-e613-4651-9690-4586646554a0"
         onFormSubmitted={handleFormSubmitted}
         className="w-full"
       />

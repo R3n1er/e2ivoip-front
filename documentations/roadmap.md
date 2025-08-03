@@ -229,6 +229,7 @@
 ## 🎉 Accomplissements Majeurs Sprint 2 + BONUS
 
 ### **Design et UX**
+
 - ✅ **Page d'accueil modernisée** avec couleurs PRD
 - ✅ **Carousel clients** avec 9 logos et défilement optimisé
 - ✅ **Header corrigé** : Visible au chargement
@@ -238,6 +239,7 @@
 - ✅ **Menu principal** optimisé pour conversion
 
 ### **Technique**
+
 - ✅ **54 tests passent** (vs 48 précédemment)
 - ✅ **Code propre** : ESLint respecté
 - ✅ **Performance optimale** : Carousel fluide
@@ -248,6 +250,7 @@
 - ✅ **Liens Tally** : Tracking automatique des clics
 
 ### **Conversion**
+
 - ✅ **Navigation optimisée** : "Devis en ligne" au lieu de "Contact"
 - ✅ **Page dédiée** : `/devis-en-ligne` avec 4 types de devis
 - ✅ **Call-to-actions** : Boutons clairs et visibles
