@@ -1,98 +1,223 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Phone, Headphones, Settings, Shield, Cloud, Smartphone } from "lucide-react"
+import { Phone, Headphones, Settings, Shield, Cloud, Smartphone, Zap, Users, Globe, MessageSquare, BarChart3, Cpu } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export function ServicesSection() {
   const services = [
     {
       icon: Phone,
       title: "Standards téléphoniques IP",
-      description: "Solutions complètes de téléphonie d'entreprise avec fonctionnalités avancées",
-      features: ["Auto-commutateur", "Messagerie vocale", "Transfert d'appels", "Conférence"],
+      description: "Solutions complètes de téléphonie d'entreprise avec fonctionnalités avancées et haute disponibilité",
+      features: ["Auto-commutateur intelligent", "Messagerie vocale unifiée", "Transfert d'appels avancé", "Conférence multipartite"],
+      badge: "Populaire",
+      color: "red"
     },
     {
       icon: Headphones,
       title: "Centre d'appels",
-      description: "Optimisez votre relation client avec nos solutions de centre d'appels",
-      features: ["Distribution automatique", "Supervision temps réel", "Enregistrement", "Reporting"],
+      description: "Optimisez votre relation client avec nos solutions de centre d'appels performantes",
+      features: ["Distribution automatique", "Supervision temps réel", "Enregistrement sécurisé", "Reporting détaillé"],
+      badge: "Nouveau",
+      color: "blue"
     },
     {
       icon: Cloud,
       title: "Trunk SIP",
-      description: "Connexions SIP haute qualité pour vos communications sortantes",
-      features: ["Numéros géographiques", "Portabilité", "Qualité garantie", "Tarifs préférentiels"],
+      description: "Connexions SIP haute qualité pour vos communications sortantes avec tarifs optimisés",
+      features: ["Numéros géographiques", "Portabilité simplifiée", "Qualité garantie", "Tarifs préférentiels"],
+      badge: "Économique",
+      color: "green"
     },
     {
       icon: Smartphone,
       title: "Softphones mobiles",
-      description: "Applications mobiles pour rester connecté partout",
-      features: ["iOS et Android", "Synchronisation", "Notifications push", "Interface intuitive"],
+      description: "Applications mobiles pour rester connecté partout avec une interface intuitive",
+      features: ["iOS et Android", "Synchronisation cloud", "Notifications push", "Interface intuitive"],
+      badge: "Mobile",
+      color: "purple"
     },
     {
       icon: Settings,
       title: "Installation & maintenance",
-      description: "Service complet d'installation et de maintenance de vos équipements",
-      features: ["Installation sur site", "Configuration", "Formation", "Support technique"],
+      description: "Service complet d'installation et de maintenance de vos équipements avec formation",
+      features: ["Installation sur site", "Configuration optimisée", "Formation équipe", "Support technique 24/7"],
+      badge: "Premium",
+      color: "orange"
     },
     {
       icon: Shield,
       title: "Sécurité & monitoring",
-      description: "Protection et surveillance de votre infrastructure télécom",
-      features: ["Chiffrement", "Firewall SIP", "Monitoring 24/7", "Alertes automatiques"],
+      description: "Protection et surveillance de votre infrastructure télécom avec alertes automatiques",
+      features: ["Chiffrement end-to-end", "Firewall SIP avancé", "Monitoring 24/7", "Alertes automatiques"],
+      badge: "Sécurisé",
+      color: "indigo"
     },
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const getColorClasses = (color: string) => {
+    const colors = {
+      red: "bg-red-50 border-red-200 text-red-700",
+      blue: "bg-blue-50 border-blue-200 text-blue-700",
+      green: "bg-green-50 border-green-200 text-green-700",
+      purple: "bg-purple-50 border-purple-200 text-purple-700",
+      orange: "bg-orange-50 border-orange-200 text-orange-700",
+      indigo: "bg-indigo-50 border-indigo-200 text-indigo-700"
+    }
+    return colors[color as keyof typeof colors] || colors.red
+  }
+
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Nos <span className="text-red-600">Services</span>
+          <Badge className="mb-4 bg-red-primary/10 text-red-primary border-red-primary/20">
+            Nos Solutions
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-marine mb-6">
+            Services de <span className="text-red-primary">Téléphonie IP</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Découvrez notre gamme complète de solutions de téléphonie IP adaptées à tous les besoins d'entreprise
+          <p className="text-xl text-gray-secondary max-w-4xl mx-auto leading-relaxed">
+            Découvrez notre gamme complète de solutions de téléphonie IP adaptées à tous les besoins d'entreprise.
+            <br />
+            <span className="font-medium text-blue-marine">
+              Performance, fiabilité et innovation au service de votre business.
+            </span>
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={cardVariants}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-gray-200">
-                <CardHeader>
-                  <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-red-600" />
+              <Card className="h-full group hover:shadow-2xl transition-all duration-500 border-gray-200 bg-white/80 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`p-3 rounded-xl ${getColorClasses(service.color)}`}>
+                      <service.icon className="w-6 h-6" />
+                    </div>
+                    {service.badge && (
+                      <Badge variant="secondary" className="text-xs">
+                        {service.badge}
+                      </Badge>
+                    )}
                   </div>
-                  <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600">{service.description}</CardDescription>
+                  <CardTitle className="text-xl text-blue-marine group-hover:text-red-primary transition-colors">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-secondary leading-relaxed">
+                    {service.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3 flex-shrink-0" />
+                      <motion.li
+                        key={featureIndex}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: featureIndex * 0.1 }}
+                        className="flex items-center text-sm text-gray-secondary"
+                      >
+                        <div className="w-1.5 h-1.5 bg-red-primary rounded-full mr-3 flex-shrink-0" />
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
+                  
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-6 pt-4 border-t border-gray-100"
+                  >
+                    <div className="flex items-center justify-between text-xs text-gray-secondary">
+                      <span>Disponibilité</span>
+                      <span className="font-medium text-green-600">99.9%</span>
+                    </div>
+                  </motion.div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <div className="bg-gradient-to-r from-blue-marine to-blue-900 rounded-2xl p-8 md:p-12 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Prêt à moderniser votre téléphonie ?
+            </h3>
+            <p className="text-lg text-gray-200 mb-6 max-w-2xl mx-auto">
+              Nos experts vous accompagnent dans la mise en place de votre solution sur mesure
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-red-primary hover:bg-red-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Demander un devis gratuit
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-marine px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Voir nos références
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

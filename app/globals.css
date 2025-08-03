@@ -24,6 +24,11 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    
+    /* Couleurs personnalisées selon le PRD */
+    --red-primary: 0 62% 56%; /* #E53E3E */
+    --blue-marine: 220 25% 25%; /* #2D3848 */
+    --gray-secondary: 240 5% 55%; /* #818096 */
   }
 
   .dark {
@@ -55,5 +60,56 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Animations pour les éléments décoratifs */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  /* Couleurs personnalisées */
+  .text-red-primary {
+    color: hsl(var(--red-primary));
+  }
+  
+  .bg-red-primary {
+    background-color: hsl(var(--red-primary));
+  }
+  
+  .text-blue-marine {
+    color: hsl(var(--blue-marine));
+  }
+  
+  .bg-blue-marine {
+    background-color: hsl(var(--blue-marine));
+  }
+  
+  .text-gray-secondary {
+    color: hsl(var(--gray-secondary));
   }
 }
