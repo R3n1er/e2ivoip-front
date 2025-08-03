@@ -1,1 +1,14 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/blog/page": "app/blog/page.js",
+  "/page": "app/page.js",
+  "/qui-sommes-nous/page": "app/qui-sommes-nous/page.js",
+  "/studio-attente/page": "app/studio-attente/page.js",
+  "/telephonie-entreprise/page": "app/telephonie-entreprise/page.js",
+  "/assistants-vocaux-ia/page": "app/assistants-vocaux-ia/page.js",
+  "/test-integrations/page": "app/test-integrations/page.js",
+  "/nos-services/mobilite/page": "app/nos-services/mobilite/page.js",
+  "/test-macbook/page": "app/test-macbook/page.js",
+  "/test-tawk/page": "app/test-tawk/page.js"
+}
