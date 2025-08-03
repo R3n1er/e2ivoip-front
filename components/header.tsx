@@ -63,7 +63,7 @@ export function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-          : 'bg-transparent'
+          : 'bg-white/10 backdrop-blur-sm border-b border-white/20'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ export function Header() {
             </motion.div>
             <div className="hidden sm:block">
               <div className={`text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] transition-colors ${
-                isScrolled ? 'text-gray-secondary' : 'text-white/80'
+                isScrolled ? 'text-gray-secondary' : 'text-white/90'
               }`}>
                 Solutions de Téléphonie IP
                 <br />
@@ -105,13 +105,13 @@ export function Header() {
                   className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
                     isScrolled 
                       ? 'text-gray-700 hover:text-red-primary' 
-                      : 'text-white/90 hover:text-white'
+                      : 'text-white/95 hover:text-white'
                   }`}
                 >
                   {item.name}
                   {item.submenu && (
                     <ChevronDown className={`w-3 h-3 ml-1 transition-transform ${
-                      isScrolled ? 'text-gray-600' : 'text-white/70'
+                      isScrolled ? 'text-gray-600' : 'text-white/80'
                     } group-hover:rotate-180`} />
                   )}
                 </Link>
