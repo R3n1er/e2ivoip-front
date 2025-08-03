@@ -92,11 +92,11 @@ export default function DevisEnLignePage() {
             src="/images/photos/man-oniphone-business-min.jpg" 
             alt="Homme d'affaires sur téléphone"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-25"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/95 via-red-primary/85 to-blue-marine/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 via-red-primary/80 to-blue-marine/90"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
