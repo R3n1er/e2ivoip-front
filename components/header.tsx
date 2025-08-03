@@ -52,7 +52,7 @@ export function Header() {
       ],
     },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Devis en ligne", href: "/devis-en-ligne" },
   ]
 
   return (
@@ -147,7 +147,7 @@ export function Header() {
             >
               <Button className="bg-red-primary hover:bg-red-600 text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
                 <Phone className="w-4 h-4 mr-2" />
-                Nous contacter
+                Devis en ligne
               </Button>
             </motion.div>
           </div>
@@ -197,7 +197,7 @@ export function Header() {
                 >
                   <Button className="bg-red-primary hover:bg-red-600 text-white w-full">
                     <Phone className="w-4 h-4 mr-2" />
-                    Nous contacter
+                    Devis en ligne
                   </Button>
                 </motion.div>
               </div>
