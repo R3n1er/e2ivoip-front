@@ -48,9 +48,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <HubSpotTracking />
         <TawkTo />
