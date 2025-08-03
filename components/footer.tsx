@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react"
+import { ThreeCXBadge } from "@/components/ui/3cx-badge"
 
 export function Footer() {
   return (
@@ -18,6 +19,12 @@ export function Footer() {
             <p className="text-gray-400 mb-6 text-sm lg:text-base">
               Solutions de téléphonie IP et communications d'entreprise depuis plus de 15 ans.
             </p>
+            
+            {/* 3CX Bronze Partner Badge */}
+            <div className="mb-6">
+              <ThreeCXBadge />
+            </div>
+            
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-red-500 flex-shrink-0" />
@@ -153,13 +160,19 @@ export function Footer() {
               <p>&copy; 2024 E2I VoIP. Tous droits réservés.</p>
             </div>
             
-            {/* Partners logos - Placeholder */}
+            {/* Partners logos */}
             <div className="flex items-center space-x-6 text-gray-400 text-xs">
-              <span>Partenaires :</span>
+              <span className="text-gray-300 font-medium">Partenaires certifiés :</span>
               <div className="flex items-center space-x-4">
-                <span className="opacity-60">3CX</span>
-                <span className="opacity-60">Yeastar</span>
-                <span className="opacity-60">HubSpot</span>
+                <div className="flex items-center space-x-1">
+                  <span className="text-blue-600 font-semibold">3CX</span>
+                  <span className="text-yellow-500">★</span>
+                  <span className="text-gray-400">Bronze Partner</span>
+                </div>
+                <span className="text-gray-500">|</span>
+                <span className="opacity-80">Yeastar</span>
+                <span className="text-gray-500">|</span>
+                <span className="opacity-80">HubSpot</span>
               </div>
             </div>
           </div>
