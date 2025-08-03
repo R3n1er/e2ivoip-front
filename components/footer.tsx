@@ -108,7 +108,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/nos-services/devis-en-ligne" className="hover:text-white transition-colors">
+                <Link href="/devis-en-ligne" className="hover:text-white transition-colors">
                   Devis en ligne
                 </Link>
               </li>
