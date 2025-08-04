@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useHubSpot } from "./hubspot-tracking";
+import { useToast } from "@/components/ui/use-toast";
+import { validateEmail, validatePhone } from "@/lib/utils";
 
 interface HubSpotFormProps {
   portalId: string;
@@ -9,6 +11,12 @@ interface HubSpotFormProps {
   region?: string;
   onFormSubmitted?: (data: any) => void;
   className?: string;
+  validation?: {
+    email?: boolean;
+    phone?: boolean;
+    company?: boolean;
+    message?: boolean;
+  };
 }
 
 export function HubSpotForm({
@@ -17,39 +25,90 @@ export function HubSpotForm({
   region = "eu1",
   onFormSubmitted,
   className = "",
+  validation = { email: true, phone: true, company: true, message: true },
 }: HubSpotFormProps) {
   const formRef = useRef<HTMLDivElement>(null);
   const { trackEvent } = useHubSpot();
+  const { toast } = useToast();
+
+  const validateForm = (
+    form: HTMLFormElement
+  ): { isValid: boolean; errors: string[] } => {
+    const fields = form.querySelectorAll("input, textarea");
+    let isValid = true;
+    const errors: string[] = [];
+
+    fields.forEach((field: Element) => {
+      const inputField = field as HTMLInputElement | HTMLTextAreaElement;
+      const name = inputField.name;
+      const value = inputField.value.trim();
+
+      if (validation[name as keyof typeof validation] && !value) {
+        isValid = false;
+        errors.push(`Le champ ${name} est requis`);
+        inputField.classList.add("border-red-500");
+      } else {
+        inputField.classList.remove("border-red-500");
+      }
+
+      if (name === "email" && validation.email && !validateEmail(value)) {
+        isValid = false;
+        errors.push("Veuillez entrer une adresse email valide");
+        inputField.classList.add("border-red-500");
+      }
+
+      if (name === "phone" && validation.phone && !validatePhone(value)) {
+        isValid = false;
+        errors.push("Veuillez entrer un numéro de téléphone valide");
+        inputField.classList.add("border-red-500");
+      }
+    });
+
+    if (!isValid) {
+      toast({
+        title: "Erreur de validation",
+        description: errors.join(", "),
+        variant: "destructive",
+      });
+    }
+
+    return { isValid, errors };
+  };
 
   useEffect(() => {
-    if ((window as any).hbspt && formRef.current) {
-      // Supprimer le formulaire existant s'il y en a un
+    if (window.hbspt && formRef.current) {
       const existingForm = formRef.current.querySelector(".hs-form");
       if (existingForm) {
         existingForm.remove();
       }
 
-      // Créer le formulaire HubSpot
-      ;(window as any).hbspt.forms.create({
+      window.hbspt.forms.create({
         portalId,
         formId,
         region,
         target: formRef.current,
-        onFormSubmitted: (form: any) => {
-          // Tracking de l'événement de soumission
-          trackEvent("form_submitted", {
-            form_id: formId,
-            form_type: "hubspot_form",
-            portal_id: portalId,
-          });
+        onFormSubmitted: (form: HTMLFormElement) => {
+          const { isValid, errors } = validateForm(form);
+          if (isValid) {
+            trackEvent("form_submitted", {
+              form_id: formId,
+              form_type: "hubspot_form",
+              portal_id: portalId,
+            });
 
-          // Callback personnalisé
-          if (onFormSubmitted) {
-            onFormSubmitted(form);
+            if (onFormSubmitted) {
+              onFormSubmitted(form);
+            }
+          } else {
+            trackEvent("form_validation_error", {
+              form_id: formId,
+              form_type: "hubspot_form",
+              portal_id: portalId,
+              errors: errors,
+            });
           }
         },
-        onFormReady: (form: any) => {
-          // Tracking de l'affichage du formulaire
+        onFormReady: () => {
           trackEvent("form_displayed", {
             form_id: formId,
             form_type: "hubspot_form",
@@ -58,7 +117,7 @@ export function HubSpotForm({
         },
       });
     }
-  }, [portalId, formId, region, onFormSubmitted, trackEvent]);
+  }, [portalId, formId, region, onFormSubmitted, trackEvent, validateForm]);
 
   return (
     <div
@@ -74,7 +133,9 @@ export function HubSpotForm({
 export function TrunkSIPForm() {
   const { trackEvent } = useHubSpot();
 
-  const handleFormSubmitted = (data: any) => {
+  const handleFormSubmitted = (_data: any) => {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     trackEvent("devis_trunk_sip_submitted", {
       form_type: "trunk_sip",
       lead_source: "website",
@@ -102,6 +163,7 @@ export function PortabiliteForm() {
   const { trackEvent } = useHubSpot();
 
   const handleFormSubmitted = (data: any) => {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     trackEvent("devis_portabilite_submitted", {
       form_type: "portabilite",
       lead_source: "website",
@@ -131,6 +193,7 @@ export function VoIP3CXForm() {
   const { trackEvent } = useHubSpot();
 
   const handleFormSubmitted = (data: any) => {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     trackEvent("devis_voip_3cx_submitted", {
       form_type: "voip_3cx",
       lead_source: "website",
@@ -158,6 +221,7 @@ export function ProjetPBXForm() {
   const { trackEvent } = useHubSpot();
 
   const handleFormSubmitted = (data: any) => {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     trackEvent("devis_projet_pbx_submitted", {
       form_type: "projet_pbx",
       lead_source: "website",
@@ -183,12 +247,20 @@ export function ProjetPBXForm() {
 
 export function ContactForm() {
   const { trackEvent } = useHubSpot();
+  const { toast } = useToast();
 
   const handleFormSubmitted = (data: any) => {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     trackEvent("contact_form_submitted", {
       form_type: "contact",
       lead_source: "website",
       timestamp: new Date().toISOString(),
+    });
+
+    toast({
+      title: "Merci pour votre demande",
+      description: "Nous vous recontacterons dans les plus brefs délais",
+      variant: "default",
     });
   };
 
@@ -203,6 +275,12 @@ export function ContactForm() {
         formId="contact-form" // À remplacer par l'ID réel du formulaire HubSpot
         onFormSubmitted={handleFormSubmitted}
         className="w-full"
+        validation={{
+          email: true,
+          phone: true,
+          company: true,
+          message: true,
+        }}
       />
     </div>
   );
