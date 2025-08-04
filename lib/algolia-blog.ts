@@ -77,14 +77,23 @@ export async function syncHubSpotToAlgolia() {
   }
 }
 
-export async function searchBlogPosts(query: string, filters?: any) {
+export async function searchBlogPosts(
+  query: string, 
+  filters?: any, 
+  page: number = 1
+) {
   try {
     const client = getAlgoliaClient();
     const index = client.initIndex(BLOG_INDEX_NAME);
+    const hitsPerPage = 12;
+    const offset = (page - 1) * hitsPerPage;
+    
     const searchOptions: any = {
-      hitsPerPage: 12,
+      hitsPerPage,
+      page: page - 1, // Algolia utilise un index basé sur 0
       facets: ["author", "tags", "publishYear"],
     };
+    
     if (filters) {
       if (filters.author) searchOptions.filters = `author:"${filters.author}"`;
       if (filters.year) searchOptions.filters = `publishYear:${filters.year}`;
@@ -97,6 +106,7 @@ export async function searchBlogPosts(query: string, filters?: any) {
           : `(${tagFilters})`;
       }
     }
+    
     const results = await index.search(query, searchOptions);
     return results;
   } catch (error) {

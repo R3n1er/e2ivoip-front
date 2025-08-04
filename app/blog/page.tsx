@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
+import { BlogPagination } from "@/components/blog/blog-pagination";
 import { searchBlogPosts } from "@/lib/algolia-blog";
 import type { BlogPost } from "@/lib/hubspot-blog";
 
@@ -16,15 +17,18 @@ interface BlogFilters {
   sortBy: "newest" | "oldest" | "relevance";
 }
 
+const POSTS_PER_PAGE = 12;
+
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [totalResults, setTotalResults] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [availableAuthors, setAvailableAuthors] = useState<string[]>([]);
   const [availableYears, setAvailableYears] = useState<number[]>([]);
   const [availableTags, setAvailableTags] = useState<string[]>([]);
 
-  const handleSearch = async (filters: BlogFilters) => {
+  const handleSearch = async (filters: BlogFilters, page: number = 1) => {
     setLoading(true);
     try {
       // Préparer les filtres pour Algolia
@@ -33,8 +37,8 @@ export default function Blog() {
       if (filters.year) algoliaFilters.year = filters.year;
       if (filters.tags.length > 0) algoliaFilters.tags = filters.tags;
 
-      // Effectuer la recherche
-      const results = await searchBlogPosts(filters.query, algoliaFilters);
+      // Effectuer la recherche avec pagination
+      const results = await searchBlogPosts(filters.query, algoliaFilters, page);
 
       // Traiter les résultats
       const blogPosts = results.hits.map((hit: any) => ({
@@ -74,6 +78,7 @@ export default function Blog() {
 
       setPosts(sortedPosts);
       setTotalResults(results.nbHits || 0);
+      setCurrentPage(page);
 
       // Extraire les facettes pour les filtres disponibles
       if (results.facets) {
@@ -98,6 +103,18 @@ export default function Blog() {
     }
   };
 
+  const handlePageChange = (page: number) => {
+    // Récupérer les filtres actuels et changer de page
+    const currentFilters = {
+      query: "",
+      author: "",
+      year: null,
+      tags: [],
+      sortBy: "newest" as const,
+    };
+    handleSearch(currentFilters, page);
+  };
+
   // Recherche initiale au chargement
   useEffect(() => {
     handleSearch({
@@ -108,6 +125,8 @@ export default function Blog() {
       sortBy: "newest",
     });
   }, []);
+
+  const totalPages = Math.ceil(totalResults / POSTS_PER_PAGE);
 
   return (
     <div className="min-h-screen bg-white">
@@ -159,7 +178,10 @@ export default function Blog() {
             {/* Composant de recherche */}
             <div className="mb-12">
               <BlogSearch
-                onSearch={handleSearch}
+                onSearch={(filters) => {
+                  setCurrentPage(1);
+                  handleSearch(filters, 1);
+                }}
                 availableAuthors={availableAuthors}
                 availableYears={availableYears}
                 availableTags={availableTags}
@@ -173,6 +195,14 @@ export default function Blog() {
               posts={posts}
               loading={loading}
               emptyMessage="Aucun article ne correspond à votre recherche."
+            />
+
+            {/* Pagination */}
+            <BlogPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              isLoading={loading}
             />
           </div>
         </section>
