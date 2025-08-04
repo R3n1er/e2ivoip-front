@@ -95,21 +95,30 @@
 
 ### 3.1 Intégration HubSpot étendue ✅
 
-- ✅ **Formulaires HubSpot natifs** :
-  - ✅ Formulaire de contact principal
-  - ✅ Tracking avancé des visiteurs
-  - ✅ Lead scoring automatique
-  - ✅ **CORRECTION CRITIQUE** : Tous les formulaires utilisent HubSpot
-    - Page d'accueil : `ContactSection` avec `FullContactForm`
-    - Page devis : `FullContactForm` avec tracking complet
-    - Form ID : `312a9f67-e613-4651-9690-4586646554a0`
-    - Portal ID : `26878201`
-- ✅ **Tracking étendu** :
-  - ✅ Pixel de suivi HubSpot (Portail 26878201)
-  - ✅ Events personnalisés
-  - ✅ Attribution des sources
-  - ✅ Campagnes marketing
-  - ✅ Statistiques de visite détaillées
+- ✅ **Formulaire de contact global** (implémenté)
+  - Page contact dédiée `/contact`
+  - Formulaire HubSpot avec Portal ID: `26878201`
+  - Form ID: `312a9f67-e613-4651-9690-4586646554a0`
+  - Intégration script HubSpot v2
+  - Composant `HubSpotContactFormGlobal` réutilisable
+- ✅ **Formulaire de devis en ligne** (implémenté)
+  - Page `/devis-en-ligne` avec formulaire HubSpot
+  - Même configuration Portal/Form ID
+- ✅ **Formulaire page d'accueil** (implémenté)
+  - Section contact avec `FullContactForm`
+  - Synchronisation automatique avec HubSpot CRM
+- ✅ **Tracking et analytics** (implémenté)
+  - Script HubSpot chargé globalement
+  - Hook `useHubSpot` pour événements personnalisés
+  - Conversion tracking automatique
+
+**Nouvelles fonctionnalités ajoutées :**
+- ✅ **Page contact complète** : `/contact` avec design moderne
+- ✅ **Informations de contact** : Téléphone, email, adresse, horaires
+- ✅ **Section FAQ** : Questions fréquentes sur la page contact
+- ✅ **CTA urgent** : Bouton d'appel direct pour réponse rapide
+- ✅ **SEO optimisé** : Métadonnées complètes pour la page contact
+- ✅ **Navigation mise à jour** : Bouton "Contact" dans le header
 
 ### 3.2 Intégration Tally + n8n ✅
 
@@ -139,6 +148,7 @@
 - ✅ Intégration URLR pour raccourcissement automatique
 
 **Nouvelles fonctionnalités ajoutées :**
+
 - ✅ **Pages d'articles individuels** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pagination avancée** : Navigation entre pages avec 12 articles par page
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique

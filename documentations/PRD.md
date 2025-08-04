@@ -80,23 +80,34 @@
 - **Logos clients** : Section dédiée avec carousel
 - **Composants** : Utiliser des composants de la librairie Shadcn, optimiser avec DaisyUI
 
-### 6. Intégration HubSpot
+## 4. Intégrations HubSpot
 
-#### 6.1 CRM ✅
+### 4.1 Formulaires HubSpot ✅
+- ✅ **Formulaire de contact global** : Page `/contact` dédiée
+- ✅ **Formulaire de devis** : Page `/devis-en-ligne` 
+- ✅ **Formulaire page d'accueil** : Section contact
+- ✅ **Configuration unifiée** :
+  - Portal ID : `26878201`
+  - Form ID : `312a9f67-e613-4651-9690-4586646554a0`
+  - Region : `eu1`
+- ✅ **Composants réutilisables** :
+  - `HubSpotContactFormGlobal` pour formulaires personnalisés
+  - `FullContactForm` pour intégration standard
+  - `useHubSpot` hook pour tracking
 
-- [x] Tracking des visiteurs (Portail 26878201)
-- [x] Lead scoring automatique
-- [x] Attribution des sources
-- [x] Formulaires natifs HubSpot
-- [x] Articles du blog
+### 4.2 CRM et Lead Management ✅
+- ✅ **Synchronisation automatique** des leads
+- ✅ **Lead scoring** basé sur l'activité
+- ✅ **Attribution des sources** (site web, contact, devis)
+- ✅ **Workflows automatiques** de qualification
+- ✅ **Notifications** en temps réel
 
-#### 6.2 Blog ✅
-
-- [x] Synchronisation automatique des articles
-- [x] Catégories et tags
-- [x] SEO optimisé
-- [x] Commentaires désactivés
-- [x] Intégration URLR pour raccourcissement automatique
+### 4.3 Analytics et Tracking ✅
+- ✅ **Pixel de suivi** HubSpot intégré
+- ✅ **Events personnalisés** pour conversions
+- ✅ **Attribution multi-touch** des conversions
+- ✅ **Rapports détaillés** de performance
+- ✅ **A/B testing** des formulaires
 
 ### 7. Statut d'implémentation
 

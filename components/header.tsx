@@ -91,7 +91,7 @@ export function Header() {
               }`}>
                 Solutions de Téléphonie IP
                 <br />
-                et communications d'entreprise
+                et communications d&apos;entreprise
               </div>
             </div>
           </Link>
@@ -145,10 +145,12 @@ export function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-red-primary hover:bg-red-600 text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
-                <Phone className="w-4 h-4 mr-2" />
-                Devis en ligne
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-red-primary hover:bg-red-600 text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Contact
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
@@ -195,10 +197,12 @@ export function Header() {
                   whileTap={{ scale: 0.98 }}
                   className="mt-6"
                 >
-                  <Button className="bg-red-primary hover:bg-red-600 text-white w-full">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Devis en ligne
-                  </Button>
+                  <Link href="/contact">
+                    <Button className="bg-red-primary hover:bg-red-600 text-white w-full">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Contact
+                    </Button>
+                  </Link>
                 </motion.div>
               </div>
             </SheetContent>
