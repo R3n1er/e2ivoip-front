@@ -83,8 +83,9 @@
 ## 4. Intégrations HubSpot
 
 ### 4.1 Formulaires HubSpot ✅
+
 - ✅ **Formulaire de contact global** : Page `/contact` dédiée
-- ✅ **Formulaire de devis** : Page `/devis-en-ligne` 
+- ✅ **Formulaire de devis** : Page `/devis-en-ligne`
 - ✅ **Formulaire page d'accueil** : Section contact
 - ✅ **Configuration unifiée** :
   - Portal ID : `26878201`
@@ -96,6 +97,7 @@
   - `useHubSpot` hook pour tracking
 
 ### 4.2 CRM et Lead Management ✅
+
 - ✅ **Synchronisation automatique** des leads
 - ✅ **Lead scoring** basé sur l'activité
 - ✅ **Attribution des sources** (site web, contact, devis)
@@ -103,6 +105,7 @@
 - ✅ **Notifications** en temps réel
 
 ### 4.3 Analytics et Tracking ✅
+
 - ✅ **Pixel de suivi** HubSpot intégré
 - ✅ **Events personnalisés** pour conversions
 - ✅ **Attribution multi-touch** des conversions

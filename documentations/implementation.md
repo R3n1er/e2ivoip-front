@@ -113,6 +113,7 @@
   - Conversion tracking automatique
 
 **Nouvelles fonctionnalités ajoutées :**
+
 - ✅ **Page contact complète** : `/contact` avec design moderne
 - ✅ **Informations de contact** : Téléphone, email, adresse, horaires
 - ✅ **Section FAQ** : Questions fréquentes sur la page contact

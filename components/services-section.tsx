@@ -82,12 +82,12 @@ export function ServicesSection() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      red: "bg-red-50 border-red-200 text-red-700",
-      blue: "bg-blue-50 border-blue-200 text-blue-700",
-      green: "bg-green-50 border-green-200 text-green-700",
-      purple: "bg-purple-50 border-purple-200 text-purple-700",
-      orange: "bg-orange-50 border-orange-200 text-orange-700",
-      indigo: "bg-indigo-50 border-indigo-200 text-indigo-700"
+      red: { bg: '#fef2f2', border: '#fecaca', text: '#E53E3E' },
+      blue: { bg: '#eff6ff', border: '#bfdbfe', text: '#2D3848' },
+      green: { bg: '#f0fdf4', border: '#bbf7d0', text: '#16a34a' },
+      purple: { bg: '#faf5ff', border: '#d8b4fe', text: '#9333ea' },
+      orange: { bg: '#fff7ed', border: '#fed7aa', text: '#ea580c' },
+      indigo: { bg: '#eef2ff', border: '#c7d2fe', text: '#6366f1' }
     }
     return colors[color as keyof typeof colors] || colors.red
   }
@@ -102,16 +102,16 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <Badge className="mb-4 bg-red-primary/10 text-red-primary border-red-primary/20">
+          <Badge className="mb-4 bg-red-600/10 text-red-600 border-red-600/20">
             Nos Solutions
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-marine mb-6">
-            Services de <span className="text-red-primary">Téléphonie IP</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ color: '#2D3848' }}>
+            Services de <span className="text-red-600" style={{ color: '#E53E3E' }}>Téléphonie IP</span>
           </h2>
-          <p className="text-xl text-gray-secondary max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl max-w-4xl mx-auto leading-relaxed" style={{ color: '#818096' }}>
             Découvrez notre gamme complète de solutions de téléphonie IP adaptées à tous les besoins d'entreprise.
             <br />
-            <span className="font-medium text-blue-marine">
+            <span className="font-medium" style={{ color: '#2D3848' }}>
               Performance, fiabilité et innovation au service de votre business.
             </span>
           </p>
@@ -136,7 +136,14 @@ export function ServicesSection() {
               <Card className="h-full group hover:shadow-2xl transition-all duration-500 border-gray-200 bg-white/80 backdrop-blur-sm">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl ${getColorClasses(service.color)}`}>
+                    <div 
+                      className="p-3 rounded-xl"
+                      style={{
+                        backgroundColor: getColorClasses(service.color).bg,
+                        borderColor: getColorClasses(service.color).border,
+                        color: getColorClasses(service.color).text
+                      }}
+                    >
                       <service.icon className="w-6 h-6" />
                     </div>
                     {service.badge && (
@@ -145,10 +152,10 @@ export function ServicesSection() {
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-xl text-blue-marine group-hover:text-red-primary transition-colors">
+                  <CardTitle className="text-xl transition-colors" style={{ color: '#2D3848' }}>
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-secondary leading-relaxed">
+                  <CardDescription className="leading-relaxed" style={{ color: '#818096' }}>
                     {service.description}
                   </CardDescription>
                 </CardHeader>
@@ -160,9 +167,10 @@ export function ServicesSection() {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: featureIndex * 0.1 }}
-                        className="flex items-center text-sm text-gray-secondary"
+                        className="flex items-center text-sm"
+                        style={{ color: '#818096' }}
                       >
-                        <div className="w-1.5 h-1.5 bg-red-primary rounded-full mr-3 flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0" style={{ backgroundColor: '#E53E3E' }} />
                         {feature}
                       </motion.li>
                     ))}
@@ -174,7 +182,7 @@ export function ServicesSection() {
                     transition={{ delay: 0.5 }}
                     className="mt-6 pt-4 border-t border-gray-100"
                   >
-                    <div className="flex items-center justify-between text-xs text-gray-secondary">
+                    <div className="flex items-center justify-between text-xs" style={{ color: '#818096' }}>
                       <span>Disponibilité</span>
                       <span className="font-medium text-green-600">99.9%</span>
                     </div>
@@ -193,25 +201,30 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-blue-marine to-blue-900 rounded-2xl p-8 md:p-12 text-white">
+          <div className="rounded-2xl p-8 md:p-12 text-white" style={{ background: 'linear-gradient(to right, #2D3848, #1e293b)' }}>
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Prêt à moderniser votre téléphonie ?
             </h3>
-            <p className="text-lg text-gray-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: '#e2e8f0' }}>
               Nos experts vous accompagnent dans la mise en place de votre solution sur mesure
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-red-primary hover:bg-red-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                style={{ backgroundColor: '#E53E3E' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#dc2626'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#E53E3E'}
               >
                 Demander un devis gratuit
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-marine px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                onMouseEnter={(e) => { e.target.style.backgroundColor = 'white'; e.target.style.color = '#2D3848'; }}
+                onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'white'; }}
               >
                 Voir nos références
               </motion.button>
