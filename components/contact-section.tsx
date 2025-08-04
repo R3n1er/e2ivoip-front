@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FullContactForm } from "@/components/hubspot-contact-form";
+import { HubSpotContactForm } from "@/components/hubspot-contact-form";
 
 export function ContactSection() {
   const contactInfo = [
@@ -66,9 +66,20 @@ export function ContactSection() {
                 <CardTitle className="text-2xl text-gray-900">
                   Demande de devis
                 </CardTitle>
+                <p className="text-gray-600">
+                  Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
+                </p>
               </CardHeader>
               <CardContent>
-                <FullContactForm />
+                <HubSpotContactForm
+                  portalId="26878201"
+                  formId="312a9f67-e613-4651-9690-4586646554a0"
+                  region="eu1"
+                  onFormSubmitted={(data) => {
+                    console.log("Formulaire soumis:", data);
+                  }}
+                  className="w-full"
+                />
               </CardContent>
             </Card>
           </motion.div>

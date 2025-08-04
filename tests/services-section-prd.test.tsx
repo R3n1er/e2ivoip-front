@@ -17,7 +17,7 @@ vi.mock('framer-motion', () => ({
   },
 }))
 
-describe('ServicesSection - Charte Graphique PRD', () => {
+describe('ServicesSection - Charte Graphique PRD (Icônes Corrigées)', () => {
   it('affiche le titre avec les couleurs PRD', () => {
     render(<ServicesSection />)
     
@@ -68,11 +68,15 @@ describe('ServicesSection - Charte Graphique PRD', () => {
     expect(availabilityElements).toHaveLength(6)
   })
 
-  it('utilise les couleurs PRD dans les styles inline', () => {
+  it('utilise uniquement les couleurs PRD pour les icônes', () => {
     const { container } = render(<ServicesSection />)
     
-    // Vérifier que les couleurs PRD sont utilisées dans les styles inline
+    // Vérifier que seules les couleurs PRD sont utilisées
     const elementsWithPRDColors = container.querySelectorAll('[style*="#E53E3E"], [style*="#2D3848"], [style*="#818096"]')
     expect(elementsWithPRDColors.length).toBeGreaterThan(0)
+    
+    // Vérifier qu'aucune autre couleur n'est utilisée pour les icônes
+    const elementsWithOtherColors = container.querySelectorAll('[style*="#16a34a"], [style*="#9333ea"], [style*="#ea580c"], [style*="#6366f1"]')
+    expect(elementsWithOtherColors.length).toBe(0)
   })
 })

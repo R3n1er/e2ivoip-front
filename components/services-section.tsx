@@ -12,48 +12,42 @@ export function ServicesSection() {
       title: "Standards téléphoniques IP",
       description: "Solutions complètes de téléphonie d'entreprise avec fonctionnalités avancées et haute disponibilité",
       features: ["Auto-commutateur intelligent", "Messagerie vocale unifiée", "Transfert d'appels avancé", "Conférence multipartite"],
-      badge: "Populaire",
-      color: "red"
+      badge: "Populaire"
     },
     {
       icon: Headphones,
       title: "Centre d'appels",
       description: "Optimisez votre relation client avec nos solutions de centre d'appels performantes",
       features: ["Distribution automatique", "Supervision temps réel", "Enregistrement sécurisé", "Reporting détaillé"],
-      badge: "Nouveau",
-      color: "blue"
+      badge: "Nouveau"
     },
     {
       icon: Cloud,
       title: "Trunk SIP",
       description: "Connexions SIP haute qualité pour vos communications sortantes avec tarifs optimisés",
       features: ["Numéros géographiques", "Portabilité simplifiée", "Qualité garantie", "Tarifs préférentiels"],
-      badge: "Économique",
-      color: "green"
+      badge: "Économique"
     },
     {
       icon: Smartphone,
       title: "Softphones mobiles",
       description: "Applications mobiles pour rester connecté partout avec une interface intuitive",
       features: ["iOS et Android", "Synchronisation cloud", "Notifications push", "Interface intuitive"],
-      badge: "Mobile",
-      color: "purple"
+      badge: "Mobile"
     },
     {
       icon: Settings,
       title: "Installation & maintenance",
       description: "Service complet d'installation et de maintenance de vos équipements avec formation",
       features: ["Installation sur site", "Configuration optimisée", "Formation équipe", "Support technique 24/7"],
-      badge: "Premium",
-      color: "orange"
+      badge: "Premium"
     },
     {
       icon: Shield,
       title: "Sécurité & monitoring",
       description: "Protection et surveillance de votre infrastructure télécom avec alertes automatiques",
       features: ["Chiffrement end-to-end", "Firewall SIP avancé", "Monitoring 24/7", "Alertes automatiques"],
-      badge: "Sécurisé",
-      color: "indigo"
+      badge: "Sécurisé"
     },
   ]
 
@@ -80,16 +74,14 @@ export function ServicesSection() {
     }
   }
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      red: { bg: '#fef2f2', border: '#fecaca', text: '#E53E3E' },
-      blue: { bg: '#eff6ff', border: '#bfdbfe', text: '#2D3848' },
-      green: { bg: '#f0fdf4', border: '#bbf7d0', text: '#16a34a' },
-      purple: { bg: '#faf5ff', border: '#d8b4fe', text: '#9333ea' },
-      orange: { bg: '#fff7ed', border: '#fed7aa', text: '#ea580c' },
-      indigo: { bg: '#eef2ff', border: '#c7d2fe', text: '#6366f1' }
-    }
-    return colors[color as keyof typeof colors] || colors.red
+  const getIconStyle = (index: number) => {
+    // Utiliser uniquement les couleurs PRD en alternance
+    const prdColors = [
+      { bg: '#fef2f2', text: '#E53E3E' }, // Rouge principal PRD
+      { bg: '#f8fafc', text: '#2D3848' }, // Bleu marine PRD  
+      { bg: '#f9fafb', text: '#818096' }, // Gris secondaire PRD
+    ]
+    return prdColors[index % 3]
   }
 
   return (
@@ -139,9 +131,8 @@ export function ServicesSection() {
                     <div 
                       className="p-3 rounded-xl"
                       style={{
-                        backgroundColor: getColorClasses(service.color).bg,
-                        borderColor: getColorClasses(service.color).border,
-                        color: getColorClasses(service.color).text
+                        backgroundColor: getIconStyle(index).bg,
+                        color: getIconStyle(index).text
                       }}
                     >
                       <service.icon className="w-6 h-6" />
