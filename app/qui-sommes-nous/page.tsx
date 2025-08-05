@@ -17,14 +17,19 @@ export const metadata: Metadata = {
 export default function QuiSommesNous() {
   const teamMembers = [
     {
-      name: "Alban RENIER",
-      role: "Directeur & Solutions Specialist",
+      name: "Alban",
+      role: "Directeur & Customer Success Manager",
       image: "/images/team/alban-renier.jpg",
     },
     {
-      name: "Valerie DE JESUS",
-      role: "Attachée administrative",
+      name: "Valerie",
+      role: "Assistante Commerciale",
       image: "/images/team/valerie-de-jesus.jpg",
+    },
+    {
+      name: "Fabien",
+      role: "Technicien VoIP",
+      image: "/images/team/fabien.jpg",
     },
   ];
 
@@ -240,7 +245,7 @@ export default function QuiSommesNous() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
