@@ -11,16 +11,17 @@ import { searchBlogPosts } from "@/lib/algolia-blog";
 import { useHubSpot } from "@/components/hubspot-tracking";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Génération des métadonnées dynamiques
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getHubSpotBlogPost(params.slug);
+  const { slug } = await params;
+  const post = await getHubSpotBlogPost(slug);
   
   if (!post) {
     return {
@@ -59,7 +60,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getHubSpotBlogPost(params.slug);
+  const { slug } = await params;
+  const post = await getHubSpotBlogPost(slug);
 
   if (!post) {
     notFound();

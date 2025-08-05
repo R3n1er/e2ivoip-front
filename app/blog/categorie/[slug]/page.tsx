@@ -8,16 +8,17 @@ import { BlogPagination } from "@/components/blog/blog-pagination";
 import type { BlogPost } from "@/lib/hubspot-blog";
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Génération des métadonnées dynamiques
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
-  const categoryName = decodeURIComponent(params.slug);
+  const { slug } = await params;
+  const categoryName = decodeURIComponent(slug);
   
   return {
     title: `Articles ${categoryName} - Blog E2I VoIP`,
@@ -31,7 +32,8 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const categoryName = decodeURIComponent(params.slug);
+  const { slug } = await params;
+  const categoryName = decodeURIComponent(slug);
   
   // Rechercher les articles de cette catégorie
   const results = await searchBlogPosts("", {

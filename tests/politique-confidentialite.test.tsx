@@ -1,43 +1,66 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import PolitiqueConfidentialitePage from '@/app/politique-confidentialite/page'
+import { describe, it, expect } from 'vitest'
+import PolitiqueConfidentialitePage from '../app/politique-confidentialite/page'
 
 describe('Page Politique de Confidentialité', () => {
   it('affiche le titre principal', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    expect(screen.getByText('Politique de Confidentialité')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Politique de confidentialité')
   })
 
-  it('affiche les informations de contact E2I', () => {
+  it('affiche le nom de la société', () => {
+    render(<PolitiqueConfidentialitePage />)
+    const companyNames = screen.getAllByText('E2I ASSISTANCE')
+    expect(companyNames.length).toBeGreaterThan(0)
+    expect(companyNames[0]).toBeInTheDocument()
+  })
+
+  it('contient les sections principales', () => {
     render(<PolitiqueConfidentialitePage />)
     
-    expect(screen.getByText('E2I Assistance')).toBeInTheDocument()
-    expect(screen.getByText('05 94 96 35 00')).toBeInTheDocument()
-    expect(screen.getByText('contact@e2i-voip.com')).toBeInTheDocument()
+    expect(screen.getByText(/Identité du responsable du traitement/)).toBeInTheDocument()
+    expect(screen.getByText(/données recueillies et utilisées/)).toBeInTheDocument()
+    expect(screen.getByText(/Comment vos données sont-elles protégées/)).toBeInTheDocument()
+    expect(screen.getByText(/Vos droits/)).toBeInTheDocument()
   })
 
-  it('contient les sections RGPD essentielles', () => {
-    render(<PolitiqueConfidentialitePage />)
-    
-    expect(screen.getByText('1. Identité du responsable de traitement')).toBeInTheDocument()
-    expect(screen.getByText('2. Données personnelles collectées')).toBeInTheDocument()
-    expect(screen.getByText('3. Finalités du traitement')).toBeInTheDocument()
-    expect(screen.getByText('4. Vos droits')).toBeInTheDocument()
-  })
-
-  it('mentionne les droits RGPD', () => {
+  it('contient les droits RGPD', () => {
     render(<PolitiqueConfidentialitePage />)
     
     expect(screen.getByText(/Droit d'accès/)).toBeInTheDocument()
     expect(screen.getByText(/Droit de rectification/)).toBeInTheDocument()
-    expect(screen.getByText(/Droit à l'effacement/)).toBeInTheDocument()
+    expect(screen.getByText(/droit à l'oubli/)).toBeInTheDocument()
+    expect(screen.getByText(/Droit à la portabilité/)).toBeInTheDocument()
   })
 
-  it('contient les informations sur les cookies', () => {
+  it('contient les liens vers le formulaire de contact', () => {
     render(<PolitiqueConfidentialitePage />)
     
-    expect(screen.getByText('5. Cookies et technologies similaires')).toBeInTheDocument()
-    expect(screen.getByText(/Google Analytics, HubSpot/)).toBeInTheDocument()
+    const contactLinks = screen.getAllByRole('link', { name: /formulaire de contact/i })
+    expect(contactLinks.length).toBeGreaterThan(0)
+    contactLinks.forEach(link => {
+      expect(link).toHaveAttribute('href', '/contact')
+    })
+  })
+
+  it('contient la certification 3CX', () => {
+    render(<PolitiqueConfidentialitePage />)
+    
+    expect(screen.getByText(/3CX Bronze/)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Découvrir 3CX/i })).toHaveAttribute('href', 'https://www.3cx.fr/pabx/download-pabx-ip/?resellerId=208715')
+  })
+
+  it('respecte la structure sémantique', () => {
+    render(<PolitiqueConfidentialitePage />)
+    
+    const headings = screen.getAllByRole('heading')
+    expect(headings.length).toBeGreaterThan(5) // Au moins 6 titres
+    
+    // Vérifier la hiérarchie des titres
+    const h1 = screen.getByRole('heading', { level: 1 })
+    const h2s = screen.getAllByRole('heading', { level: 2 })
+    
+    expect(h1).toBeInTheDocument()
+    expect(h2s.length).toBeGreaterThan(3)
   })
 })

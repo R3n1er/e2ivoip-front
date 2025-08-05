@@ -31,7 +31,7 @@ export async function getHubSpotBlogPosts(
 ): Promise<BlogPost[]> {
   try {
     const hubspot = getHubSpotClient();
-    const response = await hubspot.cms.blogs.blogPostsApi.getPage(
+    const response = await (hubspot.cms.blogs.blogPosts as any).getPage(
       undefined,
       limit,
       undefined,
@@ -54,7 +54,7 @@ export async function getHubSpotBlogPosts(
       undefined,
       false
     );
-    return response.results.map((post) => ({
+    return response.results.map((post: any) => ({
       id: post.id || "",
       title: post.name || "",
       excerpt: post.postSummary || post.metaDescription || "",
@@ -85,7 +85,7 @@ export async function getHubSpotBlogPost(
 ): Promise<BlogPost | null> {
   try {
     const hubspot = getHubSpotClient();
-    const response = await hubspot.cms.blogs.blogPostsApi.getById(postId, [
+    const response = await (hubspot.cms.blogs.blogPosts as any).getById(postId, [
       "id",
       "name",
       "postSummary",

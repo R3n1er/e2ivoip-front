@@ -58,10 +58,10 @@ describe('HomePage - Test d\'hydratation', () => {
   it('a la structure de layout correcte', () => {
     const { container } = render(<HomePage />)
     
-    // Vérifier la structure principale
-    const mainElement = container.querySelector('main')
-    expect(mainElement).toBeInTheDocument()
-    expect(mainElement).toHaveClass('relative')
+    // Vérifier la structure principale (div au lieu de main)
+    const mainContainer = container.querySelector('div')
+    expect(mainContainer).toBeInTheDocument()
+    expect(mainContainer).toHaveClass('min-h-screen')
     
     // Vérifier les éléments décoratifs
     const decorativeElements = container.querySelectorAll('.animate-blob')

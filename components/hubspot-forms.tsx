@@ -65,11 +65,7 @@ export function HubSpotForm({
     });
 
     if (!isValid) {
-      toast({
-        title: "Erreur de validation",
-        description: errors.join(", "),
-        variant: "destructive",
-      });
+      toast.error(`Erreur de validation: ${errors.join(", ")}`);
     }
 
     return { isValid, errors };
@@ -82,7 +78,7 @@ export function HubSpotForm({
         existingForm.remove();
       }
 
-      window.hbspt.forms.create({
+      (window.hbspt as any).forms.create({
         portalId,
         formId,
         region,
@@ -257,11 +253,7 @@ export function ContactForm() {
       timestamp: new Date().toISOString(),
     });
 
-    toast({
-      title: "Merci pour votre demande",
-      description: "Nous vous recontacterons dans les plus brefs délais",
-      variant: "default",
-    });
+    toast.success("Merci pour votre demande. Nous vous recontacterons dans les plus brefs délais.");
   };
 
   return (

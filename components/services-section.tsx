@@ -205,8 +205,8 @@ export function ServicesSection() {
                 whileTap={{ scale: 0.95 }}
                 className="text-white px-8 py-3 rounded-lg font-semibold transition-colors"
                 style={{ backgroundColor: '#E53E3E' }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#dc2626'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#E53E3E'}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#dc2626'}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#E53E3E'}
               >
                 Demander un devis gratuit
               </motion.button>
@@ -214,8 +214,8 @@ export function ServicesSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                onMouseEnter={(e) => { e.target.style.backgroundColor = 'white'; e.target.style.color = '#2D3848'; }}
-                onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'white'; }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = 'white'; (e.target as HTMLElement).style.color = '#2D3848'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = 'transparent'; (e.target as HTMLElement).style.color = 'white'; }}
               >
                 Voir nos références
               </motion.button>

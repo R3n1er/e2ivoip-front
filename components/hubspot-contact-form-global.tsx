@@ -32,8 +32,8 @@ export function HubSpotContactFormGlobal({
     }
 
     function createForm() {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
+      if (window.hbspt && (window.hbspt as any).forms) {
+        (window.hbspt as any).forms.create({
           portalId: portalId,
           formId: formId,
           region: region,
@@ -50,18 +50,4 @@ export function HubSpotContactFormGlobal({
   );
 }
 
-// Déclaration globale pour TypeScript
-declare global {
-  interface Window {
-    hbspt: {
-      forms: {
-        create: (config: {
-          portalId: string;
-          formId: string;
-          region: string;
-          target: string;
-        }) => void;
-      };
-    };
-  }
-} 
+ 

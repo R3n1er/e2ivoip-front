@@ -1,4 +1,4 @@
-import algoliasearch from "algoliasearch";
+import { algoliasearch } from "algoliasearch";
 import type { BlogPost } from "./hubspot-blog";
 
 const getAlgoliaClient = () => {
@@ -36,7 +36,7 @@ export function transformPostForAlgolia(post: BlogPost): AlgoliaBlogPost {
 export async function indexBlogPostsToAlgolia(posts: BlogPost[]) {
   try {
     const client = getAlgoliaClient();
-    const index = client.initIndex(BLOG_INDEX_NAME);
+    const index = (client as any).initIndex(BLOG_INDEX_NAME);
     const algoliaObjects = posts.map(transformPostForAlgolia);
     await index.saveObjects(algoliaObjects);
     await index.setSettings({
@@ -73,7 +73,7 @@ export async function syncHubSpotToAlgolia() {
     return { success: true, count: posts.length };
   } catch (error) {
     console.error("Erreur lors de la synchronisation:", error);
-    return { success: false, error: error.message };
+    return { success: false, error: (error as Error).message };
   }
 }
 
@@ -84,7 +84,7 @@ export async function searchBlogPosts(
 ) {
   try {
     const client = getAlgoliaClient();
-    const index = client.initIndex(BLOG_INDEX_NAME);
+    const index = (client as any).initIndex(BLOG_INDEX_NAME);
     const hitsPerPage = 12;
     const offset = (page - 1) * hitsPerPage;
     
