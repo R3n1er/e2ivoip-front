@@ -103,19 +103,34 @@ export default function MentionsLegales() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 <span className="text-red-600">Hébergement</span>
               </h2>
-              <Card className="shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <Globe className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Plateforme HubSpot</h3>
-                      <p className="text-gray-600">
-                        Le site internet www.e2i-voip.com est hébergé par la plateforme HubSpot.
-                      </p>
+              <div className="space-y-6">
+                <Card className="shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <Globe className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Plateforme Vercel</h3>
+                        <p className="text-gray-600">
+                          Le site internet www.e2i-voip.com est hébergé par la plateforme Vercel.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+                <Card className="shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <Globe className="w-8 h-8 text-green-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Gestion du domaine</h3>
+                        <p className="text-gray-600">
+                          Le domaine www.e2i-voip.com est enregistré et géré par Hostinger.
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
