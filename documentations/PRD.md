@@ -4,9 +4,9 @@
 
 ### 1. Vue d'ensemble du projet
 
-**Objectif** : Développer une version moderne et améliorée du site web e2i-voip.com avec un design contemporain, une navigation intuitive et une intégration HubSpot pour le CRM.
+**Objectif** : Développer une version moderne et améliorée du site web e2i-voip.com avec un design contemporain, une navigation intuitive et une intégration HubSpot pour le CRM, avec migration du blog vers Strapi CMS.
 
-**Vision** : Créer une expérience utilisateur exceptionnelle qui convertit les visiteurs en leads qualifiés pour les services VoIP et téléphonie d'entreprise.
+**Vision** : Créer une expérience utilisateur exceptionnelle qui convertit les visiteurs en leads qualifiés pour les services VoIP et téléphonie d'entreprise, avec un CMS moderne et indépendant pour la gestion du blog.
 
 ### 2. Objectifs métier
 
@@ -15,6 +15,7 @@
 - **SEO** : Améliorer le classement dans les moteurs de recherche
 - **Mobile** : Assurer une expérience mobile optimale (Core Web Vitals > 90)
 - **CRM** : Intégration complète avec HubSpot pour le suivi des leads, des campagnes marketing et des statistiques de visite
+- **CMS** : Migration du blog vers Strapi pour une gestion indépendante et moderne
 
 ### 3. Public cible
 
@@ -44,7 +45,7 @@
 - **Nos services**
   - Studio attente téléphonique (exemple de messages audio SVI et de prédécroché ou répondeur de fermeture avec musique personnalisée libre de droits)
   - Assistants vocaux IA (accompagner les clients à mettre en oeuvre l'intelligence artificielle dans les règles de routage téléphonique des serveurs de téléphonie IP pour améliorer l'expérience client. )
-- **Blog** : Articles synchronisés avec articles de blog HubSpot
+- **Blog** : Articles gérés via Strapi CMS avec recherche avancée et pagination
 - **Devis en ligne** : Page regroupant plusieurs bouton de lien vers formulaires de contact Tally (devis Trunk SIP, devis portabilité, devis serveur de téléphonie 3CX, devis projet PBX -- **intégration IPBX Yeastar**)
 
 #### 4.3 Fonctionnalités techniques
@@ -54,7 +55,7 @@
 - **SEO** : Meta tags, structured data, sitemap XML. Le site doit permettre d'optimiser le référencement naturel.
 - **Analytics** : Google Analytics 4, HubSpot tracking
 - **Formulaires** : Intégration HubSpot native et Hook depuis formulaire tally avec des automatisme n8n déja mis en place. Ces automatismes permettent de notamment notifier lorsqu'un formulaire a été répondu, de récupérer les informations essentielles et transmettre une notification au groupe des commerciaux par mail et également intégrer les informations de contact dans le CRM HubSpot et également de créer des transactions dans HubSpot.
-- **Blog** : Synchronisation automatique avec HubSpot CMS
+- **Blog** : CMS Strapi headless avec interface d'administration moderne
 - **Chatbot** : Intégration Tawk.to avec exclusion des pages contact et devis en ligne. Récupération automatique des informations de contact (nom, prénom, entreprise, téléphone, email) et automatisation n8n pour import dans HubSpot CRM.
 
 ### 5. Charte graphique
@@ -80,9 +81,46 @@
 - **Logos clients** : Section dédiée avec carousel
 - **Composants** : Utiliser des composants de la librairie Shadcn, optimiser avec DaisyUI
 
-## 4. Intégrations HubSpot
+## 6. Architecture Technique
 
-### 4.1 Formulaires HubSpot ✅
+### 6.1 Architecture Monorepo
+
+```
+e2ivoip-front/
+├── app/                    # Frontend Next.js (App Router)
+├── components/             # Composants React réutilisables
+├── lib/                    # Services et utilitaires
+│   ├── hubspot-blog.ts    # Ancien service HubSpot (déprécié)
+│   └── strapi-blog.ts     # Nouveau service Strapi
+├── backend/                # Strapi CMS
+│   ├── src/
+│   ├── config/
+│   └── package.json
+├── scripts/                # Scripts de migration
+│   ├── extract-blog-content.js
+│   ├── import-to-strapi.js
+│   ├── test-extraction.js
+│   └── package.json
+└── package.json           # Configuration monorepo
+```
+
+### 6.2 CMS Strapi
+
+- **Interface d'administration** : Interface moderne pour la gestion des articles
+- **API REST/GraphQL** : Accès programmatique aux données
+- **Gestion des médias** : Upload et optimisation d'images intégrée
+- **Workflow de publication** : Draft/Publish avec contrôle d'accès
+- **SEO intégré** : Métadonnées automatiques et URLs personnalisables
+
+### 6.3 Migration des Articles
+
+- **Extraction automatisée** : Scripts pour récupérer les articles existants
+- **Import dans Strapi** : Migration complète avec images et métadonnées
+- **Préservation SEO** : Maintien des URLs et du référencement existant
+
+## 7. Intégrations HubSpot
+
+### 7.1 Formulaires HubSpot ✅
 
 - ✅ **Formulaire de contact global** : Page `/contact` dédiée
 - ✅ **Formulaire de devis** : Page `/devis-en-ligne`
@@ -96,7 +134,7 @@
   - `FullContactForm` pour intégration standard
   - `useHubSpot` hook pour tracking
 
-### 4.2 CRM et Lead Management ✅
+### 7.2 CRM et Lead Management ✅
 
 - ✅ **Synchronisation automatique** des leads
 - ✅ **Lead scoring** basé sur l'activité
@@ -104,7 +142,7 @@
 - ✅ **Workflows automatiques** de qualification
 - ✅ **Notifications** en temps réel
 
-### 4.3 Analytics et Tracking ✅
+### 7.3 Analytics et Tracking ✅
 
 - ✅ **Pixel de suivi** HubSpot intégré
 - ✅ **Events personnalisés** pour conversions
@@ -112,9 +150,9 @@
 - ✅ **Rapports détaillés** de performance
 - ✅ **A/B testing** des formulaires
 
-### 7. Statut d'implémentation
+## 8. Statut d'implémentation
 
-#### 7.1 Sprint 1 - Fondations ✅ TERMINÉ
+#### 8.1 Sprint 1 - Fondations ✅ TERMINÉ
 
 - ✅ **Setup Next.js 15** : Framework moderne configuré
 - ✅ **Tailwind CSS + DaisyUI** : Styling moderne et responsive
@@ -124,7 +162,7 @@
 - ✅ **Tests unitaires** : Vitest configuré avec 19 tests passants
 - ✅ **Documentation** : PRD, roadmap, et guides d'implémentation
 
-#### 7.2 Sprint 2 - Modernisation Page d'Accueil ✅ TERMINÉ + BONUS
+#### 8.2 Sprint 2 - Modernisation Page d'Accueil ✅ TERMINÉ + BONUS
 
 - ✅ **Design moderne** : Couleurs PRD (#E53E3E, #2D3848, #818096)
 - ✅ **Hero Section impactante** : Titre, sous-titre, CTA, statistiques
@@ -138,7 +176,7 @@
 - ✅ **Corrections importantes** : Header visible au chargement
 - ✅ **Tests complets** : 48 tests passent (vs 35 précédemment)
 
-#### 7.3 BONUS - Accomplissements supplémentaires ✅
+#### 8.3 BONUS - Accomplissements supplémentaires ✅
 
 - ✅ **Page Devis en ligne créée** : `/devis-en-ligne` avec design moderne
 - ✅ **Menu principal optimisé** : "Contact" → "Devis en ligne"
@@ -152,7 +190,7 @@
 - ✅ **Page Politique de Confidentialité** : `/politique-confidentialite` conforme RGPD
 - ✅ **Charte graphique PRD** : Services section avec couleurs strictement conformes
 
-#### 7.4 Sprint 3 - Fonctionnalités Avancées ✅ MAJORITAIREMENT TERMINÉ
+#### 8.4 Sprint 3 - Fonctionnalités Avancées ✅ MAJORITAIREMENT TERMINÉ
 
 - ✅ **Intégration HubSpot CRM** : Formulaires et tracking avancés
 - ✅ **Formulaires HubSpot** : Tous les formulaires utilisent HubSpot
@@ -179,7 +217,7 @@
   - Certification 3CX Bronze Partner
 - ✅ **Page "Politique de confidentialité"** : `/politique-confidentialite` ✅ STYLE MODERNISÉ
   - Contenu récupéré du site existant (e2i-voip.com)
-  - Conformité RGPD complète avec tous les droits utilisateurs
+  - Conformité RGPD complète avec tous les droits
   - Sections détaillées : collecte, utilisation, protection des données
   - Droits utilisateurs : accès, rectification, effacement, portabilité
   - Informations sur l'hébergement et la sécurité
@@ -192,7 +230,20 @@
 - 🔄 **Pages services détaillées** : Contenu enrichi et SEO (en cours)
 - 🔄 **SEO avancé** : Meta tags, structured data, sitemap (en cours)
 
-#### 7.5 Sprint 4 - Optimisations et Finalisation ⏳ PLANIFIÉ
+#### 8.5 Sprint 4 - Migration Strapi 🔄 EN COURS
+
+- ✅ **Architecture monorepo** : Structure mise en place
+- ✅ **Installation Strapi** : CMS configuré dans le dossier backend/
+- ✅ **Scripts de migration** : Extraction et import des articles
+- ✅ **Service Strapi** : `lib/strapi-blog.ts` avec toutes les fonctions
+- ✅ **Content-Type Blog Post** : Schéma complet configuré
+- 🔄 **Migration des articles** : Extraction depuis le site existant
+- 🔄 **Import dans Strapi** : Migration des données et images
+- 🔄 **Adaptation des composants** : Modification pour utiliser Strapi
+- 🔄 **Tests d'intégration** : Validation de la migration
+- 🔄 **Déploiement** : Configuration pour production
+
+#### 8.6 Sprint 5 - Optimisations et Finalisation ⏳ PLANIFIÉ
 
 - ⏳ **Core Web Vitals** : Optimisation des performances
 - ⏳ **Analytics avancés** : Tracking détaillé des conversions
@@ -200,21 +251,21 @@
 - ⏳ **Déploiement** : Mise en production sur Vercel
 - ⏳ **Documentation finale** : Guides utilisateur et maintenance
 
-### 8. Métriques de succès
+### 9. Métriques de succès
 
-#### 8.1 Performance
+#### 9.1 Performance
 
 - ✅ **Core Web Vitals** : Optimisation en cours
 - ✅ **Temps de chargement** : < 2 secondes
 - ✅ **Mobile usability** : Score parfait GSC
 
-#### 8.2 SEO
+#### 9.2 SEO
 
 - 🔄 **Score Lighthouse SEO** : > 95
 - 🔄 **Meta descriptions** : Optimisées
 - 🔄 **Structured data** : Implémentée
 
-#### 8.3 Conversion
+#### 9.3 Conversion
 
 - ✅ **Formulaires HubSpot** : 100% des formulaires intégrés
 - ✅ **Tracking complet** : Événements de conversion implémentés
@@ -222,9 +273,9 @@
 - 🔄 **Leads qualifiés** : +50% (objectif)
 - 🔄 **Taux de rebond** : -30% (objectif)
 
-### 9. Accomplissements majeurs
+### 10. Accomplissements majeurs
 
-#### 9.1 Design et UX
+#### 10.1 Design et UX
 
 - ✅ **Page d'accueil modernisée** avec couleurs PRD
 - ✅ **Carousel clients** avec 9 logos et défilement optimisé
@@ -234,7 +285,7 @@
 - ✅ **Page Devis en ligne** créée avec design moderne
 - ✅ **Menu principal** optimisé pour conversion
 
-#### 9.2 Technique
+#### 10.2 Technique
 
 - ✅ **84 tests passent** (vs 48 précédemment)
 - ✅ **Code propre** : ESLint respecté
@@ -245,7 +296,7 @@
 - ✅ **Images de background** : Gestion intelligente du chargement
 - ✅ **Composants optimisés** : HomepageHeroSection et DevisHeroSection
 
-#### 9.3 Conversion et CRM
+#### 10.3 Conversion et CRM
 
 - ✅ **Navigation optimisée** : Header avec bouton "Contact" → page dédiée
 - ✅ **Page Contact dédiée** : `/contact` avec formulaire HubSpot global
@@ -257,15 +308,26 @@
 - ✅ **CRM HubSpot** : Synchronisation automatique des leads
 - ✅ **Blog HubSpot + Algolia** : Synchronisation complète avec recherche avancée
 
-### 10. Prochaines étapes
+#### 10.4 Migration Strapi
 
-#### 10.1 Sprint 3 - Finalisation
+- ✅ **Architecture monorepo** : Structure complète mise en place
+- ✅ **Strapi CMS** : Installation et configuration terminée
+- ✅ **Scripts de migration** : Extraction et import automatisés
+- ✅ **Service Strapi** : API complète pour l'intégration
+- ✅ **Content-Type** : Schéma blog post configuré
+- ✅ **Documentation** : Guide de migration complet
 
-1. **Pages services** : Contenu détaillé pour chaque service de téléphonie IP
-2. **SEO avancé** : Meta tags, structured data, sitemap
-3. **Chatbot Tawk.to** : Intégration n8n → HubSpot
+### 11. Prochaines étapes
 
-#### 10.2 Sprint 4 - Finalisation
+#### 11.1 Sprint 4 - Migration Strapi (EN COURS)
+
+1. **Test d'extraction** : Valider la récupération des articles existants
+2. **Import dans Strapi** : Migration des données et images
+3. **Adaptation des composants** : Modification pour utiliser Strapi
+4. **Tests d'intégration** : Validation complète
+5. **Déploiement** : Configuration pour production
+
+#### 11.2 Sprint 5 - Finalisation
 
 1. **Performance** : Core Web Vitals optimisés
 2. **Analytics** : Tracking détaillé
@@ -275,5 +337,5 @@
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut global** : 🟢 **EXCELLENT - SPRINT 3 FINALISÉ**  
-**Progression** : 90% (Blog finalisé, pages légales complètes, politique de confidentialité modernisée)
+**Statut global** : 🟢 **EXCELLENT - SPRINT 4 EN COURS (MIGRATION STRAPI)**  
+**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)

@@ -1,6 +1,6 @@
 # E2I VoIP - Site Web Moderne
 
-Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui.
+Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui, avec migration du blog vers Strapi CMS.
 
 ## 🚀 Technologies Utilisées
 
@@ -8,13 +8,13 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
 - **Animations** : Framer Motion
 - **Tests** : Vitest + Testing Library
-- **CMS** : HubSpot (CRM + Blog + Analytics)
+- **CMS** : Strapi (blog) + HubSpot (CRM + Analytics)
 - **Formulaires** : Tally (devis spécialisés)
 - **Automatisation** : n8n (workflows)
 
 ## 📋 Prérequis
 
-- Node.js 18+ 
+- Node.js 18+
 - npm ou yarn
 - Compte HubSpot
 - Compte Tally
@@ -23,36 +23,55 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 ## 🛠️ Installation
 
 1. **Cloner le repository**
+
 ```bash
 git clone https://github.com/alban/e2ivoip-front.git
 cd e2ivoip-front
 ```
 
-2. **Installer les dépendances**
+2. **Installer toutes les dépendances**
+
 ```bash
-npm install
+npm run install:all
 ```
 
 3. **Configurer les variables d'environnement**
+
 ```bash
 cp env.example .env.local
 # Éditer .env.local avec vos clés API
 ```
 
 4. **Vérifier la configuration**
+
 ```bash
 node scripts/check-setup.js
 ```
 
 ## 🏃‍♂️ Démarrage Rapide
 
-### Serveur de développement
+### Développement simultané (Frontend + Backend)
+
 ```bash
 npm run dev
 ```
-Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
+
+- Frontend : [http://localhost:3000](http://localhost:3000)
+- Backend Strapi : [http://localhost:1337](http://localhost:1337)
+- Admin Strapi : [http://localhost:1337/admin](http://localhost:1337/admin)
+
+### Développement séparé
+
+```bash
+# Frontend seulement
+npm run dev:frontend
+
+# Backend Strapi seulement
+npm run dev:backend
+```
 
 ### Tests
+
 ```bash
 # Tests unitaires
 npm test
@@ -65,6 +84,7 @@ npm run test:coverage
 ```
 
 ### Build de production
+
 ```bash
 npm run build
 npm start
@@ -79,8 +99,18 @@ e2ivoip-front/
 │   ├── ui/                # Composants shadcn/ui
 │   └── ...
 ├── lib/                   # Utilitaires et configurations
+│   ├── hubspot-blog.ts   # Ancien service HubSpot (déprécié)
+│   └── strapi-blog.ts    # Nouveau service Strapi
+├── backend/               # Strapi CMS
+│   ├── src/
+│   ├── config/
+│   └── package.json
+├── scripts/               # Scripts de migration
+│   ├── extract-blog-content.js
+│   ├── import-to-strapi.js
+│   ├── test-extraction.js
+│   └── package.json
 ├── tests/                 # Tests unitaires et d'intégration
-├── scripts/               # Scripts utilitaires
 ├── public/                # Assets statiques
 └── documentations/        # PRD, Roadmap, Implémentation
 ```
@@ -92,21 +122,76 @@ e2ivoip-front/
 Copiez `env.example` vers `.env.local` et configurez :
 
 ```env
-# HubSpot
-HUBSPOT_API_KEY=your_hubspot_api_key
-HUBSPOT_PORTAL_ID=your_portal_id
+# Strapi Configuration
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+STRAPI_URL=http://localhost:1337
+STRAPI_TOKEN=your_strapi_api_token_here
 
-# Tally
-TALLY_WEBHOOK_SECRET=your_tally_webhook_secret
+# Database Configuration (pour Strapi)
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+
+# JWT Configuration (pour Strapi)
+JWT_SECRET=your_jwt_secret_here
+ADMIN_JWT_SECRET=your_admin_jwt_secret_here
+API_TOKEN_SALT=your_api_token_salt_here
+APP_KEYS=your_app_keys_here
+
+# HubSpot Configuration
+HUBSPOT_API_KEY=your_hubspot_api_key
+HUBSPOT_PORTAL_ID=26878201
+HUBSPOT_CLIENT_ID=your_hubspot_client_id
+HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
+HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
+HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
+
+# Algolia Configuration
+NEXT_PUBLIC_ALGOLIA_APP_ID=SHNPNF5579
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=603d9f3c3201ccf4a5a44f0fefbdc3a7
+ALGOLIA_ADMIN_KEY=your_algolia_admin_key
+
+# Tally Configuration
 TALLY_API_KEY=your_tally_api_key
 
-# n8n
-N8N_WEBHOOK_URL=your_n8n_webhook_url
-N8N_API_KEY=your_n8n_api_key
+# Tawk.to Configuration
+NEXT_PUBLIC_TAWK_TO_ID=688d3cc109ef001928d4773f
+NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
+```
 
-# Analytics
-NEXT_PUBLIC_GA_ID=your_google_analytics_id
-NEXT_PUBLIC_HUBSPOT_PORTAL_ID=your_portal_id
+## 🚀 Migration Strapi
+
+### Scripts de Migration
+
+```bash
+# Test d'extraction d'un article
+cd scripts && npm run test
+
+# Extraction complète des articles
+npm run extract:blog
+
+# Import dans Strapi (après configuration du token)
+cd scripts && npm run import
+
+# Migration complète (extraction + import)
+cd scripts && npm run full-migration
+```
+
+### Service Strapi
+
+Le service `lib/strapi-blog.ts` fournit toutes les fonctions nécessaires :
+
+```typescript
+// Récupérer tous les articles
+const posts = await getStrapiBlogPosts(page, pageSize);
+
+// Récupérer un article par slug
+const post = await getStrapiBlogPost(slug);
+
+// Rechercher des articles
+const results = await searchStrapiBlogPosts(query, filters);
+
+// Articles par catégorie
+const categoryPosts = await getStrapiBlogPostsByCategory(category);
 ```
 
 ## 🧪 Tests
@@ -129,16 +214,20 @@ npm run test:coverage
 - [PRD](./documentations/PRD.md) - Product Requirements Document
 - [Roadmap](./documentations/roadmap.md) - Plan de développement
 - [Implémentation](./documentations/implementation.md) - Plan d'implémentation technique
+- [Prochaines étapes](./documentations/NEXT_STEPS.md) - Statut actuel et prochaines actions
+- [Migration Strapi](./README-STRAPI-MIGRATION.md) - Guide complet de migration
 
 ## 🚀 Déploiement
 
-### Vercel (Recommandé)
+### Vercel (Frontend) + Railway/Render (Strapi)
+
 ```bash
 npm run build
 # Déployer sur Vercel avec GitHub
 ```
 
 ### Variables d'environnement de production
+
 Configurez les variables d'environnement dans votre plateforme de déploiement.
 
 ## 📊 Monitoring
@@ -163,3 +252,13 @@ Ce projet est propriétaire d'E2I VoIP.
 ## 📞 Support
 
 Pour toute question ou support, contactez l'équipe de développement.
+
+## 🎯 Statut du Projet
+
+- **Sprint 1** : ✅ Terminé (Fondations)
+- **Sprint 2** : ✅ Terminé (Homepage modernisée)
+- **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
+- **Sprint 4** : 🔄 **EN COURS** (Migration Strapi + Architecture monorepo)
+- **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)
+
+**Progression globale** : 95% (Architecture Strapi mise en place, scripts de migration prêts)

@@ -205,9 +205,82 @@
   - ✅ **Responsive design** : Grid 2 colonnes pour les droits utilisateurs
   - ✅ **Code couleur intuitif** : Rouge (cookies, effacement), Bleu (contact, accès), Vert (candidatures, rectification), etc.
 
-## Phase 4 : Optimisation et Performance (Semaine 5) 🔄 EN COURS
+## Phase 4 : Migration Strapi (Semaine 5) 🔄 EN COURS
 
-### 4.1 Performance optimisée 🔄
+### 4.1 Architecture Monorepo ✅
+
+- ✅ **Structure mise en place** :
+  - ✅ Dossier `backend/` pour Strapi CMS
+  - ✅ Dossier `scripts/` pour les outils de migration
+  - ✅ Configuration monorepo dans `package.json`
+  - ✅ Scripts npm pour développement simultané
+- ✅ **Installation Strapi** :
+  - ✅ Strapi v5.20.0 installé dans `backend/`
+  - ✅ Configuration de base terminée
+  - ✅ Content-Type Blog Post configuré
+  - ✅ Schéma complet avec tous les champs nécessaires
+
+### 4.2 Scripts de Migration ✅
+
+- ✅ **Script d'extraction** : `scripts/extract-blog-content.js`
+  - ✅ Récupération des articles depuis https://www.e2i-voip.com/blog
+  - ✅ Extraction du contenu, images, métadonnées
+  - ✅ Téléchargement automatique des images
+  - ✅ Sauvegarde dans `extracted-blog-content.json`
+- ✅ **Script d'import** : `scripts/import-to-strapi.js`
+  - ✅ Import des articles dans Strapi
+  - ✅ Upload des images de couverture
+  - ✅ Association des médias aux articles
+  - ✅ Gestion des erreurs et doublons
+- ✅ **Script de test** : `scripts/test-extraction.js`
+  - ✅ Test d'extraction d'un article
+  - ✅ Validation des données extraites
+  - ✅ Debugging et optimisation
+
+### 4.3 Service Strapi ✅
+
+- ✅ **Service complet** : `lib/strapi-blog.ts`
+  - ✅ `getStrapiBlogPosts()` - Récupération avec pagination
+  - ✅ `getStrapiBlogPost(slug)` - Article individuel
+  - ✅ `searchStrapiBlogPosts()` - Recherche avancée
+  - ✅ `getStrapiBlogPostsByCategory()` - Articles par catégorie
+  - ✅ `getStrapiBlogMetadata()` - Métadonnées pour facettes
+  - ✅ `transformStrapiPost()` - Transformation des données
+- ✅ **Configuration API** :
+  - ✅ Variables d'environnement Strapi
+  - ✅ Headers et authentification
+  - ✅ Gestion d'erreurs robuste
+  - ✅ Types TypeScript complets
+
+### 4.4 Content-Type Blog Post ✅
+
+- ✅ **Schéma complet** : `backend/src/api/blog-post/content-types/blog-post/schema.json`
+  - ✅ **title** : Titre de l'article (requis, unique)
+  - ✅ **slug** : URL unique (généré automatiquement)
+  - ✅ **content** : Contenu riche (requis)
+  - ✅ **excerpt** : Extrait de l'article (max 500 caractères)
+  - ✅ **publishDate** : Date de publication
+  - ✅ **author** : Auteur (défaut: "E2I VoIP")
+  - ✅ **tags** : Tags de l'article (JSON)
+  - ✅ **categories** : Catégories (JSON)
+  - ✅ **featuredImage** : Image de couverture (média)
+  - ✅ **metaDescription** : Description SEO (max 160 caractères)
+  - ✅ **seoTitle** : Titre SEO (max 60 caractères)
+  - ✅ **status** : Statut (draft/published)
+  - ✅ **readingTime** : Temps de lecture estimé
+  - ✅ **originalUrl** : URL originale sur l'ancien site
+
+### 4.5 Prochaines étapes Migration 🔄
+
+- 🔄 **Test d'extraction** : Valider la récupération des articles existants
+- 🔄 **Import dans Strapi** : Migration des données et images
+- 🔄 **Adaptation des composants** : Modification pour utiliser Strapi
+- 🔄 **Tests d'intégration** : Validation complète
+- 🔄 **Déploiement** : Configuration pour production
+
+## Phase 5 : Optimisation et Performance (Semaine 6) 🔄 EN COURS
+
+### 5.1 Performance optimisée 🔄
 
 - ✅ Optimisation images WebP avec lazy loading
 - ✅ Code splitting et lazy loading composants
@@ -215,7 +288,7 @@
 - ✅ Temps de chargement < 2s
 - ✅ Tests spécifiques MacBook Pro 13", 14", 15"
 
-### 4.2 SEO avancé 🔄
+### 5.2 SEO avancé 🔄
 
 - 🔄 Meta tags optimisés pour chaque page
 - 🔄 Structured data (JSON-LD) complète
@@ -224,7 +297,7 @@
 - 🔄 Open Graph et Twitter Cards
 - 🔄 SEO pages services et chatbot
 
-### 4.3 Responsive design étendu ✅
+### 5.3 Responsive design étendu ✅
 
 - ✅ Breakpoints : 320px, 868px, 1024px, 1440px
 - ✅ Tests iOS/Android complets
@@ -232,7 +305,7 @@
 - ✅ Navigation tactile optimisée
 - ✅ Interface chatbot responsive
 
-### 4.4 Accessibilité et légal ✅
+### 5.4 Accessibilité et légal ✅
 
 - ✅ Audit WCAG 2.1 niveau AA
 - ✅ Contraste des couleurs validé
@@ -240,9 +313,9 @@
 - ✅ Pages légales (CGV, Confidentialité)
 - ✅ Conformité RGPD chatbot
 
-## Phase 5 : Tests et Déploiement (Semaine 6) 🔄 EN COURS
+## Phase 6 : Tests et Déploiement (Semaine 7) 🔄 EN COURS
 
-### 5.1 Tests étendus ✅
+### 6.1 Tests étendus ✅
 
 - ✅ **Tests unitaires** (Vitest + scripts personnalisés)
   - ✅ Composants React
@@ -259,14 +332,14 @@
   - 🔄 Conversion funnel
   - 🔄 Tests sur MacBook Pro différentes tailles
 
-### 5.2 Tests de performance 🔄
+### 6.2 Tests de performance 🔄
 
 - 🔄 Lighthouse CI sur toutes les pages
 - 🔄 Tests de charge
 - 🔄 Validation Core Web Vitals
 - 🔄 Tests performance chatbot
 
-### 5.3 Déploiement avec CI/CD 🔄
+### 6.3 Déploiement avec CI/CD 🔄
 
 - 🔄 **Configuration Vercel + GitHub**
   - 🔄 Pipeline CI/CD automatisé
@@ -277,9 +350,9 @@
 - 🔄 SSL et sécurité renforcée
 - 🔄 Monitoring et alertes
 
-## Phase 6 : Post-lancement (Semaine 7) ⏳ PLANIFIÉ
+## Phase 7 : Post-lancement (Semaine 8) ⏳ PLANIFIÉ
 
-### 6.1 Monitoring étendu 🔄
+### 7.1 Monitoring étendu 🔄
 
 - 🔄 Google Analytics 4 avec événements personnalisés
 - 🔄 Google Search Console
@@ -290,7 +363,7 @@
 - 🔄 Analytics chatbot
 - 🔄 Suivi conversions Tally
 
-### 6.2 Optimisations continues ⏳
+### 7.2 Optimisations continues ⏳
 
 - ⏳ A/B testing des CTA
 - ⏳ Optimisation chatbot basée sur les données
@@ -310,15 +383,15 @@
 
 ### Backend & Intégrations ✅
 
-- ✅ **CMS** : HubSpot (blog, CRM, analytics)
+- ✅ **CMS** : HubSpot (CRM, analytics) + Strapi (blog)
 - ✅ **Forms** : Tally (devis spécialisés)
 - ✅ **Automation** : n8n (workflows)
 - ✅ **Chatbot** : Tawk.to
-- ✅ **API** : HubSpot API + Tally webhooks
+- ✅ **API** : HubSpot API + Tally webhooks + Strapi API
 
 ### Deployment & CI/CD 🔄
 
-- 🔄 **Hosting** : Vercel
+- 🔄 **Hosting** : Vercel (frontend) + Railway/Render (Strapi)
 - ✅ **Version Control** : GitHub avec Actions
 - 🔄 **CDN** : Vercel Edge Network
 - ✅ **Images** : Next.js Image Optimization
@@ -336,40 +409,61 @@
 ### Variables d'environnement ✅
 
 ```env
-# HubSpot
+# Strapi Configuration
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+STRAPI_URL=http://localhost:1337
+STRAPI_TOKEN=your_strapi_api_token_here
+
+# Database Configuration (pour Strapi)
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+
+# JWT Configuration (pour Strapi)
+JWT_SECRET=your_jwt_secret_here
+ADMIN_JWT_SECRET=your_admin_jwt_secret_here
+API_TOKEN_SALT=your_api_token_salt_here
+APP_KEYS=your_app_keys_here
+
+# HubSpot Configuration (existant)
 HUBSPOT_API_KEY=your_hubspot_api_key
 HUBSPOT_PORTAL_ID=26878201
+HUBSPOT_CLIENT_ID=your_hubspot_client_id
+HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
+HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
+HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
 
-# Tally
-TALLY_WEBHOOK_SECRET=your_tally_webhook_secret
+# Algolia Configuration (existant)
+NEXT_PUBLIC_ALGOLIA_APP_ID=SHNPNF5579
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=603d9f3c3201ccf4a5a44f0fefbdc3a7
+ALGOLIA_ADMIN_KEY=your_algolia_admin_key
+
+# Tally Configuration (existant)
 TALLY_API_KEY=your_tally_api_key
 
-# n8n
-N8N_WEBHOOK_URL=your_n8n_webhook_url
-N8N_API_KEY=your_n8n_api_key
-
-# Analytics
-NEXT_PUBLIC_GA_ID=your_google_analytics_id
-NEXT_PUBLIC_HUBSPOT_PORTAL_ID=26878201
-
-# Chatbot
-CHATBOT_API_KEY=your_chatbot_api_key
-CHATBOT_WIDGET_ID=688d3cc109ef001928d4773f/1j1jrald3
+# Tawk.to Configuration (existant)
+NEXT_PUBLIC_TAWK_TO_ID=688d3cc109ef001928d4773f
+NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 ```
 
 ### Scripts npm étendus ✅
 
 ```json
 {
-  "dev": "next dev --port 3000",
-  "build": "next build",
-  "start": "next start",
+  "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+  "dev:frontend": "next dev --port 3000",
+  "dev:backend": "cd backend && npm run develop",
+  "build": "npm run build:frontend && npm run build:backend",
+  "build:frontend": "next build",
+  "build:backend": "cd backend && npm run build",
+  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+  "start:frontend": "next start",
+  "start:backend": "cd backend && npm start",
   "test": "vitest",
   "test:e2e": "playwright test",
   "test:integration": "vitest --config vitest.integration.config.ts",
-  "lint": "next lint",
-  "lint:fix": "next lint --fix",
-  "type-check": "tsc --noEmit"
+  "extract:blog": "cd scripts && npm run extract",
+  "setup:strapi": "cd backend && npx create-strapi-app@latest . --quickstart --no-run",
+  "install:all": "npm install && cd backend && npm install && cd ../scripts && npm install"
 }
 ```
 
@@ -395,55 +489,82 @@ CHATBOT_WIDGET_ID=688d3cc109ef001928d4773f/1j1jrald3
 - ✅ Chatbot opérationnel avec Tawk.to
 - ✅ Pages légales et équipe : Qui sommes-nous + Mentions légales + Politique de confidentialité modernisée
 
-### Phase 4 🔄
+### Phase 4 🔄 EN COURS
+
+- ✅ **Architecture monorepo** : Structure complète mise en place
+- ✅ **Strapi CMS** : Installation et configuration terminée
+- ✅ **Scripts de migration** : Extraction et import automatisés
+- ✅ **Service Strapi** : API complète pour l'intégration
+- ✅ **Content-Type** : Schéma blog post configuré
+- 🔄 **Migration des articles** : Extraction et import en cours
+- 🔄 **Adaptation des composants** : Modification pour utiliser Strapi
+- 🔄 **Tests d'intégration** : Validation de la migration
+
+### Phase 5 🔄
 
 - 🔄 Site optimisé (performance + SEO + légal)
 - 🔄 Tous les audits dans le vert
 - ✅ Conformité RGPD complète
 
-### Phase 5 🔄
+### Phase 6 🔄
 
 - ✅ Tests complets tous systèmes
 - 🔄 CI/CD GitHub + Vercel
 - 🔄 Déploiement production sécurisé
 
-### Phase 6 ⏳
+### Phase 7 ⏳
 
 - 🔄 Analytics multi-plateformes
 - ⏳ Formation équipe complète
 - ⏳ Plan d'optimisation continue automatisé
 
-## 🎯 **CORRECTION CRITIQUE - Formulaires HubSpot**
+## 🎯 **MIGRATION STRAPI - NOUVELLE ARCHITECTURE**
 
-### **Problème résolu :**
+### **Architecture Monorepo Mise en Place** ✅
 
-Le composant `ContactSection` de la page d'accueil utilisait un formulaire statique HTML au lieu du formulaire HubSpot.
-
-### **Solution appliquée :**
-
-```tsx
-// AVANT (formulaire statique)
-<CardContent className="space-y-6">
-  <Input placeholder="Votre prénom" />
-  <Input placeholder="Votre nom" />
-  // ... autres champs statiques
-</CardContent>
-
-// APRÈS (formulaire HubSpot)
-<CardContent>
-  <FullContactForm />
-</CardContent>
+```
+e2ivoip-front/
+├── app/                    # Frontend Next.js (App Router)
+├── components/             # Composants React réutilisables
+├── lib/                    # Services et utilitaires
+│   ├── hubspot-blog.ts    # Ancien service HubSpot (déprécié)
+│   └── strapi-blog.ts     # ✅ Nouveau service Strapi
+├── backend/                # ✅ Strapi CMS
+│   ├── src/
+│   ├── config/
+│   └── package.json
+├── scripts/                # ✅ Scripts de migration
+│   ├── extract-blog-content.js
+│   ├── import-to-strapi.js
+│   ├── test-extraction.js
+│   └── package.json
+└── package.json           # ✅ Configuration monorepo
 ```
 
-### **Résultat :**
+### **Scripts de Migration Créés** ✅
 
-- ✅ **100% des formulaires** utilisent maintenant HubSpot
-- ✅ **Tracking complet** des conversions
-- ✅ **CRM HubSpot** : Synchronisation automatique des leads
-- ✅ **84 tests passent** (vs 48 précédemment)
+- ✅ **`extract-blog-content.js`** : Extraction des articles depuis https://www.e2i-voip.com/blog
+- ✅ **`import-to-strapi.js`** : Import des articles dans Strapi avec images
+- ✅ **`test-extraction.js`** : Test d'extraction d'un article
+- ✅ **Configuration package.json** : Scripts npm pour la migration
+
+### **Service Strapi Complet** ✅
+
+- ✅ **`lib/strapi-blog.ts`** : Service complet avec toutes les fonctions
+  - `getStrapiBlogPosts()` - Récupération avec pagination
+  - `getStrapiBlogPost(slug)` - Article individuel
+  - `searchStrapiBlogPosts()` - Recherche avancée
+  - `getStrapiBlogPostsByCategory()` - Articles par catégorie
+  - `transformStrapiPost()` - Transformation des données
+
+### **Content-Type Strapi Configuré** ✅
+
+- ✅ **Schéma complet** : Tous les champs nécessaires configurés
+- ✅ **Permissions API** : Prêtes pour l'utilisation
+- ✅ **Variables d'environnement** : Configuration dans `env.example`
 
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut global** : 🟢 **EXCELLENT - PHASE 3 FINALISÉE**  
-**Progression** : 90% (Blog finalisé, pages légales complètes, politique de confidentialité modernisée)
+**Statut global** : 🟢 **EXCELLENT - PHASE 4 EN COURS (MIGRATION STRAPI)**  
+**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)

@@ -1,0 +1,20 @@
+{
+  "name": "e2i-blog-extraction",
+  "version": "1.0.0",
+  "description": "Scripts d'extraction des articles de blog E2I VoIP",
+  "main": "extract-blog-content.js",
+  "scripts": {
+    "extract": "node extract-blog-content.js",
+    "extract:dev": "node extract-blog-content.js --dev",
+    "import": "node import-to-strapi.js",
+    "test": "node test-extraction.js",
+    "full-migration": "npm run extract && npm run import"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
+}

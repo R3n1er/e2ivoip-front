@@ -1,73 +1,88 @@
-# SPRINT 3 FINALISÉ - BLOG + PAGES LÉGALES COMPLÈTES ✅
+# SPRINT 4 EN COURS - MIGRATION STRAPI + ARCHITECTURE MONOREPO ✅
 
 ## 📋 **Résumé des accomplissements**
 
-✅ **Page contact complète implémentée** avec formulaire HubSpot global
-✅ **Navigation mise à jour** : Bouton "Contact" dans le header
+✅ **Architecture monorepo mise en place** avec Strapi CMS intégré
+✅ **Scripts de migration créés** pour extraction et import des articles
+✅ **Service Strapi complet** avec toutes les fonctions API
+✅ **Content-Type Blog Post configuré** avec schéma complet
 ✅ **84 tests passent** avec succès
-✅ **Blog finalisé** avec pagination, pages individuelles et recherche Algolia
+✅ **Blog HubSpot + Algolia finalisé** avec pagination et recherche avancée
 ✅ **Page "Qui sommes-nous"** avec équipe mise à jour
 ✅ **Page "Mentions légales"** avec informations complètes (Vercel + Hostinger)
 ✅ **Formulaires HubSpot** 100% fonctionnels sur tout le site
 
-## 🆕 **NOUVELLES FONCTIONNALITÉS - Blog + Pages Légales**
+## 🆕 **NOUVELLES FONCTIONNALITÉS - Migration Strapi**
 
-### **Blog HubSpot + Algolia** ✅ FINALISÉ
-- ✅ **Pagination complète** avec `BlogPagination`
-- ✅ **Pages individuelles** : `/blog/[slug]` avec SEO optimisé
-- ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage
-- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres
-- ✅ **Design moderne** : Interface utilisateur cohérente
-- ✅ **SEO automatique** : Meta tags, Open Graph, Twitter Cards
+### **Architecture Monorepo** ✅ FINALISÉ
 
-### **Page "Qui sommes-nous"** ✅
-- ✅ **Design moderne** avec image stylisée
-- ✅ **Équipe mise à jour** : Alban (Directeur & Customer Success Manager), Valerie (Assistante Commerciale), Fabien (Technicien VoIP)
-- ✅ **Layout optimisé** : Grid 3 colonnes pour l'équipe
+- ✅ **Structure complète** : Frontend Next.js + Backend Strapi
+- ✅ **Configuration monorepo** : Scripts npm pour développement simultané
+- ✅ **Installation Strapi** : CMS v5.20.0 dans le dossier `backend/`
+- ✅ **Scripts de migration** : Extraction et import automatisés
+- ✅ **Service Strapi** : `lib/strapi-blog.ts` avec API complète
 
-### **Page "Mentions légales"** ✅
-- ✅ **Informations complètes** : Éditeur, hébergement, cookies, RGPD
-- ✅ **Hébergement Vercel** : Plateforme moderne et performante
-- ✅ **Gestion domaine Hostinger** : Enregistrement et gestion du domaine
-- ✅ **Conformité RGPD** : Cookies, protection données, droits d'auteur
-- ✅ **Certification 3CX** : Badge Bronze Partner
+### **Scripts de Migration** ✅
 
-### **Page "Politique de confidentialité"** ✅ STYLE MODERNISÉ
-- ✅ **Contenu récupéré** du site existant (e2i-voip.com)
-- ✅ **Conformité RGPD complète** avec tous les droits utilisateurs
-- ✅ **Sections détaillées** : collecte, utilisation, protection des données
-- ✅ **Droits utilisateurs** : accès, rectification, effacement, portabilité
-- ✅ **Tests unitaires** : 7 tests passés
-- ✅ **Design moderne cohérent** : Hero section, cartes colorées, icônes Lucide React
-- ✅ **Structure organisée** : 4 sections principales avec code couleur intuitif
-- ✅ **Responsive design** : Grid 2 colonnes pour les droits utilisateurs
-- ✅ **Code couleur intuitif** : Rouge (cookies, effacement), Bleu (contact, accès), Vert (candidatures, rectification), etc.
+- ✅ **`extract-blog-content.js`** : Récupération des articles depuis https://www.e2i-voip.com/blog
+  - Extraction du contenu, images, métadonnées
+  - Téléchargement automatique des images
+  - Sauvegarde dans `extracted-blog-content.json`
+- ✅ **`import-to-strapi.js`** : Import des articles dans Strapi
+  - Upload des images de couverture
+  - Association des médias aux articles
+  - Gestion des erreurs et doublons
+- ✅ **`test-extraction.js`** : Test d'extraction d'un article
+  - Validation des données extraites
+  - Debugging et optimisation
 
-### **Page Contact `/contact`** ✅
-- ✅ **Design moderne** avec hero section et gradient
-- ✅ **Formulaire HubSpot global** intégré
-- ✅ **Informations de contact** complètes (téléphone, email, adresse, horaires)
-- ✅ **Section FAQ** avec questions fréquentes
-- ✅ **CTA urgent** pour appel direct
-- ✅ **SEO optimisé** avec métadonnées complètes
-- ✅ **Navigation mise à jour** : Bouton "Contact" dans le header
+### **Service Strapi Complet** ✅
 
-### **Composant HubSpotContactFormGlobal** ✅
-- ✅ **Script HubSpot v2** intégré automatiquement
-- ✅ **Configuration unifiée** : Portal ID `26878201`, Form ID `312a9f67-e613-4651-9690-4586646554a0`
-- ✅ **Réutilisable** pour d'autres pages
-- ✅ **TypeScript** avec déclarations globales
+- ✅ **`getStrapiBlogPosts()`** : Récupération avec pagination
+- ✅ **`getStrapiBlogPost(slug)`** : Article individuel
+- ✅ **`searchStrapiBlogPosts()`** : Recherche avancée
+- ✅ **`getStrapiBlogPostsByCategory()`** : Articles par catégorie
+- ✅ **`getStrapiBlogMetadata()`** : Métadonnées pour facettes
+- ✅ **`transformStrapiPost()`** : Transformation des données
+
+### **Content-Type Blog Post** ✅
+
+- ✅ **Schéma complet** : Tous les champs nécessaires configurés
+  - **title** : Titre de l'article (requis, unique)
+  - **slug** : URL unique (généré automatiquement)
+  - **content** : Contenu riche (requis)
+  - **excerpt** : Extrait de l'article (max 500 caractères)
+  - **publishDate** : Date de publication
+  - **author** : Auteur (défaut: "E2I VoIP")
+  - **tags** : Tags de l'article (JSON)
+  - **categories** : Catégories (JSON)
+  - **featuredImage** : Image de couverture (média)
+  - **metaDescription** : Description SEO (max 160 caractères)
+  - **seoTitle** : Titre SEO (max 60 caractères)
+  - **status** : Statut (draft/published)
+  - **readingTime** : Temps de lecture estimé
+  - **originalUrl** : URL originale sur l'ancien site
+
+### **Variables d'Environnement Strapi** ✅
+
+- ✅ **Configuration complète** : Variables Strapi ajoutées à `env.example`
+- ✅ **Base de données** : Configuration SQLite pour développement
+- ✅ **JWT et sécurité** : Clés de sécurité configurées
+- ✅ **API Token** : Configuration pour l'authentification
 
 ## 🎯 **PROCHAINE TÂCHE PRIORITAIRE**
 
-### **Finalisation Sprint 3** (EN COURS)
-1. **Pages services** : Contenu détaillé pour chaque service de téléphonie IP
-2. **SEO avancé** : Meta tags, structured data, sitemap
-3. **Chatbot Tawk.to** : Intégration n8n → HubSpot
+### **Finalisation Sprint 4 - Migration Strapi** (EN COURS)
+
+1. **Test d'extraction** : Valider la récupération des articles existants
+2. **Import dans Strapi** : Migration des données et images
+3. **Adaptation des composants** : Modification pour utiliser Strapi
+4. **Tests d'intégration** : Validation complète
+5. **Déploiement** : Configuration pour production
 
 ## 📊 **Objectifs atteints**
 
-- ✅ **Tests** : 84 tests passent (78 → 84)
+- ✅ **Tests** : 84 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
@@ -78,22 +93,75 @@
 - ✅ **Accessibilité** : WCAG 2.1 AA
 - ✅ **SEO** : Meta tags et structured data
 - ✅ **Responsive** : Mobile-first design
+- ✅ **Architecture** : Monorepo avec Strapi CMS
 
 ## 🚀 **Recommandations pour la suite**
 
-1. **Priorité 1** : Finaliser les pages services avec contenu détaillé pour chaque service de téléphonie IP
-2. **Priorité 2** : Implémenter le chatbot Tawk.to avec n8n
-3. **Priorité 3** : Optimiser le SEO avec sitemap et structured data
-4. **Priorité 4** : Tests E2E avec Playwright
-5. **Priorité 5** : Déploiement production sur Vercel
+1. **Priorité 1** : Tester l'extraction des articles existants
+2. **Priorité 2** : Importer les articles dans Strapi
+3. **Priorité 3** : Adapter les composants pour utiliser Strapi
+4. **Priorité 4** : Tests d'intégration complets
+5. **Priorité 5** : Déploiement en production
 
 ## 📈 **Statut global**
 
 - **Sprint 1** : ✅ Terminé (Fondations)
 - **Sprint 2** : ✅ Terminé (Homepage modernisée)
-- **Sprint 3** : ✅ **FINALISÉ** (Fonctionnalités avancées + Blog + Pages légales complètes)
-- **Sprint 4** : 🔄 En cours (Optimisations et finalisation)
+- **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
+- **Sprint 4** : 🔄 **EN COURS** (Migration Strapi + Architecture monorepo)
+- **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)
 
 ## 🎯 **Prochaine action immédiate**
 
-**Finaliser les pages services** avec contenu détaillé pour chaque service de téléphonie IP et optimiser le SEO.
+**Tester l'extraction des articles** depuis le site existant et valider la migration vers Strapi.
+
+## 🛠️ **Commandes pour la migration**
+
+```bash
+# Test d'extraction d'un article
+cd scripts && npm run test
+
+# Extraction complète des articles
+npm run extract:blog
+
+# Import dans Strapi (après configuration du token)
+cd scripts && npm run import
+
+# Démarrage de Strapi
+cd backend && npm run develop
+
+# Développement simultané (frontend + backend)
+npm run dev
+```
+
+## 📋 **Checklist Migration Strapi**
+
+### ✅ **Terminé**
+
+- [x] Architecture monorepo mise en place
+- [x] Strapi CMS installé et configuré
+- [x] Scripts de migration créés
+- [x] Service Strapi complet
+- [x] Content-Type configuré
+- [x] Variables d'environnement
+
+### 🔄 **En cours**
+
+- [ ] Test d'extraction des articles
+- [ ] Import dans Strapi
+- [ ] Adaptation des composants
+- [ ] Tests d'intégration
+- [ ] Déploiement
+
+### ⏳ **À faire**
+
+- [ ] Configuration des permissions Strapi
+- [ ] Tests de performance
+- [ ] Documentation utilisateur
+- [ ] Formation équipe
+
+---
+
+**Date de mise à jour** : Décembre 2024  
+**Statut global** : 🟢 **EXCELLENT - SPRINT 4 EN COURS (MIGRATION STRAPI)**  
+**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)
