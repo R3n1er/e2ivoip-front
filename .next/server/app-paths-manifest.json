@@ -1,20 +1,7 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/assistants-vocaux-ia/page": "app/assistants-vocaux-ia/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/blog/categorie/[slug]/page": "app/blog/categorie/[slug]/page.js",
   "/devis-en-ligne/page": "app/devis-en-ligne/page.js",
-  "/nos-services/mobilite/page": "app/nos-services/mobilite/page.js",
-  "/page": "app/page.js",
-  "/studio-attente/page": "app/studio-attente/page.js",
-  "/telephonie-entreprise/page": "app/telephonie-entreprise/page.js",
-  "/test-integrations/page": "app/test-integrations/page.js",
-  "/test-macbook/page": "app/test-macbook/page.js",
-  "/test-tawk/page": "app/test-tawk/page.js",
-  "/blog/[slug]/page": "app/blog/[slug]/page.js",
-  "/contact/page": "app/contact/page.js",
   "/politique-confidentialite/page": "app/politique-confidentialite/page.js",
-  "/mentions-legales/page": "app/mentions-legales/page.js",
-  "/qui-sommes-nous/page": "app/qui-sommes-nous/page.js"
+  "/blog/page": "app/blog/page.js"
 }
