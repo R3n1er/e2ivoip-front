@@ -4,22 +4,22 @@ const path = require("path");
 const https = require("https");
 const http = require("http");
 
-// Interface pour les articles de blog
-interface BlogArticle {
-  title: string;
-  content: string;
-  excerpt: string;
-  publishDate: string;
-  author: string;
-  tags: string[];
-  categories: string[];
-  slug: string;
-  featuredImage?: string;
-  images: string[];
-  metaDescription?: string;
-  seoTitle?: string;
-  url: string;
-}
+// Structure pour les articles de blog
+// BlogArticle: {
+//   title: string;
+//   content: string;
+//   excerpt: string;
+//   publishDate: string;
+//   author: string;
+//   tags: string[];
+//   categories: string[];
+//   slug: string;
+//   featuredImage?: string;
+//   images: string[];
+//   metaDescription?: string;
+//   seoTitle?: string;
+//   url: string;
+// }
 
 // Liste des articles identifiés sur votre site
 const articles = [
@@ -82,7 +82,7 @@ const articles = [
 async function downloadImage(url, filepath) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith("https:") ? https : http;
-    const file = fs.createWriteStream(filepath);
+    const file = require("fs").createWriteStream(filepath);
 
     protocol
       .get(url, (response) => {
@@ -93,7 +93,7 @@ async function downloadImage(url, filepath) {
         });
       })
       .on("error", (err) => {
-        fs.unlink(filepath, () => {}); // Supprimer le fichier en cas d'erreur
+        require("fs").unlink(filepath, () => {}); // Supprimer le fichier en cas d'erreur
         reject(err);
       });
   });
@@ -128,40 +128,54 @@ async function extractBlogContent() {
       await page.waitForSelector("body", { timeout: 10000 });
 
       const articleData = await page.evaluate(() => {
-        // Extraction du titre
+        // Extraction du titre - sélecteurs plus robustes
         const title =
           document.querySelector("h1")?.textContent?.trim() ||
+          document.querySelector(".blog-post__headline")?.textContent?.trim() ||
           document.querySelector(".article-title")?.textContent?.trim() ||
+          document.querySelector(".post-title")?.textContent?.trim() ||
           document.querySelector("title")?.textContent?.trim();
 
-        // Extraction du contenu
+        // Extraction du contenu - sélecteurs plus robustes
         const content =
+          document.querySelector(".blog-post__body")?.innerHTML ||
           document.querySelector(".article-content")?.innerHTML ||
           document.querySelector(".post-content")?.innerHTML ||
           document.querySelector("article")?.innerHTML ||
-          document.querySelector(".content")?.innerHTML;
+          document.querySelector(".content")?.innerHTML ||
+          document.querySelector(".blog-post")?.innerHTML;
 
         // Extraction de l'extrait
         const excerpt =
           document.querySelector(".article-excerpt")?.textContent?.trim() ||
           document.querySelector(".post-excerpt")?.textContent?.trim() ||
-          document.querySelector(".excerpt")?.textContent?.trim();
+          document.querySelector(".excerpt")?.textContent?.trim() ||
+          document.querySelector(".blog-post__body p")?.textContent?.trim();
 
-        // Extraction de la date
+        // Extraction de la date - sélecteurs plus robustes
         const publishDate =
+          document
+            .querySelector(".blog-post__timestamp")
+            ?.textContent?.trim() ||
           document.querySelector(".publish-date")?.textContent?.trim() ||
           document.querySelector(".post-date")?.textContent?.trim() ||
-          document.querySelector(".date")?.textContent?.trim();
+          document.querySelector(".date")?.textContent?.trim() ||
+          document.querySelector("time")?.textContent?.trim();
 
-        // Extraction de l'auteur
+        // Extraction de l'auteur - sélecteurs plus robustes
         const author =
+          document
+            .querySelector(".blog-post__author-name")
+            ?.textContent?.trim() ||
           document.querySelector(".author")?.textContent?.trim() ||
           document.querySelector(".post-author")?.textContent?.trim() ||
           "E2I VoIP";
 
         // Extraction des tags
         const tags = Array.from(
-          document.querySelectorAll(".tags .tag, .post-tags .tag")
+          document.querySelectorAll(
+            ".tags .tag, .post-tags .tag, .blog-post__tags .tag"
+          )
         )
           .map((tag) => tag.textContent?.trim())
           .filter(Boolean);
@@ -169,22 +183,26 @@ async function extractBlogContent() {
         // Extraction des catégories
         const categories = Array.from(
           document.querySelectorAll(
-            ".categories .category, .post-categories .category"
+            ".categories .category, .post-categories .category, .blog-post__categories .category"
           )
         )
           .map((cat) => cat.textContent?.trim())
           .filter(Boolean);
 
-        // Extraction de l'image de couverture
+        // Extraction de l'image de couverture - sélecteurs plus robustes
         const featuredImage =
+          document
+            .querySelector(".blog-post__featured-image img")
+            ?.getAttribute("src") ||
           document.querySelector(".featured-image img")?.getAttribute("src") ||
           document.querySelector(".post-image img")?.getAttribute("src") ||
-          document.querySelector("article img")?.getAttribute("src");
+          document.querySelector("article img")?.getAttribute("src") ||
+          document.querySelector(".blog-post img")?.getAttribute("src");
 
-        // Extraction de toutes les images
+        // Extraction de toutes les images - sélecteurs plus robustes
         const images = Array.from(
           document.querySelectorAll(
-            ".article-content img, .post-content img, article img"
+            ".blog-post__body img, .article-content img, .post-content img, article img, .blog-post img"
           )
         )
           .map((img) => img.getAttribute("src"))
@@ -216,7 +234,12 @@ async function extractBlogContent() {
         };
       });
 
-      if (articleData.title && articleData.content) {
+      // Validation améliorée - un article est considéré comme complet s'il a au moins un titre et du contenu
+      const hasTitle = articleData.title && articleData.title.length > 0;
+      const hasContent =
+        articleData.content && articleData.content.length > 100; // Au moins 100 caractères
+
+      if (hasTitle && hasContent) {
         extractedArticles.push({
           ...articleData,
           slug: article.slug,
@@ -231,6 +254,16 @@ async function extractBlogContent() {
         }
       } else {
         console.log(`⚠️ Article incomplet: ${article.title}`);
+        console.log(
+          `   - Titre: ${hasTitle ? "✅" : "❌"} (${
+            articleData.title?.length || 0
+          } caractères)`
+        );
+        console.log(
+          `   - Contenu: ${hasContent ? "✅" : "❌"} (${
+            articleData.content?.length || 0
+          } caractères)`
+        );
       }
 
       // Pause entre les requêtes pour éviter la surcharge
@@ -285,9 +318,90 @@ async function downloadImages(imageUrls, articleSlug) {
   }
 }
 
+// Fonction pour explorer le blog et obtenir les vraies URLs
+async function exploreBlogAndGetArticles() {
+  console.log("🔍 Exploration du blog pour obtenir les vraies URLs...");
+
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+
+  const page = await browser.newPage();
+  await page.setUserAgent(
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  );
+
+  try {
+    await page.goto("https://www.e2i-voip.com/blog", {
+      waitUntil: "networkidle0",
+      timeout: 30000,
+    });
+
+    await page.waitForSelector("body", { timeout: 10000 });
+
+    const blogArticles = await page.evaluate(() => {
+      const articleLinks = Array.from(
+        document.querySelectorAll("a[href*='/blog/']")
+      )
+        .map((link) => ({
+          url: link.href,
+          title: link.textContent?.trim() || link.getAttribute("title") || "",
+          slug: link.href.split("/blog/")[1]?.split("?")[0] || "",
+        }))
+        .filter(
+          (article) =>
+            article.url.includes("/blog/") &&
+            !article.url.includes("/tag/") &&
+            !article.url.includes("/author/") &&
+            article.slug.length > 0
+        );
+
+      // Dédupliquer par URL
+      const uniqueArticles = [];
+      const seenUrls = new Set();
+
+      for (const article of articleLinks) {
+        if (!seenUrls.has(article.url)) {
+          seenUrls.add(article.url);
+          uniqueArticles.push(article);
+        }
+      }
+
+      return uniqueArticles;
+    });
+
+    console.log(`📊 ${blogArticles.length} articles trouvés sur le blog`);
+
+    // Afficher les premiers articles pour vérification
+    blogArticles.slice(0, 5).forEach((article, index) => {
+      console.log(`${index + 1}. ${article.title} -> ${article.url}`);
+    });
+
+    await browser.close();
+    return blogArticles;
+  } catch (error) {
+    console.error("❌ Erreur lors de l'exploration:", error.message);
+    await browser.close();
+    return [];
+  }
+}
+
 // Fonction principale
 async function main() {
   try {
+    // Utiliser l'exploration automatique au lieu de la liste statique
+    const realArticles = await exploreBlogAndGetArticles();
+
+    if (realArticles.length === 0) {
+      console.log("❌ Aucun article trouvé sur le blog");
+      return;
+    }
+
+    // Remplacer la liste statique par les articles trouvés
+    articles.length = 0; // Vider la liste
+    articles.push(...realArticles); // Ajouter les vrais articles
+
     await extractBlogContent();
   } catch (error) {
     console.error("❌ Erreur lors de l'extraction:", error);
