@@ -138,21 +138,24 @@
   - ✅ Création de transactions HubSpot
   - ✅ Récupération données essentielles
 
-### 3.3 Blog dynamique HubSpot ✅
+### 3.3 Blog dynamique HubSpot ✅ FINALISÉ
 
 - ✅ API de récupération des articles HubSpot
-- ✅ **Pages de listing avec pagination** (implémenté)
-- ✅ **Pages individuelles d'articles** (implémenté)
-- ✅ **Système de catégories et tags** (implémenté)
-- ✅ **SEO automatique des articles** (implémenté)
-- ✅ Commentaires désactivés
-- ✅ Intégration URLR pour raccourcissement automatique
+- ✅ **Pages de listing avec pagination** : `BlogPagination` avec navigation intuitive
+- ✅ **Pages individuelles d'articles** : `/blog/[slug]` avec SEO optimisé
+- ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique
+- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres (auteur, année, tags)
+- ✅ **SEO automatique des articles** : Meta tags, Open Graph, Twitter Cards
+- ✅ **Commentaires désactivés** : Conformité RGPD
+- ✅ **Intégration URLR** : Raccourcissement automatique des liens
+- ✅ **Design moderne** : Interface utilisateur cohérente avec le site
 
 **Nouvelles fonctionnalités ajoutées :**
 
 - ✅ **Pages d'articles individuels** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pagination avancée** : Navigation entre pages avec 12 articles par page
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique
+- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres avancés
 - ✅ **Métadonnées dynamiques** : Open Graph, Twitter Cards, structured data
 - ✅ **Articles liés** : Recommandations automatiques basées sur les tags
 - ✅ **Navigation améliorée** : Boutons retour et partage
@@ -176,6 +179,19 @@
   - 🔄 Export automatique des contacts
   - 🔄 Création de leads dans HubSpot
   - 🔄 Attribution source "chatbot"
+
+### 3.5 Pages légales et équipe ✅
+
+- ✅ **Page "Qui sommes-nous"** : `/qui-sommes-nous` avec design moderne
+  - ✅ Équipe mise à jour : Alban (Directeur & Customer Success Manager), Valerie (Assistante Commerciale), Fabien (Technicien VoIP)
+  - ✅ Design moderne avec image stylisée
+  - ✅ Layout optimisé : Grid 3 colonnes pour l'équipe
+- ✅ **Page "Mentions légales"** : `/mentions-legales` avec informations complètes
+  - ✅ Éditeur : E2I ASSISTANCE (Alban RENIER)
+  - ✅ Hébergement : Vercel + Gestion domaine Hostinger
+  - ✅ Cookies et RGPD conformes
+  - ✅ Certification 3CX Bronze Partner
+  - ✅ Conformité RGPD : Cookies, protection données, droits d'auteur
 
 ## Phase 4 : Optimisation et Performance (Semaine 5) 🔄 EN COURS
 
@@ -359,12 +375,13 @@ CHATBOT_WIDGET_ID=688d3cc109ef001928d4773f/1j1jrald3
 - ✅ Navigation optimisée multi-devices
 - ✅ Design system DaisyUI + shadcn/ui
 
-### Phase 3 ✅ MAJORITAIREMENT
+### Phase 3 ✅ MAJORITAIREMENT TERMINÉ
 
 - ✅ Intégrations complètes (HubSpot + Tally + n8n)
 - ✅ **CORRECTION CRITIQUE** : Formulaires HubSpot
-- 🔄 Blog dynamique HubSpot (en cours)
+- ✅ Blog dynamique HubSpot ✅ FINALISÉ
 - ✅ Chatbot opérationnel avec Tawk.to
+- ✅ Pages légales et équipe : Qui sommes-nous + Mentions légales
 
 ### Phase 4 🔄
 
@@ -417,4 +434,4 @@ Le composant `ContactSection` de la page d'accueil utilisait un formulaire stati
 
 **Date de mise à jour** : Décembre 2024  
 **Statut global** : 🟢 **EXCELLENT - PHASE 3 MAJORITAIREMENT TERMINÉ**  
-**Progression** : 75% (3/4 phases majoritairement terminées)
+**Progression** : 80% (Blog finalisé, pages légales ajoutées)
