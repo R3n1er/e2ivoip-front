@@ -307,6 +307,8 @@ e2ivoip-front/
 - ✅ **Tracking complet** : Événements de conversion implémentés
 - ✅ **CRM HubSpot** : Synchronisation automatique des leads
 - ✅ **Blog HubSpot + Algolia** : Synchronisation complète avec recherche avancée
+- ✅ **Section Services optimisée** : Bouton "Demander un devis gratuit" redirige vers `/devis-en-ligne`
+- ✅ **Suppression bouton "Voir nos références"** : Interface simplifiée pour focus sur la conversion
 
 #### 10.4 Migration Strapi
 
@@ -327,7 +329,14 @@ e2ivoip-front/
 4. **Tests d'intégration** : Validation complète
 5. **Déploiement** : Configuration pour production
 
-#### 11.2 Sprint 5 - Finalisation
+#### 11.2 Optimisations UX récentes ✅ TERMINÉ
+
+1. ✅ **Section Services optimisée** : Bouton "Demander un devis gratuit" redirige vers `/devis-en-ligne`
+2. ✅ **Interface simplifiée** : Suppression du bouton "Voir nos références" pour focus sur la conversion
+3. ✅ **Tests mis à jour** : Validation du nouveau comportement du bouton CTA
+4. ✅ **Navigation cohérente** : Tous les CTA principaux redirigent vers les pages de conversion
+
+#### 11.3 Sprint 5 - Finalisation
 
 1. **Performance** : Core Web Vitals optimisés
 2. **Analytics** : Tracking détaillé
@@ -337,5 +346,5 @@ e2ivoip-front/
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut global** : 🟢 **EXCELLENT - SPRINT 4 EN COURS (MIGRATION STRAPI)**  
-**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)
+**Statut global** : 🟢 **EXCELLENT - SPRINT 4 EN COURS (MIGRATION STRAPI) + OPTIMISATIONS UX**  
+**Progression** : 96% (Architecture Strapi mise en place, scripts de migration prêts, optimisations UX terminées)

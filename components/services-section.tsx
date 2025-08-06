@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Phone, Headphones, Settings, Shield, Cloud, Smartphone, Zap, Users, Globe, MessageSquare, BarChart3, Cpu } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export function ServicesSection() {
   const services = [
@@ -199,26 +200,19 @@ export function ServicesSection() {
             <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: '#e2e8f0' }}>
               Nos experts vous accompagnent dans la mise en place de votre solution sur mesure
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                style={{ backgroundColor: '#E53E3E' }}
-                onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#dc2626'}
-                onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#E53E3E'}
-              >
-                Demander un devis gratuit
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = 'white'; (e.target as HTMLElement).style.color = '#2D3848'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = 'transparent'; (e.target as HTMLElement).style.color = 'white'; }}
-              >
-                Voir nos références
-              </motion.button>
+            <div className="flex justify-center">
+              <Link href="/devis-en-ligne">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                  style={{ backgroundColor: '#E53E3E' }}
+                  onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#dc2626'}
+                  onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#E53E3E'}
+                >
+                  Demander un devis gratuit
+                </motion.button>
+              </Link>
             </div>
           </div>
         </motion.div>

@@ -57,7 +57,6 @@ describe('ServicesSection - Charte Graphique PRD (Icônes Corrigées)', () => {
     
     expect(screen.getByText('Prêt à moderniser votre téléphonie ?')).toBeInTheDocument()
     expect(screen.getByText('Demander un devis gratuit')).toBeInTheDocument()
-    expect(screen.getByText('Voir nos références')).toBeInTheDocument()
   })
 
   it('affiche la disponibilité 99.9% pour chaque service', () => {
@@ -78,5 +77,16 @@ describe('ServicesSection - Charte Graphique PRD (Icônes Corrigées)', () => {
     // Vérifier qu'aucune autre couleur n'est utilisée pour les icônes
     const elementsWithOtherColors = container.querySelectorAll('[style*="#16a34a"], [style*="#9333ea"], [style*="#ea580c"], [style*="#6366f1"]')
     expect(elementsWithOtherColors.length).toBe(0)
+  })
+
+  it('le bouton "Demander un devis gratuit" redirige vers la page devis en ligne', () => {
+    render(<ServicesSection />)
+    
+    const devisButton = screen.getByText('Demander un devis gratuit')
+    expect(devisButton).toBeInTheDocument()
+    
+    // Vérifier que le bouton est dans un lien vers /devis-en-ligne
+    const linkElement = devisButton.closest('a')
+    expect(linkElement).toHaveAttribute('href', '/devis-en-ligne')
   })
 })

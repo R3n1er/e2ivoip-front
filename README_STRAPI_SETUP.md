@@ -25,21 +25,25 @@ e2ivoip-front/
 ## 🚀 **Étape 1 : Démarrage de Strapi**
 
 ### 1.1 Naviguer vers le dossier backend
+
 ```bash
 cd backend
 ```
 
 ### 1.2 Installer les dépendances (si pas déjà fait)
+
 ```bash
 npm install
 ```
 
 ### 1.3 Démarrer Strapi en mode développement
+
 ```bash
 npm run develop
 ```
 
 **Résultat attendu :**
+
 ```
 Welcome back!
 To manage your project 🚀, go to the administration panel at:
@@ -52,10 +56,13 @@ http://localhost:1337
 ## ⚙️ **Étape 2 : Configuration initiale**
 
 ### 2.1 Accéder à l'interface d'administration
+
 Ouvrez votre navigateur et allez sur : **http://localhost:1337/admin**
 
 ### 2.2 Créer le compte administrateur
+
 Remplissez le formulaire avec :
+
 - **First Name** : `Admin`
 - **Last Name** : `E2I VoIP`
 - **Email** : `admin@e2i-voip.com`
@@ -67,10 +74,12 @@ Cliquez sur **Let's start**
 ## 🔐 **Étape 3 : Configuration des permissions API**
 
 ### 3.1 Accéder aux paramètres
+
 1. Dans le menu de gauche, cliquez sur **Settings** (⚙️)
 2. Cliquez sur **Users & Permissions plugin**
 
 ### 3.2 Configurer les permissions publiques
+
 1. Cliquez sur **Roles** dans le menu de gauche
 2. Cliquez sur **Public** (rôle public)
 3. Dans la section **Blog Post**, activer :
@@ -81,6 +90,7 @@ Cliquez sur **Let's start**
 ## 🔑 **Étape 4 : Génération du token API**
 
 ### 4.1 Créer un token d'API
+
 1. Dans **Settings**, cliquez sur **API Tokens**
 2. Cliquez sur **Create new API Token**
 3. Remplissez les informations :
@@ -90,17 +100,20 @@ Cliquez sur **Let's start**
 4. Cliquez sur **Save**
 
 ### 4.2 Copier le token
+
 ⚠️ **IMPORTANT** : Copiez le token généré (commence par `...`)
 
 ## 🔧 **Étape 5 : Configuration des variables d'environnement**
 
 ### 5.1 Modifier le fichier .env.local
+
 ```bash
 # À la racine du projet
 nano .env.local
 ```
 
 ### 5.2 Ajouter les variables Strapi
+
 ```bash
 # Configuration Strapi
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
@@ -113,6 +126,7 @@ STRAPI_TOKEN=votre_token_ici
 ## 📥 **Étape 6 : Import des articles**
 
 ### 6.1 Vérifier les articles extraits
+
 ```bash
 # À la racine du projet
 cd scripts
@@ -120,11 +134,13 @@ ls -la extracted-blog-content.json
 ```
 
 ### 6.2 Lancer l'import
+
 ```bash
 npm run import
 ```
 
 **Résultat attendu :**
+
 ```
 🚀 Début de l'import des articles dans Strapi...
 📖 10 articles trouvés pour l'import
@@ -133,6 +149,7 @@ npm run import
 ```
 
 ### 6.3 Vérifier l'import
+
 1. Retourner sur **http://localhost:1337/admin**
 2. Aller dans **Content Manager** → **Blog Post**
 3. Vérifier que les 10 articles sont présents
@@ -141,23 +158,27 @@ npm run import
 ## 🧪 **Étape 7 : Test d'intégration**
 
 ### 7.1 Démarrer le frontend
+
 ```bash
 # À la racine du projet
 npm run dev
 ```
 
 ### 7.2 Tester l'API Strapi
+
 ```bash
 curl http://localhost:1337/api/blog-posts
 ```
 
 ### 7.3 Vérifier le blog
+
 - Aller sur **http://localhost:3000/blog**
 - Vérifier que les articles s'affichent correctement
 
 ## 📊 **Vérification finale**
 
 ### ✅ Checklist de validation
+
 - [ ] Strapi démarre sur http://localhost:1337
 - [ ] Compte admin créé
 - [ ] Permissions API configurées
@@ -170,6 +191,7 @@ curl http://localhost:1337/api/blog-posts
 ## 🚨 **Dépannage**
 
 ### Problème : Strapi ne démarre pas
+
 ```bash
 # Vérifier les dépendances
 cd backend
@@ -180,15 +202,18 @@ npm run develop
 ```
 
 ### Problème : Erreur de permissions
+
 1. Vérifier que les permissions `find` et `findOne` sont activées
 2. Redémarrer Strapi après modification des permissions
 
 ### Problème : Token API invalide
+
 1. Régénérer un nouveau token
 2. Mettre à jour `.env.local`
 3. Redémarrer le frontend
 
 ### Problème : Import échoue
+
 ```bash
 # Vérifier la connexion Strapi
 curl http://localhost:1337/api/blog-posts
@@ -207,6 +232,7 @@ echo $STRAPI_TOKEN
 ## 📞 **Support**
 
 En cas de problème :
+
 1. Vérifier les logs dans le terminal
 2. Consulter la documentation Strapi
 3. Contacter l'équipe technique E2I VoIP
@@ -215,4 +241,4 @@ En cas de problème :
 
 **Guide créé le 5 août 2025 - Migration Strapi E2I VoIP**
 **Version** : 1.0
-**Statut** : En cours de migration 
+**Statut** : En cours de migration
