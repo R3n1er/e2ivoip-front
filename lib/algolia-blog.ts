@@ -1,5 +1,5 @@
 import { algoliasearch } from "algoliasearch";
-import type { BlogPost } from "./hubspot-blog";
+import type { BlogPost } from "./blog-types";
 
 const getAlgoliaClient = () => {
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;

@@ -6,9 +6,12 @@ import { Footer } from "@/components/footer";
 import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
-import { searchBlogPosts } from "@/lib/algolia-blog";
-import type { BlogPost } from "@/lib/hubspot-blog";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import type { BlogPost } from "@/lib/blog-types";
+import {
+  searchStrapiBlogPosts,
+  getStrapiBlogMetadata,
+  transformStrapiPost,
+} from "@/lib/strapi-blog";
 
 interface BlogFilters {
   query: string;
@@ -32,58 +35,18 @@ export default function Blog() {
   const handleSearch = async (filters: BlogFilters, page: number = 1) => {
     setLoading(true);
     try {
-      // Préparer les filtres pour Algolia
-      const algoliaFilters: any = {};
-      if (filters.author) algoliaFilters.author = filters.author;
-      if (filters.year) algoliaFilters.year = filters.year;
-      if (filters.tags.length > 0) algoliaFilters.tags = filters.tags;
+      const searchFilters: any = {};
+      if (filters.author) searchFilters.author = filters.author;
+      if (filters.tags.length > 0) searchFilters.tags = filters.tags;
 
-      // Effectuer la recherche avec pagination
-      let results;
-      try {
-        results = await searchBlogPosts(filters.query, algoliaFilters, page);
-        // Si Algolia ne retourne aucun résultat, utiliser les données de test
-        if (!results.hits || results.hits.length === 0) {
-          throw new Error("Aucun résultat Algolia");
-        }
-      } catch (algoliaError) {
-        console.warn("Algolia indisponible, utilisation des données de test:", (algoliaError as Error).message);
-        // Utiliser les données de test
-        const mockPosts = getMockBlogPosts();
-        results = {
-          hits: mockPosts,
-          nbHits: mockPosts.length,
-          facets: {
-            author: { "E2I VoIP": mockPosts.length },
-            publishYear: { "2024": mockPosts.length },
-            tags: mockPosts.reduce((acc, post) => {
-              post.tags.forEach(tag => {
-                acc[tag] = (acc[tag] || 0) + 1;
-              });
-              return acc;
-            }, {} as Record<string, number>)
-          }
-        };
-      }
+      const strapiResults = await searchStrapiBlogPosts(
+        filters.query,
+        searchFilters,
+        page,
+        POSTS_PER_PAGE
+      );
 
-      // Traiter les résultats
-      const blogPosts = results.hits.map((hit: any) => ({
-        id: hit.objectID || hit.id,
-        title: hit.title,
-        excerpt: hit.excerpt,
-        content: hit.content,
-        publishDate: hit.publishDate,
-        modifiedDate: hit.modifiedDate,
-        author: hit.author,
-        authorId: hit.authorId,
-        tags: hit.tags || [],
-        categories: hit.categories || [],
-        slug: hit.slug,
-        url: hit.url,
-        featuredImage: hit.featuredImage,
-        metaDescription: hit.metaDescription,
-        seoTitle: hit.seoTitle,
-      }));
+      const blogPosts: BlogPost[] = strapiResults.data.map(transformStrapiPost);
 
       // Appliquer le tri
       let sortedPosts = [...blogPosts];
@@ -103,23 +66,20 @@ export default function Blog() {
       // Pour "relevance", Algolia gère déjà le tri par pertinence
 
       setPosts(sortedPosts);
-      setTotalResults(results.nbHits || 0);
+      setTotalResults(strapiResults.meta.pagination?.total || sortedPosts.length);
       setCurrentPage(page);
 
-      // Extraire les facettes pour les filtres disponibles
-      if (results.facets) {
-        if (results.facets.author) {
-          setAvailableAuthors(Object.keys(results.facets.author));
-        }
-        if (results.facets.publishYear) {
-          setAvailableYears(
-            Object.keys(results.facets.publishYear).map(Number)
-          );
-        }
-        if (results.facets.tags) {
-          setAvailableTags(Object.keys(results.facets.tags));
-        }
-      }
+      // Récupérer les facettes via Strapi
+      const metadata = await getStrapiBlogMetadata();
+      setAvailableAuthors(metadata.authors);
+      // Extraire les années à partir des dates de publication
+      const years = Array.from(
+        new Set(sortedPosts.map((p) => new Date(p.publishDate).getFullYear()))
+      )
+        .filter((y) => !Number.isNaN(y))
+        .sort((a, b) => b - a);
+      setAvailableYears(years);
+      setAvailableTags(metadata.tags);
     } catch (error) {
       console.error("Erreur lors de la recherche:", error);
       setPosts([]);

@@ -19,9 +19,9 @@ describe('Page Politique de Confidentialité', () => {
     render(<PolitiqueConfidentialitePage />)
     
     expect(screen.getByText(/Identité du responsable du traitement/)).toBeInTheDocument()
-    expect(screen.getByText(/données recueillies et utilisées/)).toBeInTheDocument()
-    expect(screen.getByText(/Comment vos données sont-elles protégées/)).toBeInTheDocument()
-    expect(screen.getByText(/Vos droits/)).toBeInTheDocument()
+    expect(screen.getByText(/Collecte et utilisation des données/)).toBeInTheDocument()
+    expect(screen.getByText(/Hébergement et sécurité des données/)).toBeInTheDocument()
+    expect(screen.getByText(/Vos droits utilisateurs/)).toBeInTheDocument()
   })
 
   it('contient les droits RGPD', () => {
@@ -29,7 +29,7 @@ describe('Page Politique de Confidentialité', () => {
     
     expect(screen.getByText(/Droit d'accès/)).toBeInTheDocument()
     expect(screen.getByText(/Droit de rectification/)).toBeInTheDocument()
-    expect(screen.getByText(/droit à l'oubli/)).toBeInTheDocument()
+    expect(screen.getByText(/Droit d'effacement/)).toBeInTheDocument()
     expect(screen.getByText(/Droit à la portabilité/)).toBeInTheDocument()
   })
 
@@ -58,9 +58,11 @@ describe('Page Politique de Confidentialité', () => {
     
     // Vérifier la hiérarchie des titres
     const h1 = screen.getByRole('heading', { level: 1 })
-    const h2s = screen.getAllByRole('heading', { level: 2 })
+    const h2s = screen.queryAllByRole('heading', { level: 2 })
+    const h3s = screen.queryAllByRole('heading', { level: 3 })
     
     expect(h1).toBeInTheDocument()
-    expect(h2s.length).toBeGreaterThan(3)
+    // La page utilise des CardTitle (h3) pour les sections principales
+    expect(h2s.length + h3s.length).toBeGreaterThan(5)
   })
 })

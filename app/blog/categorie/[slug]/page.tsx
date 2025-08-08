@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { ArrowLeft, Tag } from "lucide-react";
 import Link from "next/link";
-import { searchBlogPosts } from "@/lib/algolia-blog";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
-import { BlogPagination } from "@/components/blog/blog-pagination";
-import type { BlogPost } from "@/lib/hubspot-blog";
+import type { BlogPost } from "@/lib/blog-types";
+import { getStrapiBlogPostsByCategory, transformStrapiPost } from "@/lib/strapi-blog";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -35,33 +34,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
   
-  // Rechercher les articles de cette catégorie
-  const results = await searchBlogPosts("", {
-    tags: [categoryName],
-  });
-
-  if (!results.hits || results.hits.length === 0) {
+  // Rechercher les articles de cette catégorie via Strapi
+  const response = await getStrapiBlogPostsByCategory(categoryName, 1, 60);
+  if (!response.data || response.data.length === 0) {
     notFound();
   }
 
   // Transformer les résultats
-  const posts: BlogPost[] = results.hits.map((hit: any) => ({
-    id: hit.objectID,
-    title: hit.title,
-    excerpt: hit.excerpt,
-    content: hit.content,
-    publishDate: hit.publishDate,
-    modifiedDate: hit.modifiedDate,
-    author: hit.author,
-    authorId: hit.authorId,
-    tags: hit.tags || [],
-    categories: hit.categories || [],
-    slug: hit.slug,
-    url: hit.url,
-    featuredImage: hit.featuredImage,
-    metaDescription: hit.metaDescription,
-    seoTitle: hit.seoTitle,
-  }));
+  const posts: BlogPost[] = response.data.map(transformStrapiPost);
 
   return (
     <div className="min-h-screen bg-white">
@@ -101,7 +81,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </h1>
               </div>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                {results.nbHits} article{results.nbHits !== 1 ? "s" : ""} trouvé{results.nbHits !== 1 ? "s" : ""} dans cette catégorie
+                 {response.meta.pagination?.total || posts.length} article{(response.meta.pagination?.total || posts.length) !== 1 ? "s" : ""} trouvé{(response.meta.pagination?.total || posts.length) !== 1 ? "s" : ""} dans cette catégorie
               </p>
             </div>
           </div>

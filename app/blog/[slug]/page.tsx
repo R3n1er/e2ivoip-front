@@ -6,8 +6,12 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getHubSpotBlogPosts, getHubSpotBlogPost } from "@/lib/hubspot-blog";
-import { searchBlogPosts } from "@/lib/algolia-blog";
+import {
+  getStrapiBlogPost,
+  getStrapiBlogPosts,
+  searchStrapiBlogPosts,
+  transformStrapiPost,
+} from "@/lib/strapi-blog";
 import { useHubSpot } from "@/components/hubspot-tracking";
 
 interface BlogPostPageProps {
@@ -21,7 +25,8 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getHubSpotBlogPost(slug);
+  const strapiPost = await getStrapiBlogPost(slug);
+  const post = strapiPost ? transformStrapiPost(strapiPost) : null;
   
   if (!post) {
     return {
@@ -53,24 +58,29 @@ export async function generateMetadata({
 
 // Génération des routes statiques
 export async function generateStaticParams() {
-  const posts = await getHubSpotBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const response = await getStrapiBlogPosts(1, 200);
+    return response.data.map((post) => ({
+      slug: post.attributes.slug,
+    }));
+  } catch {
+    // En build sans Strapi disponible, ne pré-génère pas de routes
+    return [];
+  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getHubSpotBlogPost(slug);
+  const strapiPost = await getStrapiBlogPost(slug);
+  const post = strapiPost ? transformStrapiPost(strapiPost) : null;
 
   if (!post) {
     notFound();
   }
 
   // Récupérer des articles liés
-  const relatedPosts = await searchBlogPosts("", {
-    tags: post.tags.slice(0, 2),
-  });
+  const related = await searchStrapiBlogPosts("", { tags: post.tags.slice(0, 2) });
+  const relatedPosts = related.data.map(transformStrapiPost);
 
   const publishDate = new Date(post.publishDate);
   const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
@@ -202,7 +212,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
 
         {/* Articles liés */}
-        {relatedPosts.hits && relatedPosts.hits.length > 0 && (
+        {relatedPosts && relatedPosts.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -213,8 +223,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedPosts.hits.slice(0, 3).map((relatedPost: any) => (
-                <Card key={relatedPost.objectID} className="hover:shadow-lg transition-shadow">
+              {relatedPosts.slice(0, 3).map((relatedPost: any) => (
+                <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-2">
                       <Link

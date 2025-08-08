@@ -1,4 +1,4 @@
-import type { BlogPost } from "./hubspot-blog";
+import type { BlogPost } from "./blog-types";
 
 export const mockBlogPosts: BlogPost[] = [
   {

@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
-import type { BlogPost } from "@/lib/hubspot-blog";
+import type { BlogPost } from "@/lib/blog-types";
 
 // Mock des services
 vi.mock("@/lib/algolia-blog", () => ({
