@@ -1,10 +1,11 @@
-# 🔄 Migration Blog HubSpot/Algolia → Strapi CMS
+# 🔄 Migration Blog HubSpot → Strapi CMS
 
 ## 📋 **Contexte de la migration**
 
 ### **Ancienne architecture (ABANDONNÉE)**
+
 - **Blog HubSpot** : Articles gérés dans HubSpot CMS
-- **Recherche Algolia** : Indexation et recherche avancée
+- (Algolia) : Obsolète — remplacé par la recherche Strapi
 - **Synchronisation** : HubSpot → Algolia via API
 - **Problèmes identifiés** :
   - ❌ Permissions API HubSpot insuffisantes
@@ -13,6 +14,7 @@
   - ❌ Limitations de l'API HubSpot
 
 ### **Nouvelle architecture (ACTUELLE)**
+
 - **Blog Strapi** : CMS headless moderne et indépendant
 - **Recherche intégrée** : Fonctionnalité native Strapi
 - **Architecture monorepo** : Frontend + Backend unifiés
@@ -26,12 +28,14 @@
 ## 🎯 **Raisons de la migration**
 
 ### **1. Problèmes techniques HubSpot**
+
 - **Permissions API** : Scopes `cms.blog.read` et `cms.blog_posts.read` non disponibles
 - **Erreur API** : `MISSING_SCOPES` - "This app hasn't been granted all required scopes"
 - **Limitations** : API HubSpot restrictive pour le contenu de blog
 - **Dépendance** : Tied to HubSpot ecosystem
 
 ### **2. Avantages Strapi**
+
 - **Indépendance** : CMS headless sans dépendance externe
 - **Flexibilité** : API REST et GraphQL natives
 - **Interface moderne** : Admin panel intuitif
@@ -40,6 +44,7 @@
 - **SEO intégré** : Métadonnées automatiques
 
 ### **3. Architecture simplifiée**
+
 - **Monorepo** : Frontend Next.js + Backend Strapi
 - **Déploiement unifié** : Vercel + Railway/Render
 - **Développement simultané** : `npm run dev` lance les deux
@@ -48,6 +53,7 @@
 ## 🔧 **Migration technique**
 
 ### **1. Architecture mise à jour**
+
 ```
 e2ivoip-front/
 ├── app/                    # Frontend Next.js (App Router)
@@ -66,11 +72,13 @@ e2ivoip-front/
 ```
 
 ### **2. Scripts de migration créés**
+
 - ✅ **`extract-blog-content.js`** : Extraction depuis https://www.e2i-voip.com/blog
 - ✅ **`import-to-strapi.js`** : Import dans Strapi avec images
 - ✅ **`test-extraction.js`** : Validation des données extraites
 
 ### **3. Service Strapi complet**
+
 - ✅ **`lib/strapi-blog.ts`** : API complète
   - `getStrapiBlogPosts()` - Récupération avec pagination
   - `getStrapiBlogPost(slug)` - Article individuel
@@ -79,6 +87,7 @@ e2ivoip-front/
   - `transformStrapiPost()` - Transformation des données
 
 ### **4. Content-Type configuré**
+
 - ✅ **Schéma complet** : Tous les champs nécessaires
   - **title** : Titre de l'article (requis, unique)
   - **slug** : URL unique (généré automatiquement)
@@ -98,6 +107,7 @@ e2ivoip-front/
 ## 📊 **Impact sur le projet**
 
 ### **1. Fonctionnalités maintenues**
+
 - ✅ **Pages de listing** : `/blog` avec pagination
 - ✅ **Pages individuelles** : `/blog/[slug]` avec SEO
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]`
@@ -107,6 +117,7 @@ e2ivoip-front/
 - ✅ **SEO** : Meta tags et structured data
 
 ### **2. Améliorations apportées**
+
 - ✅ **Performance** : API native plus rapide
 - ✅ **Flexibilité** : Contrôle total sur le contenu
 - ✅ **Interface admin** : Gestion moderne des articles
@@ -115,6 +126,7 @@ e2ivoip-front/
 - ✅ **Déploiement** : Architecture monorepo simplifiée
 
 ### **3. Tests et validation**
+
 - ✅ **84 tests passent** : Validation complète
 - ✅ **Tests unitaires** : Composants blog validés
 - ✅ **Tests d'intégration** : API Strapi testée
@@ -123,6 +135,7 @@ e2ivoip-front/
 ## 🚀 **Prochaines étapes**
 
 ### **1. Finalisation Sprint 4**
+
 - 🔄 **Test d'extraction** : Valider la récupération des articles existants
 - 🔄 **Import dans Strapi** : Migration des données et images
 - 🔄 **Adaptation des composants** : Modification pour utiliser Strapi
@@ -130,6 +143,7 @@ e2ivoip-front/
 - 🔄 **Déploiement** : Configuration pour production
 
 ### **2. Optimisations futures**
+
 - ⏳ **Recherche avancée** : Filtres et facettes
 - ⏳ **Analytics** : Tracking des lectures d'articles
 - ⏳ **Newsletter** : Intégration avec les articles
@@ -138,6 +152,7 @@ e2ivoip-front/
 ## 📋 **Checklist migration**
 
 ### ✅ **Terminé**
+
 - [x] Architecture monorepo mise en place
 - [x] Strapi CMS installé et configuré
 - [x] Scripts de migration créés
@@ -146,6 +161,7 @@ e2ivoip-front/
 - [x] Variables d'environnement
 
 ### 🔄 **En cours**
+
 - [ ] Test d'extraction des articles
 - [ ] Import dans Strapi
 - [ ] Adaptation des composants
@@ -153,6 +169,7 @@ e2ivoip-front/
 - [ ] Déploiement
 
 ### ⏳ **À faire**
+
 - [ ] Configuration des permissions Strapi
 - [ ] Tests de performance
 - [ ] Documentation utilisateur

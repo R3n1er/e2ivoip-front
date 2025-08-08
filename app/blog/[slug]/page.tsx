@@ -27,7 +27,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const strapiPost = await getStrapiBlogPost(slug);
   const post = strapiPost ? transformStrapiPost(strapiPost) : null;
-  
+
   if (!post) {
     return {
       title: "Article non trouvé - E2I VoIP",
@@ -79,7 +79,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   // Récupérer des articles liés
-  const related = await searchStrapiBlogPosts("", { tags: post.tags.slice(0, 2) });
+  const related = await searchStrapiBlogPosts("", {
+    tags: post.tags.slice(0, 2),
+  });
   const relatedPosts = related.data.map(transformStrapiPost);
 
   const publishDate = new Date(post.publishDate);
@@ -202,7 +204,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </Button>
                 </Link>
                 <Link href="/nos-services">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-red-primary">
+                  <Button
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-red-primary"
+                  >
                     Découvrir nos services
                   </Button>
                 </Link>
@@ -224,7 +229,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedPosts.slice(0, 3).map((relatedPost: any) => (
-                <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow">
+                <Card
+                  key={relatedPost.id}
+                  className="hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-2">
                       <Link
@@ -240,11 +248,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <div className="flex items-center gap-2 text-xs text-gray-500">
                       <Calendar className="w-3 h-3" />
                       <span>
-                        {new Date(relatedPost.publishDate).toLocaleDateString("fr-FR", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        })}
+                        {new Date(relatedPost.publishDate).toLocaleDateString(
+                          "fr-FR",
+                          {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                          }
+                        )}
                       </span>
                     </div>
                   </CardContent>
@@ -256,4 +267,4 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </main>
     </div>
   );
-} 
+}

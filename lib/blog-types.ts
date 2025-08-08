@@ -15,5 +15,3 @@ export interface BlogPost {
   metaDescription?: string;
   seoTitle?: string;
 }
-
-

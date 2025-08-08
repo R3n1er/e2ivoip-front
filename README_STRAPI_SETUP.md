@@ -66,8 +66,8 @@ Remplissez le formulaire avec :
 - **First Name** : `Admin`
 - **Last Name** : `E2I VoIP`
 - **Email** : `admin@e2i-voip.com`
-- **Password** : `E2IVoip2025!`
-- **Confirm Password** : `E2IVoip2025!`
+- **Password** : ****\*\*****
+- **Confirm Password** : ****\*\*****
 
 Cliquez sur **Let's start**
 

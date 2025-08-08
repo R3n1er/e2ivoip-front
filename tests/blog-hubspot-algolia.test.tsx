@@ -4,17 +4,7 @@ import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import type { BlogPost } from "@/lib/blog-types";
 
-// Mock des services
-vi.mock("@/lib/algolia-blog", () => ({
-  searchBlogPosts: vi.fn(),
-  syncHubSpotToAlgolia: vi.fn(),
-  indexBlogPostsToAlgolia: vi.fn(),
-}));
-
-vi.mock("@/lib/hubspot-blog", () => ({
-  getHubSpotBlogPosts: vi.fn(),
-  getHubSpotBlogPost: vi.fn(),
-}));
+// Aucune dépendance Algolia/HubSpot requise pour ces tests UI
 
 vi.mock("@/components/hubspot-tracking", () => ({
   useHubSpot: () => ({

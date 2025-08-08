@@ -4,7 +4,10 @@ import { ArrowLeft, Tag } from "lucide-react";
 import Link from "next/link";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import type { BlogPost } from "@/lib/blog-types";
-import { getStrapiBlogPostsByCategory, transformStrapiPost } from "@/lib/strapi-blog";
+import {
+  getStrapiBlogPostsByCategory,
+  transformStrapiPost,
+} from "@/lib/strapi-blog";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -18,7 +21,7 @@ export async function generateMetadata({
 }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
-  
+
   return {
     title: `Articles ${categoryName} - Blog E2I VoIP`,
     description: `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
@@ -33,7 +36,7 @@ export async function generateMetadata({
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
-  
+
   // Rechercher les articles de cette catégorie via Strapi
   const response = await getStrapiBlogPostsByCategory(categoryName, 1, 60);
   if (!response.data || response.data.length === 0) {
@@ -81,7 +84,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </h1>
               </div>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                 {response.meta.pagination?.total || posts.length} article{(response.meta.pagination?.total || posts.length) !== 1 ? "s" : ""} trouvé{(response.meta.pagination?.total || posts.length) !== 1 ? "s" : ""} dans cette catégorie
+                {response.meta.pagination?.total || posts.length} article
+                {(response.meta.pagination?.total || posts.length) !== 1
+                  ? "s"
+                  : ""}{" "}
+                trouvé
+                {(response.meta.pagination?.total || posts.length) !== 1
+                  ? "s"
+                  : ""}{" "}
+                dans cette catégorie
               </p>
             </div>
           </div>
@@ -127,4 +138,4 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </main>
     </div>
   );
-} 
+}

@@ -204,7 +204,7 @@ e2ivoip-front/
   - Pagination complète avec `BlogPagination`
   - Pages individuelles d'articles : `/blog/[slug]`
   - Pages de catégories : `/blog/categorie/[slug]`
-  - Recherche et filtres avancés avec Algolia
+  - Recherche et filtres avancés intégrés (Strapi)
   - SEO optimisé pour chaque article
 - ✅ **Page "Qui sommes-nous"** : `/qui-sommes-nous` avec équipe mise à jour
   - Design moderne avec image stylisée

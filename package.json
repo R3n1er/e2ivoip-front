@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "next dev --port 3001",
+    "dev:frontend": "next dev --port 3000",
     "dev:backend": "cd backend && npm run develop",
     "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "next build",
@@ -31,7 +31,6 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
-    "algoliasearch": "^5.35.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "concurrently": "^8.2.2",

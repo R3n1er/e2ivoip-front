@@ -66,7 +66,9 @@ export default function Blog() {
       // Pour "relevance", Algolia gère déjà le tri par pertinence
 
       setPosts(sortedPosts);
-      setTotalResults(strapiResults.meta.pagination?.total || sortedPosts.length);
+      setTotalResults(
+        strapiResults.meta.pagination?.total || sortedPosts.length
+      );
       setCurrentPage(page);
 
       // Récupérer les facettes via Strapi
