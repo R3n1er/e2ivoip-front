@@ -90,8 +90,7 @@ e2ivoip-front/
 ├── app/                    # Frontend Next.js (App Router)
 ├── components/             # Composants React réutilisables
 ├── lib/                    # Services et utilitaires
-│   ├── hubspot-blog.ts    # Ancien service HubSpot (déprécié)
-│   └── strapi-blog.ts     # Nouveau service Strapi
+│   └── strapi-blog.ts     # Service Strapi CMS
 ├── backend/                # Strapi CMS
 │   ├── src/
 │   ├── config/
@@ -201,7 +200,7 @@ e2ivoip-front/
   - Portal ID : `26878201`
 - ✅ **Page Contact dédiée** : `/contact` avec formulaire HubSpot global
 - ✅ **Navigation optimisée** : Header avec bouton "Contact" → page dédiée
-- ✅ **Blog moderne** : Design et synchronisation articles HubSpot ✅ FINALISÉ
+- ✅ **Blog moderne** : Design et synchronisation articles Strapi ✅ FINALISÉ
   - Pagination complète avec `BlogPagination`
   - Pages individuelles d'articles : `/blog/[slug]`
   - Pages de catégories : `/blog/categorie/[slug]`
@@ -306,7 +305,7 @@ e2ivoip-front/
 - ✅ **Formulaires HubSpot** : 100% des formulaires intégrés
 - ✅ **Tracking complet** : Événements de conversion implémentés
 - ✅ **CRM HubSpot** : Synchronisation automatique des leads
-- ✅ **Blog HubSpot + Algolia** : Synchronisation complète avec recherche avancée
+- ✅ **Blog Strapi** : CMS moderne avec recherche avancée intégrée
 - ✅ **Section Services optimisée** : Bouton "Demander un devis gratuit" redirige vers `/devis-en-ligne`
 - ✅ **Suppression bouton "Voir nos références"** : Interface simplifiée pour focus sur la conversion
 

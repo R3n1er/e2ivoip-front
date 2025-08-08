@@ -88,7 +88,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
   - ✅ Campagnes marketing
   - ✅ Statistiques de visite détaillées
 
-#### **3.2 Blog dynamique HubSpot** ✅ FINALISÉ
+#### **3.2 Blog dynamique Strapi** ✅ FINALISÉ
 - ✅ **Pages de listing avec pagination** : `BlogPagination` avec navigation intuitive
 - ✅ **Pages individuelles d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage avancé
@@ -114,7 +114,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Page contact complète** : `/contact` avec design moderne
 - ✅ **Formulaire HubSpot global** : Composant `HubSpotContactFormGlobal`
 - ✅ **Navigation mise à jour** : Bouton "Contact" dans le header
-- ✅ **Blog finalisé** : Pagination, pages individuelles, catégories, recherche Algolia
+- ✅ **Blog finalisé** : Pagination, pages individuelles, catégories, recherche intégrée
 - ✅ **Page "Qui sommes-nous"** : `/qui-sommes-nous` avec équipe mise à jour
 - ✅ **Page "Mentions légales"** : `/mentions-legales` avec informations complètes
 - ✅ **Page "Politique de confidentialité"** : `/politique-confidentialite` ✅ STYLE MODERNISÉ

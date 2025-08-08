@@ -14,7 +14,7 @@
 - ✅ Configuration du compte HubSpot
 - ✅ Génération des clés API HubSpot
 - ✅ Setup des formulaires HubSpot natifs
-- ✅ Configuration du blog HubSpot
+- ✅ Configuration du blog Strapi
 - ✅ Script de suivi HubSpot configuré (Portail 26878201)
 - ✅ Configuration Tally pour formulaires de devis
 - ✅ Setup webhook Tally → n8n → HubSpot
@@ -138,13 +138,13 @@
   - ✅ Création de transactions HubSpot
   - ✅ Récupération données essentielles
 
-### 3.3 Blog dynamique HubSpot ✅ FINALISÉ
+### 3.3 Blog dynamique Strapi ✅ FINALISÉ
 
-- ✅ API de récupération des articles HubSpot
+- ✅ API de récupération des articles Strapi
 - ✅ **Pages de listing avec pagination** : `BlogPagination` avec navigation intuitive
 - ✅ **Pages individuelles d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique
-- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres (auteur, année, tags)
+- ✅ **Recherche intégrée** : Recherche ultra-rapide avec filtres (auteur, année, tags)
 - ✅ **SEO automatique des articles** : Meta tags, Open Graph, Twitter Cards
 - ✅ **Commentaires désactivés** : Conformité RGPD
 - ✅ **Intégration URLR** : Raccourcissement automatique des liens
@@ -325,7 +325,7 @@
 - ✅ **Tests d'intégration**
   - ✅ Formulaires HubSpot ↔ Tally
   - ✅ Automatisations n8n
-  - ✅ Synchronisation blog HubSpot
+  - ✅ Synchronisation blog Strapi
   - ✅ Chatbot → CRM
 - 🔄 **Tests E2E**
   - 🔄 Parcours utilisateur complet
@@ -383,7 +383,7 @@
 
 ### Backend & Intégrations ✅
 
-- ✅ **CMS** : HubSpot (CRM, analytics) + Strapi (blog)
+- ✅ **CMS** : HubSpot (CRM, analytics) + Strapi (blog moderne)
 - ✅ **Forms** : Tally (devis spécialisés)
 - ✅ **Automation** : n8n (workflows)
 - ✅ **Chatbot** : Tawk.to
@@ -485,7 +485,7 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 
 - ✅ Intégrations complètes (HubSpot + Tally + n8n)
 - ✅ **CORRECTION CRITIQUE** : Formulaires HubSpot
-- ✅ Blog dynamique HubSpot ✅ FINALISÉ
+- ✅ Blog dynamique Strapi ✅ FINALISÉ
 - ✅ Chatbot opérationnel avec Tawk.to
 - ✅ Pages légales et équipe : Qui sommes-nous + Mentions légales + Politique de confidentialité modernisée
 
@@ -527,8 +527,7 @@ e2ivoip-front/
 ├── app/                    # Frontend Next.js (App Router)
 ├── components/             # Composants React réutilisables
 ├── lib/                    # Services et utilitaires
-│   ├── hubspot-blog.ts    # Ancien service HubSpot (déprécié)
-│   └── strapi-blog.ts     # ✅ Nouveau service Strapi
+│   └── strapi-blog.ts     # ✅ Service Strapi CMS
 ├── backend/                # ✅ Strapi CMS
 │   ├── src/
 │   ├── config/

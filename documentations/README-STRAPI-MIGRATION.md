@@ -2,7 +2,7 @@
 
 ## 🎯 Vue d'ensemble
 
-Ce guide explique la migration de votre blog HubSpot vers Strapi, une solution CMS headless moderne qui vous permettra de gérer vos articles de blog de manière indépendante.
+Ce guide explique la migration de votre blog HubSpot/Algolia vers Strapi, une solution CMS headless moderne qui vous permettra de gérer vos articles de blog de manière indépendante.
 
 ## 📋 Architecture Monorepo
 
@@ -11,7 +11,7 @@ e2ivoip-front/
 ├── app/                    # Frontend Next.js (existant)
 ├── components/             # Composants React (existant)
 ├── lib/                    # Services et utilitaires
-│   ├── hubspot-blog.ts    # Ancien service HubSpot
+│   ├── hubspot-blog.ts    # Ancien service HubSpot (déprécié)
 │   └── strapi-blog.ts     # Nouveau service Strapi
 ├── backend/                # Strapi CMS
 │   ├── src/

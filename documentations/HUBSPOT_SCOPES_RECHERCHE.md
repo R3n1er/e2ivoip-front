@@ -1,4 +1,6 @@
-# Recherche des Scopes HubSpot - Guide de Documentation
+# Recherche des Scopes HubSpot - Guide de Documentation (ANCIENNE ARCHITECTURE)
+
+> **⚠️ OBSOLÈTE** : Cette recherche concerne l'ancienne architecture HubSpot/Algolia qui a été abandonnée au profit de Strapi CMS. Voir `BLOG_MIGRATION_STRAPI.md` pour les détails de la migration.
 
 ## Problème identifié
 

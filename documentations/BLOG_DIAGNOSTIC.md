@@ -1,4 +1,6 @@
-# 🔍 Diagnostic Blog HubSpot - Problème Identifié et Solution
+# 🔍 Diagnostic Blog HubSpot - PROBLÈME RÉSOLU PAR MIGRATION STRAPI
+
+> **⚠️ OBSOLÈTE** : Ce diagnostic concerne l'ancienne architecture HubSpot/Algolia qui a été abandonnée au profit de Strapi CMS. Voir `BLOG_MIGRATION_STRAPI.md` pour les détails de la migration.
 
 ## 📋 **Problème identifié**
 
@@ -101,5 +103,5 @@ npm run sync-blog
 ---
 
 **Date de diagnostic** : Décembre 2024  
-**Statut** : 🟡 **SOLUTION TEMPORAIRE ACTIVE**  
-**Action requise** : Résoudre permissions HubSpot API
+**Statut** : 🟢 **RÉSOLU PAR MIGRATION STRAPI**  
+**Action requise** : Aucune - Architecture Strapi mise en place

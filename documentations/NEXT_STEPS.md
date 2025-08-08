@@ -7,7 +7,7 @@
 ✅ **Service Strapi complet** avec toutes les fonctions API
 ✅ **Content-Type Blog Post configuré** avec schéma complet
 ✅ **84 tests passent** avec succès
-✅ **Blog HubSpot + Algolia finalisé** avec pagination et recherche avancée
+✅ **Blog Strapi finalisé** avec pagination et recherche avancée
 ✅ **Page "Qui sommes-nous"** avec équipe mise à jour
 ✅ **Page "Mentions légales"** avec informations complètes (Vercel + Hostinger)
 ✅ **Formulaires HubSpot** 100% fonctionnels sur tout le site
@@ -86,7 +86,7 @@
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
-- ✅ **Blog** : Système complet avec pagination et recherche Algolia
+- ✅ **Blog** : Système complet avec pagination et recherche intégrée
 - ✅ **Contact** : Page dédiée avec formulaire HubSpot
 - ✅ **Pages légales** : Qui sommes-nous + Mentions légales + Politique de confidentialité
 - ✅ **Performance** : Core Web Vitals optimisés
