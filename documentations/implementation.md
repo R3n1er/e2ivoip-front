@@ -24,6 +24,7 @@
 
 - ✅ Optimisation des images existantes (WebP)
 - ✅ Collecte des logos clients
+- ✅ Favicon configuré (app/favicon.ico + public/favicon.svg) et déclaré via `metadata.icons` dans `app/layout.tsx`
 - ✅ Logos des partenaires pour footer
 - ✅ Audit du contenu existant
 - ✅ Préparation du contenu SEO optimisé
@@ -155,7 +156,7 @@
 - ✅ **Pages d'articles individuels** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pagination avancée** : Navigation entre pages avec 12 articles par page
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique
-// (Algolia retiré) — Recherche désormais gérée par Strapi
+  // (Algolia retiré) — Recherche désormais gérée par Strapi
 - ✅ **Métadonnées dynamiques** : Open Graph, Twitter Cards, structured data
 - ✅ **Articles liés** : Recommandations automatiques basées sur les tags
 - ✅ **Navigation améliorée** : Boutons retour et partage

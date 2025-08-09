@@ -78,6 +78,7 @@
 - **Animations** : Framer Motion pour les transitions
 - **Icons** : Lineicons (Preffered), Lucide React
 - **Images** : WebP optimisées, lazy loading
+- **Icônes** : Favicon intégré (ICO + SVG) et déclaré dans `app/layout.tsx`
 - **Logos clients** : Section dédiée avec carousel
 - **Composants** : Utiliser des composants de la librairie Shadcn, optimiser avec DaisyUI
 

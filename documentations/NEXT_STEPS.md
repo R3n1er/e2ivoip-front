@@ -21,6 +21,7 @@
 - ✅ **Installation Strapi** : CMS v5.20.0 dans le dossier `backend/`
 - ✅ **Scripts de migration** : Extraction et import automatisés
 - ✅ **Service Strapi** : `lib/strapi-blog.ts` avec API complète
+- ✅ **Favicon** : app/favicon.ico + public/favicon.svg + déclaration `metadata.icons` dans `app/layout.tsx`
 
 ### **Scripts de Migration** ✅
 

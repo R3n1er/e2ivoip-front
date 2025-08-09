@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   keywords:
     "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
   authors: [{ name: "E2I VoIP" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+  },
   openGraph: {
     title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
     description:

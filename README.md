@@ -155,6 +155,29 @@ NEXT_PUBLIC_TAWK_TO_ID=688d3cc109ef001928d4773f
 NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 ```
 
+## 🖼️ Icônes & Favicon
+
+- Fichiers:
+  - `app/favicon.ico` (pris en charge automatiquement par Next.js App Router)
+  - `public/favicon.svg`
+- Déclaration dans `app/layout.tsx`:
+  - `metadata.icons.icon`: ico + svg
+  - `metadata.icons.shortcut`: ico
+  - Extrait:
+
+```ts
+export const metadata: Metadata = {
+  // ...
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+  },
+}
+```
+
 ## 🚀 Migration Strapi
 
 ### Scripts de Migration
