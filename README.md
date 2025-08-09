@@ -158,8 +158,8 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 ## 🖼️ Icônes & Favicon
 
 - Fichiers:
-  - `app/favicon.ico` (pris en charge automatiquement par Next.js App Router)
-  - `public/favicon.svg`
+- `app/favicon.ico` (source principale, App Router)
+- `public/favicon.svg` (version vectorielle)
 - Déclaration dans `app/layout.tsx`:
   - `metadata.icons.icon`: ico + svg
   - `metadata.icons.shortcut`: ico
@@ -175,7 +175,7 @@ export const metadata: Metadata = {
     ],
     shortcut: [{ url: "/favicon.ico" }],
   },
-}
+};
 ```
 
 ## 🚀 Migration Strapi

@@ -24,7 +24,7 @@
 
 - ✅ Optimisation des images existantes (WebP)
 - ✅ Collecte des logos clients
-- ✅ Favicon configuré (app/favicon.ico + public/favicon.svg) et déclaré via `metadata.icons` dans `app/layout.tsx`
+- ✅ Favicon configuré (source: `app/favicon.ico`, vectoriel: `public/favicon.svg`) et déclaré via `metadata.icons` dans `app/layout.tsx`
 - ✅ Logos des partenaires pour footer
 - ✅ Audit du contenu existant
 - ✅ Préparation du contenu SEO optimisé
