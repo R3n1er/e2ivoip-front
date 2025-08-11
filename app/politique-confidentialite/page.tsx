@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Shield, FileText, Cookie, Copyright, MapPin, Phone, Mail, Globe, Lock, Users, Eye, Trash2, Download, Ban, Clock } from 'lucide-react'
 
@@ -83,9 +83,9 @@ export default function PolitiqueConfidentialitePage() {
             {/* Responsable du traitement */}
             <Card className="shadow-lg mb-8">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold">
                   1. Identité du responsable du traitement
-                </CardTitle>
+                </h2>
               </CardHeader>
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
@@ -110,9 +110,9 @@ export default function PolitiqueConfidentialitePage() {
             {/* Collecte des données */}
             <Card className="shadow-lg mb-8">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-2xl font-bold">
-                  2. Collecte et utilisation des données
-                </CardTitle>
+                <h2 className="text-2xl font-bold capitalize">
+                  2. données recueillies et utilisées
+                </h2>
               </CardHeader>
               <CardContent className="p-8">
                 <p className="text-gray-600 mb-6">
@@ -217,9 +217,9 @@ export default function PolitiqueConfidentialitePage() {
             {/* Hébergement et sécurité */}
             <Card className="shadow-lg mb-8">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-2xl font-bold">
-                  3. Hébergement et sécurité des données
-                </CardTitle>
+                <h2 className="text-2xl font-bold">
+                  3. Comment vos données sont-elles protégées ?
+                </h2>
               </CardHeader>
               <CardContent className="p-8">
                 <div className="space-y-6">
@@ -277,9 +277,9 @@ export default function PolitiqueConfidentialitePage() {
             {/* Droits utilisateurs */}
             <Card className="shadow-lg mb-8">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold">
                   4. Vos droits utilisateurs
-                </CardTitle>
+                </h2>
               </CardHeader>
               <CardContent className="p-8">
                 <p className="text-gray-600 mb-6">
@@ -325,7 +325,7 @@ export default function PolitiqueConfidentialitePage() {
                     </CardContent>
                   </Card>
 
-                  {/* Droit d'effacement */}
+                  {/* Droit à l'oubli */}
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
@@ -333,11 +333,11 @@ export default function PolitiqueConfidentialitePage() {
                           <Trash2 className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Droit d'effacement
+                          <h4 className="text-lg font-semibold text-gray-900 mb-2 capitalize">
+                            droit à l'oubli
                           </h4>
                           <p className="text-gray-600 text-sm">
-                            Vous pouvez demander la suppression de vos données à caractère personnel dans les conditions prévues par l'article 18 du RGPD.
+                            Vous pouvez demander la suppression de vos données à caractère personnel dans les conditions prévues par l'article 17 du RGPD.
                           </p>
                         </div>
                       </div>
