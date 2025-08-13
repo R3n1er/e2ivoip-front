@@ -75,14 +75,14 @@ export function ServicesSection() {
     }
   }
 
-  const getIconStyle = (index: number) => {
+  const getIconClasses = (index: number) => {
     // Utiliser uniquement les couleurs PRD en alternance
-    const prdColors = [
-      { bg: '#fef2f2', text: '#E53E3E' }, // Rouge principal PRD
-      { bg: '#f8fafc', text: '#2D3848' }, // Bleu marine PRD  
-      { bg: '#f9fafb', text: '#818096' }, // Gris secondaire PRD
+    const prdClasses = [
+      { bg: 'bg-red-50', text: 'text-red-600' }, // Rouge principal PRD
+      { bg: 'bg-blue-50', text: 'text-blue-900' }, // Bleu marine PRD
+      { bg: 'bg-gray-50', text: 'text-gray-600' }, // Gris secondaire PRD
     ]
-    return prdColors[index % 3]
+    return prdClasses[index % prdClasses.length]
   }
 
   return (
@@ -98,13 +98,13 @@ export function ServicesSection() {
           <Badge className="mb-4 bg-red-600/10 text-red-600 border-red-600/20">
             Nos Solutions
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ color: '#2D3848' }}>
-            Services de <span className="text-red-600" style={{ color: '#E53E3E' }}>Téléphonie IP</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+            Services de <span className="text-red-600">Téléphonie IP</span>
           </h2>
-          <p className="text-xl max-w-4xl mx-auto leading-relaxed" style={{ color: '#818096' }}>
+          <p className="text-xl max-w-4xl mx-auto leading-relaxed text-gray-600">
             Découvrez notre gamme complète de solutions de téléphonie IP adaptées à tous les besoins d'entreprise.
             <br />
-            <span className="font-medium" style={{ color: '#2D3848' }}>
+            <span className="font-medium text-blue-900">
               Performance, fiabilité et innovation au service de votre business.
             </span>
           </p>
@@ -129,25 +129,24 @@ export function ServicesSection() {
               <Card className="h-full group hover:shadow-2xl transition-all duration-500 border-gray-200 bg-white/80 backdrop-blur-sm">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-4">
-                    <div 
-                      className="p-3 rounded-xl"
-                      style={{
-                        backgroundColor: getIconStyle(index).bg,
-                        color: getIconStyle(index).text
-                      }}
-                    >
-                      <service.icon className="w-6 h-6" />
-                    </div>
+                    {(() => {
+                      const colorClasses = getIconClasses(index)
+                      return (
+                        <div className={`p-3 rounded-xl ${colorClasses.bg} ${colorClasses.text}`}>
+                          <service.icon className="w-6 h-6" />
+                        </div>
+                      )
+                    })()}
                     {service.badge && (
                       <Badge variant="secondary" className="text-xs">
                         {service.badge}
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-xl transition-colors" style={{ color: '#2D3848' }}>
+                  <CardTitle className="text-xl transition-colors text-blue-900">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="leading-relaxed" style={{ color: '#818096' }}>
+                  <CardDescription className="leading-relaxed text-gray-600">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
@@ -159,22 +158,21 @@ export function ServicesSection() {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: featureIndex * 0.1 }}
-                        className="flex items-center text-sm"
-                        style={{ color: '#818096' }}
+                        className="flex items-center text-sm text-gray-600"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0" style={{ backgroundColor: '#E53E3E' }} />
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0 bg-red-600" />
                         {feature}
                       </motion.li>
                     ))}
                   </ul>
-                  
+
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
                     className="mt-6 pt-4 border-t border-gray-100"
                   >
-                    <div className="flex items-center justify-between text-xs" style={{ color: '#818096' }}>
+                    <div className="flex items-center justify-between text-xs text-gray-600">
                       <span>Disponibilité</span>
                       <span className="font-medium text-green-600">99.9%</span>
                     </div>
@@ -193,11 +191,11 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="rounded-2xl p-8 md:p-12 text-white" style={{ background: 'linear-gradient(to right, #2D3848, #1e293b)' }}>
+          <div className="rounded-2xl p-8 md:p-12 text-white bg-gradient-to-r from-blue-900 to-gray-800">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Prêt à moderniser votre téléphonie ?
             </h3>
-            <p className="text-lg mb-6 max-w-2xl mx-auto" style={{ color: '#e2e8f0' }}>
+            <p className="text-lg mb-6 max-w-2xl mx-auto text-gray-200">
               Nos experts vous accompagnent dans la mise en place de votre solution sur mesure
             </p>
             <div className="flex justify-center">
@@ -205,10 +203,7 @@ export function ServicesSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                  style={{ backgroundColor: '#E53E3E' }}
-                  onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#dc2626'}
-                  onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#E53E3E'}
+                  className="text-white px-8 py-3 rounded-lg font-semibold transition-colors bg-red-600 hover:bg-red-700"
                 >
                   Demander un devis gratuit
                 </motion.button>

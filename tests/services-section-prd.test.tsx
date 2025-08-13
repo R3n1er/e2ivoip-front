@@ -69,13 +69,17 @@ describe('ServicesSection - Charte Graphique PRD (Icônes Corrigées)', () => {
 
   it('utilise uniquement les couleurs PRD pour les icônes', () => {
     const { container } = render(<ServicesSection />)
-    
-    // Vérifier que seules les couleurs PRD sont utilisées
-    const elementsWithPRDColors = container.querySelectorAll('[style*="#E53E3E"], [style*="#2D3848"], [style*="#818096"]')
+
+    // Vérifier que seules les classes de couleurs PRD sont utilisées
+    const elementsWithPRDColors = container.querySelectorAll(
+      '.text-red-600, .text-blue-900, .text-gray-600, .text-green-600, .bg-red-50, .bg-blue-50, .bg-gray-50'
+    )
     expect(elementsWithPRDColors.length).toBeGreaterThan(0)
-    
-    // Vérifier qu'aucune autre couleur n'est utilisée pour les icônes
-    const elementsWithOtherColors = container.querySelectorAll('[style*="#16a34a"], [style*="#9333ea"], [style*="#ea580c"], [style*="#6366f1"]')
+
+    // Vérifier qu'aucune autre classe de couleur n'est utilisée
+    const elementsWithOtherColors = container.querySelectorAll(
+      '[class*="text-purple-"], [class*="text-orange-"], [class*="text-indigo-"]'
+    )
     expect(elementsWithOtherColors.length).toBe(0)
   })
 

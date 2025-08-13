@@ -20,13 +20,9 @@ export function DevisHeroSection() {
         <div
           className={`w-full h-full transition-opacity duration-500 ${
             imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          } bg-gray-800 bg-cover bg-center bg-no-repeat`}
           style={{
             backgroundImage: "url('/man-oniphone-business-min.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "#1f2937", // Fallback color
           }}
         />
         {/* Gradient Overlay */}

@@ -1,3 +1,6 @@
+const colors = require("tailwindcss/colors");
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -19,7 +22,7 @@ module.exports = {
       screens: {
         // MacBook Pro breakpoints
         "macbook13": "1280px",
-        "macbook14": "1440px", 
+        "macbook14": "1440px",
         "macbook15": "1680px",
       },
       colors: {
@@ -57,21 +60,26 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         red: {
-          50: "#fef2f2",
-          100: "#fee2e2",
-          200: "#fecaca",
-          300: "#fca5a5",
-          400: "#f87171",
-          500: "#ef4444",
-          600: "#dc2626",
-          700: "#b91c1c",
-          800: "#991b1b",
-          900: "#7f1d1d",
+          ...colors.red,
+          600: "#E53E3E",
+          700: "#C53030",
+          800: "#9B2C2C",
+          900: "#742A2A",
           primary: "hsl(var(--red-primary))",
         },
         blue: {
+          ...colors.blue,
+          900: "#2D3848",
           marine: "hsl(var(--blue-marine))",
         },
+        gray: {
+          ...colors.gray,
+          600: "#818096",
+          900: "#2D3848",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", ...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -105,4 +113,4 @@ module.exports = {
     logs: true,
     themeRoot: ":root",
   },
-}
+};
