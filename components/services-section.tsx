@@ -245,20 +245,7 @@ export function ServicesSection() {
                     ))}
                   </ul>
 
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-6 pt-4 border-t border-gray-100"
-                  >
-                    <div
-                      className="flex items-center justify-between text-xs"
-                      style={{ color: "#818096" }}
-                    >
-                      <span>Disponibilité</span>
-                      <span className="font-medium text-green-600">99.9%</span>
-                    </div>
-                  </motion.div>
+
                 </CardContent>
               </Card>
             </motion.div>
