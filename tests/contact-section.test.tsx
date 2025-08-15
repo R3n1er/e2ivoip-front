@@ -40,8 +40,8 @@ describe('ContactSection', () => {
   it('affiche l\'adresse email sécurisée', () => {
     render(<ContactSection />);
     
-    // L'email doit être présent mais encodé
-    expect(screen.getByText(/commerciaux@e2i-voip\.com/)).toBeInTheDocument();
+    // L'email doit être présent mais masqué par des points
+    expect(screen.getByText(/••••••••••••••••••••••••/)).toBeInTheDocument();
   });
 
   it('n\'affiche pas de formulaire de contact', () => {

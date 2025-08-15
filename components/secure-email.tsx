@@ -9,14 +9,8 @@ import { useState } from "react";
 export function SecureEmail({ email }: { email: string }) {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Encoder l'email pour éviter la détection par les bots
-  const encodedEmail = email
-    .split('')
-    .map(char => `&#${char.charCodeAt(0)};`)
-    .join('');
-  
-  // Décoder l'email au survol
-  const decodedEmail = email.replace(/[&#;]/g, '');
+  // Version simplifiée sans dangerouslySetInnerHTML
+  const displayEmail = isHovered ? email : email.replace(/./g, '•');
   
   return (
     <span
@@ -25,11 +19,12 @@ export function SecureEmail({ email }: { email: string }) {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {
         // Copier l'email dans le presse-papiers
-        navigator.clipboard.writeText(decodedEmail);
+        navigator.clipboard.writeText(email);
       }}
       title="Cliquez pour copier l'email"
-      dangerouslySetInnerHTML={{ __html: isHovered ? decodedEmail : encodedEmail }}
-    />
+    >
+      {displayEmail}
+    </span>
   );
 }
 

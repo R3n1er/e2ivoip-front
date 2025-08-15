@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SecureEmail } from "@/components/secure-email";
 
 export function ContactSection() {
-
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,9 +49,7 @@ export function ContactSection() {
                     <p className="text-gray-900 font-medium mb-1">
                       0594 96 35 00
                     </p>
-                    <p className="text-sm text-gray-600">
-                      Lun-Ven 9h-18h
-                    </p>
+                    <p className="text-sm text-gray-600">Lun-Ven 9h-18h</p>
                   </div>
                 </div>
               </CardContent>
@@ -72,9 +69,7 @@ export function ContactSection() {
                     <p className="text-gray-900 font-medium mb-1">
                       <SecureEmail email="commerciaux@e2i-voip.com" />
                     </p>
-                    <p className="text-sm text-gray-600">
-                      Réponse sous 24h
-                    </p>
+                    <p className="text-sm text-gray-600">Réponse sous 24h</p>
                   </div>
                 </div>
               </CardContent>
@@ -103,9 +98,7 @@ export function ContactSection() {
                     <p className="text-gray-900 font-medium mb-1">
                       123 Avenue des Télécoms
                     </p>
-                    <p className="text-sm text-gray-600">
-                      75001 Paris, France
-                    </p>
+                    <p className="text-sm text-gray-600">75001 Paris, France</p>
                   </div>
                 </div>
               </CardContent>
@@ -125,9 +118,7 @@ export function ContactSection() {
                     <p className="text-gray-900 font-medium mb-1">
                       Lun-Ven 9h-18h
                     </p>
-                    <p className="text-sm text-gray-600">
-                      Support 24/7
-                    </p>
+                    <p className="text-sm text-gray-600">Support 24/7</p>
                   </div>
                 </div>
               </CardContent>
