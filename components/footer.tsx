@@ -27,16 +27,39 @@ export function Footer() {
             
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>01 23 45 67 89</span>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-red-500 flex-shrink-0" />
                 <span>contact@e2i-voip.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
                 <span>Paris, France</span>
+              </div>
+            </div>
+            
+            {/* Numéros par département */}
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-medium text-gray-300 mb-3">Nos numéros par département :</h4>
+              <div className="space-y-2 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Guadeloupe :</span>
+                  <span className="text-white">0590 96 35 00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Martinique :</span>
+                  <span className="text-white">0596 96 35 00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Guyane :</span>
+                  <span className="text-white">0594 96 35 00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">La Réunion :</span>
+                  <span className="text-white">0262 96 35 00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">France métropolitaine :</span>
+                  <span className="text-white">01 96 35 00</span>
+                </div>
               </div>
             </div>
           </div>
@@ -165,14 +188,35 @@ export function Footer() {
               <span className="text-gray-300 font-medium">Partenaires certifiés :</span>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
-                  <span className="text-blue-600 font-semibold">3CX</span>
+                  <a 
+                    href="https://www.3cx.fr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold hover:text-blue-400 transition-colors"
+                  >
+                    3CX
+                  </a>
                   <span className="text-yellow-500">★</span>
                   <span className="text-gray-400">Bronze Partner</span>
                 </div>
                 <span className="text-gray-500">|</span>
-                <span className="opacity-80">Yeastar</span>
+                <a 
+                  href="https://www.yeastar.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
+                >
+                  Yeastar
+                </a>
                 <span className="text-gray-500">|</span>
-                <span className="opacity-80">HubSpot</span>
+                <a 
+                  href="https://www.grandstream.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
+                >
+                  Grandstream
+                </a>
               </div>
             </div>
           </div>

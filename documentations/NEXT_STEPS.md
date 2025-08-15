@@ -48,6 +48,20 @@
   - **Email sécurisé** : "commerciaux@e2i-voip.com" avec composant SecureEmail
   - **Adresse et horaires** conservés
 
+### **Footer - Toutes les pages** ✅
+- ✅ **Partenaires mis à jour** : Remplacement de HubSpot par Grandstream
+- ✅ **Liens vers sites officiels** : Chaque partenaire a un lien cliquable vers son site :
+  - **3CX** : https://www.3cx.fr (avec badge Bronze Partner)
+  - **Yeastar** : https://www.yeastar.com
+  - **Grandstream** : https://www.grandstream.com
+- ✅ **Numéros par département** : Section complète avec tous les numéros de téléphone :
+  - **Guadeloupe** : 0590 96 35 00
+  - **Martinique** : 0596 96 35 00
+  - **Guyane** : 0594 96 35 00
+  - **La Réunion** : 0262 96 35 00
+  - **France métropolitaine** : 01 96 35 00
+- ✅ **Design optimisé** : Layout en colonnes avec séparateur visuel
+
 ### **Sécurité des Emails** ✅
 - ✅ **Composant SecureEmail** : Protection contre le spam avec encodage HTML
 - ✅ **Décodage au survol** : L'email est visible uniquement quand l'utilisateur survole
@@ -122,7 +136,7 @@
 
 ## 📊 **Objectifs atteints**
 
-- ✅ **Tests** : 110 tests passent
+- ✅ **Tests** : 116 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia

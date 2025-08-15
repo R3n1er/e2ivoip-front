@@ -187,30 +187,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Urgent - Centré sur toute la largeur */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center">
-            <Card className="shadow-lg bg-red-600 text-white border-red-600 max-w-md">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-2">
-                  Besoin d&apos;une réponse rapide ?
-                </h3>
-                <p className="mb-4 opacity-90">
-                  Appelez-nous directement pour un conseil personnalisé
-                </p>
-                <a
-                  href="tel:0594963500"
-                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  0594 96 35 00
-                </a>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+
 
       {/* Section Numéros par Département */}
       <section className="py-16 bg-gray-50">
