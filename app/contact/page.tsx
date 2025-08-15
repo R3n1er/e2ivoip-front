@@ -189,108 +189,91 @@ export default function ContactPage() {
 
 
 
-      {/* Section Numéros par Département */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section Nos Implantations */}
+      <section className="py-16 bg-gradient-to-r from-orange-500 via-red-500 to-blue-800 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          ></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Nos numéros par département
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+              Nos implantations
             </h2>
-            <p className="text-lg text-gray-600">
-              Contactez-nous directement selon votre localisation
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Présents aux Antilles, en Guyane, à la Réunion et en France Métropolitaine
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-6">
+            {/* Guyane */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[280px] hover:bg-white/30 transition-all duration-300 hover:scale-105">
+              <div className="bg-white/20 rounded-xl p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Guyane
+              </h3>
+              <a 
+                href="tel:+594594963500" 
+                className="text-2xl font-bold text-white underline hover:text-white/80 transition-colors duration-200"
+              >
+                +594 594 963 500
+              </a>
+            </div>
+
             {/* Guadeloupe */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Guadeloupe
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  0590 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Basse-Terre, Pointe-à-Pitre
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[280px] hover:bg-white/30 transition-all duration-300 hover:scale-105">
+              <div className="bg-white/20 rounded-xl p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Guadeloupe
+              </h3>
+              <a 
+                href="tel:+590590173500" 
+                className="text-2xl font-bold text-white underline hover:text-white/80 transition-colors duration-200"
+              >
+                +590 590 173 500
+              </a>
+            </div>
 
             {/* Martinique */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Martinique
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  0596 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Fort-de-France, Le Lamentin
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Guyane */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Guyane
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  0594 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Cayenne, Kourou
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[280px] hover:bg-white/30 transition-all duration-300 hover:scale-105">
+              <div className="bg-white/20 rounded-xl p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Martinique
+              </h3>
+              <a 
+                href="tel:+596596313500" 
+                className="text-2xl font-bold text-white underline hover:text-white/80 transition-colors duration-200"
+              >
+                +596 596 313 500
+              </a>
+            </div>
 
             {/* La Réunion */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  La Réunion
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  0262 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Saint-Denis, Saint-Pierre
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* France métropolitaine */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  France métropolitaine
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  01 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Paris, Lyon, Marseille
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center min-w-[280px] hover:bg-white/30 transition-all duration-300 hover:scale-105">
+              <div className="bg-white/20 rounded-xl p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                La Réunion
+              </h3>
+              <a 
+                href="tel:+262263085500" 
+                className="text-2xl font-bold text-white underline hover:text-white/80 transition-colors duration-200"
+              >
+                +262 263 085 500
+              </a>
+            </div>
           </div>
         </div>
       </section>
