@@ -224,7 +224,7 @@
 - ✅ **Pages d'articles individuels** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pagination avancée** : Navigation entre pages avec 12 articles par page
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage automatique
-- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres avancés
+
 - ✅ **Métadonnées dynamiques** : Open Graph, Twitter Cards, structured data
 - ✅ **Articles liés** : Recommandations automatiques basées sur les tags
 - ✅ **Navigation améliorée** : Boutons retour et partage
@@ -501,10 +501,7 @@ HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
 HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
 HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
 
-# Algolia Configuration (existant)
-NEXT_PUBLIC_ALGOLIA_APP_ID=SHNPNF5579
-NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=603d9f3c3201ccf4a5a44f0fefbdc3a7
-ALGOLIA_ADMIN_KEY=your_algolia_admin_key
+
 
 # Tally Configuration (existant)
 TALLY_API_KEY=your_tally_api_key

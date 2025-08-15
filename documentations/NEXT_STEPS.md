@@ -139,7 +139,7 @@
 - ✅ **Tests** : 116 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
-- ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
+- ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to
 - ✅ **Blog** : Système complet avec pagination et recherche intégrée
 - ✅ **Contact** : Page dédiée avec formulaire HubSpot
 - ✅ **Pages légales** : Qui sommes-nous + Mentions légales + Politique de confidentialité

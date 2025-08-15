@@ -145,10 +145,7 @@ HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
 HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
 HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
 
-# Algolia Configuration
-NEXT_PUBLIC_ALGOLIA_APP_ID=SHNPNF5579
-NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=603d9f3c3201ccf4a5a44f0fefbdc3a7
-ALGOLIA_ADMIN_KEY=your_algolia_admin_key
+
 
 # Tally Configuration
 TALLY_API_KEY=your_tally_api_key
