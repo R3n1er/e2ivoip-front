@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
-import { searchBlogPosts } from "@/lib/algolia-blog";
+
 import type { BlogPost } from "@/lib/hubspot-blog";
 import { getMockBlogPosts } from "@/lib/mock-blog-data";
 
@@ -32,39 +32,45 @@ export default function Blog() {
   const handleSearch = async (filters: BlogFilters, page: number = 1) => {
     setLoading(true);
     try {
-      // Préparer les filtres pour Algolia
-      const algoliaFilters: any = {};
-      if (filters.author) algoliaFilters.author = filters.author;
-      if (filters.year) algoliaFilters.year = filters.year;
-      if (filters.tags.length > 0) algoliaFilters.tags = filters.tags;
+    
+      const mockPosts = getMockBlogPosts();
+      
+      // Filtrer les posts selon les critères
+      let filteredPosts = mockPosts.filter(post => {
+        const matchesQuery = !filters.query || 
+          post.title.toLowerCase().includes(filters.query.toLowerCase()) ||
+          post.excerpt.toLowerCase().includes(filters.query.toLowerCase());
+        
+        const matchesAuthor = !filters.author || post.author === filters.author;
+        
+        const matchesYear = !filters.year || 
+          new Date(post.publishDate).getFullYear() === filters.year;
+        
+        const matchesTags = filters.tags.length === 0 || 
+          filters.tags.some(tag => post.tags.includes(tag));
+        
+        return matchesQuery && matchesAuthor && matchesYear && matchesTags;
+      });
 
-      // Effectuer la recherche avec pagination
-      let results;
-      try {
-        results = await searchBlogPosts(filters.query, algoliaFilters, page);
-        // Si Algolia ne retourne aucun résultat, utiliser les données de test
-        if (!results.hits || results.hits.length === 0) {
-          throw new Error("Aucun résultat Algolia");
+      // Pagination
+      const startIndex = (page - 1) * POSTS_PER_PAGE;
+      const endIndex = startIndex + POSTS_PER_PAGE;
+      const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
+      const results = {
+        hits: paginatedPosts,
+        nbHits: filteredPosts.length,
+        facets: {
+          author: { "E2I VoIP": filteredPosts.length },
+          publishYear: { "2024": filteredPosts.length },
+          tags: filteredPosts.reduce((acc, post) => {
+            post.tags.forEach(tag => {
+              acc[tag] = (acc[tag] || 0) + 1;
+            });
+            return acc;
+          }, {} as Record<string, number>)
         }
-      } catch (algoliaError) {
-        console.warn("Algolia indisponible, utilisation des données de test:", (algoliaError as Error).message);
-        // Utiliser les données de test
-        const mockPosts = getMockBlogPosts();
-        results = {
-          hits: mockPosts,
-          nbHits: mockPosts.length,
-          facets: {
-            author: { "E2I VoIP": mockPosts.length },
-            publishYear: { "2024": mockPosts.length },
-            tags: mockPosts.reduce((acc, post) => {
-              post.tags.forEach(tag => {
-                acc[tag] = (acc[tag] || 0) + 1;
-              });
-              return acc;
-            }, {} as Record<string, number>)
-          }
-        };
-      }
+      };
 
       // Traiter les résultats
       const blogPosts = results.hits.map((hit: any) => ({
@@ -100,7 +106,7 @@ export default function Blog() {
             new Date(b.publishDate).getTime()
         );
       }
-      // Pour "relevance", Algolia gère déjà le tri par pertinence
+      // Pour "relevance", trier par pertinence (nombre de mots correspondants)
 
       setPosts(sortedPosts);
       setTotalResults(results.nbHits || 0);

@@ -7,8 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getHubSpotBlogPosts, getHubSpotBlogPost } from "@/lib/hubspot-blog";
-import { searchBlogPosts } from "@/lib/algolia-blog";
+
 import { useHubSpot } from "@/components/hubspot-tracking";
+import { getMockBlogPosts } from "@/lib/mock-blog-data";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -67,10 +68,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Récupérer des articles liés
-  const relatedPosts = await searchBlogPosts("", {
-    tags: post.tags.slice(0, 2),
-  });
+
+  const mockPosts = getMockBlogPosts();
+  const relatedPosts = mockPosts
+    .filter(p => p.slug !== slug && p.tags.some(tag => post.tags.includes(tag)))
+    .slice(0, 3);
 
   const publishDate = new Date(post.publishDate);
   const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
@@ -202,7 +204,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
 
         {/* Articles liés */}
-        {relatedPosts.hits && relatedPosts.hits.length > 0 && (
+        {relatedPosts.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -213,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedPosts.hits.slice(0, 3).map((relatedPost: any) => (
+              {relatedPosts.map((relatedPost: any) => (
                 <Card key={relatedPost.objectID} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-2">
