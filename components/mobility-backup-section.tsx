@@ -190,30 +190,11 @@ export function MobilityBackupSection() {
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Performances techniques
+              Configurez votre solution sur mesure
             </h3>
             <p className="text-gray-600">
-              Nos équipements répondent aux exigences les plus strictes
+              Nos experts vous accompagnent dans le choix de la solution adaptée à vos besoins
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">2 Gbps</div>
-              <div className="text-sm text-gray-600">Débit max 5G</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">&lt; 30s</div>
-              <div className="text-sm text-gray-600">Basculement</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
-              <div className="text-sm text-gray-600">Disponibilité</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-              <div className="text-sm text-gray-600">Support</div>
-            </div>
           </div>
 
           <div className="text-center">

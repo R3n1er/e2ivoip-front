@@ -56,21 +56,7 @@ export function MobilityHeroSection() {
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-600">99.9%</div>
-                <div className="text-sm text-gray-600">Couverture réseau</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-600">24/7</div>
-                <div className="text-sm text-gray-600">Support technique</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-600">5G</div>
-                <div className="text-sm text-gray-600">Technologie</div>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Visual */}
