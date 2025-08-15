@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { HubSpotContactFormGlobal } from "@/components/hubspot-contact-form-global";
+import { SecureEmail } from "@/components/secure-email";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP",
@@ -92,22 +93,22 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-6">
-                {/* Téléphone */}
+                {/* WhatsApp */}
                 <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="bg-red-100 p-3 rounded-lg">
-                        <Phone className="w-6 h-6 text-red-600" />
+                      <div className="bg-green-100 p-3 rounded-lg">
+                        <MessageCircle className="w-6 h-6 text-green-600" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                          Téléphone
+                          WhatsApp
                         </h3>
                         <p className="text-gray-900 font-medium mb-1">
                           0594 96 35 00
                         </p>
                         <p className="text-sm text-gray-600">
-                          Lun-Ven 9h-18h
+                          Réponse rapide par message
                         </p>
                       </div>
                     </div>
@@ -126,7 +127,7 @@ export default function ContactPage() {
                           Email
                         </h3>
                         <p className="text-gray-900 font-medium mb-1">
-                          contact@e2i-voip.com
+                          <SecureEmail email="commerciaux@e2i-voip.com" />
                         </p>
                         <p className="text-sm text-gray-600">
                           Réponse sous 24h
@@ -202,7 +203,7 @@ export default function ContactPage() {
                   href="tel:0594963500"
                   className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
                 >
-                  <Phone className="w-4 h-4 mr-2" />
+                  <MessageCircle className="w-4 h-4 mr-2" />
                   0594 96 35 00
                 </a>
               </CardContent>
@@ -228,7 +229,7 @@ export default function ContactPage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
+                  <MessageCircle className="w-8 h-8 text-red-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Guadeloupe
@@ -246,7 +247,7 @@ export default function ContactPage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
+                  <MessageCircle className="w-8 h-8 text-red-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Martinique
@@ -264,7 +265,7 @@ export default function ContactPage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
+                  <MessageCircle className="w-8 h-8 text-red-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   Guyane
@@ -278,14 +279,14 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            {/* Réunion */}
+            {/* La Réunion */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
+                  <MessageCircle className="w-8 h-8 text-red-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Réunion
+                  La Réunion
                 </h3>
                 <p className="text-2xl font-bold text-red-600 mb-2">
                   0262 96 35 00
@@ -296,32 +297,14 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            {/* Mayotte */}
+            {/* France métropolitaine */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
+                  <MessageCircle className="w-8 h-8 text-red-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Mayotte
-                </h3>
-                <p className="text-2xl font-bold text-red-600 mb-2">
-                  0269 96 35 00
-                </p>
-                <p className="text-sm text-gray-600">
-                  Mamoudzou, Dzaoudzi
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Métropole */}
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-red-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Métropole
+                  France métropolitaine
                 </h3>
                 <p className="text-2xl font-bold text-red-600 mb-2">
                   01 96 35 00

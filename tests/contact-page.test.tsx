@@ -32,6 +32,20 @@ describe('ContactPage', () => {
     expect(phoneNumbers.length).toBeGreaterThan(0);
   });
 
+  it('affiche WhatsApp au lieu du téléphone', () => {
+    render(<ContactPage />);
+    
+    expect(screen.getByText('WhatsApp')).toBeInTheDocument();
+    expect(screen.getByText('Réponse rapide par message')).toBeInTheDocument();
+  });
+
+  it('affiche l\'email sécurisé', () => {
+    render(<ContactPage />);
+    
+    // L'email doit être présent mais masqué par des points
+    expect(screen.getByText(/••••••••••••••••••••••••/)).toBeInTheDocument();
+  });
+
   it('affiche les numéros par département', () => {
     render(<ContactPage />);
     
@@ -39,9 +53,8 @@ describe('ContactPage', () => {
     expect(screen.getByText('Guadeloupe')).toBeInTheDocument();
     expect(screen.getByText('Martinique')).toBeInTheDocument();
     expect(screen.getByText('Guyane')).toBeInTheDocument();
-    expect(screen.getByText('Réunion')).toBeInTheDocument();
-    expect(screen.getByText('Mayotte')).toBeInTheDocument();
-    expect(screen.getByText('Métropole')).toBeInTheDocument();
+    expect(screen.getByText('La Réunion')).toBeInTheDocument();
+    expect(screen.getByText('France métropolitaine')).toBeInTheDocument();
   });
 
   it('affiche les numéros de téléphone corrects', () => {
@@ -55,9 +68,8 @@ describe('ContactPage', () => {
     const guyaneNumbers = screen.getAllByText('0594 96 35 00');
     expect(guyaneNumbers.length).toBeGreaterThan(0);
     
-    expect(screen.getByText('0262 96 35 00')).toBeInTheDocument(); // Réunion
-    expect(screen.getByText('0269 96 35 00')).toBeInTheDocument(); // Mayotte
-    expect(screen.getByText('01 96 35 00')).toBeInTheDocument(); // Métropole
+    expect(screen.getByText('0262 96 35 00')).toBeInTheDocument(); // La Réunion
+    expect(screen.getByText('01 96 35 00')).toBeInTheDocument(); // France métropolitaine
   });
 
   it('affiche le formulaire HubSpot', () => {

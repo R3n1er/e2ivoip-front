@@ -39,11 +39,14 @@
   - **Guadeloupe** : 0590 96 35 00
   - **Martinique** : 0596 96 35 00  
   - **Guyane** : 0594 96 35 00
-  - **Réunion** : 0262 96 35 00
-  - **Mayotte** : 0269 96 35 00
-  - **Métropole** : 01 96 35 00
+  - **La Réunion** : 0262 96 35 00
+  - **France métropolitaine** : 01 96 35 00
 - ✅ **Design responsive** : Grille 2x3 adaptative pour un affichage optimal sur tous les écrans
-- ✅ **Icônes visuelles** : Chaque département a son icône téléphone distinctive
+- ✅ **Icônes visuelles** : Chaque département a son icône WhatsApp distinctive
+- ✅ **Section coordonnées mise à jour** : 
+  - **WhatsApp** au lieu du téléphone (icône MessageCircle verte)
+  - **Email sécurisé** : "commerciaux@e2i-voip.com" avec composant SecureEmail
+  - **Adresse et horaires** conservés
 
 ### **Sécurité des Emails** ✅
 - ✅ **Composant SecureEmail** : Protection contre le spam avec encodage HTML
@@ -119,7 +122,7 @@
 
 ## 📊 **Objectifs atteints**
 
-- ✅ **Tests** : 108 tests passent
+- ✅ **Tests** : 110 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
