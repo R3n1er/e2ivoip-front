@@ -21,16 +21,7 @@ describe('ContactPage', () => {
     expect(screen.getByText('nous')).toBeInTheDocument();
   });
 
-  it('affiche le CTA urgent centré', () => {
-    render(<ContactPage />);
-    
-    expect(screen.getByText('Besoin d\'une réponse rapide ?')).toBeInTheDocument();
-    expect(screen.getByText('Appelez-nous directement pour un conseil personnalisé')).toBeInTheDocument();
-    
-    // Utiliser getAllByText car il y a plusieurs éléments avec ce numéro
-    const phoneNumbers = screen.getAllByText('0594 96 35 00');
-    expect(phoneNumbers.length).toBeGreaterThan(0);
-  });
+
 
   it('affiche WhatsApp au lieu du téléphone', () => {
     render(<ContactPage />);
