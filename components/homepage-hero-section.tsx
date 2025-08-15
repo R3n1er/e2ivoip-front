@@ -12,6 +12,9 @@ export function HomepageHeroSection() {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.src = "/images/photos/pexels-ketut-subiyanto-4559714-min.jpg";
+    // Fallback: si onload ne se déclenche pas (cache ou blocage), afficher quand même
+    const fallback = setTimeout(() => setImageLoaded(true), 2000);
+    return () => clearTimeout(fallback);
   }, []);
 
   const containerVariants = {
@@ -20,9 +23,9 @@ export function HomepageHeroSection() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -32,9 +35,9 @@ export function HomepageHeroSection() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const stats = [
@@ -44,15 +47,19 @@ export function HomepageHeroSection() {
   ];
 
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="accueil"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div
           className={`w-full h-full transition-opacity duration-500 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
+            imageLoaded ? "opacity-100" : "opacity-60"
           }`}
           style={{
-            backgroundImage: "url('/images/photos/pexels-ketut-subiyanto-4559714-min.jpg')",
+            backgroundImage:
+              "url('/images/photos/pexels-ketut-subiyanto-4559714-min.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -60,34 +67,34 @@ export function HomepageHeroSection() {
           }}
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-0" />
       </div>
 
       {/* Floating Elements */}
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, -20, 0],
-          rotate: [0, 5, 0]
+          rotate: [0, 5, 0],
         }}
-        transition={{ 
+        transition={{
           duration: 6,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
-        className="absolute top-20 left-10 w-20 h-20 bg-red-600/20 rounded-full blur-xl z-5"
+        className="absolute top-20 left-10 w-20 h-20 bg-red-600/20 rounded-full blur-xl z-10 pointer-events-none"
       />
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, 20, 0],
-          rotate: [0, -5, 0]
+          rotate: [0, -5, 0],
         }}
-        transition={{ 
+        transition={{
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 2
+          delay: 2,
         }}
-        className="absolute bottom-20 right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl z-5"
+        className="absolute bottom-20 right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl z-10 pointer-events-none"
       />
 
       {/* Content */}
@@ -126,7 +133,8 @@ export function HomepageHeroSection() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-md"
           >
-            Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise
+            Solutions de téléphonie IP professionnelles pour optimiser vos
+            communications d'entreprise
             <br />
             <span className="text-gray-300 font-medium">
               Performance, fiabilité et innovation au service de votre business
@@ -138,8 +146,8 @@ export function HomepageHeroSection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <Phone className="w-5 h-5 mr-3" />
@@ -172,9 +180,13 @@ export function HomepageHeroSection() {
               >
                 <div className="flex items-center justify-center mb-2">
                   <stat.icon className="w-6 h-6 text-red-400 mr-2" />
-                  <span className="text-3xl font-bold text-white drop-shadow-lg">{stat.value}</span>
+                  <span className="text-3xl font-bold text-white drop-shadow-lg">
+                    {stat.value}
+                  </span>
                 </div>
-                <p className="text-gray-300 text-sm drop-shadow-md">{stat.label}</p>
+                <p className="text-gray-300 text-sm drop-shadow-md">
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -197,7 +209,11 @@ export function HomepageHeroSection() {
           <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="w-1 h-3 bg-white/70 rounded-full mt-2"
             />
           </div>
