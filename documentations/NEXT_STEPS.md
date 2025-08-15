@@ -14,7 +14,7 @@
 
 ## 🆕 **NOUVELLES FONCTIONNALITÉS - Migration Strapi**
 
-## 🔄 **MODIFICATIONS RÉCENTES - Page d'accueil**
+## 🔄 **MODIFICATIONS RÉCENTES - Pages d'accueil et Contact**
 
 ### **Section Services** ✅
 - ✅ **Suppression des indicateurs de disponibilité** : Retrait des "99.9%" sur toutes les cartes de services
@@ -32,6 +32,18 @@
 - ✅ **Email sécurisé** : Changement de "contact@e2i-voip.com" vers "commerciaux@e2i-voip.com" avec protection anti-spam
 - ✅ **Composant SecureEmail** : Création d'un composant pour protéger les emails contre les bots
 - ✅ **CTA urgent centré** : Bouton d'appel d'urgence repositionné sous les deux colonnes
+
+### **Page de Contact** ✅
+- ✅ **CTA urgent centré** : La carte rouge est maintenant centrée sur toute la largeur de la page
+- ✅ **Numéros par département** : Ajout d'une section complète avec les numéros de téléphone pour chaque région :
+  - **Guadeloupe** : 0590 96 35 00
+  - **Martinique** : 0596 96 35 00  
+  - **Guyane** : 0594 96 35 00
+  - **Réunion** : 0262 96 35 00
+  - **Mayotte** : 0269 96 35 00
+  - **Métropole** : 01 96 35 00
+- ✅ **Design responsive** : Grille 2x3 adaptative pour un affichage optimal sur tous les écrans
+- ✅ **Icônes visuelles** : Chaque département a son icône téléphone distinctive
 
 ### **Sécurité des Emails** ✅
 - ✅ **Composant SecureEmail** : Protection contre le spam avec encodage HTML
@@ -107,7 +119,7 @@
 
 ## 📊 **Objectifs atteints**
 
-- ✅ **Tests** : 103 tests passent
+- ✅ **Tests** : 108 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
