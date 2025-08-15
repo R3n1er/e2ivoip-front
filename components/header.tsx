@@ -51,9 +51,9 @@ export function Header() {
           href: "/telephonie-entreprise/3cx-smb-mutualisee",
         },
         { name: "PBX Yeastar", href: "/telephonie-entreprise/pbx-yeastar" },
-        { name: "Mobilité", href: "/telephonie-entreprise/mobilite" },
       ],
     },
+    { name: "Mobilité", href: "/mobilite" },
     {
       name: "Nos services",
       href: "/nos-services",
