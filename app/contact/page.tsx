@@ -104,7 +104,7 @@ export default function ContactPage() {
                           Téléphone
                         </h3>
                         <p className="text-gray-900 font-medium mb-1">
-                          01 23 45 67 89
+                          0594 96 35 00
                         </p>
                         <p className="text-sm text-gray-600">
                           Lun-Ven 9h-18h
@@ -181,31 +181,162 @@ export default function ContactPage() {
                 </Card>
               </div>
 
-              {/* CTA Urgent */}
-              <Card className="shadow-lg bg-red-600 text-white border-red-600">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold mb-2">
-                    Besoin d'une réponse rapide ?
-                  </h3>
-                  <p className="mb-4 opacity-90">
-                    Appelez-nous directement pour un conseil personnalisé
-                  </p>
-                  <a
-                    href="tel:0123456789"
-                    className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    01 23 45 67 89
-                  </a>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section FAQ */}
+      {/* CTA Urgent - Centré sur toute la largeur */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <Card className="shadow-lg bg-red-600 text-white border-red-600 max-w-md">
+              <CardContent className="p-6 text-center">
+                <h3 className="text-xl font-semibold mb-2">
+                  Besoin d&apos;une réponse rapide ?
+                </h3>
+                <p className="mb-4 opacity-90">
+                  Appelez-nous directement pour un conseil personnalisé
+                </p>
+                <a
+                  href="tel:0594963500"
+                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  0594 96 35 00
+                </a>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Numéros par Département */}
       <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Nos numéros par département
+            </h2>
+            <p className="text-lg text-gray-600">
+              Contactez-nous directement selon votre localisation
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Guadeloupe */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Guadeloupe
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  0590 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Basse-Terre, Pointe-à-Pitre
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Martinique */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Martinique
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  0596 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Fort-de-France, Le Lamentin
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Guyane */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Guyane
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  0594 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Cayenne, Kourou
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Réunion */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Réunion
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  0262 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Saint-Denis, Saint-Pierre
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Mayotte */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Mayotte
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  0269 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Mamoudzou, Dzaoudzi
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Métropole */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Métropole
+                </h3>
+                <p className="text-2xl font-bold text-red-600 mb-2">
+                  01 96 35 00
+                </p>
+                <p className="text-sm text-gray-600">
+                  Paris, Lyon, Marseille
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section FAQ */}
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">

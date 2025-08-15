@@ -123,7 +123,6 @@ export function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-
           </motion.div>
         </div>
 
@@ -140,9 +139,9 @@ export function ContactSection() {
               <h3 className="text-xl font-semibold mb-2">
                 Besoin d&apos;une réponse rapide ?
               </h3>
-                              <p className="mb-4 opacity-90">
-                  Appelez-nous directement pour un conseil personnalisé
-                </p>
+              <p className="mb-4 opacity-90">
+                Appelez-nous directement pour un conseil personnalisé
+              </p>
               <Button
                 variant="secondary"
                 className="bg-white text-red-600 hover:bg-gray-100"
