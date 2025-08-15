@@ -14,6 +14,31 @@
 
 ## 🆕 **NOUVELLES FONCTIONNALITÉS - Migration Strapi**
 
+## 🔄 **MODIFICATIONS RÉCENTES - Page d'accueil**
+
+### **Section Services** ✅
+- ✅ **Suppression des indicateurs de disponibilité** : Retrait des "99.9%" sur toutes les cartes de services
+- ✅ **Tests mis à jour** : Suppression du test vérifiant la présence de la disponibilité
+
+### **Section Statistiques Clients** ✅
+- ✅ **Réorganisation en 2 colonnes** : Suppression de la troisième carte "Taux de satisfaction 99.9%"
+- ✅ **Layout optimisé** : Grille 2x2 au lieu de 3x2 pour un design plus équilibré
+
+### **Section Contact** ✅
+- ✅ **Suppression du formulaire HubSpot** : La section de gauche avec le formulaire a été retirée
+- ✅ **Réorganisation en 2 colonnes** : 
+  - **Colonne gauche** : Téléphone + Email
+  - **Colonne droite** : Adresse + Horaires
+- ✅ **Email sécurisé** : Changement de "contact@e2i-voip.com" vers "commerciaux@e2i-voip.com" avec protection anti-spam
+- ✅ **Composant SecureEmail** : Création d'un composant pour protéger les emails contre les bots
+- ✅ **CTA urgent centré** : Bouton d'appel d'urgence repositionné sous les deux colonnes
+
+### **Sécurité des Emails** ✅
+- ✅ **Composant SecureEmail** : Protection contre le spam avec encodage HTML
+- ✅ **Décodage au survol** : L'email est visible uniquement quand l'utilisateur survole
+- ✅ **Copie au clic** : Fonctionnalité de copie dans le presse-papiers
+- ✅ **Protection anti-bot** : Encodage des caractères pour éviter la détection automatique
+
 ### **Architecture Monorepo** ✅ FINALISÉ
 
 - ✅ **Structure complète** : Frontend Next.js + Backend Strapi
@@ -82,7 +107,7 @@
 
 ## 📊 **Objectifs atteints**
 
-- ✅ **Tests** : 84 tests passent
+- ✅ **Tests** : 103 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia

@@ -4,35 +4,9 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HubSpotContactForm } from "@/components/hubspot-contact-form";
+import { SecureEmail } from "@/components/secure-email";
 
 export function ContactSection() {
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Téléphone",
-      content: "01 23 45 67 89",
-      description: "Lun-Ven 9h-18h",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "contact@e2i-voip.com",
-      description: "Réponse sous 24h",
-    },
-    {
-      icon: MapPin,
-      title: "Adresse",
-      content: "123 Avenue des Télécoms",
-      description: "75001 Paris, France",
-    },
-    {
-      icon: Clock,
-      title: "Horaires",
-      content: "Lun-Ven 9h-18h",
-      description: "Support 24/7",
-    },
-  ];
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -53,38 +27,61 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form - HubSpot */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Colonne gauche */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="space-y-6"
           >
-            <Card className="border-gray-200">
-              <CardHeader>
-                <CardTitle className="text-2xl text-gray-900">
-                  Demande de devis
-                </CardTitle>
-                <p className="text-gray-600">
-                  Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
-                </p>
-              </CardHeader>
-              <CardContent>
-                <HubSpotContactForm
-                  portalId="26878201"
-                  formId="312a9f67-e613-4651-9690-4586646554a0"
-                  region="eu1"
-                  onFormSubmitted={(data) => {
-                    console.log("Formulaire soumis:", data);
-                  }}
-                  className="w-full"
-                />
+            {/* Téléphone */}
+            <Card className="border-gray-200 hover:shadow-md transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Phone className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      Téléphone
+                    </h3>
+                    <p className="text-gray-900 font-medium mb-1">
+                      0594 96 35 00
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Lun-Ven 9h-18h
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Email */}
+            <Card className="border-gray-200 hover:shadow-md transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Mail className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      Email
+                    </h3>
+                    <p className="text-gray-900 font-medium mb-1">
+                      <SecureEmail email="commerciaux@e2i-voip.com" />
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Réponse sous 24h
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Colonne droite */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -92,31 +89,49 @@ export function ContactSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="border-gray-200 hover:shadow-md transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-red-100 p-3 rounded-lg">
-                      <info.icon className="w-6 h-6 text-red-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        {info.title}
-                      </h3>
-                      <p className="text-gray-900 font-medium mb-1">
-                        {info.content}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {info.description}
-                      </p>
-                    </div>
+            {/* Adresse */}
+            <Card className="border-gray-200 hover:shadow-md transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <MapPin className="w-6 h-6 text-red-600" />
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      Adresse
+                    </h3>
+                    <p className="text-gray-900 font-medium mb-1">
+                      123 Avenue des Télécoms
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      75001 Paris, France
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Horaires */}
+            <Card className="border-gray-200 hover:shadow-md transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-red-100 p-3 rounded-lg">
+                    <Clock className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      Horaires
+                    </h3>
+                    <p className="text-gray-900 font-medium mb-1">
+                      Lun-Ven 9h-18h
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Support 24/7
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* CTA Card */}
             <Card className="bg-red-600 text-white border-red-600">
@@ -132,7 +147,7 @@ export function ContactSection() {
                   className="bg-white text-red-600 hover:bg-gray-100"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  01 23 45 67 89
+                  0594 96 35 00
                 </Button>
               </CardContent>
             </Card>
