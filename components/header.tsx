@@ -32,7 +32,7 @@ export function Header() {
     },
     {
       name: "Téléphonie d'entreprise",
-      href: "/telephonie-entreprise",
+      href: null,
       submenu: [
         {
           name: "Trunk SIP au compteur",
@@ -135,23 +135,42 @@ export function Header() {
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
               <div key={item.name} className="relative group">
-                <Link
-                  href={item.href}
-                  className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
-                    isScrolled
-                      ? "text-gray-700 hover:text-red-primary"
-                      : "text-gray-700 hover:text-red-primary"
-                  }`}
-                >
-                  {item.name}
-                  {item.submenu && (
-                    <ChevronDown
-                      className={`w-3 h-3 ml-1 transition-transform ${
-                        isScrolled ? "text-gray-600" : "text-gray-600"
-                      } group-hover:rotate-180`}
-                    />
-                  )}
-                </Link>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
+                      isScrolled
+                        ? "text-gray-700 hover:text-red-primary"
+                        : "text-gray-700 hover:text-red-primary"
+                    }`}
+                  >
+                    {item.name}
+                    {item.submenu && (
+                      <ChevronDown
+                        className={`w-3 h-3 ml-1 transition-transform ${
+                          isScrolled ? "text-gray-600" : "text-gray-600"
+                        } group-hover:rotate-180`}
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <span
+                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer ${
+                      isScrolled
+                        ? "text-gray-700 hover:text-red-primary"
+                        : "text-gray-700 hover:text-red-primary"
+                    }`}
+                  >
+                    {item.name}
+                    {item.submenu && (
+                      <ChevronDown
+                        className={`w-3 h-3 ml-1 transition-transform ${
+                          isScrolled ? "text-gray-600" : "text-gray-600"
+                        } group-hover:rotate-180`}
+                      />
+                    )}
+                  </span>
+                )}
 
                 {item.submenu && (
                   <motion.div
@@ -210,13 +229,19 @@ export function Header() {
               <div className="flex flex-col space-y-4 mt-6">
                 {navigation.map((item) => (
                   <div key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-base font-medium text-gray-700 hover:text-red-primary transition-colors block py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className="text-base font-medium text-gray-700 hover:text-red-primary transition-colors block py-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <span className="text-base font-medium text-gray-700 block py-2">
+                        {item.name}
+                      </span>
+                    )}
                     {item.submenu && (
                       <div className="ml-4 mt-2 space-y-2">
                         {item.submenu.map((subItem) => (
