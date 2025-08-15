@@ -7,24 +7,14 @@ import { useState } from "react";
  * L'email est encodé par défaut et décodé au survol
  */
 export function SecureEmail({ email }: { email: string }) {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  // Version simplifiée sans dangerouslySetInnerHTML
-  const displayEmail = isHovered ? email : email.replace(/./g, '•');
-  
   return (
-    <span
-      className="cursor-pointer select-none"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => {
-        // Copier l'email dans le presse-papiers
-        navigator.clipboard.writeText(email);
-      }}
-      title="Cliquez pour copier l'email"
+    <a
+      href="/contact"
+      className="cursor-pointer select-none hover:text-red-600 transition-colors duration-200"
+      title="Cliquez pour aller à la page de contact"
     >
-      {displayEmail}
-    </span>
+      {email.replace(/./g, '•')}
+    </a>
   );
 }
 
