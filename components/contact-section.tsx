@@ -124,26 +124,35 @@ export function ContactSection() {
               </CardContent>
             </Card>
 
-            {/* CTA Card */}
-            <Card className="bg-red-600 text-white border-red-600">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-2">
-                  Besoin d'une réponse rapide ?
-                </h3>
-                <p className="mb-4 opacity-90">
-                  Appelez-nous directement pour un conseil personnalisé
-                </p>
-                <Button
-                  variant="secondary"
-                  className="bg-white text-red-600 hover:bg-gray-100"
-                >
-                  <Phone className="w-4 h-4 mr-2" />
-                  0594 96 35 00
-                </Button>
-              </CardContent>
-            </Card>
           </motion.div>
         </div>
+
+        {/* CTA Card - Centrée sur toute la largeur */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 flex justify-center"
+        >
+          <Card className="bg-red-600 text-white border-red-600 max-w-md">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-xl font-semibold mb-2">
+                Besoin d&apos;une réponse rapide ?
+              </h3>
+                              <p className="mb-4 opacity-90">
+                  Appelez-nous directement pour un conseil personnalisé
+                </p>
+              <Button
+                variant="secondary"
+                className="bg-white text-red-600 hover:bg-gray-100"
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                0594 96 35 00
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
