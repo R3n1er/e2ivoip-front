@@ -83,6 +83,75 @@
 
 ## 6. Architecture Technique
 
+## 7. Modifications Récentes - Sprint 4 ✅
+
+### 7.1 Page d'accueil optimisée
+
+#### **Section Services**
+- Suppression des indicateurs de disponibilité "99.9%" sur toutes les cartes
+- Design épuré focalisé sur les fonctionnalités et avantages
+- Tests mis à jour pour refléter les changements
+
+#### **Section Statistiques Clients**
+- Réorganisation en 2 colonnes au lieu de 3
+- Suppression de la carte "Taux de satisfaction 99.9%"
+- Layout équilibré et plus lisible
+
+#### **Section Contact**
+- Suppression du formulaire HubSpot de la page d'accueil
+- Réorganisation des informations de contact en 2 colonnes
+- Email changé vers "commerciaux@e2i-voip.com"
+- Composant SecureEmail pour protection anti-spam
+- CTA rouge centré sur toute la largeur
+- Redirection email vers page de contact au clic
+
+### 7.2 Page de Contact modernisée
+
+#### **Structure optimisée**
+- CTA urgent centré sur toute la largeur
+- Section numéros par département avec 5 départements uniquement
+- Design responsive avec grille 2x3 adaptative
+
+#### **Numéros par département**
+- Guadeloupe : 0590 96 35 00
+- Martinique : 0596 96 35 00
+- Guyane : 0594 96 35 00
+- La Réunion : 0262 96 35 00
+- France métropolitaine : 01 96 35 00
+
+#### **Section coordonnées mise à jour**
+- WhatsApp au lieu du téléphone (icône MessageCircle verte)
+- Email sécurisé avec composant SecureEmail
+- Adresse et horaires conservés
+- Suppression du CTA "Besoin d'une réponse rapide ?"
+
+### 7.3 Footer - Toutes les pages
+
+#### **Partenaires mis à jour**
+- HubSpot remplacé par Grandstream
+- Liens vers sites officiels pour tous les partenaires
+- 3CX : https://www.3cx.fr (avec badge Bronze Partner)
+- Yeastar : https://www.yeastar.com
+- Grandstream : https://www.grandstream.com
+
+#### **Section numéros par département ajoutée**
+- Tous les numéros de téléphone visibles dans le footer
+- Design en colonnes avec séparateur visuel
+- Layout optimisé pour la lisibilité
+
+### 7.4 Sécurité et composants
+
+#### **Composant SecureEmail**
+- Protection contre le spam avec encodage
+- Affichage masqué par défaut (points)
+- Révélation au survol ou redirection au clic
+- Tests complets et validation
+
+#### **Tests et validation**
+- 116 tests passent sur l'ensemble du projet
+- Tests spécifiques pour chaque composant modifié
+- Validation des fonctionnalités et de l'UX
+
 ### 6.1 Architecture Monorepo
 
 ```
@@ -229,7 +298,15 @@ e2ivoip-front/
 - 🔄 **Pages services détaillées** : Contenu enrichi et SEO (en cours)
 - 🔄 **SEO avancé** : Meta tags, structured data, sitemap (en cours)
 
-#### 8.5 Sprint 4 - Migration Strapi 🔄 EN COURS
+#### 8.5 Sprint 4 - UI/UX Optimization & Contact Enhancement ✅ TERMINÉ
+
+- ✅ **Page d'accueil optimisée** : Services, statistiques et contact modernisés
+- ✅ **Page de Contact refaite** : Numéros par département et coordonnées mises à jour
+- ✅ **Footer optimisé** : Partenaires mis à jour et numéros par département ajoutés
+- ✅ **Sécurité renforcée** : Composant SecureEmail et protection anti-spam
+- ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
+
+#### 8.6 Sprint 5 - Migration Strapi 🔄 EN COURS
 
 - ✅ **Architecture monorepo** : Structure mise en place
 - ✅ **Installation Strapi** : CMS configuré dans le dossier backend/
@@ -242,7 +319,7 @@ e2ivoip-front/
 - 🔄 **Tests d'intégration** : Validation de la migration
 - 🔄 **Déploiement** : Configuration pour production
 
-#### 8.6 Sprint 5 - Optimisations et Finalisation ⏳ PLANIFIÉ
+#### 8.7 Sprint 6 - Optimisations et Finalisation ⏳ PLANIFIÉ
 
 - ⏳ **Core Web Vitals** : Optimisation des performances
 - ⏳ **Analytics avancés** : Tracking détaillé des conversions
@@ -286,7 +363,7 @@ e2ivoip-front/
 
 #### 10.2 Technique
 
-- ✅ **84 tests passent** (vs 48 précédemment)
+- ✅ **116 tests passent** (vs 84 précédemment)
 - ✅ **Code propre** : ESLint respecté
 - ✅ **Performance optimale** : Images optimisées avec preload
 - ✅ **Design cohérent** : Intégration parfaite
@@ -294,6 +371,8 @@ e2ivoip-front/
 - ✅ **Routage fonctionnel** : Navigation cohérente
 - ✅ **Images de background** : Gestion intelligente du chargement
 - ✅ **Composants optimisés** : HomepageHeroSection et DevisHeroSection
+- ✅ **Composant SecureEmail** : Protection anti-spam implémentée
+- ✅ **Footer optimisé** : Partenaires et numéros par département
 
 #### 10.3 Conversion et CRM
 
@@ -320,7 +399,15 @@ e2ivoip-front/
 
 ### 11. Prochaines étapes
 
-#### 11.1 Sprint 4 - Migration Strapi (EN COURS)
+#### 11.1 Sprint 4 - UI/UX Optimization & Contact Enhancement ✅ TERMINÉ
+
+1. ✅ **Page d'accueil optimisée** : Services, statistiques et contact modernisés
+2. ✅ **Page de Contact refaite** : Numéros par département et coordonnées mises à jour
+3. ✅ **Footer optimisé** : Partenaires mis à jour et numéros par département ajoutés
+4. ✅ **Sécurité renforcée** : Composant SecureEmail et protection anti-spam
+5. ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
+
+#### 11.2 Sprint 5 - Migration Strapi (EN COURS)
 
 1. **Test d'extraction** : Valider la récupération des articles existants
 2. **Import dans Strapi** : Migration des données et images

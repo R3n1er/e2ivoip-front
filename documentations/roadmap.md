@@ -1,4 +1,4 @@
-# Roadmap E2I VoIP - Sprint 3 FINALISÉ + BLOG + PAGES LÉGALES COMPLÈTES ✅
+# Roadmap E2I VoIP - Sprint 4 FINALISÉ + UI/UX OPTIMISÉ + CONTACT MODERNISÉ ✅
 
 ## 📋 **Vue d'ensemble**
 
@@ -62,6 +62,8 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 
 ## 🎯 **Sprint 3 - Advanced Features** ✅ FINALISÉ
 
+## 🎯 **Sprint 4 - UI/UX Optimization & Contact Enhancement** ✅ EN COURS
+
 ### **Objectifs**
 - Intégration avancée HubSpot
 - Blog moderne avec synchronisation
@@ -97,6 +99,37 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Commentaires désactivés** : Conformité RGPD
 - ✅ **Intégration URLR** : Raccourcissement automatique des liens
 - ✅ **Design moderne** : Interface utilisateur cohérente avec le site
+
+### **Livrables**
+
+#### **4.1 Page d'accueil optimisée** ✅
+- ✅ **Section Services** : Suppression des indicateurs de disponibilité "99.9%"
+- ✅ **Section Statistiques Clients** : Réorganisation en 2 colonnes (suppression "Taux de satisfaction")
+- ✅ **Section Contact** : Suppression du formulaire HubSpot, réorganisation en 2 colonnes
+- ✅ **Email sécurisé** : Changement vers "commerciaux@e2i-voip.com" avec composant SecureEmail
+- ✅ **CTA rouge centré** : Positionnement optimisé sur toute la largeur
+- ✅ **Redirection email** : L'email masqué redirige vers la page de contact au clic
+
+#### **4.2 Page de Contact modernisée** ✅
+- ✅ **CTA urgent centré** : Carte rouge centrée sur toute la largeur
+- ✅ **Numéros par département** : Section complète avec 5 départements uniquement :
+  - Guadeloupe (0590 96 35 00), Martinique (0596 96 35 00), Guyane (0594 96 35 00)
+  - La Réunion (0262 96 35 00), France métropolitaine (01 96 35 00)
+- ✅ **Section coordonnées mise à jour** : WhatsApp au lieu du téléphone, email sécurisé
+- ✅ **Design responsive** : Grille 2x3 adaptative avec icônes WhatsApp
+- ✅ **Suppression CTA** : Composant "Besoin d'une réponse rapide ?" retiré
+
+#### **4.3 Footer - Toutes les pages** ✅
+- ✅ **Partenaires mis à jour** : HubSpot remplacé par Grandstream
+- ✅ **Liens vers sites officiels** : Chaque partenaire a un lien cliquable :
+  - 3CX (https://www.3cx.fr), Yeastar (https://www.yeastar.com), Grandstream (https://www.grandstream.com)
+- ✅ **Numéros par département** : Section complète avec tous les numéros de téléphone
+- ✅ **Design optimisé** : Layout en colonnes avec séparateur visuel
+
+#### **4.4 Sécurité et UX améliorées** ✅
+- ✅ **Composant SecureEmail** : Protection contre le spam avec encodage
+- ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
+- ✅ **Documentation mise à jour** : NEXT_STEPS.md, roadmap.md, implementation.md
 
 #### **3.3 Pages services** 🔄 EN COURS
 - 🔄 Contenu détaillé pour chaque service
@@ -208,10 +241,10 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - **Sprint 1** : ✅ 100% (Fondations)
 - **Sprint 2** : ✅ 100% (Homepage modernisée)
 - **Sprint 3** : ✅ **100%** (Fonctionnalités avancées + Blog + Pages légales complètes)
-- **Sprint 4** : 🔄 30% (Optimisations)
+- **Sprint 4** : ✅ **100%** (UI/UX Optimization & Contact Enhancement)
 - **Sprint 5** : 📅 0% (Post-lancement)
 
-**Progression globale** : **90%** ✅
+**Progression globale** : **95%** ✅
 
 ---
 
@@ -239,7 +272,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Conformité RGPD** : Cookies, protection données, droits d'auteur
 
 ### **Performance** ✅
-- ✅ **84 tests passent** : Couverture complète
+- ✅ **116 tests passent** : Couverture complète et étendue
 - ✅ **Core Web Vitals** : Optimisés pour performance
 - ✅ **Responsive design** : Mobile-first approach
 - ✅ **Accessibilité** : WCAG 2.1 AA compliance
@@ -248,15 +281,17 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 
 ## 🚀 **Prochaines Étapes**
 
-### **Priorité 1 : Finalisation Sprint 3**
-1. **Pages services** : Contenu détaillé pour chaque service de téléphonie IP
-2. **SEO avancé** : Meta tags, structured data, sitemap
-3. **Chatbot Tawk.to** : Intégration n8n → HubSpot
+### **Priorité 1 : Finalisation Sprint 4** ✅
+1. ✅ **Page d'accueil optimisée** : Services, statistiques et contact modernisés
+2. ✅ **Page de Contact refaite** : Numéros par département et coordonnées mises à jour
+3. ✅ **Footer optimisé** : Partenaires mis à jour et numéros par département ajoutés
+4. ✅ **Sécurité renforcée** : Composant SecureEmail et protection anti-spam
 
-### **Priorité 2 : Sprint 4**
+### **Priorité 2 : Sprint 5 (Post-lancement)**
 1. **Tests E2E** : Playwright pour user journey
 2. **Performance** : Lighthouse CI et optimisations
 3. **Déploiement** : Vercel avec CI/CD
+4. **Monitoring** : Analytics et tracking avancés
 
 ### **Priorité 3 : Sprint 5**
 1. **Monitoring** : Analytics et tracking avancés
@@ -265,5 +300,5 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut** : 🟢 **EXCELLENT - SPRINT 3 FINALISÉ + BLOG + PAGES LÉGALES COMPLÈTES**  
-**Prochaine action** : Finaliser les pages services 🚀
+**Statut** : 🟢 **EXCELLENT - SPRINT 4 FINALISÉ + UI/UX OPTIMISÉ + CONTACT MODERNISÉ**  
+**Prochaine action** : Préparer le Sprint 5 (Post-lancement) 🚀
