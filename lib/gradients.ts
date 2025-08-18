@@ -146,7 +146,7 @@ export function getCssClass(name: string): string {
 // Fonction utilitaire pour valider les couleurs d'un dégradé
 export function validateGradientColors(colors: string[]): boolean {
   return colors.every(color => 
-    Object.values(COLORS).includes(color) || 
+    Object.values(COLORS).includes(color as any) || 
     color === 'transparent' ||
     /^#[0-9A-F]{6}$/i.test(color) ||
     /^#[0-9A-F]{8}$/i.test(color)

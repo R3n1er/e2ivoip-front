@@ -42,20 +42,20 @@ export function Footer() {
                 <Phone className="w-4 h-4 text-red-500 mr-2" />
                 Nous contacter
               </h4>
-              <div className="space-y-3 text-xs">
-                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+              <div className="space-y-2 text-xs">
+                <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">Guyane :</span>
                   <span className="text-white font-semibold">+594 594 963 500</span>
                 </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">Guadeloupe :</span>
                   <span className="text-white font-semibold">+590 590 173 500</span>
                 </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">Martinique :</span>
                   <span className="text-white font-semibold">+596 596 313 500</span>
                 </div>
-                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">La Réunion :</span>
                   <span className="text-white font-semibold">+262 263 085 500</span>
                 </div>
