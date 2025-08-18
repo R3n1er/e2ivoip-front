@@ -3,7 +3,7 @@
 ## Version 1.0.0 - 2024-12-19
 
 ### 🎯 Objectif
-Retrait des dégradés des numéros de téléphone du footer pour revenir à un style plus classique et professionnel, tout en conservant les numéros de téléphone mis à jour.
+Retrait des dégradés des numéros de téléphone du footer et suppression du bouton contact pour revenir à un style plus classique et professionnel, tout en conservant les numéros de téléphone mis à jour.
 
 ### ✨ Modifications Effectuées
 
@@ -23,6 +23,11 @@ Retrait des dégradés des numéros de téléphone du footer pour revenir à un 
 - Suppression des effets de survol complexes
 - Conservation de la lisibilité et de l'accessibilité
 
+#### 4. Suppression du Bouton Contact
+- **Avant** : Bouton CTA "Nous contacter" avec dégradé rouge-bleu
+- **Après** : Bouton complètement supprimé
+- **Impact** : Footer plus épuré et focalisé sur les informations essentielles
+
 ### 🔧 Corrections Techniques
 
 #### 1. Erreur TypeScript
@@ -40,6 +45,7 @@ Retrait des dégradés des numéros de téléphone du footer pour revenir à un 
 - **Avant** : 121 tests passants
 - **Après** : 136 tests passants
 - **Statut** : ✅ Tous les tests passent
+- **Mise à jour** : Test du bouton contact modifié pour vérifier sa suppression
 
 #### 2. Validation Serveur
 - **Serveur de développement** : Port 3000 ✅
@@ -91,13 +97,20 @@ Retrait des dégradés des numéros de téléphone du footer pour revenir à un 
 ### 📝 Notes Techniques
 
 #### 1. Fichiers Modifiés
-- `components/footer.tsx` : Retrait des dégradés
+- `components/footer.tsx` : Retrait des dégradés et suppression du bouton contact
 - `lib/gradients.ts` : Correction de l'erreur de type
+- `tests/footer.test.tsx` : Mise à jour du test pour vérifier la suppression du bouton
 
 #### 2. Classes CSS Supprimées
 - `bg-gradient-to-r from-gray-800 to-gray-700`
 - `hover:from-gray-700 hover:to-gray-600`
 - `transition-all duration-300`
+
+#### 3. Éléments Supprimés
+- Bouton CTA "Nous contacter" complet
+- Classes de dégradé rouge-bleu du bouton
+- Icône Phone du bouton
+- Conteneur et styles associés au bouton
 - `rounded-lg`
 
 #### 3. Classes CSS Conservées
