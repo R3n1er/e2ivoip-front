@@ -243,11 +243,13 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 #### Dégradés Principaux
 
 - [ ] **HeroSection** : Implémentation du dégradé rouge-bleu
+
   - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
   - **Composant** : `components/homepage-hero-section.tsx`
   - **Test** : Validation visuelle et responsive
 
 - [ ] **ServicesSection** : Cartes avec dégradé rouge-vert
+
   - **Classes** : `bg-gradient-to-br from-red-600 to-green-600`
   - **Composant** : `components/services-section.tsx`
   - **Test** : Validation des cartes de services
@@ -260,6 +262,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 #### Dégradés Secondaires
 
 - [ ] **ContactSection** : Boutons CTA avec dégradé rouge-bleu
+
   - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
   - **Composant** : `components/contact-section.tsx`
   - **Test** : Validation des boutons CTA
@@ -274,6 +277,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 #### Boutons et CTA
 
 - [ ] **Button primaire** : Dégradé rouge-bleu
+
   - **Fichier** : `components/ui/button.tsx`
   - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
   - **Variantes** : Hover, focus, disabled
@@ -286,6 +290,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 #### Cartes et Sections
 
 - [ ] **Card d'accent** : Dégradé rouge-vert
+
   - **Fichier** : `components/ui/card.tsx`
   - **Classes** : `bg-gradient-to-br from-red-600 to-green-600`
   - **Variantes** : Hover, focus, selected

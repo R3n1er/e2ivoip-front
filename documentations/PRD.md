@@ -78,12 +78,15 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 ### Dégradés
 
 #### Dégradés Principaux
+
 - **Dégradé Rouge-Bleu** : `bg-gradient-to-r from-red-600 to-blue-700`
+
   - Utilisation : Boutons CTA, sections héro, éléments d'accent
   - Direction : De gauche à droite
   - Couleurs : Rouge primaire vers bleu marine
 
 - **Dégradé Rouge-Vert** : `bg-gradient-to-br from-red-600 to-green-600`
+
   - Utilisation : Cartes de services, badges, indicateurs de statut
   - Direction : Diagonal (bas-droite)
   - Couleurs : Rouge primaire vers vert
@@ -94,12 +97,15 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
   - Couleurs : Bleu marine vers gris secondaire
 
 #### Dégradés Secondaires
+
 - **Dégradé Rouge-Orange** : `bg-gradient-to-r from-red-600 to-orange-500`
+
   - Utilisation : Éléments d'alerte, notifications importantes
   - Direction : De gauche à droite
   - Couleurs : Rouge primaire vers orange
 
 - **Dégradé Bleu-Vert** : `bg-gradient-to-br from-blue-700 to-green-600`
+
   - Utilisation : Sections de succès, indicateurs positifs
   - Direction : Diagonal (bas-droite)
   - Couleurs : Bleu marine vers vert
@@ -110,7 +116,9 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
   - Couleurs : Gris clair vers blanc
 
 #### Dégradés Spéciaux
+
 - **Dégradé Transparent-Rouge** : `bg-gradient-to-t from-red-600/80 to-transparent`
+
   - Utilisation : Overlays d'images, effets de superposition
   - Direction : Du bas vers le haut
   - Couleurs : Rouge semi-transparent vers transparent
