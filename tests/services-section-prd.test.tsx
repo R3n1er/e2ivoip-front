@@ -67,13 +67,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
     expect(screen.getByText("Demander un devis gratuit")).toBeInTheDocument();
   });
 
-  it("affiche la disponibilité 99.9% pour chaque service", () => {
-    render(<ServicesSection />);
-
-    // Il devrait y avoir 6 mentions de "99.9%" (une par service)
-    const availabilityElements = screen.getAllByText("99.9%");
-    expect(availabilityElements).toHaveLength(6);
-  });
+  // Les indicateurs de disponibilité 99.9% ont été retirés du PRD
 
   it("utilise uniquement les couleurs PRD pour les icônes", () => {
     const { container } = render(<ServicesSection />);

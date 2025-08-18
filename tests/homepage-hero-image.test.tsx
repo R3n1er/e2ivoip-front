@@ -53,8 +53,7 @@ describe('HomepageHeroSection', () => {
     expect(screen.getByText('Clients satisfaits')).toBeInTheDocument()
     expect(screen.getByText('15+')).toBeInTheDocument()
     expect(screen.getByText('Années d\'expérience')).toBeInTheDocument()
-    expect(screen.getByText('99.9%')).toBeInTheDocument()
-    expect(screen.getByText('Disponibilité')).toBeInTheDocument()
+    // Les indicateurs 99.9% ont été retirés du design
   })
 
   it('affiche les boutons CTA', () => {

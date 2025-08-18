@@ -17,13 +17,8 @@ dist/
 .env.test.local
 .env.production.local
 
-# Strapi
-backend/.tmp/
-backend/exports/
-backend/*.cache
-backend/build/
-backend/dist/
-backend/.env
+# CMS temp files
+contentful-export.json
 
 # Logs
 logs
