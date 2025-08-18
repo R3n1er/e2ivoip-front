@@ -36,30 +36,40 @@ export function Footer() {
               </div>
             </div>
             
-            {/* Numéros par département */}
-            <div className="mt-4 pt-4 border-t border-gray-700">
-              <h4 className="text-sm font-medium text-gray-300 mb-3">Nos numéros par département :</h4>
-              <div className="space-y-2 text-xs">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Guadeloupe :</span>
-                  <span className="text-white">0590 96 35 00</span>
+            {/* Section Nous contacter avec dégradé */}
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-semibold text-white mb-4 flex items-center">
+                <Phone className="w-4 h-4 text-red-500 mr-2" />
+                Nous contacter
+              </h4>
+              <div className="space-y-3 text-xs">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                  <span className="text-gray-300 font-medium">Guyane :</span>
+                  <span className="text-white font-semibold">+594 594 963 500</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Martinique :</span>
-                  <span className="text-white">0596 96 35 00</span>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                  <span className="text-gray-300 font-medium">Guadeloupe :</span>
+                  <span className="text-white font-semibold">+590 590 173 500</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Guyane :</span>
-                  <span className="text-white">0594 96 35 00</span>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                  <span className="text-gray-300 font-medium">Martinique :</span>
+                  <span className="text-white font-semibold">+596 596 313 500</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">La Réunion :</span>
-                  <span className="text-white">0262 96 35 00</span>
+                <div className="flex justify-between items-center p-2 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 transition-all duration-300">
+                  <span className="text-gray-300 font-medium">La Réunion :</span>
+                  <span className="text-white font-semibold">+262 263 085 500</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">France métropolitaine :</span>
-                  <span className="text-white">01 96 35 00</span>
-                </div>
+              </div>
+              
+              {/* Bouton CTA avec dégradé */}
+              <div className="mt-4">
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-600 to-blue-700 hover:from-red-700 hover:to-blue-800 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Nous contacter
+                </Link>
               </div>
             </div>
           </div>
