@@ -4,7 +4,7 @@
 
 ### 1. Vue d'ensemble du projet
 
-**Objectif** : Développer une version moderne et améliorée du site web e2i-voip.com avec un design contemporain, une navigation intuitive et une intégration HubSpot pour le CRM, avec migration du blog vers Strapi CMS.
+**Objectif** : Développer une version moderne et améliorée du site web e2i-voip.com avec un design contemporain, une navigation intuitive et une intégration HubSpot pour le CRM, avec migration du blog vers Contentful CMS.
 
 **Vision** : Créer une expérience utilisateur exceptionnelle qui convertit les visiteurs en leads qualifiés pour les services VoIP et téléphonie d'entreprise, avec un CMS moderne et indépendant pour la gestion du blog.
 
@@ -15,7 +15,7 @@
 - **SEO** : Améliorer le classement dans les moteurs de recherche
 - **Mobile** : Assurer une expérience mobile optimale (Core Web Vitals > 90)
 - **CRM** : Intégration complète avec HubSpot pour le suivi des leads, des campagnes marketing et des statistiques de visite
-- **CMS** : Migration du blog vers Strapi pour une gestion indépendante et moderne
+- **CMS** : Migration du blog vers Contentful pour une gestion indépendante et moderne
 
 ### 3. Public cible
 
@@ -45,7 +45,7 @@
 - **Nos services**
   - Studio attente téléphonique (exemple de messages audio SVI et de prédécroché ou répondeur de fermeture avec musique personnalisée libre de droits)
   - Assistants vocaux IA (accompagner les clients à mettre en oeuvre l'intelligence artificielle dans les règles de routage téléphonique des serveurs de téléphonie IP pour améliorer l'expérience client. )
-- **Blog** : Articles gérés via Strapi CMS avec recherche avancée et pagination
+- **Blog** : Articles gérés via Contentful CMS avec recherche avancée et pagination
 - **Devis en ligne** : Page regroupant plusieurs bouton de lien vers formulaires de contact Tally (devis Trunk SIP, devis portabilité, devis serveur de téléphonie 3CX, devis projet PBX -- **intégration IPBX Yeastar**)
 
 #### 4.3 Fonctionnalités techniques
@@ -55,7 +55,7 @@
 - **SEO** : Meta tags, structured data, sitemap XML. Le site doit permettre d'optimiser le référencement naturel.
 - **Analytics** : Google Analytics 4, HubSpot tracking
 - **Formulaires** : Intégration HubSpot native et Hook depuis formulaire tally avec des automatisme n8n déja mis en place. Ces automatismes permettent de notamment notifier lorsqu'un formulaire a été répondu, de récupérer les informations essentielles et transmettre une notification au groupe des commerciaux par mail et également intégrer les informations de contact dans le CRM HubSpot et également de créer des transactions dans HubSpot.
-- **Blog** : CMS Strapi headless avec interface d'administration moderne
+- **Blog** : CMS Contentful headless (Delivery & Preview API)
 - **Chatbot** : Intégration Tawk.to avec exclusion des pages contact et devis en ligne. Récupération automatique des informations de contact (nom, prénom, entreprise, téléphone, email) et automatisation n8n pour import dans HubSpot CRM.
 
 ### 5. Charte graphique
@@ -159,8 +159,8 @@ e2ivoip-front/
 ├── app/                    # Frontend Next.js (App Router)
 ├── components/             # Composants React réutilisables
 ├── lib/                    # Services et utilitaires
-│   └── strapi-blog.ts     # Service Strapi CMS
-├── backend/                # Strapi CMS
+│   └── contentful-blog.ts  # Service Contentful CMS
+├── backend/                # (supprimé)
 │   ├── src/
 │   ├── config/
 │   └── package.json
@@ -172,18 +172,17 @@ e2ivoip-front/
 └── package.json           # Configuration monorepo
 ```
 
-### 6.2 CMS Strapi
+### 6.2 CMS Contentful
 
-- **Interface d'administration** : Interface moderne pour la gestion des articles
-- **API REST/GraphQL** : Accès programmatique aux données
-- **Gestion des médias** : Upload et optimisation d'images intégrée
-- **Workflow de publication** : Draft/Publish avec contrôle d'accès
-- **SEO intégré** : Métadonnées automatiques et URLs personnalisables
+- **Espace Contentful** : Modèles de contenu pour les articles
+- **APIs** : Delivery/Preview (lecture), Management (optionnelle pour import)
+- **Gestion des médias** : Assets gérés par Contentful
+- **Workflow de publication** : Draft/Publish, locales (si besoin)
 
 ### 6.3 Migration des Articles
 
 - **Extraction automatisée** : Scripts pour récupérer les articles existants
-- **Import dans Strapi** : Migration complète avec images et métadonnées
+- **Import dans Contentful** : Migration complète avec images et métadonnées
 - **Préservation SEO** : Maintien des URLs et du référencement existant
 
 ## 7. Intégrations HubSpot
@@ -384,16 +383,16 @@ e2ivoip-front/
 - ✅ **Formulaires HubSpot** : 100% des formulaires intégrés
 - ✅ **Tracking complet** : Événements de conversion implémentés
 - ✅ **CRM HubSpot** : Synchronisation automatique des leads
-- ✅ **Blog Strapi** : CMS moderne avec recherche avancée intégrée
+- ✅ **Blog** : Design et intégration CMS moderne (Contentful)
 - ✅ **Section Services optimisée** : Bouton "Demander un devis gratuit" redirige vers `/devis-en-ligne`
 - ✅ **Suppression bouton "Voir nos références"** : Interface simplifiée pour focus sur la conversion
 
-#### 10.4 Migration Strapi
+#### 10.4 Migration CMS
 
 - ✅ **Architecture monorepo** : Structure complète mise en place
-- ✅ **Strapi CMS** : Installation et configuration terminée
-- ✅ **Scripts de migration** : Extraction et import automatisés
-- ✅ **Service Strapi** : API complète pour l'intégration
+- ✅ **Strapi retiré** : Dossier backend supprimé
+- ✅ **Transition vers Contentful** : Variables d'environnement ajoutées
+- ✅ **Scripts de migration** : Extraction conservée; import Contentful à planifier
 - ✅ **Content-Type** : Schéma blog post configuré
 - ✅ **Documentation** : Guide de migration complet
 
@@ -407,11 +406,11 @@ e2ivoip-front/
 4. ✅ **Sécurité renforcée** : Composant SecureEmail et protection anti-spam
 5. ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
 
-#### 11.2 Sprint 5 - Migration Strapi (EN COURS)
+#### 11.2 Sprint 5 - Migration Contentful (EN COURS)
 
 1. **Test d'extraction** : Valider la récupération des articles existants
-2. **Import dans Strapi** : Migration des données et images
-3. **Adaptation des composants** : Modification pour utiliser Strapi
+2. **Import Contentful** : Migration des données et images
+3. **Adaptation des composants** : Modification pour utiliser Contentful
 4. **Tests d'intégration** : Validation complète
 5. **Déploiement** : Configuration pour production
 

@@ -6,7 +6,7 @@
   "scripts": {
     "extract": "node extract-blog-content.js",
     "extract:dev": "node extract-blog-content.js --dev",
-    "import": "node import-to-strapi.js",
+    "import": "echo 'Import Strapi supprimé. Utiliser Contentful Management API si nécessaire.'",
     "test": "node test-extraction.js",
     "full-migration": "npm run extract && npm run import"
   },

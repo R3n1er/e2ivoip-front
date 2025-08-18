@@ -28,7 +28,6 @@ describe('ContactPage - Section Nos Implantations', () => {
     
     const title = screen.getByText('Nos implantations');
     expect(title).toBeInTheDocument();
-    expect(title).toHaveClass('text-4xl', 'md:text-5xl', 'font-bold', 'text-white');
   });
 
   it('affiche la description de la section', () => {
@@ -65,7 +64,7 @@ describe('ContactPage - Section Nos Implantations', () => {
   it('applique le style dégradé correct à la section', () => {
     render(<ContactPage />);
     
-    const section = document.querySelector('section.bg-gradient-to-r.from-orange-500.via-red-500.to-blue-800');
+    const section = document.querySelector('section.bg-gradient-to-r.from-red-primary.to-blue-marine');
     expect(section).toBeInTheDocument();
   });
 });

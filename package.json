@@ -3,15 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "next dev --port 3001",
-    "dev:backend": "cd backend && npm run develop",
-    "build": "npm run build:frontend && npm run build:backend",
-    "build:frontend": "next build",
-    "build:backend": "cd backend && npm run build",
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "next start",
-    "start:backend": "cd backend && npm start",
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -19,8 +13,7 @@
     "test:e2e": "playwright test",
     "test:integration": "vitest --config vitest.integration.config.ts",
     "extract:blog": "cd scripts && npm run extract",
-    "setup:strapi": "cd backend && npx create-strapi-app@latest . --quickstart --no-run",
-    "install:all": "npm install && cd backend && npm install && cd ../scripts && npm install"
+    "install:all": "npm install && cd scripts && npm install"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
