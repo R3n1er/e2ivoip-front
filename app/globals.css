@@ -24,6 +24,8 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    --red-primary: 0 84% 60%;
+    --blue-marine: 220 15% 23%;
   }
 
   .dark {
@@ -158,7 +160,7 @@
     .gradient-primary-red-blue {
       @apply bg-gradient-to-b from-red-600 to-blue-700;
     }
-    
+
     .gradient-primary-red-green {
       @apply bg-gradient-to-b from-red-600 to-green-600;
     }
@@ -183,6 +185,7 @@
 
   .shadow-gradient {
     @apply shadow-lg;
-    box-shadow: 0 10px 25px -3px rgba(220, 38, 38, 0.3), 0 4px 6px -2px rgba(30, 64, 175, 0.2);
+    box-shadow: 0 10px 25px -3px rgba(220, 38, 38, 0.3),
+      0 4px 6px -2px rgba(30, 64, 175, 0.2);
   }
 }
