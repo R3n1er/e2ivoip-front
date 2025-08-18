@@ -74,14 +74,10 @@ describe('Footer', () => {
     expect(screen.getByText('+262 263 085 500')).toBeInTheDocument();
   });
 
-  it('affiche le bouton CTA "Nous contacter"', () => {
+  it('n\'affiche plus le bouton CTA "Nous contacter" (supprimé)', () => {
     render(<Footer />);
-    const contactButtons = screen.getAllByRole('link', { name: /Nous contacter/ });
-    const contactButton = contactButtons.find(button => 
-      button.getAttribute('href') === '/contact'
-    );
-    expect(contactButton).toBeInTheDocument();
-    expect(contactButton).toHaveAttribute('href', '/contact');
+    const contactButtons = screen.queryAllByRole('link', { name: /Nous contacter/ });
+    expect(contactButtons).toHaveLength(0);
   });
 
   it('affiche les sections de services et support', () => {
