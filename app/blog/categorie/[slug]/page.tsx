@@ -2,10 +2,11 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { ArrowLeft, Tag } from "lucide-react";
 import Link from "next/link";
-import { searchBlogPosts } from "@/lib/algolia-blog";
+
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import type { BlogPost } from "@/lib/hubspot-blog";
+import { getMockBlogPosts } from "@/lib/mock-blog-data";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -35,14 +36,22 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
   
-  // Rechercher les articles de cette catégorie
-  const results = await searchBlogPosts("", {
-    tags: [categoryName],
-  });
 
-  if (!results.hits || results.hits.length === 0) {
+  const mockPosts = getMockBlogPosts();
+  
+  // Filtrer les articles de cette catégorie
+  const filteredPosts = mockPosts.filter(post => 
+    post.tags.includes(categoryName) || post.categories.includes(categoryName)
+  );
+
+  if (filteredPosts.length === 0) {
     notFound();
   }
+
+  const results = {
+    hits: filteredPosts,
+    nbHits: filteredPosts.length
+  };
 
   // Transformer les résultats
   const posts: BlogPost[] = results.hits.map((hit: any) => ({

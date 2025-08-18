@@ -6,13 +6,19 @@
   "scripts": {
     "extract": "node extract-blog-content.js",
     "extract:dev": "node extract-blog-content.js --dev",
-    "import": "node import-to-strapi.js",
+    "import": "node import-to-contentful.js",
+    "import:dry": "node import-to-contentful.js --dry-run",
+    "covers": "node generate-blog-covers.js",
+    "covers:ai": "node generate-ai-covers-openai.js",
     "test": "node test-extraction.js",
     "full-migration": "npm run extract && npm run import"
   },
   "dependencies": {
+    "@contentful/rich-text-from-markdown": "^16.1.1",
+    "contentful-management": "^11.54.4",
+    "form-data": "^4.0.0",
     "puppeteer": "^21.0.0",
-    "form-data": "^4.0.0"
+    "turndown": "^7.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0"
