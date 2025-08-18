@@ -14,7 +14,7 @@
 - ✅ Configuration du compte HubSpot
 - ✅ Génération des clés API HubSpot
 - ✅ Setup des formulaires HubSpot natifs
-- ✅ Configuration du blog Strapi
+- ✅ Transition du blog vers Contentful (retrait Strapi)
 - ✅ Script de suivi HubSpot configuré (Portail 26878201)
 - ✅ Configuration Tally pour formulaires de devis
 - ✅ Setup webhook Tally → n8n → HubSpot
@@ -274,7 +274,7 @@
   - ✅ **Responsive design** : Grid 2 colonnes pour les droits utilisateurs
   - ✅ **Code couleur intuitif** : Rouge (cookies, effacement), Bleu (contact, accès), Vert (candidatures, rectification), etc.
 
-## Phase 4 : Migration Strapi (Semaine 5) 🔄 EN COURS
+## Phase 4 : Migration Contentful (Semaine 5) 🔄 EN COURS
 
 ### 4.1 Architecture Monorepo ✅
 
@@ -289,15 +289,15 @@
   - ✅ Content-Type Blog Post configuré
   - ✅ Schéma complet avec tous les champs nécessaires
 
-### 4.2 Scripts de Migration ✅
+### 4.2 Scripts de Migration ✅/🔄
 
 - ✅ **Script d'extraction** : `scripts/extract-blog-content.js`
   - ✅ Récupération des articles depuis https://www.e2i-voip.com/blog
   - ✅ Extraction du contenu, images, métadonnées
   - ✅ Téléchargement automatique des images
   - ✅ Sauvegarde dans `extracted-blog-content.json`
-- ✅ **Script d'import** : `scripts/import-to-strapi.js`
-  - ✅ Import des articles dans Strapi
+- 🔄 **Script d'import** : `scripts/import-to-contentful.js`
+  - 🔄 Import des articles dans Contentful (Assets + Entries)
   - ✅ Upload des images de couverture
   - ✅ Association des médias aux articles
   - ✅ Gestion des erreurs et doublons
@@ -306,44 +306,38 @@
   - ✅ Validation des données extraites
   - ✅ Debugging et optimisation
 
-### 4.3 Service Strapi ✅
+### 4.3 Service Contentful 🔄
 
-- ✅ **Service complet** : `lib/strapi-blog.ts`
-  - ✅ `getStrapiBlogPosts()` - Récupération avec pagination
-  - ✅ `getStrapiBlogPost(slug)` - Article individuel
-  - ✅ `searchStrapiBlogPosts()` - Recherche avancée
-  - ✅ `getStrapiBlogPostsByCategory()` - Articles par catégorie
-  - ✅ `getStrapiBlogMetadata()` - Métadonnées pour facettes
-  - ✅ `transformStrapiPost()` - Transformation des données
-- ✅ **Configuration API** :
-  - ✅ Variables d'environnement Strapi
-  - ✅ Headers et authentification
-  - ✅ Gestion d'erreurs robuste
-  - ✅ Types TypeScript complets
+- 🔄 **Service** : `lib/contentful-blog.ts`
+  - 🔄 `getContentfulBlogPosts()` - Récupération avec pagination
+  - 🔄 `getContentfulBlogPost(slug)` - Article individuel
+  - 🔄 `searchContentfulBlogPosts()` - Recherche
+  - 🔄 `getContentfulBlogMetadata()` - Métadonnées/tags
+- 🔄 **Configuration API** :
+  - 🔄 Variables d'environnement Contentful
+  - 🔄 Tokens Delivery/Preview
+  - 🔄 Gestion d'erreurs robuste
+  - 🔄 Types TypeScript complets
 
-### 4.4 Content-Type Blog Post ✅
+### 4.4 Content model Blog Post (Contentful) ✅
 
-- ✅ **Schéma complet** : `backend/src/api/blog-post/content-types/blog-post/schema.json`
-  - ✅ **title** : Titre de l'article (requis, unique)
-  - ✅ **slug** : URL unique (généré automatiquement)
-  - ✅ **content** : Contenu riche (requis)
-  - ✅ **excerpt** : Extrait de l'article (max 500 caractères)
-  - ✅ **publishDate** : Date de publication
-  - ✅ **author** : Auteur (défaut: "E2I VoIP")
-  - ✅ **tags** : Tags de l'article (JSON)
-  - ✅ **categories** : Catégories (JSON)
-  - ✅ **featuredImage** : Image de couverture (média)
-  - ✅ **metaDescription** : Description SEO (max 160 caractères)
-  - ✅ **seoTitle** : Titre SEO (max 60 caractères)
-  - ✅ **status** : Statut (draft/published)
-  - ✅ **readingTime** : Temps de lecture estimé
-  - ✅ **originalUrl** : URL originale sur l'ancien site
+- ✅ **Champs** :
+  - ✅ `title` (Short text)
+  - ✅ `slug` (Short text)
+  - ✅ `excerpt` (Long text)
+  - ✅ `content` (Rich text)
+  - ✅ `featuredImage` (Media)
+  - ✅ `author` (Short text)
+  - ✅ `publishDate` (Date & time)
+  - ✅ `metaDescription` (Short text)
+  - ✅ `seoTitle` (Short text)
+  - ✅ `tags` (Short text, list)
 
 ### 4.5 Prochaines étapes Migration 🔄
 
 - 🔄 **Test d'extraction** : Valider la récupération des articles existants
-- 🔄 **Import dans Strapi** : Migration des données et images
-- 🔄 **Adaptation des composants** : Modification pour utiliser Strapi
+- 🔄 **Import dans Contentful** : Migration des données et images
+- 🔄 **Adaptation des composants** : Modification pour utiliser Contentful
 - 🔄 **Tests d'intégration** : Validation complète
 - 🔄 **Déploiement** : Configuration pour production
 
@@ -452,15 +446,15 @@
 
 ### Backend & Intégrations ✅
 
-- ✅ **CMS** : HubSpot (CRM, analytics) + Strapi (blog moderne)
+- ✅ **CMS** : HubSpot (CRM, analytics) + Contentful (blog)
 - ✅ **Forms** : Tally (devis spécialisés)
 - ✅ **Automation** : n8n (workflows)
 - ✅ **Chatbot** : Tawk.to
-- ✅ **API** : HubSpot API + Tally webhooks + Strapi API
+- ✅ **API** : HubSpot API + Tally webhooks + Contentful Delivery API
 
 ### Deployment & CI/CD 🔄
 
-- 🔄 **Hosting** : Vercel (frontend) + Railway/Render (Strapi)
+- 🔄 **Hosting** : Vercel (frontend)
 - ✅ **Version Control** : GitHub avec Actions
 - 🔄 **CDN** : Vercel Edge Network
 - ✅ **Images** : Next.js Image Optimization
@@ -478,20 +472,14 @@
 ### Variables d'environnement ✅
 
 ```env
-# Strapi Configuration
-NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-STRAPI_URL=http://localhost:1337
-STRAPI_TOKEN=your_strapi_api_token_here
-
-# Database Configuration (pour Strapi)
-DATABASE_CLIENT=sqlite
-DATABASE_FILENAME=.tmp/data.db
-
-# JWT Configuration (pour Strapi)
-JWT_SECRET=your_jwt_secret_here
-ADMIN_JWT_SECRET=your_admin_jwt_secret_here
-API_TOKEN_SALT=your_api_token_salt_here
-APP_KEYS=your_app_keys_here
+# Contentful Configuration
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ENVIRONMENT=master
+CONTENTFUL_DELIVERY_TOKEN=
+CONTENTFUL_PREVIEW_TOKEN=
+CONTENTFUL_MANAGEMENT_TOKEN=
+CONTENTFUL_CONTENT_TYPE_ID=blogPost
+CONTENTFUL_LOCALE=en-US
 
 # HubSpot Configuration (existant)
 HUBSPOT_API_KEY=your_hubspot_api_key
@@ -515,21 +503,14 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 
 ```json
 {
-  "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-  "dev:frontend": "next dev --port 3000",
-  "dev:backend": "cd backend && npm run develop",
-  "build": "npm run build:frontend && npm run build:backend",
-  "build:frontend": "next build",
-  "build:backend": "cd backend && npm run build",
-  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-  "start:frontend": "next start",
-  "start:backend": "cd backend && npm start",
+  "dev": "next dev --port 3000",
+  "build": "next build",
+  "start": "next start",
   "test": "vitest",
   "test:e2e": "playwright test",
   "test:integration": "vitest --config vitest.integration.config.ts",
   "extract:blog": "cd scripts && npm run extract",
-  "setup:strapi": "cd backend && npx create-strapi-app@latest . --quickstart --no-run",
-  "install:all": "npm install && cd backend && npm install && cd ../scripts && npm install"
+  "install:all": "npm install && cd ../scripts && npm install"
 }
 ```
 
@@ -584,7 +565,7 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 - ⏳ Formation équipe complète
 - ⏳ Plan d'optimisation continue automatisé
 
-## 🎯 **MIGRATION STRAPI - NOUVELLE ARCHITECTURE**
+## 🎯 **MIGRATION CONTENTFUL - NOUVELLE ARCHITECTURE**
 
 ### **Architecture Monorepo Mise en Place** ✅
 
@@ -593,14 +574,14 @@ e2ivoip-front/
 ├── app/                    # Frontend Next.js (App Router)
 ├── components/             # Composants React réutilisables
 ├── lib/                    # Services et utilitaires
-│   └── strapi-blog.ts     # ✅ Service Strapi CMS
-├── backend/                # ✅ Strapi CMS
+│   └── contentful-blog.ts     # 🔄 Service Contentful CMS
+├── backend/                # (supprimé)
 │   ├── src/
 │   ├── config/
 │   └── package.json
 ├── scripts/                # ✅ Scripts de migration
 │   ├── extract-blog-content.js
-│   ├── import-to-strapi.js
+│   ├── import-to-contentful.js
 │   ├── test-extraction.js
 │   └── package.json
 └── package.json           # ✅ Configuration monorepo
@@ -613,16 +594,11 @@ e2ivoip-front/
 - ✅ **`test-extraction.js`** : Test d'extraction d'un article
 - ✅ **Configuration package.json** : Scripts npm pour la migration
 
-### **Service Strapi Complet** ✅
+### **Service Contentful (à venir)** 🔄
 
-- ✅ **`lib/strapi-blog.ts`** : Service complet avec toutes les fonctions
-  - `getStrapiBlogPosts()` - Récupération avec pagination
-  - `getStrapiBlogPost(slug)` - Article individuel
-  - `searchStrapiBlogPosts()` - Recherche avancée
-  - `getStrapiBlogPostsByCategory()` - Articles par catégorie
-  - `transformStrapiPost()` - Transformation des données
+- 🔄 `lib/contentful-blog.ts` – fonctions Delivery API équivalentes
 
-### **Content-Type Strapi Configuré** ✅
+### **Content model Contentful Configuré** ✅
 
 - ✅ **Schéma complet** : Tous les champs nécessaires configurés
 - ✅ **Permissions API** : Prêtes pour l'utilisation
@@ -631,5 +607,5 @@ e2ivoip-front/
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut global** : 🟢 **EXCELLENT - PHASE 4 EN COURS (MIGRATION STRAPI)**  
-**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)
+**Statut global** : 🟢 **EXCELLENT - PHASE 4 EN COURS (TRANSITION CONTENTFUL)**  
+**Progression** : 92% (Strapi retiré, intégration Contentful planifiée)
