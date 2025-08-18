@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-label="Trunk SIP dans les DROM : le guide 2025 pour choisir un opérateur Vo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F8F9FB"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#g)"/>
+  <rect x="24" y="24" width="752" height="372" rx="20" fill="#FFF" stroke="#818096" stroke-opacity="0.2"/>
+  <g fill="#2D3848">
+    <circle cx="300" cy="220" r="28"/>
+    <circle cx="324" cy="226" r="20"/>
+    <circle cx="276" cy="226" r="20"/>
+    <rect x="260" y="226" width="80" height="26" rx="13"/>
+  </g>
+<g fill="#818096">
+    <circle cx="460" cy="200" r="28"/>
+    <circle cx="484" cy="206" r="20"/>
+    <circle cx="436" cy="206" r="20"/>
+    <rect x="420" y="206" width="80" height="26" rx="13"/>
+  </g>
+<line x1="260" y1="220" x2="500" y2="200" stroke="#E53E3E" stroke-width="2" stroke-dasharray="4 6"/>
+  <rect x="40" y="320" width="720" height="56" rx="12" fill="#2D3848"/>
+  <text x="400" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" fill="#FFFFFF">Trunk SIP dans les DROM : le guide 2025 pour choisir un opérateur Vo</text>
+</svg>

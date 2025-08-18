@@ -94,7 +94,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Pages de listing avec pagination** : `BlogPagination` avec navigation intuitive
 - ✅ **Pages individuelles d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage avancé
-- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres (auteur, année, tags)
+
 - ✅ **SEO automatique des articles** : Meta tags, Open Graph, Twitter Cards
 - ✅ **Commentaires désactivés** : Conformité RGPD
 - ✅ **Intégration URLR** : Raccourcissement automatique des liens
@@ -167,7 +167,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Tests** : 84 tests passent (78 → 84)
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
-- ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to, Algolia
+- ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to
 - ✅ **Performance** : Core Web Vitals optimisés
 - ✅ **Conformité RGPD** : Pages légales complètes
 
@@ -261,7 +261,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Pagination avancée** : Navigation intuitive entre pages
 - ✅ **Pages d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Catégories** : `/blog/categorie/[slug]` avec filtrage
-- ✅ **Recherche Algolia** : Recherche ultra-rapide avec filtres
+
 - ✅ **Métadonnées dynamiques** : Open Graph, Twitter Cards
 - ✅ **Design cohérent** : Interface utilisateur moderne
 

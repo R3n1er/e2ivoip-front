@@ -37,31 +37,14 @@ describe('ContactPage', () => {
     expect(screen.getByText(/••••••••••••••••••••••••/)).toBeInTheDocument();
   });
 
-  it('affiche les numéros par département', () => {
+  it('affiche la section Nos coordonnées et le formulaire', () => {
     render(<ContactPage />);
-    
-    // Vérifier que tous les départements sont présents
-    expect(screen.getByText('Guadeloupe')).toBeInTheDocument();
-    expect(screen.getByText('Martinique')).toBeInTheDocument();
-    expect(screen.getByText('Guyane')).toBeInTheDocument();
-    expect(screen.getByText('La Réunion')).toBeInTheDocument();
-    expect(screen.getByText('France métropolitaine')).toBeInTheDocument();
+    expect(screen.getByText('Nos coordonnées')).toBeInTheDocument();
+    const hubspotForm = screen.getByTestId('hubspot-form');
+    expect(hubspotForm).toBeInTheDocument();
   });
 
-  it('affiche les numéros de téléphone corrects', () => {
-    render(<ContactPage />);
-    
-    // Vérifier les numéros de téléphone
-    expect(screen.getByText('0590 96 35 00')).toBeInTheDocument(); // Guadeloupe
-    expect(screen.getByText('0596 96 35 00')).toBeInTheDocument(); // Martinique
-    
-    // Utiliser getAllByText pour Guyane car il y a plusieurs éléments avec ce numéro
-    const guyaneNumbers = screen.getAllByText('0594 96 35 00');
-    expect(guyaneNumbers.length).toBeGreaterThan(0);
-    
-    expect(screen.getByText('0262 96 35 00')).toBeInTheDocument(); // La Réunion
-    expect(screen.getByText('01 96 35 00')).toBeInTheDocument(); // France métropolitaine
-  });
+  // Les numéros par département sont maintenant listés dans la section "Nos implantations"
 
   it('affiche le formulaire HubSpot', () => {
     render(<ContactPage />);

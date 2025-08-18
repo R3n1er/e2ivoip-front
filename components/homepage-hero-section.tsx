@@ -43,7 +43,6 @@ export function HomepageHeroSection() {
   const stats = [
     { icon: Users, value: "500+", label: "Clients satisfaits" },
     { icon: Award, value: "15+", label: "Années d'expérience" },
-    { icon: Star, value: "99.9%", label: "Disponibilité" },
   ];
 
   return (
@@ -168,7 +167,7 @@ export function HomepageHeroSection() {
           {/* Stats */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             {stats.map((stat, index) => (
               <motion.div
