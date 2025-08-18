@@ -12,8 +12,11 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [x] **Intégration API Contentful** : Service complet avec gestion d'erreurs
 - [x] **Refactorisation header** : Sous-menus au survol avec animations fluides
 - [x] **Génération d'images de couverture** : SVG automatique + PNG via AI
-- [x] **Tests automatisés** : 121 tests passants avec couverture complète
+- [x] **Tests automatisés** : 136 tests passants avec couverture complète
 - [x] **Scripts de migration** : Import et génération d'images automatisés
+- [x] **Optimisation footer** : Retrait des dégradés des numéros de téléphone
+- [x] **Correction types** : Résolution des erreurs TypeScript pour le build
+- [x] **Build Next.js** : Configuration optimisée pour déploiement Vercel
 
 ## Phase 2 - Optimisations Avancées 🔄
 
