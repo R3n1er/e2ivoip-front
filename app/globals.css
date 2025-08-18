@@ -24,11 +24,6 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
-    
-    /* Couleurs personnalisées selon le PRD */
-    --red-primary: 0 62% 56%; /* #E53E3E */
-    --blue-marine: 220 25% 25%; /* #2D3848 */
-    --gray-secondary: 240 5% 55%; /* #818096 */
   }
 
   .dark {
@@ -63,53 +58,131 @@
   }
 }
 
+@layer components {
+  /* Dégradés principaux selon la charte graphique E2I VoIP */
+  .gradient-primary-red-blue {
+    @apply bg-gradient-to-r from-red-600 to-blue-700;
+  }
+
+  .gradient-primary-red-green {
+    @apply bg-gradient-to-br from-red-600 to-green-600;
+  }
+
+  .gradient-primary-blue-gray {
+    @apply bg-gradient-to-b from-blue-700 to-gray-500;
+  }
+
+  /* Dégradés secondaires */
+  .gradient-secondary-red-orange {
+    @apply bg-gradient-to-r from-red-600 to-orange-500;
+  }
+
+  .gradient-secondary-blue-green {
+    @apply bg-gradient-to-br from-blue-700 to-green-600;
+  }
+
+  .gradient-secondary-gray-white {
+    @apply bg-gradient-to-b from-gray-100 to-white;
+  }
+
+  /* Dégradés spéciaux */
+  .gradient-special-transparent-red {
+    @apply bg-gradient-to-t from-red-600/80 to-transparent;
+  }
+
+  .gradient-special-radial-red {
+    @apply bg-gradient-radial from-red-600 to-transparent;
+  }
+
+  /* Composants avec dégradés */
+  .hero-gradient {
+    @apply gradient-primary-red-blue;
+  }
+
+  .services-gradient {
+    @apply gradient-primary-red-green;
+  }
+
+  .about-gradient {
+    @apply gradient-primary-blue-gray;
+  }
+
+  .contact-gradient {
+    @apply gradient-primary-red-blue;
+  }
+
+  .footer-gradient {
+    @apply gradient-secondary-gray-white;
+  }
+
+  .button-primary-gradient {
+    @apply gradient-primary-red-blue;
+  }
+
+  .button-secondary-gradient {
+    @apply bg-gradient-to-r from-blue-700 to-gray-500;
+  }
+
+  .card-accent-gradient {
+    @apply gradient-primary-red-green;
+  }
+
+  .card-info-gradient {
+    @apply gradient-primary-blue-gray;
+  }
+
+  .badge-gradient {
+    @apply gradient-primary-red-green;
+  }
+
+  /* Effets hover pour les dégradés */
+  .gradient-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .gradient-hover:hover {
+    @apply scale-105 shadow-lg;
+  }
+
+  /* Dégradés avec transparence pour les overlays */
+  .overlay-gradient {
+    @apply gradient-special-transparent-red;
+  }
+
+  .focus-gradient {
+    @apply gradient-special-radial-red;
+  }
+
+  /* Responsive gradients */
+  @media (max-width: 768px) {
+    .gradient-primary-red-blue {
+      @apply bg-gradient-to-b from-red-600 to-blue-700;
+    }
+    
+    .gradient-primary-red-green {
+      @apply bg-gradient-to-b from-red-600 to-green-600;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gradient-primary-blue-gray {
+      @apply bg-gradient-to-b from-blue-700 to-gray-500;
+    }
+  }
+}
+
 @layer utilities {
-  /* Animations pour les éléments décoratifs */
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
+  /* Utilitaires pour les dégradés */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-blue-700;
   }
-  
-  .animate-blob {
-    animation: blob 7s infinite;
+
+  .border-gradient {
+    @apply border-2 border-transparent bg-gradient-to-r from-red-600 to-blue-700 bg-clip-border;
   }
-  
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-  
-  /* Couleurs personnalisées */
-  .text-red-primary {
-    color: hsl(var(--red-primary));
-  }
-  
-  .bg-red-primary {
-    background-color: hsl(var(--red-primary));
-  }
-  
-  .text-blue-marine {
-    color: hsl(var(--blue-marine));
-  }
-  
-  .bg-blue-marine {
-    background-color: hsl(var(--blue-marine));
-  }
-  
-  .text-gray-secondary {
-    color: hsl(var(--gray-secondary));
+
+  .shadow-gradient {
+    @apply shadow-lg;
+    box-shadow: 0 10px 25px -3px rgba(220, 38, 38, 0.3), 0 4px 6px -2px rgba(30, 64, 175, 0.2);
   }
 }

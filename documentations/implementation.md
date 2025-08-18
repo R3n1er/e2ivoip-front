@@ -151,6 +151,113 @@ e2ivoip-front/
 - **Z-index** : Valeur élevée (z-50)
 - **Responsive** : Adaptation mobile
 
+## Implémentation des Dégradés
+
+### Charte Graphique des Dégradés
+
+#### 3.1 Dégradés Principaux
+
+- **Dégradé Rouge-Bleu** : `bg-gradient-to-r from-red-600 to-blue-700`
+  - **Composants** : Boutons CTA, sections héro, éléments d'accent
+  - **Exemples** : `HeroSection`, `Button` primaire, `Card` d'accent
+  - **Direction** : De gauche à droite
+  - **Couleurs** : Rouge primaire (#DC2626) vers bleu marine (#1E40AF)
+
+- **Dégradé Rouge-Vert** : `bg-gradient-to-br from-red-600 to-green-600`
+  - **Composants** : Cartes de services, badges, indicateurs de statut
+  - **Exemples** : `ServicesSection`, `Badge` de service, `Card` de service
+  - **Direction** : Diagonal (bas-droite)
+  - **Couleurs** : Rouge primaire (#DC2626) vers vert (#16A34A)
+
+- **Dégradé Bleu-Gris** : `bg-gradient-to-b from-blue-700 to-gray-500`
+  - **Composants** : Arrière-plans de sections, cartes d'information
+  - **Exemples** : `AboutSection`, `InfoCard`, arrière-plans de contenu
+  - **Direction** : Du haut vers le bas
+  - **Couleurs** : Bleu marine (#1E40AF) vers gris secondaire (#6B7280)
+
+#### 3.2 Dégradés Secondaires
+
+- **Dégradé Rouge-Orange** : `bg-gradient-to-r from-red-600 to-orange-500`
+  - **Composants** : Éléments d'alerte, notifications importantes
+  - **Exemples** : `Alert` component, `Notification` importante
+  - **Direction** : De gauche à droite
+  - **Couleurs** : Rouge primaire (#DC2626) vers orange
+
+- **Dégradé Bleu-Vert** : `bg-gradient-to-br from-blue-700 to-green-600`
+  - **Composants** : Sections de succès, indicateurs positifs
+  - **Exemples** : `SuccessCard`, `StatusIndicator` positif
+  - **Direction** : Diagonal (bas-droite)
+  - **Couleurs** : Bleu marine (#1E40AF) vers vert (#16A34A)
+
+- **Dégradé Gris-Blanc** : `bg-gradient-to-b from-gray-100 to-white`
+  - **Composants** : Arrière-plans de cartes, sections de contenu
+  - **Exemples** : `ContentCard`, `Section` de contenu
+  - **Direction** : Du haut vers le bas
+  - **Couleurs** : Gris clair vers blanc
+
+#### 3.3 Dégradés Spéciaux
+
+- **Dégradé Transparent-Rouge** : `bg-gradient-to-t from-red-600/80 to-transparent`
+  - **Composants** : Overlays d'images, effets de superposition
+  - **Exemples** : `ImageOverlay`, `HeroImage` avec texte
+  - **Direction** : Du bas vers le haut
+  - **Couleurs** : Rouge semi-transparent vers transparent
+
+- **Dégradé Radial Rouge** : `bg-gradient-radial from-red-600 to-transparent`
+  - **Composants** : Effets de focus, points d'accent
+  - **Exemples** : `FocusIndicator`, `AccentPoint`
+  - **Type** : Radial (du centre vers l'extérieur)
+  - **Couleurs** : Rouge vers transparent
+
+### Implémentation Technique
+
+#### 3.4 Classes Tailwind CSS
+
+```css
+/* Dégradés principaux */
+.gradient-primary-red-blue {
+  @apply bg-gradient-to-r from-red-600 to-blue-700;
+}
+
+.gradient-primary-red-green {
+  @apply bg-gradient-to-br from-red-600 to-green-600;
+}
+
+.gradient-primary-blue-gray {
+  @apply bg-gradient-to-b from-blue-700 to-gray-500;
+}
+
+/* Dégradés secondaires */
+.gradient-secondary-red-orange {
+  @apply bg-gradient-to-r from-red-600 to-orange-500;
+}
+
+.gradient-secondary-blue-green {
+  @apply bg-gradient-to-br from-blue-700 to-green-600;
+}
+
+.gradient-secondary-gray-white {
+  @apply bg-gradient-to-b from-gray-100 to-white;
+}
+
+/* Dégradés spéciaux */
+.gradient-special-transparent-red {
+  @apply bg-gradient-to-t from-red-600/80 to-transparent;
+}
+
+.gradient-special-radial-red {
+  @apply bg-gradient-radial from-red-600 to-transparent;
+}
+```
+
+#### 3.5 Composants avec Dégradés
+
+- **HeroSection** : Dégradé rouge-bleu en arrière-plan
+- **ServicesSection** : Cartes avec dégradé rouge-vert
+- **AboutSection** : Arrière-plan avec dégradé bleu-gris
+- **ContactSection** : Boutons CTA avec dégradé rouge-bleu
+- **Footer** : Sections avec dégradé gris-blanc
+
 ## Génération d'Images de Couverture
 
 ### Approche SVG

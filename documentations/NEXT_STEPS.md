@@ -236,6 +236,106 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [ ] **Accessibilité** : Conformité WCAG 2.1
 - [ ] **Audit légal** : Validation par un expert juridique
 
+## Phase 6 - Implémentation des Dégradés 🔄
+
+### 6.1 Application de la Charte Graphique
+
+#### Dégradés Principaux
+
+- [ ] **HeroSection** : Implémentation du dégradé rouge-bleu
+  - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
+  - **Composant** : `components/homepage-hero-section.tsx`
+  - **Test** : Validation visuelle et responsive
+
+- [ ] **ServicesSection** : Cartes avec dégradé rouge-vert
+  - **Classes** : `bg-gradient-to-br from-red-600 to-green-600`
+  - **Composant** : `components/services-section.tsx`
+  - **Test** : Validation des cartes de services
+
+- [ ] **AboutSection** : Arrière-plan avec dégradé bleu-gris
+  - **Classes** : `bg-gradient-to-b from-blue-700 to-gray-500`
+  - **Composant** : `components/about-section.tsx`
+  - **Test** : Validation de l'arrière-plan
+
+#### Dégradés Secondaires
+
+- [ ] **ContactSection** : Boutons CTA avec dégradé rouge-bleu
+  - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
+  - **Composant** : `components/contact-section.tsx`
+  - **Test** : Validation des boutons CTA
+
+- [ ] **Footer** : Sections avec dégradé gris-blanc
+  - **Classes** : `bg-gradient-to-b from-gray-100 to-white`
+  - **Composant** : `components/footer.tsx`
+  - **Test** : Validation des sections du footer
+
+### 6.2 Composants UI avec Dégradés
+
+#### Boutons et CTA
+
+- [ ] **Button primaire** : Dégradé rouge-bleu
+  - **Fichier** : `components/ui/button.tsx`
+  - **Classes** : `bg-gradient-to-r from-red-600 to-blue-700`
+  - **Variantes** : Hover, focus, disabled
+
+- [ ] **Button secondaire** : Dégradé bleu-gris
+  - **Fichier** : `components/ui/button.tsx`
+  - **Classes** : `bg-gradient-to-r from-blue-700 to-gray-500`
+  - **Variantes** : Hover, focus, disabled
+
+#### Cartes et Sections
+
+- [ ] **Card d'accent** : Dégradé rouge-vert
+  - **Fichier** : `components/ui/card.tsx`
+  - **Classes** : `bg-gradient-to-br from-red-600 to-green-600`
+  - **Variantes** : Hover, focus, selected
+
+- [ ] **InfoCard** : Dégradé bleu-gris
+  - **Fichier** : `components/ui/card.tsx`
+  - **Classes** : `bg-gradient-to-b from-blue-700 to-gray-500`
+  - **Variantes** : Hover, focus, selected
+
+### 6.3 Classes CSS Personnalisées
+
+#### Configuration Tailwind
+
+- [ ] **Classes de dégradés** : Ajout dans `tailwind.config.js`
+  - **Dégradés principaux** : Rouge-bleu, rouge-vert, bleu-gris
+  - **Dégradés secondaires** : Rouge-orange, bleu-vert, gris-blanc
+  - **Dégradés spéciaux** : Transparent-rouge, radial-rouge
+
+#### Composants CSS
+
+- [ ] **Gradients utilitaires** : Classes réutilisables
+  - **Fichier** : `app/globals.css`
+  - **Classes** : `.gradient-primary-red-blue`, `.gradient-primary-red-green`
+  - **Responsive** : Adaptation selon les breakpoints
+
+### 6.4 Tests des Dégradés
+
+#### Tests Visuels
+
+- [ ] **Validation des couleurs** : Vérification des codes hexadécimaux
+  - **Rouge primaire** : #DC2626
+  - **Bleu marine** : #1E40AF
+  - **Vert** : #16A34A
+  - **Gris secondaire** : #6B7280
+
+#### Tests Responsive
+
+- [ ] **Breakpoints** : Validation sur tous les écrans
+  - **Mobile** : 320px - 767px
+  - **Tablet** : 768px - 1023px
+  - **Desktop** : 1024px - 1440px
+  - **Large** : 1440px+
+
+#### Tests d'Accessibilité
+
+- [ ] **Contraste** : Validation des ratios de contraste
+  - **WCAG AA** : Ratio minimum 4.5:1
+  - **WCAG AAA** : Ratio minimum 7:1
+  - **Textes** : Validation de la lisibilité
+
 ## Métriques de Succès
 
 ### Performance
@@ -259,6 +359,13 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - **Taux de rebond** : -30% vs baseline
 - **Temps sur site** : +40% d'engagement
 
+### Cohérence Visuelle
+
+- **Dégradés appliqués** : 100% des composants ciblés
+- **Charte graphique** : Respectée à 100%
+- **Responsive design** : Dégradés optimisés sur tous les écrans
+- **Accessibilité** : Contraste validé sur tous les dégradés
+
 ## Planning et Ressources
 
 ### Timeline
@@ -267,6 +374,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - **Phase 3** : 6-8 semaines
 - **Phase 4** : 3-4 semaines
 - **Phase 5** : 2-3 semaines
+- **Phase 6 (Dégradés)** : 2-3 semaines
 
 ### Ressources Requises
 
@@ -285,7 +393,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 
 ## Conclusion
 
-La migration vers Contentful et la refactorisation du header ont créé une base solide pour les évolutions futures. Les prochaines phases se concentrent sur l'optimisation des performances, l'amélioration du SEO, et l'ajout de fonctionnalités avancées pour offrir une expérience utilisateur exceptionnelle.
+La migration vers Contentful et la refactorisation du header ont créé une base solide pour les évolutions futures. L'implémentation des dégradés selon la charte graphique permettra d'améliorer considérablement la cohérence visuelle et l'expérience utilisateur du site.
 
-**Priorité immédiate** : Phase 2 - Optimisations de performance et SEO  
-**Objectif** : Site de référence dans le secteur VoIP avec des performances exceptionnelles
+**Priorité immédiate** : Phase 6 - Implémentation des dégradés selon la charte graphique  
+**Objectif** : Site de référence dans le secteur VoIP avec une identité visuelle parfaitement cohérente

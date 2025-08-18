@@ -75,6 +75,51 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Gris secondaire** : #6B7280 (gray-500)
 - **Vert** : #16A34A (green-600)
 
+### Dégradés
+
+#### Dégradés Principaux
+- **Dégradé Rouge-Bleu** : `bg-gradient-to-r from-red-600 to-blue-700`
+  - Utilisation : Boutons CTA, sections héro, éléments d'accent
+  - Direction : De gauche à droite
+  - Couleurs : Rouge primaire vers bleu marine
+
+- **Dégradé Rouge-Vert** : `bg-gradient-to-br from-red-600 to-green-600`
+  - Utilisation : Cartes de services, badges, indicateurs de statut
+  - Direction : Diagonal (bas-droite)
+  - Couleurs : Rouge primaire vers vert
+
+- **Dégradé Bleu-Gris** : `bg-gradient-to-b from-blue-700 to-gray-500`
+  - Utilisation : Arrière-plans de sections, cartes d'information
+  - Direction : Du haut vers le bas
+  - Couleurs : Bleu marine vers gris secondaire
+
+#### Dégradés Secondaires
+- **Dégradé Rouge-Orange** : `bg-gradient-to-r from-red-600 to-orange-500`
+  - Utilisation : Éléments d'alerte, notifications importantes
+  - Direction : De gauche à droite
+  - Couleurs : Rouge primaire vers orange
+
+- **Dégradé Bleu-Vert** : `bg-gradient-to-br from-blue-700 to-green-600`
+  - Utilisation : Sections de succès, indicateurs positifs
+  - Direction : Diagonal (bas-droite)
+  - Couleurs : Bleu marine vers vert
+
+- **Dégradé Gris-Blanc** : `bg-gradient-to-b from-gray-100 to-white`
+  - Utilisation : Arrière-plans de cartes, sections de contenu
+  - Direction : Du haut vers le bas
+  - Couleurs : Gris clair vers blanc
+
+#### Dégradés Spéciaux
+- **Dégradé Transparent-Rouge** : `bg-gradient-to-t from-red-600/80 to-transparent`
+  - Utilisation : Overlays d'images, effets de superposition
+  - Direction : Du bas vers le haut
+  - Couleurs : Rouge semi-transparent vers transparent
+
+- **Dégradé Radial Rouge** : `bg-gradient-radial from-red-600 to-transparent`
+  - Utilisation : Effets de focus, points d'accent
+  - Type : Radial (du centre vers l'extérieur)
+  - Couleurs : Rouge vers transparent
+
 ### Typographie
 
 - **Titres** : Font-bold, tailles responsives
