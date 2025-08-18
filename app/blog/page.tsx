@@ -1,14 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 
-import type { BlogPost } from "@/lib/hubspot-blog";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import type { BlogPost } from "@/lib/contentful-blog";
 
 interface BlogFilters {
   query: string;
@@ -22,112 +19,83 @@ const POSTS_PER_PAGE = 12;
 
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Commencer en mode chargement
   const [totalResults, setTotalResults] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [availableAuthors, setAvailableAuthors] = useState<string[]>([]);
   const [availableYears, setAvailableYears] = useState<number[]>([]);
   const [availableTags, setAvailableTags] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async (filters: BlogFilters, page: number = 1) => {
     setLoading(true);
+    setError(null);
     try {
-    
-      const mockPosts = getMockBlogPosts();
-      
-      // Filtrer les posts selon les critères
-      let filteredPosts = mockPosts.filter(post => {
-        const matchesQuery = !filters.query || 
-          post.title.toLowerCase().includes(filters.query.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(filters.query.toLowerCase());
-        
-        const matchesAuthor = !filters.author || post.author === filters.author;
-        
-        const matchesYear = !filters.year || 
-          new Date(post.publishDate).getFullYear() === filters.year;
-        
-        const matchesTags = filters.tags.length === 0 || 
-          filters.tags.some(tag => post.tags.includes(tag));
-        
-        return matchesQuery && matchesAuthor && matchesYear && matchesTags;
+      const params = new URLSearchParams();
+      params.set("page", String(page));
+      params.set("pageSize", String(POSTS_PER_PAGE));
+      if (filters.query) params.set("q", filters.query);
+
+      const res = await fetch(`/api/blog/list?${params.toString()}`, {
+        cache: "no-store",
       });
 
-      // Pagination
-      const startIndex = (page - 1) * POSTS_PER_PAGE;
-      const endIndex = startIndex + POSTS_PER_PAGE;
-      const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+      if (!res.ok) {
+        throw new Error(`Erreur API: ${res.status}`);
+      }
 
-      const results = {
-        hits: paginatedPosts,
-        nbHits: filteredPosts.length,
-        facets: {
-          author: { "E2I VoIP": filteredPosts.length },
-          publishYear: { "2024": filteredPosts.length },
-          tags: filteredPosts.reduce((acc, post) => {
-            post.tags.forEach(tag => {
-              acc[tag] = (acc[tag] || 0) + 1;
-            });
-            return acc;
-          }, {} as Record<string, number>)
-        }
-      };
+      const data = await res.json();
 
-      // Traiter les résultats
-      const blogPosts = results.hits.map((hit: any) => ({
-        id: hit.objectID || hit.id,
-        title: hit.title,
-        excerpt: hit.excerpt,
-        content: hit.content,
-        publishDate: hit.publishDate,
-        modifiedDate: hit.modifiedDate,
-        author: hit.author,
-        authorId: hit.authorId,
-        tags: hit.tags || [],
-        categories: hit.categories || [],
-        slug: hit.slug,
-        url: hit.url,
-        featuredImage: hit.featuredImage,
-        metaDescription: hit.metaDescription,
-        seoTitle: hit.seoTitle,
-      }));
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const blogPosts: BlogPost[] = (data.posts || []).map(
+        (p: Record<string, unknown>) => ({
+          id: p.id as string,
+          title: p.title as string,
+          excerpt: p.excerpt as string,
+          content: p.content,
+          publishDate: p.publishDate as string,
+          author: p.author as string,
+          tags: (p.tags as string[]) || [],
+          slug: p.slug as string,
+          featuredImage: p.featuredImage, // Utiliser featuredImage directement
+          featuredImageUrl: p.featuredImage, // Garder pour compatibilité
+          metaDescription: p.metaDescription as string,
+          seoTitle: p.seoTitle as string,
+        })
+      );
 
       // Appliquer le tri
-      let sortedPosts = [...blogPosts];
+      const sortedPosts = [...blogPosts];
       if (filters.sortBy === "newest") {
         sortedPosts.sort(
           (a, b) =>
-            new Date(b.publishDate).getTime() -
-            new Date(a.publishDate).getTime()
+            new Date(b.publishDate || "").getTime() -
+            new Date(a.publishDate || "").getTime()
         );
       } else if (filters.sortBy === "oldest") {
         sortedPosts.sort(
           (a, b) =>
-            new Date(a.publishDate).getTime() -
-            new Date(b.publishDate).getTime()
+            new Date(a.publishDate || "").getTime() -
+            new Date(b.publishDate || "").getTime()
         );
       }
-      // Pour "relevance", trier par pertinence (nombre de mots correspondants)
 
       setPosts(sortedPosts);
-      setTotalResults(results.nbHits || 0);
+      setTotalResults(data.total || blogPosts.length);
       setCurrentPage(page);
 
       // Extraire les facettes pour les filtres disponibles
-      if (results.facets) {
-        if (results.facets.author) {
-          setAvailableAuthors(Object.keys(results.facets.author));
-        }
-        if (results.facets.publishYear) {
-          setAvailableYears(
-            Object.keys(results.facets.publishYear).map(Number)
-          );
-        }
-        if (results.facets.tags) {
-          setAvailableTags(Object.keys(results.facets.tags));
-        }
+      if (data.metadata) {
+        setAvailableAuthors(data.metadata.authors || []);
+        setAvailableYears(data.metadata.years || []);
+        setAvailableTags(data.metadata.tags || []);
       }
     } catch (error) {
       console.error("Erreur lors de la recherche:", error);
+      setError(error instanceof Error ? error.message : "Erreur inconnue");
       setPosts([]);
       setTotalResults(0);
     } finally {
@@ -162,8 +130,6 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-
       <main className="pt-16">
         {/* Hero Section - Charte PRD */}
         <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
@@ -222,6 +188,32 @@ export default function Blog() {
               />
             </div>
 
+            {/* Affichage des erreurs */}
+            {error && (
+              <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800">
+                  <strong>Erreur :</strong> {error}
+                </p>
+                <button
+                  onClick={() =>
+                    handleSearch(
+                      {
+                        query: "",
+                        author: "",
+                        year: null,
+                        tags: [],
+                        sortBy: "newest",
+                      },
+                      1
+                    )
+                  }
+                  className="mt-2 text-red-600 hover:text-red-800 underline"
+                >
+                  Réessayer
+                </button>
+              </div>
+            )}
+
             {/* Grille d'articles */}
             <BlogPostsGrid
               posts={posts}
@@ -266,8 +258,6 @@ export default function Blog() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { BlogPost } from "@/lib/hubspot-blog";
+import type { BlogPost } from "@/lib/contentful-blog";
 import { useHubSpot } from "@/components/hubspot-tracking";
 
 interface BlogPostsGridProps {
@@ -88,8 +88,13 @@ export function BlogPostsGrid({
 
 function BlogPostCard({ post }: { post: BlogPost }) {
   const { trackEvent } = useHubSpot();
-  const publishDate = new Date(post.publishDate);
-  const readingTime = Math.ceil(post.content.split(/\s+/).length / 200); // Estimation de lecture
+  const publishDate = new Date(post.publishDate || Date.now());
+  const readingTime = Math.ceil(
+    (typeof post.content === "string"
+      ? post.content
+      : JSON.stringify(post.content || {})
+    ).split(/\s+/).length / 200
+  );
 
   const handleReadMore = () => {
     trackEvent("blog_article_clicked", {
@@ -103,10 +108,10 @@ function BlogPostCard({ post }: { post: BlogPost }) {
   return (
     <Card className="border-gray-200 hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
       {/* Image si disponible */}
-      {post.featuredImage && (
+      {post.featuredImageUrl && (
         <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
           <Image
-            src={post.featuredImage}
+            src={post.featuredImageUrl}
             alt={post.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

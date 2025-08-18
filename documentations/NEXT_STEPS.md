@@ -17,16 +17,19 @@
 ## 🔄 **MODIFICATIONS RÉCENTES - Pages d'accueil et Contact**
 
 ### **Section Services** ✅
+
 - ✅ **Suppression des indicateurs de disponibilité** : Retrait des "99.9%" sur toutes les cartes de services
 - ✅ **Tests mis à jour** : Suppression du test vérifiant la présence de la disponibilité
 
 ### **Section Statistiques Clients** ✅
+
 - ✅ **Réorganisation en 2 colonnes** : Suppression de la troisième carte "Taux de satisfaction 99.9%"
 - ✅ **Layout optimisé** : Grille 2x2 au lieu de 3x2 pour un design plus équilibré
 
 ### **Section Contact** ✅
+
 - ✅ **Suppression du formulaire HubSpot** : La section de gauche avec le formulaire a été retirée
-- ✅ **Réorganisation en 2 colonnes** : 
+- ✅ **Réorganisation en 2 colonnes** :
   - **Colonne gauche** : Téléphone + Email
   - **Colonne droite** : Adresse + Horaires
 - ✅ **Email sécurisé** : Changement de "contact@e2i-voip.com" vers "commerciaux@e2i-voip.com" avec protection anti-spam
@@ -34,21 +37,23 @@
 - ✅ **CTA urgent centré** : Bouton d'appel d'urgence repositionné sous les deux colonnes
 
 ### **Page de Contact** ✅
+
 - ✅ **CTA urgent centré** : La carte rouge est maintenant centrée sur toute la largeur de la page
 - ✅ **Numéros par département** : Ajout d'une section complète avec les numéros de téléphone pour chaque région :
   - **Guadeloupe** : 0590 96 35 00
-  - **Martinique** : 0596 96 35 00  
+  - **Martinique** : 0596 96 35 00
   - **Guyane** : 0594 96 35 00
   - **La Réunion** : 0262 96 35 00
   - **France métropolitaine** : 01 96 35 00
 - ✅ **Design responsive** : Grille 2x3 adaptative pour un affichage optimal sur tous les écrans
 - ✅ **Icônes visuelles** : Chaque département a son icône WhatsApp distinctive
-- ✅ **Section coordonnées mise à jour** : 
+- ✅ **Section coordonnées mise à jour** :
   - **WhatsApp** au lieu du téléphone (icône MessageCircle verte)
   - **Email sécurisé** : "commerciaux@e2i-voip.com" avec composant SecureEmail
   - **Adresse et horaires** conservés
 
 ### **Footer - Toutes les pages** ✅
+
 - ✅ **Partenaires mis à jour** : Remplacement de HubSpot par Grandstream
 - ✅ **Liens vers sites officiels** : Chaque partenaire a un lien cliquable vers son site :
   - **3CX** : https://www.3cx.fr (avec badge Bronze Partner)
@@ -63,6 +68,7 @@
 - ✅ **Design optimisé** : Layout en colonnes avec séparateur visuel
 
 ### **Sécurité des Emails** ✅
+
 - ✅ **Composant SecureEmail** : Protection contre le spam avec encodage HTML
 - ✅ **Décodage au survol** : L'email est visible uniquement quand l'utilisateur survole
 - ✅ **Copie au clic** : Fonctionnalité de copie dans le presse-papiers
@@ -124,6 +130,7 @@ CONTENTFUL_MANAGEMENT_TOKEN=
 CONTENTFUL_CONTENT_TYPE_ID=blogPost
 CONTENTFUL_LOCALE=en-US
 ```
+
 - ✅ **Base de données** : Configuration SQLite pour développement
 - ✅ **JWT et sécurité** : Clés de sécurité configurées
 - ✅ **API Token** : Configuration pour l'authentification
