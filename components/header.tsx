@@ -220,7 +220,7 @@ export function Header() {
           <div className="hidden lg:flex items-center flex-shrink-0">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/contact">
-                <Button className="bg-red-primary hover:bg-red-600 text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
+                <Button className="!bg-red-primary hover:bg-red-600 !text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
                   <Phone className="w-4 h-4 mr-2" />
                   Contact
                 </Button>
@@ -285,7 +285,7 @@ export function Header() {
                   className="mt-6"
                 >
                   <Link href="/contact">
-                    <Button className="bg-red-primary hover:bg-red-600 text-white w-full">
+                    <Button className="!bg-red-primary hover:bg-red-600 !text-white w-full">
                       <Phone className="w-4 h-4 mr-2" />
                       Contact
                     </Button>
