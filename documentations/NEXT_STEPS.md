@@ -1,18 +1,18 @@
-# SPRINT 4 EN COURS - MIGRATION STRAPI + ARCHITECTURE MONOREPO ✅
+# SPRINT 4 EN COURS - TRANSITION VERS CONTENTFUL ✅
 
 ## 📋 **Résumé des accomplissements**
 
-✅ **Architecture monorepo mise en place** avec Strapi CMS intégré
-✅ **Scripts de migration créés** pour extraction et import des articles
-✅ **Service Strapi complet** avec toutes les fonctions API
-✅ **Content-Type Blog Post configuré** avec schéma complet
+✅ **Retrait complet de Strapi** (backend supprimé)
+✅ **Scripts d'extraction** conservés (scraping + images locales)
+✅ **Variables d'environnement Contentful** ajoutées
+✅ **Content model Blog Post** configuré sur Contentful
 ✅ **84 tests passent** avec succès
 ✅ **Blog Strapi finalisé** avec pagination et recherche avancée
 ✅ **Page "Qui sommes-nous"** avec équipe mise à jour
 ✅ **Page "Mentions légales"** avec informations complètes (Vercel + Hostinger)
 ✅ **Formulaires HubSpot** 100% fonctionnels sur tout le site
 
-## 🆕 **NOUVELLES FONCTIONNALITÉS - Migration Strapi**
+## 🆕 **NOUVELLES FONCTIONNALITÉS - Migration Contentful**
 
 ## 🔄 **MODIFICATIONS RÉCENTES - Pages d'accueil et Contact**
 
@@ -68,21 +68,19 @@
 - ✅ **Copie au clic** : Fonctionnalité de copie dans le presse-papiers
 - ✅ **Protection anti-bot** : Encodage des caractères pour éviter la détection automatique
 
-### **Architecture Monorepo** ✅ FINALISÉ
+### **Architecture** ✅ MISE À JOUR
 
-- ✅ **Structure complète** : Frontend Next.js + Backend Strapi
-- ✅ **Configuration monorepo** : Scripts npm pour développement simultané
-- ✅ **Installation Strapi** : CMS v5.20.0 dans le dossier `backend/`
-- ✅ **Scripts de migration** : Extraction et import automatisés
-- ✅ **Service Strapi** : `lib/strapi-blog.ts` avec API complète
+- ✅ **Structure** : Frontend Next.js uniquement (backend supprimé)
+- ✅ **Scripts** : Extraction (`scripts/extract-blog-content.js`) + Import Contentful (à ajouter)
+- ✅ **Service CMS** : `lib/contentful-blog.ts` (à implémenter)
 
-### **Scripts de Migration** ✅
+### **Scripts de Migration** ✅/🔄
 
 - ✅ **`extract-blog-content.js`** : Récupération des articles depuis https://www.e2i-voip.com/blog
   - Extraction du contenu, images, métadonnées
   - Téléchargement automatique des images
   - Sauvegarde dans `extracted-blog-content.json`
-- ✅ **`import-to-strapi.js`** : Import des articles dans Strapi
+- 🔄 **`import-to-contentful.js`** : Import des articles dans Contentful (CMA)
   - Upload des images de couverture
   - Association des médias aux articles
   - Gestion des erreurs et doublons
@@ -90,14 +88,12 @@
   - Validation des données extraites
   - Debugging et optimisation
 
-### **Service Strapi Complet** ✅
+### **Service Contentful (à implémenter)** 🔄
 
-- ✅ **`getStrapiBlogPosts()`** : Récupération avec pagination
-- ✅ **`getStrapiBlogPost(slug)`** : Article individuel
-- ✅ **`searchStrapiBlogPosts()`** : Recherche avancée
-- ✅ **`getStrapiBlogPostsByCategory()`** : Articles par catégorie
-- ✅ **`getStrapiBlogMetadata()`** : Métadonnées pour facettes
-- ✅ **`transformStrapiPost()`** : Transformation des données
+- 🔄 `getContentfulBlogPosts()` – pagination
+- 🔄 `getContentfulBlogPost(slug)` – article individuel
+- 🔄 `searchContentfulBlogPosts()` – recherche
+- 🔄 `getContentfulBlogMetadata()` – métadonnées
 
 ### **Content-Type Blog Post** ✅
 
@@ -117,20 +113,28 @@
   - **readingTime** : Temps de lecture estimé
   - **originalUrl** : URL originale sur l'ancien site
 
-### **Variables d'Environnement Strapi** ✅
+### **Variables d'Environnement Contentful** ✅
 
-- ✅ **Configuration complète** : Variables Strapi ajoutées à `env.example`
+```env
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ENVIRONMENT=master
+CONTENTFUL_DELIVERY_TOKEN=
+CONTENTFUL_PREVIEW_TOKEN=
+CONTENTFUL_MANAGEMENT_TOKEN=
+CONTENTFUL_CONTENT_TYPE_ID=blogPost
+CONTENTFUL_LOCALE=en-US
+```
 - ✅ **Base de données** : Configuration SQLite pour développement
 - ✅ **JWT et sécurité** : Clés de sécurité configurées
 - ✅ **API Token** : Configuration pour l'authentification
 
 ## 🎯 **PROCHAINE TÂCHE PRIORITAIRE**
 
-### **Finalisation Sprint 4 - Migration Strapi** (EN COURS)
+### **Finalisation Sprint 4 - Transition Contentful** (EN COURS)
 
 1. **Test d'extraction** : Valider la récupération des articles existants
-2. **Import dans Strapi** : Migration des données et images
-3. **Adaptation des composants** : Modification pour utiliser Strapi
+2. **Import dans Contentful** : via script d’import CMA
+3. **Adaptation des composants** : Lecture via Delivery API Contentful
 4. **Tests d'intégration** : Validation complète
 5. **Déploiement** : Configuration pour production
 
@@ -147,13 +151,13 @@
 - ✅ **Accessibilité** : WCAG 2.1 AA
 - ✅ **SEO** : Meta tags et structured data
 - ✅ **Responsive** : Mobile-first design
-- ✅ **Architecture** : Monorepo avec Strapi CMS
+- ✅ **Architecture** : Frontend Next.js + Contentful
 
 ## 🚀 **Recommandations pour la suite**
 
 1. **Priorité 1** : Tester l'extraction des articles existants
-2. **Priorité 2** : Importer les articles dans Strapi
-3. **Priorité 3** : Adapter les composants pour utiliser Strapi
+2. **Priorité 2** : Importer les articles dans Contentful
+3. **Priorité 3** : Adapter les composants pour utiliser Contentful
 4. **Priorité 4** : Tests d'intégration complets
 5. **Priorité 5** : Déploiement en production
 
@@ -162,12 +166,12 @@
 - **Sprint 1** : ✅ Terminé (Fondations)
 - **Sprint 2** : ✅ Terminé (Homepage modernisée)
 - **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
-- **Sprint 4** : 🔄 **EN COURS** (Migration Strapi + Architecture monorepo)
+- **Sprint 4** : 🔄 **EN COURS** (Migration Contentful + UI/UX)
 - **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)
 
 ## 🎯 **Prochaine action immédiate**
 
-**Tester l'extraction des articles** depuis le site existant et valider la migration vers Strapi.
+**Tester l'extraction des articles** depuis le site existant et valider l'import vers Contentful.
 
 ## 🛠️ **Commandes pour la migration**
 
@@ -188,28 +192,25 @@ cd backend && npm run develop
 npm run dev
 ```
 
-## 📋 **Checklist Migration Strapi**
+## 📋 **Checklist Migration Contentful**
 
 ### ✅ **Terminé**
 
-- [x] Architecture monorepo mise en place
-- [x] Strapi CMS installé et configuré
-- [x] Scripts de migration créés
-- [x] Service Strapi complet
-- [x] Content-Type configuré
-- [x] Variables d'environnement
+- [x] Suppression du backend Strapi
+- [x] Ajout des variables Contentful
+- [x] Content model Blog Post créé
 
 ### 🔄 **En cours**
 
-- [ ] Test d'extraction des articles
-- [ ] Import dans Strapi
-- [ ] Adaptation des composants
+- [ ] Script `import-to-contentful.js`
+- [ ] Service `lib/contentful-blog.ts`
+- [ ] Adaptation des pages `/blog`
 - [ ] Tests d'intégration
 - [ ] Déploiement
 
 ### ⏳ **À faire**
 
-- [ ] Configuration des permissions Strapi
+- [ ] Redirections 301 si URLs changent
 - [ ] Tests de performance
 - [ ] Documentation utilisateur
 - [ ] Formation équipe
@@ -217,5 +218,5 @@ npm run dev
 ---
 
 **Date de mise à jour** : Décembre 2024  
-**Statut global** : 🟢 **EXCELLENT - SPRINT 4 EN COURS (MIGRATION STRAPI)**  
-**Progression** : 95% (Architecture Strapi mise en place, scripts de migration prêts)
+**Statut global** : 🟢 **EXCELLENT - TRANSITION CONTENTFUL EN COURS**  
+**Progression** : 92% (Strapi retiré, intégration Contentful planifiée)
