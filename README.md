@@ -12,6 +12,20 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Formulaires** : Tally (devis spécialisés)
 - **Automatisation** : n8n (workflows)
 
+## ✨ Dernières Améliorations
+
+### 🎯 Header UX - Délai des Sous-menus ✅
+
+**Problème résolu** : Les sous-menus se fermaient immédiatement, empêchant la navigation.
+
+**Solution implémentée** :
+- **Délai de 300ms** pour une navigation confortable
+- **Zone de sécurité** autour des sous-menus
+- **Navigation fluide** entre menu principal et sous-menus
+- **Gestion intelligente des timeouts** avec nettoyage automatique
+
+**Tests** : 18 tests passants (délai, intégration, hydratation)
+
 ## 📋 Prérequis
 
 - Node.js 18+
@@ -70,6 +84,10 @@ npm run test:ui
 # Tests de couverture
 npm run test:coverage
 ```
+
+**Statut des tests** : ✅ 148 tests passants
+- **Header UX** : 18 tests (délai, intégration, hydratation)
+- **Composants** : 130 tests (fonctionnalités, responsive, accessibilité)
 
 ### Build de production
 
