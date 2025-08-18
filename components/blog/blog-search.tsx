@@ -48,9 +48,10 @@ export function BlogSearch({
   });
   const [showFilters, setShowFilters] = useState(false);
 
-  useEffect(() => {
-    onSearch(filters);
-  }, [filters, onSearch]);
+  // Supprimé pour éviter la boucle infinie
+  // useEffect(() => {
+  //   onSearch(filters);
+  // }, [filters, onSearch]);
 
   const handleQueryChange = (query: string) =>
     setFilters((prev) => ({ ...prev, query }));
@@ -88,6 +89,11 @@ export function BlogSearch({
           placeholder="Rechercher dans les articles..."
           value={filters.query}
           onChange={(e) => handleQueryChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onSearch(filters);
+            }
+          }}
           className="pl-10 pr-4 py-3 text-lg border-gray-200 focus:border-red-primary focus:ring-red-primary"
           disabled={isLoading}
         />

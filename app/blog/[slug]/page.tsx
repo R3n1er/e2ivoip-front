@@ -6,7 +6,10 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getHubSpotBlogPosts, getHubSpotBlogPost } from "@/lib/hubspot-blog";
+import {
+  getContentfulBlogPosts,
+  getContentfulBlogPost,
+} from "@/lib/contentful-blog";
 
 import { useHubSpot } from "@/components/hubspot-tracking";
 import { getMockBlogPosts } from "@/lib/mock-blog-data";
@@ -22,8 +25,8 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getHubSpotBlogPost(slug);
-  
+  const post = await getContentfulBlogPost(slug);
+
   if (!post) {
     return {
       title: "Article non trouvé - E2I VoIP",
@@ -39,42 +42,50 @@ export async function generateMetadata({
       description: post.metaDescription || post.excerpt,
       type: "article",
       publishedTime: post.publishDate,
-      modifiedTime: post.modifiedDate,
-      authors: [post.author],
-      images: post.featuredImage ? [post.featuredImage] : [],
+      modifiedTime: post.publishDate, // Utiliser publishDate au lieu de modifiedDate
+      authors: post.author ? [post.author] : [],
+      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seoTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: post.featuredImage ? [post.featuredImage] : [],
+      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
     },
   };
 }
 
 // Génération des routes statiques
 export async function generateStaticParams() {
-  const posts = await getHubSpotBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const { posts } = await getContentfulBlogPosts(1, 100);
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    // Si l'API n'est pas disponible, retourner un tableau vide
+    console.warn("Impossible de générer les paramètres statiques:", error);
+    return [];
+  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getHubSpotBlogPost(slug);
+  const post = await getContentfulBlogPost(slug);
 
   if (!post) {
     notFound();
   }
 
-
   const mockPosts = getMockBlogPosts();
   const relatedPosts = mockPosts
-    .filter(p => p.slug !== slug && p.tags.some(tag => post.tags.includes(tag)))
+    .filter(
+      (p) =>
+        p.slug !== slug && p.tags.some((tag) => (post.tags || []).includes(tag))
+    )
     .slice(0, 3);
 
-  const publishDate = new Date(post.publishDate);
+  const publishDate = new Date(post.publishDate || "");
   const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
 
   return (
@@ -103,10 +114,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="pt-8">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Image d'en-tête */}
-          {post.featuredImage && (
+          {post.featuredImageUrl && (
             <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
               <Image
-                src={post.featuredImage}
+                src={post.featuredImageUrl}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -194,7 +205,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </Button>
                 </Link>
                 <Link href="/nos-services">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-red-primary">
+                  <Button
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-red-primary"
+                  >
                     Découvrir nos services
                   </Button>
                 </Link>
@@ -215,8 +229,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedPosts.map((relatedPost: any) => (
-                <Card key={relatedPost.objectID} className="hover:shadow-lg transition-shadow">
+              {relatedPosts.map((relatedPost) => (
+                <Card
+                  key={relatedPost.slug}
+                  className="hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-2">
                       <Link
@@ -232,7 +249,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <div className="flex items-center gap-2 text-xs text-gray-500">
                       <Calendar className="w-3 h-3" />
                       <span>
-                        {new Date(relatedPost.publishDate).toLocaleDateString("fr-FR", {
+                        {new Date(
+                          relatedPost.publishDate || ""
+                        ).toLocaleDateString("fr-FR", {
                           day: "numeric",
                           month: "short",
                           year: "numeric",
@@ -248,4 +267,4 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </main>
     </div>
   );
-} 
+}

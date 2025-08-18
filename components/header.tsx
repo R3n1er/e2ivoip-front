@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,6 +74,14 @@ export function Header() {
     { name: "Devis en ligne", href: "/devis-en-ligne" },
   ];
 
+  const handleMouseEnter = (itemName: string) => {
+    setActiveSubmenu(itemName);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveSubmenu(null);
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -134,7 +143,12 @@ export function Header() {
           {/* Desktop Navigation - Optimisé pour MacBook Pro */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
-              <div key={item.name} className="relative group">
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(item.name)}
+                onMouseLeave={handleMouseLeave}
+              >
                 {item.href ? (
                   <Link
                     href={item.href}
@@ -147,9 +161,9 @@ export function Header() {
                     {item.name}
                     {item.submenu && (
                       <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform ${
+                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
                           isScrolled ? "text-gray-600" : "text-gray-600"
-                        } group-hover:rotate-180`}
+                        } ${activeSubmenu === item.name ? "rotate-180" : ""}`}
                       />
                     )}
                   </Link>
@@ -164,32 +178,39 @@ export function Header() {
                     {item.name}
                     {item.submenu && (
                       <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform ${
+                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
                           isScrolled ? "text-gray-600" : "text-gray-600"
-                        } group-hover:rotate-180`}
+                        } ${activeSubmenu === item.name ? "rotate-180" : ""}`}
                       />
                     )}
                   </span>
                 )}
 
+                {/* Sous-menu avec AnimatePresence pour une animation fluide */}
                 {item.submenu && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
-                  >
-                    <div className="py-2">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
+                  <AnimatePresence>
+                    {activeSubmenu === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-50"
+                      >
+                        <div className="py-2">
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-150"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 )}
               </div>
             ))}

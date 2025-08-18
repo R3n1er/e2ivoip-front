@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-label="La réponse de 3CX face à son piratage supply chain">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F8F9FB"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#g)"/>
+  <rect x="24" y="24" width="752" height="372" rx="20" fill="#FFF" stroke="#818096" stroke-opacity="0.2"/>
+  <path d="M 300 120 L 460 120 L 460 220 C 460 320 300 320 300 220 Z" fill="#E53E3E"/>
+<g fill="#2D3848">
+    <circle cx="260" cy="220" r="28"/>
+    <circle cx="284" cy="226" r="20"/>
+    <circle cx="236" cy="226" r="20"/>
+    <rect x="220" y="226" width="80" height="26" rx="13"/>
+  </g>
+  <rect x="40" y="320" width="720" height="56" rx="12" fill="#2D3848"/>
+  <text x="400" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" fill="#FFFFFF">La réponse de 3CX face à son piratage supply chain</text>
+</svg>

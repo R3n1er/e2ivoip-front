@@ -88,16 +88,19 @@
 ### 7.1 Page d'accueil optimisée
 
 #### **Section Services**
+
 - Suppression des indicateurs de disponibilité "99.9%" sur toutes les cartes
 - Design épuré focalisé sur les fonctionnalités et avantages
 - Tests mis à jour pour refléter les changements
 
 #### **Section Statistiques Clients**
+
 - Réorganisation en 2 colonnes au lieu de 3
 - Suppression de la carte "Taux de satisfaction 99.9%"
 - Layout équilibré et plus lisible
 
 #### **Section Contact**
+
 - Suppression du formulaire HubSpot de la page d'accueil
 - Réorganisation des informations de contact en 2 colonnes
 - Email changé vers "commerciaux@e2i-voip.com"
@@ -108,11 +111,13 @@
 ### 7.2 Page de Contact modernisée
 
 #### **Structure optimisée**
+
 - CTA urgent centré sur toute la largeur
 - Section numéros par département avec 5 départements uniquement
 - Design responsive avec grille 2x3 adaptative
 
 #### **Numéros par département**
+
 - Guadeloupe : 0590 96 35 00
 - Martinique : 0596 96 35 00
 - Guyane : 0594 96 35 00
@@ -120,6 +125,7 @@
 - France métropolitaine : 01 96 35 00
 
 #### **Section coordonnées mise à jour**
+
 - WhatsApp au lieu du téléphone (icône MessageCircle verte)
 - Email sécurisé avec composant SecureEmail
 - Adresse et horaires conservés
@@ -128,6 +134,7 @@
 ### 7.3 Footer - Toutes les pages
 
 #### **Partenaires mis à jour**
+
 - HubSpot remplacé par Grandstream
 - Liens vers sites officiels pour tous les partenaires
 - 3CX : https://www.3cx.fr (avec badge Bronze Partner)
@@ -135,6 +142,7 @@
 - Grandstream : https://www.grandstream.com
 
 #### **Section numéros par département ajoutée**
+
 - Tous les numéros de téléphone visibles dans le footer
 - Design en colonnes avec séparateur visuel
 - Layout optimisé pour la lisibilité
@@ -142,12 +150,14 @@
 ### 7.4 Sécurité et composants
 
 #### **Composant SecureEmail**
+
 - Protection contre le spam avec encodage
 - Affichage masqué par défaut (points)
 - Révélation au survol ou redirection au clic
 - Tests complets et validation
 
 #### **Tests et validation**
+
 - 116 tests passent sur l'ensemble du projet
 - Tests spécifiques pour chaque composant modifié
 - Validation des fonctionnalités et de l'UX
@@ -269,11 +279,13 @@ e2ivoip-front/
 - ✅ **Page Contact dédiée** : `/contact` avec formulaire HubSpot global
 - ✅ **Navigation optimisée** : Header avec bouton "Contact" → page dédiée
 - ✅ **Blog moderne** : Design et synchronisation articles Strapi ✅ FINALISÉ
+
   - Pagination complète avec `BlogPagination`
   - Pages individuelles d'articles : `/blog/[slug]`
   - Pages de catégories : `/blog/categorie/[slug]`
 
   - SEO optimisé pour chaque article
+
 - ✅ **Page "Qui sommes-nous"** : `/qui-sommes-nous` avec équipe mise à jour
   - Design moderne avec image stylisée
   - Équipe : Alban (Directeur & Customer Success Manager), Valerie (Assistante Commerciale), Fabien (Technicien VoIP)
