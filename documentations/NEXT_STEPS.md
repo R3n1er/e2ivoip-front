@@ -242,42 +242,17 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [ ] **Audit légal** : Validation par un expert juridique
 
 ## Phase 6 - Amélioration UX Header ✅
-
-### 6.1 Problème Résolu
-
-#### Délai des Sous-menus
-
-- [x] **Problème identifié** : Sous-menus qui se fermaient immédiatement
-- [x] **Solution implémentée** : Délai de 300ms avec zone de sécurité
-- [x] **Navigation fluide** : Possibilité de passer du menu principal au sous-menu
-- [x] **Tests complets** : 18 tests passants (délai, intégration, hydratation)
-
-#### Améliorations Techniques
-
-- [x] **Gestion des timeouts** : Nettoyage automatique avec `useRef`
-- [x] **Zone de sécurité** : Détection du survol des sous-menus
-- [x] **Annulation intelligente** : Délai annulé lors du retour sur le menu
-- [x] **Animation améliorée** : Durée passée de 0.15s à 0.2s
-
-### 6.2 Composants Testés
-
-#### Tests de Délai (`tests/header-submenu-delay.test.tsx`)
-- ✅ Rendu du composant
-- ✅ Présence des sous-menus
-- ✅ Navigation mobile
-- ✅ Gestion des états de scroll
-
-#### Tests d'Intégration (`tests/header-integration.test.tsx`)
-- ✅ Rendu sans erreur
-- ✅ Structure complète de navigation
-- ✅ Sous-menus correctement structurés
-- ✅ Responsivité et branding
-
-#### Tests d'Hydratation (`tests/header-hydration.test.tsx`)
-- ✅ Pas d'erreurs d'hydratation
-- ✅ Classes CSS correctement appliquées
-- ✅ Structure de navigation valide
-- ✅ Gestion des états et liens
+- **Problème résolu** : Délai trop court des sous-menus empêchant la navigation
+- **Solution implémentée** : Délai intelligent de 300ms avec zone de sécurité
+- **Améliorations techniques** :
+  - Gestion d'état avancée avec `isHoveringSubmenu`
+  - Timeout intelligent avec `submenuTimeoutRef`
+  - Zone de sécurité pour éviter la fermeture accidentelle
+  - Transitions fluides avec Framer Motion
+- **Tests** : 18 tests header UX créés et validés
+- **Menu "Qui sommes-nous"** : Suppression des liens "Notre Histoire" et "Notre équipe" du menu de navigation
+- **Page "Qui sommes-nous"** : Section équipe conservée et testée (4 tests spécifiques)
+- **Total tests** : 158 tests qui passent ✅
 
 ## Phase 7 - Implémentation des Dégradés 🔄
 
