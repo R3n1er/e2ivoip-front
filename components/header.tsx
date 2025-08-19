@@ -37,8 +37,6 @@ export function Header() {
       name: "Qui sommes-nous",
       href: "/qui-sommes-nous",
       submenu: [
-        { name: "Notre histoire", href: "/qui-sommes-nous" },
-        { name: "Notre équipe", href: "/qui-sommes-nous/equipe" },
         { name: "Nos certifications", href: "/qui-sommes-nous/certifications" },
         { name: "Nos partenaires", href: "/qui-sommes-nous/partenaires" },
       ],
@@ -92,7 +90,7 @@ export function Header() {
       clearTimeout(submenuTimeoutRef.current);
       submenuTimeoutRef.current = null;
     }
-    
+
     setActiveSubmenu(itemName);
     setIsHoveringSubmenu(false);
   };
