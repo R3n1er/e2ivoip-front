@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { HubSpotTracking } from "@/components/hubspot-tracking";
-import { Header } from "@/components/header";
+import { HeaderSimple } from "@/components/header-simple";
 import { Footer } from "@/components/footer";
 import { TawkTo } from "@/components/tawk-to";
 
@@ -48,14 +48,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="fr" className="scroll-smooth" data-theme="e2ivoip" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <HubSpotTracking />
         <TawkTo />
-        <Header />
+        <HeaderSimple />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
       </body>

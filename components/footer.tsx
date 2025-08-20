@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react"
-import { ThreeCXBadge } from "@/components/ui/3cx-badge"
+import Link from "next/link";
+import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { ThreeCXBadge } from "@/components/ui/3cx-badge";
 
 export function Footer() {
   return (
@@ -17,14 +17,15 @@ export function Footer() {
               </div>
             </div>
             <p className="text-gray-400 mb-6 text-sm lg:text-base">
-              Solutions de téléphonie IP et communications d'entreprise depuis plus de 15 ans.
+              Solutions de téléphonie IP et communications d'entreprise depuis
+              plus de 15 ans.
             </p>
-            
+
             {/* 3CX Bronze Partner Badge */}
             <div className="mb-6">
               <ThreeCXBadge />
             </div>
-            
+
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-red-500 flex-shrink-0" />
@@ -35,7 +36,7 @@ export function Footer() {
                 <span>Paris, France</span>
               </div>
             </div>
-            
+
             {/* Section Nous contacter avec dégradé */}
             <div className="mt-6 pt-4 border-t border-gray-700">
               <h4 className="text-sm font-semibold text-white mb-4 flex items-center">
@@ -45,23 +46,41 @@ export function Footer() {
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">Guyane :</span>
-                  <span className="text-white font-semibold">+594 594 963 500</span>
+                  <span className="text-white font-semibold">
+                    +594 594 963 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-300 font-medium">Guadeloupe :</span>
-                  <span className="text-white font-semibold">+590 590 173 500</span>
+                  <span className="text-gray-300 font-medium">
+                    Guadeloupe :
+                  </span>
+                  <span className="text-white font-semibold">
+                    +590 590 173 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-300 font-medium">Martinique :</span>
-                  <span className="text-white font-semibold">+596 596 313 500</span>
+                  <span className="text-gray-300 font-medium">
+                    Martinique :
+                  </span>
+                  <span className="text-white font-semibold">
+                    +596 596 313 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-300 font-medium">La Réunion :</span>
-                  <span className="text-white font-semibold">+262 263 085 500</span>
+                  <span className="text-gray-300 font-medium">France :</span>
+                  <span className="text-white font-semibold">
+                    +33 1 XX XX XX XX
+                  </span>
                 </div>
               </div>
-              
-
+              <div className="mt-3 pt-2 border-t border-gray-600">
+                <div className="flex items-center space-x-2">
+                  <Mail className="w-3 h-3 text-red-500 flex-shrink-0" />
+                  <span className="text-gray-300 text-xs">
+                    assistance@e2i-voip.com
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -70,32 +89,50 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-white">Services</h3>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <Link href="/telephonie-entreprise/trunk-sip-compteur" className="hover:text-white transition-colors">
+                <Link
+                  href="/telephonie-entreprise/trunk-sip-compteur"
+                  className="hover:text-white transition-colors"
+                >
                   Trunk SIP au compteur
                 </Link>
               </li>
               <li>
-                <Link href="/telephonie-entreprise/trunk-sip-illimite" className="hover:text-white transition-colors">
+                <Link
+                  href="/telephonie-entreprise/trunk-sip-illimite"
+                  className="hover:text-white transition-colors"
+                >
                   Trunk SIP illimité
                 </Link>
               </li>
               <li>
-                <Link href="/telephonie-entreprise/3cx-pro-dediee" className="hover:text-white transition-colors">
+                <Link
+                  href="/telephonie-entreprise/3cx-pro-dediee"
+                  className="hover:text-white transition-colors"
+                >
                   3CX PRO dédiée
                 </Link>
               </li>
               <li>
-                <Link href="/telephonie-entreprise/3cx-smb-mutualisee" className="hover:text-white transition-colors">
+                <Link
+                  href="/telephonie-entreprise/3cx-smb-mutualisee"
+                  className="hover:text-white transition-colors"
+                >
                   3CX SMB mutualisée
                 </Link>
               </li>
               <li>
-                <Link href="/telephonie-entreprise/pbx-yeastar" className="hover:text-white transition-colors">
+                <Link
+                  href="/telephonie-entreprise/pbx-yeastar"
+                  className="hover:text-white transition-colors"
+                >
                   PBX Yeastar
                 </Link>
               </li>
               <li>
-                <Link href="/nos-services/studio-attente" className="hover:text-white transition-colors">
+                <Link
+                  href="/nos-services/studio-attente"
+                  className="hover:text-white transition-colors"
+                >
                   Studio attente téléphonique
                 </Link>
               </li>
@@ -107,32 +144,50 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-white">Support</h3>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <Link href="/support/documentation" className="hover:text-white transition-colors">
+                <Link
+                  href="/support/documentation"
+                  className="hover:text-white transition-colors"
+                >
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/support/faq" className="hover:text-white transition-colors">
+                <Link
+                  href="/support/faq"
+                  className="hover:text-white transition-colors"
+                >
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/support/technique" className="hover:text-white transition-colors">
+                <Link
+                  href="/support/technique"
+                  className="hover:text-white transition-colors"
+                >
                   Support technique
                 </Link>
               </li>
               <li>
-                <Link href="/support/formation" className="hover:text-white transition-colors">
+                <Link
+                  href="/support/formation"
+                  className="hover:text-white transition-colors"
+                >
                   Formation
                 </Link>
               </li>
               <li>
-                <Link href="/support/garanties" className="hover:text-white transition-colors">
+                <Link
+                  href="/support/garanties"
+                  className="hover:text-white transition-colors"
+                >
                   Garanties
                 </Link>
               </li>
               <li>
-                <Link href="/devis-en-ligne" className="hover:text-white transition-colors">
+                <Link
+                  href="/devis-en-ligne"
+                  className="hover:text-white transition-colors"
+                >
                   Devis en ligne
                 </Link>
               </li>
@@ -141,35 +196,55 @@ export function Footer() {
 
           {/* Legal & RGPD */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Informations</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">
+              Informations
+            </h3>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <Link href="/qui-sommes-nous" className="hover:text-white transition-colors">
+                <Link
+                  href="/qui-sommes-nous"
+                  className="hover:text-white transition-colors"
+                >
                   À propos
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">
+                <Link
+                  href="/blog"
+                  className="hover:text-white transition-colors"
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/mentions-legales" className="hover:text-white transition-colors">
+                <Link
+                  href="/mentions-legales"
+                  className="hover:text-white transition-colors"
+                >
                   Mentions légales
                 </Link>
               </li>
               <li>
-                <Link href="/politique-confidentialite" className="hover:text-white transition-colors">
+                <Link
+                  href="/politique-confidentialite"
+                  className="hover:text-white transition-colors"
+                >
                   Politique de confidentialité
                 </Link>
               </li>
               <li>
-                <Link href="/cgv" className="hover:text-white transition-colors">
+                <Link
+                  href="/cgv"
+                  className="hover:text-white transition-colors"
+                >
                   Conditions générales de vente
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -183,15 +258,17 @@ export function Footer() {
             <div className="text-sm text-gray-400">
               <p>&copy; 2024 E2I VoIP. Tous droits réservés.</p>
             </div>
-            
+
             {/* Partners logos */}
             <div className="flex items-center space-x-6 text-gray-400 text-xs">
-              <span className="text-gray-300 font-medium">Partenaires certifiés :</span>
+              <span className="text-gray-300 font-medium">
+                Partenaires certifiés :
+              </span>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
-                  <a 
-                    href="https://www.3cx.fr" 
-                    target="_blank" 
+                  <a
+                    href="https://www.3cx.fr"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 font-semibold hover:text-blue-400 transition-colors"
                   >
@@ -201,18 +278,18 @@ export function Footer() {
                   <span className="text-gray-400">Bronze Partner</span>
                 </div>
                 <span className="text-gray-500">|</span>
-                <a 
-                  href="https://www.yeastar.com" 
-                  target="_blank" 
+                <a
+                  href="https://www.yeastar.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
                   Yeastar
                 </a>
                 <span className="text-gray-500">|</span>
-                <a 
-                  href="https://www.grandstream.com" 
-                  target="_blank" 
+                <a
+                  href="https://www.grandstream.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
@@ -224,5 +301,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

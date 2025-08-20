@@ -109,6 +109,20 @@
     @apply gradient-primary-blue-gray;
   }
 
+  /* Animation pour le carousel de clients */
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-left {
+    animation: scrollLeft 60s linear infinite;
+  }
+
   .contact-gradient {
     @apply gradient-primary-red-blue;
   }
