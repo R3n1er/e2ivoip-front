@@ -1,9 +1,9 @@
-import { HomepageHeroSection } from "@/components/homepage-hero-section"
-import { ServicesSection } from "@/components/services-section"
-import { AboutSection } from "@/components/about-section"
+import { HomepageHeroSectionSimple } from "@/components/homepage-hero-section-simple"
+import { ServicesSectionSimple } from "@/components/services-section-simple"
+import { AboutSectionSimple } from "@/components/about-section-simple"
 import { ClientsCarousel } from "@/components/clients-carousel"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { ContactSection } from "@/components/contact-section"
+import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple"
+import { ContactSectionSimple } from "@/components/contact-section-simple"
 
 export default function HomePage() {
   return (
@@ -16,12 +16,12 @@ export default function HomePage() {
       </div>
 
       <div className="relative z-10">
-        <HomepageHeroSection />
-        <AboutSection />
-        <ServicesSection />
+        <HomepageHeroSectionSimple />
+        <AboutSectionSimple />
+        <ServicesSectionSimple />
         <ClientsCarousel />
-        <TestimonialsSection />
-        <ContactSection />
+        <TestimonialsSectionSimple />
+        <ContactSectionSimple />
       </div>
     </div>
   )

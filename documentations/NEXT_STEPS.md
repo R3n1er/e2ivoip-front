@@ -35,23 +35,34 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [x] **Configuration Next.js** : Optimisations de performance et sécurité
 - [x] **Tests Core Web Vitals** : 16 tests sur 20 passants (tests des composants en cours)
 
+### Phase 4 - Refactorisation Framer Motion et UX : COMPLÉTÉE ✅
+
+- [x] **Migration vers composants -simple** : Remplacement des composants Framer Motion par versions CSS natives
+- [x] **Section clients "Ils nous font confiance"** : Titre fonctionnel et logos défilants
+- [x] **Optimisation DaisyUI** : Application des meilleures pratiques selon documentation officielle
+- [x] **Correction textes DOM-TOM** : Mise à jour vers "Support France Métropolitaine et DOM-TOM"
+- [x] **Animations CSS natives** : Carrousel clients avec animation `scrollLeft 60s linear infinite`
+- [x] **Fix affichage logos** : Remplacement OptimizedImage par Image standard avec `unoptimized`
+- [x] **Header stable** : Passage de `Header` à `HeaderSimple` sans Framer Motion
+- [x] **Configuration Next.js** : Correction options dépréciées (`experimental.turbo` → `turbopack`)
+
 ## Prochaines Phases
 
-### Phase 4 - Implémentation des Dégradés 🎨
+### Phase 5 - Implémentation des Dégradés 🎨
 
 - [ ] **Dégradés CSS avancés** : Création de composants avec dégradés sophistiqués
 - [ ] **Animations de dégradés** : Transitions et animations fluides
 - [ ] **Thèmes de couleurs** : Système de thèmes avec dégradés personnalisables
 - [ ] **Tests des dégradés** : Validation visuelle et tests d'accessibilité
 
-### Phase 5 - Optimisations Avancées 🚀
+### Phase 6 - Optimisations Avancées 🚀
 
 - [ ] **Bundle Analysis** : Analyse et optimisation des bundles JavaScript
 - [ ] **Tree Shaking** : Élimination du code mort
 - [ ] **Code Splitting** : Division intelligente du code par routes
 - [ ] **Preloading** : Préchargement des ressources critiques
 
-### Phase 6 - Tests et Qualité 🧪
+### Phase 7 - Tests et Qualité 🧪
 
 - [ ] **Tests E2E** : Tests end-to-end avec Playwright
 - [ ] **Tests de Performance** : Tests Lighthouse automatisés
@@ -113,19 +124,26 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - PWA et Service Worker
 - Sitemaps et SEO
 
-### Phase 4 🎯 (En cours)
+### Phase 4 ✅ (Complétée)
+
+- Migration vers composants -simple
+- Section clients fonctionnelle
+- Optimisation DaisyUI
+- Animations CSS natives
+
+### Phase 5 🎯 (En cours)
 
 - Implémentation des dégradés
 - Composants visuels avancés
 - Tests des dégradés
 
-### Phase 5 🚀 (Planifiée)
+### Phase 6 🚀 (Planifiée)
 
 - Optimisations avancées
 - Bundle analysis
 - Performance
 
-### Phase 6 🧪 (Planifiée)
+### Phase 7 🧪 (Planifiée)
 
 - Tests E2E
 - Tests de performance
@@ -234,20 +252,64 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - Optimisations continues
 - Validation des métriques
 
+## Détails Phase 4 - Refactorisation Framer Motion
+
+### Problèmes résolus
+
+#### 1. **Migration des composants**
+- Remplacé tous les composants Framer Motion par versions `-simple`
+- Supprimé les dépendances de `motion` causant des problèmes d'hydratation
+- Utilisé des animations CSS natives plus performantes
+
+#### 2. **Section clients "Ils nous font confiance"**
+- **Problème** : Titre et logos ne s'affichaient pas à cause de Framer Motion
+- **Solution** : Animation CSS pure `scrollLeft 60s linear infinite`
+- **Résultat** : Carrousel fonctionnel avec 9 logos clients défilants
+
+#### 3. **Optimisation des images**
+- **Problème** : `OptimizedImage` avec lazy loading ne fonctionnait pas dans le carrousel
+- **Solution** : Passage à `Image` Next.js standard avec `unoptimized={true}`
+- **Résultat** : Affichage correct des logos clients
+
+#### 4. **DaisyUI optimisé**
+- Application des classes sémantiques : `btn btn-primary`, `badge badge-primary`
+- Thème personnalisé "e2ivoip" avec couleurs de la charte graphique
+- Configuration `data-theme="e2ivoip"` dans le layout
+
+#### 5. **Textes mis à jour**
+- "Support DOM-TOM" → "Support France Métropolitaine et DOM-TOM"
+- "Équipes DOM-TOM" → "Équipes France Métropolitaine et DOM-TOM"
+- "Support technique DOM-TOM & France" → "Support technique France Métropolitaine et DOM-TOM"
+
+#### 6. **Configuration Next.js**
+- Correction `experimental.turbo` → `turbopack`
+- Suppression `testPathIgnorePatterns` invalide
+- Stabilisation du serveur de développement
+
+### Fichiers modifiés
+
+- `/app/layout.tsx` : HeaderSimple + data-theme
+- `/app/page.tsx` : Imports des composants -simple
+- `/components/clients-carousel.tsx` : Animation CSS + Image standard
+- `/components/header-simple.tsx` : Version sans Framer Motion
+- `/components/*-simple.tsx` : Optimisations DaisyUI
+- `/app/globals.css` : Animation scrollLeft
+- `/tailwind.config.js` : Thème DaisyUI personnalisé
+- `/next.config.js` : Correction options dépréciées
+
 ## Conclusion
 
-La **Phase 3 - Core Web Vitals & Optimisations Techniques** est maintenant **COMPLÉTÉE** avec succès !
+La **Phase 4 - Refactorisation Framer Motion et UX** est maintenant **COMPLÉTÉE** avec succès !
 
 ✅ **Accomplissements majeurs :**
 
-- Lazy loading des composants
-- Service Worker avec cache intelligent
-- Manifest PWA complet
-- Page offline fonctionnelle
-- Sitemaps dynamiques
-- Robots.txt optimisé
-- Configuration Next.js avancée
+- Migration complète vers composants CSS natifs
+- Section clients fonctionnelle avec logos défilants
+- Header stable sans problèmes d'hydratation
+- Optimisation DaisyUI selon bonnes pratiques
+- Textes DOM-TOM mis à jour
+- Configuration Next.js stabilisée
 
-🎯 **Prochaine priorité :** Phase 4 - Implémentation des Dégradés
+🎯 **Prochaine priorité :** Phase 5 - Implémentation des Dégradés
 
 🚀 **Objectif final :** Site web ultra-performant avec Core Web Vitals optimaux et expérience utilisateur exceptionnelle

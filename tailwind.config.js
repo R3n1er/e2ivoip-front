@@ -96,13 +96,31 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"],
-    darkTheme: "dark",
+    themes: [
+      {
+        e2ivoip: {
+          // Thème personnalisé E2I VoIP basé sur le PRD actualisé
+          "primary": "#E53E3E", // Rouge primaire PRD ##E53E3E
+          "secondary": "#2D3848", // Bleu marine PRD #2D3848
+          "accent": "#818096", // Gris secondaire PRD #818096
+          "neutral": "#1F2937", // Gris foncé PRD #1F2937
+          "base-100": "#FFFFFF", // Blanc PRD #FFFFFF
+          "base-200": "#f9fafb",
+          "base-300": "#f3f4f6",
+          "info": "#2D3848",
+          "success": "#E53E3E",
+          "warning": "#f97316",
+          "error": "#E53E3E",
+        },
+      },
+      "light", // Fallback theme
+    ],
+    darkTheme: false, // Désactiver le thème sombre
     base: true,
     styled: true,
     utils: true,
-    prefix: "",
-    logs: true,
+    prefix: "", 
+    logs: false, // Réduire les logs en console
     themeRoot: ":root",
   },
 }
