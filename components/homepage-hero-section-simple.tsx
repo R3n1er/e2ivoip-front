@@ -5,7 +5,7 @@ import { ArrowRight, Phone, Play, Star, Users, Award } from "lucide-react";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
-    { icon: Users, value: "500+", label: "Entreprises nous font confiance" },
+    { icon: Users, value: "100+", label: "Entreprises nous font confiance" },
     { icon: Award, value: "15+", label: "Années d'expertise télécom" },
     { icon: Phone, value: "24/7", label: "Support technique France Métropolitaine et DOM-TOM" },
     { icon: Star, value: "30%", label: "Économies garanties" },
@@ -33,7 +33,7 @@ export function HomepageHeroSectionSimple() {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-600/10 border border-red-600/20 text-red-400 text-sm font-medium mb-8">
             <Star className="w-4 h-4 mr-2" />
-            Opérateur télécom DOM-TOM • Plus de 500 clients
+            Opérateur télécom DOM-TOM • Plus de 100 clients
           </div>
 
           {/* Main Heading */}

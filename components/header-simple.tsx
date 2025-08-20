@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, Phone, ChevronDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,8 @@ export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [isHoveringSubmenu, setIsHoveringSubmenu] = useState(false);
+  const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +18,15 @@ export function HeaderSimple() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Nettoyer le timeout lors du démontage du composant
+  useEffect(() => {
+    return () => {
+      if (submenuTimeoutRef.current) {
+        clearTimeout(submenuTimeoutRef.current);
+      }
+    };
   }, []);
 
   const navigation = [
@@ -67,17 +78,45 @@ export function HeaderSimple() {
       ],
     },
     { name: "Blog", href: "/blog" },
+    { name: "Assistance", href: "/assistance" },
     { name: "Devis en ligne", href: "/devis-en-ligne" },
   ];
 
   const handleMouseEnter = (itemName: string) => {
+    // Annuler le timeout de fermeture s'il existe
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+
     setActiveSubmenu(itemName);
+    setIsHoveringSubmenu(false);
   };
 
   const handleMouseLeave = () => {
-    setTimeout(() => {
+    // Démarrer le délai de fermeture
+    submenuTimeoutRef.current = setTimeout(() => {
+      if (!isHoveringSubmenu) {
+        setActiveSubmenu(null);
+      }
+    }, 300); // 300ms de délai
+  };
+
+  const handleSubmenuMouseEnter = () => {
+    setIsHoveringSubmenu(true);
+    // Annuler le timeout de fermeture
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+  };
+
+  const handleSubmenuMouseLeave = () => {
+    setIsHoveringSubmenu(false);
+    // Démarrer le délai de fermeture
+    submenuTimeoutRef.current = setTimeout(() => {
       setActiveSubmenu(null);
-    }, 300);
+    }, 300); // 300ms de délai
   };
 
   return (
@@ -179,7 +218,11 @@ export function HeaderSimple() {
 
                 {/* Sous-menu simplifié */}
                 {item.submenu && activeSubmenu === item.name && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200]">
+                  <div 
+                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200]"
+                    onMouseEnter={handleSubmenuMouseEnter}
+                    onMouseLeave={handleSubmenuMouseLeave}
+                  >
                     <div className="py-2">
                       {item.submenu.map((subItem) => (
                         <Link
