@@ -11,18 +11,21 @@ import {
   Phone,
   Mail,
   Globe,
+  MessageCircle,
 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Qui sommes-nous - E2I VoIP",
+  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM depuis 15 ans",
   description:
-    "Découvrez E2I Assistance (E2I VOIP), votre partenaire privilégié pour une téléphonie d'entreprise innovante. Spécialistes de l'installation et l'intégration de solutions de téléphonie IP comme 3CX.",
+    "E2I VoIP : Opérateur de servicestélécom DOM-TOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms.",
   keywords:
-    "E2I VoIP, téléphonie IP, 3CX, Trunk SIP, intégration VoIP, Antilles, Guyane, Réunion",
+    "E2I VoIP, opérateur télécom DOM-TOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM-TOM",
   openGraph: {
-    title: "Qui sommes-nous - E2I VoIP",
+    title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM",
     description:
-      "Découvrez E2I Assistance (E2I VOIP), votre partenaire privilégié pour une téléphonie d'entreprise innovante.",
+      "Opérateur de services télécom DOM-TOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
     type: "website",
   },
 };
@@ -47,10 +50,11 @@ export default function QuiSommesNous() {
   ];
 
   const locations = [
-    { name: "Guyane", phone: "+594 594 963 500" },
-    { name: "Guadeloupe", phone: "+590 590 173 500" },
-    { name: "Martinique", phone: "+596 596 313 500" },
-    { name: "La Réunion", phone: "+262 263 085 500" },
+    { name: "Guyane", phone: "0594 963 500", icon: MapPin },
+    { name: "Guadeloupe", phone: "0590 173 500", icon: MapPin },
+    { name: "Martinique", phone: "0596 313 500", icon: MapPin },
+    { name: "La Réunion", phone: "0262 263 085 500", icon: MapPin },
+    { name: "France Métropole", phone: "0189 563 500", icon: Globe },
   ];
 
   const services = [
@@ -80,11 +84,16 @@ export default function QuiSommesNous() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Qui sommes-<span className="text-white">nous</span> ?
+              Votre opérateur de services télécom{" "}
+              <span className="text-white">DOM-TOM</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              E2I Assistance (E2I VOIP) est votre partenaire privilégié pour une
-              téléphonie d'entreprise innovante
+              15 ans d'expertise • 100+ entreprises nous font confiance •
+              Support local réactif
+            </p>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
+              Économisez jusqu'à 30% sur vos coûts télécoms avec nos solutions
+              de téléphonie IP
             </p>
           </div>
         </div>
@@ -96,51 +105,55 @@ export default function QuiSommesNous() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Notre <span className="text-red-600">expertise</span>
+                L'histoire d'une{" "}
+                <span className="text-red-primary">réussite locale</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Nous sommes opérateur de services Telecom, spécialistes de
-                l'installation et l'intégration de solutions de téléphonie IP
-                comme 3CX et fournisseurs de Trunk SIP (création et portabilité
-                de numéros en zone locale).
+                <strong>Depuis maintenant plusieurs années, E2I VoIP</strong>{" "}
+                est un opérateur de services télécom avec des Trunk SIP dédiés
+                aux Antilles-Guyane et La Réunion. Nous avons accompagné plus de{" "}
+                <strong>100 entreprises</strong> dans leur transformation
+                digitale, leur permettant d'économiser en moyenne{" "}
+                <strong>30% sur leurs coûts télécoms</strong>.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Nous intervenons aux Antilles (Guadeloupe et Martinique), en
-                Guyane, à la Réunion et en France Métropolitaine. Nous avons
-                également la possibilité de vous accompagner en Afrique
-                francophone : Sénégal, Côte d'Ivoire, Benin, Togo, Ghana et
-                Cameroun.
+                <strong>Notre mission :</strong> Faciliter votre transition vers
+                la téléphonie IP dans le contexte de l'arrêt du réseau cuivre.
+                Nous transformons cette contrainte en opportunité pour
+                moderniser vos communications et{" "}
+                <strong>réduire vos coûts</strong>.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Notre équipe maîtrise les dernières avancées technologiques IP
-                dans les Telecoms. Dans un contexte de fin du cuivre en France
-                et dans les DOM avec la transition vers la fibre optique, nous
-                sommes là pour vous guider vers la solution de téléphonie
-                idéale.
+                <strong>Notre différence :</strong> Des équipes techniques
+                présentes localement en Martinique, Guadeloupe et Guyane. Un
+                Customer Success Manager dédié qui connaît vos besoins
+                spécifiques. Une assistance en français, dans votre fuseau
+                horaire, avec une connaissance parfaite du contexte des régions
+                des DOM-TOM (Antilles, Guyane, Réunion).
               </p>
             </div>
             <div className="relative">
               <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <Phone className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Plus de 15 ans d'expérience
+                    Opérateur télécom certifié
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Spécialistes reconnus dans les solutions de téléphonie IP et
-                    communications unifiées
+                    Partenaire Silver 3CX • Certifié Yeastar Cloud et On-Premise
+                    • Trunk SIP dédiés DOM-TOM
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-red-600">
+                      <div className="text-2xl font-bold text-red-primary">
                         100+
                       </div>
                       <div className="text-gray-600">Clients satisfaits</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">
+                      <div className="text-2xl font-bold text-blue-marine">
                         15+
                       </div>
                       <div className="text-gray-600">Années d'expertise</div>
@@ -158,59 +171,58 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nos <span className="text-red-600">missions</span>
+              Nos{" "}
+              <span className="text-red-primary">valeurs et engagements</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Notre expertise réside dans l'intégration de solutions de
-              téléphonie IP avancées pour les entreprises comme 3CX.
+              Proximité, expertise et résultats concrets pour votre entreprise
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6 text-red-600" />
+                <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-red-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Solutions sur mesure
+                  Proximité et réactivité
                 </h3>
                 <p className="text-gray-600">
-                  Nous comprenons que chaque organisation a des besoins uniques,
-                  c'est pourquoi nous offrons des services adaptés à la taille
-                  et aux spécificités de votre entreprise.
+                  Équipes locales en France, Martinique, Guadeloupe et Guyane.
+                  Réponse en moins de 2h, intervention rapide sur site si
+                  nécessaire.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-blue-600" />
+                <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-blue-marine" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Équipements de pointe
+                  Excellence technique
                 </h3>
                 <p className="text-gray-600">
-                  Nous mettons à votre disposition des équipements de pointe des
-                  marques leaders du marché : Yealink, Fanvil, Jabra et
-                  Logitech.
+                  Partenaire Silver 3CX, certifié Yeastar. Maîtrise des
+                  dernières technologies VoIP et intégrations WhatsApp,
+                  Microsoft Teams, CRM, IA, Microsoft 365.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-green-600" />
+                <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-gray-secondary" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Accompagnement complet
+                  Résultats garantis
                 </h3>
                 <p className="text-gray-600">
-                  De la sélection de votre trunk SIP à son intégration
-                  harmonieuse dans votre infrastructure existante, notre équipe
-                  vous guide à chaque étape.
+                  Économies de 30% garanties sur vos factures télécom. Customer
+                  Success Manager dédié pour assurer votre satisfaction.
                 </p>
               </CardContent>
             </Card>
@@ -224,58 +236,60 @@ export default function QuiSommesNous() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Notre <span className="text-red-600">cœur de métier</span>
+                Nos <span className="text-red-primary">solutions phares</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Notre cœur de métier réside dans la fourniture de trunks SIP à
-                partir de 2 utilisateurs ou 4 canaux voix simultanés, vous
-                offrant la souplesse nécessaire pour répondre à la demande de
-                communication de votre entreprise.
+                <strong>Trunk SIP éligibles DOM-TOM</strong> : Au compteur ou
+                illimité, dès 2 utilisateurs. Création et portabilité de numéros
+                locaux incluses.
+                <strong>Économisez jusqu'à 30%</strong> par rapport à la
+                téléphonie traditionnelle.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      Communications au Compteur ou Illimitées
+                      Trunk SIP au compteur ou illimité
                     </h3>
                     <p className="text-gray-600">
-                      Choisissez la formule qui convient le mieux à votre
-                      activité. Avec nos Trunk SIP, vous avez la liberté de
-                      sélectionner des plans de communication au compteur pour
-                      une tarification précise et juste, ou des forfaits
-                      illimités (France Métropolitaine et DOM).
+                      <strong>Au compteur :</strong> Payez uniquement vos
+                      consommations, idéal TPE/PME.
+                      <strong> Illimité :</strong> Budget fixe, appels illimités
+                      France + DOM-TOM. Tarifs préférentiels spéciaux
+                      Antilles-Guyane-Réunion.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      Portabilité et Création de Numéros
+                      3CX : IPBX cloud nouvelle génération
                     </h3>
                     <p className="text-gray-600">
-                      E2I Assistance VOIP facilite la portabilité de vos numéros
-                      en France et dans les Départements et Régions d'Outre-Mer
-                      (DROM). Vous conservez votre identité téléphonique tout en
-                      bénéficiant des avantages de nos services.
+                      <strong>3CX SMB :</strong> Dès 3 utilisateurs,
+                      15€/mois/utilisateur.
+                      <strong> 3CX PRO :</strong> Instance dédiée +50 postes,
+                      intégrations CRM/M365. Formation incluse, Customer Success
+                      Manager dédié.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      Tarifs Compétitifs, Services de Qualité
+                      Services innovants inclus
                     </h3>
                     <p className="text-gray-600">
-                      Nous comprenons que la téléphonie est un élément essentiel
-                      de votre activité. C'est pourquoi nous vous offrons des
-                      tarifs compétitifs sans compromettre la qualité du
-                      service.
+                      <strong>Assistants vocaux IA</strong> pour accueil 24/7.
+                      <strong>Intégrations</strong> WhatsApp, Teams, CRM.
+                      <strong>Mobilité totale</strong> avec softphones. Studio
+                      d'enregistrement pour messages professionnels.
                     </p>
                   </div>
                 </div>
@@ -284,15 +298,38 @@ export default function QuiSommesNous() {
 
             <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Nos Services
+                Cas client emblématique
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {services.map((service, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-red-600 rounded-full"></div>
-                    <span className="text-gray-700 text-sm">{service}</span>
-                  </div>
-                ))}
+              <div className="bg-white rounded-lg p-6">
+                <h4 className="font-bold text-lg text-gray-900 mb-2">
+                  Titeca BEAUPORT Finance
+                </h4>
+                <p className="text-gray-600 mb-4">
+                  Le Groupe TBF gère des magasins sur la Guadeloupe, La
+                  Martinique et la Guyane dans le secteur de l'horlogerie et la
+                  joaillerie. Connu plus particulièrement avec l'enseigne
+                  Eurogold, Grain d'Or et Callas aux Antilles et les bijouteries
+                  Buirettes en Guyane.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  <strong>60+ utilisateurs</strong> migrés vers 3CX PRO -
+                  Instance dédiée cloud
+                </p>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-600">
+                    ✓ <strong>-30% sur les coûts télécoms</strong>
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    ✓ Parc de postes téléphoniques Fanvil
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    ✓ Mobilité pour tous les collaborateurs
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    ✓ Support local réactif sur 3 départements (Guadeloupe,
+                    Martinique, Guyane)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -304,10 +341,12 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Rencontrez <span className="text-red-600">l'équipe</span>
+              Une équipe{" "}
+              <span className="text-red-primary">locale et experte</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Notre équipe d&apos;experts dédiés à votre succès
+              Des experts présents localement pour un accompagnement
+              personnalisé
             </p>
           </div>
 
@@ -318,7 +357,9 @@ export default function QuiSommesNous() {
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <Users className="w-12 h-12 text-gray-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {member.name}
+                  </h3>
                   <p className="text-gray-600">{member.role}</p>
                 </CardContent>
               </Card>
@@ -332,18 +373,36 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Nous sommes <span className="text-red-600">certifiés</span> !
+              Nos{" "}
+              <span className="text-red-primary">
+                certifications et partenariats
+              </span>
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              E2I Assistance est partenaire 3CX Bronze et certifié ! Visitez le
-              site internet de notre partenaire et souscrivez à une version
-              d'évaluation du standard téléphonique.
+              Partenaire Silver 3CX • Certifié Yeastar • Distributeur Fanvil &
+              Yealink
             </p>
-            <div className="bg-white rounded-lg p-8 shadow-lg inline-block">
-              <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
-                <Badge variant="secondary" className="text-sm">
-                  3CX Bronze Partner
-                </Badge>
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="bg-white rounded-lg p-8 shadow-lg">
+                <Award className="w-12 h-12 text-red-primary mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2">3CX Silver Partner</h3>
+                <p className="text-gray-600 text-sm">Expertise CFD avancée</p>
+              </div>
+              <div className="bg-white rounded-lg p-8 shadow-lg">
+                <Award className="w-12 h-12 text-blue-marine mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2">Certifié Yeastar</h3>
+                <p className="text-gray-600 text-sm">
+                  Solutions économiques PME
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-8 shadow-lg">
+                <Award className="w-12 h-12 text-gray-secondary mx-auto mb-4" />
+                <h3 className="font-bold text-lg mb-2">
+                  Partenaire Fanvil & Yealink
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Gestion centralisée du parc de téléphones SIP
+                </p>
               </div>
             </div>
           </div>
@@ -355,31 +414,83 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Nos <span className="text-white">implantations</span>
+              Support local <span className="text-white">24/7</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Présents aux Antilles, en Guyane, à la Réunion et en France
-              Métropolitaine
+              Équipes techniques présentes localement en Guadeloupe et en Guyane
+              • Réponse rapide en moins de 2h • Intervention sur site
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {locations.map((location, index) => (
               <Card
                 key={index}
-                className="bg-white/10 backdrop-blur-sm border-white/20"
+                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-colors"
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <MapPin className="w-6 h-6 text-white" />
+                    <location.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {location.name}
                   </h3>
-                  <p className="text-white/90 text-sm">{location.phone}</p>
+                  <p className="text-white/90 text-sm font-bold">
+                    {location.phone}
+                  </p>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-white text-lg mb-6">
+              <strong>Hotline Assistance technique :</strong> 0189 560 500
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="mailto:commerciaux@e2i-voip.com"
+                className="text-white hover:text-white/80 transition-colors"
+              >
+                <Mail className="inline w-5 h-5 mr-2" />
+                commerciaux@e2i-voip.com
+              </a>
+              <Link href="/assistance">
+                <Button className="bg-white text-red-primary hover:bg-white/90 font-semibold">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Accéder au support complet
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section CTA finale */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Prêt à <span className="text-red-primary">économiser 30%</span> sur
+            vos coûts télécoms ?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Audit gratuit de votre installation • Devis personnalisé en 24h •
+            Migration sans interruption
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/devis-en-ligne"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Calculez vos économies
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Parler à un expert
+            </a>
           </div>
         </div>
       </section>

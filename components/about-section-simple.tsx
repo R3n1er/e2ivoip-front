@@ -32,7 +32,7 @@ export function AboutSectionSimple() {
   ];
 
   const stats = [
-    { value: "500+", label: "Entreprises clientes", icon: Users },
+    { value: "100+", label: "Entreprises clientes", icon: Users },
     { value: "15+", label: "Années d'expertise", icon: Award },
     { value: "30%", label: "Économies garanties", icon: Zap },
     { value: "24/7", label: "Support France Métropolitaine et DOM-TOM", icon: Shield },
@@ -139,7 +139,7 @@ export function AboutSectionSimple() {
         <div className="bg-white rounded-xl p-8 shadow-sm border">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Pourquoi plus de 500 entreprises nous font confiance ?
+              Pourquoi plus de 100 entreprises nous font confiance ?
             </h3>
             <p className="text-gray-secondary">
               Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
