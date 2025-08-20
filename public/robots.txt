@@ -1,0 +1,193 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://e2ivoip.fr/sitemap.xml
+Sitemap: https://e2ivoip.fr/sitemap-image.xml
+
+# Pages importantes - Priorité haute
+Allow: /
+Allow: /services
+Allow: /devis
+Allow: /contact
+Allow: /qui-sommes-nous
+Allow: /blog
+
+# Pages de services détaillées
+Allow: /services/installation-voip
+Allow: /services/maintenance-voip
+Allow: /services/formation-voip
+Allow: /services/support-technique
+
+# Pages de contenu
+Allow: /qui-sommes-nous/certifications
+Allow: /qui-sommes-nous/partenaires
+Allow: /ressources/guide-voip
+Allow: /ressources/faq
+Allow: /ressources/glossaire
+
+# Images importantes
+Allow: /images/photos/
+Allow: /images/team/
+Allow: /images/services/
+Allow: /images/certifications/
+Allow: /images/partners/
+Allow: /images/blog/
+Allow: /images/resources/
+
+# Fichiers statiques
+Allow: /images/logo.svg
+Allow: /favicon.ico
+Allow: /manifest.json
+
+# Pages à éviter (si elles existent)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /draft/
+
+# Paramètres d'URL à éviter
+Disallow: /*?*
+Disallow: /*&*
+
+# Fichiers spécifiques
+Disallow: /sw.js
+Disallow: /workbox-*.js
+Disallow: /firebase-messaging-sw.js
+
+# Crawl-delay pour éviter de surcharger le serveur
+Crawl-delay: 1
+
+# Règles spécifiques pour les bots principaux
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Règles pour les bots d'images
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+User-agent: Bingbot-Image
+Allow: /images/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+# Règles pour les bots mobiles
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+# Règles pour les bots de news
+User-agent: Googlebot-News
+Allow: /blog/
+Allow: /news/
+Allow: /actualites/
+
+# Règles pour les bots de vidéos
+User-agent: Googlebot-Video
+Allow: /videos/
+Allow: /*.mp4
+Allow: /*.webm
+Allow: /*.ogg
+
+# Règles pour les bots de recherche avancée
+User-agent: AdsBot-Google
+Allow: /
+Crawl-delay: 1
+
+# Règles pour les bots de validation
+User-agent: W3C_Validator
+Allow: /
+Crawl-delay: 0
+
+# Règles pour les bots de performance
+User-agent: Lighthouse
+Allow: /
+Crawl-delay: 0
+
+# Règles pour les bots de sécurité
+User-agent: SecurityBot
+Allow: /
+Crawl-delay: 2
+
+# Règles pour les bots de social media
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: WhatsApp
+Allow: /
+Crawl-delay: 1
+
+# Règles pour les bots de monitoring
+User-agent: Pingdom
+Allow: /
+Crawl-delay: 0
+
+User-agent: UptimeRobot
+Allow: /
+Crawl-delay: 0
+
+# Règles pour les bots de SEO
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 2
+
+# Règles pour les bots de scraping
+User-agent: ScraperBot
+Disallow: /
+
+User-agent: Screaming
+Disallow: /
+
+User-agent: Nutch
+Disallow: /
+
+# Règles pour les bots malveillants
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /draft/
+Disallow: /sw.js
+Disallow: /workbox-*.js
+Disallow: /firebase-messaging-sw.js
+Disallow: /*?*
+Disallow: /*&*

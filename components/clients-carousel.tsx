@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 const clients = [
   {
@@ -112,12 +112,13 @@ export function ClientsCarousel() {
               >
                 <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
                   <div className="relative w-32 h-16 lg:w-40 lg:h-20">
-                    <Image
+                    <OptimizedImage
                       src={client.logo}
                       alt={client.alt}
                       fill
                       className="object-contain"
                       sizes="(max-width: 768px) 128px, 160px"
+                      quality={80}
                     />
                   </div>
                   <p className="text-xs text-gray-500 text-center mt-2 font-medium">
