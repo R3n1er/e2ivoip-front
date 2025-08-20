@@ -3,20 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Play, Star, Users, Award } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { HeroBackgroundImage } from "@/components/ui/lazy-background-image";
 
 export function HomepageHeroSection() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = "/images/photos/pexels-ketut-subiyanto-4559714-min.jpg";
-    // Fallback: si onload ne se déclenche pas (cache ou blocage), afficher quand même
-    const fallback = setTimeout(() => setImageLoaded(true), 2000);
-    return () => clearTimeout(fallback);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,24 +39,16 @@ export function HomepageHeroSection() {
       id="accueil"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className={`w-full h-full transition-opacity duration-500 ${
-            imageLoaded ? "opacity-100" : "opacity-60"
-          }`}
-          style={{
-            backgroundImage:
-              "url('/images/photos/pexels-ketut-subiyanto-4559714-min.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: "#1f2937", // Fallback color
-          }}
-        />
+      {/* Background Image avec Lazy Loading */}
+      <HeroBackgroundImage
+        src="/images/photos/pexels-ketut-subiyanto-4559714-min.jpg"
+        alt="Personne utilisant la téléphonie d'entreprise moderne"
+        className="absolute inset-0 z-0"
+        fallbackColor="bg-gray-800"
+      >
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-0" />
-      </div>
+      </HeroBackgroundImage>
 
       {/* Floating Elements */}
       <motion.div
