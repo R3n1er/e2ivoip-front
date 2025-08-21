@@ -6,10 +6,7 @@ import {
   ContentImage,
 } from "@/components/ui/optimized-image";
 import { LazyBackgroundImage } from "@/components/ui/lazy-background-image";
-import {
-  BlogCoverImage,
-  PriorityBlogCoverImage,
-} from "@/components/blog/blog-cover-image";
+// BlogCoverImage removed - using OptimizedBlogImage instead
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 
 // Mock des composants UI
@@ -126,35 +123,7 @@ describe("Composants d'Optimisation d'Images", () => {
     });
   });
 
-  describe("BlogCoverImage", () => {
-    test("rend le composant avec détection de format", () => {
-      render(<BlogCoverImage src="/blog-cover.jpg" alt="Couverture de blog" />);
-
-      // Le composant affiche d'abord un placeholder
-      const container = screen.getByTestId("blog-cover-container");
-      expect(container).toBeInTheDocument();
-    });
-
-    test("affiche un titre si fourni", () => {
-      render(
-        <BlogCoverImage
-          src="/blog-cover.jpg"
-          alt="Couverture de blog"
-          title="Titre du blog"
-        />
-      );
-
-      expect(screen.getByText("Titre du blog")).toBeInTheDocument();
-    });
-
-    test("utilise la priorité par défaut (false)", () => {
-      render(<BlogCoverImage src="/blog-cover.jpg" alt="Couverture de blog" />);
-
-      // Le composant affiche d'abord un placeholder
-      const container = screen.getByTestId("blog-cover-container");
-      expect(container).toBeInTheDocument();
-    });
-  });
+  // BlogCoverImage tests removed - component deleted
 
   describe("ResponsiveImage", () => {
     test("rend le composant avec ratio d'aspect par défaut", () => {
@@ -221,15 +190,7 @@ describe("Composants d'Optimisation d'Images", () => {
       expect(placeholder).toBeInTheDocument();
     });
 
-    test("PriorityBlogCoverImage utilise la priorité haute", () => {
-      render(
-        <PriorityBlogCoverImage src="/cover.jpg" alt="Couverture prioritaire" />
-      );
-
-      // Le composant affiche d'abord un placeholder
-      const container = screen.getByTestId("blog-cover-container");
-      expect(container).toBeInTheDocument();
-    });
+    // PriorityBlogCoverImage test removed - component deleted
   });
 
   describe("Gestion des erreurs", () => {
@@ -243,8 +204,7 @@ describe("Composants d'Optimisation d'Images", () => {
           height={100}
         />,
         <LazyBackgroundImage key="2" src="/error.jpg" alt="Erreur 2" />,
-        <BlogCoverImage key="3" src="/error.jpg" alt="Erreur 3" />,
-        <ResponsiveImage key="4" src="/error.jpg" alt="Erreur 4" />,
+        <ResponsiveImage key="3" src="/error.jpg" alt="Erreur 3" />,
       ];
 
       for (const component of components) {
@@ -256,10 +216,6 @@ describe("Composants d'Optimisation d'Images", () => {
         } else if (component.type === LazyBackgroundImage) {
           expect(
             screen.getByTestId("lazy-background-container")
-          ).toBeInTheDocument();
-        } else if (component.type === BlogCoverImage) {
-          expect(
-            screen.getByTestId("blog-cover-container")
           ).toBeInTheDocument();
         } else if (component.type === ResponsiveImage) {
           expect(

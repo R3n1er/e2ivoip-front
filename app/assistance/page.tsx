@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { FAQAccordion } from "@/components/faq-accordion";
 import {
   Phone,
   Mail,
@@ -87,24 +88,6 @@ export default function AssistancePage() {
     },
   ];
 
-  const faqItems = [
-    {
-      question: "Comment configurer mon téléphone IP ?",
-      answer: "Consultez notre guide de configuration ou contactez notre support pour un accompagnement personnalisé.",
-    },
-    {
-      question: "Que faire en cas de problème de connexion ?",
-      answer: "Vérifiez votre connexion internet, redémarrez votre équipement et contactez notre hotline si le problème persiste.",
-    },
-    {
-      question: "Comment porter mes numéros existants ?",
-      answer: "La portabilité est gratuite avec E2I VoIP. Contactez notre équipe commerciale pour lancer la procédure.",
-    },
-    {
-      question: "Puis-je utiliser mon téléphone en télétravail ?",
-      answer: "Oui, nos solutions 3CX incluent la mobilité avec applications mobiles et softphones pour ordinateur.",
-    },
-  ];
 
   return (
     <>
@@ -275,29 +258,9 @@ export default function AssistancePage() {
 
       {/* FAQ */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Questions <span className="text-red-primary">fréquentes</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Réponses aux questions les plus courantes de nos utilisateurs
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {faqItems.map((faq, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-gray-600">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FAQAccordion />
+          
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-6">
               Vous ne trouvez pas la réponse à votre question ?

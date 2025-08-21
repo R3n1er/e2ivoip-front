@@ -22,11 +22,11 @@ export function LazyComponent({
   );
 }
 
-// Composants spécialisés pour différents types de contenu
+// Composants spécialisés pour différents types de contenu (versions simplifiées)
 export function LazyHeroSection({ ...props }) {
   return (
     <LazyComponent
-      component={() => import("@/components/homepage-hero-section")}
+      component={() => import("@/components/homepage-hero-section-simple").then(mod => ({ default: mod.HomepageHeroSectionSimple }))}
       fallback={
         <div className="animate-pulse bg-gradient-to-r from-blue-900 to-red-600 h-screen" />
       }
@@ -38,18 +38,8 @@ export function LazyHeroSection({ ...props }) {
 export function LazyServicesSection({ ...props }) {
   return (
     <LazyComponent
-      component={() => import("@/components/services-section")}
+      component={() => import("@/components/services-section-simple").then(mod => ({ default: mod.ServicesSectionSimple }))}
       fallback={<div className="animate-pulse bg-gray-100 h-96 rounded-lg" />}
-      props={props}
-    />
-  );
-}
-
-export function LazyBlogSection({ ...props }) {
-  return (
-    <LazyComponent
-      component={() => import("@/components/blog-section")}
-      fallback={<div className="animate-pulse bg-white h-64 rounded-lg" />}
       props={props}
     />
   );
@@ -58,7 +48,7 @@ export function LazyBlogSection({ ...props }) {
 export function LazyContactSection({ ...props }) {
   return (
     <LazyComponent
-      component={() => import("@/components/contact-section")}
+      component={() => import("@/components/contact-section-simple").then(mod => ({ default: mod.ContactSectionSimple }))}
       fallback={<div className="animate-pulse bg-gray-50 h-80 rounded-lg" />}
       props={props}
     />
