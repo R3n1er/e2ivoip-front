@@ -126,8 +126,8 @@ export default function ContactPage() {
                 <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="bg-green-100 p-3 rounded-lg">
-                        <MessageCircle className="w-6 h-6 text-green-600" />
+                      <div className="bg-blue-marine/10 p-3 rounded-lg">
+                        <MessageCircle className="w-6 h-6 text-blue-marine" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-1">
