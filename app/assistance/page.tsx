@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FAQAccordion } from "@/components/faq-accordion";
+import WorkingFAQ from "@/components/faq-working";
 import {
   Phone,
   Mail,
@@ -16,6 +16,7 @@ import {
   Globe,
 } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM-TOM",
@@ -32,63 +33,6 @@ export const metadata: Metadata = {
 };
 
 export default function AssistancePage() {
-  const supportChannels = [
-    {
-      icon: Phone,
-      title: "Hotline support",
-      description: "Assistance téléphonique directe",
-      contact: "0189 560 500",
-      availability: "Lundi - Vendredi : 8h - 18h",
-      urgent: true,
-    },
-    {
-      icon: MessageCircle,
-      title: "Chat en ligne",
-      description: "Support instantané via chat",
-      contact: "Disponible ci-dessous",
-      availability: "24/7",
-      urgent: false,
-    },
-    {
-      icon: Mail,
-      title: "Email support",
-      description: "Support par email détaillé",
-      contact: "assistance@e2i-voip.com",
-      availability: "Réponse sous 2h",
-      urgent: false,
-    },
-  ];
-
-  const localSupport = [
-    { name: "Guyane", phone: "0594 963 500", icon: MapPin },
-    { name: "Guadeloupe", phone: "0590 173 500", icon: MapPin },
-    { name: "Martinique", phone: "0596 313 500", icon: MapPin },
-    { name: "La Réunion", phone: "0262 263 085 500", icon: MapPin },
-    { name: "France Métropole", phone: "0189 563 500", icon: Globe },
-  ];
-
-  const resources = [
-    {
-      icon: FileText,
-      title: "Guides d'installation",
-      description: "Guides pas-à-pas pour configurer vos équipements",
-      items: ["Configuration 3CX", "Paramétrage téléphones", "Trunk SIP"],
-    },
-    {
-      icon: Video,
-      title: "Tutoriels vidéo",
-      description: "Vidéos explicatives pour résoudre les problèmes courants",
-      items: ["Prise en main 3CX", "Configuration softphone", "Dépannage"],
-    },
-    {
-      icon: Download,
-      title: "Téléchargements",
-      description: "Logiciels et applications nécessaires",
-      items: ["Applications mobiles", "Softphones", "Pilotes"],
-    },
-  ];
-
-
   return (
     <>
       {/* Hero Section */}
@@ -106,56 +50,45 @@ export default function AssistancePage() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Assistance & <span className="text-white">Support</span>
+              Assistance & <span className="text-white">Support VoIP</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Support technique 24/7 • Équipes locales DOM-TOM • Réponse en moins de 2h
+              Support technique 3CX et Yeastar • Équipes locales France et
+              Outre-mer (Antilles-Guyane, Réunion) • Réponse rapide
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Notre équipe d'experts est là pour vous accompagner dans l'utilisation de vos solutions téléphoniques
+              Notre équipe d'experts est là pour vous accompagner dans
+              l'utilisation de vos solutions téléphoniques
             </p>
           </div>
         </div>
       </section>
 
-      {/* Canaux de support */}
+      {/* Hotline Support */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Contactez notre <span className="text-red-primary">équipe support</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Plusieurs moyens pour obtenir de l'aide rapidement et efficacement
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {supportChannels.map((channel, index) => (
-              <Card key={index} className={`hover:shadow-lg transition-shadow ${channel.urgent ? 'border-red-primary border-2' : ''}`}>
-                <CardContent className="p-8 text-center">
-                  <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${
-                    channel.urgent ? 'bg-red-primary' : 'bg-blue-marine/10'
-                  }`}>
-                    <channel.icon className={`w-8 h-8 ${channel.urgent ? 'text-white' : 'text-blue-marine'}`} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {channel.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{channel.description}</p>
-                  <div className="space-y-2">
-                    <p className="font-bold text-lg text-gray-900">{channel.contact}</p>
-                    <p className="text-sm text-gray-500">{channel.availability}</p>
-                    {channel.urgent && (
-                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-800 text-sm font-medium">
-                        Priorité support
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Hotline <span className="text-red-primary">Support</span>
+          </h2>
+          <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
+            <CardContent className="p-12">
+              <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                <Phone className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Assistance téléphonique directe
+              </h3>
+              <p className="text-3xl font-bold text-red-primary mb-4">
+                0189 560 500
+              </p>
+              <p className="text-lg text-gray-600 mb-4">
+                Lundi - Vendredi : 8h - 18h
+              </p>
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-100 text-red-800 font-medium">
+                Support prioritaire selon contrat client
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -164,7 +97,8 @@ export default function AssistancePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Chat <span className="text-red-primary">assistance instantanée</span>
+              Chat{" "}
+              <span className="text-red-primary">assistance instantanée</span>
             </h2>
             <p className="text-xl text-gray-600 mb-8">
               Discutez directement avec nos experts techniques en temps réel
@@ -174,84 +108,21 @@ export default function AssistancePage() {
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
               <MessageCircle className="w-12 h-12 text-blue-marine mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Support chat en direct</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Support chat en direct
+              </h3>
               <p className="text-gray-600">
                 Notre équipe est disponible pour répondre à toutes vos questions
               </p>
             </div>
-            
-            {/* Container pour Tawk.to */}
-            <div id='tawk_688d3cc109ef001928d4773f' className="min-h-[400px] border border-gray-200 rounded-lg"></div>
-          </div>
-        </div>
-      </section>
 
-      {/* Support local par région */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Support <span className="text-red-primary">local par région</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Des équipes techniques présentes dans chaque département
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {localSupport.map((location, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <location.icon className="w-8 h-8 text-blue-marine mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {location.name}
-                  </h3>
-                  <p className="text-red-primary font-bold">{location.phone}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ressources et documentation */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ressources et <span className="text-red-primary">documentation</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Guides, tutoriels et outils pour une utilisation optimale
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {resources.map((resource, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-blue-marine/10 rounded-lg flex items-center justify-center mb-6">
-                    <resource.icon className="w-6 h-6 text-blue-marine" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {resource.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{resource.description}</p>
-                  <ul className="space-y-2">
-                    {resource.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center text-sm text-gray-600">
-                        <div className="w-2 h-2 bg-red-primary rounded-full mr-3"></div>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full mt-6 bg-blue-marine hover:bg-blue-marine/80 text-white">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Accéder aux ressources
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            {/* Chat Tawk.to intégré */}
+            <iframe
+              src="https://tawk.to/chat/688d3cc109ef001928d4773f/1j34pnbg2"
+              className="w-full h-[600px] border border-gray-200 rounded-lg"
+              title="Chat support E2I VoIP"
+              allow="microphone; camera"
+            />
           </div>
         </div>
       </section>
@@ -259,43 +130,9 @@ export default function AssistancePage() {
       {/* FAQ */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FAQAccordion />
-          
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              Vous ne trouvez pas la réponse à votre question ?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-red-primary hover:bg-red-primary/80 text-white">
-                <Phone className="w-4 h-4 mr-2" />
-                Contacter le support
-              </Button>
-              <Button variant="outline" className="border-blue-marine text-blue-marine hover:bg-blue-marine/10">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Chat en ligne
-              </Button>
-            </div>
-          </div>
+          <WorkingFAQ />
         </div>
       </section>
-
-      {/* Script Tawk.to */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); 
-            Tawk_API.embedded='tawk_688d3cc109ef001928d4773f';
-            (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/688d3cc109ef001928d4773f/1j34pnbg2';
-              s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
-              s0.parentNode.insertBefore(s1,s0);
-            })();
-          `,
-        }}
-      />
     </>
   );
 }

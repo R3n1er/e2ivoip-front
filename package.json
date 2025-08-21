@@ -28,6 +28,7 @@
     "clsx": "^2.0.0",
     "concurrently": "^8.2.2",
     "contentful": "^11.7.15",
+    "critters": "^0.0.23",
     "daisyui": "^5.0.50",
     "framer-motion": "^10.18.0",
     "lineicons-react": "^2.0.0",
