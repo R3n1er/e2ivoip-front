@@ -35,12 +35,17 @@ export default function ContactPage() {
               Contactez-<span className="text-white">nous</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Prêt à moderniser votre système téléphonique ? Contactez nos experts pour un accompagnement personnalisé
+              Prêt à moderniser votre système téléphonique ? Contactez nos experts VoIP pour un accompagnement personnalisé
             </p>
             <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span className="text-sm">Expertise téléphonie IP</span>
+                <span className="text-sm">Expert téléphonie IP</span>
+              </div>
+              <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="text-sm">Standard téléphonique</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -137,27 +142,7 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
 
-                {/* Adresse */}
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-red-100 p-3 rounded-lg">
-                        <MapPin className="w-6 h-6 text-red-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                          Adresse
-                        </h3>
-                        <p className="text-gray-900 font-medium mb-1">
-                          123 Avenue des Télécoms
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          75001 Paris, France
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+
 
                 {/* Horaires */}
                 <Card className="hover:shadow-lg transition-shadow">
