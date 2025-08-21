@@ -78,7 +78,6 @@ export function HeaderSimple() {
       ],
     },
     { name: "Blog", href: "/blog" },
-    { name: "Assistance", href: "/assistance" },
     { name: "Devis en ligne", href: "/devis-en-ligne" },
   ];
 
