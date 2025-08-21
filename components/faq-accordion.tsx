@@ -243,9 +243,10 @@ export function FAQAccordion({
           >
             <button
               onClick={() => toggleAccordion(index)}
-              className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors hover:bg-gray-50"
+              className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2"
               aria-expanded={openIndex === index}
               aria-controls={`faq-content-${index}`}
+              type="button"
             >
               <span className="font-semibold text-gray-900 pr-4">
                 {item.question}
@@ -266,17 +267,19 @@ export function FAQAccordion({
             <div
               id={`faq-content-${index}`}
               className={`transition-all duration-300 ease-in-out ${
-                openIndex === index
-                  ? "max-h-[1000px] opacity-100"
-                  : "max-h-0 opacity-0 overflow-hidden"
-              }`}
+                openIndex === index 
+                  ? "max-h-[800px] opacity-100" 
+                  : "max-h-0 opacity-0"
+              } overflow-hidden`}
             >
-              <div className="px-6 pb-6 text-gray-600">
-                {typeof item.answer === "string" ? (
-                  <p>{item.answer}</p>
-                ) : (
-                  item.answer
-                )}
+              <div className="border-t border-gray-100 bg-gray-50">
+                <div className="px-6 py-6 text-gray-600">
+                  {typeof item.answer === "string" ? (
+                    <p>{item.answer}</p>
+                  ) : (
+                    item.answer
+                  )}
+                </div>
               </div>
             </div>
           </Card>
