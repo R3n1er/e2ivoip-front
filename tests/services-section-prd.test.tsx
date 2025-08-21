@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { ServicesSection } from "@/components/services-section";
+import { ServicesSectionSimple } from "@/components/services-section-simple";
 
 // Mock framer-motion
 vi.mock("framer-motion", () => ({
@@ -23,9 +23,9 @@ vi.mock("framer-motion", () => ({
   },
 }));
 
-describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
+describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", () => {
   it("affiche le titre avec les couleurs PRD", () => {
-    render(<ServicesSection />);
+    render(<ServicesSectionSimple />);
 
     // Vérifier que le titre principal est présent
     expect(screen.getByText(/Services de/)).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
   });
 
   it("affiche tous les services de téléphonie IP", () => {
-    render(<ServicesSection />);
+    render(<ServicesSectionSimple />);
 
     // Vérifier que tous les services sont présents
     expect(screen.getByText("Standards téléphoniques IP")).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
   });
 
   it("affiche les badges de service", () => {
-    render(<ServicesSection />);
+    render(<ServicesSectionSimple />);
 
     expect(screen.getByText("Populaire")).toBeInTheDocument();
     expect(screen.getByText("Nouveau")).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
   });
 
   it("affiche la section CTA avec les couleurs PRD", () => {
-    render(<ServicesSection />);
+    render(<ServicesSectionSimple />);
 
     expect(
       screen.getByText("Prêt à moderniser votre téléphonie ?")
@@ -70,7 +70,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
   // Les indicateurs de disponibilité 99.9% ont été retirés du PRD
 
   it("utilise uniquement les couleurs PRD pour les icônes", () => {
-    const { container } = render(<ServicesSection />);
+    const { container } = render(<ServicesSectionSimple />);
 
     // Vérifier que seules les couleurs PRD sont utilisées
     const elementsWithPRDColors = container.querySelectorAll(
@@ -86,7 +86,7 @@ describe("ServicesSection - Charte Graphique PRD (Icônes Corrigées)", () => {
   });
 
   it('le bouton "Demander un devis gratuit" redirige vers la page devis en ligne', () => {
-    render(<ServicesSection />);
+    render(<ServicesSectionSimple />);
 
     const devisButton = screen.getByText("Demander un devis gratuit");
     expect(devisButton).toBeInTheDocument();

@@ -2,7 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { useHubSpot } from "./hubspot-tracking";
-import { useToast } from "@/components/ui/use-toast";
+// Simple toast implementation
+const useToast = () => ({
+  toast: {
+    error: (message: string) => console.error("Toast Error:", message),
+    success: (message: string) => console.log("Toast Success:", message)
+  }
+});
 import { validateEmail, validatePhone } from "@/lib/utils";
 
 interface HubSpotFormProps {
