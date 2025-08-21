@@ -55,6 +55,25 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [x] **FAQ fonctionnel** : Remplacement `faq-accordion.tsx` défaillant par `faq-working.tsx`
 - [x] **Nettoyage codebase** : Suppression composants obsolètes et pages debug
 - [x] **Build stable** : Application démarre et se compile sans erreurs
+- [x] **Résolution formulaire HubSpot** : Intégration complète avec gestion d'erreurs et fallback
+
+### Phase 6 - Intégration HubSpot et Formulaires : COMPLÉTÉE ✅
+
+- [x] **Diagnostic problème HubSpot** : Identification du problème de timing et de gestion des erreurs
+- [x] **Amélioration composant HubSpotScript** : Gestion d'état, logs de debug, fallback email
+- [x] **Intégration page contact** : Formulaire HubSpot intégré dans le conteneur approprié
+- [x] **Tests HubSpot complets** : 4 tests d'intégration + 4 tests E2E + 3 tests de debug
+- [x] **Documentation HubSpot** : Guide complet d'intégration et de dépannage
+- [x] **Fallback robuste** : Lien email en cas d'échec du formulaire HubSpot
+
+### Phase 6 - Intégration HubSpot et Formulaires : COMPLÉTÉE ✅
+
+- [x] **Diagnostic problème HubSpot** : Identification du problème de timing et de gestion des erreurs
+- [x] **Amélioration composant HubSpotScript** : Gestion d'état, logs de debug, fallback email
+- [x] **Intégration page contact** : Formulaire HubSpot intégré dans le conteneur approprié
+- [x] **Tests HubSpot complets** : 4 tests d'intégration + 4 tests E2E + 3 tests de debug
+- [x] **Documentation HubSpot** : Guide complet d'intégration et de dépannage
+- [x] **Fallback robuste** : Lien email en cas d'échec du formulaire HubSpot
 
 ## Prochaines Phases
 
@@ -166,160 +185,4 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 #### 1. **Lazy Loading des Composants**
 
 - Composant `LazyComponent` avec Suspense
-- Composants spécialisés : `LazyHeroSection`, `LazyServicesSection`, etc.
-- Fallbacks visuels pendant le chargement
-
-#### 2. **Service Worker**
-
-- Cache intelligent avec stratégies optimisées
-- Support offline complet
-- Gestion des mises à jour automatiques
-- Nettoyage automatique du cache
-
-#### 3. **Manifest PWA**
-
-- Configuration complète pour l'expérience mobile
-- Icônes multiples et raccourcis
-- Thème et couleurs personnalisées
-- Support des protocoles (tel:, mailto:)
-
-#### 4. **Page Offline**
-
-- Interface utilisateur intuitive
-- Actions alternatives (appel, email)
-- Informations de contact
-- Bouton de rafraîchissement
-
-#### 5. **Sitemaps Dynamiques**
-
-- Sitemap principal avec priorités et fréquences
-- Sitemap des images pour l'indexation
-- Génération automatique des métadonnées
-- Support des redirections
-
-#### 6. **Robots.txt Optimisé**
-
-- Règles pour tous les types de bots
-- Configuration des sitemaps
-- Règles spécifiques pour les images
-- Protection contre le scraping
-
-#### 7. **Configuration Next.js**
-
-- Optimisations des images (WebP, AVIF)
-- Headers de sécurité et performance
-- Redirections et réécritures
-- Configuration webpack avancée
-
-### Optimisations de Performance
-
-#### **Code Splitting**
-
-- Lazy loading des composants lourds
-- Division par routes et fonctionnalités
-- Suspense avec fallbacks visuels
-
-#### **Cache et Service Worker**
-
-- Stratégies de cache optimisées
-- Cache-first pour les images
-- Network-first pour les API
-- Stale-while-revalidate pour les ressources
-
-#### **Images et Assets**
-
-- Formats modernes (WebP, AVIF)
-- Lazy loading avec IntersectionObserver
-- Responsive images avec srcset
-- Cache long terme pour les assets statiques
-
-#### **Bundle Optimization**
-
-- Tree shaking automatique
-- Code splitting par chunks
-- Optimisation des dépendances
-- Minification et compression
-
-## Prochaines Étapes Immédiates
-
-### 1. **Finalisation des Tests Core Web Vitals**
-
-- Créer les composants manquants
-- Finaliser les tests des composants
-- Valider tous les tests (objectif : 174/174)
-
-### 2. **Phase 4 - Dégradés**
-
-- Développer les composants de dégradés
-- Créer le système de thèmes
-- Implémenter les animations
-- Tester l'accessibilité
-
-### 3. **Validation des Performances**
-
-- Tests Lighthouse automatisés
-- Monitoring des Core Web Vitals
-- Optimisations continues
-- Validation des métriques
-
-## Détails Phase 4 - Refactorisation Framer Motion
-
-### Problèmes résolus
-
-#### 1. **Migration des composants**
-- Remplacé tous les composants Framer Motion par versions `-simple`
-- Supprimé les dépendances de `motion` causant des problèmes d'hydratation
-- Utilisé des animations CSS natives plus performantes
-
-#### 2. **Section clients "Ils nous font confiance"**
-- **Problème** : Titre et logos ne s'affichaient pas à cause de Framer Motion
-- **Solution** : Animation CSS pure `scrollLeft 60s linear infinite`
-- **Résultat** : Carrousel fonctionnel avec 9 logos clients défilants
-
-#### 3. **Optimisation des images**
-- **Problème** : `OptimizedImage` avec lazy loading ne fonctionnait pas dans le carrousel
-- **Solution** : Passage à `Image` Next.js standard avec `unoptimized={true}`
-- **Résultat** : Affichage correct des logos clients
-
-#### 4. **DaisyUI optimisé**
-- Application des classes sémantiques : `btn btn-primary`, `badge badge-primary`
-- Thème personnalisé "e2ivoip" avec couleurs de la charte graphique
-- Configuration `data-theme="e2ivoip"` dans le layout
-
-#### 5. **Textes mis à jour**
-- "Support DOM-TOM" → "Support France Métropolitaine et DOM-TOM"
-- "Équipes DOM-TOM" → "Équipes France Métropolitaine et DOM-TOM"
-- "Support technique DOM-TOM & France" → "Support technique France Métropolitaine et DOM-TOM"
-
-#### 6. **Configuration Next.js**
-- Correction `experimental.turbo` → `turbopack`
-- Suppression `testPathIgnorePatterns` invalide
-- Stabilisation du serveur de développement
-
-### Fichiers modifiés
-
-- `/app/layout.tsx` : HeaderSimple + data-theme
-- `/app/page.tsx` : Imports des composants -simple
-- `/components/clients-carousel.tsx` : Animation CSS + Image standard
-- `/components/header-simple.tsx` : Version sans Framer Motion
-- `/components/*-simple.tsx` : Optimisations DaisyUI
-- `/app/globals.css` : Animation scrollLeft
-- `/tailwind.config.js` : Thème DaisyUI personnalisé
-- `/next.config.js` : Correction options dépréciées
-
-## Conclusion
-
-La **Phase 4 - Refactorisation Framer Motion et UX** est maintenant **COMPLÉTÉE** avec succès !
-
-✅ **Accomplissements majeurs :**
-
-- Migration complète vers composants CSS natifs
-- Section clients fonctionnelle avec logos défilants
-- Header stable sans problèmes d'hydratation
-- Optimisation DaisyUI selon bonnes pratiques
-- Textes DOM-TOM mis à jour
-- Configuration Next.js stabilisée
-
-🎯 **Prochaine priorité :** Phase 5 - Implémentation des Dégradés
-
-🚀 **Objectif final :** Site web ultra-performant avec Core Web Vitals optimaux et expérience utilisateur exceptionnelle
+- Composants spécialisés : `
