@@ -35,7 +35,7 @@ describe("TawkTo Component", () => {
     });
 
     // Mock document.head.appendChild
-    vi.spyOn(document.head, "appendChild").mockImplementation(() => {});
+    vi.spyOn(document.head, "appendChild").mockImplementation((node) => node);
 
     // Supprimer window.Tawk_API pour forcer le chargement du script
     if (window.Tawk_API) {

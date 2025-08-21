@@ -7,23 +7,12 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 jours
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Optimisations des performances
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
-  },
-
-  // Configuration Turbopack (remplace experimental.turbo)
-  turbopack: {
-    rules: {
-      "*.svg": {
-        loaders: ["@svgr/webpack"],
-        as: "*.js",
-      },
-    },
   },
 
   // Compression et minification
@@ -49,10 +38,6 @@ const nextConfig = {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
           },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
         ],
       },
       {
@@ -61,10 +46,6 @@ const nextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
           },
         ],
       },
@@ -77,32 +58,10 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: "/sw.js",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=0, must-revalidate",
-          },
-          {
-            key: "Service-Worker-Allowed",
-            value: "/",
-          },
-        ],
-      },
-      {
-        source: "/manifest.json",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=3600",
-          },
-        ],
-      },
     ];
   },
 
-  // Redirections et réécritures
+  // Redirections
   async redirects() {
     return [
       {
@@ -115,70 +74,7 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
-      {
-        source: "/telephonie-ip",
-        destination: "/services",
-        permanent: true,
-      },
-      {
-        source: "/voip",
-        destination: "/services",
-        permanent: true,
-      },
     ];
-  },
-
-  // Réécritures pour les API
-  async rewrites() {
-    return [
-      {
-        source: "/api/sitemap",
-        destination: "/api/sitemap-generator",
-      },
-    ];
-  },
-
-  // Configuration webpack
-  webpack: (config, { dev, isServer }) => {
-    // Optimisations pour la production
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: "all",
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendors",
-            chunks: "all",
-            priority: 10,
-          },
-          common: {
-            name: "common",
-            minChunks: 2,
-            chunks: "all",
-            priority: 5,
-            reuseExistingChunk: true,
-          },
-        },
-      };
-
-      // Optimisation des bundles
-      config.optimization.minimize = true;
-      config.optimization.minimizer = config.optimization.minimizer || [];
-    }
-
-    // Support des SVG
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-
-    // Optimisation des polices
-    config.module.rules.push({
-      test: /\.(woff|woff2|eot|ttf|otf)$/i,
-      type: "asset/resource",
-    });
-
-    return config;
   },
 
   // Configuration TypeScript
@@ -192,17 +88,8 @@ const nextConfig = {
   },
 
   // Configuration de build
-  output: "standalone",
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
-
-  // Configuration des variables d'environnement
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
-  },
-
-  // Note: testPathIgnorePatterns n'est pas une option Next.js valide
-  // Cette configuration doit être dans jest.config.js si vous utilisez Jest
 };
 
 module.exports = nextConfig;

@@ -1,21 +1,13 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { ChevronDown, Plus, HelpCircle } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { HelpCircle } from 'lucide-react'
 
 interface FAQItem {
-  question: string;
-  answer: string | React.ReactNode;
+  question: string
+  answer: string | React.ReactNode
 }
 
-interface FAQAccordionProps {
-  items?: FAQItem[];
-  title?: string;
-  subtitle?: string;
-}
-
-const defaultFAQItems: FAQItem[] = [
+const faqData: FAQItem[] = [
   {
     question: "Définition de SIP et de la VoIP",
     answer: (
@@ -206,19 +198,9 @@ const defaultFAQItems: FAQItem[] = [
       </div>
     ),
   },
-];
+]
 
-export function FAQAccordion({
-  items = defaultFAQItems,
-  title = "FAQ",
-  subtitle = "Réponses aux questions fréquemment posées par nos clients",
-}: FAQAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
+export default function WorkingFAQ() {
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Header */}
@@ -227,64 +209,51 @@ export function FAQAccordion({
           <HelpCircle className="w-8 h-8 text-red-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          {title}
+          FAQ
         </h2>
-        <p className="text-xl text-gray-600">{subtitle}</p>
+        <p className="text-xl text-gray-600">
+          Réponses aux questions fréquemment posées par nos clients
+        </p>
       </div>
 
-      {/* Accordion Items */}
+      {/* FAQ Items */}
       <div className="space-y-4">
-        {items.map((item, index) => (
-          <Card
+        {faqData.map((item, index) => (
+          <details 
             key={index}
-            className={`overflow-hidden transition-all duration-300 ${
-              openIndex === index ? "shadow-lg" : "hover:shadow-md"
-            }`}
+            className="group bg-white rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
           >
-            <button
-              onClick={() => toggleAccordion(index)}
-              className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2"
-              aria-expanded={openIndex === index}
-              aria-controls={`faq-content-${index}`}
-              type="button"
-            >
+            <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
               <span className="font-semibold text-gray-900 pr-4">
                 {item.question}
               </span>
-              <div
-                className={`flex-shrink-0 transition-transform duration-300 ${
-                  openIndex === index ? "rotate-180" : ""
-                }`}
-              >
-                {openIndex === index ? (
-                  <ChevronDown className="w-5 h-5 text-red-primary" />
+              <div className="flex-shrink-0 transition-transform duration-300 group-open:rotate-180">
+                <svg 
+                  className="w-5 h-5 text-red-primary" 
+                  fill="none" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </summary>
+            
+            <div className="border-t border-gray-100 bg-gray-50">
+              <div className="px-6 py-6 text-gray-600">
+                {typeof item.answer === 'string' ? (
+                  <p>{item.answer}</p>
                 ) : (
-                  <Plus className="w-5 h-5 text-gray-400" />
+                  item.answer
                 )}
               </div>
-            </button>
-
-            <div
-              id={`faq-content-${index}`}
-              className={`transition-all duration-300 ease-in-out ${
-                openIndex === index 
-                  ? "max-h-[800px] opacity-100" 
-                  : "max-h-0 opacity-0"
-              } overflow-hidden`}
-            >
-              <div className="border-t border-gray-100 bg-gray-50">
-                <div className="px-6 py-6 text-gray-600">
-                  {typeof item.answer === "string" ? (
-                    <p>{item.answer}</p>
-                  ) : (
-                    item.answer
-                  )}
-                </div>
-              </div>
             </div>
-          </Card>
+          </details>
         ))}
       </div>
     </div>
-  );
+  )
 }
