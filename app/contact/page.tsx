@@ -5,12 +5,12 @@ import { HubSpotContactFormGlobal } from "@/components/hubspot-contact-form-glob
 import { SecureEmail } from "@/components/secure-email";
 
 export const metadata: Metadata = {
-  title: "Contact - E2I VoIP",
-  description: "Contactez notre équipe d'experts en téléphonie IP pour un accompagnement personnalisé. Devis gratuit et conseils techniques.",
-  keywords: "contact, téléphonie IP, devis, support, E2I VoIP",
+  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
+  description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
+  keywords: "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM-TOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
-    title: "Contact - E2I VoIP",
-    description: "Contactez notre équipe d'experts en téléphonie IP pour un accompagnement personnalisé.",
+    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
+    description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
     type: "website",
   },
 };
@@ -32,17 +32,19 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Contactez-<span className="text-white">nous</span>
+              Contactez nos <span className="text-white">experts VoIP</span>
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Prêt à moderniser votre système téléphonique ? Contactez nos experts VoIP pour un accompagnement personnalisé
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
+              Prêt à moderniser votre système téléphonique ? Nos experts en téléphonie IP vous accompagnent dans votre projet
             </p>
-            <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Devis gratuit • Support 24/7 • Équipes locales France & DOM-TOM
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <span className="text-sm">Expert téléphonie IP</span>
               </div>
-              <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <span className="text-sm">Standard téléphonique</span>
@@ -93,11 +95,33 @@ export default function ContactPage() {
                   Nos coordonnées
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Notre équipe d'experts est là pour vous accompagner dans vos projets de téléphonie IP
+                  Notre équipe d&apos;experts est là pour vous accompagner dans vos projets de téléphonie IP
                 </p>
               </div>
 
               <div className="space-y-6">
+                {/* Hotline Prioritaire */}
+                <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-red-primary p-3 rounded-lg">
+                        <MessageCircle className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                          Hotline Support
+                        </h3>
+                        <p className="text-gray-900 font-bold text-xl mb-1">
+                          0189 560 500
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Support technique prioritaire • Lun-Ven 8h-18h
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
                 {/* WhatsApp */}
                 <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
@@ -107,35 +131,13 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                          WhatsApp
+                          WhatsApp Business
                         </h3>
                         <p className="text-gray-900 font-medium mb-1">
                           0594 96 35 00
                         </p>
                         <p className="text-sm text-gray-600">
-                          Réponse rapide par message
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Email */}
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-red-100 p-3 rounded-lg">
-                        <Mail className="w-6 h-6 text-red-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                          Email
-                        </h3>
-                        <p className="text-gray-900 font-medium mb-1">
-                          <SecureEmail email="commerciaux@e2i-voip.com" />
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Réponse sous 24h
+                          Réponse rapide • Support commercial et technique
                         </p>
                       </div>
                     </div>
@@ -143,38 +145,13 @@ export default function ContactPage() {
                 </Card>
 
 
-
-                {/* Horaires */}
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-red-100 p-3 rounded-lg">
-                        <Clock className="w-6 h-6 text-red-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                          Horaires
-                        </h3>
-                        <p className="text-gray-900 font-medium mb-1">
-                          Lun-Ven 9h-18h
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Support 24/7
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
-
             </div>
           </div>
         </div>
       </section>
 
-
-
-            {/* Section Nos Implantations */}
+      {/* Section Nos Implantations */}
       <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -182,11 +159,27 @@ export default function ContactPage() {
               Nos <span className="text-white">implantations</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Présents aux Antilles, en Guyane, à la Réunion et en France Métropolitaine
+              Équipes techniques locales en France Métropolitaine et DOM-TOM pour un support de proximité
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* France */}
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+              <CardContent className="p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">France</h3>
+                <a
+                  href="tel:+33189560500"
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                >
+                  01 89 56 05 00
+                </a>
+              </CardContent>
+            </Card>
+            
             {/* Guyane */}
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardContent className="p-6 text-center">
@@ -198,7 +191,7 @@ export default function ContactPage() {
                   href="tel:+594594963500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                 >
-                  +594 594 963 500
+                  05 94 96 35 00
                 </a>
               </CardContent>
             </Card>
@@ -295,7 +288,7 @@ export default function ContactPage() {
                   Quels sont vos horaires de support ?
                 </h3>
                 <p className="text-gray-600">
-                  Notre équipe technique est disponible du lundi au vendredi de 9h à 18h, avec un support d'urgence 24/7.
+                  Notre équipe technique est disponible du lundi au vendredi de 9h à 18h, avec un support d&apos;urgence 24/7.
                 </p>
               </CardContent>
             </Card>
@@ -306,7 +299,7 @@ export default function ContactPage() {
                   Intervenez-vous sur site ?
                 </h3>
                 <p className="text-gray-600">
-                  Oui, nous proposons des interventions sur site pour l'installation et la maintenance de vos équipements.
+                  Oui, nous proposons des interventions sur site pour l&apos;installation et la maintenance de vos équipements.
                 </p>
               </CardContent>
             </Card>
