@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
-import { HubSpotContactFormGlobal } from "@/components/hubspot-contact-form-global";
+import Script from "next/script";
 import { SecureEmail } from "@/components/secure-email";
 
 export const metadata: Metadata = {
@@ -78,12 +78,7 @@ export default function ContactPage() {
                   </p>
                 </CardHeader>
                 <CardContent className="p-8">
-                  <HubSpotContactFormGlobal
-                    portalId="26878201"
-                    formId="312a9f67-e613-4651-9690-4586646554a0"
-                    region="eu1"
-                    className="w-full"
-                  />
+                  <div id="hubspot-form-container"></div>
                 </CardContent>
               </Card>
             </div>
@@ -306,6 +301,30 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Scripts HubSpot */}
+      <Script
+        src="//js-eu1.hsforms.net/forms/embed/v2.js"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="hubspot-form"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener('load', function() {
+              if (window.hbspt) {
+                window.hbspt.forms.create({
+                  portalId: "26878201",
+                  formId: "312a9f67-e613-4651-9690-4586646554a0",
+                  region: "eu1",
+                  target: "#hubspot-form-container"
+                });
+              }
+            });
+          `,
+        }}
+      />
     </>
   );
 } 
