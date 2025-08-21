@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import Script from "next/script";
 import { SecureEmail } from "@/components/secure-email";
+import WorkingFAQ from "@/components/faq-working";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
@@ -242,63 +243,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Section FAQ */}
+      {/* FAQ */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Questions fréquentes
-            </h2>
-            <p className="text-lg text-gray-600">
-              Trouvez rapidement les réponses à vos questions
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Quel est le délai de réponse ?
-                </h3>
-                <p className="text-gray-600">
-                  Nous répondons à toutes les demandes sous 24h maximum, souvent dans la journée.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Proposez-vous des devis gratuits ?
-                </h3>
-                <p className="text-gray-600">
-                  Oui, tous nos devis sont gratuits et sans engagement. Nous analysons vos besoins avant de vous proposer une solution.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Quels sont vos horaires de support ?
-                </h3>
-                <p className="text-gray-600">
-                  Notre équipe technique est disponible du lundi au vendredi de 9h à 18h, avec un support d&apos;urgence 24/7.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Intervenez-vous sur site ?
-                </h3>
-                <p className="text-gray-600">
-                  Oui, nous proposons des interventions sur site pour l&apos;installation et la maintenance de vos équipements.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <WorkingFAQ />
         </div>
       </section>
 
