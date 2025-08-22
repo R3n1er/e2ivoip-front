@@ -26,7 +26,7 @@ export function HubSpotSimple() {
             portalId: "26878201",
             formId: "312a9f67-e613-4651-9690-4586646554a0",
             region: "eu1",
-            target: formRef.current
+            target: "#hubspot-form-simple",
           });
         }
         return;
@@ -47,7 +47,7 @@ export function HubSpotSimple() {
               portalId: "26878201",
               formId: "312a9f67-e613-4651-9690-4586646554a0",
               region: "eu1",
-              target: formRef.current
+              target: "#hubspot-form-simple",
             });
             clearInterval(waitForHubSpot);
           }
