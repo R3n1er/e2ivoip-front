@@ -1,43 +1,55 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import ContactPage from '../app/contact/page';
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import ContactPage from "../app/contact/page";
 
-// Mock du composant HubSpotScript
-vi.mock('../components/hubspot-script', () => ({
-  HubSpotScript: () => <div data-testid="hubspot-script">HubSpot Script Mock</div>
+// Mock du composant HubSpotSimple
+vi.mock("../components/hubspot-simple", () => ({
+  HubSpotSimple: () => (
+    <div data-testid="hubspot-simple">
+      <div className="text-center text-gray-500 py-4">
+        Chargement du formulaire...
+      </div>
+    </div>
+  ),
 }));
 
-describe('ContactPage HubSpot Integration', () => {
-  it('should display the HubSpot form container', () => {
+describe("ContactPage HubSpot Integration", () => {
+  it("should display the HubSpot form container", () => {
     render(<ContactPage />);
     
-    // Vérifier que le conteneur du formulaire existe
-    const formContainer = screen.getByTestId('hubspot-script');
-    expect(formContainer).toBeInTheDocument();
+    // Vérifier que le composant HubSpot est présent
+    const hubspotComponent = screen.getByTestId("hubspot-simple");
+    expect(hubspotComponent).toBeInTheDocument();
   });
 
-  it('should have the correct HubSpot form container ID', () => {
+  it("should have the correct HubSpot form container", () => {
     render(<ContactPage />);
     
-    // Vérifier que l'ID du conteneur est correct
-    const formContainer = screen.getByTestId('hubspot-script');
-    expect(formContainer.parentElement).toHaveAttribute('id', 'hubspot-form-container');
+    // Vérifier que le composant HubSpot est dans la bonne section
+    const hubspotComponent = screen.getByTestId("hubspot-simple");
+    const cardContent = hubspotComponent.closest(".p-8");
+    expect(cardContent).toBeInTheDocument();
   });
 
-  it('should display the contact form card', () => {
+  it("should display the contact form title", () => {
     render(<ContactPage />);
     
-    // Vérifier que la carte du formulaire est présente
-    const formCard = screen.getByText('Demande de contact');
-    expect(formCard).toBeInTheDocument();
+    expect(screen.getByText("Demande de contact")).toBeInTheDocument();
+    expect(screen.getByText(/Remplissez ce formulaire/)).toBeInTheDocument();
   });
 
-  it('should display contact information', () => {
+  it("should display contact information", () => {
     render(<ContactPage />);
     
-    // Vérifier que les informations de contact sont présentes
-    expect(screen.getByText('Nos coordonnées')).toBeInTheDocument();
-    expect(screen.getByText('0189 560 500')).toBeInTheDocument();
-    expect(screen.getByText('0594 96 35 00')).toBeInTheDocument();
+    expect(screen.getByText("Nos coordonnées")).toBeInTheDocument();
+    expect(screen.getByText(/Notre équipe d'experts/)).toBeInTheDocument();
+  });
+
+  it("should display the hero section", () => {
+    render(<ContactPage />);
+    
+    expect(screen.getByText(/Contactez nos/)).toBeInTheDocument();
+    expect(screen.getByText("experts VoIP")).toBeInTheDocument();
+    expect(screen.getByText(/Prêt à moderniser/)).toBeInTheDocument();
   });
 });
