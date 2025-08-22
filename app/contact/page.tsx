@@ -3,15 +3,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
-import { HubSpotScript } from "@/components/hubspot-script";
+import { HubSpotSimple } from "@/components/hubspot-simple";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
-  description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
-  keywords: "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM-TOM, standard téléphonique entreprise, 3CX Yeastar",
+  description:
+    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
+  keywords:
+    "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM-TOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
     title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
-    description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
+    description:
+      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
     type: "website",
   },
 };
@@ -36,7 +39,8 @@ export default function ContactPage() {
               Contactez nos <span className="text-white">experts VoIP</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-              Prêt à moderniser votre système téléphonique ? Nos experts en téléphonie IP vous accompagnent dans votre projet
+              Prêt à moderniser votre système téléphonique ? Nos experts en
+              téléphonie IP vous accompagnent dans votre projet
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Devis gratuit • Support 24/7 • Équipes locales France & DOM-TOM
@@ -75,13 +79,12 @@ export default function ContactPage() {
                     Demande de contact
                   </CardTitle>
                   <p className="text-white/90">
-                    Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
+                    Remplissez ce formulaire et nous vous recontacterons dans
+                    les plus brefs délais
                   </p>
                 </CardHeader>
                 <CardContent className="p-8">
-                  <div id="hubspot-form-container">
-                    <HubSpotScript />
-                  </div>
+                  <HubSpotSimple />
                 </CardContent>
               </Card>
             </div>
@@ -93,7 +96,8 @@ export default function ContactPage() {
                   Nos coordonnées
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Notre équipe d&apos;experts est là pour vous accompagner dans vos projets de téléphonie IP
+                  Notre équipe d&apos;experts est là pour vous accompagner dans
+                  vos projets de téléphonie IP
                 </p>
               </div>
 
@@ -119,7 +123,7 @@ export default function ContactPage() {
                     </div>
                   </CardContent>
                 </Card>
-                
+
                 {/* WhatsApp */}
                 <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
@@ -141,8 +145,6 @@ export default function ContactPage() {
                     </div>
                   </CardContent>
                 </Card>
-
-
               </div>
             </div>
           </div>
@@ -157,7 +159,8 @@ export default function ContactPage() {
               Nos <span className="text-white">implantations</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Équipes techniques locales en France Métropolitaine et DOM-TOM pour un support de proximité
+              Équipes techniques locales en France Métropolitaine et DOM-TOM
+              pour un support de proximité
             </p>
           </div>
 
@@ -168,7 +171,9 @@ export default function ContactPage() {
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">France</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  France
+                </h3>
                 <a
                   href="tel:+33189560500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
@@ -177,14 +182,16 @@ export default function ContactPage() {
                 </a>
               </CardContent>
             </Card>
-            
+
             {/* Guyane */}
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardContent className="p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Guyane</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Guyane
+                </h3>
                 <a
                   href="tel:+594594963500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
@@ -200,7 +207,9 @@ export default function ContactPage() {
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Guadeloupe</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Guadeloupe
+                </h3>
                 <a
                   href="tel:+590590173500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
@@ -216,7 +225,9 @@ export default function ContactPage() {
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Martinique</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Martinique
+                </h3>
                 <a
                   href="tel:+596596313500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
@@ -232,7 +243,9 @@ export default function ContactPage() {
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">La Réunion</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  La Réunion
+                </h3>
                 <a
                   href="tel:+262263085500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
@@ -251,9 +264,6 @@ export default function ContactPage() {
           <WorkingFAQ />
         </div>
       </section>
-
-      {/* HubSpot Form Script */}
-      {/* HubSpotScript is now embedded within the form */}
     </>
   );
-} 
+}
