@@ -1,13 +1,13 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import ContactPage from '../app/contact/page';
+import { render, screen, waitFor } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import ContactPage from "../app/contact/page";
 
-// Mock du composant HubSpotScript
-vi.mock('../components/hubspot-script', () => ({
-  HubSpotScript: () => (
-    <div data-testid="hubspot-script">
-      <div className="text-xs text-gray-500 mt-2 p-2 bg-gray-100 rounded">
-        <strong>Debug HubSpot:</strong> ✅ Formulaire HubSpot créé avec succès
+// Mock du composant HubSpotSimple
+vi.mock("../components/hubspot-simple", () => ({
+  HubSpotSimple: () => (
+    <div data-testid="hubspot-simple">
+      <div className="text-center text-gray-500 py-4">
+        Chargement du formulaire...
       </div>
       <div data-testid="hubspot-form" className="hubspot-form">
         <iframe 
@@ -17,61 +17,64 @@ vi.mock('../components/hubspot-script', () => ({
         />
       </div>
     </div>
-  )
+  ),
 }));
 
-describe('HubSpot E2E Integration', () => {
-  it('should display the complete contact page with HubSpot form', () => {
+describe("HubSpot E2E Integration", () => {
+  it("should display the complete contact page with HubSpot integration", () => {
     render(<ContactPage />);
     
-    // Vérifier que la page se charge complètement (texte divisé en plusieurs éléments)
+    // Vérifier la section hero
     expect(screen.getByText(/Contactez nos/)).toBeInTheDocument();
-    expect(screen.getByText(/experts VoIP/)).toBeInTheDocument();
-    expect(screen.getByText('Demande de contact')).toBeInTheDocument();
+    expect(screen.getByText("experts VoIP")).toBeInTheDocument();
     
-    // Vérifier que le composant HubSpot est présent
-    const hubspotScript = screen.getByTestId('hubspot-script');
-    expect(hubspotScript).toBeInTheDocument();
+    // Vérifier le formulaire HubSpot
+    const hubspotComponent = screen.getByTestId("hubspot-simple");
+    expect(hubspotComponent).toBeInTheDocument();
     
-    // Vérifier que le formulaire HubSpot est affiché
-    const hubspotForm = screen.getByTestId('hubspot-form');
-    expect(hubspotForm).toBeInTheDocument();
+    // Vérifier le titre du formulaire
+    expect(screen.getByText("Demande de contact")).toBeInTheDocument();
     
-    // Vérifier que l'iframe HubSpot est présent
-    const hubspotIframe = screen.getByTestId('hubspot-iframe');
-    expect(hubspotIframe).toBeInTheDocument();
+    // Vérifier les informations de contact
+    expect(screen.getByText("Nos coordonnées")).toBeInTheDocument();
   });
 
-  it('should have proper HubSpot form container structure', () => {
+  it("should have proper HubSpot form structure", () => {
     render(<ContactPage />);
     
-    // Vérifier que le conteneur du formulaire a le bon ID
-    const formContainer = screen.getByTestId('hubspot-script').parentElement;
-    expect(formContainer).toHaveAttribute('id', 'hubspot-form-container');
-    
-    // Vérifier que le conteneur est dans la bonne section
-    const cardContent = formContainer?.closest('[class*="p-8"]');
+    // Vérifier que le composant HubSpot est dans la bonne structure
+    const hubspotComponent = screen.getByTestId("hubspot-simple");
+    const cardContent = hubspotComponent.closest(".p-8");
     expect(cardContent).toBeInTheDocument();
+    
+    // Vérifier que le composant est dans une carte
+    const card = cardContent?.closest(".shadow-lg");
+    expect(card).toBeInTheDocument();
   });
 
-  it('should display contact information alongside the form', () => {
+  it("should display loading state for HubSpot form", () => {
     render(<ContactPage />);
     
-    // Vérifier que les informations de contact sont présentes
-    expect(screen.getByText('Nos coordonnées')).toBeInTheDocument();
-    expect(screen.getByText('0189 560 500')).toBeInTheDocument();
-    expect(screen.getByText('0594 96 35 00')).toBeInTheDocument();
-    
-    // Vérifier que le formulaire est dans la même section
-    expect(screen.getByTestId('hubspot-script')).toBeInTheDocument();
+    // Vérifier l'état de chargement
+    expect(screen.getByText("Chargement du formulaire...")).toBeInTheDocument();
   });
 
-  it('should have proper responsive layout', () => {
+  it("should have responsive layout", () => {
     render(<ContactPage />);
     
-    // Vérifier que la grille responsive est en place
-    const gridContainer = screen.getByTestId('hubspot-script').closest('[class*="grid"]');
-    expect(gridContainer).toBeInTheDocument();
-    expect(gridContainer).toHaveClass('lg:grid-cols-2');
+    // Vérifier que la grille est responsive
+    const gridContainer = screen.getByText("Demande de contact").closest(".grid");
+    expect(gridContainer).toHaveClass("lg:grid-cols-2");
+  });
+
+  it("should display all contact information sections", () => {
+    render(<ContactPage />);
+    
+    // Vérifier toutes les sections d'information
+    expect(screen.getByText("Nos coordonnées")).toBeInTheDocument();
+    expect(screen.getByText(/Notre équipe d'experts/)).toBeInTheDocument();
+    
+    // Vérifier les icônes et informations de contact
+    expect(screen.getByText(/0189 560 500/)).toBeInTheDocument();
   });
 });
