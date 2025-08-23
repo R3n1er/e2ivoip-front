@@ -41,9 +41,7 @@ export function HubSpotSimple() {
 
   return (
     <div id="hubspot-form-simple">
-      <div className="text-center text-gray-500 py-4">
-        Chargement du formulaire HubSpot...
-      </div>
+      {/* HubSpot injectera le formulaire directement ici */}
     </div>
   );
 }
