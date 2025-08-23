@@ -16,6 +16,10 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 
 > **📖 Voir le fichier [`.agents.md`](./.agents.md) pour les instructions complètes dédiées aux assistants IA**
 
+## 🎨 Charte Graphique Officielle
+
+> **📋 Voir le fichier [`.docs/CHARTE_GRAPHIQUE.md`](./docs/CHARTE_GRAPHIQUE.md) pour la charte graphique officielle E2I VoIP**
+
 ### Stack & Priorities
 
 - **Framework**: NextJS 15 (App Router)

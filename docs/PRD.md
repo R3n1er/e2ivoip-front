@@ -67,14 +67,93 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Images** : Optimisation automatique Next.js
 - **Lazy Loading** : Composants et images
 
-## Charte Graphique
+## Charte Graphique Officielle
 
-### Couleurs
+### Couleurs Principales
 
-- **Rouge primaire** : #DC2626 (red-600)
-- **Bleu marine** : #1E40AF (blue-700)
-- **Gris secondaire** : #6B7280 (gray-500)
-- **Vert** : #16A34A (green-600)
+- **Rouge principal** : #E53E3E (229, 62, 62)
+
+  - Utilisation : Chiffre "2", lettres "IP" dans VOIP, hover E/I
+  - Code Tailwind : `text-red-600` ou `bg-red-600`
+
+- **Bleu marine** : #2D3848 (45, 56, 72)
+
+  - Utilisation : Lettres E et I dans E2I
+  - Code Tailwind : `text-gray-800` ou `bg-gray-800`
+
+- **Gris secondaire** : #818096 (129, 128, 150)
+
+  - Utilisation : Lettres "VO" dans VOIP, baseline
+  - Code Tailwind : `text-gray-500` ou `bg-gray-500`
+
+- **Gris foncé** : #1F2937 (31, 41, 55)
+
+  - Utilisation : Texte, version non scrolled du header
+  - Code Tailwind : `text-gray-800` ou `bg-gray-800`
+
+- **Blanc** : #FFFFFF (255, 255, 255)
+  - Utilisation : Fond clair, inversions
+  - Code Tailwind : `text-white` ou `bg-white`
+
+### Application dans l'Identité Visuelle
+
+#### Logo E2I VoIP
+
+- **E2I** :
+  - E et I : Bleu marine (#2D3848)
+  - 2 : Rouge principal (#E53E3E)
+- **VOIP** :
+  - VO : Gris secondaire (#818096)
+  - IP : Rouge principal (#E53E3E)
+
+#### Éléments d'Interface
+
+- **Header** :
+  - Version normale : Gris foncé (#1F2937)
+  - Version scrolled : Blanc (#FFFFFF)
+- **Boutons CTA** : Rouge principal (#E53E3E)
+- **Liens hover** : Rouge principal (#E53E3E)
+- **Texte principal** : Gris foncé (#1F2937)
+- **Texte secondaire** : Gris secondaire (#818096)
+
+### Variables CSS Personnalisées
+
+```css
+:root {
+  /* Couleurs officielles E2I VoIP */
+  --red-primary: #e53e3e; /* Rouge principal */
+  --blue-marine: #2d3848; /* Bleu marine */
+  --gray-secondary: #818096; /* Gris secondaire */
+  --gray-dark: #1f2937; /* Gris foncé */
+  --white: #ffffff; /* Blanc */
+}
+
+/* Classes utilitaires */
+.text-red-primary {
+  color: var(--red-primary);
+}
+.bg-red-primary {
+  background-color: var(--red-primary);
+}
+.text-blue-marine {
+  color: var(--blue-marine);
+}
+.bg-blue-marine {
+  background-color: var(--blue-marine);
+}
+.text-gray-secondary {
+  color: var(--gray-secondary);
+}
+.bg-gray-secondary {
+  background-color: var(--gray-secondary);
+}
+.text-gray-dark {
+  color: var(--gray-dark);
+}
+.bg-gray-dark {
+  background-color: var(--gray-dark);
+}
+```
 
 ### Dégradés
 

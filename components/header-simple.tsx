@@ -24,10 +24,6 @@ export function HeaderSimple() {
     {
       name: "Qui sommes-nous",
       href: "/qui-sommes-nous",
-      submenu: [
-        { name: "Nos certifications", href: "/qui-sommes-nous/certifications" },
-        { name: "Nos partenaires", href: "/qui-sommes-nous/partenaires" },
-      ],
     },
     {
       name: "Téléphonie d'entreprise",
