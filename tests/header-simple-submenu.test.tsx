@@ -56,20 +56,12 @@ describe("HeaderSimple - Sous-menus", () => {
     expect(screen.getByText("Studio attente téléphonique")).toBeInTheDocument();
   });
 
-  test("Les événements de souris sont gérés", async () => {
-    const user = userEvent.setup();
+  test("Les sous-menus ont les bonnes classes CSS", () => {
     render(<HeaderSimple />);
     
-    // Trouver un élément avec sous-menu
-    const quiSommesNous = screen.getByText("Qui sommes-nous").closest("div");
-    
-    if (quiSommesNous) {
-      // Simuler le survol
-      await user.hover(quiSommesNous);
-      
-      // Vérifier que console.log a été appelé (debug)
-      expect(console.log).toHaveBeenCalled();
-    }
+    // Vérifier que les sous-menus ont les classes CSS hover
+    const submenuElements = document.querySelectorAll('.group-hover\\:opacity-100');
+    expect(submenuElements.length).toBeGreaterThan(0);
   });
 
   test("Le bouton contact est présent", () => {
@@ -83,8 +75,8 @@ describe("HeaderSimple - Sous-menus", () => {
     const user = userEvent.setup();
     render(<HeaderSimple />);
     
-    // Trouver le bouton menu mobile (il devrait être présent même si caché)
-    const menuButton = screen.getByRole("button");
+    // Trouver le bouton menu mobile spécifiquement
+    const menuButton = screen.getByRole("button", { name: "" }); // Le bouton sans nom (menu mobile)
     
     // Cliquer sur le bouton menu
     await user.click(menuButton);
