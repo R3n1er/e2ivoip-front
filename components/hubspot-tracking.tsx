@@ -67,8 +67,6 @@ export function useHubSpot() {
 // Déclaration TypeScript pour HubSpot
 declare global {
   interface Window {
-    hbspt: {
-      push: (args: any[]) => void
-    }
+    hbspt: any;
   }
 } 

@@ -12,9 +12,30 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Formulaires** : Tally (devis spécialisés)
 - **Automatisation** : n8n (workflows)
 
+## 🤖 Development Guidelines for AI Assistants
+
+### Stack & Priorities
+
+- **Framework**: NextJS 15 (App Router)
+- **CSS**: DaisyUI (priority) → Tailwind → shadcn/ui
+- Animations CSS avec Framer Motion
+- **Icons**: Lineicons (priority) → React Icons
+- **Deployment**: Vercel
+- **Testing**: TDD with Jest + Playwright
+
+### Code Generation Rules
+
+- Always use DaisyUI components first
+- Search Lineicons before React Icons
+- Use Framer Motion for Animation
+- Write tests before implementation (TDD)
+- Document in /docs automatically
+- Deploy via Vercel integration
+
 ## Dernières Améliorations
 
 ### ✅ Phase 7 - Résolution Problèmes Techniques & Optimisations (Terminée)
+
 - **ChunkLoadError résolu** : Simplification configuration webpack Next.js
 - **Page assistance refonte** : Chat Tawk.to intégré, suppression composants défaillants
 - **Configuration NextJS optimisée** : Headers sécurité, compression, redirections
@@ -23,6 +44,7 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **FAQ fonctionnel** : Remplacement accordéon défaillant par composant stable
 
 ### ✅ Phase 6 - Amélioration UX Header (Terminée)
+
 - **Problème résolu** : Délai trop court des sous-menus empêchant la navigation
 - **Solution** : Délai intelligent de 300ms avec zone de sécurité et gestion d'état avancée
 - **Tests** : 18 tests header UX créés et validés
@@ -99,6 +121,7 @@ npm run test:coverage
 ```
 
 **Statut des tests** : ✅ 148 tests passants
+
 - **Header UX** : 18 tests (délai, intégration, hydratation)
 - **Composants** : 130 tests (fonctionnalités, responsive, accessibilité)
 
@@ -126,7 +149,7 @@ e2ivoip-front/
 │   └── package.json
 ├── tests/                 # Tests unitaires et d'intégration
 ├── public/                # Assets statiques
-└── documentations/        # PRD, Roadmap, Implémentation
+└── docs/                  # PRD, Roadmap, Implémentation
 ```
 
 ## 🔧 Configuration
@@ -162,7 +185,7 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 
 ## 🚀 Migration Contentful
 
-- Le backend Strapi est supprimé. Nous allons implémenter un service `lib/contentful-blog.ts` (delivery API) et scripts d’import ultérieurement si nécessaire (Management API).
+- Le backend Strapi est supprimé. Nous allons implémenter un service `lib/contentful-blog.ts` (delivery API) et scripts d'import ultérieurement si nécessaire (Management API).
 
 ## 🧪 Tests
 
@@ -181,11 +204,10 @@ npm run test:coverage
 
 ## 📚 Documentation
 
-- [PRD](./documentations/PRD.md) - Product Requirements Document
-- [Roadmap](./documentations/roadmap.md) - Plan de développement
-- [Implémentation](./documentations/implementation.md) - Plan d'implémentation technique
-- [Prochaines étapes](./documentations/NEXT_STEPS.md) - Statut actuel et prochaines actions
-  
+- [PRD](./docs/PRD.md) - Product Requirements Document
+- [Roadmap](./docs/roadmap.md) - Plan de développement
+- [Implémentation](./docs/implementation.md) - Plan d'implémentation technique
+- [Prochaines étapes](./docs/NEXT_STEPS.md) - Statut actuel et prochaines actions
 
 ## 🚀 Déploiement
 

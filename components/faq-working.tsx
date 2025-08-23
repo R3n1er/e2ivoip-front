@@ -1,6 +1,6 @@
 'use client'
 
-import { HelpCircle } from 'lucide-react'
+// import { LineIcon } from 'lineicons-react' // Temporaire - Conflit avec Next.js 15
 
 interface FAQItem {
   question: string
@@ -206,7 +206,7 @@ export default function WorkingFAQ() {
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
-          <HelpCircle className="w-8 h-8 text-red-primary" />
+          <span className="text-4xl" role="img" aria-label="FAQ">❓</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           FAQ

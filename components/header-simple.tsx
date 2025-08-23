@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, Phone, ChevronDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,6 +83,7 @@ export function HeaderSimple() {
   ];
 
   const handleMouseEnter = (itemName: string) => {
+    console.log('Mouse enter:', itemName); // Debug
     // Annuler le timeout de fermeture s'il existe
     if (submenuTimeoutRef.current) {
       clearTimeout(submenuTimeoutRef.current);
@@ -93,15 +95,18 @@ export function HeaderSimple() {
   };
 
   const handleMouseLeave = () => {
+    console.log('Mouse leave from nav item'); // Debug
     // Démarrer le délai de fermeture
     submenuTimeoutRef.current = setTimeout(() => {
       if (!isHoveringSubmenu) {
+        console.log('Closing submenu after timeout'); // Debug
         setActiveSubmenu(null);
       }
     }, 300); // 300ms de délai
   };
 
   const handleSubmenuMouseEnter = () => {
+    console.log('Mouse enter submenu'); // Debug
     setIsHoveringSubmenu(true);
     // Annuler le timeout de fermeture
     if (submenuTimeoutRef.current) {
@@ -111,9 +116,11 @@ export function HeaderSimple() {
   };
 
   const handleSubmenuMouseLeave = () => {
+    console.log('Mouse leave submenu'); // Debug
     setIsHoveringSubmenu(false);
     // Démarrer le délai de fermeture
     submenuTimeoutRef.current = setTimeout(() => {
+      console.log('Closing submenu from submenu leave'); // Debug
       setActiveSubmenu(null);
     }, 300); // 300ms de délai
   };
@@ -175,8 +182,8 @@ export function HeaderSimple() {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => handleMouseEnter(item.name)}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => item.submenu && handleMouseEnter(item.name)}
+                onMouseLeave={item.submenu ? handleMouseLeave : undefined}
               >
                 {item.href ? (
                   <Link
@@ -215,25 +222,39 @@ export function HeaderSimple() {
                   </span>
                 )}
 
-                {/* Sous-menu simplifié */}
-                {item.submenu && activeSubmenu === item.name && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200]"
-                    onMouseEnter={handleSubmenuMouseEnter}
-                    onMouseLeave={handleSubmenuMouseLeave}
-                  >
-                    <div className="py-2">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-150"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                {/* Sous-menu avec Framer Motion */}
+                {item.submenu && (
+                  <AnimatePresence>
+                    {activeSubmenu === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200]"
+                        onMouseEnter={handleSubmenuMouseEnter}
+                        onMouseLeave={handleSubmenuMouseLeave}
+                      >
+                        <div className="py-2">
+                          {item.submenu.map((subItem, index) => (
+                            <motion.div
+                              key={subItem.name}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.05, duration: 0.15 }}
+                            >
+                              <Link
+                                href={subItem.href}
+                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-150"
+                              >
+                                {subItem.name}
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 )}
               </div>
             ))}

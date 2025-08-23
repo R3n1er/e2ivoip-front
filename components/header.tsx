@@ -2,18 +2,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, Phone, ChevronDown, Home, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LineIcon } from "lineicons-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
-  const [isHoveringSubmenu, setIsHoveringSubmenu] = useState(false);
-  const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const submenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,14 +17,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Nettoyer le timeout lors du démontage du composant
-  useEffect(() => {
-    return () => {
-      if (submenuTimeoutRef.current) {
-        clearTimeout(submenuTimeoutRef.current);
-      }
-    };
-  }, []);
 
   const navigation = [
     {
@@ -84,42 +70,7 @@ export function Header() {
     { name: "Devis en ligne", href: "/devis-en-ligne" },
   ];
 
-  const handleMouseEnter = (itemName: string) => {
-    // Annuler le timeout de fermeture s'il existe
-    if (submenuTimeoutRef.current) {
-      clearTimeout(submenuTimeoutRef.current);
-      submenuTimeoutRef.current = null;
-    }
-
-    setActiveSubmenu(itemName);
-    setIsHoveringSubmenu(false);
-  };
-
-  const handleMouseLeave = () => {
-    // Démarrer le délai de fermeture
-    submenuTimeoutRef.current = setTimeout(() => {
-      if (!isHoveringSubmenu) {
-        setActiveSubmenu(null);
-      }
-    }, 300); // 300ms de délai
-  };
-
-  const handleSubmenuMouseEnter = () => {
-    setIsHoveringSubmenu(true);
-    // Annuler le timeout de fermeture
-    if (submenuTimeoutRef.current) {
-      clearTimeout(submenuTimeoutRef.current);
-      submenuTimeoutRef.current = null;
-    }
-  };
-
-  const handleSubmenuMouseLeave = () => {
-    setIsHoveringSubmenu(false);
-    // Démarrer le délai de fermeture
-    submenuTimeoutRef.current = setTimeout(() => {
-      setActiveSubmenu(null);
-    }, 300); // 300ms de délai
-  };
+  // Plus besoin de logique complexe, DaisyUI gère le hover automatiquement
 
   return (
     <motion.header
@@ -131,6 +82,7 @@ export function Header() {
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           : "bg-white/80 backdrop-blur-sm border-b border-white/30"
       }`}
+      data-testid="main-header"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
@@ -144,7 +96,7 @@ export function Header() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-xl lg:text-2xl font-bold">
+              <div className="text-xl lg:text-2xl font-bold" data-testid="logo">
                 <span
                   className={`group-hover:text-red-primary transition-colors ${
                     isScrolled ? "text-red-primary" : "text-gray-800"
@@ -179,163 +131,179 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Optimisé pour MacBook Pro */}
+          {/* Desktop Navigation avec DaisyUI + Framer Motion */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(item.name)}
-                onMouseLeave={handleMouseLeave}
-              >
+              <div key={item.name} className="dropdown dropdown-hover dropdown-bottom dropdown-end">
                 {item.href ? (
-                  <Link
-                    href={item.href}
-                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
-                      isScrolled
-                        ? "text-gray-700 hover:text-red-primary"
-                        : "text-gray-700 hover:text-red-primary"
-                    }`}
-                  >
-                    {item.name}
+                  <div className="flex items-center">
+                    <Link
+                      href={item.href}
+                      className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-red-primary ${
+                        isScrolled ? "text-gray-700" : "text-gray-700"
+                      }`}
+                      data-testid={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {item.name}
+                    </Link>
                     {item.submenu && (
-                      <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
-                          isScrolled ? "text-gray-600" : "text-gray-600"
-                        } ${activeSubmenu === item.name ? "rotate-180" : ""}`}
-                      />
-                    )}
-                  </Link>
-                ) : (
-                  <span
-                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer ${
-                      isScrolled
-                        ? "text-gray-700 hover:text-red-primary"
-                        : "text-gray-700 hover:text-red-primary"
-                    }`}
-                  >
-                    {item.name}
-                    {item.submenu && (
-                      <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
-                          isScrolled ? "text-gray-600" : "text-gray-600"
-                        } ${activeSubmenu === item.name ? "rotate-180" : ""}`}
-                      />
-                    )}
-                  </span>
-                )}
-
-                {/* Sous-menu avec AnimatePresence pour une animation fluide */}
-                {item.submenu && (
-                  <AnimatePresence>
-                    {activeSubmenu === item.name && (
                       <motion.div
-                        ref={submenuRef}
-                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-50"
-                        onMouseEnter={handleSubmenuMouseEnter}
-                        onMouseLeave={handleSubmenuMouseLeave}
+                        className="ml-1 cursor-pointer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                       >
-                        <div className="py-2">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-150"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
+                        <LineIcon
+                          name="lni-chevron-down"
+                          className="text-sm text-gray-600 transition-all duration-200 hover:text-red-primary"
+                          aria-hidden="true"
+                        />
                       </motion.div>
                     )}
-                  </AnimatePresence>
+                  </div>
+                ) : (
+                  <div tabIndex={0} role="button" className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
+                    isScrolled ? "text-gray-700" : "text-gray-700"
+                  }`} data-testid={`nav-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    {item.name}
+                    {item.submenu && (
+                      <motion.div
+                        className="ml-1"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <LineIcon
+                          name="lni-chevron-down"
+                          className="text-sm text-gray-600 transition-all duration-200 hover:text-red-primary"
+                          aria-hidden="true"
+                        />
+                      </motion.div>
+                    )}
+                  </div>
+                )}
+                
+                {/* Sous-menu avec DaisyUI + Framer Motion */}
+                {item.submenu && (
+                  <motion.div
+                    className="dropdown-content menu bg-base-100 rounded-box w-64 p-2 shadow-2xl border border-base-300 z-[9999] mt-2"
+                    initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 30,
+                      duration: 0.2 
+                    }}
+                    data-testid={`submenu-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {item.submenu.map((subItem) => (
+                      <li key={subItem.name}>
+                        <motion.div
+                          whileHover={{ 
+                            backgroundColor: "var(--primary)", 
+                            color: "var(--primary-content)",
+                            x: 4
+                          }}
+                          transition={{ duration: 0.15 }}
+                        >
+                          <Link
+                            href={subItem.href}
+                            className="text-sm transition-colors duration-150 block w-full"
+                            data-testid={`submenu-link-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            {subItem.name}
+                          </Link>
+                        </motion.div>
+                      </li>
+                    ))}
+                  </motion.div>
                 )}
               </div>
             ))}
           </nav>
 
-          {/* CTA Button - Optimisé pour MacBook Pro */}
+          {/* CTA Button DaisyUI - Optimisé pour MacBook Pro */}
           <div className="hidden lg:flex items-center flex-shrink-0">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/contact">
-                <Button className="!bg-red-primary hover:bg-red-600 !text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
-                  <Phone className="w-4 h-4 mr-2" />
+                <button className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200" data-testid="header-contact-button">
+                  <LineIcon name="lni-phone" className="text-lg mr-2" aria-hidden="true" />
                   Contact
-                </Button>
+                </button>
               </Link>
             </motion.div>
           </div>
 
-          {/* Mobile menu button */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="lg:hidden p-2 rounded-lg transition-colors"
-              >
-                <Menu
-                  className={`h-5 w-5 ${
+          {/* Mobile menu DaisyUI drawer */}
+          <div className="drawer drawer-end lg:hidden">
+            <input 
+              id="mobile-drawer" 
+              type="checkbox" 
+              className="drawer-toggle" 
+              checked={isOpen} 
+              onChange={(e) => setIsOpen(e.target.checked)} 
+            />
+            <div className="drawer-content">
+              <label htmlFor="mobile-drawer" className="btn btn-square btn-ghost drawer-button" data-testid="mobile-menu-button">
+                <LineIcon
+                  name={isOpen ? "lni-close" : "lni-menu"}
+                  className={`text-2xl ${
                     isScrolled ? "text-gray-700" : "text-gray-700"
                   }`}
+                  aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                  role="img"
                 />
-              </motion.button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[300px] sm:w-[350px] bg-white/95 backdrop-blur-md"
-            >
-              <div className="flex flex-col space-y-4 mt-6">
-                {navigation.map((item) => (
-                  <div key={item.name}>
-                    {item.href ? (
-                      <Link
-                        href={item.href}
-                        className="text-base font-medium text-gray-700 hover:text-red-primary transition-colors block py-2"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <span className="text-base font-medium text-gray-700 block py-2">
-                        {item.name}
-                      </span>
-                    )}
-                    {item.submenu && (
-                      <div className="ml-4 mt-2 space-y-2">
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block text-sm text-gray-600 hover:text-red-primary transition-colors py-1"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+              </label>
+            </div>
+            <div className="drawer-side z-50">
+              <label htmlFor="mobile-drawer" aria-label="Fermer le menu" className="drawer-overlay"></label>
+              <div className="menu min-h-full w-80 bg-base-100 text-base-content p-4" data-testid="mobile-menu">
+                <div className="flex flex-col space-y-4 mt-6">
+                  {navigation.map((item) => (
+                    <div key={item.name}>
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className="text-base font-medium hover:text-primary transition-colors block py-2"
+                          onClick={() => setIsOpen(false)}
+                          data-testid={`mobile-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <span className="text-base font-medium block py-2">
+                          {item.name}
+                        </span>
+                      )}
+                      {item.submenu && (
+                        <div className="ml-4 mt-2 space-y-2">
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="block text-sm hover:text-primary transition-colors py-1"
+                              onClick={() => setIsOpen(false)}
+                              data-testid={`mobile-submenu-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <button className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full" data-testid="mobile-contact-button">
+                        <LineIcon name="lni-phone" className="text-lg mr-2" aria-hidden="true" />
+                        Contact
+                      </button>
+                    </Link>
                   </div>
-                ))}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-6"
-                >
-                  <Link href="/contact">
-                    <Button className="!bg-red-primary hover:bg-red-600 !text-white w-full">
-                      <Phone className="w-4 h-4 mr-2" />
-                      Contact
-                    </Button>
-                  </Link>
-                </motion.div>
+                </div>
               </div>
-            </SheetContent>
-          </Sheet>
+            </div>
+          </div>
         </div>
       </div>
     </motion.header>
