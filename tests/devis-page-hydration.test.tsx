@@ -1,20 +1,21 @@
-import { describe, it, expect, vi } from 'vitest'
+// Jest mocks
+
 import { render, screen } from '@testing-library/react'
 import DevisEnLignePage from '@/app/devis-en-ligne/page'
 
 // Mock des composants externes
-vi.mock('@/components/tally-tracking', () => ({
+jest.mock('@/components/tally-tracking', () => ({
   TrunkSIPTallyLink: ({ children }: any) => <div data-testid="trunk-sip-link">{children}</div>,
   PortabiliteTallyLink: ({ children }: any) => <div data-testid="portabilite-link">{children}</div>,
   VoIP3CXTallyLink: ({ children }: any) => <div data-testid="voip-3cx-link">{children}</div>,
   ProjetPBXTallyLink: ({ children }: any) => <div data-testid="projet-pbx-link">{children}</div>,
 }))
 
-vi.mock('@/components/hubspot-contact-form', () => ({
+jest.mock('@/components/hubspot-contact-form', () => ({
   FullContactForm: () => <div data-testid="hubspot-form">Formulaire HubSpot</div>,
 }))
 
-vi.mock('@/components/devis-animations', () => ({
+jest.mock('@/components/devis-animations', () => ({
   AnimatedSection: ({ children, className }: any) => (
     <div className={className} data-testid="animated-section">{children}</div>
   ),
@@ -26,7 +27,7 @@ vi.mock('@/components/devis-animations', () => ({
   ),
 }))
 
-vi.mock('@/components/devis-hero-section', () => ({
+jest.mock('@/components/devis-hero-section', () => ({
   DevisHeroSection: () => (
     <section data-testid="hero-section">
       <h1>Recevez un devis personnalisé</h1>

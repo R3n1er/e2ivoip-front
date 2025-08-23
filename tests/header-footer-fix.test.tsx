@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+
 
 describe('Header and Footer Fixes', () => {
   it('should have proper header visibility classes', () => {

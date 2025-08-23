@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+
 
 describe('Header Visibility Fix', () => {
   it('should have proper background classes', () => {

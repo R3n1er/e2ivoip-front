@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+
 
 describe('ClientsCarousel Component', () => {
   it('should have correct background color', () => {

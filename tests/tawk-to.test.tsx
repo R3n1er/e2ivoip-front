@@ -1,41 +1,41 @@
+// Jest mocks
 import { render } from "@testing-library/react";
-import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { TawkTo } from "@/components/tawk-to";
 
 // Mock usePathname
-const mockUsePathname = vi.fn();
-vi.mock("next/navigation", () => ({
+const mockUsePathname = jest.fn();
+jest.mock("next/navigation", () => ({
   usePathname: () => mockUsePathname(),
 }));
 
 // Mock window.Tawk_API
 const mockTawkAPI = {
-  hideWidget: vi.fn(),
-  showWidget: vi.fn(),
+  hideWidget: jest.fn(),
+  showWidget: jest.fn(),
 };
 
 describe("TawkTo Component", () => {
   beforeEach(() => {
     // Reset mocks
-    vi.clearAllMocks();
+    jest.clearAllMocks();
 
     // Mock document.createElement pour retourner un vrai élément
     const originalCreateElement = document.createElement.bind(document);
-    vi.spyOn(document, "createElement").mockImplementation((tagName) => {
+    jest.spyOn(document, "createElement").mockImplementation((tagName) => {
       if (tagName === "script") {
         const script = originalCreateElement("script");
         script.type = "";
         script.async = false;
         script.src = "";
         script.charset = "";
-        script.setAttribute = vi.fn();
+        script.setAttribute = jest.fn();
         return script;
       }
       return originalCreateElement(tagName);
     });
 
     // Mock document.head.appendChild
-    vi.spyOn(document.head, "appendChild").mockImplementation((node) => node);
+    jest.spyOn(document.head, "appendChild").mockImplementation((node) => node);
 
     // Supprimer window.Tawk_API pour forcer le chargement du script
     if (window.Tawk_API) {
@@ -44,7 +44,7 @@ describe("TawkTo Component", () => {
   });
 
   afterEach(() => {
-    vi.restoreAllMocks();
+    jest.restoreAllMocks();
   });
 
   it("should load Tawk.to script on allowed pages", () => {

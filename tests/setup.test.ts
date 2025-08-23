@@ -1,5 +1,3 @@
-import { describe, it, expect } from 'vitest'
-
 describe('Environment Setup', () => {
   it('should have correct Node.js environment', () => {
     expect(process.env.NODE_ENV).toBeDefined()

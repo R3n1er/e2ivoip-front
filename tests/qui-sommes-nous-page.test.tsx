@@ -1,9 +1,9 @@
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import QuiSommesNous from "@/app/qui-sommes-nous/page";
-import { vi, describe, test, expect, beforeEach } from "vitest";
 
 // Mock des composants UI
-vi.mock("@/components/ui/card", () => ({
+jest.mock("@/components/ui/card", () => ({
   Card: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => (
     <div {...props}>{children}</div>
   ),
@@ -12,7 +12,7 @@ vi.mock("@/components/ui/card", () => ({
   ),
 }));
 
-vi.mock("@/components/ui/badge", () => ({
+jest.mock("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => (
     <span {...props}>{children}</span>
   ),

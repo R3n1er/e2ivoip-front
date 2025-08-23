@@ -1,9 +1,9 @@
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import { Header } from "@/components/header";
-import { vi, describe, test, expect, beforeEach, afterEach } from "vitest";
 
 // Mock des composants Next.js
-vi.mock("next/link", () => ({
+jest.mock("next/link", () => ({
   default: ({
     children,
     href,
@@ -20,7 +20,7 @@ vi.mock("next/link", () => ({
 }));
 
 // Mock de framer-motion
-vi.mock("framer-motion", () => ({
+jest.mock("framer-motion", () => ({
   motion: {
     header: ({
       children,
@@ -50,7 +50,7 @@ vi.mock("framer-motion", () => ({
 }));
 
 // Mock des composants UI
-vi.mock("@/components/ui/button", () => ({
+jest.mock("@/components/ui/button", () => ({
   Button: ({
     children,
     ...props
@@ -60,7 +60,7 @@ vi.mock("@/components/ui/button", () => ({
   }) => <button {...props}>{children}</button>,
 }));
 
-vi.mock("@/components/ui/sheet", () => ({
+jest.mock("@/components/ui/sheet", () => ({
   Sheet: ({
     children,
     ...props
@@ -93,12 +93,12 @@ describe("Header - Délai des sous-menus", () => {
     });
 
     // Mock des événements de scroll
-    global.window.addEventListener = vi.fn();
-    global.window.removeEventListener = vi.fn();
+    global.window.addEventListener = jest.fn();
+    global.window.removeEventListener = jest.fn();
   });
 
   afterEach(() => {
-    vi.clearAllTimers();
+    jest.clearAllTimers();
   });
 
   test("Le composant Header se rend correctement", () => {

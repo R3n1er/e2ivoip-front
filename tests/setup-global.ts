@@ -1,5 +1,3 @@
-import { vi } from "vitest";
-
 // Mock global pour les tests
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
@@ -63,7 +61,7 @@ global.ResizeObserver = class ResizeObserver {
 } as unknown as typeof ResizeObserver;
 
 // Mock HTMLCanvasElement.prototype.toDataURL
-HTMLCanvasElement.prototype.toDataURL = vi.fn(
+HTMLCanvasElement.prototype.toDataURL = jest.fn(
   () => "data:image/png;base64,mock"
 );
 
@@ -81,7 +79,7 @@ Object.defineProperty(Image.prototype, "src", {
 });
 
 // Mock fetch
-global.fetch = vi.fn(() =>
+global.fetch = jest.fn(() =>
   Promise.resolve({
     ok: true,
     json: () => Promise.resolve({}),

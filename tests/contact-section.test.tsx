@@ -1,9 +1,10 @@
-import { describe, it, expect } from 'vitest';
+// Jest mocks
+;
 import { render, screen } from '@testing-library/react';
 import { ContactSection } from '@/components/contact-section';
 
 // Mock framer-motion
-vi.mock('framer-motion', () => ({
+jest.mock('framer-motion', () => ({
   motion: {
     div: ({ children, className, ...props }: any) => (
       <div className={className} {...props}>{children}</div>

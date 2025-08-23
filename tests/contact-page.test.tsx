@@ -1,9 +1,10 @@
-import { describe, it, expect } from 'vitest';
+// Jest mocks
+;
 import { render, screen } from '@testing-library/react';
 import ContactPage from '@/app/contact/page';
 
 // Mock HubSpotContactFormGlobal
-vi.mock('@/components/hubspot-contact-form-global', () => ({
+jest.mock('@/components/hubspot-contact-form-global', () => ({
   HubSpotContactFormGlobal: ({ portalId, formId, region, className }: any) => (
     <div data-testid="hubspot-form" data-portal-id={portalId} data-form-id={formId} data-region={region} className={className}>
       HubSpot Form Mock

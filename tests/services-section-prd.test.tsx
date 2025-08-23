@@ -1,9 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import { ServicesSectionSimple } from "@/components/services-section-simple";
 
 // Mock framer-motion
-vi.mock("framer-motion", () => ({
+jest.mock("framer-motion", () => ({
   motion: {
     div: ({ children, className, style, ...props }: { children: React.ReactNode; className?: string; style?: React.CSSProperties; [key: string]: unknown }) => (
       <div className={className} style={style} {...props}>

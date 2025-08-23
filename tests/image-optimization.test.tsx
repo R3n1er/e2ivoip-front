@@ -1,5 +1,5 @@
+// Jest mocks
 import { render, screen, waitFor } from "@testing-library/react";
-import { vi, describe, test, expect, beforeEach } from "vitest";
 import {
   OptimizedImage,
   HeroImage,
@@ -10,7 +10,7 @@ import { LazyBackgroundImage } from "@/components/ui/lazy-background-image";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 
 // Mock des composants UI
-vi.mock("@/components/ui/button", () => ({
+jest.mock("@/components/ui/button", () => ({
   Button: ({
     children,
     ...props
@@ -20,16 +20,16 @@ vi.mock("@/components/ui/button", () => ({
   }) => <button {...props}>{children}</button>,
 }));
 
-vi.mock("@/lib/utils", () => ({
+jest.mock("@/lib/utils", () => ({
   cn: (...classes: string[]) => classes.filter(Boolean).join(" "),
 }));
 
 describe("Composants d'Optimisation d'Images", () => {
   beforeEach(() => {
     // Mock de l'Intersection Observer
-    global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
-      observe: vi.fn(),
-      disconnect: vi.fn(),
+    global.IntersectionObserver = jest.fn().mockImplementation((callback) => ({
+      observe: jest.fn(),
+      disconnect: jest.fn(),
       rootMargin: "100px",
       threshold: 0.1,
     }));
@@ -71,7 +71,7 @@ describe("Composants d'Optimisation d'Images", () => {
     });
 
     test("gère les erreurs de chargement", async () => {
-      const onError = vi.fn();
+      const onError = jest.fn();
 
       render(
         <OptimizedImage

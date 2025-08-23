@@ -1,9 +1,9 @@
+// Jest mocks
 import { render, screen, waitFor } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import ContactPage from "../app/contact/page";
 
 // Mock du composant HubSpotSimple
-vi.mock("../components/hubspot-simple", () => ({
+jest.mock("../components/hubspot-simple", () => ({
   HubSpotSimple: () => (
     <div data-testid="hubspot-simple">
       <div className="text-center text-gray-500 py-4">
