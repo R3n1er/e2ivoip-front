@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { Calendar, User, Clock, Eye, ArrowLeft, Share2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -98,12 +97,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               href="/blog"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <i className="lni lni-arrow-left w-4 h-4"></i>
               Retour au blog
             </Link>
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm">
-                <Share2 className="w-4 h-4 mr-2" />
+                <i className="lni lni-share-alt w-4 h-4 mr-2"></i>
                 Partager
               </Button>
             </div>
@@ -153,11 +152,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Métadonnées */}
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
               <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
+                <i className="lni lni-user w-4 h-4"></i>
                 <span>{post.author}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
+                <i className="lni lni-calendar w-4 h-4"></i>
                 <span>
                   {publishDate.toLocaleDateString("fr-FR", {
                     day: "numeric",
@@ -167,7 +166,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
+                <i className="lni lni-timer w-4 h-4"></i>
                 <span>{readingTime} min de lecture</span>
               </div>
             </div>
@@ -247,7 +246,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPost.excerpt}
                     </p>
                     <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <Calendar className="w-3 h-3" />
+                      <i className="lni lni-calendar w-3 h-3"></i>
                       <span>
                         {new Date(
                           relatedPost.publishDate || ""

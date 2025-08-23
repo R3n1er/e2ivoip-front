@@ -156,7 +156,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
   - Sections détaillées : collecte, utilisation, protection des données
   - Droits utilisateurs : accès, rectification, effacement, portabilité
   - Tests unitaires complets (7 tests passés)
-  - **Design moderne cohérent** : Hero section, cartes colorées, icônes Lucide React
+  - **Design moderne cohérent** : Hero section, cartes colorées, icônes Lineicons
   - **Structure organisée** : 4 sections principales avec code couleur intuitif
   - **Responsive design** : Grid 2 colonnes pour les droits utilisateurs
 - ✅ **Informations de contact** : Téléphone, email, adresse, horaires

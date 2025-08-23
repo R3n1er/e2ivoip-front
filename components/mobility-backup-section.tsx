@@ -4,22 +4,12 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Router, 
-  Wifi, 
-  Shield, 
-  Zap, 
-  Settings,
-  CheckCircle,
-  ArrowRight,
-  AlertTriangle
-} from "lucide-react";
 import Link from "next/link";
 
 export function MobilityBackupSection() {
   const backupSolutions = [
     {
-      icon: Router,
+      icon: "lni-question-circle",
       title: "Modems Routeurs 4G/5G",
       description: "Équipements professionnels haute performance pour backup internet et connectivité mobile",
       features: [
@@ -36,7 +26,7 @@ export function MobilityBackupSection() {
       ]
     },
     {
-      icon: Shield,
+      icon: "lni-shield",
       title: "Solutions de Backup Internet",
       description: "Continuité de service garantie avec basculement automatique en cas de panne",
       features: [
@@ -56,17 +46,17 @@ export function MobilityBackupSection() {
 
   const useCases = [
     {
-      icon: AlertTriangle,
+      icon: "lni-question-circle",
       title: "Continuité d'activité",
       description: "Évitez les interruptions coûteuses avec nos solutions de backup automatique"
     },
     {
-      icon: Zap,
+      icon: "lni-bolt",
       title: "Sites temporaires",
       description: "Connectivité immédiate pour chantiers, événements et installations temporaires"
     },
     {
-      icon: Settings,
+      icon: "lni-cog",
       title: "Sites isolés",
       description: "Solutions pour zones non couvertes par la fibre ou l'ADSL"
     }
@@ -83,7 +73,7 @@ export function MobilityBackupSection() {
           className="text-center mb-16"
         >
           <Badge className="mb-4 bg-blue-100 text-blue-600 border-blue-200">
-            <Router className="w-4 h-4 mr-2" />
+            <i className="lni lni-question-circle w-4 h-4 mr-2"></i>
             Backup Internet & Modems 4G/5G
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -109,7 +99,7 @@ export function MobilityBackupSection() {
                 <CardHeader>
                   <div className="flex items-center mb-4">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                      <solution.icon className="w-6 h-6 text-blue-600" />
+                      <i className={`lni ${solution.icon} w-6 h-6 text-blue-600`}></i>
                     </div>
                     <CardTitle className="text-xl text-gray-900">
                       {solution.title}
@@ -126,7 +116,7 @@ export function MobilityBackupSection() {
                       <ul className="space-y-2">
                         {solution.features.map((feature, featureIndex) => (
                           <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                            <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2 flex-shrink-0"></i>
                             {feature}
                           </li>
                         ))}
@@ -137,7 +127,7 @@ export function MobilityBackupSection() {
                       <ul className="space-y-2">
                         {solution.specs.map((spec, specIndex) => (
                           <li key={specIndex} className="flex items-center text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-blue-500 mr-2 flex-shrink-0" />
+                            <i className="lni lni-checkmark-circle w-4 h-4 text-blue-500 mr-2 flex-shrink-0"></i>
                             {spec}
                           </li>
                         ))}
@@ -166,7 +156,7 @@ export function MobilityBackupSection() {
               <Card key={index} className="text-center">
                 <CardContent className="p-6">
                   <div className="bg-red-100 p-3 rounded-lg w-fit mx-auto mb-4">
-                    <useCase.icon className="w-6 h-6 text-red-600" />
+                    <i className={`lni ${useCase.icon} w-6 h-6 text-red-600`}></i>
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">
                     {useCase.title}
@@ -200,9 +190,9 @@ export function MobilityBackupSection() {
           <div className="text-center">
             <Link href="/contact">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                <Wifi className="w-5 h-5 mr-2" />
+                <i className="lni lni-signal w-5 h-5 mr-2"></i>
                 Configurer votre solution
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <i className="lni lni-arrow-right w-5 h-5 ml-2"></i>
               </Button>
             </Link>
           </div>

@@ -1,16 +1,6 @@
 "use client";
 
 import {
-  Phone,
-  Cloud,
-  Smartphone,
-  Users,
-  MessageSquare,
-  BarChart3,
-  ArrowRight,
-  CheckCircle,
-} from "lucide-react";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -24,7 +14,7 @@ import Link from "next/link";
 export function ServicesSectionSimple() {
   const services = [
     {
-      icon: Cloud,
+      icon: "lni-cloud",
       title: "Trunk SIP DOM-TOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
@@ -39,7 +29,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/trunk-sip-compteur",
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "3CX SMB Mutualisé",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -54,7 +44,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
     },
     {
-      icon: Phone,
+      icon: "lni-phone",
       title: "3CX PRO Dédié",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -69,7 +59,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/3cx-pro-dediee",
     },
     {
-      icon: Smartphone,
+      icon: "lni-mobile",
       title: "Solutions Mobilité",
       description:
         "Travaillez de n'importe où avec softphone mobile et fonctionnalités nomades",
@@ -84,7 +74,7 @@ export function ServicesSectionSimple() {
       href: "/mobilite",
     },
     {
-      icon: MessageSquare,
+      icon: "lni-comments",
       title: "Assistants Vocaux IA",
       description:
         "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
@@ -99,7 +89,7 @@ export function ServicesSectionSimple() {
       href: "/nos-services/assistants-vocaux-ia",
     },
     {
-      icon: BarChart3,
+      icon: "lni-bar-chart",
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -177,7 +167,7 @@ export function ServicesSectionSimple() {
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                    <service.icon className="h-6 w-6 text-red-primary" />
+                    <i className={`lni ${service.icon} h-6 w-6 text-red-primary`}></i>
                   </div>
                   <Badge className="badge badge-primary">
                     {service.badge}
@@ -195,7 +185,7 @@ export function ServicesSectionSimple() {
                 <div className="space-y-3 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <CheckCircle className="h-4 w-4 text-red-primary mr-2 flex-shrink-0" />
+                      <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
                       <span className="text-gray-secondary">{feature}</span>
                     </div>
                   ))}
@@ -214,7 +204,7 @@ export function ServicesSectionSimple() {
                       className="w-full border-red-primary text-red-primary hover:bg-red-primary hover:text-white"
                     >
                       En savoir plus
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <i className="lni lni-arrow-right w-4 h-4 ml-2"></i>
                     </Button>
                   </Link>
                 </div>
@@ -236,7 +226,7 @@ export function ServicesSectionSimple() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="btn btn-primary">
-              <Phone className="w-5 h-5 mr-2" />
+              <i className="lni lni-phone w-5 h-5 mr-2"></i>
               Audit télécom gratuit
             </Button>
             <Button

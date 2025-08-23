@@ -1,28 +1,27 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Music, Mic, Volume2, Download, Play, Headphones } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export default function StudioAttente() {
   const services = [
     {
-      icon: Mic,
+      icon: "lni-microphone",
       title: "Enregistrement professionnel",
       description: "Studio d'enregistrement avec voix off professionnelles en français et langues étrangères",
     },
     {
-      icon: Music,
+      icon: "lni-music",
       title: "Habillage musical",
       description: "Large choix de musiques libres de droits pour accompagner vos messages",
     },
     {
-      icon: Volume2,
+      icon: "lni-volume",
       title: "Messages sur mesure",
       description: "Création de messages personnalisés selon votre image de marque",
     },
     {
-      icon: Download,
+      icon: "lni-download",
       title: "Formats multiples",
       description: "Livraison dans tous les formats compatibles avec votre système téléphonique",
     },
@@ -45,7 +44,7 @@ export default function StudioAttente() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
-                  <Play className="w-5 h-5 mr-2" />
+                  <i className="lni lni-play w-5 h-5 mr-2"></i>
                   Écouter des exemples
                 </Button>
                 <Button
@@ -53,7 +52,7 @@ export default function StudioAttente() {
                   variant="outline"
                   className="border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
                 >
-                  <Headphones className="w-5 h-5 mr-2" />
+                  <i className="lni lni-headphone w-5 h-5 mr-2"></i>
                   Demander un devis
                 </Button>
               </div>
@@ -69,7 +68,7 @@ export default function StudioAttente() {
                 <Card key={index} className="text-center border-gray-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <service.icon className="w-8 h-8 text-red-600" />
+                      <i className={`lni ${service.icon} w-8 h-8 text-red-600`}></i>
                     </div>
                     <CardTitle className="text-xl">{service.title}</CardTitle>
                   </CardHeader>
@@ -101,7 +100,7 @@ export default function StudioAttente() {
                       important pour nous, un conseiller va vous répondre dans quelques instants. Merci de patienter."
                     </p>
                     <Button size="sm" variant="outline" className="w-full bg-transparent">
-                      <Play className="w-4 h-4 mr-2" />
+                      <i className="lni lni-play w-4 h-4 mr-2"></i>
                       Écouter l'exemple
                     </Button>
                   </div>
@@ -120,7 +119,7 @@ export default function StudioAttente() {
                       jusqu'à 50% ? Découvrez nos offres sur notre site web www.e2i-voip.com"
                     </p>
                     <Button size="sm" variant="outline" className="w-full bg-transparent">
-                      <Play className="w-4 h-4 mr-2" />
+                      <i className="lni lni-play w-4 h-4 mr-2"></i>
                       Écouter l'exemple
                     </Button>
                   </div>

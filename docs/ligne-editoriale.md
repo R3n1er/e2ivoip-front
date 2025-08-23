@@ -183,7 +183,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - **Titres principaux** : Avec span rouge sur mots-clés
 - **Badges** : Pour mettre en avant les offres (Nouveau, Populaire, Économique)
-- **Icônes** : Lucide React pour illustrer les concepts
+- **Icônes** : Lineicons pour illustrer les concepts
 - **Couleurs** :
   - Rouge ##E53E3E : CTAs et éléments d'action
   - Bleu #2D3848 : Titres et confiance

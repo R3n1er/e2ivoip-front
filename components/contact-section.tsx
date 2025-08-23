@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SecureEmail } from "@/components/secure-email";
@@ -40,7 +39,7 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-red-600" />
+                    <i className="lni lni-phone w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -60,7 +59,7 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-red-600" />
+                    <i className="lni lni-envelope w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -89,7 +88,7 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-red-600" />
+                    <i className="lni lni-map-marker w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -109,7 +108,7 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <Clock className="w-6 h-6 text-red-600" />
+                    <i className="lni lni-timer w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -146,7 +145,7 @@ export function ContactSection() {
                 variant="secondary"
                 className="bg-white text-red-600 hover:bg-gray-100"
               >
-                <Phone className="w-4 h-4 mr-2" />
+                <i className="lni lni-phone w-4 h-4 mr-2"></i>
                 0594 96 35 00
               </Button>
             </CardContent>

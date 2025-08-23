@@ -10,8 +10,9 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 - **Framework** : Next.js 15 (App Router)
 - **Styling** : Tailwind CSS + DaisyUI
+- **Icônes** : Lineicons (CDN 4.0)
 - **Animations** : Framer Motion
-- **Tests** : Vitest + Testing Library
+- **Tests** : Jest + Testing Library + Playwright
 - **État** : React Hooks (useState, useEffect)
 
 ### Backend & CMS

@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Smartphone, Wifi, Signal, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function MobilityHeroSection() {
@@ -25,7 +24,7 @@ export function MobilityHeroSection() {
             transition={{ duration: 0.8 }}
           >
             <Badge className="mb-6 bg-red-100 text-red-600 border-red-200">
-              <Signal className="w-4 h-4 mr-2" />
+              <i className="lni lni-question-circle w-4 h-4 mr-2"></i>
               Solutions Mobilité 4G/5G
             </Badge>
 
@@ -44,9 +43,9 @@ export function MobilityHeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link href="/contact">
                 <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
-                  <Smartphone className="w-5 h-5 mr-2" />
+                  <i className="lni lni-mobile w-5 h-5 mr-2"></i>
                   Demander un devis
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <i className="lni lni-arrow-right w-5 h-5 ml-2"></i>
                 </Button>
               </Link>
               <Link href="#services">
@@ -69,7 +68,7 @@ export function MobilityHeroSection() {
             <div className="relative bg-gradient-to-br from-red-500 to-red-600 rounded-3xl p-8 shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl" />
               <div className="relative z-10 text-center text-white">
-                <Wifi className="w-20 h-20 mx-auto mb-6 opacity-90" />
+                <i className="lni lni-signal w-20 h-20 mx-auto mb-6 opacity-90"></i>
                 <h3 className="text-2xl font-bold mb-4">Connectivité Entreprise</h3>
                 <p className="text-red-100 mb-6">
                   Solutions 4G/5G adaptées aux besoins professionnels

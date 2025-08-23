@@ -1,6 +1,5 @@
 "use client";
 
-import { Star, Quote, Award, Shield, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -40,25 +39,25 @@ export function TestimonialsSectionSimple() {
 
   const certifications = [
     {
-      icon: Award,
+      icon: "lni-certificate",
       title: "Partenaire Silver 3CX",
       description: "Certification avancée CFD (Certified for Distribution)",
       level: "Expert",
     },
     {
-      icon: Shield,
+      icon: "lni-shield",
       title: "Certifié Yeastar",
       description: "Solution économique et flexible pour PME",
       level: "Certifié",
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "Partenaire Fanvil & Yealink",
       description: "Gestion centralisée du parc téléphonique",
       level: "Partenaire",
     },
     {
-      icon: CheckCircle,
+      icon: "lni-checkmark-circle",
       title: "Hébergement Souverain",
       description: "Infrastructure AWS/Azure France/UE conforme RGPD",
       level: "Conforme",
@@ -94,14 +93,14 @@ export function TestimonialsSectionSimple() {
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
+                      <i
                         key={i}
-                        className="h-5 w-5 text-yellow-400 fill-current"
-                      />
+                        className="lni lni-star-filled h-5 w-5 text-yellow-400"
+                      ></i>
                     ))}
                   </div>
 
-                  <Quote className="h-8 w-8 text-red-200 mb-4" />
+                  <i className="lni lni-question-circle h-8 w-8 text-red-200 mb-4"></i>
 
                   <p className="text-gray-secondary mb-6 leading-relaxed">
                     &ldquo;{testimonial.content}&rdquo;
@@ -144,7 +143,7 @@ export function TestimonialsSectionSimple() {
                 className="bg-white p-6 rounded-lg shadow-sm text-center"
               >
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <cert.icon className="h-6 w-6 text-red-primary" />
+                  <i className={`lni ${cert.icon} h-6 w-6 text-red-primary`}></i>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">
                   {cert.title}

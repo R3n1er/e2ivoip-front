@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, Filter, Calendar, User, Tag, BookOpen } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -83,7 +82,7 @@ export function BlogSearch({
     <div className="space-y-6">
       {/* Barre de recherche principale */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <i className="lni lni-search-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
         <Input
           type="text"
           placeholder="Rechercher dans les articles..."
@@ -109,14 +108,14 @@ export function BlogSearch({
         {/* Statistiques */}
         <div className="flex items-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-1">
-            <BookOpen className="w-4 h-4" />
+            <i className="lni lni-question-circle w-4 h-4"></i>
             <span>
               {totalResults} article{totalResults !== 1 ? "s" : ""}
             </span>
           </div>
           {filters.query && (
             <div className="flex items-center gap-1 text-red-primary">
-              <Search className="w-4 h-4" />
+              <i className="lni lni-search-alt w-4 h-4"></i>
               <span>"{filters.query}"</span>
             </div>
           )}
@@ -159,7 +158,7 @@ export function BlogSearch({
             className="flex items-center gap-2"
             disabled={isLoading}
           >
-            <Filter className="w-4 h-4" />
+            <i className="lni lni-funnel w-4 h-4"></i>
             Filtres
             {hasActiveFilters && (
               <Badge
@@ -193,7 +192,7 @@ export function BlogSearch({
         <Card className="border-gray-200">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg flex items-center gap-2">
-              <Filter className="w-5 h-5 text-red-primary" />
+              <i className="lni lni-funnel w-5 h-5 text-red-primary"></i>
               Filtres avancés
             </CardTitle>
             <CardDescription>
@@ -204,7 +203,7 @@ export function BlogSearch({
             {/* Filtre par auteur */}
             <div className="space-y-3">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <User className="w-4 h-4" />
+                <i className="lni lni-user w-4 h-4"></i>
                 Auteur
               </label>
               <div className="flex flex-wrap gap-2">
@@ -242,7 +241,7 @@ export function BlogSearch({
             {/* Filtre par année */}
             <div className="space-y-3">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
+                <i className="lni lni-calendar w-4 h-4"></i>
                 Année de publication
               </label>
               <div className="flex flex-wrap gap-2">
@@ -282,7 +281,7 @@ export function BlogSearch({
             {/* Filtre par tags */}
             <div className="space-y-3">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Tag className="w-4 h-4" />
+                <i className="lni lni-tag w-4 h-4"></i>
                 Mots-clés
               </label>
               <div className="flex flex-wrap gap-2">
@@ -313,7 +312,7 @@ export function BlogSearch({
           <span className="text-sm text-gray-600">Filtres actifs :</span>
           {filters.author && (
             <Badge variant="secondary" className="flex items-center gap-1">
-              <User className="w-3 h-3" />
+              <i className="lni lni-user w-3 h-3"></i>
               {filters.author}
               <button
                 onClick={() => handleAuthorChange("")}
@@ -326,7 +325,7 @@ export function BlogSearch({
           )}
           {filters.year && (
             <Badge variant="secondary" className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
+              <i className="lni lni-calendar w-3 h-3"></i>
               {filters.year}
               <button
                 onClick={() => handleYearChange(null)}
@@ -343,7 +342,7 @@ export function BlogSearch({
               variant="secondary"
               className="flex items-center gap-1"
             >
-              <Tag className="w-3 h-3" />
+              <i className="lni lni-tag w-3 h-3"></i>
               {tag}
               <button
                 onClick={() => handleTagToggle(tag)}

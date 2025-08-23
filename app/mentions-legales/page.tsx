@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, FileText, Cookie, Copyright, MapPin, Phone, Mail, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Mentions légales - E2I VoIP",
@@ -66,28 +65,28 @@ export default function MentionsLegales() {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div className="flex items-start space-x-3">
-                        <Shield className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                        <i className="lni lni-shield w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
                         <div>
                           <h3 className="font-semibold text-gray-900">Propriétaire du site</h3>
                           <p className="text-gray-600">Alban RENIER / E2I ASSISTANCE</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <FileText className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                        <i className="lni lni-text-format w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
                         <div>
                           <h3 className="font-semibold text-gray-900">SIRET</h3>
                           <p className="text-gray-600">51743457700014</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <FileText className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                        <i className="lni lni-text-format w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
                         <div>
                           <h3 className="font-semibold text-gray-900">Code APE</h3>
                           <p className="text-gray-600">6203Z</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <MapPin className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                        <i className="lni lni-map-marker w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
                         <div>
                           <h3 className="font-semibold text-gray-900">Siège social</h3>
                           <p className="text-gray-600">23 Chemin Troubiran<br />97300 CAYENNE</p>
@@ -107,7 +106,7 @@ export default function MentionsLegales() {
                 <Card className="shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
-                      <Globe className="w-8 h-8 text-blue-600 mt-1 flex-shrink-0" />
+                      <i className="lni lni-world w-8 h-8 text-blue-600 mt-1 flex-shrink-0"></i>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">Plateforme Vercel</h3>
                         <p className="text-gray-600">
@@ -120,7 +119,7 @@ export default function MentionsLegales() {
                 <Card className="shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
-                      <Globe className="w-8 h-8 text-green-600 mt-1 flex-shrink-0" />
+                      <i className="lni lni-world w-8 h-8 text-green-600 mt-1 flex-shrink-0"></i>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">Gestion du domaine</h3>
                         <p className="text-gray-600">
@@ -152,7 +151,7 @@ export default function MentionsLegales() {
             <Card className="shadow-lg">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
                 <CardTitle className="text-xl font-bold flex items-center">
-                  <Cookie className="w-6 h-6 mr-2" />
+                  <i className="lni lni-question-circle w-6 h-6 mr-2"></i>
                   Cookies et traces
                 </CardTitle>
               </CardHeader>
@@ -174,7 +173,7 @@ export default function MentionsLegales() {
             <Card className="shadow-lg">
               <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
                 <CardTitle className="text-xl font-bold flex items-center">
-                  <Shield className="w-6 h-6 mr-2" />
+                  <i className="lni lni-shield w-6 h-6 mr-2"></i>
                   Protection des données
                 </CardTitle>
               </CardHeader>
@@ -211,7 +210,7 @@ export default function MentionsLegales() {
           <Card className="shadow-lg max-w-4xl mx-auto">
             <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
               <CardTitle className="text-xl font-bold flex items-center">
-                <Copyright className="w-6 h-6 mr-2" />
+                <i className="lni lni-question-circle w-6 h-6 mr-2"></i>
                 Propriété intellectuelle
               </CardTitle>
             </CardHeader>
@@ -268,7 +267,7 @@ export default function MentionsLegales() {
               <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Phone className="w-6 h-6 text-white" />
+                    <i className="lni lni-phone w-6 h-6 text-white"></i>
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">{contact.region}</h3>
                   <p className="text-white/90 text-sm">{contact.phone}</p>

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Shield, FileText, Cookie, Copyright, MapPin, Phone, Mail, Globe, Lock, Users, Eye, Trash2, Download, Ban, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité | E2I VoIP',
@@ -63,7 +62,7 @@ export default function PolitiqueConfidentialitePage() {
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <Shield className="w-8 h-8 text-red-600" />
+                    <i className="lni lni-shield w-8 h-8 text-red-600"></i>
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -90,7 +89,7 @@ export default function PolitiqueConfidentialitePage() {
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
                   <div className="bg-red-100 p-3 rounded-lg">
-                    <Users className="w-8 h-8 text-red-600" />
+                    <i className="lni lni-users w-8 h-8 text-red-600"></i>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -124,7 +123,7 @@ export default function PolitiqueConfidentialitePage() {
                   <div className="border-l-4 border-red-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-red-100 p-2 rounded-lg">
-                        <Cookie className="w-6 h-6 text-red-600" />
+                        <i className="lni lni-question-circle w-6 h-6 text-red-600"></i>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -141,7 +140,7 @@ export default function PolitiqueConfidentialitePage() {
                   <div className="border-l-4 border-blue-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg">
-                        <Mail className="w-6 h-6 text-blue-600" />
+                        <i className="lni lni-envelope w-6 h-6 text-blue-600"></i>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -161,7 +160,7 @@ export default function PolitiqueConfidentialitePage() {
                   <div className="border-l-4 border-green-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-green-100 p-2 rounded-lg">
-                        <Users className="w-6 h-6 text-green-600" />
+                        <i className="lni lni-users w-6 h-6 text-green-600"></i>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -181,7 +180,7 @@ export default function PolitiqueConfidentialitePage() {
                   <div className="border-l-4 border-purple-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-purple-100 p-2 rounded-lg">
-                        <Lock className="w-6 h-6 text-purple-600" />
+                        <i className="lni lni-lock w-6 h-6 text-purple-600"></i>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -198,7 +197,7 @@ export default function PolitiqueConfidentialitePage() {
                   <div className="border-l-4 border-orange-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-orange-100 p-2 rounded-lg">
-                        <Eye className="w-6 h-6 text-orange-600" />
+                        <i className="lni lni-eye w-6 h-6 text-orange-600"></i>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -226,7 +225,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Hébergement */}
                   <div className="flex items-start space-x-4">
                     <div className="bg-blue-100 p-3 rounded-lg">
-                      <Globe className="w-8 h-8 text-blue-600" />
+                      <i className="lni lni-world w-8 h-8 text-blue-600"></i>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -241,7 +240,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Protection */}
                   <div className="flex items-start space-x-4">
                     <div className="bg-green-100 p-3 rounded-lg">
-                      <Lock className="w-8 h-8 text-green-600" />
+                      <i className="lni lni-lock w-8 h-8 text-green-600"></i>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -256,7 +255,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Contenu embarqué */}
                   <div className="flex items-start space-x-4">
                     <div className="bg-orange-100 p-3 rounded-lg">
-                      <Eye className="w-8 h-8 text-orange-600" />
+                      <i className="lni lni-eye w-8 h-8 text-orange-600"></i>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -292,7 +291,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-blue-100 p-2 rounded-lg">
-                          <Eye className="w-6 h-6 text-blue-600" />
+                          <i className="lni lni-eye w-6 h-6 text-blue-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -311,7 +310,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-green-100 p-2 rounded-lg">
-                          <FileText className="w-6 h-6 text-green-600" />
+                          <i className="lni lni-text-format w-6 h-6 text-green-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -330,7 +329,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-red-100 p-2 rounded-lg">
-                          <Trash2 className="w-6 h-6 text-red-600" />
+                          <i className="lni lni-question-circle w-6 h-6 text-red-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2 capitalize">
@@ -349,7 +348,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-purple-100 p-2 rounded-lg">
-                          <Download className="w-6 h-6 text-purple-600" />
+                          <i className="lni lni-download w-6 h-6 text-purple-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -368,7 +367,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-orange-100 p-2 rounded-lg">
-                          <Ban className="w-6 h-6 text-orange-600" />
+                          <i className="lni lni-question-circle w-6 h-6 text-orange-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -387,7 +386,7 @@ export default function PolitiqueConfidentialitePage() {
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <div className="bg-yellow-100 p-2 rounded-lg">
-                          <Lock className="w-6 h-6 text-yellow-600" />
+                          <i className="lni lni-lock w-6 h-6 text-yellow-600"></i>
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -407,7 +406,7 @@ export default function PolitiqueConfidentialitePage() {
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
                       <div className="bg-blue-100 p-2 rounded-lg">
-                        <Clock className="w-6 h-6 text-blue-600" />
+                        <i className="lni lni-timer w-6 h-6 text-blue-600"></i>
                       </div>
                       <div>
                         <h4 className="text-lg font-semibold text-gray-900 mb-2">

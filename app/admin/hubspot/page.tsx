@@ -5,16 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getHubSpotAuthUrl } from "@/lib/hubspot-blog";
-import {
-  ExternalLink,
-  CheckCircle,
-  XCircle,
-  RefreshCw,
-  Lock,
-  Unlock,
-  Settings,
-  TestTube,
-} from "lucide-react";
 
 interface ScopeTestResult {
   name: string;
@@ -126,7 +116,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Settings className="w-5 h-5" />
+                <i className="lni lni-cog w-5 h-5"></i>
                 Statut de connexion
               </CardTitle>
             </CardHeader>
@@ -134,9 +124,9 @@ export default function HubSpotAdminPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {isConnected ? (
-                    <CheckCircle className="w-6 h-6 text-green-500" />
+                    <i className="lni lni-checkmark-circle w-6 h-6 text-green-500"></i>
                   ) : (
-                    <XCircle className="w-6 h-6 text-red-500" />
+                    <i className="lni lni-cross-circle w-6 h-6 text-red-500"></i>
                   )}
                   <div>
                     <p className="font-medium">
@@ -160,7 +150,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Lock className="w-5 h-5" />
+                <i className="lni lni-lock w-5 h-5"></i>
                 Configuration OAuth
               </CardTitle>
             </CardHeader>
@@ -193,9 +183,9 @@ export default function HubSpotAdminPage() {
                   className="flex items-center gap-2"
                 >
                   {isLoading ? (
-                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <i className="lni lni-reload w-4 h-4 animate-spin"></i>
                   ) : (
-                    <Unlock className="w-4 h-4" />
+                    <i className="lni lni-unlock w-4 h-4"></i>
                   )}
                   {isConnected ? "Reconnecter" : "Se connecter"}
                 </Button>
@@ -206,7 +196,7 @@ export default function HubSpotAdminPage() {
                   disabled={isLoading}
                   className="flex items-center gap-2"
                 >
-                  <RefreshCw className="w-4 h-4" />
+                  <i className="lni lni-reload w-4 h-4"></i>
                   Tester la connexion
                 </Button>
 
@@ -217,9 +207,9 @@ export default function HubSpotAdminPage() {
                   className="flex items-center gap-2"
                 >
                   {isTestingScopes ? (
-                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <i className="lni lni-reload w-4 h-4 animate-spin"></i>
                   ) : (
-                    <TestTube className="w-4 h-4" />
+                    <i className="lni lni-question-circle w-4 h-4"></i>
                   )}
                   Tester les scopes
                 </Button>
@@ -232,7 +222,7 @@ export default function HubSpotAdminPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TestTube className="w-5 h-5" />
+                  <i className="lni lni-question-circle w-5 h-5"></i>
                   Résultats des tests de scopes
                 </CardTitle>
               </CardHeader>
@@ -309,7 +299,7 @@ export default function HubSpotAdminPage() {
                   className="w-full justify-start"
                   onClick={() => window.open("/blog", "_blank")}
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
+                  <i className="lni lni-link w-4 h-4 mr-2"></i>
                   Voir le blog
                 </Button>
 
@@ -323,7 +313,7 @@ export default function HubSpotAdminPage() {
                     )
                   }
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
+                  <i className="lni lni-link w-4 h-4 mr-2"></i>
                   Documentation API HubSpot
                 </Button>
               </div>
@@ -335,7 +325,7 @@ export default function HubSpotAdminPage() {
             <Card className="border-red-200 bg-red-50">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 text-red-700">
-                  <XCircle className="w-5 h-5" />
+                  <i className="lni lni-cross-circle w-5 h-5"></i>
                   <p className="font-medium">Erreur : {error}</p>
                 </div>
               </CardContent>

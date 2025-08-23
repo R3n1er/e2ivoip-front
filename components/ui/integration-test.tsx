@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, XCircle, Loader2 } from "lucide-react"
 
 interface IntegrationTest {
   name: string
@@ -101,11 +100,11 @@ export function IntegrationTest() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "success":
-        return <CheckCircle className="w-5 h-5 text-green-500" />
+        return <i className="lni lni-checkmark-circle w-5 h-5 text-green-500"></i>
       case "error":
-        return <XCircle className="w-5 h-5 text-red-500" />
+        return <i className="lni lni-cross-circle w-5 h-5 text-red-500"></i>
       default:
-        return <Loader2 className="w-5 h-5 text-gray-400 animate-spin" />
+        return <i className="lni lni-question-circle w-5 h-5 text-gray-400 animate-spin"></i>
     }
   }
 
@@ -137,7 +136,7 @@ export function IntegrationTest() {
           >
             {isRunning ? (
               <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                <i className="lni lni-question-circle w-4 h-4 mr-2 animate-spin"></i>
                 Tests en cours...
               </>
             ) : (
@@ -166,27 +165,27 @@ export function IntegrationTest() {
           <h2 className="text-xl font-semibold mb-4">Résumé des Tests</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>HubSpot CRM</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>HubSpot Blog</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>HubSpot Analytics</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>Tally Formulaires</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>n8n Workflows</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
               <span>URLR API</span>
             </div>
           </div>

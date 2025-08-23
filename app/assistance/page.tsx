@@ -2,19 +2,6 @@ import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import WorkingFAQ from "@/components/faq-working";
-import {
-  Phone,
-  Mail,
-  MessageCircle,
-  Clock,
-  Users,
-  FileText,
-  Video,
-  Download,
-  ExternalLink,
-  MapPin,
-  Globe,
-} from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
 
@@ -34,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function AssistancePage() {
   return (
-    <>
+    <i className="lni lni-question-circle"></i>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
         <div className="absolute inset-0">
@@ -73,7 +60,7 @@ export default function AssistancePage() {
           <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
             <CardContent className="p-12">
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Phone className="w-10 h-10 text-white" />
+                <i className="lni lni-phone w-10 h-10 text-white"></i>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
@@ -107,7 +94,7 @@ export default function AssistancePage() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
-              <MessageCircle className="w-12 h-12 text-blue-marine mx-auto mb-4" />
+              <i className="lni lni-comments w-12 h-12 text-blue-marine mx-auto mb-4"></i>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Support chat en direct
               </h3>
@@ -133,6 +120,6 @@ export default function AssistancePage() {
           <WorkingFAQ />
         </div>
       </section>
-    </>
+    <i className="lni lni-question-circle"></i>
   );
 }
