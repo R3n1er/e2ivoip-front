@@ -83,32 +83,24 @@ export function HeaderSimple() {
   ];
 
   const handleMouseEnter = (itemName: string) => {
-    console.log('Mouse enter:', itemName); // Debug
-    // Annuler le timeout de fermeture s'il existe
+    console.log('Mouse enter:', itemName);
     if (submenuTimeoutRef.current) {
       clearTimeout(submenuTimeoutRef.current);
       submenuTimeoutRef.current = null;
     }
-
     setActiveSubmenu(itemName);
-    setIsHoveringSubmenu(false);
   };
 
   const handleMouseLeave = () => {
-    console.log('Mouse leave from nav item'); // Debug
-    // Démarrer le délai de fermeture
+    console.log('Mouse leave from nav item');
     submenuTimeoutRef.current = setTimeout(() => {
-      if (!isHoveringSubmenu) {
-        console.log('Closing submenu after timeout'); // Debug
-        setActiveSubmenu(null);
-      }
-    }, 300); // 300ms de délai
+      console.log('Closing submenu after timeout');
+      setActiveSubmenu(null);
+    }, 150);
   };
 
   const handleSubmenuMouseEnter = () => {
-    console.log('Mouse enter submenu'); // Debug
-    setIsHoveringSubmenu(true);
-    // Annuler le timeout de fermeture
+    console.log('Mouse enter submenu');
     if (submenuTimeoutRef.current) {
       clearTimeout(submenuTimeoutRef.current);
       submenuTimeoutRef.current = null;
@@ -116,13 +108,11 @@ export function HeaderSimple() {
   };
 
   const handleSubmenuMouseLeave = () => {
-    console.log('Mouse leave submenu'); // Debug
-    setIsHoveringSubmenu(false);
-    // Démarrer le délai de fermeture
+    console.log('Mouse leave submenu');
     submenuTimeoutRef.current = setTimeout(() => {
-      console.log('Closing submenu from submenu leave'); // Debug
+      console.log('Closing submenu from submenu leave');
       setActiveSubmenu(null);
-    }, 300); // 300ms de délai
+    }, 150);
   };
 
   return (
@@ -181,9 +171,19 @@ export function HeaderSimple() {
             {navigation.map((item) => (
               <div
                 key={item.name}
-                className="relative"
-                onMouseEnter={() => item.submenu && handleMouseEnter(item.name)}
-                onMouseLeave={item.submenu ? handleMouseLeave : undefined}
+                className="relative group"
+                onMouseEnter={() => {
+                  if (item.submenu) {
+                    console.log('Entering item with submenu:', item.name);
+                    handleMouseEnter(item.name);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.submenu) {
+                    console.log('Leaving item with submenu:', item.name);
+                    handleMouseLeave();
+                  }
+                }}
               >
                 {item.href ? (
                   <Link
