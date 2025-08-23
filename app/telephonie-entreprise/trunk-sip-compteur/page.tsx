@@ -95,19 +95,17 @@ export default function TrunkSIPCompteur() {
 
               {/* CTA Hero */}
               <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/devis-en-ligne" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white hover:bg-gray-100 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-                >
-                  <i className="lni lni-calculator mr-2"></i>
-                  Calculer mes économies
+                <Link href="/devis-en-ligne">
+                  <button className="btn btn-primary btn-lg">
+                    <i className="lni lni-calculator mr-2"></i>
+                    Calculer mes économies
+                  </button>
                 </Link>
-                <a 
-                  href="tel:+33189560500" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white hover:bg-white hover:text-red-primary rounded-lg transition-all duration-300"
-                >
-                  <i className="lni lni-phone mr-2"></i>
-                  01 89 56 05 00
+                <a href="tel:+33189560500">
+                  <button className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-red-primary">
+                    <i className="lni lni-phone mr-2"></i>
+                    01 89 56 05 00
+                  </button>
                 </a>
               </div>
             </div>
@@ -127,26 +125,32 @@ export default function TrunkSIPCompteur() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <i className="lni lni-money-location text-red-primary text-3xl"></i>
+              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="card-body items-center text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-money-location text-red-primary text-3xl"></i>
+                  </div>
+                  <h3 className="card-title text-lg text-gray-900">Coûts imprévisibles</h3>
+                  <p className="text-gray-600">Factures qui varient de <strong>200 à 800€</strong> selon les mois sans visibilité sur la consommation</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">Coûts imprévisibles</h3>
-                <p className="text-gray-600">Factures qui varient de <strong>200 à 800€</strong> selon les mois sans visibilité sur la consommation</p>
               </div>
-              <div className="bg-white rounded-xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <i className="lni lni-network text-red-primary text-3xl"></i>
+              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="card-body items-center text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-network text-red-primary text-3xl"></i>
+                  </div>
+                  <h3 className="card-title text-lg text-gray-900">PABX obsolète</h3>
+                  <p className="text-gray-600">Ancien système limité, <strong>coûteux à maintenir</strong> et incompatible avec le télétravail</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">PABX obsolète</h3>
-                <p className="text-gray-600">Ancien système limité, <strong>coûteux à maintenir</strong> et incompatible avec le télétravail</p>
               </div>
-              <div className="bg-white rounded-xl p-8 shadow-lg text-center hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <i className="lni lni-map-marker text-red-primary text-3xl"></i>
+              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="card-body items-center text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-map-marker text-red-primary text-3xl"></i>
+                  </div>
+                  <h3 className="card-title text-lg text-gray-900">Numéros non-locaux</h3>
+                  <p className="text-gray-600"><strong>Aucun numéro géographique</strong> dans votre zone DOM-TOM, pénalisant votre image locale</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">Numéros non-locaux</h3>
-                <p className="text-gray-600"><strong>Aucun numéro géographique</strong> dans votre zone DOM-TOM, pénalisant votre image locale</p>
               </div>
             </div>
 
@@ -287,12 +291,14 @@ export default function TrunkSIPCompteur() {
 
             <div className="grid md:grid-cols-5 gap-6">
               {compatibleBrands.map((brand, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <i className="lni lni-checkmark text-blue-600 text-xl"></i>
+                <div key={index} className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="card-body items-center text-center p-6">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                      <i className="lni lni-checkmark text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 className="card-title text-base text-gray-900">{brand.name}</h3>
+                    <p className="text-gray-600 text-sm">{brand.description}</p>
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{brand.name}</h3>
-                  <p className="text-gray-600 text-sm">{brand.description}</p>
                 </div>
               ))}
             </div>
@@ -326,18 +332,20 @@ export default function TrunkSIPCompteur() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {useCases.map((useCase, index) => (
-                <div key={index} className="bg-gradient-to-br from-blue-50 to-red-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
-                    <i className={`lni ${useCase.icon} text-blue-600 text-3xl`}></i>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{useCase.title}</h3>
-                  <p className="text-gray-600 mb-4">{useCase.description}</p>
-                  <div className="space-y-2">
-                    <div className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
-                      {useCase.users}
+                <div key={index} className="card bg-gradient-to-br from-blue-50 to-red-50 shadow-xl hover:shadow-2xl transition-shadow">
+                  <div className="card-body items-center text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+                      <i className={`lni ${useCase.icon} text-blue-600 text-3xl`}></i>
                     </div>
-                    <div className="text-green-600 font-semibold text-sm">
-                      {useCase.savings}
+                    <h3 className="card-title text-xl text-gray-900">{useCase.title}</h3>
+                    <p className="text-gray-600 mb-4">{useCase.description}</p>
+                    <div className="card-actions flex-col space-y-2">
+                      <div className="badge badge-info">
+                        {useCase.users}
+                      </div>
+                      <div className="text-green-600 font-semibold text-sm">
+                        {useCase.savings}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -382,74 +390,79 @@ export default function TrunkSIPCompteur() {
               </h2>
             </div>
 
-            <div className="space-y-4">
-              <details className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                <summary className="p-6 cursor-pointer font-medium text-lg hover:bg-gray-50">
-                  <span>Quelle est la différence entre Trunk SIP au compteur et illimité ?</span>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  <p>
+            <div className="join join-vertical w-full">
+              <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="faq-accordion" defaultChecked />
+                <div className="collapse-title text-lg font-medium">
+                  Quelle est la différence entre Trunk SIP au compteur et illimité ?
+                </div>
+                <div className="collapse-content">
+                  <p className="text-gray-600">
                     Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois), 
                     tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM-TOM 
                     (recommandé pour plus de 200 minutes/mois).
                   </p>
                 </div>
-              </details>
+              </div>
 
-              <details className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                <summary className="p-6 cursor-pointer font-medium text-lg hover:bg-gray-50">
-                  <span>Puis-je garder mes numéros actuels ?</span>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  <p>
+              <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="faq-accordion" />
+                <div className="collapse-title text-lg font-medium">
+                  Puis-je garder mes numéros actuels ?
+                </div>
+                <div className="collapse-content">
+                  <p className="text-gray-600">
                     <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants. 
                     Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM-TOM 
                     (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
                   </p>
                 </div>
-              </details>
+              </div>
 
-              <details className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                <summary className="p-6 cursor-pointer font-medium text-lg hover:bg-gray-50">
-                  <span>Quel équipement faut-il pour utiliser le Trunk SIP ?</span>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  <p>
+              <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="faq-accordion" />
+                <div className="collapse-title text-lg font-medium">
+                  Quel équipement faut-il pour utiliser le Trunk SIP ?
+                </div>
+                <div className="collapse-content">
+                  <p className="text-gray-600">
                     Vous avez besoin d'un <strong>IPBX</strong> (comme 3CX, Yeastar) ou d'une <strong>passerelle SIP</strong>. 
                     Si vous n'en avez pas, nous proposons des solutions complètes incluant l'équipement et la configuration.
                     Une connexion Internet stable (ADSL/Fibre) est également requise.
                   </p>
                 </div>
-              </details>
+              </div>
 
-              <details className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                <summary className="p-6 cursor-pointer font-medium text-lg hover:bg-gray-50">
-                  <span>Le support technique est-il disponible localement ?</span>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  <p>
+              <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="faq-accordion" />
+                <div className="collapse-title text-lg font-medium">
+                  Le support technique est-il disponible localement ?
+                </div>
+                <div className="collapse-content">
+                  <p className="text-gray-600">
                     <strong>Oui, c'est notre avantage principal !</strong> Nos équipes techniques sont présentes en 
                     <strong>Martinique, Guadeloupe et Guyane</strong>. Support disponible du lundi au vendredi de 8h à 18h (heure locale).
                     Intervention sur site possible si nécessaire.
                   </p>
                 </div>
-              </details>
+              </div>
 
-              <details className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                <summary className="p-6 cursor-pointer font-medium text-lg hover:bg-gray-50">
-                  <span>Quelle connexion Internet est recommandée ?</span>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600">
-                  <p>
-                    <strong>Recommandations techniques :</strong>
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li><strong>Fibre optique FTTO Entreprise</strong> (idéal)</li>
-                    <li><strong>SDSL Cuivre</strong> avec 2Mb dédiés à la VoIP minimum</li>
-                    <li><strong>Box 4G</strong> avec forfait 200GB/illimité VoIP en secours</li>
-                  </ul>
+              <div className="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="faq-accordion" />
+                <div className="collapse-title text-lg font-medium">
+                  Quelle connexion Internet est recommandée ?
                 </div>
-              </details>
+                <div className="collapse-content">
+                  <div className="text-gray-600">
+                    <p><strong>Recommandations techniques :</strong></p>
+                    <ul className="list-disc pl-6 mt-2 space-y-1">
+                      <li><strong>Fibre optique FTTO Entreprise</strong> (idéal)</li>
+                      <li><strong>SDSL Cuivre</strong> avec 2Mb dédiés à la VoIP minimum</li>
+                      <li><strong>Box 4G</strong> avec forfait 200GB/illimité VoIP en secours</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -481,19 +494,17 @@ export default function TrunkSIPCompteur() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/devis-en-ligne" 
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white hover:bg-gray-100 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <i className="lni lni-calculator mr-2"></i>
-                Calculer mes économies gratuitement
+              <Link href="/devis-en-ligne">
+                <button className="btn btn-primary btn-lg shadow-xl">
+                  <i className="lni lni-calculator mr-2"></i>
+                  Calculer mes économies gratuitement
+                </button>
               </Link>
-              <a 
-                href="tel:+33189560500" 
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white hover:bg-white hover:text-red-primary rounded-lg transition-all duration-300"
-              >
-                <i className="lni lni-phone mr-2"></i>
-                Parler à un expert : 01 89 56 05 00
+              <a href="tel:+33189560500">
+                <button className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-red-primary">
+                  <i className="lni lni-phone mr-2"></i>
+                  Parler à un expert : 01 89 56 05 00
+                </button>
               </a>
             </div>
             
