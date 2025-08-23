@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 
 // Mock des composants
-vi.mock("@/components/ui/lazy-component", () => ({
+jest.mock("@/components/ui/lazy-component", () => ({
   LazyComponent: ({
     children,
     fallback,
@@ -17,18 +17,18 @@ vi.mock("@/components/ui/lazy-component", () => ({
   ),
 }));
 
-vi.mock("@/hooks/use-service-worker", () => ({
+jest.mock("@/hooks/use-service-worker", () => ({
   useServiceWorker: () => ({
     isSupported: true,
     isInstalled: true,
     isUpdating: false,
     hasUpdate: false,
     error: null,
-    register: vi.fn(),
-    update: vi.fn(),
-    forceUpdate: vi.fn(),
-    getCacheStatus: vi.fn(),
-    clearCache: vi.fn(),
+    register: jest.fn(),
+    update: jest.fn(),
+    forceUpdate: jest.fn(),
+    getCacheStatus: jest.fn(),
+    clearCache: jest.fn(),
   }),
 }));
 
@@ -38,9 +38,9 @@ describe("Core Web Vitals - Optimisations", () => {
     Object.defineProperty(window, "navigator", {
       value: {
         serviceWorker: {
-          register: vi.fn(),
-          addEventListener: vi.fn(),
-          removeEventListener: vi.fn(),
+          register: jest.fn(),
+          addEventListener: jest.fn(),
+          removeEventListener: jest.fn(),
         },
       },
       writable: true,
@@ -48,11 +48,11 @@ describe("Core Web Vitals - Optimisations", () => {
 
     Object.defineProperty(window, "caches", {
       value: {
-        open: vi.fn(),
-        keys: vi.fn(),
-        delete: vi.fn(),
-        match: vi.fn(),
-        put: vi.fn(),
+        open: jest.fn(),
+        keys: jest.fn(),
+        delete: jest.fn(),
+        match: jest.fn(),
+        put: jest.fn(),
       },
       writable: true,
     });

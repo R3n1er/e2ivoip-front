@@ -1,9 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
+// Jest mocks
 import { render, screen, waitFor } from "@testing-library/react";
 import { DevisHeroSection } from "@/components/devis-hero-section";
 
 // Mock du composant d'animation
-vi.mock("@/components/devis-animations", () => ({
+jest.mock("@/components/devis-animations", () => ({
   AnimatedHero: ({
     children,
     className,

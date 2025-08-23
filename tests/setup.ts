@@ -1,24 +1,23 @@
 import '@testing-library/jest-dom'
 import React from 'react'
-import { vi } from 'vitest'
 
 // Configuration globale pour les tests
-global.ResizeObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
 }))
 
 // Mock pour Next.js router
-vi.mock('next/navigation', () => ({
+jest.mock('next/navigation', () => ({
   useRouter() {
     return {
-      push: vi.fn(),
-      replace: vi.fn(),
-      prefetch: vi.fn(),
-      back: vi.fn(),
-      forward: vi.fn(),
-      refresh: vi.fn(),
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+      back: jest.fn(),
+      forward: jest.fn(),
+      refresh: jest.fn(),
     }
   },
   useSearchParams() {
@@ -30,7 +29,7 @@ vi.mock('next/navigation', () => ({
 }))
 
 // Mock pour Framer Motion
-vi.mock('framer-motion', () => ({
+jest.mock('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: any) => {
       const { div, ...rest } = props

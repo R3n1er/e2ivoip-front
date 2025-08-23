@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+
 
 describe('3CX Badge Component', () => {
   it('should use the correct image path', () => {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect } from 'vitest'
+
 import PolitiqueConfidentialitePage from '../app/politique-confidentialite/page'
 
 describe('Page Politique de Confidentialité', () => {

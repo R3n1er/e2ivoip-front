@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+// Jest mocks
 import { urlrService, shortenArticleLink } from '../lib/urlr'
 
 // Mock fetch
-global.fetch = vi.fn()
+global.fetch = jest.fn()
 
 // Mock environment variables for tests
 process.env.URLR_USERNAME = 'test-username'
@@ -11,7 +11,7 @@ process.env.URLR_TEAM_ID = 'test-team-id'
 
 describe('URLR Service', () => {
   beforeEach(() => {
-    vi.clearAllMocks()
+    jest.clearAllMocks()
   })
 
   describe('authenticate', () => {
@@ -57,7 +57,7 @@ describe('URLR Service', () => {
   describe('createArticleLink', () => {
     it('should create article link with correct parameters', async () => {
       // Mock the authenticate method to set the access token
-      vi.spyOn(urlrService, 'authenticate').mockResolvedValue({
+      jest.spyOn(urlrService, 'authenticate').mockResolvedValue({
         token: 'test-token',
         refresh_token: 'test-refresh-token'
       })
@@ -104,7 +104,7 @@ describe('URLR Service', () => {
   describe('shortenArticleLink', () => {
     it('should shorten article link successfully', async () => {
       // Mock the authenticate method to set the access token
-      vi.spyOn(urlrService, 'authenticate').mockResolvedValue({
+      jest.spyOn(urlrService, 'authenticate').mockResolvedValue({
         token: 'test-token',
         refresh_token: 'test-refresh-token'
       })
@@ -150,7 +150,7 @@ describe('URLR Service', () => {
 
     it('should handle QR code creation failure gracefully', async () => {
       // Mock the authenticate method to set the access token
-      vi.spyOn(urlrService, 'authenticate').mockResolvedValue({
+      jest.spyOn(urlrService, 'authenticate').mockResolvedValue({
         token: 'test-token',
         refresh_token: 'test-refresh-token'
       })
@@ -177,7 +177,7 @@ describe('URLR Service', () => {
           status: 500
         })
 
-      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+      const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
 
       const result = await shortenArticleLink(
         'https://example.com/article',

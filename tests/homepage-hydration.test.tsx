@@ -1,9 +1,10 @@
-import { describe, it, expect, vi } from 'vitest'
+// Jest mocks
+
 import { render, screen } from '@testing-library/react'
 import HomePage from '@/app/page'
 
 // Mock des composants externes
-vi.mock('@/components/homepage-hero-section', () => ({
+jest.mock('@/components/homepage-hero-section', () => ({
   HomepageHeroSection: () => (
     <section data-testid="homepage-hero">
       <h1>Votre standard téléphonique</h1>
@@ -11,23 +12,23 @@ vi.mock('@/components/homepage-hero-section', () => ({
   ),
 }))
 
-vi.mock('@/components/services-section', () => ({
+jest.mock('@/components/services-section', () => ({
   ServicesSection: () => <section data-testid="services">Services</section>,
 }))
 
-vi.mock('@/components/about-section', () => ({
+jest.mock('@/components/about-section', () => ({
   AboutSection: () => <section data-testid="about">À propos</section>,
 }))
 
-vi.mock('@/components/clients-carousel', () => ({
+jest.mock('@/components/clients-carousel', () => ({
   ClientsCarousel: () => <div data-testid="clients">Clients</div>,
 }))
 
-vi.mock('@/components/testimonials-section', () => ({
+jest.mock('@/components/testimonials-section', () => ({
   TestimonialsSection: () => <section data-testid="testimonials">Témoignages</section>,
 }))
 
-vi.mock('@/components/contact-section', () => ({
+jest.mock('@/components/contact-section', () => ({
   ContactSection: () => <section data-testid="contact">Contact</section>,
 }))
 

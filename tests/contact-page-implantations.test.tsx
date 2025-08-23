@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
@@ -10,7 +10,7 @@ interface HubSpotFormProps {
 }
 
 // Mock des composants externes
-vi.mock("@/components/hubspot-contact-form-global", () => ({
+jest.mock("@/components/hubspot-contact-form-global", () => ({
   HubSpotContactFormGlobal: ({
     portalId,
     formId,
@@ -29,7 +29,7 @@ vi.mock("@/components/hubspot-contact-form-global", () => ({
   ),
 }));
 
-vi.mock("@/components/secure-email", () => ({
+jest.mock("@/components/secure-email", () => ({
   SecureEmail: ({ email }: { email: string }) => (
     <span data-testid="secure-email">{email}</span>
   ),

@@ -1,9 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import { HomepageHeroSectionSimple } from "@/components/homepage-hero-section-simple";
 
 // Mock framer-motion
-vi.mock("framer-motion", () => ({
+jest.mock("framer-motion", () => ({
   motion: {
     div: ({
       children,

@@ -1,12 +1,12 @@
+// Jest mocks
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { HubSpotSimple } from "../components/hubspot-simple";
 
-const mockHbspt = { forms: { create: vi.fn() } };
+const mockHbspt = { forms: { create: jest.fn() } };
 
 describe("HubSpotSimple", () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    jest.clearAllMocks();
     Object.defineProperty(window, "hbspt", { value: mockHbspt, writable: true });
   });
 
