@@ -1,27 +1,42 @@
-import { Metadata } from "next";
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
-import Script from "next/script";
+import { useEffect } from "react";
+import Head from "next/head";
 
-export const metadata: Metadata = {
-  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
-  description:
-    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
-  keywords:
-    "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM-TOM, standard téléphonique entreprise, 3CX Yeastar",
-  openGraph: {
-    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
-    description:
-      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
-    type: "website",
-  },
-};
+
 
 export default function ContactPage() {
+  useEffect(() => {
+    // Charger le script HubSpot
+    const script1 = document.createElement('script');
+    script1.src = '//js-eu1.hsforms.net/forms/embed/v2.js';
+    script1.charset = 'utf-8';
+    script1.type = 'text/javascript';
+    document.head.appendChild(script1);
+
+    script1.onload = () => {
+      // Créer le formulaire une fois le script chargé
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: "26878201",
+          formId: "312a9f67-e613-4651-9690-4586646554a0",
+          region: "eu1",
+          target: "#hubspot-form-container"
+        });
+      }
+    };
+  }, []);
+
   return (
     <>
+      <Head>
+        <title>Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM</title>
+        <meta name="description" content="Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion." />
+      </Head>
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -265,29 +280,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Scripts HubSpot */}
-      <Script
-        src="//js-eu1.hsforms.net/forms/embed/v2.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="hubspot-form"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.addEventListener('load', function() {
-              if (window.hbspt) {
-                window.hbspt.forms.create({
-                  portalId: "26878201",
-                  formId: "312a9f67-e613-4651-9690-4586646554a0",
-                  region: "eu1",
-                  target: "#hubspot-form-container"
-                });
-              }
-            });
-          `,
-        }}
-      />
+
     </>
   );
 }
