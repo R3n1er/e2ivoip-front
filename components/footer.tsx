@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { ThreeCXBadge } from "@/components/ui/3cx-badge";
 
 export function Footer() {
@@ -28,11 +27,11 @@ export function Footer() {
 
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <i className="lni lni-envelope w-4 h-4 text-red-500 flex-shrink-0"></i>
                 <span>contact@e2i-voip.com</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <i className="lni lni-map-marker w-4 h-4 text-red-500 flex-shrink-0"></i>
                 <span>Paris, France</span>
               </div>
             </div>
@@ -40,7 +39,7 @@ export function Footer() {
             {/* Section Nous contacter avec dégradé */}
             <div className="mt-6 pt-4 border-t border-gray-700">
               <h4 className="text-sm font-semibold text-white mb-4 flex items-center">
-                <Phone className="w-4 h-4 text-red-500 mr-2" />
+                <i className="lni lni-phone w-4 h-4 text-red-500 mr-2"></i>
                 Nous contacter
               </h4>
               <div className="space-y-2 text-xs">
@@ -75,7 +74,7 @@ export function Footer() {
               </div>
               <div className="mt-3 pt-2 border-t border-gray-600">
                 <div className="flex items-center space-x-2">
-                  <Mail className="w-3 h-3 text-red-500 flex-shrink-0" />
+                  <i className="lni lni-envelope w-3 h-3 text-red-500 flex-shrink-0"></i>
                   <span className="text-gray-300 text-xs">
                     assistance@e2i-voip.com
                   </span>

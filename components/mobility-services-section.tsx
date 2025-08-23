@@ -4,22 +4,12 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Smartphone, 
-  Phone, 
-  Wifi, 
-  Globe, 
-  Users, 
-  Shield,
-  ArrowRight,
-  CheckCircle
-} from "lucide-react";
 import Link from "next/link";
 
 export function MobilityServicesSection() {
   const services = [
     {
-      icon: Smartphone,
+      icon: "lni-mobile",
       title: "Téléphonie Mobile 4G/5G",
       description: "Forfaits professionnels avec voix illimitée et data adaptée aux besoins entreprise",
       features: [
@@ -32,7 +22,7 @@ export function MobilityServicesSection() {
       color: "red"
     },
     {
-      icon: Phone,
+      icon: "lni-phone",
       title: "Solutions Voix & Data",
       description: "Packages complets combinant téléphonie fixe IP et mobile pour une communication unifiée",
       features: [
@@ -45,7 +35,7 @@ export function MobilityServicesSection() {
       color: "blue"
     },
     {
-      icon: Globe,
+      icon: "lni-world",
       title: "Connectivité Internationale",
       description: "Solutions pour entreprises avec besoins de communication internationale",
       features: [
@@ -58,7 +48,7 @@ export function MobilityServicesSection() {
       color: "green"
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "Gestion de Flotte",
       description: "Outils de gestion et supervision pour parcs mobiles d'entreprise",
       features: [
@@ -93,7 +83,7 @@ export function MobilityServicesSection() {
           className="text-center mb-16"
         >
           <Badge className="mb-4 bg-red-100 text-red-600 border-red-200">
-            <Wifi className="w-4 h-4 mr-2" />
+            <i className="lni lni-signal w-4 h-4 mr-2"></i>
             Nos Solutions Mobilité
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -137,7 +127,7 @@ export function MobilityServicesSection() {
                     <ul className="space-y-3">
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
+                          <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-3 flex-shrink-0"></i>
                           {feature}
                         </li>
                       ))}
@@ -157,7 +147,7 @@ export function MobilityServicesSection() {
           viewport={{ once: true }}
           className="text-center bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 md:p-12 text-white"
         >
-          <Shield className="w-16 h-16 mx-auto mb-6 opacity-90" />
+          <i className="lni lni-shield w-16 h-16 mx-auto mb-6 opacity-90"></i>
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
             Prêt à moderniser votre mobilité d'entreprise ?
           </h3>
@@ -167,9 +157,9 @@ export function MobilityServicesSection() {
           </p>
           <Link href="/contact">
             <Button size="lg" variant="secondary" className="bg-white text-red-600 hover:bg-gray-100">
-              <Phone className="w-5 h-5 mr-2" />
+              <i className="lni lni-phone w-5 h-5 mr-2"></i>
               Demander un devis gratuit
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <i className="lni lni-arrow-right w-5 h-5 ml-2"></i>
             </Button>
           </Link>
         </motion.div>

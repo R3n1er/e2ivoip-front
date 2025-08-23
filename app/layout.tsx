@@ -49,6 +49,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth" data-theme="e2ivoip" suppressHydrationWarning>
+      <head>
+        <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning

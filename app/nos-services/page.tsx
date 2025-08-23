@@ -1,20 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
-  Phone,
-  Cloud,
-  Smartphone,
-  Users,
-  MessageSquare,
-  BarChart3,
-  ArrowRight,
-  CheckCircle,
-  MapPin,
-  Clock,
-  Shield,
-  Zap,
-} from "lucide-react";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -50,7 +36,7 @@ export const metadata: Metadata = {
 export default function NosServices() {
   const services = [
     {
-      icon: Cloud,
+      icon: "lni-cloud",
       title: "Trunk SIP DOM-TOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
@@ -66,7 +52,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "3CX SMB Mutualisé",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -82,7 +68,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: Phone,
+      icon: "lni-phone",
       title: "3CX PRO Dédié",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -98,7 +84,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: Smartphone,
+      icon: "lni-mobile",
       title: "Solutions Mobilité",
       description:
         "Travaillez de n'importe où avec softphone mobile et fonctionnalités nomades",
@@ -114,7 +100,7 @@ export default function NosServices() {
       category: "Mobilité",
     },
     {
-      icon: MessageSquare,
+      icon: "lni-comments",
       title: "Assistants Vocaux IA",
       description:
         "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
@@ -130,7 +116,7 @@ export default function NosServices() {
       category: "Innovation",
     },
     {
-      icon: BarChart3,
+      icon: "lni-bar-chart",
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -156,25 +142,25 @@ export default function NosServices() {
 
   const benefits = [
     {
-      icon: Zap,
+      icon: "lni-bolt",
       title: "Économies garanties",
       description: "Jusqu'à 30% de réduction sur vos factures télécom",
       color: "text-red-primary",
     },
     {
-      icon: MapPin,
+      icon: "lni-map-marker",
       title: "Présence locale DOM-TOM",
       description: "Support technique réactif dans toutes les zones",
       color: "text-blue-marine",
     },
     {
-      icon: Clock,
+      icon: "lni-timer",
       title: "Disponibilité 24/7",
       description: "Services et support disponibles en permanence",
       color: "text-green-600",
     },
     {
-      icon: Shield,
+      icon: "lni-shield",
       title: "Sécurité maximale",
       description: "Infrastructure cloud France/UE conforme RGPD",
       color: "text-purple-600",
@@ -253,7 +239,7 @@ export default function NosServices() {
                     size="lg"
                     className="bg-red-primary hover:bg-red-600 text-white-primary"
                   >
-                    <Phone className="w-5 h-5 mr-2" />
+                    <i className="lni lni-phone w-5 h-5 mr-2"></i>
                     Audit télécom gratuit
                   </Button>
                   <Button
@@ -368,7 +354,7 @@ export default function NosServices() {
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <service.icon className="h-6 w-6 text-red-primary" />
+                          <i className={`lni ${service.icon} h-6 w-6 text-red-primary`}></i>
                         </div>
                         <Badge className="bg-red-primary text-white-primary">
                           {service.badge}
@@ -389,7 +375,7 @@ export default function NosServices() {
                             key={featureIndex}
                             className="flex items-center text-sm"
                           >
-                            <CheckCircle className="h-4 w-4 text-red-primary mr-2 flex-shrink-0" />
+                            <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
                             <span className="text-gray-secondary">
                               {feature}
                             </span>
@@ -410,7 +396,7 @@ export default function NosServices() {
                             className="w-full border-red-primary text-red-primary hover:bg-red-primary hover:text-white-primary"
                           >
                             En savoir plus
-                            <ArrowRight className="w-4 h-4 ml-2" />
+                            <i className="lni lni-arrow-right w-4 h-4 ml-2"></i>
                           </Button>
                         </Link>
                       </div>
@@ -439,7 +425,7 @@ export default function NosServices() {
                   size="lg"
                   className="bg-red-primary hover:bg-red-600 text-white-primary"
                 >
-                  <Phone className="w-5 h-5 mr-2" />
+                  <i className="lni lni-phone w-5 h-5 mr-2"></i>
                   Audit télécom gratuit
                 </Button>
                 <Button

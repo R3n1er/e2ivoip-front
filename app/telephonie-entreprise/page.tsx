@@ -1,25 +1,24 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Phone, Users, Headphones } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export default function TelephonieDentreprise() {
   const solutions = [
     {
-      icon: Phone,
+      icon: "lni-phone",
       title: "Standards téléphoniques IP",
       description: "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
       features: ["Auto-commutateur", "Messagerie vocale", "Transfert d'appels", "Conférence téléphonique"],
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "Solutions multi-sites",
       description: "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
       features: ["Numérotation abrégée", "Transfert inter-sites", "Annuaire centralisé", "Gestion centralisée"],
     },
     {
-      icon: Headphones,
+      icon: "lni-headphone",
       title: "Centre d'appels",
       description: "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
       features: ["Distribution automatique", "Supervision temps réel", "Enregistrement", "Statistiques détaillées"],
@@ -56,7 +55,7 @@ export default function TelephonieDentreprise() {
                 <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                      <solution.icon className="w-6 h-6 text-red-600" />
+                      <i className={`lni ${solution.icon} w-6 h-6 text-red-600`}></i>
                     </div>
                     <CardTitle className="text-xl">{solution.title}</CardTitle>
                     <CardDescription>{solution.description}</CardDescription>

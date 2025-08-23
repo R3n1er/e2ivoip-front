@@ -1,6 +1,5 @@
 "use client";
 
-import { Calendar, User, ArrowRight, Clock, Eye } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -157,7 +156,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
         {/* Métadonnées */}
         <div className="flex items-center text-xs text-gray-500 mb-4 gap-4 flex-wrap">
           <div className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
+            <i className="lni lni-calendar w-3 h-3"></i>
             <span>
               {publishDate.toLocaleDateString("fr-FR", {
                 day: "numeric",
@@ -168,12 +167,12 @@ function BlogPostCard({ post }: { post: BlogPost }) {
           </div>
 
           <div className="flex items-center gap-1">
-            <User className="w-3 h-3" />
+            <i className="lni lni-user w-3 h-3"></i>
             <span>{post.author}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
+            <i className="lni lni-timer w-3 h-3"></i>
             <span>{readingTime} min</span>
           </div>
         </div>
@@ -186,7 +185,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
             className="w-full bg-transparent hover:bg-red-primary hover:text-white hover:border-red-primary transition-all duration-200 group/btn"
           >
             Lire l&apos;article
-            <ArrowRight className="w-3 h-3 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+            <i className="lni lni-arrow-right w-3 h-3 ml-2 group-hover/btn:translate-x-1 transition-transform"></i>
           </Button>
         </Link>
       </CardContent>

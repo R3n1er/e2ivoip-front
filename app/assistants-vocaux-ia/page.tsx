@@ -1,28 +1,27 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Bot, MessageSquare, Clock, Users, Zap } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export default function AssistantsVocauxIA() {
   const features = [
     {
-      icon: Bot,
+      icon: "lni-question-circle",
       title: "IA conversationnelle",
       description: "Assistants vocaux intelligents capables de comprendre et répondre naturellement",
     },
     {
-      icon: Clock,
+      icon: "lni-timer",
       title: "Disponibilité 24/7",
       description: "Vos clients sont accueillis et orientés à toute heure, même en dehors des horaires d'ouverture",
     },
     {
-      icon: Users,
+      icon: "lni-users",
       title: "Personnalisation avancée",
       description: "Adaptez le comportement et les réponses selon votre secteur d'activité",
     },
     {
-      icon: Zap,
+      icon: "lni-bolt",
       title: "Intégration CRM",
       description: "Connexion directe avec vos outils métier pour un service client optimisé",
     },
@@ -45,7 +44,7 @@ export default function AssistantsVocauxIA() {
                 exceptionnelle 24h/24.
               </p>
               <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
-                <MessageSquare className="w-5 h-5 mr-2" />
+                <i className="lni lni-comments w-5 h-5 mr-2"></i>
                 Découvrir la démo
               </Button>
             </div>
@@ -60,7 +59,7 @@ export default function AssistantsVocauxIA() {
                 <Card key={index} className="text-center border-gray-200">
                   <CardHeader>
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <feature.icon className="w-8 h-8 text-red-600" />
+                      <i className={`lni ${feature.icon} w-8 h-8 text-red-600`}></i>
                     </div>
                     <CardTitle className="text-xl">{feature.title}</CardTitle>
                   </CardHeader>

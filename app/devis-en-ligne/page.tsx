@@ -7,16 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Phone,
-  Mail,
-  Clock,
-  CheckCircle,
-  Users,
-  Shield,
-  Zap,
-  Star,
-} from "lucide-react";
 import Link from "next/link";
 import {
   TrunkSIPTallyLink,
@@ -37,28 +27,28 @@ export default function DevisEnLignePage() {
     {
       title: "Devis Trunk SIP",
       description: "Solutions de connectivité SIP professionnelles",
-      icon: <Phone className="w-6 h-6" />,
+      icon: "lni-phone w-6 h-6",
       href: "/devis-en-ligne/trunk-sip",
       features: ["Au compteur", "Illimité", "Portabilité"],
     },
     {
       title: "Devis Portabilité",
       description: "Conservez vos numéros existants",
-      icon: <Users className="w-6 h-6" />,
+      icon: "lni-users w-6 h-6",
       href: "/devis-en-ligne/portabilite",
       features: ["Numéros fixes", "RIO requis", "Sans interruption"],
     },
     {
       title: "Devis VoIP 3CX",
       description: "Solutions 3CX dédiées ou mutualisées",
-      icon: <Zap className="w-6 h-6" />,
+      icon: "lni-bolt w-6 h-6",
       href: "/devis-en-ligne/voip-3cx",
       features: ["3CX PRO Cloud", "3CX SMB Mutualisé", "Support inclus"],
     },
     {
       title: "Devis Projet PBX",
       description: "Solutions Yeastar et intégrations sur mesure",
-      icon: <Shield className="w-6 h-6" />,
+      icon: "lni-shield w-6 h-6",
       href: "/devis-en-ligne/projet-pbx",
       features: ["PBX Yeastar", "Intégrations", "Accompagnement"],
     },
@@ -66,22 +56,22 @@ export default function DevisEnLignePage() {
 
   const avantages = [
     {
-      icon: <Clock className="w-5 h-5" />,
+      icon: "lni-timer w-5 h-5",
       title: "Réponse sous 24h",
       description: "Par un expert en téléphonie IP",
     },
     {
-      icon: <CheckCircle className="w-5 h-5" />,
+      icon: "lni-checkmark-circle w-5 h-5",
       title: "Accompagnement gratuit",
       description: "Sans engagement",
     },
     {
-      icon: <Star className="w-5 h-5" />,
+      icon: "lni-star w-5 h-5",
       title: "Offres sur mesure",
       description: "Selon votre activité",
     },
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: "lni-phone w-5 h-5",
       title: "Support technique réactif",
       description: "Local dans les DOM et en France",
     },
@@ -193,14 +183,14 @@ export default function DevisEnLignePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 text-lg">
-                <Phone className="w-5 h-5 mr-2" />
+                <i className="lni lni-phone w-5 h-5 mr-2"></i>
                 05 94 96 35 00
               </Button>
               <Button
                 variant="outline"
                 className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 text-lg"
               >
-                <Mail className="w-5 h-5 mr-2" />
+                <i className="lni lni-envelope w-5 h-5 mr-2"></i>
                 contact@e2i-voip.com
               </Button>
             </div>

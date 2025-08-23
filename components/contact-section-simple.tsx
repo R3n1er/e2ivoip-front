@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Calendar,
-  ArrowRight,
-  CheckCircle,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -17,22 +9,22 @@ export function ContactSectionSimple() {
     {
       region: "Martinique",
       phone: "0596 XXX XXX",
-      icon: "🇲🇶",
+      icon: "lni-map-marker",
     },
     {
       region: "Guadeloupe",
       phone: "0590 XXX XXX",
-      icon: "🇬🇵",
+      icon: "lni-map-marker",
     },
     {
       region: "Guyane",
       phone: "0594 XXX XXX",
-      icon: "🇬🇫",
+      icon: "lni-map-marker",
     },
     {
       region: "Métropole",
       phone: "01 XX XX XX XX",
-      icon: "🇫🇷",
+      icon: "lni-map-marker",
     },
   ];
 
@@ -62,13 +54,13 @@ export function ContactSectionSimple() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/contact">
               <Button size="lg" className="btn btn-primary">
-                <Calendar className="w-5 h-5 mr-2" />
+                <i className="lni lni-calendar w-5 h-5 mr-2"></i>
                 Audit télécom gratuit
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <i className="lni lni-arrow-right w-5 h-5 ml-2"></i>
               </Button>
             </Link>
             <Button size="lg" className="btn btn-outline btn-primary">
-              <Phone className="w-5 h-5 mr-2" />
+              <i className="lni lni-phone w-5 h-5 mr-2"></i>
               Calculez vos économies
             </Button>
           </div>
@@ -90,7 +82,9 @@ export function ContactSectionSimple() {
                 <Card key={index} className="hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
-                      <span className="text-2xl mr-3">{contact.icon}</span>
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                        <i className={`lni ${contact.icon} text-blue-600`}></i>
+                      </div>
                       <h4 className="font-semibold text-gray-900">
                         {contact.region}
                       </h4>
@@ -98,7 +92,7 @@ export function ContactSectionSimple() {
 
                     <div className="space-y-3">
                       <div className="flex items-center text-sm">
-                        <Phone className="h-4 w-4 text-red-primary mr-2" />
+                        <i className="lni lni-phone h-4 w-4 text-red-primary mr-2"></i>
                         <span className="text-gray-secondary">
                           {contact.phone}
                         </span>
@@ -180,7 +174,7 @@ export function ContactSectionSimple() {
 
               <div className="flex items-start">
                 <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                  <CheckCircle className="h-4 w-4 text-red-primary" />
+                  <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary"></i>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">
@@ -201,7 +195,7 @@ export function ContactSectionSimple() {
               <div className="space-y-2">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center text-sm">
-                    <CheckCircle className="h-4 w-4 text-red-primary mr-2 flex-shrink-0" />
+                    <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
                     <span className="text-gray-secondary">{benefit}</span>
                   </div>
                 ))}

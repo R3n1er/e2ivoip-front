@@ -1,14 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Play, Star, Users, Award } from "lucide-react";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
-    { icon: Users, value: "100+", label: "Entreprises nous font confiance" },
-    { icon: Award, value: "15+", label: "Années d'expertise télécom" },
-    { icon: Phone, value: "24/7", label: "Support technique France Métropolitaine et DOM-TOM" },
-    { icon: Star, value: "30%", label: "Économies garanties" },
+    { icon: "lni-users", value: "100+", label: "Entreprises nous font confiance" },
+    { icon: "lni-certificate", value: "15+", label: "Années d'expertise télécom" },
+    { icon: "lni-phone", value: "24/7", label: "Support technique France Métropolitaine et DOM-TOM" },
+    { icon: "lni-star", value: "30%", label: "Économies garanties" },
   ];
 
   return (
@@ -32,7 +31,7 @@ export function HomepageHeroSectionSimple() {
         <div className="text-center">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-600/10 border border-red-600/20 text-red-400 text-sm font-medium mb-8">
-            <Star className="w-4 h-4 mr-2" />
+            <i className="lni lni-star w-4 h-4 mr-2"></i>
             Opérateur télécom DOM-TOM • Plus de 100 clients
           </div>
 
@@ -63,9 +62,9 @@ export function HomepageHeroSectionSimple() {
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              <Phone className="w-5 h-5 mr-3" />
+              <i className="lni lni-phone w-5 h-5 mr-3"></i>
               Calculez vos économies
-              <ArrowRight className="w-5 h-5 ml-3" />
+              <i className="lni lni-arrow-right w-5 h-5 ml-3"></i>
             </Button>
 
             <Button
@@ -73,7 +72,7 @@ export function HomepageHeroSectionSimple() {
               variant="outline"
               className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-semibold bg-transparent transition-all duration-300 transform hover:scale-105"
             >
-              <Play className="w-5 h-5 mr-3" />
+              <i className="lni lni-play w-5 h-5 mr-3"></i>
               Découvrez nos offres Trunk SIP
             </Button>
           </div>
@@ -83,7 +82,7 @@ export function HomepageHeroSectionSimple() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <stat.icon className="w-6 h-6 text-red-400 mr-2" />
+                  <i className={`lni ${stat.icon} w-6 h-6 text-red-400 mr-2`}></i>
                   <span className="text-3xl font-bold text-white drop-shadow-lg">
                     {stat.value}
                   </span>

@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { ArrowLeft, Tag } from "lucide-react";
 import Link from "next/link";
 
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
@@ -82,7 +81,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               href="/blog"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <i className="lni lni-arrow-left w-4 h-4"></i>
               Retour au blog
             </Link>
           </div>
@@ -104,7 +103,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <Tag className="w-8 h-8 text-white" />
+                <i className="lni lni-tag w-8 h-8 text-white"></i>
                 <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
                   {categoryName}
                 </h1>

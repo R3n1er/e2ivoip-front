@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface BlogPaginationProps {
@@ -60,7 +59,7 @@ export function BlogPagination({
         disabled={currentPage === 1 || isLoading}
         className="flex items-center gap-2"
       >
-        <ChevronLeft className="w-4 h-4" />
+        <i className="lni lni-chevron-left w-4 h-4"></i>
         Précédent
       </Button>
 
@@ -98,7 +97,7 @@ export function BlogPagination({
         className="flex items-center gap-2"
       >
         Suivant
-        <ChevronRight className="w-4 h-4" />
+        <i className="lni lni-chevron-right w-4 h-4"></i>
       </Button>
     </div>
   );

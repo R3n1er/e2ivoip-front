@@ -1,6 +1,5 @@
 'use client';
 
-import { WifiOff, RefreshCw, Home, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function OfflinePage() {
@@ -13,7 +12,7 @@ export default function OfflinePage() {
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
         {/* Icône Offline */}
         <div className="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
-          <WifiOff className="w-10 h-10 text-red-600" />
+          <i className="lni lni-question-circle w-10 h-10 text-red-600"></i>
         </div>
 
         {/* Titre */}
@@ -32,7 +31,7 @@ export default function OfflinePage() {
           onClick={handleRefresh}
           className="w-full bg-gradient-to-r from-red-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-red-700 hover:to-blue-800 transition-all duration-200 flex items-center justify-center gap-2 mb-6"
         >
-          <RefreshCw className="w-5 h-5" />
+          <i className="lni lni-reload w-5 h-5"></i>
           Réessayer
         </button>
 
@@ -42,7 +41,7 @@ export default function OfflinePage() {
             href="/"
             className="block w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
           >
-            <Home className="w-5 h-5" />
+            <i className="lni lni-home w-5 h-5"></i>
             Retour à l'accueil
           </Link>
 
@@ -51,7 +50,7 @@ export default function OfflinePage() {
               href="tel:+33123456789"
               className="flex-1 bg-green-100 text-green-700 font-medium py-3 px-4 rounded-lg hover:bg-green-200 transition-colors duration-200 flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4" />
+              <i className="lni lni-phone w-4 h-4"></i>
               Appeler
             </a>
 
@@ -59,7 +58,7 @@ export default function OfflinePage() {
               href="mailto:contact@e2ivoip.fr"
               className="flex-1 bg-blue-100 text-blue-700 font-medium py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors duration-200 flex items-center justify-center gap-2"
             >
-              <Mail className="w-4 h-4" />
+              <i className="lni lni-envelope w-4 h-4"></i>
               Email
             </a>
           </div>

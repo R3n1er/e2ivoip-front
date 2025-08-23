@@ -249,7 +249,7 @@ test("L'accessibilité des icônes est respectée", () => {
 
 1. **Cards** : `Card` + `CardContent` → `.card` + `.card-body`
 2. **Boutons** : `Button` → `.btn` + modificateurs DaisyUI
-3. **Icônes** : Lucide React → Lineicons React
+3. **Icônes** : Lineicons (CDN 4.0)
 4. **Badges** : `Badge` → Classes Tailwind natives
 
 ### Avantages de la Migration

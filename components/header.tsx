@@ -17,15 +17,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   const navigation = [
     {
       name: "Qui sommes-nous",
       href: "/qui-sommes-nous",
-      submenu: [
-        { name: "Nos certifications", href: "/qui-sommes-nous/certifications" },
-        { name: "Nos partenaires", href: "/qui-sommes-nous/partenaires" },
-      ],
     },
     {
       name: "Téléphonie d'entreprise",
@@ -134,7 +129,10 @@ export function Header() {
           {/* Desktop Navigation avec DaisyUI + Framer Motion */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation.map((item) => (
-              <div key={item.name} className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+              <div
+                key={item.name}
+                className="dropdown dropdown-hover dropdown-bottom dropdown-end"
+              >
                 {item.href ? (
                   <div className="flex items-center">
                     <Link
@@ -142,28 +140,24 @@ export function Header() {
                       className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-red-primary ${
                         isScrolled ? "text-gray-700" : "text-gray-700"
                       }`}
-                      data-testid={`nav-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      data-testid={`nav-link-${item.name
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
                     >
                       {item.name}
                     </Link>
-                    {item.submenu && (
-                      <motion.div
-                        className="ml-1 cursor-pointer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <LineIcon
-                          name="lni-chevron-down"
-                          className="text-sm text-gray-600 transition-all duration-200 hover:text-red-primary"
-                          aria-hidden="true"
-                        />
-                      </motion.div>
-                    )}
                   </div>
                 ) : (
-                  <div tabIndex={0} role="button" className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
-                    isScrolled ? "text-gray-700" : "text-gray-700"
-                  }`} data-testid={`nav-dropdown-${item.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
+                      isScrolled ? "text-gray-700" : "text-gray-700"
+                    }`}
+                    data-testid={`nav-dropdown-${item.name
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
+                  >
                     {item.name}
                     {item.submenu && (
                       <motion.div
@@ -180,36 +174,40 @@ export function Header() {
                     )}
                   </div>
                 )}
-                
-                {/* Sous-menu avec DaisyUI + Framer Motion */}
-                {item.submenu && (
+
+                {/* Sous-menu avec DaisyUI + Framer Motion - Uniquement pour les éléments avec submenu */}
+                {item.submenu && item.submenu.length > 0 && (
                   <motion.div
                     className="dropdown-content menu bg-base-100 rounded-box w-64 p-2 shadow-2xl border border-base-300 z-[9999] mt-2"
                     initial={{ opacity: 0, y: -20, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ 
-                      type: "spring", 
-                      stiffness: 300, 
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
                       damping: 30,
-                      duration: 0.2 
+                      duration: 0.2,
                     }}
-                    data-testid={`submenu-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    data-testid={`submenu-${item.name
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                   >
                     {item.submenu.map((subItem) => (
                       <li key={subItem.name}>
                         <motion.div
-                          whileHover={{ 
-                            backgroundColor: "var(--primary)", 
+                          whileHover={{
+                            backgroundColor: "var(--primary)",
                             color: "var(--primary-content)",
-                            x: 4
+                            x: 4,
                           }}
                           transition={{ duration: 0.15 }}
                         >
                           <Link
                             href={subItem.href}
                             className="text-sm transition-colors duration-150 block w-full"
-                            data-testid={`submenu-link-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            data-testid={`submenu-link-${subItem.name
+                              .toLowerCase()
+                              .replace(/\s+/g, "-")}`}
                           >
                             {subItem.name}
                           </Link>
@@ -226,8 +224,15 @@ export function Header() {
           <div className="hidden lg:flex items-center flex-shrink-0">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/contact">
-                <button className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200" data-testid="header-contact-button">
-                  <LineIcon name="lni-phone" className="text-lg mr-2" aria-hidden="true" />
+                <button
+                  className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200"
+                  data-testid="header-contact-button"
+                >
+                  <LineIcon
+                    name="lni-phone"
+                    className="text-lg mr-2"
+                    aria-hidden="true"
+                  />
                   Contact
                 </button>
               </Link>
@@ -236,15 +241,19 @@ export function Header() {
 
           {/* Mobile menu DaisyUI drawer */}
           <div className="drawer drawer-end lg:hidden">
-            <input 
-              id="mobile-drawer" 
-              type="checkbox" 
-              className="drawer-toggle" 
-              checked={isOpen} 
-              onChange={(e) => setIsOpen(e.target.checked)} 
+            <input
+              id="mobile-drawer"
+              type="checkbox"
+              className="drawer-toggle"
+              checked={isOpen}
+              onChange={(e) => setIsOpen(e.target.checked)}
             />
             <div className="drawer-content">
-              <label htmlFor="mobile-drawer" className="btn btn-square btn-ghost drawer-button" data-testid="mobile-menu-button">
+              <label
+                htmlFor="mobile-drawer"
+                className="btn btn-square btn-ghost drawer-button"
+                data-testid="mobile-menu-button"
+              >
                 <LineIcon
                   name={isOpen ? "lni-close" : "lni-menu"}
                   className={`text-2xl ${
@@ -256,8 +265,15 @@ export function Header() {
               </label>
             </div>
             <div className="drawer-side z-50">
-              <label htmlFor="mobile-drawer" aria-label="Fermer le menu" className="drawer-overlay"></label>
-              <div className="menu min-h-full w-80 bg-base-100 text-base-content p-4" data-testid="mobile-menu">
+              <label
+                htmlFor="mobile-drawer"
+                aria-label="Fermer le menu"
+                className="drawer-overlay"
+              ></label>
+              <div
+                className="menu min-h-full w-80 bg-base-100 text-base-content p-4"
+                data-testid="mobile-menu"
+              >
                 <div className="flex flex-col space-y-4 mt-6">
                   {navigation.map((item) => (
                     <div key={item.name}>
@@ -266,7 +282,9 @@ export function Header() {
                           href={item.href}
                           className="text-base font-medium hover:text-primary transition-colors block py-2"
                           onClick={() => setIsOpen(false)}
-                          data-testid={`mobile-link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                          data-testid={`mobile-link-${item.name
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
                         >
                           {item.name}
                         </Link>
@@ -283,7 +301,9 @@ export function Header() {
                               href={subItem.href}
                               className="block text-sm hover:text-primary transition-colors py-1"
                               onClick={() => setIsOpen(false)}
-                              data-testid={`mobile-submenu-${subItem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              data-testid={`mobile-submenu-${subItem.name
+                                .toLowerCase()
+                                .replace(/\s+/g, "-")}`}
                             >
                               {subItem.name}
                             </Link>
@@ -294,8 +314,15 @@ export function Header() {
                   ))}
                   <div className="mt-6">
                     <Link href="/contact">
-                      <button className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full" data-testid="mobile-contact-button">
-                        <LineIcon name="lni-phone" className="text-lg mr-2" aria-hidden="true" />
+                      <button
+                        className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full"
+                        data-testid="mobile-contact-button"
+                      >
+                        <LineIcon
+                          name="lni-phone"
+                          className="text-lg mr-2"
+                          aria-hidden="true"
+                        />
                         Contact
                       </button>
                     </Link>

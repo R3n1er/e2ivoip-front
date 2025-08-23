@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, Phone, ChevronDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -141,11 +140,11 @@ export function HeaderSimple() {
                   >
                     {item.name}
                     {item.submenu && (
-                      <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
+                      <i
+                        className={`lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 ${
                           isScrolled ? "text-white/70" : "text-gray-600"
                         } group-hover:rotate-180`}
-                      />
+                      ></i>
                     )}
                   </Link>
                 ) : (
@@ -158,11 +157,11 @@ export function HeaderSimple() {
                   >
                     {item.name}
                     {item.submenu && (
-                      <ChevronDown
-                        className={`w-3 h-3 ml-1 transition-transform duration-200 ${
+                      <i
+                        className={`lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 ${
                           isScrolled ? "text-white/70" : "text-gray-600"
                         } group-hover:rotate-180`}
-                      />
+                      ></i>
                     )}
                   </span>
                 )}
@@ -191,7 +190,7 @@ export function HeaderSimple() {
           <div className="hidden lg:flex items-center flex-shrink-0">
             <Link href="/contact">
               <Button className="!bg-red-primary hover:bg-red-600 !text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
-                <Phone className="w-4 h-4 mr-2" />
+                <i className="lni lni-phone w-4 h-4 mr-2"></i>
                 Contact
               </Button>
             </Link>
@@ -203,17 +202,17 @@ export function HeaderSimple() {
             className="lg:hidden p-2 rounded-lg transition-colors"
           >
             {isOpen ? (
-              <X
-                className={`h-5 w-5 ${
+              <i
+                className={`lni lni-close h-5 w-5 ${
                   isScrolled ? "text-white" : "text-gray-700"
                 }`}
-              />
+              ></i>
             ) : (
-              <Menu
-                className={`h-5 w-5 ${
+              <i
+                className={`lni lni-menu h-5 w-5 ${
                   isScrolled ? "text-white" : "text-gray-700"
                 }`}
-              />
+              ></i>
             )}
           </button>
 
@@ -254,7 +253,7 @@ export function HeaderSimple() {
                 ))}
                 <Link href="/contact" className="mt-6">
                   <Button className="!bg-red-primary hover:bg-red-600 !text-white w-full">
-                    <Phone className="w-4 h-4 mr-2" />
+                    <i className="lni lni-phone w-4 h-4 mr-2"></i>
                     Contact
                   </Button>
                 </Link>

@@ -1,20 +1,9 @@
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  CheckCircle,
-  Users,
-  Award,
-  Clock,
-  Target,
-  MapPin,
-  Phone,
-  Mail,
-  Globe,
-  MessageCircle,
-} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM depuis 15 ans",
@@ -50,21 +39,13 @@ export default function QuiSommesNous() {
   ];
 
   const locations = [
-    { name: "Guyane", phone: "0594 963 500", icon: MapPin },
-    { name: "Guadeloupe", phone: "0590 173 500", icon: MapPin },
-    { name: "Martinique", phone: "0596 313 500", icon: MapPin },
-    { name: "La Réunion", phone: "0262 263 085 500", icon: MapPin },
-    { name: "France Métropole", phone: "0189 563 500", icon: Globe },
+    { name: "Guyane", phone: "0594 963 500", icon: "lni-map-marker" },
+    { name: "Guadeloupe", phone: "0590 173 500", icon: "lni-map-marker" },
+    { name: "Martinique", phone: "0596 313 500", icon: "lni-map-marker" },
+    { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },
+    { name: "France Métropole", phone: "0189 563 500", icon: "lni-world" },
   ];
 
-  const services = [
-    "Trunk SIP au compteur",
-    "Trunk SIP illimité",
-    "Standard 3CX PRO Cloud",
-    "Standard 3CX SMB PRO Mutualisé",
-    "Intégrateur VoIP",
-    "Studio messages vocaux",
-  ];
 
   return (
     <>
@@ -73,12 +54,7 @@ export default function QuiSommesNous() {
         {/* Image de fond avec overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 to-blue-marine/90 z-10"></div>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
+          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 pattern-dots"></div>
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,7 +112,7 @@ export default function QuiSommesNous() {
               <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Phone className="w-12 h-12 text-white" />
+                    <i className="lni lni-phone text-5xl text-white"></i>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Opérateur télécom certifié
@@ -183,7 +159,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6 text-red-primary" />
+                  <i className="lni lni-target text-2xl text-red-primary"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Proximité et réactivité
@@ -199,7 +175,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-blue-marine" />
+                  <i className="lni lni-certificate text-2xl text-blue-marine"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Excellence technique
@@ -215,7 +191,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-gray-secondary" />
+                  <i className="lni lni-users text-2xl text-gray-secondary"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Résultats garantis
@@ -248,7 +224,7 @@ export default function QuiSommesNous() {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
+                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Trunk SIP au compteur ou illimité
@@ -264,7 +240,7 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
+                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       3CX : IPBX cloud nouvelle génération
@@ -280,7 +256,7 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-red-primary mt-1 flex-shrink-0" />
+                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Services innovants inclus
@@ -340,7 +316,10 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-testid="team-section-title">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              data-testid="team-section-title"
+            >
               Une équipe{" "}
               <span className="text-red-primary">locale et experte</span>
             </h2>
@@ -355,7 +334,7 @@ export default function QuiSommesNous() {
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Users className="w-12 h-12 text-gray-400" />
+                    <i className="lni lni-user text-5xl text-gray-400"></i>
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {member.name}
@@ -368,10 +347,10 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Section Certification */}
+      {/* Section Certification et Partenariats */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Nos{" "}
               <span className="text-red-primary">
@@ -379,31 +358,133 @@ export default function QuiSommesNous() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Partenaire Silver 3CX • Certifié Yeastar • Distributeur Fanvil &
-              Yealink
+              Partenaire Silver 3CX • Certifié Yeastar • Distributeur officiel
+              Fanvil & Yealink
             </p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <Award className="w-12 h-12 text-red-primary mx-auto mb-4" />
-                <h3 className="font-bold text-lg mb-2">3CX Silver Partner</h3>
-                <p className="text-gray-600 text-sm">Expertise CFD avancée</p>
-              </div>
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <Award className="w-12 h-12 text-blue-marine mx-auto mb-4" />
-                <h3 className="font-bold text-lg mb-2">Certifié Yeastar</h3>
-                <p className="text-gray-600 text-sm">
-                  Solutions économiques PME
+          </div>
+
+          {/* Certifications principales */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+              <div className="text-center">
+                <div className="mb-6">
+                  <Image
+                    src="/images/logo-partners/Bronze Partner badge-min.jpeg"
+                    alt="Logo 3CX Bronze Partner - Certification officielle E2I VoIP"
+                    width={120}
+                    height={120}
+                    className="mx-auto rounded-lg"
+                  />
+                </div>
+                <h3 className="font-bold text-xl mb-2">3CX Silver Partner</h3>
+                <p className="text-gray-600 mb-4">
+                  Expertise CFD avancée et solutions IPBX cloud
                 </p>
+                <Badge className="bg-red-primary text-white">
+                  Partenaire Officiel
+                </Badge>
               </div>
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <Award className="w-12 h-12 text-gray-secondary mx-auto mb-4" />
-                <h3 className="font-bold text-lg mb-2">
-                  Partenaire Fanvil & Yealink
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Gestion centralisée du parc de téléphones SIP
+            </div>
+
+            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+              <div className="text-center">
+                <div className="mb-6">
+                  <Image
+                    src="/images/logo-partners/yeastar-certified-expert-ysce-icon.png"
+                    alt="Logo Yeastar Certified Expert - Certification officielle E2I VoIP"
+                    width={120}
+                    height={120}
+                    className="mx-auto"
+                  />
+                </div>
+                <h3 className="font-bold text-xl mb-2">Certifié Yeastar</h3>
+                <p className="text-gray-600 mb-4">
+                  Solutions économiques pour PME et entreprises
                 </p>
+                <Badge className="bg-blue-marine text-white">
+                  Expert Certifié
+                </Badge>
               </div>
+            </div>
+          </div>
+
+          {/* Logos des partenaires */}
+          <div className="bg-gray-50 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              Nos{" "}
+              <span className="text-red-primary">partenaires matériels</span>
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+              {/* Fanvil */}
+              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+                <div className="mb-6">
+                  <Image
+                    src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
+                    alt="Logo Fanvil - Partenaire officiel E2I VoIP"
+                    width={200}
+                    height={80}
+                    className="mx-auto"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-3">Fanvil</h4>
+                <p className="text-gray-600 mb-4">
+                  Distributeur officiel des téléphones SIP haute qualité et
+                  accessoires
+                </p>
+                <Badge className="bg-gray-secondary text-white">
+                  Distributeur Officiel
+                </Badge>
+                <div className="mt-4">
+                  <a
+                    href="https://www.fanvil.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                  >
+                    Visiter le site officiel →
+                  </a>
+                </div>
+              </div>
+
+              {/* Yealink */}
+              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+                <div className="mb-6">
+                  <Image
+                    src="/images/logo-partners/logo-yealink.webp"
+                    alt="Logo Yealink - Partenaire officiel E2I VoIP"
+                    width={200}
+                    height={80}
+                    className="mx-auto"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  Yealink
+                </h4>
+                <p className="text-gray-600 mb-4">
+                  Distributeur officiel des solutions de communication unifiée
+                </p>
+                <Badge className="bg-green-600 text-white">
+                  Distributeur Officiel
+                </Badge>
+                <div className="mt-4">
+                  <a
+                    href="https://www.yealink.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                  >
+                    Visiter le site officiel →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <p className="text-gray-600 text-sm">
+                Tous nos partenaires sont sélectionnés pour leur qualité et leur
+                fiabilité
+              </p>
             </div>
           </div>
         </div>
@@ -430,7 +511,9 @@ export default function QuiSommesNous() {
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <location.icon className="w-6 h-6 text-white" />
+                    <i
+                      className={`lni ${location.icon} text-2xl text-white`}
+                    ></i>
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {location.name}
@@ -452,12 +535,12 @@ export default function QuiSommesNous() {
                 href="mailto:commerciaux@e2i-voip.com"
                 className="text-white hover:text-white/80 transition-colors"
               >
-                <Mail className="inline w-5 h-5 mr-2" />
+                <i className="lni lni-envelope inline text-xl mr-2"></i>
                 commerciaux@e2i-voip.com
               </a>
               <Link href="/assistance">
                 <Button className="bg-white text-red-primary hover:bg-white/90 font-semibold">
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <i className="lni lni-comments text-xl mr-2"></i>
                   Accéder au support complet
                 </Button>
               </Link>
@@ -488,7 +571,7 @@ export default function QuiSommesNous() {
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300"
             >
-              <Phone className="w-5 h-5 mr-2" />
+              <i className="lni lni-phone text-xl mr-2"></i>
               Parler à un expert
             </a>
           </div>
