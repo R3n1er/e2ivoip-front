@@ -23,7 +23,7 @@ describe("HubSpotSimple", () => {
   it("affiche le message de chargement initial", () => {
     render(<HubSpotSimple />);
     
-    expect(screen.getByText("Chargement du formulaire...")).toBeInTheDocument();
+    expect(screen.getByText("Chargement du formulaire HubSpot...")).toBeInTheDocument();
   });
 
   it("a le bon ID de conteneur", () => {
@@ -43,7 +43,7 @@ describe("HubSpotSimple", () => {
     expect(container).toBeInTheDocument();
     
     // Vérifier que le message de chargement est centré
-    const loadingMessage = screen.getByText("Chargement du formulaire...");
+    const loadingMessage = screen.getByText("Chargement du formulaire HubSpot...");
     expect(loadingMessage).toHaveClass("text-center", "text-gray-500", "py-4");
   });
 
@@ -51,7 +51,7 @@ describe("HubSpotSimple", () => {
     render(<HubSpotSimple />);
     
     // Vérifier les classes CSS du conteneur
-    const container = screen.getByText("Chargement du formulaire...").closest("div");
+    const container = screen.getByText("Chargement du formulaire HubSpot...").closest("div");
     expect(container).toHaveClass("text-center", "text-gray-500", "py-4");
   });
 });
