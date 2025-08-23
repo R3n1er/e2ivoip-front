@@ -2,34 +2,16 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { HubSpotSimple } from "../components/hubspot-simple";
 
-// Mock de window.hbspt
-const mockHbspt = {
-  forms: {
-    create: vi.fn(),
-  },
-};
+const mockHbspt = { forms: { create: vi.fn() } };
 
 describe("HubSpotSimple", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    
-    // Mock de window.hbspt
-    Object.defineProperty(window, "hbspt", {
-      value: mockHbspt,
-      writable: true,
-    });
-  });
-
-  it("affiche le message de chargement initial", () => {
-    render(<HubSpotSimple />);
-    
-    expect(screen.getByText("Chargement du formulaire HubSpot...")).toBeInTheDocument();
+    Object.defineProperty(window, "hbspt", { value: mockHbspt, writable: true });
   });
 
   it("a le bon ID de conteneur", () => {
     render(<HubSpotSimple />);
-    
-    // Utiliser querySelector pour trouver l'élément avec l'ID
     const container = document.getElementById("hubspot-form-simple");
     expect(container).toBeInTheDocument();
     expect(container).toHaveAttribute("id", "hubspot-form-simple");
@@ -37,22 +19,21 @@ describe("HubSpotSimple", () => {
 
   it("a la bonne structure de base", () => {
     render(<HubSpotSimple />);
+    const container = document.getElementById("hubspot-form-simple");
+    expect(container).toBeInTheDocument();
+    expect(container).toHaveAttribute("id", "hubspot-form-simple");
     
-    // Vérifier que le composant a la bonne structure
+    // Vérifier que le conteneur est vide (HubSpot injectera le formulaire)
+    expect(container).toHaveTextContent("");
+  });
+
+  it("est prêt pour l'injection HubSpot", () => {
+    render(<HubSpotSimple />);
     const container = document.getElementById("hubspot-form-simple");
     expect(container).toBeInTheDocument();
     
-    // Vérifier que le message de chargement est centré
-    const loadingMessage = screen.getByText("Chargement du formulaire HubSpot...");
-    expect(loadingMessage).toHaveClass("text-center", "text-gray-500", "py-4");
-  });
-
-  it("utilise les bonnes classes CSS", () => {
-    render(<HubSpotSimple />);
-    
-    // Vérifier les classes CSS du conteneur
-    const container = screen.getByText("Chargement du formulaire HubSpot...").closest("div");
-    expect(container).toHaveClass("text-center", "text-gray-500", "py-4");
+    // Le conteneur doit être vide et prêt pour HubSpot
+    expect(container?.children.length).toBe(0);
   });
 });
 
