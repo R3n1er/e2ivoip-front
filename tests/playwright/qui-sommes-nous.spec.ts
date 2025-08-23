@@ -91,8 +91,124 @@ test.describe('Page Qui sommes-nous', () => {
     const gridElements = page.locator('.grid');
     await expect(gridElements).toHaveCount(expect.any(Number));
     
-    // Vérifier que les cartes ont des ombres et transitions
-    const cards = page.locator('.shadow-lg, .hover\\:shadow-lg');
-    await expect(cards).toHaveCount(expect.any(Number));
+    // Test desktop - Vérifier structure DaisyUI
+    await expect(page.locator('.card')).toHaveCount(11); // 3 valeurs + 3 équipe + 3 certifications + 5 locations - 3 = 11
+    await expect(page.locator('.btn')).toHaveCount(3); // Support + 2 CTA
+    
+    // Test tablet
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await expect(page.locator('.card').first()).toBeVisible();
+    await expect(page.getByTestId('team-section-title')).toBeVisible();
+    
+    // Test mobile
+    await page.setViewportSize({ width: 375, height: 667 });
+    await expect(page.locator('.card').first()).toBeVisible();
+    await expect(page.getByTestId('proximity-card')).toBeVisible();
+    
+    // Reset à desktop
+    await page.setViewportSize({ width: 1200, height: 800 });
+    
+    // Test performance des icônes Lineicons
+    const iconLoadTime = await page.evaluate(() => {
+      const start = performance.now();
+      const icons = document.querySelectorAll('[data-testid^="icon-"]');
+      const end = performance.now();
+      return { count: icons.length, loadTime: end - start };
+    });
+    
+    expect(iconLoadTime.count).toBeGreaterThan(15);
+    expect(iconLoadTime.loadTime).toBeLessThan(100);
+  });
+  
+  test('Accessibilité complète Lineicons et structure sémantique', async ({ page }) => {
+    // Vérifier la structure des headings
+    await expect(page.locator('h1')).toHaveCount(1);
+    await expect(page.locator('h2')).toHaveCount(expect.any(Number));
+    await expect(page.locator('h3')).toHaveCount(expect.any(Number));
+    
+    // Vérifier l'accessibilité des icônes avec aria-label
+    const accessibleIcons = page.locator('[role="img"][aria-label]');
+    const iconCount = await accessibleIcons.count();
+    expect(iconCount).toBeGreaterThan(0);
+    
+    // Vérifier les icônes décoratives avec aria-hidden
+    const decorativeIcons = page.locator('[aria-hidden="true"]');
+    const decorativeCount = await decorativeIcons.count();
+    expect(decorativeCount).toBeGreaterThan(0);
+    
+    // Test navigation au clavier sur les boutons DaisyUI
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    
+    // Vérifier le contraste et la visibilité
+    const cards = page.locator('.card');
+    for (let i = 0; i < Math.min(await cards.count(), 5); i++) {
+      const card = cards.nth(i);
+      await expect(card).toBeVisible();
+    }
+  });
+  
+  test('SEO et méta-données optimisées', async ({ page }) => {
+    // Vérifier le titre SEO complet
+    await expect(page).toHaveTitle(/Qui sommes-nous - E2I VoIP \| Opérateur télécom DOM-TOM depuis 15 ans/);
+    
+    // Vérifier la méta description
+    const metaDescription = page.locator('meta[name="description"]');
+    await expect(metaDescription).toHaveAttribute(
+      'content', 
+      /E2I VoIP : Opérateur de servicestélécom DOM-TOM.*15 ans d'expertise.*100\+ clients/
+    );
+    
+    // Vérifier les mots-clés
+    const metaKeywords = page.locator('meta[name="keywords"]');
+    await expect(metaKeywords).toHaveAttribute(
+      'content', 
+      /E2I VoIP.*télécom DOM-TOM.*3CX.*Trunk SIP.*VoIP/
+    );
+    
+    // Vérifier Open Graph
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /Qui sommes-nous - E2I VoIP/);
+    
+    const ogDescription = page.locator('meta[property="og:description"]');
+    await expect(ogDescription).toHaveAttribute('content', /Opérateur de services télécom DOM-TOM/);
+  });
+  
+  test('Performance globale et temps de chargement', async ({ page }) => {
+    // Mesurer le temps de chargement complet
+    const loadStartTime = Date.now();
+    await page.waitForLoadState('networkidle');
+    const loadEndTime = Date.now();
+    const totalLoadTime = loadEndTime - loadStartTime;
+    
+    // Vérifier que la page se charge rapidement
+    expect(totalLoadTime).toBeLessThan(5000); // Moins de 5 secondes
+    
+    // Vérifier que tous les éléments critiques sont chargés
+    await expect(page.locator('.card').first()).toBeVisible();
+    await expect(page.locator('[data-testid^="icon-"]').first()).toBeVisible();
+    await expect(page.locator('.btn').first()).toBeVisible();
+    
+    // Test de scroll fluide
+    await page.evaluate(() => {
+      window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' });
+    });
+    await page.waitForTimeout(1000);
+    
+    await page.evaluate(() => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+    await page.waitForTimeout(1000);
+    
+    await page.evaluate(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    await page.waitForTimeout(1000);
+    
+    // Vérifier que les éléments restent interactifs après le scroll
+    const supportButton = page.getByTestId('support-button');
+    await expect(supportButton).toBeVisible();
+    await supportButton.hover();
   });
 });

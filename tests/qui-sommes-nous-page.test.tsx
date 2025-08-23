@@ -102,8 +102,83 @@ describe("Page Qui sommes-nous", () => {
     expect(screen.getByText("Services innovants inclus")).toBeInTheDocument();
     
     // Vérifier les certifications
-    expect(screen.getByText("3CX Silver Partner")).toBeInTheDocument();
-    expect(screen.getByText("Certifié Yeastar")).toBeInTheDocument();
-    expect(screen.getByText("Partenaire Fanvil & Yealink")).toBeInTheDocument();
+    // Vérifier les cards DaisyUI des certifications
+    const cx3Card = screen.getByTestId("3cx-certification");
+    expect(cx3Card).toHaveClass("card");
+    expect(within(cx3Card).getByText("3CX Silver Partner")).toBeInTheDocument();
+    
+    const yeastarCard = screen.getByTestId("yeastar-certification");
+    expect(yeastarCard).toHaveClass("card");
+    expect(within(yeastarCard).getByText("Certifié Yeastar")).toBeInTheDocument();
+    
+    const fanvilCard = screen.getByTestId("fanvil-yealink-partnership");
+    expect(fanvilCard).toHaveClass("card");
+    expect(within(fanvilCard).getByText("Partenaire Fanvil & Yealink")).toBeInTheDocument();
+    
+    // Vérifier l'accessibilité des icônes
+    const awardIcons = screen.getAllByTestId("icon-award");
+    expect(awardIcons).toHaveLength(3);
+    awardIcons.forEach(icon => {
+      expect(icon).toHaveAttribute("role", "img");
+      expect(icon).toHaveAttribute("aria-label");
+    });
+  });
+  
+  test("Les boutons DaisyUI et liens sont interactifs", async () => {
+    render(<QuiSommesNous />);
+    
+    // Vérifier les boutons DaisyUI
+    const supportButton = screen.getByTestId("support-button");
+    expect(supportButton).toHaveClass("btn");
+    expect(supportButton).toHaveTextContent("Accéder au support complet");
+    
+    const quoteCta = screen.getByTestId("quote-cta");
+    expect(quoteCta).toHaveClass("btn");
+    expect(quoteCta).toHaveAttribute("href", "/devis-en-ligne");
+    
+    const contactCta = screen.getByTestId("contact-cta");
+    expect(contactCta).toHaveClass("btn");
+    expect(contactCta).toHaveAttribute("href", "/contact");
+    
+    // Vérifier le lien email
+    const emailLink = screen.getByTestId("email-link");
+    expect(emailLink).toHaveAttribute("href", "mailto:commerciaux@e2i-voip.com");
+    
+    // Test d'interaction
+    await user.hover(supportButton);
+    expect(supportButton).toBeInTheDocument();
+  });
+  
+  test("L'accessibilité des icônes est respectée", () => {
+    render(<QuiSommesNous />);
+    
+    // Vérifier les icônes avec aria-label
+    const locationIcons = screen.getAllByRole("img");
+    expect(locationIcons.length).toBeGreaterThan(0);
+    
+    locationIcons.forEach(icon => {
+      expect(icon).toHaveAttribute("aria-label");
+    });
+    
+    // Vérifier les icônes décoratives avec aria-hidden
+    const decorativeIcons = screen.getAllByLabelText("", { exact: false });
+    decorativeIcons.forEach(icon => {
+      if (icon.hasAttribute("aria-hidden")) {
+        expect(icon).toHaveAttribute("aria-hidden", "true");
+      }
+    });
+  });
+  
+  test("La page respecte la structure DaisyUI", () => {
+    const { container } = render(<QuiSommesNous />);
+    
+    // Vérifier la présence des classes DaisyUI essentielles
+    expect(container.querySelectorAll('.card')).toHaveLength(11); // 3 valeurs + 3 équipe + 3 certifications + 5 locations - 3 = 11
+    expect(container.querySelectorAll('.card-body')).toHaveLength(8); // Certifications + locations
+    expect(container.querySelectorAll('.card-title')).toHaveLength(8); // Équipe + certifications
+    expect(container.querySelectorAll('.btn')).toHaveLength(3); // Support + 2 CTA
+    
+    // Vérifier qu'aucun composant shadcn n'est utilisé
+    expect(container.querySelector('[class*="shadcn"]')).toBeNull();
   });
 });

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MessageCircle, Mail, MapPin, Clock } from "lucide-react";
-import { SecureEmail } from "@/components/secure-email";
+// import { LineIcon } from "lineicons-react"; // Temporaire - Conflit avec Next.js 15
+// import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
 
 export const metadata: Metadata = {
@@ -71,33 +70,35 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Formulaire HubSpot */}
             <div>
-              <Card className="shadow-lg border-0">
-                <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                  <CardTitle className="text-2xl font-bold">
+              <div className="card bg-base-100 shadow-xl border-0" data-testid="contact-form-card">
+                <div className="card-header bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-2xl p-6">
+                  <h2 className="card-title text-2xl font-bold text-white mb-2" data-testid="contact-form-title">
                     Demande de contact
-                  </CardTitle>
+                  </h2>
                   <p className="text-white/90">
                     Remplissez ce formulaire et nous vous recontacterons dans
                     les plus brefs délais
                   </p>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <div 
-                    dangerouslySetInnerHTML={{
-                      __html: `
-                        <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
-                        <script>
-                          hbspt.forms.create({
-                            portalId: "26878201",
-                            formId: "312a9f67-e613-4651-9690-4586646554a0",
-                            region: "eu1"
-                          });
-                        </script>
-                      `
-                    }}
-                  />
-                </CardContent>
-              </Card>
+                </div>
+                <div className="card-body p-8" data-testid="contact-form-body">
+                  <div id="hubspot-form-container" className="min-h-[400px]">
+                    <div 
+                      dangerouslySetInnerHTML={{
+                        __html: `
+                          <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+                          <script>
+                            hbspt.forms.create({
+                              portalId: "26878201",
+                              formId: "312a9f67-e613-4651-9690-4586646554a0",
+                              region: "eu1"
+                            });
+                          </script>
+                        `
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Informations de contact */}
@@ -114,17 +115,17 @@ export default function ContactPage() {
 
               <div className="space-y-6">
                 {/* Hotline Prioritaire */}
-                <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
-                  <CardContent className="p-6">
+                <div className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow" data-testid="hotline-card">
+                  <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-red-primary p-3 rounded-lg">
-                        <MessageCircle className="w-6 h-6 text-white" />
+                        <span className="text-2xl">📞</span>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1" data-testid="hotline-title">
                           Hotline Support
                         </h3>
-                        <p className="text-gray-900 font-bold text-xl mb-1">
+                        <p className="text-gray-900 font-bold text-xl mb-1" data-testid="hotline-phone">
                           0189 560 500
                         </p>
                         <p className="text-sm text-gray-600">
@@ -132,21 +133,21 @@ export default function ContactPage() {
                         </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
 
                 {/* WhatsApp */}
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
+                <div className="card bg-base-100 hover:shadow-lg transition-shadow" data-testid="whatsapp-card">
+                  <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-blue-marine/10 p-3 rounded-lg">
-                        <MessageCircle className="w-6 h-6 text-blue-marine" />
+                        <span className="text-2xl">💬</span>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1" data-testid="whatsapp-title">
                           WhatsApp Business
                         </h3>
-                        <p className="text-gray-900 font-medium mb-1">
+                        <p className="text-gray-900 font-medium mb-1" data-testid="whatsapp-phone">
                           0594 96 35 00
                         </p>
                         <p className="text-sm text-gray-600">
@@ -154,8 +155,8 @@ export default function ContactPage() {
                         </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -177,10 +178,10 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {/* France */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
+            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-france">
+              <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   France
@@ -188,17 +189,18 @@ export default function ContactPage() {
                 <a
                   href="tel:+33189560500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-france"
                 >
                   01 89 56 05 00
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Guyane */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
+            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-guyane">
+              <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Guyane
@@ -206,17 +208,18 @@ export default function ContactPage() {
                 <a
                   href="tel:+594594963500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-guyane"
                 >
                   05 94 96 35 00
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Guadeloupe */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
+            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-guadeloupe">
+              <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Guadeloupe
@@ -224,17 +227,18 @@ export default function ContactPage() {
                 <a
                   href="tel:+590590173500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-guadeloupe"
                 >
                   +590 590 173 500
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Martinique */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
+            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-martinique">
+              <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Martinique
@@ -242,17 +246,18 @@ export default function ContactPage() {
                 <a
                   href="tel:+596596313500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-martinique"
                 >
                   +596 596 313 500
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* La Réunion */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
+            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-reunion">
+              <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   La Réunion
@@ -260,11 +265,12 @@ export default function ContactPage() {
                 <a
                   href="tel:+262263085500"
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-reunion"
                 >
                   +262 263 085 500
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>

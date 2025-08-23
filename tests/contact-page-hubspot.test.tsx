@@ -2,33 +2,22 @@
 import { render, screen } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
-// Mock du composant HubSpotSimple
-jest.mock("../components/hubspot-simple", () => ({
-  HubSpotSimple: () => (
-    <div data-testid="hubspot-simple">
-      <div className="text-center text-gray-500 py-4">
-        Chargement du formulaire...
-      </div>
-    </div>
-  ),
-}));
-
 describe("ContactPage HubSpot Integration", () => {
   it("should display the HubSpot form container", () => {
     render(<ContactPage />);
     
-    // Vérifier que le composant HubSpot est présent
-    const hubspotComponent = screen.getByTestId("hubspot-simple");
-    expect(hubspotComponent).toBeInTheDocument();
+    // Vérifier que le conteneur HubSpot est présent
+    const hubspotContainer = document.getElementById('hubspot-form-container');
+    expect(hubspotContainer).toBeInTheDocument();
   });
 
   it("should have the correct HubSpot form container", () => {
     render(<ContactPage />);
     
-    // Vérifier que le composant HubSpot est dans la bonne section
-    const hubspotComponent = screen.getByTestId("hubspot-simple");
-    const cardContent = hubspotComponent.closest(".p-8");
-    expect(cardContent).toBeInTheDocument();
+    // Vérifier que le conteneur HubSpot est dans la bonne section
+    const formBody = screen.getByTestId("contact-form-body");
+    expect(formBody).toBeInTheDocument();
+    expect(formBody).toHaveClass("card-body", "p-8");
   });
 
   it("should display the contact form title", () => {
