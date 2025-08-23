@@ -14,6 +14,8 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 
 ## 🤖 Development Guidelines for AI Assistants
 
+> **📖 Voir le fichier [`.agents.md`](./.agents.md) pour les instructions complètes dédiées aux assistants IA**
+
 ### Stack & Priorities
 
 - **Framework**: NextJS 15 (App Router)

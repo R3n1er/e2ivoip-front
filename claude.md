@@ -1,5 +1,7 @@
 # Claude Configuration - NextJS + DaisyUI Development
 
+Prends en compte CLAUDE.md et .agents.md pour ce projet
+
 ## Contexte du Projet
 
 Le fichier PRD du projet est dans le dossier docs\PRD.md
