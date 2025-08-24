@@ -23,7 +23,7 @@ describe("Page Qui Sommes Nous", () => {
     render(<QuiSommesNous />);
 
     expect(
-      screen.getByText("Votre opérateur de services télécom DOM-TOM")
+      screen.getByText("Votre opérateur de services télécom DOM")
     ).toBeInTheDocument();
   });
 

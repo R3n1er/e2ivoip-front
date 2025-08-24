@@ -92,8 +92,11 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
   - Code Tailwind : `text-gray-800` ou `bg-gray-800`
 
 - **Blanc** : #FFFFFF (255, 255, 255)
+
   - Utilisation : Fond clair, inversions
   - Code Tailwind : `text-white` ou `bg-white`
+
+- **Orange** : Pour les dégradé de bleu vers l'orange des sections héro et de certains composants card.
 
 ### Application dans l'Identité Visuelle
 

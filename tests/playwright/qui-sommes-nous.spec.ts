@@ -11,7 +11,7 @@ test.describe('Page Qui sommes-nous', () => {
     await expect(page).toHaveTitle(/Qui sommes-nous - E2I VoIP/);
     
     // Vérifier la section hero
-    await expect(page.locator('h1')).toContainText('Votre opérateur de services télécom DOM-TOM');
+    await expect(page.locator('h1')).toContainText('Votre opérateur de services télécom DOM');
     
     // Vérifier les sections principales
     await expect(page.locator('text=Excellence technique')).toBeVisible();
@@ -151,20 +151,20 @@ test.describe('Page Qui sommes-nous', () => {
   
   test('SEO et méta-données optimisées', async ({ page }) => {
     // Vérifier le titre SEO complet
-    await expect(page).toHaveTitle(/Qui sommes-nous - E2I VoIP \| Opérateur télécom DOM-TOM depuis 15 ans/);
+    await expect(page).toHaveTitle(/Qui sommes-nous - E2I VoIP \| Opérateur télécom DOM depuis 15 ans/);
     
     // Vérifier la méta description
     const metaDescription = page.locator('meta[name="description"]');
     await expect(metaDescription).toHaveAttribute(
       'content', 
-      /E2I VoIP : Opérateur de servicestélécom DOM-TOM.*15 ans d'expertise.*100\+ clients/
+      /E2I VoIP : Opérateur de servicestélécom DOM.*15 ans d'expertise.*100\+ clients/
     );
     
     // Vérifier les mots-clés
     const metaKeywords = page.locator('meta[name="keywords"]');
     await expect(metaKeywords).toHaveAttribute(
       'content', 
-      /E2I VoIP.*télécom DOM-TOM.*3CX.*Trunk SIP.*VoIP/
+      /E2I VoIP.*télécom DOM.*3CX.*Trunk SIP.*VoIP/
     );
     
     // Vérifier Open Graph
@@ -172,7 +172,7 @@ test.describe('Page Qui sommes-nous', () => {
     await expect(ogTitle).toHaveAttribute('content', /Qui sommes-nous - E2I VoIP/);
     
     const ogDescription = page.locator('meta[property="og:description"]');
-    await expect(ogDescription).toHaveAttribute('content', /Opérateur de services télécom DOM-TOM/);
+    await expect(ogDescription).toHaveAttribute('content', /Opérateur de services télécom DOM/);
   });
   
   test('Performance globale et temps de chargement', async ({ page }) => {

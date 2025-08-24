@@ -15,7 +15,7 @@ export function ServicesSectionSimple() {
   const services = [
     {
       icon: "lni-cloud",
-      title: "Trunk SIP DOM-TOM",
+      title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
@@ -148,7 +148,7 @@ export function ServicesSectionSimple() {
             </div>
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
               <div className="text-gray-secondary font-semibold text-sm">
-                🏝️ DOM-TOM
+                🏝️ DOM
               </div>
               <p className="text-gray-secondary text-xs mt-1">
                 Support local réactif

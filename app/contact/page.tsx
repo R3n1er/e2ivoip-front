@@ -4,11 +4,11 @@ import { Metadata } from "next";
 import WorkingFAQ from "@/components/faq-working";
 
 export const metadata: Metadata = {
-  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
+  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
   description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
-  keywords: "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM-TOM, standard téléphonique entreprise, 3CX Yeastar",
+  keywords: "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
-    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM-TOM",
+    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
     description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
     type: "website",
   },
@@ -40,7 +40,7 @@ export default function ContactPage() {
               téléphonie IP vous accompagnent dans votre projet
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Devis gratuit • Support 24/7 • Équipes locales France & DOM-TOM
+              Devis gratuit • Support 24/7 • Équipes locales France & DOM
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">
@@ -171,7 +171,7 @@ export default function ContactPage() {
               Nos <span className="text-white">implantations</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Équipes techniques locales en France Métropolitaine et DOM-TOM
+              Équipes techniques locales en France Métropolitaine et DOM
               pour un support de proximité
             </p>
           </div>

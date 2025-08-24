@@ -10,7 +10,7 @@
 **Hero Section**
 - Titre actuel : "Solutions de téléphonie IP pour entreprises"
 - **Nouveau titre** : "Économisez 30% sur vos coûts télécoms avec la téléphonie IP"
-- Sous-titre : "Trunk SIP éligible DOM-TOM • Création et portabilité de numéros locaux • Mobilité et fonctionnalités nouvelle génération"
+- Sous-titre : "Trunk SIP éligible DOM • Création et portabilité de numéros locaux • Mobilité et fonctionnalités nouvelle génération"
 
 **Section Services**
 - Réorganiser par bénéfices plutôt que par technologies
@@ -20,7 +20,7 @@
 **Section Statistiques**
 - "500+ entreprises nous font confiance"
 - "15 ans d'expertise télécom"
-- "Support technique 24/7 DOM-TOM"
+- "Support technique 24/7 DOM"
 - "Jusqu'à 30% d'économies garanties"
 - "Numéros locaux dans toutes les zones"
 
@@ -29,21 +29,21 @@
 ```
 - Hero : "Téléphonie IP nouvelle génération : -30% sur vos coûts + mobilité totale"
 - Problématiques : Coûts élevés, système obsolète, pas de mobilité, numéros non locaux
-- Notre solution : IPBX cloud avec Trunk SIP DOM-TOM éligible
+- Notre solution : IPBX cloud avec Trunk SIP DOM éligible
 - Points forts :
   • Trunk SIP au compteur ou illimité
   • Création/portabilité numéros locaux
   • Mobilité intégrée (softphones)
   • Fonctionnalités IA et CRM
 - 4 offres claires : Starter, Business, Premium, Enterprise
-- Focus DOM-TOM : tarifs spéciaux, numéros locaux garantis
+- Focus DOM : tarifs spéciaux, numéros locaux garantis
 - Tableau comparatif des offres
 - CTA : "Calculez vos économies"
 ```
 
 #### 3. Page Contact
 **Optimisations** :
-- Titre : "Parlons de vos besoins télécom - Support local DOM-TOM"
+- Titre : "Parlons de vos besoins télécom - Support local DOM"
 - Ajout proposition de valeur : "Réponse en moins de 2h par nos équipes locales"
 - Numéros par département :
   - Guyane : 0594 963 500
@@ -59,18 +59,18 @@
 #### Pages à créer avec contenu optimisé :
 
 1. **Trunk SIP au Compteur** (`/telephonie-entreprise/trunk-sip-compteur`)
-   - Titre : "Trunk SIP au compteur DOM-TOM : Payez uniquement vos consommations"
+   - Titre : "Trunk SIP au compteur DOM : Payez uniquement vos consommations"
    - Focus : Flexibilité totale, éligible Antilles-Guyane-Réunion, pas d'engagement
-   - Points clés : Numéros locaux inclus, portabilité gratuite, tarifs DOM-TOM préférentiels
+   - Points clés : Numéros locaux inclus, portabilité gratuite, tarifs DOM préférentiels
    - Tarifs transparents affichés
    - Calculateur d'économies en ligne
 
 2. **Trunk SIP Illimité** (`/telephonie-entreprise/trunk-sip-illimite`)
-   - Titre : "Trunk SIP illimité DOM-TOM : Budget fixe, appels illimités"
-   - Focus : Budget maîtrisé, appels illimités France + DOM-TOM
+   - Titre : "Trunk SIP illimité DOM : Budget fixe, appels illimités"
+   - Focus : Budget maîtrisé, appels illimités France + DOM
    - Points clés : Création numéros locaux gratuite, mobilité incluse
    - Comparaison : -30% vs téléphonie traditionnelle
-   - Témoignage client DOM-TOM
+   - Témoignage client DOM
 
 3. **3CX PRO Dédiée** (`/telephonie-entreprise/3cx-pro-dediee`)
    - Titre : "3CX PRO : Instance dédiée pour entreprises exigeantes"
@@ -147,9 +147,9 @@
 ### Phase 4 : Optimisation SEO (Semaine 4)
 
 #### Meta Descriptions (155 caractères max)
-- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM-TOM, numéros locaux, mobilité. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
-- Téléphonie : "Téléphonie IP nouvelle génération. Trunk SIP compteur/illimité DOM-TOM. Création numéros locaux. Économies 30%. Support 24/7."
-- Trunk SIP : "Trunk SIP éligible DOM-TOM. Au compteur ou illimité. Numéros locaux inclus. Portabilité gratuite. -30% vs télécom classique."
+- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM, numéros locaux, mobilité. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
+- Téléphonie : "Téléphonie IP nouvelle génération. Trunk SIP compteur/illimité DOM. Création numéros locaux. Économies 30%. Support 24/7."
+- Trunk SIP : "Trunk SIP éligible DOM. Au compteur ou illimité. Numéros locaux inclus. Portabilité gratuite. -30% vs télécom classique."
 - Contact : "Contactez E2I VoIP pour vos besoins télécom. Réponse en 2h. Présence locale Martinique, Guadeloupe, Guyane. ☎ 0590 96 35 00"
 
 #### Structured Data (JSON-LD)
@@ -210,7 +210,7 @@ Pour chaque page :
 
 ### Long terme (6 mois)
 - ROI positif sur refonte
-- Part de marché DOM-TOM augmentée
+- Part de marché DOM augmentée
 - NPS > 8
 
 ---

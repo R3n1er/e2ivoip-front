@@ -6,7 +6,7 @@ export function HomepageHeroSectionSimple() {
   const stats = [
     { icon: "lni-users", value: "100+", label: "Entreprises nous font confiance" },
     { icon: "lni-certificate", value: "15+", label: "Années d'expertise télécom" },
-    { icon: "lni-phone", value: "24/7", label: "Support technique France Métropolitaine et DOM-TOM" },
+    { icon: "lni-phone", value: "24/7", label: "Support technique France Métropolitaine et DOM" },
     { icon: "lni-star", value: "30%", label: "Économies garanties" },
   ];
 
@@ -32,7 +32,7 @@ export function HomepageHeroSectionSimple() {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-600/10 border border-red-600/20 text-red-400 text-sm font-medium mb-8">
             <i className="lni lni-star w-4 h-4 mr-2"></i>
-            Opérateur télécom DOM-TOM • Plus de 100 clients
+            Opérateur télécom DOM • Plus de 100 clients
           </div>
 
           {/* Main Heading */}
@@ -48,7 +48,7 @@ export function HomepageHeroSectionSimple() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-            Trunk SIP éligible DOM-TOM • Création et portabilité de numéros
+            Trunk SIP éligible DOM • Création et portabilité de numéros
             locaux
             <br />
             <span className="text-gray-300 font-medium">

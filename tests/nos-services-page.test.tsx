@@ -37,7 +37,7 @@ describe("Page Nos Services", () => {
 
     // Vérification des 4 bénéfices
     expect(screen.getByText("Économies garanties")).toBeInTheDocument();
-    expect(screen.getByText("Présence locale DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("Présence locale DOM")).toBeInTheDocument();
     expect(screen.getByText("Disponibilité 24/7")).toBeInTheDocument();
     expect(screen.getByText("Sécurité maximale")).toBeInTheDocument();
   });
@@ -58,7 +58,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des 6 services
-    expect(screen.getByText("Trunk SIP DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Solutions Mobilité")).toBeInTheDocument();
@@ -95,7 +95,7 @@ describe("Page Nos Services", () => {
     // Vérification des messages clés
     expect(screen.getByText(/économies garanties/)).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
-    const domTomElements = screen.getAllByText(/DOM-TOM/);
+    const domTomElements = screen.getAllByText(/DOM/);
     expect(domTomElements.length).toBeGreaterThan(0);
     expect(
       screen.getByText(/500 entreprises nous font confiance/)

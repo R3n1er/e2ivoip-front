@@ -24,7 +24,7 @@ test.describe('Section Services', () => {
 
   test('devrait afficher tous les services principaux', async ({ page }) => {
     // Vérifier que tous les services sont présents
-    await expect(page.locator('text=Trunk SIP DOM-TOM')).toBeVisible();
+    await expect(page.locator('text=Trunk SIP DOM')).toBeVisible();
     await expect(page.locator('text=3CX SMB Mutualisé')).toBeVisible();
     await expect(page.locator('text=3CX PRO Dédié')).toBeVisible();
     await expect(page.locator('text=Solutions Mobilité')).toBeVisible();
@@ -47,7 +47,7 @@ test.describe('Section Services', () => {
     await expect(page.locator('text=💰 Économies 30%')).toBeVisible();
     await expect(page.locator('text=📱 Mobilité totale')).toBeVisible();
     await expect(page.locator('text=🤖 IA intégrée')).toBeVisible();
-    await expect(page.locator('text=🏝️ DOM-TOM')).toBeVisible();
+    await expect(page.locator('text=🏝️ DOM')).toBeVisible();
     
     // Vérifier que les descriptions sont présentes
     await expect(page.locator('text=Sur vos factures télécom')).toBeVisible();
