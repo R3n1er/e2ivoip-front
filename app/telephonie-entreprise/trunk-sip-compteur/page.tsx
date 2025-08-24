@@ -60,7 +60,7 @@ export default function TrunkSIPCompteur() {
     <div className="min-h-screen bg-white">
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 hero-gradient relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pattern-dots"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -116,8 +116,8 @@ export default function TrunkSIPCompteur() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4">
-                Vos factures télécom <span className="text-primary">explosent</span> ?
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                Vos factures télécom <span className="text-red-primary">explosent</span> ?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 <strong>Les entreprises DOM-TOM paient 40% plus cher</strong> leurs communications que nécessaire
@@ -127,28 +127,28 @@ export default function TrunkSIPCompteur() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="card-body items-center text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <i className="lni lni-money-location text-primary text-3xl"></i>
+                  <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-money-location text-red-primary text-3xl"></i>
                   </div>
-                  <h3 className="card-title text-lg text-neutral">Coûts imprévisibles</h3>
+                  <h3 className="card-title text-lg text-gray-dark">Coûts imprévisibles</h3>
                   <p className="text-gray-600">Factures qui varient de <strong>200 à 800€</strong> selon les mois sans visibilité sur la consommation</p>
                 </div>
               </div>
               <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="card-body items-center text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <i className="lni lni-network text-primary text-3xl"></i>
+                  <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-network text-red-primary text-3xl"></i>
                   </div>
-                  <h3 className="card-title text-lg text-neutral">PABX obsolète</h3>
+                  <h3 className="card-title text-lg text-gray-dark">PABX obsolète</h3>
                   <p className="text-gray-600">Ancien système limité, <strong>coûteux à maintenir</strong> et incompatible avec le télétravail</p>
                 </div>
               </div>
               <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="card-body items-center text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <i className="lni lni-map-marker text-primary text-3xl"></i>
+                  <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i className="lni lni-map-marker text-red-primary text-3xl"></i>
                   </div>
-                  <h3 className="card-title text-lg text-neutral">Numéros non-locaux</h3>
+                  <h3 className="card-title text-lg text-gray-dark">Numéros non-locaux</h3>
                   <p className="text-gray-600"><strong>Aucun numéro géographique</strong> dans votre zone DOM-TOM, pénalisant votre image locale</p>
                 </div>
               </div>
@@ -158,15 +158,15 @@ export default function TrunkSIPCompteur() {
             <div className="mt-12 bg-white rounded-xl p-8 shadow-lg">
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">40%</div>
+                  <div className="text-3xl font-bold text-red-primary mb-2">40%</div>
                   <p className="text-gray-600">Coûts supplémentaires DOM-TOM</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">65%</div>
+                  <div className="text-3xl font-bold text-red-primary mb-2">65%</div>
                   <p className="text-gray-600">Entreprises avec PABX obsolète</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">85%</div>
+                  <div className="text-3xl font-bold text-red-primary mb-2">85%</div>
                   <p className="text-gray-600">Sans numéros locaux DOM-TOM</p>
                 </div>
               </div>
@@ -183,8 +183,8 @@ export default function TrunkSIPCompteur() {
                   <i className="lni lni-checkmark-circle mr-2"></i>
                   Solution certifiée DOM-TOM
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-6">
-                  <span className="text-primary">Trunk SIP au compteur</span> : payez seulement ce que vous consommez
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                  <span className="text-red-primary">Trunk SIP au compteur</span> : payez seulement ce que vous consommez
                 </h2>
                 <p className="text-xl text-gray-600 mb-8">
                   <strong>Passerelle SIP spécialisée DOM-TOM</strong> qui connecte votre IPBX au réseau téléphonique. 
@@ -193,38 +193,38 @@ export default function TrunkSIPCompteur() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-money-location text-success text-xl"></i>
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-money-location text-green-600 text-xl"></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-neutral mb-2">Facturation au compteur transparente</h3>
+                      <h3 className="font-semibold text-gray-dark mb-2">Facturation au compteur transparente</h3>
                       <p className="text-gray-600"><strong>Payez uniquement vos appels émis</strong>, facturation à la seconde dès le premier décroché. Idéal pour les centres d'appels et TPE/PME.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-secondary text-xl"></i>
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-phone text-blue-marine text-xl"></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-neutral mb-2">Numéros locaux DOM-TOM gratuits</h3>
+                      <h3 className="font-semibold text-gray-dark mb-2">Numéros locaux DOM-TOM gratuits</h3>
                       <p className="text-gray-600"><strong>Création et portabilité gratuites</strong> de numéros géographiques Antilles-Guyane-Réunion pour renforcer votre image locale.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-network text-primary text-xl"></i>
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-network text-red-primary text-xl"></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-neutral mb-2">Compatible tous IPBX</h3>
+                      <h3 className="font-semibold text-gray-dark mb-2">Compatible tous IPBX</h3>
                       <p className="text-gray-600">Compatible avec <strong>3CX, Yeastar, Grandstream, Avaya, Asterisk</strong>. Connexions flexibles de 2 à 30 appels simultanés.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-users text-accent text-xl"></i>
+                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-users text-gray-secondary text-xl"></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-neutral mb-2">Support technique local réactif</h3>
+                      <h3 className="font-semibold text-gray-dark mb-2">Support technique local réactif</h3>
                       <p className="text-gray-600">Équipes présentes localement en <strong>Martinique, Guadeloupe, Guyane</strong>. Réponse en moins de 2h.</p>
                     </div>
                   </div>
@@ -281,8 +281,8 @@ export default function TrunkSIPCompteur() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4">
-                Compatible avec <span className="text-primary">tous les IPBX</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                Compatible avec <span className="text-red-primary">tous les IPBX</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Notre Trunk SIP s'intègre parfaitement avec toutes les marques d'IPBX du marché
@@ -293,10 +293,10 @@ export default function TrunkSIPCompteur() {
               {compatibleBrands.map((brand, index) => (
                 <div key={index} className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
                   <div className="card-body items-center text-center p-6">
-                    <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center mb-4">
-                      <i className="lni lni-checkmark text-success text-xl"></i>
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                      <i className="lni lni-checkmark text-green-600 text-xl"></i>
                     </div>
-                    <h3 className="card-title text-base text-neutral">{brand.name}</h3>
+                    <h3 className="card-title text-base text-gray-dark">{brand.name}</h3>
                     <p className="text-gray-600 text-sm">{brand.description}</p>
                   </div>
                 </div>
@@ -322,8 +322,8 @@ export default function TrunkSIPCompteur() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral mb-4">
-                Idéal pour votre <span className="text-primary">entreprise</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                Idéal pour votre <span className="text-red-primary">entreprise</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Le Trunk SIP au compteur s'adapte parfaitement aux besoins des TPE et PME DOM-TOM
@@ -337,13 +337,13 @@ export default function TrunkSIPCompteur() {
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
                       <i className={`lni ${useCase.icon} text-blue-600 text-3xl`}></i>
                     </div>
-                    <h3 className="card-title text-xl text-neutral">{useCase.title}</h3>
+                    <h3 className="card-title text-xl text-gray-dark">{useCase.title}</h3>
                     <p className="text-gray-600 mb-4">{useCase.description}</p>
                     <div className="card-actions flex-col space-y-2">
-                      <div className="badge badge-secondary">
+                      <div className="badge bg-blue-marine text-white">
                         {useCase.users}
                       </div>
-                      <div className="text-success font-semibold text-sm">
+                      <div className="text-green-600 font-semibold text-sm">
                         {useCase.savings}
                       </div>
                     </div>
@@ -468,7 +468,7 @@ export default function TrunkSIPCompteur() {
         </section>
 
         {/* CTA Section finale */}
-        <section className="py-20 hero-gradient">
+        <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Calculez vos <span className="text-white">économies</span> maintenant
