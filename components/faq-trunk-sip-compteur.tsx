@@ -11,7 +11,7 @@ const faqData: FAQItem[] = [
     answer: (
       <p>
         Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois), 
-        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM-TOM 
+        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM 
         (recommandé pour plus de 200 minutes/mois).
       </p>
     ),
@@ -21,7 +21,7 @@ const faqData: FAQItem[] = [
     answer: (
       <p>
         <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants. 
-        Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM-TOM 
+        Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM 
         (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
       </p>
     ),
@@ -92,7 +92,7 @@ const faqData: FAQItem[] = [
           <li>✓ <strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</li>
         </ul>
         <p className="text-sm bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
-          <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM-TOM 
+          <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM 
           vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
         </p>
       </div>
@@ -112,7 +112,7 @@ export default function TrunkSipCompteurFAQ() {
           Questions <span className="text-red-primary">fréquentes</span>
         </h2>
         <p className="text-xl text-gray-600">
-          Tout ce qu'il faut savoir sur notre Trunk SIP au compteur DOM-TOM
+          Tout ce qu'il faut savoir sur notre Trunk SIP au compteur DOM
         </p>
       </div>
 

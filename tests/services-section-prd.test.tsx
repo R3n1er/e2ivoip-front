@@ -36,7 +36,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     render(<ServicesSectionSimple />);
 
     // Vérifier que tous les services sont présents
-    expect(screen.getByText("Trunk SIP DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Solutions Mobilité")).toBeInTheDocument();
@@ -97,6 +97,6 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("💰 Économies 30%")).toBeInTheDocument();
     expect(screen.getByText("📱 Mobilité totale")).toBeInTheDocument();
     expect(screen.getByText("🤖 IA intégrée")).toBeInTheDocument();
-    expect(screen.getByText("🏝️ DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("🏝️ DOM")).toBeInTheDocument();
   });
 });

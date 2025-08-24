@@ -6,15 +6,15 @@ import Link from "next/link";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM-TOM",
+  title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
   description:
-    "Support technique E2I VoIP 24/7. Assistance locale DOM-TOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
+    "Support technique E2I VoIP 24/7. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
-    "assistance E2I VoIP, support technique DOM-TOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
+    "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
   openGraph: {
     title: "Assistance & Support - E2I VoIP | Support technique 24/7",
     description:
-      "Support technique E2I VoIP 24/7. Équipes locales DOM-TOM, chat en ligne, guides et tutoriels.",
+      "Support technique E2I VoIP 24/7. Équipes locales DOM, chat en ligne, guides et tutoriels.",
     type: "website",
   },
 };

@@ -70,7 +70,7 @@ export function ContactSectionSimple() {
           {/* Contacts par région */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Support France Métropolitaine et DOM-TOM
+              Support France Métropolitaine et DOM
             </h3>
             <p className="text-gray-secondary mb-8">
               Équipes techniques présentes localement pour un support réactif et
@@ -109,7 +109,7 @@ export function ContactSectionSimple() {
               </h4>
               <p className="text-gray-secondary text-sm">
                 Assistance technique disponible 24h/24 et 7j/7 avec escalade
-                vers nos équipes locales DOM-TOM et France métropolitaine.
+                vers nos équipes locales DOM et France métropolitaine.
               </p>
             </div>
           </div>

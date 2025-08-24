@@ -7,7 +7,7 @@ export function AboutSectionSimple() {
     {
       icon: "lni-users",
       title: "Expertise reconnue",
-      description: "Plus de 15 ans d'expérience dans les télécommunications d'entreprise DOM-TOM",
+      description: "Plus de 15 ans d'expérience dans les télécommunications d'entreprise DOM",
     },
     {
       icon: "lni-certificate",
@@ -26,7 +26,7 @@ export function AboutSectionSimple() {
     "Formation de vos équipes et Customer Success Manager dédié",
     "Maintenance préventive et corrective incluse",
     "Migration depuis vos anciens PABX vers IP",
-    "Portabilité et création de numéros locaux DOM-TOM",
+    "Portabilité et création de numéros locaux DOM",
     "Hébergement souverain France/UE conforme RGPD"
   ];
 
@@ -34,7 +34,7 @@ export function AboutSectionSimple() {
     { value: "100+", label: "Entreprises clientes", icon: "lni-users" },
     { value: "15+", label: "Années d'expertise", icon: "lni-certificate" },
     { value: "30%", label: "Économies garanties", icon: "lni-bolt" },
-    { value: "24/7", label: "Support France Métropolitaine et DOM-TOM", icon: "lni-shield" },
+    { value: "24/7", label: "Support France Métropolitaine et DOM", icon: "lni-shield" },
   ];
 
   return (
@@ -48,7 +48,7 @@ export function AboutSectionSimple() {
           </h2>
           <p className="text-xl text-gray-secondary max-w-4xl mx-auto mb-8">
             Face à l'arrêt du réseau cuivre et au déploiement de la fibre optique, 
-            de nombreuses entreprises DOM-TOM se retrouvent avec des factures télécom élevées 
+            de nombreuses entreprises DOM se retrouvent avec des factures télécom élevées 
             et des systèmes PABX obsolètes qui limitent leur productivité.
           </p>
           
@@ -78,7 +78,7 @@ export function AboutSectionSimple() {
             </h2>
 
             <p className="text-lg text-gray-secondary mb-8">
-              E2I VoIP, <strong>opérateur télécom DOM-TOM</strong>, accompagne les entreprises 
+              E2I VoIP, <strong>opérateur télécom DOM</strong>, accompagne les entreprises 
               dans leur transformation digitale avec des solutions de téléphonie IP innovantes, 
               spécialement conçues pour les Antilles-Guyane et La Réunion.
             </p>

@@ -16,7 +16,7 @@
   - France : 0189 563 500
 - **Téléphone - Hotline support technique** : 0189 560 500
 
-- **Zone d’intervention** : Guyane, Guadeloupe, Martinique, La Réunion, France métropolitaine. Spécialiste de la téléphonie IP dans lee s DOM-TOM (DROM)
+- **Zone d’intervention** : Guyane, Guadeloupe, Martinique, La Réunion, France métropolitaine. Spécialiste de la téléphonie IP dans lee s DOM (DROM)
 
 Le client peut effectuer une demande de vie en ligne via le lien suivant : https://www.e2i-voip.com/devis
 
@@ -110,7 +110,7 @@ Ce modèle unique, combinant expertise technologique et proximité relationnelle
 
 Parce que nous croyons que la téléphonie d’entreprise doit être **simple, fiable et évolutive**. Nos Trunk SIP vous offrent la liberté de communiquer sans contraintes techniques, tout en maîtrisant vos coûts.
 
-E2I VOIP est Opérateur de solutions VoIP en fournissant des Trunk SIP au compteur ou illimités à nos clients. Possibilité de création de numéros en zone locale pour les DOM-TOM et portabilités de numéros existants.
+E2I VOIP est Opérateur de solutions VoIP en fournissant des Trunk SIP au compteur ou illimités à nos clients. Possibilité de création de numéros en zone locale pour les DOM et portabilités de numéros existants.
 
 Nos Trunk SIP sont disponibles à partir de **4 appels simultanés (AS)**, avec des paliers progressifs (8AS, 16AS, 24AS, 32AS, 64AS) pour s’adapter à votre croissance. Compatibles avec les principales plateformes VoIP (**3CX, Yeastar, Grandstream, Avaya, Alcatel, FreePBX**), ils s’intègrent parfaitement à votre système existant. La sécurité est au cœur de notre approche : authentification par **user/password** ou restriction par **IP autorisées**, pour une protection optimale de vos communications.
 
@@ -118,7 +118,7 @@ Nos Trunk SIP sont disponibles à partir de **4 appels simultanés (AS)**, avec
 
 Nous facilitons votre transition vers la téléphonie VoIP en vous proposant :
 
-- La **création de numéros locaux** dans les DOM-TOM pour renforcer votre ancrage territorial.
+- La **création de numéros locaux** dans les DOM pour renforcer votre ancrage territorial.
 - La **portabilité de vos numéros existants**, afin de préserver votre identité téléphonique.
 - Un **engagement clair de 24 mois**, avec des débits ajustables dès 4 canaux.
 

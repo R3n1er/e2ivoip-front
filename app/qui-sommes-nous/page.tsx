@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM depuis 15 ans",
+  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
   description:
-    "E2I VoIP : Opérateur de servicestélécom DOM-TOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms.",
+    "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms.",
   keywords:
-    "E2I VoIP, opérateur télécom DOM-TOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM-TOM",
+    "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM",
   openGraph: {
-    title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM",
+    title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
     description:
-      "Opérateur de services télécom DOM-TOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
+      "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
     type: "website",
   },
 };
@@ -61,7 +61,7 @@ export default function QuiSommesNous() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               Votre opérateur de services télécom{" "}
-              <span className="text-white">DOM-TOM</span>
+              <span className="text-white">DOM</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               15 ans d'expertise • 100+ entreprises nous font confiance •
@@ -105,7 +105,7 @@ export default function QuiSommesNous() {
                 Customer Success Manager dédié qui connaît vos besoins
                 spécifiques. Une assistance en français, dans votre fuseau
                 horaire, avec une connaissance parfaite du contexte des régions
-                des DOM-TOM (Antilles, Guyane, Réunion).
+                des DOM (Antilles, Guyane, Réunion).
               </p>
             </div>
             <div className="relative">
@@ -119,7 +119,7 @@ export default function QuiSommesNous() {
                   </h3>
                   <p className="text-gray-600 mb-6">
                     Partenaire Silver 3CX • Certifié Yeastar Cloud et On-Premise
-                    • Trunk SIP dédiés DOM-TOM
+                    • Trunk SIP dédiés DOM
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="text-center">
@@ -215,7 +215,7 @@ export default function QuiSommesNous() {
                 Nos <span className="text-red-primary">solutions phares</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                <strong>Trunk SIP éligibles DOM-TOM</strong> : Au compteur ou
+                <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
                 locaux incluses.
                 <strong>Économisez jusqu'à 30%</strong> par rapport à la
@@ -233,7 +233,7 @@ export default function QuiSommesNous() {
                       <strong>Au compteur :</strong> Payez uniquement vos
                       consommations, idéal TPE/PME.
                       <strong> Illimité :</strong> Budget fixe, appels illimités
-                      France + DOM-TOM. Tarifs préférentiels spéciaux
+                      France + DOM. Tarifs préférentiels spéciaux
                       Antilles-Guyane-Réunion.
                     </p>
                   </div>

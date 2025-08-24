@@ -75,7 +75,7 @@ export function TestimonialsSectionSimple() {
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto">
             Découvrez pourquoi E2I VoIP est le choix privilégié des entreprises
-            DOM-TOM pour leur transformation télécom.
+            DOM pour leur transformation télécom.
           </p>
         </div>
 

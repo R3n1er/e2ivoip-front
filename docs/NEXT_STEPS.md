@@ -40,7 +40,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [x] **Migration vers composants -simple** : Remplacement des composants Framer Motion par versions CSS natives
 - [x] **Section clients "Ils nous font confiance"** : Titre fonctionnel et logos défilants
 - [x] **Optimisation DaisyUI** : Application des meilleures pratiques selon documentation officielle
-- [x] **Correction textes DOM-TOM** : Mise à jour vers "Support France Métropolitaine et DOM-TOM"
+- [x] **Correction textes DOM** : Mise à jour vers "Support France Métropolitaine et DOM"
 - [x] **Animations CSS natives** : Carrousel clients avec animation `scrollLeft 60s linear infinite`
 - [x] **Fix affichage logos** : Remplacement OptimizedImage par Image standard avec `unoptimized`
 - [x] **Header stable** : Passage de `Header` à `HeaderSimple` sans Framer Motion
@@ -73,7 +73,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 - [x] **Charte graphique respectée** : Couleurs red-primary et blue-marine appliquées
 - [x] **FAQ intégrée** : Composant WorkingFAQ réutilisé depuis page assistance
 - [x] **Optimisation contacts** : Hotline support prioritaire et WhatsApp Business
-- [x] **Section implantations** : DOM-TOM et France métropolitaine complètes
+- [x] **Section implantations** : DOM et France métropolitaine complètes
 - [x] **Page épurée** : Design professionnel et cohérent
 - [x] **Suppression menu assistance** : Élément retiré du header-simple
 - [x] **Nettoyage pages dev** : Suppression pages test-* et templates

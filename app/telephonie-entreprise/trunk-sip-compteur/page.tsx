@@ -3,15 +3,15 @@ import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 
 export const metadata: Metadata = {
-  title: "Trunk SIP au Compteur DOM-TOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
+  title: "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:
-    "Trunk SIP au compteur DOM-TOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 30%.",
+    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 30%.",
   keywords:
-    "trunk SIP compteur DOM-TOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM-TOM, opérateur télécom local",
+    "trunk SIP compteur DOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM, opérateur télécom local",
   openGraph: {
-    title: "Trunk SIP au Compteur DOM-TOM - E2I VoIP",
+    title: "Trunk SIP au Compteur DOM - E2I VoIP",
     description:
-      "Connexions SIP au compteur pour entreprises DOM-TOM. Payez uniquement vos consommations réelles. Numéros locaux gratuits.",
+      "Connexions SIP au compteur pour entreprises DOM. Payez uniquement vos consommations réelles. Numéros locaux gratuits.",
     type: "website",
     locale: "fr_FR",
     url: "https://e2ivoip.fr/telephonie-entreprise/trunk-sip-compteur",
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trunk SIP au Compteur DOM-TOM - E2I VoIP",
-    description: "Connexions SIP au compteur pour entreprises DOM-TOM. Économisez jusqu'à 30%.",
+    title: "Trunk SIP au Compteur DOM - E2I VoIP",
+    description: "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 30%.",
   },
 };
 
@@ -68,13 +68,13 @@ export default function TrunkSIPCompteur() {
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
                 <i className="lni lni-phone text-white mr-2"></i>
-                <span className="text-white/90 text-sm font-medium">Opérateur SIP DOM-TOM</span>
+                <span className="text-white/90 text-sm font-medium">Opérateur SIP DOM</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
                 Trunk SIP au <span className="text-white">compteur</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-                <strong>Payez uniquement vos consommations réelles</strong> avec notre passerelle SIP DOM-TOM
+                <strong>Payez uniquement vos consommations réelles</strong> avec notre passerelle SIP DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
                 Économisez jusqu'à <strong>30%</strong> sur vos coûts télécom • Connexions SIP locales Antilles-Guyane-Réunion
@@ -121,7 +121,7 @@ export default function TrunkSIPCompteur() {
                 Vos factures télécom <span className="text-red-primary">explosent</span> ?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                <strong>Les entreprises DOM-TOM paient 40% plus cher</strong> leurs communications que nécessaire
+                <strong>Les entreprises DOM paient 40% plus cher</strong> leurs communications que nécessaire
               </p>
             </div>
 
@@ -150,7 +150,7 @@ export default function TrunkSIPCompteur() {
                     <i className="lni lni-map-marker text-red-primary text-3xl"></i>
                   </div>
                   <h3 className="card-title text-lg text-gray-dark">Numéros non-locaux</h3>
-                  <p className="text-gray-600"><strong>Aucun numéro géographique</strong> dans votre zone DOM-TOM, pénalisant votre image locale</p>
+                  <p className="text-gray-600"><strong>Aucun numéro géographique</strong> dans votre zone DOM, pénalisant votre image locale</p>
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function TrunkSIPCompteur() {
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <div className="text-3xl font-bold text-red-primary mb-2">40%</div>
-                  <p className="text-gray-600">Coûts supplémentaires DOM-TOM</p>
+                  <p className="text-gray-600">Coûts supplémentaires DOM</p>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-red-primary mb-2">65%</div>
@@ -168,7 +168,7 @@ export default function TrunkSIPCompteur() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-red-primary mb-2">85%</div>
-                  <p className="text-gray-600">Sans numéros locaux DOM-TOM</p>
+                  <p className="text-gray-600">Sans numéros locaux DOM</p>
                 </div>
               </div>
             </div>
@@ -182,13 +182,13 @@ export default function TrunkSIPCompteur() {
               <div>
                 <div className="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <i className="lni lni-checkmark-circle mr-2"></i>
-                  Solution certifiée DOM-TOM
+                  Solution certifiée DOM
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
                   <span className="text-red-primary">Trunk SIP au compteur</span> : payez seulement ce que vous consommez
                 </h2>
                 <p className="text-xl text-gray-600 mb-8">
-                  <strong>Passerelle SIP spécialisée DOM-TOM</strong> qui connecte votre IPBX au réseau téléphonique. 
+                  <strong>Passerelle SIP spécialisée DOM</strong> qui connecte votre IPBX au réseau téléphonique. 
                   Facturation <strong>transparente à la seconde</strong> dès la première seconde.
                 </p>
 
@@ -207,7 +207,7 @@ export default function TrunkSIPCompteur() {
                       <i className="lni lni-phone text-blue-marine text-xl"></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-dark mb-2">Numéros locaux DOM-TOM gratuits</h3>
+                      <h3 className="font-semibold text-gray-dark mb-2">Numéros locaux DOM gratuits</h3>
                       <p className="text-gray-600"><strong>Création et portabilité gratuites</strong> de numéros géographiques Antilles-Guyane-Réunion pour renforcer votre image locale.</p>
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function TrunkSIPCompteur() {
 
               <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Tarification DOM-TOM</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Tarification DOM</h3>
                   <p className="text-gray-600">Facturation à la seconde dès la première seconde</p>
                 </div>
                 <div className="space-y-4">
@@ -327,7 +327,7 @@ export default function TrunkSIPCompteur() {
                 Idéal pour votre <span className="text-red-primary">entreprise</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Le Trunk SIP au compteur s'adapte parfaitement aux besoins des TPE et PME DOM-TOM
+                Le Trunk SIP au compteur s'adapte parfaitement aux besoins des TPE et PME DOM
               </p>
             </div>
 
@@ -431,7 +431,7 @@ export default function TrunkSIPCompteur() {
             </div>
             
             <p className="text-white/70 text-sm mt-6">
-              <strong>Expertise DOM-TOM depuis 15 ans</strong> • Plus de 100 entreprises nous font confiance
+              <strong>Expertise DOM depuis 15 ans</strong> • Plus de 100 entreprises nous font confiance
             </p>
           </div>
         </section>

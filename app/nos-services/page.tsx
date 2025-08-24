@@ -13,15 +13,15 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM-TOM",
+  title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM-TOM, 3CX PRO, mobilité, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
   keywords:
-    "téléphonie IP entreprise, trunk SIP DOM-TOM, 3CX PRO, solutions mobilité, assistants vocaux IA, studio enregistrement, VoIP Antilles",
+    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, solutions mobilité, assistants vocaux IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM-TOM, 3CX, mobilité, IA. Économies 30% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA. Économies 30% garanties.",
     type: "website",
     locale: "fr_FR",
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM-TOM, 3CX, mobilité, IA.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA.",
   },
 };
 
@@ -37,7 +37,7 @@ export default function NosServices() {
   const services = [
     {
       icon: "lni-cloud",
-      title: "Trunk SIP DOM-TOM",
+      title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
@@ -149,7 +149,7 @@ export default function NosServices() {
     },
     {
       icon: "lni-map-marker",
-      title: "Présence locale DOM-TOM",
+      title: "Présence locale DOM",
       description: "Support technique réactif dans toutes les zones",
       color: "text-blue-marine",
     },
@@ -173,7 +173,7 @@ export default function NosServices() {
     "@type": "Organization",
     name: "E2I VoIP",
     description:
-      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM-TOM, 3CX PRO, mobilité, assistants vocaux IA.",
+      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA.",
     url: "https://e2ivoip.fr",
     logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
     contactPoint: {

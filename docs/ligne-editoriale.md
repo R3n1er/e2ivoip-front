@@ -13,7 +13,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - **Professionnel mais accessible** : Expertise technique vulgarisée
 - **Rassurant et fiable** : Mise en avant de la disponibilité et du support
 - **Orienté solutions** : Focus sur les bénéfices clients plutôt que les caractéristiques techniques
-- **Local et proche** : Emphase sur la présence régionale (DOM-TOM)
+- **Local et proche** : Emphase sur la présence régionale (DOM)
 
 ### Style rédactionnel
 
@@ -29,9 +29,9 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 **"Réduisez de 30% vos coûts télécoms avec la téléphonie IP"**
 
 - Économies garanties jusqu'à 30% sur vos factures télécom
-- Trunk SIP au compteur et illimité, éligibles DOM-TOM (Antilles, Guyane et La Réunion)
+- Trunk SIP au compteur et illimité, éligibles DOM (Antilles, Guyane et La Réunion)
 - Création et portabilité de numéros en zone locale
-- Support assistance utilisateur local et réactif dans les DOM-TOM
+- Support assistance utilisateur local et réactif dans les DOM
 
 ### Proposition de valeur secondaire
 
@@ -46,7 +46,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Arguments différenciateurs
 
-1. **Opérateur télécom DOM-TOM** : Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
+1. **Opérateur télécom DOM** : Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
 2. **Customer Success dédié** : Un accompagnement personnalisé avec un Customer Success Manager attitré pour chaque client
 3. **Double économie** : -30% sur les coûts + nouvelles fonctionnalités incluses (IA, CRM, mobilité)
 4. **Support local réactif** : Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane
@@ -58,12 +58,12 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Mots-clés primaires
 
-- Téléphonie IP entreprise DOM-TOM / Antilles / Martinique / Guadeloupe / Guyane / Réunion
+- Téléphonie IP entreprise DOM / Antilles / Martinique / Guadeloupe / Guyane / Réunion
 - Trunk SIP compteur / illimité
 - VoIP Antilles / Martinique / Guadeloupe / Guyane / Réunion
 - Portabilité numéros locaux
 - IPBX cloud nouvelle génération
-- 3CX DOM-TOM / Antilles / Martinique / Guadeloupe / Guyane / Réunion
+- 3CX DOM / Antilles / Martinique / Guadeloupe / Guyane / Réunion
 - 3CX
 - Yeastar Antilles / Martinique / Guadeloupe / Guyane / Réunion
 - Grandstream Antilles / Martinique / Guadeloupe / Guyane / Réunion
@@ -93,7 +93,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 **Entreprises multisites (50+ utilisateurs)**
 
-- Message : "Unifiez vos communications entre tous vos sites DOM-TOM et métropole"
+- Message : "Unifiez vos communications entre tous vos sites DOM et métropole"
 - Focus : 3CX PRO dédié, communications unifiées, tableau de bord centralisé
 - Vocabulaire : performance, scalabilité, gestion centralisée
 
@@ -137,8 +137,8 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 ### Trunk SIP
 
 - **Au compteur** : "Payez uniquement vos consommations, idéal pour maîtriser votre budget"
-- **Illimité** : "Budget fixe, appels illimités France + DOM-TOM"
-- Toujours mentionner : Création numéros locaux, portabilité gratuite, éligibilité DOM-TOM
+- **Illimité** : "Budget fixe, appels illimités France + DOM"
+- Toujours mentionner : Création numéros locaux, portabilité gratuite, éligibilité DOM
 
 ### Solutions 3CX
 
@@ -158,14 +158,14 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - ❌ "Solutions de téléphonie IP"
 - ✅ "Économisez 30% sur vos coûts télécoms avec la VoIP"
-- ✅ "Trunk SIP illimité éligible DOM-TOM"
+- ✅ "Trunk SIP illimité éligible DOM"
 - ✅ "Créez vos numéros locaux en 24h"
 
 ### Descriptions
 
 - ❌ "Nous proposons des solutions IPBX"
 - ✅ "Votre standard téléphonique nouvelle génération avec mobilité intégrée"
-- ✅ "Trunk SIP au compteur ou illimité, spécialement conçu pour les DOM-TOM"
+- ✅ "Trunk SIP au compteur ou illimité, spécialement conçu pour les DOM"
 - ✅ "Portabilité et création de numéros dans votre zone géographique"
 
 ### CTAs
@@ -219,7 +219,7 @@ Pour chaque page/section :
 - Toujours mentionner : "Plus de 500 clients nous font confiance"
 - Cas clients emblématiques : Titeca BEAUPORT Finance (90+ utilisateurs)
 - Infrastructure : AWS et Azure, hébergement France/UE
-- Support : Équipes locales DOM-TOM + métropole
+- Support : Équipes locales DOM + métropole
 
 ## 🔄 Contenus à Conserver/Optimiser
 
@@ -228,7 +228,7 @@ Pour chaque page/section :
 - Références aux 500+ clients
 - 15 ans d'expérience
 - Certifications partenaires
-- Présence DOM-TOM
+- Présence DOM
 - Numéros de téléphone par département
 
 ### À optimiser

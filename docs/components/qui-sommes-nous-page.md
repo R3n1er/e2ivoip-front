@@ -22,7 +22,7 @@ La page "Qui sommes-nous" d'E2I VoIP présente l'entreprise, son équipe, ses va
 4. **Solutions Phares** - Services avec détails techniques
 5. **Équipe** - Membres avec photos et rôles
 6. **Certifications** - Partenariats et certifications officielles
-7. **Support Local** - Contacts par région DOM-TOM
+7. **Support Local** - Contacts par région DOM
 8. **CTA Final** - Appels à l'action
 
 ### Composants DaisyUI Utilisés
@@ -58,7 +58,7 @@ La page "Qui sommes-nous" d'E2I VoIP présente l'entreprise, son équipe, ses va
 | Équipe | `lni-user` | Membres de l'équipe |
 | Utilisateurs | `lni-users` | Résultats, clients |
 | Validation | `lni-checkmark-circle` | Solutions, services |
-| Localisation | `lni-map-marker` | DOM-TOM |
+| Localisation | `lni-map-marker` | DOM |
 | International | `lni-world` | France métropole |
 | Email | `lni-envelope` | Contact email |
 | Chat | `lni-comments` | Support |
@@ -180,27 +180,27 @@ test.describe('Page Qui sommes-nous E2E - DaisyUI et Lineicons', () => {
 ### Titre
 
 ```typescript
-title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM depuis 15 ans"
+title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans"
 ```
 
 ### Description
 
 ```typescript
-description: "E2I VoIP : Opérateur de servicestélécom DOM-TOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms."
+description: "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms."
 ```
 
 ### Mots-clés
 
 ```typescript
-keywords: "E2I VoIP, opérateur télécom DOM-TOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM-TOM"
+keywords: "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM"
 ```
 
 ### Open Graph
 
 ```typescript
 openGraph: {
-  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM-TOM",
-  description: "Opérateur de services télécom DOM-TOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
+  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
+  description: "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
   type: "website",
 }
 ```

@@ -25,7 +25,7 @@ describe("Page Trunk SIP au Compteur", () => {
     expect(screen.getByText(/Notre solution/)).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP")).toBeInTheDocument();
     expect(screen.getByText("Facturation au compteur")).toBeInTheDocument();
-    expect(screen.getByText("Numéros locaux DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
   });
 
   test("Les tarifs sont affichés", () => {
@@ -83,7 +83,7 @@ describe("Page Trunk SIP au Compteur", () => {
     
     expect(screen.getByText("Facturation transparente")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux inclus")).toBeInTheDocument();
-    expect(screen.getByText("Support DOM-TOM")).toBeInTheDocument();
+    expect(screen.getByText("Support DOM")).toBeInTheDocument();
     expect(screen.getByText("Devis gratuit")).toBeInTheDocument();
   });
 });
