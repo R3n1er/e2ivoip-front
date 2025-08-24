@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 
 export const metadata: Metadata = {
   title: "Trunk SIP au Compteur DOM-TOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
@@ -383,87 +384,8 @@ export default function TrunkSIPCompteur() {
 
         {/* FAQ */}
         <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Questions <span className="text-red-primary">fréquentes</span>
-              </h2>
-            </div>
-
-            <div className="join join-vertical w-full">
-              <div className="collapse collapse-arrow join-item border border-base-300">
-                <input type="radio" name="faq-accordion" defaultChecked />
-                <div className="collapse-title text-lg font-medium">
-                  Quelle est la différence entre Trunk SIP au compteur et illimité ?
-                </div>
-                <div className="collapse-content">
-                  <p className="text-gray-600">
-                    Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois), 
-                    tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM-TOM 
-                    (recommandé pour plus de 200 minutes/mois).
-                  </p>
-                </div>
-              </div>
-
-              <div className="collapse collapse-arrow join-item border border-base-300">
-                <input type="radio" name="faq-accordion" />
-                <div className="collapse-title text-lg font-medium">
-                  Puis-je garder mes numéros actuels ?
-                </div>
-                <div className="collapse-content">
-                  <p className="text-gray-600">
-                    <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants. 
-                    Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM-TOM 
-                    (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
-                  </p>
-                </div>
-              </div>
-
-              <div className="collapse collapse-arrow join-item border border-base-300">
-                <input type="radio" name="faq-accordion" />
-                <div className="collapse-title text-lg font-medium">
-                  Quel équipement faut-il pour utiliser le Trunk SIP ?
-                </div>
-                <div className="collapse-content">
-                  <p className="text-gray-600">
-                    Vous avez besoin d'un <strong>IPBX</strong> (comme 3CX, Yeastar) ou d'une <strong>passerelle SIP</strong>. 
-                    Si vous n'en avez pas, nous proposons des solutions complètes incluant l'équipement et la configuration.
-                    Une connexion Internet stable (ADSL/Fibre) est également requise.
-                  </p>
-                </div>
-              </div>
-
-              <div className="collapse collapse-arrow join-item border border-base-300">
-                <input type="radio" name="faq-accordion" />
-                <div className="collapse-title text-lg font-medium">
-                  Le support technique est-il disponible localement ?
-                </div>
-                <div className="collapse-content">
-                  <p className="text-gray-600">
-                    <strong>Oui, c'est notre avantage principal !</strong> Nos équipes techniques sont présentes en 
-                    <strong>Martinique, Guadeloupe et Guyane</strong>. Support disponible du lundi au vendredi de 8h à 18h (heure locale).
-                    Intervention sur site possible si nécessaire.
-                  </p>
-                </div>
-              </div>
-
-              <div className="collapse collapse-arrow join-item border border-base-300">
-                <input type="radio" name="faq-accordion" />
-                <div className="collapse-title text-lg font-medium">
-                  Quelle connexion Internet est recommandée ?
-                </div>
-                <div className="collapse-content">
-                  <div className="text-gray-600">
-                    <p><strong>Recommandations techniques :</strong></p>
-                    <ul className="list-disc pl-6 mt-2 space-y-1">
-                      <li><strong>Fibre optique FTTO Entreprise</strong> (idéal)</li>
-                      <li><strong>SDSL Cuivre</strong> avec 2Mb dédiés à la VoIP minimum</li>
-                      <li><strong>Box 4G</strong> avec forfait 200GB/illimité VoIP en secours</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <TrunkSipCompteurFAQ />
           </div>
         </section>
 
