@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { CTAButton } from "@/components/ui/cta-button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function HeaderSimple() {
@@ -184,12 +184,9 @@ export function HeaderSimple() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
-            <Link href="/contact">
-              <Button className="!bg-red-primary hover:bg-red-600 !text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200">
-                <i className="lni lni-phone w-4 h-4 mr-2"></i>
-                Contact
-              </Button>
-            </Link>
+            <CTAButton href="/contact" icon="lni-phone" className="!text-sm !px-6 !py-2 !font-medium">
+              Contact
+            </CTAButton>
           </div>
 
           {/* Mobile menu button */}
@@ -247,12 +244,11 @@ export function HeaderSimple() {
                     )}
                   </div>
                 ))}
-                <Link href="/contact" className="mt-6">
-                  <Button className="!bg-red-primary hover:bg-red-600 !text-white w-full">
-                    <i className="lni lni-phone w-4 h-4 mr-2"></i>
+                <div className="mt-6">
+                  <CTAButton href="/contact" icon="lni-phone" fullWidth>
                     Contact
-                  </Button>
-                </Link>
+                  </CTAButton>
+                </div>
               </div>
             </div>
           )}

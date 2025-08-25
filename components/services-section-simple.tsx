@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
 import Link from "next/link";
 
@@ -120,80 +112,47 @@ export function ServicesSectionSimple() {
             nouvelle génération.
           </p>
 
-          {/* Bénéfices clés */}
-          <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-              <div className="text-red-primary font-semibold text-sm">
-                💰 Économies 30%
-              </div>
-              <p className="text-gray-secondary text-xs mt-1">
-                Sur vos factures télécom
-              </p>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <div className="text-blue-marine font-semibold text-sm">
-                📱 Mobilité totale
-              </div>
-              <p className="text-gray-secondary text-xs mt-1">
-                Téléphonez de partout
-              </p>
-            </div>
-            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-              <div className="text-red-primary font-semibold text-sm">
-                🤖 IA intégrée
-              </div>
-              <p className="text-gray-secondary text-xs mt-1">
-                Assistants vocaux inclus
-              </p>
-            </div>
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <div className="text-gray-secondary font-semibold text-sm">
-                🏝️ DOM
-              </div>
-              <p className="text-gray-secondary text-xs mt-1">
-                Support local réactif
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
-            <Card
+            <div
               key={index}
-              className="h-full hover:shadow-lg transition-shadow duration-300 group cursor-pointer"
+              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 h-full"
             >
-              <CardHeader className="pb-4">
+              <div className="card-body p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                    <i className={`lni ${service.icon} h-6 w-6 text-red-primary`}></i>
+                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
+                    <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
                   </div>
-                  <Badge className="badge badge-primary">
+                  <div className="badge badge-primary badge-lg font-medium">
                     {service.badge}
-                  </Badge>
+                  </div>
                 </div>
-                <CardTitle className="text-xl mb-2">
+                
+                <h3 className="card-title text-xl mb-3 text-base-content">
                   {service.title}
-                </CardTitle>
-                <CardDescription className="text-gray-secondary leading-relaxed">
+                </h3>
+                
+                <p className="text-base-content/70 leading-relaxed mb-6">
                   {service.description}
-                </CardDescription>
-              </CardHeader>
+                </p>
 
-              <CardContent className="pt-0">
                 <div className="space-y-3 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
-                      <span className="text-gray-secondary">{feature}</span>
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="border-t pt-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold text-gray-900">
+                <div className="divider my-4"></div>
+                
+                <div className="card-actions flex-col space-y-4">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-lg font-bold text-primary">
                       {service.price}
                     </span>
                   </div>
@@ -202,31 +161,11 @@ export function ServicesSectionSimple() {
                     En savoir plus
                   </CTAButtonSecondary>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gray-50 rounded-xl p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Prêt à économiser 30% sur vos télécoms ?
-          </h3>
-          <p className="text-gray-secondary mb-6 max-w-2xl mx-auto">
-            Nos experts analysent gratuitement votre infrastructure actuelle et
-            vous proposent la solution la plus adaptée à vos besoins et votre
-            budget.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTAButton href="/contact" icon="lni-phone">
-              Audit télécom gratuit
-            </CTAButton>
-            <CTAButtonMarine href="/devis-en-ligne" icon="lni-calculator">
-              Demander un devis
-            </CTAButtonMarine>
-          </div>
-        </div>
       </div>
     </section>
   );
