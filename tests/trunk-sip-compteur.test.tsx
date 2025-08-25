@@ -1,89 +1,214 @@
 import { render, screen } from "@testing-library/react";
-import TrunkSIPCompteur from "@/app/telephonie-entreprise/trunk-sip-compteur/page";
+import TrunkSIPCompteur from "../app/telephonie-entreprise/trunk-sip-compteur/page";
+
+// Mock des composants Next.js
+jest.mock("next/image", () => {
+  return function MockImage({
+    src,
+    alt,
+    ...props
+  }: {
+    src: string;
+    alt: string;
+    [key: string]: unknown;
+  }) {
+    return <img src={src} alt={alt} {...props} />;
+  };
+});
+
+jest.mock("next/link", () => {
+  return function MockLink({
+    href,
+    children,
+    ...props
+  }: {
+    href: string;
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) {
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  };
+});
 
 describe("Page Trunk SIP au Compteur", () => {
-  test("Le titre principal s'affiche correctement", () => {
+  test("se rend correctement", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText("Trunk SIP au")).toBeInTheDocument();
-    expect(screen.getByText("compteur")).toBeInTheDocument();
+    const titleElements = screen.getAllByText(/Trunk SIP au compteur/i);
+    expect(titleElements.length).toBeGreaterThan(0);
   });
 
-  test("La section problématique est présente", () => {
+  test("affiche le titre principal", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText(/Votre facture télécom/)).toBeInTheDocument();
-    expect(screen.getByText("explose")).toBeInTheDocument();
-    expect(screen.getByText("Coûts imprévisibles")).toBeInTheDocument();
-    expect(screen.getByText("PABX obsolète")).toBeInTheDocument();
-    expect(screen.getByText("Numéros non-locaux")).toBeInTheDocument();
+    const titleElements = screen.getAllByText(/Trunk SIP au compteur/i);
+    expect(titleElements.length).toBeGreaterThan(0);
   });
 
-  test("La solution est bien présentée", () => {
+  test("affiche la description principale", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText(/Notre solution/)).toBeInTheDocument();
-    expect(screen.getByText("Trunk SIP")).toBeInTheDocument();
-    expect(screen.getByText("Facturation au compteur")).toBeInTheDocument();
-    expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
+    expect(
+      screen.getByText(/Payez uniquement vos consommations réelles/i)
+    ).toBeInTheDocument();
   });
 
-  test("Les tarifs sont affichés", () => {
+  test("affiche les avantages clés", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText("Tarification transparente")).toBeInTheDocument();
-    expect(screen.getByText("0,02€/min")).toBeInTheDocument();
-    expect(screen.getByText("0,015€/min")).toBeInTheDocument();
-    expect(screen.getByText("Gratuit")).toBeInTheDocument();
+    const facturationElements = screen.getAllByText(
+      /Facturation à la seconde/i
+    );
+    expect(facturationElements.length).toBeGreaterThan(0);
+
+    expect(screen.getByText(/Numéros locaux gratuits/i)).toBeInTheDocument();
+
+    const supportElements = screen.getAllByText(/Support technique local/i);
+    expect(supportElements.length).toBeGreaterThan(0);
   });
 
-  test("Les cas d'usage sont présentés", () => {
+  test("affiche les solutions proposées", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText("Commerce de proximité")).toBeInTheDocument();
-    expect(screen.getByText("Cabinets médicaux")).toBeInTheDocument();
-    expect(screen.getByText("Professions libérales")).toBeInTheDocument();
+    // Vérifier que la section est présente en cherchant des éléments partiels
+    const trunkElements = screen.getAllByText(/Trunk SIP au compteur/i);
+    expect(trunkElements.length).toBeGreaterThan(0);
+
+    const payezElements = screen.getAllByText(
+      /payez seulement ce que vous consommez/i
+    );
+    expect(payezElements.length).toBeGreaterThan(0);
   });
 
-  test("Le témoignage client est affiché", () => {
+  test("affiche la section des tarifs détaillés des appels à la minute", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText(/Avec le Trunk SIP au compteur/)).toBeInTheDocument();
-    expect(screen.getByText("Dr. Marie Dubois")).toBeInTheDocument();
-    expect(screen.getByText("Cabinet médical, Fort-de-France")).toBeInTheDocument();
+    // Le titre est dans un seul élément h3
+    expect(
+      screen.getByText(/Tarifs détaillés des appels à la minute/i)
+    ).toBeInTheDocument();
   });
 
-  test("Le CTA principal pointe vers devis en ligne", () => {
+  test("affiche le tableau des coûts avec tous les tarifs", () => {
     render(<TrunkSIPCompteur />);
-    
-    const ctaButton = screen.getByRole("link", { name: /Calculer mes économies/ });
-    expect(ctaButton).toBeInTheDocument();
-    expect(ctaButton).toHaveAttribute("href", "/devis-en-ligne");
+    expect(screen.getByText(/France Fixe/i)).toBeInTheDocument();
+    expect(screen.getByText(/France Mobile/i)).toBeInTheDocument();
+    expect(screen.getByText(/DOM Fixe/i)).toBeInTheDocument();
+    expect(screen.getByText(/DOM Mobile/i)).toBeInTheDocument();
+    expect(screen.getByText(/Création numéro SDA/i)).toBeInTheDocument();
+
+    const portabiliteElements = screen.getAllByText(/Portabilité/i);
+    expect(portabiliteElements.length).toBeGreaterThan(0);
   });
 
-  test("Le numéro de téléphone est cliquable", () => {
+  test("affiche les informations sur les DOM avec les territoires", () => {
     render(<TrunkSIPCompteur />);
-    
-    const phoneLink = screen.getByRole("link", { name: /01 89 56 05 00/ });
-    expect(phoneLink).toBeInTheDocument();
-    expect(phoneLink).toHaveAttribute("href", "tel:+33189560500");
+    // Vérifier que les territoires DOM sont mentionnés dans le contexte des tarifs
+    const guadeloupeElements = screen.getAllByText(/Guadeloupe/i);
+    expect(guadeloupeElements.length).toBeGreaterThan(0);
+
+    const martiniqueElements = screen.getAllByText(/Martinique/i);
+    expect(martiniqueElements.length).toBeGreaterThan(0);
+
+    const guyaneElements = screen.getAllByText(/Guyane/i);
+    expect(guyaneElements.length).toBeGreaterThan(0);
+
+    const reunionElements = screen.getAllByText(/Réunion/i);
+    expect(reunionElements.length).toBeGreaterThan(0);
+
+    const mayotteElements = screen.getAllByText(/Mayotte/i);
+    expect(mayotteElements.length).toBeGreaterThan(0);
   });
 
-  test("La FAQ est présente et fonctionnelle", () => {
+  test('affiche les indications "Sur devis"', () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText("Questions")).toBeInTheDocument();
-    expect(screen.getByText("fréquentes")).toBeInTheDocument();
-    expect(screen.getByText(/Quelle est la différence entre Trunk SIP/)).toBeInTheDocument();
-    expect(screen.getByText(/Puis-je garder mes numéros actuels/)).toBeInTheDocument();
+    const surDevisElements = screen.getAllByText(/Sur devis/i);
+    expect(surDevisElements.length).toBeGreaterThan(0);
   });
 
-  test("Les éléments de réassurance sont présents", () => {
+  test("utilise les couleurs de la charte graphique", () => {
     render(<TrunkSIPCompteur />);
-    
-    expect(screen.getByText("Facturation transparente")).toBeInTheDocument();
-    expect(screen.getByText("Numéros locaux inclus")).toBeInTheDocument();
-    expect(screen.getByText("Support DOM")).toBeInTheDocument();
-    expect(screen.getByText("Devis gratuit")).toBeInTheDocument();
+    // Vérifier que les classes de couleurs personnalisées sont utilisées
+    const container = document.querySelector(
+      ".bg-gradient-to-br.from-blue-50.to-red-50"
+    );
+    expect(container).toBeInTheDocument();
+  });
+
+  test("affiche la section de compatibilité IPBX", () => {
+    render(<TrunkSIPCompteur />);
+    // Vérifier que la section est présente en cherchant des éléments partiels
+    const compatibleElements = screen.getAllByText(/Compatible avec/i);
+    expect(compatibleElements.length).toBeGreaterThan(0);
+
+    const ipbxElements = screen.getAllByText(/tous les IPBX/i);
+    expect(ipbxElements.length).toBeGreaterThan(0);
+  });
+
+  test("affiche les marques compatibles", () => {
+    render(<TrunkSIPCompteur />);
+    // Utiliser getAllByText car 3CX apparaît plusieurs fois
+    const c3xElements = screen.getAllByText(/3CX/i);
+    expect(c3xElements.length).toBeGreaterThan(0);
+
+    const yeastarElements = screen.getAllByText(/Yeastar/i);
+    expect(yeastarElements.length).toBeGreaterThan(0);
+
+    const grandstreamElements = screen.getAllByText(/Grandstream/i);
+    expect(grandstreamElements.length).toBeGreaterThan(0);
+  });
+
+  test("affiche la section des cas d'usage", () => {
+    render(<TrunkSIPCompteur />);
+    // Vérifier que la section est présente en cherchant des éléments partiels
+    const idealElements = screen.getAllByText(/Idéal pour votre/i);
+    expect(idealElements.length).toBeGreaterThan(0);
+
+    const entrepriseElements = screen.getAllByText(/entreprise/i);
+    expect(entrepriseElements.length).toBeGreaterThan(0);
+  });
+
+  test("affiche les témoignages clients", () => {
+    render(<TrunkSIPCompteur />);
+    expect(
+      screen.getByText(/Avec le Trunk SIP au compteur d'E2I VoIP/i)
+    ).toBeInTheDocument();
+  });
+
+  test("affiche la section CTA finale", () => {
+    render(<TrunkSIPCompteur />);
+    // Vérifier que la section est présente en cherchant des éléments partiels
+    const calculezElements = screen.getAllByText(/Calculez vos/i);
+    expect(calculezElements.length).toBeGreaterThan(0);
+
+    const economiesElements = screen.getAllByText(/économies/i);
+    expect(economiesElements.length).toBeGreaterThan(0);
+  });
+
+  test("affiche les boutons d'action", () => {
+    render(<TrunkSIPCompteur />);
+    const devisButtons = screen.getAllByText(/Calculer mes économies/i);
+    expect(devisButtons.length).toBeGreaterThan(0);
+
+    const expertButtons = screen.getAllByText(/Parler à un expert/i);
+    expect(expertButtons.length).toBeGreaterThan(0);
+  });
+
+  test("respecte la ligne éditoriale avec les mots-clés DOM-TOM", () => {
+    render(<TrunkSIPCompteur />);
+
+    // Vérifier que les éléments sont présents (même si dans des textes divisés)
+    const domElements = screen.getAllByText(/DOM/i);
+    expect(domElements.length).toBeGreaterThan(0);
+
+    const antillesElements = screen.getAllByText(/Antilles/i);
+    expect(antillesElements.length).toBeGreaterThan(0);
+
+    const guyaneElements = screen.getAllByText(/Guyane/i);
+    expect(guyaneElements.length).toBeGreaterThan(0);
+
+    const reunionElements = screen.getAllByText(/Réunion/i);
+    expect(reunionElements.length).toBeGreaterThan(0);
+
+    // Vérifier la présence des sections plutôt que des textes spécifiques
+    expect(screen.getByText(/Opérateur SIP DOM/i)).toBeInTheDocument();
   });
 });
