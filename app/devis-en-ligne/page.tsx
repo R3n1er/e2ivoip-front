@@ -21,6 +21,7 @@ import {
   AnimatedGrid,
 } from "@/components/devis-animations";
 import { DevisHeroSection } from "@/components/devis-hero-section";
+import { TawkToChat } from "@/components/tawk-to-chat";
 
 export default function DevisEnLignePage() {
   const devisTypes = [
@@ -294,6 +295,9 @@ export default function DevisEnLignePage() {
           </AnimatedSection>
         </div>
       </section>
+      
+      {/* Chat Tawk.to avec délai de 30 secondes */}
+      <TawkToChat />
     </div>
   );
 }

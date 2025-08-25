@@ -528,6 +528,41 @@ module.exports = {
 };
 ```
 
+## Dégradés et Styles Visuels E2I VoIP
+
+### Dégradé Hero Section Standard
+
+**OBLIGATOIRE** : Utiliser ce dégradé pour toutes les hero sections du site :
+
+```css
+bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
+```
+
+**Structure HTML recommandée** :
+
+```tsx
+<section className="relative py-20 overflow-hidden">
+  <div className="absolute inset-0">
+    <img
+      src="/image.jpg"
+      alt="Description"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+    {/* Gradient Overlay uniforme */}
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
+  </div>
+  <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Contenu de la hero section */}
+  </div>
+</section>
+```
+
+**Caractéristiques** :
+- Direction : De gauche à droite (bleu foncé → bleu marine → rouge)
+- Transparences : Permettent la visibilité de l'image de fond
+- Z-index : 10 pour l'overlay, 20 pour le contenu
+- Cohérence visuelle : Uniforme sur tout le site
+
 ## Bonnes Pratiques
 
 ### Performance

@@ -5,6 +5,7 @@ import { AboutSectionSimple } from "@/components/about-section-simple";
 import { ClientsCarousel } from "@/components/clients-carousel";
 import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { TawkToChat } from "@/components/tawk-to-chat";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,9 @@ export default function HomePage() {
         <ServicesSectionSimple />
         <ContactSectionSimple />
       </div>
+      
+      {/* Chat Tawk.to avec délai de 30 secondes */}
+      <TawkToChat />
     </div>
   );
 }
