@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { TawkToChat } from "@/components/tawk-to-chat";
 
 export const metadata: Metadata = {
   title:
@@ -41,19 +42,15 @@ export default function TrunkSIPCompteur() {
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage:
-                "url('/pexels-man-on-phone-e2ivoip-business-1.jpg')",
-            }}
-          ></div>
-
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/60 to-blue-marine/60"></div>
-
-          {/* Pattern overlay */}
-          <div className="absolute inset-0 opacity-20 pattern-dots"></div>
+          <div className="absolute inset-0">
+            <img
+              src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
+              alt="Professionnel utilisant la téléphonie IP E2I VoIP"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Gradient Overlay uniforme */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
+          </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
@@ -497,6 +494,9 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
       </main>
+      
+      {/* Chat Tawk.to avec délai de 30 secondes */}
+      <TawkToChat />
     </div>
   );
 }

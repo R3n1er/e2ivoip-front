@@ -55,6 +55,31 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Filtres** : Par catégorie, année, auteur
 - **Articles individuels** : Rendu Rich Text avec métadonnées SEO
 
+### Chat en direct Tawk.to
+
+Le script de chat en direct doit etre lancé avec un délais de 10 secondes sur les pages suivantes :
+
+- Home
+- Trunk SIP au Compteur
+- Devis en ligne
+- Qui sommes-nous
+
+Voici le script Tawk.to à intégrer sur les pages :
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/688d3cc109ef001928d4773f/1j1jrald3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
 ### Formulaires
 
 - **Contact général** : HubSpot (intégration complète)
@@ -162,9 +187,17 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 #### Dégradés Principaux
 
+- **Dégradé Hero Uniforme** : `bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85`
+
+  - Utilisation : **STANDARD pour toutes les hero sections du site**
+  - Direction : De gauche à droite (bleu vers rouge)
+  - Couleurs : Bleu foncé semi-transparent vers bleu marine vers rouge
+  - Structure : Image de fond + overlay avec ce dégradé + contenu
+  - Opacité : Transparences pour permettre la visibilité de l'image de fond
+
 - **Dégradé Rouge-Bleu** : `bg-gradient-to-r from-red-600 to-blue-700`
 
-  - Utilisation : Boutons CTA, sections héro, éléments d'accent
+  - Utilisation : Boutons CTA, sections héro alternatives, éléments d'accent
   - Direction : De gauche à droite
   - Couleurs : Rouge primaire vers bleu marine
 

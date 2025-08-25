@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { TawkToChat } from "@/components/tawk-to-chat";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
@@ -50,11 +51,16 @@ export default function QuiSommesNous() {
   return (
     <>
       {/* Hero Section avec Image Stylisée */}
-      <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
         {/* Image de fond avec overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 to-blue-marine/90 z-10"></div>
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 pattern-dots"></div>
+          <img
+            src="/images/photos/pexels-polina-tankilevitch-5234774.webp"
+            alt="Équipe E2I VoIP - Experts télécom DOM"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Gradient Overlay uniforme */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -577,6 +583,9 @@ export default function QuiSommesNous() {
           </div>
         </div>
       </section>
+      
+      {/* Chat Tawk.to avec délai de 30 secondes */}
+      <TawkToChat />
     </>
   );
 }
