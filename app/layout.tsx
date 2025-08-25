@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { HubSpotTracking } from "@/components/hubspot-tracking";
+import { HotjarTracking } from "@/components/hotjar-tracking";
 import { HeaderSimple } from "@/components/header-simple";
 import { Footer } from "@/components/footer";
 import { TawkTo } from "@/components/tawk-to";
@@ -57,6 +58,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <HubSpotTracking />
+        <HotjarTracking />
         <TawkTo />
         <HeaderSimple />
         <main className="flex-1 pt-16">{children}</main>
