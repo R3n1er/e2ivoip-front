@@ -39,7 +39,7 @@ export default function QuiSommesNous() {
   ];
 
   const locations = [
-    { name: "Guyane", phone: "0594 963 500", icon: "lni-map-marker" },
+    { name: "Guyane", phone: "0594 96 35 00", icon: "lni-map-marker" },
     { name: "Guadeloupe", phone: "0590 173 500", icon: "lni-map-marker" },
     { name: "Martinique", phone: "0596 313 500", icon: "lni-map-marker" },
     { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },

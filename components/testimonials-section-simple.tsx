@@ -37,32 +37,6 @@ export function TestimonialsSectionSimple() {
     },
   ];
 
-  const certifications = [
-    {
-      icon: "lni-certificate",
-      title: "Partenaire Silver 3CX",
-      description: "Certification avancée CFD (Certified for Distribution)",
-      level: "Expert",
-    },
-    {
-      icon: "lni-shield",
-      title: "Certifié Yeastar",
-      description: "Solution économique et flexible pour PME",
-      level: "Certifié",
-    },
-    {
-      icon: "lni-users",
-      title: "Partenaire Fanvil & Yealink",
-      description: "Gestion centralisée du parc téléphonique",
-      level: "Partenaire",
-    },
-    {
-      icon: "lni-checkmark-circle",
-      title: "Hébergement Souverain",
-      description: "Infrastructure AWS/Azure France/UE conforme RGPD",
-      level: "Conforme",
-    },
-  ];
 
   return (
     <section id="temoignages" className="py-20 bg-gray-50">
@@ -131,31 +105,6 @@ export function TestimonialsSectionSimple() {
           </div>
         </div>
 
-        {/* Certifications */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Certifications et expertise
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-sm text-center"
-              >
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <i className={`lni ${cert.icon} h-6 w-6 text-red-primary`}></i>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  {cert.title}
-                </h4>
-                <p className="text-gray-secondary text-sm mb-3">
-                  {cert.description}
-                </p>
-                <Badge className="badge badge-primary">{cert.level}</Badge>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
