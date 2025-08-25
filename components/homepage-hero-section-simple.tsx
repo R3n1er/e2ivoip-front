@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
@@ -58,23 +58,13 @@ export function HomepageHeroSectionSimple() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              <i className="lni lni-phone w-5 h-5 mr-3"></i>
+            <CTAButton href="/devis-en-ligne" icon="lni-phone">
               Calculez vos économies
-              <i className="lni lni-arrow-right w-5 h-5 ml-3"></i>
-            </Button>
+            </CTAButton>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-semibold bg-transparent transition-all duration-300 transform hover:scale-105"
-            >
-              <i className="lni lni-play w-5 h-5 mr-3"></i>
+            <CTAButtonSecondary href="/telephonie-entreprise/trunk-sip-compteur" icon="lni-play">
               Découvrez nos offres Trunk SIP
-            </Button>
+            </CTAButtonSecondary>
           </div>
 
           {/* Stats */}

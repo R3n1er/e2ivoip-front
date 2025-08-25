@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
+import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 
 export const metadata: Metadata = {
   title:
@@ -481,18 +482,12 @@ export default function TrunkSIPCompteur() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/devis-en-ligne">
-                <button className="btn btn-primary btn-lg shadow-xl">
-                  <i className="lni lni-calculator mr-2"></i>
-                  Calculer mes économies gratuitement
-                </button>
-              </Link>
-              <a href="tel:+33189560500">
-                <button className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-red-primary">
-                  <i className="lni lni-phone mr-2"></i>
-                  Parler à un expert : 01 89 56 05 00
-                </button>
-              </a>
+              <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                Calculer mes économies gratuitement
+              </CTAButton>
+              <CTAButtonSecondary href="tel:+33189560500" icon="lni-phone" external>
+                Parler à un expert : 01 89 56 05 00
+              </CTAButtonSecondary>
             </div>
 
             <p className="text-white/70 text-sm mt-6">

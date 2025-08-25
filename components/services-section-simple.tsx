@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
 import Link from "next/link";
 
 export function ServicesSectionSimple() {
@@ -198,15 +198,9 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
                   
-                  <Link href={service.href}>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-red-primary text-red-primary hover:bg-red-primary hover:text-white"
-                    >
-                      En savoir plus
-                      <i className="lni lni-arrow-right w-4 h-4 ml-2"></i>
-                    </Button>
-                  </Link>
+                  <CTAButtonSecondary href={service.href} icon="lni-arrow-right" fullWidth>
+                    En savoir plus
+                  </CTAButtonSecondary>
                 </div>
               </CardContent>
             </Card>
@@ -225,17 +219,12 @@ export function ServicesSectionSimple() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="btn btn-primary">
-              <i className="lni lni-phone w-5 h-5 mr-2"></i>
+            <CTAButton href="/contact" icon="lni-phone">
               Audit télécom gratuit
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="btn btn-outline btn-primary"
-            >
+            </CTAButton>
+            <CTAButtonMarine href="/devis-en-ligne" icon="lni-calculator">
               Demander un devis
-            </Button>
+            </CTAButtonMarine>
           </div>
         </div>
       </div>
