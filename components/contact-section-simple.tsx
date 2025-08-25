@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
 
 export function ContactSectionSimple() {
   const contacts = [
@@ -52,17 +51,12 @@ export function ContactSectionSimple() {
 
           {/* Main CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/contact">
-              <Button size="lg" className="btn btn-primary">
-                <i className="lni lni-calendar w-5 h-5 mr-2"></i>
-                Audit télécom gratuit
-                <i className="lni lni-arrow-right w-5 h-5 ml-2"></i>
-              </Button>
-            </Link>
-            <Button size="lg" className="btn btn-outline btn-primary">
-              <i className="lni lni-phone w-5 h-5 mr-2"></i>
+            <CTAButton href="/contact" icon="lni-calendar">
+              Audit télécom gratuit
+            </CTAButton>
+            <CTAButtonMarine href="/devis-en-ligne" icon="lni-phone">
               Calculez vos économies
-            </Button>
+            </CTAButtonMarine>
           </div>
         </div>
 
