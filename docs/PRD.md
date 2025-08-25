@@ -318,6 +318,26 @@ TAWK_TO_ID=
 - **Erreurs** : Logs Next.js + Sentry
 - **Analytics** : HubSpot + Google Analytics
 
+### HOTJAR Analytics
+
+Mettre en place le script Hotjar
+
+Lien vers la documentation Hotjar : https://help.hotjar.com/hc/en-us
+
+Script Hotjar à intégrer :
+
+<!-- Hotjar Tracking Code for https://www.e2i-voip.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:6502550,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
 ## Roadmap
 
 ### Phase 1 - Complétée ✅
