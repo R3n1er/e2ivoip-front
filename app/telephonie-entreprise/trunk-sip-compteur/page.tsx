@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { TawkToChat } from "@/components/tawk-to-chat";
 import { ClientWrapperTally } from "@/components/client-wrapper-tally";
 
 export const metadata: Metadata = {
@@ -468,8 +467,8 @@ export default function TrunkSIPCompteur() {
       {/* Popup Tally après 5 secondes */}
       <ClientWrapperTally />
       
-      {/* Chat Tawk.to avec délai de 30 secondes */}
-      <TawkToChat />
+      {/* Chat Tawk.to désactivé sur cette page pour éviter le conflit avec l'emoji personnalisé */}
+      {/* <TawkToChat /> */}
     </div>
   );
 }

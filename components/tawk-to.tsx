@@ -14,7 +14,7 @@ export function TawkTo({
 
   useEffect(() => {
     // Pages à exclure du chat
-    const excludedPages = ["/contact", "/devis-en-ligne"];
+    const excludedPages = ["/contact", "/devis-en-ligne", "/telephonie-entreprise/trunk-sip-compteur"];
 
     // Vérifier si la page actuelle est exclue
     const isExcluded = excludedPages.some((page) => pathname.includes(page));

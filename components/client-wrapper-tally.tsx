@@ -1,7 +1,7 @@
 "use client";
 
-import { TallyPopupClean } from "@/components/tally-popup-clean";
+import { TallyPopupWithCustomEmoji } from "@/components/tally-popup-with-custom-emoji";
 
 export function ClientWrapperTally() {
-  return <TallyPopupClean />;
+  return <TallyPopupWithCustomEmoji />;
 }

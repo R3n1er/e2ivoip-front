@@ -32,6 +32,31 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 - **Playwright MCP** : Tests end-to-end et intégration
 - **MCP Browser** : Tests navigateur et validation UI
 
+### Intégrations Formulaires
+
+#### Tally - Popup de Conversion
+
+**Implémentation** : Popup automatique sur page Trunk SIP au compteur
+
+**Composant** : `TallyPopupClean` avec wrapper client `ClientWrapperTally`
+
+**Configuration** :
+- **Formulaire** : ID `mDY1bl` 
+- **Déclenchement** : Automatique après 3 secondes (optimisé UX)
+- **Animation** : Emoji 👋 avec effet "wave"
+- **Script** : `https://tally.so/widgets/embed.js` (chargement immédiat)
+
+**Usage** :
+```tsx
+// Import dans page Server Component
+import { ClientWrapperTally } from "@/components/client-wrapper-tally";
+
+// Utilisation
+<ClientWrapperTally />
+```
+
+**Objectif métier** : Capturer les prospects qualifiés sur la page produit stratégique avec automatismes N8N pour traitement commercial.
+
 ### Méthodologie de Développement
 
 - **Test-Driven Development (TDD)** : Tests AVANT implémentation
