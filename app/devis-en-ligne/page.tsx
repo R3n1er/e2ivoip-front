@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FullContactForm } from "@/components/hubspot-contact-form";
+import { TallyFormEmbed } from "@/components/tally-form-embed";
 import { ClientsCarousel } from "@/components/clients-carousel";
 
 export default function DevisEnLignePage() {
@@ -211,10 +211,10 @@ export default function DevisEnLignePage() {
         </div>
       </section>
 
-      {/* Formulaire de Contact HubSpot */}
+      {/* Formulaire de Contact Tally */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FullContactForm />
+          <TallyFormEmbed />
         </div>
       </section>
 
