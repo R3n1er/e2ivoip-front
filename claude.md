@@ -29,7 +29,7 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 ### Serveurs MCP Intégrés
 
 - **Context7** : Gestion du contexte et de la mémoire projet
-- **Playwright** : Tests end-to-end et intégration
+- **Playwright MCP** : Tests end-to-end et intégration
 - **MCP Browser** : Tests navigateur et validation UI
 
 ### Méthodologie de Développement
@@ -558,6 +558,7 @@ bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
 ```
 
 **Caractéristiques** :
+
 - Direction : De gauche à droite (bleu foncé → bleu marine → rouge)
 - Transparences : Permettent la visibilité de l'image de fond
 - Z-index : 10 pour l'overlay, 20 pour le contenu

@@ -3,6 +3,7 @@ import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { TawkToChat } from "@/components/tawk-to-chat";
+import { ClientWrapperTally } from "@/components/client-wrapper-tally";
 
 export const metadata: Metadata = {
   title:
@@ -410,37 +411,6 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
 
-        {/* Témoignage client */}
-        <section className="py-16 bg-base-200">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <i className="lni lni-quotation text-green-600 text-3xl"></i>
-                </div>
-                <blockquote className="text-xl text-gray-700 mb-6 italic">
-                  "Avec le Trunk SIP au compteur d'E2I VoIP, nous avons{" "}
-                  <strong>réduit notre facture télécom de 35%</strong>
-                  tout en gardant nos numéros locaux martiniquais. La
-                  facturation transparente nous permet enfin de maîtriser notre
-                  budget."
-                </blockquote>
-                <div className="text-gray-600">
-                  <div className="font-semibold text-gray-900">
-                    Dr. Marie Dubois
-                  </div>
-                  <div>Cabinet médical • Fort-de-France, Martinique</div>
-                  <div className="text-sm mt-2">
-                    <span className="inline-flex items-center text-green-600">
-                      <i className="lni lni-checkmark-circle mr-1"></i>
-                      Client E2I VoIP depuis 2 ans
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* FAQ */}
         <section className="py-16 bg-white">
@@ -494,6 +464,9 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
       </main>
+      
+      {/* Popup Tally après 5 secondes */}
+      <ClientWrapperTally />
       
       {/* Chat Tawk.to avec délai de 30 secondes */}
       <TawkToChat />

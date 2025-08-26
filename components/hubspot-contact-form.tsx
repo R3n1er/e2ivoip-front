@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHubSpot } from "./hubspot-tracking";
 
 interface HubSpotContactFormProps {
@@ -19,56 +19,93 @@ export function HubSpotContactForm({
   className = "",
 }: HubSpotContactFormProps) {
   const formRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const { trackEvent } = useHubSpot();
 
   useEffect(() => {
-    if ((window as any).hbspt && formRef.current) {
-      // Supprimer le formulaire existant s'il y en a un
-      const existingForm = formRef.current.querySelector(".hs-form");
-      if (existingForm) {
-        existingForm.remove();
+    const createForm = () => {
+      if ((window as any).hbspt && (window as any).hbspt.forms && formRef.current) {
+        // Supprimer le formulaire existant s'il y en a un
+        const existingForm = formRef.current.querySelector(".hs-form");
+        if (existingForm) {
+          existingForm.remove();
+        }
+
+        // Créer le formulaire HubSpot
+        ;(window as any).hbspt.forms.create({
+          portalId: portalId,
+          formId: formId,
+          region: region,
+          target: formRef.current,
+          onFormSubmitted: (form: any) => {
+            // Tracking de l'événement de soumission
+            trackEvent("contact_form_submitted", {
+              form_id: formId,
+              form_type: "contact_general",
+              portal_id: portalId,
+              lead_source: "website",
+              timestamp: new Date().toISOString(),
+            });
+
+            // Callback personnalisé
+            if (onFormSubmitted) {
+              onFormSubmitted(form);
+            }
+          },
+          onFormReady: (form: any) => {
+            // Formulaire prêt, masquer le loader
+            setIsLoading(false);
+            
+            // Tracking de l'affichage du formulaire
+            trackEvent("contact_form_displayed", {
+              form_id: formId,
+              form_type: "contact_general",
+              portal_id: portalId,
+            });
+          },
+        });
       }
+    };
 
-      // Créer le formulaire HubSpot
-      ;(window as any).hbspt.forms.create({
-        portalId: portalId,
-        formId: formId,
-        region: region,
-        target: formRef.current,
-        onFormSubmitted: (form: any) => {
-          // Tracking de l'événement de soumission
-          trackEvent("contact_form_submitted", {
-            form_id: formId,
-            form_type: "contact_general",
-            portal_id: portalId,
-            lead_source: "website",
-            timestamp: new Date().toISOString(),
-          });
+    // Essayer de créer le formulaire immédiatement
+    createForm();
 
-          // Callback personnalisé
-          if (onFormSubmitted) {
-            onFormSubmitted(form);
-          }
-        },
-        onFormReady: (form: any) => {
-          // Tracking de l'affichage du formulaire
-          trackEvent("contact_form_displayed", {
-            form_id: formId,
-            form_type: "contact_general",
-            portal_id: portalId,
-          });
-        },
-      });
-    }
+    // Si HubSpot n'est pas encore chargé, attendre et réessayer
+    const checkInterval = setInterval(() => {
+      if ((window as any).hbspt && (window as any).hbspt.forms) {
+        createForm();
+        clearInterval(checkInterval);
+      }
+    }, 500);
+
+    // Nettoyer l'intervalle après 10 secondes maximum
+    const timeout = setTimeout(() => {
+      clearInterval(checkInterval);
+    }, 10000);
+
+    return () => {
+      clearInterval(checkInterval);
+      clearTimeout(timeout);
+    };
   }, [portalId, formId, region, onFormSubmitted, trackEvent]);
 
   return (
-    <div
-      ref={formRef}
-      className={`hubspot-contact-form ${className}`}
-      data-portal-id={portalId}
-      data-form-id={formId}
-    />
+    <div className={`hubspot-contact-form-wrapper ${className}`}>
+      {isLoading && (
+        <div className="flex justify-center items-center min-h-[400px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Chargement du formulaire...</p>
+          </div>
+        </div>
+      )}
+      <div
+        ref={formRef}
+        className={`hubspot-contact-form ${isLoading ? 'hidden' : ''}`}
+        data-portal-id={portalId}
+        data-form-id={formId}
+      />
+    </div>
   );
 }
 
