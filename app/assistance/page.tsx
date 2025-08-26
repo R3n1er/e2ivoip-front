@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function AssistancePage() {
   return (
-    <i className="lni lni-question-circle"></i>
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
         <div className="absolute inset-0">
@@ -120,6 +120,6 @@ export default function AssistancePage() {
           <WorkingFAQ />
         </div>
       </section>
-    <i className="lni lni-question-circle"></i>
+    </div>
   );
 }

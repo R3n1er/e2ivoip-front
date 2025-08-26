@@ -276,7 +276,7 @@ export default function NosServices() {
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
+                        <i className={`lni ${benefit.icon} text-2xl ${benefit.color}`}></i>
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
                         {benefit.title}

@@ -110,7 +110,7 @@ export function MobilityServicesSection() {
                   <CardHeader>
                     <div className="flex items-start justify-between mb-4">
                       <div className={`p-3 rounded-lg ${colorClasses.bg}`}>
-                        <service.icon className={`w-6 h-6 ${colorClasses.text}`} />
+                        <i className={`lni ${service.icon} text-lg ${colorClasses.text}`}></i>
                       </div>
                       <Badge variant="secondary" className="text-xs">
                         {service.badge}

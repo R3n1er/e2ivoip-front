@@ -73,18 +73,3 @@ export function HubSpotForm({
   );
 }
 
-// Déclaration TypeScript pour window.hbspt
-declare global {
-  interface Window {
-    hbspt: {
-      forms: {
-        create: (options: {
-          portalId: string;
-          formId: string;
-          region: string;
-          target?: HTMLElement;
-        }) => void;
-      };
-    };
-  }
-}
