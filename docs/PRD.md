@@ -86,6 +86,50 @@ s0.parentNode.insertBefore(s1,s0);
 - **Formulaires spécialisés** : Tally (automatismes N8N)
 - **Validation** : Côté client et serveur
 
+#### Popup Tally - Page Trunk SIP au Compteur
+
+**Objectif** : Augmenter la conversion sur la page produit "Trunk SIP au Compteur" en capturant les prospects qualifiés avec un formulaire contextuel non-intrusif.
+
+**Fonctionnement** :
+- **Déclenchement** : Popup automatique après 3 secondes de présence sur la page (optimisé pour UX réactive)
+- **Formulaire** : Tally ID `mDY1bl` (formulaire de qualification commerciale)
+- **Animation** : Emoji 👋 avec animation "wave" pour attirer l'attention
+- **Comportement** : 
+  - Fermeture manuelle possible
+  - Ne réapparaît pas après soumission (`doNotShowAfterSubmit: true`)
+  - Pas de fermeture automatique (`autoClose: 0`)
+
+**Intégration technique** :
+- **Composant** : `TallyPopupClean` avec chargement asynchrone optimisé du script Tally
+- **Script source** : `https://tally.so/widgets/embed.js`
+- **Chargement** : Immédiat après montage du composant (sans délai artificiel)
+- **Gestion d'erreurs** : Logs en cas d'échec de chargement du script
+
+**Configuration Tally** :
+```javascript
+TallyConfig = {
+  formId: "mDY1bl",
+  popup: {
+    emoji: {
+      text: "👋",
+      animation: "wave"
+    },
+    open: {
+      trigger: "time", 
+      ms: 3000
+    },
+    autoClose: 0,
+    doNotShowAfterSubmit: true
+  }
+}
+```
+
+**Justification métier** :
+- **Page stratégique** : Trunk SIP au compteur = solution phare pour PME DOM-TOM
+- **Timing optimal** : 3 secondes permettent de capter l'attention sans sur-attendre
+- **Qualification** : Formulaire Tally connecté aux automatismes N8N pour traitement commercial
+- **UX optimisée** : Popup réactif qui respecte l'expérience utilisateur moderne
+
 ### Performance
 
 - **SSR/SSG** : Next.js 15 avec génération statique
@@ -505,6 +549,8 @@ Section Call-to-Action principale avec intégration calendrier :
 - [x] Refactorisation header
 - [x] Génération d'images de couverture
 - [x] Tests automatisés
+- [x] Popup Tally page Trunk SIP au compteur
+- [x] Optimisation UX header (fond blanc permanent)
 
 ### Phase 2 - En cours
 

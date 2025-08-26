@@ -52,6 +52,9 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth" data-theme="e2ivoip" suppressHydrationWarning>
       <head>
         <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+        {/* Précharge DNS pour Tally - améliore les performances du popup */}
+        <link rel="dns-prefetch" href="//tally.so" />
+        <link rel="preconnect" href="https://tally.so" crossOrigin="" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
