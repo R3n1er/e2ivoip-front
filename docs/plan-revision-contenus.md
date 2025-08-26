@@ -83,7 +83,7 @@
    - Cas client : Titeca BEAUPORT Finance (90 utilisateurs)
    - Badge "Solution Premium"
 
-4. **3CX SMB Mutualisée** (`/telephonie-entreprise/3cx-smb-mutualisee`)
+4. **3CX SMB PRO** (`/telephonie-entreprise/3cx-smb-pro`)
    - Titre : "3CX SMB PRO : La téléphonie pro dès 3 utilisateurs"
    - Focus : TPE/PME 3-15 postes, solution clé en main
    - Inclus : Trunk SIP, numéros locaux, app mobile 3CX

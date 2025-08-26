@@ -86,7 +86,7 @@ export default function TelephonieDentreprise() {
               {[
                 { title: "Trunk SIP", href: "/trunk-sip", description: "Connexions SIP professionnelles" },
                 { title: "3CX PRO dédiée", href: "/3cx-pro-dediee", description: "Solution 3CX dédiée" },
-                { title: "3CX SMB mutualisée", href: "/3cx-smb-mutualisee", description: "Solution 3CX partagée" },
+                { title: "3CX SMB PRO", href: "/3cx-smb-pro", description: "Solution 3CX pro" },
                 { title: "Yeastar", href: "/yeastar", description: "IPBX Yeastar" },
               ].map((item, index) => (
                 <Card key={index} className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer">

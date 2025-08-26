@@ -113,10 +113,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/telephonie-entreprise/3cx-smb-mutualisee"
+                  href="/telephonie-entreprise/3cx-smb-pro"
                   className="hover:text-white transition-colors"
                 >
-                  3CX SMB mutualisée
+                  3CX SMB PRO
                 </Link>
               </li>
               <li>
