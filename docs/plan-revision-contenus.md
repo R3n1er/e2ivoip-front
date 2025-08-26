@@ -58,10 +58,12 @@
 
 #### Pages à créer avec contenu optimisé :
 
-1. **Trunk SIP au Compteur** (`/telephonie-entreprise/trunk-sip-compteur`)
+1. **✅ Trunk SIP au Compteur** (`/telephonie-entreprise/trunk-sip-compteur`) - **TERMINÉ**
    - Titre : "Trunk SIP au compteur DOM : Payez uniquement vos consommations"
    - Focus : Flexibilité totale, éligible Antilles-Guyane-Réunion, pas d'engagement
    - Points clés : Numéros locaux inclus, portabilité gratuite, tarifs DOM préférentiels
+   - ✅ **Popup Tally intégré** : Qualification automatique des prospects après 15s
+   - ✅ **Conflit Tawk.to résolu** : UX optimisée sans widgets concurrents
    - Tarifs transparents affichés
    - Calculateur d'économies en ligne
 
@@ -212,6 +214,49 @@ Pour chaque page :
 - ROI positif sur refonte
 - Part de marché DOM augmentée
 - NPS > 8
+
+## 🚀 Réalisations - Août 2025
+
+### ✅ 26 Août 2025 - Optimisations UX et Popup de Conversion
+
+#### Popup Tally Page Trunk SIP au Compteur
+- **Implémentation** : Popup automatique avec formulaire de qualification commerciale
+- **Composant** : `TallyPopupWithCustomEmoji` intégré via `ClientWrapperTally`  
+- **Animation** : Emoji 👋 avec animation "wave" CSS personnalisée
+- **Timing** : Délai d'apparition réglé à 15 secondes (optimisé pour UX)
+- **Configuration** : Formulaire Tally ID `mDY1bl` avec script chargé de manière asynchrone
+- **Objectif** : Augmenter la conversion sur page produit stratégique
+
+#### Résolution Conflit Widgets
+- **Problème** : Conflit entre Tawk.to et popup Tally sur page Trunk SIP  
+- **Solution** : Exclusion de Tawk.to spécifiquement sur `/telephonie-entreprise/trunk-sip-compteur`
+- **Implémentation** : Ajout de la page dans la liste `excludedPages` du composant `TawkTo`
+- **Résultat** : UX optimisée sans widgets concurrents
+
+#### Renommage Terminologique
+- **Changement** : "3CX SMB Mutualisée" → "3CX SMB PRO"
+- **Motivation** : Terminologie plus commerciale et cohérente
+- **Fichiers mis à jour** :
+  - `/components/services-section-simple.tsx`
+  - `/app/nos-services/page.tsx`
+  - `/components/header-simple.tsx` 
+  - `/components/header.tsx`
+  - `/app/telephonie-entreprise/page.tsx`
+  - `/components/footer.tsx`
+  - `/docs/plan-revision-contenus.md`
+- **Impact** : Uniformisation de la nomenclature sur tout le site
+
+#### Améliorations Techniques
+- **Animations CSS** : Keyframes personnalisées avec `styled-jsx global`
+- **Performance** : Précharge DNS Tally avec `dns-prefetch` et `preconnect`
+- **Tests** : Validation avec MCP Playwright sur environnement de développement
+- **Git** : Commits atomiques avec messages conventionnels
+
+#### Métriques Attendues
+- **Conversion** : Augmentation attendue de 15-20% sur page Trunk SIP
+- **UX** : Réduction des conflits d'interface utilisateur  
+- **SEO** : Terminologie "PRO" plus attractive pour le référencement
+- **Maintenance** : Code plus cohérent et maintenable
 
 ---
 
