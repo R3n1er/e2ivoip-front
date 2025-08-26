@@ -53,18 +53,18 @@ export default function NosServices() {
     },
     {
       icon: "lni-users",
-      title: "3CX SMB Mutualisé",
+      title: "3CX SMB PRO",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
       features: [
-        "Instance sécurisée mutualisée",
+        "Instance sécurisée pro",
         "Formation incluse",
         "Mobilité intégrée",
         "Interface intuitive",
       ],
       badge: "Idéal PME",
       price: "15€/mois/utilisateur",
-      href: "/telephonie-entreprise/3cx-smb-mutualisee",
+      href: "/telephonie-entreprise/3cx-smb-pro",
       category: "Téléphonie IP",
     },
     {
