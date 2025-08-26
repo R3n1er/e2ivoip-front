@@ -338,6 +338,164 @@ Script Hotjar à intégrer :
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 
+## Nouveaux Composants de Conversion - Page 3CX Cloud
+
+### HubSpot Calendar Component
+
+Composant React pour intégrer le calendrier de rendez-vous HubSpot avec optimisations pour la conversion :
+
+**Localisation** : `/components/hubspot-calendar.tsx`
+
+**Fonctionnalités** :
+- Intégration du script HubSpot Meetings Embed
+- Gestion du chargement asynchrone et des erreurs
+- Interface personnalisable (titre, description, hauteur)
+- Placeholder de chargement avec spinner
+- Informations de contact alternatives pour tous les DOM-TOM
+- Support des numéros de téléphone cliquables
+
+**Script HubSpot intégré** :
+```html
+<!-- Start of Meetings Embed Script -->
+<div class="meetings-iframe-container" data-src="https://www.e2i-voip.com/meetings/alban-renier?embed=true"></div>
+<script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+<!-- End of Meetings Embed Script -->
+```
+
+**Props disponibles** :
+- `meetingUrl` : URL du calendrier HubSpot
+- `title` : Titre affiché au-dessus du calendrier
+- `description` : Description sous le titre  
+- `height` : Hauteur du calendrier en pixels
+- `className` : Classes CSS personnalisées
+- `showContactInfo` : Afficher les contacts alternatifs
+
+### ProblemSolutionSection Component
+
+Composant de conversion présentant les problèmes clients vs solutions E2I VoIP :
+
+**Localisation** : `/components/problem-solution-section.tsx`
+
+**Structure** :
+- Section problèmes (fond rouge) avec icônes Lineicons
+- Section solutions (fond vert) avec badges de mise en valeur
+- Layout responsive en 2 colonnes sur desktop
+- Messages d'impact et d'urgence intégrés
+
+### PricingTiers Component
+
+Composant de tarification par paliers d'appels simultanés :
+
+**Localisation** : `/components/pricing-tiers.tsx`
+
+**Fonctionnalités** :
+- Grille responsive des paliers (8, 16, 24, 32, 64 appels)
+- Mise en valeur du palier "Populaire" (16 appels)
+- Badges personnalisables par palier
+- Fonctionnalités listées avec checkmarks
+- Message d'économie (40%) mis en évidence
+- CTA intégré sur chaque palier
+
+### TestimonialsSection & TestimonialCard Components
+
+Composants pour afficher les témoignages clients :
+
+**Localisation** : `/components/testimonial-card.tsx`
+
+**Fonctionnalités** :
+- Cartes témoignages avec logo entreprise
+- Statistiques visuelles (utilisateurs, solution)
+- Badge de confiance "Client satisfait"
+- Section secteurs d'activité avec icônes
+- Layout adaptatif pour mobile/desktop
+
+### GeographicAdvantage Component
+
+Composant spécifique à l'expertise DOM-TOM d'E2I VoIP :
+
+**Localisation** : `/components/geographic-advantage.tsx`
+
+**Fonctionnalités** :
+- Mise en valeur de la présence locale dans 5 régions
+- Numéros de téléphone cliquables par région
+- Fonctionnalités spécifiques à chaque région
+- Message de proximité et réactivité
+- Design avec dégradés de la charte graphique
+
+### CTACalendarSection Component
+
+Section Call-to-Action principale avec intégration calendrier :
+
+**Localisation** : `/components/cta-calendar-section.tsx`
+
+**Fonctionnalités** :
+- Titre et sous-titre personnalisables
+- Liste des bénéfices de la démonstration
+- Intégration du HubSpotCalendar component
+- Section urgence avec 3 raisons d'agir maintenant
+- Contacts alternatifs (email + devis en ligne)
+- Ancre `#calendrier` pour navigation directe
+
+### Page 3CX Cloud Optimisée
+
+**Localisation** : `/app/3cx-cloud/page.tsx`
+
+**Structure de conversion** :
+1. **Hero Section** - Dégradé standardisé + CTA calendrier principal
+2. **Problèmes vs Solutions** - Identification des pain points clients
+3. **Intégrations avancées** - WhatsApp, CRM, Microsoft 365, IA
+4. **Tarification transparent** - Paliers par appels simultanés
+5. **Témoignages et secteurs** - Preuve sociale et crédibilité
+6. **Avantage géographique** - Expertise DOM-TOM unique
+7. **CTA final avec calendrier** - Conversion principale
+
+**Optimisations SEO** :
+- Titre meta optimisé : "3CX PRO Cloud - Solution Téléphonique d'Entreprise"
+- Description longue avec mots-clés stratégiques
+- Keywords DOM-TOM, calls simultanés, WhatsApp Business
+- OpenGraph optimisé pour partage social
+
+### Données Structurées Intégrées
+
+**Problèmes identifiés** :
+- Saturation d'appels (lignes occupées)
+- Coûts téléphoniques explosifs
+- Obsolescence technique (arrêt cuivre)
+- Sites multiples non centralisés
+- Absence d'intégrations CRM/Office 365
+
+**Solutions proposées** :
+- Serveur cloud dédié AWS EU
+- Tarification transparente (40% d'économies)
+- Hébergement souverain France/UE
+- Expertise certifiée 3CX Silver
+- Minimum 8 appels simultanés garantis
+
+**Paliers tarifaires** :
+- 8 appels : TPE Dynamiques
+- 16 appels : PME Multi-sites (Populaire)
+- 24 appels : Entreprises en croissance
+- 32 appels : Structures importantes  
+- 64 appels : Solution haute capacité
+
+### Intégrations de Conversion
+
+**HubSpot Calendar** :
+- URL : `https://www.e2i-voip.com/meetings/alban-renier`
+- Embed automatique avec paramètre `?embed=true`
+- Titre : "Réservez votre démonstration gratuite"
+- Description : "Échangeons 15 minutes pour comprendre vos enjeux"
+
+**Contacts régionaux intégrés** :
+- Guyane : 0594 963 500
+- Guadeloupe : 0590 173 500  
+- Martinique : 0596 313 500
+- La Réunion : +262 263 085 500
+- France : 0189 563 500
+
+**Email commercial** : commerciaux@e2i-voip.com
+**Devis en ligne** : www.e2i-voip.com/devis
+
 ## Roadmap
 
 ### Phase 1 - Complétée ✅

@@ -37,18 +37,18 @@ export function ServicesSectionSimple() {
     },
     {
       icon: "lni-phone",
-      title: "3CX PRO Dédié",
+      title: "3CX PRO Cloud",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
       features: [
-        "Serveur dédié",
-        "8 appels simultanés minimum",
+        "Serveur dédié dans le cloud",
+        "4 appels simultanés minimum",
         "Multi-sites",
         "Tableau de bord avancé",
       ],
       badge: "Entreprise",
       price: "Sur devis",
-      href: "/telephonie-entreprise/3cx-pro-dediee",
+      href: "/3cx-cloud",
     },
     {
       icon: "lni-mobile",

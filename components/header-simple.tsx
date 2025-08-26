@@ -38,8 +38,8 @@ export function HeaderSimple() {
           href: "/telephonie-entreprise/trunk-sip-illimite",
         },
         {
-          name: "3CX PRO dédiée",
-          href: "/telephonie-entreprise/3cx-pro-dediee",
+          name: "3CX PRO",
+          href: "/3cx-cloud",
         },
         {
           name: "3CX SMB mutualisée",
