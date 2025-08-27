@@ -2,13 +2,25 @@
 import { render, screen } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
+const mockCreate = jest.fn();
+
+beforeEach(() => {
+  mockCreate.mockClear();
+  (window as any).hbspt = { forms: { create: mockCreate } };
+});
+
 describe("ContactPage HubSpot Integration", () => {
   it("should display the HubSpot form container", () => {
     render(<ContactPage />);
-    
+
     // Vérifier que le conteneur HubSpot est présent
     const hubspotContainer = document.getElementById('hubspot-form-container');
     expect(hubspotContainer).toBeInTheDocument();
+    expect(mockCreate).toHaveBeenCalledWith({
+      portalId: "26878201",
+      formId: "312a9f67-e613-4651-9690-4586646554a0",
+      region: "eu1",
+    });
   });
 
   it("should have the correct HubSpot form container", () => {
