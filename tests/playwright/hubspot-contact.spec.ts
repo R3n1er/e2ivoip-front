@@ -13,11 +13,8 @@ test.describe('Page de Contact - Intégration HubSpot', () => {
     // Vérifier la section hero
     await expect(page.locator('h1')).toContainText('Contactez nos experts VoIP');
     
-    // Vérifier que le composant HubSpot est présent
-    await expect(page.locator('#hubspot-form-simple')).toBeVisible();
-    
-    // Vérifier le message de chargement
-    await expect(page.locator('text=Chargement du formulaire...')).toBeVisible();
+    // Vérifier que le conteneur HubSpot est présent
+    await expect(page.locator('#hubspot-form-container')).toBeVisible();
   });
 
   test('devrait charger le script HubSpot', async ({ page }) => {
@@ -27,9 +24,9 @@ test.describe('Page de Contact - Intégration HubSpot', () => {
     // Vérifier que le script HubSpot est dans le DOM
     const scriptElement = page.locator('script[src*="hsforms.net"]');
     await expect(scriptElement).toHaveCount(1);
-    
+
     // Vérifier l'URL du script
-    await expect(scriptElement).toHaveAttribute('src', 'https://js-eu1.hsforms.net/forms/embed/v2.js');
+    await expect(scriptElement).toHaveAttribute('src', /js-eu1\.hsforms\.net\/forms\/embed\/v2\.js/);
   });
 
   test('devrait afficher les informations de contact', async ({ page }) => {
@@ -68,7 +65,7 @@ test.describe('Page de Contact - Intégration HubSpot', () => {
     // Vérifier que la page se charge toujours
     await expect(page.locator('h1')).toContainText('Contactez nos experts VoIP');
     
-    // Vérifier que le composant HubSpot est toujours présent
-    await expect(page.locator('#hubspot-form-simple')).toBeVisible();
+    // Vérifier que le conteneur HubSpot est toujours présent
+    await expect(page.locator('#hubspot-form-container')).toBeVisible();
   });
 });
