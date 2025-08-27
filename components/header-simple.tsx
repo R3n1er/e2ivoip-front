@@ -1,22 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { CTAButton } from "@/components/ui/cta-button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   // Suppression de la logique complexe des sous-menus
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Nettoyage simplifié
 
@@ -72,11 +63,8 @@ export function HeaderSimple() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
-        isScrolled
-          ? "bg-transparent backdrop-blur-sm border-b border-white/20"
-          : "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
-      }`}
+      suppressHydrationWarning
+      className="fixed top-0 w-full z-[100] transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
@@ -87,33 +75,13 @@ export function HeaderSimple() {
           >
             <div className="flex items-center">
               <div className="text-xl lg:text-2xl font-bold">
-                <span
-                  className={`group-hover:text-red-primary transition-colors ${
-                    isScrolled ? "text-white" : "text-red-primary"
-                  }`}
-                >
-                  E
-                </span>
-                <span
-                  className={isScrolled ? "text-white" : "text-blue-marine"}
-                >
-                  2
-                </span>
-                <span
-                  className={`group-hover:text-red-primary transition-colors ${
-                    isScrolled ? "text-white" : "text-red-primary"
-                  }`}
-                >
-                  I
-                </span>
+                <span className="text-red-primary transition-colors">E</span>
+                <span className="text-blue-marine">2</span>
+                <span className="text-red-primary transition-colors">I</span>
               </div>
             </div>
             <div className="hidden sm:block">
-              <div
-                className={`text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] transition-colors ${
-                  isScrolled ? "text-white/80" : "text-gray-secondary"
-                }`}
-              >
+              <div className="text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] text-gray-secondary">
                 Solutions de Téléphonie IP
                 <br />
                 et communications d&apos;entreprise
@@ -128,36 +96,18 @@ export function HeaderSimple() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 ${
-                      isScrolled
-                        ? "text-white hover:text-red-400"
-                        : "text-gray-700 hover:text-red-primary"
-                    }`}
+                    className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 text-gray-700 hover:text-red-primary"
                   >
                     {item.name}
                     {item.submenu && (
-                      <i
-                        className={`lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 ${
-                          isScrolled ? "text-white/70" : "text-gray-600"
-                        } group-hover:rotate-180`}
-                      ></i>
+                      <i className="lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180"></i>
                     )}
                   </Link>
                 ) : (
-                  <span
-                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer ${
-                      isScrolled
-                        ? "text-white hover:text-red-400"
-                        : "text-gray-700 hover:text-red-primary"
-                    }`}
-                  >
+                  <span className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer text-gray-700 hover:text-red-primary">
                     {item.name}
                     {item.submenu && (
-                      <i
-                        className={`lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 ${
-                          isScrolled ? "text-white/70" : "text-gray-600"
-                        } group-hover:rotate-180`}
-                      ></i>
+                      <i className="lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180"></i>
                     )}
                   </span>
                 )}
@@ -184,7 +134,11 @@ export function HeaderSimple() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
-            <CTAButton href="/contact" icon="lni-phone" className="!text-sm !px-6 !py-2 !font-medium">
+            <CTAButton
+              href="/contact"
+              icon="lni-phone"
+              className="!text-sm !px-6 !py-2 !font-medium"
+            >
               Contact
             </CTAButton>
           </div>
@@ -195,17 +149,9 @@ export function HeaderSimple() {
             className="lg:hidden p-2 rounded-lg transition-colors"
           >
             {isOpen ? (
-              <i
-                className={`lni lni-close h-5 w-5 ${
-                  isScrolled ? "text-white" : "text-gray-700"
-                }`}
-              ></i>
+              <i className="lni lni-close h-5 w-5 text-gray-700"></i>
             ) : (
-              <i
-                className={`lni lni-menu h-5 w-5 ${
-                  isScrolled ? "text-white" : "text-gray-700"
-                }`}
-              ></i>
+              <i className="lni lni-menu h-5 w-5 text-gray-700"></i>
             )}
           </button>
 
