@@ -2,6 +2,7 @@ import { Metadata } from "next";
 // import { LineIcon } from "lineicons-react"; // Temporaire - Conflit avec Next.js 15
 // import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
+import HubspotFormInline from "@/components/hubspot-form-inline";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
@@ -82,22 +83,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="card-body p-8" data-testid="contact-form-body">
-                  <div id="hubspot-form-container" className="min-h-[400px]">
-                    <div 
-                      dangerouslySetInnerHTML={{
-                        __html: `
-                          <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
-                          <script>
-                            hbspt.forms.create({
-                              portalId: "26878201",
-                              formId: "312a9f67-e613-4651-9690-4586646554a0",
-                              region: "eu1"
-                            });
-                          </script>
-                        `
-                      }}
-                    />
-                  </div>
+                  <HubspotFormInline className="min-h-[400px]" />
                 </div>
               </div>
             </div>
