@@ -52,7 +52,6 @@ export function HeaderSimple() {
           name: "Assistants vocaux IA",
           href: "/nos-services/assistants-vocaux-ia",
         },
-        { name: "Devis en ligne", href: "/nos-services/devis-en-ligne" },
       ],
     },
     { name: "Blog", href: "/blog" },
@@ -82,9 +81,7 @@ export function HeaderSimple() {
             </div>
             <div className="hidden sm:block">
               <div className="text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] text-gray-secondary">
-                Solutions de Téléphonie IP
-                <br />
-                et communications d&apos;entreprise
+                Solutions de Téléphonie IP et communications d&apos;entreprise
               </div>
             </div>
           </Link>
@@ -120,7 +117,7 @@ export function HeaderSimple() {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-150"
+                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
                         >
                           {subItem.name}
                         </Link>
@@ -147,6 +144,7 @@ export function HeaderSimple() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg transition-colors"
+            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isOpen ? (
               <i className="lni lni-close h-5 w-5 text-gray-700"></i>
