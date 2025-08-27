@@ -17,7 +17,7 @@ interface HubspotFormInlineProps {
   className?: string;
 }
 
-export function HubspotFormInline({ className = "" }: HubspotFormInlineProps) {
+export default function HubspotFormInline({ className = "" }: HubspotFormInlineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,5 +45,3 @@ export function HubspotFormInline({ className = "" }: HubspotFormInlineProps) {
     />
   );
 }
-
-export default HubspotFormInline;
