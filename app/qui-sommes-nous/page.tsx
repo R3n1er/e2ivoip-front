@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { TawkToChat } from "@/components/tawk-to-chat";
+import { TawkTo } from "@/components/tawk-to";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
@@ -585,7 +585,7 @@ export default function QuiSommesNous() {
       </section>
       
       {/* Chat Tawk.to avec délai de 30 secondes */}
-      <TawkToChat />
+      <TawkTo />
     </>
   );
 }

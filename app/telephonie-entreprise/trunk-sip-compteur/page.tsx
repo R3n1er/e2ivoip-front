@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { TawkToChat } from "@/components/tawk-to-chat";
+import { TawkTo } from "@/components/tawk-to";
 
 export const metadata: Metadata = {
   title:
@@ -496,7 +496,7 @@ export default function TrunkSIPCompteur() {
       </main>
       
       {/* Chat Tawk.to avec délai de 30 secondes */}
-      <TawkToChat />
+      <TawkTo />
     </div>
   );
 }
