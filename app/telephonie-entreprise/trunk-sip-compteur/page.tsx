@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { TallyPopupDelay } from "@/components/tally-popup-delay";
+// Tally embed inséré en iframe (pas de popup)
+import { TallyEmbedDevis } from "@/components/tally-embed-devis";
 
 export const metadata: Metadata = {
   title:
@@ -39,8 +40,7 @@ export default function TrunkSIPCompteur() {
   return (
     <div className="min-h-screen bg-white">
       <main className="pt-20">
-        {/* Popup Tally automatique après 25s */}
-        <TallyPopupDelay formId="mDY1bl" delayMs={25000} showOnce={false} />
+        {/* Formulaire Tally intégré (embed) */}
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
           {/* Background Image */}
@@ -418,6 +418,9 @@ export default function TrunkSIPCompteur() {
             <TrunkSipCompteurFAQ />
           </div>
         </section>
+
+        {/* Formulaire Tally (embed) juste sous la FAQ */}
+        <TallyEmbedDevis />
 
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
