@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { TawkToChat } from "@/components/tawk-to-chat";
+import { TawkTo } from "@/components/tawk-to";
 import { ProblemSolutionSection } from "@/components/problem-solution-section";
 import { PricingTiers } from "@/components/pricing-tiers";
 import { TestimonialsSection } from "@/components/testimonial-card";
@@ -152,7 +152,7 @@ export default function ThreeCXCloudPage() {
 
   return (
     <div className="min-h-screen">
-      <TawkToChat delay={10000} />
+      <TawkTo />
       
       {/* Hero Section avec dégradé standardisé */}
       <section className="relative py-20 overflow-hidden">

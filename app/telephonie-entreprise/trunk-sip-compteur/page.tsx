@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { ClientWrapperTally } from "@/components/client-wrapper-tally";
+import { TallyPopupDelay } from "@/components/tally-popup-delay";
 
 export const metadata: Metadata = {
   title:
@@ -39,6 +39,8 @@ export default function TrunkSIPCompteur() {
   return (
     <div className="min-h-screen bg-white">
       <main className="pt-20">
+        {/* Popup Tally automatique après 25s */}
+        <TallyPopupDelay formId="mDY1bl" delayMs={25000} showOnce={false} />
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
           {/* Background Image */}
@@ -410,7 +412,10 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
         {/* FAQ */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -451,7 +456,11 @@ export default function TrunkSIPCompteur() {
               <CTAButton href="/devis-en-ligne" icon="lni-calculator">
                 Calculer mes économies gratuitement
               </CTAButton>
-              <CTAButtonSecondary href="tel:+33189560500" icon="lni-phone" external>
+              <CTAButtonSecondary
+                href="tel:+33189560500"
+                icon="lni-phone"
+                external
+              >
                 Parler à un expert : 01 89 56 05 00
               </CTAButtonSecondary>
             </div>
@@ -463,12 +472,8 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
       </main>
-      
-      {/* Popup Tally après 5 secondes */}
-      <ClientWrapperTally />
-      
-      {/* Chat Tawk.to désactivé sur cette page pour éviter le conflit avec l'emoji personnalisé */}
-      {/* <TawkToChat /> */}
+
+      {/* TawkTo volontairement désactivé sur cette page */}
     </div>
   );
 }

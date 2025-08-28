@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { HubSpotTracking } from "@/components/hubspot-tracking";
 import { HotjarTracking } from "@/components/hotjar-tracking";
@@ -49,12 +50,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" data-theme="e2ivoip" suppressHydrationWarning>
+    <html
+      lang="fr"
+      className="scroll-smooth"
+      data-theme="e2ivoip"
+      suppressHydrationWarning
+    >
       <head>
         <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
         {/* Précharge DNS pour Tally - améliore les performances du popup */}
         <link rel="dns-prefetch" href="//tally.so" />
         <link rel="preconnect" href="https://tally.so" crossOrigin="" />
+        <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
