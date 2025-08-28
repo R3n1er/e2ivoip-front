@@ -419,7 +419,7 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
 
-        {/* Formulaire Tally (embed) juste sous la FAQ */}
+        {/* Formulaire Tally (embed) avec nouvelle UX améliorée */}
         <TallyEmbedDevis />
 
         {/* CTA Section finale */}
