@@ -1,0 +1,61 @@
+# Page snapshot
+
+```yaml
+- generic:
+  - generic [active]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - navigation [ref=e6]:
+            - button "previous" [disabled] [ref=e7]:
+              - img "previous" [ref=e8]
+            - generic [ref=e10]:
+              - generic [ref=e11]: 1/
+              - generic [ref=e12]: "1"
+            - button "next" [disabled] [ref=e13]:
+              - img "next" [ref=e14]
+          - img
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic "Latest available version is detected (15.5.2)." [ref=e20]: Next.js 15.5.2
+            - generic [ref=e21]: Webpack
+          - img
+      - dialog "Build Error" [ref=e23]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - generic [ref=e28]:
+              - generic [ref=e30]: Build Error
+              - generic [ref=e31]:
+                - button "Copy Error Info" [ref=e32] [cursor=pointer]:
+                  - img [ref=e33] [cursor=pointer]
+                - link "Go to related documentation" [ref=e35] [cursor=pointer]:
+                  - /url: https://nextjs.org/docs/messages/module-not-found
+                  - img [ref=e36] [cursor=pointer]
+                - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e38] [cursor=pointer]:
+                  - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                  - img [ref=e39] [cursor=pointer]
+            - paragraph [ref=e48]: "Module not found: Can't resolve '@/components/hubspot-contact'"
+          - generic [ref=e50]:
+            - generic [ref=e52]:
+              - img [ref=e54]
+              - generic [ref=e57]: ./app/telephonie-entreprise/trunk-sip-illimite/page.tsx (4:1)
+              - button "Open in editor" [ref=e58] [cursor=pointer]:
+                - img [ref=e60] [cursor=pointer]
+            - generic [ref=e64]:
+              - text: "Module not found: Can't resolve '@/components/hubspot-contact' 2 | import Link from \"next/link\"; 3 | import { CTAButton, CTAButtonSecondary } from \"@/components/ui/cta-button\"; > 4 | import HubspotContactForm from \"@/components/hubspot-contact\"; | ^ 5 | 6 | export const metadata: Metadata = { 7 | title:"
+              - link "https://nextjs.org/docs/messages/module-not-found" [ref=e65] [cursor=pointer]:
+                - /url: https://nextjs.org/docs/messages/module-not-found
+        - generic [ref=e66]:
+          - generic [ref=e67]: "1"
+          - generic [ref=e68]: "2"
+    - generic [ref=e73] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e74] [cursor=pointer]:
+        - img [ref=e75] [cursor=pointer]
+      - button "Open issues overlay" [ref=e79] [cursor=pointer]:
+        - generic [ref=e80] [cursor=pointer]:
+          - generic [ref=e81] [cursor=pointer]: "0"
+          - generic [ref=e82] [cursor=pointer]: "1"
+        - generic [ref=e83] [cursor=pointer]: Issue
+  - alert [ref=e84]
+```
