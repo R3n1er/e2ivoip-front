@@ -84,6 +84,7 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 
 **Priorité 1 - Pages Téléphonie d'Entreprise** 📞
 - [ ] **Page Trunk SIP au compteur** : Création et optimisation
+  - Implémenté: Popup Tally automatique (formId `mDY1bl`) après 25s via `TallyPopupDelay` (affichage non limité pour QA). Script `https://tally.so/widgets/embed.js` injecté dans `app/layout.tsx`. `TawkTo` désactivé sur cette page.
 - [ ] **Page Trunk SIP illimité** : Contenu et formulaires
 - [ ] **Page 3CX PRO dédiée** : Spécifications techniques
 - [ ] **Page 3CX SMB mutualisée** : Offre PME
@@ -127,8 +128,8 @@ Ce document détaille les prochaines étapes pour l'évolution du site web E2I V
 
 ### Tests
 
-- **Total des tests** : 174 tests
-- **Tests passants** : 170 tests (97.7%)
+- **Total des tests** : 175 tests
+- **Tests passants** : 171 tests (~97.7%)
 - **Tests en cours** : 4 tests (Core Web Vitals - composants)
 - **Tests header UX** : 18 tests passants
 - **Tests page 'Qui sommes-nous'** : 4 tests passants
