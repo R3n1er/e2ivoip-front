@@ -563,6 +563,36 @@ bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
 - Z-index : 10 pour l'overlay, 20 pour le contenu
 - Cohérence visuelle : Uniforme sur tout le site
 
+## Style de Boutons E2I VoIP
+
+### Bouton Standard avec Effet Click
+
+**OBLIGATOIRE** : Utiliser ce style pour tous les boutons CTA du site :
+
+```tsx
+<button 
+  type="button"
+  className="btn btn-lg bg-red-primary hover:bg-red-700 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold relative overflow-hidden group"
+>
+  <span className="flex items-center justify-center">
+    Texte du bouton
+    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+  </span>
+  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+</button>
+```
+
+**Éléments clés** :
+- `relative overflow-hidden group` : Conteneur pour l'effet click
+- `<span className="flex items-center justify-center">` : Structure du contenu
+- `group-hover:translate-x-1` : Animation flèche au hover
+- `<div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>` : Effet click sombre
+
+**Variantes de couleurs** :
+- Primary : `bg-red-primary hover:bg-red-700`
+- Secondary : `bg-gray-800 hover:bg-gray-900`
+- Transparent : `bg-white/10 hover:bg-white hover:text-red-primary`
+
 ## Bonnes Pratiques
 
 ### Performance

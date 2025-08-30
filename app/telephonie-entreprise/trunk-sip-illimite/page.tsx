@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { HubSpotContactForm } from "@/components/hubspot-contact-form";
 
 export const metadata: Metadata = {
@@ -35,23 +35,13 @@ export default function TrunkSIPIllimite() {
       popular: false,
     },
     {
-      appels: 3,
-      ideal: "PME en croissance",
-      popular: false,
-    },
-    {
       appels: 4,
-      ideal: "Entreprises actives",
+      ideal: "PME et entreprises actives",
       popular: true,
     },
     {
-      appels: 6,
-      ideal: "Centres d'appels",
-      popular: false,
-    },
-    {
       appels: 8,
-      ideal: "Grandes structures",
+      ideal: "Grandes structures et centres d'appels",
       popular: false,
     },
   ];
@@ -88,7 +78,7 @@ export default function TrunkSIPIllimite() {
                 France métropolitaine & DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                De <strong>2 à 8 appels simultanés</strong> • 
+                <strong>2, 4 ou 8 appels simultanés</strong> • 
                 Forfait tout inclus avec politique fair use
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
@@ -102,24 +92,18 @@ export default function TrunkSIPIllimite() {
                 </div>
                 <div className="flex items-center gap-2">
                   <i className="lni lni-users text-white"></i>
-                  <span className="text-sm">2 à 8 lignes simultanées</span>
+                  <span className="text-sm">2, 4 ou 8 lignes simultanées</span>
                 </div>
               </div>
 
-              {/* CTA Hero */}
+              {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="#contact-form">
-                  <button className="btn btn-lg bg-white text-red-primary border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[240px]">
-                    <i className="lni lni-bubble mr-2 text-lg"></i>
-                    Demander un devis
-                  </button>
-                </Link>
-                <a href="tel:+33189560500">
-                  <button className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[200px]">
-                    <i className="lni lni-phone mr-2 text-lg"></i>
-                    01 89 56 05 00
-                  </button>
-                </a>
+                <CTAButton href="#contact-form" icon="lni-bubble">
+                  Demander un devis
+                </CTAButton>
+                <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+                  01 89 56 05 00
+                </CTAButtonMarine>
               </div>
             </div>
           </div>
@@ -180,10 +164,10 @@ export default function TrunkSIPIllimite() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
-                        De 2 à 8 appels simultanés
+                        3 paliers : 2, 4 ou 8 appels simultanés
                       </h3>
                       <p className="text-gray-600">
-                        Choisissez le nombre de lignes selon vos besoins.
+                        Choisissez le forfait adapté à votre volume d'appels.
                         <strong> Évolutif à tout moment</strong> pour
                         accompagner votre croissance.
                       </p>
@@ -292,81 +276,64 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-primary via-red-primary/70 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="card-body">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-green-100 to-white">
                     <i className="lni lni-calculator text-green-600 text-2xl"></i>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">
-                    Budget maîtrisé
-                  </h3>
+                  <h3 className="card-title text-gray-dark mb-2">Budget maîtrisé</h3>
                   <p className="text-gray-600">
-                    Un forfait mensuel fixe, pas de surprise. Idéal pour la
-                    gestion budgétaire de votre entreprise.
+                    Un forfait mensuel fixe, pas de surprise. Idéal pour la gestion budgétaire de votre entreprise.
                   </p>
                 </div>
               </div>
 
               {/* Couverture complète */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="card-body">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-blue-100 to-white">
                     <i className="lni lni-world text-blue-600 text-2xl"></i>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">
-                    Couverture France + DOM
-                  </h3>
+                  <h3 className="card-title text-gray-dark mb-2">Couverture France + DOM</h3>
                   <p className="text-gray-600">
-                    Appelez sans limite vers la métropole et tous les
-                    départements d'outre-mer.
+                    Appelez sans limite vers la métropole et tous les départements d'outre-mer.
                   </p>
                 </div>
               </div>
 
               {/* Évolutif */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-primary via-red-primary/70 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="card-body">
-                  <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-red-primary/10 to-white">
                     <i className="lni lni-grow text-red-primary text-2xl"></i>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">
-                    Solution évolutive
-                  </h3>
+                  <h3 className="card-title text-gray-dark mb-2">Solution évolutive</h3>
                   <p className="text-gray-600">
-                    Ajustez le nombre d'appels simultanés selon l'évolution de
-                    votre activité.
+                    Ajustez le nombre d'appels simultanés selon l'évolution de votre activité.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Points clés supplémentaires */}
-            <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
-                  <span className="text-gray-700">
-                    Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
-                  <span className="text-gray-700">
-                    Portabilité gratuite de vos numéros existants
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
-                  <span className="text-gray-700">
-                    Support technique local et réactif
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
-                  <span className="text-gray-700">
-                    Qualité HD garantie sur tous les appels
-                  </span>
-                </div>
+            <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  "Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)",
+                  "Portabilité gratuite de vos numéros existants",
+                  "Support technique local et réactif",
+                  "Qualité HD garantie sur tous les appels",
+                ].map((text, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center ring-1 ring-green-100">
+                      <i className="lni lni-checkmark text-green-600 text-base"></i>
+                    </div>
+                    <span className="text-gray-700">{text}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -389,7 +356,9 @@ export default function TrunkSIPIllimite() {
             </div>
 
             {/* Formulaire HubSpot */}
-            <HubSpotContactForm />
+            <div id="hubspot-contact-form">
+              <HubSpotContactForm />
+            </div>
 
             {/* Alternative de contact */}
             <div className="mt-12 text-center">
@@ -453,13 +422,13 @@ export default function TrunkSIPIllimite() {
               <CTAButton href="#contact-form" icon="lni-bubble">
                 Demander mon devis illimité
               </CTAButton>
-              <CTAButtonSecondary
+              <CTAButtonMarine
                 href="tel:+33189560500"
                 icon="lni-phone"
                 external
               >
                 Appeler un conseiller
-              </CTAButtonSecondary>
+              </CTAButtonMarine>
             </div>
           </div>
         </section>

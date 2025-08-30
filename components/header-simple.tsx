@@ -18,7 +18,6 @@ export function HeaderSimple() {
     },
     {
       name: "Téléphonie d'entreprise",
-      href: null,
       submenu: [
         {
           name: "Trunk SIP au compteur",
@@ -29,14 +28,13 @@ export function HeaderSimple() {
           href: "/telephonie-entreprise/trunk-sip-illimite",
         },
         {
-          name: "3CX PRO",
-          href: "/3cx-cloud",
+          name: "Téléphonie 3CX",
+          href: "/telephonie-3cx",
         },
         {
-          name: "3CX SMB mutualisée",
-          href: "/telephonie-entreprise/3cx-smb-mutualisee",
+          name: "Téléphonie Yeastar",
+          href: "/telephonie-entreprise/pbx-yeastar",
         },
-        { name: "PBX Yeastar", href: "/telephonie-entreprise/pbx-yeastar" },
       ],
     },
     { name: "Mobilité", href: "/mobilite" },

@@ -21,7 +21,7 @@ test.describe("Trunk SIP Illimité Page", () => {
     // Vérifier les avantages dans le hero
     await expect(page.getByText("Appels illimités France")).toBeVisible();
     await expect(page.getByText("Appels illimités DOM")).toBeVisible();
-    await expect(page.getByText("2 à 8 lignes simultanées")).toBeVisible();
+    await expect(page.getByText("2, 4 ou 8 lignes simultanées")).toBeVisible();
 
     // Section explicative
     await expect(
@@ -31,7 +31,7 @@ test.describe("Trunk SIP Illimité Page", () => {
     // Vérifier les points clés
     await expect(page.getByText("Appels illimités France métropolitaine")).toBeVisible();
     await expect(page.getByText("Appels illimités vers les DOM")).toBeVisible();
-    await expect(page.getByText("De 2 à 8 appels simultanés")).toBeVisible();
+    await expect(page.getByText("3 paliers : 2, 4 ou 8 appels simultanés")).toBeVisible();
     await expect(page.getByText("Politique Fair Use transparente")).toBeVisible();
   });
 
@@ -43,9 +43,7 @@ test.describe("Trunk SIP Illimité Page", () => {
 
     // Vérifier les différents forfaits
     await expect(page.getByText("2 appels simultanés")).toBeVisible();
-    await expect(page.getByText("3 appels simultanés")).toBeVisible();
     await expect(page.getByText("4 appels simultanés")).toBeVisible();
-    await expect(page.getByText("6 appels simultanés")).toBeVisible();
     await expect(page.getByText("8 appels simultanés")).toBeVisible();
 
     // Vérifier le badge populaire
@@ -53,7 +51,7 @@ test.describe("Trunk SIP Illimité Page", () => {
 
     // Vérifier que tous les prix sont "Sur devis"
     const surDevisElements = page.locator("text=Sur devis");
-    await expect(surDevisElements).toHaveCount(5);
+    await expect(surDevisElements).toHaveCount(3);
   });
 
   test("affiche la section avantages", async ({ page }) => {

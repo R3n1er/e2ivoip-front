@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { CTAButton } from "@/components/ui/cta-button"
 
 export default function TelephonieDentreprise() {
   const solutions = [
@@ -40,9 +40,9 @@ export default function TelephonieDentreprise() {
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Des solutions de téléphonie IP complètes et évolutives pour répondre aux besoins de votre entreprise
               </p>
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
+              <CTAButton href="/devis-en-ligne" icon="lni-bubble">
                 Demander un devis gratuit
-              </Button>
+              </CTAButton>
             </div>
           </div>
         </section>
