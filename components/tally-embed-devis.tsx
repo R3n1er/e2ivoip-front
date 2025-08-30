@@ -51,13 +51,15 @@ export function TallyEmbedDevis() {
             {/* Formulaire Tally iframe */}
             <div className="rounded-xl overflow-hidden">
               <iframe
-                data-tally-src="https://tally.so/embed/mDY1bl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+                src="https://tally.so/embed/mDY1bl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
                 loading="lazy"
                 width="100%"
                 height="500"
                 style={{ border: 0, margin: 0 }}
                 title="E2I VOIP - ☎️ Formulaire Devis Trunk SIP"
                 className="w-full"
+                allow="clipboard-read; clipboard-write"
+                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
               />
             </div>
           </div>
