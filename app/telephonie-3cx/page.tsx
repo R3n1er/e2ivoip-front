@@ -318,75 +318,143 @@ export default function Telephonie3CX() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-phone text-gray-800 text-xl"></i>
+              {/* Téléphonie VoIP */}
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-gray-200">
+                <div className="h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500 rounded-t-2xl"></div>
+                <div className="p-6">
+                  <div className="mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                      <i className="lni lni-phone text-3xl text-gray-800"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Téléphonie VoIP</h3>
-                  <p className="text-gray-600">
-                    Appels HD, transferts, conférences, files d'attente, SVI intelligent
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Téléphonie VoIP</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Appels HD, transferts, conférences, files d'attente, SVI intelligent</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                      <i className="lni lni-checkmark-circle mr-1"></i>
+                      Haute qualité
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-video text-red-primary text-xl"></i>
+              {/* Visioconférence */}
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                <div className="relative p-6">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-video text-3xl text-red-primary"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Visioconférence</h3>
-                  <p className="text-gray-600">
-                    Réunions vidéo HD, partage d'écran, enregistrement, jusqu'à 250 participants
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Visioconférence</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Réunions vidéo HD, partage d'écran, enregistrement, jusqu'à 250 participants</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                      <i className="lni lni-users mr-1"></i>
+                      Jusqu'à 250 participants
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-comments text-gray-800 text-xl"></i>
+              {/* Chat & Collaboration */}
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                <div className="relative p-6">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-comments text-3xl text-gray-800"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Chat & Collaboration</h3>
-                  <p className="text-gray-600">
-                    Messagerie instantanée, partage de fichiers, statuts de présence
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Chat & Collaboration</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Messagerie instantanée, partage de fichiers, statuts de présence</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                      <i className="lni lni-bolt-alt mr-1"></i>
+                      Temps réel
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-mobile text-red-primary text-xl"></i>
+              {/* Applications mobiles */}
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                <div className="relative p-6">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-mobile text-3xl text-red-primary"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Applications mobiles</h3>
-                  <p className="text-gray-600">
-                    Apps iOS/Android complètes, softphone intégré, push notifications
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Applications mobiles</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Apps iOS/Android complètes, softphone intégré, push notifications</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                      <i className="lni lni-mobile mr-1"></i>
+                      iOS & Android
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-link text-red-primary text-xl"></i>
+              {/* Intégrations CRM */}
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-red-primary to-gray-500"></div>
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                <div className="relative p-6">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-link text-3xl text-red-primary"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Intégrations CRM</h3>
-                  <p className="text-gray-600">
-                    Microsoft 365, Google Workspace, Salesforce, HubSpot, et plus
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Intégrations CRM</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Microsoft 365, Google Workspace, Salesforce, HubSpot, et plus</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                      <i className="lni lni-link mr-1"></i>
+                      Multi-CRM
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                    <i className="lni lni-headphone-alt text-gray-800 text-xl"></i>
+              {/* Centre de contact */}
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                <div className="relative p-6">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-headphone-alt text-3xl text-gray-800"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark">Centre de contact</h3>
-                  <p className="text-gray-600">
-                    Files d'attente avancées, rapports temps réel, enregistrements
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Centre de contact</h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Files d'attente avancées, rapports temps réel, enregistrements</p>
+                  <div className="text-center">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                      <i className="lni lni-stats-up mr-1"></i>
+                      Rapports en temps réel
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
