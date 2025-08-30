@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import HubspotFormInline from "@/components/hubspot-form-inline";
 
 export const metadata: Metadata = {
   title: "Solutions PBX Yeastar - Cloud et On-Premise | E2I VoIP",
@@ -597,10 +596,56 @@ export default function PBXYeastar() {
               </div>
             </div>
 
-            {/* Container du formulaire HubSpot */}
+            {/* Container du formulaire de contact */}
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-                <HubspotFormInline className="max-w-2xl mx-auto" />
+                <div className="max-w-2xl mx-auto">
+                  <div className="text-center">
+                    <div className="mb-8">
+                      <h3 className="text-xl font-semibold text-gray-dark mb-4">
+                        Contactez nos experts Yeastar
+                      </h3>
+                      <p className="text-gray-600 mb-6">
+                        Remplissez le formulaire ci-dessous ou appelez-nous directement
+                      </p>
+                    </div>
+                    
+                    {/* Boutons de contact direct */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                      <CTAButton href="tel:+33189560500" icon="lni-phone" external>
+                        01 89 56 05 00
+                      </CTAButton>
+                      <CTAButtonMarine href="mailto:contact@e2ivoip.com" icon="lni-envelope" external>
+                        contact@e2ivoip.com
+                      </CTAButtonMarine>
+                    </div>
+                    
+                    {/* Informations de contact */}
+                    <div className="bg-gray-50 rounded-lg p-6">
+                      <h4 className="font-semibold text-gray-dark mb-3">
+                        Vous préférez nous contacter directement ?
+                      </h4>
+                      <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                        <div className="flex items-center">
+                          <i className="lni lni-phone text-red-primary mr-2"></i>
+                          <span>01 89 56 05 00</span>
+                        </div>
+                        <div className="flex items-center">
+                          <i className="lni lni-envelope text-red-primary mr-2"></i>
+                          <span>contact@e2ivoip.com</span>
+                        </div>
+                        <div className="flex items-center">
+                          <i className="lni lni-timer text-red-primary mr-2"></i>
+                          <span>Lun-Ven 9h-18h</span>
+                        </div>
+                        <div className="flex items-center">
+                          <i className="lni lni-map-marker text-red-primary mr-2"></i>
+                          <span>Support France</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
