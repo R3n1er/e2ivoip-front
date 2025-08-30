@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -235,20 +235,12 @@ export default function NosServices() {
                   fonctionnalités nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="bg-red-primary hover:bg-red-600 text-white-primary"
-                  >
-                    <i className="lni lni-phone w-5 h-5 mr-2"></i>
+                  <CTAButton href="/contact" icon="lni-phone">
                     Audit télécom gratuit
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-red-primary text-red-primary hover:bg-red-primary hover:text-white-primary"
-                  >
+                  </CTAButton>
+                  <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
                     Demander un devis
-                  </Button>
+                  </CTAButtonMarine>
                 </div>
               </div>
             </div>
@@ -390,15 +382,9 @@ export default function NosServices() {
                           </span>
                         </div>
 
-                        <Link href={service.href}>
-                          <Button
-                            variant="outline"
-                            className="w-full border-red-primary text-red-primary hover:bg-red-primary hover:text-white-primary"
-                          >
-                            En savoir plus
-                            <i className="lni lni-arrow-right w-4 h-4 ml-2"></i>
-                          </Button>
-                        </Link>
+                        <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
+                          En savoir plus
+                        </CTAButton>
                       </div>
                     </CardContent>
                   </Card>
@@ -421,20 +407,12 @@ export default function NosServices() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-red-primary hover:bg-red-600 text-white-primary"
-                >
-                  <i className="lni lni-phone w-5 h-5 mr-2"></i>
+                <CTAButton href="/contact" icon="lni-phone">
                   Audit télécom gratuit
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white-primary text-white-primary hover:bg-white-primary hover:text-blue-marine"
-                >
+                </CTAButton>
+                <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
                   Demander un devis
-                </Button>
+                </CTAButtonMarine>
               </div>
             </div>
           </section>

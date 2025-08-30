@@ -182,17 +182,25 @@ export default function ThreeCXCloudPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="#calendrier"
-                className="btn bg-red-600 hover:bg-red-700 text-white border-none px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 shadow-lg"
+                className="btn btn-lg bg-red-primary text-white border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[300px] relative overflow-hidden group"
               >
-                <i className="lni lni-calendar mr-2"></i>
-                Réserver ma démonstration gratuite
+                <span className="flex items-center justify-center">
+                  <i className="lni lni-calendar mr-2 text-lg"></i>
+                  Réserver ma démonstration gratuite
+                  <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </span>
+                <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
               </a>
               <a
                 href="/devis-en-ligne"
-                className="btn bg-white/10 hover:bg-white/20 text-white border-white/30 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
+                className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[250px] relative overflow-hidden group"
               >
-                <i className="lni lni-calculator mr-2"></i>
-                Calculer mes économies
+                <span className="flex items-center justify-center">
+                  <i className="lni lni-calculator mr-2 text-lg"></i>
+                  Calculer mes économies
+                  <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </span>
+                <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
               </a>
             </div>
           </div>

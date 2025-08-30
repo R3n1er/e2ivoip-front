@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
-import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedDevis } from "@/components/tally-embed-devis";
 
@@ -88,20 +88,14 @@ export default function TrunkSIPCompteur() {
                 </div>
               </div>
 
-              {/* CTA Hero */}
+              {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="/devis-en-ligne">
-                  <button className="btn btn-lg bg-white text-red-primary border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[240px]">
-                    <i className="lni lni-calculator mr-2 text-lg"></i>
-                    Calculer mes économies
-                  </button>
-                </Link>
-                <a href="tel:+33189560500">
-                  <button className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[200px]">
-                    <i className="lni lni-phone mr-2 text-lg"></i>
-                    0594 96 35 00
-                  </button>
-                </a>
+                <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                  Calculer mes économies
+                </CTAButton>
+                <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+                  0594 96 35 00
+                </CTAButtonMarine>
               </div>
 
               {/* Indicateur de défilement */}
@@ -141,7 +135,7 @@ export default function TrunkSIPCompteur() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <i className="lni lni-checkmark-circle mr-2"></i>
                   Solution certifiée DOM
                 </div>
@@ -160,8 +154,8 @@ export default function TrunkSIPCompteur() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-money-location text-green-600 text-xl"></i>
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-money-location text-red-primary text-xl"></i>
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -175,8 +169,8 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-blue-marine text-xl"></i>
+                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-phone text-gray-800 text-xl"></i>
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -250,24 +244,24 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-green-600">
+                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-800">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">
                         DOM Fixe (Guadeloupe, Martinique, Guyane, Réunion,
                         Mayotte)
                       </span>
-                      <span className="text-green-600 font-bold text-lg">
+                      <span className="text-gray-800 font-bold text-lg">
                         0,0160 €
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-orange-500">
+                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-600">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">
                         DOM Mobile (Guadeloupe, Martinique, Guyane, Réunion,
                         Mayotte)
                       </span>
-                      <span className="text-orange-500 font-bold text-lg">
+                      <span className="text-gray-600 font-bold text-lg">
                         0,0800 €
                       </span>
                     </div>
@@ -455,13 +449,13 @@ export default function TrunkSIPCompteur() {
               <CTAButton href="/devis-en-ligne" icon="lni-calculator">
                 Calculer mes économies gratuitement
               </CTAButton>
-              <CTAButtonSecondary
+              <CTAButtonMarine
                 href="tel:+33189560500"
                 icon="lni-phone"
                 external
               >
                 Parler à un expert : 01 89 56 05 00
-              </CTAButtonSecondary>
+              </CTAButtonMarine>
             </div>
 
             <p className="text-white/70 text-sm mt-6">

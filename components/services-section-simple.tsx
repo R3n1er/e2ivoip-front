@@ -1,6 +1,6 @@
 "use client";
 
-import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton } from "@/components/ui/cta-button";
 import Link from "next/link";
 
 export function ServicesSectionSimple() {
@@ -157,9 +157,9 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
                   
-                  <CTAButtonSecondary href={service.href} icon="lni-arrow-right" fullWidth>
+                  <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
                     En savoir plus
-                  </CTAButtonSecondary>
+                  </CTAButton>
                 </div>
               </div>
             </div>
