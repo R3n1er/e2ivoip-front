@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode } from "react";
 
 interface FeatureCardProps {
@@ -54,30 +52,20 @@ export function FeatureCard({
 
   return (
     <div className={`
-      relative overflow-hidden bg-white rounded-2xl 
-      shadow-xl hover:shadow-2xl 
+      bg-white rounded-2xl 
+      shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
+      border border-gray-200
       ${className}
     `}>
       {/* Gradient border top - Couleurs de la charte graphique */}
-      <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${styles.border}`}></div>
+      <div className={`h-1.5 bg-gradient-to-r ${styles.border} rounded-t-2xl`}></div>
       
-      {/* Background pattern subtil avec couleurs officielles */}
-      <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${styles.patternColor}' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}
-        ></div>
-      </div>
-      
-      <div className="relative p-6">
-        {/* Icon avec style amélioré selon la charte */}
-        <div className="relative mb-4">
-          <div className={`absolute inset-0 bg-gradient-to-br ${styles.glowBg} rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
-          <div className={`relative w-16 h-16 bg-gradient-to-br ${styles.iconBg} rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow`}>
+      <div className="p-6">
+        {/* Icon avec style simplifié */}
+        <div className="mb-4">
+          <div className={`w-16 h-16 ${styles.iconBg} rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100`}>
             <i className={`lni ${icon} text-3xl ${styles.iconColor}`}></i>
           </div>
         </div>
@@ -110,37 +98,26 @@ export function FeatureCard({
 export function FeatureCardCustom({ 
   children,
   borderGradient = "from-gray-800 via-gray-500 to-red-primary",
-  patternColor = "%232D3848",
   className = ""
 }: {
   children: ReactNode;
   borderGradient?: string;
-  patternColor?: string;
   className?: string;
 }) {
   return (
     <div className={`
-      relative overflow-hidden bg-white rounded-2xl 
-      shadow-xl hover:shadow-2xl 
+      bg-white rounded-2xl 
+      shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
+      border border-gray-200
       ${className}
     `}>
       {/* Gradient border top personnalisable */}
-      <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${borderGradient}`}></div>
-      
-      {/* Background pattern personnalisable */}
-      <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${patternColor}' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}
-        ></div>
-      </div>
+      <div className={`h-1.5 bg-gradient-to-r ${borderGradient} rounded-t-2xl`}></div>
       
       {/* Contenu personnalisé */}
-      <div className="relative">
+      <div>
         {children}
       </div>
     </div>
