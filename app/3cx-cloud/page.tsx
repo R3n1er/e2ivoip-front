@@ -227,66 +227,146 @@ export default function ThreeCXCloudPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* WhatsApp Business */}
-            <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 border border-green-200">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="lni lni-whatsapp text-green-600 text-3xl"></i>
+            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              {/* Gradient border top - Bleu marine vers gris */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
+              
+              {/* Background pattern subtil */}
+              <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">WhatsApp Business</h3>
-              <p className="text-gray-600 text-center mb-4">
-                Centralisez vos conversations WhatsApp directement dans votre standard téléphonique
-              </p>
-              <div className="text-center">
-                <span className="px-3 py-1 bg-green-200 text-green-800 text-sm font-semibold rounded-full">
-                  Intégration native
-                </span>
+              
+              <div className="relative p-6">
+                {/* Icon avec style amélioré */}
+                <div className="relative mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                    <i className="lni lni-whatsapp text-3xl text-gray-800"></i>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  WhatsApp Business
+                </h3>
+                <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                  Centralisez vos conversations WhatsApp directement dans votre standard téléphonique
+                </p>
+                
+                {/* Badge en bas */}
+                <div className="text-center">
+                  <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                    <i className="lni lni-checkmark-circle mr-1"></i>
+                    Intégration native
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* CRM Connecté */}
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="lni lni-database text-blue-600 text-3xl"></i>
+            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              {/* Gradient border top - Rouge vers orange */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+              
+              {/* Background pattern subtil */}
+              <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">CRM Connecté</h3>
-              <p className="text-gray-600 text-center mb-4">
-                HubSpot, Zoho, Salesforce, Organilog - Historique complet affiché automatiquement
-              </p>
-              <div className="text-center">
-                <span className="px-3 py-1 bg-blue-200 text-blue-800 text-sm font-semibold rounded-full">
-                  Multi-CRM
-                </span>
+              
+              <div className="relative p-6">
+                {/* Icon avec style amélioré */}
+                <div className="relative mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                    <i className="lni lni-database text-3xl text-red-primary"></i>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  CRM Connecté
+                </h3>
+                <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                  HubSpot, Zoho, Salesforce, Organilog - Historique complet affiché automatiquement
+                </p>
+                
+                {/* Badge en bas */}
+                <div className="text-center">
+                  <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                    <i className="lni lni-link mr-1"></i>
+                    Multi-CRM
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Microsoft 365 */}
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-200">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="lni lni-microsoft text-orange-600 text-3xl"></i>
+            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              {/* Gradient border top - Gris secondaire */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300"></div>
+              
+              {/* Background pattern subtil */}
+              <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23818096' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">Microsoft 365</h3>
-              <p className="text-gray-600 text-center mb-4">
-                Synchronisation complète avec calendriers, contacts et Teams. Appels depuis Outlook
-              </p>
-              <div className="text-center">
-                <span className="px-3 py-1 bg-orange-200 text-orange-800 text-sm font-semibold rounded-full">
-                  Sync complète
-                </span>
+              
+              <div className="relative p-6">
+                {/* Icon avec style amélioré */}
+                <div className="relative mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                    <i className="lni lni-microsoft text-3xl text-gray-secondary"></i>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  Microsoft 365
+                </h3>
+                <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                  Synchronisation complète avec calendriers, contacts et Teams. Appels depuis Outlook
+                </p>
+                
+                {/* Badge en bas */}
+                <div className="text-center">
+                  <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                    <i className="lni lni-sync mr-1"></i>
+                    Sync complète
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* IA Intégrée */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="lni lni-brain text-purple-600 text-3xl"></i>
+            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              {/* Gradient border top - Mix rouge et gris */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-red-primary to-gray-500"></div>
+              
+              {/* Background pattern subtil */}
+              <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">IA Intégrée</h3>
-              <p className="text-gray-600 text-center mb-4">
-                Transcription automatique via Google Speech ou OpenAI Whisper. Données exploitables
-              </p>
-              <div className="text-center">
-                <span className="px-3 py-1 bg-purple-200 text-purple-800 text-sm font-semibold rounded-full">
-                  IA avancée
-                </span>
+              
+              <div className="relative p-6">
+                {/* Icon avec style amélioré */}
+                <div className="relative mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                    <i className="lni lni-brain text-3xl text-red-primary"></i>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  IA Intégrée
+                </h3>
+                <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                  Transcription automatique via Google Speech ou OpenAI Whisper. Données exploitables
+                </p>
+                
+                {/* Badge en bas */}
+                <div className="text-center">
+                  <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                    <i className="lni lni-bulb mr-1"></i>
+                    IA avancée
+                  </span>
+                </div>
               </div>
             </div>
           </div>
