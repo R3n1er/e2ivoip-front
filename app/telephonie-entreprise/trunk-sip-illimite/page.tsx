@@ -288,7 +288,6 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-calculator text-3xl text-gray-800"></i>
                     </div>
@@ -322,7 +321,6 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-500 to-gray-600 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-world text-3xl text-gray-secondary"></i>
                     </div>
@@ -356,7 +354,6 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-500 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
                     <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-grow text-3xl text-red-primary"></i>
                     </div>
@@ -380,7 +377,6 @@ export default function TrunkSIPIllimite() {
 
             {/* Points clés supplémentaires */}
             <div className="mt-16 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-800 via-red-primary to-orange-500 rounded-3xl blur-3xl opacity-10"></div>
               <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">

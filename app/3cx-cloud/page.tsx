@@ -239,7 +239,6 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-whatsapp text-3xl text-gray-800"></i>
                   </div>
@@ -275,7 +274,6 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-red-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-database text-3xl text-red-primary"></i>
                   </div>
@@ -311,7 +309,6 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-microsoft text-3xl text-gray-secondary"></i>
                   </div>
@@ -347,7 +344,6 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-gray-500 rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-brain text-3xl text-red-primary"></i>
                   </div>
