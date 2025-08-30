@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { FeatureCard, FeatureCardCustom } from "@/components/ui/feature-card";
 
 export const metadata: Metadata = {
   title: "Solutions PBX Yeastar - Cloud et On-Premise | E2I VoIP",
@@ -196,26 +195,41 @@ export default function PBXYeastar() {
 
             {/* Avantages spécifiques aux petites entreprises */}
             <div className="grid md:grid-cols-3 gap-8">
-              <FeatureCard
-                title="Adapté aux petites équipes"
-                description="De 5 à 50 utilisateurs avec gestion optimisée des appels simultanés"
-                icon="lni-users"
-                variant="primary"
-              />
+              <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-red-300 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-users text-red-primary text-2xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">Adapté aux petites équipes</h3>
+                  <p className="text-gray-600 text-sm">
+                    De 5 à 50 utilisateurs avec gestion optimisée des appels simultanés
+                  </p>
+                </div>
+              </div>
               
-              <FeatureCard
-                title="Spécial cabinets médicaux"
-                description="Fonctionnalités dédiées : files d'attente, messagerie vocale médicale"
-                icon="lni-heart-monitor"
-                variant="secondary"
-              />
+              <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-heart-monitor text-blue-600 text-2xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">Spécial cabinets médicaux</h3>
+                  <p className="text-gray-600 text-sm">
+                    Fonctionnalités dédiées : files d'attente, messagerie vocale médicale
+                  </p>
+                </div>
+              </div>
               
-              <FeatureCard
-                title="ROI immédiat"
-                description="Investissement maîtrisé avec fonctionnalités entreprise"
-                icon="lni-calculator"
-                variant="accent"
-              />
+              <div className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-green-300 transition-all duration-300 hover:shadow-lg">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-calculator text-green-600 text-2xl"></i>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3">ROI immédiat</h3>
+                  <p className="text-gray-600 text-sm">
+                    Investissement maîtrisé avec fonctionnalités entreprise
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Gamme Yeastar détaillée */}
@@ -326,47 +340,65 @@ export default function PBXYeastar() {
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <FeatureCard
-                  title="Standard automatique (IVR)"
-                  description="Accueil professionnel avec menu vocal personnalisé"
-                  icon="lni-microphone"
-                  variant="primary"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-microphone text-red-primary text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Standard automatique (IVR)</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Accueil professionnel avec menu vocal personnalisé</p>
+                </div>
                 
-                <FeatureCard
-                  title="Files d'attente"
-                  description="Gestion intelligente des appels entrants"
-                  icon="lni-timer"
-                  variant="primary"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-timer text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Files d'attente</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Gestion intelligente des appels entrants</p>
+                </div>
                 
-                <FeatureCard
-                  title="Conférences"
-                  description="Audioconférence et visioconférence intégrées"
-                  icon="lni-users"
-                  variant="secondary"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-users text-green-600 text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Conférences</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Audioconférence et visioconférence intégrées</p>
+                </div>
                 
-                <FeatureCard
-                  title="Enregistrement"
-                  description="Enregistrement automatique des appels (légal)"
-                  icon="lni-music"
-                  variant="accent"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-music text-orange-600 text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Enregistrement</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Enregistrement automatique des appels (légal)</p>
+                </div>
                 
-                <FeatureCard
-                  title="Messagerie vocale"
-                  description="Messages vocaux par email avec transcription"
-                  icon="lni-envelope"
-                  variant="primary"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-envelope text-purple-600 text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Messagerie vocale</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Messages vocaux par email avec transcription</p>
+                </div>
                 
-                <FeatureCard
-                  title="Applications Linkus"
-                  description="Apps mobiles et desktop pour le télétravail"
-                  icon="lni-mobile"
-                  variant="secondary"
-                />
+                <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
+                      <i className="lni lni-mobile text-cyan-600 text-xl"></i>
+                    </div>
+                    <h4 className="font-bold text-gray-800">Applications Linkus</h4>
+                  </div>
+                  <p className="text-gray-600 text-sm">Apps mobiles et desktop pour le télétravail</p>
+                </div>
               </div>
               
               {/* Spécial cabinets médicaux */}
@@ -417,109 +449,146 @@ export default function PBXYeastar() {
             
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Cabinet médical */}
-              <FeatureCardCustom borderGradient="from-blue-600 via-blue-400 to-blue-300">
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-white rounded-xl flex items-center justify-center mb-4 mx-auto shadow-sm border border-blue-100">
-                    <i className="lni lni-heart-monitor text-blue-600 text-3xl"></i>
+              <div className="relative rounded-xl p-6 border-2 border-blue-200 bg-gradient-to-b from-blue-50 to-white hover:shadow-lg transition-all duration-300">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-heart-monitor text-blue-600 text-2xl"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 text-center mb-4 group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
                     Cabinet médical (5-15 praticiens)
                   </h3>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">2-3 appels simultanés max</span>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Standard automatique médical</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Messagerie vocale sécurisée</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Application mobile pour garde</span>
-                    </div>
+                    <span className="text-gray-700">2-3 appels simultanés max</span>
                   </div>
-                  <div className="bg-blue-50 text-blue-700 rounded-lg p-3 text-center">
-                    <span className="text-xs font-semibold">
-                      <strong>Solution recommandée :</strong> P-Series Cloud (10 extensions)
-                    </span>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Standard automatique médical</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Messagerie vocale sécurisée</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Application mobile pour garde</span>
                   </div>
                 </div>
-              </FeatureCardCustom>
+                
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                  <span className="text-xs font-bold text-blue-700">
+                    Solution recommandée : P-Series Cloud (10 extensions)
+                  </span>
+                </div>
+              </div>
               
               {/* PME de services */}
-              <FeatureCardCustom borderGradient="from-red-primary via-red-400 to-orange-400">
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-white rounded-xl flex items-center justify-center mb-4 mx-auto shadow-sm border border-red-100">
-                    <i className="lni lni-briefcase text-red-primary text-3xl"></i>
+              <div className="relative rounded-xl p-6 border-2 border-red-200 bg-gradient-to-b from-red-50 to-white shadow-lg transform scale-105 hover:shadow-xl transition-all duration-300">
+                {/* Badge Populaire */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-red-600 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    POPULAIRE
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 text-center mb-4 group-hover:text-red-primary transition-colors">
+                </div>
+                
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-briefcase text-2xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
                     PME de services (10-30 collaborateurs)
                   </h3>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">5-8 appels simultanés</span>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">File d'attente commerciale</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Conférences clients</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Télétravail sécurisé</span>
-                    </div>
+                    <span className="text-gray-700">5-8 appels simultanés</span>
                   </div>
-                  <div className="bg-red-50 text-red-700 rounded-lg p-3 text-center">
-                    <span className="text-xs font-semibold">
-                      <strong>Solution recommandée :</strong> P520 On-premise ou P-Series Cloud
-                    </span>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">File d'attente commerciale</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Conférences clients</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Télétravail sécurisé</span>
                   </div>
                 </div>
-              </FeatureCardCustom>
+                
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                  <span className="text-xs font-bold text-red-700">
+                    Solution recommandée : P520 On-premise ou P-Series Cloud
+                  </span>
+                </div>
+              </div>
               
               {/* Entreprise multi-sites */}
-              <FeatureCardCustom borderGradient="from-gray-800 via-gray-600 to-gray-400">
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-white rounded-xl flex items-center justify-center mb-4 mx-auto shadow-sm border border-gray-100">
-                    <i className="lni lni-apartment text-gray-800 text-3xl"></i>
+              <div className="relative rounded-xl p-6 border-2 border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="lni lni-apartment text-gray-600 text-2xl"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 text-center mb-4 group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
                     Multi-sites (50+ collaborateurs)
                   </h3>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">10-20 appels simultanés</span>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Liaison inter-sites gratuite</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Administration centralisée</span>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-green-600 mr-2"></i>
-                      <span className="text-gray-700">Reporting avancé</span>
-                    </div>
+                    <span className="text-gray-700">10-20 appels simultanés</span>
                   </div>
-                  <div className="bg-gray-50 text-gray-700 rounded-lg p-3 text-center">
-                    <span className="text-xs font-semibold">
-                      <strong>Solution recommandée :</strong> P-Series Software Multi-tenant
-                    </span>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Liaison inter-sites gratuite</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Administration centralisée</span>
+                  </div>
+                  <div className="flex items-center text-sm">
+                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                    </div>
+                    <span className="text-gray-700">Reporting avancé</span>
                   </div>
                 </div>
-              </FeatureCardCustom>
+                
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+                  <span className="text-xs font-bold text-gray-700">
+                    Solution recommandée : P-Series Software Multi-tenant
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
