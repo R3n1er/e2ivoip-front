@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { TallyEmbedDevis } from "@/components/tally-embed-devis";
 import HubspotFormInline from "@/components/hubspot-form-inline";
@@ -38,11 +39,32 @@ export default function PBXYeastar() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
-              {/* Badge avec logo Yeastar */}
+              {/* Logo Yeastar */}
+              <div className="flex justify-center mb-6">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                  <Image
+                    src="/images/logos-sip-compatibility/Yeastar_Logo.webp"
+                    alt="Logo Yeastar"
+                    width={200}
+                    height={80}
+                    className="h-16 w-auto"
+                    priority
+                  />
+                </div>
+              </div>
+              
+              {/* Badge avec certifications */}
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
+                <Image
+                  src="/images/logo-partners/yeastar-certified-expert-ysce-icon.png"
+                  alt="Yeastar Certified Expert"
+                  width={24}
+                  height={24}
+                  className="mr-3"
+                />
                 <i className="lni lni-cloud text-white mr-2"></i>
                 <span className="text-white/90 text-sm font-medium">
-                  Solutions Yeastar Cloud & On-Premise
+                  Expert Certifié Yeastar - Solutions Cloud & On-Premise
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
