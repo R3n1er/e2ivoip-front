@@ -2,8 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { TallyEmbedDevis } from "@/components/tally-embed-devis";
-import HubspotFormInline from "@/components/hubspot-form-inline";
 
 export const metadata: Metadata = {
   title: "Solutions PBX Yeastar - Cloud et On-Premise | E2I VoIP",
@@ -559,7 +557,64 @@ export default function PBXYeastar() {
         </section>
 
         {/* Section formulaire de contact */}
-        <TallyEmbedDevis />
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-red-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* En-tête */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <i className="lni lni-calculator mr-2"></i>
+                Devis personnalisé Yeastar gratuit
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+                Obtenez votre <span className="text-red-primary">devis Yeastar sur-mesure</span>
+              </h2>
+              
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                Remplissez ce formulaire en <strong>2 minutes</strong>, un expert Yeastar vous répond sous <strong>24h</strong>
+              </p>
+
+              {/* Avantages du formulaire */}
+              <div className="flex flex-wrap justify-center gap-6 mb-8">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
+                  <span>100% Gratuit</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <i className="lni lni-shield text-blue-600 text-xl"></i>
+                  <span>Sans engagement</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <i className="lni lni-timer text-orange-500 text-xl"></i>
+                  <span>Réponse rapide</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <i className="lni lni-users text-red-primary text-xl"></i>
+                  <span>Expert Yeastar dédié</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Container du formulaire */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+                <div className="rounded-xl overflow-hidden">
+                  <iframe
+                    src="https://tally.so/embed/mDY1bl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+                    loading="lazy"
+                    width="100%"
+                    height="500"
+                    style={{ border: 0, margin: 0 }}
+                    title="E2I VOIP - Devis PBX Yeastar"
+                    className="w-full"
+                    allow="clipboard-read; clipboard-write"
+                    sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* CTA finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
