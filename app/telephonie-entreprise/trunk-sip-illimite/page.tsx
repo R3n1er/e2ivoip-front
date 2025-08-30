@@ -276,64 +276,178 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-primary via-red-primary/70 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="card-body">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-green-100 to-white">
-                    <i className="lni lni-calculator text-green-600 text-2xl"></i>
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                {/* Gradient border top */}
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500"></div>
+                
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                
+                <div className="relative p-8">
+                  {/* Icon with enhanced styling */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-green-100 via-emerald-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-calculator text-3xl bg-gradient-to-br from-green-600 to-emerald-600 bg-clip-text text-transparent"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">Budget maîtrisé</h3>
-                  <p className="text-gray-600">
+                  
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+                    Budget maîtrisé
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
                     Un forfait mensuel fixe, pas de surprise. Idéal pour la gestion budgétaire de votre entreprise.
                   </p>
+                  
+                  {/* Bottom accent */}
+                  <div className="flex items-center text-green-600 font-medium text-sm">
+                    <i className="lni lni-checkmark-circle mr-2"></i>
+                    <span>Économies garanties</span>
+                  </div>
                 </div>
               </div>
 
               {/* Couverture complète */}
-              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="card-body">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-blue-100 to-white">
-                    <i className="lni lni-world text-blue-600 text-2xl"></i>
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                {/* Gradient border top */}
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-500"></div>
+                
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                
+                <div className="relative p-8">
+                  {/* Icon with enhanced styling */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-sky-400 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-blue-100 via-sky-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-world text-3xl bg-gradient-to-br from-blue-600 to-sky-600 bg-clip-text text-transparent"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">Couverture France + DOM</h3>
-                  <p className="text-gray-600">
+                  
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    Couverture France + DOM
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
                     Appelez sans limite vers la métropole et tous les départements d'outre-mer.
                   </p>
+                  
+                  {/* Bottom accent */}
+                  <div className="flex items-center text-blue-600 font-medium text-sm">
+                    <i className="lni lni-map-marker mr-2"></i>
+                    <span>National & DOM-TOM</span>
+                  </div>
                 </div>
               </div>
 
               {/* Évolutif */}
-              <div className="relative card bg-white/90 backdrop-blur-sm border border-red-primary/10 hover:border-red-primary/20 shadow-lg hover:shadow-2xl transition-all duration-300 group hover:-translate-y-0.5">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-primary via-red-primary/70 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="card-body">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-red-primary/10 to-white">
-                    <i className="lni lni-grow text-red-primary text-2xl"></i>
+              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+                {/* Gradient border top */}
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-500 via-orange-400 to-amber-500"></div>
+                
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ef4444' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                </div>
+                
+                <div className="relative p-8">
+                  {/* Icon with enhanced styling */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-400 to-orange-400 rounded-2xl blur-2xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-orange-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                      <i className="lni lni-grow text-3xl bg-gradient-to-br from-red-600 to-orange-600 bg-clip-text text-transparent"></i>
+                    </div>
                   </div>
-                  <h3 className="card-title text-gray-dark mb-2">Solution évolutive</h3>
-                  <p className="text-gray-600">
+                  
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    Solution évolutive
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
                     Ajustez le nombre d'appels simultanés selon l'évolution de votre activité.
                   </p>
+                  
+                  {/* Bottom accent */}
+                  <div className="flex items-center text-red-600 font-medium text-sm">
+                    <i className="lni lni-rocket mr-2"></i>
+                    <span>Croissance flexible</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Points clés supplémentaires */}
-            <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  "Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)",
-                  "Portabilité gratuite de vos numéros existants",
-                  "Support technique local et réactif",
-                  "Qualité HD garantie sur tous les appels",
-                ].map((text, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center ring-1 ring-green-100">
-                      <i className="lni lni-checkmark text-green-600 text-base"></i>
+            <div className="mt-16 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-red-600 to-orange-600 rounded-3xl blur-3xl opacity-10"></div>
+              <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Tout est inclus dans votre forfait
+                  </h3>
+                  <p className="text-gray-600">
+                    Une solution complète sans frais cachés
+                  </p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    {
+                      text: "Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)",
+                      icon: "lni-plug",
+                      color: "purple"
+                    },
+                    {
+                      text: "Portabilité gratuite de vos numéros existants",
+                      icon: "lni-phone-set",
+                      color: "blue"
+                    },
+                    {
+                      text: "Support technique local et réactif",
+                      icon: "lni-headphone-alt",
+                      color: "green"
+                    },
+                    {
+                      text: "Qualité HD garantie sur tous les appels",
+                      icon: "lni-signal",
+                      color: "orange"
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <div className={`
+                        w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
+                        ${item.color === 'purple' ? 'bg-gradient-to-br from-purple-100 to-purple-50' : ''}
+                        ${item.color === 'blue' ? 'bg-gradient-to-br from-blue-100 to-blue-50' : ''}
+                        ${item.color === 'green' ? 'bg-gradient-to-br from-green-100 to-green-50' : ''}
+                        ${item.color === 'orange' ? 'bg-gradient-to-br from-orange-100 to-orange-50' : ''}
+                        shadow-md group-hover:shadow-lg transition-shadow
+                      `}>
+                        <i className={`
+                          ${item.icon} text-xl
+                          ${item.color === 'purple' ? 'text-purple-600' : ''}
+                          ${item.color === 'blue' ? 'text-blue-600' : ''}
+                          ${item.color === 'green' ? 'text-green-600' : ''}
+                          ${item.color === 'orange' ? 'text-orange-600' : ''}
+                        `}></i>
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-gray-800 font-medium leading-relaxed block">
+                          {item.text}
+                        </span>
+                        <span className={`
+                          text-sm mt-1 inline-flex items-center
+                          ${item.color === 'purple' ? 'text-purple-600' : ''}
+                          ${item.color === 'blue' ? 'text-blue-600' : ''}
+                          ${item.color === 'green' ? 'text-green-600' : ''}
+                          ${item.color === 'orange' ? 'text-orange-600' : ''}
+                        `}>
+                          <i className="lni lni-checkmark-circle mr-1"></i>
+                          Inclus
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-gray-700">{text}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
