@@ -103,79 +103,107 @@ export default function PBXYeastar() {
             </div>
 
             {/* Cloud vs On-Premise */}
-            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <div className="grid lg:grid-cols-2 gap-8 mb-16">
               {/* Solution Cloud */}
-              <div className="card bg-gradient-to-br from-blue-50 to-white shadow-xl border border-blue-100">
-                <div className="card-body">
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
-                      <i className="lni lni-cloud text-white text-2xl"></i>
+              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 h-full">
+                <div className="card-body p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
+                      <i className="lni lni-cloud text-xl text-blue-600 group-hover:scale-110 transition-transform duration-200"></i>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-2xl font-bold text-gray-dark">Solution Cloud</h3>
-                      <p className="text-blue-600 font-medium">Hébergée par E2I VoIP</p>
+                    <div className="badge badge-primary badge-lg font-medium">
+                      Cloud
                     </div>
                   </div>
+                  
+                  <h3 className="card-title text-xl mb-3 text-base-content">
+                    Solution Cloud
+                  </h3>
+                  
+                  <p className="text-base-content/70 leading-relaxed mb-6">
+                    Hébergée par E2I VoIP, sans infrastructure à gérer. Idéale pour les petites entreprises et cabinets médicaux.
+                  </p>
+
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Aucune infrastructure à gérer</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Aucune infrastructure à gérer</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Mises à jour automatiques</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Mises à jour automatiques</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Support E2I VoIP inclus</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Support E2I VoIP inclus</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Scalabilité instantanée</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Scalabilité instantanée</span>
                     </div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <p className="text-sm text-blue-700">
-                      <strong>Idéal pour :</strong> Cabinets médicaux, petites entreprises souhaitant externaliser leur téléphonie
-                    </p>
+
+                  <div className="divider my-4"></div>
+                  
+                  <div className="card-actions flex-col space-y-4">
+                    <div className="w-full">
+                      <div className="alert alert-info text-sm">
+                        <i className="lni lni-heart-monitor"></i>
+                        <span><strong>Idéal pour :</strong> Cabinets médicaux, petites entreprises souhaitant externaliser leur téléphonie</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Solution On-Premise */}
-              <div className="card bg-gradient-to-br from-red-50 to-white shadow-xl border border-red-100">
-                <div className="card-body">
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 bg-red-primary rounded-full flex items-center justify-center">
-                      <i className="lni lni-server text-white text-2xl"></i>
+              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 h-full">
+                <div className="card-body p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
+                      <i className="lni lni-server text-xl text-red-primary group-hover:scale-110 transition-transform duration-200"></i>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-2xl font-bold text-gray-dark">Solution On-Premise</h3>
-                      <p className="text-red-primary font-medium">Sur votre infrastructure</p>
+                    <div className="badge badge-secondary badge-lg font-medium">
+                      On-Premise
                     </div>
                   </div>
+                  
+                  <h3 className="card-title text-xl mb-3 text-base-content">
+                    Solution On-Premise
+                  </h3>
+                  
+                  <p className="text-base-content/70 leading-relaxed mb-6">
+                    Sur votre infrastructure. Contrôle total et personnalisation avancée pour les entreprises avec besoins spécifiques.
+                  </p>
+
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Contrôle total des données</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Contrôle total des données</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Personnalisation avancée</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Personnalisation avancée</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Intégration système existant</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Intégration système existant</span>
                     </div>
-                    <div className="flex items-center">
-                      <i className="lni lni-checkmark-circle text-green-600 text-lg mr-3"></i>
-                      <span className="text-gray-700">Investissement unique</span>
+                    <div className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">Investissement unique</span>
                     </div>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-4">
-                    <p className="text-sm text-red-700">
-                      <strong>Idéal pour :</strong> Entreprises avec infrastructure IT dédiée, besoins de sécurité spécifiques
-                    </p>
+
+                  <div className="divider my-4"></div>
+                  
+                  <div className="card-actions flex-col space-y-4">
+                    <div className="w-full">
+                      <div className="alert alert-warning text-sm">
+                        <i className="lni lni-cog"></i>
+                        <span><strong>Idéal pour :</strong> Entreprises avec infrastructure IT dédiée, besoins de sécurité spécifiques</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
