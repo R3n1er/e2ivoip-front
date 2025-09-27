@@ -272,7 +272,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Conformité RGPD** : Cookies, protection données, droits d'auteur
 
 ### **Performance** ✅
-- ✅ **116 tests passent** : Couverture complète et étendue
+- ✅ **Tests** : 308 tests passent (après nettoyage Mobilité)
 - ✅ **Core Web Vitals** : Optimisés pour performance
 - ✅ **Responsive design** : Mobile-first approach
 - ✅ **Accessibilité** : WCAG 2.1 AA compliance
@@ -299,6 +299,6 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 
 ---
 
-**Date de mise à jour** : Décembre 2024  
+**Date de mise à jour** : Septembre 2025  
 **Statut** : 🟢 **EXCELLENT - SPRINT 4 FINALISÉ + UI/UX OPTIMISÉ + CONTACT MODERNISÉ**  
 **Prochaine action** : Préparer le Sprint 5 (Post-lancement) 🚀
