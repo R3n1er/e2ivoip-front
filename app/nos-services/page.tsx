@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
@@ -84,22 +85,6 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-mobile",
-      title: "Solutions Mobilité",
-      description:
-        "Travaillez de n'importe où avec softphone mobile et fonctionnalités nomades",
-      features: [
-        "Softphone iOS/Android",
-        "Numéro fixe sur mobile",
-        "Renvoi intelligent",
-        "Continuité de service",
-      ],
-      badge: "Télétravail",
-      price: "Inclus",
-      href: "/mobilite",
-      category: "Mobilité",
-    },
-    {
       icon: "lni-comments",
       title: "Assistants Vocaux IA",
       description:
@@ -135,7 +120,6 @@ export default function NosServices() {
 
   const categories = [
     { name: "Téléphonie IP", count: 3, color: "bg-red-primary" },
-    { name: "Mobilité", count: 1, color: "bg-blue-marine" },
     { name: "Innovation", count: 1, color: "bg-green-600" },
     { name: "Communication", count: 1, color: "bg-purple-600" },
   ];
@@ -210,12 +194,7 @@ export default function NosServices() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
+      {/* JSON-LD temporairement désactivé pour corriger le pré-rendu */}
 
       <div className="min-h-screen bg-white-primary">
         <Header />
@@ -268,7 +247,9 @@ export default function NosServices() {
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <i className={`lni ${benefit.icon} text-2xl ${benefit.color}`}></i>
+                        <i
+                          className={`lni ${benefit.icon} text-2xl ${benefit.color}`}
+                        ></i>
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
                         {benefit.title}
@@ -346,7 +327,9 @@ export default function NosServices() {
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <i className={`lni ${service.icon} h-6 w-6 text-red-primary`}></i>
+                          <i
+                            className={`lni ${service.icon} h-6 w-6 text-red-primary`}
+                          ></i>
                         </div>
                         <Badge className="bg-red-primary text-white-primary">
                           {service.badge}
@@ -382,7 +365,11 @@ export default function NosServices() {
                           </span>
                         </div>
 
-                        <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
+                        <CTAButton
+                          href={service.href}
+                          icon="lni-arrow-right"
+                          fullWidth
+                        >
                           En savoir plus
                         </CTAButton>
                       </div>

@@ -2,19 +2,13 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
-// Mock du composant HubSpotSimple
-jest.mock("../components/hubspot-simple", () => ({
-  HubSpotSimple: () => (
-    <div data-testid="hubspot-simple">
-      <div className="text-center text-gray-500 py-4">
-        Chargement du formulaire...
-      </div>
-      <div data-testid="hubspot-form" className="hubspot-form">
-        <iframe 
-          title="HubSpot Form"
-          src="about:blank"
-          data-testid="hubspot-iframe"
-        />
+// Mock du composant HubspotFormInline (évite de charger le script HubSpot réel)
+jest.mock("@/components/hubspot-form-inline", () => ({
+  __esModule: true,
+  default: ({ className }: { className?: string }) => (
+    <div className={className} data-testid="hubspot-form-inline">
+      <div className="flex items-center justify-center min-h-[200px]">
+        <p>Chargement du formulaire...</p>
       </div>
     </div>
   ),
@@ -29,7 +23,7 @@ describe("HubSpot E2E Integration", () => {
     expect(screen.getByText("experts VoIP")).toBeInTheDocument();
     
     // Vérifier le formulaire HubSpot
-    const hubspotComponent = screen.getByTestId("hubspot-simple");
+    const hubspotComponent = screen.getByTestId("hubspot-form-inline");
     expect(hubspotComponent).toBeInTheDocument();
     
     // Vérifier le titre du formulaire
@@ -41,22 +35,21 @@ describe("HubSpot E2E Integration", () => {
 
   it("should have proper HubSpot form structure", () => {
     render(<ContactPage />);
-    
+
     // Vérifier que le composant HubSpot est dans la bonne structure
-    const hubspotComponent = screen.getByTestId("hubspot-simple");
-    const cardContent = hubspotComponent.closest(".p-8");
-    expect(cardContent).toBeInTheDocument();
-    
-    // Vérifier que le composant est dans une carte
-    const card = cardContent?.closest(".shadow-lg");
-    expect(card).toBeInTheDocument();
+    const hubspotComponent = screen.getByTestId("hubspot-form-inline");
+    const cardBody = screen.getByTestId("contact-form-body");
+    const card = screen.getByTestId("contact-form-card");
+
+    expect(cardBody).toContainElement(hubspotComponent);
+    expect(card).toContainElement(cardBody);
   });
 
   it("should display loading state for HubSpot form", () => {
     render(<ContactPage />);
     
     // Vérifier l'état de chargement
-    expect(screen.getByText("Chargement du formulaire...")).toBeInTheDocument();
+    expect(screen.getAllByText("Chargement du formulaire...")[0]).toBeInTheDocument();
   });
 
   it("should have responsive layout", () => {

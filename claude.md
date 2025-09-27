@@ -34,9 +34,10 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 
 ### Méthodologie de Développement
 
-- **Test-Driven Development (TDD)** : Tests AVANT implémentation
-- **Documentation First** : Chaque feature documentée dans `/docs`
-- **Git Flow** : Push automatique après validation complète des tests
+- **Test-Driven Development (TDD)** : respecter strictement le cycle RED → GREEN → REFACTOR en écrivant toujours les tests avant le code de production
+- **Tests systématiques** : exécuter les tests unitaires et Playwright (via MCP) pour chaque page/feature développée
+- **Documentation First** : chaque feature documentée dans `/docs`
+- **Git Flow** : push automatique après validation complète des tests et déclenchement du déploiement Vercel
 
 ### Hiérarchie des Librairies
 
@@ -46,6 +47,13 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 4. **React Icons** - Icônes complémentaires si Lineicons ne couvre pas le besoin
 5. **shadcn/ui** - Composants spécialisés uniquement si DaisyUI ne couvre pas le besoin
 6. **Framer Motion** - Pour les animations
+
+### Règles prioritaires
+
+1. Toujours privilégier les composants DaisyUI avant toute autre librairie UI
+2. Chercher une icône dans Lineicons avant d’envisager React Icons
+3. Utiliser TypeScript en mode strict et respecter les patterns fonctionnels
+4. Prévoir des tests (Jest + Playwright/MCP) pour chaque composant ou page créée
 
 ## Configuration Icônes
 
@@ -547,7 +555,7 @@ bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
 #### Composant Réutilisable
 
 ```typescript
-import { FeatureCard } from '@/components/ui/feature-card';
+import { FeatureCard } from "@/components/ui/feature-card";
 
 // Utilisation basique
 <FeatureCard
@@ -556,17 +564,19 @@ import { FeatureCard } from '@/components/ui/feature-card';
   icon="lni-icon-name"
   badge={{ text: "Badge", icon: "lni-checkmark-circle" }}
   variant="primary" // "primary" | "secondary" | "accent"
-/>
+/>;
 ```
 
 #### Variantes de Couleurs (Charte Graphique)
 
 1. **Primary** (Rouge principal E2I) :
+
    - Bordure : `from-red-primary via-red-500 to-orange-500`
    - Icône : `text-red-primary`
    - Badge : `bg-red-50 text-red-primary`
 
 2. **Secondary** (Bleu marine / Gris) :
+
    - Bordure : `from-gray-800 via-gray-600 to-gray-500`
    - Icône : `text-gray-800`
    - Badge : `bg-gray-100 text-gray-800`
@@ -583,12 +593,15 @@ import { FeatureCard } from '@/components/ui/feature-card';
 <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
   {/* 1. Bordure dégradée - Couleurs de la charte */}
   <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
-  
+
   {/* 2. Pattern d'arrière-plan subtil */}
   <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-    <div className="absolute inset-0" style={{backgroundImage: "url(pattern-svg)"}}></div>
+    <div
+      className="absolute inset-0"
+      style={{ backgroundImage: "url(pattern-svg)" }}
+    ></div>
   </div>
-  
+
   <div className="relative p-6">
     {/* 3. Icône avec effets visuels */}
     <div className="relative mb-4">
@@ -597,17 +610,17 @@ import { FeatureCard } from '@/components/ui/feature-card';
         <i className="lni lni-icon text-3xl text-red-primary"></i>
       </div>
     </div>
-    
+
     {/* 4. Titre avec hover rouge */}
     <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
       Titre de la carte
     </h3>
-    
+
     {/* 5. Description - Gris secondaire */}
     <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
       Description de la fonctionnalité
     </p>
-    
+
     {/* 6. Badge optionnel */}
     <div className="text-center">
       <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
@@ -653,6 +666,7 @@ import { FeatureCard } from '@/components/ui/feature-card';
 #### Migration des Anciennes Cartes
 
 **AVANT** (À éviter) :
+
 ```typescript
 // ❌ Couleurs non conformes à la charte
 <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 border border-green-200">
@@ -662,6 +676,7 @@ import { FeatureCard } from '@/components/ui/feature-card';
 ```
 
 **APRÈS** (Style standardisé) :
+
 ```typescript
 // ✅ Style conforme E2I VoIP
 <FeatureCard
@@ -692,6 +707,7 @@ import { FeatureCard } from '@/components/ui/feature-card';
 ```
 
 **Caractéristiques** :
+
 - Direction : De gauche à droite (bleu foncé → bleu marine → rouge)
 - Transparences : Permettent la visibilité de l'image de fond
 - Z-index : 10 pour l'overlay, 20 pour le contenu
@@ -704,7 +720,7 @@ import { FeatureCard } from '@/components/ui/feature-card';
 **OBLIGATOIRE** : Utiliser ce style pour tous les boutons CTA du site :
 
 ```tsx
-<button 
+<button
   type="button"
   className="btn btn-lg bg-red-primary hover:bg-red-700 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold relative overflow-hidden group"
 >
@@ -717,12 +733,14 @@ import { FeatureCard } from '@/components/ui/feature-card';
 ```
 
 **Éléments clés** :
+
 - `relative overflow-hidden group` : Conteneur pour l'effet click
 - `<span className="flex items-center justify-center">` : Structure du contenu
 - `group-hover:translate-x-1` : Animation flèche au hover
 - `<div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>` : Effet click sombre
 
 **Variantes de couleurs** :
+
 - Primary : `bg-red-primary hover:bg-red-700`
 - Secondary : `bg-gray-800 hover:bg-gray-900`
 - Transparent : `bg-white/10 hover:bg-white hover:text-red-primary`

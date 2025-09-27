@@ -2,20 +2,30 @@
 import { render, screen } from "@testing-library/react";
 
 // Mock des composants
-jest.mock("@/components/ui/lazy-component", () => ({
-  LazyComponent: ({
+jest.mock("@/components/ui/lazy-component", () => {
+  const MockWrapper = ({
     children,
     fallback,
   }: {
-    children: React.ReactNode;
-    fallback: React.ReactNode;
+    children?: unknown;
+    fallback?: unknown;
   }) => (
     <div data-testid="lazy-component">
       {fallback}
       {children}
     </div>
-  ),
-}));
+  );
+
+  const Specialized = () => <div data-testid="lazy-component" />;
+
+  return {
+    __esModule: true,
+    LazyComponent: MockWrapper,
+    LazyHeroSection: Specialized,
+    LazyServicesSection: Specialized,
+    LazyContactSection: Specialized,
+  };
+});
 
 jest.mock("@/hooks/use-service-worker", () => ({
   useServiceWorker: () => ({
