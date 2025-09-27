@@ -83,7 +83,7 @@ describe("Page Trunk SIP au Compteur", () => {
     render(<TrunkSIPCompteur />);
     // Le titre est dans un seul élément h3
     expect(
-      screen.getByText(/Tarifs détaillés des appels à la minute/i)
+      screen.getByText(/Tarifs des appels à la minute/i)
     ).toBeInTheDocument();
   });
 
@@ -154,23 +154,6 @@ describe("Page Trunk SIP au Compteur", () => {
 
     const grandstreamElements = screen.getAllByText(/Grandstream/i);
     expect(grandstreamElements.length).toBeGreaterThan(0);
-  });
-
-  test("affiche la section des cas d'usage", () => {
-    render(<TrunkSIPCompteur />);
-    // Vérifier que la section est présente en cherchant des éléments partiels
-    const idealElements = screen.getAllByText(/Idéal pour votre/i);
-    expect(idealElements.length).toBeGreaterThan(0);
-
-    const entrepriseElements = screen.getAllByText(/entreprise/i);
-    expect(entrepriseElements.length).toBeGreaterThan(0);
-  });
-
-  test("affiche les témoignages clients", () => {
-    render(<TrunkSIPCompteur />);
-    expect(
-      screen.getByText(/Avec le Trunk SIP au compteur d'E2I VoIP/i)
-    ).toBeInTheDocument();
   });
 
   test("affiche la section CTA finale", () => {

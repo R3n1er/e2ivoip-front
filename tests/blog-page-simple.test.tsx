@@ -1,15 +1,43 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Blog from "@/app/blog/page";
 
+const mockBlogResponse = {
+  posts: [],
+  total: 0,
+  metadata: {
+    authors: [],
+    years: [],
+    tags: [],
+  },
+};
+
 describe("Blog Page - Test Simple", () => {
-  it("se charge sans erreur", () => {
-    // Ce test vérifie juste que la page se rend sans planter
-    expect(() => render(<Blog />)).not.toThrow();
+  beforeEach(() => {
+    jest.spyOn(global, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => mockBlogResponse,
+    } as Response);
   });
 
-  it("affiche le titre principal", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("se charge sans erreur", async () => {
+    const { container } = render(<Blog />);
+
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    expect(container.querySelector("main")).toBeInTheDocument();
+  });
+
+  it("affiche le titre principal", async () => {
     render(<Blog />);
-    // Le titre est divisé en plusieurs éléments, cherchons "Blog"
-    expect(screen.getByText(/Blog/i)).toBeInTheDocument();
+
+    const heading = await screen.findByRole("heading", {
+      level: 1,
+      name: /Blog E2I VoIP/i,
+    });
+
+    expect(heading).toBeInTheDocument();
   });
 });

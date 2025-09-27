@@ -1,9 +1,10 @@
 // Jest mocks
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { Header } from "@/components/header";
 
 // Mock des composants Next.js
 jest.mock("next/link", () => ({
+  __esModule: true,
   default: ({
     children,
     href,
@@ -16,36 +17,6 @@ jest.mock("next/link", () => ({
     <a href={href} {...props}>
       {children}
     </a>
-  ),
-}));
-
-// Mock de framer-motion
-jest.mock("framer-motion", () => ({
-  motion: {
-    header: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <header {...props}>{children}</header>,
-    div: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <div {...props}>{children}</div>,
-    button: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <button {...props}>{children}</button>,
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
   ),
 }));
 
@@ -131,21 +102,21 @@ describe("Header - Test d'hydratation", () => {
       .find((el) => el.closest("nav")?.classList.contains("lg:flex"));
     expect(desktopNav).toBeInTheDocument();
 
-    // Vérifier que le bouton mobile a les bonnes classes
-    const mobileButton = screen
-      .getAllByRole("button")
-      .find((button) => button.classList.contains("lg:hidden"));
-    expect(mobileButton).toBeInTheDocument();
+    // Vérifier que la structure du menu mobile DaisyUI est présente
+    expect(document.querySelector('.drawer.drawer-end.lg\\:hidden')).toBeInTheDocument();
+    expect(screen.getByTestId('mobile-menu-button')).toBeInTheDocument();
   });
 
-  test("Les sous-menus sont présents dans le DOM", () => {
+  test("Les sous-menus sont présents dans le DOM", async () => {
     render(<Header />);
 
-    // Vérifier que les éléments de sous-menu sont présents
-    expect(screen.getByText("Nos certifications")).toBeInTheDocument();
-    expect(screen.getByText("Nos partenaires")).toBeInTheDocument();
-    
-    // Vérifier que "Notre histoire" et "Notre équipe" ne sont PAS dans le sous-menu
+    fireEvent.mouseEnter(screen.getByTestId('nav-link-qui-sommes-nous'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('submenu-link-nos-certifications')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-nos-partenaires')).toBeInTheDocument();
+    });
+
     expect(screen.queryByText("Notre histoire")).not.toBeInTheDocument();
     expect(screen.queryByText("Notre équipe")).not.toBeInTheDocument();
   });
@@ -170,10 +141,6 @@ describe("Header - Test d'hydratation", () => {
     );
     expect(quiSommesNousLink).toBeInTheDocument();
 
-    const mobiliteElements = screen.getAllByText("Mobilité");
-    const mobiliteLink = mobiliteElements.find(
-      (el) => el.closest("a")?.getAttribute("href") === "/mobilite"
-    );
-    expect(mobiliteLink).toBeInTheDocument();
+    // Lien « Mobilité » retiré du header
   });
 });

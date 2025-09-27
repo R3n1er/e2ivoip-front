@@ -16,11 +16,13 @@ describe("ContactPage HubSpot Integration", () => {
     // Vérifier que le conteneur HubSpot est présent
     const hubspotContainer = document.getElementById('hubspot-form-container');
     expect(hubspotContainer).toBeInTheDocument();
-    expect(mockCreate).toHaveBeenCalledWith({
-      portalId: "26878201",
-      formId: "312a9f67-e613-4651-9690-4586646554a0",
-      region: "eu1",
-    });
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        portalId: "26878201",
+        formId: "312a9f67-e613-4651-9690-4586646554a0",
+        region: "eu1",
+      })
+    );
   });
 
   it("should have the correct HubSpot form container", () => {

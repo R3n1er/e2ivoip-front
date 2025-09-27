@@ -45,9 +45,8 @@ describe("Page Nos Services", () => {
   it("affiche les catégories de services", () => {
     render(<NosServices />);
 
-    // Vérification des 4 catégories
+    // Vérification des catégories restantes
     expect(screen.getByText("Téléphonie IP")).toBeInTheDocument();
-    expect(screen.getByText("Mobilité")).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
     const innovationElements = screen.getAllByText("Innovation");
     expect(innovationElements.length).toBeGreaterThan(0);
@@ -57,11 +56,10 @@ describe("Page Nos Services", () => {
   it("affiche tous les services avec leurs détails", () => {
     render(<NosServices />);
 
-    // Vérification des 6 services
+    // Vérification des services (sans Mobilité)
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
-    expect(screen.getByText("Solutions Mobilité")).toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
@@ -112,7 +110,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Populaire")).toBeInTheDocument();
     expect(screen.getByText("Idéal PME")).toBeInTheDocument();
     expect(screen.getByText("Entreprise")).toBeInTheDocument();
-    expect(screen.getByText("Télétravail")).toBeInTheDocument();
+    // Badge "Télétravail" retiré avec la suppression du service Mobilité
     // Utilisation de getAllByText pour gérer les éléments multiples
     const innovationElements = screen.getAllByText("Innovation");
     expect(innovationElements.length).toBeGreaterThan(0);
@@ -125,10 +123,8 @@ describe("Page Nos Services", () => {
     // Vérification des prix
     expect(screen.getByText("À partir de 15€/mois")).toBeInTheDocument();
     expect(screen.getByText("15€/mois/utilisateur")).toBeInTheDocument();
-    // Utilisation de getAllByText pour gérer les éléments multiples
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
-    expect(screen.getByText("Inclus")).toBeInTheDocument();
     expect(screen.getByText("À partir de 50€")).toBeInTheDocument();
   });
 

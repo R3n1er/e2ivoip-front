@@ -1,29 +1,54 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CTAButton } from "@/components/ui/cta-button"
+export const dynamic = "force-dynamic";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { CTAButton } from "@/components/ui/cta-button";
 
 export default function TelephonieDentreprise() {
   const solutions = [
     {
       icon: "lni-phone",
       title: "Standards téléphoniques IP",
-      description: "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
-      features: ["Auto-commutateur", "Messagerie vocale", "Transfert d'appels", "Conférence téléphonique"],
+      description:
+        "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
+      features: [
+        "Auto-commutateur",
+        "Messagerie vocale",
+        "Transfert d'appels",
+        "Conférence téléphonique",
+      ],
     },
     {
       icon: "lni-users",
       title: "Solutions multi-sites",
-      description: "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
-      features: ["Numérotation abrégée", "Transfert inter-sites", "Annuaire centralisé", "Gestion centralisée"],
+      description:
+        "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
+      features: [
+        "Numérotation abrégée",
+        "Transfert inter-sites",
+        "Annuaire centralisé",
+        "Gestion centralisée",
+      ],
     },
     {
       icon: "lni-headphone",
       title: "Centre d'appels",
-      description: "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
-      features: ["Distribution automatique", "Supervision temps réel", "Enregistrement", "Statistiques détaillées"],
+      description:
+        "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
+      features: [
+        "Distribution automatique",
+        "Supervision temps réel",
+        "Enregistrement",
+        "Statistiques détaillées",
+      ],
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -38,7 +63,8 @@ export default function TelephonieDentreprise() {
                 Téléphonie <span className="text-red-600">d'entreprise</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                Des solutions de téléphonie IP complètes et évolutives pour répondre aux besoins de votre entreprise
+                Des solutions de téléphonie IP complètes et évolutives pour
+                répondre aux besoins de votre entreprise
               </p>
               <CTAButton href="/devis-en-ligne" icon="lni-bubble">
                 Demander un devis gratuit
@@ -52,10 +78,15 @@ export default function TelephonieDentreprise() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-8">
               {solutions.map((solution, index) => (
-                <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="border-gray-200 hover:shadow-lg transition-shadow"
+                >
                   <CardHeader>
                     <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                      <i className={`lni ${solution.icon} w-6 h-6 text-red-600`}></i>
+                      <i
+                        className={`lni ${solution.icon} w-6 h-6 text-red-600`}
+                      ></i>
                     </div>
                     <CardTitle className="text-xl">{solution.title}</CardTitle>
                     <CardDescription>{solution.description}</CardDescription>
@@ -63,7 +94,10 @@ export default function TelephonieDentreprise() {
                   <CardContent>
                     <ul className="space-y-2">
                       {solution.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        <li
+                          key={featureIndex}
+                          className="flex items-center text-sm text-gray-600"
+                        >
                           <div className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3" />
                           {feature}
                         </li>
@@ -84,12 +118,31 @@ export default function TelephonieDentreprise() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { title: "Trunk SIP", href: "/trunk-sip", description: "Connexions SIP professionnelles" },
-                { title: "3CX PRO dédiée", href: "/3cx-pro-dediee", description: "Solution 3CX dédiée" },
-                { title: "3CX SMB mutualisée", href: "/3cx-smb-mutualisee", description: "Solution 3CX partagée" },
-                { title: "Yeastar", href: "/yeastar", description: "IPBX Yeastar" },
+                {
+                  title: "Trunk SIP",
+                  href: "/trunk-sip",
+                  description: "Connexions SIP professionnelles",
+                },
+                {
+                  title: "3CX PRO dédiée",
+                  href: "/3cx-pro-dediee",
+                  description: "Solution 3CX dédiée",
+                },
+                {
+                  title: "3CX SMB mutualisée",
+                  href: "/3cx-smb-mutualisee",
+                  description: "Solution 3CX partagée",
+                },
+                {
+                  title: "Yeastar",
+                  href: "/yeastar",
+                  description: "IPBX Yeastar",
+                },
               ].map((item, index) => (
-                <Card key={index} className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
+                <Card
+                  key={index}
+                  className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+                >
                   <CardHeader>
                     <CardTitle className="text-lg">{item.title}</CardTitle>
                     <CardDescription>{item.description}</CardDescription>
@@ -103,5 +156,5 @@ export default function TelephonieDentreprise() {
 
       <Footer />
     </div>
-  )
+  );
 }

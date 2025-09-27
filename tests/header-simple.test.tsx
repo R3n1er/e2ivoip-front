@@ -91,12 +91,7 @@ describe("HeaderSimple Component", () => {
       expect(link).toHaveAttribute("href", "/qui-sommes-nous");
     });
 
-    it("has correct href for Mobilité link", () => {
-      render(<HeaderSimple />);
-
-      const link = screen.getByRole("link", { name: "Mobilité" });
-      expect(link).toHaveAttribute("href", "/mobilite");
-    });
+    // Lien « Mobilité » retiré du header simple
 
     it("has correct href for Blog link", () => {
       render(<HeaderSimple />);
@@ -180,7 +175,7 @@ describe("HeaderSimple Component", () => {
 
       // Vérifier que les éléments de navigation sont présents dans le menu mobile
       const mobileNavItems = screen.getAllByText(
-        /Qui sommes-nous|Téléphonie|Mobilité|Nos services|Blog|Devis/i
+        /Qui sommes-nous|Téléphonie|Nos services|Blog|Devis/i
       );
       expect(mobileNavItems.length).toBeGreaterThan(0);
     });
@@ -278,7 +273,7 @@ describe("HeaderSimple Component", () => {
       render(<HeaderSimple />);
 
       const navItems = screen.getAllByText(
-        /Qui sommes-nous|Mobilité|Blog|Devis/i
+        /Qui sommes-nous|Blog|Devis/i
       );
       navItems.forEach((item) => {
         expect(item).toHaveClass("transition-colors", "duration-200");

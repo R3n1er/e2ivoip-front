@@ -40,20 +40,19 @@ describe("HeaderSimple - Sous-menus", () => {
     expect(screen.getByText("Qui sommes-nous")).toBeInTheDocument();
     expect(screen.getByText("Téléphonie d'entreprise")).toBeInTheDocument();
     expect(screen.getByText("Nos services")).toBeInTheDocument();
-    expect(screen.getByText("Mobilité")).toBeInTheDocument();
+    // « Mobilité » supprimé du menu
     expect(screen.getByText("Blog")).toBeInTheDocument();
   });
 
   test("Les sous-menus contiennent les bons éléments", () => {
     render(<HeaderSimple />);
-    
-    // Vérifier les sous-éléments (ils sont dans le DOM même si pas visibles)
-    expect(screen.getByText("Nos certifications")).toBeInTheDocument();
-    expect(screen.getByText("Nos partenaires")).toBeInTheDocument();
+
     expect(screen.getByText("Trunk SIP au compteur")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP illimité")).toBeInTheDocument();
-    expect(screen.getByText("3CX PRO dédiée")).toBeInTheDocument();
+    expect(screen.getByText("Téléphonie 3CX")).toBeInTheDocument();
+    expect(screen.getByText("Téléphonie Yeastar")).toBeInTheDocument();
     expect(screen.getByText("Studio attente téléphonique")).toBeInTheDocument();
+    expect(screen.getByText("Assistants vocaux IA")).toBeInTheDocument();
   });
 
   test("Les sous-menus ont les bonnes classes CSS", () => {
@@ -76,7 +75,7 @@ describe("HeaderSimple - Sous-menus", () => {
     render(<HeaderSimple />);
     
     // Trouver le bouton menu mobile spécifiquement
-    const menuButton = screen.getByRole("button", { name: "" }); // Le bouton sans nom (menu mobile)
+    const menuButton = screen.getByRole("button", { name: /ouvrir le menu/i });
     
     // Cliquer sur le bouton menu
     await user.click(menuButton);
@@ -87,13 +86,12 @@ describe("HeaderSimple - Sous-menus", () => {
 
   test("Les liens ont les bonnes URLs", () => {
     render(<HeaderSimple />);
-    
+
     // Vérifier les liens principaux
     const quiSommesNousLink = screen.getByRole("link", { name: /qui sommes-nous/i });
     expect(quiSommesNousLink).toHaveAttribute("href", "/qui-sommes-nous");
     
-    const mobiliteLink = screen.getByRole("link", { name: /mobilité/i });
-    expect(mobiliteLink).toHaveAttribute("href", "/mobilite");
+    // Lien « Mobilité » retiré du header simple
     
     const blogLink = screen.getByRole("link", { name: /blog/i });
     expect(blogLink).toHaveAttribute("href", "/blog");
@@ -103,13 +101,10 @@ describe("HeaderSimple - Sous-menus", () => {
     render(<HeaderSimple />);
     
     // Vérifier les sous-liens
-    const certificationsLink = screen.getByRole("link", { name: /nos certifications/i });
-    expect(certificationsLink).toHaveAttribute("href", "/qui-sommes-nous/certifications");
-    
-    const partenairesLink = screen.getByRole("link", { name: /nos partenaires/i });
-    expect(partenairesLink).toHaveAttribute("href", "/qui-sommes-nous/partenaires");
-    
     const trunkSipLink = screen.getByRole("link", { name: /trunk sip au compteur/i });
     expect(trunkSipLink).toHaveAttribute("href", "/telephonie-entreprise/trunk-sip-compteur");
+
+    const telephonie3cxLink = screen.getByRole("link", { name: /téléphonie 3cx/i });
+    expect(telephonie3cxLink).toHaveAttribute("href", "/telephonie-3cx");
   });
 });

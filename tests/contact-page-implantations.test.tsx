@@ -45,36 +45,31 @@ describe("ContactPage - Section Nos Implantations", () => {
   it("affiche la description de la section", () => {
     render(<ContactPage />);
 
-    const description = screen.getByText(
-      "Présents aux Antilles, en Guyane, à la Réunion et en France Métropolitaine"
-    );
+    const description = screen.getByText(/Équipes techniques locales en France Métropolitaine et DOM/);
     expect(description).toBeInTheDocument();
   });
 
-  it("affiche les 4 implantations avec leurs numéros de téléphone", () => {
+  it("affiche les implantations avec leurs numéros de téléphone", () => {
     render(<ContactPage />);
 
-    // Vérifier que les 4 implantations sont présentes
-    expect(screen.getByText("Guyane")).toBeInTheDocument();
-    expect(screen.getByText("Guadeloupe")).toBeInTheDocument();
-    expect(screen.getByText("Martinique")).toBeInTheDocument();
-    expect(screen.getByText("La Réunion")).toBeInTheDocument();
+    expect(screen.getByTestId("location-france")).toBeInTheDocument();
+    expect(screen.getByTestId("location-guyane")).toBeInTheDocument();
+    expect(screen.getByTestId("location-guadeloupe")).toBeInTheDocument();
+    expect(screen.getByTestId("location-martinique")).toBeInTheDocument();
+    expect(screen.getByTestId("location-reunion")).toBeInTheDocument();
 
-    // Vérifier les numéros de téléphone
-    expect(screen.getByText("+594 594 963 500")).toBeInTheDocument();
-    expect(screen.getByText("+590 590 173 500")).toBeInTheDocument();
-    expect(screen.getByText("+596 596 313 500")).toBeInTheDocument();
-    expect(screen.getByText("+262 263 085 500")).toBeInTheDocument();
+    expect(screen.getByTestId("phone-france")).toHaveTextContent("01 89 56 05 00");
+    expect(screen.getByTestId("phone-guyane")).toHaveTextContent("05 94 96 35 00");
+    expect(screen.getByTestId("phone-guadeloupe")).toHaveTextContent("+590 590 173 500");
+    expect(screen.getByTestId("phone-martinique")).toHaveTextContent("+596 596 313 500");
+    expect(screen.getByTestId("phone-reunion")).toHaveTextContent("+262 263 085 500");
   });
 
   it("affiche les liens téléphoniques cliquables", () => {
     render(<ContactPage />);
 
-    const phoneLinks = screen.getAllByRole("link", {
-      name: /\+594 594 963 500/,
-    });
-    expect(phoneLinks).toHaveLength(1);
-    expect(phoneLinks[0]).toHaveAttribute("href", "tel:+594594963500");
+    expect(screen.getByTestId("phone-guyane")).toHaveAttribute("href", "tel:+594594963500");
+    expect(screen.getByTestId("phone-france")).toHaveAttribute("href", "tel:+33189560500");
   });
 
   it("applique le style dégradé correct à la section", () => {

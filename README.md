@@ -69,7 +69,7 @@ Le projet utilise **Vitest** et **React Testing Library** pour les tests unitair
 
 ## 📋 Prérequis
 
-- Node.js 18+
+- Node.js 22.12.0 (LTS)
 - npm ou yarn
 - Compte HubSpot
 - Compte Tally
