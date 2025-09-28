@@ -8,6 +8,17 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 jours
     dangerouslyAllowSVG: true,
     qualities: [60, 70, 75, 80, 85, 90],
+    // Autoriser les images distantes depuis Contentful
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.ctfassets.net",
+      },
+    ],
   },
 
   // Optimisations des performances

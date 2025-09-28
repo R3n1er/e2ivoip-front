@@ -7,11 +7,13 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Sprint 1 - Foundations** ✅ TERMINÉ
 
 ### **Objectifs**
+
 - Mise en place de l'environnement de développement
 - Configuration des technologies de base
 - Intégration des services tiers
 
 ### **Livrables**
+
 - ✅ Environnement Next.js 15 configuré
 - ✅ Tailwind CSS + DaisyUI + shadcn/ui
 - ✅ HubSpot CRM intégré (Portail 26878201)
@@ -22,6 +24,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ Configuration optimisée MacBook Pro
 
 ### **Technologies**
+
 - ✅ Next.js 15 (App Router)
 - ✅ React 18
 - ✅ TypeScript
@@ -36,11 +39,13 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Sprint 2 - Homepage Modernization** ✅ TERMINÉ
 
 ### **Objectifs**
+
 - Modernisation complète de la page d'accueil
 - Optimisation de l'expérience utilisateur
 - Intégration des composants de base
 
 ### **Livrables**
+
 - ✅ Layout principal optimisé
 - ✅ Header responsive avec navigation
 - ✅ Footer avec partenaires et légal
@@ -53,6 +58,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ Animations Framer Motion
 
 ### **Métriques**
+
 - ✅ Performance : Core Web Vitals optimisés
 - ✅ Responsive : Mobile-first design
 - ✅ Accessibilité : WCAG 2.1 AA
@@ -65,6 +71,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Sprint 4 - UI/UX Optimization & Contact Enhancement** ✅ EN COURS
 
 ### **Objectifs**
+
 - Intégration avancée HubSpot
 - Blog moderne avec synchronisation
 - Pages services détaillées
@@ -73,6 +80,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ### **Livrables**
 
 #### **3.1 Intégration HubSpot étendue** ✅
+
 - ✅ **Formulaires HubSpot natifs** :
   - ✅ Formulaire de contact principal
   - ✅ Tracking avancé des visiteurs
@@ -91,6 +99,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
   - ✅ Statistiques de visite détaillées
 
 #### **3.2 Blog dynamique Strapi** ✅ FINALISÉ
+
 - ✅ **Pages de listing avec pagination** : `BlogPagination` avec navigation intuitive
 - ✅ **Pages individuelles d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Pages de catégories** : `/blog/categorie/[slug]` avec filtrage avancé
@@ -103,6 +112,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ### **Livrables**
 
 #### **4.1 Page d'accueil optimisée** ✅
+
 - ✅ **Section Services** : Suppression des indicateurs de disponibilité "99.9%"
 - ✅ **Section Statistiques Clients** : Réorganisation en 2 colonnes (suppression "Taux de satisfaction")
 - ✅ **Section Contact** : Suppression du formulaire HubSpot, réorganisation en 2 colonnes
@@ -111,6 +121,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Redirection email** : L'email masqué redirige vers la page de contact au clic
 
 #### **4.2 Page de Contact modernisée** ✅
+
 - ✅ **CTA urgent centré** : Carte rouge centrée sur toute la largeur
 - ✅ **Numéros par département** : Section complète avec 5 départements uniquement :
   - Guadeloupe (0590 96 35 00), Martinique (0596 96 35 00), Guyane (0594 96 35 00)
@@ -120,6 +131,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Suppression CTA** : Composant "Besoin d'une réponse rapide ?" retiré
 
 #### **4.3 Footer - Toutes les pages** ✅
+
 - ✅ **Partenaires mis à jour** : HubSpot remplacé par Grandstream
 - ✅ **Liens vers sites officiels** : Chaque partenaire a un lien cliquable :
   - 3CX (https://www.3cx.fr), Yeastar (https://www.yeastar.com), Grandstream (https://www.grandstream.com)
@@ -127,23 +139,27 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Design optimisé** : Layout en colonnes avec séparateur visuel
 
 #### **4.4 Sécurité et UX améliorées** ✅
+
 - ✅ **Composant SecureEmail** : Protection contre le spam avec encodage
 - ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
 - ✅ **Documentation mise à jour** : NEXT_STEPS.md, roadmap.md, implementation.md
 
 #### **3.3 Pages services** 🔄 EN COURS
+
 - 🔄 Contenu détaillé pour chaque service
 - 🔄 Intégration formulaires de devis
 - 🔄 SEO optimisé par page
 - 🔄 Call-to-actions stratégiques
 
 #### **3.4 SEO avancé** 🔄 EN COURS
+
 - 🔄 Meta descriptions optimisées
 - 🔄 Structured data implémentée
 - 🔄 Sitemap XML généré
 - 🔄 Core Web Vitals optimisés
 
 ### **Nouvelles fonctionnalités Sprint 3**
+
 - ✅ **Page contact complète** : `/contact` avec design moderne
 - ✅ **Formulaire HubSpot global** : Composant `HubSpotContactFormGlobal`
 - ✅ **Navigation mise à jour** : Bouton "Contact" dans le header
@@ -164,7 +180,8 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Charte graphique PRD** : Services section avec couleurs strictement conformes
 
 ### **Métriques Sprint 3**
-- ✅ **Tests** : 84 tests passent (78 → 84)
+
+- ✅ **Tests** : 308 tests passent
 - ✅ **Pages** : 15 pages créées (+ blog, qui-sommes-nous, mentions-légales)
 - ✅ **Composants** : 30+ composants React
 - ✅ **Intégrations** : HubSpot, Tally, n8n, Tawk.to
@@ -176,6 +193,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Sprint 4 - Optimizations & Finalization** 🔄 EN COURS
 
 ### **Objectifs**
+
 - Optimisation des performances
 - Tests utilisateurs
 - Déploiement production
@@ -184,18 +202,21 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ### **Livrables**
 
 #### **4.1 Performance & Core Web Vitals** 🔄
+
 - 🔄 Optimisation des images
 - 🔄 Lazy loading des composants
 - 🔄 Bundle splitting optimisé
 - 🔄 Lighthouse score > 90
 
 #### **4.2 Tests E2E** 🔄
+
 - 🔄 Tests Playwright complets
 - 🔄 User journey tests
 - 🔄 Conversion funnel tests
 - 🔄 Tests sur MacBook Pro différentes tailles
 
 #### **4.3 Déploiement** 🔄
+
 - 🔄 Configuration Vercel
 - 🔄 Pipeline CI/CD
 - 🔄 Tests automatiques sur PR
@@ -204,6 +225,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - 🔄 SSL et sécurité renforcée
 
 #### **4.4 Documentation** 🔄
+
 - 🔄 Guide utilisateur
 - 🔄 Guide maintenance
 - 🔄 Documentation technique
@@ -214,6 +236,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Sprint 5 - Post-launch** 📅 PLANIFIÉ
 
 ### **Objectifs**
+
 - Monitoring et analytics
 - Optimisations continues
 - Nouvelles fonctionnalités
@@ -221,6 +244,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ### **Livrables**
 
 #### **5.1 Monitoring étendu** 📅
+
 - 📅 Google Analytics 4
 - 📅 Google Search Console
 - 📅 Monitoring errors (Sentry)
@@ -228,6 +252,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - 📅 Conversion tracking Tally
 
 #### **5.2 Optimisations continues** 📅
+
 - 📅 A/B testing
 - 📅 Chatbot optimization
 - 📅 UX improvement
@@ -251,6 +276,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🎯 **Accomplissements Majeurs Sprint 3**
 
 ### **Intégrations HubSpot** ✅
+
 - ✅ **Formulaires 100% HubSpot** : Tous les formulaires utilisent HubSpot
 - ✅ **CRM synchronisation** : Leads automatiquement synchronisés
 - ✅ **Tracking complet** : Événements de conversion implémentés
@@ -258,6 +284,7 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Navigation** : Bouton "Contact" dans le header
 
 ### **Blog moderne** ✅
+
 - ✅ **Pagination avancée** : Navigation intuitive entre pages
 - ✅ **Pages d'articles** : `/blog/[slug]` avec SEO optimisé
 - ✅ **Catégories** : `/blog/categorie/[slug]` avec filtrage
@@ -266,12 +293,14 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Design cohérent** : Interface utilisateur moderne
 
 ### **Pages légales** ✅
+
 - ✅ **Page "Qui sommes-nous"** : Équipe mise à jour avec design moderne
 - ✅ **Page "Mentions légales"** : Informations complètes (Vercel + Hostinger)
 - ✅ **Page "Politique de confidentialité"** : Design moderne cohérent avec le site
 - ✅ **Conformité RGPD** : Cookies, protection données, droits d'auteur
 
 ### **Performance** ✅
+
 - ✅ **Tests** : 308 tests passent (après nettoyage Mobilité)
 - ✅ **Core Web Vitals** : Optimisés pour performance
 - ✅ **Responsive design** : Mobile-first approach
@@ -282,18 +311,21 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 ## 🚀 **Prochaines Étapes**
 
 ### **Priorité 1 : Finalisation Sprint 4** ✅
+
 1. ✅ **Page d'accueil optimisée** : Services, statistiques et contact modernisés
 2. ✅ **Page de Contact refaite** : Numéros par département et coordonnées mises à jour
 3. ✅ **Footer optimisé** : Partenaires mis à jour et numéros par département ajoutés
 4. ✅ **Sécurité renforcée** : Composant SecureEmail et protection anti-spam
 
 ### **Priorité 2 : Sprint 5 (Post-lancement)**
+
 1. **Tests E2E** : Playwright pour user journey
 2. **Performance** : Lighthouse CI et optimisations
 3. **Déploiement** : Vercel avec CI/CD
 4. **Monitoring** : Analytics et tracking avancés
 
 ### **Priorité 3 : Sprint 5**
+
 1. **Monitoring** : Analytics et tracking avancés
 2. **Optimisations** : A/B testing et améliorations continues
 

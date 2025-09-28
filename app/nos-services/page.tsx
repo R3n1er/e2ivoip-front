@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
   Card,
@@ -16,13 +15,13 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
   keywords:
-    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, solutions mobilité, assistants vocaux IA, studio enregistrement, VoIP Antilles",
+    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, assistants vocaux IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA. Économies 30% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 30% garanties.",
     type: "website",
     locale: "fr_FR",
   },
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA.",
   },
 };
 
@@ -60,7 +59,7 @@ export default function NosServices() {
       features: [
         "Instance sécurisée mutualisée",
         "Formation incluse",
-        "Mobilité intégrée",
+        "Support utilisateur dédié",
         "Interface intuitive",
       ],
       badge: "Idéal PME",
@@ -157,7 +156,7 @@ export default function NosServices() {
     "@type": "Organization",
     name: "E2I VoIP",
     description:
-      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA.",
+      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et assistants vocaux IA.",
     url: "https://e2ivoip.fr",
     logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
     contactPoint: {
@@ -197,9 +196,7 @@ export default function NosServices() {
       {/* JSON-LD temporairement désactivé pour corriger le pré-rendu */}
 
       <div className="min-h-screen bg-white-primary">
-        <Header />
-
-        <main className="pt-20">
+        <main className="pt-6">
           {/* Hero Section */}
           <section className="py-20 bg-gradient-to-r from-red-50 to-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,8 +207,8 @@ export default function NosServices() {
                 </h1>
                 <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
                   Transformez votre téléphonie d&apos;entreprise avec des
-                  solutions complètes : économies garanties, mobilité totale et
-                  fonctionnalités nouvelle génération.
+                  solutions complètes : économies garanties et fonctionnalités
+                  nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <CTAButton href="/contact" icon="lni-phone">
@@ -404,7 +401,6 @@ export default function NosServices() {
             </div>
           </section>
         </main>
-
         <Footer />
       </div>
     </>

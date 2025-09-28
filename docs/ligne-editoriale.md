@@ -35,10 +35,10 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Proposition de valeur secondaire
 
-**"Transformez votre téléphonie avec mobilité et fonctionnalités nouvelle génération"**
+**"Transformez votre téléphonie avec des fonctionnalités nouvelle génération"**
 
 - Solutions de téléphonie IP nouvelle génération hébergé dans le cloud (3CX et Yeastar)
-- Mobilité totale : travaillez de n'importe où, maintenir la productivité des équipes
+- Collaboration unifiée : travaillez de manière fluide sur tous vos sites
 - Fonctionnalités avancées : Intégration WhatsApp, Integration Teams, Integration Microsoft 365, Integration CRM, Visioconférence, Assistants vocaux IA, Transcription des appels
 - Standard virtuel intelligent et évolutif
 - Tableau de bord, Statistique des appels reçus ou abandonnés en file d'attente.
@@ -48,7 +48,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 1. **Opérateur télécom DOM** : Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
 2. **Customer Success dédié** : Un accompagnement personnalisé avec un Customer Success Manager attitré pour chaque client
-3. **Double économie** : -30% sur les coûts + nouvelles fonctionnalités incluses (IA, CRM, mobilité)
+3. **Double économie** : -30% sur les coûts + nouvelles fonctionnalités incluses (IA, CRM, automatisation)
 4. **Support local réactif** : Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane
 5. **Expertise certifiée** : Partenaire Silver 3CX, certifié Yeastar, partenaire Fanvil et Yealink
 6. **Migration PABX vers IP** : Spécialiste de l'évolution des anciens PABX face à l'arrêt du cuivre
@@ -72,11 +72,9 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - Création numéros géographiques locaux
 - Standard téléphonique
-- Solutions télécom mobilité
 - Économies 30% factures télécom
 - Téléphonie IP nouvelle génération
 - Centre d'appels virtuel
-- Softphone mobile
 - Agents vocaux IA / Intelligents
 - Communications unifiées
 - Standard virtuel intelligent
@@ -100,7 +98,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 **Secteurs spécifiques**
 
 - **Santé** (cliniques, EHPAD, cabinets medicaux, services médico-social) : Conformité, fiabilité, disponibilité 24/7
-- **Juridique/Expertise** (avocats, comptables) : Confidentialité, professionnalisme, mobilité
+- **Juridique/Expertise** (avocats, comptables) : Confidentialité, professionnalisme, flexibilité
 - **Commerce/Distribution** : Multi-sites, statistiques d'appels, centre d'appels virtuel
 - **Collectivités** : Budget maîtrisé, conformité RGPD, support local
 
@@ -111,7 +109,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 1. **Hero** : Accroche forte + proposition de valeur
 2. **Problématique** : Coûts élevés, système PABX obsolète
 3. **Solution** : Notre offre de téléphonie IP cloud ou sur site
-4. **Bénéfices** : Économies, mobilité, fonctionnalités, flexibilité, disponibilité
+4. **Bénéfices** : Économies, collaboration, fonctionnalités, flexibilité, disponibilité
 5. **Preuves** : Certifications, témoignages, Etude de Cas
 6. **CTA** : Devis gratuit, audit télécom offert
 
@@ -164,7 +162,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 ### Descriptions
 
 - ❌ "Nous proposons des solutions IPBX"
-- ✅ "Votre standard téléphonique nouvelle génération avec mobilité intégrée"
+- ✅ "Votre standard téléphonique nouvelle génération, simple et évolutif"
 - ✅ "Trunk SIP au compteur ou illimité, spécialement conçu pour les DOM"
 - ✅ "Portabilité et création de numéros dans votre zone géographique"
 

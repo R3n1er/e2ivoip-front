@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Header navigation", () => {
-  test("affiche la navigation desktop avec les liens clés", async ({ page }) => {
+  test("affiche la navigation desktop avec les liens clés", async ({
+    page,
+  }) => {
     await page.goto("/");
     const header = page.locator("header").first();
     await expect(header).toBeVisible();
@@ -14,7 +16,6 @@ test.describe("Header navigation", () => {
 
     const expectedLinks = [
       { name: "Qui sommes-nous", href: "/qui-sommes-nous" },
-      { name: "Mobilité", href: "/mobilite" },
       { name: "Nos services", href: "/nos-services" },
       { name: "Blog", href: "/blog" },
       { name: "Devis en ligne", href: "/devis-en-ligne" },
@@ -39,13 +40,19 @@ test.describe("Header navigation", () => {
       .getByText("Téléphonie d'entreprise", { exact: true });
     await telephony.hover();
     await expect(
-      page.getByRole("link", { name: "Trunk SIP illimité" })
+      page
+        .getByRole("navigation")
+        .getByRole("link", { name: "Trunk SIP illimité" })
     ).toBeVisible();
 
-    const services = page.locator("nav").getByText("Nos services", { exact: false });
+    const services = page
+      .locator("nav")
+      .getByText("Nos services", { exact: false });
     await services.first().hover();
     await expect(
-      page.getByRole("link", { name: "Assistants vocaux IA" })
+      page
+        .getByRole("navigation")
+        .getByRole("link", { name: "Assistants vocaux IA" })
     ).toBeVisible();
   });
 

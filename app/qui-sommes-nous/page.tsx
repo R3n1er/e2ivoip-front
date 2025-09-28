@@ -269,7 +269,7 @@ export default function QuiSommesNous() {
                     <p className="text-gray-600">
                       <strong>Assistants vocaux IA</strong> pour accueil 24/7.
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.
-                      <strong>Mobilité totale</strong> avec softphones. Studio
+                      <strong>Collaboration unifiée</strong> pour vos équipes. Studio
                       d'enregistrement pour messages professionnels.
                     </p>
                   </div>
@@ -304,7 +304,7 @@ export default function QuiSommesNous() {
                     ✓ Parc de postes téléphoniques Fanvil
                   </p>
                   <p className="text-sm text-gray-600">
-                    ✓ Mobilité pour tous les collaborateurs
+                    ✓ Collaboration fluide pour tous les collaborateurs
                   </p>
                   <p className="text-sm text-gray-600">
                     ✓ Support local réactif sur 3 départements (Guadeloupe,

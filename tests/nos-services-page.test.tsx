@@ -2,11 +2,6 @@
 import { render, screen } from "@testing-library/react";
 import NosServices from "../app/nos-services/page";
 
-// Mock des composants Header et Footer
-jest.mock("@/components/header", () => ({
-  Header: () => <div data-testid="header">Header</div>,
-}));
-
 jest.mock("@/components/footer", () => ({
   Footer: () => <div data-testid="footer">Footer</div>,
 }));
@@ -16,7 +11,6 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des composants principaux
-    expect(screen.getByTestId("header")).toBeInTheDocument();
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
@@ -136,5 +130,6 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Numéros locaux garantis")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();
+    expect(screen.getByText("Support utilisateur dédié")).toBeInTheDocument();
   });
 });

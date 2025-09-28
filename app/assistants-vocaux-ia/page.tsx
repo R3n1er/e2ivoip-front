@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
   Card,
@@ -40,9 +39,7 @@ export default function AssistantsVocauxIA() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-
-      <main className="pt-20">
+      <div className="pt-6">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-r from-blue-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,8 +135,7 @@ export default function AssistantsVocauxIA() {
             </div>
           </div>
         </section>
-      </main>
-
+      </div>
       <Footer />
     </div>
   );
