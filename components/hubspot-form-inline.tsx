@@ -18,7 +18,7 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
         // Vérifier si le script HubSpot Forms est déjà chargé
         if (!(window as any).hbspt) {
           const script = document.createElement("script");
-          script.src = "//js-eu1.hsforms.net/forms/embed/v2.js";
+          script.src = "https://js-eu1.hsforms.net/forms/embed/v2.js";
           script.charset = "utf-8";
           script.type = "text/javascript";
           script.async = true;
