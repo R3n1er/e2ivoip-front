@@ -72,8 +72,8 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Formulaire HubSpot */}
             <div>
-              <div className="card bg-base-100 shadow-xl border-0" data-testid="contact-form-card">
-                <div className="card-header bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-2xl p-6">
+              <div className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl" data-testid="contact-form-card">
+                <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
                   <h2 className="card-title text-2xl font-bold text-white mb-2" data-testid="contact-form-title">
                     Demande de contact
                   </h2>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="card-body p-8" data-testid="contact-form-body">
-                  <HubspotFormInline className="min-h-[400px]" />
+                  <HubspotFormInline className="min-h-[420px]" />
                 </div>
               </div>
             </div>
