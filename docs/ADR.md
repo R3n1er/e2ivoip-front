@@ -10,6 +10,15 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-09-28 — Adoption de Zustand pour états UI (formulaire HubSpot)
+
+- **Contexte** : Le formulaire HubSpot nécessitait une gestion d’état fiable (chargement/erreur) côté client avec possibilité d’évolution (tracking, retries, UX d’erreur).
+- **Décision** : Ajouter Zustand et centraliser l’état `loading`/`error` du composant `hubspot-form-inline` dans un store léger.
+- **Conséquences** :
+  - UX plus robuste (affichage loading, message d’erreur clair, transition d’opacité).
+  - État facilement extensible (ex. retry, metrics, analytics).
+- **Tests associés** : `npm test` ✅ (308/308) ; `npx playwright test tests/playwright/hubspot-contact.spec.ts` ✅ (3/3).
+
 ### 2025-09-28 — Correction Next/Image pour Contentful et stabilisation Blog
 
 - **Contexte** : La page `app/blog/page.tsx` renvoyait une erreur `next-image-unconfigured` lors du rendu d'images hébergées sur Contentful (`images.ctfassets.net`). Par ailleurs, un script Tally injecté dans le `<head>` provoquait un plantage runtime en dev.
