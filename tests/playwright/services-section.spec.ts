@@ -20,12 +20,11 @@ test.describe("Section Services", () => {
     ).toBeVisible();
   });
 
-  test("liste les six offres phares", async ({ page }) => {
+  test("liste les offres phares", async ({ page }) => {
     const titles = [
       "Trunk SIP DOM",
       "3CX SMB Mutualisé",
       "3CX PRO Cloud",
-      "Solutions Mobilité",
       "Assistants Vocaux IA",
       "Studio d'Enregistrement",
     ];
@@ -38,7 +37,7 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    await expect(page.locator("#services .card")).toHaveCount(6);
+    await expect(page.locator("#services .card")).toHaveCount(5);
   });
 
   test("met en avant les badges et les CTA", async ({ page }) => {
@@ -46,7 +45,6 @@ test.describe("Section Services", () => {
       "Populaire",
       "Idéal PME",
       "Entreprise",
-      "Télétravail",
       "Innovation",
       "Pro",
     ];
@@ -60,7 +58,7 @@ test.describe("Section Services", () => {
     const ctaButtons = page
       .locator("#services")
       .getByRole("link", { name: "En savoir plus" });
-    await expect(ctaButtons).toHaveCount(6);
+    await expect(ctaButtons).toHaveCount(5);
   });
 
   test("affiche les icônes et la grille responsive", async ({ page }) => {

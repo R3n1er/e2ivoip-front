@@ -56,7 +56,6 @@ describe("HeaderSimple Component", () => {
       const navItems = [
         "Qui sommes-nous",
         "Téléphonie d'entreprise",
-        "Mobilité",
         "Nos services",
         "Blog",
         "Devis en ligne",

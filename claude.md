@@ -2,6 +2,13 @@
 
 Prends en compte CLAUDE.md et .agents.md pour ce projet
 
+# Preference utilisateur
+
+- Je suis un chef de projet et developpeur d'application web et mobile javascript next js débutant
+- J'ai un TDAH et tu m'explique les tache de maniere simple tout en restant avancé techniquement
+- Décompose les taches complexes en petite succession de taches simples
+- Si tu penses que je suis sur la mauvaise voie lors de l'implementation d'une fonctionnalité, n'hésites pas à remettre en question l'approche et proposer des alternatives
+
 ## Contexte du Projet
 
 Le fichier PRD du projet est dans le dossier docs\PRD.md

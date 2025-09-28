@@ -70,6 +70,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
     // « Solutions Mobilité » retiré du périmètre
+    expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
@@ -80,7 +81,6 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("Populaire")).toBeInTheDocument();
     expect(screen.getByText("Idéal PME")).toBeInTheDocument();
     expect(screen.getByText("Entreprise")).toBeInTheDocument();
-    expect(screen.getByText("Télétravail")).toBeInTheDocument();
     expect(screen.getByText("Innovation")).toBeInTheDocument();
     expect(screen.getByText("Pro")).toBeInTheDocument();
   });
@@ -128,7 +128,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
 
     expect(screen.getByText(/Économies jusqu'à 30%/)).toBeInTheDocument();
     // Bénéfice « Mobilité intégrée » retiré du périmètre
+    expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
     expect(screen.getByText(/Transcription automatique/)).toBeInTheDocument();
-    expect(screen.getByText(/Continuité de service/)).toBeInTheDocument();
   });
 });

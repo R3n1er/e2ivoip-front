@@ -52,7 +52,7 @@ export function HomepageHeroSectionSimple() {
             locaux
             <br />
             <span className="text-gray-300 font-medium">
-              Mobilité et fonctionnalités nouvelle génération
+              Automatisation et fonctionnalités nouvelle génération
             </span>
           </p>
 

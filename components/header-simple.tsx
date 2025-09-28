@@ -37,7 +37,6 @@ export function HeaderSimple() {
         },
       ],
     },
-    { name: "Mobilité", href: "/mobilite" },
     {
       name: "Nos services",
       href: "/nos-services",
