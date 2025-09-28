@@ -1,6 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { create } from "zustand";
+
+interface HubspotFormState {
+  loading: boolean;
+  error: string | null;
+  setLoading: (v: boolean) => void;
+  setError: (e: string | null) => void;
+}
+
+const useHubspotFormStore = create<HubspotFormState>((set) => ({
+  loading: true,
+  error: null,
+  setLoading: (v) => set({ loading: v }),
+  setError: (e) => set({ error: e }),
+}));
 
 interface HubspotFormInlineProps {
   className?: string;
@@ -8,7 +23,7 @@ interface HubspotFormInlineProps {
 
 export default function HubspotFormInline({ className = "" }: HubspotFormInlineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { loading, error, setLoading, setError } = useHubspotFormStore();
 
   useEffect(() => {
     let scriptLoaded = false;
@@ -45,7 +60,7 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
             region: "eu1",
             target: containerRef.current,
             onFormReady: () => {
-              setIsLoading(false);
+              setLoading(false);
             },
             onFormSubmitted: () => {
               console.log("Formulaire HubSpot soumis avec succès");
@@ -54,7 +69,8 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
         }
       } catch (error) {
         console.error("Erreur lors du chargement du formulaire HubSpot:", error);
-        setIsLoading(false);
+        setError(error instanceof Error ? error.message : "Erreur inconnue");
+        setLoading(false);
       }
     };
 
@@ -67,7 +83,7 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
 
   return (
     <div className={className}>
-      {isLoading && (
+      {loading && (
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-primary mx-auto mb-4"></div>
@@ -75,10 +91,15 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
           </div>
         </div>
       )}
+      {!loading && error && (
+        <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-4">
+          Une erreur est survenue lors du chargement du formulaire. Veuillez réessayer plus tard.
+        </div>
+      )}
       <div
         id="hubspot-form-container"
         ref={containerRef}
-        className={isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-300"}
+        className={loading ? "opacity-0" : "opacity-100 transition-opacity duration-300"}
         data-testid="hubspot-form-inline"
       />
     </div>
