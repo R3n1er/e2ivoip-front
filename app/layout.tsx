@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { HubSpotTracking } from "@/components/hubspot-tracking";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { HotjarTracking } from "@/components/hotjar-tracking";
 import { HeaderSimple } from "@/components/header-simple";
 import { Footer } from "@/components/footer";
@@ -49,6 +51,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient();
   return (
     <html
       lang="fr"
@@ -66,11 +69,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <HubSpotTracking />
-        <HotjarTracking />
-        <HeaderSimple />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
+        <QueryClientProvider client={queryClient}>
+          <HubSpotTracking />
+          <HotjarTracking />
+          <HeaderSimple />
+          <main className="flex-1 pt-16">{children}</main>
+          <Footer />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </body>
     </html>
   );

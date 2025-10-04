@@ -144,6 +144,13 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ **Tests complets** : 116 tests passent sur l'ensemble du projet
 - ✅ **Documentation mise à jour** : NEXT_STEPS.md, roadmap.md, implementation.md
 
+#### **4.5 Pré‑chat overlay + CRM** ✅
+
+- ✅ Overlay pré‑chat (nom, prénom, email, téléphone) avant ouverture du widget HubSpot
+- ✅ Endpoint `/api/hubspot/ingest-conversation` (upsert contact + note)
+- ✅ Adoption TanStack Query pour les mutations (provider global)
+- ✅ Tests unitaires + e2e (anti‑Tawk) à jour
+
 #### **3.3 Pages services** 🔄 EN COURS
 
 - 🔄 Contenu détaillé pour chaque service
