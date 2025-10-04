@@ -105,6 +105,7 @@ export async function POST(request: Request) {
       source,
       conversationId,
       pageUrl,
+      company,
     } = await request.json();
 
     if (!email)
@@ -118,6 +119,7 @@ export async function POST(request: Request) {
       email,
       phone: phone || "",
       mobilephone: mobile || "",
+      company: company || "",
       last_chat_message: message || "",
       chat_source: source || "website",
       chat_conversation_id: conversationId || "",
