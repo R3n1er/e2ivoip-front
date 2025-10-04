@@ -13,7 +13,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Icônes** : Lineicons (CDN 4.0)
 - **Animations** : Framer Motion
 - **Tests** : Jest + Testing Library + Playwright
-- **État** : React Hooks (useState, useEffect)
+- **État** : Zustand (state client) + React Hooks (useState, useEffect)
 
 ### Backend & CMS
 

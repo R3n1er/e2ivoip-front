@@ -79,7 +79,7 @@ export default function AssistancePage() {
         </div>
       </section>
 
-      {/* Chat Tawk.to intégré */}
+      {/* Chat intégré désactivé (Tawk.to) */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -103,13 +103,7 @@ export default function AssistancePage() {
               </p>
             </div>
 
-            {/* Chat Tawk.to intégré */}
-            <iframe
-              src="https://tawk.to/chat/688d3cc109ef001928d4773f/1j34pnbg2"
-              className="w-full h-[600px] border border-gray-200 rounded-lg"
-              title="Chat support E2I VoIP"
-              allow="microphone; camera"
-            />
+            {/* Chat Tawk.to désactivé temporairement */}
           </div>
         </div>
       </section>

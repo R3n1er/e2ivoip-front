@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
-import { TawkTo } from "@/components/tawk-to";
+// Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
@@ -45,7 +45,6 @@ export default function QuiSommesNous() {
     { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },
     { name: "France Métropole", phone: "0189 563 500", icon: "lni-world" },
   ];
-
 
   return (
     <>
@@ -269,8 +268,8 @@ export default function QuiSommesNous() {
                     <p className="text-gray-600">
                       <strong>Assistants vocaux IA</strong> pour accueil 24/7.
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.
-                      <strong>Collaboration unifiée</strong> pour vos équipes. Studio
-                      d'enregistrement pour messages professionnels.
+                      <strong>Collaboration unifiée</strong> pour vos équipes.
+                      Studio d'enregistrement pour messages professionnels.
                     </p>
                   </div>
                 </div>
@@ -594,9 +593,8 @@ export default function QuiSommesNous() {
           </div>
         </div>
       </section>
-      
-      {/* Chat Tawk.to avec délai de 30 secondes */}
-      <TawkTo />
+
+      {/* Tawk.to désactivé */}
     </>
   );
 }

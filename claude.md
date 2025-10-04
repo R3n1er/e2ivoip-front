@@ -20,6 +20,7 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 - **Utilitaires CSS**: Tailwind CSS
 - **Composants UI**: Framer Motion pour les animations, shadcn/ui (en complément, pas en remplacement de DaisyUI)
 - **Icônes**: Lineicons (priorité absolue) + React Icons (complément)
+- **État client**: Zustand pour la gestion d'états UI simples (loading/erreur)
 - **Déploiement**: Vercel (plateforme officielle NextJS)
 - **Environnement**: Cursor + Claude Code + MCP Servers
 
@@ -43,6 +44,7 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 
 - **Test-Driven Development (TDD)** : respecter strictement le cycle RED → GREEN → REFACTOR en écrivant toujours les tests avant le code de production
 - **Tests systématiques** : exécuter les tests unitaires et Playwright (via MCP) pour chaque page/feature développée
+- **Gestion d'état** : privilégier Zustand pour les états UI locaux (ex. formulaires)
 - **Documentation First** : chaque feature documentée dans `/docs`
 - **Git Flow** : push automatique après validation complète des tests et déclenchement du déploiement Vercel
 

@@ -28,3 +28,12 @@
 
 - Ces règles condensent les directives décrites sur https://agents.md/ et https://agentsmd.net/.
 - En cas d'exception produit, documenter ici pour éviter de rallonger le contexte dans les futures missions.
+
+## Stack & Priorities
+
+- **Testing**: TDD with Jest + MCP Playwright + Browser MCP
+- **State**: Zustand pour la gestion d'états UI (loading/erreur, flags)
+
+## Documentation Rules
+
+- Document in /docs automatically (inclure l'usage de Zustand si pertinent)
