@@ -1,6 +1,7 @@
 // Jest mocks
 
 import { render, screen } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "@/app/page";
 
 // Mock des composants externes
@@ -32,7 +33,12 @@ jest.mock("@/components/contact-section-simple", () => ({
 
 describe("HomePage - Test d'hydratation", () => {
   it("se rend sans erreurs d'hydratation", () => {
-    const { container } = render(<HomePage />);
+    const client = new QueryClient();
+    const { container } = render(
+      <QueryClientProvider client={client}>
+        <HomePage />
+      </QueryClientProvider>
+    );
 
     // Vérifier que la page se rend correctement
     expect(screen.getByTestId("homepage-hero")).toBeInTheDocument();
@@ -43,7 +49,12 @@ describe("HomePage - Test d'hydratation", () => {
   });
 
   it("affiche toutes les sections principales", () => {
-    render(<HomePage />);
+    const client = new QueryClient();
+    render(
+      <QueryClientProvider client={client}>
+        <HomePage />
+      </QueryClientProvider>
+    );
 
     // Vérifier que toutes les sections sont présentes
     expect(screen.getByTestId("homepage-hero")).toBeInTheDocument();
@@ -54,7 +65,12 @@ describe("HomePage - Test d'hydratation", () => {
   });
 
   it("a la structure de layout correcte", () => {
-    const { container } = render(<HomePage />);
+    const client = new QueryClient();
+    const { container } = render(
+      <QueryClientProvider client={client}>
+        <HomePage />
+      </QueryClientProvider>
+    );
 
     // Vérifier la structure principale (div au lieu de main)
     const mainContainer = container.querySelector("div");
@@ -67,7 +83,12 @@ describe("HomePage - Test d'hydratation", () => {
   });
 
   it("applique les classes CSS correctement", () => {
-    const { container } = render(<HomePage />);
+    const client = new QueryClient();
+    const { container } = render(
+      <QueryClientProvider client={client}>
+        <HomePage />
+      </QueryClientProvider>
+    );
 
     const mainContainer = container.querySelector("div");
     expect(mainContainer).toHaveClass("min-h-screen");

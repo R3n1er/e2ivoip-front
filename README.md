@@ -7,6 +7,7 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Framework** : Next.js 15 (App Router)
 - **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
 - **Animations** : Framer Motion
+- **État** : Zustand (gestion d'état UI)
 - **Tests** : Vitest + Testing Library
 - **CMS** : Contentful (blog) + HubSpot (CRM + Analytics)
 - **Formulaires** : Tally (devis spécialisés)
@@ -28,6 +29,7 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Icons**: Lineicons (priority) → React Icons
 - **Deployment**: Vercel
 - **Testing**: TDD with Jest + Playwright
+- **State**: Zustand pour le state client (loading/erreur, UI)
 
 ### Code Generation Rules
 
