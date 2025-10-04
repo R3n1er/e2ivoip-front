@@ -13,6 +13,13 @@ export function TawkTo({
   const pathname = usePathname();
 
   useEffect(() => {
+    // Lecture du flag d'activation via env publique
+    const isEnabled = process.env.NEXT_PUBLIC_TAWK_TO_ENABLED === "true";
+
+    if (!isEnabled) {
+      return;
+    }
+
     // Pages à exclure du chat
     const excludedPages = [
       "/contact",
