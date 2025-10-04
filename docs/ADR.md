@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-04 — Adoption TanStack Query + Pré‑chat overlay (sans consentement)
+
+- **Contexte** : Collecter progressivement nom, prénom, email, téléphone avant d’ouvrir HubSpot Conversations, tout en gardant le widget HubSpot et en poussant les données au CRM.
+- **Décision** :
+  - Ajouter TanStack Query (provider global) pour les mutations vers `/api/hubspot/ingest-conversation`.
+  - Implémenter `ChatPreOverlay` (sans étape de consentement) pour upsert le contact, puis ouverture du widget HubSpot.
+  - Tawk.to reste désactivé; Playwright vérifie l’absence de `tawk.to`.
+- **Conséquences** : Flux robuste; identification HubSpot côté client; note de conversation créée côté serveur; tests unitaires & e2e à jour.
+- **Réfs** : TanStack Query React Overview — `https://tanstack.com/query/latest/docs/framework/react/overview`.
+
 ### 2025-10-04 — Désactivation temporaire de Tawk.to, conservation HubSpot Conversations
 
 - **Contexte** : Deux bulles de chat apparaissaient (Tawk.to et HubSpot Conversations). Pour homogénéiser l'UX et centraliser le tracking, la décision est de conserver uniquement le chat HubSpot.
