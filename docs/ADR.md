@@ -10,6 +10,13 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-04 — Désactivation temporaire de Tawk.to, conservation HubSpot Conversations
+
+- **Contexte** : Deux bulles de chat apparaissaient (Tawk.to et HubSpot Conversations). Pour homogénéiser l'UX et centraliser le tracking, la décision est de conserver uniquement le chat HubSpot.
+- **Décision** : Retirer l'initialisation du composant `TawkTo` du layout global (`app/layout.tsx`), garder `HubSpotTracking` actif. Aucune suppression de code du composant Tawk, simple désactivation.
+- **Conséquences** : Plus de bulle Tawk en bas de page, avertissement HubSpot Conversations attendu en HTTP local. Possibilité de réactiver Tawk ultérieurement si besoin.
+- **Tests associés** : Vérification Playwright sur `http://localhost:3000` confirmant l'absence de `embed.tawk.to` et la présence du script HubSpot (`js-eu1.hs-scripts.com`).
+
 ### 2025-09-28 — Adoption de Zustand pour états UI (formulaire HubSpot)
 
 - **Contexte** : Le formulaire HubSpot nécessitait une gestion d’état fiable (chargement/erreur) côté client avec possibilité d’évolution (tracking, retries, UX d’erreur).
