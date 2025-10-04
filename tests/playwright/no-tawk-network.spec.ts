@@ -1,21 +1,24 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from "@playwright/test";
 
-test('aucune requête réseau ne doit pointer vers tawk.to', async ({ page }) => {
-  const tawkRequests: string[] = []
+const routes = ["/", "/contact", "/nos-services", "/3cx-cloud"] as const;
 
-  page.on('request', (req) => {
-    const url = req.url()
-    if (url.includes('tawk.to')) {
-      tawkRequests.push(url)
-    }
-  })
+for (const route of routes) {
+  test(`aucune requête tawk.to sur ${route}`, async ({ page }) => {
+    const tawkRequests: string[] = [];
 
-  await page.goto('/')
+    page.on("request", (req) => {
+      const url = req.url();
+      if (url.includes("tawk.to")) {
+        tawkRequests.push(url);
+      }
+    });
 
-  // Attendre un peu que les scripts tiers tentent de se charger
-  await page.waitForTimeout(1500)
+    await page.goto(route);
+    await page.waitForTimeout(1500);
 
-  expect(tawkRequests, `Des requêtes Tawk.to ont été détectées: ${tawkRequests.join(', ')}`).toHaveLength(0)
-})
-
-
+    expect(
+      tawkRequests,
+      `Des requêtes Tawk.to ont été détectées sur ${route}: ${tawkRequests.join(", ")}`
+    ).toHaveLength(0);
+  });
+}
