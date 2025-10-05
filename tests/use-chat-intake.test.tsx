@@ -1,7 +1,7 @@
 import React from "react";
 import { renderHook, act, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useChatIntake } from "@/lib/hooks/use-chat-intake";
+import { useChatIntake } from "@/lib/hooks/forms/use-chat-intake";
 
 describe("useChatIntake", () => {
   const wrapper = ({ children }: { children: React.ReactNode }) => (

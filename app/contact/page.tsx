@@ -2,7 +2,7 @@ import { Metadata } from "next";
 // import { LineIcon } from "lineicons-react"; // Temporaire - Conflit avec Next.js 15
 // import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
-import HubspotFormInline from "@/components/hubspot-form-inline";
+import { InlineContactForm } from "@/components/hubspot";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="card-body p-8" data-testid="contact-form-body">
-                  <HubspotFormInline className="min-h-[420px]" />
+                  <InlineContactForm className="min-h-[420px]" />
                 </div>
               </div>
             </div>

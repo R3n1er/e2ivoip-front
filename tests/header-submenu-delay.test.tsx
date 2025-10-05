@@ -1,6 +1,6 @@
 // Jest mocks
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { Header } from "@/components/header";
+import { Header } from "@/components/layout/header";
 
 // Mock des composants Next.js
 jest.mock("next/link", () => ({

@@ -21,6 +21,9 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 - **Composants UI**: Framer Motion pour les animations, shadcn/ui (en complément, pas en remplacement de DaisyUI)
 - **Icônes**: Lineicons (priorité absolue) + React Icons (complément)
 - **État client**: Zustand pour la gestion d'états UI simples (loading/erreur)
+- **État serveur**: TanStack Query (React Query) pour les mutations API (ex: `use-chat-intake.ts`)
+- **Validation**: Zod + React Hook Form pour validation formulaires (ex: `lib/validation/chat-intake.ts`)
+- **Performance**: React.memo + useCallback + Lazy loading Framer Motion (`lib/utils/lazy-motion.tsx`)
 - **Déploiement**: Vercel (plateforme officielle NextJS)
 - **Environnement**: Cursor + Claude Code + MCP Servers
 
@@ -44,7 +47,14 @@ Le fichier PRD du projet est dans le dossier docs\PRD.md
 
 - **Test-Driven Development (TDD)** : respecter strictement le cycle RED → GREEN → REFACTOR en écrivant toujours les tests avant le code de production
 - **Tests systématiques** : exécuter les tests unitaires et Playwright (via MCP) pour chaque page/feature développée
-- **Gestion d'état** : privilégier Zustand pour les états UI locaux (ex. formulaires)
+- **Gestion d'état** :
+  - Zustand pour états UI locaux (loading, erreur)
+  - TanStack Query pour états serveur (mutations, queries API)
+  - Zod + React Hook Form pour validation formulaires
+- **Performance** :
+  - React.memo pour composants lourds (HubSpotForm, ChatPreOverlay)
+  - useCallback pour handlers
+  - Lazy loading Framer Motion via `lib/utils/lazy-motion.tsx` (économie ~60KB)
 - **Documentation First** : chaque feature documentée dans `/docs`
 - **Git Flow** : push automatique après validation complète des tests et déclenchement du déploiement Vercel
 
@@ -159,22 +169,34 @@ export const AppIcons = {
 - **Icônes Lineicons** en priorité pour tous les besoins d'iconographie
 - React Icons uniquement si l'icône n'existe pas dans Lineicons
 
-### Structure des Composants
+### Structure des Composants (Post-Refactoring)
 
 ```typescript
-// Exemple de composant privilégié avec Lineicons
+// Exemple de composant privilégié avec Lineicons + React.memo
 import { LineIcon } from "react-lineicons";
+import { memo, useCallback } from "react";
 
-const Button = ({
+// ✅ React.memo pour composants lourds
+const Button = memo(({
   variant = "primary",
   size = "md",
   icon,
   iconPosition = "left",
   children,
+  onClick,
   ...props
 }) => {
+  // ✅ useCallback pour handlers
+  const handleClick = useCallback((e) => {
+    onClick?.(e);
+  }, [onClick]);
+
   return (
-    <button className={`btn btn-${variant} btn-${size}`} {...props}>
+    <button
+      className={`btn btn-${variant} btn-${size}`}
+      onClick={handleClick}
+      {...props}
+    >
       {icon && iconPosition === "left" && (
         <LineIcon name={icon} className="mr-2" />
       )}
@@ -184,7 +206,7 @@ const Button = ({
       )}
     </button>
   );
-};
+});
 
 // Exemple avec React Icons en fallback
 import { LineIcon } from "react-lineicons";
@@ -199,34 +221,58 @@ const IconButton = ({ iconName, fallbackIcon, ...props }) => {
 };
 ```
 
-### Structure des Fichiers NextJS + Documentation + Vercel
+### Structure des Fichiers NextJS + Documentation + Vercel (Post-Phase 6)
 
 ```
-src/
+e2ivoip-front/
 ├── app/
 │   ├── layout.tsx
 │   ├── page.tsx
 │   └── (routes)/
 ├── components/
-│   ├── ui/          # Composants DaisyUI customisés
-│   ├── layout/      # Header, Footer, Navigation
-│   └── features/    # Composants métier
+│   ├── hubspot/
+│   │   ├── hubspot-form.tsx      # ✅ Universal component (Phase 2)
+│   │   ├── index.ts
+│   │   └── legacy/               # ✅ Old components (migrate progressively)
+│   ├── layout/                   # ✅ Header, Footer, Navigation (Phase 6)
+│   │   ├── header.tsx
+│   │   ├── header-simple.tsx
+│   │   └── footer.tsx
+│   ├── ui/                       # Composants DaisyUI customisés
+│   └── features/                 # Composants métier
 ├── lib/
+│   ├── constants/
+│   │   └── hubspot.ts            # ✅ Centralized HubSpot config (Phase 1)
+│   ├── hooks/                    # ✅ Organized by domain (Phase 6)
+│   │   ├── hubspot/
+│   │   │   └── use-hubspot-script.ts
+│   │   ├── forms/                # ✅ TanStack Query hooks
+│   │   │   └── use-chat-intake.ts
+│   │   └── ui/
+│   │       └── use-image-optimization.ts
+│   ├── utils/
+│   │   └── lazy-motion.tsx       # ✅ Lazy loaded Framer Motion (Phase 5)
+│   ├── validation/
+│   │   └── chat-intake.ts        # ✅ Zod schemas (Phase 4)
 │   └── utils.ts
 ├── styles/
 │   └── globals.css
-├── __tests__/       # Tests unitaires et d'intégration
+├── tests/                        # Tests Jest + Playwright
 │   ├── components/
 │   ├── pages/
-│   └── e2e/        # Tests Playwright
-├── docs/            # Documentation projet
-│   ├── PRD.md       # Product Requirements Document
-│   ├── roadmap.md   # Roadmap et avancement
-│   ├── api/         # Documentation API
-│   ├── components/  # Documentation composants
-│   └── deployment/  # Guides de déploiement Vercel
-├── .vercel/         # Configuration Vercel (généré)
-└── vercel.json      # Configuration déploiement Vercel
+│   └── playwright/
+├── docs/
+│   ├── PRD.md
+│   ├── roadmap.md
+│   ├── ARCHITECTURE.md           # ✅ Architecture guide (Phase 6)
+│   ├── REFACTORING.md            # ✅ Refactoring journal
+│   ├── OPTIMIZATIONS.md          # ✅ Performance guide (Phase 5)
+│   ├── BUNDLE_ANALYSIS.md        # ✅ Bundle analysis (Phase 5)
+│   ├── api/
+│   ├── components/
+│   └── deployment/
+├── .vercel/
+└── vercel.json
 ```
 
 ## Workflow Test-Driven Development

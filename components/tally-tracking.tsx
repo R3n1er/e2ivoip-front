@@ -1,6 +1,6 @@
 "use client"
 
-import { useHubSpot } from "./hubspot-tracking"
+import { useHubSpot } from "./hubspot/legacy/hubspot-tracking"
 
 interface TallyLinkProps {
   href: string

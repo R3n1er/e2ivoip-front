@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FullContactForm } from "@/components/hubspot-contact-form";
+import { FullContactForm } from "@/components/hubspot";
 import { ClientsCarousel } from "@/components/clients-carousel";
 
 export default function DevisEnLignePage() {

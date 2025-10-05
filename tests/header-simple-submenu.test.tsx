@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { HeaderSimple } from "@/components/header-simple";
+import { HeaderSimple } from "@/components/layout/header-simple";
 
 // Mock Framer Motion pour éviter les erreurs de test
 jest.mock("framer-motion", () => ({

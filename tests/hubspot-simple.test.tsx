@@ -1,6 +1,6 @@
 // Jest mocks
 import { render, screen } from "@testing-library/react";
-import { HubSpotSimple } from "../components/hubspot-simple";
+import { HubSpotSimple } from "../components/hubspot/legacy/hubspot-simple";
 
 const mockHbspt = { forms: { create: jest.fn() } };
 

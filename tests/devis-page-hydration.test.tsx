@@ -19,9 +19,19 @@ jest.mock("@/components/tally-tracking", () => ({
   ),
 }));
 
-jest.mock("@/components/hubspot-contact-form", () => ({
+// Mock du hook useHubSpotFormsScript
+jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
+  useHubSpotFormsScript: () => ({
+    loaded: true,
+    loading: false,
+    error: null,
+  }),
+}));
+
+// Mock du nouveau composant FullContactForm
+jest.mock("@/components/hubspot", () => ({
   FullContactForm: () => (
-    <div data-testid="hubspot-form">Formulaire HubSpot</div>
+    <div data-testid="full-contact-form">Formulaire HubSpot</div>
   ),
 }));
 
@@ -86,7 +96,7 @@ describe("Page Devis En Ligne - Test d'hydratation", () => {
   it("affiche le formulaire de contact HubSpot", () => {
     render(<DevisEnLignePage />);
 
-    expect(screen.getByTestId("hubspot-form")).toBeInTheDocument();
+    expect(screen.getByTestId("full-contact-form")).toBeInTheDocument();
   });
 
   it("affiche la certification 3CX", () => {

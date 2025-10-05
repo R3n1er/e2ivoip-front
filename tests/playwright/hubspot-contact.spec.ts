@@ -15,7 +15,7 @@ test.describe("Page de contact", () => {
 
     await expect(page.getByTestId("contact-form-card")).toBeVisible();
     await expect(page.getByTestId("contact-form-title")).toBeVisible();
-    await expect(page.getByTestId("hubspot-form-inline")).toBeAttached();
+    await expect(page.getByTestId("inline-contact-form")).toBeAttached();
   });
 
   test("met en avant les canaux de contact", async ({ page }) => {
@@ -45,6 +45,6 @@ test.describe("Page de contact", () => {
       page.getByRole("heading", { level: 1, name: /Contactez nos experts VoIP/i })
     ).toBeVisible();
     await expect(page.getByTestId("contact-form-body")).toBeVisible();
-    await expect(page.getByTestId("hubspot-form-inline")).toBeAttached();
+    await expect(page.getByTestId("inline-contact-form")).toBeAttached();
   });
 });
