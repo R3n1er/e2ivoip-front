@@ -9,6 +9,7 @@
  * - Messages d'erreur personnalisés
  * - Performance optimisée (moins de re-renders)
  * - Code plus maintenable
+ * - Sans TanStack Query (utilise une fonction async simple)
  *
  * @see docs/REFACTORING.md - Phase 4
  */
@@ -16,7 +17,7 @@
 import React, { useState, memo, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useChatIntake } from "@/lib/hooks/forms/use-chat-intake";
+import { submitChatIntake } from "@/lib/api/chat-intake";
 import {
   chatIntakeSchema,
   type ChatIntakeFormData,
@@ -24,7 +25,7 @@ import {
 
 export const ChatPreOverlay = memo(function ChatPreOverlay() {
   const [open, setOpen] = useState(false);
-  const { mutateAsync, isPending } = useChatIntake();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Configuration React Hook Form avec Zod
   const {
@@ -43,8 +44,10 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
    */
   const onSubmit = useCallback(async (data: ChatIntakeFormData) => {
     try {
+      setIsSubmitting(true);
+
       // Envoi des données à l'API
-      await mutateAsync({
+      await submitChatIntake({
         ...data,
         pageUrl: window.location.href,
         source: "website-prechat",
@@ -72,9 +75,10 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
       reset();
     } catch (error) {
       console.error("Erreur lors de la soumission:", error);
-      // L'erreur est gérée par TanStack Query
+    } finally {
+      setIsSubmitting(false);
     }
-  }, [mutateAsync, reset]);
+  }, [reset]);
 
   /**
    * Annulation et fermeture
@@ -218,11 +222,11 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               </button>
               <button
                 type="submit"
-                disabled={!isValid || isPending}
+                disabled={!isValid || isSubmitting}
                 className="btn btn-primary flex-1"
                 data-testid="submit-button"
               >
-                {isPending ? "Envoi..." : "Ouvrir le chat"}
+                {isSubmitting ? "Envoi..." : "Ouvrir le chat"}
               </button>
             </div>
           </form>

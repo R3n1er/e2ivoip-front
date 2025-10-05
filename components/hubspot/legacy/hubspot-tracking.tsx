@@ -9,6 +9,10 @@ interface HubSpotTrackingProps {
 export function HubSpotTracking({ portalId = "26878201" }: HubSpotTrackingProps) {
   useEffect(() => {
     // Vérifier si le script HubSpot est déjà chargé
+    if (typeof window === 'undefined') {
+      return
+    }
+
     if (window.hbspt) {
       return
     }
@@ -40,18 +44,30 @@ export function HubSpotTracking({ portalId = "26878201" }: HubSpotTrackingProps)
  */
 export function useHubSpot() {
   const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     if (window.hbspt) {
       window.hbspt.push(['trackEvent', eventName, properties])
     }
   }
 
   const identifyUser = (email: string, properties?: Record<string, any>) => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     if (window.hbspt) {
       window.hbspt.push(['identify', email, properties])
     }
   }
 
   const trackPageView = (url?: string) => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     if (window.hbspt) {
       window.hbspt.push(['trackPageView', url])
     }
