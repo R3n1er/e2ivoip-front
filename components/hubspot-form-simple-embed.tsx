@@ -9,7 +9,7 @@
  * @see https://developers.hubspot.com/docs/cms/building-blocks/forms
  */
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface HubSpotFormSimpleProps {
   /**
@@ -36,24 +36,6 @@ interface HubSpotFormSimpleProps {
   className?: string;
 }
 
-/**
- * Déclarer le type global pour HubSpot
- */
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (config: {
-          region: string;
-          portalId: string;
-          formId: string;
-          target: string;
-        }) => void;
-      };
-    };
-  }
-}
-
 export function HubSpotFormSimpleEmbed({
   formId = "312a9f67-e613-4651-9690-4586646554a0",
   portalId = "26878201",
@@ -62,98 +44,75 @@ export function HubSpotFormSimpleEmbed({
 }: HubSpotFormSimpleProps) {
   const formContainerRef = useRef<HTMLDivElement>(null);
   const formLoadedRef = useRef(false);
-  const containerId = useMemo(
-    () => `hubspot-form-${formId}`,
-    [formId]
-  );
 
   useEffect(() => {
-    const container = formContainerRef.current;
-
-    if (!container) {
+    // Éviter de charger le formulaire plusieurs fois
+    if (formLoadedRef.current) {
       return;
     }
 
-    formLoadedRef.current = false;
-    container.innerHTML = "";
-
-    const createForm = () => {
-      if (!container) {
-        return;
-      }
-
-      const hubspot = window.hbspt;
-      const formsApi = hubspot?.forms;
-
-      if (!formsApi?.create) {
-        return;
-      }
-
-      if (formLoadedRef.current) {
-        return;
-      }
-
-      try {
-        formsApi.create({
-          region,
-          portalId,
-          formId,
-          target: `#${containerId}`,
-        });
-        formLoadedRef.current = true;
-      } catch (error) {
-        console.error("Erreur lors du chargement du formulaire HubSpot:", error);
+    // Fonction pour charger le formulaire
+    const loadForm = () => {
+      const win = window as any;
+      if (win.hbspt && formContainerRef.current) {
+        try {
+          win.hbspt.forms.create({
+            region: region,
+            portalId: portalId,
+            formId: formId,
+            target: `#${formContainerRef.current.id}`,
+          });
+          formLoadedRef.current = true;
+        } catch (error) {
+          console.error("Erreur lors du chargement du formulaire HubSpot:", error);
+        }
       }
     };
 
-    if (window.hbspt?.forms?.create) {
-      createForm();
-      return;
-    }
-
-    const scriptSrc = `//js-${region}.hsforms.net/forms/embed/v2.js`;
-    let script = document.querySelector<HTMLScriptElement>(
-      `script[src="${scriptSrc}"]`
-    );
-
-    const handleLoad = () => {
-      script?.setAttribute("data-hubspot-loaded", "true");
-      createForm();
-    };
-
-    const handleError = (event: Event) => {
-      console.error("Impossible de charger le script HubSpot Forms", event);
-    };
-
-    if (!script) {
-      script = document.createElement("script");
-      script.src = scriptSrc;
+    // Charger le script HubSpot si pas déjà chargé
+    const win = window as any;
+    if (!win.hbspt) {
+      const script = document.createElement("script");
+      script.src = `https://js-${region}.hsforms.net/forms/embed/v2.js`;
       script.charset = "utf-8";
       script.type = "text/javascript";
       script.async = true;
-      script.defer = true;
-      script.setAttribute("data-hubspot-loader", region);
-      script.addEventListener("load", handleLoad);
-      script.addEventListener("error", handleError);
-      document.head.appendChild(script);
-    } else {
-      script.addEventListener("load", handleLoad);
-      script.addEventListener("error", handleError);
 
-      if (script.getAttribute("data-hubspot-loaded") === "true") {
-        createForm();
-      }
+      script.onload = () => {
+        loadForm();
+      };
+
+      script.onerror = () => {
+        console.error("Impossible de charger le script HubSpot");
+      };
+
+      document.body.appendChild(script);
+    } else {
+      // Script déjà chargé, créer le formulaire directement
+      loadForm();
     }
 
+    // Cleanup function
     return () => {
-      script?.removeEventListener("load", handleLoad);
-      script?.removeEventListener("error", handleError);
+      // Le formulaire sera automatiquement nettoyé par React lors du démontage
     };
-  }, [containerId, formId, portalId, region]);
+  }, [formId, portalId, region]);
 
   return (
     <div className={className}>
-      <div id={containerId} ref={formContainerRef} />
+      {/* Loader pendant le chargement */}
+      <div
+        id={`hubspot-form-${formId}`}
+        ref={formContainerRef}
+        className="min-h-[400px]"
+      >
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-primary mx-auto mb-4"></div>
+            <p className="text-gray-600">Chargement du formulaire...</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -4,16 +4,17 @@ import { InlineContactForm } from "@/components/hubspot";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
-  description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
-  keywords: "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
+  description:
+    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
+  keywords:
+    "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
     title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
-    description: "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
+    description:
+      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
     type: "website",
   },
 };
-
-
 
 export default function ContactPage() {
   return (
@@ -70,9 +71,15 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Formulaire HubSpot */}
             <div>
-              <div className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl" data-testid="contact-form-card">
+              <div
+                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl"
+                data-testid="contact-form-card"
+              >
                 <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
-                  <h2 className="card-title text-2xl font-bold text-white mb-2" data-testid="contact-form-title">
+                  <h2
+                    className="card-title text-2xl font-bold text-white mb-2"
+                    data-testid="contact-form-title"
+                  >
                     Demande de contact
                   </h2>
                   <p className="text-white/90">
@@ -100,17 +107,26 @@ export default function ContactPage() {
 
               <div className="space-y-6">
                 {/* Hotline Prioritaire */}
-                <div className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow" data-testid="hotline-card">
+                <div
+                  className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow"
+                  data-testid="hotline-card"
+                >
                   <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-red-primary p-3 rounded-lg">
                         <span className="text-2xl">📞</span>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1" data-testid="hotline-title">
+                        <h3
+                          className="text-lg font-semibold text-gray-900 mb-1"
+                          data-testid="hotline-title"
+                        >
                           Hotline Support
                         </h3>
-                        <p className="text-gray-900 font-bold text-xl mb-1" data-testid="hotline-phone">
+                        <p
+                          className="text-gray-900 font-bold text-xl mb-1"
+                          data-testid="hotline-phone"
+                        >
                           0189 560 500
                         </p>
                         <p className="text-sm text-gray-600">
@@ -122,17 +138,26 @@ export default function ContactPage() {
                 </div>
 
                 {/* WhatsApp */}
-                <div className="card bg-base-100 hover:shadow-lg transition-shadow" data-testid="whatsapp-card">
+                <div
+                  className="card bg-base-100 hover:shadow-lg transition-shadow"
+                  data-testid="whatsapp-card"
+                >
                   <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-blue-marine/10 p-3 rounded-lg">
                         <span className="text-2xl">💬</span>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1" data-testid="whatsapp-title">
+                        <h3
+                          className="text-lg font-semibold text-gray-900 mb-1"
+                          data-testid="whatsapp-title"
+                        >
                           WhatsApp Business
                         </h3>
-                        <p className="text-gray-900 font-medium mb-1" data-testid="whatsapp-phone">
+                        <p
+                          className="text-gray-900 font-medium mb-1"
+                          data-testid="whatsapp-phone"
+                        >
                           0594 96 35 00
                         </p>
                         <p className="text-sm text-gray-600">
@@ -156,14 +181,17 @@ export default function ContactPage() {
               Nos <span className="text-white">implantations</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Équipes techniques locales en France Métropolitaine et DOM
-              pour un support de proximité
+              Équipes techniques locales en France Métropolitaine et DOM pour un
+              support de proximité
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {/* France */}
-            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-france">
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-france"
+            >
               <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
@@ -182,7 +210,10 @@ export default function ContactPage() {
             </div>
 
             {/* Guyane */}
-            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-guyane">
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-guyane"
+            >
               <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
@@ -201,7 +232,10 @@ export default function ContactPage() {
             </div>
 
             {/* Guadeloupe */}
-            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-guadeloupe">
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-guadeloupe"
+            >
               <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
@@ -220,7 +254,10 @@ export default function ContactPage() {
             </div>
 
             {/* Martinique */}
-            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-martinique">
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-martinique"
+            >
               <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
@@ -239,7 +276,10 @@ export default function ContactPage() {
             </div>
 
             {/* La Réunion */}
-            <div className="card bg-white/10 backdrop-blur-sm border-white/20" data-testid="location-reunion">
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-reunion"
+            >
               <div className="card-body p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
@@ -266,8 +306,6 @@ export default function ContactPage() {
           <WorkingFAQ />
         </div>
       </section>
-
-
     </>
   );
 }
