@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
-import { HubSpotTracking } from "@/components/hubspot-tracking";
+import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
 import { HotjarTracking } from "@/components/hotjar-tracking";
-import { HeaderSimple } from "@/components/header-simple";
-import { Footer } from "@/components/footer";
-import { TawkTo } from "@/components/tawk-to";
+import { HeaderSimple } from "@/components/layout/header-simple";
+import { Footer } from "@/components/layout/footer";
+// Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
+// import { TawkTo } from "@/components/tawk-to";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
   description:
-    "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar, mobilité et assistants vocaux IA.",
+    "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar et assistants vocaux IA.",
   keywords:
     "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
   authors: [{ name: "E2I VoIP" }],
@@ -57,11 +57,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-        {/* Précharge DNS pour Tally - améliore les performances du popup */}
-        <link rel="dns-prefetch" href="//tally.so" />
-        <link rel="preconnect" href="https://tally.so" crossOrigin="" />
-        <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
+        <link
+          href="https://cdn.lineicons.com/4.0/lineicons.css"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
@@ -69,7 +68,6 @@ export default function RootLayout({
       >
         <HubSpotTracking />
         <HotjarTracking />
-        <TawkTo />
         <HeaderSimple />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />

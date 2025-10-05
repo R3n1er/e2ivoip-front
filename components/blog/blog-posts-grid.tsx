@@ -12,7 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { BlogPost } from "@/lib/contentful-blog";
-import { useHubSpot } from "@/components/hubspot-tracking";
+import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
 
 interface BlogPostsGridProps {
   posts: BlogPost[];

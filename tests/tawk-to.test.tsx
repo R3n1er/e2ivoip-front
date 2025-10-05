@@ -48,6 +48,8 @@ describe("TawkTo Component", () => {
   });
 
   it("should load Tawk.to script on allowed pages", () => {
+    // Désactive via env flag
+    (process as any).env.NEXT_PUBLIC_TAWK_TO_ENABLED = "true";
     mockUsePathname.mockReturnValue("/");
 
     render(<TawkTo />);
@@ -56,6 +58,7 @@ describe("TawkTo Component", () => {
   });
 
   it("should hide widget on excluded pages", () => {
+    (process as any).env.NEXT_PUBLIC_TAWK_TO_ENABLED = "true";
     mockUsePathname.mockReturnValue("/contact");
 
     // Mock window.Tawk_API pour ce test
@@ -70,6 +73,7 @@ describe("TawkTo Component", () => {
   });
 
   it("should hide widget on devis-en-ligne page", () => {
+    (process as any).env.NEXT_PUBLIC_TAWK_TO_ENABLED = "true";
     mockUsePathname.mockReturnValue("/devis-en-ligne");
 
     // Mock window.Tawk_API pour ce test
@@ -84,6 +88,7 @@ describe("TawkTo Component", () => {
   });
 
   it("should use custom widget ID when provided", () => {
+    (process as any).env.NEXT_PUBLIC_TAWK_TO_ENABLED = "true";
     mockUsePathname.mockReturnValue("/");
 
     render(<TawkTo widgetId="custom-widget-id" />);
@@ -92,6 +97,7 @@ describe("TawkTo Component", () => {
   });
 
   it("should show widget when navigating from excluded to allowed page", () => {
+    (process as any).env.NEXT_PUBLIC_TAWK_TO_ENABLED = "true";
     mockUsePathname.mockReturnValue("/contact");
 
     // Mock window.Tawk_API pour ce test

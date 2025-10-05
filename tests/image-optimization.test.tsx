@@ -35,7 +35,7 @@ describe("Composants d'Optimisation d'Images", () => {
     }));
 
     // Mock de l'API Canvas pour la détection de format
-    global.HTMLCanvasElement.prototype.toDataURL = vi
+    global.HTMLCanvasElement.prototype.toDataURL = jest
       .fn()
       .mockReturnValue("data:image/webp;base64,");
   });

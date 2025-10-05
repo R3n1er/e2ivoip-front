@@ -2,9 +2,8 @@ import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { TawkTo } from "@/components/tawk-to";
+// Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
@@ -46,7 +45,6 @@ export default function QuiSommesNous() {
     { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },
     { name: "France Métropole", phone: "0189 563 500", icon: "lni-world" },
   ];
-
 
   return (
     <>
@@ -270,8 +268,8 @@ export default function QuiSommesNous() {
                     <p className="text-gray-600">
                       <strong>Assistants vocaux IA</strong> pour accueil 24/7.
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.
-                      <strong>Mobilité totale</strong> avec softphones. Studio
-                      d'enregistrement pour messages professionnels.
+                      <strong>Collaboration unifiée</strong> pour vos équipes.
+                      Studio d'enregistrement pour messages professionnels.
                     </p>
                   </div>
                 </div>
@@ -305,7 +303,7 @@ export default function QuiSommesNous() {
                     ✓ Parc de postes téléphoniques Fanvil
                   </p>
                   <p className="text-sm text-gray-600">
-                    ✓ Mobilité pour tous les collaborateurs
+                    ✓ Collaboration fluide pour tous les collaborateurs
                   </p>
                   <p className="text-sm text-gray-600">
                     ✓ Support local réactif sur 3 départements (Guadeloupe,
@@ -470,7 +468,7 @@ export default function QuiSommesNous() {
                 <p className="text-gray-600 mb-4">
                   Distributeur officiel des solutions de communication unifiée
                 </p>
-                <Badge className="bg-green-600 text-white">
+                <Badge className="bg-gray-800 text-white">
                   Distributeur Officiel
                 </Badge>
                 <div className="mt-4">
@@ -545,10 +543,14 @@ export default function QuiSommesNous() {
                 commerciaux@e2i-voip.com
               </a>
               <Link href="/assistance">
-                <Button className="bg-white text-red-primary hover:bg-white/90 font-semibold">
-                  <i className="lni lni-comments text-xl mr-2"></i>
-                  Accéder au support complet
-                </Button>
+                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
+                  <span className="flex items-center justify-center">
+                    <i className="lni lni-comments text-xl mr-2"></i>
+                    Accéder au support complet
+                    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                  </span>
+                  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+                </button>
               </Link>
             </div>
           </div>
@@ -569,23 +571,30 @@ export default function QuiSommesNous() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/devis-en-ligne"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Calculez vos économies
+              <span className="flex items-center justify-center">
+                Calculez vos économies
+                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+              </span>
+              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300"
+              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300 group"
             >
-              <i className="lni lni-phone text-xl mr-2"></i>
-              Parler à un expert
+              <span className="flex items-center justify-center">
+                <i className="lni lni-phone text-xl mr-2"></i>
+                Parler à un expert
+                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+              </span>
+              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>
           </div>
         </div>
       </section>
-      
-      {/* Chat Tawk.to avec délai de 30 secondes */}
-      <TawkTo />
+
+      {/* Tawk.to désactivé */}
     </>
   );
 }

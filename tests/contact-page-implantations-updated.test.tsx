@@ -10,7 +10,7 @@ interface HubSpotFormProps {
 }
 
 // Mock des composants externes
-jest.mock("@/components/hubspot-contact-form-global", () => ({
+jest.mock("@/components/hubspot/legacy/hubspot-contact-form-global", () => ({
   HubSpotContactFormGlobal: ({
     portalId,
     formId,
