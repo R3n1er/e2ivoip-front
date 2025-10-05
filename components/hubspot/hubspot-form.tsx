@@ -158,6 +158,7 @@ export const HubSpotForm = memo(function HubSpotForm({
   testId = "hubspot-form",
 }: HubSpotFormProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const autoIdRef = useRef<string | null>(null);
   const formCreatedRef = useRef(false);
   const { loaded, loading, error } = useHubSpotFormsScript();
 
@@ -166,6 +167,12 @@ export const HubSpotForm = memo(function HubSpotForm({
     formId in HUBSPOT_CONFIG.FORMS
       ? getHubSpotFormId(formId as HubSpotFormId)
       : formId;
+
+  if (!autoIdRef.current) {
+    autoIdRef.current = `hubspot-form-${Math.random().toString(36).slice(2)}`;
+  }
+
+  const resolvedContainerId = containerId || autoIdRef.current!;
 
   useEffect(() => {
     // Attendre que le script soit chargé et le conteneur prêt
@@ -191,7 +198,7 @@ export const HubSpotForm = memo(function HubSpotForm({
         portalId,
         formId: resolvedFormId,
         region,
-        target: containerRef.current,
+        target: `#${resolvedContainerId}`,
         onFormReady: (form: any) => {
           if (onFormReady) {
             onFormReady(form);
@@ -212,7 +219,7 @@ export const HubSpotForm = memo(function HubSpotForm({
     return () => {
       formCreatedRef.current = false;
     };
-  }, [loaded, portalId, resolvedFormId, region, onFormReady, onFormSubmitted]);
+  }, [loaded, portalId, resolvedFormId, region, resolvedContainerId, onFormReady, onFormSubmitted]);
 
   return (
     <div className={className} data-testid={testId}>
@@ -225,9 +232,13 @@ export const HubSpotForm = memo(function HubSpotForm({
 
       {/* Conteneur du formulaire */}
       <div
-        id={containerId}
+        id={resolvedContainerId}
         ref={containerRef}
-        className={loading ? "opacity-0" : "opacity-100 transition-opacity duration-300"}
+        className={
+          showLoading && loading
+            ? "opacity-0"
+            : "opacity-100 transition-opacity duration-300"
+        }
         data-testid={`${testId}-container`}
       />
     </div>
@@ -327,6 +338,7 @@ export function InlineContactForm({
     <HubSpotForm
       formId={formId}
       className={className}
+      showLoading={false}
       onFormSubmitted={() => {
         if (onSubmitted) {
           onSubmitted();
