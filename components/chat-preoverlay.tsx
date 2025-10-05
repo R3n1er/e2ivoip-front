@@ -65,7 +65,8 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
             phone: data.phone || "",
           },
         ]);
-        (window as any).HubSpotConversations?.widget?.open?.();
+        // Ne pas ouvrir automatiquement le widget de conversation HubSpot
+        (window as any).HubSpotConversations?.widget?.hide?.();
       } catch (err) {
         console.error("Erreur identification HubSpot:", err);
       }
@@ -95,10 +96,14 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="btn btn-primary shadow-xl hover:shadow-2xl transition-shadow"
+          className="shadow-xl hover:shadow-2xl transition-shadow rounded-full w-14 h-14 flex items-center justify-center bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white"
+          aria-label="Ouvrir le pré‑chat"
           data-testid="open-chat-button"
         >
-          Démarrer le chat
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 14c-2.761 0-5-1.79-5-4s2.239-4 5-4h6c2.761 0 5 1.79 5 4s-2.239 4-5 4H9l-2 2v-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M15 16c2.209 0 4-1.343 4-3 0-1.657-1.791-3-4-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
+          </svg>
         </button>
       )}
 
