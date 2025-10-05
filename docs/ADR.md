@@ -25,12 +25,28 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 - **Contexte** : Après la refactorisation HubSpot (Phase 2), le formulaire de contact sur `/contact` restait bloqué sur un loader et ne rendait plus le formulaire HubSpot. Les tests end-to-end n'exerçaient pas le script HubSpot réel, ce qui a masqué la régression.
 - **Décision** :
-  - Forcer l'ID du conteneur HubSpot côté client et cibler explicitement la div via `target: '#<id>'` pour `hbspt.forms.create`.
-  - Supprimer l'affichage du loader par défaut pour la variante inline et rendre le conteneur immédiatement visible.
+  - Gérer nativement le chargement du script `forms/embed/v2.js` dans `HubSpotForm` (éviter le hook partagé) avec écouteurs `load/error`, retry exponentiel et détection DOM.
+  - Garder un conteneur unique ciblé via un sélecteur CSS et rendre la variante inline immédiatement visible.
 - **Conséquences** :
-  - Le script HubSpot peut injecter le formulaire sans ambiguïté et s'exécute dès le chargement de la page.
-  - L'UX de la page `/contact` n'affiche plus de spinner inutile avant l'apparition du formulaire.
-- **Tests associés** : Non exécutés (à lancer : `npm test`, `npx playwright test`).
+  - Chargement robuste même si le script met plusieurs secondes à exposer `hbspt.forms` ; le formulaire est détecté via `.hs-form` en dernier recours.
+  - L'UX de la page `/contact` (et des autres pages HubSpot) n'affiche plus de spinner infini et échoue proprement en cas d'erreur réseau.
+- **Tests associés** : `npm test -- --watchman=false contact-page-hubspot.test.tsx` ✅ (tests rapides uniquement – relancer la suite complète côté produit).
+- **Référence script HubSpot** :
+
+  ```html
+  <script
+    charset="utf-8"
+    type="text/javascript"
+    src="//js-eu1.hsforms.net/forms/embed/v2.js"
+  ></script>
+  <script>
+    hbspt.forms.create({
+      portalId: "26878201",
+      formId: "312a9f67-e613-4651-9690-4586646554a0",
+      region: "eu1",
+    });
+  </script>
+  ```
 
 ### 2025-10-04 — Phase 6 : Restructuration dossiers par domaine
 

@@ -1,5 +1,5 @@
 // Jest mocks
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
 // Mock du hook useHubSpotFormsScript
@@ -15,9 +15,6 @@ jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
 jest.mock("@/components/hubspot", () => ({
   InlineContactForm: ({ className }: { className?: string }) => (
     <div className={className} data-testid="inline-contact-form">
-      <div className="flex items-center justify-center min-h-[200px]">
-        <p>Chargement du formulaire...</p>
-      </div>
       <div data-testid="hubspot-form-container" />
     </div>
   ),
@@ -52,13 +49,6 @@ describe("HubSpot E2E Integration", () => {
 
     expect(cardBody).toContainElement(hubspotComponent);
     expect(card).toContainElement(cardBody);
-  });
-
-  it("should display loading state for HubSpot form", () => {
-    render(<ContactPage />);
-    
-    // Vérifier l'état de chargement
-    expect(screen.getAllByText("Chargement du formulaire...")[0]).toBeInTheDocument();
   });
 
   it("should have responsive layout", () => {
