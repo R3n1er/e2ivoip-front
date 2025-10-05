@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CTAButton } from "@/components/ui/cta-button";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
