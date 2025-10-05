@@ -13,6 +13,12 @@ export function HubSpotTracking({ portalId = "26878201" }: HubSpotTrackingProps)
       return
     }
 
+    // Empêcher explicitement le chargement automatique du widget Conversations
+    // et s'assurer qu'il ne s'affiche pas.
+    ;(window as any).hsConversationsSettings = {
+      loadImmediately: false,
+    }
+
     if (window.hbspt) {
       return
     }
@@ -33,6 +39,12 @@ export function HubSpotTracking({ portalId = "26878201" }: HubSpotTrackingProps)
       if (existingScript) {
         existingScript.remove()
       }
+
+      // Tentative de suppression/masquage du widget s'il a été injecté
+      try {
+        (window as any).HubSpotConversations?.widget?.hide?.()
+        ;(window as any).HubSpotConversations?.widget?.remove?.()
+      } catch {}
     }
   }, [portalId])
 
