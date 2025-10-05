@@ -32,7 +32,7 @@ describe('Devis en ligne Page', () => {
       {
         title: 'Devis VoIP 3CX',
         href: '/devis-en-ligne/voip-3cx',
-        features: ['3CX PRO Cloud', '3CX SMB Mutualisé', 'Support inclus']
+        features: ['3CX PRO Cloud', '3CX SMB PRO', 'Support inclus']
       },
       {
         title: 'Devis Projet PBX',

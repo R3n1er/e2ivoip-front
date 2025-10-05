@@ -50,8 +50,8 @@ export function Header() {
           href: "/telephonie-entreprise/3cx-pro-dediee",
         },
         {
-          name: "3CX SMB PRO",
-          href: "/telephonie-entreprise/3cx-smb-pro",
+          name: "3CX SMB mutualisée",
+          href: "/telephonie-entreprise/3cx-smb-mutualisee",
         },
         { name: "PBX Yeastar", href: "/telephonie-entreprise/pbx-yeastar" },
       ],
