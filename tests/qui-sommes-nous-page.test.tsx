@@ -2,11 +2,11 @@ import { render, screen } from "@testing-library/react";
 import QuiSommesNous from "../app/qui-sommes-nous/page";
 
 // Mock des composants Header et Footer
-jest.mock("@/components/header", () => ({
+jest.mock("@/components/layout/header", () => ({
   Header: () => <div data-testid="header">Header</div>,
 }));
 
-jest.mock("@/components/footer", () => ({
+jest.mock("@/components/layout/footer", () => ({
   Footer: () => <div data-testid="footer">Footer</div>,
 }));
 

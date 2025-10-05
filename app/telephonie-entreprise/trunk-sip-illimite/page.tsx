@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { HubSpotContactForm } from "@/components/hubspot-contact-form";
+import { HubSpotForm } from "@/components/hubspot";
 
 export const metadata: Metadata = {
   title:
@@ -464,7 +464,7 @@ export default function TrunkSIPIllimite() {
 
             {/* Formulaire HubSpot */}
             <div id="hubspot-contact-form">
-              <HubSpotContactForm />
+              <HubSpotForm />
             </div>
 
             {/* Alternative de contact */}
