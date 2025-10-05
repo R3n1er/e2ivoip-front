@@ -1,5 +1,5 @@
 import React from "react";
-import { HubSpotCalendar } from "./hubspot-calendar";
+import { HubSpotCalendar } from "@/components/hubspot/legacy/hubspot-calendar";
 
 interface CTACalendarSectionProps {
   title?: string;

@@ -10,6 +10,28 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-05 — Hook pré-chat sans TanStack Query
+
+- **Contexte** : Après la refonte, `useChatIntake` avait été supprimé et le test unitaire échouait. La réintroduction temporaire via TanStack Query ne respectait pas la nouvelle orientation produit (suppression de TanStack Query côté client).
+- **Décision** :
+  - Recréer `lib/hooks/forms/use-chat-intake.ts` avec un hook maison (state + `submitChatIntake`) qui expose la même API (`mutateAsync`, `isSuccess`, etc.).
+  - Conserver le remplissage automatique de `source` et `pageUrl` pour le tracking HubSpot.
+- **Conséquences** :
+  - Les dépendances à TanStack Query sont éliminées du bundle client, tout en préservant la compatibilité avec les tests et composants existants.
+  - Les futures évolutions peuvent continuer à utiliser le hook sans se lier à une librairie externe.
+- **Tests associés** : `npm test -- --watchman=false use-chat-intake.test.tsx` ✅.
+
+### 2025-10-05 — Correctif affichage formulaire HubSpot contact
+
+- **Contexte** : Après la refactorisation HubSpot (Phase 2), le formulaire de contact sur `/contact` restait bloqué sur un loader et ne rendait plus le formulaire HubSpot. Les tests end-to-end n'exerçaient pas le script HubSpot réel, ce qui a masqué la régression.
+- **Décision** :
+  - Forcer l'ID du conteneur HubSpot côté client et cibler explicitement la div via `target: '#<id>'` pour `hbspt.forms.create`.
+  - Supprimer l'affichage du loader par défaut pour la variante inline et rendre le conteneur immédiatement visible.
+- **Conséquences** :
+  - Le script HubSpot peut injecter le formulaire sans ambiguïté et s'exécute dès le chargement de la page.
+  - L'UX de la page `/contact` n'affiche plus de spinner inutile avant l'apparition du formulaire.
+- **Tests associés** : Non exécutés (à lancer : `npm test`, `npx playwright test`).
+
 ### 2025-10-04 — Phase 6 : Restructuration dossiers par domaine
 
 - **Contexte** : Le projet présentait une structure plate avec composants et hooks mélangés à la racine, rendant difficile la navigation et la maintenance. Les composants HubSpot legacy coexistaient avec le nouveau composant universel sans distinction claire.
