@@ -2,28 +2,32 @@ import { render, screen } from "@testing-library/react";
 import QuiSommesNous from "../app/qui-sommes-nous/page";
 
 // Mock des composants Header et Footer
-jest.mock("@/components/header", () => ({
+jest.mock("@/components/layout/header", () => ({
   Header: () => <div data-testid="header">Header</div>,
 }));
 
-jest.mock("@/components/footer", () => ({
+jest.mock("@/components/layout/footer", () => ({
   Footer: () => <div data-testid="footer">Footer</div>,
 }));
 
 describe("Page Qui Sommes Nous", () => {
   it("rend la page sans erreur", () => {
-    render(<QuiSommesNous />);
-
-    // Vérification des composants principaux
-    expect(screen.getByTestId("header")).toBeInTheDocument();
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+    expect(() => render(<QuiSommesNous />)).not.toThrow();
+    expect(
+      screen.getByRole('heading', {
+        name: /Votre opérateur de services télécom DOM/i,
+        level: 1,
+      })
+    ).toBeInTheDocument();
   });
 
   it("affiche le titre principal de la page", () => {
     render(<QuiSommesNous />);
 
     expect(
-      screen.getByText("Votre opérateur de services télécom DOM")
+      screen.getByRole('heading', {
+        name: /Votre opérateur de services télécom DOM/i,
+      })
     ).toBeInTheDocument();
   });
 
@@ -32,7 +36,10 @@ describe("Page Qui Sommes Nous", () => {
 
     expect(screen.getByTestId("team-section-title")).toBeInTheDocument();
     expect(
-      screen.getByText("Une équipe locale et experte")
+      screen.getByText((_, element) =>
+        element?.textContent?.replace(/\s+/g, " ").trim() ===
+        "Une équipe locale et experte"
+      )
     ).toBeInTheDocument();
   });
 
@@ -57,9 +64,11 @@ describe("Page Qui Sommes Nous", () => {
   it("affiche la section des certifications et partenariats", () => {
     render(<QuiSommesNous />);
 
-    expect(
-      screen.getByText("Nos certifications et partenariats")
-    ).toBeInTheDocument();
+    const certificationsHeading = screen.getByText((content, element) => {
+      const text = element?.textContent?.replace(/\s+/g, " ").trim();
+      return text === "Nos certifications et partenariats";
+    });
+    expect(certificationsHeading).toBeInTheDocument();
   });
 
   it("affiche les certifications principales (3CX et Yeastar)", () => {
@@ -72,7 +81,11 @@ describe("Page Qui Sommes Nous", () => {
   it("affiche la section des partenaires matériels", () => {
     render(<QuiSommesNous />);
 
-    expect(screen.getByText("Nos partenaires matériels")).toBeInTheDocument();
+    const partnersHeading = screen.getByText((content, element) => {
+      const text = element?.textContent?.replace(/\s+/g, " ").trim();
+      return text === "Nos partenaires matériels";
+    });
+    expect(partnersHeading).toBeInTheDocument();
   });
 
   it("affiche Fanvil et Yealink comme partenaires", () => {

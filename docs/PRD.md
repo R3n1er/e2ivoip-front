@@ -13,7 +13,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Icônes** : Lineicons (CDN 4.0)
 - **Animations** : Framer Motion
 - **Tests** : Jest + Testing Library + Playwright
-- **État** : React Hooks (useState, useEffect)
+- **État** : Zustand (state client) + React Hooks (useState, useEffect)
 
 ### Backend & CMS
 
@@ -296,7 +296,71 @@ TallyConfig = {
 
 ### Composants UI
 
-- **Boutons** : Composants shadcn/ui personnalisés
+#### Boutons Standard E2I VoIP
+
+**Style officiel** : Tous les boutons du site doivent suivre cette structure standardisée.
+
+##### Bouton Principal (Primary)
+
+```tsx
+<button className="btn btn-lg bg-red-primary text-white border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[240px] relative overflow-hidden group">
+  <span className="flex items-center justify-center">
+    <i className="lni lni-icon mr-2 text-lg"></i>
+    Texte du bouton
+    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+  </span>
+  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+</button>
+```
+
+##### Bouton Secondaire (Secondary)
+
+```tsx
+<button className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[200px] relative overflow-hidden group">
+  <span className="flex items-center justify-center">
+    <i className="lni lni-icon mr-2 text-lg"></i>
+    Texte du bouton
+    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+  </span>
+  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+</button>
+```
+
+##### Caractéristiques Obligatoires
+
+1. **Structure à deux niveaux** :
+   - `<button>` avec classes de base et group
+   - `<span>` pour le contenu avec flexbox
+   - `<div>` pour l'effet de clic
+
+2. **Effet de clic** (OBLIGATOIRE) :
+   ```html
+   <div class="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+   ```
+
+3. **Animation flèche** :
+   - Icône `lni-arrow-right` en fin de bouton
+   - Animation au hover : `group-hover:translate-x-1`
+
+4. **Classes essentielles** :
+   - `relative overflow-hidden group` sur le button
+   - `flex items-center justify-center` sur le span
+   - `transition-transform group-hover:translate-x-1` sur la flèche
+
+5. **Tailles minimales** :
+   - Bouton principal : `min-w-[240px]`
+   - Bouton secondaire : `min-w-[200px]`
+   - Ajustable selon le contenu
+
+6. **Icônes** :
+   - Lineicons en priorité (`lni-*`)
+   - Icône principale à gauche
+   - Flèche à droite (obligatoire)
+
+##### Composants Réutilisables
+
+Utiliser les composants `CTAButton` et `CTAButtonSecondary` qui implémentent déjà ce style standard.
+
 - **Cartes** : Ombres, bordures, hover effects
 - **Animations** : Transitions CSS + Framer Motion
 

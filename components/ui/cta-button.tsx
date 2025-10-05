@@ -42,6 +42,7 @@ export function CTAButton({
       <span className="relative z-10 flex items-center justify-center">
         {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
         <span className="tracking-wide">{children}</span>
+        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
       </span>
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-red-700 to-red-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
@@ -51,8 +52,13 @@ export function CTAButton({
   );
 
   if (external) {
+    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="inline-block">
+      <a
+        href={href}
+        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        className="inline-block"
+      >
         {buttonContent}
       </a>
     );
@@ -95,6 +101,7 @@ export function CTAButtonMarine({
       <span className="relative z-10 flex items-center justify-center">
         {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
         <span className="tracking-wide">{children}</span>
+        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
       </span>
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
@@ -104,8 +111,13 @@ export function CTAButtonMarine({
   );
 
   if (external) {
+    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="inline-block">
+      <a
+        href={href}
+        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        className="inline-block"
+      >
         {buttonContent}
       </a>
     );
@@ -149,15 +161,21 @@ export function CTAButtonSecondary({
       <span className="relative z-10 flex items-center justify-center">
         {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
         <span className="tracking-wide">{children}</span>
+        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
       </span>
       {/* Click animation */}
-      <div className="absolute inset-0 bg-red-primary/10 opacity-0 group-active:opacity-100 transition-opacity duration-150"></div>
+      <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
     </button>
   );
 
   if (external) {
+    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="inline-block">
+      <a
+        href={href}
+        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        className="inline-block"
+      >
         {buttonContent}
       </a>
     );

@@ -58,10 +58,10 @@ export function AboutSectionSimple() {
 
             <p className="text-lg text-gray-secondary mb-8">
               E2I VoIP, <strong>opérateur de services télécom </strong>, Expert
-              dans les DOM et la France Métropolitaine et accompagne les
+              dans les DOM et la France Métropolitaine accompagne les
               entreprises dans leur transformation digitale avec des solutions
               de téléphonie IP innovantes comme 3CX ou Yeastar, spécialement
-              adaptées aux nouveaux usages et à la mobilité.
+              adaptées aux nouveaux usages professionnels.
             </p>
 
             <div className="space-y-4 mb-8">

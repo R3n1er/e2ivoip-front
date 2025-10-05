@@ -1,6 +1,6 @@
 "use client";
 
-import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
@@ -52,19 +52,19 @@ export function HomepageHeroSectionSimple() {
             locaux
             <br />
             <span className="text-gray-300 font-medium">
-              Mobilité et fonctionnalités nouvelle génération
+              Automatisation et fonctionnalités nouvelle génération
             </span>
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Red + Blue pairing */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <CTAButton href="/devis-en-ligne" icon="lni-phone">
               Calculez vos économies
             </CTAButton>
 
-            <CTAButtonSecondary href="/telephonie-entreprise/trunk-sip-compteur" icon="lni-play">
+            <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-compteur" icon="lni-play">
               Découvrez nos offres Trunk SIP
-            </CTAButtonSecondary>
+            </CTAButtonMarine>
           </div>
 
           {/* Stats */}

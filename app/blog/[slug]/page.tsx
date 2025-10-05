@@ -10,7 +10,7 @@ import {
   getContentfulBlogPost,
 } from "@/lib/contentful-blog";
 
-import { useHubSpot } from "@/components/hubspot-tracking";
+import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
 import { getMockBlogPosts } from "@/lib/mock-blog-data";
 
 interface BlogPostPageProps {

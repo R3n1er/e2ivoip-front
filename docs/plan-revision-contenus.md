@@ -10,7 +10,7 @@
 **Hero Section**
 - Titre actuel : "Solutions de téléphonie IP pour entreprises"
 - **Nouveau titre** : "Économisez 30% sur vos coûts télécoms avec la téléphonie IP"
-- Sous-titre : "Trunk SIP éligible DOM • Création et portabilité de numéros locaux • Mobilité et fonctionnalités nouvelle génération"
+- Sous-titre : "Trunk SIP éligible DOM • Création et portabilité de numéros locaux • Automatisation et fonctionnalités nouvelle génération"
 
 **Section Services**
 - Réorganiser par bénéfices plutôt que par technologies
@@ -27,13 +27,13 @@
 #### 2. Page Téléphonie d'Entreprise
 **Structure à implémenter** :
 ```
-- Hero : "Téléphonie IP nouvelle génération : -30% sur vos coûts + mobilité totale"
-- Problématiques : Coûts élevés, système obsolète, pas de mobilité, numéros non locaux
+- Hero : "Téléphonie IP nouvelle génération : -30% sur vos coûts et plus de flexibilité"
+- Problématiques : Coûts élevés, système obsolète, collaboration complexe, numéros non locaux
 - Notre solution : IPBX cloud avec Trunk SIP DOM éligible
 - Points forts :
   • Trunk SIP au compteur ou illimité
   • Création/portabilité numéros locaux
-  • Mobilité intégrée (softphones)
+  • Collaboration unifiée pour les équipes multisites
   • Fonctionnalités IA et CRM
 - 4 offres claires : Starter, Business, Premium, Enterprise
 - Focus DOM : tarifs spéciaux, numéros locaux garantis
@@ -70,7 +70,7 @@
 2. **Trunk SIP Illimité** (`/telephonie-entreprise/trunk-sip-illimite`)
    - Titre : "Trunk SIP illimité DOM : Budget fixe, appels illimités"
    - Focus : Budget maîtrisé, appels illimités France + DOM
-   - Points clés : Création numéros locaux gratuite, mobilité incluse
+   - Points clés : Création numéros locaux gratuite, support prioritaire inclus
    - Comparaison : -30% vs téléphonie traditionnelle
    - Témoignage client DOM
 
@@ -88,7 +88,7 @@
 4. **3CX SMB PRO** (`/telephonie-entreprise/3cx-smb-pro`)
    - Titre : "3CX SMB PRO : La téléphonie pro dès 3 utilisateurs"
    - Focus : TPE/PME 3-15 postes, solution clé en main
-   - Inclus : Trunk SIP, numéros locaux, app mobile 3CX
+   - Inclus : Trunk SIP, numéros locaux, applications 3CX multi-plateformes
    - Limitations transparentes :
      • Pas de personnalisation extensions
      • Pas de musique d'attente personnalisée

@@ -1,5 +1,5 @@
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+export const dynamic = "force-dynamic";
+import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -8,20 +8,20 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
   keywords:
-    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, solutions mobilité, assistants vocaux IA, studio enregistrement, VoIP Antilles",
+    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, assistants vocaux IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA. Économies 30% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 30% garanties.",
     type: "website",
     locale: "fr_FR",
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX, mobilité, IA.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA.",
   },
 };
 
@@ -59,7 +59,7 @@ export default function NosServices() {
       features: [
         "Instance sécurisée pro",
         "Formation incluse",
-        "Mobilité intégrée",
+        "Support utilisateur dédié",
         "Interface intuitive",
       ],
       badge: "Idéal PME",
@@ -82,22 +82,6 @@ export default function NosServices() {
       price: "Sur devis",
       href: "/telephonie-entreprise/3cx-pro-dediee",
       category: "Téléphonie IP",
-    },
-    {
-      icon: "lni-mobile",
-      title: "Solutions Mobilité",
-      description:
-        "Travaillez de n'importe où avec softphone mobile et fonctionnalités nomades",
-      features: [
-        "Softphone iOS/Android",
-        "Numéro fixe sur mobile",
-        "Renvoi intelligent",
-        "Continuité de service",
-      ],
-      badge: "Télétravail",
-      price: "Inclus",
-      href: "/mobilite",
-      category: "Mobilité",
     },
     {
       icon: "lni-comments",
@@ -135,7 +119,6 @@ export default function NosServices() {
 
   const categories = [
     { name: "Téléphonie IP", count: 3, color: "bg-red-primary" },
-    { name: "Mobilité", count: 1, color: "bg-blue-marine" },
     { name: "Innovation", count: 1, color: "bg-green-600" },
     { name: "Communication", count: 1, color: "bg-purple-600" },
   ];
@@ -173,7 +156,7 @@ export default function NosServices() {
     "@type": "Organization",
     name: "E2I VoIP",
     description:
-      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, mobilité, assistants vocaux IA.",
+      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et assistants vocaux IA.",
     url: "https://e2ivoip.fr",
     logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
     contactPoint: {
@@ -210,17 +193,10 @@ export default function NosServices() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
+      {/* JSON-LD temporairement désactivé pour corriger le pré-rendu */}
 
       <div className="min-h-screen bg-white-primary">
-        <Header />
-
-        <main className="pt-20">
+        <main className="pt-6">
           {/* Hero Section */}
           <section className="py-20 bg-gradient-to-r from-red-50 to-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -231,24 +207,16 @@ export default function NosServices() {
                 </h1>
                 <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
                   Transformez votre téléphonie d&apos;entreprise avec des
-                  solutions complètes : économies garanties, mobilité totale et
-                  fonctionnalités nouvelle génération.
+                  solutions complètes : économies garanties et fonctionnalités
+                  nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="bg-red-primary hover:bg-red-600 text-white-primary"
-                  >
-                    <i className="lni lni-phone w-5 h-5 mr-2"></i>
+                  <CTAButton href="/contact" icon="lni-phone">
                     Audit télécom gratuit
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-red-primary text-red-primary hover:bg-red-primary hover:text-white-primary"
-                  >
+                  </CTAButton>
+                  <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
                     Demander un devis
-                  </Button>
+                  </CTAButtonMarine>
                 </div>
               </div>
             </div>
@@ -276,7 +244,9 @@ export default function NosServices() {
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <i className={`lni ${benefit.icon} text-2xl ${benefit.color}`}></i>
+                        <i
+                          className={`lni ${benefit.icon} text-2xl ${benefit.color}`}
+                        ></i>
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
                         {benefit.title}
@@ -354,7 +324,9 @@ export default function NosServices() {
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <i className={`lni ${service.icon} h-6 w-6 text-red-primary`}></i>
+                          <i
+                            className={`lni ${service.icon} h-6 w-6 text-red-primary`}
+                          ></i>
                         </div>
                         <Badge className="bg-red-primary text-white-primary">
                           {service.badge}
@@ -390,15 +362,13 @@ export default function NosServices() {
                           </span>
                         </div>
 
-                        <Link href={service.href}>
-                          <Button
-                            variant="outline"
-                            className="w-full border-red-primary text-red-primary hover:bg-red-primary hover:text-white-primary"
-                          >
-                            En savoir plus
-                            <i className="lni lni-arrow-right w-4 h-4 ml-2"></i>
-                          </Button>
-                        </Link>
+                        <CTAButton
+                          href={service.href}
+                          icon="lni-arrow-right"
+                          fullWidth
+                        >
+                          En savoir plus
+                        </CTAButton>
                       </div>
                     </CardContent>
                   </Card>
@@ -421,25 +391,16 @@ export default function NosServices() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-red-primary hover:bg-red-600 text-white-primary"
-                >
-                  <i className="lni lni-phone w-5 h-5 mr-2"></i>
+                <CTAButton href="/contact" icon="lni-phone">
                   Audit télécom gratuit
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white-primary text-white-primary hover:bg-white-primary hover:text-blue-marine"
-                >
+                </CTAButton>
+                <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
                   Demander un devis
-                </Button>
+                </CTAButtonMarine>
               </div>
             </div>
           </section>
         </main>
-
         <Footer />
       </div>
     </>

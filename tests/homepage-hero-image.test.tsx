@@ -52,18 +52,23 @@ describe("HomepageHeroSectionSimple", () => {
     render(<HomepageHeroSectionSimple />);
 
     // Vérifier que le titre principal est présent
-    expect(screen.getByText(/Votre standard/)).toBeInTheDocument();
-    expect(screen.getByText(/représente/)).toBeInTheDocument();
-    expect(screen.getByText(/votre entreprise/)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        level: 1,
+        name: /Économisez 30%/i,
+      })
+    ).toBeInTheDocument();
 
     // Vérifier que le badge est présent
     expect(
-      screen.getByText("Leader en solutions VoIP depuis 2008")
+      screen.getByText("Opérateur télécom DOM • Plus de 100 clients")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
     expect(
-      screen.getByText(/Solutions de.*phonie IP professionnelles/)
+      screen.getByText(
+        /Trunk SIP éligible DOM • Création et portabilité de numéros locaux/
+      )
     ).toBeInTheDocument();
   });
 
@@ -79,7 +84,9 @@ describe("HomepageHeroSectionSimple", () => {
     render(<HomepageHeroSectionSimple />);
 
     expect(screen.getByText("100+")).toBeInTheDocument();
-    expect(screen.getByText("Entreprises nous font confiance")).toBeInTheDocument();
+    expect(
+      screen.getByText("Entreprises nous font confiance")
+    ).toBeInTheDocument();
     expect(screen.getByText("15+")).toBeInTheDocument();
     expect(screen.getByText("Années d'expertise télécom")).toBeInTheDocument();
   });
@@ -87,8 +94,10 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les boutons CTA", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Demander un devis gratuit")).toBeInTheDocument();
-    expect(screen.getByText("Découvrir nos solutions")).toBeInTheDocument();
+    expect(screen.getByText("Calculez vos économies")).toBeInTheDocument();
+    expect(
+      screen.getByText("Découvrez nos offres Trunk SIP")
+    ).toBeInTheDocument();
   });
 
   it("contient le gradient overlay", () => {
