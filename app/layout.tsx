@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { HubSpotTracking } from "@/components/hubspot-tracking";
+import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
 import { QueryProvider } from "@/components/query-provider";
 import { HotjarTracking } from "@/components/hotjar-tracking";
-import { HeaderSimple } from "@/components/header-simple";
-import { Footer } from "@/components/footer";
+import { HeaderSimple } from "@/components/layout/header-simple";
+import { Footer } from "@/components/layout/footer";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 

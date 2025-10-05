@@ -2,14 +2,23 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
-// Mock du composant HubspotFormInline (évite de charger le script HubSpot réel)
-jest.mock("@/components/hubspot-form-inline", () => ({
-  __esModule: true,
-  default: ({ className }: { className?: string }) => (
-    <div className={className} data-testid="hubspot-form-inline">
+// Mock du hook useHubSpotFormsScript
+jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
+  useHubSpotFormsScript: () => ({
+    loaded: true,
+    loading: false,
+    error: null,
+  }),
+}));
+
+// Mock du nouveau composant InlineContactForm
+jest.mock("@/components/hubspot", () => ({
+  InlineContactForm: ({ className }: { className?: string }) => (
+    <div className={className} data-testid="inline-contact-form">
       <div className="flex items-center justify-center min-h-[200px]">
         <p>Chargement du formulaire...</p>
       </div>
+      <div data-testid="hubspot-form-container" />
     </div>
   ),
 }));
@@ -23,7 +32,7 @@ describe("HubSpot E2E Integration", () => {
     expect(screen.getByText("experts VoIP")).toBeInTheDocument();
     
     // Vérifier le formulaire HubSpot
-    const hubspotComponent = screen.getByTestId("hubspot-form-inline");
+    const hubspotComponent = screen.getByTestId("inline-contact-form");
     expect(hubspotComponent).toBeInTheDocument();
     
     // Vérifier le titre du formulaire
@@ -37,7 +46,7 @@ describe("HubSpot E2E Integration", () => {
     render(<ContactPage />);
 
     // Vérifier que le composant HubSpot est dans la bonne structure
-    const hubspotComponent = screen.getByTestId("hubspot-form-inline");
+    const hubspotComponent = screen.getByTestId("inline-contact-form");
     const cardBody = screen.getByTestId("contact-form-body");
     const card = screen.getByTestId("contact-form-card");
 

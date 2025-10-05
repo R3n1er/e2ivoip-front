@@ -2,7 +2,7 @@
 import { render, screen } from "@testing-library/react";
 import NosServices from "../app/nos-services/page";
 
-jest.mock("@/components/footer", () => ({
+jest.mock("@/components/layout/footer", () => ({
   Footer: () => <div data-testid="footer">Footer</div>,
 }));
 

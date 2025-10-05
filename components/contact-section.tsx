@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { SimpleFadeIn } from "@/lib/utils/lazy-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SecureEmail } from "@/components/secure-email";
@@ -9,13 +9,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <SimpleFadeIn className="text-center mb-16" delay={0}>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Contactez-<span className="text-red-600">nous</span>
           </h2>
@@ -23,17 +17,11 @@ export function ContactSection() {
             Prêt à moderniser votre système téléphonique ? Contactez nos experts
             pour un devis personnalisé
           </p>
-        </motion.div>
+        </SimpleFadeIn>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Colonne gauche */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
+          <SimpleFadeIn className="space-y-6" delay={0.1}>
             {/* Téléphone */}
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
@@ -73,16 +61,10 @@ export function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </SimpleFadeIn>
 
           {/* Colonne droite */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
+          <SimpleFadeIn className="space-y-6" delay={0.2}>
             {/* Adresse */}
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
@@ -122,17 +104,11 @@ export function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </SimpleFadeIn>
         </div>
 
         {/* CTA Card - Centrée sur toute la largeur */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-12 flex justify-center"
-        >
+        <SimpleFadeIn className="mt-12 flex justify-center" delay={0.3}>
           <Card className="bg-red-600 text-white border-red-600 max-w-md">
             <CardContent className="p-6 text-center">
               <h3 className="text-xl font-semibold mb-2">
@@ -150,7 +126,7 @@ export function ContactSection() {
               </Button>
             </CardContent>
           </Card>
-        </motion.div>
+        </SimpleFadeIn>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { HeaderSimple } from "@/components/header-simple";
+import { HeaderSimple } from "@/components/layout/header-simple";
 import "@testing-library/jest-dom";
 
 // Mock des composants externes

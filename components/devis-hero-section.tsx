@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { AnimatedHero } from "@/components/devis-animations";
+import { AnimatedHero } from "@/components/devis-animations-optimized";
 import { ContentBackgroundImage } from "@/components/ui/lazy-background-image";
 
 export function DevisHeroSection() {

@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
