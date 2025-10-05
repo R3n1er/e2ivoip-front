@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,16 @@ export function Header() {
     {
       name: "Qui sommes-nous",
       href: "/qui-sommes-nous",
+      submenu: [
+        {
+          name: "Nos certifications",
+          href: "/qui-sommes-nous#certifications",
+        },
+        {
+          name: "Nos partenaires",
+          href: "/qui-sommes-nous#partenaires",
+        },
+      ],
     },
     {
       name: "Téléphonie d'entreprise",
@@ -45,7 +56,6 @@ export function Header() {
         { name: "PBX Yeastar", href: "/telephonie-entreprise/pbx-yeastar" },
       ],
     },
-    { name: "Mobilité", href: "/mobilite" },
     {
       name: "Nos services",
       href: "/nos-services",
@@ -128,38 +138,52 @@ export function Header() {
 
           {/* Desktop Navigation avec DaisyUI + Framer Motion */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            {navigation.map((item) => (
-              <div
-                key={item.name}
-                className="dropdown dropdown-hover dropdown-bottom dropdown-end"
-              >
-                {item.href ? (
+            {navigation.map((item) => {
+              const hasSubmenu = Boolean(
+                item.submenu && item.submenu.length > 0
+              );
+              const slug = item.name.toLowerCase().replace(/\s+/g, "-");
+
+              return (
+                <div
+                  key={item.name}
+                  className="dropdown dropdown-hover dropdown-bottom dropdown-end"
+                  onMouseEnter={() => hasSubmenu && setOpenMenu(item.name)}
+                  onMouseLeave={() => hasSubmenu && setOpenMenu(null)}
+                >
                   <div className="flex items-center">
-                    <Link
-                      href={item.href}
-                      className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-red-primary ${
-                        isScrolled ? "text-gray-700" : "text-gray-700"
-                      }`}
-                      data-testid={`nav-link-${item.name
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
-                    >
-                      {item.name}
-                    </Link>
-                  </div>
-                ) : (
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
-                      isScrolled ? "text-gray-700" : "text-gray-700"
-                    }`}
-                    data-testid={`nav-dropdown-${item.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    {item.name}
-                    {item.submenu && (
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-red-primary ${
+                          isScrolled ? "text-gray-700" : "text-gray-700"
+                        }`}
+                        data-testid={`nav-link-${slug}`}
+                        onMouseEnter={() =>
+                          hasSubmenu && setOpenMenu(item.name)
+                        }
+                        onMouseLeave={() => hasSubmenu && setOpenMenu(null)}
+                        onFocus={() => hasSubmenu && setOpenMenu(item.name)}
+                        onBlur={() => hasSubmenu && setOpenMenu(null)}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <span
+                        tabIndex={0}
+                        role="button"
+                        className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
+                          isScrolled ? "text-gray-700" : "text-gray-700"
+                        }`}
+                        data-testid={`nav-dropdown-${slug}`}
+                        onFocus={() => hasSubmenu && setOpenMenu(item.name)}
+                        onBlur={() => hasSubmenu && setOpenMenu(null)}
+                      >
+                        {item.name}
+                      </span>
+                    )}
+
+                    {hasSubmenu && (
                       <motion.div
                         className="ml-1"
                         whileHover={{ scale: 1.1 }}
@@ -167,57 +191,59 @@ export function Header() {
                       >
                         <LineIcon
                           name="lni-chevron-down"
-                          className="text-sm text-gray-600 transition-all duration-200 hover:text-red-primary"
+                          className={`text-sm text-gray-600 transition-all duration-200 hover:text-red-primary ${
+                            openMenu === item.name ? "rotate-180" : ""
+                          }`}
                           aria-hidden="true"
+                          data-testid={`icon-chevron-down-${slug}`}
                         />
                       </motion.div>
                     )}
                   </div>
-                )}
 
-                {/* Sous-menu avec DaisyUI + Framer Motion - Uniquement pour les éléments avec submenu */}
-                {item.submenu && item.submenu.length > 0 && (
-                  <motion.div
-                    className="dropdown-content menu bg-base-100 rounded-box w-64 p-2 shadow-2xl border border-base-300 z-[9999] mt-2"
-                    initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 30,
-                      duration: 0.2,
-                    }}
-                    data-testid={`submenu-${item.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    {item.submenu.map((subItem) => (
-                      <li key={subItem.name}>
-                        <motion.div
-                          whileHover={{
-                            backgroundColor: "var(--primary)",
-                            color: "var(--primary-content)",
-                            x: 4,
-                          }}
-                          transition={{ duration: 0.15 }}
-                        >
-                          <Link
-                            href={subItem.href}
-                            className="text-sm transition-colors duration-150 block w-full"
-                            data-testid={`submenu-link-${subItem.name
-                              .toLowerCase()
-                              .replace(/\s+/g, "-")}`}
-                          >
-                            {subItem.name}
-                          </Link>
-                        </motion.div>
-                      </li>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
-            ))}
+                  <AnimatePresence>
+                    {hasSubmenu && openMenu === item.name && (
+                      <motion.div
+                        className="dropdown-content menu bg-base-100 rounded-box w-64 p-2 shadow-2xl border border-base-300 z-[9999] mt-2"
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                          duration: 0.2,
+                        }}
+                        data-testid={`submenu-${slug}`}
+                      >
+                        {item.submenu?.map((subItem) => (
+                          <li key={subItem.name}>
+                            <motion.div
+                              whileHover={{
+                                backgroundColor: "var(--primary)",
+                                color: "var(--primary-content)",
+                                x: 4,
+                              }}
+                              transition={{ duration: 0.15 }}
+                            >
+                              <Link
+                                href={subItem.href}
+                                className="text-sm transition-colors duration-150 block w-full"
+                                data-testid={`submenu-link-${subItem.name
+                                  .toLowerCase()
+                                  .replace(/\s+/g, "-")}`}
+                              >
+                                {subItem.name}
+                              </Link>
+                            </motion.div>
+                          </li>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </nav>
 
           {/* CTA Button DaisyUI - Optimisé pour MacBook Pro */}

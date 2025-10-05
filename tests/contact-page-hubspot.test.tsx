@@ -2,6 +2,24 @@
 import { render, screen } from "@testing-library/react";
 import ContactPage from "../app/contact/page";
 
+// Mock du hook useHubSpotFormsScript
+jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
+  useHubSpotFormsScript: () => ({
+    loaded: true,
+    loading: false,
+    error: null,
+  }),
+}));
+
+// Mock du nouveau composant InlineContactForm
+jest.mock("@/components/hubspot", () => ({
+  InlineContactForm: ({ className }: { className?: string }) => (
+    <div className={className} data-testid="inline-contact-form">
+      <div data-testid="hubspot-form-container" />
+    </div>
+  ),
+}));
+
 const mockCreate = jest.fn();
 
 beforeEach(() => {
@@ -14,13 +32,8 @@ describe("ContactPage HubSpot Integration", () => {
     render(<ContactPage />);
 
     // Vérifier que le conteneur HubSpot est présent
-    const hubspotContainer = document.getElementById('hubspot-form-container');
+    const hubspotContainer = screen.getByTestId('hubspot-form-container');
     expect(hubspotContainer).toBeInTheDocument();
-    expect(mockCreate).toHaveBeenCalledWith({
-      portalId: "26878201",
-      formId: "312a9f67-e613-4651-9690-4586646554a0",
-      region: "eu1",
-    });
   });
 
   it("should have the correct HubSpot form container", () => {

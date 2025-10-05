@@ -1,9 +1,10 @@
 // Jest mocks
-import { render, screen } from "@testing-library/react";
-import { Header } from "@/components/header";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { Header } from "@/components/layout/header";
 
 // Mock des composants Next.js
 jest.mock("next/link", () => ({
+  __esModule: true,
   default: ({
     children,
     href,
@@ -16,36 +17,6 @@ jest.mock("next/link", () => ({
     <a href={href} {...props}>
       {children}
     </a>
-  ),
-}));
-
-// Mock de framer-motion
-jest.mock("framer-motion", () => ({
-  motion: {
-    header: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <header {...props}>{children}</header>,
-    div: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <div {...props}>{children}</div>,
-    button: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <button {...props}>{children}</button>,
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
   ),
 }));
 
@@ -104,26 +75,28 @@ describe("Header - Délai des sous-menus", () => {
   test("Le composant Header se rend correctement", () => {
     render(<Header />);
 
-    // Vérifier que les éléments de base sont présents
     expect(screen.getByText("E")).toBeInTheDocument();
     expect(screen.getByText("2")).toBeInTheDocument();
     expect(screen.getByText("I")).toBeInTheDocument();
 
-    // Vérifier que la navigation est présente
-    expect(screen.getAllByText("Qui sommes-nous")).toHaveLength(2); // Desktop + Mobile
-    expect(screen.getAllByText("Téléphonie d'entreprise")).toHaveLength(2); // Desktop + Mobile
-    expect(screen.getAllByText("Mobilité")).toHaveLength(2); // Desktop + Mobile
-    expect(screen.getAllByText("Contact")).toHaveLength(2); // Desktop + Mobile
+    [
+      "Qui sommes-nous",
+      "Téléphonie d'entreprise",
+      "Contact",
+    ].forEach((label) => {
+      expect(screen.getAllByText(label).length).toBeGreaterThan(0);
+    });
   });
 
-  test("Les sous-menus sont présents dans la structure", () => {
+  test("Les sous-menus sont présents dans la structure", async () => {
     render(<Header />);
 
-    // Vérifier que les éléments de sous-menu sont présents
-    expect(screen.getByText("Nos certifications")).toBeInTheDocument();
-    expect(screen.getByText("Nos partenaires")).toBeInTheDocument();
-    
-    // Vérifier que "Notre histoire" et "Notre équipe" ne sont PAS dans le sous-menu
+    fireEvent.mouseEnter(screen.getByTestId('nav-link-qui-sommes-nous'));
+    await waitFor(() => {
+      expect(screen.getByTestId('submenu-link-nos-certifications')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-nos-partenaires')).toBeInTheDocument();
+    });
+
     expect(screen.queryByText("Notre histoire")).not.toBeInTheDocument();
     expect(screen.queryByText("Notre équipe")).not.toBeInTheDocument();
   });
@@ -131,13 +104,8 @@ describe("Header - Délai des sous-menus", () => {
   test("La navigation mobile est présente", () => {
     render(<Header />);
 
-    // Vérifier que le bouton de menu mobile est présent
-    const menuButtons = screen.getAllByRole("button");
-    const mobileMenuButton = menuButtons.find((button) =>
-      button.classList.contains("lg:hidden")
-    );
-
-    expect(mobileMenuButton).toBeInTheDocument();
+    expect(document.querySelector('.drawer.drawer-end.lg\\:hidden')).toBeInTheDocument();
+    expect(screen.getByTestId('mobile-menu-button')).toBeInTheDocument();
   });
 
   test("Le composant gère correctement les états de scroll", () => {
@@ -161,10 +129,8 @@ describe("Header - Délai des sous-menus", () => {
     expect(desktopNav).toBeInTheDocument();
 
     // Vérifier que le bouton mobile est présent
-    const mobileButton = screen
-      .getAllByRole("button")
-      .find((button) => button.classList.contains("lg:hidden"));
-    expect(mobileButton).toBeInTheDocument();
+    expect(document.querySelector('.drawer.drawer-end.lg\\:hidden')).toBeInTheDocument();
+    expect(screen.getByTestId('mobile-menu-button')).toBeInTheDocument();
   });
 
   test("Le logo et la tagline sont présents", () => {

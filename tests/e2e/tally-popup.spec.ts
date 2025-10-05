@@ -1,17 +1,30 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Tally Popup - Trunk SIP Compteur", () => {
-  test("ouvre le popup Tally automatiquement après 15s", async ({ page }) => {
+test.describe("Tally Embed - Trunk SIP Compteur", () => {
+  test("affiche le bloc formulaire avec ses éléments clés", async ({ page }) => {
     await page.goto(
-      "http://localhost:3000/telephonie-entreprise/trunk-sip-compteur"
+      "/telephonie-entreprise/trunk-sip-compteur"
     );
+    await page.waitForLoadState("networkidle");
 
-    // Attendre un peu plus que 25s pour être robuste (~27s)
-    await page.waitForTimeout(27000);
+    await expect(
+      page.getByRole("heading", { level: 2, name: /Obtenez votre devis sur-mesure/i })
+    ).toBeVisible();
 
-    // Le widget Tally insère un iframe dont la source contient "tally.so"
-    const tallyIframe = page.locator('iframe[src*="tally.so"]');
-    const count = await tallyIframe.count();
-    expect(count).toBeGreaterThan(0);
+    const advantages = [
+      "100% Gratuit",
+      "Sans engagement",
+      "Réponse rapide",
+      "Expert dédié",
+    ];
+
+    for (const label of advantages) {
+      await expect(page.locator(`text=${label}`).first()).toBeVisible();
+    }
+
+    const tallyIframe = page.locator(
+      'iframe[src*="tally.so/embed/mDY1bl"]'
+    );
+    await expect(tallyIframe).toBeAttached();
   });
 });

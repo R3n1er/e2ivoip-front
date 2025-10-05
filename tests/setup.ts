@@ -1,6 +1,10 @@
 import '@testing-library/jest-dom'
 import React from 'react'
 
+// Harmonise Next/Image qualities for tests to silence configuration warnings
+const { imageConfigDefault } = require('next/dist/shared/lib/image-config')
+imageConfigDefault.qualities = [60, 70, 75, 80, 85, 90]
+
 // Configuration globale pour les tests
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
@@ -28,21 +32,38 @@ jest.mock('next/navigation', () => ({
   },
 }))
 
-// Mock pour Framer Motion
-jest.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => {
-      const { div, ...rest } = props
-      return React.createElement('div', rest, children)
+// Mock pour Framer Motion : on ignore les props d'animation pour éviter les warnings React
+jest.mock('framer-motion', () => {
+  const animationProps = [
+    'initial',
+    'animate',
+    'exit',
+    'transition',
+    'whileHover',
+    'whileTap',
+    'variants',
+    'layout',
+  ]
+
+  const createMotionMock = (tag: keyof JSX.IntrinsicElements) =>
+    ({ children, ...props }: any) => {
+      const cleanedProps = { ...props }
+      for (const prop of animationProps) {
+        if (prop in cleanedProps) {
+          delete cleanedProps[prop]
+        }
+      }
+      return React.createElement(tag, cleanedProps, children)
+    }
+
+  return {
+    motion: {
+      div: createMotionMock('div'),
+      span: createMotionMock('span'),
+      button: createMotionMock('button'),
+      header: createMotionMock('header'),
+      nav: createMotionMock('nav'),
     },
-    span: ({ children, ...props }: any) => {
-      const { span, ...rest } = props
-      return React.createElement('span', rest, children)
-    },
-    button: ({ children, ...props }: any) => {
-      const { button, ...rest } = props
-      return React.createElement('button', rest, children)
-    },
-  },
-  AnimatePresence: ({ children }: any) => children,
-})) 
+    AnimatePresence: ({ children }: any) => children,
+  }
+})

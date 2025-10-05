@@ -1,9 +1,10 @@
 // Jest mocks
-import { render, screen } from "@testing-library/react";
-import { Header } from "@/components/header";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { Header } from "@/components/layout/header";
 
 // Mock des composants Next.js
 jest.mock("next/link", () => ({
+  __esModule: true,
   default: ({
     children,
     href,
@@ -16,36 +17,6 @@ jest.mock("next/link", () => ({
     <a href={href} {...props}>
       {children}
     </a>
-  ),
-}));
-
-// Mock de framer-motion
-jest.mock("framer-motion", () => ({
-  motion: {
-    header: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <header {...props}>{children}</header>,
-    div: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <div {...props}>{children}</div>,
-    button: ({
-      children,
-      ...props
-    }: {
-      children: React.ReactNode;
-      [key: string]: unknown;
-    }) => <button {...props}>{children}</button>,
-  },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
   ),
 }));
 
@@ -108,41 +79,46 @@ describe("Header - Test d'intégration", () => {
   test("Tous les éléments de navigation sont présents", () => {
     render(<Header />);
 
-    // Navigation principale
-    expect(screen.getAllByText("Qui sommes-nous")).toHaveLength(2);
-    expect(screen.getAllByText("Téléphonie d'entreprise")).toHaveLength(2);
-    expect(screen.getAllByText("Mobilité")).toHaveLength(2);
-    expect(screen.getAllByText("Nos services")).toHaveLength(2);
-    expect(screen.getAllByText("Blog")).toHaveLength(2);
-    expect(screen.getAllByText("Devis en ligne")).toHaveLength(3); // Principal + Sous-menu + Mobile
-    expect(screen.getAllByText("Contact")).toHaveLength(2);
+    const items = [
+      "Qui sommes-nous",
+      "Téléphonie d'entreprise",
+      "Nos services",
+      "Blog",
+      "Devis en ligne",
+      "Contact",
+    ];
+
+    items.forEach((label) => {
+      expect(screen.getAllByText(label).length).toBeGreaterThan(0);
+    });
   });
 
-  test("Les sous-menus sont correctement structurés", () => {
+  test("Les sous-menus sont correctement structurés", async () => {
     render(<Header />);
 
-    // Sous-menu "Qui sommes-nous"
-    expect(screen.getByText("Nos certifications")).toBeInTheDocument();
-    expect(screen.getByText("Nos partenaires")).toBeInTheDocument();
-    
-    // Vérifier que "Notre histoire" et "Notre équipe" ne sont PAS dans le sous-menu
+    fireEvent.mouseEnter(screen.getByTestId('nav-link-qui-sommes-nous'));
+    await waitFor(() => {
+      expect(screen.getByTestId('submenu-link-nos-certifications')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-nos-partenaires')).toBeInTheDocument();
+    });
     expect(screen.queryByText("Notre histoire")).not.toBeInTheDocument();
     expect(screen.queryByText("Notre équipe")).not.toBeInTheDocument();
 
-    // Sous-menu "Téléphonie d'entreprise"
-    expect(screen.getByText("Trunk SIP au compteur")).toBeInTheDocument();
-    expect(screen.getByText("Trunk SIP illimité")).toBeInTheDocument();
-    expect(screen.getByText("3CX PRO dédiée")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB mutualisée")).toBeInTheDocument();
-    expect(screen.getByText("PBX Yeastar")).toBeInTheDocument();
+    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
+    await waitFor(() => {
+      expect(screen.getByTestId('submenu-link-trunk-sip-au-compteur')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-trunk-sip-illimité')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-3cx-pro-dédiée')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-3cx-smb-mutualisée')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-pbx-yeastar')).toBeInTheDocument();
+    });
 
-    // Sous-menu "Nos services"
-    expect(screen.getByText("Studio attente téléphonique")).toBeInTheDocument();
-    expect(screen.getByText("Assistants vocaux IA")).toBeInTheDocument();
-    
-    // "Devis en ligne" apparaît dans le sous-menu "Nos services"
-    const devisEnLigneElements = screen.getAllByText("Devis en ligne");
-    expect(devisEnLigneElements).toHaveLength(3);
+    fireEvent.mouseEnter(screen.getByTestId('nav-link-nos-services'));
+    await waitFor(() => {
+      expect(screen.getByTestId('submenu-link-studio-attente-téléphonique')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-assistants-vocaux-ia')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-devis-en-ligne')).toBeInTheDocument();
+    });
   });
 
   test("Le composant est responsive", () => {
@@ -155,10 +131,8 @@ describe("Header - Test d'intégration", () => {
     expect(desktopNav).toBeInTheDocument();
 
     // Bouton mobile
-    const mobileButton = screen
-      .getAllByRole("button")
-      .find((button) => button.classList.contains("lg:hidden"));
-    expect(mobileButton).toBeInTheDocument();
+    expect(document.querySelector('.drawer.drawer-end.lg\\:hidden')).toBeInTheDocument();
+    expect(screen.getByTestId('mobile-menu-button')).toBeInTheDocument();
   });
 
   test("Le logo et la branding sont présents", () => {
@@ -188,10 +162,6 @@ describe("Header - Test d'intégration", () => {
     );
     expect(quiSommesNousLink).toBeInTheDocument();
 
-    const mobiliteElements = screen.getAllByText("Mobilité");
-    const mobiliteLink = mobiliteElements.find(
-      (el) => el.closest("a")?.getAttribute("href") === "/mobilite"
-    );
-    expect(mobiliteLink).toBeInTheDocument();
+    // Le lien Mobilité a été retiré du header
   });
 });

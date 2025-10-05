@@ -1,6 +1,6 @@
 "use client";
 
-import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton } from "@/components/ui/cta-button";
 import Link from "next/link";
 
 export function ServicesSectionSimple() {
@@ -28,7 +28,7 @@ export function ServicesSectionSimple() {
       features: [
         "Instance sécurisée pro",
         "Formation incluse",
-        "Mobilité intégrée",
+        "Support utilisateur dédié",
         "Interface intuitive",
       ],
       badge: "Idéal PME",
@@ -49,21 +49,6 @@ export function ServicesSectionSimple() {
       badge: "Entreprise",
       price: "Sur devis",
       href: "/3cx-cloud",
-    },
-    {
-      icon: "lni-mobile",
-      title: "Solutions Mobilité",
-      description:
-        "Travaillez de n'importe où avec softphone mobile et fonctionnalités nomades",
-      features: [
-        "Softphone iOS/Android",
-        "Numéro fixe sur mobile",
-        "Renvoi intelligent",
-        "Continuité de service",
-      ],
-      badge: "Télétravail",
-      price: "Inclus",
-      href: "/mobilite",
     },
     {
       icon: "lni-comments",
@@ -108,7 +93,7 @@ export function ServicesSectionSimple() {
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
             Des solutions complètes pour transformer votre téléphonie
-            d'entreprise : économies garanties, mobilité et fonctionnalités
+            d'entreprise : économies garanties et fonctionnalités
             nouvelle génération.
           </p>
 
@@ -157,9 +142,9 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
                   
-                  <CTAButtonSecondary href={service.href} icon="lni-arrow-right" fullWidth>
+                  <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
                     En savoir plus
-                  </CTAButtonSecondary>
+                  </CTAButton>
                 </div>
               </div>
             </div>
