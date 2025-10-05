@@ -67,7 +67,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
 
     // Vérifier que tous les services sont présents
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
+    expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
     // « Solutions Mobilité » retiré du périmètre
     expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();

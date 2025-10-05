@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-// import { LineIcon } from "lineicons-react"; // Temporaire - Conflit avec Next.js 15
-// import { SecureEmail } from "@/components/secure-email";
 import WorkingFAQ from "@/components/faq-working";
 import { InlineContactForm } from "@/components/hubspot";
 
@@ -83,7 +81,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="card-body p-8" data-testid="contact-form-body">
-                  <InlineContactForm className="min-h-[420px]" />
+                  <InlineContactForm className="w-full" />
                 </div>
               </div>
             </div>

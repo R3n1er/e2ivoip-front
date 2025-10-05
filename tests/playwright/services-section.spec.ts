@@ -23,7 +23,7 @@ test.describe("Section Services", () => {
   test("liste les offres phares", async ({ page }) => {
     const titles = [
       "Trunk SIP DOM",
-      "3CX SMB Mutualisé",
+      "3CX SMB PRO",
       "3CX PRO Cloud",
       "Assistants Vocaux IA",
       "Studio d'Enregistrement",

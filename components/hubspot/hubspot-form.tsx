@@ -4,18 +4,17 @@
  * Composant universel HubSpot Form
  *
  * Remplace tous les composants HubSpot existants par une solution unifiée
- * utilisant les constantes et hooks centralisés.
+ * avec gestion interne du chargement script HubSpot.
  *
- * @see docs/REFACTORING.md - Phase 2
+ * @see docs/ADR.md
  */
 
-import { useEffect, useRef, ReactNode, memo } from "react";
+import { useEffect, useMemo, useRef, useState, ReactNode, memo } from "react";
 import {
   HUBSPOT_CONFIG,
   getHubSpotFormId,
   type HubSpotFormId,
 } from "@/lib/constants/hubspot";
-import { useHubSpotFormsScript } from "@/lib/hooks/hubspot/use-hubspot-script";
 
 /**
  * Props du composant HubSpotForm
@@ -55,17 +54,6 @@ export interface HubSpotFormProps {
   className?: string;
 
   /**
-   * Afficher le loader pendant le chargement
-   * @default true
-   */
-  showLoading?: boolean;
-
-  /**
-   * Composant de chargement personnalisé
-   */
-  loadingComponent?: ReactNode;
-
-  /**
    * Composant d'erreur personnalisé
    */
   errorComponent?: ReactNode;
@@ -84,20 +72,6 @@ export interface HubSpotFormProps {
    * Test ID pour les tests automatisés
    */
   testId?: string;
-}
-
-/**
- * Composant de chargement par défaut
- */
-function DefaultLoader() {
-  return (
-    <div className="flex items-center justify-center min-h-[400px]">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-primary mx-auto mb-4"></div>
-        <p className="text-gray-600">Chargement du formulaire...</p>
-      </div>
-    </div>
-  );
 }
 
 /**
@@ -134,15 +108,12 @@ function DefaultError({ message }: { message?: string }) {
  *   }}
  * />
  * ```
- *
- * @example Avec loader personnalisé
- * ```tsx
- * <HubSpotForm
- *   loadingComponent={<CustomLoader />}
- *   errorComponent={<CustomError />}
- * />
- * ```
  */
+interface ScriptState {
+  loading: boolean;
+  error: Error | null;
+}
+
 export const HubSpotForm = memo(function HubSpotForm({
   formId = "CONTACT_GENERAL",
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
@@ -150,8 +121,6 @@ export const HubSpotForm = memo(function HubSpotForm({
   onFormReady,
   onFormSubmitted,
   className = "",
-  showLoading = true,
-  loadingComponent,
   errorComponent,
   errorMessage,
   containerId,
@@ -160,7 +129,10 @@ export const HubSpotForm = memo(function HubSpotForm({
   const containerRef = useRef<HTMLDivElement>(null);
   const autoIdRef = useRef<string | null>(null);
   const formCreatedRef = useRef(false);
-  const { loaded, loading, error } = useHubSpotFormsScript();
+  const [scriptState, setScriptState] = useState<ScriptState>({
+    loading: true,
+    error: null,
+  });
 
   // Déterminer l'ID du formulaire (peut être une constante ou un ID direct)
   const resolvedFormId =
@@ -172,73 +144,216 @@ export const HubSpotForm = memo(function HubSpotForm({
     autoIdRef.current = `hubspot-form-${Math.random().toString(36).slice(2)}`;
   }
 
-  const resolvedContainerId = containerId || autoIdRef.current!;
+  const resolvedContainerId = useMemo(
+    () => containerId || autoIdRef.current!,
+    [containerId]
+  );
 
   useEffect(() => {
-    // Attendre que le script soit chargé et le conteneur prêt
-    if (!loaded || !containerRef.current || formCreatedRef.current) {
+    if (!containerRef.current) {
       return;
     }
 
-    // Vérifier que hbspt.forms est disponible
-    if (!(window as any).hbspt?.forms) {
-      console.error("HubSpot Forms API non disponible");
-      return;
-    }
+    let isMounted = true;
+    let retryTimer: ReturnType<typeof setTimeout> | null = null;
+    const cleanupHandlers: Array<() => void> = [];
+    let attempts = 0;
+    const MAX_ATTEMPTS = 6;
+    const RETRY_DELAY = Math.max(250, HUBSPOT_CONFIG.LOADING.RETRY_DELAY ?? 500);
 
-    // Marquer comme créé pour éviter les duplications
-    formCreatedRef.current = true;
+    const updateState = (updater: (prev: ScriptState) => ScriptState) => {
+      if (!isMounted) return;
+      setScriptState((prev) => updater(prev));
+    };
 
-    // Nettoyer le conteneur avant de créer le formulaire
-    containerRef.current.innerHTML = "";
-
-    try {
-      // Créer le formulaire HubSpot
-      (window as any).hbspt.forms.create({
-        portalId,
-        formId: resolvedFormId,
-        region,
-        target: `#${resolvedContainerId}`,
-        onFormReady: (form: any) => {
-          if (onFormReady) {
-            onFormReady(form);
-          }
-        },
-        onFormSubmitted: (data: any) => {
-          if (onFormSubmitted) {
-            onFormSubmitted(data);
-          }
-        },
-      });
-    } catch (err) {
-      console.error("Erreur lors de la création du formulaire HubSpot:", err);
-      formCreatedRef.current = false;
-    }
-
-    // Cleanup: réinitialiser le flag si le composant est démonté
-    return () => {
+    const handleError = (message: string, error?: unknown) => {
+      console.error(message, error);
+      updateState(() => ({
+        loading: false,
+        error: error instanceof Error ? error : new Error(message),
+      }));
       formCreatedRef.current = false;
     };
-  }, [loaded, portalId, resolvedFormId, region, resolvedContainerId, onFormReady, onFormSubmitted]);
+
+    const clearRetry = () => {
+      if (retryTimer) {
+        clearTimeout(retryTimer);
+        retryTimer = null;
+      }
+    };
+
+    const scheduleRetry = () => {
+      clearRetry();
+      if (attempts >= MAX_ATTEMPTS) {
+        handleError("HubSpot Forms API indisponible après plusieurs tentatives");
+        return;
+      }
+      attempts += 1;
+      retryTimer = setTimeout(ensureForm, RETRY_DELAY);
+    };
+
+    const createForm = () => {
+      if (!isMounted || !containerRef.current) {
+        return false;
+      }
+
+      const hubspot = (window as any).hbspt;
+      const formsApi = hubspot?.forms;
+
+      if (!formsApi?.create) {
+        return false;
+      }
+
+      try {
+        formCreatedRef.current = true;
+        containerRef.current.innerHTML = "";
+
+        updateState((prev) => ({ ...prev, loading: true, error: null }));
+
+        let formCheckTimer: ReturnType<typeof setInterval> | null = setInterval(() => {
+          if (!isMounted) {
+            if (formCheckTimer) {
+              clearInterval(formCheckTimer);
+            }
+            return;
+          }
+
+          if (containerRef.current?.querySelector(".hs-form")) {
+            updateState((prev) => ({ ...prev, loading: false, error: null }));
+            if (formCheckTimer) {
+              clearInterval(formCheckTimer);
+              formCheckTimer = null;
+            }
+          }
+        }, 300);
+
+        cleanupHandlers.push(() => {
+          if (formCheckTimer) {
+            clearInterval(formCheckTimer);
+            formCheckTimer = null;
+          }
+        });
+
+        formsApi.create({
+          portalId,
+          formId: resolvedFormId,
+          region,
+          target: `#${resolvedContainerId}`,
+          onFormReady: (form: any) => {
+            if (!isMounted) {
+              return;
+            }
+            updateState((prev) => ({ ...prev, loading: false, error: null }));
+            if (onFormReady) {
+              onFormReady(form);
+            }
+          },
+          onFormSubmitted: (data: any) => {
+            if (onFormSubmitted) {
+              onFormSubmitted(data);
+            }
+          },
+        });
+
+        return true;
+      } catch (err) {
+        handleError("Erreur lors de la création du formulaire HubSpot", err);
+        return false;
+      }
+    };
+
+    const ensureForm = () => {
+      if (!isMounted) return;
+
+      // Si le formulaire est déjà présent dans le DOM, ne rien faire
+      if (formCreatedRef.current && containerRef.current?.querySelector(".hs-form")) {
+        updateState((prev) => ({ ...prev, loading: false, error: null }));
+        return;
+      }
+
+      const hubspot = (window as any).hbspt;
+
+      if (hubspot?.forms?.create && createForm()) {
+        return;
+      }
+
+      const scriptSrc = HUBSPOT_CONFIG.SCRIPTS.FORMS;
+      let script = document.querySelector<HTMLScriptElement>(`script[src="${scriptSrc}"]`);
+
+      const onLoad = () => {
+        if (!createForm()) {
+          scheduleRetry();
+        }
+      };
+
+      const onError = (event: ErrorEvent | Event) => {
+        handleError("Impossible de charger le script HubSpot Forms", event);
+      };
+
+      if (script) {
+        script.addEventListener("load", onLoad);
+        script.addEventListener("error", onError);
+        cleanupHandlers.push(() => {
+          script?.removeEventListener("load", onLoad);
+          script?.removeEventListener("error", onError);
+        });
+
+        // Si le script est déjà chargé mais que hbspt n'est pas prêt, on retente
+        if (script.getAttribute("data-hubspot-loaded") === "true") {
+          scheduleRetry();
+        }
+
+        return;
+      }
+
+      script = document.createElement("script");
+      script.src = scriptSrc;
+      script.id = "hubspot-forms-script";
+      script.type = "text/javascript";
+      script.charset = "utf-8";
+      script.async = true;
+      script.defer = true;
+
+      script.addEventListener("load", () => {
+        script?.setAttribute("data-hubspot-loaded", "true");
+        onLoad();
+      });
+      script.addEventListener("error", onError);
+
+      cleanupHandlers.push(() => {
+        script?.removeEventListener("load", onLoad);
+        script?.removeEventListener("error", onError);
+      });
+
+      document.body.appendChild(script);
+    };
+
+    updateState(() => ({ loading: true, error: null }));
+    ensureForm();
+
+    return () => {
+      isMounted = false;
+      clearRetry();
+      cleanupHandlers.forEach((fn) => fn());
+      formCreatedRef.current = false;
+    };
+  }, [portalId, resolvedFormId, region, resolvedContainerId, onFormReady, onFormSubmitted]);
 
   return (
     <div className={className} data-testid={testId}>
-      {/* Loader pendant le chargement du script */}
-      {loading && showLoading && (loadingComponent || <DefaultLoader />)}
-
       {/* Message d'erreur si échec du chargement */}
-      {error &&
-        (errorComponent || <DefaultError message={errorMessage || error.message} />)}
+      {scriptState.error &&
+        (errorComponent || (
+          <DefaultError
+            message={errorMessage || scriptState.error.message}
+          />
+        ))}
 
       {/* Conteneur du formulaire */}
       <div
         id={resolvedContainerId}
         ref={containerRef}
-        className={
-          showLoading && loading
-            ? "opacity-0"
-            : "opacity-100 transition-opacity duration-300"
-        }
+        className="opacity-100 transition-opacity duration-300"
         data-testid={`${testId}-container`}
       />
     </div>
@@ -338,7 +453,6 @@ export function InlineContactForm({
     <HubSpotForm
       formId={formId}
       className={className}
-      showLoading={false}
       onFormSubmitted={() => {
         if (onSubmitted) {
           onSubmitted();

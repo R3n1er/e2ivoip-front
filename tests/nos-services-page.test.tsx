@@ -52,7 +52,7 @@ describe("Page Nos Services", () => {
 
     // Vérification des services (sans Mobilité)
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB Mutualisé")).toBeInTheDocument();
+    expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
