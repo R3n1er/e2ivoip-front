@@ -1149,6 +1149,258 @@ vercel env add DATABASE_URL
 - `docs:` mise à jour documentation
 - `refactor:` refactoring sans changement fonctionnel
 - `chore:` tâches de maintenance
+- `security:` corrections de sécurité
+
+## Workflow Obligatoire Avant Push (RÈGLE CRITIQUE)
+
+**IMPORTANT** : Cette procédure est OBLIGATOIRE pour toute modification de code ou ajout de fonctionnalité avant de pousser vers GitHub.
+
+### Checklist Pré-Push Obligatoire
+
+```bash
+# 1. Vérifier que tous les tests Jest passent
+npm run test:ci
+
+# 2. Vérifier que tous les tests Playwright (E2E) passent
+npm run test:e2e
+
+# 3. Vérifier le linting et formatage
+npm run lint
+
+# 4. Vérifier les types TypeScript
+npm run type-check
+
+# 5. Vérifier qu'il n'y a pas d'erreurs de sécurité
+npm audit --audit-level=high
+
+# 6. Build de production pour détecter les erreurs
+npm run build
+```
+
+### Script de Validation Complet (Recommandé)
+
+Créer un script `validate.sh` à la racine du projet :
+
+```bash
+#!/bin/bash
+# validate.sh - Script de validation avant push
+
+set -e  # Arrêter en cas d'erreur
+
+echo "🧪 Exécution des tests Jest..."
+npm run test:ci
+
+echo "🎭 Exécution des tests Playwright E2E..."
+npm run test:e2e
+
+echo "✨ Vérification du linting..."
+npm run lint
+
+echo "🔍 Vérification des types TypeScript..."
+npm run type-check
+
+echo "🔐 Audit de sécurité..."
+npm audit --audit-level=high || {
+  echo "⚠️  Vulnérabilités détectées. Corrigez-les avant de continuer."
+  exit 1
+}
+
+echo "🏗️  Build de production..."
+npm run build
+
+echo "✅ Toutes les vérifications sont passées ! Vous pouvez push."
+```
+
+Rendre le script exécutable :
+```bash
+chmod +x validate.sh
+```
+
+### Utilisation du Script de Validation
+
+```bash
+# Avant CHAQUE push
+./validate.sh
+
+# Si toutes les vérifications passent, alors :
+git add .
+git commit -m "feat: nouvelle fonctionnalité validée"
+git push origin <branche>
+```
+
+### Automatisation avec Husky (Fortement Recommandé)
+
+Installation et configuration de Husky pour automatiser les vérifications :
+
+```bash
+# Installation
+npm install --save-dev husky
+npx husky init
+
+# Créer le hook pre-push
+npx husky add .husky/pre-push "npm run test:all && npm audit --audit-level=high"
+```
+
+### Configuration package.json avec Script Pre-Push
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "test": "jest --watch",
+    "test:ci": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "npm run test:ci && npm run test:e2e",
+    "security:audit": "npm audit --audit-level=high",
+    "validate": "npm run lint && npm run type-check && npm run test:all && npm run security:audit && npm run build",
+    "predeploy": "npm run validate",
+    "deploy": "npm run predeploy && git push origin main"
+  }
+}
+```
+
+### Règles Strictes de Push
+
+#### ✅ AUTORISÉ À PUSH SI :
+
+1. **Tous les tests Jest passent** (100% des tests unitaires)
+2. **Tous les tests Playwright passent** (100% des tests E2E)
+3. **Aucune erreur de linting** (`npm run lint` ✅)
+4. **Aucune erreur TypeScript** (`npm run type-check` ✅)
+5. **Aucune vulnérabilité de sécurité HIGH/CRITICAL** (`npm audit`)
+6. **Le build de production réussit** (`npm run build` ✅)
+
+#### ❌ INTERDIT DE PUSH SI :
+
+1. Un seul test échoue (Jest OU Playwright)
+2. Des erreurs de linting persistent
+3. Des erreurs TypeScript existent
+4. Des vulnérabilités de sécurité HIGH/CRITICAL sont détectées
+5. Le build de production échoue
+6. Des fichiers sensibles (.env, credentials) sont trackés
+
+### Workflow Complet avec Validation
+
+```bash
+# 1. Créer une branche feature
+git checkout -b feature/nouvelle-fonctionnalite
+
+# 2. Développer avec TDD (Tests d'abord)
+# - Écrire les tests Playwright pour le comportement attendu
+# - Écrire les tests Jest pour les composants
+# - Implémenter le code pour faire passer les tests
+
+# 3. Exécuter la validation complète
+npm run validate
+
+# 4. Si validation OK, commit
+git add .
+git commit -m "feat: ajoute nouvelle fonctionnalité avec tests complets"
+
+# 5. Push (Husky exécutera automatiquement les vérifications)
+git push origin feature/nouvelle-fonctionnalite
+
+# 6. Vérifier le Preview Deployment Vercel
+# Vercel génère automatiquement une URL de preview
+
+# 7. Créer une Pull Request vers main
+gh pr create --title "feat: nouvelle fonctionnalité" --body "Description"
+
+# 8. Après merge, déploiement automatique en production
+```
+
+### Instructions pour Claude Code
+
+**RÈGLE ABSOLUE** : Avant TOUT push Git, Claude Code doit :
+
+1. **Exécuter automatiquement** `npm run validate`
+2. **Vérifier** que TOUS les résultats sont ✅
+3. **Afficher un résumé** des vérifications au user
+4. **BLOQUER le push** si une seule vérification échoue
+5. **Proposer des corrections** pour les erreurs détectées
+
+#### Exemple de Workflow Claude Code
+
+```typescript
+// Avant de suggérer un git push, Claude Code DOIT faire :
+
+async function validateBeforePush() {
+  console.log("🔍 Validation pré-push en cours...");
+
+  // 1. Tests Jest
+  const jestResult = await exec("npm run test:ci");
+  if (jestResult.failed) {
+    throw new Error("❌ Tests Jest échoués. Corrigez avant de push.");
+  }
+
+  // 2. Tests Playwright
+  const playwrightResult = await exec("npm run test:e2e");
+  if (playwrightResult.failed) {
+    throw new Error("❌ Tests Playwright échoués. Corrigez avant de push.");
+  }
+
+  // 3. Linting
+  const lintResult = await exec("npm run lint");
+  if (lintResult.failed) {
+    throw new Error("❌ Erreurs de linting détectées.");
+  }
+
+  // 4. Type check
+  const typeCheckResult = await exec("npm run type-check");
+  if (typeCheckResult.failed) {
+    throw new Error("❌ Erreurs TypeScript détectées.");
+  }
+
+  // 5. Security audit
+  const auditResult = await exec("npm audit --audit-level=high");
+  if (auditResult.failed) {
+    throw new Error("❌ Vulnérabilités de sécurité détectées.");
+  }
+
+  // 6. Build
+  const buildResult = await exec("npm run build");
+  if (buildResult.failed) {
+    throw new Error("❌ Build de production échoué.");
+  }
+
+  console.log("✅ Toutes les validations sont passées !");
+  return true;
+}
+
+// Utilisation
+await validateBeforePush();
+// Si tout OK, alors autoriser git push
+```
+
+### Cas d'Échec de Validation
+
+Si la validation échoue, Claude Code doit :
+
+1. **Identifier la cause** de l'échec
+2. **Proposer une correction** automatique si possible
+3. **Afficher les logs d'erreur** pertinents
+4. **Re-exécuter les tests** après correction
+5. **NE PAS PUSH** tant que tous les tests ne sont pas verts
+
+### Exceptions (Très Rare)
+
+Dans des cas EXCEPTIONNELS (hotfix critique en production), il est possible de skip certaines vérifications avec :
+
+```bash
+# ⚠️ À UTILISER AVEC PRÉCAUTION
+git push --no-verify
+
+# Mais TOUJOURS exécuter au minimum :
+npm run test:e2e  # Tests E2E obligatoires
+npm audit --audit-level=high  # Sécurité obligatoire
+```
+
+**IMPORTANT** : Ces exceptions doivent être documentées dans le commit message et corrigées immédiatement après le hotfix.
 
 ## Configuration Vercel
 
