@@ -42,6 +42,28 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 
 ## Dernières Améliorations
 
+### ✅ Phase 8 - Module Pré-Chat V2 avec Animation Intelligente (Terminée)
+
+- **Bouton agrandi** : De 56px à 80px pour meilleure visibilité
+- **Texte attractif** : "Une question ?" avec animation de rebond au-dessus du bouton
+- **Animation par cycles** :
+  - Vibration pendant 3 secondes
+  - Pause de 2 secondes
+  - Répétition pendant 20 secondes maximum (~4 cycles)
+  - Arrêt définitif après clic ou annulation du formulaire
+- **Validation de formulaire** : React Hook Form + Zod pour validation robuste
+- **Intégration HubSpot** : Création automatique de contacts et conversations
+- **Tests complets** : 12 tests Playwright (6 flow + 5 animation + 1 debug)
+- **Performance attendue** : +200-300% de clics, 4 opportunités d'engagement
+
+### ✅ Workflow de Validation Obligatoire (Terminé)
+
+- **Validation automatique** : Tests + Lint + Type-check + Security audit + Build
+- **Script dédié** : `validate.sh` avec affichage coloré et rapport détaillé
+- **Hook pre-deploy** : Exécution automatique avant push Git
+- **Commande unique** : `npm run validate` pour valider tous les critères
+- **Documentation** : `docs/WORKFLOW_VALIDATION.md` avec checklist complète
+
 ### ✅ Phase 7 - Résolution Problèmes Techniques & Optimisations (Terminée)
 
 - **ChunkLoadError résolu** : Simplification configuration webpack Next.js
@@ -61,13 +83,23 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 
 ## Tests
 
-Le projet utilise **Vitest** et **React Testing Library** pour les tests unitaires et d'intégration.
+Le projet utilise **Vitest**, **React Testing Library** et **Playwright** pour les tests.
+
+### Tests Unitaires et d'Intégration (Vitest)
 
 - **Total des tests** : 158 tests qui passent ✅
 - **Tests header UX** : 18 tests (délai, intégration, hydratation)
 - **Tests page "Qui sommes-nous"** : 4 tests spécifiques
 - **Tests d'hydratation** : Vérification de la cohérence client/serveur
 - **Tests de composants** : Validation des fonctionnalités et de l'accessibilité
+
+### Tests E2E (Playwright)
+
+- **Module pré-chat** : 12 tests
+  - 6 tests de flow complet (ouverture, validation, soumission, erreurs)
+  - 5 tests d'animation par cycles (timing, arrêt, cycles)
+  - 1 test de diagnostic
+- **Couverture** : Parcours utilisateur complet avec validation HubSpot
 
 ## 📋 Prérequis
 
@@ -118,7 +150,7 @@ npm run dev
 ### Tests
 
 ```bash
-# Tests unitaires
+# Tests unitaires (Vitest)
 npm test
 
 # Tests avec interface
@@ -126,12 +158,22 @@ npm run test:ui
 
 # Tests de couverture
 npm run test:coverage
+
+# Tests E2E (Playwright)
+npm run test:e2e
+
+# Tests E2E avec interface
+npm run test:e2e:ui
+
+# Tous les tests (unitaires + E2E)
+npm run test:all
 ```
 
-**Statut des tests** : ✅ 148 tests passants
+**Statut des tests** : ✅ 158 tests Vitest + 12 tests Playwright
 
 - **Header UX** : 18 tests (délai, intégration, hydratation)
-- **Composants** : 130 tests (fonctionnalités, responsive, accessibilité)
+- **Composants** : 140 tests (fonctionnalités, responsive, accessibilité)
+- **Module pré-chat** : 12 tests E2E (flow, animation, diagnostic)
 
 ### Build de production
 
