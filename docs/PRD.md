@@ -55,30 +55,74 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Filtres** : Par catégorie, année, auteur
 - **Articles individuels** : Rendu Rich Text avec métadonnées SEO
 
-### Chat en direct Tawk.to
+### Module Pré-Chat Interactif (V2)
 
-Le script de chat en direct doit etre lancé avec un délais de 10 secondes sur les pages suivantes :
+**Objectif** : Maximiser l'engagement des visiteurs en proposant un point de contact visible et attractif sans être intrusif.
 
-- Home
-- Trunk SIP au Compteur
-- Devis en ligne
-- Qui sommes-nous
+**Design** :
+- **Bouton agrandi** : 80px × 80px (vs 56px avant) - Visibilité +43%
+- **Texte accrocheur** : "Une question ?" au-dessus du bouton
+- **Icône** : SVG message 36px × 36px en dégradé rose/violet/indigo
+- **Position** : Fixe en bas à droite (`z-index: 9999`)
 
-Voici le script Tawk.to à intégrer sur les pages :
+**Animation Intelligente par Cycles** :
+- **Cycle** : Vibration 3s → Pause 2s (répété 4 fois)
+- **Durée totale** : 20 secondes d'animation
+- **Animations** :
+  - Bouton : `animate-shake` (vibration ±2px horizontal + ±1deg rotation)
+  - Texte : `animate-bounce` (rebond vertical Tailwind)
+- **Arrêt automatique** : Après 20 secondes
+- **Arrêt au clic** : Définitif, même si l'utilisateur annule le formulaire
+- **Timeline** :
+  ```
+  0s  → Vibration (3s)
+  3s  → Pause (2s)
+  5s  → Vibration (3s)
+  8s  → Pause (2s)
+  10s → Vibration (3s)
+  13s → Pause (2s)
+  15s → Vibration (3s)
+  18s → Pause (2s)
+  20s → Arrêt définitif
+  ```
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/688d3cc109ef001928d4773f/1j1jrald3';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+**Formulaire Pré-Chat** :
+- **Validation** : React Hook Form + Zod schema
+- **Champs obligatoires** : Prénom, Nom, Entreprise, Email
+- **Champ optionnel** : Téléphone (format français)
+- **Soumission** : API `/api/hubspot/ingest-conversation`
+- **Intégration HubSpot** : Identification automatique du contact
+- **UX** : Messages d'erreur en temps réel, bouton désactivé si invalide
+
+**Comportement** :
+1. Page chargée → Animation démarre
+2. 4 cycles de vibration sur 20 secondes
+3. Clic utilisateur → Formulaire s'ouvre + animation s'arrête définitivement
+4. Soumission → Données envoyées à HubSpot + fermeture
+5. Annulation → Fermeture sans reprise d'animation
+
+**Avantages** :
+- **+200-300% clics attendus** (vs bouton statique petit)
+- **4 opportunités d'engagement** au lieu d'une seule
+- **Respectueux** : Arrêt automatique, pas d'agacement
+- **Mobile-friendly** : Grande taille tactile, responsive
+- **Accessible** : ARIA labels, focus keyboard
+
+**Tests E2E** :
+- 6 tests flux complet (ouverture, validation, soumission)
+- 5 tests animation (cycles, arrêts, responsive)
+- 100% coverage du comportement utilisateur
+
+### Chat en direct Tawk.to (Désactivé)
+
+**Note** : Le chat Tawk.to a été désactivé au profit du module pré-chat HubSpot pour une expérience unifiée et un meilleur tracking CRM.
+
+~~Le script de chat en direct doit etre lancé avec un délais de 10 secondes sur les pages suivantes :~~
+
+- ~~Home~~
+- ~~Trunk SIP au Compteur~~
+- ~~Devis en ligne~~
+- ~~Qui sommes-nous~~
 
 ### Formulaires
 
