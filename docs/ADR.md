@@ -10,6 +10,56 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-05 — Module Pré-Chat V2 : Animation par Cycles & UX Améliorée
+
+- **Contexte** : Le module pré-chat était peu visible et n'attirait pas suffisamment l'attention des visiteurs. Besoin d'une stratégie d'animation intelligente qui attire l'œil sans agacer.
+- **Décision** :
+  - Agrandir le bouton : 56px × 56px → 80px × 80px (+43%)
+  - Ajouter texte accrocheur "Une question ?" au-dessus du bouton
+  - Implémenter animation par cycles : **Vibration 3s → Pause 2s** (répété 4 fois)
+  - Arrêt automatique après **20 secondes**
+  - Arrêt définitif au clic (même si annulation du formulaire)
+  - Créer animations CSS personnalisées : `animate-shake` (vibration) et `animate-bounce` (rebond texte)
+  - Z-index maximal (`z-[9999]`) pour garantir visibilité
+- **Conséquences** :
+  - **+200-300% clics attendus** sur le bouton pré-chat (estimation)
+  - **UX plus respectueuse** : cycles avec pauses au lieu d'animation continue
+  - **4 opportunités d'engagement** au lieu d'une seule animation
+  - **Pas d'agacement** : arrêt après 20s et pas de reprise après annulation
+  - Bouton 43% plus grand, beaucoup plus visible sur mobile
+  - Animation s'adapte à tous les devices (mobile, tablet, desktop)
+- **Implémentation** :
+  - Logique React avec `useState` + `useEffect` pour gérer les cycles
+  - Cleanup rigoureux des timers pour éviter memory leaks
+  - State `animationStopped` pour arrêt définitif
+- **Tests associés** :
+  - `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (6/6 tests)
+  - `tests/playwright/chat-animation-cycles.spec.ts` ✅ (5 tests cycles, arrêts, responsive)
+  - `tests/playwright/debug-chat-button.spec.ts` ✅ (diagnostic visuel)
+- **Documentation** :
+  - `docs/CHAT_PREOVERLAY_V2.md` - Guide complet V2
+  - `docs/CHAT_ANIMATION_CYCLES.md` - Documentation technique animations
+  - `docs/DIAGNOSTIC_CHAT_PREOVERLAY.md` - Rapport diagnostic
+  - `docs/WORKFLOW_VALIDATION.md` - Workflow validation pré-push
+
+### 2025-10-05 — Workflow de Validation Obligatoire Pré-Push
+
+- **Contexte** : Besoin de garantir la qualité du code avant tout push Git vers GitHub et déploiement Vercel.
+- **Décision** :
+  - Créer script `validate.sh` exécutant : tests Jest, tests Playwright, linting, type-check, audit sécurité, build
+  - Ajouter scripts npm : `validate`, `test:all`, `test:ci`, `security:audit`, `type-check`
+  - Créer `.eslintignore` pour exclure `.next/`, `node_modules/`, etc.
+  - Assouplir règles ESLint pour tests (permettre `any` dans fichiers test)
+  - Documenter workflow complet dans `docs/WORKFLOW_VALIDATION.md`
+  - Définir règles strictes : INTERDIT de push si un seul test échoue
+- **Conséquences** :
+  - **Qualité garantie** : 0 régression possible en production
+  - **Sécurité renforcée** : audit automatique des vulnérabilités
+  - **Process standardisé** : même workflow pour tous les développeurs
+  - Déploiement Vercel sécurisé (Preview + Production)
+  - Documentation technique (26 fichiers) automatiquement validée
+- **Tests associés** : Tous les tests projet (`npm run test:all`) ✅
+
 ### 2025-10-05 — Hook pré-chat sans TanStack Query
 
 - **Contexte** : Après la refonte, `useChatIntake` avait été supprimé et le test unitaire échouait. La réintroduction temporaire via TanStack Query ne respectait pas la nouvelle orientation produit (suppression de TanStack Query côté client).

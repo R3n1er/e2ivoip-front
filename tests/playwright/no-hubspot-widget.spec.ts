@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("HubSpot Conversations désactivé", () => {
-  test("le widget HubSpot Conversations n'est pas chargé et le pré‑chat est visible", async ({ page }) => {
+  test("le widget HubSpot Conversations n'est pas chargé et le pré‑chat est visible", async ({
+    page,
+  }) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
       if (msg.type() === "error") consoleErrors.push(msg.text());
@@ -10,7 +12,12 @@ test.describe("HubSpot Conversations désactivé", () => {
     await page.goto("/");
 
     // Le script de widget ne doit pas être présent
-    const hasWidgetScript = await page.evaluate(() => !!document.querySelector('script[src*="hs-scripts.com"]:not(#hs-script-loader)'));
+    const hasWidgetScript = await page.evaluate(
+      () =>
+        !!document.querySelector(
+          'script[src*="hs-scripts.com"]:not(#hs-script-loader)'
+        )
+    );
     expect(hasWidgetScript).toBeFalsy();
 
     // Le bouton du pré‑chat doit être visible
@@ -22,8 +29,8 @@ test.describe("HubSpot Conversations désactivé", () => {
     await expect(page.getByTestId("chat-preoverlay")).toBeVisible();
 
     // Pas d'erreurs console bloquantes
-    expect(consoleErrors.join("\n")).not.toMatch(/hydration|ReferenceError|TypeError/);
+    expect(consoleErrors.join("\n")).not.toMatch(
+      /hydration|ReferenceError|TypeError/
+    );
   });
 });
-
-
