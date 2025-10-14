@@ -1,7 +1,7 @@
 interface HubSpotFormCreateOptions {
   portalId: string;
   formId: string;
-  target: string;
+  target: string | HTMLElement;
   region?: string;
   inlineMessage?: string;
   cssRequired?: string;
