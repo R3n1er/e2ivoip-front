@@ -5,6 +5,7 @@ import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
 import { HotjarTracking } from "@/components/hotjar-tracking";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { Footer } from "@/components/layout/footer";
+import { ChatPreOverlay } from "@/components/chat-preoverlay";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
@@ -71,6 +72,7 @@ export default function RootLayout({
         <HeaderSimple />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
+        <ChatPreOverlay />
       </body>
     </html>
   );

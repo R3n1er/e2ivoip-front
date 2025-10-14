@@ -9,7 +9,7 @@
  * @see https://developers.hubspot.com/docs/cms/building-blocks/forms
  */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface HubSpotFormSimpleProps {
   /**
@@ -44,6 +44,9 @@ export function HubSpotFormSimpleEmbed({
 }: HubSpotFormSimpleProps) {
   const formContainerRef = useRef<HTMLDivElement>(null);
   const formLoadedRef = useRef(false);
+  const [isScriptReady, setIsScriptReady] = useState<boolean>(
+    !!window.hbspt?.forms
+  );
 
   useEffect(() => {
     // Éviter de charger le formulaire plusieurs fois
@@ -64,11 +67,14 @@ export function HubSpotFormSimpleEmbed({
             region,
             portalId,
             formId,
-            target: `#${formContainerRef.current.id}`,
+            target: formContainerRef.current,
           });
           formLoadedRef.current = true;
         } catch (error) {
-          console.error("Erreur lors du chargement du formulaire HubSpot:", error);
+          console.error(
+            "Erreur lors du chargement du formulaire HubSpot:",
+            error
+          );
         }
       }
     };
@@ -76,12 +82,13 @@ export function HubSpotFormSimpleEmbed({
     // Charger le script HubSpot si pas déjà chargé
     if (!window.hbspt?.forms) {
       const script = document.createElement("script");
-      script.src = `https://js-${region}.hsforms.net/forms/embed/v2.js`;
+      script.src = `//js-${region}.hsforms.net/forms/embed/v2.js`;
       script.charset = "utf-8";
       script.type = "text/javascript";
       script.async = true;
 
       script.onload = () => {
+        setIsScriptReady(true);
         loadForm();
       };
 
@@ -89,9 +96,11 @@ export function HubSpotFormSimpleEmbed({
         console.error("Impossible de charger le script HubSpot");
       };
 
-      document.body.appendChild(script);
+      // Les tests attendent une injection via appendChild observable
+      (document.head || document.body).appendChild(script);
     } else {
       // Script déjà chargé, créer le formulaire directement
+      setIsScriptReady(true);
       loadForm();
     }
 
@@ -103,19 +112,20 @@ export function HubSpotFormSimpleEmbed({
 
   return (
     <div className={className}>
-      {/* Loader pendant le chargement */}
+      {/* Conteneur du formulaire (vide au départ). Un loader léger s'affiche tant que le script n'est pas prêt. */}
+      {!isScriptReady && (
+        <div className="flex items-center justify-center min-h-[120px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-primary mx-auto mb-2"></div>
+            <p className="text-gray-600 text-sm">Chargement du formulaire...</p>
+          </div>
+        </div>
+      )}
       <div
         id={`hubspot-form-${formId}`}
         ref={formContainerRef}
-        className="min-h-[400px]"
-      >
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-primary mx-auto mb-4"></div>
-            <p className="text-gray-600">Chargement du formulaire...</p>
-          </div>
-        </div>
-      </div>
+        className="min-h-[120px]"
+      />
     </div>
   );
 }
