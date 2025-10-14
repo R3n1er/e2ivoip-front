@@ -4,6 +4,11 @@
 
 Le site web E2I VoIP est une plateforme moderne et professionnelle présentant les solutions de téléphonie IP et de communications d'entreprise. Le site est construit avec Next.js 15, utilise Tailwind CSS avec DaisyUI, et intègre Contentful comme CMS principal.
 
+### Statut d'avancement
+
+- Sprints 1 → 4 : ✅ Terminés (UI/UX + Contact + Blog + HubSpot)
+- Sprint 5 : 📅 Planifié (post‑lancement: monitoring, optimisations continues)
+
 ## Architecture Technique
 
 ### Frontend
@@ -27,6 +32,12 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 ### Intégrations
 
 - **HubSpot** : Formulaires de contact et tracking
+  - Centralisation de l'API `window.hbspt` (typage unique) dans `types/hubspot.d.ts`
+  - Embed fiable via composant `HubSpotFormSimpleEmbed` :
+    - Chargement du script avec URL à protocole relatif `//js-<region>.hsforms.net/forms/embed/v2.js`
+    - `target` accepté en `HTMLElement` pour injection directe
+    - Loader léger uniquement avant disponibilité du script
+  - Couverture tests: Jest + Playwright validés
 - **Tally** : Formulaires spécialisés avec automatismes N8N
 - **Tawk.to** : Chat en direct
 - **OpenAI** : Génération d'images de couverture via DALL-E
