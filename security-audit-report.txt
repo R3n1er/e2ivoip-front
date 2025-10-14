@@ -1,0 +1,35 @@
+═══════════════════════════════════════
+   SECURITY AUDIT REPORT
+   Generated: 2025-10-05T19:36:04.747Z
+═══════════════════════════════════════
+
+
+Branch: dev
+────────────────────────────────────────
+⚠ Found 2 potential secret(s):
+  CRITICAL: 0
+  HIGH: 2
+
+[HIGH] HubSpot API Key
+  File: .env.local:2
+  Match: 9ddc1e3a-ba89-4159-8e9c-749d0eb88766
+
+[HIGH] HubSpot API Key
+  File: .env.local:7
+  Match: e0b9381a-ab8d-4719-81c0-2b71c58d907c
+
+
+Branch: main
+────────────────────────────────────────
+⚠ Found 2 potential secret(s):
+  CRITICAL: 0
+  HIGH: 2
+
+[HIGH] HubSpot API Key
+  File: .env.local:2
+  Match: 9ddc1e3a-ba89-4159-8e9c-749d0eb88766
+
+[HIGH] HubSpot API Key
+  File: .env.local:7
+  Match: e0b9381a-ab8d-4719-81c0-2b71c58d907c
+
