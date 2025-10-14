@@ -10,6 +10,21 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-06 — Centralisation HubSpot & assouplissement ESLint marketing
+
+- **Contexte** : Le lint bloquait sur des règles trop strictes pour le contenu marketing (`react/no-unescaped-entities`, `@typescript-eslint/ban-ts-comment`, `@next/next/no-img-element`) et les déclarations `window.hbspt` étaient dupliquées localement, ce qui générait des avertissements TypeScript.
+- **Décision** :
+  - Étendre `eslint.config.mjs` pour ignorer les dossiers générés (`.next`, `build`, etc.) et assouplir les règles marketing/héritées tout en conservant les avertissements utiles.
+  - Centraliser la définition de l’API HubSpot (`window.hbspt`) dans `types/hubspot.d.ts` et supprimer les `declare global` locaux, en adaptant les composants pour exploiter la typage optionnel (`?.forms`, `?.push`).
+- **Conséquences** :
+  - Le lint reste exploitable malgré les nombreux contenus marketing ; une seule erreur ESLint subsiste côté produit (`tally-tracking.tsx` à refactorer).
+  - Les composants HubSpot bénéficient d’une API typée unique, limitant les conversions `any` et facilitant les évolutions.
+  - Le typage TSC ne remonte plus l’erreur `hbspt` mais met en évidence deux dettes historiques (form legacy + tests Core Web Vitals) à traiter.
+- **Tests associés** :
+  - `npm run lint:fix` ✅ (warnings résiduels attendus)
+  - `npm run lint` ⚠️ échoue encore tant que la fonction `trackTallyClick` n’est pas refactorée
+  - `npm run type-check` ⚠️ signale des erreurs legacy hors périmètre (`hubspot-form.tsx`, `tests/core-web-vitals.test.tsx`)
+
 ### 2025-10-05 — Module Pré-Chat V2 : Animation par Cycles & UX Améliorée
 
 - **Contexte** : Le module pré-chat était peu visible et n'attirait pas suffisamment l'attention des visiteurs. Besoin d'une stratégie d'animation intelligente qui attire l'œil sans agacer.
