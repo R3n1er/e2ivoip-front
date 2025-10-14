@@ -7,8 +7,8 @@ jest.mock("@/components/ui/lazy-component", () => {
     children,
     fallback,
   }: {
-    children?: unknown;
-    fallback?: unknown;
+    children?: React.ReactNode;
+    fallback?: React.ReactNode;
   }) => (
     <div data-testid="lazy-component">
       {fallback}

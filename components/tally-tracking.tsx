@@ -1,30 +1,35 @@
-"use client"
+"use client";
 
-import { useHubSpot } from "./hubspot/legacy/hubspot-tracking"
+import { useHubSpot } from "./hubspot/legacy/hubspot-tracking";
 
 interface TallyLinkProps {
-  href: string
-  children: React.ReactNode
-  formType: 'trunk_sip' | 'portabilite' | 'voip_3cx' | 'projet_pbx'
-  className?: string
+  href: string;
+  children: React.ReactNode;
+  formType: "trunk_sip" | "portabilite" | "voip_3cx" | "projet_pbx";
+  className?: string;
 }
 
-export function TallyLink({ href, children, formType, className = "" }: TallyLinkProps) {
-  const { trackEvent } = useHubSpot()
+export function TallyLink({
+  href,
+  children,
+  formType,
+  className = "",
+}: TallyLinkProps) {
+  const { trackEvent } = useHubSpot();
 
   const handleClick = () => {
     // Tracking du clic sur le lien Tally
-    trackEvent('tally_link_clicked', {
+    trackEvent("tally_link_clicked", {
       form_type: formType,
-      lead_source: 'website',
+      lead_source: "website",
       tally_url: href,
-      timestamp: new Date().toISOString()
-    })
-  }
+      timestamp: new Date().toISOString(),
+    });
+  };
 
   return (
-    <a 
-      href={href} 
+    <a
+      href={href}
       onClick={handleClick}
       className={className}
       target="_blank"
@@ -32,7 +37,7 @@ export function TallyLink({ href, children, formType, className = "" }: TallyLin
     >
       {children}
     </a>
-  )
+  );
 }
 
 // URLs réelles des formulaires Tally basées sur le site existant
@@ -41,71 +46,100 @@ const TALLY_URLS = {
   trunk_sip: "https://tally.so/r/trunk-sip-devis", // À remplacer par l'URL réelle
   portabilite: "https://tally.so/r/portabilite-devis", // À remplacer par l'URL réelle
   voip_3cx: "https://tally.so/r/voip-3cx-devis", // À remplacer par l'URL réelle
-  projet_pbx: "https://tally.so/r/projet-pbx-devis" // À remplacer par l'URL réelle
-}
+  projet_pbx: "https://tally.so/r/projet-pbx-devis", // À remplacer par l'URL réelle
+};
 
 // Composants spécialisés pour chaque type de devis Tally
-export function TrunkSIPTallyLink({ children, className }: { children: React.ReactNode, className?: string }) {
+export function TrunkSIPTallyLink({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <TallyLink 
+    <TallyLink
       href={TALLY_URLS.trunk_sip}
       formType="trunk_sip"
       className={className}
     >
       {children}
     </TallyLink>
-  )
+  );
 }
 
-export function PortabiliteTallyLink({ children, className }: { children: React.ReactNode, className?: string }) {
+export function PortabiliteTallyLink({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <TallyLink 
+    <TallyLink
       href={TALLY_URLS.portabilite}
       formType="portabilite"
       className={className}
     >
       {children}
     </TallyLink>
-  )
+  );
 }
 
-export function VoIP3CXTallyLink({ children, className }: { children: React.ReactNode, className?: string }) {
+export function VoIP3CXTallyLink({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <TallyLink 
+    <TallyLink
       href={TALLY_URLS.voip_3cx}
       formType="voip_3cx"
       className={className}
     >
       {children}
     </TallyLink>
-  )
+  );
 }
 
-export function ProjetPBXTallyLink({ children, className }: { children: React.ReactNode, className?: string }) {
+export function ProjetPBXTallyLink({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <TallyLink 
+    <TallyLink
       href={TALLY_URLS.projet_pbx}
       formType="projet_pbx"
       className={className}
     >
       {children}
     </TallyLink>
-  )
+  );
 }
 
 // Hook pour obtenir les URLs des formulaires Tally
 export function useTallyUrls() {
-  return TALLY_URLS
+  return TALLY_URLS;
 }
 
-// Fonction utilitaire pour tracker les clics sur les liens Tally
-export function trackTallyClick(formType: 'trunk_sip' | 'portabilite' | 'voip_3cx' | 'projet_pbx', url: string) {
-  const { trackEvent } = useHubSpot()
-  
-  trackEvent('tally_link_clicked', {
-    form_type: formType,
-    lead_source: 'website',
-    tally_url: url,
-    timestamp: new Date().toISOString()
-  })
-} 
+// Hook pour fournir une fonction de tracking conforme aux règles des Hooks React
+export function useTrackTallyClick() {
+  const { trackEvent } = useHubSpot();
+
+  return (
+    formType: "trunk_sip" | "portabilite" | "voip_3cx" | "projet_pbx",
+    url: string
+  ) => {
+    trackEvent("tally_link_clicked", {
+      form_type: formType,
+      lead_source: "website",
+      tally_url: url,
+      timestamp: new Date().toISOString(),
+    });
+  };
+}

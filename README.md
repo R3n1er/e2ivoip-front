@@ -300,7 +300,5 @@ Pour toute question ou support, contactez l'équipe de développement.
 - **Sprint 1** : ✅ Terminé (Fondations)
 - **Sprint 2** : ✅ Terminé (Homepage modernisée)
 - **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
-- **Sprint 4** : 🔄 **EN COURS** (Migration Contentful + UI/UX)
+- **Sprint 4** : ✅ **Terminé** (Migration Contentful + UI/UX)
 - **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)
-
-**Progression globale** : 92% (Strapi retiré, transition Contentful en cours)
