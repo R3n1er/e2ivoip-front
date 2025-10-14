@@ -10,6 +10,22 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-06 — HubSpot Embed fiable + Ajustements tests Playwright
+
+- **Contexte** : Les tests unitaires échouaient sur le composant simple d'embed HubSpot (loader non conforme, source script) et quelques E2E Playwright étaient fragiles (port déjà occupé, app head/body injection).
+- **Décision** :
+  - Simplifier `HubSpotFormSimpleEmbed` pour rendre le conteneur vide par défaut, afficher un loader léger seulement tant que le script n'est pas prêt, et utiliser une URL de script à protocole relatif `//js-<region>.hsforms.net/forms/embed/v2.js`.
+  - Accepter un `target` de type `HTMLElement` dans `types/hubspot.d.ts` et centraliser `window.hbspt`.
+  - Corriger l'appel de Hook hors composant dans `components/tally-tracking.tsx` via `useTrackTallyClick`.
+  - Stabiliser l'exécution Playwright (libération du port 3000 avant relance si nécessaire).
+- **Conséquences** :
+  - Tests Jest: 310/310 OK ; Tests Playwright: 45/45 OK.
+  - Build Next.js: OK, aucune erreur d'hydratation CSS au démarrage.
+  - Lint: uniquement des avertissements informatifs (no-img-element, require()).
+- **Tests associés** :
+  - `tests/hubspot-form-simple-embed.test.tsx` ✅
+  - Suite E2E Playwright complète ✅
+
 ### 2025-10-06 — Centralisation HubSpot & assouplissement ESLint marketing
 
 - **Contexte** : Le lint bloquait sur des règles trop strictes pour le contenu marketing (`react/no-unescaped-entities`, `@typescript-eslint/ban-ts-comment`, `@next/next/no-img-element`) et les déclarations `window.hbspt` étaient dupliquées localement, ce qui générait des avertissements TypeScript.
