@@ -53,13 +53,17 @@ export function HubSpotFormSimpleEmbed({
 
     // Fonction pour charger le formulaire
     const loadForm = () => {
-      const win = window as any;
-      if (win.hbspt && formContainerRef.current) {
+      if (!formContainerRef.current) {
+        return;
+      }
+
+      const hubspot = window.hbspt;
+      if (hubspot?.forms) {
         try {
-          win.hbspt.forms.create({
-            region: region,
-            portalId: portalId,
-            formId: formId,
+          hubspot.forms.create({
+            region,
+            portalId,
+            formId,
             target: `#${formContainerRef.current.id}`,
           });
           formLoadedRef.current = true;
@@ -70,8 +74,7 @@ export function HubSpotFormSimpleEmbed({
     };
 
     // Charger le script HubSpot si pas déjà chargé
-    const win = window as any;
-    if (!win.hbspt) {
+    if (!window.hbspt?.forms) {
       const script = document.createElement("script");
       script.src = `https://js-${region}.hsforms.net/forms/embed/v2.js`;
       script.charset = "utf-8";

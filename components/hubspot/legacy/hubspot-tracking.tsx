@@ -62,9 +62,7 @@ export function useHubSpot() {
       return;
     }
 
-    if (window.hbspt) {
-      window.hbspt.push(["trackEvent", eventName, properties]);
-    }
+    window.hbspt?.push?.(["trackEvent", eventName, properties]);
   };
 
   const identifyUser = (email: string, properties?: Record<string, any>) => {
@@ -72,9 +70,7 @@ export function useHubSpot() {
       return;
     }
 
-    if (window.hbspt) {
-      window.hbspt.push(["identify", email, properties]);
-    }
+    window.hbspt?.push?.(["identify", email, properties]);
   };
 
   const trackPageView = (url?: string) => {
@@ -82,9 +78,7 @@ export function useHubSpot() {
       return;
     }
 
-    if (window.hbspt) {
-      window.hbspt.push(["trackPageView", url]);
-    }
+    window.hbspt?.push?.(["trackPageView", url]);
   };
 
   return {
@@ -92,11 +86,4 @@ export function useHubSpot() {
     identifyUser,
     trackPageView,
   };
-}
-
-// Déclaration TypeScript pour HubSpot
-declare global {
-  interface Window {
-    hbspt: any;
-  }
 }

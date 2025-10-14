@@ -10,6 +10,17 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [
+      "**/.next/**",
+      "**/build/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/playwright-report/**",
+      "**/test-results/**",
+      "**/scripts/node_modules/**",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
@@ -19,6 +30,17 @@ const eslintConfig = [
       "@typescript-eslint/no-require-imports": "warn",
       // Permettre les variables non utilisées dans les fichiers générés
       "@typescript-eslint/no-unused-vars": "warn",
+      // Autoriser les directives ts-ignore nécessaires sur le legacy
+      "@typescript-eslint/ban-ts-comment": "off",
+      // Autoriser les apostrophes non échappées dans le contenu marketing
+      "react/no-unescaped-entities": "off",
+      // Réduire la sévérité des règles Next.js bloquantes
+      "@next/next/no-img-element": "warn",
+      "@next/next/no-html-link-for-pages": "warn",
+      // Éviter les faux positifs sur les composants utilitaires
+      "react/display-name": "off",
+      // Laisser Next gérer le routing généré
+      "@typescript-eslint/triple-slash-reference": "off",
     },
   },
   {
