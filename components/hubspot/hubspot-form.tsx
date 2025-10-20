@@ -9,7 +9,14 @@
  * @see docs/ADR.md
  */
 
-import { useEffect, useMemo, useRef, useState, ReactNode, memo } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  ReactNode,
+  memo,
+} from "react";
 import {
   HUBSPOT_CONFIG,
   getHubSpotFormId,
@@ -114,6 +121,14 @@ interface ScriptState {
   error: Error | null;
 }
 
+function sanitizeIdSegment(value: string): string {
+  return value
+    .trim()
+    .replace(/[^a-zA-Z0-9_-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export const HubSpotForm = memo(function HubSpotForm({
   formId = "CONTACT_GENERAL",
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
@@ -127,7 +142,6 @@ export const HubSpotForm = memo(function HubSpotForm({
   testId = "hubspot-form",
 }: HubSpotFormProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const autoIdRef = useRef<string | null>(null);
   const formCreatedRef = useRef(false);
   const [scriptState, setScriptState] = useState<ScriptState>({
     loading: true,
@@ -140,13 +154,22 @@ export const HubSpotForm = memo(function HubSpotForm({
       ? getHubSpotFormId(formId as HubSpotFormId)
       : formId;
 
-  if (!autoIdRef.current) {
-    autoIdRef.current = `hubspot-form-${Math.random().toString(36).slice(2)}`;
-  }
-
   const resolvedContainerId = useMemo(
-    () => containerId || autoIdRef.current!,
-    [containerId]
+    () => {
+      if (containerId) {
+        return containerId;
+      }
+
+      const sanitizedFormId = sanitizeIdSegment(resolvedFormId);
+      const sanitizedTestId = testId ? sanitizeIdSegment(testId) : "";
+
+      const suffix = [sanitizedFormId, sanitizedTestId]
+        .filter(Boolean)
+        .join("-");
+
+      return `hubspot-form-${suffix || "auto"}`;
+    },
+    [containerId, resolvedFormId, testId]
   );
 
   useEffect(() => {

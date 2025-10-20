@@ -114,7 +114,7 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <i className="lni lni-infinite mr-2"></i>
                   Solution forfaitaire
                 </div>
@@ -130,8 +130,8 @@ export default function TrunkSIPIllimite() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-green-600 text-xl"></i>
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-phone text-red-primary text-xl"></i>
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -145,7 +145,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-map text-blue-marine text-xl"></i>
                     </div>
                     <div>
@@ -174,8 +174,8 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-shield text-orange-600 text-xl"></i>
+                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="lni lni-shield text-blue-marine text-xl"></i>
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -277,12 +277,12 @@ export default function TrunkSIPIllimite() {
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
-                {/* Gradient border top - Utilise bleu marine de la charte */}
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600"></div>
+                {/* Gradient border top - Palette rouge & bleu marine */}
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-blue-marine to-blue-marine"></div>
                 
                 {/* Background pattern */}
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
                 </div>
                 
                 <div className="relative p-8">
@@ -311,7 +311,7 @@ export default function TrunkSIPIllimite() {
               {/* Couverture complète */}
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Mélange bleu marine et rouge */}
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-500 to-red-primary"></div>
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-marine via-red-primary to-blue-marine"></div>
                 
                 {/* Background pattern */}
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
@@ -343,8 +343,8 @@ export default function TrunkSIPIllimite() {
 
               {/* Évolutif */}
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
-                {/* Gradient border top - Rouge principal avec orange */}
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+                {/* Gradient border top - Rouge principal & bleu marine */}
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 
                 {/* Background pattern */}
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
@@ -475,21 +475,24 @@ export default function TrunkSIPIllimite() {
               <div className="flex flex-wrap justify-center gap-6">
                 <a
                   href="tel:+33189560500"
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                  suppressHydrationWarning
+                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
                   <i className="lni lni-phone-set text-lg"></i>
                   <span>France : 01 89 56 05 00</span>
                 </a>
                 <a
-                  href="tel:+594963500"
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                  href="tel:+594594963500"
+                  suppressHydrationWarning
+                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
                   <i className="lni lni-phone-set text-lg"></i>
                   <span>Guyane : 0594 96 35 00</span>
                 </a>
                 <a
-                  href="tel:+590173500"
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                  href="tel:+590590173500"
+                  suppressHydrationWarning
+                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
                   <i className="lni lni-phone-set text-lg"></i>
                   <span>Guadeloupe : 0590 17 35 00</span>

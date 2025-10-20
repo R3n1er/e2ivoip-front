@@ -85,6 +85,7 @@ const faqData: FAQItem[] = [
           Contactez notre service commercial pour plus d'informations au{" "}
           <a
             href="tel:+594594963500"
+            suppressHydrationWarning
             className="text-red-primary hover:underline font-semibold"
           >
             +594 594 963 500

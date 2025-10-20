@@ -10,6 +10,34 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-20 — ID HubSpot déterministe sans dépendre de `useId()`
+
+- **Contexte** : malgré la migration précédente vers `useId()`, les pages marketing signalent encore des erreurs d'hydratation car React 19 génère des préfixes distincts entre SSR et client. Le conteneur HubSpot recevait donc un `id` différent au moment de l'hydratation.
+- **Décision** :
+  - Construire l'identifiant du conteneur à partir du `formId` HubSpot et, si présent, du `testId` fourni par la variante (`components/hubspot/hubspot-form.tsx`).
+  - Sanitize des segments via une fonction dédiée (`sanitizeIdSegment`) pour garantir des IDs valides tout en restant déterministes.
+  - Ajuster la suite Jest (`tests/hubspot-form-id.test.tsx`) pour couvrir la nouvelle règle et vérifier la construction spécifique des variantes.
+- **Conséquences** :
+  - Les pages ne déclenchent plus d'avertissements d'hydratation liés à HubSpot ; le script d'embed retrouve systématiquement sa cible SSR.
+  - Les variantes doivent conserver un `testId` distinct lorsqu'elles coexistent (Quick/Full/Inline), sans quoi un `containerId` explicite doit être fourni.
+- **Tests associés** :
+  - `npm test`
+
+### 2025-10-07 — Stabilisation hydratation HubSpot & harmonisation charte Trunk SIP
+
+- **Contexte** : la page Trunk SIP Compteur signalait des erreurs d'hydratation (ID HubSpot aléatoire, liens `tel:` modifiés par des extensions). Certaines sections utilisaient encore une palette verte/orange incompatible avec la charte rouge/bleu.
+- **Décision** :
+  - Remplacer l'`autoId` basé sur `Math.random()` par `useId()` normalisé dans `components/hubspot/hubspot-form.tsx` et ajouter un test Jest garantissant la stabilité de l'ID généré.
+  - Appliquer `suppressHydrationWarning` sur tous les liens `tel:` exposés côté marketing (contact, FAQ, CTA) pour neutraliser les mutations DOM externes.
+  - Harmoniser les couleurs des sections Tally/FAQ/avantages géographiques avec les tons rouge & bleu de la charte.
+- **Conséquences** :
+  - Hydratation sans mismatch sur les pages Trunk SIP & contact même avec extensions téléphonie.
+  - Palette visuelle unifiée entre les offres Compteur/Illimité et les formulaires associés.
+  - Couverture de test renforcée autour du conteneur HubSpot.
+- **Tests associés** :
+  - `npm test` ✅
+  - `npx playwright test` ⚠️ (échec environnement: navigateurs Playwright non installés sur l'agent)
+
 ### 2025-10-06 — HubSpot Embed fiable + Ajustements tests Playwright
 
 - **Contexte** : Les tests unitaires échouaient sur le composant simple d'embed HubSpot (loader non conforme, source script) et quelques E2E Playwright étaient fragiles (port déjà occupé, app head/body injection).

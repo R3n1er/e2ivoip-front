@@ -201,6 +201,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+33189560500"
+                  suppressHydrationWarning
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-france"
                 >
@@ -223,6 +224,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+594594963500"
+                  suppressHydrationWarning
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-guyane"
                 >
@@ -245,6 +247,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+590590173500"
+                  suppressHydrationWarning
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-guadeloupe"
                 >
@@ -267,6 +270,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+596596313500"
+                  suppressHydrationWarning
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-martinique"
                 >
@@ -289,6 +293,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+262263085500"
+                  suppressHydrationWarning
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-reunion"
                 >

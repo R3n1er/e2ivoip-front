@@ -108,6 +108,7 @@ export function DevisButtonsSection() {
           </p>
           <a
             href="tel:+594594963500"
+            suppressHydrationWarning
             className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             <span className="mr-2">📞</span>
