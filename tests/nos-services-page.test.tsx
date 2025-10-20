@@ -115,7 +115,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des prix
-    expect(screen.getByText("À partir de 15€/mois")).toBeInTheDocument();
+    expect(screen.getByText("À partir de 2 canaux voix")).toBeInTheDocument();
     expect(screen.getByText("15€/mois/utilisateur")).toBeInTheDocument();
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
@@ -130,6 +130,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Numéros locaux garantis")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();
+    expect(screen.getByText("2 appels simultanés inclus")).toBeInTheDocument();
     expect(screen.getByText("Support utilisateur dédié")).toBeInTheDocument();
   });
 });

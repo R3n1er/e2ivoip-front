@@ -71,12 +71,14 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 **Objectif** : Maximiser l'engagement des visiteurs en proposant un point de contact visible et attractif sans être intrusif.
 
 **Design** :
+
 - **Bouton agrandi** : 80px × 80px (vs 56px avant) - Visibilité +43%
 - **Texte accrocheur** : "Une question ?" au-dessus du bouton
 - **Icône** : SVG message 36px × 36px en dégradé rose/violet/indigo
 - **Position** : Fixe en bas à droite (`z-index: 9999`)
 
 **Animation Intelligente par Cycles** :
+
 - **Cycle** : Vibration 3s → Pause 2s (répété 4 fois)
 - **Durée totale** : 20 secondes d'animation
 - **Animations** :
@@ -98,6 +100,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
   ```
 
 **Formulaire Pré-Chat** :
+
 - **Validation** : React Hook Form + Zod schema
 - **Champs obligatoires** : Prénom, Nom, Entreprise, Email
 - **Champ optionnel** : Téléphone (format français)
@@ -106,6 +109,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **UX** : Messages d'erreur en temps réel, bouton désactivé si invalide
 
 **Comportement** :
+
 1. Page chargée → Animation démarre
 2. 4 cycles de vibration sur 20 secondes
 3. Clic utilisateur → Formulaire s'ouvre + animation s'arrête définitivement
@@ -113,6 +117,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 5. Annulation → Fermeture sans reprise d'animation
 
 **Avantages** :
+
 - **+200-300% clics attendus** (vs bouton statique petit)
 - **4 opportunités d'engagement** au lieu d'une seule
 - **Respectueux** : Arrêt automatique, pas d'agacement
@@ -120,6 +125,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Accessible** : ARIA labels, focus keyboard
 
 **Tests E2E** :
+
 - 6 tests flux complet (ouverture, validation, soumission)
 - 5 tests animation (cycles, arrêts, responsive)
 - 100% coverage du comportement utilisateur
@@ -146,40 +152,44 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 **Objectif** : Augmenter la conversion sur la page produit "Trunk SIP au Compteur" en capturant les prospects qualifiés avec un formulaire contextuel non-intrusif.
 
 **Fonctionnement** :
+
 - **Déclenchement** : Popup automatique après 3 secondes de présence sur la page (optimisé pour UX réactive)
 - **Formulaire** : Tally ID `mDY1bl` (formulaire de qualification commerciale)
 - **Animation** : Emoji 👋 avec animation "wave" pour attirer l'attention
-- **Comportement** : 
+- **Comportement** :
   - Fermeture manuelle possible
   - Ne réapparaît pas après soumission (`doNotShowAfterSubmit: true`)
   - Pas de fermeture automatique (`autoClose: 0`)
 
 **Intégration technique** :
+
 - **Composant** : `TallyPopupClean` avec chargement asynchrone optimisé du script Tally
 - **Script source** : `https://tally.so/widgets/embed.js`
 - **Chargement** : Immédiat après montage du composant (sans délai artificiel)
 - **Gestion d'erreurs** : Logs en cas d'échec de chargement du script
 
 **Configuration Tally** :
+
 ```javascript
 TallyConfig = {
   formId: "mDY1bl",
   popup: {
     emoji: {
       text: "👋",
-      animation: "wave"
+      animation: "wave",
     },
     open: {
-      trigger: "time", 
-      ms: 3000
+      trigger: "time",
+      ms: 3000,
     },
     autoClose: 0,
-    doNotShowAfterSubmit: true
-  }
-}
+    doNotShowAfterSubmit: true,
+  },
+};
 ```
 
 **Justification métier** :
+
 - **Page stratégique** : Trunk SIP au compteur = solution phare pour PME DOM-TOM
 - **Timing optimal** : 3 secondes permettent de capter l'attention sans sur-attendre
 - **Qualification** : Formulaire Tally connecté aux automatismes N8N pour traitement commercial
@@ -384,25 +394,32 @@ TallyConfig = {
 ##### Caractéristiques Obligatoires
 
 1. **Structure à deux niveaux** :
+
    - `<button>` avec classes de base et group
    - `<span>` pour le contenu avec flexbox
    - `<div>` pour l'effet de clic
 
 2. **Effet de clic** (OBLIGATOIRE) :
+
    ```html
-   <div class="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+   <div
+     class="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"
+   ></div>
    ```
 
 3. **Animation flèche** :
+
    - Icône `lni-arrow-right` en fin de bouton
    - Animation au hover : `group-hover:translate-x-1`
 
 4. **Classes essentielles** :
+
    - `relative overflow-hidden group` sur le button
    - `flex items-center justify-center` sur le span
    - `transition-transform group-hover:translate-x-1` sur la flèche
 
 5. **Tailles minimales** :
+
    - Bouton principal : `min-w-[240px]`
    - Bouton secondaire : `min-w-[200px]`
    - Ajustable selon le contenu
@@ -510,6 +527,7 @@ Composant React pour intégrer le calendrier de rendez-vous HubSpot avec optimis
 **Localisation** : `/components/hubspot-calendar.tsx`
 
 **Fonctionnalités** :
+
 - Intégration du script HubSpot Meetings Embed
 - Gestion du chargement asynchrone et des erreurs
 - Interface personnalisable (titre, description, hauteur)
@@ -518,17 +536,25 @@ Composant React pour intégrer le calendrier de rendez-vous HubSpot avec optimis
 - Support des numéros de téléphone cliquables
 
 **Script HubSpot intégré** :
+
 ```html
 <!-- Start of Meetings Embed Script -->
-<div class="meetings-iframe-container" data-src="https://www.e2i-voip.com/meetings/alban-renier?embed=true"></div>
-<script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+<div
+  class="meetings-iframe-container"
+  data-src="https://www.e2i-voip.com/meetings/alban-renier?embed=true"
+></div>
+<script
+  type="text/javascript"
+  src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+></script>
 <!-- End of Meetings Embed Script -->
 ```
 
 **Props disponibles** :
+
 - `meetingUrl` : URL du calendrier HubSpot
 - `title` : Titre affiché au-dessus du calendrier
-- `description` : Description sous le titre  
+- `description` : Description sous le titre
 - `height` : Hauteur du calendrier en pixels
 - `className` : Classes CSS personnalisées
 - `showContactInfo` : Afficher les contacts alternatifs
@@ -540,6 +566,7 @@ Composant de conversion présentant les problèmes clients vs solutions E2I VoIP
 **Localisation** : `/components/problem-solution-section.tsx`
 
 **Structure** :
+
 - Section problèmes (fond rouge) avec icônes Lineicons
 - Section solutions (fond vert) avec badges de mise en valeur
 - Layout responsive en 2 colonnes sur desktop
@@ -552,6 +579,7 @@ Composant de tarification par paliers d'appels simultanés :
 **Localisation** : `/components/pricing-tiers.tsx`
 
 **Fonctionnalités** :
+
 - Grille responsive des paliers (8, 16, 24, 32, 64 appels)
 - Mise en valeur du palier "Populaire" (16 appels)
 - Badges personnalisables par palier
@@ -566,6 +594,7 @@ Composants pour afficher les témoignages clients :
 **Localisation** : `/components/testimonial-card.tsx`
 
 **Fonctionnalités** :
+
 - Cartes témoignages avec logo entreprise
 - Statistiques visuelles (utilisateurs, solution)
 - Badge de confiance "Client satisfait"
@@ -579,6 +608,7 @@ Composant spécifique à l'expertise DOM-TOM d'E2I VoIP :
 **Localisation** : `/components/geographic-advantage.tsx`
 
 **Fonctionnalités** :
+
 - Mise en valeur de la présence locale dans 5 régions
 - Numéros de téléphone cliquables par région
 - Fonctionnalités spécifiques à chaque région
@@ -592,6 +622,7 @@ Section Call-to-Action principale avec intégration calendrier :
 **Localisation** : `/components/cta-calendar-section.tsx`
 
 **Fonctionnalités** :
+
 - Titre et sous-titre personnalisables
 - Liste des bénéfices de la démonstration
 - Intégration du HubSpotCalendar component
@@ -604,6 +635,7 @@ Section Call-to-Action principale avec intégration calendrier :
 **Localisation** : `/app/3cx-cloud/page.tsx`
 
 **Structure de conversion** :
+
 1. **Hero Section** - Dégradé standardisé + CTA calendrier principal
 2. **Problèmes vs Solutions** - Identification des pain points clients
 3. **Intégrations avancées** - WhatsApp, CRM, Microsoft 365, IA
@@ -613,6 +645,7 @@ Section Call-to-Action principale avec intégration calendrier :
 7. **CTA final avec calendrier** - Conversion principale
 
 **Optimisations SEO** :
+
 - Titre meta optimisé : "3CX PRO Cloud - Solution Téléphonique d'Entreprise"
 - Description longue avec mots-clés stratégiques
 - Keywords DOM-TOM, calls simultanés, WhatsApp Business
@@ -621,6 +654,7 @@ Section Call-to-Action principale avec intégration calendrier :
 ### Données Structurées Intégrées
 
 **Problèmes identifiés** :
+
 - Saturation d'appels (lignes occupées)
 - Coûts téléphoniques explosifs
 - Obsolescence technique (arrêt cuivre)
@@ -628,6 +662,7 @@ Section Call-to-Action principale avec intégration calendrier :
 - Absence d'intégrations CRM/Office 365
 
 **Solutions proposées** :
+
 - Serveur cloud dédié AWS EU
 - Tarification transparente (40% d'économies)
 - Hébergement souverain France/UE
@@ -635,23 +670,26 @@ Section Call-to-Action principale avec intégration calendrier :
 - Minimum 8 appels simultanés garantis
 
 **Paliers tarifaires** :
+
 - 8 appels : TPE Dynamiques
 - 16 appels : PME Multi-sites (Populaire)
 - 24 appels : Entreprises en croissance
-- 32 appels : Structures importantes  
+- 32 appels : Structures importantes
 - 64 appels : Solution haute capacité
 
 ### Intégrations de Conversion
 
 **HubSpot Calendar** :
+
 - URL : `https://www.e2i-voip.com/meetings/alban-renier`
 - Embed automatique avec paramètre `?embed=true`
 - Titre : "Réservez votre démonstration gratuite"
 - Description : "Échangeons 15 minutes pour comprendre vos enjeux"
 
 **Contacts régionaux intégrés** :
+
 - Guyane : 0594 963 500
-- Guadeloupe : 0590 173 500  
+- Guadeloupe : 0590 173 500
 - Martinique : 0596 313 500
 - La Réunion : +262 263 085 500
 - France : 0189 563 500

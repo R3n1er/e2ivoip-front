@@ -15,9 +15,10 @@ export function ServicesSectionSimple() {
         "Numéros locaux garantis",
         "Portabilité gratuite",
         "Support technique local",
+        "2 appels simultanés inclus",
       ],
       badge: "Populaire",
-      price: "À partir de 15€/mois",
+      price: "À partir de 2 canaux voix",
       href: "/telephonie-entreprise/trunk-sip-compteur",
     },
     {
@@ -104,9 +105,9 @@ export function ServicesSectionSimple() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 h-full"
+              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full"
             >
-              <div className="card-body p-6">
+              <div className="card-body p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
                     <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
@@ -115,16 +116,16 @@ export function ServicesSectionSimple() {
                     {service.badge}
                   </div>
                 </div>
-                
+
                 <h3 className="card-title text-xl mb-3 text-base-content">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-base-content/70 leading-relaxed mb-6">
                   {service.description}
                 </p>
 
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-6 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
                       <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
@@ -134,14 +135,14 @@ export function ServicesSectionSimple() {
                 </div>
 
                 <div className="divider my-4"></div>
-                
-                <div className="card-actions flex-col space-y-4">
+
+                <div className="card-actions flex-col space-y-4 mt-auto">
                   <div className="flex items-center justify-between w-full">
                     <span className="text-lg font-bold text-primary">
                       {service.price}
                     </span>
                   </div>
-                  
+
                   <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
                     En savoir plus
                   </CTAButton>

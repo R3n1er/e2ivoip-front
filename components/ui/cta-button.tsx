@@ -56,6 +56,7 @@ export function CTAButton({
     return (
       <a
         href={href}
+        suppressHydrationWarning={isTelOrMailto}
         {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
         className="inline-block"
       >
@@ -115,6 +116,7 @@ export function CTAButtonMarine({
     return (
       <a
         href={href}
+        suppressHydrationWarning={isTelOrMailto}
         {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
         className="inline-block"
       >
@@ -173,6 +175,7 @@ export function CTAButtonSecondary({
     return (
       <a
         href={href}
+        suppressHydrationWarning={isTelOrMailto}
         {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
         className="inline-block"
       >

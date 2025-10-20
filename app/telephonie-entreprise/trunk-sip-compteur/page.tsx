@@ -93,7 +93,11 @@ export default function TrunkSIPCompteur() {
                 <CTAButton href="/devis-en-ligne" icon="lni-calculator">
                   Calculer mes économies
                 </CTAButton>
-                <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+                <CTAButtonMarine
+                  href="tel:+33189560500"
+                  icon="lni-phone"
+                  external
+                >
                   0594 96 35 00
                 </CTAButtonMarine>
               </div>
@@ -116,15 +120,14 @@ export default function TrunkSIPCompteur() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="prose prose-lg mx-auto text-center">
               <p className="text-gray-700 leading-relaxed">
-                <strong>E2I Assistance VOIP</strong> est opérateur de service
-                télécom et est capable de vous fournir des passerelles Trunk SIP
-                de qualité en France et dans les DOM. Le Trunk SIP est un des
-                éléments essentiels de votre système de téléphonie IP, avec
-                votre IPBX et vos téléphones SIP. C&apos;est une liaison entre
-                votre serveur de téléphonie IP et votre opérateur SIP vous
-                permettant de passer des appels sur le réseau téléphonique.
-                C&apos;est donc tout simplement votre ligne téléphonique via
-                Internet.
+                <strong>E2I VOIP</strong> est opérateur de service télécom et
+                est capable de vous fournir des passerelles Trunk SIP de qualité
+                en France et dans les DOM. Le Trunk SIP est un des éléments
+                essentiels de votre système de téléphonie IP, avec votre IPBX et
+                vos téléphones SIP. C&apos;est une liaison entre votre serveur
+                de téléphonie IP et votre opérateur SIP vous permettant de
+                passer des appels sur le réseau téléphonique. C&apos;est donc
+                tout simplement votre ligne téléphonique via Internet.
               </p>
             </div>
           </div>
