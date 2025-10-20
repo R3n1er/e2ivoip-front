@@ -82,19 +82,19 @@ export function TallyEmbedDevis() {
           {/* Avantages du formulaire */}
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-checkmark-circle text-green-600 text-xl"></i>
+              <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
               <span>100% Gratuit</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-shield text-blue-600 text-xl"></i>
+              <i className="lni lni-shield text-blue-marine text-xl"></i>
               <span>Sans engagement</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-timer text-orange-500 text-xl"></i>
+              <i className="lni lni-timer text-red-primary text-xl"></i>
               <span>Réponse rapide</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-users text-red-primary text-xl"></i>
+              <i className="lni lni-users text-blue-marine text-xl"></i>
               <span>Expert dédié</span>
             </div>
           </div>

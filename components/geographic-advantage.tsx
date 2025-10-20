@@ -111,9 +111,10 @@ export function GeographicAdvantage({
                   <h4 className="text-xl font-bold text-gray-800 mb-2">{location.region}</h4>
                   
                   <div className="mb-4">
-                    <a 
-                      href={`tel:${location.phone.replace(/\s/g, '')}`} 
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
+                    <a
+                      href={`tel:${location.phone.replace(/\s/g, '')}`}
+                      suppressHydrationWarning
+                      className="inline-flex items-center text-red-primary hover:text-red-600 font-semibold"
                     >
                       <i className="lni lni-phone mr-2"></i>
                       {location.phone}
@@ -123,7 +124,7 @@ export function GeographicAdvantage({
                   <div className="space-y-2">
                     {location.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center justify-center text-sm text-gray-600">
-                        <i className="lni lni-checkmark text-green-600 mr-2"></i>
+                        <i className="lni lni-checkmark text-red-primary mr-2"></i>
                         {feature}
                       </div>
                     ))}
@@ -136,13 +137,13 @@ export function GeographicAdvantage({
 
         {/* Message de proximité */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center p-6 bg-gradient-to-r from-green-100 to-blue-100 rounded-xl border border-green-200">
-            <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center mr-4">
-              <i className="lni lni-heart text-green-600 text-xl"></i>
+          <div className="inline-flex items-center p-6 bg-gradient-to-r from-red-primary/10 via-white to-blue-marine/10 rounded-xl border border-red-primary/20">
+            <div className="w-12 h-12 bg-red-primary/20 rounded-full flex items-center justify-center mr-4">
+              <i className="lni lni-heart text-red-primary text-xl"></i>
             </div>
             <div className="text-left">
-              <h3 className="font-bold text-green-800 text-lg">Proximité & Réactivité</h3>
-              <p className="text-green-700">
+              <h3 className="font-bold text-blue-marine text-lg">Proximité & Réactivité</h3>
+              <p className="text-blue-marine/80">
                 Parce que votre téléphonie ne peut pas attendre, nos équipes sont proches de vous
               </p>
             </div>

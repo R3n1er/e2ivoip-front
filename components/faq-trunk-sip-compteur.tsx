@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 interface FAQItem {
   question: string
@@ -91,8 +91,8 @@ const faqData: FAQItem[] = [
           <li>✓ <strong>Transparence totale</strong> : facture détaillée avec chaque appel</li>
           <li>✓ <strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</li>
         </ul>
-        <p className="text-sm bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
-          <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM 
+        <p className="text-sm bg-red-primary/5 p-3 rounded-lg border-l-4 border-red-primary/60 text-gray-700">
+          <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
           vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
         </p>
       </div>
