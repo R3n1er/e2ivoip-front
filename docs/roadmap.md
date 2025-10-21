@@ -151,11 +151,20 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ Adoption TanStack Query pour les mutations (provider global)
 - ✅ Tests unitaires + e2e (anti‑Tawk) à jour
 
-#### **3.3 Pages services** ✅ ACTUALISÉ
+#### **3.3 Pages services** ✅ FINALISÉ UX
 
 - ✅ Mise à jour page Trunk SIP Compteur avec formulaire Tally intégré fiable (iframe `src` forcé)
 - ✅ CTA alignés et centrés sur la page `telephonie-3cx`
-- 🔄 Contenu détaillé pour chaque service
+- ✅ Page `pbx-yeastar` harmonisée avec la charte graphique (rouge primaire/bleu marine)
+- ✅ **Optimisation UX page Yeastar** :
+  - ✅ Image architecture P-Series intégrée dans section "Modes de déploiement"
+  - ✅ Nouvelle section Call Center dédiée avec image et fonctionnalités détaillées
+  - ✅ Nouvelle section Intégrations avec image et liste des outils connectés
+  - ✅ Alternance image gauche/droite pour rythme de lecture optimisé
+  - ✅ Utilisation complète des 8 images Yeastar disponibles
+  - ✅ Cohérence visuelle avec effets blur et dégradés rouge/bleu marine
+- ✅ Tests complets : 310 tests Jest passent, 3 tests Playwright passent
+- 🔄 Contenu détaillé pour autres services (Assistants IA, Studio d'attente)
 - 🔄 SEO optimisé par page
 - 🔄 Call-to-actions stratégiques
 
