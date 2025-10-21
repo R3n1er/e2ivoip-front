@@ -151,10 +151,11 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - ✅ Adoption TanStack Query pour les mutations (provider global)
 - ✅ Tests unitaires + e2e (anti‑Tawk) à jour
 
-#### **3.3 Pages services** 🔄 EN COURS
+#### **3.3 Pages services** ✅ ACTUALISÉ
 
+- ✅ Mise à jour page Trunk SIP Compteur avec formulaire Tally intégré fiable (iframe `src` forcé)
+- ✅ CTA alignés et centrés sur la page `telephonie-3cx`
 - 🔄 Contenu détaillé pour chaque service
-- 🔄 Intégration formulaires de devis
 - 🔄 SEO optimisé par page
 - 🔄 Call-to-actions stratégiques
 

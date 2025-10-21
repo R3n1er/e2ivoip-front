@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-21 — Sécurisation iframe Tally Embed pour tests E2E
+
+- **Contexte** : Les tests Playwright (`tests/e2e/tally-popup.spec.ts`) échouaient car l'iframe Tally (`tally.so/embed/mDY1bl`) n'était pas détectée. Le composant `TallyEmbedDevis` se reposait sur `data-tally-src` pour laisser le script d'embed définir `src`, ce qui peut être asynchrone ou bloqué en environnement headless.
+- **Décision** : Forcer l'attribut `src` directement dans l'iframe tout en conservant `data-tally-src`. Si le script Tally charge, il rafraîchit l'iframe ; sinon, le contenu est immédiatement disponible pour Playwright.
+- **Conséquences** : Chargement fiable de l'iframe en prod et en test ; les E2E ne dépendent plus d'un événement script asynchrone potentiel.
+- **Tests associés** :
+  - `npm test`
+  - `npx playwright test --grep "Tally Embed - Trunk SIP Compteur"`
+  - `npx playwright test`
+
 ### 2025-10-20 — ID HubSpot déterministe sans dépendre de `useId()`
 
 - **Contexte** : malgré la migration précédente vers `useId()`, les pages marketing signalent encore des erreurs d'hydratation car React 19 génère des préfixes distincts entre SSR et client. Le conteneur HubSpot recevait donc un `id` différent au moment de l'hydratation.
