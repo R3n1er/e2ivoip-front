@@ -8,7 +8,7 @@
 ## Processus Fonctionnalité
 
 1. Développer la fonctionnalité en respectant la charte produit.
-2. Stopper le serveur de développement, nettoyer l'état en le relançant pour repartir d'un cache vide avant de lancer les tests.
+2. Stopper le serveur de développement, **libérer le port 3000** (`lsof -ti :3000 | xargs kill -9 2>/dev/null || true`), puis relancer pour repartir d'un cache vide avant de lancer les tests.
 3. Écrire ou mettre à jour les tests unitaires couvrant le comportement métier.
 4. Ajouter ou mettre à jour les tests Playwright garantissant que l'affichage correspond aux attentes.
 5. Lancer la phase de test pour vérifier que toutes les fonctionnalités développées sont OK.
@@ -21,8 +21,8 @@
 
 - `npm test`
 - `npx playwright test`
-- Démarrage local : `npm run dev`
-- Redémarrage : interrompre le process (`Ctrl+C`) puis relancer `npm run dev`.
+- Démarrage local : `npm run dev -- --port 3000`
+- Redémarrage : interrompre le process (`Ctrl+C`), libérer le port 3000 si nécessaire, puis relancer `npm run dev -- --port 3000`.
 
 ## Notes
 
