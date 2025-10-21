@@ -10,6 +10,46 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-21 — Optimisation UX et répartition des images page PBX Yeastar
+
+- **Contexte** : Après l'harmonisation graphique de la page `pbx-yeastar`, l'utilisateur a demandé une vérification UX complète et une meilleure répartition des composants/images pour améliorer la lecture et la disposition.
+- **Décision** :
+  - **Simplification section Introduction** : Remplacement de 2 grandes cartes détaillées (omnicanal/sécurité) par 3 points clés compacts avec icônes pour rééquilibrer texte/image
+  - **Suppression des 3 cartes redondantes** : Suppression des cartes "Flexibilité Cloud & Software", "Expérience omnicanale" et "Customer Success dédié" qui faisaient doublon avec le contenu déjà présent dans d'autres sections
+  - **Ajout image d'architecture P-Series** : Intégration de `yeastar-pbx-p-series-systemview.webp` dans la section "Modes de déploiement" pour illustrer visuellement l'architecture cloud/on-premise avant les cartes détaillées
+  - **Nouvelle section Call Center** : Création d'une section dédiée avec l'image `Yeastar-Call-center.png` positionnée à gauche, détaillant les fonctionnalités call center (routage intelligent, wallboard, enregistrements RGPD)
+  - **Nouvelle section Intégrations** : Création d'une section avec l'image `yeastar-integration-img1.png` positionnée à droite, présentant les intégrations natives (WhatsApp Business, Microsoft 365, Slack/Teams, CRM) et l'API REST
+  - **Amélioration du rythme visuel** : Alternance image-gauche/texte-droite puis texte-gauche/image-droite pour créer une lecture plus dynamique et aérée
+  - **Utilisation complète des assets** : Toutes les 8 images Yeastar disponibles dans `/images/images-yeastar/` sont désormais intégrées de manière stratégique
+- **Conséquences** :
+  - **Élimination des redondances** : Suppression des cartes répétitives qui n'apportaient pas de valeur ajoutée par rapport aux sections détaillées
+  - **Fluidité de lecture améliorée** : Transition directe de l'Introduction vers les Modes de déploiement sans interruption
+  - **Équilibre visuel restauré** : Section Introduction désormais équilibrée avec contenu réduit à gauche proportionnel à l'image de droite
+  - **Meilleure lisibilité** : Points clés sous forme de liste scannables rapidement plutôt que cartes détaillées qui alourdissaient
+  - **Rythme de lecture optimisé** : L'alternance gauche/droite des images évite la monotonie et guide naturellement l'œil
+  - **Valorisation des fonctionnalités** : Les sections call center et intégrations, désormais mises en avant avec leurs images, renforcent la proposition de valeur
+  - **Cohérence visuelle** : Tous les cadres d'images utilisent le même style (blur effects avec dégradés rouge/bleu marine, bordures arrondies, shadow-2xl)
+- **Tests associés** :
+  - `npm run dev -- --port 3000` (compilation OK, page accessible)
+  - `npm test` (310 tests passent, 2 échecs footer non liés à Yeastar)
+  - `npx playwright test --grep "telephonie"` (3 tests passent)
+
+### 2025-10-21 — Harmonisation charte graphique et amélioration page PBX Yeastar
+
+- **Contexte** : La page `app/telephonie-entreprise/pbx-yeastar/page.tsx` utilisait des couleurs non conformes à la charte graphique E2I VoIP (bleu-600, green-600, purple-600, etc.) et manquait d'images et de contenu orienté client final.
+- **Décision** :
+  - Remplacement systématique de toutes les couleurs non conformes par `red-primary` (#E53E3E) et `blue-marine` (#2D3848)
+  - Intégration de 4 images Yeastar depuis `/images/images-yeastar/` (communications unifiées, call center, intégrations, P-Series system)
+  - Réécriture du contenu selon la ligne éditoriale E2I VoIP : focus sur les bénéfices clients, tarifs accessibles, accompagnement E2I VoIP
+  - Mise en avant du déploiement cloud (AWS/Azure) ET on-premise (P-Series appliances)
+  - Amélioration des CTAs avec des libellés orientés action ("Demander un devis Cloud", "Étudier votre projet")
+- **Conséquences** :
+  - Page visuellement cohérente avec le reste du site
+  - Contenu plus attractif pour les TPE/PME (5-50 collaborateurs)
+  - Meilleure compréhension des options cloud vs on-premise
+  - Positionnement clair : "alternative économique aux grands IPBX"
+- **Tests associés** : `npm test` (extraction blog OK)
+
 ### 2025-10-21 — Sécurisation iframe Tally Embed pour tests E2E
 
 - **Contexte** : Les tests Playwright (`tests/e2e/tally-popup.spec.ts`) échouaient car l'iframe Tally (`tally.so/embed/mDY1bl`) n'était pas détectée. Le composant `TallyEmbedDevis` se reposait sur `data-tally-src` pour laisser le script d'embed définir `src`, ce qui peut être asynchrone ou bloqué en environnement headless.
