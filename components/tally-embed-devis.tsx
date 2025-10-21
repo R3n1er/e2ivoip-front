@@ -30,7 +30,7 @@ export function TallyEmbedDevis() {
     };
 
     const existingScript = document.getElementById(
-      TALLY_SCRIPT_ID,
+      TALLY_SCRIPT_ID
     ) as HTMLScriptElement | null;
 
     if (existingScript) {
@@ -70,13 +70,15 @@ export function TallyEmbedDevis() {
             <i className="lni lni-calculator mr-2"></i>
             Devis personnalisé gratuit
           </div>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            Obtenez votre <span className="text-red-primary">devis sur-mesure</span>
+            Obtenez votre{" "}
+            <span className="text-red-primary">devis sur-mesure</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Remplissez ce formulaire en <strong>2 minutes</strong>, un expert vous répond sous <strong>24h</strong>
+            Remplissez ce formulaire en <strong>2 minutes</strong>, un expert
+            vous répond sous <strong>24h</strong>
           </p>
 
           {/* Avantages du formulaire */}
@@ -105,7 +107,7 @@ export function TallyEmbedDevis() {
           {/* Effet de décoration */}
           <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-red-primary/20 to-transparent rounded-full blur-2xl"></div>
           <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-blue-600/20 to-transparent rounded-full blur-2xl"></div>
-          
+
           {/* Card conteneur avec ombre et bordure */}
           <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
             {/* Formulaire Tally iframe */}
@@ -113,6 +115,7 @@ export function TallyEmbedDevis() {
               {isClient ? (
                 <iframe
                   ref={iframeRef}
+                  src={TALLY_EMBED_URL}
                   data-tally-src={TALLY_EMBED_URL}
                   loading="lazy"
                   width="100%"
@@ -133,7 +136,6 @@ export function TallyEmbedDevis() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
