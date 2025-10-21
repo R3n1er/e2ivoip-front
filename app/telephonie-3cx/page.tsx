@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 
 export const metadata: Metadata = {
@@ -44,21 +44,28 @@ export default function Telephonie3CX() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
-              <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-phone-set text-white mr-2"></i>
-                <span className="text-white/90 text-sm font-medium">
-                  Solutions 3CX
-                </span>
+              <div className="inline-flex items-center justify-center bg-white rounded-full px-6 py-3 mb-6 shadow-lg">
+                <Image
+                  src="/images/logos-sip-compatibility/logo-3cx.webp"
+                  alt="Logo 3CX"
+                  width={120}
+                  height={80}
+                  priority
+                  className="h-10 w-auto"
+                />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                Téléphonie <span className="text-white">3CX</span> Professionnelle
+                Téléphonie <span className="text-white">3CX</span>{" "}
+                Professionnelle
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-                <strong>Communications unifiées complètes</strong> pour votre entreprise
+                <strong>Communications unifiées complètes</strong> pour votre
+                entreprise
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                Choisissez la solution 3CX adaptée à vos besoins : 
-                <strong> instance dédiée</strong> ou <strong>hébergement mutualisé</strong>
+                Choisissez la solution 3CX adaptée à vos besoins :
+                <strong> instance dédiée</strong> ou{" "}
+                <strong>hébergement mutualisé</strong>
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
@@ -71,7 +78,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="flex items-center gap-2">
                   <i className="lni lni-users text-white"></i>
-                  <span className="text-sm">+100 entreprises équipées</span>
+                  <span className="text-sm">+50 entreprises équipées</span>
                 </div>
               </div>
             </div>
@@ -83,14 +90,16 @@ export default function Telephonie3CX() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
-                Pourquoi choisir <span className="text-red-primary">3CX</span> avec E2I VoIP ?
+                Pourquoi choisir <span className="text-red-primary">3CX</span>{" "}
+                avec E2I VOIP ?
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                <strong>3CX</strong> est le système de communications unifiées leader mondial,
-                offrant téléphonie VoIP, visioconférence, chat en équipe et centre de contact
-                dans une solution unique. En tant que <strong>partenaire certifié 3CX Silver</strong>,
-                E2I VoIP vous garantit une expertise locale et un accompagnement personnalisé
-                pour vos projets de téléphonie d'entreprise.
+                <strong>3CX</strong> est le système de communications unifiées
+                leader mondial, offrant téléphonie VoIP, visioconférence, chat
+                en équipe et centre de contact dans une solution unique. En tant
+                que <strong>partenaire certifié 3CX Silver</strong>, E2I VoIP
+                vous garantit une expertise locale et un accompagnement
+                personnalisé pour vos projets de téléphonie d'entreprise.
               </p>
             </div>
           </div>
@@ -105,10 +114,12 @@ export default function Telephonie3CX() {
                 Choisissez votre solution
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-                Deux options adaptées à <span className="text-red-primary">vos besoins</span>
+                Deux options adaptées à{" "}
+                <span className="text-red-primary">vos besoins</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Sélectionnez la solution 3CX qui correspond le mieux à votre entreprise
+                Sélectionnez la solution 3CX qui correspond le mieux à votre
+                entreprise
               </p>
             </div>
 
@@ -119,42 +130,60 @@ export default function Telephonie3CX() {
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX PRO</h3>
                     <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-sm font-medium">Instance Dédiée</span>
+                      <span className="text-sm font-medium">
+                        Instance Dédiée
+                      </span>
                     </div>
                   </div>
                   <p className="text-white/90">
                     Solution premium avec serveur dédié
                   </p>
                 </div>
-                
+
                 <div className="card-body p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Serveur dédié AWS</p>
-                        <p className="text-sm text-gray-600">Instance cloud dédiée à votre entreprise</p>
+                        <p className="font-semibold text-gray-dark">
+                          Serveur dédié cloud AWS
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Instance cloud dédiée à votre entreprise
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">De 8 à 1024 utilisateurs</p>
-                        <p className="text-sm text-gray-600">Évolutif selon vos besoins</p>
+                        <p className="font-semibold text-gray-dark">
+                          De 8 à 1024 utilisateurs
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Évolutif selon vos besoins
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Personnalisation complète</p>
-                        <p className="text-sm text-gray-600">Configuration sur-mesure</p>
+                        <p className="font-semibold text-gray-dark">
+                          Personnalisation complète
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Configuration et intégrations sur-mesure
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Support prioritaire</p>
-                        <p className="text-sm text-gray-600">Assistance dédiée 24/7</p>
+                        <p className="font-semibold text-gray-dark">
+                          Support et Assistance utilisateur
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Sauvegardes sécurisées externalisées
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -162,12 +191,13 @@ export default function Telephonie3CX() {
                   <div className="border-t pt-6">
                     <p className="text-center text-gray-600 mb-2">Idéal pour</p>
                     <p className="text-center font-semibold text-gray-dark mb-6">
-                      PME et grandes entreprises exigeantes
+                      PME et entreprises exigeantes avec besoin d'intégrations
                     </p>
-                    
-                    <CTAButtonMarine href="/3cx-cloud" fullWidth>
-                      Découvrir 3CX PRO
-                    </CTAButtonMarine>
+                    <div className="flex justify-center">
+                      <CTAButtonMarine href="/3cx-cloud" className="block">
+                        Découvrir 3CX PRO
+                      </CTAButtonMarine>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -176,44 +206,60 @@ export default function Telephonie3CX() {
               <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-red-primary to-red-700 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-bold">3CX SMB</h3>
+                    <h3 className="text-2xl font-bold">3CX SMB PRO</h3>
                     <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       <span className="text-sm font-medium">Mutualisée</span>
                     </div>
                   </div>
                   <p className="text-white/90">
-                    Solution économique multi-tenant
+                    Solution économique multi-tenant (multi-sociétés)
                   </p>
                 </div>
-                
+
                 <div className="card-body p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Hébergement mutualisé</p>
-                        <p className="text-sm text-gray-600">Infrastructure partagée sécurisée</p>
+                        <p className="font-semibold text-gray-dark">
+                          Hébergement mutualisé
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Infrastructure partagée sécurisée
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">De 3 à 50 utilisateurs</p>
-                        <p className="text-sm text-gray-600">Parfait pour les TPE/PME</p>
+                        <p className="font-semibold text-gray-dark">
+                          De 3 à 15 utilisateurs
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Parfait pour les TPE/PME
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Mise en service rapide</p>
-                        <p className="text-sm text-gray-600">Activation en 24h</p>
+                        <p className="font-semibold text-gray-dark">
+                          Mise en service rapide
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Activation en 24h
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
                       <div>
-                        <p className="font-semibold text-gray-dark">Coûts optimisés</p>
-                        <p className="text-sm text-gray-600">Solution économique tout inclus</p>
+                        <p className="font-semibold text-gray-dark">
+                          Coûts optimisés
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Solution économique tout inclus
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -223,10 +269,14 @@ export default function Telephonie3CX() {
                     <p className="text-center font-semibold text-gray-dark mb-6">
                       TPE et petites PME recherchant l'efficacité
                     </p>
-                    
-                    <CTAButton href="/telephonie-entreprise/3cx-smb-mutualisee" fullWidth>
-                      Découvrir 3CX SMB
-                    </CTAButton>
+                    <div className="flex justify-center">
+                      <CTAButton
+                        href="/telephonie-entreprise/3cx-smb-mutualisee"
+                        className="block"
+                      >
+                        Découvrir 3CX SMB PRO
+                      </CTAButton>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -257,14 +307,22 @@ export default function Telephonie3CX() {
                 </thead>
                 <tbody>
                   <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Type d'hébergement</td>
-                    <td className="px-6 py-4 text-center">Instance dédiée AWS</td>
-                    <td className="px-6 py-4 text-center">Mutualisé multi-tenant</td>
+                    <td className="px-6 py-4 font-medium">
+                      Type d'hébergement
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      Instance dédiée AWS
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      Mutualisé multi-tenant
+                    </td>
                   </tr>
                   <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Nombre d'utilisateurs</td>
+                    <td className="px-6 py-4 font-medium">
+                      Nombre d'utilisateurs
+                    </td>
                     <td className="px-6 py-4 text-center">8 à 1024</td>
-                    <td className="px-6 py-4 text-center">3 à 50</td>
+                    <td className="px-6 py-4 text-center">3 à 15</td>
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium">Appels simultanés</td>
@@ -281,7 +339,9 @@ export default function Telephonie3CX() {
                     </td>
                   </tr>
                   <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Support prioritaire</td>
+                    <td className="px-6 py-4 font-medium">
+                      Support prioritaire
+                    </td>
                     <td className="px-6 py-4 text-center">
                       <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
                     </td>
@@ -296,8 +356,12 @@ export default function Telephonie3CX() {
                   </tr>
                   <tr className="hover:bg-gray-50 bg-gray-50">
                     <td className="px-6 py-4 font-medium">Tarification</td>
-                    <td className="px-6 py-4 text-center font-bold text-gray-800">Sur devis</td>
-                    <td className="px-6 py-4 text-center font-bold text-red-primary">À partir de 15€/utilisateur</td>
+                    <td className="px-6 py-4 text-center font-bold text-gray-800">
+                      Sur devis
+                    </td>
+                    <td className="px-6 py-4 text-center font-bold text-red-primary">
+                      À partir de 15€/utilisateur
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -310,7 +374,8 @@ export default function Telephonie3CX() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-                Fonctionnalités <span className="text-red-primary">3CX</span> incluses
+                Fonctionnalités <span className="text-red-primary">3CX</span>{" "}
+                incluses
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Toutes nos solutions incluent l'ensemble des fonctionnalités 3CX
@@ -327,8 +392,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-phone text-3xl text-gray-800"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Téléphonie VoIP</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Appels HD, transferts, conférences, files d'attente, SVI intelligent</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Téléphonie VoIP
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Appels HD, transferts, conférences, files d'attente, SVI
+                    intelligent
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
                       <i className="lni lni-checkmark-circle mr-1"></i>
@@ -342,7 +412,13 @@ export default function Telephonie3CX() {
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  ></div>
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
@@ -350,8 +426,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-video text-3xl text-red-primary"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Visioconférence</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Réunions vidéo HD, partage d'écran, enregistrement, jusqu'à 250 participants</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Visioconférence
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Réunions vidéo HD, partage d'écran, enregistrement, jusqu'à
+                    250 participants
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
                       <i className="lni lni-users mr-1"></i>
@@ -365,7 +446,13 @@ export default function Telephonie3CX() {
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  ></div>
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
@@ -373,8 +460,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-comments text-3xl text-gray-800"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Chat & Collaboration</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Messagerie instantanée, partage de fichiers, statuts de présence</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Chat & Collaboration
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Messagerie instantanée, partage de fichiers, statuts de
+                    présence
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
                       <i className="lni lni-bolt-alt mr-1"></i>
@@ -388,7 +480,13 @@ export default function Telephonie3CX() {
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E53E3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  ></div>
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
@@ -396,8 +494,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-mobile text-3xl text-red-primary"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Applications mobiles</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Apps iOS/Android complètes, softphone intégré, push notifications</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Applications mobiles
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Apps iOS/Android complètes, softphone intégré, push
+                    notifications
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
                       <i className="lni lni-mobile mr-1"></i>
@@ -411,7 +514,13 @@ export default function Telephonie3CX() {
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-red-primary to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  ></div>
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
@@ -419,8 +528,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-link text-3xl text-red-primary"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Intégrations CRM</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Microsoft 365, Google Workspace, Salesforce, HubSpot, et plus</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Intégrations CRM
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Microsoft 365, Google Workspace, Salesforce, HubSpot, et
+                    plus
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
                       <i className="lni lni-link mr-1"></i>
@@ -434,7 +548,13 @@ export default function Telephonie3CX() {
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="absolute inset-0" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"}}></div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232D3848' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  ></div>
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
@@ -442,8 +562,13 @@ export default function Telephonie3CX() {
                       <i className="lni lni-headphone-alt text-3xl text-gray-800"></i>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">Centre de contact</h3>
-                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">Files d'attente avancées, rapports temps réel, enregistrements</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                    Centre de contact
+                  </h3>
+                  <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
+                    Files d'attente avancées, rapports temps réel,
+                    enregistrements
+                  </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
                       <i className="lni lni-stats-up mr-1"></i>
@@ -460,11 +585,12 @@ export default function Telephonie3CX() {
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Prêt à transformer votre <span className="text-white">téléphonie d'entreprise</span> ?
+              Prêt à transformer votre{" "}
+              <span className="text-white">téléphonie d'entreprise</span> ?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Nos experts 3CX vous accompagnent dans le choix et la mise en œuvre
-              de votre solution de communications unifiées
+              Nos experts 3CX vous accompagnent dans le choix et la mise en
+              œuvre de votre solution de communications unifiées
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
@@ -486,7 +612,11 @@ export default function Telephonie3CX() {
               <CTAButton href="/devis-en-ligne" icon="lni-calculator">
                 Demander un devis
               </CTAButton>
-              <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+              <CTAButtonMarine
+                href="tel:+33189560500"
+                icon="lni-phone"
+                external
+              >
                 01 89 56 05 00
               </CTAButtonMarine>
             </div>
