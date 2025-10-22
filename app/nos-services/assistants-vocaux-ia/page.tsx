@@ -87,7 +87,7 @@ export default function AssistantsVocauxIA() {
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="bg-red-primary/10 rounded-2xl p-6 border border-red-primary/20">
                   <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm">
-                    <i className="lni lni-comments-alt text-2xl text-red-primary"></i>
+                    <i className="lni lni-phone text-2xl text-red-primary"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-3">
                     Accueil 24/7
