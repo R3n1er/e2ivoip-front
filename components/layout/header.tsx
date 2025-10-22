@@ -66,7 +66,7 @@ export function Header() {
         },
         {
           name: "Assistants vocaux IA",
-          href: "/nos-services/assistants-vocaux-ia",
+          href: "/assistants-vocaux-ia",
         },
         { name: "Devis en ligne", href: "/nos-services/devis-en-ligne" },
       ],
