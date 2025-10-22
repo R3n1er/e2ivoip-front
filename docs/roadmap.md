@@ -163,8 +163,18 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
   - ✅ Alternance image gauche/droite pour rythme de lecture optimisé
   - ✅ Utilisation complète des 8 images Yeastar disponibles
   - ✅ Cohérence visuelle avec effets blur et dégradés rouge/bleu marine
+- ✅ **Page Assistants Vocaux IA** :
+  - ✅ Restructuration complète alignée charte graphique (red-primary, blue-marine)
+  - ✅ Hero Section avec gradient et badge IA
+  - ✅ Section Introduction 2 colonnes (texte + 4 avantages clés)
+  - ✅ Section "Les 3 piliers" avec cartes illustrées
+  - ✅ Section Cas d'usage avec 3 exemples concrets
+  - ✅ Intégration formulaire HubSpot (composant wrapper client `ContactFormAssistantIA`)
+  - ✅ Correction bug SSR `HubSpotFormSimpleEmbed` (check `typeof window !== "undefined"`)
+  - ✅ Metadata SEO dans `layout.tsx` dédié
+  - ✅ Section CTA finale avec gradient rouge-bleu
 - ✅ Tests complets : 310 tests Jest passent, 3 tests Playwright passent
-- 🔄 Contenu détaillé pour autres services (Assistants IA, Studio d'attente)
+- 🔄 Contenu détaillé pour autres services (Studio d'attente, Box 4G/5G)
 - 🔄 SEO optimisé par page
 - 🔄 Call-to-actions stratégiques
 

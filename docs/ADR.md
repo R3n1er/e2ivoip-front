@@ -10,6 +10,30 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2025-10-22 — Création page Assistants Vocaux IA alignée charte graphique
+
+- **Contexte** : La page `app/assistants-vocaux-ia/page.tsx` existante (142 lignes) utilisait des couleurs génériques non conformes à la charte graphique E2I VoIP (`red-600`, `blue-50`) et manquait d'intégration avec le formulaire de contact HubSpot. L'objectif était de créer une page de lancement professionnelle alignée avec le brand brief et la ligne éditoriale.
+- **Décision** :
+  - **Restructuration complète de la page** : Création d'une Hero Section avec gradient `from-blue-marine/90 via-blue-marine/75 to-red-primary/85`, badge IA avec icône `lni-brain`, et CTA principal pointant vers le formulaire
+  - **Harmonisation des couleurs** : Remplacement systématique de `red-600` → `red-primary` (#E53E3E), `blue-50` → `blue-marine/10`, utilisation de dégradés conformes à la charte
+  - **Section Introduction en 2 colonnes** : Texte explicatif adapté du Brand Brief (ton accessible, bénéfices clients) + 4 avantages clés en cartes compactes avec alternance `bg-red-primary/10` et `bg-blue-marine/10`
+  - **Section "Les 3 piliers"** : Mise en avant des 3 piliers de l'assistant IA (Accueil 24/7, Qualification automatique, Relais humain maîtrisé) avec cartes illustrées
+  - **Section Cas d'usage** : 3 cartes horizontales (Accueil/orientation, Prise de RDV, Support niveau 1) avec exemples de dialogues concrets
+  - **Intégration formulaire HubSpot** : Création d'un composant wrapper client `ContactFormAssistantIA` pour isoler le code client et permettre le pré-rendu de la page avec metadata SEO
+  - **Correction bug SSR HubSpot** : Ajout de `typeof window !== "undefined"` dans `HubSpotFormSimpleEmbed` pour éviter l'erreur "window is not defined" lors du SSR
+  - **Metadata SEO** : Ajout d'un fichier `layout.tsx` dédié pour les metadata (title, description, keywords) tout en gardant la page en mode dynamique (`export const dynamic = "force-dynamic"`)
+  - **Section CTA finale** : Gradient `from-red-primary to-blue-marine` avec 2 CTAs (Demander une démo + Téléphone)
+- **Conséquences** :
+  - Page visuellement cohérente avec les autres pages du site (telephonie-3cx, pbx-yeastar)
+  - Ton éditorial aligné avec le brand brief : accessible, orienté bénéfices, sans jargon technique
+  - Formulaire de contact HubSpot fonctionnel avec fallback élégant pendant le chargement
+  - Page optimisée SEO avec metadata dédiée
+  - Composant `HubSpotFormSimpleEmbed` désormais compatible SSR (utilisable sur toutes les pages)
+- **Tests associés** :
+  - `npm run build` : Compilation OK, page générée avec succès
+  - `npm run dev -- --port 3000` : Page accessible avec code 200
+  - `npm test` : 310/312 tests passent (2 échecs footer non liés)
+
 ### 2025-10-21 — Optimisation UX et répartition des images page PBX Yeastar
 
 - **Contexte** : Après l'harmonisation graphique de la page `pbx-yeastar`, l'utilisateur a demandé une vérification UX complète et une meilleure répartition des composants/images pour améliorer la lecture et la disposition.
