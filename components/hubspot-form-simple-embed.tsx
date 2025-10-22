@@ -45,7 +45,7 @@ export function HubSpotFormSimpleEmbed({
   const formContainerRef = useRef<HTMLDivElement>(null);
   const formLoadedRef = useRef(false);
   const [isScriptReady, setIsScriptReady] = useState<boolean>(
-    !!window.hbspt?.forms
+    typeof window !== "undefined" && !!window.hbspt?.forms
   );
 
   useEffect(() => {
