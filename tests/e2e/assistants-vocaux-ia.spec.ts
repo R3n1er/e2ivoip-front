@@ -9,7 +9,7 @@ test.describe("Page Assistants Vocaux IA", () => {
   test("affiche correctement le titre principal et le badge IA", async ({ page }) => {
     // Vérifie le badge Intelligence Artificielle
     await expect(
-      page.getByText("Intelligence Artificielle")
+      page.getByText("Intelligence Artificielle").first()
     ).toBeVisible({ timeout: 10000 });
 
     // Vérifie le titre H1

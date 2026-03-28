@@ -10,6 +10,25 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-28 — Résolution des vulnérabilités de dépendances et correctifs UI
+
+- **Contexte** : Le projet présentait 18 vulnérabilités identifiées via `npm audit` impactant des dépendances clés. Par ailleurs, des tests E2E et unitaires échouaient à cause d'une désynchronisation entre les composants (badge partenaire 3CX passé de Bronze à Silver, numéro de téléphone, variables Playwright trop strictes sur le badge IA).
+- **Décision** :
+  - **Mise à jour de sécurité** : Exécution de `npm audit fix` pour résorber l'intégralité des failles sans monter de versions majeures (0 vulnérabilité restante).
+  - **Correctifs Tests & Composants** : 
+    - Mise à jour de `footer.tsx` et `footer.test.tsx` pour refléter le statut "3CX Silver Partner" et le numéro courant (+33 1 89 56 05 00).
+    - Correction du test E2E `assistants-vocaux-ia.spec.ts` pour cibler correctement le texte du badge IA (utilisation de `.first()`).
+    - Résolution de l'erreur linter Next.js dans `assistants-vocaux-ia.test.tsx` (`module` renommé en `pageModule`).
+- **Conséquences** :
+  - L'application est sécurisée avec des dépendances à jour.
+  - La suite de validation complète (`npm run validate`) est au vert.
+  - Aucune erreur d'hydratation CSS au démarrage.
+- **Tests associés** :
+  - `npm test` : 330/330 tests passent
+  - `npx playwright test` : 74/74 tests passent
+  - `npm run validate` : Succès total
+  - Vérification visuelle (hydration) validée.
+
 ### 2025-10-22 — Création page Assistants Vocaux IA alignée charte graphique
 
 - **Contexte** : La page `app/assistants-vocaux-ia/page.tsx` existante (142 lignes) utilisait des couleurs génériques non conformes à la charte graphique E2I VoIP (`red-600`, `blue-50`) et manquait d'intégration avec le formulaire de contact HubSpot. L'objectif était de créer une page de lancement professionnelle alignée avec le brand brief et la ligne éditoriale.

@@ -8,6 +8,7 @@
 ## Décisions techniques
 
 1. **Hero 3CX**
+
    - Remplacement du badge textuel par le logo officiel 3CX via `next/image`.
    - Fond blanc arrondi + ombre (`shadow-lg`) pour garantir la lisibilité.
    - CTA de cartes PRO/SMB enveloppés dans `div.flex.justify-center` afin d’être centrés.
@@ -27,4 +28,3 @@
 - Réduire les avertissements React (`act(...)`, `whileInView`) relevés lors de `npm test`.
 - Ajouter des props `sizes` sur les images `next/image` signalées par Playwright.
 - Continuer la rédaction de contenu détaillé pour chaque service (voir `docs/roadmap.md`, section 3.3).
-

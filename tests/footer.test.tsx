@@ -31,12 +31,12 @@ beforeEach(() => {
     expect(getByText('+596 596 313 500')).toBeInTheDocument()
 
     expect(getByText('France :')).toBeInTheDocument()
-    expect(getByText('+33 1 XX XX XX XX')).toBeInTheDocument()
+    expect(getByText('+33 1 89 56 05 00')).toBeInTheDocument()
   })
 
   it('rend le badge partenaire 3CX et les liens certifiés', () => {
     expect(
-      screen.getByAltText('3CX Bronze Partner Badge')
+      screen.getByAltText('3CX Silver Partner Badge')
     ).toBeInTheDocument()
 
     const partnerBar = screen.getByText('Partenaires certifiés :').closest('div')
