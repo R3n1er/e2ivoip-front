@@ -19,19 +19,19 @@ export function MacBookTest() {
         </AnimatedText>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-none shadow-md">
             <h3 className="text-xl font-semibold mb-3">MacBook Pro 13"</h3>
             <p className="text-gray-600">Résolution : 1280px</p>
             <p className="text-gray-600">Navigation : Compacte</p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-none shadow-md">
             <h3 className="text-xl font-semibold mb-3">MacBook Pro 14"</h3>
             <p className="text-gray-600">Résolution : 1440px</p>
             <p className="text-gray-600">Navigation : Standard</p>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-none shadow-md">
             <h3 className="text-xl font-semibold mb-3">MacBook Pro 15"</h3>
             <p className="text-gray-600">Résolution : 1680px</p>
             <p className="text-gray-600">Navigation : Étendue</p>

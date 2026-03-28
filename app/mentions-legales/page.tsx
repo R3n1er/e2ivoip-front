@@ -241,7 +241,7 @@ export default function MentionsLegales() {
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               E2I Assistance est partenaire 3CX Bronze et certifié ! Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
             </p>
-            <div className="bg-white rounded-lg p-8 shadow-lg inline-block">
+            <div className="bg-white rounded-none p-8 shadow-lg inline-block">
               <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
                 <Badge variant="secondary" className="text-sm">3CX Bronze Partner</Badge>
               </div>
@@ -266,7 +266,7 @@ export default function MentionsLegales() {
             {contactInfo.map((contact, index) => (
               <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6 text-center">
-                  <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                     <i className="lni lni-phone w-6 h-6 text-white"></i>
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">{contact.region}</h3>

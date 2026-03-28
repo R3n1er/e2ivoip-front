@@ -37,7 +37,7 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    await expect(page.locator("#services .card")).toHaveCount(5);
+    await expect(page.locator('#services [class*="bento-item"]')).toHaveCount(5);
   });
 
   test("met en avant les badges et les CTA", async ({ page }) => {
@@ -55,16 +55,12 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    const ctaButtons = page
-      .locator("#services")
-      .getByRole("link", { name: "En savoir plus" });
+    const ctaButtons = page.locator('#services a i.lni-arrow-right');
     await expect(ctaButtons).toHaveCount(5);
   });
 
   test("affiche les icônes et la grille responsive", async ({ page }) => {
-    await expect(
-      page.locator("#services .grid.md\\:grid-cols-2.lg\\:grid-cols-3")
-    ).toBeVisible();
+    await expect(page.locator("#services .bento-grid")).toBeVisible();
 
     const icons = page.locator("#services .lni");
     await expect(icons.first()).toBeVisible();

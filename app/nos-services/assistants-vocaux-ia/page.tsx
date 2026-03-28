@@ -85,8 +85,8 @@ export default function AssistantsVocauxIA() {
 
               {/* Colonne droite : Avantages clés */}
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="bg-red-primary/10 rounded-2xl p-6 border border-red-primary/20">
-                  <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-red-primary/10 rounded-none p-6 border border-red-primary/20">
+                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
                     <i className="lni lni-phone text-2xl text-red-primary"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -98,8 +98,8 @@ export default function AssistantsVocauxIA() {
                   </p>
                 </div>
 
-                <div className="bg-blue-marine/10 rounded-2xl p-6 border border-blue-marine/20">
-                  <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-blue-marine/10 rounded-none p-6 border border-blue-marine/20">
+                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
                     <i className="lni lni-users text-2xl text-blue-marine"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -111,8 +111,8 @@ export default function AssistantsVocauxIA() {
                   </p>
                 </div>
 
-                <div className="bg-red-primary/10 rounded-2xl p-6 border border-red-primary/20">
-                  <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-red-primary/10 rounded-none p-6 border border-red-primary/20">
+                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
                     <i className="lni lni-timer text-2xl text-red-primary"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -124,8 +124,8 @@ export default function AssistantsVocauxIA() {
                   </p>
                 </div>
 
-                <div className="bg-blue-marine/10 rounded-2xl p-6 border border-blue-marine/20">
-                  <div className="bg-white w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-blue-marine/10 rounded-none p-6 border border-blue-marine/20">
+                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
                     <i className="lni lni-rocket text-2xl text-blue-marine"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -157,8 +157,8 @@ export default function AssistantsVocauxIA() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Pilier 1 */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-phone text-3xl text-white"></i>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
@@ -172,8 +172,8 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Pilier 2 */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-blue-marine to-blue-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="bg-gradient-to-br from-blue-marine to-blue-900 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-checkmark-circle text-3xl text-white"></i>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
@@ -188,8 +188,8 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Pilier 3 */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-user text-3xl text-white"></i>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
@@ -222,8 +222,8 @@ export default function AssistantsVocauxIA() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Cas 1 : Accueil et orientation */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
+                <div className="bg-red-primary/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-phone text-3xl text-red-primary"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
@@ -233,7 +233,7 @@ export default function AssistantsVocauxIA() {
                   L&rsquo;assistant accueille vos appelants et les oriente vers
                   le bon service automatiquement.
                 </p>
-                <div className="bg-blue-marine/5 p-4 rounded-lg border-l-4 border-blue-marine">
+                <div className="bg-blue-marine/5 p-4 rounded-none border-l-4 border-blue-marine">
                   <p className="text-sm text-gray-700 italic">
                     « Bonjour, vous êtes bien chez E2I VoIP. Pour le service
                     commercial, dites &lsquo;commercial&rsquo;, pour le support
@@ -243,8 +243,8 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Cas 2 : Prise de rendez-vous */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200">
-                <div className="bg-blue-marine/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
+                <div className="bg-blue-marine/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-calendar text-3xl text-blue-marine"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
@@ -254,7 +254,7 @@ export default function AssistantsVocauxIA() {
                   Gestion automatique des plannings et confirmation des créneaux
                   disponibles.
                 </p>
-                <div className="bg-red-primary/5 p-4 rounded-lg border-l-4 border-red-primary">
+                <div className="bg-red-primary/5 p-4 rounded-none border-l-4 border-red-primary">
                   <p className="text-sm text-gray-700 italic">
                     « Je peux vous proposer un rendez-vous mardi 15 à 14h ou
                     mercredi 16 à 10h. Quelle option vous convient ? »
@@ -263,8 +263,8 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Cas 3 : Support niveau 1 */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
+                <div className="bg-red-primary/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
                   <i className="lni lni-headphone text-3xl text-red-primary"></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
@@ -274,7 +274,7 @@ export default function AssistantsVocauxIA() {
                   Réponses aux questions fréquentes et résolution des problèmes
                   simples.
                 </p>
-                <div className="bg-blue-marine/5 p-4 rounded-lg border-l-4 border-blue-marine">
+                <div className="bg-blue-marine/5 p-4 rounded-none border-l-4 border-blue-marine">
                   <p className="text-sm text-gray-700 italic">
                     « Pour redémarrer votre téléphone IP, maintenez le bouton
                     power enfoncé 5 secondes... »
@@ -297,7 +297,7 @@ export default function AssistantsVocauxIA() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Feature 1 */}
-              <div className="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="bg-red-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-question-circle text-3xl text-red-primary"></i>
                 </div>
@@ -311,7 +311,7 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="bg-blue-marine/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-timer text-3xl text-blue-marine"></i>
                 </div>
@@ -325,7 +325,7 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="bg-red-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-users text-3xl text-red-primary"></i>
                 </div>
@@ -339,7 +339,7 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-white rounded-2xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="bg-blue-marine/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-bolt text-3xl text-blue-marine"></i>
                 </div>

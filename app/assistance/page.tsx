@@ -92,7 +92,7 @@ export default function AssistancePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="bg-white rounded-none shadow-xl p-8">
             <div className="text-center mb-6">
               <i className="lni lni-comments w-12 h-12 text-blue-marine mx-auto mb-4"></i>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">

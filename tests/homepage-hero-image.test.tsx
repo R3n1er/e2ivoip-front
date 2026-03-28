@@ -100,12 +100,10 @@ describe("HomepageHeroSectionSimple", () => {
     ).toBeInTheDocument();
   });
 
-  it("contient le gradient overlay", () => {
+  it("contient les blocs asymétriques décoratifs", () => {
     render(<HomepageHeroSectionSimple />);
 
-    const gradientOverlay = document.querySelector(
-      ".bg-gradient-to-r.from-blue-900\\/85"
-    );
-    expect(gradientOverlay).toBeInTheDocument();
+    const skewBlock = document.querySelector(".skew-x-\\[-5deg\\]");
+    expect(skewBlock).toBeInTheDocument();
   });
 });

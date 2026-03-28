@@ -88,11 +88,11 @@ export function AboutSectionSimple() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border"
+                className="bg-white p-6 rounded-none shadow-sm border"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-red-100 rounded-none flex items-center justify-center">
                       <i
                         className={`lni ${feature.icon} h-6 w-6 text-red-primary`}
                       ></i>
@@ -111,7 +111,7 @@ export function AboutSectionSimple() {
         </div>
 
         {/* Statistiques de réassurance */}
-        <div className="bg-white rounded-xl p-8 shadow-sm border">
+        <div className="bg-white rounded-none p-8 shadow-sm border">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Pourquoi plus de 100 entreprises nous font confiance ?

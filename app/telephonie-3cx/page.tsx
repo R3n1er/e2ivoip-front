@@ -297,7 +297,7 @@ export default function Telephonie3CX() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="table table-zebra w-full bg-base-100 rounded-lg shadow-lg">
+              <table className="table table-zebra w-full bg-base-100 rounded-none shadow-lg">
                 <thead className="bg-gradient-to-r from-gray-800 to-red-primary text-white">
                   <tr>
                     <th className="px-6 py-4 text-left">Caractéristiques</th>
@@ -384,11 +384,11 @@ export default function Telephonie3CX() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* Téléphonie VoIP */}
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-gray-200">
+              <div className="bg-white rounded-none shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-gray-200">
                 <div className="h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500 rounded-t-2xl"></div>
                 <div className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-phone text-3xl text-gray-800"></i>
                     </div>
                   </div>
@@ -409,7 +409,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* Visioconférence */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
@@ -422,7 +422,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-video text-3xl text-red-primary"></i>
                     </div>
                   </div>
@@ -443,7 +443,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* Chat & Collaboration */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
@@ -456,7 +456,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-comments text-3xl text-gray-800"></i>
                     </div>
                   </div>
@@ -477,7 +477,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* Applications mobiles */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
@@ -490,7 +490,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-mobile text-3xl text-red-primary"></i>
                     </div>
                   </div>
@@ -511,7 +511,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* Intégrations CRM */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-red-primary to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
@@ -524,7 +524,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-link text-3xl text-red-primary"></i>
                     </div>
                   </div>
@@ -545,7 +545,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* Centre de contact */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
@@ -558,7 +558,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
                       <i className="lni lni-headphone-alt text-3xl text-gray-800"></i>
                     </div>
                   </div>

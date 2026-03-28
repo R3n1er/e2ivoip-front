@@ -92,7 +92,7 @@ export default function HubspotFormInline({ className = "" }: HubspotFormInlineP
         </div>
       )}
       {!loading && error && (
-        <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-4">
+        <div className="p-4 rounded-none bg-red-50 border border-red-200 text-red-800 mb-4">
           Une erreur est survenue lors du chargement du formulaire. Veuillez réessayer plus tard.
         </div>
       )}

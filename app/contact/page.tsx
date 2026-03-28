@@ -72,7 +72,7 @@ export default function ContactPage() {
             {/* Formulaire HubSpot */}
             <div>
               <div
-                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl"
+                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-none"
                 data-testid="contact-form-card"
               >
                 <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                 >
                   <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="bg-red-primary p-3 rounded-lg">
+                      <div className="bg-red-primary p-3 rounded-none">
                         <span className="text-2xl">📞</span>
                       </div>
                       <div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                 >
                   <div className="card-body p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="bg-blue-marine/10 p-3 rounded-lg">
+                      <div className="bg-blue-marine/10 p-3 rounded-none">
                         <span className="text-2xl">💬</span>
                       </div>
                       <div>
@@ -193,7 +193,7 @@ export default function ContactPage() {
               data-testid="location-france"
             >
               <div className="card-body p-6 text-center">
-                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -216,7 +216,7 @@ export default function ContactPage() {
               data-testid="location-guyane"
             >
               <div className="card-body p-6 text-center">
-                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -239,7 +239,7 @@ export default function ContactPage() {
               data-testid="location-guadeloupe"
             >
               <div className="card-body p-6 text-center">
-                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -262,7 +262,7 @@ export default function ContactPage() {
               data-testid="location-martinique"
             >
               <div className="card-body p-6 text-center">
-                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
@@ -285,7 +285,7 @@ export default function ContactPage() {
               data-testid="location-reunion"
             >
               <div className="card-body p-6 text-center">
-                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">

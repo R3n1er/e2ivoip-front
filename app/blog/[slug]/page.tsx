@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Image d'en-tête */}
           {post.featuredImageUrl && (
-            <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
+            <div className="relative w-full h-64 md:h-96 mb-8 rounded-none overflow-hidden">
               <Image
                 src={post.featuredImageUrl}
                 alt={post.title}

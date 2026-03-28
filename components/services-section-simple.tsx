@@ -100,56 +100,64 @@ export function ServicesSectionSimple() {
 
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full"
-            >
-              <div className="card-body p-6 flex flex-col flex-grow">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
-                    <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
-                  </div>
-                  <div className="badge badge-primary badge-lg font-medium">
-                    {service.badge}
-                  </div>
-                </div>
+        {/* Services Bento Box */}
+        <div className="bento-grid mb-12">
+          {services.map((service, index) => {
+            let layoutClass = "bento-item";
+            if (index === 0) layoutClass += " bento-item-large bg-gray-50";
+            else if (index === 1) layoutClass += " bento-item-wide bg-blue-marine text-white";
+            else if (index === 2) layoutClass += " bento-item";
+            else if (index === 3) layoutClass += " bento-item bg-red-primary text-white";
+            else if (index === 4) layoutClass += " lg:col-span-4 bg-gray-dark text-white";
 
-                <h3 className="card-title text-xl mb-3 text-base-content">
-                  {service.title}
-                </h3>
+            const isDark = index === 1 || index === 3 || index === 4;
 
-                <p className="text-base-content/70 leading-relaxed mb-6">
-                  {service.description}
-                </p>
-
-                <div className="space-y-3 mb-6 flex-grow">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
-                      <span className="text-base-content/80">{feature}</span>
+            return (
+              <div
+                key={index}
+                className={`${layoutClass} group cursor-pointer p-8 flex flex-col justify-between`}
+              >
+                <div>
+                  <div className="flex items-start justify-between mb-6">
+                    <div className={`w-14 h-14 rounded-none flex items-center justify-center transition-colors duration-200 ${isDark ? 'bg-white/10' : 'bg-red-primary/10 group-hover:bg-red-primary/20'}`}>
+                      <i className={`lni ${service.icon} text-2xl ${isDark ? 'text-white' : 'text-red-primary'} group-hover:scale-110 transition-transform duration-200`}></i>
                     </div>
-                  ))}
-                </div>
-
-                <div className="divider my-4"></div>
-
-                <div className="card-actions flex-col space-y-4 mt-auto">
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-lg font-bold text-primary">
-                      {service.price}
-                    </span>
+                    <div className={`px-3 py-1 rounded-none text-xs font-bold uppercase tracking-wider ${isDark ? 'bg-white/20 text-white' : 'bg-blue-marine text-white'}`}>
+                      {service.badge}
+                    </div>
                   </div>
 
-                  <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
-                    En savoir plus
-                  </CTAButton>
+                  <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-dark'}`}>
+                    {service.title}
+                  </h3>
+
+                  <p className={`text-sm md:text-base leading-relaxed mb-6 block ${isDark ? 'text-white/80' : 'text-gray-secondary'}`}>
+                    {service.description}
+                  </p>
+                  
+                  {(index === 0 || index === 4) && ( /* Show features on large items */
+                    <div className={`grid ${index === 4 ? 'md:grid-cols-2 md:gap-x-8' : ''} space-y-3 md:space-y-0 md:gap-y-3 mb-8`}>
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center text-sm">
+                          <i className={`lni lni-checkmark-circle mr-3 flex-shrink-0 text-lg ${isDark ? 'text-white' : 'text-red-primary'}`}></i>
+                          <span className={`font-medium ${isDark ? 'text-white/90' : 'text-gray-dark'}`}>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-auto pt-6 border-t border-current/10 flex items-center justify-between">
+                  <span className={`text-lg font-black ${isDark ? 'text-white' : 'text-red-primary'}`}>
+                    {service.price}
+                  </span>
+                  <Link href={service.href} className={`inline-flex items-center justify-center w-12 h-12 rounded-none transition-all duration-300 group-hover:scale-110 ${isDark ? 'bg-white text-gray-dark hover:bg-gray-100' : 'bg-gray-dark text-white hover:bg-red-primary'}`}>
+                    <i className="lni lni-arrow-right"></i>
+                  </Link>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

@@ -68,7 +68,7 @@ describe('GradientButton', () => {
       'inline-flex',
       'items-center',
       'justify-center',
-      'rounded-md',
+      'rounded-none',
       'font-medium',
       'transition-all',
       'duration-300',

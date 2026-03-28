@@ -49,7 +49,7 @@ export function CTACalendarSection({
           </h3>
           
           {urgencyMessage && (
-            <div className="max-w-2xl mx-auto p-4 bg-red-50 border border-red-200 rounded-lg mb-8">
+            <div className="max-w-2xl mx-auto p-4 bg-red-50 border border-red-200 rounded-none mb-8">
               <p className="text-lg text-red-800 font-medium">
                 {urgencyMessage}
               </p>
@@ -61,7 +61,7 @@ export function CTACalendarSection({
         <div className="max-w-4xl mx-auto mb-12">
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div key={index} className="flex items-start p-4 bg-blue-50 rounded-none border border-blue-200">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                   <i className="lni lni-checkmark text-blue-600 text-lg"></i>
                 </div>
@@ -79,7 +79,7 @@ export function CTACalendarSection({
         {/* Urgence et raisons d'agir */}
         {showUrgency && (
           <div className="mt-12">
-            <div className="bg-gradient-to-r from-red-100 to-orange-100 rounded-xl p-8 border border-red-200">
+            <div className="bg-gradient-to-r from-red-100 to-orange-100 rounded-none p-8 border border-red-200">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-alarm text-red-600 text-2xl"></i>
@@ -90,7 +90,7 @@ export function CTACalendarSection({
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 text-center">
-                <div className="p-4 bg-white rounded-lg border border-red-200">
+                <div className="p-4 bg-white rounded-none border border-red-200">
                   <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
                     <i className="lni lni-warning text-red-600 text-xl"></i>
                   </div>
@@ -98,7 +98,7 @@ export function CTACalendarSection({
                   <p className="text-sm text-gray-600">La migration vers l'IP est inévitable</p>
                 </div>
                 
-                <div className="p-4 bg-white rounded-lg border border-orange-200">
+                <div className="p-4 bg-white rounded-none border border-orange-200">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
                     <i className="lni lni-rocket text-orange-600 text-xl"></i>
                   </div>
@@ -106,7 +106,7 @@ export function CTACalendarSection({
                   <p className="text-sm text-gray-600">Ne prenez pas de retard technologique</p>
                 </div>
                 
-                <div className="p-4 bg-white rounded-lg border border-red-200">
+                <div className="p-4 bg-white rounded-none border border-red-200">
                   <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
                     <i className="lni lni-dollar text-red-600 text-xl"></i>
                   </div>
@@ -120,13 +120,13 @@ export function CTACalendarSection({
 
         {/* Contact direct alternatif */}
         <div className="mt-12 text-center">
-          <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-xl border border-gray-200">
+          <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-none border border-gray-200">
             <h3 className="text-xl font-bold text-gray-800 mb-6">
               Ou contactez directement notre équipe commerciale
             </h3>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <div className="p-4 bg-white rounded-none border border-gray-200">
                 <div className="flex items-center justify-center mb-3">
                   <i className="lni lni-envelope text-blue-600 text-xl mr-2"></i>
                   <span className="font-semibold text-gray-800">Email</span>
@@ -139,7 +139,7 @@ export function CTACalendarSection({
                 </a>
               </div>
               
-              <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <div className="p-4 bg-white rounded-none border border-gray-200">
                 <div className="flex items-center justify-center mb-3">
                   <i className="lni lni-world text-red-600 text-xl mr-2"></i>
                   <span className="font-semibold text-gray-800">Devis en ligne</span>

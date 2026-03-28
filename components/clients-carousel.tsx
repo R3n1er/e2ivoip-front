@@ -98,7 +98,7 @@ export function ClientsCarousel() {
                 key={`${client.name}-${index}`}
                 className="flex-shrink-0 hover:scale-105 transition-transform duration-200"
               >
-                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
+                <div className="bg-white rounded-none p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
                   <div className="relative w-32 h-16 lg:w-40 lg:h-20">
                     <Image
                       src={client.logo}

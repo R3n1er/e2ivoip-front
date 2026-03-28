@@ -324,7 +324,7 @@ export default function NosServices() {
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                        <div className="w-12 h-12 bg-red-100 rounded-none flex items-center justify-center">
                           <i
                             className={`lni ${service.icon} h-6 w-6 text-red-primary`}
                           ></i>

@@ -157,7 +157,7 @@ export default function TrunkSIPCompteur() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-money-location text-red-primary text-xl"></i>
                     </div>
                     <div>
@@ -172,7 +172,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gray-100 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-phone text-gray-800 text-xl"></i>
                     </div>
                     <div>
@@ -187,7 +187,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-network text-red-primary text-xl"></i>
                     </div>
                     <div>
@@ -203,7 +203,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gray-100 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-users text-gray-secondary text-xl"></i>
                     </div>
                     <div>
@@ -220,7 +220,7 @@ export default function TrunkSIPCompteur() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
+              <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-none">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     Tarifs des appels à la minute
@@ -231,7 +231,7 @@ export default function TrunkSIPCompteur() {
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-red-primary">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-red-primary">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">France Fixe</span>
                       <span className="text-red-primary font-bold text-lg">
@@ -239,7 +239,7 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-blue-marine">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-blue-marine">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">France Mobile</span>
                       <span className="text-blue-marine font-bold text-lg">
@@ -247,7 +247,7 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-800">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-gray-800">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">
                         DOM Fixe (Guadeloupe, Martinique, Guyane, Réunion,
@@ -258,7 +258,7 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-600">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-gray-600">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">
                         DOM Mobile (Guadeloupe, Martinique, Guyane, Réunion,
@@ -269,7 +269,7 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-gray-secondary">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">Création numéro SDA</span>
                       <span className="text-gray-secondary font-semibold">
@@ -277,7 +277,7 @@ export default function TrunkSIPCompteur() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
+                  <div className="bg-white p-4 rounded-none shadow border-l-4 border-gray-secondary">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">Portabilité</span>
                       <span className="text-gray-secondary font-semibold">
@@ -286,7 +286,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="mt-6 p-4 bg-blue-50 rounded-none border border-blue-200">
                   <div className="flex items-start space-x-2">
                     <i className="lni lni-information text-blue-marine mt-0.5"></i>
                     <div className="text-sm text-blue-800">
@@ -325,7 +325,7 @@ export default function TrunkSIPCompteur() {
               {/* 3CX */}
               <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="card-body items-center text-center p-6">
-                  <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
+                  <div className="w-20 h-20 bg-white rounded-none flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-3cx.webp"
                       alt="Logo 3CX"
@@ -342,7 +342,7 @@ export default function TrunkSIPCompteur() {
               {/* Yeastar */}
               <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="card-body items-center text-center p-6">
-                  <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
+                  <div className="w-20 h-20 bg-white rounded-none flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/Yeastar_Logo.webp"
                       alt="Logo Yeastar"
@@ -361,7 +361,7 @@ export default function TrunkSIPCompteur() {
               {/* Grandstream */}
               <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="card-body items-center text-center p-6">
-                  <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
+                  <div className="w-20 h-20 bg-white rounded-none flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-grandstream.webp"
                       alt="Logo Grandstream"
@@ -380,7 +380,7 @@ export default function TrunkSIPCompteur() {
               {/* Avaya */}
               <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="card-body items-center text-center p-6">
-                  <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
+                  <div className="w-20 h-20 bg-white rounded-none flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/avaya-logo.webp"
                       alt="Logo Avaya"

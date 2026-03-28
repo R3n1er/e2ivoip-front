@@ -7,7 +7,7 @@ export function TransformationSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Colonne image à gauche */}
-          <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative h-[600px] rounded-none overflow-hidden shadow-2xl">
             <Image
               src="/images/photos/pexels-polina-tankilevitch-5234774.webp"
               alt="Femme souriante au téléphone - Communication d'entreprise optimisée"
@@ -42,7 +42,7 @@ export function TransformationSection() {
             </div>
 
             {/* Points clés */}
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 p-6 rounded-xl">
+            <div className="bg-gradient-to-br from-blue-50 to-red-50 p-6 rounded-none">
               <h3 className="text-xl font-bold text-gray-dark mb-4">
                 Vos avantages avec E2I VoIP
               </h3>
