@@ -68,7 +68,7 @@ export function Footer() {
                 <div className="flex justify-between items-center py-1">
                   <span className="text-gray-300 font-medium">France :</span>
                   <span className="text-white font-semibold">
-                    +33 1 XX XX XX XX
+                    +33 1 89 56 05 00
                   </span>
                 </div>
               </div>
@@ -274,7 +274,7 @@ export function Footer() {
                     3CX
                   </a>
                   <span className="text-yellow-500">★</span>
-                  <span className="text-gray-400">Bronze Partner</span>
+                  <span className="text-gray-400">Silver Partner</span>
                 </div>
                 <span className="text-gray-500">|</span>
                 <a

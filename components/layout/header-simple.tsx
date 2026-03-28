@@ -46,7 +46,7 @@ export function HeaderSimple() {
         },
         {
           name: "Assistants vocaux IA",
-          href: "/assistants-vocaux-ia",
+          href: "/nos-services/assistants-vocaux-ia",
         },
       ],
     },
