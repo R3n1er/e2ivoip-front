@@ -113,7 +113,7 @@ export default function QuiSommesNous() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-none p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <i className="lni lni-phone text-5xl text-white"></i>
@@ -162,7 +162,7 @@ export default function QuiSommesNous() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <div className="bg-red-primary/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-target text-2xl text-red-primary"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -178,7 +178,7 @@ export default function QuiSommesNous() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <div className="bg-blue-marine/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-certificate text-2xl text-blue-marine"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -194,7 +194,7 @@ export default function QuiSommesNous() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <div className="bg-gray-secondary/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-users text-2xl text-gray-secondary"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -276,11 +276,11 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8">
+            <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-none p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Cas client emblématique
               </h3>
-              <div className="bg-white rounded-lg p-6">
+              <div className="bg-white rounded-none p-6">
                 <h4 className="font-bold text-lg text-gray-900 mb-2">
                   Titeca BEAUPORT Finance
                 </h4>
@@ -369,7 +369,7 @@ export default function QuiSommesNous() {
 
           {/* Certifications principales */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -377,7 +377,7 @@ export default function QuiSommesNous() {
                     alt="Logo 3CX Bronze Partner - Certification officielle E2I VoIP"
                     width={120}
                     height={120}
-                    className="mx-auto rounded-lg"
+                    className="mx-auto rounded-none"
                   />
                 </div>
                 <h3 className="font-bold text-xl mb-2">3CX Silver Partner</h3>
@@ -390,7 +390,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -413,7 +413,7 @@ export default function QuiSommesNous() {
           </div>
 
           {/* Logos des partenaires */}
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="bg-gray-50 rounded-none p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
               Nos{" "}
               <span className="text-red-primary">partenaires matériels</span>
@@ -421,7 +421,7 @@ export default function QuiSommesNous() {
 
             <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               {/* Fanvil */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-none p-8 shadow-md text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
@@ -452,7 +452,7 @@ export default function QuiSommesNous() {
               </div>
 
               {/* Yealink */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-none p-8 shadow-md text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/logo-yealink.webp"
@@ -514,7 +514,7 @@ export default function QuiSommesNous() {
                 className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-colors"
               >
                 <CardContent className="p-6 text-center">
-                  <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
                     <i
                       className={`lni ${location.icon} text-2xl text-white`}
                     ></i>
@@ -543,7 +543,7 @@ export default function QuiSommesNous() {
                 commerciaux@e2i-voip.com
               </a>
               <Link href="/assistance">
-                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
+                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-none shadow-lg transition-all duration-300 group">
                   <span className="flex items-center justify-center">
                     <i className="lni lni-comments text-xl mr-2"></i>
                     Accéder au support complet
@@ -571,7 +571,7 @@ export default function QuiSommesNous() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/devis-en-ligne"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-none shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               <span className="flex items-center justify-center">
                 Calculez vos économies
@@ -581,7 +581,7 @@ export default function QuiSommesNous() {
             </a>
             <a
               href="/contact"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300 group"
+              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-none transition-all duration-300 group"
             >
               <span className="flex items-center justify-center">
                 <i className="lni lni-phone text-xl mr-2"></i>

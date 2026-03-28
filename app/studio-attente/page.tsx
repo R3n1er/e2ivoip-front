@@ -114,7 +114,7 @@ export default function StudioAttente() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-white p-4 rounded-lg border">
+                  <div className="bg-white p-4 rounded-none border">
                     <p className="text-gray-700 italic mb-4">
                       "Bonjour et merci d'appeler E2I VoIP, spécialiste des
                       solutions de téléphonie IP. Votre appel est important pour
@@ -141,7 +141,7 @@ export default function StudioAttente() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-white p-4 rounded-lg border">
+                  <div className="bg-white p-4 rounded-none border">
                     <p className="text-gray-700 italic mb-4">
                       "Saviez-vous que nos solutions de téléphonie IP permettent
                       de réduire vos coûts de communication jusqu'à 50% ?

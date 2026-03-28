@@ -139,13 +139,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/devis-en-ligne"
-                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-600 text-white font-medium rounded-none transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 Demander un devis
               </a>
               <a
                 href="/nos-services"
-                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-lg transition-colors duration-200"
+                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-none transition-colors duration-200"
               >
                 Découvrir nos services
               </a>

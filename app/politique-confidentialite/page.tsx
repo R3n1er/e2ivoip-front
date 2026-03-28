@@ -61,7 +61,7 @@ export default function PolitiqueConfidentialitePage() {
             <Card className="shadow-lg mb-8">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="bg-red-100 p-3 rounded-lg">
+                  <div className="bg-red-100 p-3 rounded-none">
                     <i className="lni lni-shield w-8 h-8 text-red-600"></i>
                   </div>
                   <div>
@@ -88,7 +88,7 @@ export default function PolitiqueConfidentialitePage() {
               </CardHeader>
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-lg">
+                  <div className="bg-red-100 p-3 rounded-none">
                     <i className="lni lni-users w-8 h-8 text-red-600"></i>
                   </div>
                   <div>
@@ -122,7 +122,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Cookies */}
                   <div className="border-l-4 border-red-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-red-100 p-2 rounded-lg">
+                      <div className="bg-red-100 p-2 rounded-none">
                         <i className="lni lni-question-circle w-6 h-6 text-red-600"></i>
                       </div>
                       <div>
@@ -139,7 +139,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Contact */}
                   <div className="border-l-4 border-blue-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
+                      <div className="bg-blue-100 p-2 rounded-none">
                         <i className="lni lni-envelope w-6 h-6 text-blue-600"></i>
                       </div>
                       <div>
@@ -159,7 +159,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Candidatures */}
                   <div className="border-l-4 border-green-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-green-100 p-2 rounded-lg">
+                      <div className="bg-green-100 p-2 rounded-none">
                         <i className="lni lni-users w-6 h-6 text-green-600"></i>
                       </div>
                       <div>
@@ -179,7 +179,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Paiements */}
                   <div className="border-l-4 border-purple-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-purple-100 p-2 rounded-lg">
+                      <div className="bg-purple-100 p-2 rounded-none">
                         <i className="lni lni-lock w-6 h-6 text-purple-600"></i>
                       </div>
                       <div>
@@ -196,7 +196,7 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Images */}
                   <div className="border-l-4 border-orange-500 pl-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-orange-100 p-2 rounded-lg">
+                      <div className="bg-orange-100 p-2 rounded-none">
                         <i className="lni lni-eye w-6 h-6 text-orange-600"></i>
                       </div>
                       <div>
@@ -224,7 +224,7 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="space-y-6">
                   {/* Hébergement */}
                   <div className="flex items-start space-x-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
+                    <div className="bg-blue-100 p-3 rounded-none">
                       <i className="lni lni-world w-8 h-8 text-blue-600"></i>
                     </div>
                     <div>
@@ -239,7 +239,7 @@ export default function PolitiqueConfidentialitePage() {
 
                   {/* Protection */}
                   <div className="flex items-start space-x-4">
-                    <div className="bg-green-100 p-3 rounded-lg">
+                    <div className="bg-green-100 p-3 rounded-none">
                       <i className="lni lni-lock w-8 h-8 text-green-600"></i>
                     </div>
                     <div>
@@ -254,7 +254,7 @@ export default function PolitiqueConfidentialitePage() {
 
                   {/* Contenu embarqué */}
                   <div className="flex items-start space-x-4">
-                    <div className="bg-orange-100 p-3 rounded-lg">
+                    <div className="bg-orange-100 p-3 rounded-none">
                       <i className="lni lni-eye w-8 h-8 text-orange-600"></i>
                     </div>
                     <div>
@@ -290,7 +290,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-blue-100 p-2 rounded-lg">
+                        <div className="bg-blue-100 p-2 rounded-none">
                           <i className="lni lni-eye w-6 h-6 text-blue-600"></i>
                         </div>
                         <div>
@@ -309,7 +309,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-green-100 p-2 rounded-lg">
+                        <div className="bg-green-100 p-2 rounded-none">
                           <i className="lni lni-text-format w-6 h-6 text-green-600"></i>
                         </div>
                         <div>
@@ -328,7 +328,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
+                        <div className="bg-red-100 p-2 rounded-none">
                           <i className="lni lni-question-circle w-6 h-6 text-red-600"></i>
                         </div>
                         <div>
@@ -347,7 +347,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-purple-100 p-2 rounded-lg">
+                        <div className="bg-purple-100 p-2 rounded-none">
                           <i className="lni lni-download w-6 h-6 text-purple-600"></i>
                         </div>
                         <div>
@@ -366,7 +366,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-orange-100 p-2 rounded-lg">
+                        <div className="bg-orange-100 p-2 rounded-none">
                           <i className="lni lni-question-circle w-6 h-6 text-orange-600"></i>
                         </div>
                         <div>
@@ -385,7 +385,7 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-yellow-100 p-2 rounded-lg">
+                        <div className="bg-yellow-100 p-2 rounded-none">
                           <i className="lni lni-lock w-6 h-6 text-yellow-600"></i>
                         </div>
                         <div>
@@ -405,7 +405,7 @@ export default function PolitiqueConfidentialitePage() {
                 <Card className="bg-blue-50 border-blue-200">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
+                      <div className="bg-blue-100 p-2 rounded-none">
                         <i className="lni lni-timer w-6 h-6 text-blue-600"></i>
                       </div>
                       <div>
@@ -421,7 +421,7 @@ export default function PolitiqueConfidentialitePage() {
                 </Card>
 
                 {/* Réclamation CNIL */}
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <div className="mt-6 p-4 bg-gray-50 rounded-none">
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">
                     Réclamation auprès de la CNIL
                   </h4>
@@ -446,7 +446,7 @@ export default function PolitiqueConfidentialitePage() {
                   href="https://www.3cx.fr/pabx/download-pabx-ip/?resellerId=208715" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-none transition-colors duration-200 shadow-lg hover:shadow-xl"
                 >
                   Découvrir 3CX
                 </a>

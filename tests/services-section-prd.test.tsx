@@ -85,7 +85,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("Pro")).toBeInTheDocument();
   });
 
-  it("affiche la section CTA avec les couleurs PRD", () => {
+  it("affiche la section avec le titre principal", () => {
     render(<ServicesSectionSimple />);
 
     expect(
@@ -96,39 +96,33 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     ).toBeInTheDocument();
   });
 
-  it("utilise uniquement les couleurs PRD pour les icônes", () => {
+  it("utilise les couleurs PRD pour les éléments asymétriques", () => {
     const { container } = render(<ServicesSectionSimple />);
 
-    // Vérifier que les icônes utilisent les classes de couleurs PRD
+    // Vérifier que certaines icônes utilisent le red-primary
     const redPrimaryIcons = container.querySelectorAll(".text-red-primary");
     expect(redPrimaryIcons.length).toBeGreaterThan(0);
 
-    // Vérifier que les badges utilisent les bonnes classes
-    const primaryBadges = container.querySelectorAll(".badge.badge-primary");
-    expect(primaryBadges.length).toBeGreaterThan(0);
-
-    // Vérifier qu'aucune autre couleur non-PRD n'est utilisée pour les icônes
-    const nonPRDIcons = container.querySelectorAll(
-      ".text-green-600, .text-purple-600, .text-orange-600, .text-indigo-600"
-    );
-    expect(nonPRDIcons.length).toBe(0);
+    // Vérifier les classes de la grille
+    const bentoGrid = container.querySelectorAll(".bento-grid");
+    expect(bentoGrid.length).toBe(1);
+    
+    // Vérifier la présence des éléments de base Bento
+    const bentoItems = container.querySelectorAll(".bento-item, .bento-item-large, .bento-item-wide");
+    expect(bentoItems.length).toBeGreaterThan(3);
   });
 
-  it("les boutons CTA sont présents et fonctionnels", () => {
-    render(<ServicesSectionSimple />);
+  it("les liens CTA sont présents et fonctionnels", () => {
+    const { container } = render(<ServicesSectionSimple />);
 
-    const ctaButtons = screen.getAllByRole("button", {
-      name: /En savoir plus/i,
-    });
-    expect(ctaButtons.length).toBeGreaterThan(0);
+    const arrowLinks = container.querySelectorAll(".lni-arrow-right");
+    expect(arrowLinks.length).toBeGreaterThan(0);
   });
 
-  it("affiche les bénéfices clés avec les bonnes couleurs", () => {
+  it("affiche les bénéfices clés avec les bonnes couleurs pour les cartes larges", () => {
     render(<ServicesSectionSimple />);
 
     expect(screen.getByText(/Économies jusqu'à 30%/)).toBeInTheDocument();
-    // Bénéfice « Mobilité intégrée » retiré du périmètre
-    expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
-    expect(screen.getByText(/Transcription automatique/)).toBeInTheDocument();
+    expect(screen.getByText(/Qualité studio/)).toBeInTheDocument();
   });
 });

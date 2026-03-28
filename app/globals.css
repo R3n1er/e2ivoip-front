@@ -50,184 +50,134 @@
 }
 
 @layer components {
-  /* Dégradés principaux selon la charte graphique E2I VoIP */
+  /* Dégradés principaux E2I VoIP strict charte graphique */
   .gradient-primary-red-blue {
-    @apply bg-gradient-to-r from-red-600 to-blue-700;
+    @apply bg-gradient-to-r from-red-primary to-blue-marine;
   }
 
-  .gradient-primary-red-green {
-    @apply bg-gradient-to-br from-red-600 to-green-600;
+  .gradient-subtle-gray {
+    @apply bg-gradient-to-b from-white to-gray-50 border border-gray-200;
   }
 
-  .gradient-primary-blue-gray {
-    @apply bg-gradient-to-b from-blue-700 to-gray-500;
+  .gradient-subtle-blue {
+    @apply bg-gradient-to-br from-blue-marine/5 to-transparent border border-blue-marine/10;
+  }
+  
+  .gradient-subtle-red {
+    @apply bg-gradient-to-br from-red-primary/5 to-transparent border border-red-primary/10;
   }
 
-  /* Dégradés secondaires */
-  .gradient-secondary-red-orange {
-    @apply bg-gradient-to-r from-red-600 to-orange-500;
-  }
+  /* Composants avec dégradés - unifiés */
+  .hero-gradient { @apply gradient-primary-red-blue; }
+  .services-gradient { @apply gradient-subtle-gray; }
+  .about-gradient { @apply gradient-subtle-gray; }
+  .contact-gradient { @apply gradient-primary-red-blue; }
+  .footer-gradient { @apply bg-gray-dark border-t-4 border-red-primary; }
+  .button-primary-gradient { @apply bg-red-primary hover:bg-red-800 transition-colors duration-300; }
+  .button-secondary-gradient { @apply bg-blue-marine hover:bg-gray-900 transition-colors duration-300; }
+  .card-accent-gradient { @apply gradient-subtle-red; }
+  .card-info-gradient { @apply gradient-subtle-blue; }
+  .badge-gradient { @apply bg-gray-100 text-gray-dark border border-gray-200; }
 
-  .gradient-secondary-blue-green {
-    @apply bg-gradient-to-br from-blue-700 to-green-600;
-  }
-
-  .gradient-secondary-gray-white {
-    @apply bg-gradient-to-b from-gray-100 to-white;
-  }
-
-  /* Dégradés spéciaux */
-  .gradient-special-transparent-red {
-    @apply bg-gradient-to-t from-red-600/80 to-transparent;
-  }
-
-  .gradient-special-radial-red {
-    @apply bg-gradient-radial from-red-600 to-transparent;
-  }
-
-  /* Composants avec dégradés */
-  .hero-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .services-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  .about-gradient {
-    @apply gradient-primary-blue-gray;
-  }
-
-  /* Animation pour le carousel de clients */
-  @keyframes scrollLeft {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-scroll-left {
-    animation: scrollLeft 60s linear infinite;
-  }
-
-  .contact-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .footer-gradient {
-    @apply gradient-secondary-gray-white;
-  }
-
-  .button-primary-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .button-secondary-gradient {
-    @apply bg-gradient-to-r from-blue-700 to-gray-500;
-  }
-
-  .card-accent-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  .card-info-gradient {
-    @apply gradient-primary-blue-gray;
-  }
-
-  .badge-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  /* Effets hover pour les dégradés */
+  /* Effets hover premium 2026 : transformations subtiles, pas de scale agressif */
   .gradient-hover {
     @apply transition-all duration-300 ease-in-out;
   }
-
   .gradient-hover:hover {
-    @apply scale-105 shadow-lg;
+    @apply translate-y-[-2px] shadow-xl shadow-blue-marine/5 border-red-primary/30;
   }
 
-  /* Dégradés avec transparence pour les overlays */
+  /* Glassmorphism E2I */
+  .glass-card {
+    @apply bg-white/85 backdrop-blur-md border border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+
+  /* Dégradés avec transparence pour les overlays (subtils) */
   .overlay-gradient {
-    @apply gradient-special-transparent-red;
+    @apply bg-gradient-to-t from-gray-dark/95 via-gray-dark/60 to-transparent;
   }
-
   .focus-gradient {
-    @apply gradient-special-radial-red;
+    @apply bg-gradient-radial from-red-primary/10 to-transparent;
   }
 
   /* Responsive gradients */
   @media (max-width: 768px) {
     .gradient-primary-red-blue {
-      @apply bg-gradient-to-b from-red-600 to-blue-700;
-    }
-
-    .gradient-primary-red-green {
-      @apply bg-gradient-to-b from-red-600 to-green-600;
+      @apply bg-gradient-to-b from-red-primary to-blue-marine;
     }
   }
 
-  @media (max-width: 480px) {
-    .gradient-primary-blue-gray {
-      @apply bg-gradient-to-b from-blue-700 to-gray-500;
-    }
+  /* Layout BENTO strict (Angles carrés - rounded-none pour matcher les boutons) */
+  .bento-grid {
+    @apply grid gap-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 auto-rows-[250px];
+  }
+  .bento-item {
+    @apply relative overflow-hidden bg-white border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-premium rounded-none flex flex-col;
+  }
+  .bento-item-large {
+    @apply lg:col-span-2 lg:row-span-2;
+  }
+  .bento-item-wide {
+    @apply lg:col-span-2 lg:row-span-1;
+  }
+  .bento-item-tall {
+    @apply lg:row-span-2 lg:col-span-1;
+  }
+
+  /* Animation pour le carousel de clients */
+  @keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-scroll-left {
+    animation: scrollLeft 60s linear infinite;
   }
 }
 
 @layer utilities {
-  /* Utilitaires pour les dégradés */
+  /* Utilitaires 2026 */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-blue-700;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-primary to-blue-marine;
   }
 
   .border-gradient {
-    @apply border-2 border-transparent bg-gradient-to-r from-red-600 to-blue-700 bg-clip-border;
+    @apply border-2 border-transparent bg-gradient-to-r from-red-primary to-blue-marine bg-clip-border;
   }
 
-  .shadow-gradient {
-    @apply shadow-lg;
-    box-shadow: 0 10px 25px -3px rgba(220, 38, 38, 0.3),
-      0 4px 6px -2px rgba(30, 64, 175, 0.2);
+  .shadow-premium {
+    box-shadow: 0 10px 40px -10px rgba(45, 56, 72, 0.12), 0 4px 6px -2px rgba(45, 56, 72, 0.05); /* Blue-marine shadow */
   }
 
-  /* Pattern dots background */
+  /* Pattern dots background - enhanced subtlety */
   .pattern-dots {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232D3848' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 20px 20px;
   }
 
-  /* Animation de vibration pour le bouton chat */
-  @keyframes shake {
-    0%, 100% {
-      transform: translateX(0) rotate(0deg);
-    }
-    10%, 30%, 50%, 70%, 90% {
-      transform: translateX(-2px) rotate(-1deg);
-    }
-    20%, 40%, 60%, 80% {
-      transform: translateX(2px) rotate(1deg);
-    }
-  }
-
-  .animate-shake {
-    animation: shake 0.5s ease-in-out infinite;
-    animation-iteration-count: infinite;
-  }
-
-  /* Animation de pulsation douce */
+  /* Animation de pulsation douce (premium) avec red-primary */
   @keyframes pulse-soft {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 15px 30px -5px rgba(229, 62, 62, 0.1); 
     }
     50% {
-      transform: scale(1.05);
-      box-shadow: 0 25px 50px -12px rgba(236, 72, 153, 0.4), 0 10px 20px -5px rgba(147, 51, 234, 0.3);
+      transform: scale(1.02);
+      box-shadow: 0 25px 45px -10px rgba(229, 62, 62, 0.25); 
     }
   }
 
   .animate-pulse-soft {
-    animation: pulse-soft 2s ease-in-out infinite;
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+  
+  /* Animation de vibration pour le bouton chat */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px) rotate(-1deg); }
+    20%, 40%, 60%, 80% { transform: translateX(2px) rotate(1deg); }
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out infinite;
   }
 }

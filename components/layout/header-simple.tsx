@@ -107,7 +107,7 @@ export function HeaderSimple() {
 
                 {/* Sous-menu CSS Hover */}
                 {item.submenu && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-none shadow-2xl border border-gray-200 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                     <div className="py-2">
                       {item.submenu.map((subItem) => (
                         <Link
@@ -139,7 +139,7 @@ export function HeaderSimple() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg transition-colors"
+            className="lg:hidden p-2 rounded-none transition-colors"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isOpen ? (

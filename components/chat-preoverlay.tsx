@@ -158,7 +158,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
           {/* Texte "Une question?" */}
           <div
             className={`
-              bg-white px-4 py-2 rounded-full shadow-lg border border-gray-200
+              bg-white px-4 py-2 rounded-none shadow-lg border border-gray-200
               ${isAnimating ? "animate-bounce" : ""}
             `}
           >
@@ -177,10 +177,10 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               setAnimationStopped(true);
             }}
             className={`
-              shadow-xl hover:shadow-2xl transition-all hover:scale-110
-              rounded-full w-20 h-20 flex items-center justify-center
-              bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500
-              text-white cursor-pointer
+              shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1
+              rounded-none w-20 h-20 flex items-center justify-center
+              bg-gradient-to-br from-red-primary to-blue-marine
+              text-white cursor-pointer border border-red-primary/20
               ${isAnimating ? "animate-shake" : ""}
             `}
             aria-label="Ouvrir le pré‑chat"
@@ -217,7 +217,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
       {/* Overlay du formulaire */}
       {open && (
         <div
-          className="w-[320px] p-4 rounded-2xl shadow-2xl bg-white border border-gray-200"
+          className="w-[320px] p-4 rounded-none shadow-2xl bg-white border border-gray-200"
           data-testid="chat-preoverlay"
           style={{ pointerEvents: "auto" }}
         >

@@ -280,7 +280,7 @@ export default function ThreeCXCloudPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* WhatsApp Business */}
-            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
               {/* Gradient border top - Bleu marine vers gris */}
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500"></div>
 
@@ -298,7 +298,7 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-whatsapp text-3xl text-gray-800"></i>
                   </div>
                 </div>
@@ -322,7 +322,7 @@ export default function ThreeCXCloudPage() {
             </div>
 
             {/* CRM Connecté */}
-            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
               {/* Gradient border top - Rouge vers orange */}
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
 
@@ -340,7 +340,7 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-none flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-database text-3xl text-red-primary"></i>
                   </div>
                 </div>
@@ -364,7 +364,7 @@ export default function ThreeCXCloudPage() {
             </div>
 
             {/* Microsoft 365 */}
-            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
               {/* Gradient border top - Gris secondaire */}
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300"></div>
 
@@ -382,7 +382,7 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-microsoft text-3xl text-gray-secondary"></i>
                   </div>
                 </div>
@@ -406,7 +406,7 @@ export default function ThreeCXCloudPage() {
             </div>
 
             {/* IA Intégrée */}
-            <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+            <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
               {/* Gradient border top - Mix rouge et gris */}
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-gray-800 via-red-primary to-gray-500"></div>
 
@@ -424,7 +424,7 @@ export default function ThreeCXCloudPage() {
               <div className="relative p-6">
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-none flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
                     <i className="lni lni-brain text-3xl text-red-primary"></i>
                   </div>
                 </div>

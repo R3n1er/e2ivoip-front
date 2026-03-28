@@ -120,7 +120,7 @@ export default function Smb3CXMutualisee() {
             </div>
 
             {/* Fonctionnalités incluses */}
-            <div className="mt-16 bg-base-200 rounded-2xl p-8">
+            <div className="mt-16 bg-base-200 rounded-none p-8">
               <h3 className="text-2xl font-bold text-gray-dark mb-6 text-center">
                 Toutes les fonctionnalités 3CX incluses
               </h3>

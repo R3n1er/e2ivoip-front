@@ -16,7 +16,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial, className = "" }: TestimonialCardProps) {
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 ${className}`}>
+    <div className={`bg-white rounded-none p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 ${className}`}>
       {/* Logo/En-tête */}
       <div className="flex items-center mb-4">
         {testimonial.logo ? (
@@ -26,7 +26,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
             className="w-12 h-12 object-contain mr-4"
           />
         ) : (
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center mr-4">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-none flex items-center justify-center mr-4">
             <i className="lni lni-apartment text-white text-xl"></i>
           </div>
         )}
@@ -48,7 +48,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
 
       {/* Statistiques */}
       <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="text-center p-3 bg-gray-50 rounded-lg">
+        <div className="text-center p-3 bg-gray-50 rounded-none">
           <div className="flex items-center justify-center mb-1">
             <i className="lni lni-users text-blue-600 text-lg mr-1"></i>
             <span className="font-bold text-xl text-gray-800">{testimonial.users}</span>
@@ -56,7 +56,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
           <p className="text-xs text-gray-600">Utilisateurs</p>
         </div>
         
-        <div className="text-center p-3 bg-gray-50 rounded-lg">
+        <div className="text-center p-3 bg-gray-50 rounded-none">
           <div className="flex items-center justify-center mb-1">
             <i className="lni lni-map text-red-600 text-lg mr-1"></i>
             <span className="font-bold text-sm text-gray-800">{testimonial.solution}</span>
@@ -124,7 +124,7 @@ export function TestimonialsSection({
               { icon: "heart", title: "Secteur santé", desc: "Cliniques, cabinets médicaux, maisons de santé" },
               { icon: "apartment", title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
             ].map((sector, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-white rounded-none p-4 text-center shadow-md hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <i className={`lni lni-${sector.icon} text-blue-600 text-xl`}></i>
                 </div>

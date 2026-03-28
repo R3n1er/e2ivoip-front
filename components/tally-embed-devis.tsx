@@ -109,9 +109,9 @@ export function TallyEmbedDevis() {
           <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-blue-600/20 to-transparent rounded-full blur-2xl"></div>
 
           {/* Card conteneur avec ombre et bordure */}
-          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <div className="relative bg-white rounded-none shadow-xl border border-gray-100 p-8">
             {/* Formulaire Tally iframe */}
-            <div className="rounded-xl overflow-hidden">
+            <div className="rounded-none overflow-hidden">
               {isClient ? (
                 <iframe
                   ref={iframeRef}

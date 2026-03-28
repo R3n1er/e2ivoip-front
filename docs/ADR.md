@@ -10,6 +10,24 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-28 — Refonte UX/UI Premium 2026 (Philosophie Carrée & Bento Box)
+
+- **Contexte** : L'interface du site (Hero Section, boutons, cartes de service, widget de chat) présentait une esthétique "générée par IA" avec des dégradés arc-en-ciel (red-to-green), des coins excessivement arrondis (`rounded-full`, `rounded-2xl`) et une disposition en grille standard peu dynamique, ne correspondant pas au positionnement professionnel B2B 2026 attendu par E2I VoIP.
+- **Décision** :
+  - **Épuration du Design System** : Suppression des dégradés fantaisistes hors-charte depuis `globals.css` et `tailwind.config.js`. Restriction stricte aux couleurs `red-primary`, `blue-marine`, `gray-dark` et effets *Glassmorphism* unifiés.
+  - **Philosophie Carrée** : Remplacement systématique des classes `.rounded-lg/xl/2xl/3xl` par `.rounded-none` sur l'ensemble des conteneurs (cartes, badges) afin d'incarner une image statutaire et solide, en phase avec le logo E2I VoIP.
+  - **Refonte Asymétrique de la Page d'Accueil** : Transformation du "Hero" classique en une disposition asymétrique moderne en deux colonnes avec blocs décoratifs (skew, dot-patterns) et retrait de l'image de fond lourde.
+  - **Structure Bento Box** : Mise en place de classes utilitaires CSS Grid (`bento-grid`, `bento-item`, `bento-item-large`) employées dans `services-section-simple.tsx` afin de rompre la monotonie. Mises à jour lourdes des tests end-to-end Playwright (`services-section.spec.ts` et `services-cards-alignment.spec.ts`) pour vérifier cette nouvelle arborescence au lieu de `.card`.
+  - **Widget Chat (Pre-Overlay)** : Conversion des couleurs "pink-to-indigo" fantômes vers un dégradé `red-primary` à `blue-marine` parfaitement aligné avec la charte, accompagné du retrait total des bordures arrondies.
+- **Conséquences** :
+  - Un rendu très "premium B2B" qui se détache des standards visuels low-cost générés par les templates de 2023-2024.
+  - Dette technique liée au style nettoyée.
+  - Le serveur de développement Next.js a été purgé de son cache (`rm -rf .next`) pour corriger une erreur d'hydratation CSS issue de cet important refactoring de classes `.rounded-`.
+- **Tests associés** :
+  - Audit visuel (Playwright Subagent Chrome) de la Page d'accueil : Validé sans erreurs d'hydratation.
+  - `npm test` : 330/330. (adaptations des tests boutons & sections de services)
+  - `npx playwright test` : 74/74.
+
 ### 2026-03-28 — Résolution des vulnérabilités de dépendances et correctifs UI
 
 - **Contexte** : Le projet présentait 18 vulnérabilités identifiées via `npm audit` impactant des dépendances clés. Par ailleurs, des tests E2E et unitaires échouaient à cause d'une désynchronisation entre les composants (badge partenaire 3CX passé de Bronze à Silver, numéro de téléphone, variables Playwright trop strictes sur le badge IA).

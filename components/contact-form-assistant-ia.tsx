@@ -25,14 +25,14 @@ export function ContactFormAssistantIA() {
         <div className="relative">
           {/* Decoration effects */}
           <div
-            className="absolute -inset-4 rounded-3xl blur-3xl opacity-20"
+            className="absolute -inset-4 rounded-none blur-3xl opacity-20"
             style={{
               background:
                 "linear-gradient(135deg, rgba(229,62,62,0.3), rgba(45,56,72,0.3))",
             }}
           />
 
-          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <div className="relative bg-white rounded-none shadow-xl border border-gray-100 p-8">
             <HubSpotFormSimpleEmbed
               formId="312a9f67-e613-4651-9690-4586646554a0"
               portalId="26878201"

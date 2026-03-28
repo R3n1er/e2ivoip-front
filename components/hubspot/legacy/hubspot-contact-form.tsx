@@ -122,7 +122,7 @@ export function QuickContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-lg p-6 shadow-lg">
+    <div className="bg-white rounded-none p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">
         Contactez-nous rapidement
       </h3>
@@ -151,7 +151,7 @@ export function FullContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-lg p-8 shadow-lg">
+    <div className="bg-white rounded-none p-8 shadow-lg">
       <h3 className="text-2xl font-bold text-gray-900 mb-4">
         Contactez notre équipe
       </h3>

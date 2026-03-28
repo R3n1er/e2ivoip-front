@@ -130,7 +130,7 @@ export default function TrunkSIPIllimite() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-phone text-red-primary text-xl"></i>
                     </div>
                     <div>
@@ -145,7 +145,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-50 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-map text-blue-marine text-xl"></i>
                     </div>
                     <div>
@@ -159,7 +159,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-red-primary/10 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-users text-red-primary text-xl"></i>
                     </div>
                     <div>
@@ -174,7 +174,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-50 rounded-none flex items-center justify-center flex-shrink-0">
                       <i className="lni lni-shield text-blue-marine text-xl"></i>
                     </div>
                     <div>
@@ -193,7 +193,7 @@ export default function TrunkSIPIllimite() {
 
               <div>
                 {/* Tableau des forfaits */}
-                <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
+                <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-none">
                   <div className="text-center mb-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
                       Nos forfaits illimités
@@ -206,7 +206,7 @@ export default function TrunkSIPIllimite() {
                     {forfaits.map((forfait) => (
                       <div
                         key={forfait.appels}
-                        className={`bg-white p-4 rounded-lg shadow ${
+                        className={`bg-white p-4 rounded-none shadow ${
                           forfait.popular
                             ? "border-2 border-red-primary relative"
                             : "border border-gray-200"
@@ -240,7 +240,7 @@ export default function TrunkSIPIllimite() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="mt-6 p-4 bg-blue-50 rounded-none border border-blue-200">
                     <div className="flex items-start space-x-2">
                       <i className="lni lni-information text-blue-marine mt-0.5"></i>
                       <div className="text-sm text-blue-800">
@@ -276,7 +276,7 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Palette rouge & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-blue-marine to-blue-marine"></div>
                 
@@ -288,7 +288,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-calculator text-3xl text-gray-800"></i>
                     </div>
                   </div>
@@ -309,7 +309,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Couverture complète */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Mélange bleu marine et rouge */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-marine via-red-primary to-blue-marine"></div>
                 
@@ -321,7 +321,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-none flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-world text-3xl text-gray-secondary"></i>
                     </div>
                   </div>
@@ -342,7 +342,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Évolutif */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Rouge principal & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 
@@ -354,7 +354,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-none flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <i className="lni lni-grow text-3xl text-red-primary"></i>
                     </div>
                   </div>
@@ -377,7 +377,7 @@ export default function TrunkSIPIllimite() {
 
             {/* Points clés supplémentaires */}
             <div className="mt-16 relative">
-              <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100">
+              <div className="relative bg-white rounded-none p-10 shadow-2xl border border-gray-100">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">
                     Tout est inclus dans votre forfait
@@ -409,9 +409,9 @@ export default function TrunkSIPIllimite() {
                       color: "red"
                     },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+                    <div key={idx} className="flex items-start gap-4 p-4 rounded-none hover:bg-gray-50 transition-colors group">
                       <div className={`
-                        w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
+                        w-12 h-12 rounded-none flex items-center justify-center flex-shrink-0
                         ${item.color === 'gray' ? 'bg-gradient-to-br from-gray-100 to-gray-50' : ''}
                         ${item.color === 'red' ? 'bg-gradient-to-br from-red-100 to-red-50' : ''}
                         ${item.color === 'gray-secondary' ? 'bg-gradient-to-br from-gray-200 to-gray-100' : ''}

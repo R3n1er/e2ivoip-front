@@ -80,7 +80,7 @@ export default function TelephonieDentreprise() {
                   className="border-gray-200 hover:shadow-lg transition-shadow"
                 >
                   <CardHeader>
-                    <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                    <div className="bg-red-100 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                       <i
                         className={`lni ${solution.icon} w-6 h-6 text-red-600`}
                       ></i>

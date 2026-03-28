@@ -104,7 +104,7 @@ export function HubSpotCalendar({
       )}
 
       {/* Conteneur du calendrier HubSpot */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="bg-white rounded-none shadow-lg overflow-hidden">
         <div 
           ref={containerRef}
           className="meetings-iframe-container"
@@ -122,7 +122,7 @@ export function HubSpotCalendar({
 
       {/* Informations de contact alternatives */}
       {showContactInfo && (
-        <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="mt-8 p-6 bg-gray-50 rounded-none border border-gray-200">
           <div className="text-center">
             <h3 className="font-semibold text-gray-800 mb-3">
               Vous préférez nous appeler directement ?

@@ -230,7 +230,7 @@ export default function HubSpotAdminPage() {
                 <div className="space-y-4">
                   {scopeTestResults.recommendations?.map(
                     (test: ScopeTestRecommendation, index: number) => (
-                      <div key={index} className="border rounded-lg p-4">
+                      <div key={index} className="border rounded-none p-4">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-medium">{test.name}</h4>
                           <Badge

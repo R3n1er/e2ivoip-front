@@ -52,7 +52,7 @@ export function FeatureCard({
 
   return (
     <div className={`
-      bg-white rounded-2xl 
+      bg-white rounded-none 
       shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
@@ -65,7 +65,7 @@ export function FeatureCard({
       <div className="p-6">
         {/* Icon avec style simplifié */}
         <div className="mb-4">
-          <div className={`w-16 h-16 ${styles.iconBg} rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100`}>
+          <div className={`w-16 h-16 ${styles.iconBg} rounded-none flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100`}>
             <i className={`lni ${icon} text-3xl ${styles.iconColor}`}></i>
           </div>
         </div>
@@ -106,7 +106,7 @@ export function FeatureCardCustom({
 }) {
   return (
     <div className={`
-      bg-white rounded-2xl 
+      bg-white rounded-none 
       shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
