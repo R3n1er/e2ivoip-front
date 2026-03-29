@@ -1,4 +1,4 @@
-# Roadmap E2I VoIP - Sprint 4 FINALISÉ + UI/UX OPTIMISÉ + CONTACT MODERNISÉ ✅
+# Roadmap E2I VoIP - Sprint 5 FINALISE + Design System Monolithe 2026 ✅
 
 ## 📋 **Vue d'ensemble**
 
@@ -260,31 +260,67 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 
 ---
 
-## 🎯 **Sprint 5 - Post-launch** 📅 PLANIFIÉ
+## 🎯 **Sprint 5 - Design System Monolithe 2026** ✅ TERMINE
 
 ### **Objectifs**
 
-- Monitoring et analytics
-- Optimisations continues
-- Nouvelles fonctionnalités
+- Refonte UX/UI complete selon le template Google Stitch valide
+- Implementation du Design System "Monolithe Numerique" (Structuralisme Brutaliste B2B)
+- Optimisation du module pre-chat (3 champs, scroll trigger)
+- Creation d'agents Claude Code pour l'automatisation
 
 ### **Livrables**
 
-#### **5.1 Monitoring étendu** 📅
+#### **5.1 Design System Monolithe** ✅
 
-- 📅 Google Analytics 4
-- 📅 Google Search Console
-- 📅 Monitoring errors (Sentry)
-- 📅 Analytics chatbot
-- 📅 Conversion tracking Tally
+- ✅ **Philosophie Carree** : `border-radius: 0px` sur tous les elements
+- ✅ **Boutons Monolithe** : Hard shadows opaques + hover mecanique (`.monolith-btn`)
+- ✅ **Grilles Bento** : Layouts asymetriques pour section services
+- ✅ **Hero Asymetrique** : Fond sombre #091421 + grid-lines + layout 60/40
+- ✅ **Palette stricte** : Rouge #E53E3E + Bleu Marine #2D3848 + suppression couleurs generiques
+- ✅ **Typographie industrielle** : tracking-[-0.04em] titres, tracking-[0.2em] boutons
 
-#### **5.2 Optimisations continues** 📅
+#### **5.2 Alignement Template Stitch (Phases 0-4.1)** ✅
 
-- 📅 A/B testing
-- 📅 Chatbot optimization
-- 📅 UX improvement
-- 📅 Team training
-- 📅 n8n automations optimization
+- ✅ **Phase 0** : Suppression soft shadows (header, pages IA, trunk-sip)
+- ✅ **Phase 1.1** : Stats Section — py-32, Sans-Ligne rule
+- ✅ **Phase 1.2** : Clients carousel — tracking-[0.2em], py-24
+- ✅ **Phase 1.3** : Solutions — lignes rouges decoratives, min-h-[450px]
+- ✅ **Phase 1.4** : Navigation — separation Devis/Contact + monolith-btn shadow box
+- ✅ **Phase 1.5** : Chat PreOverlay — Monolithe complet, 3 champs, Intersection Observer
+- ✅ **Phase 2.1** : Footer — style Stitch, retrait badge 3CX
+- ✅ **Phase 3.1** : Typographie — 10 corrections tracking transversal
+- ✅ **Phase 4.1** : Dropdowns DaisyUI — override CSS rounded-none
+
+#### **5.3 Agents Claude Code** ✅
+
+- ✅ **stitch-compliance** : Audit conformite Design System (haiku)
+- ✅ **test-matcher** : Identification tests impactes (haiku)
+- ✅ **pre-commit-validator** : Scan violations pre-commit (haiku)
+
+#### **5.4 Documentation** ✅
+
+- ✅ **Design.md** : Design System complet avec section 7.5bis Chat Monolithe
+- ✅ **CHARTE_GRAPHIQUE.md** : Section 5 Widget Chat ajoutee
+- ✅ **ADR.md** : 2 nouvelles entrees (audit Stitch + chat redesign)
+- ✅ **implementation.md** : Plan complet 10 phases avec matrice tests
+- ✅ **CLAUDE.md** : Mis a jour (suppression styles obsoletes, Design System Monolithe)
+- ✅ **.agents.md** : Mis a jour (Hero Monolithe, boutons hard shadow, inputs)
+
+### **Metriques Sprint 5**
+
+- ✅ **Tests** : 318/327 Jest passent (9 echecs pre-existants pages non migrees)
+- ✅ **Build** : Production OK
+- ✅ **Lint** : 0 erreurs (120 warnings pre-existants)
+- ✅ **Pages** : Homepage 100% conforme Stitch, 4 pages interieures a migrer (Phase 5.1)
+
+### 🔄 **Sprint 5.1 — Pages Interieures (EN COURS)**
+
+- 🔄 Migration `telephonie-3cx` vers Design Monolithe
+- 🔄 Migration `3cx-cloud` vers Design Monolithe
+- 🔄 Migration `trunk-sip-illimite` vers Design Monolithe
+- 🔄 Migration `devis-en-ligne` vers Design Monolithe
+- 🔄 Correction des 9 tests en echec (assistants-vocaux-ia, trunk-sip-compteur)
 
 ---
 
@@ -294,9 +330,9 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 - **Sprint 2** : ✅ 100% (Homepage modernisée)
 - **Sprint 3** : ✅ **100%** (Fonctionnalités avancées + Blog + Pages légales complètes)
 - **Sprint 4** : ✅ **100%** (UI/UX Optimization & Contact Enhancement)
-- **Sprint 5** : 📅 0% (Post-lancement)
+- **Sprint 5** : ✅ 90% (Design Monolithe 2026 — pages interieures en cours)
 
-**Progression globale** : **95%** ✅
+**Progression globale** : **97%** ✅
 
 ---
 
@@ -358,6 +394,6 @@ Cette roadmap détaille le plan de développement du site web E2I VoIP, organis�
 
 ---
 
-**Date de mise à jour** : Octobre 2025  
-**Statut** : 🟢 **EXCELLENT - SPRINT 4 FINALISÉ + UI/UX OPTIMISÉ + CONTACT MODERNISÉ**  
-**Prochaine action** : Préparer le Sprint 5 (Post-lancement) 🚀
+**Date de mise à jour** : Mars 2026
+**Statut** : 🟢 **EXCELLENT - SPRINT 5 FINALISE + DESIGN MONOLITHE 2026**
+**Prochaine action** : Sprint 5.1 — Migration pages intérieures vers Design Monolithe 🚀

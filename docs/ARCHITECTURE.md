@@ -3,8 +3,8 @@
 > **Documentation de l'architecture organisée après refactorisation Phase 6**
 
 **Date de création** : 2025-10-04
-**Dernière mise à jour** : 2025-10-04
-**Statut** : ✅ Phase 6 terminée
+**Dernière mise à jour** : 2026-03-29
+**Statut** : ✅ Design System Monolithe Stitch 2026
 
 ---
 
@@ -31,6 +31,13 @@ e2ivoip-front/
 │   │   └── footer.tsx            # Footer
 │   ├── blog/                     # Composants blog
 │   ├── ui/                       # Composants UI réutilisables
+│   ├── chat-preoverlay.tsx      # Widget livechat Monolithe (3 champs, scroll trigger)
+│   ├── stats-section.tsx        # KPIs "Data Slab" Monolithe
+│   ├── partners-section.tsx     # Logos partenaires technologiques
+│   ├── services-section-simple.tsx  # Bento Grid solutions (Stitch 2026)
+│   ├── clients-carousel.tsx     # Carousel logos clients
+│   ├── contact-section-simple.tsx   # CTA pre-footer Monolithe
+│   ├── homepage-hero-section-simple.tsx  # Hero asymetrique Stitch
 │   └── [autres-composants]/
 ├── lib/                          # Bibliothèques et utilitaires
 │   ├── constants/                # Constantes centralisées
@@ -49,12 +56,21 @@ e2ivoip-front/
 ├── tests/                        # Tests Jest + Playwright
 │   ├── *.test.tsx                # Tests unitaires
 │   └── playwright/               # Tests E2E
+├── .claude/                      # Configuration Claude Code
+│   ├── agents/                   # Sous-agents (stitch-compliance, test-matcher, pre-commit-validator)
+│   └── settings.local.json       # Permissions
+├── .stitch/                      # Template design Stitch reference
+│   └── designs/landing-page-desktop.html
 └── docs/                         # Documentation
     ├── PRD.md                    # Product Requirements
     ├── REFACTORING.md            # Journal refactorisation
     ├── OPTIMIZATIONS.md          # Guide optimisations
     ├── BUNDLE_ANALYSIS.md        # Analyse bundle
-    └── ARCHITECTURE.md           # Ce fichier
+    ├── ARCHITECTURE.md           # Ce fichier
+    ├── Design.md                # Design System Monolithe 2026
+    ├── CHARTE_GRAPHIQUE.md      # Charte colorimetrique stricte
+    ├── ADR.md                   # Architecture Decision Records
+    └── implementation.md        # Plan d'implementation Stitch
 ```
 
 ---
@@ -139,7 +155,7 @@ lib/hooks/
 ├── hubspot/                      # Hooks HubSpot
 │   └── use-hubspot-script.ts     # ✅ Chargement scripts HubSpot
 ├── forms/                        # Hooks formulaires
-│   └── use-chat-intake.ts        # ✅ Mutation TanStack Query
+│   └── use-chat-intake.ts        # ✅ Hook custom (TanStack Query supprimé)
 └── ui/                           # Hooks UI
     └── use-image-optimization.ts # Optimisation images
 ```
@@ -170,6 +186,32 @@ import { useImageOptimization } from "@/lib/hooks/ui/use-image-optimization";
 
 **UI** :
 - `useImageOptimization()` - Optimisation images
+
+---
+
+### 4. Design System Monolithe 2026
+
+**Reference** : `docs/Design.md` + `docs/CHARTE_GRAPHIQUE.md` + `.stitch/designs/landing-page-desktop.html`
+
+Le site utilise le Design System "Monolithe Numerique" (Structuralisme Brutaliste B2B) :
+- **Philosophie Carree** : `border-radius: 0px` sur tous les elements (force dans `tailwind.config.js`)
+- **Boutons Monolithe** : `.monolith-btn` avec hard shadows opaques + hover mecanique
+- **Grilles Bento** : `.bento-grid`, `.bento-item-large`, `.bento-item-wide` (CSS Grid asymetrique)
+- **Grid Lines** : `.monolith-grid-lines` sur les sections sombres (Hero, CTA)
+- **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
+- **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
+
+### 5. Agents Claude Code
+
+**Emplacement** : `.claude/agents/`
+
+| Agent | Role | Model |
+|---|---|---|
+| `stitch-compliance` | Audit conformite Design System | haiku |
+| `test-matcher` | Identification tests impactes | haiku |
+| `pre-commit-validator` | Scan violations pre-commit | haiku |
+| `content-writer-seo` | Redaction contenu SEO | sonnet |
+| `security-guardian` | Scan securite pre-push | sonnet |
 
 ---
 
@@ -415,6 +457,6 @@ Avant de créer un nouveau composant :
 
 ---
 
-**Dernière mise à jour** : 2025-10-04 21:00
+**Dernière mise à jour** : 2026-03-29
 **Responsable** : Alban (Chef de projet)
-**Statut** : ✅ Architecture organisée - Phase 6 complète
+**Statut** : ✅ Design System Monolithe Stitch 2026
