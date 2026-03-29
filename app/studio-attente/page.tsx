@@ -1,5 +1,3 @@
-import { Footer } from "@/components/layout/footer";
-
 export default function StudioAttente() {
   const services = [
     {
@@ -147,7 +145,6 @@ export default function StudioAttente() {
           </div>
         </section>
       </div>
-      <Footer />
     </div>
   );
 }

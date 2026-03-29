@@ -47,7 +47,7 @@ export function Header() {
         },
         {
           name: "3CX PRO dédiée",
-          href: "/telephonie-entreprise/3cx-pro-dediee",
+          href: "/telephonie-3cx",
         },
         {
           name: "3CX SMB mutualisée",
@@ -62,7 +62,7 @@ export function Header() {
       submenu: [
         {
           name: "Studio attente téléphonique",
-          href: "/nos-services/studio-attente",
+          href: "/studio-attente",
         },
         {
           name: "Assistants vocaux IA",

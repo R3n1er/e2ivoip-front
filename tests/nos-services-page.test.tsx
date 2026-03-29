@@ -1,17 +1,14 @@
-// Jest mocks
 import { render, screen } from "@testing-library/react";
 import NosServices from "../app/nos-services/page";
-
-jest.mock("@/components/layout/footer", () => ({
-  Footer: () => <div data-testid="footer">Footer</div>,
-}));
 
 describe("Page Nos Services", () => {
   it("rend la page sans erreur", () => {
     render(<NosServices />);
 
-    // Vérification des composants principaux
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+    // Le footer global est dans le layout racine, pas dans la page seule
+    expect(
+      screen.getByRole("heading", { level: 1 })
+    ).toBeInTheDocument();
   });
 
   it("affiche le titre principal avec la charte PRD", () => {

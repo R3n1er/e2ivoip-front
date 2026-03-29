@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { scrollPastHeroForChat } from "./utils/homepage-chat";
 
 test.describe("Debug ChatPreOverlay Button", () => {
   test("vérifie que le bouton de chat est visible et réagit au clic", async ({
@@ -8,7 +9,8 @@ test.describe("Debug ChatPreOverlay Button", () => {
     await page.goto("http://localhost:3000");
 
     // Attendre que la page soit complètement chargée
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
+    await scrollPastHeroForChat(page);
 
     // Prendre un screenshot de la page
     await page.screenshot({ path: "debug-homepage.png", fullPage: true });

@@ -5,7 +5,8 @@ test.describe("Tally Embed - Trunk SIP Compteur", () => {
     await page.goto(
       "/telephonie-entreprise/trunk-sip-compteur"
     );
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
+    await page.waitForTimeout(2000);
 
     await expect(
       page.getByRole("heading", { level: 2, name: /Obtenez votre devis sur-mesure/i })

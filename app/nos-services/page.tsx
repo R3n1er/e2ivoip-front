@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -81,7 +80,7 @@ export default function NosServices() {
       ],
       badge: "Entreprise",
       price: "Sur devis",
-      href: "/telephonie-entreprise/3cx-pro-dediee",
+      href: "/telephonie-3cx",
       category: "Téléphonie IP",
     },
     {
@@ -113,7 +112,7 @@ export default function NosServices() {
       ],
       badge: "Pro",
       price: "À partir de 50€",
-      href: "/nos-services/studio-attente",
+      href: "/studio-attente",
       category: "Communication",
     },
   ];
@@ -402,7 +401,6 @@ export default function NosServices() {
             </div>
           </section>
         </main>
-        <Footer />
       </div>
     </>
   );
