@@ -1,158 +1,212 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import {
+  getHubSpotBlogPosts,
+  getHubSpotBlogTags,
+} from "@/lib/hubspot-blog";
+import { BlogPostCard } from "@/components/blog/blog-post-card";
+import { BlogTagFilter } from "@/components/blog/blog-tag-filter";
+import { BlogListJsonLd } from "@/components/blog/blog-json-ld";
 import Link from "next/link";
 
-import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
-import { BlogPagination } from "@/components/blog/blog-pagination";
-import type { BlogPost } from "@/lib/hubspot-blog";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+export const revalidate = 600;
+
+const POSTS_PER_PAGE = 12;
 
 interface CategoryPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
 
-// Génération des métadonnées dynamiques
+// ---------------------------------------------------------------------------
+// generateStaticParams — pre-render all tag pages
+// ---------------------------------------------------------------------------
+
+export async function generateStaticParams() {
+  try {
+    const tags = await getHubSpotBlogTags();
+    return tags.map((tag) => ({ slug: tag.slug }));
+  } catch (error) {
+    console.warn("generateStaticParams blog/categorie/[slug] error:", error);
+    return [];
+  }
+}
+
+// ---------------------------------------------------------------------------
+// generateMetadata
+// ---------------------------------------------------------------------------
+
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const categoryName = decodeURIComponent(slug);
-  
+  const tags = await getHubSpotBlogTags();
+  const tag = tags.find((t) => t.slug === slug);
+  const tagName = tag?.name || decodeURIComponent(slug);
+
   return {
-    title: `Articles ${categoryName} - Blog E2I VoIP`,
-    description: `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
+    title: `${tagName} — Blog | E2I VoIP`,
+    description: `Découvrez tous nos articles sur ${tagName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
+    alternates: {
+      canonical: `https://www.e2i-voip.com/blog/categorie/${slug}`,
+    },
     openGraph: {
-      title: `Articles ${categoryName} - Blog E2I VoIP`,
-      description: `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
+      title: `${tagName} — Blog | E2I VoIP`,
+      description: `Découvrez tous nos articles sur ${tagName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
       type: "website",
+      url: `https://www.e2i-voip.com/blog/categorie/${slug}`,
     },
   };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
+export default async function CategoryPage({
+  params,
+  searchParams,
+}: CategoryPageProps) {
   const { slug } = await params;
-  const categoryName = decodeURIComponent(slug);
-  
+  const { page: pageParam } = await searchParams;
+  const currentPage = Math.max(1, parseInt(pageParam || "1", 10));
 
-  const mockPosts = getMockBlogPosts();
-  
-  // Filtrer les articles de cette catégorie
-  const filteredPosts = mockPosts.filter(post => 
-    post.tags.includes(categoryName) || post.categories.includes(categoryName)
-  );
+  // Resolve tag name from slug
+  const allTags = await getHubSpotBlogTags();
+  const activeTag = allTags.find((t) => t.slug === slug);
 
-  if (filteredPosts.length === 0) {
+  if (!activeTag) {
     notFound();
   }
 
-  const results = {
-    hits: filteredPosts,
-    nbHits: filteredPosts.length
-  };
+  const { posts, tags, total } = await getHubSpotBlogPosts({
+    page: currentPage,
+    pageSize: POSTS_PER_PAGE,
+    tag: activeTag.id,
+  });
 
-  // Transformer les résultats
-  const posts: BlogPost[] = results.hits.map((hit: any) => ({
-    id: hit.objectID,
-    title: hit.title,
-    excerpt: hit.excerpt,
-    content: hit.content,
-    publishDate: hit.publishDate,
-    modifiedDate: hit.modifiedDate,
-    author: hit.author,
-    authorId: hit.authorId,
-    tags: hit.tags || [],
-    categories: hit.categories || [],
-    slug: hit.slug,
-    url: hit.url,
-    featuredImage: hit.featuredImage,
-    metaDescription: hit.metaDescription,
-    seoTitle: hit.seoTitle,
-  }));
+  const totalPages = Math.ceil(total / POSTS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header avec navigation */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link
-              href="/blog"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <i className="lni lni-arrow-left w-4 h-4"></i>
-              Retour au blog
-            </Link>
-          </div>
-        </div>
-      </header>
+    <>
+      <BlogListJsonLd
+        posts={posts}
+        title={`${activeTag.name} — Blog E2I VoIP`}
+        description={`Articles sur ${activeTag.name} — téléphonie IP et communications d'entreprise.`}
+        pageUrl={`/blog/categorie/${slug}`}
+      />
 
-      <main className="pt-8">
-        {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            ></div>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <i className="lni lni-tag w-8 h-8 text-white"></i>
-                <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-                  {categoryName}
-                </h1>
-              </div>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                {results.nbHits} article{results.nbHits !== 1 ? "s" : ""} trouvé{results.nbHits !== 1 ? "s" : ""} dans cette catégorie
+      <div className="min-h-screen bg-white">
+        <main className="pt-16">
+          {/* Hero Section — Monolithe 2026 */}
+          <section className="py-20 bg-[#091421] monolith-grid-lines relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-4">
+                Catégorie
+              </p>
+              <h1 className="text-5xl md:text-7xl font-black tracking-[-0.04em] leading-tight text-white mb-4">
+                {activeTag.name}
+              </h1>
+              <div className="h-2 w-32 bg-red-primary mb-6"></div>
+              <p className="text-lg text-gray-400">
+                {total} article{total !== 1 ? "s" : ""} dans cette catégorie
               </p>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Articles */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <BlogPostsGrid
-              posts={posts}
-              loading={false}
-              emptyMessage={`Aucun article trouvé dans la catégorie "${categoryName}".`}
-            />
-          </div>
-        </section>
+          {/* Contenu */}
+          <section className="py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Filtres par tag */}
+              <BlogTagFilter tags={tags} activeTag={slug} />
 
-        {/* CTA */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Besoin d&apos;expertise en téléphonie IP ?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Nos experts sont là pour vous accompagner dans vos projets de
-              communication d&apos;entreprise.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/devis-en-ligne"
-                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-600 text-white font-medium rounded-none transition-colors duration-200 shadow-lg hover:shadow-xl"
-              >
-                Demander un devis
-              </a>
-              <a
-                href="/nos-services"
-                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-none transition-colors duration-200"
-              >
-                Découvrir nos services
-              </a>
+              {/* Grille articles */}
+              {posts.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                  {posts.map((post) => (
+                    <BlogPostCard key={post.id} post={post} />
+                  ))}
+                </div>
+              ) : (
+                <div className="py-20 text-center">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-4">
+                    Aucun article
+                  </p>
+                  <p className="text-gray-500 mb-6">
+                    Aucun article trouvé dans la catégorie &laquo;{activeTag.name}&raquo;.
+                  </p>
+                  <Link
+                    href="/blog"
+                    className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-8 py-4 rounded-none inline-block"
+                  >
+                    Voir tous les articles
+                  </Link>
+                </div>
+              )}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <nav
+                  aria-label="Pagination de la catégorie"
+                  className="flex items-center justify-center gap-2 mt-8"
+                >
+                  {currentPage > 1 && (
+                    <Link
+                      href={{
+                        pathname: `/blog/categorie/${slug}`,
+                        query: { page: currentPage - 1 },
+                      }}
+                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary transition-colors duration-200"
+                      aria-label="Page précédente"
+                    >
+                      <i className="lni lni-arrow-left" aria-hidden="true"></i>
+                      Préc.
+                    </Link>
+                  )}
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (pageNum) => (
+                      <Link
+                        key={pageNum}
+                        href={{
+                          pathname: `/blog/categorie/${slug}`,
+                          query: { page: pageNum },
+                        }}
+                        className={[
+                          "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border transition-colors duration-200",
+                          pageNum === currentPage
+                            ? "border-red-primary text-red-primary"
+                            : "border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary",
+                        ].join(" ")}
+                        aria-label={`Page ${pageNum}`}
+                        aria-current={
+                          pageNum === currentPage ? "page" : undefined
+                        }
+                      >
+                        {pageNum}
+                      </Link>
+                    )
+                  )}
+
+                  {currentPage < totalPages && (
+                    <Link
+                      href={{
+                        pathname: `/blog/categorie/${slug}`,
+                        query: { page: currentPage + 1 },
+                      }}
+                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary transition-colors duration-200"
+                      aria-label="Page suivante"
+                    >
+                      Suiv.
+                      <i className="lni lni-arrow-right" aria-hidden="true"></i>
+                    </Link>
+                  )}
+                </nav>
+              )}
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
+    </>
   );
-} 
+}

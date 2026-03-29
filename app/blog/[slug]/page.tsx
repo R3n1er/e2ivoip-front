@@ -1,269 +1,260 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import sanitizeHtml from "sanitize-html";
 import {
-  getContentfulBlogPosts,
-  getContentfulBlogPost,
-} from "@/lib/contentful-blog";
+  getHubSpotBlogPosts,
+  getHubSpotBlogPost,
+} from "@/lib/hubspot-blog";
+import {
+  BlogBreadcrumb,
+  generateBreadcrumbJsonLd,
+} from "@/components/blog/blog-breadcrumb";
+import { BlogSocialShare } from "@/components/blog/blog-social-share";
+import { BlogRelatedPosts } from "@/components/blog/blog-related-posts";
+import { BlogPostJsonLd } from "@/components/blog/blog-json-ld";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
 
-import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+export const revalidate = 600;
+
+const BASE_URL = "https://www.e2i-voip.com";
 
 interface BlogPostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }
 
-// Génération des métadonnées dynamiques
-export async function generateMetadata({
-  params,
-}: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+// ---------------------------------------------------------------------------
+// generateStaticParams
+// ---------------------------------------------------------------------------
 
-  if (!post) {
-    return {
-      title: "Article non trouvé - E2I VoIP",
-      description: "L'article que vous recherchez n'existe pas.",
-    };
-  }
-
-  return {
-    title: post.seoTitle || post.title,
-    description: post.metaDescription || post.excerpt,
-    openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      type: "article",
-      publishedTime: post.publishDate,
-      modifiedTime: post.publishDate, // Utiliser publishDate au lieu de modifiedDate
-      authors: post.author ? [post.author] : [],
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.seoTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
-    },
-  };
-}
-
-// Génération des routes statiques
 export async function generateStaticParams() {
   try {
-    const { posts } = await getContentfulBlogPosts(1, 100);
-    return posts.map((post) => ({
-      slug: post.slug,
-    }));
+    const { posts } = await getHubSpotBlogPosts({ pageSize: 100 });
+    return posts.map((post) => ({ slug: post.slug }));
   } catch (error) {
-    // Si l'API n'est pas disponible, retourner un tableau vide
-    console.warn("Impossible de générer les paramètres statiques:", error);
+    console.warn("generateStaticParams blog/[slug] error:", error);
     return [];
   }
 }
 
+// ---------------------------------------------------------------------------
+// generateMetadata
+// ---------------------------------------------------------------------------
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getHubSpotBlogPost(slug);
+
+  if (!post) {
+    return {
+      title: "Article non trouvé — E2I VoIP",
+      description: "L'article que vous recherchez n'existe pas.",
+    };
+  }
+
+  const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
+  const title = post.seoTitle || post.title;
+  const description = post.metaDescription || post.excerpt;
+
+  return {
+    title: `${title} | E2I VoIP`,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: canonicalUrl,
+      publishedTime: post.publishDate,
+      modifiedTime: post.modifiedDate || post.publishDate,
+      authors: post.author ? [post.author] : ["E2I VoIP"],
+      images: post.featuredImage
+        ? [
+            {
+              url: post.featuredImage,
+              alt: post.featuredImageAltText || post.title,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: post.featuredImage ? [post.featuredImage] : [],
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Sanitize helper — sanitize-html (SSR-safe, no jsdom dependency)
+// ---------------------------------------------------------------------------
+
+function sanitizeHubSpotHtml(raw: string): string {
+  return sanitizeHtml(raw, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "iframe", "h1", "h2", "h3"]),
+    allowedAttributes: {
+      ...sanitizeHtml.defaults.allowedAttributes,
+      iframe: ["src", "width", "height", "allow", "allowfullscreen", "frameborder", "scrolling"],
+      img: ["src", "alt", "width", "height", "loading"],
+      a: ["href", "target", "rel"],
+    },
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Render sanitized HTML safely
+// ---------------------------------------------------------------------------
+
+function ArticleBody({ safeHtml }: { safeHtml: string }) {
+  // Content is sanitized above by isomorphic-dompurify before reaching this component.
+  // This is the standard pattern for rendering sanitized CMS HTML in Next.js.
+  const props = { dangerouslySetInnerHTML: { __html: safeHtml } };
+  return (
+    <article
+      className="prose prose-lg prose-monolithe max-w-none mb-12"
+      {...props}
+    />
+  );
+}
+
+// ---------------------------------------------------------------------------
+// JSON-LD breadcrumb render
+// ---------------------------------------------------------------------------
+
+function BreadcrumbJsonLdScript({ data }: { data: object }) {
+  const props = {
+    dangerouslySetInnerHTML: { __html: JSON.stringify(data) },
+  };
+  return <script type="application/ld+json" {...props} />;
+}
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+  const post = await getHubSpotBlogPost(slug);
 
   if (!post) {
     notFound();
   }
 
-  const mockPosts = getMockBlogPosts();
-  const relatedPosts = mockPosts
-    .filter(
-      (p) =>
-        p.slug !== slug && p.tags.some((tag) => (post.tags || []).includes(tag))
-    )
-    .slice(0, 3);
+  const safeHtml = sanitizeHubSpotHtml(post.htmlContent);
 
-  const publishDate = new Date(post.publishDate || "");
-  const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
+  const publishDate = new Date(post.publishDate);
+  const formattedDate = publishDate.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
+
+  const breadcrumbItems = [
+    { label: "Accueil", href: "/" },
+    { label: "Blog", href: "/blog" },
+    { label: post.title, href: `/blog/${post.slug}` },
+  ];
+
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd(breadcrumbItems);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header avec navigation */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link
-              href="/blog"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <i className="lni lni-arrow-left w-4 h-4"></i>
-              Retour au blog
-            </Link>
-            <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm">
-                <i className="lni lni-share-alt w-4 h-4 mr-2"></i>
-                Partager
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+    <>
+      {/* JSON-LD schemas */}
+      <BlogPostJsonLd post={post} />
+      <BreadcrumbJsonLdScript data={breadcrumbJsonLd} />
 
-      <main className="pt-8">
-        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Image d'en-tête */}
-          {post.featuredImageUrl && (
-            <div className="relative w-full h-64 md:h-96 mb-8 rounded-none overflow-hidden">
-              <Image
-                src={post.featuredImageUrl}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-            </div>
-          )}
+      <div className="min-h-screen bg-white">
+        <main className="pt-16">
+          {/* Article container */}
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            {/* Breadcrumb */}
+            <BlogBreadcrumb items={breadcrumbItems} />
 
-          {/* En-tête de l'article */}
-          <header className="mb-8">
-            {/* Tags */}
+            {/* Tags cliquables */}
             {post.tags && post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {post.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="secondary"
-                    className="bg-red-primary/10 text-red-primary hover:bg-red-primary/20 transition-colors"
+              <div className="flex flex-wrap gap-2 mb-6">
+                {post.tags.map((tag, i) => (
+                  <Link
+                    key={post.tagIds[i] || tag}
+                    href={`/blog/categorie/${encodeURIComponent(
+                      tag.toLowerCase().replace(/\s+/g, "-")
+                    )}`}
+                    className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary hover:underline"
                   >
                     {tag}
-                  </Badge>
+                  </Link>
                 ))}
               </div>
             )}
 
-            {/* Titre */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            {/* Titre H1 */}
+            <h1 className="text-3xl md:text-5xl font-black tracking-[-0.04em] leading-tight text-[#091421] mb-4">
               {post.title}
             </h1>
 
-            {/* Métadonnées */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
-              <div className="flex items-center gap-2">
-                <i className="lni lni-user w-4 h-4"></i>
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="lni lni-calendar w-4 h-4"></i>
-                <span>
-                  {publishDate.toLocaleDateString("fr-FR", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="lni lni-timer w-4 h-4"></i>
-                <span>{readingTime} min de lecture</span>
-              </div>
+            {/* Ligne rouge décorative */}
+            <div className="h-1 w-20 bg-red-primary mb-6"></div>
+
+            {/* Meta : auteur / date / temps de lecture */}
+            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 mb-8">
+              <span className="flex items-center gap-1">
+                <i className="lni lni-user" aria-hidden="true"></i>
+                {post.author}
+              </span>
+              <span className="flex items-center gap-1">
+                <i className="lni lni-calendar" aria-hidden="true"></i>
+                {formattedDate}
+              </span>
+              <span className="flex items-center gap-1">
+                <i className="lni lni-timer" aria-hidden="true"></i>
+                {post.readingTime} min de lecture
+              </span>
             </div>
 
-            {/* Extrait */}
-            {post.excerpt && (
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                {post.excerpt}
-              </p>
+            {/* Image featured */}
+            {post.featuredImage && (
+              <div className="relative w-full aspect-video mb-10 overflow-hidden">
+                <Image
+                  src={post.featuredImage}
+                  alt={post.featuredImageAltText || post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+                />
+              </div>
             )}
-          </header>
 
-          {/* Contenu de l'article */}
-          <div className="prose prose-lg max-w-none mb-12">
-            <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
-              className="text-gray-700 leading-relaxed"
+            {/* Contenu article — HTML sanitisé par isomorphic-dompurify */}
+            <ArticleBody safeHtml={safeHtml} />
+
+            {/* Partage social */}
+            <div className="border-t border-gray-100 pt-8 mb-8">
+              <BlogSocialShare url={canonicalUrl} title={post.title} />
+            </div>
+          </div>
+
+          {/* Articles liés */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+            <BlogRelatedPosts
+              currentPostId={post.id}
+              tags={post.tags}
+              tagIds={post.tagIds}
             />
           </div>
 
-          {/* CTA */}
-          <Card className="bg-gradient-to-r from-red-primary to-blue-marine text-white mb-12">
-            <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">
-                Besoin d&apos;expertise en téléphonie IP ?
-              </h3>
-              <p className="text-white/90 mb-6">
-                Nos experts sont là pour vous accompagner dans vos projets de
-                communication d&apos;entreprise.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/devis-en-ligne">
-                  <Button className="bg-white text-red-primary hover:bg-gray-100">
-                    Demander un devis
-                  </Button>
-                </Link>
-                <Link href="/nos-services">
-                  <Button
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-red-primary"
-                  >
-                    Découvrir nos services
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </article>
-
-        {/* Articles liés */}
-        {relatedPosts.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Articles liés
-              </h2>
-              <p className="text-gray-600">
-                Découvrez d&apos;autres articles sur des sujets similaires
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedPosts.map((relatedPost) => (
-                <Card
-                  key={relatedPost.slug}
-                  className="hover:shadow-lg transition-shadow"
-                >
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      <Link
-                        href={`/blog/${relatedPost.slug}`}
-                        className="hover:text-red-primary transition-colors"
-                      >
-                        {relatedPost.title}
-                      </Link>
-                    </h3>
-                    <p className="text-gray-600 text-sm line-clamp-2 mb-3">
-                      {relatedPost.excerpt}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <i className="lni lni-calendar w-3 h-3"></i>
-                      <span>
-                        {new Date(
-                          relatedPost.publishDate || ""
-                        ).toLocaleDateString("fr-FR", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
-      </main>
-    </div>
+          {/* CTA Contact */}
+          <ContactSectionSimple />
+        </main>
+      </div>
+    </>
   );
 }
