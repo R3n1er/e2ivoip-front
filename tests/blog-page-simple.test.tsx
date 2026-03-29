@@ -1,43 +1,37 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import Blog from "@/app/blog/page";
+// tests/blog-page-simple.test.tsx
+// Tests adaptés pour la nouvelle page Blog Server Component (ISR + HubSpot)
 
-const mockBlogResponse = {
-  posts: [],
-  total: 0,
-  metadata: {
-    authors: [],
-    years: [],
+import { render, screen } from "@testing-library/react";
+import BlogPage from "@/app/blog/page";
+
+jest.mock("@/lib/hubspot-blog", () => ({
+  getHubSpotBlogPosts: jest.fn().mockResolvedValue({
+    posts: [],
     tags: [],
-  },
-};
+    total: 0,
+    page: 1,
+    pageSize: 12,
+    hasNextPage: false,
+  }),
+}));
 
-describe("Blog Page - Test Simple", () => {
-  beforeEach(() => {
-    jest.spyOn(global, "fetch").mockResolvedValue({
-      ok: true,
-      json: async () => mockBlogResponse,
-    } as Response);
-  });
+const defaultSearchParams = Promise.resolve({
+  page: undefined,
+  q: undefined,
+  tag: undefined,
+});
 
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
+describe("Blog Page - Server Component", () => {
   it("se charge sans erreur", async () => {
-    const { container } = render(<Blog />);
-
-    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    const Component = await BlogPage({ searchParams: defaultSearchParams });
+    const { container } = render(Component);
     expect(container.querySelector("main")).toBeInTheDocument();
   });
 
   it("affiche le titre principal", async () => {
-    render(<Blog />);
-
-    const heading = await screen.findByRole("heading", {
-      level: 1,
-      name: /Blog E2I VoIP/i,
-    });
-
+    const Component = await BlogPage({ searchParams: defaultSearchParams });
+    render(Component);
+    const heading = screen.getByRole("heading", { level: 1, name: /Blog/i });
     expect(heading).toBeInTheDocument();
   });
 });
