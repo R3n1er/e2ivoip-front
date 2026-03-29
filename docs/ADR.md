@@ -10,6 +10,29 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-29 — Migration Blog Contentful -> HubSpot CMS API (ISR)
+
+- **Contexte** : L'integration Contentful pour le blog n'a jamais ete deployee en production (pas de variables d'environnement, pas de contenu importe). Le site actuel e2i-voip.com est heberge sur HubSpot et contient 11 articles de blog dans le portail 26878201. Decision de recuperer les articles directement depuis l'API Blog HubSpot CMS v3.
+- **Decision** :
+  - Suppression complete de l'integration Contentful (service, API routes, dependance npm `contentful`)
+  - Suppression des routes OAuth HubSpot (admin page, callback, test-scopes, test-connection)
+  - Implementation d'un service `lib/hubspot-blog.ts` fetchant l'API CMS HubSpot v3
+  - Pages blog en ISR (Incremental Static Regeneration) avec revalidation 10 minutes
+  - Contenu HTML HubSpot sanitise via `sanitize-html` (remplace `isomorphic-dompurify` incompatible SSR Next.js 15)
+  - Style contenu via `@tailwindcss/typography` + classe `.prose-monolithe` (Monolithe 2026)
+  - Schema JSON-LD (`BlogPosting`, `BreadcrumbList`, `CollectionPage`) sur chaque page
+  - Sitemap dynamique incluant les 11 articles et 11 tags
+  - Private App Token `pat-eu1-*` sur portail 26878201 (region EU1)
+- **Consequences** :
+  - Le blog affiche les articles HubSpot existants sans migration de contenu
+  - ISR garantit des Core Web Vitals optimaux (pages statiques CDN Vercel)
+  - La gestion editoriale reste dans HubSpot (pas de nouveau CMS a gerer)
+  - Dependance `contentful` supprimee du bundle
+- **Tests associes** :
+  - `tests/hubspot-blog-service.test.ts` — 7 tests service
+  - 334/334 tests Jest passent
+  - Build production OK
+
 ### 2026-03-29 — Redesign Chat PreOverlay Monolithe (Decisions Validees)
 
 - **Contexte** : Le template Stitch ne prevoit pas de composant livechat. Le widget ChatPreOverlay actuel utilise un gradient `red-primary to blue-marine`, des classes DaisyUI generiques (`input input-bordered`, `btn btn-ghost`, `btn btn-primary`), 5 champs de formulaire et un declenchement d'animation immediat au chargement. Ces choix divergent du Design System Monolithe 2026.

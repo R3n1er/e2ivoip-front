@@ -274,7 +274,30 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 
 ---
 
-## Phase 6 — Tests & Validation (Obligatoire apres chaque phase)
+## Phase 6 — Blog HubSpot ISR (2026-03-29)
+
+### 6.1 Migration Contentful -> HubSpot CMS Blog API
+
+**Decision** : Remplacer l'integration Contentful (jamais deployee) par l'API Blog HubSpot CMS du portail 26878201. ISR 10 minutes pour SEO/GEO optimal.
+
+**Actions** :
+- [x] Service `lib/hubspot-blog.ts` (types, fetch ISR 600s, mapping, slug cleanup) + 7 tests
+- [x] Blog list page ISR (`app/blog/page.tsx` — Server Component, recherche, filtres, pagination)
+- [x] Blog article page ISR (`app/blog/[slug]/page.tsx` + sanitize-html + prose-monolithe + JSON-LD)
+- [x] Blog category page ISR (`app/blog/categorie/[slug]/page.tsx`)
+- [x] 6 composants UI Monolithe (BlogPostCard, Breadcrumb, SocialShare, RelatedPosts, TagFilter, JsonLd)
+- [x] Styles prose-monolithe dans globals.css
+- [x] Sitemap dynamique avec URLs blog (11 articles + 11 tags)
+- [x] Suppression Contentful (lib, API routes, dependance npm)
+- [x] Suppression OAuth HubSpot (admin page, callback, test routes)
+- [x] Remplacement isomorphic-dompurify par sanitize-html (SSR-compatible)
+- [x] 334/334 tests Jest, build OK
+
+**Statut** : ✅ TERMINE
+
+---
+
+## Phase 7 — Tests & Validation (Obligatoire apres chaque phase)
 
 ### 6.1 Workflow de Validation
 
