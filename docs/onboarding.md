@@ -37,7 +37,18 @@ e2ivoip-front/
 └── agents.md            # Procédure de livraison
 ```
 
-## 4. Layout & navigation
+## 4. Design System Monolithe 2026
+
+> **IMPORTANT** : Le site suit le Design System "Monolithe Numerique" depuis mars 2026. Tout nouveau composant DOIT respecter ces regles.
+
+- **Philosophie Carree** : `border-radius: 0px` partout (force dans `tailwind.config.js`)
+- **Boutons** : `.monolith-btn` avec hard shadows opaques — jamais de `shadow-lg` ou `hover:scale-105`
+- **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
+- **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
+- **References** : `docs/Design.md`, `docs/CHARTE_GRAPHIQUE.md`, `.stitch/designs/landing-page-desktop.html`
+- **Agents** : `.claude/agents/` contient 5 agents (stitch-compliance, test-matcher, pre-commit-validator, content-writer-seo, security-guardian)
+
+## 5. Layout & navigation
 - `app/layout.tsx` applique les polices Geist, configure `HubSpotTracking`, `HotjarTracking`, `TawkTo`, et installe `HeaderSimple` + `Footer` sur tout le site.
 - `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) et drawer mobile. CTA contact via `CTAButton`.
 - `components/footer.tsx` rassemble branding, liens utilitaires, coordonnées (vérifier la cohérence des numéros région DOM/France).

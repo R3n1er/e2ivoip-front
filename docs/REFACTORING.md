@@ -3,7 +3,8 @@
 > **Objectif** : Améliorer la maintenabilité, réduire la duplication et optimiser les performances du site E2I VoIP
 
 **Date de création** : 2025-10-04
-**Statut global** : ✅ TERMINÉ - Toutes les phases complètes (6/6)
+**Derniere mise a jour** : 2026-03-29
+**Statut global** : ✅ TERMINÉ - Phases 1-6 completes + Design System Monolithe 2026
 
 ---
 
@@ -883,3 +884,30 @@ e2ivoip-front/
 - ✅ Testabilité : +40%
 - ✅ Documentation : +100%
 - ✅ DX (Developer Experience) : +60%
+
+---
+
+## 🏛️ Phase 7 : Design System Monolithe 2026 (Mars 2026)
+
+> Cette phase ne fait pas partie du plan de refactorisation initial (Phases 1-6) mais documente l'evolution majeure du Design System intervenue en mars 2026.
+
+### Contexte
+Suite a la validation du template Google Stitch "Monolithe Numerique", l'ensemble du site a ete realigne sur un Design System B2B Brutaliste : angles a 0px, hard shadows, typographie dense, palette stricte.
+
+### Changements structurels
+- **TanStack Query** : Supprime cote client (remplace par hooks custom dans `lib/hooks/forms/`)
+- **Chat PreOverlay** : V3 Monolithe (3 champs, Intersection Observer, rouge plein + hard shadow)
+- **Schema Zod** : Reduit de 5 a 3 champs (`firstName`, `email`, `company`)
+- **CSS** : Classes `.monolith-btn`, `.monolith-grid-lines`, `.bento-grid` ajoutees dans `globals.css`
+- **Tailwind** : `borderRadius` force a `0px` sur toutes les tailles dans `tailwind.config.js`
+
+### Documentation
+- `docs/Design.md` : Specs completes du Design System
+- `docs/CHARTE_GRAPHIQUE.md` : Palette et regles colorimetriques
+- `docs/implementation.md` : Plan d'implementation 10 phases (100% execute)
+- `docs/ADR.md` : Decisions architecturales documentees
+
+### Tests
+- 327/327 Jest (100%)
+- Build production OK
+- 3 agents Claude Code crees (stitch-compliance, test-matcher, pre-commit-validator)
