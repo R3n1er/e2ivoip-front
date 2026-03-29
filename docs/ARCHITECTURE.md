@@ -49,6 +49,7 @@ e2ivoip-front/
 │   │   │   └── use-chat-intake.ts
 │   │   └── ui/                   # Hooks UI
 │   │       └── use-image-optimization.ts
+│   ├── hubspot-blog.ts            # ✅ Service Blog HubSpot CMS API (ISR)
 │   ├── utils/                    # Utilitaires
 │   │   └── lazy-motion.tsx       # ✅ Lazy loading Framer Motion
 │   └── validation/               # Schémas de validation
@@ -189,7 +190,23 @@ import { useImageOptimization } from "@/lib/hooks/ui/use-image-optimization";
 
 ---
 
-### 4. Design System Monolithe 2026
+### 4. Blog HubSpot (ISR)
+
+**Service** : `lib/hubspot-blog.ts`
+**Pages** : `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`, `app/blog/categorie/[slug]/page.tsx`
+**Composants** : `components/blog/` (blog-post-card, blog-breadcrumb, blog-social-share, blog-related-posts, blog-tag-filter, blog-json-ld)
+
+Architecture : Server Components ISR (revalidation 10 minutes) fetchant l'API CMS HubSpot v3 (`/cms/v3/blogs/posts`, `/cms/v3/blogs/tags`) du portail 26878201. Pas d'API routes — fetch direct depuis les Server Components.
+
+- **Contenu** : HTML HubSpot sanitise via `sanitize-html` + style `.prose-monolithe` (`@tailwindcss/typography`)
+- **SEO** : `generateMetadata()` + JSON-LD (`BlogPosting`, `BreadcrumbList`, `CollectionPage`)
+- **Images** : `next/image` pour featured, `<img>` natif dans le contenu HTML
+- **Auth** : `HUBSPOT_ACCESS_TOKEN` (Private App Token `pat-eu1-*`) dans `.env`
+- **Ancien CMS** : Contentful supprime (lib, API routes, dependance npm)
+
+---
+
+### 5. Design System Monolithe 2026
 
 **Reference** : `docs/Design.md` + `docs/CHARTE_GRAPHIQUE.md` + `.stitch/designs/landing-page-desktop.html`
 
@@ -201,7 +218,7 @@ Le site utilise le Design System "Monolithe Numerique" (Structuralisme Brutalist
 - **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
 - **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
 
-### 5. Agents Claude Code
+### 6. Agents Claude Code
 
 **Emplacement** : `.claude/agents/`
 
@@ -394,8 +411,8 @@ import { Header } from "../../components/layout/header"; // ❌
 
 | Métrique | Statut |
 |----------|--------|
-| Tests unitaires | ✅ 309/309 (100%) |
-| Tests E2E | ✅ 32/32 (100%) |
+| Tests unitaires | ✅ 334/334 (100%) |
+| Tests E2E | ✅ 74/74 (100%) |
 | Régressions | ✅ 0 |
 
 ---
