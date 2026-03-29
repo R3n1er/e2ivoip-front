@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E2I Solutions | Téléphonie IP &amp; Solutions Télécom B2B</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #091421;
+            color: #d9e3f6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(43, 53, 68, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .monolith-grid-lines {
+            background-image: linear-gradient(to right, #5b403e 1px, transparent 1px),
+                              linear-gradient(to bottom, #5b403e 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+        }
+        .monolith-btn {
+            position: relative;
+            display: inline-block;
+            transition: transform 0.1s;
+        }
+        .monolith-btn::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            background-color: #050f1c;
+            bottom: -6px;
+            right: -6px;
+            width: 100%;
+            height: 100%;
+        }
+        .monolith-btn:active {
+            transform: translate(2px, 2px);
+        }
+        .monolith-btn:active::after {
+            bottom: -4px;
+            right: -4px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#bcc7db",
+              "secondary-fixed": "#d8e3f8",
+              "surface-container-highest": "#2b3544",
+              "tertiary-fixed-dim": "#c6c4dc",
+              "on-secondary-fixed-variant": "#3c4758",
+              "surface-bright": "#303a48",
+              "secondary": "#bcc7db",
+              "surface-container-low": "#121c2a",
+              "on-tertiary-fixed-variant": "#454559",
+              "on-error": "#690005",
+              "primary-fixed": "#ffdad7",
+              "surface-container-lowest": "#050f1c",
+              "primary-fixed-dim": "#ffb3ad",
+              "tertiary-container": "#908fa5",
+              "surface": "#091421",
+              "on-primary-container": "#5c0008",
+              "error-container": "#93000a",
+              "outline": "#aa8986",
+              "on-surface": "#d9e3f6",
+              "on-tertiary-container": "#28283a",
+              "inverse-surface": "#d9e3f6",
+              "on-primary-fixed-variant": "#930013",
+              "inverse-on-surface": "#27313f",
+              "surface-container-high": "#212b39",
+              "on-secondary": "#263141",
+              "background": "#091421",
+              "primary-container": "#ff5450",
+              "tertiary-fixed": "#e2e0f9",
+              "surface-container": "#16202e",
+              "on-primary": "#68000a",
+              "surface-tint": "#ffb3ad",
+              "on-secondary-container": "#aab6ca",
+              "surface-dim": "#091421",
+              "outline-variant": "#5b403e",
+              "primary": "#ffb3ad",
+              "on-primary-fixed": "#410004",
+              "on-surface-variant": "#e4beba",
+              "inverse-primary": "#b91c24",
+              "on-error-container": "#ffdad6",
+              "on-tertiary": "#2f2f41",
+              "error": "#ffb4ab",
+              "on-secondary-fixed": "#111c2b",
+              "on-tertiary-fixed": "#1a1a2b",
+              "on-background": "#d9e3f6",
+              "secondary-container": "#3c4758",
+              "tertiary": "#c6c4dc",
+              "surface-variant": "#2b3544"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 flex justify-between items-center w-full px-8 h-24 max-w-none bg-white transition-colors duration-300 border-b border-surface-container-highest/10 rounded-none">
+<div class="text-xl font-black text-surface-container-lowest tracking-tighter">
+        E2I Solutions
+    </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm text-on-secondary-fixed-variant hover:text-surface-container-lowest transition-all duration-200" href="#">Qui sommes-nous</a>
+<a class="font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm text-primary-container border-b-2 border-primary-container pb-1" href="#">Téléphonie d'entreprise</a>
+<a class="font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm text-on-secondary-fixed-variant hover:text-surface-container-lowest transition-all duration-200" href="#">Nos services</a>
+<a class="font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm text-on-secondary-fixed-variant hover:text-surface-container-lowest transition-all duration-200" href="#">Blog</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm text-on-secondary-fixed-variant hover:text-surface-container-lowest px-2 py-2 transition-all duration-200">
+            Devis en ligne
+        </button>
+<button class="monolith-btn bg-primary-container text-on-primary-container font-['Inter'] font-bold tracking-[-0.03em] uppercase text-sm px-8 py-3 rounded-none">
+            Contact
+        </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[800px] flex items-center overflow-hidden px-8 md:px-16">
+<div class="absolute inset-0 monolith-grid-lines pointer-events-none"></div>
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-10 gap-12 relative z-10">
+<!-- Left Content 60% -->
+<div class="md:col-span-6 flex flex-col justify-center">
+<h1 class="text-5xl md:text-7xl font-black tracking-[-0.04em] leading-tight mb-6">
+                    La téléphonie d’entreprise, <br/>
+<span class="text-primary">simple et évolutive</span>
+</h1>
+<p class="text-xl text-secondary max-w-xl mb-10 leading-relaxed">
+                    Accélérez votre transition vers le tout-IP avec des solutions de communication unifiées conçues pour la performance et la mobilité.
+                </p>
+<div class="flex">
+<button class="monolith-btn bg-primary-container text-on-primary-container px-10 py-5 text-sm font-bold uppercase tracking-widest rounded-none">
+                        Découvrir nos offres
+                    </button>
+</div>
+</div>
+<!-- Right Visual 40% -->
+<div class="md:col-span-4 relative flex items-center justify-center">
+<div class="absolute inset-0 bg-primary/10 -skew-x-12 translate-x-12"></div>
+<div class="relative w-full aspect-square bg-surface-container-high border border-outline-variant/20 p-8 flex flex-col justify-end space-y-6">
+<img alt="Infrastructure" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale mix-blend-overlay" data-alt="Modern server room with blue ambient lighting and sharp geometric server racks reflecting technical precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb33QPeET3wgJKLzwealF9P5hD2C4c6e0nLBD0TcBlv6cxqOiQH_DAcwmMI6C8zhCvVAGGTli5ApDD4FrCoquOSdB--rjsCCgyBSUNGyhBSYaaZ90Sh69clCaA9XmhSwfEGSTClhWI8wOtY3IoP8NBEbTlOowXIHcMoDN1LyeefnqW1dgybqrjjBiEKwFxaF61SYsn-ezg3ru5oQPrKJeXN40As6H0oSNn9tGbmidcLbjaXfQQPwJF-bDJlQuqd0U8S73HEUG285Q"/>
+<div class="relative z-10 space-y-8">
+<div class="bg-surface/90 p-6 border-l-4 border-primary">
+<span class="block text-4xl font-black text-primary leading-none">Plus de 100</span>
+<span class="text-xs uppercase tracking-widest font-bold text-secondary">Clients actifs</span>
+</div>
+<div class="bg-surface/90 p-6 border-l-4 border-secondary">
+<span class="block text-4xl font-black text-on-surface leading-none">+15 ans</span>
+<span class="text-xs uppercase tracking-widest font-bold text-secondary">D'expertise Télécom</span>
+</div>
+<div class="pt-4">
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary-fixed-dim">
+                                Guyane • Martinique • Guadeloupe • Réunion
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Logos Section (Solid White Background) -->
+<section class="py-24 bg-white border-y border-outline-variant/10">
+<div class="container mx-auto px-8 md:px-16">
+<h2 class="text-xl md:text-3xl font-black tracking-[0.2em] uppercase text-surface-container-lowest mb-16 text-center">Ils nous font confiance</h2>
+<div class="grid grid-cols-2 md:grid-cols-6 gap-12 items-center opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+<div class="flex justify-center"><div class="h-12 w-32 bg-surface-container-highest/20"></div></div>
+</div>
+</div>
+</section>
+<!-- Solutions Section (White Background Contrast) -->
+<section class="py-24 px-8 md:px-16 bg-white text-surface-container-lowest">
+<div class="container mx-auto">
+<div class="flex justify-between items-end mb-16">
+<h2 class="text-5xl font-black tracking-tighter uppercase text-surface-dim">Nos Solutions Phares</h2>
+<div class="h-2 w-32 bg-primary-container"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Module 1 -->
+<div class="md:col-span-2 bg-[#f4f7fa] p-12 flex flex-col justify-between min-h-[450px] border border-secondary/10">
+<div>
+<span class="material-symbols-outlined text-5xl mb-8 text-primary-container">cloud_done</span>
+<h3 class="text-3xl font-black mb-6 uppercase text-surface-dim">3CX PRO &amp; ENTREPRISE</h3>
+<p class="text-on-secondary-fixed-variant text-xl max-w-lg leading-relaxed font-medium">
+                            Le standard téléphonique IP nouvelle génération. Un PBX cloud dédié pour une flexibilité totale et une réduction massive de vos coûts.
+                        </p>
+</div>
+<div class="mt-8 flex">
+<button class="monolith-btn bg-surface-dim text-white font-black uppercase text-xs tracking-[0.2em] px-10 py-5">
+                            En savoir plus
+                        </button>
+</div>
+</div>
+<!-- Module 2 -->
+<div class="bg-surface-dim p-12 flex flex-col justify-between text-white">
+<div>
+<span class="material-symbols-outlined text-4xl mb-6 text-primary">phone_forwarded</span>
+<h3 class="text-2xl font-black mb-4 uppercase">Trunk SIP</h3>
+<p class="text-secondary text-sm leading-relaxed mb-8">
+                            Conservez vos numéros actuels et profitez de la portabilité gratuite vers notre infrastructure haute disponibilité.
+                        </p>
+</div>
+<div class="flex">
+<button class="monolith-btn bg-white text-surface-dim font-black uppercase text-[10px] tracking-widest px-8 py-4">
+                            Voir les tarifs
+                        </button>
+</div>
+</div>
+<!-- Module 3 (Photo Visual) -->
+<div class="md:col-span-2 relative p-12 flex flex-col justify-center min-h-[450px] overflow-hidden group">
+<img alt="High Performance Tech" class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQsDiFDCrbWOnBQqwBpeCFe9_RwJHL4rvWFYlPmTDfl2e1LCZRfCVvpqRJmiN0lcVuyZASaYdV4ReM5wqfT8xodkcA0mb7HunrtssD-_qnDf-Uis9ss2TDWVIAQJdksO9c2FnUrWr35Zdbe-Jba37R34JEM6ImRA9dQGbw_nnbvhdYiMP2Nkgj0_ckvAnZ2NbyM3eqeK8HTY-HAmcP5_8an99jnid8QgadoouTEGeWAtQwzIZNZCdbZQUsQeG3kRyenovvE1D0gc"/>
+<div class="absolute inset-0 bg-surface-dim/80 backdrop-blur-sm"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-6 text-primary">smart_toy</span>
+<h3 class="text-3xl font-black mb-4 uppercase text-white">Assistants Vocaux IA</h3>
+<p class="text-secondary text-lg max-w-lg leading-relaxed mb-8">
+                            Automatisez votre accueil téléphonique 24h/24 et 7j/7 grâce à notre intelligence artificielle conversationnelle de pointe.
+                        </p>
+<div class="flex space-x-4">
+<div class="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
+                                Réception Illimitée
+                            </div>
+<div class="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
+                                Analyse Sémantique
+                            </div>
+</div>
+</div>
+</div>
+<!-- Module 4 -->
+<div class="bg-primary-container p-12 flex flex-col justify-between text-on-primary-container">
+<div>
+<span class="material-symbols-outlined text-4xl mb-6">mic_external_on</span>
+<h3 class="text-2xl font-black mb-4 uppercase">Studio d'Enregistrement</h3>
+<p class="text-on-primary/80 text-sm leading-relaxed mb-8">
+                            Voix-off professionnelles et musiques libres de droits pour une image de marque irréprochable.
+                        </p>
+</div>
+<div class="flex">
+<button class="monolith-btn bg-white text-on-primary-container px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em]">
+                            Écouter les démos
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section (White Background Contrast) -->
+<section class="py-32 px-8 bg-white border-t border-outline-variant/10">
+<div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+<div class="space-y-3">
+<span class="block text-6xl font-black tracking-tighter text-surface-dim">99.9%</span>
+<span class="text-[10px] uppercase font-black tracking-[0.3em] text-secondary">Disponibilité</span>
+</div>
+<div class="space-y-3">
+<span class="block text-6xl font-black tracking-tighter text-primary-container">0€</span>
+<span class="text-[10px] uppercase font-black tracking-[0.3em] text-secondary">Frais d'activation</span>
+</div>
+<div class="space-y-3">
+<span class="block text-6xl font-black tracking-tighter text-surface-dim">24/7</span>
+<span class="text-[10px] uppercase font-black tracking-[0.3em] text-secondary">Support technique</span>
+</div>
+<div class="space-y-3">
+<span class="block text-6xl font-black tracking-tighter text-primary-container">+12k</span>
+<span class="text-[10px] uppercase font-black tracking-[0.3em] text-secondary">Lignes actives</span>
+</div>
+</div>
+</section>
+<!-- Final CTA Section (Dark Section to alternate) -->
+<section class="py-24 px-8 bg-surface-dim relative overflow-hidden">
+<div class="absolute inset-0 monolith-grid-lines"></div>
+<div class="container mx-auto text-center relative z-10">
+<h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12">Prêt à moderniser vos <br/><span class="text-primary">communications ?</span></h2>
+<div class="flex justify-center gap-6">
+<button class="monolith-btn bg-primary-container text-on-primary-container px-12 py-6 text-sm font-black uppercase tracking-widest">
+                    Demander une étude gratuite
+                </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (White Background) -->
+<footer class="w-full py-20 px-8 flex flex-col bg-white text-surface-container-lowest">
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 items-start mb-16">
+<!-- Brand -->
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-black text-surface-container-lowest mb-6 tracking-tighter">E2I Solutions</div>
+<p class="text-on-secondary-fixed-variant font-['Inter'] text-sm leading-relaxed mb-8">
+                Architectes de vos communications unifiées. Solutions télécoms haute performance pour les entreprises exigeantes depuis plus de 15 ans.
+            </p>
+<div class="flex space-x-5">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant cursor-pointer hover:text-primary-container transition-colors">language</span>
+<span class="material-symbols-outlined text-on-secondary-fixed-variant cursor-pointer hover:text-primary-container transition-colors">hub</span>
+<span class="material-symbols-outlined text-on-secondary-fixed-variant cursor-pointer hover:text-primary-container transition-colors">security</span>
+</div>
+</div>
+<!-- Links -->
+<div class="col-span-1">
+<h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-primary-container mb-8">Solutions</h4>
+<div class="flex flex-col space-y-4">
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Téléphonie Cloud</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Trunk SIP</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Internet Pro</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Communications Unifiées</a>
+</div>
+</div>
+<div class="col-span-1">
+<h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-primary-container mb-8">Entreprise</h4>
+<div class="flex flex-col space-y-4">
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Qui sommes-nous</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Nos services</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Blog</a>
+<a class="text-on-secondary-fixed-variant font-['Inter'] text-sm hover:text-surface-container-lowest transition-colors" href="#">Contact</a>
+</div>
+</div>
+<!-- Newsletter -->
+<div class="col-span-1">
+<h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-primary-container mb-8">Actualités</h4>
+<div class="flex flex-col space-y-4">
+<p class="text-on-secondary-fixed-variant text-xs leading-relaxed">
+                    Recevez nos études de cas et nouveautés IP directement par email.
+                </p>
+<div class="flex">
+<input class="bg-surface-container-lowest/5 border border-secondary/20 text-surface-container-lowest text-sm px-4 py-4 w-full focus:ring-1 focus:ring-primary-container rounded-none" placeholder="Votre email" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm font-bold">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sub Footer -->
+<div class="container mx-auto pt-10 border-t border-secondary/10 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-secondary-fixed-variant">
+<div>© 2024 E2I Solutions. Tous droits réservés.</div>
+<div class="flex space-x-8 mt-6 md:mt-0">
+<a class="hover:text-surface-container-lowest transition-colors" href="#">Mentions Légales</a>
+<a class="hover:text-surface-container-lowest transition-colors" href="#">RGPD</a>
+<a class="hover:text-surface-container-lowest transition-colors" href="#">Plan du site</a>
+</div>
+</div>
+</footer>
+</body></html>

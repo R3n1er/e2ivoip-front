@@ -55,19 +55,19 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /Économisez 30%/i,
+        name: /La téléphonie d'entreprise/i,
       })
     ).toBeInTheDocument();
 
     // Vérifier que le badge est présent
     expect(
-      screen.getByText("Opérateur télécom DOM • Plus de 100 clients")
+      screen.getByText("Opérateur télécom DOM · Plus de 100 clients")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
     expect(
       screen.getByText(
-        /Trunk SIP éligible DOM • Création et portabilité de numéros locaux/
+        /Accélérez votre transition vers le tout-IP avec des solutions de communication/i
       )
     ).toBeInTheDocument();
   });
@@ -83,27 +83,27 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les statistiques", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("100+")).toBeInTheDocument();
+    expect(screen.getByText("Plus de 100")).toBeInTheDocument();
     expect(
-      screen.getByText("Entreprises nous font confiance")
+      screen.getByText("Clients actifs")
     ).toBeInTheDocument();
-    expect(screen.getByText("15+")).toBeInTheDocument();
-    expect(screen.getByText("Années d'expertise télécom")).toBeInTheDocument();
+    expect(screen.getByText("+15 ans")).toBeInTheDocument();
+    expect(screen.getByText("D'expertise Télécom")).toBeInTheDocument();
   });
 
   it("affiche les boutons CTA", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Calculez vos économies")).toBeInTheDocument();
+    expect(screen.getByText("Découvrir nos offres")).toBeInTheDocument();
     expect(
-      screen.getByText("Découvrez nos offres Trunk SIP")
+      screen.getByText("Nous contacter")
     ).toBeInTheDocument();
   });
 
   it("contient les blocs asymétriques décoratifs", () => {
     render(<HomepageHeroSectionSimple />);
 
-    const skewBlock = document.querySelector(".skew-x-\\[-5deg\\]");
+    const skewBlock = document.querySelector(".-skew-x-3");
     expect(skewBlock).toBeInTheDocument();
   });
 });

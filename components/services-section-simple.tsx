@@ -1,165 +1,130 @@
 "use client";
 
-import { CTAButton } from "@/components/ui/cta-button";
 import Link from "next/link";
 
 export function ServicesSectionSimple() {
-  const services = [
-    {
-      icon: "lni-cloud",
-      title: "Trunk SIP DOM",
-      description:
-        "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
-      features: [
-        "Économies jusqu'à 30%",
-        "Numéros locaux garantis",
-        "Portabilité gratuite",
-        "Support technique local",
-        "2 appels simultanés inclus",
-      ],
-      badge: "Populaire",
-      price: "À partir de 2 canaux voix",
-      href: "/telephonie-entreprise/trunk-sip-compteur",
-    },
-    {
-      icon: "lni-users",
-      title: "3CX SMB PRO",
-      description:
-        "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
-      features: [
-        "Instance sécurisée pro",
-        "Formation incluse",
-        "Support utilisateur dédié",
-        "Interface intuitive",
-      ],
-      badge: "Idéal PME",
-      price: "15€/mois/utilisateur",
-      href: "/telephonie-entreprise/3cx-smb-pro",
-    },
-    {
-      icon: "lni-phone",
-      title: "3CX PRO Cloud",
-      description:
-        "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
-      features: [
-        "Serveur dédié dans le cloud",
-        "4 appels simultanés minimum",
-        "Multi-sites",
-        "Tableau de bord avancé",
-      ],
-      badge: "Entreprise",
-      price: "Sur devis",
-      href: "/3cx-cloud",
-    },
-    {
-      icon: "lni-comments",
-      title: "Assistants Vocaux IA",
-      description:
-        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
-      features: [
-        "Accueil 24/7",
-        "Compréhension naturelle",
-        "Transcription automatique",
-        "Intégration CRM",
-      ],
-      badge: "Innovation",
-      price: "Sur devis",
-      href: "/nos-services/assistants-vocaux-ia",
-    },
-    {
-      icon: "lni-bar-chart",
-      title: "Studio d'Enregistrement",
-      description:
-        "Messages vocaux professionnels et musiques personnalisées pour votre standard",
-      features: [
-        "Voix professionnelles",
-        "Musiques libres de droits",
-        "Messages sur mesure",
-        "Qualité studio",
-      ],
-      badge: "Pro",
-      price: "À partir de 50€",
-      href: "/nos-services/studio-attente",
-    },
-  ];
-
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Nos solutions de
-            <span className="text-red-primary"> téléphonie IP</span>
-          </h2>
-          <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
-            Des solutions complètes pour transformer votre téléphonie
-            d'entreprise : économies garanties et fonctionnalités
-            nouvelle génération.
-          </p>
+    <section id="services" className="py-24 px-4 sm:px-8 lg:px-16 bg-white text-[#091421]">
+      <div className="max-w-7xl mx-auto">
 
+        {/* Titre de section — aligné gauche + barre rouge */}
+        <div className="flex justify-between items-end mb-16">
+          <h2 className="text-5xl font-black tracking-tighter uppercase text-[#091421]">Nos Solutions Phares</h2>
+          <div className="h-2 w-32 bg-red-primary"></div>
         </div>
 
-        {/* Services Bento Box */}
-        <div className="bento-grid mb-12">
-          {services.map((service, index) => {
-            let layoutClass = "bento-item";
-            if (index === 0) layoutClass += " bento-item-large bg-gray-50";
-            else if (index === 1) layoutClass += " bento-item-wide bg-blue-marine text-white";
-            else if (index === 2) layoutClass += " bento-item";
-            else if (index === 3) layoutClass += " bento-item bg-red-primary text-white";
-            else if (index === 4) layoutClass += " lg:col-span-4 bg-gray-dark text-white";
+        {/* Grille 3 colonnes Stitch */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            const isDark = index === 1 || index === 3 || index === 4;
-
-            return (
-              <div
-                key={index}
-                className={`${layoutClass} group cursor-pointer p-8 flex flex-col justify-between`}
-              >
-                <div>
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`w-14 h-14 rounded-none flex items-center justify-center transition-colors duration-200 ${isDark ? 'bg-white/10' : 'bg-red-primary/10 group-hover:bg-red-primary/20'}`}>
-                      <i className={`lni ${service.icon} text-2xl ${isDark ? 'text-white' : 'text-red-primary'} group-hover:scale-110 transition-transform duration-200`}></i>
-                    </div>
-                    <div className={`px-3 py-1 rounded-none text-xs font-bold uppercase tracking-wider ${isDark ? 'bg-white/20 text-white' : 'bg-blue-marine text-white'}`}>
-                      {service.badge}
-                    </div>
-                  </div>
-
-                  <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-dark'}`}>
-                    {service.title}
-                  </h3>
-
-                  <p className={`text-sm md:text-base leading-relaxed mb-6 block ${isDark ? 'text-white/80' : 'text-gray-secondary'}`}>
-                    {service.description}
-                  </p>
-                  
-                  {(index === 0 || index === 4) && ( /* Show features on large items */
-                    <div className={`grid ${index === 4 ? 'md:grid-cols-2 md:gap-x-8' : ''} space-y-3 md:space-y-0 md:gap-y-3 mb-8`}>
-                      {service.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center text-sm">
-                          <i className={`lni lni-checkmark-circle mr-3 flex-shrink-0 text-lg ${isDark ? 'text-white' : 'text-red-primary'}`}></i>
-                          <span className={`font-medium ${isDark ? 'text-white/90' : 'text-gray-dark'}`}>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-auto pt-6 border-t border-current/10 flex items-center justify-between">
-                  <span className={`text-lg font-black ${isDark ? 'text-white' : 'text-red-primary'}`}>
-                    {service.price}
-                  </span>
-                  <Link href={service.href} className={`inline-flex items-center justify-center w-12 h-12 rounded-none transition-all duration-300 group-hover:scale-110 ${isDark ? 'bg-white text-gray-dark hover:bg-gray-100' : 'bg-gray-dark text-white hover:bg-red-primary'}`}>
-                    <i className="lni lni-arrow-right"></i>
-                  </Link>
-                </div>
+          {/* ── Module 1 : 3CX PRO (2 colonnes, fond clair) ── */}
+          <div className="md:col-span-2 bg-[#f4f7fa] p-10 lg:p-12 flex flex-col justify-between min-h-[450px]">
+            <div>
+              <div className="w-12 h-12 bg-red-primary/10 flex items-center justify-center mb-8">
+                <i className="lni lni-cloud text-2xl text-red-primary" aria-hidden="true" />
               </div>
-            );
-          })}
-        </div>
+              <h3 className="text-2xl lg:text-3xl font-black mb-5 uppercase text-[#091421]">
+                3CX PRO &amp; ENTREPRISE
+              </h3>
+              <p className="text-gray-600 text-base max-w-lg leading-relaxed">
+                Le standard téléphonique IP nouvelle génération. Un PBX cloud dédié
+                pour una flexibilité totale et une réduction massive de vos coûts.
+                Idéal pour les PME multisites.
+              </p>
+            </div>
+            <div className="mt-8">
+              <Link href="/telephonie-entreprise/3cx-pro-dediee" className="monolith-btn">
+                <span className="block bg-[#091421] text-white font-black uppercase text-xs tracking-[0.2em] px-8 py-4">
+                  En savoir plus
+                </span>
+              </Link>
+            </div>
+          </div>
 
+          {/* ── Module 2 : Trunk SIP (1 colonne, fond sombre) ── */}
+          <div className="bg-[#091421] p-10 lg:p-12 flex flex-col justify-between min-h-[450px] text-white">
+            <div>
+              <div className="w-12 h-12 bg-red-primary/20 flex items-center justify-center mb-8">
+                <i className="lni lni-phone-set text-2xl text-red-primary" aria-hidden="true" />
+              </div>
+              <h3 className="text-xl lg:text-2xl font-black mb-4 uppercase">
+                Trunk SIP
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Conservez vos numéros actuels et profitez de la portabilité gratuite.
+                Éligible DOM — Guyane, Martinique, Guadeloupe, Réunion.
+              </p>
+            </div>
+            <div className="mt-8">
+              <Link href="/telephonie-entreprise/trunk-sip-compteur" className="monolith-btn">
+                <span className="block bg-white text-[#091421] font-black uppercase text-[10px] tracking-[0.2em] px-8 py-4">
+                  Voir les offres
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* ── Module 3 : Assistants IA (2 colonnes, image + overlay) ── */}
+          <div className="md:col-span-2 relative p-10 lg:p-12 flex flex-col justify-end min-h-[450px] overflow-hidden">
+            <img
+              src="/images/photos/pexels-ola-dapo-1754561-3345882-min.jpg"
+              alt="Assistants Vocaux IA E2I VoIP"
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to top, #091421 40%, rgba(9,20,33,0.5) 100%)" }}
+              aria-hidden="true"
+            />
+            <div className="relative z-10">
+              <div className="w-10 h-10 bg-red-primary/20 flex items-center justify-center mb-6">
+                <i className="lni lni-comments-alt text-xl text-red-primary" aria-hidden="true" />
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-black mb-4 uppercase text-white">
+                Assistants Vocaux IA
+              </h3>
+              <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-lg">
+                Automatisez votre accueil téléphonique 24h/24 et 7j/7 grâce à
+                notre intelligence artificielle conversationnelle.
+              </p>
+              <div className="flex gap-3 flex-wrap">
+                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
+                  Réception Illimitée
+                </span>
+                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
+                  Analyse Sémantique
+                </span>
+                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
+                  Intégration CRM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Module 4 : Studio (1 colonne, fond rouge) ── */}
+          <div className="bg-red-primary p-10 lg:p-12 flex flex-col justify-between min-h-[450px] text-white">
+            <div>
+              <div className="w-12 h-12 bg-white/20 flex items-center justify-center mb-8">
+                <i className="lni lni-microphone text-2xl text-white" aria-hidden="true" />
+              </div>
+              <h3 className="text-xl lg:text-2xl font-black mb-4 uppercase">
+                Studio d&apos;Enregistrement
+              </h3>
+              <p className="text-red-100 text-sm leading-relaxed">
+                Voix-off professionnelles et musiques libres de droits pour une
+                image de marque irréprochable.
+              </p>
+            </div>
+            <div className="mt-8">
+              <Link href="/nos-services/studio-attente" className="monolith-btn">
+                <span className="block bg-white text-red-primary font-black uppercase text-[10px] tracking-[0.2em] px-8 py-4">
+                  Écouter les démos
+                </span>
+              </Link>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

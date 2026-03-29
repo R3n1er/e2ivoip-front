@@ -10,32 +10,18 @@
 import { z } from "zod";
 
 /**
- * Schéma de validation pour le formulaire de pré-chat
+ * Schema de validation pour le formulaire de pre-chat (V3 Monolithe 2026)
  *
- * Règles de validation :
- * - firstName : requis, minimum 2 caractères
- * - lastName : requis, minimum 2 caractères
- * - company : requis, minimum 2 caractères
+ * Reduit a 3 champs pour minimiser la friction :
+ * - firstName : requis, minimum 2 caracteres
  * - email : requis, format email valide
- * - phone : optionnel, format français/international si fourni
+ * - company : requis, minimum 2 caracteres
  */
 export const chatIntakeSchema = z.object({
   firstName: z
     .string()
     .min(2, "Le prénom doit contenir au moins 2 caractères")
     .max(50, "Le prénom ne peut pas dépasser 50 caractères")
-    .trim(),
-
-  lastName: z
-    .string()
-    .min(2, "Le nom doit contenir au moins 2 caractères")
-    .max(50, "Le nom ne peut pas dépasser 50 caractères")
-    .trim(),
-
-  company: z
-    .string()
-    .min(2, "Le nom de l'entreprise doit contenir au moins 2 caractères")
-    .max(100, "Le nom de l'entreprise ne peut pas dépasser 100 caractères")
     .trim(),
 
   email: z
@@ -46,21 +32,11 @@ export const chatIntakeSchema = z.object({
     .trim()
     .toLowerCase(),
 
-  phone: z
+  company: z
     .string()
-    .optional()
-    .refine(
-      (val) => {
-        if (!val || val.trim() === "") return true;
-        // Regex simple pour téléphones français/internationaux
-        const phoneRegex = /^[\d\s\+\-\(\)]{8,20}$/;
-        return phoneRegex.test(val);
-      },
-      {
-        message:
-          "Le numéro de téléphone n'est pas valide (8-20 caractères, chiffres et +()-)",
-      }
-    ),
+    .min(2, "Le nom de l'entreprise doit contenir au moins 2 caractères")
+    .max(100, "Le nom de l'entreprise ne peut pas dépasser 100 caractères")
+    .trim(),
 });
 
 /**
@@ -70,10 +46,8 @@ export const chatIntakeSchema = z.object({
  * ```typescript
  * const formData: ChatIntakeFormData = {
  *   firstName: "John",
- *   lastName: "Doe",
- *   company: "Acme Inc",
  *   email: "john@acme.com",
- *   phone: "+33 1 23 45 67 89"
+ *   company: "Acme Inc",
  * };
  * ```
  */
@@ -108,24 +82,16 @@ export const chatIntakeErrorMessages = {
     tooShort: "Le prénom est trop court (min. 2 caractères)",
     tooLong: "Le prénom est trop long (max. 50 caractères)",
   },
-  lastName: {
-    required: "Le nom est obligatoire",
-    tooShort: "Le nom est trop court (min. 2 caractères)",
-    tooLong: "Le nom est trop long (max. 50 caractères)",
-  },
-  company: {
-    required: "Le nom de l'entreprise est obligatoire",
-    tooShort: "Le nom de l'entreprise est trop court (min. 2 caractères)",
-    tooLong: "Le nom de l'entreprise est trop long (max. 100 caractères)",
-  },
   email: {
     required: "L'email est obligatoire",
     invalid: "L'adresse email n'est pas valide",
     tooShort: "L'email est trop court",
     tooLong: "L'email est trop long (max. 100 caractères)",
   },
-  phone: {
-    invalid: "Le numéro de téléphone n'est pas valide",
+  company: {
+    required: "Le nom de l'entreprise est obligatoire",
+    tooShort: "Le nom de l'entreprise est trop court (min. 2 caractères)",
+    tooLong: "Le nom de l'entreprise est trop long (max. 100 caractères)",
   },
 } as const;
 

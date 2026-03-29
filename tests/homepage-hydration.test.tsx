@@ -19,12 +19,16 @@ jest.mock("@/components/services-section-simple", () => ({
   ),
 }));
 
-jest.mock("@/components/about-section-simple", () => ({
-  AboutSectionSimple: () => <section data-testid="about">À propos</section>,
-}));
-
 jest.mock("@/components/clients-carousel", () => ({
   ClientsCarousel: () => <div data-testid="clients">Clients</div>,
+}));
+
+jest.mock("@/components/partners-section", () => ({
+  PartnersSection: () => <div data-testid="partners">Partners</div>,
+}));
+
+jest.mock("@/components/stats-section", () => ({
+  StatsSection: () => <div data-testid="stats">Stats</div>,
 }));
 
 jest.mock("@/components/contact-section-simple", () => ({
@@ -58,9 +62,10 @@ describe("HomePage - Test d'hydratation", () => {
 
     // Vérifier que toutes les sections sont présentes
     expect(screen.getByTestId("homepage-hero")).toBeInTheDocument();
-    expect(screen.getByTestId("about")).toBeInTheDocument();
-    expect(screen.getByTestId("services")).toBeInTheDocument();
     expect(screen.getByTestId("clients")).toBeInTheDocument();
+    expect(screen.getByTestId("partners")).toBeInTheDocument();
+    expect(screen.getByTestId("services")).toBeInTheDocument();
+    expect(screen.getByTestId("stats")).toBeInTheDocument();
     expect(screen.getByTestId("contact")).toBeInTheDocument();
   });
 
@@ -73,13 +78,12 @@ describe("HomePage - Test d'hydratation", () => {
     );
 
     // Vérifier la structure principale (div au lieu de main)
-    const mainContainer = container.querySelector("div");
+    const mainContainer = container.querySelector("main");
     expect(mainContainer).toBeInTheDocument();
-    expect(mainContainer).toHaveClass("min-h-screen");
+    expect(mainContainer).toHaveClass("bg-white"); // Ou bg-white selon la page, on vérifie juste qu'il existe et a des classes
 
-    // Vérifier les éléments décoratifs
-    const decorativeElements = container.querySelectorAll(".animate-blob");
-    expect(decorativeElements.length).toBeGreaterThan(0);
+    // Vérifier les classes de base
+    expect(mainContainer).toHaveClass("min-h-screen");
   });
 
   it("applique les classes CSS correctement", () => {
@@ -90,8 +94,8 @@ describe("HomePage - Test d'hydratation", () => {
       </QueryClientProvider>
     );
 
-    const mainContainer = container.querySelector("div");
+    const mainContainer = container.querySelector("main");
     expect(mainContainer).toHaveClass("min-h-screen");
-    expect(mainContainer).toHaveClass("bg-gradient-to-br");
+    expect(mainContainer).toHaveClass("bg-white");
   });
 });

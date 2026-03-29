@@ -1,20 +1,15 @@
 "use client";
 
 /**
- * Composant ChatPreOverlay refactorisé avec React Hook Form + Zod
+ * ChatPreOverlay — Design System Monolithe 2026
  *
- * Améliorations par rapport à la version précédente :
- * - Validation robuste avec Zod
- * - Gestion d'état simplifiée avec React Hook Form
- * - Messages d'erreur personnalisés
- * - Performance optimisée (moins de re-renders)
- * - Code plus maintenable
- * - Sans TanStack Query (utilise une fonction async simple)
+ * Bouton rouge plein + hard shadow, formulaire 3 champs (Prenom, Email, Entreprise),
+ * animation declenchee par Intersection Observer post-Hero.
  *
- * @see docs/REFACTORING.md - Phase 4
+ * @see docs/Design.md - Section 7.5bis
  */
 
-import React, { useState, memo, useCallback } from "react";
+import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { submitChatIntake } from "@/lib/api/chat-intake";
@@ -26,44 +21,56 @@ import {
 export const ChatPreOverlay = memo(function ChatPreOverlay() {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [animationStopped, setAnimationStopped] = useState(false);
+  const [scrollTriggered, setScrollTriggered] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
-  // Log pour debug
-  React.useEffect(() => {
-    console.log("✅ ChatPreOverlay monté et prêt");
-  }, []);
+  // Intersection Observer — declenche l'animation quand on scrolle apres le Hero
+  useEffect(() => {
+    if (animationStopped || scrollTriggered) return;
 
-  // Animation de vibration par cycles : vibration 3s → pause 2s → répéter
-  // Arrêt définitif après 20 secondes
-  React.useEffect(() => {
-    if (animationStopped) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !scrollTriggered) {
+          setScrollTriggered(true);
+          setIsAnimating(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    const VIBRATION_DURATION = 3000; // 3 secondes de vibration
-    const PAUSE_DURATION = 2000; // 2 secondes de pause
-    const TOTAL_DURATION = 20000; // 20 secondes maximum
+    // Observer le sentinel place apres le Hero dans le DOM
+    // On cible le deuxieme <section> de la page (apres le Hero)
+    const sections = document.querySelectorAll("main > section, main > div > section");
+    if (sections.length > 1) {
+      observer.observe(sections[1]);
+    }
 
-    let currentCycleTimeout: NodeJS.Timeout;
+    return () => observer.disconnect();
+  }, [animationStopped, scrollTriggered]);
+
+  // Animation par cycles : vibration 3s -> pause 2s -> repeter (20s total)
+  useEffect(() => {
+    if (!scrollTriggered || animationStopped) return;
+
+    const VIBRATION_DURATION = 3000;
+    const PAUSE_DURATION = 2000;
+    const TOTAL_DURATION = 20000;
+
     const allTimers: NodeJS.Timeout[] = [];
 
-    // Timer global pour arrêter après 20 secondes
     const stopTimer = setTimeout(() => {
       setIsAnimating(false);
       setAnimationStopped(true);
     }, TOTAL_DURATION);
     allTimers.push(stopTimer);
 
-    // Fonction pour gérer les cycles vibration/pause
     const runAnimationCycle = () => {
-      // Phase 1: Vibration (3s)
       setIsAnimating(true);
-
       const vibrationTimer = setTimeout(() => {
-        // Phase 2: Pause (2s)
         setIsAnimating(false);
-
         const pauseTimer = setTimeout(() => {
-          // Répéter le cycle
           runAnimationCycle();
         }, PAUSE_DURATION);
         allTimers.push(pauseTimer);
@@ -71,16 +78,13 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
       allTimers.push(vibrationTimer);
     };
 
-    // Démarrer le premier cycle immédiatement
     runAnimationCycle();
 
     return () => {
-      // Nettoyer tous les timers
       allTimers.forEach((timer) => clearTimeout(timer));
     };
-  }, [animationStopped]);
+  }, [scrollTriggered, animationStopped]);
 
-  // Configuration React Hook Form avec Zod
   const {
     register,
     handleSubmit,
@@ -88,26 +92,20 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
     reset,
   } = useForm<ChatIntakeFormData>({
     resolver: zodResolver(chatIntakeSchema),
-    mode: "onChange", // Validation en temps réel
+    mode: "onChange",
   });
 
-  /**
-   * Soumission du formulaire
-   * Mémorisé avec useCallback pour optimiser les re-renders
-   */
   const onSubmit = useCallback(
     async (data: ChatIntakeFormData) => {
       try {
         setIsSubmitting(true);
 
-        // Envoi des données à l'API
         await submitChatIntake({
           ...data,
           pageUrl: window.location.href,
           source: "website-prechat",
         });
 
-        // Identification HubSpot côté client
         try {
           (window as any)._hsq = (window as any)._hsq || [];
           (window as any)._hsq.push([
@@ -115,17 +113,13 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
             {
               email: data.email,
               firstname: data.firstName,
-              lastname: data.lastName,
-              phone: data.phone || "",
             },
           ]);
-          // Ne pas ouvrir automatiquement le widget de conversation HubSpot
           (window as any).HubSpotConversations?.widget?.hide?.();
         } catch (err) {
           console.error("Erreur identification HubSpot:", err);
         }
 
-        // Fermeture de l'overlay et reset du formulaire
         setOpen(false);
         reset();
       } catch (error) {
@@ -137,50 +131,40 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
     [reset]
   );
 
-  /**
-   * Annulation et fermeture
-   * Mémorisé avec useCallback
-   * Arrête définitivement l'animation
-   */
   const handleCancel = useCallback(() => {
     setOpen(false);
     reset();
-    // Arrêter définitivement l'animation
     setIsAnimating(false);
     setAnimationStopped(true);
   }, [reset]);
 
   return (
     <div className="fixed bottom-6 right-6 z-[9999]">
-      {/* Bouton pour ouvrir le chat */}
+      {/* Bouton Monolithe Primaire */}
       {!open && (
         <div className="flex flex-col items-end gap-3">
-          {/* Texte "Une question?" */}
+          {/* Texte "Une question ?" — style industriel Stitch */}
           <div
             className={`
-              bg-white px-4 py-2 rounded-none shadow-lg border border-gray-200
+              bg-white px-4 py-2 rounded-none shadow-[3px_3px_0_0_#1F2937] border border-gray-200
               ${isAnimating ? "animate-bounce" : ""}
             `}
           >
-            <p className="text-sm font-semibold text-gray-800 whitespace-nowrap">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#091421] whitespace-nowrap">
               Une question ?
             </p>
           </div>
 
-          {/* Bouton chat agrandi */}
+          {/* Bouton chat — Monolithe Primaire rouge plein + hard shadow */}
           <button
             onClick={() => {
-              console.log("ChatPreOverlay: Bouton cliqué");
               setOpen(true);
-              // Arrêter définitivement l'animation au clic
               setIsAnimating(false);
               setAnimationStopped(true);
             }}
             className={`
-              shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1
-              rounded-none w-20 h-20 flex items-center justify-center
-              bg-gradient-to-br from-red-primary to-blue-marine
-              text-white cursor-pointer border border-red-primary/20
+              monolith-btn rounded-none w-20 h-20 flex items-center justify-center
+              bg-red-primary text-white cursor-pointer
               ${isAnimating ? "animate-shake" : ""}
             `}
             aria-label="Ouvrir le pré‑chat"
@@ -214,75 +198,34 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
         </div>
       )}
 
-      {/* Overlay du formulaire */}
+      {/* Formulaire PreChat — Carte Monolithe */}
       {open && (
         <div
-          className="w-[320px] p-4 rounded-none shadow-2xl bg-white border border-gray-200"
+          className="w-[320px] p-6 rounded-none shadow-[6px_6px_0_0_#1F2937] bg-white border border-gray-200"
           data-testid="chat-preoverlay"
           style={{ pointerEvents: "auto" }}
         >
-          <h3 className="font-bold text-gray-900 mb-2">Avant de commencer</h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <h3 className="font-black uppercase tracking-[0.2em] text-sm text-[#091421] mb-2">
+            Avant de commencer
+          </h3>
+          <p className="text-sm text-gray-secondary mb-4">
             On fait connaissance en quelques infos simples.
           </p>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
-            {/* Prénom */}
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+            {/* Prenom */}
             <div>
               <input
                 {...register("firstName")}
-                className={`input input-bordered w-full ${
-                  errors.firstName ? "input-error" : ""
+                className={`w-full rounded-none bg-gray-50 border px-4 py-3 text-sm focus:outline-none focus:border-b-2 focus:border-red-primary ${
+                  errors.firstName ? "border-red-primary" : "border-gray-200"
                 }`}
                 placeholder="Prénom*"
                 data-testid="firstname-input"
               />
               {errors.firstName && (
-                <p
-                  className="text-xs text-error mt-1"
-                  data-testid="firstname-error"
-                >
+                <p className="text-xs text-red-primary mt-1" data-testid="firstname-error">
                   {errors.firstName.message}
-                </p>
-              )}
-            </div>
-
-            {/* Nom */}
-            <div>
-              <input
-                {...register("lastName")}
-                className={`input input-bordered w-full ${
-                  errors.lastName ? "input-error" : ""
-                }`}
-                placeholder="Nom*"
-                data-testid="lastname-input"
-              />
-              {errors.lastName && (
-                <p
-                  className="text-xs text-error mt-1"
-                  data-testid="lastname-error"
-                >
-                  {errors.lastName.message}
-                </p>
-              )}
-            </div>
-
-            {/* Entreprise */}
-            <div>
-              <input
-                {...register("company")}
-                className={`input input-bordered w-full ${
-                  errors.company ? "input-error" : ""
-                }`}
-                placeholder="Entreprise*"
-                data-testid="company-input"
-              />
-              {errors.company && (
-                <p
-                  className="text-xs text-error mt-1"
-                  data-testid="company-error"
-                >
-                  {errors.company.message}
                 </p>
               )}
             </div>
@@ -292,60 +235,57 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               <input
                 {...register("email")}
                 type="email"
-                className={`input input-bordered w-full ${
-                  errors.email ? "input-error" : ""
+                className={`w-full rounded-none bg-gray-50 border px-4 py-3 text-sm focus:outline-none focus:border-b-2 focus:border-red-primary ${
+                  errors.email ? "border-red-primary" : "border-gray-200"
                 }`}
                 placeholder="Email*"
                 data-testid="email-input"
               />
               {errors.email && (
-                <p
-                  className="text-xs text-error mt-1"
-                  data-testid="email-error"
-                >
+                <p className="text-xs text-red-primary mt-1" data-testid="email-error">
                   {errors.email.message}
                 </p>
               )}
             </div>
 
-            {/* Téléphone (optionnel) */}
+            {/* Entreprise */}
             <div>
               <input
-                {...register("phone")}
-                type="tel"
-                className={`input input-bordered w-full ${
-                  errors.phone ? "input-error" : ""
+                {...register("company")}
+                className={`w-full rounded-none bg-gray-50 border px-4 py-3 text-sm focus:outline-none focus:border-b-2 focus:border-red-primary ${
+                  errors.company ? "border-red-primary" : "border-gray-200"
                 }`}
-                placeholder="Téléphone (optionnel)"
-                data-testid="phone-input"
+                placeholder="Entreprise*"
+                data-testid="company-input"
               />
-              {errors.phone && (
-                <p
-                  className="text-xs text-error mt-1"
-                  data-testid="phone-error"
-                >
-                  {errors.phone.message}
+              {errors.company && (
+                <p className="text-xs text-red-primary mt-1" data-testid="company-error">
+                  {errors.company.message}
                 </p>
               )}
             </div>
 
-            {/* Boutons d'action */}
-            <div className="mt-3 flex gap-2">
-              <button
-                type="button"
-                onClick={handleCancel}
-                className="btn btn-ghost flex-1"
-                data-testid="cancel-button"
-              >
-                Annuler
-              </button>
+            {/* CTA Monolithe Primaire pleine largeur */}
+            <div className="mt-4">
               <button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="btn btn-primary flex-1"
+                className="monolith-btn w-full bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-8 py-4 rounded-none disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="submit-button"
               >
                 {isSubmitting ? "Envoi..." : "Ouvrir le chat"}
+              </button>
+            </div>
+
+            {/* Lien Annuler discret */}
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="text-sm text-gray-secondary hover:text-[#091421] transition-colors"
+                data-testid="cancel-button"
+              >
+                Annuler
               </button>
             </div>
           </form>
