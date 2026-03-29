@@ -84,7 +84,7 @@ export function Header() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-200"
           : "bg-white/80 backdrop-blur-sm border-b border-white/30"
       }`}
       data-testid="main-header"
@@ -155,7 +155,7 @@ export function Header() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-red-primary ${
+                        className={`font-bold transition-colors duration-200 flex items-center text-xs tracking-widest uppercase whitespace-nowrap py-2 hover:text-red-primary ${
                           isScrolled ? "text-gray-700" : "text-gray-700"
                         }`}
                         data-testid={`nav-link-${slug}`}
@@ -172,7 +172,7 @@ export function Header() {
                       <span
                         tabIndex={0}
                         role="button"
-                        className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
+                        className={`font-bold transition-colors duration-200 flex items-center text-xs tracking-widest uppercase whitespace-nowrap py-2 cursor-pointer hover:text-red-primary ${
                           isScrolled ? "text-gray-700" : "text-gray-700"
                         }`}
                         data-testid={`nav-dropdown-${slug}`}
@@ -204,7 +204,7 @@ export function Header() {
                   <AnimatePresence>
                     {hasSubmenu && openMenu === item.name && (
                       <motion.div
-                        className="dropdown-content menu bg-base-100 rounded-box w-64 p-2 shadow-2xl border border-base-300 z-[9999] mt-2"
+                        className="dropdown-content menu bg-base-100 rounded-none w-64 p-2 shadow-[4px_4px_0_0_#1F2937] border border-base-300 z-[9999] mt-2"
                         initial={{ opacity: 0, y: -20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -246,23 +246,23 @@ export function Header() {
             })}
           </nav>
 
-          {/* CTA Button DaisyUI - Optimisé pour MacBook Pro */}
-          <div className="hidden lg:flex items-center flex-shrink-0">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/contact">
-                <button
-                  className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200"
-                  data-testid="header-contact-button"
-                >
-                  <LineIcon
-                    name="lni-phone"
-                    className="text-lg mr-2"
-                    aria-hidden="true"
-                  />
-                  Contact
-                </button>
-              </Link>
-            </motion.div>
+          {/* CTA Buttons - Stitch 2026 (Devis + Contact separes) */}
+          <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
+            <Link
+              href="/devis-en-ligne"
+              className="font-bold tracking-[-0.03em] uppercase text-sm text-gray-700 hover:text-[#091421] transition-colors duration-200"
+              data-testid="header-devis-link"
+            >
+              Devis en ligne
+            </Link>
+            <Link href="/contact">
+              <button
+                className="monolith-btn bg-red-primary text-white font-black tracking-[-0.03em] uppercase text-sm px-8 py-3 rounded-none"
+                data-testid="header-contact-button"
+              >
+                Contact
+              </button>
+            </Link>
           </div>
 
           {/* Mobile menu DaisyUI drawer */}
@@ -306,7 +306,7 @@ export function Header() {
                       {item.href ? (
                         <Link
                           href={item.href}
-                          className="text-base font-medium hover:text-primary transition-colors block py-2"
+                          className="text-sm font-bold tracking-widest uppercase hover:text-red-primary transition-colors block py-2"
                           onClick={() => setIsOpen(false)}
                           data-testid={`mobile-link-${item.name
                             .toLowerCase()
@@ -315,7 +315,7 @@ export function Header() {
                           {item.name}
                         </Link>
                       ) : (
-                        <span className="text-base font-medium block py-2">
+                        <span className="text-sm font-bold tracking-widest uppercase block py-2">
                           {item.name}
                         </span>
                       )}
@@ -338,17 +338,20 @@ export function Header() {
                       )}
                     </div>
                   ))}
-                  <div className="mt-6">
-                    <Link href="/contact">
+                  <div className="mt-8 space-y-4">
+                    <Link
+                      href="/devis-en-ligne"
+                      className="block text-center font-bold tracking-[-0.03em] uppercase text-sm text-gray-700 hover:text-[#091421] transition-colors py-3"
+                      onClick={() => setIsOpen(false)}
+                      data-testid="mobile-devis-link"
+                    >
+                      Devis en ligne
+                    </Link>
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
                       <button
-                        className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full"
+                        className="monolith-btn w-full text-white bg-red-primary font-black tracking-[-0.03em] uppercase text-sm flex items-center justify-center px-8 py-3 rounded-none"
                         data-testid="mobile-contact-button"
                       >
-                        <LineIcon
-                          name="lni-phone"
-                          className="text-lg mr-2"
-                          aria-hidden="true"
-                        />
                         Contact
                       </button>
                     </Link>

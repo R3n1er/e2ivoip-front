@@ -40,66 +40,51 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - Document in /docs automatically
 - Deploy via Vercel integration
 
-## Dernières Améliorations
+## Design System Monolithe 2026
 
-### ✅ Phase 8 - Module Pré-Chat V2 avec Animation Intelligente (Terminée)
+Le site a ete completement redesigne en mars 2026 selon le Design System **"Monolithe Numerique"** (Structuralisme Brutaliste B2B) base sur un template Google Stitch valide.
 
-- **Bouton agrandi** : De 56px à 80px pour meilleure visibilité
-- **Texte attractif** : "Une question ?" avec animation de rebond au-dessus du bouton
-- **Animation par cycles** :
-  - Vibration pendant 3 secondes
-  - Pause de 2 secondes
-  - Répétition pendant 20 secondes maximum (~4 cycles)
-  - Arrêt définitif après clic ou annulation du formulaire
-- **Validation de formulaire** : React Hook Form + Zod pour validation robuste
-- **Intégration HubSpot** : Création automatique de contacts et conversations
-- **Tests complets** : 12 tests Playwright (6 flow + 5 animation + 1 debug)
-- **Performance attendue** : +200-300% de clics, 4 opportunités d'engagement
+- **Philosophie Carree** : `border-radius: 0px` partout, coins tranchants
+- **Boutons Monolithe** : Hard shadows opaques + hover mecanique (pression physique)
+- **Grilles Bento** : Layouts asymetriques (`.bento-grid`, `.bento-item-large`, `.bento-item-wide`)
+- **Hero Asymetrique** : Fond sombre `#091421` + grid-lines + layout 60/40
+- **Typographie Dense** : `font-black tracking-[-0.04em]` sur titres, `tracking-[0.2em]` sur CTA
+- **Palette Stricte** : Rouge `#E53E3E` + Bleu Marine `#2D3848` + Blanc — aucun gradient generique
 
-### ✅ Workflow de Validation Obligatoire (Terminé)
+> Ref : `docs/Design.md`, `docs/CHARTE_GRAPHIQUE.md`, `.stitch/designs/landing-page-desktop.html`
 
-- **Validation automatique** : Tests + Lint + Type-check + Security audit + Build
-- **Script dédié** : `validate.sh` avec affichage coloré et rapport détaillé
-- **Hook pre-deploy** : Exécution automatique avant push Git
-- **Commande unique** : `npm run validate` pour valider tous les critères
-- **Documentation** : `docs/WORKFLOW_VALIDATION.md` avec checklist complète
+## Dernieres Ameliorations
 
-### ✅ Phase 7 - Résolution Problèmes Techniques & Optimisations (Terminée)
+### ✅ Redesign Monolithe 2026 (2026-03-28)
 
-- **ChunkLoadError résolu** : Simplification configuration webpack Next.js
-- **Page assistance refonte** : Chat Tawk.to intégré, suppression composants défaillants
-- **Configuration NextJS optimisée** : Headers sécurité, compression, redirections
-- **Corrections TypeScript** : Tests et build sans erreurs
-- **Nettoyage codebase** : Suppression composants obsolètes et pages debug
-- **FAQ fonctionnel** : Remplacement accordéon défaillant par composant stable
+- **Refonte UX/UI complete** : Philosophie Carree, Bento Box, Hard Shadows
+- **Template Stitch** : Integration du design valide Google Stitch
+- **Suppression gradients** : Tous les gradients hors-charte retires
+- **Chat PreOverlay V3** : Redesign Monolithe planifie (bouton rouge plein, 3 champs, scroll trigger)
+- **Tests** : 330 Jest + 74 Playwright au vert
 
-### ✅ Phase 6 - Amélioration UX Header (Terminée)
+### ✅ Phase 8 - Module Pre-Chat V2 (2025-10-05)
 
-- **Problème résolu** : Délai trop court des sous-menus empêchant la navigation
-- **Solution** : Délai intelligent de 300ms avec zone de sécurité et gestion d'état avancée
-- **Tests** : 18 tests header UX créés et validés
-- **Menu "Qui sommes-nous"** : Suppression des liens "Notre Histoire" et "Notre équipe" du menu de navigation
-- **Page "Qui sommes-nous"** : Section équipe conservée et testée (4 tests spécifiques)
+- Bouton 80px + texte "Une question ?" + animation par cycles (20s)
+- Validation React Hook Form + Zod + integration HubSpot
+
+### ✅ Workflow de Validation Obligatoire
+
+- `npm run validate` : Tests + Lint + Type-check + Security + Build
 
 ## Tests
 
-Le projet utilise **Vitest**, **React Testing Library** et **Playwright** pour les tests.
+Le projet utilise **Jest**, **React Testing Library** et **Playwright** pour les tests.
 
-### Tests Unitaires et d'Intégration (Vitest)
+### Tests Unitaires (Jest)
 
-- **Total des tests** : 158 tests qui passent ✅
-- **Tests header UX** : 18 tests (délai, intégration, hydratation)
-- **Tests page "Qui sommes-nous"** : 4 tests spécifiques
-- **Tests d'hydratation** : Vérification de la cohérence client/serveur
-- **Tests de composants** : Validation des fonctionnalités et de l'accessibilité
+- **Total** : 330 tests ✅
+- Header, Footer, Services, Homepage, HubSpot, Chat, Pages services
 
 ### Tests E2E (Playwright)
 
-- **Module pré-chat** : 12 tests
-  - 6 tests de flow complet (ouverture, validation, soumission, erreurs)
-  - 5 tests d'animation par cycles (timing, arrêt, cycles)
-  - 1 test de diagnostic
-- **Couverture** : Parcours utilisateur complet avec validation HubSpot
+- **Total** : 74 tests ✅
+- Homepage, Header, Services, Chat PreOverlay, Tally, Assistants IA
 
 ## 📋 Prérequis
 
@@ -169,11 +154,7 @@ npm run test:e2e:ui
 npm run test:all
 ```
 
-**Statut des tests** : ✅ 158 tests Vitest + 12 tests Playwright
-
-- **Header UX** : 18 tests (délai, intégration, hydratation)
-- **Composants** : 140 tests (fonctionnalités, responsive, accessibilité)
-- **Module pré-chat** : 12 tests E2E (flow, animation, diagnostic)
+**Statut des tests** : ✅ 330 tests Jest + 74 tests Playwright
 
 ### Build de production
 
@@ -237,19 +218,13 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 
 - Le backend Strapi est supprimé. Nous allons implémenter un service `lib/contentful-blog.ts` (delivery API) et scripts d'import ultérieurement si nécessaire (Management API).
 
-## 🧪 Tests
-
-Le projet utilise Vitest pour les tests unitaires :
+## 🧪 Commandes de Tests
 
 ```bash
-# Exécuter tous les tests
-npm test
-
-# Tests en mode watch
-npm test -- --watch
-
-# Tests avec couverture
-npm run test:coverage
+npm run test:ci       # Tests Jest avec couverture
+npm run test:e2e      # Tests Playwright E2E
+npm run test:all      # Jest + Playwright
+npm run validate      # Lint + Type-check + Tests + Security + Build
 ```
 
 ## 📚 Documentation
@@ -297,8 +272,7 @@ Pour toute question ou support, contactez l'équipe de développement.
 
 ## 🎯 Statut du Projet
 
-- **Sprint 1** : ✅ Terminé (Fondations)
-- **Sprint 2** : ✅ Terminé (Homepage modernisée)
-- **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
-- **Sprint 4** : ✅ **Terminé** (Migration Contentful + UI/UX)
-- **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)
+- **Sprints 1-4** : ✅ Termines (Fondations, Homepage, Features, Migration Contentful)
+- **Sprint 5** : ✅ Termine (Optimisations, Pre-Chat V2, Workflow Validation)
+- **Redesign Monolithe 2026** : ✅ Fondations (Philosophie Carree, Bento, Hard Shadows)
+- **Alignement Stitch** : ⏳ En cours (voir `docs/implementation.md` — 9 phases)

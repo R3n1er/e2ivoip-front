@@ -61,8 +61,9 @@ describe("Header DaisyUI avec sous-menus", () => {
     const chevrons = document.querySelectorAll('[data-testid^="icon-chevron-down"]');
     expect(chevrons.length).toBe(3); // 3 menus avec sous-menus
 
-    // Vérifier les icônes de téléphone
-    expect(screen.getAllByTestId("icon-lni-phone")).toHaveLength(2); // desktop + mobile
+    // Verifier le lien "Devis en ligne" et le bouton "Contact" separes (Stitch 2026)
+    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
+    expect(screen.getByTestId("header-contact-button")).toBeInTheDocument();
   });
 
   test("Les liens de navigation sont correctement configurés", () => {
@@ -118,7 +119,7 @@ describe("Header DaisyUI avec sous-menus", () => {
     
     // Vérifier le bouton contact desktop
     const contactButton = screen.getByTestId("header-contact-button");
-    expect(contactButton).toHaveClass("btn", "btn-primary");
+    expect(contactButton).toHaveClass("monolith-btn", "bg-red-primary");
     
     // Vérifier le bouton mobile
     const mobileButton = screen.getByTestId("mobile-menu-button");
@@ -169,7 +170,7 @@ describe("Header DaisyUI avec sous-menus", () => {
     await waitFor(() => {
       const dropdownContents = document.querySelectorAll('.dropdown-content');
       dropdownContents.forEach(content => {
-        expect(content).toHaveClass('menu', 'bg-base-100', 'rounded-box');
+        expect(content).toHaveClass('menu', 'bg-base-100', 'rounded-none');
       });
     });
   });

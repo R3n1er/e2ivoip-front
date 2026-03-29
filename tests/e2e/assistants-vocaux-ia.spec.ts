@@ -3,7 +3,6 @@ import { test, expect } from "@playwright/test";
 test.describe("Page Assistants Vocaux IA", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/nos-services/assistants-vocaux-ia");
-    await page.waitForLoadState("networkidle");
   });
 
   test("affiche correctement le titre principal et le badge IA", async ({ page }) => {
@@ -18,19 +17,14 @@ test.describe("Page Assistants Vocaux IA", () => {
     await expect(h1).toContainText("Assistants vocaux");
   });
 
-  test("affiche la section Hero avec gradient et CTA", async ({ page }) => {
+  test("affiche la section Hero avec grid lines et CTA", async ({ page }) => {
     // Vérifie le sous-titre
     await expect(
       page.getByText(/Révolutionnez votre accueil téléphonique/)
     ).toBeVisible();
 
-    // Vérifie le texte descriptif
-    await expect(
-      page.getByText(/Offrez une expérience client exceptionnelle 24h\/24/)
-    ).toBeVisible();
-
     // Vérifie le CTA principal
-    const ctaButton = page.getByRole("link", { name: /Parler à un expert/i });
+    const ctaButton = page.locator('.monolith-btn').first();
     await expect(ctaButton).toBeVisible();
   });
 
@@ -67,7 +61,7 @@ test.describe("Page Assistants Vocaux IA", () => {
     await expect(
       page.getByRole("heading", { 
         level: 2, 
-        name: /Les 3 piliers de votre assistant IA/ 
+        name: /Les 3 piliers de votre assistant IA/i
       })
     ).toBeVisible();
 
@@ -77,9 +71,7 @@ test.describe("Page Assistants Vocaux IA", () => {
     ).toBeVisible();
     
     await expect(
-      page.getByRole("heading", { 
-        name: /La qualification automatique des opportunités/i 
-      })
+      page.getByRole("heading", { name: /La qualification automatique/i })
     ).toBeVisible();
     
     await expect(
@@ -147,14 +139,14 @@ test.describe("Page Assistants Vocaux IA", () => {
     await expect(hubspotForm).toBeAttached({ timeout: 15000 });
   });
 
-  test("affiche la section CTA finale avec gradient", async ({ page }) => {
+  test("affiche la section CTA finale", async ({ page }) => {
     // Scroll vers le bas pour voir la section finale
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 
     // Vérifie le titre de la section finale
     await expect(
       page.getByRole("heading", { 
-        name: /Prêt à révolutionner votre accueil téléphonique/ 
+        name: /Prêt à révolutionner votre accueil téléphonique/i
       })
     ).toBeVisible();
 

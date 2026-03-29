@@ -1,35 +1,40 @@
 "use client";
 
-import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import Link from "next/link";
 
 export function ContactSectionSimple() {
-
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Prêt à économiser 30% sur vos
-            <span className="text-red-primary"> coûts télécoms ?</span>
-          </h2>
-          <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
-            Nos experts analysent gratuitement votre infrastructure actuelle et
-            vous accompagnent dans votre transformation vers la téléphonie IP
-            nouvelle génération.
-          </p>
+    <section
+      id="contact"
+      className="py-24 px-8 relative overflow-hidden"
+      style={{ backgroundColor: "var(--surface-dim, #091421)" }}
+    >
+      {/* Grille de fond monolithique */}
+      <div className="absolute inset-0 monolith-grid-lines" aria-hidden="true" />
 
-          {/* Main CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <CTAButton href="/contact" icon="lni-calendar">
-              Audit télécom gratuit
-            </CTAButton>
-            <CTAButtonMarine href="/devis-en-ligne" icon="lni-phone">
-              Calculez vos économies
-            </CTAButtonMarine>
-          </div>
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-[-0.03em] text-white mb-12 leading-[0.95]">
+          Prêt à moderniser vos <br />
+          <span className="text-red-primary">communications ?</span>
+        </h2>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <Link href="/devis-en-ligne" className="monolith-btn">
+            <span className="block bg-red-primary text-white px-12 py-5 text-sm font-black uppercase tracking-[0.2em]">
+              Demander une étude gratuite
+            </span>
+          </Link>
+          <Link href="/contact" className="monolith-btn">
+            <span className="block bg-white text-[#091421] px-12 py-5 text-sm font-black uppercase tracking-[0.2em]">
+              Nous contacter
+            </span>
+          </Link>
         </div>
 
+        {/* Mentions DOM */}
+        <p className="mt-12 text-[10px] uppercase tracking-[0.3em] text-gray-600">
+          Guyane · Martinique · Guadeloupe · Réunion · France Métropolitaine
+        </p>
       </div>
     </section>
   );

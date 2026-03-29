@@ -98,6 +98,9 @@ jspm_packages/
 .yarn/install-state.gz
 .pnp.*
 
+# MCP config (contains API keys)
+.mcp.json
+
 # IDE
 .vscode/
 .idea/

@@ -1,4 +1,3 @@
-import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { ContactFormAssistantIA } from "@/components/contact-form-assistant-ia";
 
 export const dynamic = "force-dynamic";
@@ -8,36 +7,36 @@ export default function AssistantsVocauxIA() {
     <div className="min-h-screen bg-white">
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Background Image */}
+        <section className="py-20 relative overflow-hidden bg-[#091421]">
+          {/* Background Image avec incrustation */}
           <div className="absolute inset-0">
-            <img
+             <img
               src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
               alt="Assistants vocaux IA E2I VoIP"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-marine/90 via-blue-marine/75 to-red-primary/85 pointer-events-none z-10"></div>
+            {/* Gradient Overlay et Grille Monolith */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-marine/90 via-[#091421]/80 to-red-primary/90 pointer-events-none z-10" />
+            <div className="absolute inset-0 monolith-grid-lines opacity-20 pointer-events-none z-10" />
+            <div className="absolute inset-0 pointer-events-none z-20" style={{ boxShadow: "inset 0 0 100px rgba(9,20,33,1)" }} />
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
             <div className="text-center">
               {/* Badge IA */}
-              <div className="inline-flex items-center justify-center bg-white rounded-full px-6 py-3 mb-6 shadow-lg">
-                <i className="lni lni-brain text-red-primary text-2xl mr-2"></i>
-                <span className="text-gray-dark text-sm font-semibold">
-                  Intelligence Artificielle
-                </span>
+              <div className="inline-flex items-center text-red-primary font-black uppercase text-[10px] tracking-widest px-4 py-2 border border-red-primary/30 bg-red-primary/5 mb-6">
+                <i className="lni lni-brain text-red-primary mr-2" aria-hidden="true"></i>
+                Intelligence Artificielle
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                Assistants vocaux <span className="text-white">IA</span>
+              <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight">
+                Assistants vocaux <span className="text-red-primary">IA</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/95 mb-4 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/95 mb-4 max-w-4xl mx-auto leading-relaxed font-bold">
                 Révolutionnez votre accueil téléphonique avec
                 l&rsquo;intelligence artificielle
               </p>
-              <p className="text-lg text-white/90 mb-10 max-w-3xl mx-auto">
+              <p className="text-lg text-white/80 mb-10 max-w-3xl mx-auto">
                 Offrez une expérience client exceptionnelle 24h/24. Vos
                 appelants sont accueillis, qualifiés et orientés
                 automatiquement, même en dehors de vos horaires
@@ -45,9 +44,12 @@ export default function AssistantsVocauxIA() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <CTAButton href="#contact" icon="lni-comments">
-                  Parler à un expert
-                </CTAButton>
+                <a href="#contact" className="monolith-btn bg-red-primary">
+                  <span className="block text-white font-black uppercase text-xs tracking-widest px-8 py-4 flex items-center justify-center gap-2">
+                    <i className="lni lni-comments" aria-hidden="true" />
+                    Parler à un expert
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -85,53 +87,53 @@ export default function AssistantsVocauxIA() {
 
               {/* Colonne droite : Avantages clés */}
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="bg-red-primary/10 rounded-none p-6 border border-red-primary/20">
-                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-white border border-gray-100 p-6 flex flex-col items-start border-t-4 border-t-red-primary">
+                  <div className="bg-[#f8fafc] w-12 h-12 flex items-center justify-center mb-4 border border-gray-100">
                     <i className="lni lni-phone text-2xl text-red-primary"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-dark mb-3">
+                  <h3 className="text-base font-bold text-[#091421] mb-2 uppercase tracking-wide">
                     Accueil 24/7
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Plus jamais un appel en absence. Votre assistant répond à
                     toute heure avec professionnalisme.
                   </p>
                 </div>
 
-                <div className="bg-blue-marine/10 rounded-none p-6 border border-blue-marine/20">
-                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
-                    <i className="lni lni-users text-2xl text-blue-marine"></i>
+                <div className="bg-white border border-gray-100 p-6 flex flex-col items-start border-t-4 border-t-[#091421]">
+                  <div className="bg-[#f8fafc] w-12 h-12 flex items-center justify-center mb-4 border border-gray-100">
+                    <i className="lni lni-users text-2xl text-[#091421]"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-dark mb-3">
-                    Qualification automatique
+                  <h3 className="text-base font-bold text-[#091421] mb-2 uppercase tracking-wide">
+                    Qualification
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Identifiez les leads chauds, triez les demandes et fixez des
                     rendez-vous directement.
                   </p>
                 </div>
 
-                <div className="bg-red-primary/10 rounded-none p-6 border border-red-primary/20">
-                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
+                <div className="bg-white border border-gray-100 p-6 flex flex-col items-start border-t-4 border-t-red-primary">
+                  <div className="bg-[#f8fafc] w-12 h-12 flex items-center justify-center mb-4 border border-gray-100">
                     <i className="lni lni-timer text-2xl text-red-primary"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-dark mb-3">
+                  <h3 className="text-base font-bold text-[#091421] mb-2 uppercase tracking-wide">
                     Gain de temps
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Libérez 30% du temps de vos équipes en automatisant le
                     filtrage des appels.
                   </p>
                 </div>
 
-                <div className="bg-blue-marine/10 rounded-none p-6 border border-blue-marine/20">
-                  <div className="bg-white w-14 h-14 rounded-none flex items-center justify-center mb-4 shadow-sm">
-                    <i className="lni lni-rocket text-2xl text-blue-marine"></i>
+                <div className="bg-white border border-gray-100 p-6 flex flex-col items-start border-t-4 border-t-[#091421]">
+                  <div className="bg-[#f8fafc] w-12 h-12 flex items-center justify-center mb-4 border border-gray-100">
+                    <i className="lni lni-rocket text-2xl text-[#091421]"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-dark mb-3">
+                  <h3 className="text-base font-bold text-[#091421] mb-2 uppercase tracking-wide">
                     ROI immédiat
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-500 text-sm">
                     Convertissez plus d&rsquo;opportunités sans augmenter vos
                     effectifs.
                   </p>
@@ -142,14 +144,14 @@ export default function AssistantsVocauxIA() {
         </section>
 
         {/* Section Les 3 piliers */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-24 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-5xl font-black text-[#091421] mb-6 uppercase tracking-tight">
                 Les 3 piliers de votre{" "}
                 <span className="text-red-primary">assistant IA</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-500 max-w-3xl mx-auto uppercase tracking-widest text-xs font-bold">
                 Une solution complète pour transformer votre accueil
                 téléphonique
               </p>
@@ -157,14 +159,14 @@ export default function AssistantsVocauxIA() {
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Pilier 1 */}
-              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-phone text-3xl text-white"></i>
+              <div className="bg-white border border-gray-100 hover:border-red-primary/30 transition-colors p-8 flex flex-col items-start border-t-4 border-t-red-primary">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
+                  <i className="lni lni-phone text-3xl text-red-primary"></i>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
                   Un accueil impeccable, 24h/24
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Plus jamais un appel en absence ou une première impression
                   bâclée. Votre assistant gère les appels hors horaires ou en
                   surcharge avec une courtoisie irréprochable.
@@ -172,34 +174,32 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Pilier 2 */}
-              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-blue-marine to-blue-900 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-checkmark-circle text-3xl text-white"></i>
+              <div className="bg-white border border-gray-100 hover:border-[#091421]/30 transition-colors p-8 flex flex-col items-start border-t-4 border-t-[#091421]">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
+                  <i className="lni lni-checkmark-circle text-3xl text-[#091421]"></i>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-dark mb-4">
-                  La qualification automatique des opportunités
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
+                  La qualification automatique
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Pose les bonnes questions pour identifier les leads chauds,
                   trier les demandes et même fixer des rendez-vous directement
-                  dans votre agenda. Vous ne perdez plus de temps avec les
-                  appels non prioritaires.
+                  dans votre agenda. Vous ne perdez plus de temps.
                 </p>
               </div>
 
               {/* Pilier 3 */}
-              <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="bg-gradient-to-br from-red-primary to-red-600 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-user text-3xl text-white"></i>
+              <div className="bg-white border border-gray-100 hover:border-red-primary/30 transition-colors p-8 flex flex-col items-start border-t-4 border-t-red-primary">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
+                  <i className="lni lni-user text-3xl text-red-primary"></i>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
                   Un relais humain maîtrisé
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Si la conversation nécessite une intervention humaine (pour un
                   devis complexe, une réclamation…), l&rsquo;assistant transfère
-                  intelligemment vers la bonne personne dans votre équipe, avec
-                  un contexte clair.
+                  intelligemment vers la bonne personne dans votre équipe.
                 </p>
               </div>
             </div>
@@ -210,52 +210,48 @@ export default function AssistantsVocauxIA() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-5xl font-black text-[#091421] mb-6 uppercase tracking-tight">
                 Cas d&rsquo;
                 <span className="text-red-primary">usage concrets</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Découvrez comment l&rsquo;assistant vocal IA peut transformer
-                votre quotidien
-              </p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Cas 1 : Accueil et orientation */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-phone text-3xl text-red-primary"></i>
+              <div className="bg-[#f8fafc] border border-gray-100 p-8 flex flex-col">
+                <div className="bg-white w-12 h-12 flex items-center justify-center mb-6 border border-gray-200">
+                  <i className="lni lni-phone text-2xl text-red-primary"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
                   Accueil et orientation
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-500 text-sm mb-6 flex-grow">
                   L&rsquo;assistant accueille vos appelants et les oriente vers
                   le bon service automatiquement.
                 </p>
-                <div className="bg-blue-marine/5 p-4 rounded-none border-l-4 border-blue-marine">
-                  <p className="text-sm text-gray-700 italic">
+                <div className="bg-white p-4 border border-gray-200 border-l-4 border-l-[#091421]">
+                  <p className="text-xs text-gray-500 italic font-medium leading-relaxed">
                     « Bonjour, vous êtes bien chez E2I VoIP. Pour le service
-                    commercial, dites &lsquo;commercial&rsquo;, pour le support
-                    technique, dites &lsquo;support&rsquo;... »
+                    commercial, dites 'commercial', pour le support
+                    technique, dites 'support'... »
                   </p>
                 </div>
               </div>
 
               {/* Cas 2 : Prise de rendez-vous */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
-                <div className="bg-blue-marine/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-calendar text-3xl text-blue-marine"></i>
+              <div className="bg-[#f8fafc] border border-gray-100 p-8 flex flex-col">
+                <div className="bg-white w-12 h-12 flex items-center justify-center mb-6 border border-gray-200">
+                  <i className="lni lni-calendar text-2xl text-[#091421]"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
                   Prise de rendez-vous
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-500 text-sm mb-6 flex-grow">
                   Gestion automatique des plannings et confirmation des créneaux
                   disponibles.
                 </p>
-                <div className="bg-red-primary/5 p-4 rounded-none border-l-4 border-red-primary">
-                  <p className="text-sm text-gray-700 italic">
+                <div className="bg-white p-4 border border-gray-200 border-l-4 border-l-red-primary">
+                  <p className="text-xs text-gray-500 italic font-medium leading-relaxed">
                     « Je peux vous proposer un rendez-vous mardi 15 à 14h ou
                     mercredi 16 à 10h. Quelle option vous convient ? »
                   </p>
@@ -263,19 +259,19 @@ export default function AssistantsVocauxIA() {
               </div>
 
               {/* Cas 3 : Support niveau 1 */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-none p-8 border border-gray-200">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-none flex items-center justify-center mb-6">
-                  <i className="lni lni-headphone text-3xl text-red-primary"></i>
+              <div className="bg-[#f8fafc] border border-gray-100 p-8 flex flex-col">
+                <div className="bg-white w-12 h-12 flex items-center justify-center mb-6 border border-gray-200">
+                  <i className="lni lni-headphone text-2xl text-red-primary"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-[#091421] mb-4 uppercase tracking-wide">
                   Support niveau 1
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-500 text-sm mb-6 flex-grow">
                   Réponses aux questions fréquentes et résolution des problèmes
                   simples.
                 </p>
-                <div className="bg-blue-marine/5 p-4 rounded-none border-l-4 border-blue-marine">
-                  <p className="text-sm text-gray-700 italic">
+                <div className="bg-white p-4 border border-gray-200 border-l-4 border-l-[#091421]">
+                  <p className="text-xs text-gray-500 italic font-medium leading-relaxed">
                     « Pour redémarrer votre téléphone IP, maintenez le bouton
                     power enfoncé 5 secondes... »
                   </p>
@@ -289,7 +285,7 @@ export default function AssistantsVocauxIA() {
         <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-5xl font-black text-[#091421] mb-6 uppercase tracking-tight">
                 Fonctionnalités{" "}
                 <span className="text-red-primary">professionnelles</span>
               </h2>
@@ -297,58 +293,54 @@ export default function AssistantsVocauxIA() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Feature 1 */}
-              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white border border-gray-100 hover:border-red-primary/30 transition-colors p-8 flex flex-col items-center justify-center text-center">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
                   <i className="lni lni-question-circle text-3xl text-red-primary"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
+                <h3 className="text-base font-bold text-[#091421] uppercase tracking-wider mb-2">
                   IA conversationnelle
                 </h3>
-                <p className="text-gray-600">
-                  Assistants vocaux intelligents capables de comprendre et
-                  répondre naturellement
+                <p className="text-gray-500 text-xs uppercase tracking-wider">
+                  Assistants vocaux intelligents capables de comprendre et répondre naturellement
                 </p>
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="bg-blue-marine/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="lni lni-timer text-3xl text-blue-marine"></i>
+              <div className="bg-white border border-gray-100 hover:border-[#091421]/30 transition-colors p-8 flex flex-col items-center justify-center text-center">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
+                  <i className="lni lni-timer text-3xl text-[#091421]"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
+                <h3 className="text-base font-bold text-[#091421] uppercase tracking-wider mb-2">
                   Disponibilité 24/7
                 </h3>
-                <p className="text-gray-600">
-                  Vos clients sont accueillis et orientés à toute heure, même en
-                  dehors des horaires d&rsquo;ouverture
+                <p className="text-gray-500 text-xs uppercase tracking-wider">
+                  Vos clients sont accueillis et orientés à toute heure, même en dehors des horaires
                 </p>
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="bg-red-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white border border-gray-100 hover:border-red-primary/30 transition-colors p-8 flex flex-col items-center justify-center text-center">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
                   <i className="lni lni-users text-3xl text-red-primary"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
+                <h3 className="text-base font-bold text-[#091421] uppercase tracking-wider mb-2">
                   Personnalisation avancée
                 </h3>
-                <p className="text-gray-600">
-                  Adaptez le comportement et les réponses selon votre secteur
-                  d&rsquo;activité
+                <p className="text-gray-500 text-xs uppercase tracking-wider">
+                  Adaptez le comportement et les réponses selon votre secteur d&rsquo;activité
                 </p>
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-white rounded-none p-6 text-center border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="bg-blue-marine/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="lni lni-bolt text-3xl text-blue-marine"></i>
+              <div className="bg-white border border-gray-100 hover:border-[#091421]/30 transition-colors p-8 flex flex-col items-center justify-center text-center">
+                <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
+                  <i className="lni lni-bolt text-3xl text-[#091421]"></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
+                <h3 className="text-base font-bold text-[#091421] uppercase tracking-wider mb-2">
                   Intégration CRM
                 </h3>
-                <p className="text-gray-600">
-                  Connexion directe avec vos outils métier pour un service
-                  client optimisé
+                <p className="text-gray-500 text-xs uppercase tracking-wider">
+                  Connexion directe avec vos outils métier pour un service client optimisé
                 </p>
               </div>
             </div>
@@ -359,32 +351,32 @@ export default function AssistantsVocauxIA() {
         <ContactFormAssistantIA />
 
         {/* Section CTA Final */}
-        <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-          </div>
+        <section className="py-24 bg-[#091421] relative overflow-hidden">
+          {/* Monolith Grid overlay */}
+          <div className="absolute inset-0 monolith-grid-lines opacity-20 pointer-events-none" />
 
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Prêt à révolutionner votre accueil téléphonique ?
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+              Prêt à <span className="text-red-primary">révolutionner</span>{" "}
+              votre accueil téléphonique ?
             </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
               Rejoignez les entreprises qui ont déjà transformé leur relation
               client avec l&rsquo;intelligence artificielle.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CTAButton href="#contact" icon="lni-comments">
-                Demander une démo
-              </CTAButton>
-              <CTAButtonSecondary
-                href="tel:+33189560500"
-                external
-                icon="lni-phone"
-              >
-                01 89 56 05 00
-              </CTAButtonSecondary>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <a href="#contact" className="monolith-btn bg-red-primary">
+                <span className="block text-white font-black uppercase text-xs tracking-widest px-8 py-4 flex items-center justify-center gap-2">
+                  <i className="lni lni-comments" aria-hidden="true" />
+                  Demander une démo
+                </span>
+              </a>
+              <a href="tel:+33189560500" className="monolith-btn bg-white">
+                <span className="block text-[#091421] font-black uppercase text-xs tracking-widest px-8 py-4 flex items-center justify-center gap-2">
+                  <i className="lni lni-phone" aria-hidden="true" />
+                  01 89 56 05 00
+                </span>
+              </a>
             </div>
           </div>
         </section>

@@ -61,19 +61,21 @@ Prends en compte CLAUDE.md et .agents.md
 
 ```
 e2ivoip-front/
-├── app/ (pages NextJS)
+├── app/                    (pages NextJS App Router)
 ├── components/
-│   ├── hubspot/ (universal form)
-│   ├── layout/ (header/footer)
-│   ├── ui/ (DaisyUI customisés)
-│   └── features/ (métier)
+│   ├── hubspot/            (universal form + legacy/)
+│   ├── layout/             (header.tsx, header-simple.tsx, footer.tsx)
+│   ├── ui/                 (DaisyUI customises)
+│   ├── chat-preoverlay.tsx (widget livechat)
+│   └── *-section*.tsx      (sections homepage)
 ├── lib/
 │   ├── constants/hubspot.ts
-│   ├── hooks/ (domain-organized)
+│   ├── hooks/              (hubspot/, forms/, ui/)
 │   ├── utils/lazy-motion.tsx
-│   └── validation/ (Zod schemas)
-├── tests/ (Jest + Playwright)
-└── docs/ (PRD, roadmap, ARCHITECTURE, etc.)
+│   └── validation/         (Zod schemas)
+├── tests/                  (Jest + Playwright)
+├── docs/                   (Design.md, CHARTE_GRAPHIQUE.md, ADR.md, etc.)
+└── .stitch/designs/        (template Stitch reference)
 ```
 
 ## Configuration Icônes
@@ -96,51 +98,64 @@ import { LineIcon } from 'react-lineicons'
 </button>
 ```
 
-### Mapping Commun (`lib/icons.ts`)
+## Design System Monolithe 2026
 
-```ts
-export const AppIcons = {
-  home: "lni-home", user: "lni-user", settings: "lni-cog",
-  add: "lni-plus", edit: "lni-pencil", delete: "lni-trash-can"
-} as const;
+> **Ref** : `docs/Design.md` + `docs/CHARTE_GRAPHIQUE.md` + `.stitch/designs/landing-page-desktop.html`
+
+### Philosophie Carree (OBLIGATOIRE)
+
+Tous les `border-radius` sont forces a `0px` dans `tailwind.config.js`. Aucune classe `rounded-*` ne produit d'arrondi (sauf `rounded-full` pour icones circulaires).
+
+### Couleurs (STRICTES)
+
+```
+red-primary: #E53E3E    (CTA, accents, liens hover)
+blue-marine: #2D3848    (texte principal, headers)
+gray-dark:   #1F2937    (fonds sombres, hard shadows)
+gray-secondary: #818096 (texte secondaire)
+surface-dim: #091421    (Hero, sections sombres)
+white:       #FFFFFF    (fonds clairs)
 ```
 
-## Styles E2I VoIP
+**INTERDIT** : Gradients generiques (`pink-to-indigo`, `red-to-green`), couleurs Tailwind non-charte (`blue-600`, `green-500`).
 
-### Hero Dégradé (OBLIGATOIRE)
-
-```css
-bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
-```
-
-### FeatureCard (Standard)
+### Boutons Monolithe (OBLIGATOIRE)
 
 ```tsx
-<FeatureCard
-  title="Titre"
-  description="Description"
-  icon="lni-icon-name"
-  badge={{ text: "Badge", icon: "lni-checkmark-circle" }}
-  variant="primary" // primary|secondary|accent
-/>
-```
+{/* Primaire — CTA principaux */}
+<button className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 rounded-none">
+  Texte du CTA
+</button>
 
-**Variantes**:
-- **Primary**: Rouge E2I (`from-red-primary via-red-500 to-orange-500`)
-- **Secondary**: Gris (`from-gray-800 via-gray-600 to-gray-500`)
-- **Accent**: Mix (`from-gray-800 via-red-primary to-gray-500`)
-
-### Boutons CTA (Standard)
-
-```tsx
-<button className="btn btn-lg bg-red-primary hover:bg-red-700 text-white border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold relative overflow-hidden group">
-  <span className="flex items-center justify-center">
-    Texte
-    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-  </span>
-  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+{/* Secondaire — sur fond sombre */}
+<button className="monolith-btn bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-xs px-8 py-4 rounded-none">
+  Texte du CTA
 </button>
 ```
+
+`.monolith-btn` (defini dans `globals.css`) applique automatiquement :
+- Hard shadow : `bottom: -5px, right: -5px, bg: #050f1c`
+- Hover : `translate(2px, 2px)` + shadow reduite (pression mecanique)
+
+### Hero Sections (Standard 2026)
+
+Fond sombre `bg-[#091421]` + `.monolith-grid-lines` + layout asymetrique 60/40. **Plus de gradient overlay sur image.**
+
+### Classes CSS Design System
+
+- `.monolith-btn` : Bouton avec hard shadow
+- `.monolith-grid-lines` : Motif grille subtil pour fonds sombres
+- `.bento-grid` / `.bento-item` / `.bento-item-large` / `.bento-item-wide` : Grilles asymetriques
+- `.glass-card` : Glassmorphism pour badges flottants et header sticky
+
+### Typographie Stitch
+
+| Element | Classes |
+|---------|---------|
+| Titres H1/H2 | `font-black tracking-[-0.04em] leading-tight` |
+| Liens navigation | `font-bold tracking-[-0.03em] uppercase text-sm` |
+| Boutons CTA | `font-black uppercase tracking-[0.2em] text-xs` |
+| Micro-labels | `font-black uppercase tracking-[0.3em] text-[10px]` |
 
 ## Tests & Validation
 
@@ -180,12 +195,28 @@ test("user login", async ({ page }) => {
 
 ```js
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["light", "dark", "cupcake", "corporate"],
-    styled: true, utils: true, logs: false,
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "red-primary": "#E53E3E",
+        "blue-marine": "#2D3848",
+        "gray-secondary": "#818096",
+        "gray-dark": "#1F2937",
+      },
+      borderRadius: {
+        // TOUS a 0px — Philosophie Carree
+        none: '0px', sm: '0px', DEFAULT: '0px', md: '0px',
+        lg: '0px', xl: '0px', '2xl': '0px', '3xl': '0px', full: '0px',
+      },
+    },
   },
+  plugins: [require("daisyui")],
+  daisyui: { themes: ["e2ivoip"], styled: true, utils: true, logs: false },
 };
 ```
 
@@ -273,7 +304,7 @@ gh pr create --title "feat: description"
 ### ✅ Auto-Modification (Sans Permission)
 
 **Config**: package.json, next.config.js, tailwind.config.js, vercel.json, tsconfig.json, jest.config.js, playwright.config.ts, .env.local, .gitignore
-**Code**: `src/components/**`, `src/app/**`, `src/lib/**`, `__tests__/**`
+**Code**: `components/**`, `app/**`, `lib/**`, `tests/**`
 **Docs Techniques**: README.md, `docs/api/**`, `docs/components/**`
 **CI/CD**: `.github/workflows/**`, `.husky/**`
 
@@ -326,28 +357,6 @@ gh pr create --title "feat: description"
 - **DaisyUI**: https://daisyui.com/components/
 - **Lineicons**: https://lineicons.com/icons/
 - **Playwright**: https://playwright.dev/
-
-### Checklist Pre-Push
-
-```md
-- [ ] `npm run test:ci` ✅
-- [ ] `npm run test:e2e` ✅
-- [ ] `npm run lint` ✅
-- [ ] `npm run type-check` ✅
-- [ ] `npm run build` ✅
-- [ ] Docs tech à jour ✅
-- [ ] Permission PRD/roadmap ✅
-- [ ] Vercel vars OK ✅
-```
-
-### Règle Absolue Push
-
-**AVANT** tout push Git:
-1. Exécuter `npm run validate`
-2. Vérifier TOUS résultats ✅
-3. Afficher résumé user
-4. BLOQUER si 1 échec
-5. Proposer corrections
 
 ### Interaction Example
 

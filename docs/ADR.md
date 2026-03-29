@@ -10,6 +10,65 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-29 — Redesign Chat PreOverlay Monolithe (Decisions Validees)
+
+- **Contexte** : Le template Stitch ne prevoit pas de composant livechat. Le widget ChatPreOverlay actuel utilise un gradient `red-primary to blue-marine`, des classes DaisyUI generiques (`input input-bordered`, `btn btn-ghost`, `btn btn-primary`), 5 champs de formulaire et un declenchement d'animation immediat au chargement. Ces choix divergent du Design System Monolithe 2026.
+- **Decision** :
+  - **Decisions validees par l'utilisateur (brainstorming)** :
+    1. **Triple objectif** : Restyling Monolithe (A) + Repensee UX (B) + Documentation Design System (C).
+    2. **Bouton** : Style Monolithe Primaire — fond rouge plein `bg-red-primary` + hard shadow `shadow-[4px_4px_0_0_#1F2937]` + hover mecanique. Suppression du gradient.
+    3. **Formulaire** : Carte blanche `bg-white` + hard shadow `shadow-[6px_6px_0_0_#1F2937]`. Inputs `rounded-none bg-gray-50 border border-gray-200` avec focus `border-b-2 border-red-primary`. Suppression totale des classes DaisyUI.
+    4. **Reduction champs** : De 5 a **3 champs** — Prenom + Email + Entreprise. Suppression de Nom et Telephone (collectes pendant la conversation HubSpot).
+    5. **Declenchement animation** : Remplacement du demarrage immediat par un **Intersection Observer post-Hero**. L'animation ne se lance que quand l'utilisateur scrolle apres le Hero Section.
+    6. **Boutons d'action** : "Ouvrir le chat" en Monolithe Primaire pleine largeur. "Annuler" en simple lien texte discret (pas de bouton secondaire).
+    7. **Texte accrocheur** : "Une question ?" en typographie industrielle (`text-xs font-black uppercase tracking-[0.2em]`) + hard shadow legere.
+  - **Documentation** : Specs integrees dans `docs/Design.md` (section 7.5bis "Le Widget Chat Monolithe") et `docs/CHARTE_GRAPHIQUE.md` (section 5 "Widget Chat").
+  - **Plan** : Ajout Phase 1.5 dans `docs/implementation.md` avec 13 actions detaillees.
+- **Consequences** :
+  - Le widget chat s'integre officiellement au Design System Monolithe (plus un element orphelin).
+  - Reduction de friction : 3 champs au lieu de 5 devrait augmenter le taux de conversion du prechat.
+  - Declenchement contextuel (scroll) devrait reduire l'agacement et cibler les utilisateurs en phase d'exploration active.
+  - Schema Zod et API route HubSpot a adapter pour les champs supprimes.
+- **Tests associes** :
+  - 5 fichiers Jest impactes : `tests/use-chat-intake.test.tsx` (schema Zod), `tests/homepage-hydration.test.tsx`
+  - 4 specs Playwright impactees : `chat-preoverlay-flow`, `chat-animation-cycles`, `chat-button-animation`, `debug-chat-button`
+  - Matrice detaillee dans `docs/implementation.md` Phase 6.2
+- **Documentation mise a jour** :
+  - `docs/Design.md` — Section 7.5bis "Le Widget Chat Monolithe"
+  - `docs/CHARTE_GRAPHIQUE.md` — Section 5 "Widget Chat"
+  - `docs/implementation.md` — Phase 1.5 + tests Phase 6.2
+  - `docs/ADR.md` — Cette entree
+  - `docs/tests-reinforcement-checklist.md` — Checklist tests chat
+  - `docs/CHAT_PREOVERLAY_V2.md` et `docs/CHAT_ANIMATION_CYCLES.md` — Marques comme partiellement obsoletes (V3 a venir)
+
+### 2026-03-29 — Audit Stitch Template & Plan d'Alignement (Decisions Validees)
+
+- **Contexte** : Suite au commit `b9dbd2e` (Refonte UX/UI Premium 2026), un audit comparatif exhaustif entre le template Stitch valide (`5386927507224192183` — `landing-page-desktop.html`) et l'implementation actuelle a ete realise. L'utilisateur a valide les decisions d'implementation suite a la proposition initiale.
+- **Decision** :
+  - **Audit systematique** : Conformite estimee a ~85-90%. Fondations solides, ecarts sur les details typographiques, navigation et footer.
+  - **Decisions validees par l'utilisateur** :
+    1. **Stats Section** : Conserver les KPIs metier actuels (30%/15 Ans/<2h/0) — les donnees Stitch (99.9%/0EUR/24/7/+12k) ne sont pas applicables au business E2I. Seul le style visuel Stitch est applique (espacement `py-32`, tracking `0.3em` labels).
+    2. **Footer** : Conserver le contenu actuel mais appliquer le style Stitch sur fond blanc. **Retirer le logo partenaire 3CX** du footer (les logos restent dans la section dediee `PartnersSection`).
+    3. **Section Partenaires Technologiques** : Conservee telle quelle avec logos fixes en grille — enrichissement independant du template Stitch.
+    4. **Navigation** : Adopter la separation Stitch avec "Devis en ligne" (lien texte) et "Contact" (bouton monolith rouge avec **hard shadow box** `shadow-[4px_4px_0_0_#1F2937]` + hover mecanique).
+    5. **Solutions** : Ajouter les **lignes rouges decoratives** (`h-2 w-32 bg-red-primary`) manquantes partout dans le projet ou le template Stitch les prevoit.
+  - **Decisions conservees** : Carousel clients anime (amelioration UX), section Partners (enrichissement).
+  - **Plan d'implementation** : `docs/implementation.md` mis a jour avec 5 phases ordonnees, decisions marquees "VALIDE".
+- **Consequences** :
+  - Plan d'action valide et priorise pour atteindre ~98% de conformite avec le template Stitch.
+  - Les KPIs restent authentiques au business E2I (pas de donnees fictives du template).
+  - Les logos partenaires sont centralises dans `PartnersSection` au lieu d'etre dupliques dans le footer.
+  - Chaque phase est independante et testable (workflow `npm run validate` apres chaque etape).
+- **Tests associes** :
+  - Aucune modification de code dans cette ADR (decisions documentaires uniquement).
+  - **Matrice de tests detaillee** ajoutee dans `docs/implementation.md` (Phase 6.2) — 11 fichiers Jest et 6 specs Playwright identifies comme impactes.
+  - `docs/tests-reinforcement-checklist.md` mis a jour avec les adaptations specifiques par phase (assertions ligne rouge, 2 CTA header, retrait badge 3CX footer).
+  - **Regle** : Chaque phase de modification code doit etre committee avec ses tests adaptes dans le meme commit.
+- **Documentation mise a jour** :
+  - `docs/implementation.md` — Plan complet avec matrice tests/phase
+  - `docs/tests-reinforcement-checklist.md` — Checklist tests Stitch 2026
+  - `docs/ADR.md` — Cette entree
+
 ### 2026-03-28 — Refonte UX/UI Premium 2026 (Philosophie Carrée & Bento Box)
 
 - **Contexte** : L'interface du site (Hero Section, boutons, cartes de service, widget de chat) présentait une esthétique "générée par IA" avec des dégradés arc-en-ciel (red-to-green), des coins excessivement arrondis (`rounded-full`, `rounded-2xl`) et une disposition en grille standard peu dynamique, ne correspondant pas au positionnement professionnel B2B 2026 attendu par E2I VoIP.

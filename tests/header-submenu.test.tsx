@@ -79,11 +79,9 @@ describe("Header avec sous-menus DaisyUI", () => {
     expect(
       screen.getByTestId("icon-chevron-down-qui-sommes-nous")
     ).toBeInTheDocument();
-    const phoneIcons = screen.getAllByTestId("icon-lni-phone");
-    expect(phoneIcons.length).toBeGreaterThan(0);
-
-    // Vérifier les boutons DaisyUI
-    expect(screen.getByTestId("header-contact-button")).toHaveClass("btn");
+    // Verifier la separation Devis/Contact (Stitch 2026)
+    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
+    expect(screen.getByTestId("header-contact-button")).toHaveClass("monolith-btn");
   });
 
   test("Les liens de navigation principaux sont présents", () => {
@@ -194,7 +192,7 @@ describe("Header avec sous-menus DaisyUI", () => {
     expect(
       screen.getByTestId("mobile-link-qui-sommes-nous")
     ).toBeInTheDocument();
-    expect(screen.getByTestId("mobile-contact-button")).toHaveClass("btn");
+    expect(screen.getByTestId("mobile-contact-button")).toHaveClass("monolith-btn");
   });
 
   test("Les sous-menus mobiles s'affichent", () => {
@@ -232,12 +230,12 @@ describe("Header avec sous-menus DaisyUI", () => {
 
     // Vérifier les classes DaisyUI
     expect(screen.getByTestId("header-contact-button")).toHaveClass(
-      "btn",
-      "btn-primary"
+      "monolith-btn",
+      "bg-red-primary"
     );
     expect(screen.getByTestId("mobile-contact-button")).toHaveClass(
-      "btn",
-      "btn-primary"
+      "monolith-btn",
+      "bg-red-primary"
     );
     expect(screen.getByTestId("mobile-menu-button")).toHaveClass(
       "btn",

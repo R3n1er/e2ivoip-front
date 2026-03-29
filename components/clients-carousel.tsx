@@ -66,16 +66,15 @@ export function ClientsCarousel() {
   const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-24 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Titre de section */}
+        {/* Titre de section — style Stitch 2026 */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Ils nous font <span className="text-red-primary">confiance</span>
+          <h2 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-[#091421] mb-3">
+            Ils nous font confiance
           </h2>
-          <p className="text-xl text-gray-secondary max-w-3xl mx-auto">
-            Découvrez les entreprises qui nous font confiance pour leurs
-            solutions de téléphonie IP
+          <p className="text-xs text-gray-secondary uppercase tracking-widest">
+            Entreprises et organisations qui nous font confiance pour leur téléphonie IP
           </p>
         </div>
 
