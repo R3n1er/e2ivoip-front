@@ -1,9 +1,14 @@
+import dynamic from "next/dynamic";
 import { HomepageHeroSectionSimple } from "@/components/homepage-hero-section-simple";
 import { ClientsCarousel } from "@/components/clients-carousel";
-import { PartnersSection } from "@/components/partners-section";
 import { ServicesSectionSimple } from "@/components/services-section-simple";
 import { StatsSection } from "@/components/stats-section";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
+
+const PartnersSection = dynamic(
+  () => import("@/components/partners-section").then((mod) => mod.PartnersSection),
+  { ssr: true }
+);
 
 export const metadata = {
   title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
