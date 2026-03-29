@@ -2,7 +2,7 @@
 
 > **Ref Stitch** : Template `5386927507224192183` (`landing-page-desktop.html`)
 > **Date** : 2026-03-29
-> **Statut** : Valide (decisions utilisateur du 2026-03-29)
+> **Statut** : ✅ TERMINE (toutes les phases executees le 2026-03-29)
 
 ---
 
@@ -24,7 +24,7 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 | Footer | 100% | ✅ Style Stitch, badge 3CX retire |
 | Navigation | 100% | ✅ Devis/Contact separes, monolith-btn |
 | Chat PreOverlay | 100% | ✅ Monolithe, 3 champs, scroll trigger |
-| Pages interieures | 40% | ⚠️ 4 pages non migrees (telephonie-3cx, 3cx-cloud, trunk-sip-illimite, devis-en-ligne) |
+| Pages interieures | 100% | ✅ 8 pages migrees, 33 corrections appliquees |
 
 ---
 
@@ -248,44 +248,29 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 
 ---
 
-## Phase 5 — Pages Interieures (Priorite Basse → EN COURS)
+## Phase 5 — Pages Interieures ✅ TERMINE
 
 ### 5.1 Migration Pages Non-Migrees vers Monolithe
 
-**Pages a migrer** (contiennent encore soft shadows, gradients pre-Stitch, ancien style boutons) :
-- `app/telephonie-3cx/page.tsx` — ~15 violations (shadow-lg/xl/2xl, hover:scale-105, drop-shadow-lg)
-- `app/3cx-cloud/page.tsx` — ~15 violations (shadow-2xl, hover:scale-105, gradients)
-- `app/telephonie-entreprise/trunk-sip-illimite/page.tsx` — ~10 violations (shadow-xl/2xl, drop-shadow-lg)
-- `app/devis-en-ligne/page.tsx` — ~5 violations (shadow-lg/xl)
+**Pages migrees** — commit `487c708` :
+- [x] `app/telephonie-3cx/page.tsx` — 11 corrections (soft shadows, drop-shadow, hover scale)
+- [x] `app/3cx-cloud/page.tsx` — 10 corrections (boutons CTA monolith-btn, shadows, icones)
+- [x] `app/telephonie-entreprise/trunk-sip-illimite/page.tsx` — 9 corrections (shadows, gradients icones → bg-gray-50)
+- [x] `app/devis-en-ligne/page.tsx` — 3 corrections (shadows, boutons monolith-btn)
 
-**Pages deja conformes** (drop-shadows supprimes en Phase 0) :
+**Pages conformes depuis Phase 0** :
 - [x] `app/nos-services/assistants-vocaux-ia/page.tsx`
 - [x] `app/studio-attente/page.tsx`
 - [x] `app/telephonie-entreprise/3cx-smb-mutualisee/page.tsx`
 - [x] `app/telephonie-entreprise/trunk-sip-compteur/page.tsx`
 
-**Actions par page** :
-- [ ] Remplacer tous les `shadow-lg/xl/2xl` par des hard shadows ou suppression
-- [ ] Remplacer `hover:scale-105 hover:shadow-xl` par style Monolithe (ou suppression)
-- [ ] Remplacer `drop-shadow-lg` sur les titres Hero par rien
-- [ ] Remplacer les gradients hors-charte (`from-blue-600`, `from-red-500 to-orange-500`) par couleurs Monolithe
-- [ ] Verifier `rounded-none` sur toutes les cartes et boutons
-- [ ] Remplacer les boutons `btn btn-lg ... shadow-2xl` par `.monolith-btn`
-- [ ] Ajouter `.monolith-grid-lines` sur les sections sombres si manquant
-- [ ] Verifier les spacings verticaux (minimum `py-16`)
-
 ### 5.2 Correction Tests Casses (9 tests)
 
-**Tests en echec** (dette pre-existante — pages restructurees mais tests non adaptes) :
-- `tests/assistants-vocaux-ia.test.tsx` — 4 tests (textes/elements qui ne matchent plus le DOM)
-- `tests/trunk-sip-compteur.test.tsx` — 5 tests (textes/elements qui ne matchent plus le DOM)
+- [x] `tests/assistants-vocaux-ia.test.tsx` — 4 tests adaptes (textes, CTA monolith-btn, couleurs #091421) — commit `487c708`
+- [x] `tests/trunk-sip-compteur.test.tsx` — 5 tests adaptes (textes tarifs, couleurs, CTA) — commit `487c708`
+- [x] **327/327 tests Jest passent (100%)**
 
-**Actions** :
-- [ ] Relire chaque page source pour comprendre le DOM actuel
-- [ ] Adapter les assertions des tests pour matcher le contenu reel
-- [ ] Objectif : retour a 327/327 (ou plus) tests Jest passants
-
-**Risque** : Moyen-Eleve — 4 pages avec beaucoup de code, tests E2E existants
+**Statut** : ✅ TERMINE
 
 ---
 
