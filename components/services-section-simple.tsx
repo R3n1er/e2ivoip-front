@@ -32,7 +32,7 @@ export function ServicesSectionSimple() {
               </p>
             </div>
             <div className="mt-8">
-              <Link href="/telephonie-entreprise/3cx-pro-dediee" className="monolith-btn">
+              <Link href="/telephonie-3cx" className="monolith-btn">
                 <span className="block bg-[#091421] text-white font-black uppercase text-xs tracking-[0.2em] px-8 py-4">
                   En savoir plus
                 </span>
@@ -116,7 +116,7 @@ export function ServicesSectionSimple() {
               </p>
             </div>
             <div className="mt-8">
-              <Link href="/nos-services/studio-attente" className="monolith-btn">
+              <Link href="/studio-attente" className="monolith-btn">
                 <span className="block bg-white text-red-primary font-black uppercase text-[10px] tracking-[0.2em] px-8 py-4">
                   Écouter les démos
                 </span>

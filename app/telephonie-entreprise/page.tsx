@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -117,40 +117,38 @@ export default function TelephonieDentreprise() {
               {[
                 {
                   title: "Trunk SIP",
-                  href: "/trunk-sip",
+                  href: "/telephonie-entreprise/trunk-sip-compteur",
                   description: "Connexions SIP professionnelles",
                 },
                 {
                   title: "3CX PRO dédiée",
-                  href: "/3cx-pro-dediee",
+                  href: "/telephonie-3cx",
                   description: "Solution 3CX dédiée",
                 },
                 {
                   title: "3CX SMB mutualisée",
-                  href: "/3cx-smb-mutualisee",
+                  href: "/telephonie-entreprise/3cx-smb-mutualisee",
                   description: "Solution 3CX partagée",
                 },
                 {
                   title: "Yeastar",
-                  href: "/yeastar",
+                  href: "/telephonie-entreprise/pbx-yeastar",
                   description: "IPBX Yeastar",
                 },
               ].map((item, index) => (
-                <Card
-                  key={index}
-                  className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                    <CardDescription>{item.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <Link key={index} href={item.href} className="block h-full">
+                  <Card className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer h-full">
+                    <CardHeader>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                      <CardDescription>{item.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
         </section>
       </div>
-      <Footer />
     </div>
   );
 }

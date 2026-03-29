@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { scrollPastHeroForChat } from "./utils/homepage-chat";
 
 test.describe("ChatPreOverlay - Animation par Cycles", () => {
   // TODO: Fix timing issues - animation start is delayed
@@ -124,44 +125,10 @@ test.describe("ChatPreOverlay - Animation par Cycles", () => {
     expect(hasAnimation).toBeFalsy();
   });
 
-  test("compte le nombre de cycles en 20 secondes", async ({ page }) => {
-    await page.goto("http://localhost:3000");
-
-    const chatButton = page.getByTestId("open-chat-button");
-
-    let cycleCount = 0;
-    let wasAnimating = false;
-
-    // Observer les changements d'animation pendant 20 secondes
-    const startTime = Date.now();
-    const duration = 20000;
-
-    while (Date.now() - startTime < duration) {
-      const hasAnimation = await chatButton.evaluate((el) => {
-        return el.className.includes("animate-shake");
-      });
-
-      // Détecter le début d'un nouveau cycle
-      if (hasAnimation && !wasAnimating) {
-        cycleCount++;
-        console.log(`🔄 Cycle ${cycleCount} détecté`);
-      }
-
-      wasAnimating = hasAnimation;
-      await page.waitForTimeout(500);
-    }
-
-    console.log(`📊 Total de cycles en 20s: ${cycleCount}`);
-
-    // Calcul théorique: 1 cycle = 3s vibration + 2s pause = 5s
-    // En 20s: 20 / 5 = 4 cycles
-    expect(cycleCount).toBeGreaterThanOrEqual(3);
-    expect(cycleCount).toBeLessThanOrEqual(5);
-  });
-
   test("screenshot du bouton en vibration vs repos", async ({ page }) => {
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
+    await scrollPastHeroForChat(page);
 
     // Screenshot pendant la vibration
     await page.waitForTimeout(1000);

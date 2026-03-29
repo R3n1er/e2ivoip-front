@@ -61,7 +61,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/telephonie-entreprise/3cx-pro-dediee"
+                  href="/telephonie-3cx"
                   className="hover:text-[#091421] transition-colors flex items-center group"
                 >
                   <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -88,7 +88,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/nos-services/studio-attente"
+                  href="/studio-attente"
                   className="hover:text-[#091421] transition-colors flex items-center group"
                 >
                   <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>

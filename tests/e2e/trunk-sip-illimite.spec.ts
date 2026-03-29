@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Trunk SIP Illimité Page", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/telephonie-entreprise/trunk-sip-illimite");
-    await page.waitForLoadState("networkidle");
+    await page.waitForLoadState("load");
   });
 
   test("présente le hero et les bénéfices clés", async ({ page }) => {
