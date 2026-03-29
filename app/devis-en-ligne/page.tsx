@@ -104,7 +104,7 @@ export default function DevisEnLignePage() {
                 rel="noopener noreferrer"
                 className={`
                   w-full py-4 px-8 text-center text-white font-bold text-lg rounded-none
-                  transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1
+                  transition-all duration-300 monolith-btn
                   ${
                     button.variant === "primary"
                       ? "bg-red-600 hover:bg-red-700"
@@ -124,7 +124,7 @@ export default function DevisEnLignePage() {
             </p>
             <a
               href="tel:+594594963500"
-              className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-none font-bold transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-none font-bold transition-colors duration-300 monolith-btn"
             >
               <span className="mr-2">📞</span>
               05 94 96 35 00
@@ -229,7 +229,7 @@ export default function DevisEnLignePage() {
             de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
           </p>
           <div className="flex justify-center">
-            <div className="bg-white p-6 rounded-none shadow-lg">
+            <div className="bg-white p-6 rounded-none">
               <img
                 src="/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp"
                 alt="3CX Silver Partner Badge"
