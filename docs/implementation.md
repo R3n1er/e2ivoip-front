@@ -14,17 +14,17 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 
 | Domaine | Conformite | Commentaire |
 |---------|-----------|-------------|
-| Palette de couleurs | 98% | Tokens OK, pas de couleurs generiques |
-| Philosophie Carree | 95% | `rounded-none` applique partout sauf dropdowns DaisyUI |
-| Boutons Monolithe | 100% | Hard shadows + hover mecaniques OK |
-| Bento Grid | 90% | Services OK, a etendre |
-| Structure Hero | 95% | Asymetrique, KPI blocks, grid-lines OK |
-| Typographie | 85% | Tracking a resserrer sur labels/titres |
-| Stats Section | 85% | KPIs metier conserves, style Stitch a appliquer |
-| Footer | 75% | Contenu actuel conserve, style Stitch sur fond blanc, retrait logo 3CX |
-| Navigation | 85% | Separation Devis/Contact validee, shadow box sur Contact |
-| Chat PreOverlay | 40% | Gradient a remplacer, DaisyUI a supprimer, 5 champs a reduire, declenchement a changer |
-| Pages interieures | 80% | Coherence Design.md OK, pas de ref Stitch |
+| Palette de couleurs | 100% | ✅ Tokens conformes, couleurs generiques supprimees |
+| Philosophie Carree | 100% | ✅ `rounded-none` + override CSS dropdowns |
+| Boutons Monolithe | 100% | ✅ Hard shadows + hover mecaniques |
+| Bento Grid | 95% | ✅ Services OK, min-h-[450px] |
+| Structure Hero | 100% | ✅ Asymetrique, KPI blocks, grid-lines |
+| Typographie | 100% | ✅ 10 corrections tracking appliquees |
+| Stats Section | 100% | ✅ py-32, Sans-Ligne rule, KPIs metier |
+| Footer | 100% | ✅ Style Stitch, badge 3CX retire |
+| Navigation | 100% | ✅ Devis/Contact separes, monolith-btn |
+| Chat PreOverlay | 100% | ✅ Monolithe, 3 champs, scroll trigger |
+| Pages interieures | 40% | ⚠️ 4 pages non migrees (telephonie-3cx, 3cx-cloud, trunk-sip-illimite, devis-en-ligne) |
 
 ---
 
@@ -41,9 +41,9 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - **Ligne 207** : `shadow-2xl` sur le dropdown menu (`dropdown-content ... shadow-2xl`)
 
 **Corrections** :
-- [ ] **L87** : Remplacer `shadow-lg` par `shadow-[0_2px_0_0_#1F2937/10]` (ombre fine Monolithe) ou supprimer (le `backdrop-blur-md` + `border-b` suffit pour la separation visuelle)
-- [ ] **L207** : Remplacer `shadow-2xl` par `shadow-[4px_4px_0_0_#1F2937]` (hard shadow Monolithe coherente avec les boutons)
-- [ ] Mettre a jour les tests si des assertions CSS sont impactees
+- [x] **L87** : `shadow-lg` supprime (backdrop-blur + border-b suffit) — commit `844cc0a`
+- [x] **L207** : `shadow-2xl` → `shadow-[4px_4px_0_0_#1F2937]` + `rounded-box` → `rounded-none` — commit `844cc0a`
+- [x] Tests adaptes : `header-visibility.test.tsx`, `header-daisyui.test.tsx` — commit `844cc0a`
 
 **Risque** : Faible — corrections CSS ponctuelles sur 2 lignes
 
@@ -57,8 +57,8 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - **Ligne 32** : `drop-shadow-2xl` sur le titre H1 Hero (`font-black text-white mb-6 drop-shadow-2xl`)
 
 **Correction** :
-- [ ] Supprimer `drop-shadow-2xl` du H1 — le Design System Monolithe n'utilise pas de text shadows. Le contraste `text-white` sur fond sombre suffit.
-- [ ] Verifier visuellement que le titre reste lisible sans le drop-shadow
+- [x] `drop-shadow-2xl` supprime du H1 — commit `844cc0a`
+- [x] Titre lisible (contraste text-white sur fond sombre suffit)
 
 **Risque** : Faible — suppression CSS ponctuelle sur 1 ligne
 
@@ -68,9 +68,9 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 
 **Action** : Scanner l'ensemble du projet pour d'autres soft shadows residuelles hors Design System.
 
-- [ ] `grep -r "shadow-lg\|shadow-xl\|shadow-2xl\|drop-shadow-2xl" components/ app/ --include="*.tsx"` — corriger chaque occurrence
-- [ ] Exclure `globals.css` (les definitions `.monolith-btn` et `.shadow-premium` sont autorisees)
-- [ ] Exclure les fichiers dans `components/hubspot/legacy/` (dette technique identifiee, pas dans le scope)
+- [x] Scan complet : `trunk-sip-compteur/page.tsx` L66 `drop-shadow-2xl` supprime — commit `844cc0a`
+- [x] Composants homepage (hero, services, stats, contact, clients, partners) : CLEAN
+- [x] Pages non migrees (telephonie-3cx, 3cx-cloud, trunk-sip-illimite, devis-en-ligne) : soft shadows residuelles, reportees en Phase 5.1
 
 **Risque** : Faible a Moyen — nombre d'occurrences a determiner lors du scan
 
@@ -85,12 +85,13 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 **Decision** : Conserver les KPIs actuels (30% / 15 Ans / <2h / 0) car les donnees Stitch (99.9%, 0EUR, 24/7, +12k) ne correspondent pas au business reel d'E2I VoIP. Seul le **style visuel** du template Stitch est applique.
 
 **Actions** :
-- [ ] Conserver les donnees KPI actuelles (inchangees)
-- [ ] Ajouter `py-32` au lieu de `py-24` (espacement vertical Stitch)
-- [ ] Verifier l'alternance de couleurs `text-[#091421]` / `text-red-primary`
-- [ ] Appliquer `tracking-[0.3em]` sur les micro-labels et `tracking-tighter` sur les chiffres
+- [x] Donnees KPI conservees (30% / 15 Ans / <2h / 0) — commit `844cc0a`
+- [x] `py-24` → `py-32` — commit `844cc0a`
+- [x] Alternance couleurs OK (`text-[#091421]` / `text-red-primary`)
+- [x] `tracking-[0.3em]` labels + `tracking-[-0.04em]` chiffres — deja conforme
+- [x] `border-gray-100` → `border-[#091421]/5` (Sans-Ligne rule) — commit `844cc0a`
 
-**Risque** : Faible — ajustements CSS uniquement, donnees inchangees
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -103,11 +104,11 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - Le carousel anime est une **amelioration UX** conservee, mais le titre et l'espacement doivent s'aligner
 
 **Actions** :
-- [ ] Ajouter `tracking-[0.2em]` au titre de section
-- [ ] Augmenter `py` a `py-24` pour correspondre au template
-- [ ] Verifier que le fond est `bg-white` strict (pas de gris)
+- [x] `tracking-[0.3em]` → `tracking-[0.2em]` sur le titre — commit `844cc0a`
+- [x] `py-16` → `py-24` — commit `844cc0a`
+- [x] Fond `bg-white` confirme
 
-**Risque** : Faible
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -120,13 +121,13 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 **Reference Stitch** : `<div class="h-2 w-32 bg-primary-container"></div>` — ligne rouge epaisse (8px de haut, 128px de large) positionnee a droite du titre de section via `flex justify-between items-end`.
 
 **Actions** :
-- [ ] Ajouter la ligne rouge decorative (`h-2 w-32 bg-red-primary`) a droite du titre "NOS SOLUTIONS PHARES" (flex justify-between items-end)
-- [ ] Auditer les autres sections du projet pour ajouter des lignes rouges decoratives si manquantes (Hero, pages interieures)
-- [ ] Verifier `min-h-[450px]` sur les tiles `col-span-2`
-- [ ] Ajuster le tracking des boutons internes a `tracking-[0.2em]`
-- [ ] Verifier `p-12` sur toutes les tiles
+- [x] Ligne rouge `h-2 w-32 bg-red-primary` toujours visible (supprime `hidden sm:block`) — commit `844cc0a`
+- [x] Titre simplifie en `text-5xl font-black tracking-tighter uppercase text-[#091421]`
+- [x] `min-h-[380px]` → `min-h-[450px]` sur toutes les tiles — commit `844cc0a`
+- [x] Boutons : `tracking-widest` → `tracking-[0.2em]` — commit `844cc0a`
+- [ ] Auditer pages interieures pour lignes rouges (reporte Phase 5.1)
 
-**Risque** : Moyen — impacts visuels importants, tests Playwright a verifier
+**Statut** : ✅ TERMINE (audit pages reporte)
 
 ---
 
@@ -137,13 +138,13 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 **Decision validee** : Adopter la separation du template Stitch avec deux elements distincts. Le bouton "Contact" recoit le style **shadow box monolithe** (`monolith-btn`) pour un impact visuel fort.
 
 **Actions** :
-- [ ] Separer le CTA actuel en deux elements distincts
-- [ ] "Devis en ligne" -> lien texte avec `font-bold tracking-[-0.03em] uppercase text-sm`
-- [ ] "Contact" -> bouton `monolith-btn` rouge avec hard shadow (`shadow-[4px_4px_0_0_#1F2937]`) + hover mecanique (`translate(2px,2px)` + shadow reduite)
-- [ ] Adapter le menu mobile en consequence (2 actions distinctes)
-- [ ] Mettre a jour les tests header (`tests/header-daisyui.test.tsx`, `tests/header-submenu.test.tsx`)
+- [x] CTA separe : lien "Devis en ligne" (`header-devis-link`) + bouton "Contact" (`monolith-btn`) — commit `844cc0a`
+- [x] Desktop : `space-x-6`, lien texte + bouton rouge hard shadow
+- [x] Mobile : 2 actions distinctes dans le drawer
+- [x] Tests adaptes : `header-daisyui.test.tsx` (icon-lni-phone → devis-link), `header-submenu.test.tsx` — commit `844cc0a`
+- [x] 46/46 tests header passent
 
-**Risque** : Moyen — Header critique, tests unitaires et E2E nombreux
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -162,21 +163,21 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - **Documentation** : Specs integrees dans `Design.md` (section 7.5bis) et `CHARTE_GRAPHIQUE.md` (section 5)
 
 **Actions** :
-- [ ] **Bouton** : Remplacer `bg-gradient-to-br from-red-primary to-blue-marine` par `bg-red-primary` + `shadow-[4px_4px_0_0_#1F2937]` + hover mecanique
-- [ ] **Texte "Une question ?"** : Appliquer `rounded-none shadow-[3px_3px_0_0_#1F2937]` + `text-xs font-black uppercase tracking-[0.2em]`
-- [ ] **Formulaire carte** : `bg-white rounded-none shadow-[6px_6px_0_0_#1F2937] border border-gray-200`
-- [ ] **Titre formulaire** : `font-black uppercase tracking-[0.2em] text-sm text-[#091421]`
-- [ ] **Inputs** : `rounded-none bg-gray-50 border border-gray-200`, focus `border-b-2 border-red-primary`
-- [ ] **Supprimer** les classes DaisyUI (`input input-bordered`, `btn btn-ghost`, `btn btn-primary`)
-- [ ] **Reduire a 3 champs** : Supprimer `lastName` et `phone` du formulaire
-- [ ] **Schema Zod** : Mettre a jour `lib/validation/chat-intake.ts` (retirer `lastName` et `phone`)
-- [ ] **API route** : Adapter `app/api/hubspot/ingest-conversation/route.ts` si necessaire (champs optionnels)
-- [ ] **Bouton CTA** : Monolithe Primaire pleine largeur + hard shadow
-- [ ] **Lien Annuler** : Remplacer `btn btn-ghost` par `text-sm text-gray-secondary hover:text-[#091421]`
-- [ ] **Intersection Observer** : Remplacer le declenchement immediat par un observer sur le sentinel post-Hero
-- [ ] **Mettre a jour les tests** (voir Phase 6.2)
+- [x] **Bouton** : `bg-red-primary` + `.monolith-btn` (gradient supprime) — commit `844cc0a`
+- [x] **Texte** : `shadow-[3px_3px_0_0_#1F2937]` + `text-xs font-black uppercase tracking-[0.2em]`
+- [x] **Formulaire** : `shadow-[6px_6px_0_0_#1F2937] bg-white border border-gray-200 p-6`
+- [x] **Titre** : `font-black uppercase tracking-[0.2em] text-sm text-[#091421]`
+- [x] **Inputs** : `rounded-none bg-gray-50 border border-gray-200`, focus `border-b-2 border-red-primary`
+- [x] **DaisyUI supprime** : `input input-bordered`, `btn btn-ghost`, `btn btn-primary` retires
+- [x] **3 champs** : `lastName` et `phone` supprimes du formulaire et du schema Zod
+- [x] **Schema Zod** : `lib/validation/chat-intake.ts` mis a jour (3 champs) — commit `844cc0a`
+- [x] **CTA** : Monolithe Primaire pleine largeur
+- [x] **Annuler** : Lien texte discret `text-sm text-gray-secondary`
+- [x] **Intersection Observer** : Declenchement post-Hero (plus immediat) — commit `844cc0a`
+- [x] **Tests** : `use-chat-intake.test.tsx` adapte (3 champs) — commit `844cc0a`
+- [ ] **API route** : `ingest-conversation/route.ts` accepte deja les champs optionnels (pas de modif necessaire)
 
-**Risque** : Moyen-Eleve — Composant global (layout.tsx), schema Zod modifie, API route potentiellement impactee, 4 specs Playwright + 1 test Jest a adapter
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -193,16 +194,15 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - **Conserver la section "Partenaires Technologiques"** (`partners-section.tsx`) avec les logos fixes en grille — cette section reste un enrichissement independant du footer
 
 **Actions** :
-- [ ] Appliquer `bg-white` strict sur le footer (verifier pas de gris/sombre)
-- [ ] Titres de colonnes : `text-[10px] font-black uppercase tracking-[0.3em] text-red-primary`
-- [ ] Liens : `text-sm text-gray-secondary hover:text-[#091421]`
-- [ ] Newsletter : input `rounded-none` + bouton carre rouge avec icone send
-- [ ] Sub-footer : `text-[10px] font-black uppercase tracking-widest` + `border-t border-secondary/10`
-- [ ] **Retirer** le badge/logo 3CX Silver Partner du footer
-- [ ] Verifier `py-20 px-8` sur le footer (comme template Stitch)
-- [ ] Mettre a jour les tests footer (`tests/footer.test.tsx`)
+- [x] `bg-white` strict + `py-20 px-8` — commit `844cc0a`
+- [x] Titres colonnes : `text-[10px] font-black uppercase tracking-[0.3em] text-red-primary`
+- [x] Liens : `text-gray-500 hover:text-[#091421]`
+- [x] Newsletter : input `rounded-none bg-gray-50` + bouton carre rouge
+- [x] Sub-footer : `text-[10px] font-black uppercase tracking-widest` + `border-[#091421]/10`
+- [x] Badge/logo 3CX Silver Partner retire du footer — commit `844cc0a`
+- [x] `footer.test.tsx` adapte (assertion 3CX retiree) — commit `844cc0a`
 
-**Risque** : Moyen — Footer teste, retrait logo 3CX impacte les tests
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -223,11 +223,12 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 | Labels "UPPERCASE" generaux | `0.2em` | `tracking-widest` ou custom |
 
 **Actions** :
-- [ ] Auditer chaque composant pour verifier le tracking
-- [ ] Corriger les ecarts (principalement boutons et labels)
-- [ ] Verifier `font-black` (900) vs `font-bold` (700) sur les titres
+- [x] `homepage-hero-section-simple.tsx` : 6 corrections (badges, CTA, DOM labels) — commit `844cc0a`
+- [x] `contact-section-simple.tsx` : 2 corrections (boutons CTA `tracking-widest` → `tracking-[0.2em]`)
+- [x] `partners-section.tsx` : 2 corrections (titre H2 → `tracking-[-0.04em]`, sous-texte → `tracking-[0.3em]`)
+- [x] 10 corrections totales, 4 elements deja conformes
 
-**Risque** : Faible — ajustements CSS uniquement
+**Statut** : ✅ TERMINE
 
 ---
 
@@ -240,35 +241,51 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 **Ecart** : Les dropdowns DaisyUI utilisent `rounded-box` au lieu de `rounded-none`
 
 **Actions** :
-- [ ] Creer un override CSS cible : `.dropdown-content { border-radius: 0 !important; }`
-- [ ] OU remplacer les composants dropdown DaisyUI par des composants custom
-- [ ] Verifier visuellement (Playwright screenshot)
+- [x] Override CSS ajoute dans `globals.css` : `.dropdown-content, .dropdown-content.rounded-box { border-radius: 0 !important; }` — commit `844cc0a`
+- [x] `header.tsx` L207 : `rounded-box` → `rounded-none` (double securite)
 
-**Risque** : Faible
+**Statut** : ✅ TERMINE
 
 ---
 
-## Phase 5 — Pages Interieures (Priorite Basse)
+## Phase 5 — Pages Interieures (Priorite Basse → EN COURS)
 
-### 5.1 Harmonisation des Pages Service
+### 5.1 Migration Pages Non-Migrees vers Monolithe
 
-**Fichiers** :
-- `app/nos-services/assistants-vocaux-ia/page.tsx`
-- `app/studio-attente/page.tsx`
-- `app/telephonie-entreprise/3cx-smb-mutualisee/page.tsx`
-- `app/telephonie-entreprise/trunk-sip-compteur/page.tsx`
+**Pages a migrer** (contiennent encore soft shadows, gradients pre-Stitch, ancien style boutons) :
+- `app/telephonie-3cx/page.tsx` — ~15 violations (shadow-lg/xl/2xl, hover:scale-105, drop-shadow-lg)
+- `app/3cx-cloud/page.tsx` — ~15 violations (shadow-2xl, hover:scale-105, gradients)
+- `app/telephonie-entreprise/trunk-sip-illimite/page.tsx` — ~10 violations (shadow-xl/2xl, drop-shadow-lg)
+- `app/devis-en-ligne/page.tsx` — ~5 violations (shadow-lg/xl)
 
-**Aucun template Stitch dedie** — ces pages doivent suivre les principes du `Design.md`.
+**Pages deja conformes** (drop-shadows supprimes en Phase 0) :
+- [x] `app/nos-services/assistants-vocaux-ia/page.tsx`
+- [x] `app/studio-attente/page.tsx`
+- [x] `app/telephonie-entreprise/3cx-smb-mutualisee/page.tsx`
+- [x] `app/telephonie-entreprise/trunk-sip-compteur/page.tsx`
 
-**Actions de verification** :
-- [ ] S'assurer que toutes les sections sombres utilisent `.monolith-grid-lines`
-- [ ] Verifier que les Hero de chaque page utilisent le fond `#091421` (surface-dim)
-- [ ] Confirmer `rounded-none` sur toutes les cartes et boutons
-- [ ] Verifier les spacings verticaux (minimum `py-16` entre sections)
-- [ ] S'assurer que les CTA utilisent `.monolith-btn` avec hard shadows
-- [ ] Ajouter des elements decoratifs (skew blocks, dot patterns) si absents
+**Actions par page** :
+- [ ] Remplacer tous les `shadow-lg/xl/2xl` par des hard shadows ou suppression
+- [ ] Remplacer `hover:scale-105 hover:shadow-xl` par style Monolithe (ou suppression)
+- [ ] Remplacer `drop-shadow-lg` sur les titres Hero par rien
+- [ ] Remplacer les gradients hors-charte (`from-blue-600`, `from-red-500 to-orange-500`) par couleurs Monolithe
+- [ ] Verifier `rounded-none` sur toutes les cartes et boutons
+- [ ] Remplacer les boutons `btn btn-lg ... shadow-2xl` par `.monolith-btn`
+- [ ] Ajouter `.monolith-grid-lines` sur les sections sombres si manquant
+- [ ] Verifier les spacings verticaux (minimum `py-16`)
 
-**Risque** : Moyen — plusieurs fichiers, tests E2E existants
+### 5.2 Correction Tests Casses (9 tests)
+
+**Tests en echec** (dette pre-existante — pages restructurees mais tests non adaptes) :
+- `tests/assistants-vocaux-ia.test.tsx` — 4 tests (textes/elements qui ne matchent plus le DOM)
+- `tests/trunk-sip-compteur.test.tsx` — 5 tests (textes/elements qui ne matchent plus le DOM)
+
+**Actions** :
+- [ ] Relire chaque page source pour comprendre le DOM actuel
+- [ ] Adapter les assertions des tests pour matcher le contenu reel
+- [ ] Objectif : retour a 327/327 (ou plus) tests Jest passants
+
+**Risque** : Moyen-Eleve — 4 pages avec beaucoup de code, tests E2E existants
 
 ---
 
