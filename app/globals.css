@@ -71,6 +71,54 @@
     pointer-events: none;
   }
 
+  /* Style Monolithe pour le contenu blog (HTML HubSpot) */
+  .prose-monolithe {
+    --tw-prose-body: #1F2937;
+    --tw-prose-headings: #091421;
+    --tw-prose-links: #E53E3E;
+    --tw-prose-bold: #091421;
+  }
+
+  .prose-monolithe h2 {
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-monolithe h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-monolithe a {
+    color: #E53E3E;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .prose-monolithe a:hover {
+    color: #091421;
+  }
+
+  .prose-monolithe img {
+    border-radius: 0;
+  }
+
+  .prose-monolithe blockquote {
+    border-left-color: #E53E3E;
+    border-radius: 0;
+  }
+
+  .prose-monolithe hr {
+    border-color: rgba(9, 20, 33, 0.1);
+  }
+
+  .prose-monolithe ul li::marker {
+    color: #E53E3E;
+  }
+
   /* Bouton Monolithe avec hard shadow décalé */
   .monolith-btn {
     position: relative;

@@ -16,11 +16,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.ctfassets.net",
+        hostname: "www.e2i-voip.com",
       },
       {
         protocol: "https",
-        hostname: "assets.ctfassets.net",
+        hostname: "**.hubfs.net",
+      },
+      {
+        protocol: "https",
+        hostname: "**.hsforms.net",
       },
     ],
   },
