@@ -13,9 +13,10 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 
 ## 2. Pré-requis & installation
 1. Node.js 22.12.0 (via `.nvmrc`).
+   > **Nouveau depuis mars 2026** : Les secrets sont geres via **dotenvx**.
 2. Cloner le dépôt puis installer les dépendances : `npm install`. Pour les scripts internes : `npm run install:all` (installe les dépendances dans `scripts/`).
-3. Copier `.env.example` → `.env.local` et compléter les clés (Contentful, HubSpot, URLR…).
-4. Démarrer le serveur local : `npm run dev` (port 3000). Le service worker charge `/sw.js` automatiquement en local.
+3. **Secrets** : Demander `.env.keys` a l'equipe (canal securise) et le placer a la racine. Ne jamais committer ce fichier. Ancien : ~~Copier `.env.example`~~ → `.env.local` et compléter les clés (Contentful, HubSpot, URLR…).
+4. Lancer : `npm run dev` (port 3000, dechiffrement auto via dotenvx).
 
 ## 3. Structure du projet
 ```text

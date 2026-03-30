@@ -10,6 +10,25 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-30 — Adoption dotenvx pour le chiffrement des secrets
+
+- **Contexte** : Les cles API (Stitch Google Cloud, HubSpot Private App Token) ont ete commitees en clair dans `.mcp.json` et detectees par GitGuardian et GitHub Push Protection. L'historique Git a du etre reecrit avec `git-filter-repo` pour supprimer les secrets de la branche `dev`. La cle Stitch a ete revoquee et remplacee.
+- **Decision** :
+  - Adoption de **`@dotenvx/dotenvx`** pour chiffrer le fichier `.env` avec une cle publique/privee
+  - `.env` est **chiffre et committe** dans Git (safe — les valeurs sont illisibles sans la cle)
+  - `.env.keys` contient la cle privee de dechiffrement — **jamais committe** (dans `.gitignore`)
+  - `.mcp.json` retire du tracking Git et ajoute au `.gitignore` (contient tokens MCP en clair)
+  - Scripts npm (`dev`, `build`, `start`) modifies pour utiliser `dotenvx run --` qui dechiffre en memoire
+  - Nouveau developpeur : doit recevoir `.env.keys` par canal securise (Slack DM, 1Password)
+- **Consequences** :
+  - Zero secret en clair dans l'historique Git (present ou futur)
+  - Les variables d'env sont versionnees (on voit les ajouts/suppressions dans les diffs)
+  - Pas d'infrastructure supplementaire (pas de Vault, pas de cloud KMS)
+  - Onboarding : une seule etape supplementaire (recevoir `.env.keys`)
+- **Tests associes** :
+  - 334/334 tests Jest passent avec dotenvx
+  - Build production OK (`dotenvx run -- next build`)
+
 ### 2026-03-29 — Header `HeaderSimple` : breakpoint desktop `lg`, tests E2E sous-menus, hero accueil (copy)
 
 - **Contexte** : La navigation horizontale et les CTA Devis/Contact n’apparaissaient qu’à partir du breakpoint Tailwind `xl` (1280px), ce qui laissait le menu hamburger actif sur de nombreux laptops et tablettes larges. Les sous-liens du menu desktop portent `role="menuitem"` sur les `Link`, ce qui les expose comme `menuitem` et non comme `link` dans l’arbre d’accessibilité. Sur la homepage, le badge hero et le paragraphe sous le H1 répétaient partiellement le positionnement « spécialiste DOM ».

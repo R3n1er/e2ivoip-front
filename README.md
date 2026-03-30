@@ -1,17 +1,18 @@
 # E2I VoIP - Site Web Moderne
 
-Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui, avec migration du blog vers Contentful.
+Site web moderne pour E2I VoIP avec Next.js 15, Design System Monolithe 2026, blog HubSpot ISR.
 
-## 🚀 Technologies Utilisées
+## 🚀 Technologies Utilisees
 
-- **Framework** : Next.js 15 (App Router)
-- **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
-- **Animations** : Framer Motion
-- **État** : Zustand (gestion d'état UI)
-- **Tests** : Vitest + Testing Library
-- **CMS** : Contentful (blog) + HubSpot (CRM + Analytics)
-- **Formulaires** : Tally (devis spécialisés)
-- **Automatisation** : n8n (workflows)
+- **Framework** : Next.js 15 (App Router, ISR)
+- **Styling** : Tailwind CSS + DaisyUI + @tailwindcss/typography + shadcn/ui
+- **Design System** : Monolithe Numerique 2026 (Stitch)
+- **Blog** : HubSpot CMS API v3 (ISR 10min) — Contentful supprime
+- **CRM** : HubSpot (formulaires, tracking, chat pre-overlay)
+- **Tests** : Jest + Playwright (334 Jest, 67 E2E)
+- **Secrets** : dotenvx (chiffrement `.env`)
+- **Formulaires** : Tally (devis specialises)
+- **Deploiement** : Vercel
 
 ## 🤖 Development Guidelines for AI Assistants
 
@@ -86,40 +87,47 @@ Le projet utilise **Jest**, **React Testing Library** et **Playwright** pour les
 - **Total** : 74 tests ✅
 - Homepage, Header, Services, Chat PreOverlay, Tally, Assistants IA
 
-## 📋 Prérequis
+## 🔐 Gestion des Secrets (dotenvx)
 
-- Node.js 22.12.0 (LTS)
-- npm ou yarn
-- Compte HubSpot
-- Compte Tally
-- Instance n8n
+Les secrets sont chiffres dans `.env` via **dotenvx**. Le fichier `.env` est committe (chiffre), la cle de dechiffrement `.env.keys` reste locale.
+
+```bash
+# Dechiffrer pour editer
+npx dotenvx decrypt
+
+# Editer les variables...
+
+# Re-chiffrer
+npx dotenvx encrypt
+
+# Les scripts npm dechiffrent automatiquement
+npm run dev   # → dotenvx run -- next dev
+```
+
+**Pour un nouveau developpeur** : Demander le fichier `.env.keys` a un membre de l'equipe (canal securise). Le placer a la racine du projet.
+
+**Variables requises** :
+- `HUBSPOT_ACCESS_TOKEN` — Private App Token (portail 26878201, pat-eu1-*)
+
+**Fichiers de config locaux (non committes)** :
+- `.env.keys` — Cle privee dotenvx
+- `.env.local` — Overrides locaux (optionnel)
+- `.mcp.json` — Config MCP servers (contient tokens)
+
+## 📋 Prerequis
+
+- Node.js 22.12.0 (via `.nvmrc`)
+- npm
+- Fichier `.env.keys` (demander a l'equipe)
 
 ## 🛠️ Installation
 
-1. **Cloner le repository**
-
 ```bash
-git clone https://github.com/alban/e2ivoip-front.git
+git clone https://github.com/R3n1er/e2ivoip-front.git
 cd e2ivoip-front
-```
-
-2. **Installer toutes les dépendances**
-
-```bash
-npm run install:all
-```
-
-3. **Configurer les variables d'environnement**
-
-```bash
-cp env.example .env.local
-# Éditer .env.local avec vos clés API
-```
-
-4. **Vérifier la configuration**
-
-```bash
-node scripts/check-setup.js
+npm install
+# Placer .env.keys a la racine (recu de l'equipe)
+npm run dev
 ```
 
 ## 🏃‍♂️ Démarrage Rapide
