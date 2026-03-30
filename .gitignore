@@ -10,8 +10,10 @@ out/
 build/
 dist/
 
-# Environment variables
-.env
+# Environment variables (dotenvx: .env is encrypted and SAFE to commit)
+# .env          <- now encrypted, committed
+.env.keys       # private decryption key — NEVER commit
+.env.local      # local overrides — never commit
 # Local overrides
 .env.local
 .env.local.backup
