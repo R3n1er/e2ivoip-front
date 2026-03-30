@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-29 — Header `HeaderSimple` : breakpoint desktop `lg`, tests E2E sous-menus, hero accueil (copy)
+
+- **Contexte** : La navigation horizontale et les CTA Devis/Contact n’apparaissaient qu’à partir du breakpoint Tailwind `xl` (1280px), ce qui laissait le menu hamburger actif sur de nombreux laptops et tablettes larges. Les sous-liens du menu desktop portent `role="menuitem"` sur les `Link`, ce qui les expose comme `menuitem` et non comme `link` dans l’arbre d’accessibilité. Sur la homepage, le badge hero et le paragraphe sous le H1 répétaient partiellement le positionnement « spécialiste DOM ».
+- **Décision** :
+  - **Header** (`components/layout/header-simple.tsx`) : afficher la barre desktop (nav centrée + Devis + Contact `monolith-btn`) dès **`lg` (≥1024px)** ; réserver le **hamburger et le tiroir** aux viewports **&lt; lg** (mobile / petite tablette). Supprimer le mode intermédiaire « Contact compact + burger » entre `lg` et `xl`. Ajuster typo, `gap`, largeur des dropdowns et bouton Contact pour tenir sur `lg`.
+  - **Tests** : Jest — classes `lg:flex` / `lg:hidden` dans `tests/header-simple.test.tsx`. Playwright — assertions sous-menus via **`getByRole("menuitem", …)`** ; viewport desktop des scénarios header à **1024×900** dans `tests/e2e/header-simple.spec.ts`.
+  - **Hero** (`components/homepage-hero-section-simple.tsx`) : badge **« Opérateur de services télécom · Spécialiste des DOM · Plus de 100 clients »** ; sous-titre allégé (plus de répétition « Spécialiste des DOM »), accent sur performance, mobilité et continuité d’activité. `tests/homepage-hero-image.test.tsx` aligné sur le nouveau texte.
+- **Conséquences** : UX laptop cohérente avec une maquette « desktop » plus tôt ; les tests E2E reflètent les rôles ARIA réels ; message d’accueil plus lisible sans redondance.
+- **Tests associés** : `npx jest tests/header-simple.test.tsx tests/header-simple-submenu.test.tsx tests/homepage-hero-image.test.tsx` ; `npx playwright test tests/e2e/header-simple.spec.ts`.
+
 ### 2026-03-29 — Migration Blog Contentful -> HubSpot CMS API (ISR)
 
 - **Contexte** : L'integration Contentful pour le blog n'a jamais ete deployee en production (pas de variables d'environnement, pas de contenu importe). Le site actuel e2i-voip.com est heberge sur HubSpot et contient 11 articles de blog dans le portail 26878201. Decision de recuperer les articles directement depuis l'API Blog HubSpot CMS v3.
