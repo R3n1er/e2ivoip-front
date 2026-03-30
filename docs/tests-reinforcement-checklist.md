@@ -25,7 +25,7 @@
 - [ ] `tests/header-submenu.test.tsx` : Verifier sous-menus OK avec nouveau layout
 - [ ] `tests/header-integration.test.tsx` : Verifier integration 2 CTA
 - [ ] `tests/header-menu.test.tsx` : Tester menu mobile avec 2 actions distinctes
-- [ ] `tests/e2e/header-simple.spec.ts` : Tester clic "Devis en ligne" et clic "Contact" separement
+- [ ] `tests/e2e/header-simple.spec.ts` : Tester clic "Devis en ligne" et clic "Contact" separement ; sous-menus au survol via **`getByRole("menuitem", { name: "…" })`** (les `Link` du dropdown ont `role="menuitem"`). Viewport desktop des tests header : **1024px** (breakpoint `lg`).
 - [ ] `tests/devis-en-ligne.test.tsx` : Verifier lien correct
 
 ### Phase 2.1 — Footer (retrait logo 3CX + restyle)

@@ -18,11 +18,11 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 | Philosophie Carree | 100% | ✅ `rounded-none` + override CSS dropdowns |
 | Boutons Monolithe | 100% | ✅ Hard shadows + hover mecaniques |
 | Bento Grid | 95% | ✅ Services OK, min-h-[450px] |
-| Structure Hero | 100% | ✅ Asymetrique, KPI blocks, grid-lines |
+| Structure Hero | 100% | ✅ Asymetrique, KPI blocks, grid-lines ; **suivi 2026-03-29** : badge + sous-titre hero (positionnement DOM sans repetition) — ADR |
 | Typographie | 100% | ✅ 10 corrections tracking appliquees |
 | Stats Section | 100% | ✅ py-32, Sans-Ligne rule, KPIs metier |
 | Footer | 100% | ✅ Style Stitch, badge 3CX retire |
-| Navigation | 100% | ✅ Devis/Contact separes, monolith-btn |
+| Navigation | 100% | ✅ Devis/Contact separes, monolith-btn ; **suivi 2026-03-29** : `HeaderSimple` desktop dès `lg`, hamburger &lt; `lg` (voir ADR du meme jour) |
 | Chat PreOverlay | 100% | ✅ Monolithe, 3 champs, scroll trigger |
 | Pages interieures | 100% | ✅ 8 pages migrees, 33 corrections appliquees |
 
@@ -476,6 +476,13 @@ npm run build           # Build production
 ---
 
 ## Historique
+
+### 2026-03-29 — Evolutions post-plan Stitch (header + hero + tests)
+
+- **Header** : `components/layout/header-simple.tsx` — menu desktop visible dès `lg` ; hamburger / tiroir uniquement en dessous de `lg` ; typo et espacements compacts sur `lg`.
+- **Tests** : `tests/header-simple.test.tsx`, `tests/e2e/header-simple.spec.ts` (role `menuitem` pour sous-menus, viewport 1024).
+- **Hero** : `components/homepage-hero-section-simple.tsx` + `tests/homepage-hero-image.test.tsx` — badge operateur / DOM / clients ; sous-titre sans doublon « Spécialiste des DOM ».
+- **Reference** : `docs/ADR.md` (entree du meme jour).
 
 ### 2025-10-21 — Plan initial (obsolete)
 

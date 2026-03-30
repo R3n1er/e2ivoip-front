@@ -50,7 +50,7 @@ e2ivoip-front/
 
 ## 5. Layout & navigation
 - `app/layout.tsx` applique les polices Geist, configure `HubSpotTracking`, `HotjarTracking`, `TawkTo`, et installe `HeaderSimple` + `Footer` sur tout le site.
-- `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) et drawer mobile. CTA contact via `CTAButton`.
+- `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) dès le breakpoint **`lg`** ; hamburger et tiroir en dessous de `lg`. CTA contact via lien **`monolith-btn`** (hard shadow) ; « Devis en ligne » en lien texte.
 - `components/footer.tsx` rassemble branding, liens utilitaires, coordonnées (vérifier la cohérence des numéros région DOM/France).
 
 ## 5. Pages clés
