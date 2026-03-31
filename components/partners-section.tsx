@@ -47,8 +47,8 @@ export function PartnersSection() {
           </p>
         </div>
 
-        {/* Logos */}
-        <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+        {/* Logos — suppressHydrationWarning: extensions navigateur (ad-blockers) peuvent filtrer certains logos */}
+        <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" suppressHydrationWarning>
           {partners.map((partner) => (
             <div
               key={partner.name}

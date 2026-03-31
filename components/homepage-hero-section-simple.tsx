@@ -12,8 +12,8 @@ export function HomepageHeroSectionSimple() {
       {/* Grille de fond monolithique */}
       <div className="absolute inset-0 monolith-grid-lines" aria-hidden="true" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full pt-28 pb-20">
+      {/* Content — suppressHydrationWarning: extensions navigateur peuvent modifier le padding */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full pt-28 pb-20" suppressHydrationWarning>
         <div className="grid lg:grid-cols-10 gap-8 lg:gap-12 items-center">
 
           {/* ── Colonne gauche (60%) ── */}
