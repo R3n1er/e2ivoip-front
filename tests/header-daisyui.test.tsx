@@ -59,9 +59,10 @@ describe("Header DaisyUI avec sous-menus", () => {
 
     // Vérifier les icônes chevron-down
     const chevrons = document.querySelectorAll('[data-testid^="icon-chevron-down"]');
-    expect(chevrons.length).toBe(3); // 3 menus avec sous-menus
+    expect(chevrons.length).toBe(4); // 4 menus avec sous-menus : Qui sommes-nous, Trunk SIP, Téléphonie d'entreprise, Nos services
 
-    // Verifier le lien "Devis en ligne" et le bouton "Contact" separes (Stitch 2026)
+    // Verifier les 3 elements CTA (Espace Client + Devis + Contact) — Stitch 2026
+    expect(screen.getByTestId("header-espace-client-link")).toBeInTheDocument();
     expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
     expect(screen.getByTestId("header-contact-button")).toBeInTheDocument();
   });
@@ -75,6 +76,7 @@ describe("Header DaisyUI avec sous-menus", () => {
     expect(screen.getByTestId("nav-link-blog")).toHaveAttribute("href", "/blog");
     
     // Vérifier les dropdowns
+    expect(screen.getByTestId("nav-dropdown-trunk-sip")).toBeInTheDocument();
     expect(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise")).toBeInTheDocument();
   });
 
@@ -86,9 +88,14 @@ describe("Header DaisyUI avec sous-menus", () => {
       expect(screen.getByTestId("submenu-link-nos-certifications")).toBeInTheDocument();
     });
 
-    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
+    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-trunk-sip"));
     await waitFor(() => {
       expect(screen.getByTestId("submenu-link-trunk-sip-au-compteur")).toBeInTheDocument();
+    });
+
+    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
+    await waitFor(() => {
+      expect(screen.getByTestId("submenu-link-3cx-pro-dédiée")).toBeInTheDocument();
     });
 
     fireEvent.mouseEnter(screen.getByTestId("nav-link-nos-services"));

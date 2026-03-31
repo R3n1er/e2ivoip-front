@@ -34,7 +34,7 @@ export function Header() {
       ],
     },
     {
-      name: "Téléphonie d'entreprise",
+      name: "Trunk SIP",
       href: null,
       submenu: [
         {
@@ -45,6 +45,12 @@ export function Header() {
           name: "Trunk SIP illimité",
           href: "/telephonie-entreprise/trunk-sip-illimite",
         },
+      ],
+    },
+    {
+      name: "Téléphonie d'entreprise",
+      href: null,
+      submenu: [
         {
           name: "3CX PRO dédiée",
           href: "/telephonie-3cx",
@@ -246,11 +252,20 @@ export function Header() {
             })}
           </nav>
 
-          {/* CTA Buttons - Stitch 2026 (Devis + Contact separes) */}
+          {/* CTA Buttons - Stitch 2026 (Espace Client + Devis + Contact) */}
           <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
+            <a
+              href="https://e2i-voip.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold tracking-[-0.03em] uppercase text-sm text-gray-500 hover:text-[#091421] transition-colors duration-200"
+              data-testid="header-espace-client-link"
+            >
+              Espace Client
+            </a>
             <Link
               href="/devis-en-ligne"
-              className="font-bold tracking-[-0.03em] uppercase text-sm text-gray-700 hover:text-[#091421] transition-colors duration-200"
+              className="font-black tracking-[-0.03em] uppercase text-sm text-[#091421] hover:text-red-primary transition-colors duration-200"
               data-testid="header-devis-link"
             >
               Devis en ligne
@@ -339,9 +354,19 @@ export function Header() {
                     </div>
                   ))}
                   <div className="mt-8 space-y-4">
+                    <a
+                      href="https://e2i-voip.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center font-bold tracking-[-0.03em] uppercase text-sm text-gray-500 hover:text-[#091421] transition-colors py-3"
+                      onClick={() => setIsOpen(false)}
+                      data-testid="mobile-espace-client-link"
+                    >
+                      Espace Client
+                    </a>
                     <Link
                       href="/devis-en-ligne"
-                      className="block text-center font-bold tracking-[-0.03em] uppercase text-sm text-gray-700 hover:text-[#091421] transition-colors py-3"
+                      className="block text-center font-black tracking-[-0.03em] uppercase text-sm text-[#091421] hover:text-red-primary transition-colors py-3"
                       onClick={() => setIsOpen(false)}
                       data-testid="mobile-devis-link"
                     >

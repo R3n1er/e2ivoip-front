@@ -10,6 +10,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-31 — Restructuration menu principal (Stitch Uppercase Navigation Header)
+
+- **Contexte** : La maquette Stitch (screen `a8a652429d1d464a8bb17fada21a62f0` "E2I Desktop - Uppercase Navigation Header") a ete mise a jour avec un bouton "Espace Client", une mise en forme renforcee du "Devis en ligne" (font-black), et une separation du menu Trunk SIP.
+- **Decision** :
+  - **Menu "Trunk SIP"** : Nouveau menu de navigation avec sous-menu dedie (Trunk SIP au compteur + Trunk SIP illimite), place avant "Telephonie d'entreprise"
+  - **Menu "Telephonie d'entreprise"** : Reduit a 3CX PRO, 3CX SMB, PBX Yeastar (Trunk SIP retire)
+  - **Bouton "Espace Client"** : Nouveau lien externe (`https://e2i-voip.com`) en `font-bold text-gray-500`, place avant "Devis en ligne" dans la zone CTA
+  - **"Devis en ligne"** : Police renforcee de `font-bold text-gray-700` a `font-black text-[#091421]` (plus visible, coherent maquette Stitch)
+  - Desktop et mobile adaptes en parallele
+- **Consequences** :
+  - 4 menus avec sous-menus au lieu de 3 (Qui sommes-nous, Trunk SIP, Telephonie, Services)
+  - L'offre Trunk SIP gagne en visibilite dans la navigation (menu dedie au lieu d'etre noye dans Telephonie)
+  - 3 elements CTA dans le header (Espace Client, Devis en ligne, Contact)
+- **Tests associes** :
+  - Tests header adaptes (chevrons 3→4, sous-menus Trunk SIP separes, assertions Espace Client)
+  - 335/335 tests Jest passent
+
 ### 2026-03-30 — Adoption dotenvx pour le chiffrement des secrets
 
 - **Contexte** : Les cles API (Stitch Google Cloud, HubSpot Private App Token) ont ete commitees en clair dans `.mcp.json` et detectees par GitGuardian et GitHub Push Protection. L'historique Git a du etre reecrit avec `git-filter-repo` pour supprimer les secrets de la branche `dev`. La cle Stitch a ete revoquee et remplacee.
