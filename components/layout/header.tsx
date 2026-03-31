@@ -78,7 +78,6 @@ export function Header() {
       ],
     },
     { name: "Blog", href: "/blog" },
-    { name: "Devis en ligne", href: "/devis-en-ligne" },
   ];
 
   // Plus besoin de logique complexe, DaisyUI gère le hover automatiquement
@@ -96,7 +95,7 @@ export function Header() {
       data-testid="main-header"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 lg:h-20">
+        <div className="flex justify-between items-center h-16 lg:h-24">
           {/* Logo - Optimisé pour MacBook Pro 13", 14", 15" */}
           <Link
             href="/"
@@ -161,8 +160,8 @@ export function Header() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className={`font-bold transition-colors duration-200 flex items-center text-xs tracking-widest uppercase whitespace-nowrap py-2 hover:text-red-primary ${
-                          isScrolled ? "text-gray-700" : "text-gray-700"
+                        className={`font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 hover:text-[#091421] ${
+                          isScrolled ? "text-gray-500" : "text-gray-500"
                         }`}
                         data-testid={`nav-link-${slug}`}
                         onMouseEnter={() =>
@@ -252,27 +251,28 @@ export function Header() {
             })}
           </nav>
 
-          {/* CTA Buttons - Stitch 2026 (Espace Client + Devis + Contact) */}
+          {/* CTA Buttons - Stitch 2026 (Devis + Espace Client + Contact) */}
           <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
-            <a
-              href="https://e2i-voip.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold tracking-[-0.03em] uppercase text-sm text-gray-500 hover:text-[#091421] transition-colors duration-200"
-              data-testid="header-espace-client-link"
-            >
-              Espace Client
-            </a>
             <Link
               href="/devis-en-ligne"
-              className="font-black tracking-[-0.03em] uppercase text-sm text-[#091421] hover:text-red-primary transition-colors duration-200"
+              className="font-black tracking-[-0.03em] uppercase text-[11px] text-[#b91c1c] hover:opacity-70 transition-all duration-200"
               data-testid="header-devis-link"
             >
               Devis en ligne
             </Link>
+            <a
+              href="https://e2i-voip.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="monolith-btn bg-white border border-[#091421] text-[#091421] font-bold tracking-[-0.03em] uppercase text-[11px] px-5 py-2.5 rounded-none flex items-center gap-2"
+              data-testid="header-espace-client-link"
+            >
+              <i className="lni lni-user text-base" aria-hidden="true" />
+              Espace Client
+            </a>
             <Link href="/contact">
               <button
-                className="monolith-btn bg-red-primary text-white font-black tracking-[-0.03em] uppercase text-sm px-8 py-3 rounded-none"
+                className="monolith-btn bg-red-primary text-white font-bold tracking-[-0.03em] uppercase text-[11px] px-7 py-2.5 rounded-none"
                 data-testid="header-contact-button"
               >
                 Contact
@@ -354,27 +354,27 @@ export function Header() {
                     </div>
                   ))}
                   <div className="mt-8 space-y-4">
-                    <a
-                      href="https://e2i-voip.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center font-bold tracking-[-0.03em] uppercase text-sm text-gray-500 hover:text-[#091421] transition-colors py-3"
-                      onClick={() => setIsOpen(false)}
-                      data-testid="mobile-espace-client-link"
-                    >
-                      Espace Client
-                    </a>
                     <Link
                       href="/devis-en-ligne"
-                      className="block text-center font-black tracking-[-0.03em] uppercase text-sm text-[#091421] hover:text-red-primary transition-colors py-3"
+                      className="block text-center font-black tracking-[-0.03em] uppercase text-[11px] text-[#b91c1c] hover:opacity-70 transition-all py-3"
                       onClick={() => setIsOpen(false)}
                       data-testid="mobile-devis-link"
                     >
                       Devis en ligne
                     </Link>
+                    <a
+                      href="https://e2i-voip.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="monolith-btn block text-center bg-white border border-[#091421] text-[#091421] font-bold tracking-[-0.03em] uppercase text-[11px] py-2.5 rounded-none"
+                      onClick={() => setIsOpen(false)}
+                      data-testid="mobile-espace-client-link"
+                    >
+                      Espace Client
+                    </a>
                     <Link href="/contact" onClick={() => setIsOpen(false)}>
                       <button
-                        className="monolith-btn w-full text-white bg-red-primary font-black tracking-[-0.03em] uppercase text-sm flex items-center justify-center px-8 py-3 rounded-none"
+                        className="monolith-btn w-full text-white bg-red-primary font-bold tracking-[-0.03em] uppercase text-[11px] flex items-center justify-center px-7 py-2.5 rounded-none"
                         data-testid="mobile-contact-button"
                       >
                         Contact

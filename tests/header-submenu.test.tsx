@@ -96,7 +96,8 @@ describe("Header avec sous-menus DaisyUI", () => {
     // Lien « Mobilité » retiré du header
     expect(screen.getByTestId("nav-link-nos-services")).toBeInTheDocument();
     expect(screen.getByTestId("nav-link-blog")).toBeInTheDocument();
-    expect(screen.getByTestId("nav-link-devis-en-ligne")).toBeInTheDocument();
+    // "Devis en ligne" retire du menu nav, maintenant dans la zone CTA (header-devis-link)
+    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
   });
 
   test("Les sous-menus s'affichent au hover", async () => {
