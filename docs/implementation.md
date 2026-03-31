@@ -175,7 +175,7 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 - [x] **Annuler** : Lien texte discret `text-sm text-gray-secondary`
 - [x] **Intersection Observer** : Declenchement post-Hero (plus immediat) — commit `844cc0a`
 - [x] **Tests** : `use-chat-intake.test.tsx` adapte (3 champs) — commit `844cc0a`
-- [ ] **API route** : `ingest-conversation/route.ts` accepte deja les champs optionnels (pas de modif necessaire)
+- [x] **API route** : `ingest-conversation/route.ts` nettoye — proprietes custom supprimees (causaient 400 HubSpot), note non-bloquante — commit `be7ddf9`
 
 **Statut** : ✅ TERMINE
 
@@ -297,7 +297,26 @@ Le redesign "Philosophie Carrée & Bento Box" (commit `b9dbd2e`) a posé les fon
 
 ---
 
-## Phase 7 — Tests & Validation (Obligatoire apres chaque phase)
+## Phase 8 — Securite + Hook Pre-Commit (2026-03-31) ✅ TERMINE
+
+- [x] Hook `.husky/pre-commit` : scan fichiers sensibles + patterns secrets — commit `949277e`
+- [x] Agent `security-guardian.md` renforce (phases 2b/5/6, dotenvx, lecons incidents)
+- [x] Husky v9 initialise (`prepare: "husky"` dans package.json)
+
+## Phase 9 — Restructuration Menu + Alignement Stitch Header (2026-03-31) ✅ TERMINE
+
+- [x] Menu "Trunk SIP" dedie (separe de Telephonie d'entreprise) — commit `be809bc`
+- [x] Bouton "Espace Client" monolith-btn avec bordure + icone user — commit `be809bc`
+- [x] "Devis en ligne" en rouge #b91c1c, retire du menu nav — commit `bd2672b`
+- [x] Liens nav : font-medium text-sm (plus uppercase bold) — commit `bd2672b`
+- [x] Hauteur header : h-20 → h-24 (96px Stitch) — commit `bd2672b`
+- [x] Fix API ingest-conversation : proprietes custom supprimees (400 HubSpot) — commit `be7ddf9`
+- [x] Fix hydratation : suppressHydrationWarning sur Hero + Partners — commit `c8ba774`
+- [x] Tests adaptes : 335/335 Jest, 67/67 Playwright
+
+---
+
+## Phase 10 — Tests & Validation (Obligatoire apres chaque phase)
 
 ### 6.1 Workflow de Validation
 

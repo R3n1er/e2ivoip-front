@@ -10,6 +10,37 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-03-31 — Fix API ingest-conversation + hydratation
+
+- **Contexte** : L'API `/api/hubspot/ingest-conversation` retournait un 400 car elle envoyait des proprietes custom inexistantes dans le portail HubSpot (`last_chat_message`, `chat_source`, `chat_conversation_id`). Par ailleurs, des erreurs d'hydratation React apparaissaient sur la homepage a cause d'extensions navigateur (ad-blockers) qui modifient le DOM.
+- **Decision** :
+  - **API route** : Proprietes reduites aux champs standard HubSpot (`firstname`, `email`, `company`). `lastName` et `phone` optionnels. Creation de note rendue non-bloquante (try/catch).
+  - **Hydratation** : `suppressHydrationWarning` ajoute sur `HomepageHeroSectionSimple` et `PartnersSection` (les elements filtres par les ad-blockers).
+- **Consequences** :
+  - Le chat pre-overlay cree correctement les contacts dans HubSpot CRM
+  - Plus de warnings d'hydratation en dev avec les extensions navigateur
+- **Tests** : 335/335 Jest, 67/67 Playwright
+
+### 2026-03-31 — Alignement header sur maquette Stitch Uppercase Navigation
+
+- **Contexte** : Le nouveau screen Stitch (`a8a652429d1d464a8bb17fada21a62f0`) definit un style de navigation different : liens en `font-medium text-sm` (pas uppercase bold), "Devis en ligne" en rouge `#b91c1c`, "Espace Client" en bouton `monolith-btn` avec bordure, hauteur header `h-24`.
+- **Decision** :
+  - Liens nav : `font-bold text-xs uppercase tracking-widest` → `font-medium text-sm text-gray-500`
+  - Hauteur : `h-20` → `h-24` (96px comme Stitch)
+  - "Devis en ligne" : couleur rouge `#b91c1c`, `text-[11px]`, retire du menu nav (uniquement zone CTA)
+  - "Espace Client" : bouton `monolith-btn` avec bordure + icone Lineicons `lni-user`
+  - "Contact" : `text-[11px] font-bold`
+- **Tests** : Tests header adaptes, 335/335 Jest
+
+### 2026-03-31 — Hook pre-commit securite + agent security-guardian renforce
+
+- **Contexte** : Suite aux incidents de fuite de cles API (Stitch, HubSpot) dans `.mcp.json` detectes par GitGuardian et GitHub Push Protection (2026-03-29/30), mise en place d'un hook pre-commit automatique.
+- **Decision** :
+  - Hook `.husky/pre-commit` : bloque les fichiers sensibles (`.mcp.json`, `.env.keys`, `.env.local`, `*.pem`) et scanne les patterns de secrets (`pat-eu1-*`, `AQ.*`, `AIza*`, `AKIA*`, `sk_live_*`, `DOTENV_PRIVATE_KEY`) dans les fichiers stages
+  - Agent `security-guardian.md` renforce avec phases 2b (fichiers interdits), 5 (dotenvx), 6 (lecons incidents)
+  - Husky v9 initialise
+- **Consequences** : 3 couches de securite (hook auto + agent Claude + GitHub Push Protection)
+
 ### 2026-03-31 — Restructuration menu principal (Stitch Uppercase Navigation Header)
 
 - **Contexte** : La maquette Stitch (screen `a8a652429d1d464a8bb17fada21a62f0` "E2I Desktop - Uppercase Navigation Header") a ete mise a jour avec un bouton "Espace Client", une mise en forme renforcee du "Devis en ligne" (font-black), et une separation du menu Trunk SIP.

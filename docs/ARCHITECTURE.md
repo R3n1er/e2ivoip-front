@@ -218,7 +218,29 @@ Le site utilise le Design System "Monolithe Numerique" (Structuralisme Brutalist
 - **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
 - **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
 
-### 6. Agents Claude Code
+### 6. Navigation Principale (Stitch 2026)
+
+**Fichier** : `components/layout/header.tsx`
+
+Structure du menu (mise a jour mars 2026) :
+- **Qui sommes-nous** (avec sous-menu : Certifications, Partenaires)
+- **Trunk SIP** (avec sous-menu : Compteur, Illimite)
+- **Telephonie d'entreprise** (avec sous-menu : 3CX PRO, 3CX SMB, PBX Yeastar)
+- **Nos services** (avec sous-menu : Studio attente, Assistants vocaux IA, Devis en ligne)
+- **Blog**
+
+Zone CTA (droite) : "Devis en ligne" (rouge #b91c1c) + "Espace Client" (bouton monolith-btn bordure) + "Contact" (bouton monolith-btn rouge)
+
+Style liens nav : `font-medium text-sm text-gray-500` (pas uppercase — style Stitch)
+Hauteur : `h-24` (96px)
+
+### 7. Securite & Gestion des Secrets
+
+- **dotenvx** : `.env` chiffre et committe, `.env.keys` local (jamais committe)
+- **Hook pre-commit** (`.husky/pre-commit`) : Bloque fichiers sensibles + patterns secrets (pat-eu1, AQ.*, AIza*, etc.)
+- **Scripts npm** : `dotenvx run -- next dev/build/start` pour dechiffrement auto
+
+### 8. Agents Claude Code
 
 **Emplacement** : `.claude/agents/`
 
@@ -227,6 +249,7 @@ Le site utilise le Design System "Monolithe Numerique" (Structuralisme Brutalist
 | `stitch-compliance` | Audit conformite Design System | haiku |
 | `test-matcher` | Identification tests impactes | haiku |
 | `pre-commit-validator` | Scan violations pre-commit | haiku |
+| `e2e-browser-tester` | Tests E2E Playwright + validation visuelle | sonnet |
 | `content-writer-seo` | Redaction contenu SEO | sonnet |
 | `security-guardian` | Scan securite pre-push | sonnet |
 
@@ -411,8 +434,8 @@ import { Header } from "../../components/layout/header"; // ❌
 
 | Métrique | Statut |
 |----------|--------|
-| Tests unitaires | ✅ 334/334 (100%) |
-| Tests E2E | ✅ 74/74 (100%) |
+| Tests unitaires | ✅ 335/335 (100%) |
+| Tests E2E | ✅ 67/67 + 5 skipped (100%) |
 | Régressions | ✅ 0 |
 
 ---
