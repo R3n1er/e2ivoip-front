@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# ==============================================================================
+# PRE-COMMIT SECURITY HOOK — E2I VoIP
+# ==============================================================================
+# Bloque le commit si des secrets ou fichiers sensibles sont stages.
+# Historique : incidents GitGuardian/GitHub Push Protection (2026-03-29)
+# ==============================================================================
+
+echo "🔐 Security scan pre-commit..."
+
+# --- 1. Fichiers interdits dans le staging ---
+BLOCKED_FILES=$(git diff --cached --name-only | grep -E "\.mcp\.json|\.env\.keys|\.env\.local|\.pem$|\.key$|\.p12$|\.pfx$")
+if [ -n "$BLOCKED_FILES" ]; then
+  echo ""
+  echo "❌ BLOQUE : Fichiers sensibles detectes dans le staging :"
+  echo "$BLOCKED_FILES"
+  echo ""
+  echo "Correction : git reset HEAD <fichier>"
+  exit 1
+fi
+
+# --- 2. Patterns de secrets dans les fichiers stages ---
+# Exclure les docs (.md), agents (.claude/), et tests des scans de patterns
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx|js|jsx|json|yml|yaml)$' | grep -v -E '\.md$|\.claude/|tests/|__tests__/')
+
+if [ -n "$STAGED_FILES" ]; then
+  # HubSpot Private App Token
+  if echo "$STAGED_FILES" | xargs grep -lE "pat-eu1-[0-9a-f-]{36}|pat-na1-[0-9a-f-]{36}" 2>/dev/null; then
+    echo "❌ BLOQUE : Token HubSpot (pat-*) detecte en clair !"
+    exit 1
+  fi
+
+  # Google / Stitch API Key
+  if echo "$STAGED_FILES" | xargs grep -lE "AQ\.[A-Za-z0-9_-]{30,}" 2>/dev/null; then
+    echo "❌ BLOQUE : Cle API Stitch/Google (AQ.*) detectee en clair !"
+    exit 1
+  fi
+  if echo "$STAGED_FILES" | xargs grep -lE "AIza[0-9A-Za-z_-]{35}" 2>/dev/null; then
+    echo "❌ BLOQUE : Cle API Google (AIza*) detectee en clair !"
+    exit 1
+  fi
+
+  # dotenvx private key
+  if echo "$STAGED_FILES" | xargs grep -l "DOTENV_PRIVATE_KEY=" 2>/dev/null; then
+    echo "❌ BLOQUE : Cle privee dotenvx detectee !"
+    exit 1
+  fi
+
+  # AWS
+  if echo "$STAGED_FILES" | xargs grep -lE "AKIA[0-9A-Z]{16}" 2>/dev/null; then
+    echo "❌ BLOQUE : Cle AWS (AKIA*) detectee en clair !"
+    exit 1
+  fi
+
+  # Stripe
+  if echo "$STAGED_FILES" | xargs grep -lE "sk_live_[0-9a-zA-Z]{24}" 2>/dev/null; then
+    echo "❌ BLOQUE : Cle Stripe live detectee en clair !"
+    exit 1
+  fi
+fi
+
+# --- 3. Verification que .mcp.json n'est pas tracke ---
+if git ls-files --error-unmatch .mcp.json >/dev/null 2>&1; then
+  echo "❌ BLOQUE : .mcp.json est tracke par git ! Executer :"
+  echo "  git rm --cached .mcp.json"
+  exit 1
+fi
+
+echo "✅ Security scan OK"

@@ -64,11 +64,26 @@ git diff --cached --name-only
 Search for common credential patterns:
 
 - AWS keys: `AKIA[0-9A-Z]{16}`
-- Google API: `AIza[0-9A-Za-z\-_]{35}`
+- Google API / Stitch: `AIza[0-9A-Za-z\-_]{35}` ou `AQ\.[A-Za-z0-9_-]{30,}`
+- HubSpot Private App: `pat-eu1-[0-9a-f-]{36}` ou `pat-na1-[0-9a-f-]{36}`
 - Stripe keys: `sk_live_[0-9a-zA-Z]{24}`
 - Generic secrets: Long alphanumeric strings (>20 chars)
 - Base64 encoded credentials
 - JWT tokens
+- dotenvx private key: `DOTENV_PRIVATE_KEY=`
+
+### Phase 2b: Fichiers Interdits dans le Staging
+
+**BLOQUER IMMEDIATEMENT** si ces fichiers sont stages :
+- `.mcp.json` — contient les tokens MCP (Stitch, HubSpot) en clair
+- `.env.keys` — cle privee dotenvx
+- `.env.local` — overrides locaux
+- `*.pem`, `*.key`, `*.p12`
+
+Commande de verification :
+```bash
+git diff --cached --name-only | grep -E "\.mcp\.json|\.env\.keys|\.env\.local|\.pem$|\.key$"
+```
 
 ### Phase 3: Context Validation
 
@@ -84,9 +99,10 @@ For each potential credential found:
 Ensure `.gitignore` contains:
 
 ```
-.env
-.env.local
+.env.keys         # cle privee dotenvx — CRITIQUE
+.env.local        # overrides locaux
 .env.*.local
+.mcp.json         # tokens MCP servers (Stitch, HubSpot)
 .vercel
 *.pem
 *.key
@@ -94,6 +110,20 @@ Ensure `.gitignore` contains:
 *.pfx
 secrets/
 ```
+
+### Phase 5: Verification dotenvx
+
+Le projet utilise dotenvx pour chiffrer `.env`. Verifier que :
+1. `.env` est chiffre (premiere ligne contient `DOTENV_PUBLIC_KEY=`)
+2. `.env.keys` n'est PAS stage (`git diff --cached --name-only | grep env.keys`)
+3. `.mcp.json` n'est PAS stage
+4. Aucune valeur `pat-eu1-` ou `AQ.` en clair dans les fichiers stages
+
+### Phase 6: Lecons apprises (incidents 2026-03-29)
+
+**Incident 1** : `.mcp.json` committe avec `STITCH_API_KEY` en clair. Detecte par GitGuardian. Historique reecrit avec `git-filter-repo`.
+**Incident 2** : `.mcp.json` committe avec `PRIVATE_APP_ACCESS_TOKEN` HubSpot. Bloque par GitHub Push Protection.
+**Prevention** : Toujours verifier que `.mcp.json` n'est pas dans `git ls-files` et n'est pas stage.
 
 ## Decision Framework
 

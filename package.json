@@ -21,7 +21,8 @@
     "predeploy": "npm run validate",
     "analyze": "ANALYZE=true npm run build",
     "extract:blog": "cd scripts && npm run extract",
-    "install:all": "npm install && cd scripts && npm install"
+    "install:all": "npm install && cd scripts && npm install",
+    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
