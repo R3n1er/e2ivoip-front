@@ -2,20 +2,16 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import "@testing-library/jest-dom";
 
-// Mock des composants externes
-jest.mock("@/components/ui/cta-button", () => ({
-  CTAButton: ({ href, icon, className, children }: any) => (
-    <a href={href} className={className}>
-      <button className="btn btn-primary">
-        {icon && <i className={`lni lni-${icon.replace("lni-", "")}`} />}
-        {children}
-      </button>
-    </a>
-  ),
-}));
-
 describe("HeaderSimple Component", () => {
   describe("Rendering Tests", () => {
+    it("utilise un conteneur large et des marges horizontales réduites", () => {
+      render(<HeaderSimple />);
+
+      const container = screen.getByTestId("header-simple-container");
+      expect(container).toHaveClass("max-w-screen-2xl", "mx-auto", "w-full");
+      expect(container).toHaveClass("px-2", "sm:px-3", "lg:px-4");
+    });
+
     it("renders header with permanent white background", () => {
       render(<HeaderSimple />);
 
@@ -55,10 +51,10 @@ describe("HeaderSimple Component", () => {
 
       const navItems = [
         "Qui sommes-nous",
+        "Trunk SIP",
         "Téléphonie d'entreprise",
         "Nos services",
         "Blog",
-        "Devis en ligne",
       ];
 
       navItems.forEach((item) => {
@@ -70,7 +66,7 @@ describe("HeaderSimple Component", () => {
     it("renders contact button with correct styling", () => {
       render(<HeaderSimple />);
 
-      const contactButton = screen.getByText("Contact");
+      const contactButton = screen.getByTestId("header-simple-contact-link");
       expect(contactButton).toBeInTheDocument();
     });
 
@@ -90,7 +86,12 @@ describe("HeaderSimple Component", () => {
       expect(link).toHaveAttribute("href", "/qui-sommes-nous");
     });
 
-    // Lien « Mobilité » retiré du header simple
+    it("has correct href for Trunk SIP overview link", () => {
+      render(<HeaderSimple />);
+
+      const link = screen.getByTestId("header-simple-nav-trunk-sip");
+      expect(link).toHaveAttribute("href", "/telephonie-entreprise/trunk-sip");
+    });
 
     it("has correct href for Blog link", () => {
       render(<HeaderSimple />);
@@ -102,14 +103,14 @@ describe("HeaderSimple Component", () => {
     it("has correct href for Devis en ligne link", () => {
       render(<HeaderSimple />);
 
-      const link = screen.getByRole("link", { name: "Devis en ligne" });
+      const link = screen.getByTestId("header-simple-devis-link");
       expect(link).toHaveAttribute("href", "/devis-en-ligne");
     });
 
     it("has correct href for Contact button", () => {
       render(<HeaderSimple />);
 
-      const contactLink = screen.getByRole("link", { name: /Contact/i });
+      const contactLink = screen.getByTestId("header-simple-contact-link");
       expect(contactLink).toHaveAttribute("href", "/contact");
     });
   });
@@ -139,7 +140,7 @@ describe("HeaderSimple Component", () => {
       render(<HeaderSimple />);
 
       const dropdownItems = screen.getAllByText(
-        /Trunk SIP|3CX|PBX|Studio|Assistants/i
+        /Trunk SIP au compteur|3CX|PBX|Studio|Assistants/i
       );
 
       dropdownItems.forEach((item) => {
@@ -169,12 +170,10 @@ describe("HeaderSimple Component", () => {
       const mobileButton = screen.getByRole("button", { name: /menu/i });
       fireEvent.click(mobileButton);
 
-      // Vérifier que le menu mobile s'ouvre correctement
       expect(mobileButton).toHaveAttribute("aria-label", "Fermer le menu");
 
-      // Vérifier que les éléments de navigation sont présents dans le menu mobile
       const mobileNavItems = screen.getAllByText(
-        /Qui sommes-nous|Téléphonie|Nos services|Blog|Devis/i
+        /Qui sommes-nous|Trunk SIP|Téléphonie|Nos services|Blog/i
       );
       expect(mobileNavItems.length).toBeGreaterThan(0);
     });
@@ -218,11 +217,11 @@ describe("HeaderSimple Component", () => {
       expect(nav).toHaveClass("hidden", "lg:flex");
     });
 
-    it("hides contact button on mobile screens", () => {
+    it("affiche le bloc CTA en flex (toujours visible dans la barre)", () => {
       render(<HeaderSimple />);
 
-      const contactButton = screen.getByText("Contact").closest("div");
-      expect(contactButton).toHaveClass("hidden", "lg:flex");
+      const cta = screen.getByTestId("header-simple-cta-desktop");
+      expect(cta).toHaveClass("flex", "shrink-0");
     });
   });
 
@@ -242,7 +241,7 @@ describe("HeaderSimple Component", () => {
       render(<HeaderSimple />);
 
       const chevrons = document.querySelectorAll(".lni-chevron-down");
-      expect(chevrons.length).toBe(2); // Téléphonie d'entreprise + Nos services
+      expect(chevrons.length).toBe(3);
     });
 
     it("has correct menu icons for mobile", () => {
@@ -265,15 +264,19 @@ describe("HeaderSimple Component", () => {
       render(<HeaderSimple />);
 
       const logo = screen.getByText("E").closest("div");
-      expect(logo).toHaveClass("text-xl", "lg:text-2xl", "font-bold");
+      expect(logo).toHaveClass(
+        "text-xl",
+        "sm:text-2xl",
+        "lg:text-3xl",
+        "font-bold",
+        "leading-none"
+      );
     });
 
     it("has proper transition classes", () => {
       render(<HeaderSimple />);
 
-      const navItems = screen.getAllByText(
-        /Qui sommes-nous|Blog|Devis/i
-      );
+      const navItems = screen.getAllByText(/Qui sommes-nous|Blog|Trunk SIP/i);
       navItems.forEach((item) => {
         expect(item).toHaveClass("transition-colors", "duration-200");
       });

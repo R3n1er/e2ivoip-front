@@ -16,6 +16,7 @@ test.describe("Header navigation", () => {
 
     const expectedLinks = [
       { name: "Qui sommes-nous", href: "/qui-sommes-nous" },
+      { name: "Trunk SIP", href: "/telephonie-entreprise/trunk-sip" },
       { name: "Nos services", href: "/nos-services" },
       { name: "Blog", href: "/blog" },
       { name: "Devis en ligne", href: "/devis-en-ligne" },
@@ -35,6 +36,14 @@ test.describe("Header navigation", () => {
   test("déploie les sous-menus au survol", async ({ page }) => {
     await page.goto("/");
 
+    const trunk = page.locator("nav").getByText("Trunk SIP", { exact: true });
+    await trunk.hover();
+    await expect(
+      page
+        .getByRole("navigation")
+        .getByRole("link", { name: "Trunk SIP illimité" })
+    ).toBeVisible();
+
     const telephony = page
       .locator("nav")
       .getByText("Téléphonie d'entreprise", { exact: true });
@@ -42,7 +51,7 @@ test.describe("Header navigation", () => {
     await expect(
       page
         .getByRole("navigation")
-        .getByRole("link", { name: "Trunk SIP illimité" })
+        .getByRole("link", { name: "PBX Yeastar" })
     ).toBeVisible();
 
     const services = page
@@ -97,5 +106,57 @@ test.describe("Header navigation", () => {
     await expect(
       page.getByRole("link", { name: "Qui sommes-nous" }).first()
     ).toBeFocused();
+  });
+});
+
+test.describe("Header desktop — marges et alignement", () => {
+  test("1280px: le premier lien nav est à droite du bloc logo (pas de chevauchement)", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto("/");
+
+    const header = page.locator("header").first();
+    const logo = header.locator('a[href="/"]').first();
+    const nav = header.getByRole("navigation", {
+      name: "Navigation principale",
+    });
+    const qui = nav.getByRole("link", { name: "Qui sommes-nous" });
+
+    const logoBox = await logo.boundingBox();
+    const quiBox = await qui.boundingBox();
+    expect(logoBox && quiBox).toBeTruthy();
+    if (logoBox && quiBox) {
+      expect(quiBox.x).toBeGreaterThanOrEqual(logoBox.x + logoBox.width - 4);
+    }
+  });
+
+  test("1440px: les CTA sont à droite de la zone navigation", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+
+    const header = page.locator("header").first();
+    const nav = header.getByRole("navigation", {
+      name: "Navigation principale",
+    });
+    const cta = header.getByTestId("header-simple-cta-desktop");
+
+    const navBox = await nav.boundingBox();
+    const ctaBox = await cta.boundingBox();
+    expect(navBox && ctaBox).toBeTruthy();
+    if (navBox && ctaBox) {
+      expect(ctaBox.x).toBeGreaterThanOrEqual(
+        navBox.x + navBox.width - 12
+      );
+    }
+  });
+
+  test("le conteneur interne du header est présent (largeur utile)", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await expect(page.getByTestId("header-simple-container")).toBeVisible();
   });
 });

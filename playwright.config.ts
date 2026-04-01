@@ -11,9 +11,10 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: "npm run build && npm run start",
+    // PORT=3000 : le .env peut définir un autre port (ex. 1337) ; Playwright et baseURL restent sur 3000.
+    command: "npm run build && PORT=3000 npm run start",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    timeout: 180000,
   },
 });
