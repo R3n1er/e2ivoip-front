@@ -68,7 +68,7 @@ export default function RootLayout({
       >
         <HotjarTracking />
         <HeaderSimple />
-        <main className="flex-1 pt-16">{children}</main>
+        <main className="flex-1 pt-20 lg:pt-24">{children}</main>
         <Footer />
         <ChatPreOverlay />
       </body>

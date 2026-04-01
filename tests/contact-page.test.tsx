@@ -62,7 +62,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     // Vérifier la structure DaisyUI du formulaire
     const formCard = screen.getByTestId("contact-form-card");
-    expect(formCard).toHaveClass("card", "bg-base-100", "shadow-xl");
+    expect(formCard).toHaveClass("card", "bg-white", "shadow-[4px_4px_0_0_#1F2937]");
     
     const formTitle = screen.getByTestId("contact-form-title");
     expect(formTitle).toHaveClass("card-title", "text-2xl", "font-bold", "text-white");
@@ -76,7 +76,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     // Vérifier la carte hotline
     const hotlineCard = screen.getByTestId("hotline-card");
-    expect(hotlineCard).toHaveClass("card", "bg-base-100", "border-red-primary");
+    expect(hotlineCard).toHaveClass("card", "bg-white", "border-gray-secondary/10");
     
     // Vérifier l'emoji à la place de l'icône (solution temporaire)
     expect(screen.getByText("📞")).toBeInTheDocument();
@@ -91,7 +91,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     // Vérifier la carte WhatsApp
     const whatsappCard = screen.getByTestId("whatsapp-card");
-    expect(whatsappCard).toHaveClass("card", "bg-base-100", "hover:shadow-lg");
+    expect(whatsappCard).toHaveClass("card", "bg-white", "hover:translate-x-[2px]");
     
     // Vérifier l'emoji WhatsApp
     expect(screen.getByText("💬")).toBeInTheDocument();
@@ -140,10 +140,10 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     // Vérifier les classes de transition
     const hotlineCard = screen.getByTestId("hotline-card");
-    expect(hotlineCard).toHaveClass("transition-shadow");
+    expect(hotlineCard).toHaveClass("transition-transform");
     
     const whatsappCard = screen.getByTestId("whatsapp-card");
-    expect(whatsappCard).toHaveClass("transition-shadow");
+    expect(whatsappCard).toHaveClass("transition-transform");
   });
 
   test("L'accessibilité est respectée avec les emojis", () => {
@@ -181,11 +181,11 @@ describe("Page Contact - DaisyUI Migration", () => {
     render(<ContactPage />);
     
     // Vérifier les couleurs de marque dans les gradients
-    const heroSection = document.querySelector('.bg-gradient-to-r.from-red-primary.to-blue-marine');
+    const heroSection = document.querySelector('.bg-\\[\\#091421\\]');
     expect(heroSection).toBeInTheDocument();
     
     // Vérifier la carte avec bordure rouge
     const hotlineCard = screen.getByTestId("hotline-card");
-    expect(hotlineCard).toHaveClass("border-red-primary");
+    expect(hotlineCard).toHaveClass("border-gray-secondary/10");
   });
 });

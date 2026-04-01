@@ -10,6 +10,27 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-04-01 — Audit Global & Optimisation Monolithe 2026
+
+- **Contexte** : Demande de revue globale du site pour s'assurer du respect strict de la charte Monolithe 2026 (Philosophie carrée, ombres dures, couleurs strictes) et corriger les erreurs d'hydratation bloquantes pour Vercel.
+- **Décision** :
+  - Correction de l'hydratation sur `ServicesSectionSimple` (ajout `suppressHydrationWarning`).
+  - Purge des `rounded-`, `shadow-lg`, et couleurs hors-charte sur les pages `qui-sommes-nous`, `nos-services`, `contact`, `telephonie-entreprise` et sous-pages (`pbx-yeastar`, `trunk-sip`).
+  - Alignement des tests Jest et Playwright sur les nouvelles classes CSS.
+- **Conséquences** : Site 100% aligné sur le Design System Monolithe 2026, tests E2E et unitaires au vert, prêt pour le déploiement.
+- **Tests** : Suite de validation complète (`npm run validate`) réussie avec 336/336 tests Jest et 70/70 Playwright.
+
+### 2026-03-31 — Page pivot Trunk SIP + header Stitch (lien principal)
+
+- **Contexte** : La maquette Stitch impose un item **Trunk SIP** avant **Téléphonie d'entreprise**, avec CTA distincts (Devis en ligne, Espace client, Contact) en typo plus marquée que les liens de gauche. Il manquait une URL de présentation unique `/telephonie-entreprise/trunk-sip`.
+- **Décision** :
+  - Nouvelle page statique [`app/telephonie-entreprise/trunk-sip/page.tsx`](../app/telephonie-entreprise/trunk-sip/page.tsx) : hero Monolithe, deux cartes vers compteur / illimité, liens devis & contact.
+  - **`Header` (`header.tsx`)** : menu gauche `font-medium` + `tracking-[-0.03em]` ; Trunk SIP = lien principal vers la page pivot + sous-menu (compteur / illimité) ; sous-menus dans un `<ul class="menu">` sous `.dropdown-content` (sémantique + lint).
+  - **CTA droite** : séparateur `border-l`, `tracking-[0.2em]`, `font-black` sur Devis / Espace client / Contact ; Contact en `text-[#091421]` sur fond `red-primary` (contraste maquette).
+  - **`HeaderSimple`** : même structure nav + CTA que le header principal (layout global [`app/layout.tsx`](../app/layout.tsx)).
+- **Conséquences** : `tests/e2e/header-simple.spec.ts` : survol Trunk SIP pour les offres SIP ; survol Téléphonie pour PBX Yeastar (plus de Trunk sous Téléphonie).
+- **Tests** : 336/336 Jest ; Playwright `header-simple.spec.ts` (5/5) avec `CI=` et serveur `next start` sur le port 3000.
+
 ### 2026-03-31 — Fix API ingest-conversation + hydratation
 
 - **Contexte** : L'API `/api/hubspot/ingest-conversation` retournait un 400 car elle envoyait des proprietes custom inexistantes dans le portail HubSpot (`last_chat_message`, `chat_source`, `chat_conversation_id`). Par ailleurs, des erreurs d'hydratation React apparaissaient sur la homepage a cause d'extensions navigateur (ad-blockers) qui modifient le DOM.

@@ -55,10 +55,10 @@ export default function QuiSommesNous() {
           <img
             src="/images/photos/pexels-polina-tankilevitch-5234774.webp"
             alt="Équipe E2I VoIP - Experts télécom DOM"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-50"
           />
           {/* Gradient Overlay uniforme */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
+          <div className="absolute inset-0 bg-[#091421]/80 pointer-events-none z-10 monolith-grid-lines"></div>
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +113,7 @@ export default function QuiSommesNous() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-none p-8 shadow-xl">
+              <div className="bg-gray-50 rounded-none p-8 border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937]">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <i className="lni lni-phone text-5xl text-white"></i>
@@ -160,7 +160,7 @@ export default function QuiSommesNous() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform">
               <CardContent className="p-6">
                 <div className="bg-red-primary/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-target text-2xl text-red-primary"></i>
@@ -176,7 +176,7 @@ export default function QuiSommesNous() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform">
               <CardContent className="p-6">
                 <div className="bg-blue-marine/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-certificate text-2xl text-blue-marine"></i>
@@ -192,7 +192,7 @@ export default function QuiSommesNous() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform">
               <CardContent className="p-6">
                 <div className="bg-gray-secondary/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                   <i className="lni lni-users text-2xl text-gray-secondary"></i>
@@ -276,7 +276,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-none p-8">
+            <div className="bg-gray-50 rounded-none p-8 border border-gray-secondary/10">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Cas client emblématique
               </h3>
@@ -335,7 +335,7 @@ export default function QuiSommesNous() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform">
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <i className="lni lni-user text-5xl text-gray-400"></i>
@@ -369,7 +369,7 @@ export default function QuiSommesNous() {
 
           {/* Certifications principales */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-none p-8 border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937]">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -390,7 +390,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-none p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-none p-8 border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937]">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -421,7 +421,7 @@ export default function QuiSommesNous() {
 
             <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               {/* Fanvil */}
-              <div className="bg-white rounded-none p-8 shadow-md text-center">
+              <div className="bg-white rounded-none p-8 border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
@@ -444,7 +444,7 @@ export default function QuiSommesNous() {
                     href="https://www.fanvil.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-red-primary hover:text-[#091421] transition-colors text-sm font-bold uppercase tracking-widest"
                   >
                     Visiter le site officiel →
                   </a>
@@ -452,7 +452,7 @@ export default function QuiSommesNous() {
               </div>
 
               {/* Yealink */}
-              <div className="bg-white rounded-none p-8 shadow-md text-center">
+              <div className="bg-white rounded-none p-8 border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/logo-yealink.webp"
@@ -468,7 +468,7 @@ export default function QuiSommesNous() {
                 <p className="text-gray-600 mb-4">
                   Distributeur officiel des solutions de communication unifiée
                 </p>
-                <Badge className="bg-gray-800 text-white">
+                <Badge className="bg-[#091421] text-white">
                   Distributeur Officiel
                 </Badge>
                 <div className="mt-4">
@@ -476,7 +476,7 @@ export default function QuiSommesNous() {
                     href="https://www.yealink.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-red-primary hover:text-[#091421] transition-colors text-sm font-bold uppercase tracking-widest"
                   >
                     Visiter le site officiel →
                   </a>
@@ -495,8 +495,11 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Section Contact par région */}
-      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-[#091421] relative overflow-hidden">
+        {/* Grille monolithique */}
+        <div className="absolute inset-0 monolith-grid-lines pointer-events-none" aria-hidden="true" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Support local <span className="text-white">24/7</span>
@@ -537,20 +540,16 @@ export default function QuiSommesNous() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="mailto:commerciaux@e2i-voip.com"
-                className="text-white hover:text-white/80 transition-colors"
+                className="text-white hover:text-red-primary transition-colors font-bold uppercase tracking-widest text-sm"
               >
                 <i className="lni lni-envelope inline text-xl mr-2"></i>
                 commerciaux@e2i-voip.com
               </a>
-              <Link href="/assistance">
-                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-none shadow-lg transition-all duration-300 group">
-                  <span className="flex items-center justify-center">
-                    <i className="lni lni-comments text-xl mr-2"></i>
-                    Accéder au support complet
-                    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                  </span>
-                  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-                </button>
+              <Link href="/assistance" className="monolith-btn bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-[10px] px-8 py-4 rounded-none group mt-4 sm:mt-0">
+                <span className="flex items-center justify-center">
+                  <i className="lni lni-comments text-xl mr-2"></i>
+                  Accéder au support complet
+                </span>
               </Link>
             </div>
           </div>
@@ -568,27 +567,23 @@ export default function QuiSommesNous() {
             Audit gratuit de votre installation • Devis personnalisé en 24h •
             Migration sans interruption
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a
               href="/devis-en-ligne"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-none shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-[10px] px-10 py-5 rounded-none group"
             >
               <span className="flex items-center justify-center">
                 Calculez vos économies
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
               </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>
             <a
               href="/contact"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-none transition-all duration-300 group"
+              className="monolith-btn bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-[10px] px-10 py-5 rounded-none group"
             >
               <span className="flex items-center justify-center">
                 <i className="lni lni-phone text-xl mr-2"></i>
                 Parler à un expert
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
               </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>
           </div>
         </div>

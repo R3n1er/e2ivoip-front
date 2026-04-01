@@ -29,14 +29,14 @@ export default function PBXYeastar() {
             <img
               src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
               alt="Solutions Yeastar E2I VoIP"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover grayscale opacity-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#091421]/80 pointer-events-none monolith-grid-lines" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 shadow-lg">
+              <div className="inline-flex items-center justify-center rounded-none bg-white px-6 py-3 shadow-[4px_4px_0_0_#1F2937] border border-gray-secondary/10">
                 <Image
                   src="/images/logos-sip-compatibility/Yeastar_Logo.webp"
                   alt="Logo Yeastar"
@@ -126,7 +126,7 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-none border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937]">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-none bg-red-50">
                         <i className="lni lni-cloud text-xl text-red-primary"></i>
@@ -141,7 +141,7 @@ export default function PBXYeastar() {
                       et dans l&rsquo;Union européenne.
                     </p>
                   </div>
-                  <div className="rounded-none border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937]">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-none bg-gray-100">
                         <i className="lni lni-server text-xl text-gray-700"></i>
@@ -205,13 +205,13 @@ export default function PBXYeastar() {
               </div>
               <div className="relative">
                 <div
-                  className="absolute -inset-4 rounded-none blur-3xl"
+                  className="absolute -inset-4 rounded-none hidden"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(229,62,62,0.15), rgba(45,56,72,0.2), rgba(229,62,62,0))",
                   }}
                 />
-                <div className="relative rounded-none border border-white/70 bg-white/95 p-4 shadow-2xl backdrop-blur">
+                <div className="relative rounded-none border border-white/70 bg-white/95 p-4 shadow-[4px_4px_0_0_#1F2937] backdrop-blur">
                   <Image
                     src="/images/images-yeastar/Yeastar-easy-first-unified-communications-more-in-one-img.png"
                     alt="Console Yeastar P-Series"
@@ -226,10 +226,10 @@ export default function PBXYeastar() {
         </section>
 
         {/* Modes de déploiement */}
-        <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+        <section className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="inline-flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
+              <div className="inline-flex items-center rounded-none bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
                 <i className="lni lni-direction-alt mr-2"></i>
                 Deux approches complémentaires
               </div>
@@ -246,11 +246,11 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <div className="card overflow-hidden bg-base-100 shadow-xl transition-all duration-300 hover:shadow-2xl">
-                <div className="bg-gradient-to-r from-red-primary to-red-600 p-6 text-white">
+              <div className="card overflow-hidden bg-white shadow-[4px_4px_0_0_#1F2937] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] rounded-none border border-gray-secondary/10">
+                <div className="bg-[#091421] p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar Cloud</h3>
-                    <span className="rounded-full bg-white/20 px-3 py-1 text-sm font-medium">
+                    <span className="rounded-none bg-white/20 px-3 py-1 text-sm font-medium">
                       IPBX Cloud managé par E2I
                     </span>
                   </div>
@@ -306,11 +306,11 @@ export default function PBXYeastar() {
                 </div>
               </div>
 
-              <div className="card overflow-hidden bg-base-100 shadow-xl transition-all duration-300 hover:shadow-2xl">
-                <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
+              <div className="card overflow-hidden bg-white shadow-[4px_4px_0_0_#1F2937] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] rounded-none border border-gray-secondary/10">
+                <div className="bg-[#091421] p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar On-Premise</h3>
-                    <span className="rounded-full bg-white/20 px-3 py-1 text-sm font-medium">
+                    <span className="rounded-none bg-white/20 px-3 py-1 text-sm font-medium">
                       P-Series
                     </span>
                   </div>
@@ -374,7 +374,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-none bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
                   <i className="lni lni-display mr-2"></i>
                   Interface unifiée
                 </div>
@@ -438,13 +438,13 @@ export default function PBXYeastar() {
               </div>
               <div className="relative">
                 <div
-                  className="absolute -inset-4 rounded-none blur-3xl"
+                  className="absolute -inset-4 rounded-none hidden"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(229,62,62,0.2), rgba(45,56,72,0.2), rgba(209,213,219,0.3))",
                   }}
                 />
-                <div className="relative rounded-none border border-white/60 bg-white/90 p-4 shadow-2xl backdrop-blur">
+                <div className="relative rounded-none border border-white/60 bg-white/90 p-4 shadow-[4px_4px_0_0_#1F2937] backdrop-blur">
                   <Image
                     src="/images/images-yeastar/Yeastar-software-pbx-img-1.png"
                     alt="Interface Yeastar P-Series"
@@ -473,7 +473,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-red-50">
                   <i className="lni lni-apartment text-2xl text-red-primary"></i>
                 </div>
@@ -486,7 +486,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-blue-900/10">
                   <i className="lni lni-headphone-alt text-2xl text-blue-marine"></i>
                 </div>
@@ -499,7 +499,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-red-50">
                   <i className="lni lni-video text-2xl text-red-primary"></i>
                 </div>
@@ -511,7 +511,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-red-50">
                   <i className="lni lni-shield text-2xl text-red-primary"></i>
                 </div>
@@ -524,7 +524,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-blue-900/10">
                   <i className="lni lni-database text-2xl text-blue-marine"></i>
                 </div>
@@ -537,7 +537,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937] transition-transform duration-300 hover:translate-x-[2px] hover:translate-y-[2px]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-slate-200/70">
                   <i className="lni lni-mobile text-2xl text-gray-700"></i>
                 </div>
@@ -559,13 +559,13 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="relative order-2 lg:order-1">
                 <div
-                  className="absolute -inset-4 rounded-none blur-3xl"
+                  className="absolute -inset-4 rounded-none hidden"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(229,62,62,0.15), rgba(45,56,72,0.2), rgba(209,213,219,0.25))",
                   }}
                 />
-                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-2xl backdrop-blur">
+                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-[4px_4px_0_0_#1F2937] backdrop-blur">
                   <Image
                     src="/images/images-yeastar/yeastar-omnichannel-img1-whatsapp.png"
                     alt="Canaux omnicanaux Yeastar"
@@ -576,7 +576,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-none bg-[#091421] px-4 py-2 text-sm font-medium text-white">
                   <i className="lni lni-whatsapp mr-2"></i>
                   Relation client simplifiée
                 </div>
@@ -624,13 +624,13 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="relative">
                 <div
-                  className="absolute -inset-4 rounded-none blur-3xl"
+                  className="absolute -inset-4 rounded-none hidden"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(229,62,62,0.2), rgba(45,56,72,0.15))",
                   }}
                 />
-                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-2xl backdrop-blur">
+                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-[4px_4px_0_0_#1F2937] backdrop-blur">
                   <Image
                     src="/images/images-yeastar/Yeastar-Call-center.png"
                     alt="Solution Call Center Yeastar"
@@ -641,7 +641,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div>
-                <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-none bg-[#091421] px-4 py-2 text-sm font-medium text-white">
                   <i className="lni lni-headphone-alt mr-2"></i>
                   Performance opérationnelle
                 </div>
@@ -706,11 +706,11 @@ export default function PBXYeastar() {
         </section>
 
         {/* Section Intégrations */}
-        <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+        <section className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-none bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
                   <i className="lni lni-plug mr-2"></i>
                   Connectivité étendue
                 </div>
@@ -725,25 +725,25 @@ export default function PBXYeastar() {
                   relation client sans développement.
                 </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <div className="flex items-center gap-3 rounded-none border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-none border border-gray-secondary/10 bg-white p-4 shadow-[4px_4px_0_0_#1F2937]">
                     <i className="lni lni-whatsapp text-2xl text-green-600"></i>
                     <span className="font-semibold text-gray-dark">
                       WhatsApp Business
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-none border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-none border border-gray-secondary/10 bg-white p-4 shadow-[4px_4px_0_0_#1F2937]">
                     <i className="lni lni-microsoft text-2xl text-blue-600"></i>
                     <span className="font-semibold text-gray-dark">
                       Microsoft 365
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-none border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-none border border-gray-secondary/10 bg-white p-4 shadow-[4px_4px_0_0_#1F2937]">
                     <i className="lni lni-comments text-2xl text-blue-500"></i>
                     <span className="font-semibold text-gray-dark">
                       Slack / Teams
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-none border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-none border border-gray-secondary/10 bg-white p-4 shadow-[4px_4px_0_0_#1F2937]">
                     <i className="lni lni-cog text-2xl text-red-primary"></i>
                     <span className="font-semibold text-gray-dark">
                       Zoho CRM / Salesforce
@@ -758,13 +758,13 @@ export default function PBXYeastar() {
               </div>
               <div className="relative order-1 lg:order-2">
                 <div
-                  className="absolute -inset-4 rounded-none blur-3xl"
+                  className="absolute -inset-4 rounded-none hidden"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(229,62,62,0.15), rgba(45,56,72,0.2))",
                   }}
                 />
-                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-2xl backdrop-blur">
+                <div className="relative rounded-none border border-white/60 bg-white/95 p-4 shadow-[4px_4px_0_0_#1F2937] backdrop-blur">
                   <Image
                     src="/images/images-yeastar/yeastar-integration-img1.png"
                     alt="Intégrations Yeastar avec CRM et outils métier"
@@ -779,7 +779,7 @@ export default function PBXYeastar() {
         </section>
 
         {/* Pourquoi E2I */}
-        <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-gray-900 py-20 text-white">
+        <section className="bg-[#091421] py-20 text-white">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold md:text-4xl">
               Pourquoi confier votre{" "}
@@ -840,7 +840,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-3">
-              <div className="rounded-none border border-blue-900/20 bg-blue-50 p-6 shadow-sm">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-blue-100">
                   <i className="lni lni-heart-monitor text-2xl text-blue-marine"></i>
                 </div>
@@ -853,7 +853,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-gray-200 bg-gray-50 p-6 shadow-sm">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-slate-200/70">
                   <i className="lni lni-briefcase text-2xl text-gray-700"></i>
                 </div>
@@ -866,7 +866,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-none border border-red-200 bg-red-50 p-6 shadow-sm">
+              <div className="rounded-none border border-gray-secondary/10 bg-white p-6 shadow-[4px_4px_0_0_#1F2937]">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-none bg-red-100">
                   <i className="lni lni-cart text-2xl text-red-primary"></i>
                 </div>
@@ -883,8 +883,9 @@ export default function PBXYeastar() {
         </section>
 
         {/* CTA final */}
-        <section className="bg-gradient-to-r from-red-primary to-blue-marine py-20">
-          <div className="mx-auto max-w-4xl px-4 text-center text-white sm:px-6 lg:px-8">
+        <section className="bg-[#091421] py-20 relative overflow-hidden">
+          <div className="absolute inset-0 monolith-grid-lines pointer-events-none" aria-hidden="true" />
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold md:text-4xl">
               Lancez votre projet <span className="text-white">Yeastar</span>{" "}
               avec E2I VoIP

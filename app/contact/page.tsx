@@ -25,10 +25,10 @@ export default function ContactPage() {
           <img
             src="/images/photos/pexels-ketut-subiyanto-4559714-min.jpg"
             alt="Contact E2I VoIP - Experts téléphonie IP"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-50"
           />
           {/* Gradient Overlay uniforme */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
+          <div className="absolute inset-0 bg-[#091421]/80 pointer-events-none z-10 monolith-grid-lines"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -72,10 +72,10 @@ export default function ContactPage() {
             {/* Formulaire HubSpot */}
             <div>
               <div
-                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-none"
+                className="card bg-white shadow-[4px_4px_0_0_#1F2937] border border-gray-secondary/10 overflow-hidden rounded-none"
                 data-testid="contact-form-card"
               >
-                <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
+                <div className="bg-[#091421] text-white p-6">
                   <h2
                     className="card-title text-2xl font-bold text-white mb-2"
                     data-testid="contact-form-title"
@@ -108,7 +108,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {/* Hotline Prioritaire */}
                 <div
-                  className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow"
+                  className="card bg-white border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform rounded-none"
                   data-testid="hotline-card"
                 >
                   <div className="card-body p-6">
@@ -139,7 +139,7 @@ export default function ContactPage() {
 
                 {/* WhatsApp */}
                 <div
-                  className="card bg-base-100 hover:shadow-lg transition-shadow"
+                  className="card bg-white border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform rounded-none"
                   data-testid="whatsapp-card"
                 >
                   <div className="card-body p-6">
@@ -174,8 +174,9 @@ export default function ContactPage() {
       </section>
 
       {/* Section Nos Implantations */}
-      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-[#091421] relative overflow-hidden">
+        <div className="absolute inset-0 monolith-grid-lines pointer-events-none" aria-hidden="true" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Nos <span className="text-white">implantations</span>

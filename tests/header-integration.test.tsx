@@ -167,6 +167,12 @@ describe("Header - Test d'intégration", () => {
     );
     expect(quiSommesNousLink).toBeInTheDocument();
 
+    const trunkSipOverview = screen.getByTestId("nav-link-trunk-sip");
+    expect(trunkSipOverview).toHaveAttribute(
+      "href",
+      "/telephonie-entreprise/trunk-sip"
+    );
+
     // Le lien Mobilité a été retiré du header
   });
 });

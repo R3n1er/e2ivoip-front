@@ -173,11 +173,12 @@ describe("Header DaisyUI avec sous-menus", () => {
     const menus = document.querySelectorAll('.menu');
     expect(menus.length).toBeGreaterThan(0);
 
-    // Vérifier les classes DaisyUI correctes
+    // Vérifier les classes DaisyUI correctes (menu sur <ul> à l'intérieur du dropdown)
     await waitFor(() => {
       const dropdownContents = document.querySelectorAll('.dropdown-content');
-      dropdownContents.forEach(content => {
-        expect(content).toHaveClass('menu', 'bg-base-100', 'rounded-none');
+      dropdownContents.forEach((content) => {
+        expect(content).toHaveClass('bg-base-100', 'rounded-none');
+        expect(content.querySelector('ul.menu')).toBeInTheDocument();
       });
     });
   });

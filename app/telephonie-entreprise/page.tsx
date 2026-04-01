@@ -53,11 +53,11 @@ export default function TelephonieDentreprise() {
     <div className="min-h-screen bg-white">
       <div className="pt-6">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-red-50 to-white">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Téléphonie <span className="text-red-600">d'entreprise</span>
+                Téléphonie <span className="text-red-primary">d'entreprise</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Des solutions de téléphonie IP complètes et évolutives pour
@@ -77,12 +77,12 @@ export default function TelephonieDentreprise() {
               {solutions.map((solution, index) => (
                 <Card
                   key={index}
-                  className="border-gray-200 hover:shadow-lg transition-shadow"
+                  className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform"
                 >
                   <CardHeader>
-                    <div className="bg-red-100 w-12 h-12 rounded-none flex items-center justify-center mb-4">
+                    <div className="bg-red-primary/10 w-12 h-12 rounded-none flex items-center justify-center mb-4">
                       <i
-                        className={`lni ${solution.icon} w-6 h-6 text-red-600`}
+                        className={`lni ${solution.icon} w-6 h-6 text-red-primary`}
                       ></i>
                     </div>
                     <CardTitle className="text-xl">{solution.title}</CardTitle>
@@ -95,7 +95,7 @@ export default function TelephonieDentreprise() {
                           key={featureIndex}
                           className="flex items-center text-sm text-gray-600"
                         >
-                          <div className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3" />
+                          <div className="w-1.5 h-1.5 bg-red-primary rounded-none mr-3" />
                           {feature}
                         </li>
                       ))}
@@ -111,7 +111,7 @@ export default function TelephonieDentreprise() {
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Nos solutions <span className="text-red-600">spécialisées</span>
+              Nos solutions <span className="text-red-primary">spécialisées</span>
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -137,7 +137,7 @@ export default function TelephonieDentreprise() {
                 },
               ].map((item, index) => (
                 <Link key={index} href={item.href} className="block h-full">
-                  <Card className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer h-full">
+                  <Card className="rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform cursor-pointer h-full">
                     <CardHeader>
                       <CardTitle className="text-lg">{item.title}</CardTitle>
                       <CardDescription>{item.description}</CardDescription>

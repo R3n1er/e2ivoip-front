@@ -6,8 +6,8 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 ### Statut d'avancement
 
-- Sprints 1 → 4 : ✅ Terminés (UI/UX + Contact + Blog + HubSpot)
-- Sprint 5 : 📅 Planifié (post‑lancement: monitoring, optimisations continues)
+- Sprints 1 → 5 : ✅ Terminés (UI/UX + Contact + Blog + HubSpot + Monolithe 2026)
+- Phase Post-lancement : 📅 En cours (déploiement, monitoring, optimisations continues)
 
 ## Architecture Technique
 

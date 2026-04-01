@@ -119,8 +119,8 @@ export default function NosServices() {
 
   const categories = [
     { name: "Téléphonie IP", count: 3, color: "bg-red-primary" },
-    { name: "Innovation", count: 1, color: "bg-green-600" },
-    { name: "Communication", count: 1, color: "bg-purple-600" },
+    { name: "Innovation", count: 1, color: "bg-[#1F2937]" },
+    { name: "Communication", count: 1, color: "bg-blue-marine" },
   ];
 
   const benefits = [
@@ -140,13 +140,13 @@ export default function NosServices() {
       icon: "lni-timer",
       title: "Disponibilité 24/7",
       description: "Services et support disponibles en permanence",
-      color: "text-green-600",
+      color: "text-[#1F2937]",
     },
     {
       icon: "lni-shield",
       title: "Sécurité maximale",
       description: "Infrastructure cloud France/UE conforme RGPD",
-      color: "text-purple-600",
+      color: "text-blue-marine",
     },
   ];
 
@@ -198,7 +198,7 @@ export default function NosServices() {
       <div className="min-h-screen bg-white-primary">
         <main className="pt-6">
           {/* Hero Section */}
-          <section className="py-20 bg-gradient-to-r from-red-50 to-white-primary">
+          <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h1 className="text-4xl md:text-5xl font-bold text-blue-marine mb-6">
@@ -240,7 +240,7 @@ export default function NosServices() {
                 {benefits.map((benefit, index) => (
                   <Card
                     key={index}
-                    className="text-center border-gray-200 hover:shadow-lg transition-shadow"
+                    className="text-center rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform"
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -281,7 +281,7 @@ export default function NosServices() {
                 {categories.map((category, index) => (
                   <Card
                     key={index}
-                    className="text-center border-gray-200 hover:shadow-lg transition-shadow cursor-pointer"
+                    className="text-center rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform cursor-pointer"
                   >
                     <CardHeader>
                       <div
@@ -319,11 +319,11 @@ export default function NosServices() {
                 {services.map((service, index) => (
                   <Card
                     key={index}
-                    className="h-full hover:shadow-lg transition-shadow duration-300 group cursor-pointer border-gray-200"
+                    className="h-full rounded-none border border-gray-secondary/10 shadow-[4px_4px_0_0_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px] transition-transform group cursor-pointer"
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-none flex items-center justify-center">
+                        <div className="w-12 h-12 bg-red-primary/10 rounded-none flex items-center justify-center">
                           <i
                             className={`lni ${service.icon} h-6 w-6 text-red-primary`}
                           ></i>

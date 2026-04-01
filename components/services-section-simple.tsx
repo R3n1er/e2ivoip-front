@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function ServicesSectionSimple() {
   return (
-    <section id="services" className="py-24 px-4 sm:px-8 lg:px-16 bg-white text-[#091421]">
+    <section id="services" className="py-24 px-4 sm:px-8 lg:px-16 bg-white text-[#091421]" suppressHydrationWarning>
       <div className="max-w-7xl mx-auto">
 
         {/* Titre de section — aligné gauche + barre rouge */}
