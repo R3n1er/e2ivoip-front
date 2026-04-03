@@ -331,7 +331,7 @@ export function Header() {
                 href="https://e2i-voip.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="monolith-btn bg-white border border-[#091421] text-[#091421] font-black tracking-[0.12em] sm:tracking-[0.2em] uppercase text-[8px] sm:text-[10px] px-2 py-1.5 sm:px-4 sm:py-2.5 rounded-none flex items-center gap-1 sm:gap-2 shrink-0"
+                className="monolith-btn bg-white hover:bg-[#091421] hover:text-white transition-colors border border-[#091421] text-[#091421] font-black tracking-[0.12em] sm:tracking-[0.2em] uppercase text-[8px] sm:text-[10px] px-2 py-1.5 sm:px-4 sm:py-2.5 rounded-none flex items-center gap-1 sm:gap-2 shrink-0"
                 data-testid="header-espace-client-link"
               >
                 <i className="lni lni-user text-sm sm:text-base shrink-0" aria-hidden="true" />
@@ -440,7 +440,7 @@ export function Header() {
                       href="https://e2i-voip.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="monolith-btn block text-center bg-white border border-[#091421] text-[#091421] font-black tracking-[0.2em] uppercase text-[10px] py-2.5 rounded-none"
+                      className="monolith-btn block text-center bg-white hover:bg-[#091421] hover:text-white transition-colors border border-[#091421] text-[#091421] font-black tracking-[0.2em] uppercase text-[10px] py-2.5 rounded-none"
                       onClick={() => setIsOpen(false)}
                       data-testid="mobile-espace-client-link"
                     >
