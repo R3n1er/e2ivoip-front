@@ -71,17 +71,19 @@ export function TransformationSection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 flex-wrap pt-4">
-              <Link href="/devis-en-ligne">
-                <button type="button" className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-8 sm:px-10 py-5 rounded-none flex items-center justify-center w-full sm:w-auto">
-                  <i className="lni lni-comments-alt mr-3 text-lg"></i>
-                  <span>Parlez-nous de votre projet</span>
-                </button>
+              <Link 
+                href="/devis-en-ligne"
+                className="monolith-btn bg-red-primary !text-white font-black uppercase tracking-[0.2em] text-xs px-8 sm:px-10 py-5 rounded-none flex items-center justify-center w-full sm:w-auto hover:opacity-90 transition-opacity"
+              >
+                <i className="lni lni-comments-alt mr-3 text-lg !text-white"></i>
+                <span>Parlez-nous de votre projet</span>
               </Link>
-              <Link href="/contact">
-                <button type="button" className="monolith-btn bg-[#091421] text-white font-black uppercase tracking-[0.2em] text-xs px-8 sm:px-10 py-5 rounded-none flex items-center justify-center w-full sm:w-auto border border-[#091421] hover:bg-white hover:text-[#091421] transition-colors">
-                  <i className="lni lni-phone mr-3 text-lg"></i>
-                  <span>Nous contacter</span>
-                </button>
+              <Link 
+                href="/contact"
+                className="monolith-btn bg-[#091421] !text-white font-black uppercase tracking-[0.2em] text-xs px-8 sm:px-10 py-5 rounded-none flex items-center justify-center w-full sm:w-auto border border-[#091421] hover:bg-white hover:!text-[#091421] transition-colors group"
+              >
+                <i className="lni lni-phone mr-3 text-lg !text-white group-hover:!text-[#091421] transition-colors"></i>
+                <span className="!text-white group-hover:!text-[#091421] transition-colors">Nous contacter</span>
               </Link>
             </div>
           </div>
