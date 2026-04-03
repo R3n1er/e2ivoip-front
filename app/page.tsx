@@ -1,4 +1,5 @@
 import { HomepageHeroSectionSimple } from "@/components/homepage-hero-section-simple";
+import { TransformationSection } from "@/components/transformation-section";
 import { ClientsCarousel } from "@/components/clients-carousel";
 import { PartnersSection } from "@/components/partners-section";
 import { ServicesSectionSimple } from "@/components/services-section-simple";
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
       <HomepageHeroSectionSimple />
+      <TransformationSection />
       <ClientsCarousel />
       <PartnersSection />
       <ServicesSectionSimple />
