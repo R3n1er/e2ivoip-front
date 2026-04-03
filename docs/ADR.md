@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-04-01 — Correction Imbrication HTML & Contraste Bouton Link
+
+- **Contexte** : Le bouton "Nous contacter" dans la nouvelle `TransformationSection` n'affichait pas la couleur de texte appropriée au survol (reste sombre sur fond sombre). Ce problème venait d'une imbrication HTML invalide en plaçant un `<button>` dans un `<Link>` Next.js.
+- **Décision** : 
+  - Application directe de la classe `.monolith-btn` et des états `:hover` sur le composant `<Link>` de Next.js.
+  - Remplacement de l'élément enfant `<button>` inutile.
+  - Ajout d'une règle stricte dans `CLAUDE.md` et `.agents.md` interdisant l'imbrication de `<button>` dans `<Link>`.
+- **Conséquences** : Les boutons intégrés aux liens de navigation maintiennent un comportement HTML valide et assurent la correcte application des styles Tailwind au survol.
+- **Tests associés** : Suite Playwright (`npx playwright test`) validée à 100%.
+
 ### 2026-04-01 — Audit Global & Optimisation Monolithe 2026
 
 - **Contexte** : Demande de revue globale du site pour s'assurer du respect strict de la charte Monolithe 2026 (Philosophie carrée, ombres dures, couleurs strictes) et corriger les erreurs d'hydratation bloquantes pour Vercel.
