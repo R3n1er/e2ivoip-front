@@ -124,7 +124,7 @@ export default function QuiSommesNous() {
                 L&apos;HISTOIRE D&apos;UNE REUSSITE LOCALE
               </h2>
               <p className="text-lg text-gray-500 mb-6 leading-relaxed">
-                <strong className="text-blue-marine">Depuis maintenant plusieurs annees, E2I VoIP</strong>{" "}
+                <strong className="text-blue-marine">Depuis plus de 15 ans, E2I VoIP</strong>{" "}
                 est un operateur de services telecom avec des Trunk SIP dedies
                 aux Antilles-Guyane et La Reunion. Nous avons accompagne plus de{" "}
                 <strong className="text-blue-marine">100 entreprises</strong> dans leur transformation
