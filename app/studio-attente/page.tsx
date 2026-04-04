@@ -1,3 +1,30 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Studio Attente Téléphonique — Messages & Musiques sur mesure | E2I VoIP",
+  description:
+    "Créez une expérience d'attente professionnelle avec nos messages vocaux et musiques sur mesure. Voix off professionnelles, habillage musical, formats multiples. Devis gratuit.",
+  keywords:
+    "studio attente téléphonique, message d'attente, musique attente, voix off professionnelle, message accueil, VoIP DOM",
+  alternates: {
+    canonical: "/studio-attente",
+  },
+  openGraph: {
+    title: "Studio Attente Téléphonique — E2I VoIP",
+    description:
+      "Messages vocaux et musiques professionnelles pour votre standard téléphonique. Sur mesure, tous formats.",
+    type: "website",
+    locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Studio Attente Téléphonique — E2I VoIP",
+    description:
+      "Messages vocaux et musiques professionnelles pour votre standard téléphonique.",
+  },
+};
+
 export default function StudioAttente() {
   const services = [
     {
@@ -27,124 +54,231 @@ export default function StudioAttente() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="pt-6">
-        {/* Hero Section */}
-        <section className="py-24 relative overflow-hidden bg-[#091421] border-b border-[#1A2E44]">
-          <div className="absolute inset-0 monolith-grid-lines opacity-20 pointer-events-none z-10" />
-          <div className="absolute inset-0 pointer-events-none z-20" style={{ boxShadow: "inset 0 0 100px rgba(9,20,33,1)" }} />
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight">
-                Studio attente{" "}
-                <span className="text-red-primary">téléphonique</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-white/95 mb-10 max-w-4xl mx-auto font-bold leading-relaxed">
-                Créez une expérience d'attente agréable et professionnelle avec
-                nos messages et musiques sur mesure
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="monolith-btn bg-red-primary">
-                  <span className="block text-white font-black uppercase text-xs tracking-widest px-8 py-4 flex items-center justify-center gap-2">
-                    <i className="lni lni-play" aria-hidden="true" />
-                    Écouter des exemples
-                  </span>
-                </button>
-                <button className="monolith-btn bg-transparent border border-white/20 hover:border-white transition-colors">
-                  <span className="block text-white font-black uppercase text-xs tracking-widest px-8 py-4 flex items-center justify-center gap-2">
-                    <i className="lni lni-headphone" aria-hidden="true" />
-                    Demander un devis
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+    <>
+      {/* Hero Section */}
+      <section className="py-32 px-8 lg:px-24 relative overflow-hidden bg-[#091421]">
+        {/* Dot pattern radial */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #E53E3E 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            opacity: 0.08,
+          }}
+        />
 
-        {/* Services */}
-        <section className="py-24 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-100 hover:border-red-primary/30 transition-colors p-8 flex flex-col items-center justify-center text-center"
-                >
-                  <div className="bg-[#f8fafc] w-16 h-16 flex items-center justify-center mb-6 border border-gray-100">
-                    <i className={`lni ${service.icon} text-3xl text-red-primary`} aria-hidden="true"></i>
-                  </div>
-                  <h3 className="text-base font-bold text-[#091421] mb-2 uppercase tracking-wide">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-500 text-xs uppercase tracking-wider">
-                    {service.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Micro-label */}
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-6">
+            Studio Attente Téléphonique
+          </p>
 
-        {/* Examples */}
-        <section className="py-24 bg-[#f8fafc]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-5xl font-black text-center text-[#091421] mb-12 uppercase tracking-tight">
-              Exemples de <span className="text-red-primary">réalisations</span>
+          <div className="border-l-8 border-[#E53E3E] pl-8 max-w-3xl">
+            <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase text-white leading-tight mb-6">
+              Votre attente,{" "}
+              <span className="text-[#E53E3E]">professionnelle</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 font-bold leading-relaxed mb-10">
+              Créez une expérience d&apos;attente agréable et professionnelle
+              avec nos messages et musiques sur mesure
+            </p>
+
+            <Link href="/devis-en-ligne">
+              <span
+                className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5"
+                style={{
+                  boxShadow: "-5px 5px 0px 0px #050f1c",
+                  display: "inline-flex",
+                  transition: "transform 0.1s, box-shadow 0.1s",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "translate(2px, -2px)";
+                  el.style.boxShadow = "-3px 3px 0px 0px #050f1c";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "";
+                  el.style.boxShadow = "-5px 5px 0px 0px #050f1c";
+                }}
+              >
+                <i className="lni lni-headphone-alt" aria-hidden="true" />
+                Demander un devis
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-32 px-8 lg:px-24 bg-white">
+        <div className="max-w-7xl mx-auto">
+          {/* Section header */}
+          <div className="mb-16">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-4">
+              Nos prestations
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-[#091421] max-w-2xl">
+              Tout ce dont vous{" "}
+              <span className="text-[#E53E3E]">avez besoin</span>
             </h2>
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="bg-white border border-gray-100 p-8 flex flex-col border-t-4 border-t-red-primary">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-[#091421] uppercase tracking-wide mb-2">Message d'accueil standard</h3>
-                  <p className="text-gray-500 text-sm">
-                    Message professionnel pour l'accueil de vos appelants
-                  </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="border-4 border-[#2D3848] p-8 flex flex-col"
+                style={{ boxShadow: "8px 8px 0px 0px #1F2937" }}
+              >
+                <div className="w-14 h-14 border-4 border-[#E53E3E] flex items-center justify-center mb-6 bg-[#091421]">
+                  <i
+                    className={`lni ${service.icon} text-2xl text-[#E53E3E]`}
+                    aria-hidden="true"
+                  />
                 </div>
-                <div className="bg-[#f8fafc] p-6 border border-gray-100 flex flex-col flex-grow">
-                  <p className="text-gray-500 italic mb-8 font-medium leading-relaxed border-l-4 border-l-[#091421] pl-4">
-                    "Bonjour et merci d'appeler E2I VoIP, spécialiste des
-                    solutions de téléphonie IP. Votre appel est important pour
-                    nous, un conseiller va vous répondre dans quelques
-                    instants. Merci de patienter."
-                  </p>
-                  <div className="mt-auto">
-                    <button className="monolith-btn w-full hover:bg-gray-50">
-                      <span className="block text-[#091421] font-black uppercase text-[10px] tracking-widest px-4 py-3 border border-gray-200 flex items-center justify-center gap-2">
-                        <i className="lni lni-play" aria-hidden="true"></i>
-                        Écouter l'exemple
-                      </span>
-                    </button>
-                  </div>
-                </div>
+                <h3 className="text-sm font-black uppercase tracking-[-0.02em] text-[#091421] mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-[#818096] text-xs leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Examples Section */}
+      <section className="py-32 px-8 lg:px-24 bg-[#1F2937]">
+        <div className="max-w-7xl mx-auto">
+          {/* Section header */}
+          <div className="mb-16">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-4">
+              Exemples de réalisations
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-white">
+              Écoutez nos{" "}
+              <span className="text-[#E53E3E]">créations</span>
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Card 1 */}
+            <div
+              className="border-4 border-[#2D3848] bg-[#091421] p-8 flex flex-col"
+              style={{ boxShadow: "8px 8px 0px 0px #050f1c" }}
+            >
+              <div className="border-l-8 border-[#E53E3E] pl-6 mb-8">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#818096] mb-2">
+                  Type de message
+                </p>
+                <h3 className="text-xl font-black uppercase tracking-[-0.03em] text-white">
+                  Message d&apos;accueil standard
+                </h3>
+                <p className="text-[#818096] text-xs mt-1">
+                  Message professionnel pour l&apos;accueil de vos appelants
+                </p>
               </div>
 
-              <div className="bg-white border border-gray-100 p-8 flex flex-col border-t-4 border-t-[#091421]">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-[#091421] uppercase tracking-wide mb-2">Message promotionnel</h3>
-                  <p className="text-gray-500 text-sm">
-                    Promotion de vos services pendant l'attente
-                  </p>
-                </div>
-                <div className="bg-[#f8fafc] p-6 border border-gray-100 flex flex-col flex-grow">
-                  <p className="text-gray-500 italic mb-8 font-medium leading-relaxed border-l-4 border-l-red-primary pl-4">
-                    "Saviez-vous que nos solutions de téléphonie IP permettent
-                    de réduire vos coûts de communication jusqu'à 50% ?
-                    Découvrez nos offres sur notre site web www.e2i-voip.com"
-                  </p>
-                  <div className="mt-auto">
-                    <button className="monolith-btn w-full hover:bg-gray-50">
-                      <span className="block text-[#091421] font-black uppercase text-[10px] tracking-widest px-4 py-3 border border-gray-200 flex items-center justify-center gap-2">
-                        <i className="lni lni-play" aria-hidden="true"></i>
-                        Écouter l'exemple
-                      </span>
-                    </button>
-                  </div>
-                </div>
+              <blockquote className="text-white/70 italic text-sm leading-relaxed mb-8 border-l-4 border-[#2D3848] pl-4 flex-grow">
+                &ldquo;Bonjour et merci d&apos;appeler E2I VoIP, spécialiste des
+                solutions de téléphonie IP. Votre appel est important pour
+                nous, un conseiller va vous répondre dans quelques
+                instants. Merci de patienter.&rdquo;
+              </blockquote>
+
+              <div>
+                <button
+                  className="w-full inline-flex items-center justify-center gap-3 border-4 border-[#E53E3E] text-[#E53E3E] font-black uppercase tracking-[0.2em] text-xs px-6 py-4 bg-transparent"
+                  style={{ boxShadow: "4px 4px 0px 0px #050f1c" }}
+                  type="button"
+                >
+                  <i className="lni lni-play" aria-hidden="true" />
+                  Écouter l&apos;exemple
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div
+              className="border-4 border-[#2D3848] bg-[#091421] p-8 flex flex-col"
+              style={{ boxShadow: "8px 8px 0px 0px #050f1c" }}
+            >
+              <div className="border-l-8 border-[#2D3848] pl-6 mb-8">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#818096] mb-2">
+                  Type de message
+                </p>
+                <h3 className="text-xl font-black uppercase tracking-[-0.03em] text-white">
+                  Message promotionnel
+                </h3>
+                <p className="text-[#818096] text-xs mt-1">
+                  Promotion de vos services pendant l&apos;attente
+                </p>
+              </div>
+
+              <blockquote className="text-white/70 italic text-sm leading-relaxed mb-8 border-l-4 border-[#E53E3E] pl-4 flex-grow">
+                &ldquo;Saviez-vous que nos solutions de téléphonie IP permettent
+                de réduire vos coûts de communication jusqu&apos;à 50&nbsp;%&nbsp;?
+                Découvrez nos offres sur notre site web e2i-voip.com&rdquo;
+              </blockquote>
+
+              <div>
+                <button
+                  className="w-full inline-flex items-center justify-center gap-3 border-4 border-[#2D3848] text-white font-black uppercase tracking-[0.2em] text-xs px-6 py-4 bg-transparent"
+                  style={{ boxShadow: "4px 4px 0px 0px #050f1c" }}
+                  type="button"
+                >
+                  <i className="lni lni-play" aria-hidden="true" />
+                  Écouter l&apos;exemple
+                </button>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-32 px-8 lg:px-24 bg-[#E53E3E] border-y-8 border-[#2D3848]">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-4">
+              Passez à l&apos;action
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-white leading-tight">
+              Votre message d&apos;attente
+              <br />
+              en 48h chrono
+            </h2>
+            <p className="text-white/80 text-lg font-bold mt-4 max-w-lg">
+              Devis gratuit et sans engagement. Notre studio vous livre vos
+              fichiers audio dans tous les formats compatibles.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            <Link href="/devis-en-ligne">
+              <span
+                className="inline-flex items-center gap-3 bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-xs px-10 py-5"
+                style={{ boxShadow: "5px 5px 0px 0px #050f1c" }}
+              >
+                <i className="lni lni-microphone" aria-hidden="true" />
+                Devis gratuit
+              </span>
+            </Link>
+            <Link href="/contact">
+              <span
+                className="inline-flex items-center gap-3 bg-transparent border-4 border-white text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5"
+                style={{ boxShadow: "5px 5px 0px 0px #050f1c" }}
+              >
+                <i className="lni lni-phone" aria-hidden="true" />
+                Nous contacter
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
