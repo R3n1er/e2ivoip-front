@@ -1,9 +1,6 @@
 import { Metadata } from "next";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import WorkingFAQ from "@/components/faq-working";
 import Link from "next/link";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
@@ -11,6 +8,9 @@ export const metadata: Metadata = {
     "Support technique E2I VoIP 24/7. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
+  alternates: {
+    canonical: "/assistance",
+  },
   openGraph: {
     title: "Assistance & Support - E2I VoIP | Support technique 24/7",
     description:
@@ -21,97 +21,182 @@ export const metadata: Metadata = {
 
 export default function AssistancePage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 to-blue-marine/90 z-10"></div>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
-        </div>
+    <div className="min-h-screen bg-white">
+      {/* ── Hero Section ── */}
+      <section className="relative bg-[#091421] py-24 overflow-hidden">
+        {/* Dot pattern */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
+            backgroundSize: "32px 32px",
+          }}
+        />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Assistance & <span className="text-white">Support VoIP</span>
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            {/* Micro-label */}
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-6">
+              Support &amp; Assistance
+            </p>
+
+            {/* Left accent bar + title */}
+            <div className="border-l-8 border-[#E53E3E] pl-6">
+              <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase text-white leading-tight mb-6">
+                Assistance
+                <br />
+                <span className="text-[#E53E3E]">&amp; Support</span>
+                <br />
+                VoIP
+              </h1>
+            </div>
+
+            <p className="text-lg text-[#818096] mt-8 max-w-2xl leading-relaxed">
               Support technique 3CX et Yeastar • Équipes locales France et
               Outre-mer (Antilles-Guyane, Réunion) • Réponse rapide
             </p>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Notre équipe d'experts est là pour vous accompagner dans
-              l'utilisation de vos solutions téléphoniques
+            <p className="text-base text-[#818096] mt-4 max-w-2xl">
+              Notre équipe d&apos;experts est là pour vous accompagner dans
+              l&apos;utilisation de vos solutions téléphoniques.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Hotline Support */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Hotline <span className="text-red-primary">Support</span>
+      {/* ── Hotline Support ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section label */}
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-4">
+            Contact direct
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-[#2D3848] mb-12">
+            Hotline{" "}
+            <span className="text-[#E53E3E]">Support</span>
           </h2>
-          <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
-            <CardContent className="p-12">
-              <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className="lni lni-phone w-10 h-10 text-white"></i>
+
+          {/* Hotline card */}
+          <div className="border-4 border-[#2D3848] shadow-[8px_8px_0px_0px_#1F2937] p-12 bg-white">
+            <div className="flex flex-col items-center text-center gap-4">
+              {/* Icon */}
+              <div className="w-16 h-16 bg-[#E53E3E] flex items-center justify-center mb-2">
+                <i className="lni lni-phone text-white text-3xl" aria-hidden="true" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#818096]">
                 Assistance téléphonique directe
-              </h3>
-              <p className="text-3xl font-bold text-red-primary mb-4">
+              </p>
+
+              <p className="text-5xl font-black tracking-[-0.04em] text-[#E53E3E]">
                 0189 560 500
               </p>
-              <p className="text-lg text-gray-600 mb-4">
-                Lundi - Vendredi : 8h - 18h
+
+              <p className="text-lg font-bold text-[#2D3848] uppercase tracking-[0.1em]">
+                Lundi – Vendredi : 8h – 18h
               </p>
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-100 text-red-800 font-medium">
-                Support prioritaire selon contrat client
+
+              <div className="mt-4 border-4 border-[#E53E3E] px-6 py-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E]">
+                  Support prioritaire selon contrat client
+                </span>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Chat intégré désactivé (Tawk.to) */}
-      <section className="py-16 bg-gray-50">
+      {/* ── Chat assistance instantanée ── */}
+      <section className="py-20 bg-[#091421]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Chat{" "}
-              <span className="text-red-primary">assistance instantanée</span>
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Discutez directement avec nos experts techniques en temps réel
-            </p>
-          </div>
+          {/* Section label */}
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-4">
+            Temps réel
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-white mb-4">
+            Chat{" "}
+            <span className="text-[#E53E3E]">assistance instantanée</span>
+          </h2>
+          <p className="text-lg text-[#818096] mb-12">
+            Discutez directement avec nos experts techniques en temps réel
+          </p>
 
-          <div className="bg-white rounded-none shadow-xl p-8">
-            <div className="text-center mb-6">
-              <i className="lni lni-comments w-12 h-12 text-blue-marine mx-auto mb-4"></i>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+          {/* Chat card */}
+          <div className="border-4 border-[#2D3848] shadow-[8px_8px_0px_0px_#1F2937] p-8 bg-[#091421]">
+            <div className="flex flex-col items-center text-center gap-4">
+              <div className="w-16 h-16 bg-[#2D3848] border-4 border-[#E53E3E] flex items-center justify-center mb-2">
+                <i className="lni lni-comments text-[#E53E3E] text-2xl" aria-hidden="true" />
+              </div>
+
+              <h3 className="text-2xl font-black tracking-[-0.04em] uppercase text-white">
                 Support chat en direct
               </h3>
-              <p className="text-gray-600">
+              <p className="text-[#818096] max-w-md">
                 Notre équipe est disponible pour répondre à toutes vos questions
               </p>
-            </div>
 
-            {/* Chat Tawk.to désactivé temporairement */}
+              {/* Chat Tawk.to désactivé temporairement */}
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#818096] mt-4">
+                Service disponible via notre widget de chat
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-16 bg-white">
+      {/* ── FAQ ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <WorkingFAQ />
+        </div>
+      </section>
+
+      {/* ── CTA Section ── */}
+      <section className="py-20 bg-[#E53E3E] border-y-8 border-[#2D3848]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#2D3848] mb-4">
+            Besoin d&apos;un accompagnement complet ?
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-[-0.05em] uppercase text-white mb-8 leading-tight">
+            Contactez-nous
+            <br />
+            maintenant
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              href="/contact"
+              className="relative inline-block bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform hover:translate-x-[2px] hover:translate-y-[2px]"
+              style={{
+                boxShadow: "5px 5px 0px 0px #1F2937",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "3px 3px 0px 0px #1F2937";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "5px 5px 0px 0px #1F2937";
+              }}
+            >
+              Demander un devis
+            </Link>
+            <Link
+              href="/"
+              className="relative inline-block bg-[#091421] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform hover:translate-x-[2px] hover:translate-y-[2px]"
+              style={{
+                boxShadow: "5px 5px 0px 0px #1F2937",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "3px 3px 0px 0px #1F2937";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "5px 5px 0px 0px #1F2937";
+              }}
+            >
+              Retour à l&apos;accueil
+            </Link>
+          </div>
         </div>
       </section>
     </div>
