@@ -22,7 +22,7 @@
     "analyze": "ANALYZE=true npm run build",
     "extract:blog": "cd scripts && npm run extract",
     "install:all": "npm install && cd scripts && npm install",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
