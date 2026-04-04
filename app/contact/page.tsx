@@ -22,6 +22,41 @@ export const metadata: Metadata = {
   },
 };
 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "E2I VoIP",
+  "url": "https://www.e2i-voip.com/contact",
+  "description": "Experts VoIP — Trunk SIP, 3CX, PBX. Devis gratuit, support. Equipes locales en France et DOM.",
+  "telephone": "+33-1-89-56-05-00",
+  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
+  "areaServed": [
+    { "@type": "Country", "name": "France" },
+    { "@type": "AdministrativeArea", "name": "Martinique" },
+    { "@type": "AdministrativeArea", "name": "Guadeloupe" },
+    { "@type": "AdministrativeArea", "name": "Guyane francaise" },
+    { "@type": "AdministrativeArea", "name": "La Reunion" }
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.e2i-voip.com/contact" }
+    ]
+  }
+};
+
+function JsonLdScript() {
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function ContactPage() {
   const locations = [
     { name: "France", phone: "01 89 56 05 00", tel: "+33189560500", detail: "Siege Social" },
@@ -33,6 +68,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLdScript />
       {/* ══════════════════════════════════════
           HERO — Stitch: aligne gauche, border-l-8
           ══════════════════════════════════════ */}

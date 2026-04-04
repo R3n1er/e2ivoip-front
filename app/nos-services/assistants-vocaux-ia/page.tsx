@@ -21,9 +21,47 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Assistants Vocaux IA — Accueil telephonique 24/7",
+  "description": "Revolutionnez votre accueil telephonique avec l'intelligence artificielle. Accueil 24/7, qualification automatique, relais humain maitrise.",
+  "url": "https://www.e2i-voip.com/nos-services/assistants-vocaux-ia",
+  "provider": { "@type": "Organization", "name": "E2I VoIP", "url": "https://www.e2i-voip.com" },
+  "serviceType": "Assistant vocal IA / Callbot",
+  "areaServed": [
+    { "@type": "Country", "name": "France" },
+    { "@type": "AdministrativeArea", "name": "Martinique" },
+    { "@type": "AdministrativeArea", "name": "Guadeloupe" },
+    { "@type": "AdministrativeArea", "name": "Guyane francaise" },
+    { "@type": "AdministrativeArea", "name": "La Reunion" }
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
+      { "@type": "ListItem", "position": 2, "name": "Nos services", "item": "https://www.e2i-voip.com/nos-services" },
+      { "@type": "ListItem", "position": 3, "name": "Assistants vocaux IA", "item": "https://www.e2i-voip.com/nos-services/assistants-vocaux-ia" }
+    ]
+  }
+};
+
+function JsonLdScript() {
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function AssistantsVocauxIA() {
   return (
-    <main className="pt-20">
+    <>
+      <JsonLdScript />
+      <main className="pt-20">
       {/* ── HERO ────────────────────────────────────────────────────── */}
       <section className="py-32 px-8 lg:px-24 bg-[#091421] relative overflow-hidden">
         {/* Dot pattern radial red */}
@@ -423,5 +461,6 @@ export default function AssistantsVocauxIA() {
         </div>
       </section>
     </main>
+    </>
   );
 }

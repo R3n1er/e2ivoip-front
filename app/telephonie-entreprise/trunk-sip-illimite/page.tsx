@@ -2,6 +2,46 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { HubSpotForm } from "@/components/hubspot";
 
+// Données structurées FAQ (schema.org)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quelle est la différence entre le Trunk SIP illimité et le Trunk SIP au compteur ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le Trunk SIP illimité vous facture un forfait mensuel fixe qui inclut tous vos appels vers les fixes et mobiles en France métropolitaine et dans les DOM. Le Trunk SIP au compteur, lui, facture à la minute consommée : idéal si votre volume d'appels est faible ou irrégulier. Si vous passez plus de 500 minutes par mois, l'illimité devient généralement plus économique.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Que signifie concrètement la politique Fair Use ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La politique Fair Use garantit un usage professionnel normal : appels entrants et sortants liés à votre activité courante, relation client, coordination interne. Elle exclut les usages intensifs atypiques tels que les campagnes d'appels sortants en masse (télémarketing automatisé, predictive dialing) qui relèvent d'offres dédiées aux centres de contacts. E2I VoIP vous contacte avant toute mesure si un usage inhabituel est détecté.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Puis-je porter mes numéros existants vers le Trunk SIP Illimité ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui, la portabilité de vos numéros géographiques ou non-géographiques est incluse sans frais supplémentaires. Nous gérons l'intégralité de la procédure auprès des opérateurs concernés. La portabilité prend en moyenne 5 à 10 jours ouvrés. Vos numéros restent actifs pendant toute la durée du transfert, sans coupure.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Quel est le délai d'activation d'un Trunk SIP Illimité ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Après signature du contrat, votre Trunk SIP Illimité est activé sous 24 à 48 heures ouvrées pour de nouveaux numéros. Si vous portez vos numéros depuis un autre opérateur, comptez 5 à 10 jours ouvrés selon les délais réglementaires de portabilité. Un Customer Success Manager E2I VoIP vous accompagne tout au long de la mise en service.",
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title:
     "Trunk SIP Illimité DOM - E2I VoIP | Appels Illimités France & DOM",
@@ -29,6 +69,41 @@ export const metadata: Metadata = {
   },
 };
 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Trunk SIP Illimite DOM",
+  "description": "Appels illimites vers fixes et mobiles France metropolitaine et DOM. De 2 a 8 appels simultanees. Forfait tout inclus avec fair use.",
+  "url": "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite",
+  "provider": { "@type": "Organization", "name": "E2I VoIP", "url": "https://www.e2i-voip.com" },
+  "serviceType": "Trunk SIP Illimite",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Martinique" },
+    { "@type": "AdministrativeArea", "name": "Guadeloupe" },
+    { "@type": "AdministrativeArea", "name": "Guyane francaise" },
+    { "@type": "AdministrativeArea", "name": "La Reunion" }
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
+      { "@type": "ListItem", "position": 2, "name": "Telephonie Entreprise", "item": "https://www.e2i-voip.com/telephonie-entreprise" },
+      { "@type": "ListItem", "position": 3, "name": "Trunk SIP Illimite", "item": "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite" }
+    ]
+  }
+};
+
+function JsonLdScript() {
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function TrunkSIPIllimite() {
   const forfaits = [
     {
@@ -48,8 +123,19 @@ export default function TrunkSIPIllimite() {
     },
   ];
 
+  // JSON-LD : données statiques, aucune entrée utilisateur — pas de risque XSS
+  const faqSchemaJson = JSON.stringify(faqSchema);
+
   return (
-    <main className="pt-20 bg-white">
+    <>
+      <JsonLdScript />
+      <main className="pt-20 bg-white">
+      {/* JSON-LD FAQ Schema — contenu statique uniquement */}
+      {/* eslint-disable-next-line react/no-danger */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqSchemaJson }}
+      />
       {/* ── Hero ── */}
       <section className="bg-[#091421] py-32 px-8 lg:px-24 relative overflow-hidden">
         {/* Dot pattern */}
@@ -491,5 +577,6 @@ export default function TrunkSIPIllimite() {
         </div>
       </section>
     </main>
+    </>
   );
 }

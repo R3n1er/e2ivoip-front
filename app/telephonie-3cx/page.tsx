@@ -28,9 +28,45 @@ export const metadata: Metadata = {
   },
 };
 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solutions 3CX — Telephonie Professionnelle",
+  "description": "Deploiement 3CX en instance dediee PRO ou hebergement mutualise SMB. Communications unifiees completes pour entreprises.",
+  "url": "https://www.e2i-voip.com/telephonie-3cx",
+  "provider": { "@type": "Organization", "name": "E2I VoIP", "url": "https://www.e2i-voip.com" },
+  "serviceType": "Telephonie IP / Communications unifiees",
+  "areaServed": [
+    { "@type": "Country", "name": "France" },
+    { "@type": "AdministrativeArea", "name": "Martinique" },
+    { "@type": "AdministrativeArea", "name": "Guadeloupe" },
+    { "@type": "AdministrativeArea", "name": "Guyane francaise" },
+    { "@type": "AdministrativeArea", "name": "La Reunion" }
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
+      { "@type": "ListItem", "position": 2, "name": "Telephonie 3CX", "item": "https://www.e2i-voip.com/telephonie-3cx" }
+    ]
+  }
+};
+
+function JsonLdScript() {
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function Telephonie3CX() {
   return (
     <>
+      <JsonLdScript />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#091421] py-32 px-8 lg:px-24">
         {/* Background image */}
