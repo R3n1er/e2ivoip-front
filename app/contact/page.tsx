@@ -78,7 +78,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Hotline Support — fond sombre Stitch */}
               <div
-                className="bg-[#091421] p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] relative overflow-hidden group"
+                className="bg-[#091421] p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] relative overflow-hidden group"
                 data-testid="hotline-card"
               >
                 <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 <h3 className="text-red-primary font-black uppercase tracking-widest text-[10px] mb-3">
                   HOTLINE SUPPORT
                 </h3>
-                <div className="text-white text-xl font-black mb-2" data-testid="hotline-phone">
+                <div className="text-white text-3xl font-black mb-2" data-testid="hotline-phone">
                   01 89 56 05 00
                 </div>
                 <p className="text-white/60 text-[10px] font-bold uppercase">
@@ -97,7 +97,7 @@ export default function ContactPage() {
 
               {/* WhatsApp Business — fond blanc Stitch */}
               <div
-                className="bg-white border-2 border-[#091421] p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group"
+                className="bg-white border-2 border-[#091421] p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group"
                 data-testid="whatsapp-card"
               >
                 <div className="absolute top-0 right-0 p-2 opacity-10">
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 <h3 className="text-[#091421] font-black uppercase tracking-widest text-[10px] mb-3">
                   WHATSAPP BUSINESS
                 </h3>
-                <div className="text-[#091421] text-xl font-black mb-2" data-testid="whatsapp-phone">
+                <div className="text-[#091421] text-3xl font-black mb-2" data-testid="whatsapp-phone">
                   05 94 96 35 00
                 </div>
                 <p className="text-gray-500 text-[10px] font-bold uppercase">
