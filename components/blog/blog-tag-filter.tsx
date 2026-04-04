@@ -17,10 +17,10 @@ export function BlogTagFilter({ tags, activeTag }: BlogTagFilterProps) {
       <Link
         href="/blog"
         className={[
-          "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border transition-colors duration-200",
+          "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border-4 transition-colors duration-200",
           !activeTag
             ? "border-red-primary text-red-primary"
-            : "border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary",
+            : "border-blue-marine text-blue-marine hover:border-red-primary hover:text-red-primary",
         ].join(" ")}
         aria-current={!activeTag ? "page" : undefined}
       >
@@ -36,10 +36,10 @@ export function BlogTagFilter({ tags, activeTag }: BlogTagFilterProps) {
             key={tag.id}
             href={`/blog/categorie/${tag.slug}`}
             className={[
-              "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border transition-colors duration-200",
+              "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border-4 transition-colors duration-200",
               isActive
                 ? "border-red-primary text-red-primary"
-                : "border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary",
+                : "border-blue-marine text-blue-marine hover:border-red-primary hover:text-red-primary",
             ].join(" ")}
             aria-current={isActive ? "page" : undefined}
           >

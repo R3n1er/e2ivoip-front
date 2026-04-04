@@ -17,7 +17,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block bg-white border border-gray-200 hover:border-red-primary transition-colors duration-200"
+      className="group block bg-white border-4 border-blue-marine shadow-[8px_8px_0px_0px_#1F2937] hover:shadow-[4px_4px_0px_0px_#1F2937] hover:translate-x-1 hover:translate-y-1 transition-all duration-200"
     >
       {/* Image */}
       {post.featuredImage && (
@@ -39,7 +39,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             {post.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary"
+                className="text-[10px] font-black uppercase tracking-[0.2em] bg-red-primary text-white px-3 py-1"
               >
                 {tag}
               </span>
@@ -48,26 +48,26 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         )}
 
         {/* Titre */}
-        <h3 className="text-xl font-bold text-[#091421] group-hover:text-red-primary transition-colors duration-200 leading-tight mb-2">
+        <h3 className="text-lg font-black tracking-[-0.02em] text-blue-marine group-hover:text-red-primary transition-colors duration-200 leading-tight mb-2 uppercase">
           {post.title}
         </h3>
 
         {/* Excerpt */}
-        <p className="text-sm text-gray-500 line-clamp-2 mb-4">
+        <p className="text-sm text-gray-secondary line-clamp-2 mb-4">
           {post.excerpt}
         </p>
 
         {/* Meta */}
         <div className="flex items-center gap-4 flex-wrap">
-          <span className="flex items-center gap-1 text-xs text-gray-400">
+          <span className="flex items-center gap-1 text-xs text-gray-secondary">
             <i className="lni lni-user" aria-hidden="true"></i>
             {post.author}
           </span>
-          <span className="flex items-center gap-1 text-xs text-gray-400">
+          <span className="flex items-center gap-1 text-xs text-gray-secondary">
             <i className="lni lni-calendar" aria-hidden="true"></i>
             {formattedDate}
           </span>
-          <span className="flex items-center gap-1 text-xs text-gray-400">
+          <span className="flex items-center gap-1 text-xs text-gray-secondary">
             <i className="lni lni-timer" aria-hidden="true"></i>
             {post.readingTime} min
           </span>

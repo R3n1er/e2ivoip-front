@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Blog | E2I VoIP",
   description:
     "Actualités, conseils et guides sur la téléphonie IP et les communications d'entreprise. Expertise VoIP par E2I VoIP.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Blog | E2I VoIP",
     description:
@@ -51,16 +54,15 @@ export default async function BlogPage({
       <div className="min-h-screen bg-white">
         <main className="pt-16">
           {/* Hero Section — Monolithe 2026 */}
-          <section className="py-20 bg-[#091421] monolith-grid-lines relative overflow-hidden">
+          <section className="py-20 bg-[#091421] monolith-grid-lines relative overflow-hidden border-l-8 border-red-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-4">
                 Ressources &amp; Expertise
               </p>
-              <h1 className="text-5xl md:text-7xl font-black tracking-[-0.04em] leading-tight text-white mb-4">
+              <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] leading-tight text-white mb-6 uppercase">
                 Blog
               </h1>
-              <div className="h-2 w-32 bg-red-primary mb-6"></div>
-              <p className="text-lg text-gray-400 max-w-2xl">
+              <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
                 Actualités, conseils et guides sur la téléphonie IP et les
                 communications d&apos;entreprise
               </p>
@@ -83,11 +85,11 @@ export default async function BlogPage({
                   defaultValue={q || ""}
                   placeholder="Rechercher un article…"
                   aria-label="Rechercher un article"
-                  className="flex-1 border border-gray-200 px-4 py-3 text-sm text-[#091421] placeholder-gray-400 focus:outline-none focus:border-red-primary bg-white rounded-none"
+                  className="flex-1 border-4 border-blue-marine px-4 py-3 text-sm text-blue-marine placeholder-gray-secondary focus:outline-none focus:border-red-primary bg-white"
                 />
                 <button
                   type="submit"
-                  className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-6 py-3 rounded-none"
+                  className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-6 py-3"
                   aria-label="Lancer la recherche"
                 >
                   <i className="lni lni-search-alt" aria-hidden="true"></i>
@@ -99,14 +101,14 @@ export default async function BlogPage({
 
               {/* Résumé résultats */}
               {(q || tag) && (
-                <p className="text-sm text-gray-500 mb-8">
+                <p className="text-sm text-gray-secondary mb-8">
                   {total} article{total !== 1 ? "s" : ""} trouvé
                   {total !== 1 ? "s" : ""}
                   {q && (
                     <>
                       {" "}
                       pour{" "}
-                      <span className="font-bold text-[#091421]">
+                      <span className="font-black text-blue-marine">
                         &laquo;{q}&raquo;
                       </span>
                     </>
@@ -123,15 +125,15 @@ export default async function BlogPage({
                 </div>
               ) : (
                 <div className="py-20 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-secondary mb-4">
                     Aucun résultat
                   </p>
-                  <p className="text-gray-500 mb-6">
+                  <p className="text-gray-secondary mb-6">
                     Aucun article ne correspond à votre recherche.
                   </p>
                   <Link
                     href="/blog"
-                    className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-8 py-4 rounded-none inline-block"
+                    className="monolith-btn bg-red-primary text-white font-black uppercase tracking-[0.2em] text-xs px-8 py-4 inline-block"
                   >
                     Voir tous les articles
                   </Link>
@@ -142,7 +144,7 @@ export default async function BlogPage({
               {totalPages > 1 && (
                 <nav
                   aria-label="Pagination du blog"
-                  className="flex items-center justify-center gap-2 mt-8"
+                  className="flex items-center justify-center gap-2 mt-12"
                 >
                   {/* Précédent */}
                   {currentPage > 1 && (
@@ -155,7 +157,7 @@ export default async function BlogPage({
                           page: currentPage - 1,
                         },
                       }}
-                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary transition-colors duration-200"
+                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border-4 border-blue-marine text-blue-marine hover:border-red-primary hover:text-red-primary transition-colors duration-200"
                       aria-label="Page précédente"
                     >
                       <i className="lni lni-arrow-left" aria-hidden="true"></i>
@@ -177,10 +179,10 @@ export default async function BlogPage({
                           },
                         }}
                         className={[
-                          "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border transition-colors duration-200",
+                          "text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border-4 transition-colors duration-200",
                           pageNum === currentPage
                             ? "border-red-primary text-red-primary"
-                            : "border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary",
+                            : "border-blue-marine text-blue-marine hover:border-red-primary hover:text-red-primary",
                         ].join(" ")}
                         aria-label={`Page ${pageNum}`}
                         aria-current={
@@ -203,7 +205,7 @@ export default async function BlogPage({
                           page: currentPage + 1,
                         },
                       }}
-                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border border-gray-200 text-gray-500 hover:border-red-primary hover:text-red-primary transition-colors duration-200"
+                      className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 border-4 border-blue-marine text-blue-marine hover:border-red-primary hover:text-red-primary transition-colors duration-200"
                       aria-label="Page suivante"
                     >
                       Suiv.
