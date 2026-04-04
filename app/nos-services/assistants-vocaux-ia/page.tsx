@@ -3,11 +3,19 @@ import { ContactFormAssistantIA } from "@/components/contact-form-assistant-ia";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Assistants vocaux IA | E2I VoIP",
+  title: "Assistants Vocaux IA Telephoniques — Accueil 24/7 | E2I VoIP",
   description:
     "Révolutionnez votre accueil téléphonique avec l'intelligence artificielle. Accueil 24/7, qualification automatique, relais humain maîtrisé.",
   alternates: {
     canonical: "/nos-services/assistants-vocaux-ia",
+  },
+  openGraph: {
+    title: "Assistants Vocaux IA Telephoniques — Accueil 24/7 | E2I VoIP",
+    description:
+      "Révolutionnez votre accueil téléphonique avec l'intelligence artificielle. Accueil 24/7, qualification automatique, relais humain maîtrisé.",
+    url: "/nos-services/assistants-vocaux-ia",
+    siteName: "E2I VoIP",
+    type: "website",
   },
 };
 

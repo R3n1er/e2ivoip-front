@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Studio Attente Téléphonique — Messages & Musiques sur mesure | E2I VoIP",
+  title: "Studio Attente Telephonique — Messages sur mesure | E2I VoIP",
   description:
     "Créez une expérience d'attente professionnelle avec nos messages vocaux et musiques sur mesure. Voix off professionnelles, habillage musical, formats multiples. Devis gratuit.",
   keywords:

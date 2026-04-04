@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/devis-en-ligne",
   },
+  openGraph: {
+    title: "Devis Rapide et Gratuit — Telephonie IP | E2I VoIP",
+    description:
+      "Recevez un devis personnalise en 24h pour votre projet telecom.",
+    url: "/devis-en-ligne",
+    siteName: "E2I VoIP",
+    type: "website",
+  },
 };
 
 const devisButtons = [

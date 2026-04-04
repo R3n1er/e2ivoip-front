@@ -5,8 +5,7 @@ import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { TallyEmbedDevis } from "@/components/tally-embed-devis";
 
 export const metadata: Metadata = {
-  title:
-    "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
+  title: "Trunk SIP au Compteur DOM — Antilles-Guyane | E2I VoIP",
   description:
     "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 30%.",
   keywords:
