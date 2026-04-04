@@ -76,7 +76,7 @@ export default function QuiSommesNous() {
       {/* ══════════════════════════════════════
           SECTION 1 — HERO (image fond + Stitch)
           ══════════════════════════════════════ */}
-      <section className="relative min-h-[700px] flex items-center overflow-hidden bg-[#091421]">
+      <section className="relative min-h-[819px] flex items-center overflow-hidden bg-[#091421]">
         <div className="absolute inset-0">
           <img
             src="/images/photos/pexels-polina-tankilevitch-5234774.webp"
@@ -93,23 +93,20 @@ export default function QuiSommesNous() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-24 py-20 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-8 lg:px-24 py-20">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-[-0.05em] leading-[0.9] text-white mb-8 uppercase">
             Votre operateur de services telecom{" "}
             <span className="text-red-primary">DOM</span>
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
+          <p className="text-xl text-white/90 max-w-3xl leading-relaxed mb-4">
             15 ans d&apos;expertise &bull; 100+ entreprises nous font confiance &bull; Support local reactif
           </p>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-white/70 max-w-2xl mb-10">
             Economisez jusqu&apos;a 30% sur vos couts telecoms avec nos solutions de telephonie IP
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/devis-en-ligne" className="bg-red-primary text-white px-10 py-5 font-black uppercase tracking-[0.2em] text-xs border-4 border-red-primary shadow-[8px_8px_0px_0px_rgba(229,62,62,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(229,62,62,0.3)] transition-all">
               Demander un devis
-            </Link>
-            <Link href="/contact" className="bg-white text-[#091421] px-10 py-5 font-black uppercase tracking-[0.2em] text-xs border-4 border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all">
-              Parler a un expert
             </Link>
           </div>
         </div>
@@ -223,7 +220,59 @@ export default function QuiSommesNous() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 4 — SOLUTIONS PHARES + CAS CLIENT
+          SECTION 4 — ILS NOUS FONT CONFIANCE
+          ══════════════════════════════════════ */}
+      <section className="bg-white py-32 px-8 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-black tracking-[-0.05em] uppercase text-blue-marine mb-4">
+              ILS NOUS FONT CONFIANCE
+            </h2>
+            <div className="w-24 h-2 bg-red-primary mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="aspect-video bg-gray-50 flex items-center justify-center p-8 border border-gray-100 hover:border-red-primary transition-colors">
+              <Image
+                src="/images/logo-partners/Bronze Partner badge-min.jpeg"
+                alt="3CX Silver Partner"
+                width={160}
+                height={90}
+                className="grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all object-contain"
+              />
+            </div>
+            <div className="aspect-video bg-gray-50 flex items-center justify-center p-8 border border-gray-100 hover:border-red-primary transition-colors">
+              <Image
+                src="/images/logo-partners/yeastar-certified-expert-ysce-icon.png"
+                alt="Yeastar Certified Expert"
+                width={160}
+                height={90}
+                className="grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all object-contain"
+              />
+            </div>
+            <div className="aspect-video bg-gray-50 flex items-center justify-center p-8 border border-gray-100 hover:border-red-primary transition-colors">
+              <Image
+                src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
+                alt="Fanvil - Distributeur officiel"
+                width={160}
+                height={90}
+                className="grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all object-contain"
+              />
+            </div>
+            <div className="aspect-video bg-gray-50 flex items-center justify-center p-8 border border-gray-100 hover:border-red-primary transition-colors">
+              <Image
+                src="/images/logo-partners/logo-yealink.webp"
+                alt="Yealink - Distributeur officiel"
+                width={160}
+                height={90}
+                className="grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SECTION 5 — SOLUTIONS PHARES + CAS CLIENT
           ══════════════════════════════════════ */}
       <section className="py-32 bg-white px-8 lg:px-24">
         <div className="max-w-7xl mx-auto">
@@ -337,7 +386,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 5 — EQUIPE
+          SECTION 6 — EQUIPE
           ══════════════════════════════════════ */}
       <section className="py-32 bg-gray-50 px-8 lg:px-24">
         <div className="max-w-7xl mx-auto">
@@ -372,7 +421,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 6 — CERTIFICATIONS ET PARTENARIATS
+          SECTION 7 — CERTIFICATIONS ET PARTENARIATS
           ══════════════════════════════════════ */}
       <section className="py-32 bg-white px-8 lg:px-24">
         <div className="max-w-7xl mx-auto">
@@ -505,7 +554,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 7 — CONTACT PAR REGION
+          SECTION 8 — CONTACT PAR REGION
           ══════════════════════════════════════ */}
       <section className="bg-[#091421] py-32 px-8 lg:px-24 relative overflow-hidden">
         <div
@@ -569,7 +618,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 8 — CTA FINALE
+          SECTION 9 — CTA FINALE
           ══════════════════════════════════════ */}
       <section className="bg-red-primary py-24 px-8 text-center border-y-8 border-blue-marine">
         <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4">
