@@ -62,12 +62,9 @@ npx playwright test --ui
 
 ## Verifications Design System Monolithe
 
-Quand tu evalues une page, verifie ces points :
-- **Rounded** : Aucun element avec border-radius > 0 (sauf icones rondes)
-- **Shadows** : Pas de soft shadows (shadow-lg, shadow-xl). Seules les hard shadows Monolithe sont autorisees
-- **Couleurs** : Palette stricte (#E53E3E, #2D3848, #1F2937, #091421, #FFFFFF)
-- **Typographie** : Titres en font-black, tracking serre, uppercase
-- **Hero** : Fond sombre #091421 avec monolith-grid-lines
+> **Regles detaillees** : voir `CLAUDE.md` section "Design System Monolithe 2026". Pour un audit complet, deleguer a l'agent `stitch-compliance`.
+
+Verification rapide via `browser_evaluate` : pas de `border-radius > 0` sur conteneurs, pas de soft shadows, palette stricte (#E53E3E, #2D3848, #1F2937, #091421, #FFFFFF).
 
 ## Port par Defaut
 

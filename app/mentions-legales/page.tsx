@@ -1,14 +1,21 @@
 import { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mentions légales - E2I VoIP",
-  description: "Mentions légales et informations juridiques d'E2I Assistance (E2I VOIP). Découvrez nos informations légales, politique de confidentialité et droits d'auteur.",
-  keywords: "mentions légales, E2I VoIP, politique confidentialité, droits auteur, RGPD, cookies",
+  title: "Mentions legales | E2I VoIP",
+  description:
+    "Mentions legales et informations juridiques d'E2I Assistance (E2I VoIP). Informations legales, politique de confidentialite et droits d'auteur.",
+  keywords:
+    "mentions legales, E2I VoIP, politique confidentialite, droits auteur, RGPD, cookies",
+  alternates: {
+    canonical: "/mentions-legales",
+  },
   openGraph: {
-    title: "Mentions légales - E2I VoIP",
-    description: "Mentions légales et informations juridiques d'E2I Assistance (E2I VOIP).",
+    title: "Mentions legales | E2I VoIP",
+    description:
+      "Mentions legales et informations juridiques d'E2I Assistance (E2I VoIP).",
+    url: "/mentions-legales",
+    siteName: "E2I VoIP",
     type: "website",
   },
 };
@@ -18,265 +25,236 @@ export default function MentionsLegales() {
     { region: "Guyane", phone: "+594 594 963 500" },
     { region: "Guadeloupe", phone: "+590 590 173 500" },
     { region: "Martinique", phone: "+596 596 313 500" },
-    { region: "La Réunion", phone: "+262 263 085 500" },
+    { region: "La Reunion", phone: "+262 263 085 500" },
   ];
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 to-blue-marine/90 z-10"></div>
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+      {/* ══════════════════════════════════════
+          HERO — fidele Stitch : h-[409px], titre split
+          ══════════════════════════════════════ */}
+      <section className="relative h-[409px] flex items-center justify-center bg-[#091421] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[#091421]/80 z-10" />
+          <div
+            className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: "radial-gradient(circle at 2px 2px, #E53E3E 1px, transparent 0)",
+              backgroundSize: "40px 40px",
             }}
-          ></div>
+          />
         </div>
-
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Mentions <span className="text-white">légales</span>
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Informations juridiques et légales d'E2I Assistance (E2I VOIP)
-            </p>
+        <div className="relative z-20 text-center px-6">
+          <h1 className="text-7xl md:text-8xl font-black tracking-[-0.05em] uppercase text-white leading-none">
+            Mentions<br />
+            <span className="text-red-primary">legales</span>
+          </h1>
+          <div className="mt-8 flex justify-center">
+            <div className="w-24 h-2 bg-red-primary" />
           </div>
         </div>
       </section>
 
-      {/* Section Éditeur */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                <span className="text-red-600">Éditeur</span> du site
+      {/* ══════════════════════════════════════
+          CONTENT GRID — 8/4 colonnes fidele Stitch
+          ══════════════════════════════════════ */}
+      <section className="max-w-7xl mx-auto px-12 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+
+          {/* ── Colonne principale (8 cols) ── */}
+          <div className="md:col-span-8">
+
+            {/* 01. Editeur du site */}
+            <div className="mb-16">
+              <h2 className="text-4xl font-black tracking-[-0.05em] uppercase mb-8 flex items-baseline gap-4">
+                <span className="text-red-primary text-5xl">01.</span>
+                EDITEUR DU SITE
               </h2>
-              <div className="space-y-6">
-                <Card className="shadow-lg">
-                  <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                    <CardTitle className="text-xl font-bold">
-                      E2I ASSISTANCE
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <i className="lni lni-shield w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Propriétaire du site</h3>
-                          <p className="text-gray-600">Alban RENIER / E2I ASSISTANCE</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <i className="lni lni-text-format w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">SIRET</h3>
-                          <p className="text-gray-600">51743457700014</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <i className="lni lni-text-format w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Code APE</h3>
-                          <p className="text-gray-600">6203Z</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <i className="lni lni-map-marker w-5 h-5 text-red-600 mt-1 flex-shrink-0"></i>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Siège social</h3>
-                          <p className="text-gray-600">23 Chemin Troubiran<br />97300 CAYENNE</p>
-                        </div>
-                      </div>
+              <div className="bg-[#121c2a] p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-l-8 border-red-primary">
+                <p className="text-2xl font-bold text-white mb-6">E2I ASSISTANCE</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-white/60 uppercase tracking-tight text-sm font-medium">
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-red-primary font-black mb-1">PROPRIETAIRE</p>
+                      <p className="text-white">Alban RENIER / E2I ASSISTANCE</p>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                <span className="text-red-600">Hébergement</span>
-              </h2>
-              <div className="space-y-6">
-                <Card className="shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-3">
-                      <i className="lni lni-world w-8 h-8 text-blue-600 mt-1 flex-shrink-0"></i>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Plateforme Vercel</h3>
-                        <p className="text-gray-600">
-                          Le site internet www.e2i-voip.com est hébergé par la plateforme Vercel.
-                        </p>
-                      </div>
+                    <div>
+                      <p className="text-red-primary font-black mb-1">SIRET</p>
+                      <p className="text-white">51743457700014</p>
                     </div>
-                  </CardContent>
-                </Card>
-                <Card className="shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-3">
-                      <i className="lni lni-world w-8 h-8 text-green-600 mt-1 flex-shrink-0"></i>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Gestion du domaine</h3>
-                        <p className="text-gray-600">
-                          Le domaine www.e2i-voip.com est enregistré et géré par Hostinger.
-                        </p>
-                      </div>
+                    <div>
+                      <p className="text-red-primary font-black mb-1">CODE APE</p>
+                      <p className="text-white">6203Z</p>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Cookies */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Gestion des <span className="text-red-600">cookies</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Notre politique de gestion des cookies et protection des données
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <Card className="shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-xl font-bold flex items-center">
-                  <i className="lni lni-question-circle w-6 h-6 mr-2"></i>
-                  Cookies et traces
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  <p className="text-gray-600">
-                    Le présent site internet dépose des cookies notamment de mesures d'audience avec votre consentement.
-                  </p>
-                  <p className="text-gray-600">
-                    Ce dernier vous est proposé à l'aide d'un gestionnaire de site (bandeau) qui vous permet de refuser, d'accepter ou de choisir les traces que vous autorisez.
-                  </p>
-                  <p className="text-gray-600">
-                    Ces traces ne sont pas conservées plus de 13 mois.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <CardTitle className="text-xl font-bold flex items-center">
-                  <i className="lni lni-shield w-6 h-6 mr-2"></i>
-                  Protection des données
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  <p className="text-gray-600">
-                    Vous pouvez vous adresser à notre société pour exercer vos droits informatiques et libertés via notre <strong>Politique de confidentialité</strong> ou notre formulaire de contact.
-                  </p>
-                  <p className="text-gray-600">
-                    Notre politique de confidentialité se réfère au Règlement Général sur la Protection des Données (RGPD) qui est entré en vigueur le 25 mai 2018.
-                  </p>
-                  <p className="text-gray-600">
-                    Nous continuerons à vous informer et, le cas échéant, à solliciter votre consentement pour tous nouveaux traitements, dans le respect de cette réglementation.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Droits d'auteur */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="text-red-600">Droits d'auteur</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Protection de la propriété intellectuelle et droits de reproduction
-            </p>
-          </div>
-
-          <Card className="shadow-lg max-w-4xl mx-auto">
-            <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-              <CardTitle className="text-xl font-bold flex items-center">
-                <i className="lni lni-question-circle w-6 h-6 mr-2"></i>
-                Propriété intellectuelle
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <p className="text-gray-600">
-                  L'ensemble de ce site relève de la législation française et internationale sur les droits d'auteur et la propriété intellectuelle.
-                </p>
-                <p className="text-gray-600">
-                  Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et visuelles.
-                </p>
-                <p className="text-gray-600">
-                  La reproduction de tout ou partie de ce site sur un support quel qu'il soit est formellement interdite sauf autorisation expresse.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Section Certification */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Nous sommes <span className="text-red-600">certifiés</span> !
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              E2I Assistance est partenaire 3CX Bronze et certifié ! Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
-            </p>
-            <div className="bg-white rounded-none p-8 shadow-lg inline-block">
-              <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
-                <Badge variant="secondary" className="text-sm">3CX Bronze Partner</Badge>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section Contact par région */}
-      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Nos <span className="text-white">implantations</span>
-            </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Contactez-nous dans votre région
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((contact, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-white/20 w-12 h-12 rounded-none flex items-center justify-center mx-auto mb-4">
-                    <i className="lni lni-phone w-6 h-6 text-white"></i>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{contact.region}</h3>
-                  <p className="text-white/90 text-sm">{contact.phone}</p>
-                </CardContent>
-              </Card>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-red-primary font-black mb-1">SIEGE SOCIAL</p>
+                      <p className="text-white">23 Chemin Troubiran<br />97300 CAYENNE</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 02. Gestion des cookies */}
+            <div className="mb-16">
+              <h2 className="text-4xl font-black tracking-[-0.05em] uppercase mb-8 flex items-baseline gap-4">
+                <span className="text-red-primary text-5xl">02.</span>
+                GESTION DES COOKIES
+              </h2>
+              <div className="max-w-none font-light leading-relaxed space-y-6 text-gray-500">
+                <p className="text-lg">
+                  Le site E2I VoIP utilise des traceurs (cookies) pour ameliorer votre navigation et realiser des statistiques de visites. Ces fichiers sont deposes sur votre terminal pour une duree maximale de 13 mois.
+                </p>
+                <p>
+                  Vous pouvez a tout moment configurer votre navigateur pour bloquer ces cookies. Cependant, certaines fonctionnalites du site pourraient etre degradees. La gestion des donnees personnelles est effectuee conformement au RGPD (Reglement General sur la Protection des Donnees).
+                </p>
+                <div className="bg-[#212b39] p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-white/10">
+                  <p className="text-red-primary font-bold uppercase tracking-widest text-xs mb-4">Action Requise</p>
+                  <p className="text-white font-medium italic">
+                    Pour toute demande de modification ou suppression de vos donnees personnelles, veuillez utiliser notre{" "}
+                    <Link href="/contact" className="text-red-primary underline hover:text-white transition-colors">
+                      formulaire de contact
+                    </Link>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 03. Droits d'auteur */}
+            <div className="mb-16">
+              <h2 className="text-4xl font-black tracking-[-0.05em] uppercase mb-8 flex items-baseline gap-4">
+                <span className="text-red-primary text-5xl">03.</span>
+                DROITS D&apos;AUTEUR
+              </h2>
+              <div className="bg-white p-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-[#091421]">
+                <p className="font-bold mb-6">
+                  L&apos;integralite de ce site est protegee par les legislations francaises et internationales sur le droit d&apos;auteur et la propriete intellectuelle.
+                </p>
+                <p className="text-[#091421]/80 leading-relaxed">
+                  Tous les droits de reproduction sont reserves, y compris pour les documents telechargeables et les representations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support electronique quel qu&apos;il soit est formellement interdite sauf autorisation expresse du directeur de la publication.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Sidebar (4 cols) ── */}
+          <div className="md:col-span-4 space-y-12">
+
+            {/* Hebergement — border-t-8 */}
+            <div className="bg-[#212b39] p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-t-8 border-red-primary">
+              <h3 className="text-2xl font-black tracking-tight uppercase mb-6 text-white">HEBERGEMENT</h3>
+              <div className="space-y-6">
+                <div>
+                  <p className="text-xs font-black text-red-primary uppercase mb-1">FOURNISSEUR CLOUD</p>
+                  <p className="text-xl font-bold text-white">VERCEL INC.</p>
+                  <p className="text-sm text-white/60">340 S Lemon Ave #4133<br />Walnut, CA 91789, USA</p>
+                </div>
+                <div>
+                  <p className="text-xs font-black text-red-primary uppercase mb-1">GESTION DOMAINE</p>
+                  <p className="text-xl font-bold text-white">HOSTINGER</p>
+                  <p className="text-sm text-white/60">Hostinger International Ltd.<br />61 Lordou Vironos Street<br />6023 Larnaca, Cyprus</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications — bg rose clair, texte fonce */}
+            <div className="bg-[#ffb3ad] text-[#5c0008] p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black tracking-tight uppercase mb-6">CERTIFICATIONS</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <i className="lni lni-shield text-4xl"></i>
+                  <span className="font-bold tracking-tighter uppercase text-sm">Operateur declare ARCEP</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <i className="lni lni-lock text-4xl"></i>
+                  <span className="font-bold tracking-tighter uppercase text-sm">Securite VoIP Avancee</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <i className="lni lni-customer text-4xl"></i>
+                  <span className="font-bold tracking-tighter uppercase text-sm">Support Technique 24/7</span>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Mini — bg-surface-bright */}
+            <div className="p-10 bg-[#303a48] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-6">
+              <p className="font-black text-xl uppercase tracking-tighter text-white">
+                Besoin d&apos;un accompagnement legal ou technique ?
+              </p>
+              <Link
+                href="/contact"
+                className="w-full bg-white text-[#091421] py-4 font-black text-xs uppercase tracking-widest border-2 border-[#091421] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center block"
+              >
+                NOUS CONTACTER
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          CONTACT PAR REGION
+          ══════════════════════════════════════ */}
+      <section className="bg-[#091421] py-24 px-12 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle at 2px 2px, #E53E3E 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-black tracking-[-0.05em] uppercase text-white mb-4">
+              Nos <span className="text-red-primary">implantations</span>
+            </h2>
+            <div className="w-24 h-2 bg-red-primary mx-auto mb-6" />
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Contactez-nous dans votre region
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {contactInfo.map((contact, index) => (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/10 p-8 text-center hover:bg-white/10 transition-colors"
+              >
+                <div className="bg-white/10 w-14 h-14 flex items-center justify-center mx-auto mb-4">
+                  <i className="lni lni-phone text-2xl text-white"></i>
+                </div>
+                <h3 className="text-lg font-black text-white mb-2 uppercase tracking-tight">
+                  {contact.region}
+                </h3>
+                <p className="text-white/80 text-sm font-bold">
+                  {contact.phone}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════
+          LEGAL BANNER — fidele Stitch
+          ══════════════════════════════════════ */}
+      <section className="bg-white py-12 px-12 border-y border-[#091421]/10">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex gap-12 items-center grayscale opacity-60">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 border border-gray-300 px-3 py-1">
+              RGPD
+            </span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 border border-gray-300 px-3 py-1">
+              ARCEP
+            </span>
+          </div>
+          <p className="text-[#091421] font-black tracking-tighter uppercase text-sm max-w-sm text-right">
+            E2I VoIP : L&apos;excellence infrastructurelle au service de votre communication.
+          </p>
+        </div>
+      </section>
     </>
   );
-} 
+}

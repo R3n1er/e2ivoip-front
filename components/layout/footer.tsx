@@ -8,7 +8,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1 flex flex-col">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="text-2xl lg:text-3xl font-bold tracking-tight">
+              <div className="text-2xl lg:text-3xl font-black tracking-tight">
                 <span className="text-red-primary">E</span>
                 <span className="text-gray-dark">2</span>
                 <span className="text-red-primary">I</span>
@@ -16,21 +16,32 @@ export function Footer() {
             </div>
             <p className="text-gray-500 mb-8 text-sm leading-relaxed">
               Solutions de téléphonie IP et communications d&apos;entreprise depuis
-              plus de 15 ans. Spécialiste des DOM.
+              plus de 15 ans.
             </p>
 
-            <div className="space-y-4 text-sm font-medium text-gray-500">
-              <div className="flex items-center space-x-3">
-                <i className="lni lni-envelope w-4 h-4 text-red-primary flex-shrink-0"></i>
-                <span>contact@e2i-voip.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="lni lni-map-marker w-4 h-4 text-red-primary flex-shrink-0"></i>
-                <span>Paris, France</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="lni lni-phone w-4 h-4 text-red-primary flex-shrink-0"></i>
-                <span>+33 1 89 56 05 00</span>
+            {/* Nous contacter */}
+            <div className="mt-auto pt-4 border-t border-[#091421]/10">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-4 flex items-center">
+                <i className="lni lni-phone w-4 h-4 text-red-primary mr-2"></i>
+                Nous contacter
+              </h4>
+              <div className="space-y-2 text-xs">
+                <div className="flex justify-between items-center py-1">
+                  <span className="text-gray-500 font-medium">Guyane :</span>
+                  <span className="text-gray-dark font-semibold">+594 594 963 500</span>
+                </div>
+                <div className="flex justify-between items-center py-1">
+                  <span className="text-gray-500 font-medium">Guadeloupe :</span>
+                  <span className="text-gray-dark font-semibold">+590 590 173 500</span>
+                </div>
+                <div className="flex justify-between items-center py-1">
+                  <span className="text-gray-500 font-medium">Martinique :</span>
+                  <span className="text-gray-dark font-semibold">+596 596 313 500</span>
+                </div>
+                <div className="flex justify-between items-center py-1">
+                  <span className="text-gray-500 font-medium">France :</span>
+                  <span className="text-gray-dark font-semibold">+33 1 89 56 05 00</span>
+                </div>
               </div>
             </div>
           </div>
@@ -98,10 +109,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Liens utiles */}
+          {/* Support */}
           <div>
             <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-6">
-              Liens utiles
+              Support
             </h3>
             <ul className="space-y-4 text-sm text-gray-500">
               <li>
@@ -115,6 +126,42 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/support/faq"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/support/technique"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Support technique
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/support/formation"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Formation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/support/garanties"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Garanties
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/devis-en-ligne"
                   className="hover:text-[#091421] transition-colors flex items-center group"
                 >
@@ -122,6 +169,15 @@ export function Footer() {
                   Devis en ligne
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Informations */}
+          <div>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-6">
+              Informations
+            </h3>
+            <ul className="space-y-4 text-sm text-gray-500">
               <li>
                 <Link
                   href="/qui-sommes-nous"
@@ -146,7 +202,7 @@ export function Footer() {
                   className="hover:text-[#091421] transition-colors flex items-center group"
                 >
                   <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Mentions Légales
+                  Mentions légales
                 </Link>
               </li>
               <li>
@@ -155,33 +211,28 @@ export function Footer() {
                   className="hover:text-[#091421] transition-colors flex items-center group"
                 >
                   <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Confidentialité
+                  Politique de confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cgv"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Conditions générales de vente
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-[#091421] transition-colors flex items-center group"
+                >
+                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  Contact
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* Newsletter (Monolith Square Component) */}
-          <div className="lg:col-span-1">
-            <div className="bg-gray-50 border border-gray-200 p-8 flex flex-col h-full relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-red-primary"></div>
-              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-3">
-                NEWSLETTER
-              </h3>
-              <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                Restez à l&apos;écoute des tendances, évolutions télécom, et actualités E2I VoIP.
-              </p>
-              <div className="flex flex-col space-y-3 mt-auto relative z-10">
-                <input
-                  type="email"
-                  placeholder="Votre adresse e-mail"
-                  className="w-full rounded-none bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-red-primary transition-colors placeholder:text-gray-400 text-gray-dark"
-                />
-                <button className="bg-red-primary text-white text-xs uppercase tracking-widest font-bold py-4 transition-colors hover:bg-red-700 w-full flex justify-center items-center rounded-none">
-                  S&apos;inscrire
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -192,7 +243,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} E2I VoIP. TOUS DROITS RÉSERVÉS.
             </div>
 
-            {/* Partners logos */}
+            {/* Partners */}
             <div className="flex items-center space-x-6 text-gray-500 text-xs font-bold uppercase tracking-wider">
               <span className="text-gray-400">PARTENAIRES :</span>
               <div className="flex items-center space-x-4">
@@ -215,7 +266,7 @@ export function Footer() {
                 </a>
                 <span className="text-gray-300">|</span>
                 <a
-                  href="https://www.grandstream.com"
+                  href="https://www.grandstream.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-red-primary transition-colors"

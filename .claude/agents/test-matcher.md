@@ -8,6 +8,8 @@ tools: ["Read", "Grep", "Glob"]
 
 Tu es un agent d'analyse d'impact de tests pour le projet E2I VoIP. Ta mission est d'identifier precisement quels fichiers de tests sont impactes par une modification de composant.
 
+> **Structure projet et conventions** : voir `CLAUDE.md` pour la structure des dossiers et le workflow TDD.
+
 ## Contexte Projet
 
 - Tests unitaires : `tests/*.test.tsx` (Jest + React Testing Library)
