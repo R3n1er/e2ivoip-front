@@ -84,28 +84,12 @@ export default function StudioAttente() {
               avec nos messages et musiques sur mesure
             </p>
 
-            <Link href="/devis-en-ligne">
-              <span
-                className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5"
-                style={{
-                  boxShadow: "-5px 5px 0px 0px #050f1c",
-                  display: "inline-flex",
-                  transition: "transform 0.1s, box-shadow 0.1s",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.transform = "translate(2px, -2px)";
-                  el.style.boxShadow = "-3px 3px 0px 0px #050f1c";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.transform = "";
-                  el.style.boxShadow = "-5px 5px 0px 0px #050f1c";
-                }}
-              >
-                <i className="lni lni-headphone-alt" aria-hidden="true" />
-                Demander un devis
-              </span>
+            <Link
+              href="/devis-en-ligne"
+              className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[-5px_5px_0px_0px_#050f1c] hover:shadow-[-3px_3px_0px_0px_#050f1c] hover:translate-x-[2px] hover:-translate-y-[2px]"
+            >
+              <i className="lni lni-headphone-alt" aria-hidden="true" />
+              Demander un devis
             </Link>
           </div>
         </div>

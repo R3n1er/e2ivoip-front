@@ -164,37 +164,15 @@ export default function AssistancePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               href="/contact"
-              className="relative inline-block bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform hover:translate-x-[2px] hover:translate-y-[2px]"
-              style={{
-                boxShadow: "5px 5px 0px 0px #1F2937",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "3px 3px 0px 0px #1F2937";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "5px 5px 0px 0px #1F2937";
-              }}
+              className="relative inline-block bg-white text-[#091421] font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[5px_5px_0px_0px_#1F2937] hover:shadow-[3px_3px_0px_0px_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
               Demander un devis
             </Link>
             <Link
               href="/"
-              className="relative inline-block bg-[#091421] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform hover:translate-x-[2px] hover:translate-y-[2px]"
-              style={{
-                boxShadow: "5px 5px 0px 0px #1F2937",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "3px 3px 0px 0px #1F2937";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "5px 5px 0px 0px #1F2937";
-              }}
+              className="relative inline-block bg-[#091421] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[5px_5px_0px_0px_#1F2937] hover:shadow-[3px_3px_0px_0px_#1F2937] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
-              Retour à l&apos;accueil
+              Retour a l&apos;accueil
             </Link>
           </div>
         </div>

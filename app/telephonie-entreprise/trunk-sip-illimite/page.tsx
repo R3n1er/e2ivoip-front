@@ -103,18 +103,7 @@ export default function TrunkSIPIllimite() {
           {/* Single CTA */}
           <Link
             href="#contact-form"
-            className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform duration-150 hover:translate-x-[2px] hover:translate-y-[2px]"
-            style={{
-              boxShadow: "5px 5px 0px 0px #050f1c",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow =
-                "3px 3px 0px 0px #050f1c";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow =
-                "5px 5px 0px 0px #050f1c";
-            }}
+            className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[5px_5px_0px_0px_#050f1c] hover:shadow-[3px_3px_0px_0px_#050f1c] hover:translate-x-[2px] hover:translate-y-[2px]"
           >
             <i className="lni lni-bubble" aria-hidden="true"></i>
             Demander un devis
@@ -486,33 +475,14 @@ export default function TrunkSIPIllimite() {
           <div className="flex flex-col sm:flex-row gap-6">
             <Link
               href="#contact-form"
-              className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform duration-150 hover:translate-x-[2px] hover:translate-y-[2px]"
-              style={{ boxShadow: "5px 5px 0px 0px #050f1c" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "3px 3px 0px 0px #050f1c";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "5px 5px 0px 0px #050f1c";
-              }}
+              className="inline-flex items-center gap-3 bg-[#E53E3E] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[5px_5px_0px_0px_#050f1c] hover:shadow-[3px_3px_0px_0px_#050f1c] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
               <i className="lni lni-bubble" aria-hidden="true"></i>
-              Demander mon devis illimité
+              Demander mon devis illimite
             </Link>
             <a
               href="tel:+33189560500"
-              suppressHydrationWarning
-              className="inline-flex items-center gap-3 bg-[#2D3848] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-transform duration-150 hover:translate-x-[2px] hover:translate-y-[2px]"
-              style={{ boxShadow: "5px 5px 0px 0px #050f1c" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "3px 3px 0px 0px #050f1c";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "5px 5px 0px 0px #050f1c";
-              }}
+              className="inline-flex items-center gap-3 bg-[#2D3848] text-white font-black uppercase tracking-[0.2em] text-xs px-10 py-5 transition-all shadow-[5px_5px_0px_0px_#050f1c] hover:shadow-[3px_3px_0px_0px_#050f1c] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
               <i className="lni lni-phone" aria-hidden="true"></i>
               Appeler un conseiller
