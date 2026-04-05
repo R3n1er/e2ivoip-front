@@ -2,54 +2,57 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Studio Attente Téléphonique — Messages et Musiques Professionnels | E2I VoIP",
+  title:
+    "Studio vocal standard téléphonique | SVI, accueil, attente, fermeture | E2I VoIP",
   description:
-    "Créez une expérience d'attente professionnelle avec nos messages vocaux sur mesure. Voix off en français, créole et anglais. Accueil, attente, répondeur, fermeture. Livraison 48h. Devis gratuit.",
+    "Studio d'enregistrement vocal spécialisé standards téléphoniques : messages d'accueil, SVI, attente et fermeture. Portail automatisé pour écouter exemples et réalisations clients ; fichiers compatibles tout IPBX. Guadeloupe, Martinique, Guyane, Réunion, DOM.",
   keywords:
-    "studio attente téléphonique, message d'attente professionnel, musique attente téléphone, voix off professionnelle, message accueil standard, message répondeur entreprise, VoIP DOM, Martinique Guadeloupe Guyane Réunion",
+    "studio vocal standard téléphonique, message accueil téléphonique, SVI serveur vocal interactif, message attente professionnel, studio enregistrement téléphonie entreprise, portail démos messages vocaux, musique attente IPBX, voix off standard 3CX Yeastar, message fermeture standard, téléphonie pro Guadeloupe Martinique Guyane Réunion DOM",
   alternates: {
     canonical: "/studio-attente",
   },
   openGraph: {
-    title: "Studio Attente Téléphonique — Messages et Musiques Professionnels | E2I VoIP",
+    title:
+      "Studio vocal pour standard téléphonique — SVI, accueil, attente | E2I VoIP",
     description:
-      "Messages vocaux et musiques professionnelles pour votre standard téléphonique. Sur mesure, tous formats, livraison 48h.",
+      "Enregistrements pro pour IPBX et standards téléphoniques. Portail démos, exemples clients, livraison formats compatibles. DOM & métropole.",
     type: "website",
     locale: "fr_FR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Attente Téléphonique — Messages et Musiques Professionnels | E2I VoIP",
+    title:
+      "Studio vocal standard téléphonique — SVI, accueil, attente | E2I VoIP",
     description:
-      "Messages vocaux professionnels pour votre standard téléphonique. Voix off français, créole, anglais. Livraison 48h.",
+      "Spécialiste standards téléphoniques : accueil, SVI, attente, fermeture. Portail exemples & productions clients. DOM.",
   },
 };
 
 export default function StudioAttente() {
   const services = [
     {
-      icon: "lni-microphone",
-      title: "Enregistrement professionnel",
+      icon: "lni-world",
+      title: "Portail automatisé démos & exemples",
       description:
-        "Voix off sélectionnées pour leur clarté et leur naturel. Tonalité chaleureuse, dynamique ou institutionnelle selon votre secteur d'activité.",
+        "Accédez en ligne à des extraits types et à des réalisations déjà produites pour nos clients (selon autorisations), pour vous projeter avant commande. Idéal pour comparer voix, débit et habillage musical.",
+    },
+    {
+      icon: "lni-microphone",
+      title: "Studio spécialisé standards téléphoniques",
+      description:
+        "Enregistrements calibrés pour la téléphonie d'entreprise : niveaux compatibles attente et SVI, voix claires, découpe par fichier si votre IPBX le requiert. Conçu pour 3CX, Yeastar, Grandstream et tout standard acceptant WAV, MP3 ou codecs télécom.",
     },
     {
       icon: "lni-music",
-      title: "Habillage musical",
+      title: "Habillage musical libre de droits",
       description:
-        "Catalogue de musiques libres de droits soigneusement sélectionnées : ambiances corporate, jazz, acoustique ou world music selon votre image.",
-    },
-    {
-      icon: "lni-volume",
-      title: "Messages sur mesure",
-      description:
-        "Textes rédigés ou retravaillés avec vous pour refléter fidèlement votre identité de marque, vos offres et votre secteur d'activité.",
+        "Musiques d'attente et fonds sonores sélectionnés pour l'image pro : corporate, jazz, acoustique ou ambiances adaptées aux marques en Guadeloupe, Martinique, Guyane, Réunion ou métropole.",
     },
     {
       icon: "lni-download",
-      title: "Formats multiples",
+      title: "Livraison tous formats & tout standard",
       description:
-        "Livraison dans tous les formats audio compatibles : MP3, WAV, G711, G729 — directement intégrables dans votre IPBX 3CX, Yeastar ou tout autre standard VoIP.",
+        "Fichiers MP3, WAV, G711, G729 et autres formats utiles à votre IPBX ou votre opérateur. Les productions peuvent être installées sur n'importe quel standard téléphonique compatible import audio.",
     },
   ];
 
@@ -60,9 +63,9 @@ export default function StudioAttente() {
       tag: "Essentiel",
       tagColor: "bg-[#E53E3E]",
       description:
-        "Le premier contact entre votre entreprise et votre appelant. Un message d'accueil bien rédigé rassure, oriente et donne le ton de votre relation client dès la première sonnerie.",
+        "Le premier contact entre votre entreprise et votre appelant : ton de marque, identification claire et transition vers le SVI ou un conseiller. Pensé pour les standards professionnels.",
       exemple:
-        "\"Bonjour et bienvenue chez [Entreprise]. Pour le service commercial, tapez le 1. Pour le service technique, tapez le 2. Pour toute autre demande, restez en ligne.\"",
+        "\"Bonjour, vous êtes bien chez [Entreprise]. Merci de votre appel ; veuillez patienter, un membre de l'équipe vous répond dans un instant.\"",
     },
     {
       icon: "lni-timer",
@@ -75,14 +78,14 @@ export default function StudioAttente() {
         "\"Votre appel est important pour nous. Pendant votre attente, saviez-vous que vous pouvez aussi nous contacter via notre site web pour un devis en ligne ?\"",
     },
     {
-      icon: "lni-envelope",
-      title: "Message répondeur",
-      tag: "Indispensable",
+      icon: "lni-target",
+      title: "SVI & menu vocal",
+      tag: "Routage",
       tagColor: "bg-[#E53E3E]",
       description:
-        "Quand vous n'êtes pas disponible, votre répondeur prend le relais. Un message clair et professionnel invite l'appelant à laisser ses coordonnées et lui indique quand il sera rappelé.",
+        "Serveur vocal interactif : structurez votre menu numérique, orientez vers les services et réduisez la charge sur votre standard. Scripts clairs, voix posée, fichiers découpés pour une intégration simple sur votre IPBX.",
       exemple:
-        "\"Vous avez bien joint [Entreprise]. Nos bureaux sont actuellement fermés. Veuillez laisser votre nom, numéro et l'objet de votre appel, nous vous rappellerons dans les plus brefs délais.\"",
+        "\"Pour le service commercial, tapez le 1. Pour le support technique, tapez le 2. Pour connaître nos horaires, tapez le 3. Pour parler à un opérateur, tapez le 0 ou restez en ligne.\"",
     },
     {
       icon: "lni-alarm-clock",
@@ -99,9 +102,9 @@ export default function StudioAttente() {
   const processSteps = [
     {
       number: "01",
-      title: "Brief & Rédaction",
+      title: "Portail, brief & rédaction",
       description:
-        "Vous nous transmettez vos textes ou nous les rédigeons ensemble. Nous précisons ensemble le ton souhaité, la langue, le style musical et les spécificités de votre secteur d'activité.",
+        "Vous explorez les démos sur notre portail automatisé, puis nous validons le brief : textes fournis ou co-rédaction, ton, langues (français, créole, anglais…), musiques et contraintes de votre standard téléphonique.",
     },
     {
       number: "02",
@@ -137,10 +140,10 @@ export default function StudioAttente() {
         "Le temps d'attente n'est plus du temps perdu. Valorisez vos offres, annoncez vos promotions ou orientez vos clients vers votre site web pendant qu'ils patientent.",
     },
     {
-      icon: "lni-globe",
-      title: "Multilingue et adapté aux DOM",
+      icon: "lni-network",
+      title: "Opérateur télécom — pas un studio « généraliste »",
       description:
-        "Nous enregistrons vos messages en français, en créole martiniquais ou guadeloupéen, en anglais et en d'autres langues selon vos besoins. Idéal pour les entreprises des Antilles, de la Guyane et de La Réunion.",
+        "Contrairement à de nombreuses offres web centrées uniquement sur la musique ou la voix sans expertise IPBX, E2I VoIP combine studio vocal et métier télécom : fichiers éprouvés sur le terrain pour les entreprises en Guadeloupe, Martinique, Guyane, La Réunion et métropole, avec intégration possible sur votre IPBX.",
     },
   ];
 
@@ -148,11 +151,11 @@ export default function StudioAttente() {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Studio Attente Telephonique",
-  "description": "Messages vocaux et musiques professionnelles sur mesure pour votre standard telephonique. Voix off professionnelles, habillage musical, formats multiples.",
+  "name": "Studio vocal pour standard telephonique — SVI, accueil, attente, fermeture",
+  "description": "Studio d'enregistrement vocal specialise standards telephoniques et IPBX. Portail demos, messages d'accueil, SVI, attente, fermeture. Formats compatibles tout standard. DOM et metropole.",
   "url": "https://www.e2i-voip.com/studio-attente",
   "provider": { "@type": "Organization", "name": "E2I VoIP", "url": "https://www.e2i-voip.com" },
-  "serviceType": "Studio enregistrement vocal / Attente telephonique",
+  "serviceType": "Studio enregistrement vocal professionnel pour telephonie entreprise",
   "areaServed": [
     { "@type": "Country", "name": "France" },
     { "@type": "AdministrativeArea", "name": "Martinique" },
@@ -164,7 +167,7 @@ const jsonLd = {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
-      { "@type": "ListItem", "position": 2, "name": "Studio Attente", "item": "https://www.e2i-voip.com/studio-attente" }
+      { "@type": "ListItem", "position": 2, "name": "Studio vocal standard telephonique", "item": "https://www.e2i-voip.com/studio-attente" }
     ]
   }
 };
@@ -198,26 +201,30 @@ function JsonLdScript() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Micro-label */}
           <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-6">
-            Studio Attente Téléphonique
+            Studio vocal · standards téléphoniques · portail démos
           </p>
 
           <div className="border-l-8 border-[#E53E3E] pl-8 max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-black tracking-[-0.05em] uppercase text-white leading-tight mb-6">
-              Studio Attente Téléphonique —{" "}
-              <span className="text-[#E53E3E]">
-                Messages et Musiques Professionnels
-              </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] uppercase text-white leading-tight mb-6">
+              Studio d&apos;enregistrement vocal pour{" "}
+              <span className="text-[#E53E3E]">standard téléphonique</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 font-bold leading-relaxed mb-4">
-              Votre standard téléphonique est souvent le premier contact entre
-              votre entreprise et vos clients. Donnez-leur une expérience à la
-              hauteur de votre professionnalisme.
+            <p className="text-lg md:text-xl text-white/80 font-bold leading-relaxed mb-4 normal-case tracking-normal">
+              Messages d&apos;accueil,{" "}
+              <span className="text-white">SVI &amp; menu vocal</span>, attente et
+              fermeture — pensés pour votre IPBX et installables sur tout
+              standard compatible.
             </p>
             <p className="text-base text-white/60 leading-relaxed mb-10">
-              Messages d&apos;accueil, d&apos;attente, répondeur et fermeture — en
-              français, en créole et en anglais. Enregistrés en studio,
-              livrés en 48h, dans tous les formats compatibles avec votre
-              système VoIP.
+              Notre{" "}
+              <strong className="text-white/80 font-bold">
+                portail automatisé
+              </strong>{" "}
+              vous permet d&apos;écouter des exemples et des enregistrements déjà
+              produits pour nos clients avant de commander. Voix pro, musiques
+              libres de droits, livraison sous 48h en français, créole ou
+              anglais — pour les entreprises en Guadeloupe, Martinique, Guyane,
+              La Réunion et métropole.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -235,6 +242,97 @@ function JsonLdScript() {
                 <i className="lni lni-phone" aria-hidden="true" />
                 Nous appeler
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portail démos & lecture marché DOM */}
+      <section className="py-24 px-8 lg:px-24 bg-[#f4f7fa] border-y-4 border-[#2D3848]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-14">
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-4">
+              Portail automatisé
+            </p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.05em] uppercase text-[#091421] max-w-4xl leading-tight">
+              Écoutez des{" "}
+              <span className="text-[#E53E3E]">exemples &amp; réalisations</span>{" "}
+              avant de commander
+            </h2>
+            <p className="text-[#818096] text-base mt-5 max-w-3xl leading-relaxed">
+              En Guadeloupe, en Martinique, en Guyane ou sur d&apos;autres
+              territoires d&apos;outre-mer, les prestations « studio vocal »
+              trouvables en ligne sont souvent généralistes (pub, radio, réseaux
+              sociaux) ou limitées à une musique d&apos;attente sans vision
+              IPBX. Notre studio est{" "}
+              <strong className="text-[#091421] font-bold">
+                calibré pour les standards téléphoniques
+              </strong>{" "}
+              : démos en ligne, productions déjà livrées à des clients
+              (extraits selon autorisations), et fichiers prêts à être chargés
+              dans votre 3CX, Yeastar, Grandstream ou tout autre équipement
+              acceptant des messages vocaux.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div
+              className="border-4 border-[#2D3848] p-8 bg-white"
+              style={{ boxShadow: "8px 8px 0px 0px #1F2937" }}
+            >
+              <div className="w-12 h-12 border-4 border-[#E53E3E] flex items-center justify-center mb-6 bg-[#091421]">
+                <i
+                  className="lni lni-headphone-alt text-xl text-[#E53E3E]"
+                  aria-hidden="true"
+                />
+              </div>
+              <h3 className="text-sm font-black uppercase tracking-[-0.02em] text-[#091421] mb-3">
+                Portail démos
+              </h3>
+              <p className="text-[#818096] text-xs leading-relaxed">
+                Parcourez des extraits types et des exemples de voix pour vous
+                projeter sur le rendu réel sur ligne téléphonique, pas seulement
+                sur une bande-annonce marketing.
+              </p>
+            </div>
+            <div
+              className="border-4 border-[#2D3848] p-8 bg-white"
+              style={{ boxShadow: "8px 8px 0px 0px #1F2937" }}
+            >
+              <div className="w-12 h-12 border-4 border-[#E53E3E] flex items-center justify-center mb-6 bg-[#091421]">
+                <i
+                  className="lni lni-users text-xl text-[#E53E3E]"
+                  aria-hidden="true"
+                />
+              </div>
+              <h3 className="text-sm font-black uppercase tracking-[-0.02em] text-[#091421] mb-3">
+                Réalisations clients
+              </h3>
+              <p className="text-[#818096] text-xs leading-relaxed">
+                Écoutez des enregistrements déjà produits pour nos clients
+                (lorsque la diffusion publique est accordée), pour juger
+                qualité, rythme et clarté — avant votre propre production.
+              </p>
+            </div>
+            <div
+              className="border-4 border-[#2D3848] p-8 bg-white"
+              style={{ boxShadow: "8px 8px 0px 0px #1F2937" }}
+            >
+              <div className="w-12 h-12 border-4 border-[#E53E3E] flex items-center justify-center mb-6 bg-[#091421]">
+                <i
+                  className="lni lni-phone-set text-xl text-[#E53E3E]"
+                  aria-hidden="true"
+                />
+              </div>
+              <h3 className="text-sm font-black uppercase tracking-[-0.02em] text-[#091421] mb-3">
+                Tout standard téléphonique
+              </h3>
+              <p className="text-[#818096] text-xs leading-relaxed">
+                Les fichiers sont livrés dans les formats attendus par votre
+                IPBX ou votre opérateur ; vous pouvez les installer sur
+                n&apos;importe quel standard compatible import audio, en DOM
+                comme en métropole.
+              </p>
             </div>
           </div>
         </div>
@@ -297,9 +395,9 @@ function JsonLdScript() {
               <span className="text-[#E53E3E]">essentiels</span>
             </h2>
             <p className="text-white/60 text-base mt-4 max-w-2xl leading-relaxed">
-              Chaque message remplit un rôle précis dans le parcours
-              téléphonique de vos clients. Nous les produisons individuellement
-              ou en pack complet.
+              Accueil, SVI (menu vocal), attente et fermeture : chaque brique
+              remplit un rôle précis sur votre standard. Production à l&apos;unité
+              ou pack complet, avec livraison prête à intégrer.
             </p>
           </div>
 
@@ -363,9 +461,9 @@ function JsonLdScript() {
               <span className="text-[#E53E3E]">3 étapes</span>
             </h2>
             <p className="text-[#818096] text-base mt-4 max-w-2xl leading-relaxed">
-              Un processus simple et rapide, de la prise de brief à la
-              livraison de vos fichiers audio. Notre studio prend en charge
-              l&apos;intégralité de la production.
+              Un parcours guidé : écoute sur le portail, validation du brief,
+              enregistrement studio et livraison des fichiers aux formats de
+              votre standard téléphonique.
             </p>
           </div>
 
@@ -449,7 +547,7 @@ function JsonLdScript() {
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    "1 message isolé (accueil, attente, répondeur ou fermeture) : à partir de 59 € HT",
+                    "1 message isolé (accueil, SVI, attente ou fermeture) : à partir de 59 € HT",
                     "Pack 4 messages complet : à partir de 199 € HT",
                     "Mise à jour saisonnière ou promotionnelle : à partir de 39 € HT",
                     "Version multilingue (créole, anglais) : sur devis",
@@ -497,13 +595,14 @@ function JsonLdScript() {
               en 48h chrono
             </h2>
             <p className="text-white/80 text-lg font-bold mt-4 max-w-lg">
-              Devis gratuit et sans engagement. Notre studio vous livre vos
-              fichiers audio dans tous les formats compatibles avec votre
-              système téléphonique VoIP.
+              Devis gratuit et sans engagement. Écoutez les démos sur notre
+              portail, puis recevez vos fichiers prêts pour votre standard
+              téléphonique ou IPBX.
             </p>
             <p className="text-white/60 text-sm mt-2">
-              Compatible 3CX, Yeastar, Grandstream et tous les IPBX du marché.
-              Service disponible pour les entreprises des DOM et de métropole.
+              3CX, Yeastar, Grandstream et tout équipement acceptant des messages
+              vocaux — entreprises des DOM (Guadeloupe, Martinique, Guyane,
+              Réunion) et métropole.
             </p>
           </div>
 

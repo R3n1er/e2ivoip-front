@@ -67,7 +67,7 @@ export default function TrunkSipPresentationPage() {
         />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-4 font-black uppercase tracking-[0.3em] text-[10px] text-red-primary">
-            Téléphonie d&apos;entreprise
+            Certifié opérateur — Guadeloupe, Martinique, Guyane et La Réunion
           </p>
           <div className="border-l-8 border-red-primary pl-6">
             <h1 className="mb-6 font-black tracking-[-0.05em] uppercase leading-none text-white">
@@ -76,9 +76,11 @@ export default function TrunkSipPresentationPage() {
             </h1>
           </div>
           <p className="mt-8 mb-10 max-w-2xl text-lg leading-relaxed text-white/85">
-            Une passerelle SIP fiable pour relier votre standard 3CX, Yeastar ou
-            autre IPBX à notre infrastructure opérateur en Outre-mer. Choisissez
-            le modèle tarifaire qui correspond à votre activité.
+            Le réseau RTC ferme : migrez votre IPBX vers une infrastructure SIP
+            opérateur, sans rupture de service. En Guadeloupe, Martinique, Guyane
+            et à La Réunion, un interlocuteur unique gère votre raccordement de
+            bout en bout. Choisissez le modèle tarifaire adapté à votre volume
+            d&apos;appels.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
@@ -107,8 +109,9 @@ export default function TrunkSipPresentationPage() {
             NOS OFFRES TRUNK SIP
           </h2>
           <p className="mb-12 max-w-2xl text-[#818096] leading-relaxed">
-            Deux formules pour couvrir les besoins des PME et des réseaux multi-sites
-            aux Antilles, en Guyane et à La Réunion.
+            Le RTC disparaît : deux formules pour basculer vers le SIP, que vous
+            soyez PME ou réseau multi-sites en Guadeloupe, Martinique, Guyane et
+            à La Réunion. Un seul interlocuteur, un seul contrat opérateur.
           </p>
           <div className="grid gap-8 md:grid-cols-2">
             {offers.map((offer) => (
@@ -151,7 +154,7 @@ export default function TrunkSipPresentationPage() {
       <section className="bg-red-primary border-y-8 border-[#2D3848] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 font-black uppercase tracking-[0.3em] text-[10px] text-white/70">
-            Besoin d&apos;un PBX ou d&apos;une téléphonie complète ?
+            Votre réseau RTC s&apos;arrête — ne subissez pas la transition.
           </p>
           <h2 className="mb-8 font-black tracking-[-0.05em] uppercase text-3xl text-white md:text-4xl">
             DÉCOUVREZ TOUTE<br />NOTRE TÉLÉPHONIE

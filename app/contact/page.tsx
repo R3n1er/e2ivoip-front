@@ -87,7 +87,7 @@ export default function ContactPage() {
               CONTACTEZ NOS<br />EXPERTS VOIP
             </h1>
             <p className="text-red-primary font-bold tracking-[0.2em] uppercase text-sm">
-              Solutions telecoms de haute precision
+              Votre interlocuteur télécom unique — de la métropole à la Guadeloupe, Martinique, Guyane et La Réunion
             </p>
           </div>
         </div>
@@ -154,22 +154,24 @@ export default function ContactPage() {
             {/* Info complementaire */}
             <div className="bg-gray-50 p-10 border-l-4 border-red-primary">
               <h3 className="text-[#091421] font-black uppercase tracking-widest text-xs mb-4">
-                NOS EXPERTS
+                UN EXPERT DÉDIÉ. PAS UN TICKET.
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Notre equipe d&apos;experts est la pour vous accompagner dans
-                vos projets de telephonie IP. Devis gratuit, audit de votre installation,
-                migration sans interruption.
+                Chez E2I VoIP, chaque client parle à un expert identifié — pas à un
+                centre d&apos;appels. Nous vous accompagnons sur la migration RTC vers SIP,
+                l&apos;audit de votre installation et le déploiement de votre Cloud PBX,
+                en Guadeloupe, Martinique, Guyane et La Réunion comme en métropole.
+                Devis gratuit, sans engagement.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Expert telephonie IP
+                  Certifié SIP Trunk
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Standard telephonique
+                  Migration RTC→SIP
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Devis gratuit
+                  Déploiement ultramarin
                 </span>
               </div>
             </div>
@@ -231,7 +233,7 @@ export default function ContactPage() {
       <section className="bg-[#ffb3ad] text-[#68000a] py-20">
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
           <h2 className="text-4xl md:text-5xl font-black uppercase leading-none">
-            PRET A MODERNISER<br />VOTRE ARCHITECTURE ?
+            LE RTC S&apos;ARRÊTE.<br />VOTRE MIGRATION COMMENCE ICI.
           </h2>
           <Link
             href="/devis-en-ligne"

@@ -87,7 +87,7 @@ export default function TrunkSIPCompteur() {
           <div className="inline-flex items-center gap-2 mb-8 border border-red-primary/40 px-4 py-2 bg-red-primary/10">
             <i className="lni lni-phone text-red-primary" aria-hidden="true" />
             <span className="text-red-primary font-black uppercase text-[10px] tracking-[0.3em]">
-              Opérateur SIP DOM
+              Opérateur SIP en France métropolitaine, en Guadeloupe, Martinique, Guyane et La Réunion
             </span>
           </div>
 
@@ -149,14 +149,40 @@ export default function TrunkSIPCompteur() {
       <section className="py-32 px-8 lg:px-24 bg-white">
         <div className="max-w-4xl mx-auto">
           <p className="text-[#2D3848] text-lg leading-relaxed">
-            <strong>E2I VOIP</strong> est opérateur de service télécom et est
-            capable de vous fournir des passerelles Trunk SIP de qualité en
-            France et dans les DOM. Le Trunk SIP est un des éléments essentiels
-            de votre système de téléphonie IP, avec votre IPBX et vos téléphones
-            SIP. C&apos;est une liaison entre votre serveur de téléphonie IP et
-            votre opérateur SIP vous permettant de passer des appels sur le
-            réseau téléphonique. C&apos;est donc tout simplement votre ligne
-            téléphonique via Internet.
+            <strong>E2I VoIP</strong> est opérateur télécom et vous fournit des
+            Trunks SIP de qualité professionnelle en France métropolitaine et en
+            Guadeloupe, Martinique, Guyane et La Réunion. Avec la fin programmée
+            du réseau RTC, le Trunk SIP est aujourd&apos;hui la solution de
+            référence pour maintenir et moderniser votre téléphonie
+            d&apos;entreprise. Il assure la liaison entre votre IPBX et le réseau
+            téléphonique, via Internet — autrement dit, c&apos;est votre ligne
+            téléphonique IP. Un seul interlocuteur gère l&apos;ensemble de votre
+            déploiement : ouverture des lignes, portabilité des numéros, support
+            technique. Pas d&apos;intermédiaire, pas de délai inutile.
+          </p>
+          <p className="text-[#2D3848] text-lg leading-relaxed mt-6">
+            La décommission progressive du réseau RTC par votre opérateur
+            historique accélère la fin des{" "}
+            <strong className="text-[#091421]">lignes RNIS T0</strong> et T2.
+            C&apos;est une occasion concrète de moderniser votre téléphonie : en
+            basculant vers un{" "}
+            <strong className="text-[#091421]">Trunk SIP au compteur</strong>,
+            vous conservez vos numéros existants grâce à la{" "}
+            <strong className="text-[#091421]">portabilité</strong>, vous gardez
+            votre IPBX actuel (3CX, Yeastar, Grandstream…) et vous réduisez
+            généralement votre facture de{" "}
+            <strong className="text-[#091421]">30 %</strong> par rapport à votre
+            abonnement T0 actuel.
+          </p>
+          <p className="text-[#2D3848] text-lg leading-relaxed mt-4">
+            E2I VoIP gère l&apos;intégralité de la{" "}
+            <strong className="text-[#091421]">
+              migration T0 vers la téléphonie IP
+            </strong>{" "}
+            : audit de votre installation, configuration du Trunk SIP sur votre
+            équipement, suivi de la portabilité et bascule — le tout sans
+            interruption de service. Un interlocuteur unique vous accompagne de
+            la première analyse jusqu&apos;à la mise en production.
           </p>
         </div>
       </section>
@@ -261,14 +287,16 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div>
                     <h3 className="font-black text-[#091421] uppercase tracking-[-0.03em] mb-2">
-                      Support technique local réactif
+                      Un interlocuteur dédié, présent dans vos territoires
                     </h3>
                     <p className="text-[#818096]">
-                      Équipes présentes localement en{" "}
+                      Nos équipes sont implantées localement en{" "}
                       <strong className="text-[#1F2937]">
-                        Martinique, Guadeloupe, Guyane
+                        Guadeloupe, Martinique, Guyane et La Réunion
                       </strong>
-                      . Réponse en moins de 2h.
+                      . Un seul contact suit votre dossier de bout en bout :
+                      migration RTC, ouverture des canaux, incidents. Réponse
+                      garantie en moins de 2h.
                     </p>
                   </div>
                 </div>
@@ -544,7 +572,7 @@ export default function TrunkSIPCompteur() {
           </div>
 
           <p className="text-white/50 text-sm mt-8">
-            <strong className="text-white/70">Expertise DOM depuis 15 ans</strong>{" "}
+            <strong className="text-white/70">Opérateur de référence en Guadeloupe, Martinique, Guyane et La Réunion</strong>{" "}
             — Plus de 100 entreprises nous font confiance
           </p>
         </div>

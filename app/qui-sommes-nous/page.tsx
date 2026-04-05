@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Qui sommes-nous | E2I VoIP — Operateur telecom DOM depuis 15 ans",
+  title: "Qui sommes-nous | E2I VoIP — Opérateur télécom DOM expert",
   description:
-    "E2I VoIP : operateur de services telecom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. Economisez 30% sur vos couts telecoms.",
+    "E2I VoIP : opérateur de services télécom DOM, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. Économisez 30% sur vos coûts télécoms.",
   keywords:
     "E2I VoIP, operateur telecom DOM, telephonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, telephonie Reunion, support local DOM",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Qui sommes-nous | E2I VoIP — Operateur telecom DOM",
     description:
-      "Operateur de services telecom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Economisez 30% sur vos couts telecoms.",
+      "Opérateur de services télécom DOM expert. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
     url: "/qui-sommes-nous",
     siteName: "E2I VoIP",
     type: "website",
@@ -95,14 +95,14 @@ export default function QuiSommesNous() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-8 lg:px-24 py-20">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-[-0.05em] leading-[0.9] text-white mb-8 uppercase">
-            Votre operateur de services telecom{" "}
+            Votre opérateur de services VoIP expert dans les{" "}
             <span className="text-red-primary">DOM</span>
           </h1>
           <p className="text-xl text-white/90 max-w-3xl leading-relaxed mb-4">
-            15 ans d&apos;expertise &bull; 100+ entreprises nous font confiance &bull; Support local reactif
+            100+ entreprises nous font confiance &bull; Support local &lt; 4h &bull; Présents dans 4 DOM + métropole
           </p>
           <p className="text-lg text-white/70 max-w-2xl mb-10">
-            Economisez jusqu&apos;a 30% sur vos couts telecoms avec nos solutions de telephonie IP
+            Économisez jusqu&apos;à 30% sur vos coûts de consommation télécom avec nos solutions de téléphonie IP
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/devis-en-ligne" className="bg-red-primary text-white px-10 py-5 font-black uppercase tracking-[0.2em] text-xs border-4 border-red-primary shadow-[8px_8px_0px_0px_rgba(229,62,62,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(229,62,62,0.3)] transition-all">
@@ -121,30 +121,32 @@ export default function QuiSommesNous() {
             <div>
               <h2 className="text-5xl font-black tracking-[-0.05em] uppercase mb-24 flex items-center gap-4 text-blue-marine">
                 <span className="w-12 h-1 bg-red-primary inline-block"></span>
-                L&apos;HISTOIRE D&apos;UNE REUSSITE LOCALE
+                NOTRE HISTOIRE
               </h2>
               <p className="text-lg text-gray-500 mb-6 leading-relaxed">
-                <strong className="text-blue-marine">Depuis plus de 15 ans, E2I VoIP</strong>{" "}
-                est un operateur de services telecom avec des Trunk SIP dedies
-                aux Antilles-Guyane et La Reunion. Nous avons accompagne plus de{" "}
-                <strong className="text-blue-marine">100 entreprises</strong> dans leur transformation
-                digitale, leur permettant d&apos;economiser en moyenne{" "}
-                <strong className="text-blue-marine">30% sur leurs couts telecoms</strong>.
+                <strong className="text-blue-marine">E2I VoIP est votre opérateur de services télécom</strong> de bout
+                en bout : intégration de standards <strong className="text-blue-marine">3CX</strong>, fourniture de{" "}
+                <strong className="text-blue-marine">Trunk SIP</strong> avec portabilité de vos numéros existants, et
+                accompagnement complet à la mise en service. Une seule équipe, un seul interlocuteur, du déploiement
+                au support.
               </p>
               <p className="text-lg text-gray-500 mb-6 leading-relaxed">
-                <strong className="text-blue-marine">Notre mission :</strong> Faciliter votre transition vers
-                la telephonie IP dans le contexte de l&apos;arret du reseau cuivre.
-                Nous transformons cette contrainte en opportunite pour
-                moderniser vos communications et{" "}
-                <strong className="text-blue-marine">reduire vos couts</strong>.
+                <strong className="text-blue-marine">Présents là où vous êtes :</strong> Guadeloupe, Martinique, Guyane,
+                La Réunion, France métropolitaine — et au-delà, en Afrique francophone (Sénégal, Côte d&apos;Ivoire, Bénin,
+                Togo, Ghana, Cameroun). Quelle que soit la géographie de votre entreprise, nous construisons une
+                infrastructure téléphonique cohérente.
+              </p>
+              <p className="text-lg text-gray-500 mb-6 leading-relaxed">
+                <strong className="text-blue-marine">La fin du cuivre change la donne dans les DOM comme en métropole.</strong>{" "}
+                Nos équipes suivent l&apos;évolution du réseau téléphonique français pour vous proposer le bon calendrier
+                de migration vers la <strong className="text-blue-marine">téléphonie IP</strong> — sans disruption de
+                votre activité, quelle que soit la taille de votre structure.
               </p>
               <p className="text-lg text-gray-500 leading-relaxed">
-                <strong className="text-blue-marine">Notre difference :</strong> Des equipes techniques
-                presentes localement en Martinique, Guadeloupe et Guyane. Un
-                Customer Success Manager dedie qui connait vos besoins
-                specifiques. Une assistance en francais, dans votre fuseau
-                horaire, avec une connaissance parfaite du contexte des regions
-                des DOM (Antilles, Guyane, Reunion).
+                <strong className="text-blue-marine">Ce qui guide notre travail :</strong> la{" "}
+                <strong className="text-blue-marine">communication unifiée</strong> doit être accessible à toutes les
+                entreprises. Flexibilité, mobilité et maîtrise du budget ne sont pas des promesses — ce sont les
+                résultats que nos clients constatent après chaque déploiement.
               </p>
             </div>
             <div>
@@ -283,11 +285,11 @@ export default function QuiSommesNous() {
                 NOS SOLUTIONS PHARES
               </h2>
               <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-                <strong className="text-blue-marine">Trunk SIP eligibles DOM</strong> : Au compteur ou
-                illimite, des 2 utilisateurs. Creation et portabilite de numeros
-                locaux incluses.{" "}
-                <strong className="text-blue-marine">Economisez jusqu&apos;a 30%</strong> par rapport a la
-                telephonie traditionnelle.
+                E2I VoIP accompagne les entreprises — de{" "}
+                <strong className="text-blue-marine">2 utilisateurs aux grands comptes</strong> — dans
+                leur migration vers la téléphonie IP. Trunk SIP, IPBX cloud 3CX,
+                portabilité de numéros France et DOM : chaque déploiement est cadré,
+                documenté et suivi jusqu&apos;à la mise en production.
               </p>
 
               <div className="space-y-8">
@@ -297,13 +299,16 @@ export default function QuiSommesNous() {
                   </div>
                   <div>
                     <h3 className="text-xl font-black uppercase text-blue-marine mb-2">
-                      Trunk SIP au compteur ou illimite
+                      Trunk SIP — cœur de métier
                     </h3>
                     <p className="text-gray-500 leading-relaxed">
-                      <strong className="text-blue-marine">Au compteur :</strong> Payez uniquement vos
-                      consommations, ideal TPE/PME.
-                      <strong className="text-blue-marine"> Illimite :</strong> Budget fixe, appels illimites
-                      France + DOM. Tarifs preferentiels speciaux Antilles-Guyane-Reunion.
+                      Éligibles dès <strong className="text-blue-marine">2 utilisateurs ou 4 canaux voix</strong>,
+                      nos Trunks SIP sont activables sur tout IPBX compatible (3CX, Asterisk,
+                      FreePBX, Cisco). Choisissez la formule{" "}
+                      <strong className="text-blue-marine">au compteur</strong> pour les usages variables,
+                      ou la formule <strong className="text-blue-marine">illimitée</strong> pour sécuriser
+                      vos coûts fixes. Les deux incluent les appels vers les mobiles et fixes
+                      France métropolitaine et DROM.
                     </p>
                   </div>
                 </div>
@@ -314,13 +319,18 @@ export default function QuiSommesNous() {
                   </div>
                   <div>
                     <h3 className="text-xl font-black uppercase text-blue-marine mb-2">
-                      3CX : IPBX cloud nouvelle generation
+                      3CX — IPBX cloud sur mesure
                     </h3>
                     <p className="text-gray-500 leading-relaxed">
-                      <strong className="text-blue-marine">3CX SMB :</strong> Des 3 utilisateurs,
-                      15&euro;/mois/utilisateur.
-                      <strong className="text-blue-marine"> 3CX PRO :</strong> Instance dediee +50 postes,
-                      integrations CRM/M365. Formation incluse, Customer Success Manager dedie.
+                      Partenaire certifié 3CX, E2I VoIP prend en charge l&apos;intégration
+                      complète : audit de votre infrastructure, paramétrage des files d&apos;appels,
+                      configuration des postes et formation des équipes. La licence{" "}
+                      <strong className="text-blue-marine">SMB</strong> couvre les PME jusqu&apos;à
+                      20 appels simultanés ; la licence{" "}
+                      <strong className="text-blue-marine">PRO</strong> ajoute le CRM intégré,
+                      les rapports avancés et les assistants vocaux IA. Tarifs jusqu&apos;à{" "}
+                      <strong className="text-blue-marine">30 % inférieurs</strong> aux offres
+                      opérateur classiques.
                     </p>
                   </div>
                 </div>
@@ -331,13 +341,39 @@ export default function QuiSommesNous() {
                   </div>
                   <div>
                     <h3 className="text-xl font-black uppercase text-blue-marine mb-2">
-                      Services innovants inclus
+                      Portabilité & création de numéros
                     </h3>
                     <p className="text-gray-500 leading-relaxed">
-                      <strong className="text-blue-marine">Assistants vocaux IA</strong> pour accueil 24/7.
-                      <strong className="text-blue-marine"> Integrations</strong> WhatsApp, Teams, CRM.
-                      <strong className="text-blue-marine"> Collaboration unifiee</strong> pour vos equipes.
-                      Studio d&apos;enregistrement pour messages professionnels.
+                      Conservez votre numéro actuel lors du changement d&apos;opérateur grâce
+                      à la <strong className="text-blue-marine">portabilité</strong> (France
+                      métropolitaine + DROM). Créez des numéros locaux dans n&apos;importe
+                      quel indicatif régional — utile pour les entreprises multi-sites
+                      ou les équipes commerciales décentralisées. La procédure est gérée
+                      de bout en bout par E2I VoIP, sans coupure de service.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-6">
+                  <div className="w-10 h-10 bg-red-primary flex items-center justify-center flex-shrink-0 mt-1">
+                    <i className="lni lni-checkmark-circle text-xl text-white"></i>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black uppercase text-blue-marine mb-2">
+                      Équipements & communication unifiée
+                    </h3>
+                    <p className="text-gray-500 leading-relaxed">
+                      Téléphones IP <strong className="text-blue-marine">Yealink</strong> et{" "}
+                      <strong className="text-blue-marine">Fanvil</strong>, casques{" "}
+                      <strong className="text-blue-marine">Jabra</strong> et solutions de
+                      visioconférence <strong className="text-blue-marine">Logitech</strong> :
+                      E2I VoIP sélectionne, approvisionne et configure le matériel adapté à
+                      votre usage. Les services inclus couvrent le{" "}
+                      <strong className="text-blue-marine">studio d&apos;attente</strong> (messages
+                      personnalisés), les assistants vocaux IA, l&apos;intégration{" "}
+                      <strong className="text-blue-marine">Microsoft Teams</strong>, le connecteur{" "}
+                      <strong className="text-blue-marine">WhatsApp Business</strong> et les couplages
+                      CRM.
                     </p>
                   </div>
                 </div>

@@ -93,14 +93,14 @@ const services = [
   {
     icon: "lni-bar-chart",
     label: "Communication",
-    title: "Studio d'Enregistrement",
+    title: "Studio vocal standards téléphoniques",
     description:
-      "Messages vocaux professionnels et musiques personnalisées pour votre standard.",
+      "Accueil, SVI, attente et fermeture — portail démos, formats compatibles tout standard.",
     features: [
-      "Voix professionnelles",
-      "Musiques libres de droits",
-      "Messages sur mesure",
-      "Qualité studio",
+      "Portail exemples & réalisations",
+      "SVI et messages d'attente",
+      "Formats IPBX & tout standard",
+      "Spécialiste téléphonie pro DOM",
     ],
     price: "À partir de 50 €",
     href: "/nos-services/studio-attente",

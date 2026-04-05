@@ -20,7 +20,7 @@ export function HomepageHeroSectionSimple() {
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 mb-8 border border-red-primary/30 bg-red-primary/10 text-red-primary text-xs font-bold uppercase tracking-[0.3em] self-start">
-              Opérateur télécom DOM · Plus de 100 clients
+              Opérateur de service télécom — Guadeloupe, Martinique, Guyane et La Réunion
             </div>
 
             {/* Titre */}
@@ -34,9 +34,10 @@ export function HomepageHeroSectionSimple() {
 
             {/* Sous-titre */}
             <p className="text-lg text-gray-400 max-w-xl mb-10 leading-relaxed font-normal">
-              Accélérez votre transition vers le tout-IP avec des solutions de
-              communication unifiées conçues pour la performance et la mobilité.
-              Spécialiste des DOM.
+              La fin du réseau RTC approche. Basculez vers la VoIP avec un
+              interlocuteur unique qui connaît les contraintes télécoms de
+              Guadeloupe, Martinique, Guyane et La Réunion. Cloud PBX, SIP Trunk
+              et support local inclus.
             </p>
 
             {/* CTAs */}
@@ -97,10 +98,10 @@ export function HomepageHeroSectionSimple() {
                 </div>
                 <div className="bg-[#091421]/90 p-5 border-l-4 border-gray-500">
                   <span className="block text-3xl font-black text-white leading-none tracking-tighter">
-                    +15 ans
+                    4
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">
-                    D&apos;expertise Télécom
+                    Territoires ultramarins
                   </span>
                 </div>
               </div>

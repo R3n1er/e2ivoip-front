@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -7,16 +8,18 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1 flex flex-col">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="text-2xl lg:text-3xl font-black tracking-tight">
-                <span className="text-red-primary">E</span>
-                <span className="text-gray-dark">2</span>
-                <span className="text-red-primary">I</span>
-              </div>
+            <div className="mb-6">
+              <Image
+                src="/logo_e2i-voip_compress.png"
+                alt="E2I VoIP — Téléphonie IP entreprise"
+                width={200}
+                height={50}
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-gray-500 mb-8 text-sm leading-relaxed">
-              Solutions de téléphonie IP et communications d&apos;entreprise depuis
-              plus de 15 ans.
+              Opérateur télécom et intégrateur de téléphonie IP
+              en outre-mer et en France.
             </p>
 
             {/* Nous contacter */}

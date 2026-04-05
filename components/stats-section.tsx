@@ -7,8 +7,8 @@ const stats = [
     color: "text-red-primary",
   },
   {
-    value: "15 Ans",
-    label: "D'EXPERTISE DOM",
+    value: "4",
+    label: "TERRITOIRES ULTRAMARINS",
     color: "text-[#091421]",
   },
   {

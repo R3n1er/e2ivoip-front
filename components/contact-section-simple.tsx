@@ -14,8 +14,8 @@ export function ContactSectionSimple() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-[-0.03em] text-white mb-12 leading-[0.95]">
-          Prêt à moderniser vos <br />
-          <span className="text-red-primary">communications ?</span>
+          Le RTC s&apos;arrête. Votre migration <br />
+          <span className="text-red-primary">peut commencer maintenant.</span>
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center">

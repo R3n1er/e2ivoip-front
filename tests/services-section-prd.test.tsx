@@ -71,7 +71,9 @@ describe("ServicesSectionSimple - Refonte 2026", () => {
     expect(screen.getByText("3CX PRO & ENTREPRISE")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP")).toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
-    expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
+    expect(
+      screen.getByText("Studio vocal — standards téléphoniques")
+    ).toBeInTheDocument();
   });
 
   it("affiche les boutons d'appel à l'action Monolith", () => {
@@ -98,6 +100,18 @@ describe("ServicesSectionSimple - Refonte 2026", () => {
     render(<ServicesSectionSimple />);
 
     expect(screen.getByText(/Conservez vos numéros actuels/)).toBeInTheDocument();
-    expect(screen.getByText(/Voix-off professionnelles/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Portail automatisé pour écouter des exemples/i)
+    ).toBeInTheDocument();
+  });
+
+  it("décrit l'encart agents vocaux IA avec angle SEO local DOM", () => {
+    render(<ServicesSectionSimple />);
+
+    expect(
+      screen.getByText(
+        /Agent vocal IA pour votre standard d'entreprise.*Guadeloupe.*Martinique.*DOM/s
+      )
+    ).toBeInTheDocument();
   });
 });

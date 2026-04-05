@@ -10,6 +10,19 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-04-04 — Refonte éditoriale site-wide + analyse concurrentielle
+
+- **Contexte** : Les pages produit du site manquaient de signaux éditoriaux différenciants (migration RTC, interlocuteur dédié, ancrage territorial détaillé, contraste anti-grand-opérateur). Une analyse concurrentielle contre Caraïbes Télécom, Dauphin Télécom, Orange Caraïbes et Résantilles a révélé 7 gaps dans la charte éditoriale. Le terme "DOM" seul était trop générique, et la référence "15 ans" a été retirée par décision du dirigeant.
+- **Décision** :
+  - Ajout de 6 nouvelles sections à `docs/ligne-editoriale.md` (sections 11-16) : positionnement géographique, migration RTC, personas DOM, anti-positionnement, certifications, règles anti-dilution.
+  - Remplacement de "DOM" par "Guadeloupe, Martinique, Guyane et La Réunion" sur toutes les pages.
+  - Suppression de toutes les références "15 ans" (site + charte éditoriale).
+  - Intégration du logo PNG E2I VoIP dans header, header-simple et footer (remplace le texte stylisé).
+  - Réécriture SEO des contenus : homepage (hero, stats, CTA), contact, qui-sommes-nous (hero, Notre histoire, Solutions phares), trunk-sip (index), trunk-sip-compteur (+ paragraphes migration T0), trunk-sip-illimite, telephonie-3cx, 3cx-smb-mutualisee.
+  - Nouveau tagline footer : "Opérateur télécom et intégrateur de téléphonie IP en outre-mer et en France."
+- **Conséquences** : Toutes les pages produit contiennent désormais les 5 piliers éditoriaux (territoires détaillés, migration RTC, interlocuteur dédié, certifications, contraste implicite). Le positionnement bi-territorial (DOM + métropole) est un différenciateur non occupé par les concurrents.
+- **Tests associés** : Tests Jest et Playwright à mettre à jour pour refléter les nouveaux textes (hero badge, stats, CTA).
+
 ### 2026-04-01 — Correction Imbrication HTML & Contraste Bouton Link
 
 - **Contexte** : Le bouton "Nous contacter" dans la nouvelle `TransformationSection` n'affichait pas la couleur de texte appropriée au survol (reste sombre sur fond sombre). Ce problème venait d'une imbrication HTML invalide en plaçant un `<button>` dans un `<Link>` Next.js.

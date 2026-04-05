@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { LineIcon } from "lineicons-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -110,44 +111,15 @@ export function Header() {
             href="/"
             className="flex items-center space-x-3 flex-shrink-0 min-w-0 group"
           >
-            <motion.div
-              className="flex items-center"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="text-xl lg:text-2xl font-bold" data-testid="logo">
-                <span
-                  className={`group-hover:text-red-primary transition-colors ${
-                    isScrolled ? "text-red-primary" : "text-gray-800"
-                  }`}
-                >
-                  E
-                </span>
-                <span
-                  className={isScrolled ? "text-blue-marine" : "text-gray-800"}
-                >
-                  2
-                </span>
-                <span
-                  className={`group-hover:text-red-primary transition-colors ${
-                    isScrolled ? "text-red-primary" : "text-gray-800"
-                  }`}
-                >
-                  I
-                </span>
-              </div>
-            </motion.div>
-            <div className="hidden sm:block">
-              <div
-                className={`text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] transition-colors ${
-                  isScrolled ? "text-gray-secondary" : "text-gray-600"
-                }`}
-              >
-                Solutions de Téléphonie IP
-                <br />
-                et communications d&apos;entreprise
-              </div>
-            </div>
+            <Image
+              src="/logo_e2i-voip_compress.png"
+              alt="E2I VoIP — Téléphonie IP entreprise"
+              width={200}
+              height={50}
+              className="h-10 lg:h-14 w-auto"
+              data-testid="logo"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation — typo plus légère que le bloc CTA droite */}

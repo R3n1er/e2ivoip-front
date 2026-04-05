@@ -35,17 +35,17 @@ export default function Smb3CXMutualisee() {
             <div className="mb-8">
               <div className="inline-flex items-center text-white font-black uppercase text-[10px] tracking-[0.3em] px-4 py-2 border border-red-primary bg-red-primary/10 mb-8">
                 <i className="lni lni-users text-red-primary mr-2" aria-hidden="true"></i>
-                Solution mutualisée
+                Partenaire certifié 3CX
               </div>
             </div>
             <h1 className="text-5xl md:text-6xl font-black text-white mb-6 uppercase tracking-[-0.05em] leading-tight">
               3CX SMB <span className="text-red-primary">Mutualisée</span>
             </h1>
             <p className="text-2xl text-white font-black uppercase tracking-[-0.03em] mb-4">
-              Solution économique pour TPE et PME
+              La téléphonie 3CX pour TPE et PME en Guadeloupe, Martinique, Guyane, La Réunion et dans l&apos;Hexagone
             </p>
             <p className="text-white/80 max-w-2xl mb-12 uppercase tracking-[0.1em] text-sm font-bold">
-              De 3 à 50 utilisateurs • À partir de 15€/utilisateur/mois
+              De 3 à 50 utilisateurs • À partir de 15€/utilisateur/mois • Disponible en Guadeloupe, Martinique, Guyane, La Réunion et Hexagone
             </p>
 
             {/* CTA Hero */}
@@ -69,9 +69,12 @@ export default function Smb3CXMutualisee() {
                 La solution <span className="text-red-primary">3CX économique</span> pour les TPE/PME
               </h2>
               <p className="text-lg text-[#2D3848] max-w-4xl leading-relaxed font-medium">
-                Notre offre <strong>3CX SMB mutualisée</strong> vous permet de bénéficier de toutes les
-                fonctionnalités 3CX sans les coûts d'une infrastructure dédiée. Parfait pour les TPE
-                et PME de 3 à 50 utilisateurs recherchant une solution professionnelle et économique.
+                En tant que partenaire certifié 3CX, nous mettons à votre disposition toutes les
+                fonctionnalités <strong>3CX SMB</strong> sans les contraintes d&apos;une infrastructure dédiée.
+                Conçue pour les TPE et PME de 3 à 50 utilisateurs, cette offre accompagne aussi votre
+                migration depuis le réseau téléphonique commuté (RTC), en cours d&apos;extinction.
+                Disponible en Guadeloupe, Martinique, Guyane, La Réunion et dans l&apos;Hexagone — avec
+                un interlocuteur dédié pour votre téléphonie, votre connexion et vos équipements.
               </p>
             </div>
 
@@ -136,7 +139,7 @@ export default function Smb3CXMutualisee() {
                 </div>
                 <div className="flex items-start space-x-4 p-4 bg-white border-2 border-[#2D3848]">
                   <i className="lni lni-checkmark-circle text-red-primary text-xl flex-shrink-0 mt-1"></i>
-                  <span className="text-[#2D3848] font-bold">Support technique local</span>
+                  <span className="text-[#2D3848] font-bold">Interlocuteur dédié, présent localement</span>
                 </div>
               </div>
             </div>
@@ -151,7 +154,7 @@ export default function Smb3CXMutualisee() {
               Démarrez avec <span className="text-red-primary">3CX SMB</span> dès aujourd'hui
             </h2>
             <p className="text-white/90 mb-12 max-w-2xl mx-auto uppercase tracking-[0.1em] text-sm font-bold">
-              Activation en 24h • Support expert local • Sans engagement
+              Activation en 24h • Interlocuteur dédié en Guadeloupe, Martinique, Guyane, La Réunion et Hexagone • Tarifs transparents
             </p>
             <Link
               href="/devis-en-ligne"

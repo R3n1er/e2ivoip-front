@@ -52,7 +52,9 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
-    expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
+    expect(
+      screen.getByText("Studio vocal standards téléphoniques")
+    ).toBeInTheDocument();
   });
 
   it("respecte la charte graphique PRD", () => {

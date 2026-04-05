@@ -567,7 +567,7 @@ export default function Telephonie3CX() {
       <section className="py-24 px-8 lg:px-24 bg-red-primary border-y-8 border-blue-marine">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-[-0.05em] text-white mb-6">
-            Prêt à transformer votre téléphonie d'entreprise ?
+            Le RTC est en fin de vie. Passez à 3CX avant la coupure.
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Nos experts 3CX vous accompagnent dans le choix et la mise en
@@ -586,7 +586,7 @@ export default function Telephonie3CX() {
             </div>
             <div className="flex items-center gap-2">
               <i className="lni lni-shield text-white"></i>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">15 ans d'expertise</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Expert téléphonie Antilles-Guyane-Réunion</span>
             </div>
           </div>
 

@@ -21,7 +21,7 @@ test.describe("Section Services", () => {
       "3CX PRO & ENTREPRISE",
       "Trunk SIP",
       "Assistants Vocaux IA",
-      "Studio d'Enregistrement",
+      "Studio vocal — standards téléphoniques",
     ];
 
     for (const title of titles) {

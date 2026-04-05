@@ -67,7 +67,7 @@ export function ServicesSectionSimple() {
           <div className="md:col-span-2 relative p-10 lg:p-12 flex flex-col justify-end min-h-[450px] overflow-hidden">
             <img
               src="/images/photos/pexels-ola-dapo-1754561-3345882-min.jpg"
-              alt="Assistants Vocaux IA E2I VoIP"
+              alt="Agent vocal IA pour standard téléphonique entreprise en Guadeloupe, Martinique et DOM"
               className="absolute inset-0 w-full h-full object-cover"
               aria-hidden="true"
             />
@@ -84,8 +84,10 @@ export function ServicesSectionSimple() {
                 Assistants Vocaux IA
               </h3>
               <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-lg">
-                Automatisez votre accueil téléphonique 24h/24 et 7j/7 grâce à
-                notre intelligence artificielle conversationnelle.
+                Agent vocal IA pour votre standard d&apos;entreprise : accueil,
+                orientation des appels et prise de messages 24h/24 et 7j/7, avec
+                intégration CRM. Déploiement et support opérateur en Guadeloupe,
+                en Martinique et sur l&apos;ensemble du territoire DOM.
               </p>
               <div className="flex gap-3 flex-wrap">
                 <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
@@ -108,11 +110,13 @@ export function ServicesSectionSimple() {
                 <i className="lni lni-microphone text-2xl text-white" aria-hidden="true" />
               </div>
               <h3 className="text-xl lg:text-2xl font-black mb-4 uppercase">
-                Studio d&apos;Enregistrement
+                Studio vocal — standards téléphoniques
               </h3>
               <p className="text-red-100 text-sm leading-relaxed">
-                Voix-off professionnelles et musiques libres de droits pour une
-                image de marque irréprochable.
+                Enregistrements pro pour votre standard : accueil, SVI, attente
+                et fermeture. Portail automatisé pour écouter des exemples et des
+                productions déjà livrées ; fichiers prêts à installer sur tout
+                IPBX (3CX, Yeastar, etc.).
               </p>
             </div>
             <div className="mt-8">

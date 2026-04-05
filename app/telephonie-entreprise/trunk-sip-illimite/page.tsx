@@ -145,7 +145,7 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Micro-label */}
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E53E3E] mb-6">
-              Forfait illimité
+              Certifié Interop SIP
             </p>
 
             <div className="border-l-8 border-[#E53E3E] pl-8 mb-10 max-w-3xl">
@@ -209,8 +209,11 @@ export default function TrunkSIPIllimite() {
 
               <p className="text-lg text-[#818096] mb-10 leading-relaxed">
                 Notre <strong className="text-[#2D3848]">Trunk SIP Illimité</strong> est la
-                solution idéale pour les entreprises avec un volume d&rsquo;appels
-                important. Maîtrisez votre budget télécom avec un forfait tout inclus.
+                solution idéale pour les entreprises qui migrent leurs lignes T0
+                vers la VoIP ou qui gèrent un volume d&rsquo;appels important.
+                Maîtrisez votre budget télécom avec un forfait tout inclus,
+                accompagné par un interlocuteur dédié tout au long de votre
+                transition.
               </p>
 
               <div className="space-y-8">
@@ -377,8 +380,8 @@ export default function TrunkSIPIllimite() {
                 },
                 {
                   icon: "lni-world",
-                  title: "Couverture France + DOM",
-                  desc: "Appelez sans limite vers la métropole et tous les départements d'outre-mer.",
+                  title: "Couverture France métropole et outre-mer",
+                  desc: "Appelez sans limite vers la métropole, la Guadeloupe, la Martinique, la Guyane et La Réunion.",
                   accent: "National & DOM-TOM",
                   accentIcon: "lni-map-marker",
                 },
@@ -434,7 +437,7 @@ export default function TrunkSIPIllimite() {
                     icon: "lni-phone-set",
                   },
                   {
-                    text: "Support technique local et réactif",
+                    text: "Un interlocuteur dédié, de l'installation au support",
                     icon: "lni-headphone-alt",
                   },
                   {

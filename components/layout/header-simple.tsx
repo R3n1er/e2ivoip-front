@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type NavSubItem = { name: string; href: string };
 
@@ -74,11 +75,15 @@ export function HeaderSimple() {
     >
       {/* Logo + Nav */}
       <div className="flex items-center space-x-12">
-        <Link href="/" className="text-xl font-black text-[#091421] tracking-tighter">
-          <span className="text-red-primary">E</span>
-          <span>2</span>
-          <span className="text-red-primary">I</span>
-          <span className="ml-1 text-sm font-bold text-gray-secondary hidden sm:inline">VoIP</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo_e2i-voip_compress.png"
+            alt="E2I VoIP — Téléphonie IP entreprise"
+            width={200}
+            height={50}
+            className="h-10 lg:h-14 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

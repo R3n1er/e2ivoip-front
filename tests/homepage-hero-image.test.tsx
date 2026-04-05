@@ -61,13 +61,15 @@ describe("HomepageHeroSectionSimple", () => {
 
     // Vérifier que le badge est présent
     expect(
-      screen.getByText("Opérateur télécom DOM · Plus de 100 clients")
+      screen.getByText(
+        "Opérateur de service télécom — Guadeloupe, Martinique, Guyane et La Réunion"
+      )
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
     expect(
       screen.getByText(
-        /Accélérez votre transition vers le tout-IP avec des solutions de communication/i
+        /La fin du réseau RTC approche\. Basculez vers la VoIP/i
       )
     ).toBeInTheDocument();
   });
@@ -87,8 +89,10 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByText("Clients actifs")
     ).toBeInTheDocument();
-    expect(screen.getByText("+15 ans")).toBeInTheDocument();
-    expect(screen.getByText("D'expertise Télécom")).toBeInTheDocument();
+    expect(screen.getByText("4")).toBeInTheDocument();
+    expect(
+      screen.getByText("Territoires ultramarins")
+    ).toBeInTheDocument();
   });
 
   it("affiche les boutons CTA", () => {
