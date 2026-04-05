@@ -1,7 +1,7 @@
 ---
 phase: 2
 slug: redesign-social-proof-conversion
-status: draft
+status: approved
 shadcn_initialized: legacy
 preset: none
 created: 2026-04-05
@@ -24,6 +24,19 @@ created: 2026-04-05
 | Font | Inter (system sans-serif fallback) via next/font |
 
 Note: shadcn was previously initialized and some components (Card, Badge) exist in the codebase. This phase removes those usages from testimonials, replacing with plain HTML + Monolithe classes. No new shadcn components are introduced.
+
+---
+
+## Canonical Design References
+
+**Downstream agents MUST read these before implementing any visual component.**
+
+| Document | Path | What it defines |
+|----------|------|-----------------|
+| Charte Graphique | `docs/CHARTE_GRAPHIQUE.md` | Palette officielle (#E53E3E, #2D3848, #1F2937, #FFFFFF), typographie, organisation de page, widget chat |
+| Design System Monolithe | `docs/Design.md` | Philosophie Carree, Bento Grid, Hero Asymetrique, boutons Monolithe (hard shadow), inputs, regles DO/DON'T |
+| Template Stitch | `.stitch/designs/landing-page-desktop.html` | Maquette HTML de reference du redesign 2026 |
+| CSS custom classes | `app/globals.css` | `.monolith-btn`, `.monolith-grid-lines`, `.bento-grid`, `.glass-card` definitions |
 
 ---
 
@@ -451,4 +464,4 @@ Using Tailwind defaults, mobile-first:
 - [ ] Dimension 5 Spacing: PASS
 - [ ] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** approved (2026-04-05)
