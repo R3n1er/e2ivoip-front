@@ -44,13 +44,12 @@ Plans:
   3. Tous les numeros de telephone du site sont des liens tel: cliquables
   4. Tous les CTA et liens tel: declenchent leurs events PostHog respectifs (cta_click, phone_click)
   5. Le composant social proof ne rend rien si les donnees sont vides (pas de section vide visible)
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — Design System audit: fix Monolithe violations in testimonials, contact section, globals.css
+- [ ] 02-02-PLAN.md — CTAButton Link-only refactor + PhoneLink component + clickable phone numbers in footer
+- [ ] 02-03-PLAN.md — Social proof section + 3CX badge + ContactSectionSimple on all product pages + per-page CTAs
 
 ### Phase 3: Deploy Redesign + SEO Content
 **Goal**: Le redesign Monolithe 2026 complet et le contenu SEO enrichi sont en production, avec les donnees avant/apres disponibles dans PostHog
