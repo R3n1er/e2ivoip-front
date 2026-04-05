@@ -35,8 +35,21 @@ Note: shadcn was previously initialized and some components (Card, Badge) exist 
 |----------|------|-----------------|
 | Charte Graphique | `docs/CHARTE_GRAPHIQUE.md` | Palette officielle (#E53E3E, #2D3848, #1F2937, #FFFFFF), typographie, organisation de page, widget chat |
 | Design System Monolithe | `docs/Design.md` | Philosophie Carree, Bento Grid, Hero Asymetrique, boutons Monolithe (hard shadow), inputs, regles DO/DON'T |
-| Template Stitch | `.stitch/designs/landing-page-desktop.html` | Maquette HTML de reference du redesign 2026 |
+| Template Stitch (local) | `.stitch/designs/landing-page-desktop.html` | Maquette HTML de reference du redesign 2026 |
 | CSS custom classes | `app/globals.css` | `.monolith-btn`, `.monolith-grid-lines`, `.bento-grid`, `.glass-card` definitions |
+
+### Stitch Project — Maquettes originales
+
+**Project:** E2I VoIP - Redesign 2026 (ID: `5386927507224192183`)
+
+| Screen | ID | Pertinence Phase 2 |
+|--------|----|---------------------|
+| E2I Homepage - White Header & Increased Height | `9e41e7c941dd4a36899f02bbfb8f7da8` | Social proof placement, CTA hero, layout global |
+| E2I Landing Page - Devis en Ligne Emphasis | `f8a929670b844b56ac8a1c5bfb071c5a` | CTA conversion, formulaire devis |
+| E2I Desktop Contact - Unified Header | `14d9b862f5f14a0ab9f7ce7129a5e3d8` | Page contact, liens telephone, CTA |
+| E2I Mentions Légales - Unified Header | `cdae615e8ba740ce81372eb8f6fee342` | Header/footer reference |
+
+Agents can fetch screen images and code via the Stitch MCP tools (`mcp__stitch__get_screen`).
 
 ---
 
