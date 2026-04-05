@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { HotjarTracking } from "@/components/hotjar-tracking";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { Footer } from "@/components/layout/footer";
 import { ChatPreOverlay } from "@/components/chat-preoverlay";
-import { PostHogProvider } from "@/lib/analytics/posthog-provider";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
@@ -123,13 +121,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        <PostHogProvider>
-          <HotjarTracking />
-          <HeaderSimple />
-          <main className="flex-1 pt-20 lg:pt-24">{children}</main>
-          <Footer />
-          <ChatPreOverlay />
-        </PostHogProvider>
+        <HeaderSimple />
+        <main className="flex-1 pt-20 lg:pt-24">{children}</main>
+        <Footer />
+        <ChatPreOverlay />
       </body>
     </html>
   );

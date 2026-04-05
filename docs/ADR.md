@@ -10,6 +10,20 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-04-05 — Retrait de Hotjar du frontend
+
+- **Contexte** : Le layout global chargeait encore un composant `HotjarTracking`, alors que l'outil n'est plus exploite dans la stack marketing actuelle. Cela maintenait un script tiers inutile dans le rendu global et brouillait la documentation projet, qui reference desormais principalement PostHog, HubSpot et Tally.
+- **Décision** :
+  - Suppression du composant `HotjarTracking` et de son injection dans [`app/layout.tsx`](../app/layout.tsx).
+  - Nettoyage de la documentation operationnelle pour refleter la stack de tracking reellement utilisee : PostHog pour l'analytics produit, HubSpot pour le CRM, Tally pour certains formulaires externes.
+  - Suppression des references actives a Hotjar dans les tests de structure du layout et dans la documentation d'onboarding/PRD.
+- **Conséquences** :
+  - Un script tiers de moins est charge sur toutes les pages.
+  - La documentation devient coherente avec l'implementation actuelle.
+  - Si un besoin de heatmaps/replays reapparait, il devra faire l'objet d'une nouvelle decision explicite plutot que de reposer sur une integration dormante.
+- **Tests associés** :
+  - Mise a jour du test [`tests/root-layout.test.tsx`](../tests/root-layout.test.tsx) pour verifier le rendu du layout sans wrapper Hotjar.
+
 ### 2026-04-04 — Refonte éditoriale site-wide + analyse concurrentielle
 
 - **Contexte** : Les pages produit du site manquaient de signaux éditoriaux différenciants (migration RTC, interlocuteur dédié, ancrage territorial détaillé, contraste anti-grand-opérateur). Une analyse concurrentielle contre Caraïbes Télécom, Dauphin Télécom, Orange Caraïbes et Résantilles a révélé 7 gaps dans la charte éditoriale. Le terme "DOM" seul était trop générique, et la référence "15 ans" a été retirée par décision du dirigeant.

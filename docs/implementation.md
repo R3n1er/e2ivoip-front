@@ -4,6 +4,8 @@
 > **Date** : 2026-04-01
 > **Statut** : ✅ TERMINE (toutes les phases exécutées et audit global Monolithe 2026 validé)
 
+> **Maintenance 2026-04-05** : Hotjar a ete retire du frontend. La pile active cote tracking est desormais PostHog + HubSpot + Tally.
+
 ---
 
 ## Contexte

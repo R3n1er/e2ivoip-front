@@ -50,7 +50,7 @@ e2ivoip-front/
 - **Agents** : `.claude/agents/` contient 5 agents (stitch-compliance, test-matcher, pre-commit-validator, content-writer-seo, security-guardian)
 
 ## 5. Layout & navigation
-- `app/layout.tsx` applique les polices Geist, configure `HubSpotTracking`, `HotjarTracking`, `TawkTo`, et installe `HeaderSimple` + `Footer` sur tout le site.
+- `app/layout.tsx` applique les polices Geist, installe `HeaderSimple` + `Footer` sur tout le site, et laisse l'initialisation analytics client a `instrumentation-client.ts` (PostHog).
 - `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) dès le breakpoint **`lg`** ; hamburger et tiroir en dessous de `lg`. CTA contact via lien **`monolith-btn`** (hard shadow) ; « Devis en ligne » en lien texte.
 - `components/footer.tsx` rassemble branding, liens utilitaires, coordonnées (vérifier la cohérence des numéros région DOM/France).
 
@@ -78,9 +78,9 @@ Page fallback PWA, propose actions Appeler/Email. Vérifier cohérence des numé
 |-------------|----------|-------|
 | **HubSpot** | `components/hubspot-*`, `app/api/hubspot/*`, `lib/hubspot-blog.ts` | Tracking, formulaires, OAuth blog. Nécessite `HUBSPOT_*` dans `.env.local`.
 | **Contentful** | `lib/contentful-blog.ts`, `scripts/extract-blog-content.js` | Blog marketing. Tokens Delivery/Preview.
-| **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Support chat. Garder IDs à jour.
+| **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Integration historique actuellement desactivee dans le layout.
 | **URLR** | `lib/urlr.ts` | Raccourcis d’articles. Auth utilisateur/password + team.
-| **Hotjar & Tally** | `components/hotjar-tracking.tsx`, script Tally dans `app/layout.tsx` | Analytics, formulaires externes.
+| **PostHog & Tally** | `instrumentation-client.ts`, `lib/analytics/*`, composants `tally-*` | Analytics produit, tracking evenementiel, formulaires externes.
 
 ## 7. Service worker & PWA
 - Fichier `public/sw.js` : cache-first images, network-first API/pages, fallback offline. Prévoit message `SKIP_WAITING`, `GET_CACHE_STATUS`, cleanup périodique.

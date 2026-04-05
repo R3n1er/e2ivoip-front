@@ -4,6 +4,11 @@
 
 Cette roadmap détaille le plan de développement du site web E2I VoIP, organisé en sprints avec des objectifs clairs et des livrables mesurables.
 
+### **Mise à jour 2026-04-05**
+
+- ✅ Hotjar retiré du frontend
+- ✅ Stack de tracking active clarifiée : PostHog + HubSpot + Tally
+
 ## 🎯 **Sprint 1 - Foundations** ✅ TERMINÉ
 
 ### **Objectifs**

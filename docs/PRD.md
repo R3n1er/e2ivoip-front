@@ -498,25 +498,13 @@ TAWK_TO_ID=
 - **Erreurs** : Logs Next.js + Sentry
 - **Analytics** : HubSpot + Google Analytics
 
-### HOTJAR Analytics
+### Analytics actuel
 
-Mettre en place le script Hotjar
+- **Analytics produit** : PostHog (initialisation client via `instrumentation-client.ts`, events applicatifs via `lib/analytics/*`).
+- **CRM / attribution marketing** : HubSpot.
+- **Formulaires externes** : Tally, avec tracking applicatif cote frontend.
 
-Lien vers la documentation Hotjar : https://help.hotjar.com/hc/en-us
-
-Script Hotjar à intégrer :
-
-<!-- Hotjar Tracking Code for https://www.e2i-voip.com -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6502550,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+> Hotjar a ete retire du frontend en avril 2026. Si un besoin de heatmaps ou de session replay reapparait, il devra etre reevalue comme une nouvelle integration dediee.
 
 ## Nouveaux Composants de Conversion - Page 3CX Cloud
 

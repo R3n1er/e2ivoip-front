@@ -40,7 +40,7 @@
 ### Test 5: Chargement des scripts externes
 - **Statut**: ✅ PASS (1.3s)
 - **Scripts vérifiés**:
-  - ✅ Hotjar tracking script
+  - ✅ Aucun script tiers de tracking inutile injecté
   - ✅ Lineicons CDN
   - ✅ Scripts Next.js
 
@@ -63,7 +63,7 @@ La capture d'écran `tests/screenshots/homepage-diagnostic.png` montre :
 4. **Carousel Clients** : Logos APAJH, SFR, etc.
 5. **Section Services** : Cartes des offres (Trunk SIP, 3CX, PBX Cloud)
 6. **Footer** : Informations de contact, liens utiles
-7. **ChatPreOverlay** : Bouton rose/violet en bas à droite
+7. **ChatPreOverlay** : Bouton de chat visible en bas à droite
 
 ---
 
@@ -72,12 +72,11 @@ La capture d'écran `tests/screenshots/homepage-diagnostic.png` montre :
 ### Problème Initial
 - Serveur de développement bloqué (timeout sur requêtes)
 - Contenu de la page remplacé par un message "Site en cours de diagnostic"
-- Composants désactivés (Footer, ChatPreOverlay, Hotjar)
+- Composants désactivés (Footer, ChatPreOverlay)
 
 ### Résolution
 1. ✅ Restauration du contenu complet de `app/page.tsx` (tous les imports et sections)
 2. ✅ Réactivation des composants dans `app/layout.tsx`:
-   - `<HotjarTracking />`
    - `<Footer />`
    - `<ChatPreOverlay />`
 3. ✅ Redémarrage propre du serveur Next.js (kill port 3000 + npm run dev)
@@ -96,7 +95,7 @@ La capture d'écran `tests/screenshots/homepage-diagnostic.png` montre :
 - [x] Hero section avec dégradé standard E2I VoIP
 - [x] Section services avec cartes FeatureCard
 - [x] Carousel clients visible
-- [x] Hotjar tracking chargé
+- [x] Aucun script Hotjar chargé
 - [x] Lineicons CDN chargé
 - [x] Screenshot de validation généré
 
