@@ -428,22 +428,25 @@ export function PhoneLink({ phone, className = '', showTerritory = false }: Phon
 | A2 | La Reunion territory phone is missing from footer but exists on contact page | Codebase Audit | Incomplete phone coverage in footer |
 | A3 | `ContactSectionSimple` event naming should be normalized to `cta_click` | Pitfall 1 | PostHog dashboard inconsistency is minor, not blocking |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Real testimonials timing**
+1. **Real testimonials timing** (RESOLVED)
    - What we know: D-03 says user will provide real testimonials during implementation
    - What's unclear: When exactly? Should component ship with existing placeholder data or empty?
    - Recommendation: Ship with existing 3 placeholder testimonials (already in component), swap when user provides real ones. Flag in PR.
+   - Resolution: Plan 02-03 Task 1 uses placeholder data per D-03. Component accepts props for real data when available.
 
-2. **Scope of font-weight audit**
+2. **Scope of font-weight audit** (RESOLVED)
    - What we know: D-11 says "audit complet" before building social proof
    - What's unclear: Does "complet" mean entire site or just Phase 2 touched files?
    - Recommendation: Fix violations in files directly modified by Phase 2. Log remaining violations for future cleanup.
+   - Resolution: Plan 02-01 scopes audit to Phase 2 touched files only. Remaining violations logged for future cleanup.
 
-3. **ContactSectionSimple event normalization**
+3. **ContactSectionSimple event normalization** (RESOLVED)
    - What we know: It uses `posthog.capture('contact_section_cta_clicked', ...)` instead of `trackEvent('cta_click', ...)`
    - What's unclear: Is this a Phase 2 fix or separate concern?
    - Recommendation: Fix it since we're touching the component's consumers (deploying it on product pages). Small scope addition.
+   - Resolution: Plan 02-01 Task 2 normalizes ContactSectionSimple to use trackEvent.
 
 ## Project Constraints (from CLAUDE.md)
 
