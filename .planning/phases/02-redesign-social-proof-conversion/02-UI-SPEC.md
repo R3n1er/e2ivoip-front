@@ -2,7 +2,7 @@
 phase: 2
 slug: redesign-social-proof-conversion
 status: draft
-shadcn_initialized: false
+shadcn_initialized: legacy
 preset: none
 created: 2026-04-05
 ---
@@ -22,6 +22,8 @@ created: 2026-04-05
 | Component library | DaisyUI (priority) > Tailwind > shadcn/ui |
 | Icon library | Lineicons (priority) > React Icons |
 | Font | Inter (system sans-serif fallback) via next/font |
+
+Note: shadcn was previously initialized and some components (Card, Badge) exist in the codebase. This phase removes those usages from testimonials, replacing with plain HTML + Monolithe classes. No new shadcn components are introduced.
 
 ---
 
@@ -49,17 +51,43 @@ Exceptions:
 
 ## Typography
 
+4 sizes, 2 weights only.
+
 | Role | Size | Weight | Line Height | Tracking | Transform |
 |------|------|--------|-------------|----------|-----------|
 | Body | 16px (text-base) | 400 (font-normal) | 1.625 (leading-relaxed) | normal | none |
-| Body secondary | 14px (text-sm) | 400 (font-normal) | 1.5 | normal | none |
-| Section heading | 30px / 36px (text-3xl / text-4xl) | 900 (font-black) | 0.95 (leading-[0.95]) | -0.04em (tracking-[-0.04em]) | none |
-| Display heading | 48px / 60px (text-5xl / text-6xl) | 900 (font-black) | 0.95 (leading-[0.95]) | -0.03em (tracking-[-0.03em]) | uppercase |
-| CTA label | 12px (text-xs) | 900 (font-black) | 1.5 | 0.2em (tracking-[0.2em]) | uppercase |
-| Micro-label | 10px (text-[10px]) | 900 (font-black) | 1.5 | 0.3em (tracking-[0.3em]) | uppercase |
-| Nav link | 14px (text-sm) | 700 (font-bold) | 1.5 | -0.03em (tracking-[-0.03em]) | uppercase |
-| Testimonial quote | 16px (text-base) | 400 (font-normal) | 1.625 (leading-relaxed) | normal | none |
-| Testimonial author | 16px (text-base) | 600 (font-semibold) | 1.5 | normal | none |
+| Body secondary / Nav link | 14px (text-sm) | 400 for body-secondary, 900 for nav | 1.5 | body-secondary: normal; nav: -0.03em | nav: uppercase |
+| CTA label / Micro-label | 12px (text-xs) | 900 (font-black) | 1.5 | CTA: 0.2em; Micro: 0.3em | uppercase |
+| Heading (section / display) | 36px (text-4xl) / 48px (text-5xl) | 900 (font-black) | 0.95 (leading-[0.95]) | section: -0.04em; display: -0.03em | display: uppercase |
+
+**Size count:** 4 (12px, 14px, 16px, 36/48px responsive heading pair)
+
+**Weight count:** 2 (400 normal, 900 black)
+
+Role mapping (all roles resolve to one of the 4 sizes and 2 weights above):
+
+| Element | Resolved Size | Resolved Weight | Differentiator |
+|---------|---------------|-----------------|----------------|
+| Body text | 16px | 400 | -- |
+| Body secondary | 14px | 400 | -- |
+| Nav link | 14px | 900 | tracking-[-0.03em] uppercase |
+| CTA label | 12px | 900 | tracking-[0.2em] uppercase |
+| Micro-label | 12px | 900 | tracking-[0.3em] uppercase |
+| Section heading | 36px | 900 | tracking-[-0.04em] |
+| Display heading | 48px | 900 | tracking-[-0.03em] uppercase |
+| Testimonial quote | 16px | 400 | -- (same as body) |
+| Testimonial author | 16px | 900 | -- (was semibold, now black) |
+| Author role label | 14px | 900 | text-red-primary |
+| Phone number (footer) | 14px | 900 | -- (was semibold, now black) |
+
+---
+
+## Focal Points
+
+| Screen | Primary Visual Anchor |
+|--------|----------------------|
+| Homepage | Hero headline "Votre migration peut commencer maintenant" + red CTA button at 60/40 split |
+| Product pages (`/telephonie-3cx`, `/3cx-cloud`, etc.) | Above-the-fold primary CTA button (red `.monolith-btn`) with page-specific label |
 
 ---
 
@@ -123,10 +151,10 @@ Accent reserved for:
 | Padding | `p-6` (24px) |
 | Star icons | `lni lni-star-filled text-yellow-400` -- keep existing |
 | Quote text | Body style, `text-gray-secondary leading-relaxed` |
-| Author name | `font-semibold text-gray-900` |
-| Author role | `text-red-primary text-sm font-medium` |
+| Author name | `font-black text-gray-900` |
+| Author role | `text-red-primary text-sm font-black` |
 | Company | `text-gray-secondary text-sm` |
-| Location badge | Micro-label style: `text-[10px] font-black uppercase tracking-[0.3em] text-gray-secondary` -- replace shadcn Badge with plain span |
+| Location badge | Micro-label style: `text-xs font-black uppercase tracking-[0.3em] text-gray-secondary` |
 | Users count | `text-xs text-gray-500` |
 | Divider | `border-t border-gray-200 pt-4` (thin divider acceptable for card internal structure, not section-level) |
 
@@ -170,7 +198,7 @@ interface Testimonial {
 | Vertical padding | `py-6` (24px) |
 | Bottom margin | `mb-12` (48px, spacing before testimonial grid) |
 | Badge image | `max-h-12` (48px), natural width |
-| Label | Micro-label: `text-[10px] font-black uppercase tracking-[0.3em] text-gray-secondary` |
+| Label | Micro-label: `text-xs font-black uppercase tracking-[0.3em] text-gray-secondary` |
 | Border | `border-l-4 border-red-primary` on badge container for Monolithe accent |
 
 ### C-03: CTAButton Refactor (Link-only)
@@ -263,7 +291,7 @@ interface TerritoryPhone {
   <phone-item> flex items-center gap-3
     <icon> lni lni-phone text-red-primary
     <territory-label> Micro-label style: "GUADELOUPE"
-    <phone-link> <a href="tel:..." className="text-white hover:text-red-primary transition-colors text-sm font-semibold"> 0590 12 34 56 </a>
+    <phone-link> <a href="tel:..." className="text-white hover:text-red-primary transition-colors text-sm font-black"> 0590 12 34 56 </a>
   </phone-item>
 </phone-territory-list>
 ```
@@ -271,8 +299,8 @@ interface TerritoryPhone {
 | Property | Value |
 |----------|-------|
 | Layout | `grid grid-cols-1 sm:grid-cols-2 gap-4` |
-| Territory label | Micro-label: `text-[10px] font-black uppercase tracking-[0.3em] text-gray-400` |
-| Phone number | `text-sm font-semibold text-white` (in dark footer context) |
+| Territory label | Micro-label: `text-xs font-black uppercase tracking-[0.3em] text-gray-400` |
+| Phone number | `text-sm font-black text-white` (in dark footer context) |
 | Phone hover | `hover:text-red-primary transition-colors duration-200` |
 | Icon | `lni lni-phone text-red-primary text-base` |
 | Min touch target | 44px height (accessibility -- ensure via `min-h-[44px]` or adequate padding) |
@@ -283,7 +311,7 @@ interface TerritoryPhone {
 ```
 <phone-inline> inline-flex items-center gap-2
   <i className="lni lni-phone text-red-primary" />
-  <a href="tel:..." className="text-blue-marine hover:text-red-primary font-semibold underline-offset-4 hover:underline"> 0590 12 34 56 </a>
+  <a href="tel:..." className="text-blue-marine hover:text-red-primary font-black underline-offset-4 hover:underline"> 0590 12 34 56 </a>
 </phone-inline>
 ```
 
@@ -322,7 +350,7 @@ Each product page gets exactly 1 primary CTA above-the-fold using the refactored
 | `/telephonie-entreprise` | MODERNISER MA TELEPHONIE | `/devis-en-ligne` | `?service=telephonie` |
 | `/studio-attente` | CREER MON STUDIO | `/devis-en-ligne` | `?service=studio` |
 
-All CTA labels follow CTA label typography: `text-sm font-black uppercase tracking-[0.2em]`.
+All CTA labels follow CTA label typography: `text-xs font-black uppercase tracking-[0.2em]`.
 
 ---
 
@@ -351,15 +379,18 @@ Violations to fix BEFORE building new components:
 |------|-----------|-----|
 | `testimonials-section-simple.tsx` | `hover:shadow-lg` on Card | Remove hover shadow entirely -- static cards |
 | `testimonials-section-simple.tsx` | shadcn `<Card>` / `<Badge>` imports | Replace with plain `<div>` + Monolithe classes |
+| `testimonials-section-simple.tsx` | `font-semibold` on author name | Replace with `font-black` (weight 900 only) |
 | `testimonials-section-simple.tsx` | `border-t` divider in card | Keep (internal card divider, acceptable) |
 | `cta-button.tsx` | `<button>` nested in `<Link>` | Refactor to Link-only pattern (C-03) |
 | `cta-button.tsx` | `shadow-md hover:shadow-xl` | Replace with `.monolith-btn` hard shadow |
 | `cta-button.tsx` | `hover:-translate-y-0.5` | Replace with `.monolith-btn` translate(2px,2px) |
 | `cta-button.tsx` | Gradient overlay div on hover | Remove entirely |
-| `cta-button.tsx` | `font-semibold text-lg` | Replace with `font-black uppercase tracking-[0.2em] text-sm` |
+| `cta-button.tsx` | `font-semibold text-lg` | Replace with `font-black uppercase tracking-[0.2em] text-xs` |
 | `cta-button.tsx` | Arrow icon `lni-arrow-right` | Remove (not in Monolithe CTA pattern) |
 | `globals.css` | `.gradient-hover` uses `shadow-xl` | Replace with hard shadow or remove class |
 | `globals.css` | `.bento-item` uses `hover:shadow-premium` | Evaluate -- shadow-premium is custom, may be acceptable |
+| Any component | `font-semibold` (weight 600) | Replace with `font-black` (900) or `font-normal` (400) |
+| Any component | `font-bold` (weight 700) | Replace with `font-black` (900) |
 
 ---
 
@@ -370,7 +401,7 @@ Violations to fix BEFORE building new components:
 | shadcn official | Card, Badge (TO BE REMOVED from testimonials) | not applicable -- removing, not adding |
 | Third-party | none | not applicable |
 
-No new shadcn components introduced in this phase. Existing shadcn Card/Badge in testimonials will be replaced with plain HTML elements styled with Monolithe classes.
+No new shadcn components introduced in this phase. Existing shadcn Card/Badge in testimonials will be replaced with plain HTML elements styled with Monolithe classes. The `shadcn_initialized: legacy` frontmatter reflects that shadcn was previously initialized and components exist in the codebase, but this phase actively phases out its usage in the affected components.
 
 ---
 
