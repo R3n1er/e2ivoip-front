@@ -1,6 +1,10 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
 export const metadata: Metadata = {
   title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",
@@ -67,7 +71,12 @@ export default function Telephonie3CX() {
                 <strong> instance dédiée</strong> ou{" "}
                 <strong>hébergement mutualisé</strong>
               </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
+              <div className="mt-8 mb-8">
+                <CTAButton href="/devis-en-ligne?service=3cx" icon="lni-calculator">
+                  PASSER A 3CX
+                </CTAButton>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
                   <i className="lni lni-checkmark-circle text-white"></i>
                   <span className="text-sm">Certifié 3CX Silver Partner</span>
@@ -622,6 +631,31 @@ export default function Telephonie3CX() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof */}
+        <TestimonialsSectionSimple />
+
+        {/* Territory phone links -- D-09 */}
+        <section className="bg-gray-50 py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+              APPELEZ-NOUS DIRECTEMENT
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+                <PhoneLink
+                  key={phone.territory}
+                  phone={phone}
+                  showTerritory={true}
+                  className="text-gray-dark font-black hover:text-red-primary transition-colors"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <ContactSectionSimple />
       </main>
     </div>
   );

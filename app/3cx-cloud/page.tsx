@@ -5,6 +5,11 @@ import { PricingTiers } from "@/components/pricing-tiers";
 import { TestimonialsSection } from "@/components/testimonial-card";
 import { GeographicAdvantage } from "@/components/geographic-advantage";
 import { CTACalendarSection } from "@/components/cta-calendar-section";
+import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { CTAButton } from "@/components/ui/cta-button";
 
 export const metadata: Metadata = {
   title:
@@ -235,28 +240,9 @@ export default function ThreeCXCloudPage() {
               moderne, évolutive et parfaitement intégrée à vos outils métier
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="#calendrier"
-                className="btn btn-lg bg-red-primary text-white border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[300px] relative overflow-hidden group"
-              >
-                <span className="flex items-center justify-center">
-                  <i className="lni lni-calendar mr-2 text-lg"></i>
-                  Réserver ma démonstration gratuite
-                  <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                </span>
-                <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-              </a>
-              <a
-                href="/devis-en-ligne"
-                className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[250px] relative overflow-hidden group"
-              >
-                <span className="flex items-center justify-center">
-                  <i className="lni lni-calculator mr-2 text-lg"></i>
-                  Calculer mes économies
-                  <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                </span>
-                <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-              </a>
+              <CTAButton href="/devis-en-ligne?service=3cx-cloud" icon="lni-calculator">
+                MIGRER VERS LE CLOUD
+              </CTAButton>
             </div>
           </div>
         </div>
@@ -463,6 +449,31 @@ export default function ThreeCXCloudPage() {
       <div id="calendrier">
         <CTACalendarSection />
       </div>
+
+      {/* Social Proof */}
+      <TestimonialsSectionSimple />
+
+      {/* Territory phone links -- D-09 */}
+      <section className="bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+            APPELEZ-NOUS DIRECTEMENT
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+              <PhoneLink
+                key={phone.territory}
+                phone={phone}
+                showTerritory={true}
+                className="text-gray-dark font-black hover:text-red-primary transition-colors"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <ContactSectionSimple />
     </div>
   );
 }

@@ -11,6 +11,10 @@ import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
+import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
@@ -212,11 +216,11 @@ export default function NosServices() {
                   nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <CTAButton href="/contact" icon="lni-phone">
-                    Audit télécom gratuit
+                  <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                    DECOUVRIR NOS OFFRES
                   </CTAButton>
-                  <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
-                    Demander un devis
+                  <CTAButtonMarine href="/contact" icon="lni-phone">
+                    Audit telecom gratuit
                   </CTAButtonMarine>
                 </div>
               </div>
@@ -366,7 +370,7 @@ export default function NosServices() {
                         <CTAButton
                           href={service.href}
                           icon="lni-arrow-right"
-                          fullWidth
+                          className="w-full"
                         >
                           En savoir plus
                         </CTAButton>
@@ -401,6 +405,31 @@ export default function NosServices() {
               </div>
             </div>
           </section>
+
+          {/* Social Proof */}
+          <TestimonialsSectionSimple />
+
+          {/* Territory phone links -- D-09 */}
+          <section className="bg-gray-50 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+                APPELEZ-NOUS DIRECTEMENT
+              </p>
+              <div className="flex flex-wrap justify-center gap-6">
+                {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+                  <PhoneLink
+                    key={phone.territory}
+                    phone={phone}
+                    showTerritory={true}
+                    className="text-gray-dark font-black hover:text-red-primary transition-colors"
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Contact */}
+          <ContactSectionSimple />
         </main>
         <Footer />
       </div>
