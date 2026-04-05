@@ -1,6 +1,18 @@
 
+import { clients } from "@/components/clients-carousel";
+
 
 describe('ClientsCarousel Component', () => {
+  it('should include the Ville de Deshaies logo in the client list', () => {
+    expect(
+      clients.some(
+        (client) =>
+          client.name === 'Ville de Deshaies' &&
+          client.logo === '/images/logos-clients/logo_Ville_Deshaies_vectorise_bw_compress.png'
+      )
+    ).toBe(true)
+  })
+
   it('should have correct background color', () => {
     const sectionClasses = 'py-16 bg-white'
     expect(sectionClasses).toContain('bg-white')

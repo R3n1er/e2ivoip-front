@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const clients = [
+export const clients = [
   {
     name: "APAJH Guyane",
     logo: "/images/logos-clients/LogoAPAJHGuyane-black-optimize.png",
@@ -48,6 +48,11 @@ const clients = [
     name: "Eurogold",
     logo: "/images/logos-clients/logo-eurogold.png",
     alt: "Logo Eurogold",
+  },
+  {
+    name: "Ville de Deshaies",
+    logo: "/images/logos-clients/logo_Ville_Deshaies_vectorise_bw_compress.png",
+    alt: "Logo Ville de Deshaies",
   },
 ];
 
