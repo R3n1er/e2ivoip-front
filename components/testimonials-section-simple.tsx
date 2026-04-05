@@ -1,111 +1,99 @@
-"use client";
-
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+'use client'
 
 export function TestimonialsSectionSimple() {
   const testimonials = [
     {
       content:
-        "E2I VoIP nous a permis de réduire nos coûts télécom de 35% tout en améliorant la qualité de nos communications. Le support technique local est exceptionnel.",
-      author: "Marie Dubois",
-      role: "Directrice Générale",
-      company: "Titeca BEAUPORT Finance",
-      location: "Guadeloupe",
-      users: "90+ utilisateurs",
+        'E2I VoIP nous a permis de reduire nos couts telecom de 35% tout en ameliorant la qualite de nos communications. Le support technique local est exceptionnel.',
+      author: 'Marie Dubois',
+      role: 'Directrice Generale',
+      company: 'Titeca BEAUPORT Finance',
+      location: 'Guadeloupe',
+      users: '90+ utilisateurs',
       rating: 5,
     },
     {
       content:
-        "La migration vers 3CX s'est faite en douceur grâce à l'accompagnement d'E2I VoIP. Nos équipes peuvent maintenant travailler en mobilité complète.",
-      author: "Jean-Pierre Martin",
-      role: "DSI",
-      company: "Cabinet Juridique Martinique",
-      location: "Martinique",
-      users: "25 utilisateurs",
+        'La migration vers 3CX s\'est faite en douceur grace a l\'accompagnement d\'E2I VoIP. Nos equipes peuvent maintenant travailler en mobilite complete.',
+      author: 'Jean-Pierre Martin',
+      role: 'DSI',
+      company: 'Cabinet Juridique Martinique',
+      location: 'Martinique',
+      users: '25 utilisateurs',
       rating: 5,
     },
     {
       content:
-        "Excellent service client et réactivité remarquable. Les assistants vocaux IA ont révolutionné notre accueil téléphonique 24/7.",
-      author: "Sophie Laurent",
-      role: "Responsable Qualité",
-      company: "Clinique Saint-Joseph",
-      location: "Guyane",
-      users: "45 utilisateurs",
+        'Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.',
+      author: 'Sophie Laurent',
+      role: 'Responsable Qualite',
+      company: 'Clinique Saint-Joseph',
+      location: 'Guyane',
+      users: '45 utilisateurs',
       rating: 5,
     },
-  ];
-
+  ]
 
   return (
     <section id="temoignages" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-900 mb-6">
             Plus de 500 entreprises
             <span className="text-red-primary"> nous font confiance</span>
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto">
-            Découvrez pourquoi E2I VoIP est le choix privilégié des entreprises
-            DOM pour leur transformation télécom.
+            Decouvrez pourquoi E2I VoIP est le choix privilegie des entreprises
+            DOM pour leur transformation telecom.
           </p>
         </div>
 
-        {/* Testimonials */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Témoignages clients
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className="h-full bg-white hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <i
-                        key={i}
-                        className="lni lni-star-filled h-5 w-5 text-yellow-400"
-                      ></i>
-                    ))}
-                  </div>
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="h-full bg-white border border-gray-200 p-6"
+            >
+              <div className="flex items-center mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <i
+                    key={i}
+                    className="lni lni-star-filled h-5 w-5 text-yellow-400"
+                  ></i>
+                ))}
+              </div>
 
-                  <i className="lni lni-question-circle h-8 w-8 text-red-200 mb-4"></i>
+              <i className="lni lni-question-circle h-8 w-8 text-red-200 mb-4"></i>
 
-                  <p className="text-gray-secondary mb-6 leading-relaxed">
-                    &ldquo;{testimonial.content}&rdquo;
-                  </p>
+              <p className="text-gray-secondary mb-6 leading-relaxed">
+                &ldquo;{testimonial.content}&rdquo;
+              </p>
 
-                  <div className="border-t pt-4">
-                    <div className="font-semibold text-gray-900">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-red-primary text-sm font-medium">
-                      {testimonial.role}
-                    </div>
-                    <div className="text-gray-secondary text-sm">
-                      {testimonial.company}
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                      <Badge variant="outline" className="text-xs">
-                        {testimonial.location}
-                      </Badge>
-                      <span className="text-xs text-gray-500">
-                        {testimonial.users}
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+              <div className="border-t pt-4">
+                <div className="font-black text-gray-900">
+                  {testimonial.author}
+                </div>
+                <div className="text-red-primary text-sm font-black">
+                  {testimonial.role}
+                </div>
+                <div className="text-gray-secondary text-sm">
+                  {testimonial.company}
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary">
+                    {testimonial.location}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    {testimonial.users}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-
       </div>
     </section>
-  );
+  )
 }
