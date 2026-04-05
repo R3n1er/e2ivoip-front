@@ -26,11 +26,6 @@ const partners = [
     logo: "/images/logo-partners/logo-yealink.webp",
     width: 120,
   },
-  {
-    name: "3CX Silver Partner",
-    logo: "/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp",
-    width: 80,
-  },
 ];
 
 export function PartnersSection() {
