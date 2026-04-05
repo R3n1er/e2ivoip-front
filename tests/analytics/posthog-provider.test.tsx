@@ -1,12 +1,15 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-const mockInit = jest.fn()
+// Mock posthog-js — use getter to avoid TDZ issue
+const mockPosthog = {
+  init: jest.fn(),
+  __loaded: false,
+}
 jest.mock('posthog-js', () => ({
   __esModule: true,
-  default: {
-    init: mockInit,
-    __loaded: false,
+  get default() {
+    return mockPosthog
   },
 }))
 
@@ -38,7 +41,7 @@ describe('PostHogProvider', () => {
       </PostHogProvider>
     )
 
-    expect(mockInit).toHaveBeenCalledWith(
+    expect(mockPosthog.init).toHaveBeenCalledWith(
       TEST_KEY,
       expect.any(Object)
     )
@@ -51,7 +54,7 @@ describe('PostHogProvider', () => {
       </PostHogProvider>
     )
 
-    const initOptions = mockInit.mock.calls[0][1]
+    const initOptions = mockPosthog.init.mock.calls[0][1]
     expect(initOptions.api_host).toBe('https://eu.i.posthog.com')
   })
 
@@ -62,7 +65,7 @@ describe('PostHogProvider', () => {
       </PostHogProvider>
     )
 
-    const initOptions = mockInit.mock.calls[0][1]
+    const initOptions = mockPosthog.init.mock.calls[0][1]
     expect(initOptions.persistence).toBe('memory')
   })
 
@@ -73,7 +76,7 @@ describe('PostHogProvider', () => {
       </PostHogProvider>
     )
 
-    const initOptions = mockInit.mock.calls[0][1]
+    const initOptions = mockPosthog.init.mock.calls[0][1]
     expect(initOptions.disable_session_recording).not.toBe(true)
   })
 })

@@ -1,11 +1,13 @@
 import type { EventPayload } from '@/lib/analytics/types'
 
-// Mock posthog-js before importing trackEvent
-const mockCapture = jest.fn()
+// Mock posthog-js — use getter to avoid TDZ issue
+const mockPosthog = {
+  capture: jest.fn(),
+}
 jest.mock('posthog-js', () => ({
   __esModule: true,
-  default: {
-    capture: mockCapture,
+  get default() {
+    return mockPosthog
   },
 }))
 
@@ -30,7 +32,7 @@ describe('trackEvent', () => {
   it('calls posthog.capture with event name and payload', () => {
     trackEvent('cta_click', payload)
 
-    expect(mockCapture).toHaveBeenCalledWith('cta_click', payload)
+    expect(mockPosthog.capture).toHaveBeenCalledWith('cta_click', payload)
   })
 
   it('does not throw when posthog is undefined', () => {
@@ -50,7 +52,7 @@ describe('trackEvent', () => {
   })
 
   it('catches errors from posthog.capture and logs them', () => {
-    mockCapture.mockImplementation(() => {
+    mockPosthog.capture.mockImplementation(() => {
       throw new Error('PostHog capture failed')
     })
 

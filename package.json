@@ -44,6 +44,7 @@
     "lineicons-react": "^2.0.0",
     "next": "^15.4.5",
     "node-fetch": "^3.3.2",
+    "posthog-js": "^1.364.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.61.1",
