@@ -23,8 +23,8 @@ Chaque visiteur du site doit comprendre en 10 secondes qu'E2I VoIP est un expert
 
 ### Active
 
-- [ ] PostHog GDPR-compliant installe avec 3 events (cta_click, phone_click, form_submit)
-- [ ] PostHog session recordings actives (cookieless mode)
+- ✓ PostHog GDPR-compliant installe avec 3 events (cta_click, phone_click, form_submit) — Validated in Phase 1: PostHog Analytics Baseline
+- ✓ PostHog session recordings actives (cookieless mode) — Validated in Phase 1: PostHog Analytics Baseline
 - [ ] Social proof strip sur la homepage (temoignages, badges partenaires)
 - [ ] Conversion audit : 1 CTA primaire above-the-fold par page produit
 - [ ] Tous les numeros de telephone en liens tel: cliquables avec tracking
