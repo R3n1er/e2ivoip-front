@@ -31,8 +31,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — PostHog SDK + Provider + trackEvent utility (TDD)
-- [ ] 01-02-PLAN.md — Wire events into CTAs, forms, phone links + create PR1
+- [x] 01-01-PLAN.md — PostHog SDK + Provider + trackEvent utility (TDD)
+- [x] 01-02-PLAN.md — Wire events into CTAs, forms, phone links + create PR1
 
 ### Phase 2: Redesign + Social Proof + Conversion
 **Goal**: Les visiteurs voient un site professionnel avec social proof credible et un chemin de conversion clair sur chaque page produit
