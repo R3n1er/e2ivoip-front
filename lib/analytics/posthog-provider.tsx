@@ -7,7 +7,7 @@ const POSTHOG_HOST = 'https://eu.i.posthog.com'
 
 export function PostHogProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY || ''
+    const key = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN || ''
     if (!key || typeof window === 'undefined') return
     try {
       posthog.init(key, {

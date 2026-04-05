@@ -15,7 +15,7 @@ jest.mock('posthog-js', () => ({
 
 // Set env var before importing provider
 const TEST_KEY = 'phc_test_key_12345'
-process.env.NEXT_PUBLIC_POSTHOG_KEY = TEST_KEY
+process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN = TEST_KEY
 
 import { PostHogProvider } from '@/lib/analytics/posthog-provider'
 
