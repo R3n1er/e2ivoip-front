@@ -140,13 +140,13 @@
     @apply gradient-primary-red-green;
   }
 
-  /* Effets hover pour les dégradés */
+  /* Effets hover pour les degrades */
   .gradient-hover {
     @apply transition-all duration-300 ease-in-out;
   }
 
   .gradient-hover:hover {
-    @apply scale-105 shadow-lg;
+    @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
   }
 
   /* Dégradés avec transparence pour les overlays */
