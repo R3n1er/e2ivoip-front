@@ -28,11 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Cliquer sur un numero de telephone genere un event phone_click dans PostHog
   4. Soumettre un formulaire HubSpot ou Tally genere un event form_submit dans PostHog
   5. Si PostHog est bloque (adblocker), le site fonctionne normalement sans erreur console
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — PostHog SDK + Provider + trackEvent utility (TDD)
+- [ ] 01-02-PLAN.md — Wire events into CTAs, forms, phone links + create PR1
 
 ### Phase 2: Redesign + Social Proof + Conversion
 **Goal**: Les visiteurs voient un site professionnel avec social proof credible et un chemin de conversion clair sur chaque page produit
