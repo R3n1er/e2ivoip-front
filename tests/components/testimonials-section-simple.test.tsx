@@ -41,3 +41,73 @@ describe('TestimonialsSectionSimple - Monolithe Design System compliance', () =>
     expect(typeof TestimonialsSectionSimple).toBe('function')
   })
 })
+
+describe('TestimonialsSectionSimple - Props and empty state', () => {
+  test('accepts optional testimonials prop', () => {
+    const customTestimonials = [
+      {
+        content: 'Custom review',
+        author: 'Test Author',
+        role: 'CEO',
+        company: 'Test Corp',
+        location: 'Guadeloupe' as const,
+        rating: 4 as const,
+      },
+    ]
+    render(<TestimonialsSectionSimple testimonials={customTestimonials} />)
+    expect(screen.getByText(/Test Author/)).toBeInTheDocument()
+    expect(screen.getByText(/Custom review/)).toBeInTheDocument()
+  })
+
+  test('returns null when testimonials is empty array', () => {
+    const { container } = render(<TestimonialsSectionSimple testimonials={[]} />)
+    expect(container.innerHTML).toBe('')
+  })
+
+  test('renders default testimonials when no prop passed', () => {
+    render(<TestimonialsSectionSimple />)
+    expect(screen.getByText(/Marie Dubois/)).toBeInTheDocument()
+  })
+
+  test('contains DEFAULT_TESTIMONIALS constant in source', () => {
+    expect(sourceCode).toContain('DEFAULT_TESTIMONIALS')
+  })
+
+  test('contains TestimonialsSectionProps interface in source', () => {
+    expect(sourceCode).toContain('TestimonialsSectionProps')
+  })
+})
+
+describe('TestimonialsSectionSimple - 3CX Badge Strip', () => {
+  test('renders 3CX badge strip with text PARTENAIRE 3CX CERTIFIE', () => {
+    render(<TestimonialsSectionSimple />)
+    expect(screen.getByText('PARTENAIRE 3CX CERTIFIE')).toBeInTheDocument()
+  })
+
+  test('renders badge image from 3cx-Silver-Partner-badge.webp', () => {
+    render(<TestimonialsSectionSimple />)
+    const img = screen.getByAltText('3CX Silver Partner')
+    expect(img).toBeInTheDocument()
+    expect(img).toHaveAttribute('src', expect.stringContaining('3cx-Silver-Partner-badge'))
+  })
+
+  test('badge strip appears before testimonial cards in DOM order', () => {
+    render(<TestimonialsSectionSimple />)
+    const badge = screen.getByText('PARTENAIRE 3CX CERTIFIE')
+    const firstAuthor = screen.getByText(/Marie Dubois/)
+    // Badge should come before testimonial content in DOM
+    const allElements = document.querySelectorAll('[class]')
+    let badgeIndex = -1
+    let authorIndex = -1
+    allElements.forEach((el, i) => {
+      if (el.textContent?.includes('PARTENAIRE 3CX CERTIFIE') && badgeIndex === -1) badgeIndex = i
+      if (el.textContent?.includes('Marie Dubois') && authorIndex === -1) authorIndex = i
+    })
+    expect(badgeIndex).toBeLessThan(authorIndex)
+    expect(badgeIndex).toBeGreaterThan(-1)
+  })
+
+  test('contains 3cx-Silver-Partner-badge in source', () => {
+    expect(sourceCode).toContain('3cx-Silver-Partner-badge')
+  })
+})
