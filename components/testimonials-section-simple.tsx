@@ -1,38 +1,54 @@
-'use client'
+import Image from 'next/image'
 
-export function TestimonialsSectionSimple() {
-  const testimonials = [
-    {
-      content:
-        'E2I VoIP nous a permis de reduire nos couts telecom de 35% tout en ameliorant la qualite de nos communications. Le support technique local est exceptionnel.',
-      author: 'Marie Dubois',
-      role: 'Directrice Generale',
-      company: 'Titeca BEAUPORT Finance',
-      location: 'Guadeloupe',
-      users: '90+ utilisateurs',
-      rating: 5,
-    },
-    {
-      content:
-        'La migration vers 3CX s\'est faite en douceur grace a l\'accompagnement d\'E2I VoIP. Nos equipes peuvent maintenant travailler en mobilite complete.',
-      author: 'Jean-Pierre Martin',
-      role: 'DSI',
-      company: 'Cabinet Juridique Martinique',
-      location: 'Martinique',
-      users: '25 utilisateurs',
-      rating: 5,
-    },
-    {
-      content:
-        'Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.',
-      author: 'Sophie Laurent',
-      role: 'Responsable Qualite',
-      company: 'Clinique Saint-Joseph',
-      location: 'Guyane',
-      users: '45 utilisateurs',
-      rating: 5,
-    },
-  ]
+interface Testimonial {
+  content: string
+  author: string
+  role: string
+  company: string
+  location: 'Guadeloupe' | 'Martinique' | 'Guyane' | 'Reunion'
+  users?: string
+  rating: 1 | 2 | 3 | 4 | 5
+}
+
+interface TestimonialsSectionProps {
+  testimonials?: Testimonial[]
+}
+
+const DEFAULT_TESTIMONIALS: Testimonial[] = [
+  {
+    content:
+      'E2I VoIP nous a permis de reduire nos couts telecom de 35% tout en ameliorant la qualite de nos communications. Le support technique local est exceptionnel.',
+    author: 'Marie Dubois',
+    role: 'Directrice Generale',
+    company: 'Titeca BEAUPORT Finance',
+    location: 'Guadeloupe',
+    users: '90+ utilisateurs',
+    rating: 5,
+  },
+  {
+    content:
+      'La migration vers 3CX s\'est faite en douceur grace a l\'accompagnement d\'E2I VoIP. Nos equipes peuvent maintenant travailler en mobilite complete.',
+    author: 'Jean-Pierre Martin',
+    role: 'DSI',
+    company: 'Cabinet Juridique Martinique',
+    location: 'Martinique',
+    users: '25 utilisateurs',
+    rating: 5,
+  },
+  {
+    content:
+      'Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.',
+    author: 'Sophie Laurent',
+    role: 'Responsable Qualite',
+    company: 'Clinique Saint-Joseph',
+    location: 'Guyane',
+    users: '45 utilisateurs',
+    rating: 5,
+  },
+]
+
+export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS }: TestimonialsSectionProps) {
+  if (!testimonials || testimonials.length === 0) return null
 
   return (
     <section id="temoignages" className="py-20 bg-gray-50">
@@ -47,6 +63,22 @@ export function TestimonialsSectionSimple() {
             Decouvrez pourquoi E2I VoIP est le choix privilegie des entreprises
             DOM pour leur transformation telecom.
           </p>
+        </div>
+
+        {/* 3CX Badge Strip -- D-02 */}
+        <div className="flex items-center justify-center gap-8 py-6 mb-12">
+          <div className="flex items-center gap-4 border-l-4 border-red-primary pl-4">
+            <Image
+              src="/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp"
+              alt="3CX Silver Partner"
+              width={48}
+              height={48}
+              className="max-h-12 w-auto"
+            />
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary">
+              PARTENAIRE 3CX CERTIFIE
+            </span>
+          </div>
         </div>
 
         {/* Testimonials Grid */}

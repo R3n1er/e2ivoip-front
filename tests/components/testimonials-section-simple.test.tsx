@@ -92,19 +92,13 @@ describe('TestimonialsSectionSimple - 3CX Badge Strip', () => {
   })
 
   test('badge strip appears before testimonial cards in DOM order', () => {
-    render(<TestimonialsSectionSimple />)
-    const badge = screen.getByText('PARTENAIRE 3CX CERTIFIE')
-    const firstAuthor = screen.getByText(/Marie Dubois/)
-    // Badge should come before testimonial content in DOM
-    const allElements = document.querySelectorAll('[class]')
-    let badgeIndex = -1
-    let authorIndex = -1
-    allElements.forEach((el, i) => {
-      if (el.textContent?.includes('PARTENAIRE 3CX CERTIFIE') && badgeIndex === -1) badgeIndex = i
-      if (el.textContent?.includes('Marie Dubois') && authorIndex === -1) authorIndex = i
-    })
-    expect(badgeIndex).toBeLessThan(authorIndex)
-    expect(badgeIndex).toBeGreaterThan(-1)
+    const { container } = render(<TestimonialsSectionSimple />)
+    const html = container.innerHTML
+    const badgePos = html.indexOf('PARTENAIRE 3CX CERTIFIE')
+    const authorPos = html.indexOf('Marie Dubois')
+    expect(badgePos).toBeGreaterThan(-1)
+    expect(authorPos).toBeGreaterThan(-1)
+    expect(badgePos).toBeLessThan(authorPos)
   })
 
   test('contains 3cx-Silver-Partner-badge in source', () => {
