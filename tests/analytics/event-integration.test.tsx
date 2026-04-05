@@ -119,8 +119,9 @@ describe('Event tracking integration', () => {
       render(<HubSpotForm formId="test-form-123" testId="hs-test" />)
 
       // Simulate HubSpot calling onFormSubmitted
-      if (capturedOnFormSubmitted) {
-        capturedOnFormSubmitted({ submissionValues: {} })
+      const callback = capturedOnFormSubmitted as ((data: any) => void) | null
+      if (callback) {
+        callback({ submissionValues: {} })
       }
 
       expect(mockTrackEvent).toHaveBeenCalledWith('form_submit', expect.objectContaining({

@@ -22,6 +22,7 @@ import {
   getHubSpotFormId,
   type HubSpotFormId,
 } from "@/lib/constants/hubspot";
+import { trackEvent } from "@/lib/analytics/track-event";
 
 /**
  * Props du composant HubSpotForm
@@ -272,6 +273,11 @@ export const HubSpotForm = memo(function HubSpotForm({
             }
           },
           onFormSubmitted: (data: any) => {
+            trackEvent('form_submit', {
+              page: typeof window !== 'undefined' ? window.location.pathname : '/',
+              element_id: `hubspot-${resolvedFormId}`,
+              element_text: 'HubSpot Form',
+            });
             if (onFormSubmitted) {
               onFormSubmitted(data);
             }

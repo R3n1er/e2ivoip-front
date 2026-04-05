@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics/track-event";
 
 export function TallyPopupClean() {
   useEffect(() => {
@@ -74,6 +75,25 @@ export function TallyPopupClean() {
       }
     }, 8000);
 
+    // ÉTAPE 5: Écouter les soumissions Tally via postMessage
+    const handleTallyMessage = (event: MessageEvent) => {
+      try {
+        if (event.data?.event === 'Tally.FormSubmitted') {
+          trackEvent('form_submit', {
+            page: window.location.pathname,
+            element_id: `tally-${event.data?.formId || 'mDY1bl'}`,
+            element_text: 'Tally Popup Form',
+          })
+        }
+      } catch (error) {
+        console.error('[Analytics] Tally tracking error:', error)
+      }
+    }
+    window.addEventListener('message', handleTallyMessage)
+
+    return () => {
+      window.removeEventListener('message', handleTallyMessage)
+    }
   }, []);
 
   // Ce composant ne rend rien de visible
