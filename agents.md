@@ -34,10 +34,6 @@
 - **Testing**: TDD with Jest + MCP Playwright + Browser MCP
 - **State**: Zustand pour la gestion d'états UI (loading/erreur, flags)
 
-## HTML & Next.js Rules
-
-- **Ne JAMAIS imbriquer de `<button>` dans un `<Link>`** : Appliquer les styles de bouton (ex: `.monolith-btn`) directement sur la balise `<Link>` pour éviter les erreurs de rendu HTML et de styles CSS (comme des `hover` défaillants).
-
 ## Documentation Rules
 
 - Document in /docs automatically (inclure l'usage de Zustand si pertinent)

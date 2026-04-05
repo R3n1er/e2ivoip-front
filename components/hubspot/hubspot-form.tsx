@@ -22,7 +22,6 @@ import {
   getHubSpotFormId,
   type HubSpotFormId,
 } from "@/lib/constants/hubspot";
-import { trackEvent } from "@/lib/analytics/track-event";
 
 /**
  * Props du composant HubSpotForm
@@ -87,7 +86,7 @@ export interface HubSpotFormProps {
  */
 function DefaultError({ message }: { message?: string }) {
   return (
-    <div className="p-4 rounded-none bg-red-50 border border-red-200 text-red-800 mb-4">
+    <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-4">
       <p className="font-semibold mb-1">Erreur de chargement</p>
       <p className="text-sm">
         {message ||
@@ -273,11 +272,6 @@ export const HubSpotForm = memo(function HubSpotForm({
             }
           },
           onFormSubmitted: (data: any) => {
-            trackEvent('form_submit', {
-              page: typeof window !== 'undefined' ? window.location.pathname : '/',
-              element_id: `hubspot-${resolvedFormId}`,
-              element_text: 'HubSpot Form',
-            });
             if (onFormSubmitted) {
               onFormSubmitted(data);
             }
@@ -405,7 +399,7 @@ export function QuickContactForm({
   onSubmitted?: () => void;
 }) {
   return (
-    <div className={`bg-white rounded-none p-6 shadow-lg ${className}`}>
+    <div className={`bg-white rounded-lg p-6 shadow-lg ${className}`}>
       <h3 className="text-xl font-bold text-gray-900 mb-4">
         Contactez-nous rapidement
       </h3>
@@ -445,7 +439,7 @@ export function FullContactForm({
   onSubmitted?: () => void;
 }) {
   return (
-    <div className={`bg-white rounded-none p-8 shadow-lg ${className}`}>
+    <div className={`bg-white rounded-lg p-8 shadow-lg ${className}`}>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
       <p className="text-gray-600 mb-6">{description}</p>
       <HubSpotForm

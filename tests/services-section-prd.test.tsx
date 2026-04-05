@@ -53,65 +53,82 @@ jest.mock("framer-motion", () => ({
   },
 }));
 
-describe("ServicesSectionSimple - Refonte 2026", () => {
-  it("affiche le titre de section", () => {
+describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", () => {
+  it("affiche le titre avec les couleurs PRD", () => {
     render(<ServicesSectionSimple />);
 
-    expect(
-      screen.getByRole("heading", {
-        level: 2,
-        name: /Nos Solutions Phares/i,
-      })
-    ).toBeInTheDocument();
+    // Vérifier que le titre principal est présent
+    expect(screen.getByText(/Nos solutions de/)).toBeInTheDocument();
+    expect(screen.getByText("téléphonie IP")).toBeInTheDocument();
   });
 
   it("affiche tous les services de téléphonie IP", () => {
     render(<ServicesSectionSimple />);
 
-    expect(screen.getByText("3CX PRO & ENTREPRISE")).toBeInTheDocument();
-    expect(screen.getByText("Trunk SIP")).toBeInTheDocument();
+    // Vérifier que tous les services sont présents
+    expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
+    expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
+    expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
+    // « Solutions Mobilité » retiré du périmètre
+    expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
+  });
+
+  it("affiche les badges de service", () => {
+    render(<ServicesSectionSimple />);
+
+    expect(screen.getByText("Populaire")).toBeInTheDocument();
+    expect(screen.getByText("Idéal PME")).toBeInTheDocument();
+    expect(screen.getByText("Entreprise")).toBeInTheDocument();
+    expect(screen.getByText("Innovation")).toBeInTheDocument();
+    expect(screen.getByText("Pro")).toBeInTheDocument();
+  });
+
+  it("affiche la section CTA avec les couleurs PRD", () => {
+    render(<ServicesSectionSimple />);
+
     expect(
-      screen.getByText("Studio vocal — standards téléphoniques")
+      screen.getByRole("heading", {
+        level: 2,
+        name: /Nos solutions de téléphonie IP/i,
+      })
     ).toBeInTheDocument();
   });
 
-  it("affiche les boutons d'appel à l'action Monolith", () => {
-    render(<ServicesSectionSimple />);
-
-    expect(screen.getByText("En savoir plus")).toBeInTheDocument();
-    expect(screen.getByText("Voir les offres")).toBeInTheDocument();
-    expect(screen.getByText("Écouter les démos")).toBeInTheDocument();
-  });
-
-  it("utilise les classes structurelles 2026", () => {
+  it("utilise uniquement les couleurs PRD pour les icônes", () => {
     const { container } = render(<ServicesSectionSimple />);
 
-    // Grille 3 colonnes générale
-    const mainGrid = container.querySelectorAll(".grid-cols-1.md\\:grid-cols-3");
-    expect(mainGrid.length).toBeGreaterThan(0);
+    // Vérifier que les icônes utilisent les classes de couleurs PRD
+    const redPrimaryIcons = container.querySelectorAll(".text-red-primary");
+    expect(redPrimaryIcons.length).toBeGreaterThan(0);
 
-    // Vérifier les classes du bouton monolith
-    const monolithBtns = container.querySelectorAll(".monolith-btn");
-    expect(monolithBtns.length).toBeGreaterThan(0);
+    // Vérifier que les badges utilisent les bonnes classes
+    const primaryBadges = container.querySelectorAll(".badge.badge-primary");
+    expect(primaryBadges.length).toBeGreaterThan(0);
+
+    // Vérifier qu'aucune autre couleur non-PRD n'est utilisée pour les icônes
+    const nonPRDIcons = container.querySelectorAll(
+      ".text-green-600, .text-purple-600, .text-orange-600, .text-indigo-600"
+    );
+    expect(nonPRDIcons.length).toBe(0);
+  });
+
+  it("les boutons CTA sont présents et fonctionnels", () => {
+    render(<ServicesSectionSimple />);
+
+    const ctaButtons = screen.getAllByRole("button", {
+      name: /En savoir plus/i,
+    });
+    expect(ctaButtons.length).toBeGreaterThan(0);
   });
 
   it("affiche les bénéfices clés avec les bonnes couleurs", () => {
     render(<ServicesSectionSimple />);
 
-    expect(screen.getByText(/Conservez vos numéros actuels/)).toBeInTheDocument();
-    expect(
-      screen.getByText(/Portail automatisé pour écouter des exemples/i)
-    ).toBeInTheDocument();
-  });
-
-  it("décrit l'encart agents vocaux IA avec angle SEO local DOM", () => {
-    render(<ServicesSectionSimple />);
-
-    expect(
-      screen.getByText(
-        /Agent vocal IA pour votre standard d'entreprise.*Guadeloupe.*Martinique.*DOM/s
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Économies jusqu'à 30%/)).toBeInTheDocument();
+    // Bénéfice « Mobilité intégrée » retiré du périmètre
+    expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
+    expect(screen.getByText(/Transcription automatique/)).toBeInTheDocument();
   });
 });

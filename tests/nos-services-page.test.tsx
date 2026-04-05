@@ -1,14 +1,17 @@
+// Jest mocks
 import { render, screen } from "@testing-library/react";
 import NosServices from "../app/nos-services/page";
+
+jest.mock("@/components/layout/footer", () => ({
+  Footer: () => <div data-testid="footer">Footer</div>,
+}));
 
 describe("Page Nos Services", () => {
   it("rend la page sans erreur", () => {
     render(<NosServices />);
 
-    // Le footer global est dans le layout racine, pas dans la page seule
-    expect(
-      screen.getByRole("heading", { level: 1 })
-    ).toBeInTheDocument();
+    // Vérification des composants principaux
+    expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
   it("affiche le titre principal avec la charte PRD", () => {
@@ -52,9 +55,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
-    expect(
-      screen.getByText("Studio vocal standards téléphoniques")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
 
   it("respecte la charte graphique PRD", () => {

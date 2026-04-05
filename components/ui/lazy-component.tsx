@@ -10,7 +10,7 @@ interface LazyComponentProps {
 
 export function LazyComponent({
   component,
-  fallback = <div className="animate-pulse bg-gray-200 h-32 rounded-none" />,
+  fallback = <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />,
   props = {},
 }: LazyComponentProps) {
   const LazyLoadedComponent = lazy(component);
@@ -39,7 +39,7 @@ export function LazyServicesSection({ ...props }) {
   return (
     <LazyComponent
       component={() => import("@/components/services-section-simple").then(mod => ({ default: mod.ServicesSectionSimple }))}
-      fallback={<div className="animate-pulse bg-gray-100 h-96 rounded-none" />}
+      fallback={<div className="animate-pulse bg-gray-100 h-96 rounded-lg" />}
       props={props}
     />
   );
@@ -49,7 +49,7 @@ export function LazyContactSection({ ...props }) {
   return (
     <LazyComponent
       component={() => import("@/components/contact-section-simple").then(mod => ({ default: mod.ContactSectionSimple }))}
-      fallback={<div className="animate-pulse bg-gray-50 h-80 rounded-none" />}
+      fallback={<div className="animate-pulse bg-gray-50 h-80 rounded-lg" />}
       props={props}
     />
   );

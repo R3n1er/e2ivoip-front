@@ -125,7 +125,7 @@ export function ResponsiveImage({
         ref={containerRef}
         data-testid="responsive-image-error"
         className={cn(
-          "flex items-center justify-center bg-gray-200 text-gray-500 rounded-none",
+          "flex items-center justify-center bg-gray-200 text-gray-500 rounded-lg",
           getAspectRatioClass(),
           className
         )}
@@ -140,7 +140,7 @@ export function ResponsiveImage({
       ref={containerRef}
       data-testid="responsive-image-container"
       className={cn(
-        "relative overflow-hidden rounded-none bg-gray-200",
+        "relative overflow-hidden rounded-lg bg-gray-200",
         getAspectRatioClass(),
         !isLoaded && "animate-pulse",
         className

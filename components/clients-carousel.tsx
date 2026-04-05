@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export const clients = [
+const clients = [
   {
     name: "APAJH Guyane",
     logo: "/images/logos-clients/LogoAPAJHGuyane-black-optimize.png",
@@ -49,11 +49,6 @@ export const clients = [
     logo: "/images/logos-clients/logo-eurogold.png",
     alt: "Logo Eurogold",
   },
-  {
-    name: "Ville de Deshaies",
-    logo: "/images/logos-clients/logo_Ville_Deshaies_vectorise_bw_compress.png",
-    alt: "Logo Ville de Deshaies",
-  },
 ];
 
 export function ClientsCarousel() {
@@ -71,15 +66,16 @@ export function ClientsCarousel() {
   const duplicatedClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-24 bg-white border-y border-gray-100">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Titre de section — style Stitch 2026 */}
+        {/* Titre de section */}
         <div className="text-center mb-12">
-          <h2 className="text-sm md:text-base font-black uppercase tracking-[0.2em] text-[#091421] mb-3">
-            Ils nous font confiance
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Ils nous font <span className="text-red-primary">confiance</span>
           </h2>
-          <p className="text-xs text-gray-secondary uppercase tracking-widest">
-            Entreprises et organisations qui nous font confiance pour leur téléphonie IP
+          <p className="text-xl text-gray-secondary max-w-3xl mx-auto">
+            Découvrez les entreprises qui nous font confiance pour leurs
+            solutions de téléphonie IP
           </p>
         </div>
 
@@ -102,7 +98,7 @@ export function ClientsCarousel() {
                 key={`${client.name}-${index}`}
                 className="flex-shrink-0 hover:scale-105 transition-transform duration-200"
               >
-                <div className="bg-white rounded-none p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
+                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border-transparent">
                   <div className="relative w-32 h-16 lg:w-40 lg:h-20">
                     <Image
                       src={client.logo}

@@ -95,35 +95,45 @@ async function createNoteForContact(
 export async function POST(request: Request) {
   try {
     const token = requireEnv("HUBSPOT_ACCESS_TOKEN");
-    const body = await request.json();
-    const { firstName, email, company, source, pageUrl } = body;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      mobile,
+      message,
+      source,
+      conversationId,
+      pageUrl,
+      company,
+    } = await request.json();
 
     if (!email)
       return NextResponse.json({ error: "email requis" }, { status: 400 });
 
     const existing = await findContactByEmail(token, email);
 
-    // Proprietes HubSpot standard uniquement (pas de proprietes custom)
-    const properties: Record<string, string> = {
+    const properties = {
       firstname: firstName || "",
+      lastname: lastName || "",
       email,
+      phone: phone || "",
+      mobilephone: mobile || "",
       company: company || "",
-    };
-    // Champs optionnels — ne pas envoyer vide a HubSpot
-    if (body.lastName) properties.lastname = body.lastName;
-    if (body.phone) properties.phone = body.phone;
+      last_chat_message: message || "",
+      chat_source: source || "website",
+      chat_conversation_id: conversationId || "",
+    } as Record<string, any>;
 
     const contact = await upsertContact(token, properties, existing?.id);
 
-    // Note optionnelle — ne pas bloquer le chat si la creation echoue
-    try {
-      const noteBody = `Source: ${source || "website"}\nURL: ${
-        pageUrl || "-"
-      }\nEntreprise: ${company || "-"}`;
-      await createNoteForContact(token, contact.id, "Chat site web", noteBody);
-    } catch (noteErr) {
-      console.warn("Note creation failed (non-blocking):", noteErr);
-    }
+    const noteTitle = "Chat site web";
+    const noteBody = `Source: ${source || "website"}\nURL: ${
+      pageUrl || "-"
+    }\nConversation ID: ${conversationId || "-"}\n\nDernier message:\n${
+      message || "-"
+    }`;
+    await createNoteForContact(token, contact.id, noteTitle, noteBody);
 
     return NextResponse.json({ ok: true, contactId: contact.id });
   } catch (e: any) {

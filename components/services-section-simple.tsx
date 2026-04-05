@@ -1,134 +1,157 @@
 "use client";
 
+import { CTAButton } from "@/components/ui/cta-button";
 import Link from "next/link";
 
 export function ServicesSectionSimple() {
+  const services = [
+    {
+      icon: "lni-cloud",
+      title: "Trunk SIP DOM",
+      description:
+        "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
+      features: [
+        "Économies jusqu'à 30%",
+        "Numéros locaux garantis",
+        "Portabilité gratuite",
+        "Support technique local",
+        "2 appels simultanés inclus",
+      ],
+      badge: "Populaire",
+      price: "À partir de 2 canaux voix",
+      href: "/telephonie-entreprise/trunk-sip-compteur",
+    },
+    {
+      icon: "lni-users",
+      title: "3CX SMB PRO",
+      description:
+        "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
+      features: [
+        "Instance sécurisée pro",
+        "Formation incluse",
+        "Support utilisateur dédié",
+        "Interface intuitive",
+      ],
+      badge: "Idéal PME",
+      price: "15€/mois/utilisateur",
+      href: "/telephonie-entreprise/3cx-smb-pro",
+    },
+    {
+      icon: "lni-phone",
+      title: "3CX PRO Cloud",
+      description:
+        "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
+      features: [
+        "Serveur dédié dans le cloud",
+        "4 appels simultanés minimum",
+        "Multi-sites",
+        "Tableau de bord avancé",
+      ],
+      badge: "Entreprise",
+      price: "Sur devis",
+      href: "/3cx-cloud",
+    },
+    {
+      icon: "lni-comments",
+      title: "Assistants Vocaux IA",
+      description:
+        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
+      features: [
+        "Accueil 24/7",
+        "Compréhension naturelle",
+        "Transcription automatique",
+        "Intégration CRM",
+      ],
+      badge: "Innovation",
+      price: "Sur devis",
+      href: "/nos-services/assistants-vocaux-ia",
+    },
+    {
+      icon: "lni-bar-chart",
+      title: "Studio d'Enregistrement",
+      description:
+        "Messages vocaux professionnels et musiques personnalisées pour votre standard",
+      features: [
+        "Voix professionnelles",
+        "Musiques libres de droits",
+        "Messages sur mesure",
+        "Qualité studio",
+      ],
+      badge: "Pro",
+      price: "À partir de 50€",
+      href: "/nos-services/studio-attente",
+    },
+  ];
+
   return (
-    <section id="services" className="py-24 px-4 sm:px-8 lg:px-16 bg-white text-[#091421]" suppressHydrationWarning>
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Nos solutions de
+            <span className="text-red-primary"> téléphonie IP</span>
+          </h2>
+          <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
+            Des solutions complètes pour transformer votre téléphonie
+            d'entreprise : économies garanties et fonctionnalités
+            nouvelle génération.
+          </p>
 
-        {/* Titre de section — aligné gauche + barre rouge */}
-        <div className="flex justify-between items-end mb-16">
-          <h2 className="text-5xl font-black tracking-tighter uppercase text-[#091421]">Nos Solutions Phares</h2>
-          <div className="h-2 w-32 bg-red-primary"></div>
         </div>
 
-        {/* Grille 3 colonnes Stitch */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          {/* ── Module 1 : 3CX PRO (2 colonnes, fond clair) ── */}
-          <div className="md:col-span-2 bg-[#f4f7fa] p-10 lg:p-12 flex flex-col justify-between min-h-[450px]">
-            <div>
-              <div className="w-12 h-12 bg-red-primary/10 flex items-center justify-center mb-8">
-                <i className="lni lni-cloud text-2xl text-red-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-black mb-5 uppercase text-[#091421]">
-                3CX PRO &amp; ENTREPRISE
-              </h3>
-              <p className="text-gray-600 text-base max-w-lg leading-relaxed">
-                Le standard téléphonique IP nouvelle génération. Un PBX cloud dédié
-                pour una flexibilité totale et une réduction massive de vos coûts.
-                Idéal pour les PME multisites.
-              </p>
-            </div>
-            <div className="mt-8">
-              <Link href="/telephonie-3cx" className="monolith-btn">
-                <span className="block bg-[#091421] text-white font-black uppercase text-xs tracking-[0.2em] px-8 py-4">
-                  En savoir plus
-                </span>
-              </Link>
-            </div>
-          </div>
-
-          {/* ── Module 2 : Trunk SIP (1 colonne, fond sombre) ── */}
-          <div className="bg-[#091421] p-10 lg:p-12 flex flex-col justify-between min-h-[450px] text-white">
-            <div>
-              <div className="w-12 h-12 bg-red-primary/20 flex items-center justify-center mb-8">
-                <i className="lni lni-phone-set text-2xl text-red-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl lg:text-2xl font-black mb-4 uppercase">
-                Trunk SIP
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Conservez vos numéros actuels et profitez de la portabilité gratuite.
-                Éligible DOM — Guyane, Martinique, Guadeloupe, Réunion.
-              </p>
-            </div>
-            <div className="mt-8">
-              <Link href="/telephonie-entreprise/trunk-sip-compteur" className="monolith-btn">
-                <span className="block bg-white text-[#091421] font-black uppercase text-[10px] tracking-[0.2em] px-8 py-4">
-                  Voir les offres
-                </span>
-              </Link>
-            </div>
-          </div>
-
-          {/* ── Module 3 : Assistants IA (2 colonnes, image + overlay) ── */}
-          <div className="md:col-span-2 relative p-10 lg:p-12 flex flex-col justify-end min-h-[450px] overflow-hidden">
-            <img
-              src="/images/photos/pexels-ola-dapo-1754561-3345882-min.jpg"
-              alt="Agent vocal IA pour standard téléphonique entreprise en Guadeloupe, Martinique et DOM"
-              className="absolute inset-0 w-full h-full object-cover"
-              aria-hidden="true"
-            />
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {services.map((service, index) => (
             <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, #091421 40%, rgba(9,20,33,0.5) 100%)" }}
-              aria-hidden="true"
-            />
-            <div className="relative z-10">
-              <div className="w-10 h-10 bg-red-primary/20 flex items-center justify-center mb-6">
-                <i className="lni lni-comments-alt text-xl text-red-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-black mb-4 uppercase text-white">
-                Assistants Vocaux IA
-              </h3>
-              <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-lg">
-                Agent vocal IA pour votre standard d&apos;entreprise : accueil,
-                orientation des appels et prise de messages 24h/24 et 7j/7, avec
-                intégration CRM. Déploiement et support opérateur en Guadeloupe,
-                en Martinique et sur l&apos;ensemble du territoire DOM.
-              </p>
-              <div className="flex gap-3 flex-wrap">
-                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
-                  Réception Illimitée
-                </span>
-                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
-                  Analyse Sémantique
-                </span>
-                <span className="bg-white/10 border border-white/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white">
-                  Intégration CRM
-                </span>
-              </div>
-            </div>
-          </div>
+              key={index}
+              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full"
+            >
+              <div className="card-body p-6 flex flex-col flex-grow">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
+                    <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
+                  </div>
+                  <div className="badge badge-primary badge-lg font-medium">
+                    {service.badge}
+                  </div>
+                </div>
 
-          {/* ── Module 4 : Studio (1 colonne, fond rouge) ── */}
-          <div className="bg-red-primary p-10 lg:p-12 flex flex-col justify-between min-h-[450px] text-white">
-            <div>
-              <div className="w-12 h-12 bg-white/20 flex items-center justify-center mb-8">
-                <i className="lni lni-microphone text-2xl text-white" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl lg:text-2xl font-black mb-4 uppercase">
-                Studio vocal — standards téléphoniques
-              </h3>
-              <p className="text-red-100 text-sm leading-relaxed">
-                Enregistrements pro pour votre standard : accueil, SVI, attente
-                et fermeture. Portail automatisé pour écouter des exemples et des
-                productions déjà livrées ; fichiers prêts à installer sur tout
-                IPBX (3CX, Yeastar, etc.).
-              </p>
-            </div>
-            <div className="mt-8">
-              <Link href="/studio-attente" className="monolith-btn">
-                <span className="block bg-white text-red-primary font-black uppercase text-[10px] tracking-[0.2em] px-8 py-4">
-                  Écouter les démos
-                </span>
-              </Link>
-            </div>
-          </div>
+                <h3 className="card-title text-xl mb-3 text-base-content">
+                  {service.title}
+                </h3>
 
+                <p className="text-base-content/70 leading-relaxed mb-6">
+                  {service.description}
+                </p>
+
+                <div className="space-y-3 mb-6 flex-grow">
+                  {service.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm">
+                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <span className="text-base-content/80">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="divider my-4"></div>
+
+                <div className="card-actions flex-col space-y-4 mt-auto">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-lg font-bold text-primary">
+                      {service.price}
+                    </span>
+                  </div>
+
+                  <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
+                    En savoir plus
+                  </CTAButton>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

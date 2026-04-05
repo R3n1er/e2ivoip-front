@@ -26,7 +26,7 @@ export function ContactSection() {
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-none">
+                  <div className="bg-red-100 p-3 rounded-lg">
                     <i className="lni lni-phone w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
@@ -46,7 +46,7 @@ export function ContactSection() {
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-none">
+                  <div className="bg-red-100 p-3 rounded-lg">
                     <i className="lni lni-envelope w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
@@ -69,7 +69,7 @@ export function ContactSection() {
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-none">
+                  <div className="bg-red-100 p-3 rounded-lg">
                     <i className="lni lni-map-marker w-6 h-6 text-red-600"></i>
                   </div>
                   <div>
@@ -89,7 +89,7 @@ export function ContactSection() {
             <Card className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-none">
+                  <div className="bg-red-100 p-3 rounded-lg">
                     <i className="lni lni-timer w-6 h-6 text-red-600"></i>
                   </div>
                   <div>

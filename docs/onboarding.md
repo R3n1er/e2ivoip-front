@@ -13,10 +13,9 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 
 ## 2. Pré-requis & installation
 1. Node.js 22.12.0 (via `.nvmrc`).
-   > **Nouveau depuis mars 2026** : Les secrets sont geres via **dotenvx**.
 2. Cloner le dépôt puis installer les dépendances : `npm install`. Pour les scripts internes : `npm run install:all` (installe les dépendances dans `scripts/`).
-3. **Secrets** : Demander `.env.keys` a l'equipe (canal securise) et le placer a la racine. Ne jamais committer ce fichier. Ancien : ~~Copier `.env.example`~~ → `.env.local` et compléter les clés (Contentful, HubSpot, URLR…).
-4. Lancer : `npm run dev` (port 3000, dechiffrement auto via dotenvx).
+3. Copier `.env.example` → `.env.local` et compléter les clés (Contentful, HubSpot, URLR…).
+4. Démarrer le serveur local : `npm run dev` (port 3000). Le service worker charge `/sw.js` automatiquement en local.
 
 ## 3. Structure du projet
 ```text
@@ -38,20 +37,9 @@ e2ivoip-front/
 └── agents.md            # Procédure de livraison
 ```
 
-## 4. Design System Monolithe 2026
-
-> **IMPORTANT** : Le site suit le Design System "Monolithe Numerique" depuis mars 2026. Tout nouveau composant DOIT respecter ces regles.
-
-- **Philosophie Carree** : `border-radius: 0px` partout (force dans `tailwind.config.js`)
-- **Boutons** : `.monolith-btn` avec hard shadows opaques — jamais de `shadow-lg` ou `hover:scale-105`
-- **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
-- **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
-- **References** : `docs/Design.md`, `docs/CHARTE_GRAPHIQUE.md`, `.stitch/designs/landing-page-desktop.html`
-- **Agents** : `.claude/agents/` contient 5 agents (stitch-compliance, test-matcher, pre-commit-validator, content-writer-seo, security-guardian)
-
-## 5. Layout & navigation
-- `app/layout.tsx` applique les polices Geist, installe `HeaderSimple` + `Footer` sur tout le site, et laisse l'initialisation analytics client a `instrumentation-client.ts` (PostHog).
-- `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) dès le breakpoint **`lg`** ; hamburger et tiroir en dessous de `lg`. CTA contact via lien **`monolith-btn`** (hard shadow) ; « Devis en ligne » en lien texte.
+## 4. Layout & navigation
+- `app/layout.tsx` applique les polices Geist, configure `HubSpotTracking`, `HotjarTracking`, `TawkTo`, et installe `HeaderSimple` + `Footer` sur tout le site.
+- `components/header-simple.tsx` fournit la navigation principale : menu desktop avec sous-menus CSS (offres téléphonie, services, blog) et drawer mobile. CTA contact via `CTAButton`.
 - `components/footer.tsx` rassemble branding, liens utilitaires, coordonnées (vérifier la cohérence des numéros région DOM/France).
 
 ## 5. Pages clés
@@ -78,9 +66,9 @@ Page fallback PWA, propose actions Appeler/Email. Vérifier cohérence des numé
 |-------------|----------|-------|
 | **HubSpot** | `components/hubspot-*`, `app/api/hubspot/*`, `lib/hubspot-blog.ts` | Tracking, formulaires, OAuth blog. Nécessite `HUBSPOT_*` dans `.env.local`.
 | **Contentful** | `lib/contentful-blog.ts`, `scripts/extract-blog-content.js` | Blog marketing. Tokens Delivery/Preview.
-| **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Integration historique actuellement desactivee dans le layout.
+| **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Support chat. Garder IDs à jour.
 | **URLR** | `lib/urlr.ts` | Raccourcis d’articles. Auth utilisateur/password + team.
-| **PostHog & Tally** | `instrumentation-client.ts`, `lib/analytics/*`, composants `tally-*` | Analytics produit, tracking evenementiel, formulaires externes.
+| **Hotjar & Tally** | `components/hotjar-tracking.tsx`, script Tally dans `app/layout.tsx` | Analytics, formulaires externes.
 
 ## 7. Service worker & PWA
 - Fichier `public/sw.js` : cache-first images, network-first API/pages, fallback offline. Prévoit message `SKIP_WAITING`, `GET_CACHE_STATUS`, cleanup périodique.

@@ -1,18 +1,17 @@
 # E2I VoIP - Site Web Moderne
 
-Site web moderne pour E2I VoIP avec Next.js 15, Design System Monolithe 2026, blog HubSpot ISR.
+Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui, avec migration du blog vers Contentful.
 
-## 🚀 Technologies Utilisees
+## 🚀 Technologies Utilisées
 
-- **Framework** : Next.js 15 (App Router, ISR)
-- **Styling** : Tailwind CSS + DaisyUI + @tailwindcss/typography + shadcn/ui
-- **Design System** : Monolithe Numerique 2026 (Stitch)
-- **Blog** : HubSpot CMS API v3 (ISR 10min) — Contentful supprime
-- **CRM** : HubSpot (formulaires, tracking, chat pre-overlay)
-- **Tests** : Jest + Playwright (334 Jest, 67 E2E)
-- **Secrets** : dotenvx (chiffrement `.env`)
-- **Formulaires** : Tally (devis specialises)
-- **Deploiement** : Vercel
+- **Framework** : Next.js 15 (App Router)
+- **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
+- **Animations** : Framer Motion
+- **État** : Zustand (gestion d'état UI)
+- **Tests** : Vitest + Testing Library
+- **CMS** : Contentful (blog) + HubSpot (CRM + Analytics)
+- **Formulaires** : Tally (devis spécialisés)
+- **Automatisation** : n8n (workflows)
 
 ## 🤖 Development Guidelines for AI Assistants
 
@@ -41,93 +40,101 @@ Site web moderne pour E2I VoIP avec Next.js 15, Design System Monolithe 2026, bl
 - Document in /docs automatically
 - Deploy via Vercel integration
 
-## Design System Monolithe 2026
+## Dernières Améliorations
 
-Le site a ete completement redesigne en mars 2026 selon le Design System **"Monolithe Numerique"** (Structuralisme Brutaliste B2B) base sur un template Google Stitch valide.
+### ✅ Phase 8 - Module Pré-Chat V2 avec Animation Intelligente (Terminée)
 
-- **Philosophie Carree** : `border-radius: 0px` partout, coins tranchants
-- **Boutons Monolithe** : Hard shadows opaques + hover mecanique (pression physique)
-- **Grilles Bento** : Layouts asymetriques (`.bento-grid`, `.bento-item-large`, `.bento-item-wide`)
-- **Hero Asymetrique** : Fond sombre `#091421` + grid-lines + layout 60/40
-- **Typographie Dense** : `font-black tracking-[-0.04em]` sur titres, `tracking-[0.2em]` sur CTA
-- **Palette Stricte** : Rouge `#E53E3E` + Bleu Marine `#2D3848` + Blanc — aucun gradient generique
+- **Bouton agrandi** : De 56px à 80px pour meilleure visibilité
+- **Texte attractif** : "Une question ?" avec animation de rebond au-dessus du bouton
+- **Animation par cycles** :
+  - Vibration pendant 3 secondes
+  - Pause de 2 secondes
+  - Répétition pendant 20 secondes maximum (~4 cycles)
+  - Arrêt définitif après clic ou annulation du formulaire
+- **Validation de formulaire** : React Hook Form + Zod pour validation robuste
+- **Intégration HubSpot** : Création automatique de contacts et conversations
+- **Tests complets** : 12 tests Playwright (6 flow + 5 animation + 1 debug)
+- **Performance attendue** : +200-300% de clics, 4 opportunités d'engagement
 
-> Ref : `docs/Design.md`, `docs/CHARTE_GRAPHIQUE.md`, `.stitch/designs/landing-page-desktop.html`
+### ✅ Workflow de Validation Obligatoire (Terminé)
 
-## Dernieres Ameliorations
+- **Validation automatique** : Tests + Lint + Type-check + Security audit + Build
+- **Script dédié** : `validate.sh` avec affichage coloré et rapport détaillé
+- **Hook pre-deploy** : Exécution automatique avant push Git
+- **Commande unique** : `npm run validate` pour valider tous les critères
+- **Documentation** : `docs/WORKFLOW_VALIDATION.md` avec checklist complète
 
-### ✅ Redesign Monolithe 2026 (2026-03-28)
+### ✅ Phase 7 - Résolution Problèmes Techniques & Optimisations (Terminée)
 
-- **Refonte UX/UI complete** : Philosophie Carree, Bento Box, Hard Shadows
-- **Template Stitch** : Integration du design valide Google Stitch
-- **Suppression gradients** : Tous les gradients hors-charte retires
-- **Chat PreOverlay V3** : Redesign Monolithe planifie (bouton rouge plein, 3 champs, scroll trigger)
-- **Tests** : 330 Jest + 74 Playwright au vert
+- **ChunkLoadError résolu** : Simplification configuration webpack Next.js
+- **Page assistance refonte** : Chat Tawk.to intégré, suppression composants défaillants
+- **Configuration NextJS optimisée** : Headers sécurité, compression, redirections
+- **Corrections TypeScript** : Tests et build sans erreurs
+- **Nettoyage codebase** : Suppression composants obsolètes et pages debug
+- **FAQ fonctionnel** : Remplacement accordéon défaillant par composant stable
 
-### ✅ Phase 8 - Module Pre-Chat V2 (2025-10-05)
+### ✅ Phase 6 - Amélioration UX Header (Terminée)
 
-- Bouton 80px + texte "Une question ?" + animation par cycles (20s)
-- Validation React Hook Form + Zod + integration HubSpot
-
-### ✅ Workflow de Validation Obligatoire
-
-- `npm run validate` : Tests + Lint + Type-check + Security + Build
+- **Problème résolu** : Délai trop court des sous-menus empêchant la navigation
+- **Solution** : Délai intelligent de 300ms avec zone de sécurité et gestion d'état avancée
+- **Tests** : 18 tests header UX créés et validés
+- **Menu "Qui sommes-nous"** : Suppression des liens "Notre Histoire" et "Notre équipe" du menu de navigation
+- **Page "Qui sommes-nous"** : Section équipe conservée et testée (4 tests spécifiques)
 
 ## Tests
 
-Le projet utilise **Jest**, **React Testing Library** et **Playwright** pour les tests.
+Le projet utilise **Vitest**, **React Testing Library** et **Playwright** pour les tests.
 
-### Tests Unitaires (Jest)
+### Tests Unitaires et d'Intégration (Vitest)
 
-- **Total** : 330 tests ✅
-- Header, Footer, Services, Homepage, HubSpot, Chat, Pages services
+- **Total des tests** : 158 tests qui passent ✅
+- **Tests header UX** : 18 tests (délai, intégration, hydratation)
+- **Tests page "Qui sommes-nous"** : 4 tests spécifiques
+- **Tests d'hydratation** : Vérification de la cohérence client/serveur
+- **Tests de composants** : Validation des fonctionnalités et de l'accessibilité
 
 ### Tests E2E (Playwright)
 
-- **Total** : 74 tests ✅
-- Homepage, Header, Services, Chat PreOverlay, Tally, Assistants IA
+- **Module pré-chat** : 12 tests
+  - 6 tests de flow complet (ouverture, validation, soumission, erreurs)
+  - 5 tests d'animation par cycles (timing, arrêt, cycles)
+  - 1 test de diagnostic
+- **Couverture** : Parcours utilisateur complet avec validation HubSpot
 
-## 🔐 Gestion des Secrets (dotenvx)
+## 📋 Prérequis
 
-Les secrets sont chiffres dans `.env` via **dotenvx**. Le fichier `.env` est committe (chiffre), la cle de dechiffrement `.env.keys` reste locale.
-
-```bash
-# Dechiffrer pour editer
-npx dotenvx decrypt
-
-# Editer les variables...
-
-# Re-chiffrer
-npx dotenvx encrypt
-
-# Les scripts npm dechiffrent automatiquement
-npm run dev   # → dotenvx run -- next dev
-```
-
-**Pour un nouveau developpeur** : Demander le fichier `.env.keys` a un membre de l'equipe (canal securise). Le placer a la racine du projet.
-
-**Variables requises** :
-- `HUBSPOT_ACCESS_TOKEN` — Private App Token (portail 26878201, pat-eu1-*)
-
-**Fichiers de config locaux (non committes)** :
-- `.env.keys` — Cle privee dotenvx
-- `.env.local` — Overrides locaux (optionnel)
-- `.mcp.json` — Config MCP servers (contient tokens)
-
-## 📋 Prerequis
-
-- Node.js 22.12.0 (via `.nvmrc`)
-- npm
-- Fichier `.env.keys` (demander a l'equipe)
+- Node.js 22.12.0 (LTS)
+- npm ou yarn
+- Compte HubSpot
+- Compte Tally
+- Instance n8n
 
 ## 🛠️ Installation
 
+1. **Cloner le repository**
+
 ```bash
-git clone https://github.com/R3n1er/e2ivoip-front.git
+git clone https://github.com/alban/e2ivoip-front.git
 cd e2ivoip-front
-npm install
-# Placer .env.keys a la racine (recu de l'equipe)
-npm run dev
+```
+
+2. **Installer toutes les dépendances**
+
+```bash
+npm run install:all
+```
+
+3. **Configurer les variables d'environnement**
+
+```bash
+cp env.example .env.local
+# Éditer .env.local avec vos clés API
+```
+
+4. **Vérifier la configuration**
+
+```bash
+node scripts/check-setup.js
 ```
 
 ## 🏃‍♂️ Démarrage Rapide
@@ -162,7 +169,11 @@ npm run test:e2e:ui
 npm run test:all
 ```
 
-**Statut des tests** : ✅ 330 tests Jest + 74 tests Playwright
+**Statut des tests** : ✅ 158 tests Vitest + 12 tests Playwright
+
+- **Header UX** : 18 tests (délai, intégration, hydratation)
+- **Composants** : 140 tests (fonctionnalités, responsive, accessibilité)
+- **Module pré-chat** : 12 tests E2E (flow, animation, diagnostic)
 
 ### Build de production
 
@@ -226,13 +237,19 @@ NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 
 - Le backend Strapi est supprimé. Nous allons implémenter un service `lib/contentful-blog.ts` (delivery API) et scripts d'import ultérieurement si nécessaire (Management API).
 
-## 🧪 Commandes de Tests
+## 🧪 Tests
+
+Le projet utilise Vitest pour les tests unitaires :
 
 ```bash
-npm run test:ci       # Tests Jest avec couverture
-npm run test:e2e      # Tests Playwright E2E
-npm run test:all      # Jest + Playwright
-npm run validate      # Lint + Type-check + Tests + Security + Build
+# Exécuter tous les tests
+npm test
+
+# Tests en mode watch
+npm test -- --watch
+
+# Tests avec couverture
+npm run test:coverage
 ```
 
 ## 📚 Documentation
@@ -280,7 +297,8 @@ Pour toute question ou support, contactez l'équipe de développement.
 
 ## 🎯 Statut du Projet
 
-- **Sprints 1-4** : ✅ Termines (Fondations, Homepage, Features, Migration Contentful)
-- **Sprint 5** : ✅ Termine (Optimisations, Pre-Chat V2, Workflow Validation)
-- **Redesign Monolithe 2026** : ✅ Fondations (Philosophie Carree, Bento, Hard Shadows)
-- **Alignement Stitch** : ⏳ En cours (voir `docs/implementation.md` — 9 phases)
+- **Sprint 1** : ✅ Terminé (Fondations)
+- **Sprint 2** : ✅ Terminé (Homepage modernisée)
+- **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
+- **Sprint 4** : ✅ **Terminé** (Migration Contentful + UI/UX)
+- **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)

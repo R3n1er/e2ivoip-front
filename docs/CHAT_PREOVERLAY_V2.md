@@ -1,9 +1,5 @@
 # Module Pré-Chat V2 - Améliorations UX
 
-> [!CAUTION]
-> **PARTIELLEMENT OBSOLETE (2026-03-29)** — Ce document decrit la V2 du module pre-chat. Une V3 "Monolithe" est planifiee (voir `docs/implementation.md` Phase 1.5 et `docs/Design.md` section 7.5bis).
-> **Changements V3 planifies** : Bouton rouge plein (plus de gradient), formulaire 3 champs (plus 5), declenchement scroll post-Hero (plus chargement immediat), suppression classes DaisyUI, style Monolithe complet.
-
 **Date**: 2025-10-05
 **Version**: 2.0
 **Composant**: `components/chat-preoverlay.tsx`

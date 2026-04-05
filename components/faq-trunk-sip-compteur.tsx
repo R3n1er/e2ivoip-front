@@ -91,7 +91,7 @@ const faqData: FAQItem[] = [
           <li>✓ <strong>Transparence totale</strong> : facture détaillée avec chaque appel</li>
           <li>✓ <strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</li>
         </ul>
-        <p className="text-sm bg-red-primary/5 p-3 rounded-none border-l-4 border-red-primary/60 text-gray-700">
+        <p className="text-sm bg-red-primary/5 p-3 rounded-lg border-l-4 border-red-primary/60 text-gray-700">
           <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
           vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
         </p>
@@ -121,7 +121,7 @@ export default function TrunkSipCompteurFAQ() {
         {faqData.map((item, index) => (
           <details 
             key={index}
-            className="group bg-white rounded-none border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
+            className="group bg-white rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
           >
             <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
               <span className="font-semibold text-gray-dark pr-4">

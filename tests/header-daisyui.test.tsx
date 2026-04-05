@@ -59,12 +59,10 @@ describe("Header DaisyUI avec sous-menus", () => {
 
     // Vérifier les icônes chevron-down
     const chevrons = document.querySelectorAll('[data-testid^="icon-chevron-down"]');
-    expect(chevrons.length).toBe(4); // 4 menus avec sous-menus : Qui sommes-nous, Trunk SIP, Téléphonie d'entreprise, Nos services
+    expect(chevrons.length).toBe(3); // 3 menus avec sous-menus
 
-    // Verifier les 3 elements CTA (Espace Client + Devis + Contact) — Stitch 2026
-    expect(screen.getByTestId("header-espace-client-link")).toBeInTheDocument();
-    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
-    expect(screen.getByTestId("header-contact-button")).toBeInTheDocument();
+    // Vérifier les icônes de téléphone
+    expect(screen.getAllByTestId("icon-lni-phone")).toHaveLength(2); // desktop + mobile
   });
 
   test("Les liens de navigation sont correctement configurés", () => {
@@ -76,7 +74,6 @@ describe("Header DaisyUI avec sous-menus", () => {
     expect(screen.getByTestId("nav-link-blog")).toHaveAttribute("href", "/blog");
     
     // Vérifier les dropdowns
-    expect(screen.getByTestId("nav-dropdown-trunk-sip")).toBeInTheDocument();
     expect(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise")).toBeInTheDocument();
   });
 
@@ -88,14 +85,9 @@ describe("Header DaisyUI avec sous-menus", () => {
       expect(screen.getByTestId("submenu-link-nos-certifications")).toBeInTheDocument();
     });
 
-    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-trunk-sip"));
-    await waitFor(() => {
-      expect(screen.getByTestId("submenu-link-trunk-sip-au-compteur")).toBeInTheDocument();
-    });
-
     fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
     await waitFor(() => {
-      expect(screen.getByTestId("submenu-link-3cx-pro-dédiée")).toBeInTheDocument();
+      expect(screen.getByTestId("submenu-link-trunk-sip-au-compteur")).toBeInTheDocument();
     });
 
     fireEvent.mouseEnter(screen.getByTestId("nav-link-nos-services"));
@@ -126,7 +118,7 @@ describe("Header DaisyUI avec sous-menus", () => {
     
     // Vérifier le bouton contact desktop
     const contactButton = screen.getByTestId("header-contact-button");
-    expect(contactButton).toHaveClass("monolith-btn", "bg-red-primary");
+    expect(contactButton).toHaveClass("btn", "btn-primary");
     
     // Vérifier le bouton mobile
     const mobileButton = screen.getByTestId("mobile-menu-button");
@@ -173,12 +165,11 @@ describe("Header DaisyUI avec sous-menus", () => {
     const menus = document.querySelectorAll('.menu');
     expect(menus.length).toBeGreaterThan(0);
 
-    // Vérifier les classes DaisyUI correctes (menu sur <ul> à l'intérieur du dropdown)
+    // Vérifier les classes DaisyUI correctes
     await waitFor(() => {
       const dropdownContents = document.querySelectorAll('.dropdown-content');
-      dropdownContents.forEach((content) => {
-        expect(content).toHaveClass('bg-base-100', 'rounded-none');
-        expect(content.querySelector('ul.menu')).toBeInTheDocument();
+      dropdownContents.forEach(content => {
+        expect(content).toHaveClass('menu', 'bg-base-100', 'rounded-box');
       });
     });
   });

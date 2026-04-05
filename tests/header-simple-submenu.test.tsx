@@ -38,7 +38,6 @@ describe("HeaderSimple - Sous-menus", () => {
     
     // Vérifier les éléments de navigation principaux
     expect(screen.getByText("Qui sommes-nous")).toBeInTheDocument();
-    expect(screen.getByText("Trunk SIP")).toBeInTheDocument();
     expect(screen.getByText("Téléphonie d'entreprise")).toBeInTheDocument();
     expect(screen.getByText("Nos services")).toBeInTheDocument();
     // « Mobilité » supprimé du menu
@@ -50,9 +49,8 @@ describe("HeaderSimple - Sous-menus", () => {
 
     expect(screen.getByText("Trunk SIP au compteur")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP illimité")).toBeInTheDocument();
-    expect(screen.getByText("3CX PRO dédiée")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB mutualisée")).toBeInTheDocument();
-    expect(screen.getByText("PBX Yeastar")).toBeInTheDocument();
+    expect(screen.getByText("Téléphonie 3CX")).toBeInTheDocument();
+    expect(screen.getByText("Téléphonie Yeastar")).toBeInTheDocument();
     expect(screen.getByText("Studio attente téléphonique")).toBeInTheDocument();
     expect(screen.getByText("Assistants vocaux IA")).toBeInTheDocument();
   });
@@ -102,13 +100,11 @@ describe("HeaderSimple - Sous-menus", () => {
   test("Les sous-liens ont les bonnes URLs", () => {
     render(<HeaderSimple />);
     
-    const trunkOverview = screen.getByTestId("header-simple-nav-trunk-sip");
-    expect(trunkOverview).toHaveAttribute("href", "/telephonie-entreprise/trunk-sip");
-
+    // Vérifier les sous-liens
     const trunkSipLink = screen.getByRole("link", { name: /trunk sip au compteur/i });
     expect(trunkSipLink).toHaveAttribute("href", "/telephonie-entreprise/trunk-sip-compteur");
 
-    const telephonie3cxLink = screen.getByRole("link", { name: /3cx pro dédiée/i });
+    const telephonie3cxLink = screen.getByRole("link", { name: /téléphonie 3cx/i });
     expect(telephonie3cxLink).toHaveAttribute("href", "/telephonie-3cx");
   });
 });

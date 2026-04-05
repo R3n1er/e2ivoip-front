@@ -222,7 +222,7 @@ export default function WorkingFAQ() {
         {faqData.map((item, index) => (
           <details 
             key={index}
-            className="group bg-white rounded-none border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
+            className="group bg-white rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
           >
             <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
               <span className="font-semibold text-gray-900 pr-4">

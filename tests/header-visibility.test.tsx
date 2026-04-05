@@ -4,7 +4,7 @@ describe('Header Visibility Fix', () => {
   it('should have proper background classes', () => {
     // Test pour vérifier que les classes CSS sont correctes
     const backgroundClasses = {
-      scrolled: 'bg-white/95 backdrop-blur-md border-b border-gray-200',
+      scrolled: 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200',
       notScrolled: 'bg-white/10 backdrop-blur-sm border-b border-white/20'
     }
     

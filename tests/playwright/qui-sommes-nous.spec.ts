@@ -72,7 +72,7 @@ test.describe("Page Qui sommes-nous", () => {
 
   test("propose des appels à l'action pertinents", async ({ page }) => {
     await expect(
-      page.getByRole("link", { name: /Accéder au support complet/i })
+      page.getByRole("button", { name: /Accéder au support complet/i })
     ).toBeVisible();
     await expect(
       page.getByRole("link", { name: /Calculez vos économies/i })

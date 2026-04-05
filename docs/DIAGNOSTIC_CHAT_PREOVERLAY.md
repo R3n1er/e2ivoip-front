@@ -1,13 +1,8 @@
 # Diagnostic Module Pré-Chat - E2I VoIP
 
-> [!CAUTION]
-> **OBSOLETE (2026-03-29)** — Ce diagnostic concerne la V2 du module pre-chat (gradient, 5 champs, declenchement immediat).
-> La V3 "Monolithe" est implementee : bouton rouge plein + hard shadow, 3 champs (Prenom/Email/Entreprise), declenchement par Intersection Observer post-Hero.
-> Voir `docs/Design.md` section 7.5bis et `docs/implementation.md` Phase 1.5 pour les specs V3.
-
 **Date**: 2025-10-05
 **Composant**: `components/chat-preoverlay.tsx`
-**Status**: ✅ Fonctionnel (V3 Monolithe deployee)
+**Status**: ✅ Fonctionnel
 
 ## 🔍 Résumé du Diagnostic
 

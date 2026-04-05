@@ -80,7 +80,7 @@ export function OptimizedBlogImage({
     <div
       ref={imageRef}
       className={cn(
-        "relative overflow-hidden rounded-none",
+        "relative overflow-hidden rounded-lg",
         !isLoaded && "bg-gray-200 animate-pulse",
         className
       )}

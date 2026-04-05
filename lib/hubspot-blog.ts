@@ -1,276 +1,232 @@
-// lib/hubspot-blog.ts
-// HubSpot CMS Blog API v3 — ISR (revalidate: 600s)
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-export interface HubSpotBlogPost {
-  id: string;
-  name: string;
-  slug: string;
-  postBody: string;
-  postSummary?: string;
-  metaDescription?: string;
-  htmlTitle?: string;
-  publishDate: string;
-  updated: string;
-  blogAuthorId?: string;
-  featuredImage?: string;
-  featuredImageAltText?: string;
-  tagIds?: string[];
-  url?: string;
-  state?: string;
-  archived?: boolean;
-}
-
-export interface BlogTag {
-  id: string;
-  name: string;
-  slug: string;
-}
-
-export interface BlogListResponse {
-  posts: BlogPost[];
-  tags: BlogTag[];
-  total: number;
-  page: number;
-  pageSize: number;
-  hasNextPage: boolean;
-}
-
 export interface BlogPost {
   id: string;
   title: string;
-  slug: string;
   excerpt: string;
-  htmlContent: string;
+  content: string;
   publishDate: string;
   modifiedDate: string;
   author: string;
   authorId: string;
   tags: string[];
-  tagIds: string[];
-  featuredImage: string;
-  featuredImageAltText: string;
-  metaDescription: string;
-  seoTitle: string;
-  readingTime: number;
+  categories: string[];
+  slug: string;
   url: string;
+  featuredImage?: string;
+  metaDescription?: string;
+  seoTitle?: string;
 }
 
-// ---------------------------------------------------------------------------
-// Config
-// ---------------------------------------------------------------------------
+interface HubSpotBlogPost {
+  id: string;
+  name: string;
+  postSummary?: string;
+  postBody?: string;
+  publishDate?: string;
+  updated?: string;
+  blogAuthorId?: string;
+  tagIds?: string[];
+  slug?: string;
+  url?: string;
+  featuredImage?: string;
+  metaDescription?: string;
+  htmlTitle?: string;
+}
 
-export const HUBSPOT_BLOG_CONFIG = {
-  baseUrl: "https://api.hubapi.com",
-  endpoints: {
-    posts: "/cms/v3/blogs/posts",
-    tags: "/cms/v3/blogs/tags",
-  },
-  defaultPageSize: 12,
-  revalidate: 600,
-} as const;
+// Configuration de l'application HubSpot via variables d'environnement
+const getHubSpotConfig = () => {
+  const clientId = process.env.HUBSPOT_CLIENT_ID;
+  const clientSecret = process.env.HUBSPOT_CLIENT_SECRET;
+  const redirectUri = process.env.HUBSPOT_REDIRECT_URI;
 
-// ---------------------------------------------------------------------------
-// Internal fetch helper
-// ---------------------------------------------------------------------------
-
-async function hubspotFetch<T>(
-  endpoint: string,
-  params: Record<string, string> = {}
-): Promise<T> {
-  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN;
-  if (!accessToken) {
-    throw new Error("HUBSPOT_ACCESS_TOKEN is required");
+  if (!clientId || !clientSecret || !redirectUri) {
+    throw new Error(
+      "HUBSPOT_CLIENT_ID, HUBSPOT_CLIENT_SECRET, and HUBSPOT_REDIRECT_URI are required"
+    );
   }
 
-  const url = new URL(`${HUBSPOT_BLOG_CONFIG.baseUrl}${endpoint}`);
-  Object.entries(params).forEach(([key, value]) => {
-    url.searchParams.set(key, value);
+  return {
+    clientId,
+    clientSecret,
+    redirectUri,
+    scopes: [
+      "content",
+      "cms.blog.read",
+      "cms.blog_posts.read",
+      "cms.domains.read",
+      "cms.functions.read",
+      "cms.knowledge_base.articles.read",
+      "cms.knowledge_base.settings.read",
+      "cms.membership.access_groups.read",
+      "cms.performance.read",
+      "oauth",
+    ],
+  };
+};
+
+const getHubSpotAccessToken = () => {
+  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN;
+  if (!accessToken) {
+    throw new Error(
+      "HUBSPOT_ACCESS_TOKEN is required for OAuth authentication"
+    );
+  }
+  return accessToken;
+};
+
+// Fonction pour obtenir l'URL d'autorisation OAuth
+export function getHubSpotAuthUrl(): string {
+  const config = getHubSpotConfig();
+  const params = new URLSearchParams({
+    client_id: config.clientId,
+    redirect_uri: config.redirectUri,
+    scope: config.scopes.join(" "),
+    response_type: "code",
   });
 
-  const response = await fetch(url.toString(), {
+  return `https://app.hubspot.com/oauth/authorize?${params.toString()}`;
+}
+
+// Fonction pour échanger le code d'autorisation contre un access token
+export async function exchangeCodeForToken(code: string): Promise<string> {
+  const config = getHubSpotConfig();
+  const response = await fetch("https://api.hubapi.com/oauth/v1/token", {
+    method: "POST",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    next: { revalidate: HUBSPOT_BLOG_CONFIG.revalidate },
+    body: new URLSearchParams({
+      grant_type: "authorization_code",
+      client_id: config.clientId,
+      client_secret: config.clientSecret,
+      redirect_uri: config.redirectUri,
+      code: code,
+    }),
   });
 
   if (!response.ok) {
     throw new Error(
-      `HubSpot API error ${response.status}: ${response.statusText}`
+      `Failed to exchange code for token: ${response.statusText}`
     );
   }
 
-  return response.json() as Promise<T>;
+  const data = await response.json();
+  return data.access_token;
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+// Fonction pour récupérer les articles de blog via API REST
+async function fetchHubSpotBlogPosts(
+  limit: number = 100
+): Promise<HubSpotBlogPost[]> {
+  const accessToken = getHubSpotAccessToken();
 
-export function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  const response = await fetch(
+    `https://api.hubapi.com/cms/v3/blogs/posts?limit=${limit}&archived=false&state=PUBLISHED`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch blog posts: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.results || [];
 }
 
-export function calculateReadingTime(text: string): number {
-  const WORDS_PER_MINUTE = 200;
-  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
+// Fonction pour récupérer un article spécifique via API REST
+async function fetchHubSpotBlogPost(
+  postId: string
+): Promise<HubSpotBlogPost | null> {
+  const accessToken = getHubSpotAccessToken();
+
+  const response = await fetch(
+    `https://api.hubapi.com/cms/v3/blogs/posts/${postId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (!response.ok) {
+    if (response.status === 404) {
+      return null;
+    }
+    throw new Error(`Failed to fetch blog post: ${response.statusText}`);
+  }
+
+  return await response.json();
 }
 
-/** Strip the `blog/` prefix that HubSpot prepends to slugs. */
-export function cleanSlug(rawSlug: string): string {
-  return rawSlug.replace(/^blog\//, "");
-}
-
-export function mapHubSpotPost(raw: HubSpotBlogPost): BlogPost {
-  const plainText = stripHtml(raw.postBody || "");
-
-  // Prefer metaDescription, fall back to first 160 chars of postBody text
-  const excerpt =
-    raw.metaDescription && raw.metaDescription.trim()
-      ? raw.metaDescription.trim()
-      : plainText.slice(0, 160).trimEnd() +
-        (plainText.length > 160 ? "…" : "");
-
-  return {
-    id: raw.id,
-    title: raw.name || "",
-    slug: cleanSlug(raw.slug || ""),
-    excerpt,
-    htmlContent: raw.postBody || "",
-    publishDate: raw.publishDate || "",
-    modifiedDate: raw.updated || "",
-    author: "E2I VoIP",
-    authorId: raw.blogAuthorId || "",
-    tags: [],
-    tagIds: raw.tagIds || [],
-    featuredImage: raw.featuredImage || "",
-    featuredImageAltText: raw.featuredImageAltText || raw.name || "",
-    metaDescription: raw.metaDescription || excerpt,
-    seoTitle: raw.htmlTitle || raw.name || "",
-    readingTime: calculateReadingTime(plainText),
-    url: raw.url || "",
-  };
-}
-
-// ---------------------------------------------------------------------------
-// Public API functions
-// ---------------------------------------------------------------------------
-
-export async function getHubSpotBlogTags(): Promise<BlogTag[]> {
+export async function getHubSpotBlogPosts(
+  limit: number = 100
+): Promise<BlogPost[]> {
   try {
-    const data = await hubspotFetch<{ results: BlogTag[] }>(
-      HUBSPOT_BLOG_CONFIG.endpoints.tags,
-      { limit: "100", archived: "false" }
-    );
-    return data.results || [];
+    const posts = await fetchHubSpotBlogPosts(limit);
+
+    return posts.map((post: HubSpotBlogPost) => ({
+      id: post.id || "",
+      title: post.name || "",
+      excerpt: post.postSummary || post.metaDescription || "",
+      content: post.postBody || "",
+      publishDate: post.publishDate || "",
+      modifiedDate: post.updated || "",
+      author: post.blogAuthorId || "E2I VoIP",
+      authorId: post.blogAuthorId || "",
+      tags: post.tagIds || [],
+      categories: [],
+      slug: post.slug || "",
+      url: post.url || "",
+      featuredImage: post.featuredImage || "",
+      metaDescription: post.metaDescription || "",
+      seoTitle: post.htmlTitle || post.name || "",
+    }));
   } catch (error) {
-    console.error("getHubSpotBlogTags error:", error);
+    console.error(
+      "Erreur lors de la récupération des articles HubSpot:",
+      error
+    );
     return [];
   }
 }
 
-export interface GetBlogPostsOptions {
-  page?: number;
-  pageSize?: number;
-  tag?: string;
-  search?: string;
-}
-
-export async function getHubSpotBlogPosts(
-  options: GetBlogPostsOptions = {}
-): Promise<BlogListResponse> {
-  const {
-    page = 1,
-    pageSize = HUBSPOT_BLOG_CONFIG.defaultPageSize,
-    tag,
-    search,
-  } = options;
-
-  const offset = (page - 1) * pageSize;
-
-  const postParams: Record<string, string> = {
-    limit: String(pageSize),
-    offset: String(offset),
-    archived: "false",
-    state: "PUBLISHED",
-    sort: "-publishDate",
-  };
-
-  if (tag) {
-    postParams["tagId"] = tag;
-  }
-
-  if (search) {
-    postParams["name__icontains"] = search;
-  }
-
+export async function getHubSpotBlogPost(
+  postId: string
+): Promise<BlogPost | null> {
   try {
-    const [postsData, tags] = await Promise.all([
-      hubspotFetch<{ results: HubSpotBlogPost[]; total: number }>(
-        HUBSPOT_BLOG_CONFIG.endpoints.posts,
-        postParams
-      ),
-      getHubSpotBlogTags(),
-    ]);
+    const post = await fetchHubSpotBlogPost(postId);
 
-    const posts = (postsData.results || []).map(mapHubSpotPost);
-    const total = postsData.total || 0;
-
-    return {
-      posts,
-      tags,
-      total,
-      page,
-      pageSize,
-      hasNextPage: offset + pageSize < total,
-    };
-  } catch (error) {
-    console.error("getHubSpotBlogPosts error:", error);
-    return {
-      posts: [],
-      tags: [],
-      total: 0,
-      page,
-      pageSize,
-      hasNextPage: false,
-    };
-  }
-}
-
-/**
- * Fetch a single blog post by its clean slug (without the `blog/` prefix).
- * Searches the HubSpot API using the full slug `blog/{slug}`.
- */
-export async function getHubSpotBlogPost(slug: string): Promise<BlogPost | null> {
-  try {
-    const fullSlug = `blog/${slug}`;
-
-    const data = await hubspotFetch<{ results: HubSpotBlogPost[] }>(
-      HUBSPOT_BLOG_CONFIG.endpoints.posts,
-      {
-        slug: fullSlug,
-        archived: "false",
-        limit: "1",
-      }
-    );
-
-    const results = data.results || [];
-    if (results.length === 0) {
+    if (!post) {
       return null;
     }
 
-    return mapHubSpotPost(results[0]);
+    return {
+      id: post.id || "",
+      title: post.name || "",
+      excerpt: post.postSummary || post.metaDescription || "",
+      content: post.postBody || "",
+      publishDate: post.publishDate || "",
+      modifiedDate: post.updated || "",
+      author: post.blogAuthorId || "E2I VoIP",
+      authorId: post.blogAuthorId || "",
+      tags: post.tagIds || [],
+      categories: [],
+      slug: post.slug || "",
+      url: post.url || "",
+      featuredImage: post.featuredImage || "",
+      metaDescription: post.metaDescription || "",
+      seoTitle: post.htmlTitle || post.name || "",
+    };
   } catch (error) {
-    console.error(`getHubSpotBlogPost(${slug}) error:`, error);
+    console.error(
+      `Erreur lors de la récupération de l'article ${postId} :`,
+      error
+    );
     return null;
   }
 }

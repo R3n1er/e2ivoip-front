@@ -76,7 +76,7 @@ describe("ContactPage - Section Nos Implantations", () => {
     render(<ContactPage />);
 
     const section = document.querySelector(
-      "section.bg-\\[\\#091421\\]"
+      "section.bg-gradient-to-r.from-red-primary.to-blue-marine"
     );
     expect(section).toBeInTheDocument();
   });

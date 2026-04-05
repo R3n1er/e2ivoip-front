@@ -10,10 +10,8 @@ out/
 build/
 dist/
 
-# Environment variables (dotenvx: .env is encrypted and SAFE to commit)
-# .env          <- now encrypted, committed
-.env.keys       # private decryption key — NEVER commit
-.env.local      # local overrides — never commit
+# Environment variables
+.env
 # Local overrides
 .env.local
 .env.local.backup
@@ -99,9 +97,6 @@ jspm_packages/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# MCP config (contains API keys)
-.mcp.json
 
 # IDE
 .vscode/

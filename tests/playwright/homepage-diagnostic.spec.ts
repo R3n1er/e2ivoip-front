@@ -26,12 +26,11 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       consoleErrors.push(`Page Error: ${error.message}`);
     });
 
-    // Charger la page (networkidle est souvent impossible avec analytics / HubSpot)
+    // Charger la page
     await page.goto("http://localhost:3000", {
-      waitUntil: "load",
+      waitUntil: "networkidle",
       timeout: 30000,
     });
-    await page.waitForTimeout(1500);
 
     // Vérifier que la page est chargée
     await expect(page).toHaveTitle(/E2I VoIP/);
@@ -88,17 +87,14 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
   test("devrait charger les styles correctement", async ({ page }) => {
     await page.goto("http://localhost:3000");
 
-    // Le layout applique souvent le fond sur les enfants (flex) ; vérifier html + body
-    const pageBg = await page.evaluate(() => {
-      const h = getComputedStyle(document.documentElement).backgroundColor;
-      const b = getComputedStyle(document.body).backgroundColor;
-      return { h, b };
-    });
-    const hasVisibleBg =
-      pageBg.h !== "rgba(0, 0, 0, 0)" ||
-      pageBg.b !== "rgba(0, 0, 0, 0)" ||
-      (await page.locator("#accueil").count()) > 0;
-    expect(hasVisibleBg).toBeTruthy();
+    // Vérifier que les styles sont appliqués
+    const body = page.locator("body");
+    const backgroundColor = await body.evaluate(
+      (el) => window.getComputedStyle(el).backgroundColor
+    );
+
+    // Vérifier qu'une couleur est appliquée (pas transparent)
+    expect(backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
   });
 
   test("devrait charger les images sans erreur", async ({ page }) => {
@@ -113,8 +109,10 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       }
     });
 
-    await page.goto("http://localhost:3000", { waitUntil: "load" });
-    await page.waitForTimeout(2000);
+    await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+
+    // Attendre que toutes les images soient chargées
+    await page.waitForLoadState("load");
 
     expect(
       imageErrors,
@@ -122,7 +120,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
     ).toHaveLength(0);
   });
 
-  test("devrait charger les scripts externes critiques sans erreur", async ({
+  test("devrait charger les scripts externes (Hotjar, etc.)", async ({
     page,
   }) => {
     const scriptErrors: string[] = [];
@@ -136,21 +134,19 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       }
     });
 
-    await page.goto("http://localhost:3000", { waitUntil: "load" });
-    await page.waitForTimeout(2000);
+    await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
 
-    const appBundleErrors = scriptErrors.filter((e) => e.includes("/_next/static"));
     expect(
-      appBundleErrors,
-      `Bundles Next non chargés: ${appBundleErrors.join("\n")}`
+      scriptErrors,
+      `Scripts non chargés: ${scriptErrors.join("\n")}`
     ).toHaveLength(0);
   });
 
   test("devrait avoir le ChatPreOverlay fonctionnel", async ({ page }) => {
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await page.getByRole("heading", { name: /Ils nous font confiance/i }).scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
+
+    // Attendre que le composant ChatPreOverlay soit présent
+    await page.waitForTimeout(2000);
 
     // Vérifier la présence du bouton de chat
     const chatButton = page.locator('[data-testid="open-chat-button"]');

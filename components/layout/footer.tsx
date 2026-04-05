@@ -1,49 +1,83 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ThreeCXBadge } from "@/components/ui/3cx-badge";
 
 export function Footer() {
   return (
-    <footer className="bg-white text-gray-dark border-t border-[#091421]/10">
-      <div className="max-w-7xl mx-auto py-20 px-8">
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-1 flex flex-col">
-            <div className="mb-6">
-              <Image
-                src="/logo_e2i-voip_compress.png"
-                alt="E2I VoIP — Téléphonie IP entreprise"
-                width={200}
-                height={50}
-                className="h-12 w-auto"
-              />
+          <div className="lg:col-span-1">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="text-2xl lg:text-3xl font-bold">
+                <span className="text-red-500">E</span>
+                <span className="text-white">2</span>
+                <span className="text-red-500">I</span>
+              </div>
             </div>
-            <p className="text-gray-500 mb-8 text-sm leading-relaxed">
-              Opérateur télécom et intégrateur de téléphonie IP
-              en outre-mer et en France.
+            <p className="text-gray-400 mb-6 text-sm lg:text-base">
+              Solutions de téléphonie IP et communications d'entreprise depuis
+              plus de 15 ans.
             </p>
 
-            {/* Nous contacter */}
-            <div className="mt-auto pt-4 border-t border-[#091421]/10">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-4 flex items-center">
-                <i className="lni lni-phone w-4 h-4 text-red-primary mr-2"></i>
+            {/* 3CX Bronze Partner Badge */}
+            <div className="mb-6">
+              <ThreeCXBadge />
+            </div>
+
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center space-x-3">
+                <i className="lni lni-envelope w-4 h-4 text-red-500 flex-shrink-0"></i>
+                <span>contact@e2i-voip.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <i className="lni lni-map-marker w-4 h-4 text-red-500 flex-shrink-0"></i>
+                <span>Paris, France</span>
+              </div>
+            </div>
+
+            {/* Section Nous contacter avec dégradé */}
+            <div className="mt-6 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-semibold text-white mb-4 flex items-center">
+                <i className="lni lni-phone w-4 h-4 text-red-500 mr-2"></i>
                 Nous contacter
               </h4>
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-500 font-medium">Guyane :</span>
-                  <span className="text-gray-dark font-semibold">+594 594 963 500</span>
+                  <span className="text-gray-300 font-medium">Guyane :</span>
+                  <span className="text-white font-semibold">
+                    +594 594 963 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-500 font-medium">Guadeloupe :</span>
-                  <span className="text-gray-dark font-semibold">+590 590 173 500</span>
+                  <span className="text-gray-300 font-medium">
+                    Guadeloupe :
+                  </span>
+                  <span className="text-white font-semibold">
+                    +590 590 173 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-500 font-medium">Martinique :</span>
-                  <span className="text-gray-dark font-semibold">+596 596 313 500</span>
+                  <span className="text-gray-300 font-medium">
+                    Martinique :
+                  </span>
+                  <span className="text-white font-semibold">
+                    +596 596 313 500
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="text-gray-500 font-medium">France :</span>
-                  <span className="text-gray-dark font-semibold">+33 1 89 56 05 00</span>
+                  <span className="text-gray-300 font-medium">France :</span>
+                  <span className="text-white font-semibold">
+                    +33 1 XX XX XX XX
+                  </span>
+                </div>
+              </div>
+              <div className="mt-3 pt-2 border-t border-gray-600">
+                <div className="flex items-center space-x-2">
+                  <i className="lni lni-envelope w-3 h-3 text-red-500 flex-shrink-0"></i>
+                  <span className="text-gray-300 text-xs">
+                    assistance@e2i-voip.com
+                  </span>
                 </div>
               </div>
             </div>
@@ -51,62 +85,54 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-6">
-              Services
-            </h3>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h3 className="text-lg font-semibold mb-4 text-white">Services</h3>
+            <ul className="space-y-3 text-sm text-gray-400">
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-compteur"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Trunk SIP au compteur
                 </Link>
               </li>
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-illimite"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Trunk SIP illimité
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/telephonie-3cx"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  href="/telephonie-entreprise/3cx-pro-dediee"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   3CX PRO dédiée
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/telephonie-entreprise/3cx-smb-mutualisee"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  href="/telephonie-entreprise/3cx-smb-pro"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  3CX SMB mutualisée
+                  3CX SMB PRO
                 </Link>
               </li>
               <li>
                 <Link
                   href="/telephonie-entreprise/pbx-yeastar"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   PBX Yeastar
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/studio-attente"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  href="/nos-services/studio-attente"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Studio d&apos;attente
+                  Studio attente téléphonique
                 </Link>
               </li>
             </ul>
@@ -114,124 +140,110 @@ export function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-6">
-              Support
-            </h3>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h3 className="text-lg font-semibold mb-4 text-white">Support</h3>
+            <ul className="space-y-3 text-sm text-gray-400">
               <li>
                 <Link
                   href="/support/documentation"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Documentation
                 </Link>
               </li>
               <li>
                 <Link
                   href="/support/faq"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   FAQ
                 </Link>
               </li>
               <li>
                 <Link
                   href="/support/technique"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Support technique
                 </Link>
               </li>
               <li>
                 <Link
                   href="/support/formation"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Formation
                 </Link>
               </li>
               <li>
                 <Link
                   href="/support/garanties"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Garanties
                 </Link>
               </li>
               <li>
                 <Link
                   href="/devis-en-ligne"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Devis en ligne
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Informations */}
+          {/* Legal & RGPD */}
           <div>
-            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-red-primary mb-6">
+            <h3 className="text-lg font-semibold mb-4 text-white">
               Informations
             </h3>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <ul className="space-y-3 text-sm text-gray-400">
               <li>
                 <Link
                   href="/qui-sommes-nous"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   À propos
                 </Link>
               </li>
               <li>
                 <Link
                   href="/blog"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Blog
                 </Link>
               </li>
               <li>
                 <Link
                   href="/mentions-legales"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Mentions légales
                 </Link>
               </li>
               <li>
                 <Link
                   href="/politique-confidentialite"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Politique de confidentialité
                 </Link>
               </li>
               <li>
                 <Link
                   href="/cgv"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Conditions générales de vente
                 </Link>
               </li>
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-[#091421] transition-colors flex items-center group"
+                  className="hover:text-white transition-colors"
                 >
-                  <span className="w-1.5 h-1.5 bg-red-primary mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Contact
                 </Link>
               </li>
@@ -240,41 +252,47 @@ export function Footer() {
         </div>
 
         {/* Bottom section with partners and copyright */}
-        <div className="border-t border-[#091421]/10 mt-12 pt-8">
+        <div className="border-t border-gray-800 mt-8 lg:mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="text-[10px] font-black uppercase tracking-widest text-gray-500">
-              &copy; {new Date().getFullYear()} E2I VoIP. TOUS DROITS RÉSERVÉS.
+            <div className="text-sm text-gray-400">
+              <p>&copy; 2024 E2I VoIP. Tous droits réservés.</p>
             </div>
 
-            {/* Partners */}
-            <div className="flex items-center space-x-6 text-gray-500 text-xs font-bold uppercase tracking-wider">
-              <span className="text-gray-400">PARTENAIRES :</span>
+            {/* Partners logos */}
+            <div className="flex items-center space-x-6 text-gray-400 text-xs">
+              <span className="text-gray-300 font-medium">
+                Partenaires certifiés :
+              </span>
               <div className="flex items-center space-x-4">
-                <a
-                  href="https://www.3cx.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-red-primary transition-colors"
-                >
-                  3CX
-                </a>
-                <span className="text-gray-300">|</span>
+                <div className="flex items-center space-x-1">
+                  <a
+                    href="https://www.3cx.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold hover:text-blue-400 transition-colors"
+                  >
+                    3CX
+                  </a>
+                  <span className="text-yellow-500">★</span>
+                  <span className="text-gray-400">Bronze Partner</span>
+                </div>
+                <span className="text-gray-500">|</span>
                 <a
                   href="https://www.yeastar.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-red-primary transition-colors"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
-                  YEASTAR
+                  Yeastar
                 </a>
-                <span className="text-gray-300">|</span>
+                <span className="text-gray-500">|</span>
                 <a
-                  href="https://www.grandstream.com/"
+                  href="https://www.grandstream.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-red-primary transition-colors"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
-                  GRANDSTREAM
+                  Grandstream
                 </a>
               </div>
             </div>

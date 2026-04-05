@@ -337,7 +337,7 @@ CTA final (centre)
 ## 🔄 Prochaines étapes recommandées
 
 1. **A/B Testing** : Comparer le taux de conversion avant/après optimisation
-2. **Heatmap** : Vérifier le parcours visuel avec Microsoft Clarity ou un outil dédié réintroduit explicitement
+2. **Heatmap** : Vérifier le parcours visuel avec Hotjar/Microsoft Clarity
 3. **Feedback utilisateurs** : Recueillir les retours clients sur la clarté
 4. **Optimisation SEO** : Ajouter structured data pour les fonctionnalités
 5. **Extension** : Appliquer ce pattern aux pages Yealink et autres produits

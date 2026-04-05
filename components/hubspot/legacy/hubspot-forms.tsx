@@ -146,7 +146,7 @@ export function TrunkSIPForm() {
   };
 
   return (
-    <div className="bg-white rounded-none p-6 shadow-lg">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">Devis Trunk SIP</h3>
       <p className="text-gray-600 mb-6">
         Recevez un devis personnalisé pour vos besoins en connectivité SIP
@@ -174,7 +174,7 @@ export function PortabiliteForm() {
   };
 
   return (
-    <div className="bg-white rounded-none p-6 shadow-lg">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">
         Devis Portabilité
       </h3>
@@ -204,7 +204,7 @@ export function VoIP3CXForm() {
   };
 
   return (
-    <div className="bg-white rounded-none p-6 shadow-lg">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">Devis VoIP 3CX</h3>
       <p className="text-gray-600 mb-6">
         Solutions 3CX dédiées ou mutualisées adaptées à vos besoins
@@ -232,7 +232,7 @@ export function ProjetPBXForm() {
   };
 
   return (
-    <div className="bg-white rounded-none p-6 shadow-lg">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">Devis Projet PBX</h3>
       <p className="text-gray-600 mb-6">
         Solutions Yeastar et intégrations sur mesure pour votre projet
@@ -263,7 +263,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-none p-6 shadow-lg">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4">Contactez-nous</h3>
       <p className="text-gray-600 mb-6">
         Notre équipe d'experts est là pour vous accompagner

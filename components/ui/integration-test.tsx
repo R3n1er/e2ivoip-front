@@ -161,7 +161,7 @@ export function IntegrationTest() {
           ))}
         </div>
 
-        <div className="mt-8 p-6 bg-white rounded-none shadow-md">
+        <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Résumé des Tests</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center">

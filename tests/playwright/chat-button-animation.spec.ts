@@ -1,13 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { scrollPastHeroForChat } from "./utils/homepage-chat";
 
 test.describe("ChatPreOverlay - Animations et UX", () => {
   test("vérifie la présence du texte 'Une question?' et des animations", async ({
     page,
   }) => {
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
+    await page.waitForLoadState("networkidle");
 
     // Vérifier que le texte "Une question?" est visible
     const questionText = page.locator('text="Une question ?"');
@@ -106,8 +104,6 @@ test.describe("ChatPreOverlay - Animations et UX", () => {
     // Test sur mobile
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     const questionText = page.locator('text="Une question ?"');
     const chatButton = page.getByTestId("open-chat-button");
@@ -124,8 +120,6 @@ test.describe("ChatPreOverlay - Animations et UX", () => {
     // Test sur tablet
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     await expect(questionText).toBeVisible();
     await expect(chatButton).toBeVisible();
@@ -133,8 +127,6 @@ test.describe("ChatPreOverlay - Animations et UX", () => {
     // Test sur desktop
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     await expect(questionText).toBeVisible();
     await expect(chatButton).toBeVisible();
@@ -142,8 +134,6 @@ test.describe("ChatPreOverlay - Animations et UX", () => {
 
   test("vérifie l'accessibilité du bouton", async ({ page }) => {
     await page.goto("http://localhost:3000");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     const chatButton = page.getByTestId("open-chat-button");
 

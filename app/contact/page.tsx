@@ -1,246 +1,314 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import WorkingFAQ from "@/components/faq-working";
 import { InlineContactForm } from "@/components/hubspot";
 
 export const metadata: Metadata = {
-  title: "Contact | E2I VoIP — Experts telephonie IP France & DOM",
+  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
   description:
-    "Contactez nos experts VoIP pour votre projet de telephonie IP. Devis gratuit, support 24/7. Equipes locales en France, Martinique, Guadeloupe, Guyane, Reunion.",
+    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
   keywords:
-    "contact E2I VoIP, expert telephonie IP, devis VoIP gratuit, support technique DOM, standard telephonique entreprise, 3CX Yeastar",
-  alternates: {
-    canonical: "/contact",
-  },
+    "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
-    title: "Contact | E2I VoIP — Experts telephonie IP France & DOM",
+    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
     description:
-      "Contactez nos experts VoIP pour votre projet de telephonie IP. Devis gratuit, support 24/7. Equipes locales partout en France.",
-    url: "/contact",
-    siteName: "E2I VoIP",
+      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
     type: "website",
   },
 };
 
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "E2I VoIP",
-  "url": "https://www.e2i-voip.com/contact",
-  "description": "Experts VoIP — Trunk SIP, 3CX, PBX. Devis gratuit, support. Equipes locales en France et DOM.",
-  "telephone": "+33-1-89-56-05-00",
-  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
-  "areaServed": [
-    { "@type": "Country", "name": "France" },
-    { "@type": "AdministrativeArea", "name": "Martinique" },
-    { "@type": "AdministrativeArea", "name": "Guadeloupe" },
-    { "@type": "AdministrativeArea", "name": "Guyane francaise" },
-    { "@type": "AdministrativeArea", "name": "La Reunion" }
-  ],
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.e2i-voip.com" },
-      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.e2i-voip.com/contact" }
-    ]
-  }
-};
-
-function JsonLdScript() {
-  return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
-
 export default function ContactPage() {
-  const locations = [
-    { name: "France", phone: "01 89 56 05 00", tel: "+33189560500", detail: "Siege Social" },
-    { name: "Guyane", phone: "05 94 96 35 00", tel: "+594594963500", detail: "Cayenne - Bureau Regional" },
-    { name: "Guadeloupe", phone: "+590 590 173 500", tel: "+590590173500", detail: "Pointe-a-Pitre - Agence" },
-    { name: "Martinique", phone: "+596 596 313 500", tel: "+596596313500", detail: "Fort-de-France - Support" },
-    { name: "La Reunion", phone: "+262 263 085 500", tel: "+262263085500", detail: "Saint-Denis" },
-  ];
-
   return (
     <>
-      <JsonLdScript />
-      {/* ══════════════════════════════════════
-          HERO — Stitch: aligne gauche, border-l-8
-          ══════════════════════════════════════ */}
-      <section className="relative h-[400px] flex items-center overflow-hidden bg-[#091421]">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[#091421]/80 z-10" />
+      {/* Hero Section */}
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0">
           <img
             src="/images/photos/pexels-ketut-subiyanto-4559714-min.jpg"
-            alt="Contact E2I VoIP - Experts telephonie IP"
-            className="w-full h-full object-cover grayscale opacity-30"
+            alt="Contact E2I VoIP - Experts téléphonie IP"
+            className="absolute inset-0 w-full h-full object-cover"
           />
+          {/* Gradient Overlay uniforme */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-8 relative z-20 w-full">
-          <div className="max-w-4xl border-l-8 border-red-primary pl-8">
-            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4">
-              CONTACTEZ NOS<br />EXPERTS VOIP
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              Contactez nos <span className="text-white">experts VoIP</span>
             </h1>
-            <p className="text-red-primary font-bold tracking-[0.2em] uppercase text-sm">
-              Votre interlocuteur télécom unique — de la métropole à la Guadeloupe, Martinique, Guyane et La Réunion
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
+              Prêt à moderniser votre système téléphonique ? Nos experts en
+              téléphonie IP vous accompagnent dans votre projet
+            </p>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Devis gratuit • Support 24/7 • Équipes locales France & DOM
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="text-sm">Expert téléphonie IP</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="text-sm">Standard téléphonique</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="text-sm">Devis gratuit</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <span className="text-sm">Support technique</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulaire et Informations */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Formulaire HubSpot */}
+            <div>
+              <div
+                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl"
+                data-testid="contact-form-card"
+              >
+                <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
+                  <h2
+                    className="card-title text-2xl font-bold text-white mb-2"
+                    data-testid="contact-form-title"
+                  >
+                    Demande de contact
+                  </h2>
+                  <p className="text-white/90">
+                    Remplissez ce formulaire et nous vous recontacterons dans
+                    les plus brefs délais
+                  </p>
+                </div>
+                <div className="card-body p-8" data-testid="contact-form-body">
+                  <InlineContactForm className="w-full" />
+                </div>
+              </div>
+            </div>
+
+            {/* Informations de contact */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Nos coordonnées
+                </h2>
+                <p className="text-lg text-gray-600 mb-8">
+                  Notre équipe d&apos;experts est là pour vous accompagner dans
+                  vos projets de téléphonie IP
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {/* Hotline Prioritaire */}
+                <div
+                  className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow"
+                  data-testid="hotline-card"
+                >
+                  <div className="card-body p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-red-primary p-3 rounded-lg">
+                        <span className="text-2xl">📞</span>
+                      </div>
+                      <div>
+                        <h3
+                          className="text-lg font-semibold text-gray-900 mb-1"
+                          data-testid="hotline-title"
+                        >
+                          Hotline Support
+                        </h3>
+                        <p
+                          className="text-gray-900 font-bold text-xl mb-1"
+                          data-testid="hotline-phone"
+                        >
+                          0189 560 500
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Support technique prioritaire • Lun-Ven 8h-18h
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* WhatsApp */}
+                <div
+                  className="card bg-base-100 hover:shadow-lg transition-shadow"
+                  data-testid="whatsapp-card"
+                >
+                  <div className="card-body p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-blue-marine/10 p-3 rounded-lg">
+                        <span className="text-2xl">💬</span>
+                      </div>
+                      <div>
+                        <h3
+                          className="text-lg font-semibold text-gray-900 mb-1"
+                          data-testid="whatsapp-title"
+                        >
+                          WhatsApp Business
+                        </h3>
+                        <p
+                          className="text-gray-900 font-medium mb-1"
+                          data-testid="whatsapp-phone"
+                        >
+                          0594 96 35 00
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Réponse rapide • Support commercial et technique
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Nos Implantations */}
+      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Nos <span className="text-white">implantations</span>
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Équipes techniques locales en France Métropolitaine et DOM pour un
+              support de proximité
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════
-          FORMULAIRE + INFOS — Grid 7/5 Stitch
-          ══════════════════════════════════════ */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          {/* Formulaire HubSpot */}
-          <div className="lg:col-span-7">
-            <h2 className="text-4xl font-black text-[#091421] uppercase tracking-tighter mb-12 flex items-center gap-4">
-              <span className="w-12 h-[2px] bg-[#091421]"></span>
-              DEMANDE DE CONTACT
-            </h2>
-            <div data-testid="contact-form-card">
-              <InlineContactForm className="w-full" />
-            </div>
-          </div>
-
-          {/* Infos de contact — 2 colonnes */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Hotline Support — fond sombre Stitch */}
-              <div
-                className="bg-[#091421] p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] relative overflow-hidden group"
-                data-testid="hotline-card"
-              >
-                <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <i className="lni lni-customer text-6xl text-white"></i>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* France */}
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-france"
+            >
+              <div className="card-body p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📍</span>
                 </div>
-                <h3 className="text-red-primary font-black uppercase tracking-widest text-[10px] mb-3">
-                  HOTLINE SUPPORT
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  France
                 </h3>
-                <div className="text-white text-3xl font-black mb-2" data-testid="hotline-phone">
-                  01 89 56 05 00
-                </div>
-                <p className="text-white/60 text-[10px] font-bold uppercase">
-                  Lun-Ven 8h-18h
-                </p>
-              </div>
-
-              {/* WhatsApp Business — fond blanc Stitch */}
-              <div
-                className="bg-white border-2 border-[#091421] p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group"
-                data-testid="whatsapp-card"
-              >
-                <div className="absolute top-0 right-0 p-2 opacity-10">
-                  <i className="lni lni-comments text-6xl text-[#091421]"></i>
-                </div>
-                <h3 className="text-[#091421] font-black uppercase tracking-widest text-[10px] mb-3">
-                  WHATSAPP BUSINESS
-                </h3>
-                <div className="text-[#091421] text-3xl font-black mb-2" data-testid="whatsapp-phone">
-                  05 94 96 35 00
-                </div>
-                <p className="text-gray-500 text-[10px] font-bold uppercase">
-                  Support commercial
-                </p>
-              </div>
-            </div>
-
-            {/* Info complementaire */}
-            <div className="bg-gray-50 p-10 border-l-4 border-red-primary">
-              <h3 className="text-[#091421] font-black uppercase tracking-widest text-xs mb-4">
-                UN EXPERT DÉDIÉ. PAS UN TICKET.
-              </h3>
-              <p className="text-gray-500 leading-relaxed">
-                Chez E2I VoIP, chaque client parle à un expert identifié — pas à un
-                centre d&apos;appels. Nous vous accompagnons sur la migration RTC vers SIP,
-                l&apos;audit de votre installation et le déploiement de votre Cloud PBX,
-                en Guadeloupe, Martinique, Guyane et La Réunion comme en métropole.
-                Devis gratuit, sans engagement.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Certifié SIP Trunk
-                </span>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Migration RTC→SIP
-                </span>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#091421] border border-[#091421] px-3 py-1">
-                  Déploiement ultramarin
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          IMPLANTATIONS — Stitch: fond tres sombre, border-l-4
-          ══════════════════════════════════════ */}
-      <section className="bg-[#050f1c] py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="mb-16">
-            <p className="text-red-primary font-black tracking-widest text-xs uppercase mb-2">Notre Reseau</p>
-            <h2 className="text-5xl font-black text-white uppercase tracking-tighter">NOS IMPLANTATIONS</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {locations.map((loc, index) => (
-              <div
-                key={index}
-                className="bg-[#212b39] p-8 border-l-4 border-red-primary hover:bg-[#303a48] transition-colors group"
-                data-testid={`location-${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <div className="mb-6">
-                  <i className="lni lni-map-marker text-red-primary text-4xl"></i>
-                </div>
-                <h4 className="text-white text-xl font-black uppercase mb-2">{loc.name}</h4>
                 <a
-                  href={`tel:${loc.tel}`}
-                  className="text-white/80 text-sm font-bold block mb-1 hover:text-white transition-colors"
-                  data-testid={`phone-${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  href="tel:+33189560500"
+                  suppressHydrationWarning
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-france"
                 >
-                  {loc.phone}
+                  01 89 56 05 00
                 </a>
-                <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed">
-                  {loc.detail}
-                </p>
               </div>
-            ))}
+            </div>
+
+            {/* Guyane */}
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-guyane"
+            >
+              <div className="card-body p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📍</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Guyane
+                </h3>
+                <a
+                  href="tel:+594594963500"
+                  suppressHydrationWarning
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-guyane"
+                >
+                  05 94 96 35 00
+                </a>
+              </div>
+            </div>
+
+            {/* Guadeloupe */}
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-guadeloupe"
+            >
+              <div className="card-body p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📍</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Guadeloupe
+                </h3>
+                <a
+                  href="tel:+590590173500"
+                  suppressHydrationWarning
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-guadeloupe"
+                >
+                  +590 590 173 500
+                </a>
+              </div>
+            </div>
+
+            {/* Martinique */}
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-martinique"
+            >
+              <div className="card-body p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📍</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  Martinique
+                </h3>
+                <a
+                  href="tel:+596596313500"
+                  suppressHydrationWarning
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-martinique"
+                >
+                  +596 596 313 500
+                </a>
+              </div>
+            </div>
+
+            {/* La Réunion */}
+            <div
+              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              data-testid="location-reunion"
+            >
+              <div className="card-body p-6 text-center">
+                <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📍</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  La Réunion
+                </h3>
+                <a
+                  href="tel:+262263085500"
+                  suppressHydrationWarning
+                  className="text-white/90 text-sm hover:text-white transition-colors duration-200"
+                  data-testid="phone-reunion"
+                >
+                  +262 263 085 500
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          FAQ — Stitch: fond blanc, composant existant
-          ══════════════════════════════════════ */}
-      <section className="bg-white py-24">
-        <div className="max-w-4xl mx-auto px-8">
-          <h2 className="text-4xl font-black text-[#091421] uppercase tracking-tighter mb-16 text-center">
-            QUESTIONS FREQUENTES
-          </h2>
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <WorkingFAQ />
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          CTA — Stitch: fond rose, texte fonce
-          ══════════════════════════════════════ */}
-      <section className="bg-[#ffb3ad] text-[#68000a] py-20">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-none">
-            LE RTC S&apos;ARRÊTE.<br />VOTRE MIGRATION COMMENCE ICI.
-          </h2>
-          <Link
-            href="/devis-en-ligne"
-            className="bg-[#091421] text-white px-12 py-5 font-black uppercase tracking-widest shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] transition-all"
-          >
-            COMMENCER ICI
-          </Link>
         </div>
       </section>
     </>

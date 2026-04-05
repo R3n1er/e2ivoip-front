@@ -43,9 +43,9 @@ export function ProblemSolutionSection({
 
             <div className="space-y-6">
               {problems.map((problem, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-none border-l-4 border-red-500">
+                <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
                   <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-red-100 rounded-none flex items-center justify-center">
+                    <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                       <i className={`lni lni-${problem.icon} text-red-600 text-xl`}></i>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ export function ProblemSolutionSection({
               ))}
             </div>
 
-            <div className="mt-8 p-6 bg-red-100 rounded-none border border-red-200">
+            <div className="mt-8 p-6 bg-red-100 rounded-xl border border-red-200">
               <div className="text-center">
                 <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-warning text-red-600 text-2xl"></i>
@@ -77,7 +77,7 @@ export function ProblemSolutionSection({
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 {solutionsTitle}
               </h2>
-              <div className="p-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-none border border-blue-200">
+              <div className="p-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-lg border border-blue-200">
                 <p className="text-lg text-gray-700">
                   <strong className="text-blue-800">Une Solution Cloud Dédiée</strong>, 
                   Conçue pour les Entreprises Exigeantes
@@ -87,9 +87,9 @@ export function ProblemSolutionSection({
 
             <div className="space-y-6">
               {solutions.map((solution, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-none border-l-4 border-green-500">
+                <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
                   <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-green-100 rounded-none flex items-center justify-center">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                       <i className={`lni lni-${solution.icon} text-green-600 text-xl`}></i>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ export function ProblemSolutionSection({
               ))}
             </div>
 
-            <div className="mt-8 p-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-none border border-green-200">
+            <div className="mt-8 p-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl border border-green-200">
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="lni lni-checkmark text-green-600 text-2xl"></i>

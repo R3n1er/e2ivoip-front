@@ -55,21 +55,19 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /La téléphonie d'entreprise/i,
+        name: /Économisez 30%/i,
       })
     ).toBeInTheDocument();
 
     // Vérifier que le badge est présent
     expect(
-      screen.getByText(
-        "Opérateur de service télécom — Guadeloupe, Martinique, Guyane et La Réunion"
-      )
+      screen.getByText("Opérateur télécom DOM • Plus de 100 clients")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
     expect(
       screen.getByText(
-        /La fin du réseau RTC approche\. Basculez vers la VoIP/i
+        /Trunk SIP éligible DOM • Création et portabilité de numéros locaux/
       )
     ).toBeInTheDocument();
   });
@@ -85,29 +83,29 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les statistiques", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Plus de 100")).toBeInTheDocument();
+    expect(screen.getByText("100+")).toBeInTheDocument();
     expect(
-      screen.getByText("Clients actifs")
+      screen.getByText("Entreprises nous font confiance")
     ).toBeInTheDocument();
-    expect(screen.getByText("4")).toBeInTheDocument();
-    expect(
-      screen.getByText("Territoires ultramarins")
-    ).toBeInTheDocument();
+    expect(screen.getByText("15+")).toBeInTheDocument();
+    expect(screen.getByText("Années d'expertise télécom")).toBeInTheDocument();
   });
 
   it("affiche les boutons CTA", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Découvrir nos offres")).toBeInTheDocument();
+    expect(screen.getByText("Calculez vos économies")).toBeInTheDocument();
     expect(
-      screen.getByText("Nous contacter")
+      screen.getByText("Découvrez nos offres Trunk SIP")
     ).toBeInTheDocument();
   });
 
-  it("contient les blocs asymétriques décoratifs", () => {
+  it("contient le gradient overlay", () => {
     render(<HomepageHeroSectionSimple />);
 
-    const skewBlock = document.querySelector(".-skew-x-3");
-    expect(skewBlock).toBeInTheDocument();
+    const gradientOverlay = document.querySelector(
+      ".bg-gradient-to-r.from-blue-900\\/85"
+    );
+    expect(gradientOverlay).toBeInTheDocument();
   });
 });

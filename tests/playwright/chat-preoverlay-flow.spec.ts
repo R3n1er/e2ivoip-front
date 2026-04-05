@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { scrollPastHeroForChat } from "./utils/homepage-chat";
 
 test.describe("ChatPreOverlay - Flux complet", () => {
   test("ouvre le formulaire pré-chat au clic, remplit les informations et lance la conversation", async ({
@@ -24,8 +23,6 @@ test.describe("ChatPreOverlay - Flux complet", () => {
 
     // Aller sur la page d'accueil
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // 1. Vérifier que le bouton de chat est visible
     const openButton = page.getByTestId("open-chat-button");
@@ -48,14 +45,18 @@ test.describe("ChatPreOverlay - Flux complet", () => {
       chatOverlay.getByText(/On fait connaissance en quelques infos simples/)
     ).toBeVisible();
 
-    // 5. Vérifier que les champs de formulaire sont présents (3 champs Monolithe 2026)
+    // 5. Vérifier que les champs de formulaire sont présents
     const firstNameInput = page.getByTestId("firstname-input");
+    const lastNameInput = page.getByTestId("lastname-input");
     const companyInput = page.getByTestId("company-input");
     const emailInput = page.getByTestId("email-input");
+    const phoneInput = page.getByTestId("phone-input");
 
     await expect(firstNameInput).toBeVisible();
+    await expect(lastNameInput).toBeVisible();
     await expect(companyInput).toBeVisible();
     await expect(emailInput).toBeVisible();
+    await expect(phoneInput).toBeVisible();
 
     // 6. Vérifier que le bouton de soumission est désactivé initialement
     const submitButton = page.getByTestId("submit-button");
@@ -63,8 +64,10 @@ test.describe("ChatPreOverlay - Flux complet", () => {
 
     // 7. Remplir le formulaire avec des données valides
     await firstNameInput.fill("Jean");
+    await lastNameInput.fill("Dupont");
     await companyInput.fill("Test SARL");
     await emailInput.fill("jean.dupont@test.fr");
+    await phoneInput.fill("0612345678");
 
     // 8. Vérifier que le bouton de soumission est maintenant activé
     await expect(submitButton).toBeEnabled();
@@ -96,8 +99,6 @@ test.describe("ChatPreOverlay - Flux complet", () => {
 
   test("valide les champs obligatoires", async ({ page }) => {
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // Ouvrir le formulaire
     await page.getByTestId("open-chat-button").click();
@@ -110,6 +111,7 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     await expect(submitButton).toBeDisabled();
 
     // Remplir tous les champs obligatoires
+    await page.getByTestId("lastname-input").fill("Dupont");
     await page.getByTestId("company-input").fill("Test SARL");
     await page.getByTestId("email-input").fill("jean.dupont@test.fr");
 
@@ -119,14 +121,13 @@ test.describe("ChatPreOverlay - Flux complet", () => {
 
   test("valide le format d'email", async ({ page }) => {
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // Ouvrir le formulaire
     await page.getByTestId("open-chat-button").click();
 
     // Remplir avec un email invalide
     await page.getByTestId("firstname-input").fill("Jean");
+    await page.getByTestId("lastname-input").fill("Dupont");
     await page.getByTestId("company-input").fill("Test SARL");
     await page.getByTestId("email-input").fill("email-invalide");
 
@@ -144,8 +145,6 @@ test.describe("ChatPreOverlay - Flux complet", () => {
 
   test("permet d'annuler et ferme le formulaire", async ({ page }) => {
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // Ouvrir le formulaire
     const openButton = page.getByTestId("open-chat-button");
@@ -185,12 +184,11 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     });
 
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // Ouvrir et remplir le formulaire
     await page.getByTestId("open-chat-button").click();
     await page.getByTestId("firstname-input").fill("Jean");
+    await page.getByTestId("lastname-input").fill("Dupont");
     await page.getByTestId("company-input").fill("Test SARL");
     await page.getByTestId("email-input").fill("jean.dupont@test.fr");
 
@@ -229,12 +227,11 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     });
 
     await page.goto("/");
-    await page.waitForLoadState("load");
-    await scrollPastHeroForChat(page);
 
     // Ouvrir et soumettre le formulaire
     await page.getByTestId("open-chat-button").click();
     await page.getByTestId("firstname-input").fill("Jean");
+    await page.getByTestId("lastname-input").fill("Dupont");
     await page.getByTestId("company-input").fill("Test SARL");
     await page.getByTestId("email-input").fill("jean.dupont@test.fr");
     await page.getByTestId("submit-button").click();

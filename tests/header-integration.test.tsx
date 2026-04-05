@@ -81,7 +81,6 @@ describe("Header - Test d'intégration", () => {
 
     const items = [
       "Qui sommes-nous",
-      "Trunk SIP",
       "Téléphonie d'entreprise",
       "Nos services",
       "Blog",
@@ -105,14 +104,10 @@ describe("Header - Test d'intégration", () => {
     expect(screen.queryByText("Notre histoire")).not.toBeInTheDocument();
     expect(screen.queryByText("Notre équipe")).not.toBeInTheDocument();
 
-    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-trunk-sip"));
+    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
     await waitFor(() => {
       expect(screen.getByTestId('submenu-link-trunk-sip-au-compteur')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-trunk-sip-illimité')).toBeInTheDocument();
-    });
-
-    fireEvent.mouseEnter(screen.getByTestId("nav-dropdown-téléphonie-d'entreprise"));
-    await waitFor(() => {
       expect(screen.getByTestId('submenu-link-3cx-pro-dédiée')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-3cx-smb-mutualisée')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-pbx-yeastar')).toBeInTheDocument();
@@ -166,12 +161,6 @@ describe("Header - Test d'intégration", () => {
       (el) => el.closest("a")?.getAttribute("href") === "/qui-sommes-nous"
     );
     expect(quiSommesNousLink).toBeInTheDocument();
-
-    const trunkSipOverview = screen.getByTestId("nav-link-trunk-sip");
-    expect(trunkSipOverview).toHaveAttribute(
-      "href",
-      "/telephonie-entreprise/trunk-sip"
-    );
 
     // Le lien Mobilité a été retiré du header
   });

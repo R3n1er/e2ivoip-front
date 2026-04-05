@@ -33,7 +33,7 @@ export function PricingTiers({
           </p>
           
           {/* Avantage du modèle */}
-          <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-none border border-blue-200">
+          <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl border border-blue-200">
             <div className="flex items-center justify-center mb-4">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                 <i className="lni lni-users text-blue-600 text-2xl"></i>
@@ -53,7 +53,7 @@ export function PricingTiers({
           {tiers.map((tier, index) => (
             <div 
               key={index} 
-              className={`relative rounded-none p-6 border-2 transition-all duration-300 hover:shadow-lg ${
+              className={`relative rounded-xl p-6 border-2 transition-all duration-300 hover:shadow-lg ${
                 tier.highlighted 
                   ? 'border-red-500 bg-gradient-to-b from-red-50 to-blue-50 shadow-lg transform scale-105' 
                   : 'border-gray-200 bg-white hover:border-blue-300'
@@ -100,7 +100,7 @@ export function PricingTiers({
               {/* CTA */}
               <div className="mt-6 pt-4 border-t border-gray-200">
                 <button 
-                  className={`w-full py-2 px-4 rounded-none font-semibold transition-colors duration-300 ${
+                  className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors duration-300 ${
                     tier.highlighted
                       ? 'bg-gradient-to-r from-red-600 to-blue-600 text-white hover:from-red-700 hover:to-blue-700'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -116,7 +116,7 @@ export function PricingTiers({
 
         {/* Message économies */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center p-4 bg-green-100 rounded-none border border-green-200">
+          <div className="inline-flex items-center p-4 bg-green-100 rounded-xl border border-green-200">
             <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center mr-4">
               <i className="lni lni-dollar text-green-600 text-xl"></i>
             </div>

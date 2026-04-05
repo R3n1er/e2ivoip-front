@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
-import { trackEvent } from "@/lib/analytics/track-event";
 
 interface CTAButtonProps {
   href: string;
@@ -15,28 +13,18 @@ interface CTAButtonProps {
   fullWidth?: boolean;
 }
 
-export function CTAButton({
-  href,
-  children,
-  icon,
+export function CTAButton({ 
+  href, 
+  children, 
+  icon, 
   className = "",
   onClick,
   external = false,
-  fullWidth = false
+  fullWidth = false 
 }: CTAButtonProps) {
-  const pathname = usePathname();
   const buttonContent = (
-    <button
-      onClick={() => {
-        const eventName = external && href.startsWith('tel:') ? 'phone_click' : 'cta_click' as const;
-        const childText = typeof children === 'string' ? children : '';
-        trackEvent(eventName, {
-          page: pathname || '/',
-          element_id: href,
-          element_text: childText,
-        });
-        onClick?.();
-      }}
+    <button 
+      onClick={onClick}
       className={`
         relative overflow-hidden 
         bg-red-primary text-white 
@@ -85,28 +73,18 @@ export function CTAButton({
 }
 
 // Variante bleu marine pour les CTA secondaires
-export function CTAButtonMarine({
-  href,
-  children,
-  icon,
+export function CTAButtonMarine({ 
+  href, 
+  children, 
+  icon, 
   className = "",
   onClick,
   external = false,
   fullWidth = false
 }: CTAButtonProps) {
-  const pathname = usePathname();
   const buttonContent = (
-    <button
-      onClick={() => {
-        const eventName = external && href.startsWith('tel:') ? 'phone_click' : 'cta_click' as const;
-        const childText = typeof children === 'string' ? children : '';
-        trackEvent(eventName, {
-          page: pathname || '/',
-          element_id: href,
-          element_text: childText,
-        });
-        onClick?.();
-      }}
+    <button 
+      onClick={onClick}
       className={`
         relative overflow-hidden 
         bg-blue-marine text-white 
@@ -155,28 +133,18 @@ export function CTAButtonMarine({
 }
 
 // Variante secondaire outline pour les CTA moins importants
-export function CTAButtonSecondary({
-  href,
-  children,
-  icon,
+export function CTAButtonSecondary({ 
+  href, 
+  children, 
+  icon, 
   className = "",
   onClick,
   external = false,
   fullWidth = false
 }: CTAButtonProps) {
-  const pathname = usePathname();
   const buttonContent = (
-    <button
-      onClick={() => {
-        const eventName = external && href.startsWith('tel:') ? 'phone_click' : 'cta_click' as const;
-        const childText = typeof children === 'string' ? children : '';
-        trackEvent(eventName, {
-          page: pathname || '/',
-          element_id: href,
-          element_text: childText,
-        });
-        onClick?.();
-      }}
+    <button 
+      onClick={onClick}
       className={`
         relative overflow-hidden 
         bg-white text-red-primary 

@@ -8,36 +8,55 @@ beforeEach(() => {
 
   it("affiche l'accroche de marque", () => {
     expect(
-      screen.getByText(/Solutions de téléphonie IP et communications d'entreprise depuis plus de 15 ans. Spécialiste des DOM./)
+      screen.getByText(/Solutions de téléphonie IP et communications d'entreprise/)
     ).toBeInTheDocument()
   })
 
   it('présente les coordonnées de contact principales', () => {
     expect(screen.getByText('contact@e2i-voip.com')).toBeInTheDocument()
     expect(screen.getByText('Paris, France')).toBeInTheDocument()
-    expect(screen.getByText('+33 1 89 56 05 00')).toBeInTheDocument()
   })
 
-  it('affiche les liens partenaires dans le sub-footer', () => {
-    const partnerBar = screen.getByText('PARTENAIRES :').closest('div')
+  it('énumère les numéros de téléphone DOM et France', () => {
+    const phoneSection = screen.getByText('Nous contacter').closest('div')
+    const { getByText } = within(phoneSection as HTMLElement)
+
+    expect(getByText('Guyane :')).toBeInTheDocument()
+    expect(getByText('+594 594 963 500')).toBeInTheDocument()
+
+    expect(getByText('Guadeloupe :')).toBeInTheDocument()
+    expect(getByText('+590 590 173 500')).toBeInTheDocument()
+
+    expect(getByText('Martinique :')).toBeInTheDocument()
+    expect(getByText('+596 596 313 500')).toBeInTheDocument()
+
+    expect(getByText('France :')).toBeInTheDocument()
+    expect(getByText('+33 1 XX XX XX XX')).toBeInTheDocument()
+  })
+
+  it('rend le badge partenaire 3CX et les liens certifiés', () => {
+    expect(
+      screen.getByAltText('3CX Bronze Partner Badge')
+    ).toBeInTheDocument()
+
+    const partnerBar = screen.getByText('Partenaires certifiés :').closest('div')
     const { getByRole } = within(partnerBar as HTMLElement)
 
     expect(getByRole('link', { name: '3CX' })).toHaveAttribute('href', 'https://www.3cx.fr')
-    expect(getByRole('link', { name: 'YEASTAR' })).toHaveAttribute('href', 'https://www.yeastar.com')
-    expect(getByRole('link', { name: 'GRANDSTREAM' })).toHaveAttribute('href', 'https://www.grandstream.com')
+    expect(getByRole('link', { name: 'Yeastar' })).toHaveAttribute('href', 'https://www.yeastar.com')
+    expect(getByRole('link', { name: 'Grandstream' })).toHaveAttribute('href', 'https://www.grandstream.com')
   })
 
-  it('propose les sections de navigation clé et la newsletter', () => {
+  it('propose les sections de navigation clé', () => {
     expect(screen.getByText('Services')).toBeInTheDocument()
-    expect(screen.getByText('Liens utiles')).toBeInTheDocument()
-    expect(screen.getByText('NEWSLETTER')).toBeInTheDocument()
+    expect(screen.getByText('Support')).toBeInTheDocument()
+    expect(screen.getByText('Informations')).toBeInTheDocument()
 
     expect(screen.getByRole('link', { name: 'Trunk SIP au compteur' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: "S'inscrire" })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument()
   })
 
-  it('affiche le copyright avec l\'année courante', () => {
-    const currentYear = new Date().getFullYear().toString()
-    expect(screen.getByText(new RegExp(`© ${currentYear} E2I VoIP. TOUS DROITS RÉSERVÉS.`))).toBeInTheDocument()
+  it('affiche le copyright annuel', () => {
+    expect(screen.getByText(/© 2024 E2I VoIP/)).toBeInTheDocument()
   })
 })

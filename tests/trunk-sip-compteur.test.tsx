@@ -74,7 +74,7 @@ describe("Page Trunk SIP au Compteur", () => {
     expect(trunkElements.length).toBeGreaterThan(0);
 
     const payezElements = screen.getAllByText(
-      /Payez uniquement vos consommations réelles/i
+      /payez seulement ce que vous consommez/i
     );
     expect(payezElements.length).toBeGreaterThan(0);
   });
@@ -83,7 +83,7 @@ describe("Page Trunk SIP au Compteur", () => {
     render(<TrunkSIPCompteur />);
     // Le titre est dans un seul élément h3
     expect(
-      screen.getByText(/Tarifs à la minute/i)
+      screen.getByText(/Tarifs des appels à la minute/i)
     ).toBeInTheDocument();
   });
 
@@ -93,7 +93,7 @@ describe("Page Trunk SIP au Compteur", () => {
     expect(screen.getByText(/France Mobile/i)).toBeInTheDocument();
     expect(screen.getByText(/DOM Fixe/i)).toBeInTheDocument();
     expect(screen.getByText(/DOM Mobile/i)).toBeInTheDocument();
-    expect(screen.getByText(/Création Numéro/i)).toBeInTheDocument();
+    expect(screen.getByText(/Création numéro SDA/i)).toBeInTheDocument();
 
     const portabiliteElements = screen.getAllByText(/Portabilité/i);
     expect(portabiliteElements.length).toBeGreaterThan(0);
@@ -126,9 +126,11 @@ describe("Page Trunk SIP au Compteur", () => {
 
   test("utilise les couleurs de la charte graphique", () => {
     render(<TrunkSIPCompteur />);
-    // Vérifier que les couleurs Monolithe sont utilisées (bg-[#091421] et red-primary)
-    const heroSection = document.querySelector("section.bg-\\[\\#091421\\]");
-    expect(heroSection).toBeInTheDocument();
+    // Vérifier que les classes de couleurs personnalisées sont utilisées
+    const container = document.querySelector(
+      ".bg-gradient-to-br.from-blue-50.to-red-50"
+    );
+    expect(container).toBeInTheDocument();
   });
 
   test("affiche la section de compatibilité IPBX", () => {
@@ -169,8 +171,8 @@ describe("Page Trunk SIP au Compteur", () => {
     const devisButtons = screen.getAllByText(/Calculer mes économies/i);
     expect(devisButtons.length).toBeGreaterThan(0);
 
-    const phoneButtons = screen.getAllByText(/01 89 56 05 00/i);
-    expect(phoneButtons.length).toBeGreaterThan(0);
+    const expertButtons = screen.getAllByText(/Parler à un expert/i);
+    expect(expertButtons.length).toBeGreaterThan(0);
   });
 
   test("respecte la ligne éditoriale avec les mots-clés DOM-TOM", () => {

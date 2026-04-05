@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackEvent } from "@/lib/analytics/track-event";
 
 export function TallyPopupClean() {
   useEffect(() => {
@@ -26,34 +25,16 @@ export function TallyPopupClean() {
     
     console.log("✅ TallyConfig defined BEFORE script load:", (window as any).TallyConfig);
 
-    // Écouter les soumissions Tally via postMessage (AVANT le early return pour existingScript)
-    const handleTallyMessage = (event: MessageEvent) => {
-      try {
-        if (event.data?.event === 'Tally.FormSubmitted') {
-          trackEvent('form_submit', {
-            page: window.location.pathname,
-            element_id: `tally-${event.data?.formId || 'mDY1bl'}`,
-            element_text: 'Tally Popup Form',
-          })
-        }
-      } catch (error) {
-        console.error('[Analytics] Tally tracking error:', error)
-      }
-    }
-    window.addEventListener('message', handleTallyMessage)
-
     // ÉTAPE 2: Vérifier si le script Tally est déjà présent
     const existingScript = document.querySelector('script[src="https://tally.so/widgets/embed.js"]');
-
+    
     if (existingScript) {
       console.log("📜 Tally script already exists, forcing reload");
       // Forcer le rechargement si Tally existe déjà
       if ((window as any).Tally && (window as any).Tally.loadEmbeds) {
         (window as any).Tally.loadEmbeds();
       }
-      return () => {
-        window.removeEventListener('message', handleTallyMessage)
-      };
+      return;
     }
 
     // ÉTAPE 3: Charger le script Tally
@@ -93,9 +74,6 @@ export function TallyPopupClean() {
       }
     }, 8000);
 
-    return () => {
-      window.removeEventListener('message', handleTallyMessage)
-    }
   }, []);
 
   // Ce composant ne rend rien de visible

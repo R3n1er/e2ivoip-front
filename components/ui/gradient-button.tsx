@@ -44,7 +44,7 @@ const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
     };
 
     const baseClasses = cn(
-      'inline-flex items-center justify-center rounded-none font-medium transition-all duration-300 ease-in-out',
+      'inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 ease-in-out',
       'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500',
       'gradient-hover',
       getSizeClass(size),

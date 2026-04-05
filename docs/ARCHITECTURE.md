@@ -3,8 +3,8 @@
 > **Documentation de l'architecture organisée après refactorisation Phase 6**
 
 **Date de création** : 2025-10-04
-**Dernière mise à jour** : 2026-03-29
-**Statut** : ✅ Design System Monolithe Stitch 2026
+**Dernière mise à jour** : 2025-10-04
+**Statut** : ✅ Phase 6 terminée
 
 ---
 
@@ -31,13 +31,6 @@ e2ivoip-front/
 │   │   └── footer.tsx            # Footer
 │   ├── blog/                     # Composants blog
 │   ├── ui/                       # Composants UI réutilisables
-│   ├── chat-preoverlay.tsx      # Widget livechat Monolithe (3 champs, scroll trigger)
-│   ├── stats-section.tsx        # KPIs "Data Slab" Monolithe
-│   ├── partners-section.tsx     # Logos partenaires technologiques
-│   ├── services-section-simple.tsx  # Bento Grid solutions (Stitch 2026)
-│   ├── clients-carousel.tsx     # Carousel logos clients
-│   ├── contact-section-simple.tsx   # CTA pre-footer Monolithe
-│   ├── homepage-hero-section-simple.tsx  # Hero asymetrique Stitch
 │   └── [autres-composants]/
 ├── lib/                          # Bibliothèques et utilitaires
 │   ├── constants/                # Constantes centralisées
@@ -49,7 +42,6 @@ e2ivoip-front/
 │   │   │   └── use-chat-intake.ts
 │   │   └── ui/                   # Hooks UI
 │   │       └── use-image-optimization.ts
-│   ├── hubspot-blog.ts            # ✅ Service Blog HubSpot CMS API (ISR)
 │   ├── utils/                    # Utilitaires
 │   │   └── lazy-motion.tsx       # ✅ Lazy loading Framer Motion
 │   └── validation/               # Schémas de validation
@@ -57,21 +49,12 @@ e2ivoip-front/
 ├── tests/                        # Tests Jest + Playwright
 │   ├── *.test.tsx                # Tests unitaires
 │   └── playwright/               # Tests E2E
-├── .claude/                      # Configuration Claude Code
-│   ├── agents/                   # Sous-agents (stitch-compliance, test-matcher, pre-commit-validator)
-│   └── settings.local.json       # Permissions
-├── .stitch/                      # Template design Stitch reference
-│   └── designs/landing-page-desktop.html
 └── docs/                         # Documentation
     ├── PRD.md                    # Product Requirements
     ├── REFACTORING.md            # Journal refactorisation
     ├── OPTIMIZATIONS.md          # Guide optimisations
     ├── BUNDLE_ANALYSIS.md        # Analyse bundle
-    ├── ARCHITECTURE.md           # Ce fichier
-    ├── Design.md                # Design System Monolithe 2026
-    ├── CHARTE_GRAPHIQUE.md      # Charte colorimetrique stricte
-    ├── ADR.md                   # Architecture Decision Records
-    └── implementation.md        # Plan d'implementation Stitch
+    └── ARCHITECTURE.md           # Ce fichier
 ```
 
 ---
@@ -156,7 +139,7 @@ lib/hooks/
 ├── hubspot/                      # Hooks HubSpot
 │   └── use-hubspot-script.ts     # ✅ Chargement scripts HubSpot
 ├── forms/                        # Hooks formulaires
-│   └── use-chat-intake.ts        # ✅ Hook custom (TanStack Query supprimé)
+│   └── use-chat-intake.ts        # ✅ Mutation TanStack Query
 └── ui/                           # Hooks UI
     └── use-image-optimization.ts # Optimisation images
 ```
@@ -187,71 +170,6 @@ import { useImageOptimization } from "@/lib/hooks/ui/use-image-optimization";
 
 **UI** :
 - `useImageOptimization()` - Optimisation images
-
----
-
-### 4. Blog HubSpot (ISR)
-
-**Service** : `lib/hubspot-blog.ts`
-**Pages** : `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`, `app/blog/categorie/[slug]/page.tsx`
-**Composants** : `components/blog/` (blog-post-card, blog-breadcrumb, blog-social-share, blog-related-posts, blog-tag-filter, blog-json-ld)
-
-Architecture : Server Components ISR (revalidation 10 minutes) fetchant l'API CMS HubSpot v3 (`/cms/v3/blogs/posts`, `/cms/v3/blogs/tags`) du portail 26878201. Pas d'API routes — fetch direct depuis les Server Components.
-
-- **Contenu** : HTML HubSpot sanitise via `sanitize-html` + style `.prose-monolithe` (`@tailwindcss/typography`)
-- **SEO** : `generateMetadata()` + JSON-LD (`BlogPosting`, `BreadcrumbList`, `CollectionPage`)
-- **Images** : `next/image` pour featured, `<img>` natif dans le contenu HTML
-- **Auth** : `HUBSPOT_ACCESS_TOKEN` (Private App Token `pat-eu1-*`) dans `.env`
-- **Ancien CMS** : Contentful supprime (lib, API routes, dependance npm)
-
----
-
-### 5. Design System Monolithe 2026
-
-**Reference** : `docs/Design.md` + `docs/CHARTE_GRAPHIQUE.md` + `.stitch/designs/landing-page-desktop.html`
-
-Le site utilise le Design System "Monolithe Numerique" (Structuralisme Brutaliste B2B) :
-- **Philosophie Carree** : `border-radius: 0px` sur tous les elements (force dans `tailwind.config.js`)
-- **Boutons Monolithe** : `.monolith-btn` avec hard shadows opaques + hover mecanique
-- **Grilles Bento** : `.bento-grid`, `.bento-item-large`, `.bento-item-wide` (CSS Grid asymetrique)
-- **Grid Lines** : `.monolith-grid-lines` sur les sections sombres (Hero, CTA)
-- **Palette stricte** : `red-primary` (#E53E3E), `blue-marine` (#2D3848), `gray-dark` (#1F2937), `surface-dim` (#091421)
-- **Typographie** : `font-black tracking-[-0.04em]` titres, `tracking-[0.2em]` boutons, `tracking-[0.3em]` labels
-
-### 6. Navigation Principale (Stitch 2026)
-
-**Fichier** : `components/layout/header.tsx`
-
-Structure du menu (mise a jour mars 2026) :
-- **Qui sommes-nous** (avec sous-menu : Certifications, Partenaires)
-- **Trunk SIP** (avec sous-menu : Compteur, Illimite)
-- **Telephonie d'entreprise** (avec sous-menu : 3CX PRO, 3CX SMB, PBX Yeastar)
-- **Nos services** (avec sous-menu : Studio attente, Assistants vocaux IA, Devis en ligne)
-- **Blog**
-
-Zone CTA (droite) : "Devis en ligne" (rouge #b91c1c) + "Espace Client" (bouton monolith-btn bordure) + "Contact" (bouton monolith-btn rouge)
-
-Style liens nav : `font-medium text-sm text-gray-500` (pas uppercase — style Stitch)
-Hauteur : `h-24` (96px)
-
-### 7. Securite & Gestion des Secrets
-
-- **dotenvx** : `.env` chiffre et committe, `.env.keys` local (jamais committe)
-- **Hook pre-commit** (`.husky/pre-commit`) : Bloque fichiers sensibles + patterns secrets (pat-eu1, AQ.*, AIza*, etc.)
-- **Scripts npm** : `dotenvx run -- next dev/build/start` pour dechiffrement auto
-
-### 8. Agents Claude Code
-
-**Emplacement** : `.claude/agents/`
-
-| Agent | Role | Model |
-|---|---|---|
-| `stitch-compliance` | Audit conformite Design System | haiku |
-| `test-matcher` | Identification tests impactes | haiku |
-| `pre-commit-validator` | Scan violations pre-commit | haiku |
-| `e2e-browser-tester` | Tests E2E Playwright + validation visuelle | sonnet |
-| `content-writer-seo` | Redaction contenu SEO | sonnet |
-| `security-guardian` | Scan securite pre-push | sonnet |
 
 ---
 
@@ -434,8 +352,8 @@ import { Header } from "../../components/layout/header"; // ❌
 
 | Métrique | Statut |
 |----------|--------|
-| Tests unitaires | ✅ 335/335 (100%) |
-| Tests E2E | ✅ 67/67 + 5 skipped (100%) |
+| Tests unitaires | ✅ 309/309 (100%) |
+| Tests E2E | ✅ 32/32 (100%) |
 | Régressions | ✅ 0 |
 
 ---
@@ -497,6 +415,6 @@ Avant de créer un nouveau composant :
 
 ---
 
-**Dernière mise à jour** : 2026-03-29
+**Dernière mise à jour** : 2025-10-04 21:00
 **Responsable** : Alban (Chef de projet)
-**Statut** : ✅ Design System Monolithe Stitch 2026
+**Statut** : ✅ Architecture organisée - Phase 6 complète

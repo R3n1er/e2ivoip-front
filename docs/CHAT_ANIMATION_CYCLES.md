@@ -1,9 +1,5 @@
 # Animation par Cycles - Module Pré-Chat
 
-> [!CAUTION]
-> **PARTIELLEMENT OBSOLETE (2026-03-29)** — Le pattern d'animation par cycles (3s vibration + 2s pause, 20s total) est **conserve** en V3. En revanche, le **declenchement** change : V3 utilise un Intersection Observer post-Hero au lieu du demarrage immediat au chargement.
-> Voir `docs/implementation.md` Phase 1.5 et `docs/Design.md` section 7.5bis pour les specs V3.
-
 **Date**: 2025-10-05
 **Version**: 2.1
 **Composant**: `components/chat-preoverlay.tsx`

@@ -72,7 +72,7 @@ describe("ContactPage - Section Nos Implantations (Style mis à jour)", () => {
     render(<ContactPage />);
     const title = screen.getByRole("heading", { name: /Nos\s+implantations/i });
     const section = title.closest("section");
-    expect(section).toHaveClass("bg-[#091421]");
+    expect(section).toHaveClass("bg-gradient-to-r");
   });
 
   it("utilise le layout en grille responsive", () => {

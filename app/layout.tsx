@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { HotjarTracking } from "@/components/hotjar-tracking";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { Footer } from "@/components/layout/footer";
 import { ChatPreOverlay } from "@/components/chat-preoverlay";
@@ -43,56 +44,6 @@ export const metadata: Metadata = {
   },
 };
 
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://www.e2i-voip.com/#website",
-  name: "E2I VoIP",
-  url: "https://www.e2i-voip.com",
-  description:
-    "Operateur telecom et integrateur VoIP pour PME et groupes multisites. Trunk SIP, 3CX, Assistants IA — specialiste DOM.",
-  inLanguage: "fr-FR",
-  publisher: {
-    "@type": "Organization",
-    "@id": "https://www.e2i-voip.com/#organization",
-    name: "E2I VoIP",
-    alternateName: "E2I Assistance",
-    url: "https://www.e2i-voip.com",
-    foundingDate: "2010",
-    areaServed: ["FR", "GP", "MQ", "GF", "RE"],
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: "+33-1-89-56-05-00",
-        contactType: "customer service",
-        areaServed: "FR",
-        availableLanguage: "French",
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+594-594-963-500",
-        contactType: "customer service",
-        areaServed: "GF",
-        availableLanguage: "French",
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+590-590-173-500",
-        contactType: "customer service",
-        areaServed: "GP",
-        availableLanguage: "French",
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+596-596-313-500",
-        contactType: "customer service",
-        areaServed: "MQ",
-        availableLanguage: "French",
-      },
-    ],
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -115,14 +66,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        {/* JSON-LD: WebSite + Organization structured data — static hardcoded object, no XSS risk */}
-        {/* eslint-disable-next-line react/no-danger */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
+        <HotjarTracking />
         <HeaderSimple />
-        <main className="flex-1 pt-20 lg:pt-24">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
         <Footer />
         <ChatPreOverlay />
       </body>

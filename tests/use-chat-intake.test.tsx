@@ -24,7 +24,8 @@ describe("useChatIntake", () => {
       await result.current.mutateAsync({
         email: "john@doe.com",
         firstName: "John",
-        company: "Acme Inc",
+        lastName: "Doe",
+        phone: "+33123456789",
       });
     });
     expect(global.fetch).toHaveBeenCalledWith(

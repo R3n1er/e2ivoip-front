@@ -16,23 +16,18 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.e2i-voip.com",
+        hostname: "images.ctfassets.net",
       },
       {
         protocol: "https",
-        hostname: "**.hubfs.net",
-      },
-      {
-        protocol: "https",
-        hostname: "**.hsforms.net",
+        hostname: "assets.ctfassets.net",
       },
     ],
   },
 
   // Optimisations des performances
-  // optimizeCss (Critters) peut casser le chargement des chunks en `next dev` (factory webpack undefined).
   experimental: {
-    optimizeCss: process.env.NODE_ENV === "production",
+    optimizeCss: true,
     optimizePackageImports: ["@radix-ui/react-icons"],
   },
 
@@ -93,16 +88,6 @@ const nextConfig = {
       {
         source: "/accueil",
         destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/telephonie-entreprise/3cx-pro-dediee",
-        destination: "/telephonie-3cx",
-        permanent: true,
-      },
-      {
-        source: "/nos-services/studio-attente",
-        destination: "/studio-attente",
         permanent: true,
       },
     ];

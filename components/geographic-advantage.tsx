@@ -37,7 +37,7 @@ export function GeographicAdvantage({
         {/* Avantages spécifiques DOM-TOM */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Expertise technique */}
-          <div className="bg-white rounded-none p-8 shadow-lg">
+          <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                 <i className="lni lni-cog text-blue-600 text-2xl"></i>
@@ -63,7 +63,7 @@ export function GeographicAdvantage({
           </div>
 
           {/* Support local */}
-          <div className="bg-white rounded-none p-8 shadow-lg">
+          <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
                 <i className="lni lni-support text-red-600 text-2xl"></i>
@@ -90,7 +90,7 @@ export function GeographicAdvantage({
         </div>
 
         {/* Carte des régions et contacts */}
-        <div className="bg-white rounded-none shadow-lg overflow-hidden">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-red-600 p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-2">
               Nos Conseillers Régionaux
@@ -103,7 +103,7 @@ export function GeographicAdvantage({
           <div className="p-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {locations.map((location, index) => (
-                <div key={index} className="text-center p-6 bg-gray-50 rounded-none hover:bg-gray-100 transition-colors">
+                <div key={index} className="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i className="lni lni-map-marker text-white text-2xl"></i>
                   </div>
@@ -137,7 +137,7 @@ export function GeographicAdvantage({
 
         {/* Message de proximité */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center p-6 bg-gradient-to-r from-red-primary/10 via-white to-blue-marine/10 rounded-none border border-red-primary/20">
+          <div className="inline-flex items-center p-6 bg-gradient-to-r from-red-primary/10 via-white to-blue-marine/10 rounded-xl border border-red-primary/20">
             <div className="w-12 h-12 bg-red-primary/20 rounded-full flex items-center justify-center mr-4">
               <i className="lni lni-heart text-red-primary text-xl"></i>
             </div>

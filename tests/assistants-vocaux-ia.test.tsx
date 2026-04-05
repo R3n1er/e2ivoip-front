@@ -14,14 +14,23 @@ jest.mock('@/components/contact-form-assistant-ia', () => ({
   ),
 }));
 
+// Mock des composants CTA
+jest.mock('@/components/ui/cta-button', () => ({
+  CTAButton: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href} data-testid="cta-button">{children}</a>
+  ),
+  CTAButtonSecondary: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href} data-testid="cta-button-secondary">{children}</a>
+  ),
+}));
 
 describe('Page Assistants Vocaux IA', () => {
   let AssistantsVocauxIA: any;
 
   beforeEach(async () => {
     // Import dynamique pour éviter les problèmes SSR
-    const pageModule = await import('@/app/nos-services/assistants-vocaux-ia/page');
-    AssistantsVocauxIA = pageModule.default;
+    const module = await import('@/app/nos-services/assistants-vocaux-ia/page');
+    AssistantsVocauxIA = module.default;
   });
 
   it('rend la page sans erreur', () => {
@@ -51,7 +60,7 @@ describe('Page Assistants Vocaux IA', () => {
   it('affiche les 4 avantages clés', () => {
     render(<AssistantsVocauxIA />);
     expect(screen.getByText('Accueil 24/7')).toBeInTheDocument();
-    expect(screen.getByText('Qualification')).toBeInTheDocument();
+    expect(screen.getByText('Qualification automatique')).toBeInTheDocument();
     expect(screen.getByText('Gain de temps')).toBeInTheDocument();
     expect(screen.getByText('ROI immédiat')).toBeInTheDocument();
   });
@@ -103,17 +112,16 @@ describe('Page Assistants Vocaux IA', () => {
   });
 
   it('affiche la section CTA finale', () => {
-    const { container } = render(<AssistantsVocauxIA />);
-    // Le texte est splitté par un <span>, on cherche dans le HTML brut
-    expect(container.innerHTML).toMatch(/Prêt à/i);
-    expect(container.innerHTML).toMatch(/révolutionner/i);
+    render(<AssistantsVocauxIA />);
+    expect(
+      screen.getByText(/Prêt à révolutionner/i)
+    ).toBeInTheDocument();
   });
 
   it('affiche les CTAs principaux', () => {
     render(<AssistantsVocauxIA />);
-    // La page utilise des <a class="monolith-btn"> sans data-testid
-    const ctaLinks = screen.getAllByRole('link', { name: /Parler à un expert|Demander une démo/i });
-    expect(ctaLinks.length).toBeGreaterThanOrEqual(1);
+    const ctaButtons = screen.getAllByTestId('cta-button');
+    expect(ctaButtons.length).toBeGreaterThanOrEqual(1);
   });
 
   it('affiche le CTA téléphone dans la section finale', () => {
@@ -134,9 +142,8 @@ describe('Page Assistants Vocaux IA', () => {
     
     // Vérifie la présence des couleurs de la charte
     expect(html).toMatch(/text-red-primary|bg-red-primary/);
-    // La page utilise #091421 (valeur hex directe) au lieu de blue-marine
-    expect(html).toMatch(/\[#091421\]|bg-\[#091421\]/);
-    expect(html).toMatch(/text-gray-dark|bg-gray-dark|text-gray-500|text-gray-600/);
+    expect(html).toMatch(/text-blue-marine|bg-blue-marine/);
+    expect(html).toMatch(/text-gray-dark|bg-gray-dark/);
   });
 
   it('contient des icônes LineIcons', () => {

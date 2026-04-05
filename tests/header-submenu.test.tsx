@@ -79,9 +79,11 @@ describe("Header avec sous-menus DaisyUI", () => {
     expect(
       screen.getByTestId("icon-chevron-down-qui-sommes-nous")
     ).toBeInTheDocument();
-    // Verifier la separation Devis/Contact (Stitch 2026)
-    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
-    expect(screen.getByTestId("header-contact-button")).toHaveClass("monolith-btn");
+    const phoneIcons = screen.getAllByTestId("icon-lni-phone");
+    expect(phoneIcons.length).toBeGreaterThan(0);
+
+    // Vérifier les boutons DaisyUI
+    expect(screen.getByTestId("header-contact-button")).toHaveClass("btn");
   });
 
   test("Les liens de navigation principaux sont présents", () => {
@@ -89,15 +91,13 @@ describe("Header avec sous-menus DaisyUI", () => {
 
     // Vérifier les liens principaux avec data-testid
     expect(screen.getByTestId("nav-link-qui-sommes-nous")).toBeInTheDocument();
-    expect(screen.getByTestId("nav-dropdown-trunk-sip")).toBeInTheDocument();
     expect(
       screen.getByTestId("nav-dropdown-téléphonie-d'entreprise")
     ).toBeInTheDocument();
     // Lien « Mobilité » retiré du header
     expect(screen.getByTestId("nav-link-nos-services")).toBeInTheDocument();
     expect(screen.getByTestId("nav-link-blog")).toBeInTheDocument();
-    // "Devis en ligne" retire du menu nav, maintenant dans la zone CTA (header-devis-link)
-    expect(screen.getByTestId("header-devis-link")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-link-devis-en-ligne")).toBeInTheDocument();
   });
 
   test("Les sous-menus s'affichent au hover", async () => {
@@ -120,26 +120,6 @@ describe("Header avec sous-menus DaisyUI", () => {
     ).toBeInTheDocument();
   });
 
-  test("Les sous-menus Trunk SIP s'affichent correctement", async () => {
-    render(<Header />);
-
-    // Tester le sous-menu "Trunk SIP"
-    const trunkSipDrop = screen.getByTestId("nav-dropdown-trunk-sip");
-    await user.hover(trunkSipDrop);
-
-    await waitFor(() => {
-      expect(screen.getByTestId("submenu-trunk-sip")).toBeInTheDocument();
-    });
-
-    // Vérifier les 2 liens du sous-menu Trunk SIP
-    expect(
-      screen.getByTestId("submenu-link-trunk-sip-au-compteur")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("submenu-link-trunk-sip-illimité")
-    ).toBeInTheDocument();
-  });
-
   test("Les sous-menus téléphonie s'affichent correctement", async () => {
     render(<Header />);
 
@@ -155,7 +135,13 @@ describe("Header avec sous-menus DaisyUI", () => {
       ).toBeInTheDocument();
     });
 
-    // Vérifier les 3 liens du sous-menu téléphonie (sans Trunk SIP)
+    // Vérifier tous les liens du sous-menu téléphonie
+    expect(
+      screen.getByTestId("submenu-link-trunk-sip-au-compteur")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId("submenu-link-trunk-sip-illimité")
+    ).toBeInTheDocument();
     expect(
       screen.getByTestId("submenu-link-3cx-pro-dédiée")
     ).toBeInTheDocument();
@@ -163,14 +149,6 @@ describe("Header avec sous-menus DaisyUI", () => {
       screen.getByTestId("submenu-link-3cx-smb-mutualisée")
     ).toBeInTheDocument();
     expect(screen.getByTestId("submenu-link-pbx-yeastar")).toBeInTheDocument();
-
-    // Vérifier que Trunk SIP n'est PAS dans ce sous-menu
-    expect(
-      screen.queryByTestId("submenu-link-trunk-sip-au-compteur")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByTestId("submenu-link-trunk-sip-illimité")
-    ).not.toBeInTheDocument();
   });
 
   test("Les sous-menus services s'affichent correctement", async () => {
@@ -216,7 +194,7 @@ describe("Header avec sous-menus DaisyUI", () => {
     expect(
       screen.getByTestId("mobile-link-qui-sommes-nous")
     ).toBeInTheDocument();
-    expect(screen.getByTestId("mobile-contact-button")).toHaveClass("monolith-btn");
+    expect(screen.getByTestId("mobile-contact-button")).toHaveClass("btn");
   });
 
   test("Les sous-menus mobiles s'affichent", () => {
@@ -254,12 +232,12 @@ describe("Header avec sous-menus DaisyUI", () => {
 
     // Vérifier les classes DaisyUI
     expect(screen.getByTestId("header-contact-button")).toHaveClass(
-      "monolith-btn",
-      "bg-red-primary"
+      "btn",
+      "btn-primary"
     );
     expect(screen.getByTestId("mobile-contact-button")).toHaveClass(
-      "monolith-btn",
-      "bg-red-primary"
+      "btn",
+      "btn-primary"
     );
     expect(screen.getByTestId("mobile-menu-button")).toHaveClass(
       "btn",

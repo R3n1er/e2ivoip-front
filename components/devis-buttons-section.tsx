@@ -82,7 +82,7 @@ export function DevisButtonsSection() {
               whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.98 }}
               className={`
-                w-full py-4 px-8 text-center text-white font-bold text-lg rounded-none
+                w-full py-4 px-8 text-center text-white font-bold text-lg rounded-lg
                 transition-all duration-300 shadow-lg hover:shadow-xl
                 ${
                   button.variant === "primary"
@@ -109,7 +109,7 @@ export function DevisButtonsSection() {
           <a
             href="tel:+594594963500"
             suppressHydrationWarning
-            className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-none font-bold transition-colors duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             <span className="mr-2">📞</span>
             05 94 96 35 00
