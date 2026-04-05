@@ -21,7 +21,7 @@ Prends en compte CLAUDE.md et .agents.md
 | Validation | Zod + React Hook Form |
 | Animations | Framer Motion (lazy via `lib/utils/lazy-motion.tsx`) |
 | Deploy | Vercel (Fluid Compute) |
-| Env | Cursor + Claude Code + MCP Servers |
+| Env | Cursor + Claude Code + MCP Servers + gstack skills |
 | Tests | Jest + Playwright (TDD obligatoire) |
 
 ## Methodologie TDD
@@ -114,6 +114,8 @@ Les 7 agents sont dans `.claude/agents/`. Voici quand les utiliser :
 
 ## Skills & Plugins disponibles
 
+### Skills SEO & Contenu
+
 | Besoin | Skill/Plugin | Quand l'utiliser |
 |--------|-------------|-----------------|
 | SEO audit complet | `seo-audit` ou `seo` | Audit site entier ou page |
@@ -121,11 +123,43 @@ Les 7 agents sont dans `.claude/agents/`. Voici quand les utiliser :
 | Schema markup | `seo-schema` | JSON-LD, structured data |
 | Contenu editorial | `content-writer-seo` (agent) | Copy pages, hero, meta descriptions |
 | Blog complet | `blog` | Lifecycle blog (ecriture, scoring, audit) |
+
+### Skills Design & UI
+
+| Besoin | Skill/Plugin | Quand l'utiliser |
+|--------|-------------|-----------------|
 | Design UI | `stitch-design` | Generation ecrans haute-fidelite |
 | Composants UI | `shadcn-ui` | Integration shadcn/ui |
+
+### Skills Dev & QA
+
+| Besoin | Skill/Plugin | Quand l'utiliser |
+|--------|-------------|-----------------|
 | Tests E2E | `e2e-browser-tester` (agent) | Validation navigateur Playwright |
 | Docs framework | Context7 MCP | Docs NextJS, Tailwind, etc. |
 | Debug Chrome | `chrome-devtools-mcp` | DevTools, a11y, performance |
+
+### gstack — Skills Garry Tan (`~/.claude/skills/gstack/`)
+
+Collection de 35 slash commands couvrant le cycle complet Think > Plan > Build > Review > Test > Ship.
+
+| Besoin | Skill gstack | Quand l'utiliser |
+|--------|-------------|-----------------|
+| QA navigateur headless | `/browse` | Tester pages, dogfooding, screenshots, responsive |
+| Code review | `/review` | Audit code avant merge |
+| Audit securite | `/cso` | Security review (complement `security-guardian`) |
+| QA + fix auto | `/qa` | QA navigateur avec corrections automatiques |
+| QA lecture seule | `/qa-only` | QA sans modifications |
+| Tests perf | `/benchmark` | Benchmark avant/apres changements |
+| Canary deploy | `/canary` | Tester deploy progressif |
+| Plan strategy | `/office-hours` | Reframer strategie produit |
+| Plan review | `/plan-ceo-review`, `/plan-eng-review` | Review de plan par role |
+| Design consultation | `/design-consultation` | Brainstorm design |
+| Design HTML | `/design-html` | Generer maquettes HTML |
+| Ship | `/ship` | Preparer merge/deploy |
+| Release notes | `/document-release` | Documenter une release |
+| Post-mortem | `/retro` | Retrospective apres incident/feature |
+| Investigation | `/investigate` | Debug/analyse en profondeur |
 
 ## Integrations
 
@@ -153,7 +187,8 @@ lib/
 tests/                  → Jest + Playwright
 docs/                   → Design.md, CHARTE_GRAPHIQUE.md, ligne-editoriale.md, BrandBrief
 .stitch/designs/        → Template Stitch reference
-.claude/agents/         → 6 agents custom
+.claude/agents/         → 7 agents custom
+~/.claude/skills/gstack/ → 35 skills gstack (global)
 ```
 
 ## Code Style
@@ -183,3 +218,23 @@ docs/                   → Design.md, CHARTE_GRAPHIQUE.md, ligne-editoriale.md,
 - NextJS: nextjs.org/docs | DaisyUI: daisyui.com/components
 - Lineicons: lineicons.com/icons | Playwright: playwright.dev
 - Vercel: vercel.com/docs
+
+## Skill routing
+
+When the user's request matches an available skill, ALWAYS invoke it using the Skill
+tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
+The skill has specialized workflows that produce better results than ad-hoc answers.
+
+Key routing rules:
+- Product ideas, "is this worth building", brainstorming → invoke office-hours
+- Bugs, errors, "why is this broken", 500 errors → invoke investigate
+- Ship, deploy, push, create PR → invoke ship
+- QA, test the site, find bugs → invoke qa
+- Code review, check my diff → invoke review
+- Update docs after shipping → invoke document-release
+- Weekly retro → invoke retro
+- Design system, brand → invoke design-consultation
+- Visual audit, design polish → invoke design-review
+- Architecture review → invoke plan-eng-review
+- Save progress, checkpoint, resume → invoke checkpoint
+- Code quality, health check → invoke health
