@@ -47,9 +47,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Design System audit: fix Monolithe violations in testimonials, contact section, globals.css
-- [ ] 02-02-PLAN.md — CTAButton Link-only refactor + PhoneLink component + clickable phone numbers in footer
-- [ ] 02-03-PLAN.md — Social proof section + 3CX badge + ContactSectionSimple on all product pages + per-page CTAs
+- [x] 02-01-PLAN.md — Design System audit: fix Monolithe violations in testimonials, contact section, globals.css
+- [x] 02-02-PLAN.md — CTAButton Link-only refactor + PhoneLink component + clickable phone numbers in footer
+- [x] 02-03-PLAN.md — Social proof section + 3CX badge + ContactSectionSimple on all product pages + per-page CTAs
 
 ### Phase 3: Deploy Redesign + SEO Content
 **Goal**: Le redesign Monolithe 2026 complet et le contenu SEO enrichi sont en production, avec les donnees avant/apres disponibles dans PostHog
@@ -59,10 +59,11 @@ Plans:
   1. Toutes les pages de la branche dev sont accessibles en production avec le design Monolithe 2026
   2. PostHog montre des donnees de sessions avant et apres le deploy du redesign (baseline vs nouveau)
   3. Le contenu SEO enrichi (deja committe sur dev) est live en production
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md — Gitignore dev artifacts + validate + create PR from dev to main
+- [ ] 03-02-PLAN.md — Merge PR to main + verify production deployment (checkpoint)
 
 ## Progress
 
@@ -71,6 +72,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. PostHog Analytics Baseline | 0/2 | Not started | - |
-| 2. Redesign + Social Proof + Conversion | 0/3 | Not started | - |
-| 3. Deploy Redesign + SEO Content | 0/1 | Not started | - |
+| 1. PostHog Analytics Baseline | 2/2 | Complete | - |
+| 2. Redesign + Social Proof + Conversion | 3/3 | Complete | - |
+| 3. Deploy Redesign + SEO Content | 0/2 | Not started | - |
