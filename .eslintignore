@@ -24,6 +24,9 @@ test-results/
 *.backup
 *.bak
 
+# Claude Code worktrees
+.claude/
+
 # Logs
 *.log
 npm-debug.log*
