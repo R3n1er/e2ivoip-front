@@ -120,3 +120,14 @@ Thumbs.db
 # Extracted content
 extracted-blog-content.json
 public/blog-images/
+
+# Dev-only artifacts (planning, MCP, dotenvx)
+.planning/
+.mcp.json
+.env.keys
+.playwright-mcp/
+posthog-setup-report.md
+full-page-logo-check.png
+header-after-refresh.png
+header-logo-check.png
+header-logo-resized.png
