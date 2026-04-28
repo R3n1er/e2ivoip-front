@@ -2,6 +2,33 @@
 
 Prends en compte CLAUDE.md et .agents.md
 
+> 📌 **Mémoire projet** : consulter `memory.md` à la racine pour le suivi global (décisions, contexte, références). À mettre à jour à chaque décision structurante.
+
+# 🎨 Charte Graphique (RÈGLE ABSOLUE)
+
+**Source de vérité unique** :
+- `docs/CHARTE_GRAPHIQUE.md` — référentiel technique (Markdown)
+- `docs/Charte_Graphique_E2I_VoIP.docx` — version Word (documents commerciaux)
+- `docs/BrandBrief_e2ivoip.md` — brief de marque (positionnement, ton, persona)
+
+**Couleurs officielles — interdiction d'introduire toute couleur hors charte** :
+
+| Rôle | Hex | Variable CSS | Tailwind |
+|---|---|---|---|
+| Rouge Principal | `#E53E3E` | `--red-primary` | `text-red-primary` / `bg-red-primary` |
+| Bleu Marine | `#2D3848` | `--blue-marine` | `text-blue-marine` / `bg-blue-marine` |
+| Gris Secondaire | `#818096` | `--gray-secondary` | `text-gray-secondary` |
+| Gris Foncé | `#1F2937` | `--gray-dark` | `text-gray-dark` |
+| Blanc | `#FFFFFF` | — | — |
+
+**Hero gradient OBLIGATOIRE** : `bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85`
+
+**Règles** :
+1. Toujours utiliser les classes Tailwind/DaisyUI mappées à la charte (jamais d'inline color hors palette).
+2. Avant toute nouvelle teinte, vérifier `docs/CHARTE_GRAPHIQUE.md`. Si manquante, **demander validation** avant d'ajouter.
+3. Les fichiers `docs/CHARTE_GRAPHIQUE.md`, `docs/Charte_Graphique_E2I_VoIP.docx` et `docs/BrandBrief_e2ivoip.md` sont en **permission requise** : ne jamais les modifier sans accord explicite.
+4. Toute modification de la charte doit être propagée dans les 3 fichiers (md + docx + brand brief) ET dans `memory.md`.
+
 # Préférences Utilisateur
 
 - Chef de projet/dev JS NextJS débutant avec TDAH
