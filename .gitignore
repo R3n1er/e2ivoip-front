@@ -131,3 +131,10 @@ full-page-logo-check.png
 header-after-refresh.png
 header-logo-check.png
 header-logo-resized.png
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Claude Code local skills (installed per-machine, not project artifacts)
+.claude/skills/
