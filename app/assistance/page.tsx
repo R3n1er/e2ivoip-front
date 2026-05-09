@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import WorkingFAQ from "@/components/faq-working";
 import Link from "next/link";
 import Script from "next/script";
+import { CTAButton } from "@/components/ui/cta-button";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
@@ -43,10 +47,13 @@ export default function AssistancePage() {
               Support technique 3CX et Yeastar • Équipes locales France et
               Outre-mer (Antilles-Guyane, Réunion) • Réponse rapide
             </p>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4 mb-8">
               Notre équipe d'experts est là pour vous accompagner dans
               l'utilisation de vos solutions téléphoniques
             </p>
+            <CTAButton href="/contact?objet=support" icon="lni-headphone">
+              DEMANDER UN SUPPORT
+            </CTAButton>
           </div>
         </div>
       </section>
@@ -114,6 +121,28 @@ export default function AssistancePage() {
           <WorkingFAQ />
         </div>
       </section>
+
+      {/* Territory phone links -- D-09 */}
+      <section className="bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+            APPELEZ-NOUS DIRECTEMENT
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+              <PhoneLink
+                key={phone.territory}
+                phone={phone}
+                showTerritory={true}
+                className="text-gray-dark font-black hover:text-red-primary transition-colors"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <ContactSectionSimple />
     </div>
   );
 }

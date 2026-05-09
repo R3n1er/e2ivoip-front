@@ -8,6 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CTAButton } from "@/components/ui/cta-button";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
 export default function StudioAttente() {
   const services = [
@@ -52,23 +56,9 @@ export default function StudioAttente() {
                 Créez une expérience d'attente agréable et professionnelle avec
                 nos messages et musiques sur mesure
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                >
-                  <i className="lni lni-play w-5 h-5 mr-2"></i>
-                  Écouter des exemples
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
-                >
-                  <i className="lni lni-headphone w-5 h-5 mr-2"></i>
-                  Demander un devis
-                </Button>
-              </div>
+              <CTAButton href="/devis-en-ligne?service=studio" icon="lni-microphone">
+                CREER MON STUDIO
+              </CTAButton>
             </div>
           </div>
         </section>
@@ -161,6 +151,27 @@ export default function StudioAttente() {
             </div>
           </div>
         </section>
+        {/* Territory phone links -- D-09 */}
+        <section className="bg-gray-50 py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+              APPELEZ-NOUS DIRECTEMENT
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+                <PhoneLink
+                  key={phone.territory}
+                  phone={phone}
+                  showTerritory={true}
+                  className="text-gray-dark font-black hover:text-red-primary transition-colors"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <ContactSectionSimple />
       </div>
       <Footer />
     </div>

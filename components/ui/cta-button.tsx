@@ -1,192 +1,144 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { ReactNode } from "react";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ReactNode } from 'react'
+import { trackEvent } from '@/lib/analytics/track-event'
 
 interface CTAButtonProps {
-  href: string;
-  children: ReactNode;
-  icon?: string;
-  className?: string;
-  onClick?: () => void;
-  external?: boolean;
-  fullWidth?: boolean;
+  href: string
+  children: ReactNode
+  icon?: string
+  className?: string
+  onClick?: () => void
+  external?: boolean
 }
 
-export function CTAButton({ 
-  href, 
-  children, 
-  icon, 
-  className = "",
+function useCTAClick(href: string, children: ReactNode, onClick?: () => void) {
+  const pathname = usePathname()
+
+  return () => {
+    const eventName = href.startsWith('tel:') ? 'phone_click' : 'cta_click' as const
+    const childText = typeof children === 'string' ? children : ''
+    trackEvent(eventName, {
+      page: pathname || '/',
+      element_id: href,
+      element_text: childText,
+    })
+    onClick?.()
+  }
+}
+
+export function CTAButton({
+  href,
+  children,
+  icon,
+  className = '',
   onClick,
   external = false,
-  fullWidth = false 
 }: CTAButtonProps) {
-  const buttonContent = (
-    <button 
-      onClick={onClick}
-      className={`
-        relative overflow-hidden 
-        bg-red-primary text-white 
-        font-semibold text-lg 
-        px-12 py-5
-        rounded-none border-0 
-        shadow-md hover:shadow-xl 
-        transform hover:-translate-y-0.5 active:translate-y-0 
-        transition-all duration-200 
-        group
-        ${fullWidth ? 'w-full' : ''}
-        ${className}
-      `}
-    >
-      <span className="relative z-10 flex items-center justify-center">
-        {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
-        <span className="tracking-wide">{children}</span>
-        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-      </span>
-      {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-red-700 to-red-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-      {/* Click animation */}
-      <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-    </button>
-  );
+  const handleClick = useCTAClick(href, children, onClick)
+
+  const inner = (
+    <span className="block bg-red-primary text-white px-10 py-4 text-sm font-black uppercase tracking-[0.2em]">
+      {icon && <i className={`lni ${icon} mr-3`} />}
+      {children}
+    </span>
+  )
 
   if (external) {
-    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
+    const isTelOrMailto = href.startsWith('tel:') || href.startsWith('mailto:')
     return (
       <a
         href={href}
-        suppressHydrationWarning={isTelOrMailto}
-        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-        className="inline-block"
+        className={`monolith-btn ${className}`}
+        onClick={handleClick}
+        {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
-        {buttonContent}
+        {inner}
       </a>
-    );
+    )
   }
 
   return (
-    <Link href={href} className="inline-block">
-      {buttonContent}
+    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+      {inner}
     </Link>
-  );
+  )
 }
 
-// Variante bleu marine pour les CTA secondaires
-export function CTAButtonMarine({ 
-  href, 
-  children, 
-  icon, 
-  className = "",
+export function CTAButtonMarine({
+  href,
+  children,
+  icon,
+  className = '',
   onClick,
   external = false,
-  fullWidth = false
 }: CTAButtonProps) {
-  const buttonContent = (
-    <button 
-      onClick={onClick}
-      className={`
-        relative overflow-hidden 
-        bg-blue-marine text-white 
-        font-semibold text-lg 
-        px-12 py-5
-        rounded-none border-0 
-        shadow-md hover:shadow-xl 
-        transform hover:-translate-y-0.5 active:translate-y-0 
-        transition-all duration-200 
-        group
-        ${fullWidth ? 'w-full' : ''}
-        ${className}
-      `}
-    >
-      <span className="relative z-10 flex items-center justify-center">
-        {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
-        <span className="tracking-wide">{children}</span>
-        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-      </span>
-      {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-blue-marine opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-      {/* Click animation */}
-      <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-    </button>
-  );
+  const handleClick = useCTAClick(href, children, onClick)
+
+  const inner = (
+    <span className="block bg-blue-marine text-white px-10 py-4 text-sm font-black uppercase tracking-[0.2em]">
+      {icon && <i className={`lni ${icon} mr-3`} />}
+      {children}
+    </span>
+  )
 
   if (external) {
-    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
+    const isTelOrMailto = href.startsWith('tel:') || href.startsWith('mailto:')
     return (
       <a
         href={href}
-        suppressHydrationWarning={isTelOrMailto}
-        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-        className="inline-block"
+        className={`monolith-btn ${className}`}
+        onClick={handleClick}
+        {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
-        {buttonContent}
+        {inner}
       </a>
-    );
+    )
   }
 
   return (
-    <Link href={href} className="inline-block">
-      {buttonContent}
+    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+      {inner}
     </Link>
-  );
+  )
 }
 
-// Variante secondaire outline pour les CTA moins importants
-export function CTAButtonSecondary({ 
-  href, 
-  children, 
-  icon, 
-  className = "",
+export function CTAButtonSecondary({
+  href,
+  children,
+  icon,
+  className = '',
   onClick,
   external = false,
-  fullWidth = false
 }: CTAButtonProps) {
-  const buttonContent = (
-    <button 
-      onClick={onClick}
-      className={`
-        relative overflow-hidden 
-        bg-white text-red-primary 
-        font-semibold text-lg 
-        px-12 py-5
-        rounded-none border-2 border-red-primary
-        shadow-md hover:shadow-xl 
-        transform hover:-translate-y-0.5 active:translate-y-0 
-        transition-all duration-200 
-        group
-        hover:bg-red-primary hover:text-white
-        ${fullWidth ? 'w-full' : ''}
-        ${className}
-      `}
-    >
-      <span className="relative z-10 flex items-center justify-center">
-        {icon && <i className={`lni ${icon} mr-3 text-xl`}></i>}
-        <span className="tracking-wide">{children}</span>
-        <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-      </span>
-      {/* Click animation */}
-      <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-    </button>
-  );
+  const handleClick = useCTAClick(href, children, onClick)
+
+  const inner = (
+    <span className="block bg-white text-[#091421] px-10 py-4 text-sm font-black uppercase tracking-[0.2em]">
+      {icon && <i className={`lni ${icon} mr-3`} />}
+      {children}
+    </span>
+  )
 
   if (external) {
-    const isTelOrMailto = href.startsWith("tel:") || href.startsWith("mailto:");
+    const isTelOrMailto = href.startsWith('tel:') || href.startsWith('mailto:')
     return (
       <a
         href={href}
-        suppressHydrationWarning={isTelOrMailto}
-        {...(isTelOrMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-        className="inline-block"
+        className={`monolith-btn ${className}`}
+        onClick={handleClick}
+        {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
-        {buttonContent}
+        {inner}
       </a>
-    );
+    )
   }
 
   return (
-    <Link href={href} className="inline-block">
-      {buttonContent}
+    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+      {inner}
     </Link>
-  );
+  )
 }

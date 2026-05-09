@@ -143,7 +143,7 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
 
-                  <CTAButton href={service.href} icon="lni-arrow-right" fullWidth>
+                  <CTAButton href={service.href} icon="lni-arrow-right" className="w-full">
                     En savoir plus
                   </CTAButton>
                 </div>

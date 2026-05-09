@@ -29,8 +29,8 @@ describe('Page Assistants Vocaux IA', () => {
 
   beforeEach(async () => {
     // Import dynamique pour éviter les problèmes SSR
-    const module = await import('@/app/nos-services/assistants-vocaux-ia/page');
-    AssistantsVocauxIA = module.default;
+    const pageModule = await import('@/app/nos-services/assistants-vocaux-ia/page');
+    AssistantsVocauxIA = pageModule.default;
   });
 
   it('rend la page sans erreur', () => {

@@ -185,7 +185,7 @@ export function HeaderSimple() {
                   </div>
                 ))}
                 <div className="mt-6">
-                  <CTAButton href="/contact" icon="lni-phone" fullWidth>
+                  <CTAButton href="/contact" icon="lni-phone" className="w-full">
                     Contact
                   </CTAButton>
                 </div>
