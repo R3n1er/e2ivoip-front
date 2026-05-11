@@ -4,6 +4,16 @@ Prends en compte CLAUDE.md et .agents.md
 
 > 📌 **Mémoire projet** : consulter `memory.md` à la racine pour le suivi global (décisions, contexte, références). À mettre à jour à chaque décision structurante.
 
+## Second Cerveau (SIKS-BRAIN)
+
+**Emplacement** : `/Users/alban/Documents/SIKS-BRAIN/`
+**Regles** : lire `/Users/alban/Documents/SIKS-BRAIN/AGENTS.md` avant toute operation.
+
+**Quand consulter** : pour retrouver des decisions, du contexte metier E2I VOIP, des fiches clients/projets/outils, ou des informations capitalisees dans d'autres sessions.
+**Quand ecrire** : pour deposer une note dans `1-INBOX/`, proposer une fiche dans `20-propositions/`, ou capitaliser une decision structurante.
+**Fiche projet liee** : `20-propositions/projets/e2i-voip-site-front-redesign.md`
+**Organisation** : `10-wiki/organisations/e2i-voip/index.md` (lecture seule)
+
 # 🎨 Charte Graphique (RÈGLE ABSOLUE)
 
 **Source de vérité unique** :

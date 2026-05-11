@@ -130,6 +130,8 @@ gh pr create --title "feat: description"
 
 ## 📌 Décisions & Historique Récent
 
+- **2026-04-28** — **Retrait du produit Mobile 4G/5G du catalogue** (offre MVNO Orange + Box 4G/5G nomades + backup 4G/5G). N'est plus commercialisé. Sections supprimées dans : `BrandBrief_e2ivoip.md` §E, `SPEC_STRATEGIE_VENTE_MARKETING.md` §4.5, `roadmap.md`, `ligne-editoriale.md`, `plan-revision-contenus.md` (page `/nos-services/box-4g-5g-secours` retirée). Conservé : mentions de "Box 4G" dans les FAQ Trunk SIP comme **type de connexion internet acceptée** (pas une offre commerciale E2I), et page `/app/mobilite/page.tsx` qui parle de **softphone 3CX mobile** (utilisation de la ligne fixe sur smartphone), sans rapport avec un produit MVNO.
+- **2026-04-28** — Spec stratégie vente & marketing créée (`docs/SPEC_STRATEGIE_VENTE_MARKETING.md` + `.docx` généré via `scripts/build_spec_docx.py` avec charte E2I appliquée).
 - **2026-04-28** — Charte graphique convertie en `.docx` (`docs/Charte_Graphique_E2I_VoIP.docx`) pour usage dans documents commerciaux Word. Couleurs réelles appliquées (swatches, titres colorés).
 - **2026-04-xx** — Phase 03 : redesign + SEO content (cf. commits `62ca4d9`, `094544a`).
 

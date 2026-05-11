@@ -233,33 +233,7 @@ Nous proposons :
 
 Profitez d’un **accueil téléphonique soigné** qui inspire confiance à vos clients et partenaires. Contactez-nous pour discuter de votre projet et recevoir un exemple personnalisé.
 
-## E. Telephonie Mobile et Box 4G / 5G de secours
-
-Nous mettons à votre disposition des solutions de connectivité mobile avancées, conçues pour répondre aux exigences des professionnels exigeants. En tant qu'opérateur MVNO sur le réseau Orange, nous vous offrons une infrastructure fiable et performante, disponible en Métropole comme dans les Antilles-Guyane.
-
-**Un Réseau Haut de Gamme pour une Connectivité Sans Compromis**
-
-Notre infrastructure sur le réseau Orange nous permet de proposer une couverture réseau 4G et 5G de qualité professionnelle reconnu dans les DOM. Ce réseau, reconnu pour sa stabilité et ses performances, couvre 84% de la population en Métropole et dispose d'une présence solide en Outre-mer. Les technologies employées garantissent des débits élevés et une latence réduite, essentielles pour les applications métiers critiques telles que la visioconférence, le cloud computing ou les transactions en temps réel.
-
-**Nos Solutions pour les Professionnels - Internet en mobilité**
-
-Nous proposons deux types de solutions adaptées aux besoins spécifiques des entreprises. Les box mobiles 4G/5G offrent une connectivité nomade haut débit, idéale pour les collaborateurs en déplacement ou les sites temporaires. Ces équipements, issus de marques reconnues comme Huawei ou ZTE, fournissent des débits pouvant atteindre 3,8 Gbps en 5G. Leur conception professionnelle intègre des fonctionnalités avancées telles que le Wi-Fi double bande ou des ports Ethernet pour une intégration aisée dans votre infrastructure existante.
-
-**Nos Solutions pour les Professionnels - Secours et continuité de service**
-
-Pour les entreprises soucieuses de la continuité de leur service, nous proposons des solutions de backup 4G/5G. Ces systèmes s'intègrent directement à votre infrastructure réseau et prennent le relais automatiquement en cas de défaillance de votre connexion principale. L'installation, simple et rapide, se fait sur votre firewall ou routeur principal, garantissant une transition transparente sans interruption de service.
-
-**Engagement et Flexibilité**
-
-Toutes nos offres sont proposées avec un engagement de 12 mois, vous offrant ainsi la stabilité nécessaire pour vos opérations tout en permettant une révision régulière de vos besoins. Cette période d'engagement nous permet de vous garantir un service de qualité constante et un accompagnement personnalisé tout au long de votre contrat.
-
-**Pourquoi Choisir E2I VOIP ?**
-
-Notre différence réside dans notre approche globale. Nous ne nous contentons pas de fournir des solutions techniques, nous vous accompagnons dans leur déploiement et leur utilisation optimale. Notre expertise locale, présente à la fois en Métropole et dans les Antilles-Guyane, nous permet d'intervenir rapidement et efficacement pour répondre à vos besoins spécifiques.
-
-Les entreprises qui nous font confiance bénéficient ainsi d'une infrastructure de communication résiliente, adaptée à leurs exigences métier, et soutenue par une équipe d'experts dédiés. Que vous ayez besoin d'une connectivité mobile performante ou d'une solution de backup fiable, nos offres s'adaptent à vos besoins pour vous offrir la tranquillité d'esprit que mérite votre activité.
-
-# F. Automatisation et assistants IA pour standard téléphonique
+## E. Automatisation et assistants IA pour standard téléphonique
 
 ### **Réinventez votre réception téléphonique grâce à l’assistant vocal IA sur mesure**
 
@@ -324,7 +298,7 @@ Prenez 10 minutes pour échanger avec nous. Ensemble, identifions comment cet as
 
 [Appelons-nous] pour un diagnostic sans engagement. Parce que chaque appel mérite d’être une opportunité saisie.
 
-## G. Services complémentaires
+## F. Services complémentaires
 
 - Étude de portabilité opérateur - Étude financière de réduction des couts de la téléphonie
 - Audit et conseil téléphonie IP et communication d’entreprise
