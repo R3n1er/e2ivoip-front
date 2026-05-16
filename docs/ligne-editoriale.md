@@ -148,7 +148,6 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - **Assistants vocaux IA** : "Accueil client 24/7 avec intelligence artificielle"
 - **Studio d'enregistrement** : "Messages vocaux professionnels pour votre standard". Choisissez votre musique personnalisée libre de doigts et éditez vos messages vocaux pour la réception de vos appels aux standards.
-- **Box 4G/5G secours** : "Continuité de service garantie"
 
 ## ✍️ Exemples de Formulations
 

@@ -117,10 +117,10 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
   it("les boutons CTA sont présents et fonctionnels", () => {
     render(<ServicesSectionSimple />);
 
-    const ctaButtons = screen.getAllByRole("button", {
+    const ctaLinks = screen.getAllByRole("link", {
       name: /En savoir plus/i,
     });
-    expect(ctaButtons.length).toBeGreaterThan(0);
+    expect(ctaLinks.length).toBeGreaterThan(0);
   });
 
   it("affiche les bénéfices clés avec les bonnes couleurs", () => {

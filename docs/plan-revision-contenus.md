@@ -120,12 +120,6 @@
    - 3 piliers : Accueil 24/7, qualification auto, transfert intelligent
    - CTA : "Démonstration gratuite"
 
-8. **Box 4G/5G Secours** (`/nos-services/box-4g-5g-secours`)
-   - Titre : "Continuité de service garantie avec nos solutions 4G/5G"
-   - Focus : Backup automatique, réseau Orange, engagement 12 mois
-   - Débits jusqu'à 3,8 Gbps en 5G
-   - CTA : "Sécurisez votre connexion"
-
 ### Phase 3 : Pages Institutionnelles (Semaine 3)
 
 #### Qui Sommes-Nous

@@ -8,6 +8,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
+import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { PhoneLink } from "@/components/ui/phone-link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
 export default function TelephonieDentreprise() {
   const solutions = [
@@ -63,8 +66,8 @@ export default function TelephonieDentreprise() {
                 Des solutions de téléphonie IP complètes et évolutives pour
                 répondre aux besoins de votre entreprise
               </p>
-              <CTAButton href="/devis-en-ligne" icon="lni-bubble">
-                Demander un devis gratuit
+              <CTAButton href="/devis-en-ligne?service=telephonie" icon="lni-bubble">
+                MODERNISER MA TELEPHONIE
               </CTAButton>
             </div>
           </div>
@@ -149,6 +152,27 @@ export default function TelephonieDentreprise() {
             </div>
           </div>
         </section>
+        {/* Territory phone links -- D-09 */}
+        <section className="bg-gray-50 py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
+              APPELEZ-NOUS DIRECTEMENT
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
+                <PhoneLink
+                  key={phone.territory}
+                  phone={phone}
+                  showTerritory={true}
+                  className="text-gray-dark font-black hover:text-red-primary transition-colors"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <ContactSectionSimple />
       </div>
       <Footer />
     </div>

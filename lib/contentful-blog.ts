@@ -28,8 +28,12 @@ const PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN as
   | undefined;
 const CT_ID = process.env.CONTENTFUL_CONTENT_TYPE_ID || "blogPost";
 
+function isConfigured(): boolean {
+  return !!(SPACE_ID && DELIVERY_TOKEN);
+}
+
 function assertEnv() {
-  if (!SPACE_ID || !DELIVERY_TOKEN) {
+  if (!isConfigured()) {
     throw new Error(
       "CONTENTFUL_SPACE_ID ou CONTENTFUL_DELIVERY_TOKEN (ou CONTENTFUL_ACCESS_TOKEN) manquant"
     );
@@ -87,7 +91,7 @@ export async function getContentfulBlogPosts(
   pageSize = 12,
   preview = false
 ): Promise<{ posts: BlogPost[]; total: number }> {
-  assertEnv();
+  if (!isConfigured()) return { posts: [], total: 0 };
   const skip = (page - 1) * pageSize;
   const params = new URLSearchParams({
     content_type: CT_ID,
@@ -107,7 +111,7 @@ export async function getContentfulBlogPost(
   slug: string,
   preview = false
 ): Promise<BlogPost | null> {
-  assertEnv();
+  if (!isConfigured()) return null;
   const params = new URLSearchParams({
     content_type: CT_ID,
     limit: "1",
@@ -125,7 +129,7 @@ export async function searchContentfulBlogPosts(
   pageSize = 12,
   preview = false
 ): Promise<{ posts: BlogPost[]; total: number }> {
-  assertEnv();
+  if (!isConfigured()) return { posts: [], total: 0 };
   const skip = (page - 1) * pageSize;
   const params = new URLSearchParams({
     content_type: CT_ID,
