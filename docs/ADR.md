@@ -10,6 +10,18 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-18 — Suppression effective de la page `/mobilite`
+
+- **Contexte** : L’ADR du 2025-09-27 prévoyait déjà la suppression de la page mobilité et le retrait des liens de navigation. Le fichier `app/mobilite/page.tsx` était resté en place et répondait encore en HTTP 200. Le produit Mobile 4G/5G avait déjà été retiré du catalogue (memory.md, 2026-04-28).
+- **Décision** :
+  - Supprimer définitivement `app/mobilite/page.tsx` et le dossier `app/mobilite/`.
+  - Conserver le 404 naturel Next.js (aucune redirection ajoutée — le projet n’a pas de pattern de redirect pour pages obsolètes).
+  - Les menus et sections services étaient déjà sans lien `/mobilite` ; aucune modification composant requise.
+- **Conséquences** :
+  - `/mobilite` renvoie 404.
+  - Le softphone 3CX mobile reste documenté via `/telephonie-3cx` et les contenus 3CX existants.
+- **Tests associés** : `npm test` (suites header/services déjà alignées sur l’absence de Mobilité).
+
 ### 2025-10-22 — Création page Assistants Vocaux IA alignée charte graphique
 
 - **Contexte** : La page `app/assistants-vocaux-ia/page.tsx` existante (142 lignes) utilisait des couleurs génériques non conformes à la charte graphique E2I VoIP (`red-600`, `blue-50`) et manquait d'intégration avec le formulaire de contact HubSpot. L'objectif était de créer une page de lancement professionnelle alignée avec le brand brief et la ligne éditoriale.

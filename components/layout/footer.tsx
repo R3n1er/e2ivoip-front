@@ -112,7 +112,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/nos-services/studio-attente"
+                  href="/studio-attente"
                   className="hover:text-white transition-colors"
                 >
                   Studio attente telephonique
