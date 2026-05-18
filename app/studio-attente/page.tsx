@@ -45,12 +45,12 @@ export default function StudioAttente() {
     <div className="min-h-screen bg-white">
       <div className="pt-6">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-purple-50 to-white">
+        <section className="py-20 bg-gradient-to-r from-red-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Studio attente{" "}
-                <span className="text-red-600">téléphonique</span>
+                <span className="text-red-primary">téléphonique</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Créez une expérience d'attente agréable et professionnelle avec

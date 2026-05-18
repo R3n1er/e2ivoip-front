@@ -309,8 +309,8 @@ export default function ThreeCXCloudPage() {
 
             {/* CRM Connecté */}
             <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
-              {/* Gradient border top - Rouge vers orange */}
-              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+              {/* Gradient border top */}
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
 
               {/* Background pattern subtil */}
               <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">

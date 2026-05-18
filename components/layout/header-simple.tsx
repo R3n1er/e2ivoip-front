@@ -42,11 +42,11 @@ export function HeaderSimple() {
       submenu: [
         {
           name: "Studio attente téléphonique",
-          href: "/nos-services/studio-attente",
+          href: "/studio-attente",
         },
         {
           name: "Assistants vocaux IA",
-          href: "/assistants-vocaux-ia",
+          href: "/nos-services/assistants-vocaux-ia",
         },
       ],
     },
