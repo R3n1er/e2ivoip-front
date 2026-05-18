@@ -3,7 +3,7 @@
 Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapidement sur le projet `e2ivoip-front`.
 
 ## 1. Vision d’ensemble
-- **Objectif produit :** site marketing Next.js pour promouvoir les offres téléphonie IP d’E2I (Trunk SIP, 3CX, mobilité, assistants IA, etc.).
+- **Objectif produit :** site marketing Next.js pour promouvoir les offres téléphonie IP d’E2I (Trunk SIP, 3CX, assistants vocaux IA, Yeastar, studio d’attente, etc.). L’offre téléphonie mobile / MVNO et la page `/mobilite` ne sont plus commercialisées (voir ADR 2026-05-18).
 - **Stack principale :** Next.js 15 (App Router) + TypeScript + TailwindCSS/DaisyUI + composants shadcn-ui.
 - **Modes de rendu :** pages statiques hybridées avec composants interactifs côté client, service worker pour support offline/PWA light.
 - **Références internes :**
@@ -23,7 +23,7 @@ e2ivoip-front/
 ├── app/                 # Routes App Router (pages marketing + API routes)
 │   ├── layout.tsx       # Layout global (fonts, header/footer, trackers)
 │   ├── page.tsx         # Homepage
-│   ├── [section]/       # Pages thématiques (blog, assistance, mobilite, etc.)
+│   ├── [section]/       # Pages thématiques (blog, assistance, telephonie-3cx, etc.)
 │   └── api/             # Routes API (Contentful/HubsPot utilitaires)
 ├── components/          # Sections marketing et intégrations HubSpot/Tawk
 │   └── ui/              # Design system shadcn (Button, Card, etc.)
@@ -53,7 +53,7 @@ Orchestre les sections marketing : hero, transformation, carousel clients, abou
 - `app/api/blog/[slug]/route.ts` expose un fetch unitaire (slug).
 
 ### 5.3 Pages services/produits
-Dossiers `app/telephonie-3cx`, `app/nos-services/...`, `app/assistance`, `app/mobilite`, etc. Chaque page présente un hero, sections CTA, FAQ (`components/faq-working`) et intégrations (formulaires HubSpot, iframes TawkTo).
+Dossiers `app/telephonie-3cx`, `app/nos-services/...`, `app/assistance`, etc. Chaque page présente un hero, sections CTA, FAQ (`components/faq-working`) et intégrations (formulaires HubSpot, iframes TawkTo).
 
 ### 5.4 Contact (`app/contact/page.tsx`)
 Hero illustré + carte HubSpot inline, hotline/WhatsApp, implantations DOM. Vérifier correspondance des pictos et data-tests (`data-testid`) utilisés en tests.

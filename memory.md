@@ -2,7 +2,7 @@
 
 > Mémoire centrale du projet : décisions, contexte, références.
 > Source de vérité partagée entre l'humain et les assistants IA (Claude Code, Cursor, Copilot).
-> Dernière mise à jour : 2026-04-28
+> Dernière mise à jour : 2026-05-18
 
 ---
 
@@ -13,6 +13,8 @@
 **Stack** : NextJS 15 (App Router) + DaisyUI + Tailwind + Vercel
 **Repo** : `e2ivoip-front` (branche principale : `main`, dev : `dev`)
 **Méthodologie** : TDD strict (RED → GREEN → REFACTOR → DOCUMENT → COMMIT → DEPLOY)
+
+**Offres retirées du site (ne pas réintroduire sans décision produit)** : téléphonie mobile E2I (MVNO Orange, Box 4G/5G nomades), page `/mobilite`. Softphone 3CX mobile documenté via `/telephonie-3cx` uniquement.
 
 ---
 
@@ -130,7 +132,8 @@ gh pr create --title "feat: description"
 
 ## 📌 Décisions & Historique Récent
 
-- **2026-04-28** — **Retrait du produit Mobile 4G/5G du catalogue** (offre MVNO Orange + Box 4G/5G nomades + backup 4G/5G). N'est plus commercialisé. Sections supprimées dans : `BrandBrief_e2ivoip.md` §E, `SPEC_STRATEGIE_VENTE_MARKETING.md` §4.5, `roadmap.md`, `ligne-editoriale.md`, `plan-revision-contenus.md` (page `/nos-services/box-4g-5g-secours` retirée). Conservé : mentions de "Box 4G" dans les FAQ Trunk SIP comme **type de connexion internet acceptée** (pas une offre commerciale E2I), et page `/app/mobilite/page.tsx` qui parle de **softphone 3CX mobile** (utilisation de la ligne fixe sur smartphone), sans rapport avec un produit MVNO.
+- **2026-05-18** — **Suppression page `/mobilite`** : fichier `app/mobilite/page.tsx` retiré (404 naturelle). Menus et tests déjà sans lien Mobilité depuis ADR 2025-09-27. Softphone 3CX mobile couvert par `/telephonie-3cx`.
+- **2026-04-28** — **Retrait du produit Mobile 4G/5G du catalogue** (offre MVNO Orange + Box 4G/5G nomades + backup 4G/5G). N'est plus commercialisé. Sections supprimées dans : `BrandBrief_e2ivoip.md` §E, `SPEC_STRATEGIE_VENTE_MARKETING.md` §4.5, `roadmap.md`, `ligne-editoriale.md`, `plan-revision-contenus.md` (page `/nos-services/box-4g-5g-secours` retirée). Conservé : mentions de "Box 4G" dans les FAQ Trunk SIP comme **type de connexion internet acceptée** (pas une offre commerciale E2I).
 - **2026-04-28** — Spec stratégie vente & marketing créée (`docs/SPEC_STRATEGIE_VENTE_MARKETING.md` + `.docx` généré via `scripts/build_spec_docx.py` avec charte E2I appliquée).
 - **2026-04-28** — Charte graphique convertie en `.docx` (`docs/Charte_Graphique_E2I_VoIP.docx`) pour usage dans documents commerciaux Word. Couleurs réelles appliquées (swatches, titres colorés).
 - **2026-04-xx** — Phase 03 : redesign + SEO content (cf. commits `62ca4d9`, `094544a`).

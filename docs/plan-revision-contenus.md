@@ -143,7 +143,7 @@
 ### Phase 4 : Optimisation SEO (Semaine 4)
 
 #### Meta Descriptions (155 caractères max)
-- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM, numéros locaux, mobilité. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
+- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM, numéros locaux, IPBX 3CX. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
 - Téléphonie : "Téléphonie IP nouvelle génération. Trunk SIP compteur/illimité DOM. Création numéros locaux. Économies 30%. Support 24/7."
 - Trunk SIP : "Trunk SIP éligible DOM. Au compteur ou illimité. Numéros locaux inclus. Portabilité gratuite. -30% vs télécom classique."
 - Contact : "Contactez E2I VoIP pour vos besoins télécom. Réponse en 2h. Présence locale Martinique, Guadeloupe, Guyane. ☎ 0590 96 35 00"

@@ -86,10 +86,9 @@ La charte définit **5 couleurs uniquement** :
 - **Cards tarifs** : 🔴 Gradient `to-orange-500` hors charte (même problème que telephonie-3cx)
 - **Contenu** : ✅ Complet
 
-### Mobilité (`/mobilite`)
-- **Hero** : ⚠️ `py-20 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85` — gradient correct MAIS sans image de fond (hero plat coloré)
-- **Accents** : ⚠️ `text-red-300` (trop clair) et `text-red-primary` mélangés
-- **Contenu** : ✅ Présent
+### ~~Mobilité (`/mobilite`)~~ — page supprimée (2026-05-18)
+- **Statut** : route retirée du site ; `/mobilite` renvoie 404. L’offre téléphonie mobile E2I (MVNO, Box 4G/5G) n’est plus au catalogue. Le softphone 3CX mobile reste couvert par `/telephonie-3cx`.
+- **Note audit** : les constats ci-dessous (hero, accents) ne s’appliquent plus ; conservés ici à titre d’archive de l’audit du 2026-05-16.
 
 ### Studio attente téléphonique (`/studio-attente`)
 - **Hero** : 🔴 `bg-gradient-to-r from-purple-50 to-white` — violet TOTALEMENT hors charte
@@ -189,7 +188,7 @@ Rechercher-remplacer `text-red-400`, `text-red-600`, `bg-red-600` par leurs équ
 
 ## 6. Points positifs à conserver
 
-- ✅ Hero gradient conforme sur toutes les pages avec photo (contact, devis, qui-sommes-nous, telephonie-3cx, 3cx-cloud, mobilite)
+- ✅ Hero gradient conforme sur toutes les pages avec photo (contact, devis, qui-sommes-nous, telephonie-3cx, 3cx-cloud)
 - ✅ Utilisation de `red-primary` et `blue-marine` correcte sur la majorité des pages
 - ✅ Navigation principale structurée et cohérente (hormis les 3 URLs erronées)
 - ✅ Sections CTA finales harmonisées
