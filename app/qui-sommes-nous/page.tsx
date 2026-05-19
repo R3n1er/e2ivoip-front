@@ -8,13 +8,13 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
   description:
-    "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms.",
+    "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -20% sur vos coûts télécoms.",
   keywords:
     "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM",
   openGraph: {
     title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
     description:
-      "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
+      "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 20% sur vos coûts télécoms.",
     type: "website",
   },
 };
@@ -72,7 +72,7 @@ export default function QuiSommesNous() {
               Support local réactif
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Économisez jusqu'à 30% sur vos coûts télécoms avec nos solutions
+              Économisez jusqu'à 20% sur vos coûts télécoms avec nos solutions
               de téléphonie IP
             </p>
           </div>
@@ -94,7 +94,7 @@ export default function QuiSommesNous() {
                 aux Antilles-Guyane et La Réunion. Nous avons accompagné plus de{" "}
                 <strong>100 entreprises</strong> dans leur transformation
                 digitale, leur permettant d'économiser en moyenne{" "}
-                <strong>30% sur leurs coûts télécoms</strong>.
+                <strong>20% sur leurs coûts télécoms</strong>.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Notre mission :</strong> Faciliter votre transition vers
@@ -201,7 +201,7 @@ export default function QuiSommesNous() {
                   Résultats garantis
                 </h3>
                 <p className="text-gray-600">
-                  Économies de 30% garanties sur vos factures télécom. Customer
+                  Économies de 20% garanties sur vos factures télécom. Customer
                   Success Manager dédié pour assurer votre satisfaction.
                 </p>
               </CardContent>
@@ -222,7 +222,7 @@ export default function QuiSommesNous() {
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
                 locaux incluses.
-                <strong>Économisez jusqu'à 30%</strong> par rapport à la
+                <strong>Économisez jusqu'à 20%</strong> par rapport à la
                 téléphonie traditionnelle.
               </p>
 
@@ -266,7 +266,8 @@ export default function QuiSommesNous() {
                       Services innovants inclus
                     </h3>
                     <p className="text-gray-600">
-                      <strong>Assistants vocaux IA</strong> pour accueil 24/7.
+                      <strong>Trunk SIP agents IA</strong> pour interconnexion
+                      plateformes VAPI, Rounded, ElevenLabs.
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.
                       <strong>Collaboration unifiée</strong> pour vos équipes.
                       Studio d'enregistrement pour messages professionnels.
@@ -297,7 +298,7 @@ export default function QuiSommesNous() {
                 </p>
                 <div className="space-y-2">
                   <p className="text-sm text-gray-600">
-                    ✓ <strong>-30% sur les coûts télécoms</strong>
+                    ✓ <strong>-20% sur les coûts télécoms</strong>
                   </p>
                   <p className="text-sm text-gray-600">
                     ✓ Parc de postes téléphoniques Fanvil
@@ -561,7 +562,7 @@ export default function QuiSommesNous() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Prêt à <span className="text-red-primary">économiser 30%</span> sur
+            Prêt à <span className="text-red-primary">économiser 20%</span> sur
             vos coûts télécoms ?
           </h2>
           <p className="text-xl text-gray-600 mb-8">

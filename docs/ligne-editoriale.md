@@ -39,7 +39,8 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - Solutions de téléphonie IP nouvelle génération hébergé dans le cloud (3CX et Yeastar)
 - Collaboration unifiée : travaillez de manière fluide sur tous vos sites
-- Fonctionnalités avancées : Intégration WhatsApp, Integration Teams, Integration Microsoft 365, Integration CRM, Visioconférence, Assistants vocaux IA, Transcription des appels
+- Fonctionnalités avancées : Intégration WhatsApp, Integration Teams, Integration Microsoft 365, Integration CRM, Visioconférence, Transcription des appels
+- Interconnexion SIP pour agents vocaux IA : numéros locaux DOM et trunk SIP BYOC pour VAPI, Rounded, ElevenLabs, Jambonz et plateformes compatibles
 - Standard virtuel intelligent et évolutif
 - Tableau de bord, Statistique des appels reçus ou abandonnés en file d'attente.
 - Communications unifiées pour tous vos sites. Plusieurs départements et services répartis sur plusieurs régions au sein d'un seul et même serveur hébergé dans le cloud.
@@ -75,7 +76,11 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - Économies 30% factures télécom
 - Téléphonie IP nouvelle génération
 - Centre d'appels virtuel
-- Agents vocaux IA / Intelligents
+- Trunk SIP agents IA
+- Carrier SIP DOM
+- BYOC SIP DOM
+- Interconnexion VAPI / Rounded / ElevenLabs / Jambonz
+- Numéros locaux DOM pour agents vocaux IA
 - Communications unifiées
 - Standard virtuel intelligent
 
@@ -101,6 +106,14 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - **Juridique/Expertise** (avocats, comptables) : Confidentialité, professionnalisme, flexibilité
 - **Commerce/Distribution** : Multi-sites, statistiques d'appels, centre d'appels virtuel
 - **Collectivités** : Budget maîtrisé, conformité RGPD, support local
+
+### Intégrateurs et agences IA
+
+- Message : "Déployez vos agents vocaux IA avec des numéros locaux DOM et une interconnexion SIP fiable"
+- Focus : trunk SIP BYOC, redirection SIP, numéros +596 / +590 / +594 / +262, support technique d'intégration
+- Vocabulaire : précis, B2B, orienté compatibilité plateforme et mise en production
+- À ne pas promettre : E2I VoIP ne conçoit pas les workflows IA, ne fournit pas de LLM/STT/TTS et ne vend pas d'assistant vocal clé en main
+- Plateformes à citer naturellement : VAPI, Rounded, ElevenLabs, Jambonz ; Retell AI et Bland AI peuvent être mentionnés comme plateformes compatibles sur le même modèle BYOC
 
 ## 📑 Structure des Contenus
 
@@ -137,6 +150,8 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - **Au compteur** : "Payez uniquement vos consommations, idéal pour maîtriser votre budget"
 - **Illimité** : "Budget fixe, appels illimités France + DOM"
 - Toujours mentionner : Création numéros locaux, portabilité gratuite, éligibilité DOM
+- **Agents vocaux IA** : "Connectez vos plateformes d'agents IA au réseau téléphonique local DOM via trunk SIP ou redirection SIP"
+- Pour l'offre agents IA, toujours mentionner : audience intégrateurs/agences IA, BYOC, numéros locaux DOM, plateformes compatibles, accompagnement technique, support local
 
 ### Solutions 3CX
 
@@ -146,8 +161,30 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Services innovants
 
-- **Assistants vocaux IA** : "Accueil client 24/7 avec intelligence artificielle"
+- **Trunk SIP agents IA** : "La couche télécom DOM pour connecter vos agents vocaux IA aux appels locaux"
 - **Studio d'enregistrement** : "Messages vocaux professionnels pour votre standard". Choisissez votre musique personnalisée libre de doigts et éditez vos messages vocaux pour la réception de vos appels aux standards.
+
+### Trunk SIP agents IA
+
+- **URL de référence** : `/telephonie-entreprise/trunk-sip-agents-ia`
+- **Titre recommandé** : "Trunk SIP DOM pour agents vocaux IA"
+- **Accroche** : "Numéros locaux Antilles-Guyane-Réunion et interconnexion SIP pour VAPI, Rounded, ElevenLabs et Jambonz"
+- **Positionnement** : E2I VoIP est le carrier SIP DOM et le partenaire télécom d'intégration, pas l'éditeur de l'agent IA
+- **Promesse** : permettre aux intégrateurs de déployer des agents vocaux IA avec des numéros locaux rassurants dans les DOM
+- **Offres à présenter** :
+  - Trunk SIP bidirectionnel pour production et volumes récurrents
+  - Redirection SIP pour POC rapides ou flux entrants uniquement
+- **Cas d'usage prioritaires** :
+  - Cabinets de santé : prise de rendez-vous et qualification avant agenda
+  - Dépannage automobile : collecte d'informations d'urgence et routage vers le bon intervenant
+  - PME locales : accueil 24/7, FAQ métier et transfert contextuel vers un humain
+- **Prérequis techniques à vulgariser** : numéros E.164, codecs G.711, whitelist IP, credentials SIP, transferts SIP REFER
+- **CTA recommandé** : "Parler à un commercial"
+- **Formulations à éviter** :
+  - "E2I crée votre assistant IA"
+  - "Assistant vocal IA clé en main"
+  - "Remplace vos équipes"
+  - "Automatisation sans supervision"
 
 ## ✍️ Exemples de Formulations
 
@@ -157,6 +194,8 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - ✅ "Économisez 30% sur vos coûts télécoms avec la VoIP"
 - ✅ "Trunk SIP illimité éligible DOM"
 - ✅ "Créez vos numéros locaux en 24h"
+- ✅ "Connectez vos agents vocaux IA aux numéros locaux DOM"
+- ✅ "Trunk SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz"
 
 ### Descriptions
 
@@ -164,6 +203,8 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - ✅ "Votre standard téléphonique nouvelle génération, simple et évolutif"
 - ✅ "Trunk SIP au compteur ou illimité, spécialement conçu pour les DOM"
 - ✅ "Portabilité et création de numéros dans votre zone géographique"
+- ✅ "E2I VoIP fournit la couche télécom DOM ; vous gardez votre plateforme IA"
+- ✅ "Numéros locaux +596, +590, +594 et +262 pour vos agents vocaux IA"
 
 ### CTAs
 
@@ -173,6 +214,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - ✅ "Lancer la portabilité de vos numéros"
 - ✅ "Créez votre numéro local"
 - ✅ "Découvrez nos offres de téléphonie 3CX"
+- ✅ "Parler à un commercial"
 
 ## 🎨 Cohérence avec la Charte Graphique
 

@@ -71,7 +71,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
     // « Solutions Mobilité » retiré du périmètre
     expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();
-    expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
 
@@ -126,9 +126,9 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
   it("affiche les bénéfices clés avec les bonnes couleurs", () => {
     render(<ServicesSectionSimple />);
 
-    expect(screen.getByText(/Économies jusqu'à 30%/)).toBeInTheDocument();
+    expect(screen.getByText(/Économies jusqu'à 20%/)).toBeInTheDocument();
     // Bénéfice « Mobilité intégrée » retiré du périmètre
     expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
-    expect(screen.getByText(/Transcription automatique/)).toBeInTheDocument();
+    expect(screen.getByText(/BYOC compatible/i)).toBeInTheDocument();
   });
 });

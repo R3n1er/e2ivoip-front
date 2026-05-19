@@ -54,7 +54,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
-    expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
 
@@ -93,7 +93,7 @@ describe("Page Nos Services", () => {
       screen.getByText(/500 entreprises nous font confiance/)
     ).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
-    const thirtyPercentElements = screen.getAllByText(/30%/);
+    const thirtyPercentElements = screen.getAllByText(/20%/);
     expect(thirtyPercentElements.length).toBeGreaterThan(0);
   });
 
@@ -126,7 +126,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification de quelques fonctionnalités clés
-    expect(screen.getByText("Économies jusqu'à 30%")).toBeInTheDocument();
+    expect(screen.getByText("Économies jusqu'à 20%")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux garantis")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();

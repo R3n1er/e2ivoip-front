@@ -113,12 +113,12 @@
      • Musique libre de droits incluse
    - CTA : "Écoutez nos exemples"
 
-7. **Assistants Vocaux IA** (`/nos-services/assistants-vocaux-ia`)
-   - Titre : "Assistant vocal intelligent 24/7 pour votre entreprise"
-   - Focus : Accueil automatisé, qualification leads, prise RDV
-   - Technologies : ElevenLabs, Rounded
-   - 3 piliers : Accueil 24/7, qualification auto, transfert intelligent
-   - CTA : "Démonstration gratuite"
+7. **Trunk SIP agents IA** (`/telephonie-entreprise/trunk-sip-agents-ia`)
+   - Titre : "Trunk SIP DOM pour agents vocaux IA — interconnexion VAPI, Rounded, ElevenLabs, Jambonz"
+   - Focus : Carrier SIP DOM pour intégrateurs IA (BYOC, numéros locaux, trunk ou redirection)
+   - Cas d'usage : kinésithérapeutes (RDV), dépannage auto, accueil PME 24/7
+   - CTA : "Parler à un commercial"
+   - Note : remplace l'ancienne page `/nos-services/assistants-vocaux-ia` (supprimée, pas de redirect)
 
 ### Phase 3 : Pages Institutionnelles (Semaine 3)
 

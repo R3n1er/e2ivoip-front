@@ -7,7 +7,7 @@ export function HomepageHeroSectionSimple() {
     { icon: "lni-users", value: "100+", label: "Entreprises nous font confiance" },
     { icon: "lni-certificate", value: "15+", label: "Années d'expertise télécom" },
     { icon: "lni-phone", value: "24/7", label: "Support technique France Métropolitaine et DOM" },
-    { icon: "lni-star", value: "30%", label: "Économies garanties" },
+    { icon: "lni-star", value: "20%", label: "Économies garanties" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export function HomepageHeroSectionSimple() {
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
             <span className="text-red-400 bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
-              Économisez 30%
+              Économisez 20%
             </span>
             <br />
             sur vos coûts télécoms

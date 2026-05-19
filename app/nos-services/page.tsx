@@ -19,13 +19,13 @@ import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. Économies 20% garanties. Devis gratuit ☎",
   keywords:
-    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, assistants vocaux IA, studio enregistrement, VoIP Antilles",
+    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 30% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 20% garanties.",
     type: "website",
     locale: "fr_FR",
   },
@@ -45,7 +45,7 @@ export default function NosServices() {
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
-        "Économies jusqu'à 30%",
+        "Économies jusqu'à 20%",
         "Numéros locaux garantis",
         "Portabilité gratuite",
         "Support technique local",
@@ -89,19 +89,19 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-comments",
-      title: "Assistants Vocaux IA",
+      icon: "lni-network",
+      title: "Trunk SIP agents IA",
       description:
-        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
+        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
       features: [
-        "Accueil 24/7",
-        "Compréhension naturelle",
-        "Transcription automatique",
-        "Intégration CRM",
+        "Numéros +596, +590, +594, +262",
+        "BYOC compatible",
+        "Trunk ou redirection",
+        "Offre revendeurs",
       ],
       badge: "Innovation",
       price: "Sur devis",
-      href: "/nos-services/assistants-vocaux-ia",
+      href: "/telephonie-entreprise/trunk-sip-agents-ia",
       category: "Innovation",
     },
     {
@@ -132,7 +132,7 @@ export default function NosServices() {
     {
       icon: "lni-bolt",
       title: "Économies garanties",
-      description: "Jusqu'à 30% de réduction sur vos factures télécom",
+      description: "Jusqu'à 20% de réduction sur vos factures télécom",
       color: "text-red-primary",
     },
     {
@@ -161,7 +161,7 @@ export default function NosServices() {
     "@type": "Organization",
     name: "E2I VoIP",
     description:
-      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et assistants vocaux IA.",
+      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et interconnexion agents vocaux IA.",
     url: "https://e2ivoip.fr",
     logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
     contactPoint: {
@@ -386,7 +386,7 @@ export default function NosServices() {
           <section className="py-20 bg-blue-marine">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white-primary mb-6">
-                Prêt à économiser <span className="text-red-primary">30%</span>{" "}
+                Prêt à économiser <span className="text-red-primary">20%</span>{" "}
                 sur vos télécoms ?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">

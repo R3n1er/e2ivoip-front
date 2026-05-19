@@ -154,10 +154,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Pages téléphonie entreprise
+  const telephoniePages = [
+    {
+      url: `${baseUrl}/telephonie-entreprise/trunk-sip-agents-ia`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+  ];
+
   // Combiner toutes les pages
   const allPages = [
     ...staticPages,
     ...servicePages,
+    ...telephoniePages,
     ...aboutPages,
     ...legalPages,
     ...blogPages,

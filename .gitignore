@@ -35,6 +35,7 @@ pids
 # Coverage directory used by tools like istanbul
 coverage/
 *.lcov
+test-results/
 
 # nyc test coverage
 .nyc_output
@@ -138,3 +139,6 @@ tsconfig.tsbuildinfo
 
 # Claude Code local skills (installed per-machine, not project artifacts)
 .claude/skills/
+
+# Cursor local hook state
+.cursor/hooks/state/

@@ -55,7 +55,7 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /Économisez 30%/i,
+        name: /Économisez 20%/i,
       })
     ).toBeInTheDocument();
 

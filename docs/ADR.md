@@ -10,6 +10,26 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-18 — Pivot Trunk SIP agents vocaux IA (remplace offre Assistants Vocaux IA)
+
+- **Contexte** : E2I VoIP ne commercialise plus de service d'assistant vocal IA clé en main. L'entreprise accompagne désormais les intégrateurs et agences IA qui déploient des agents sur VAPI, Rounded, ElevenLabs ou Jambonz, en fournissant la couche télécom DOM (numéros locaux Antilles-Guyane-Réunion + trunk SIP / redirection) que Twilio/Telnyx ne couvrent pas.
+- **Décision** :
+  - Créer la page `/telephonie-entreprise/trunk-sip-agents-ia` (audience intégrateurs B2B).
+  - Supprimer `/nos-services/assistants-vocaux-ia` sans redirection (SEO repart de zéro).
+  - Déplacer l'entrée menu sous **Téléphonie d'entreprise** (« Trunk SIP agents IA »).
+  - Remplacer `ContactFormAssistantIA` par `ContactFormTrunkSipIA` (même formId HubSpot, copy intégrateurs).
+  - Mettre à jour cartes services homepage et `/nos-services`, témoignages, metadata globale.
+- **Conséquences** :
+  - Positionnement clair : E2I = carrier SIP DOM, pas éditeur d'agents IA.
+  - Liens internes pointent vers la nouvelle URL uniquement.
+  - `/nos-services/assistants-vocaux-ia` → 404.
+  - Ligne éditoriale mise à jour pour cadrer le positionnement `trunk-sip-agents-ia` : E2I = carrier SIP DOM pour intégrateurs IA, pas éditeur d'assistants vocaux.
+  - BrandBrief/PRD non modifiés (dette doc restante).
+- **Tests associés** :
+  - `tests/trunk-sip-agents-ia.test.tsx`
+  - `tests/e2e/trunk-sip-agents-ia.spec.ts`
+  - Tests header, services-section, nos-services mis à jour
+
 ### 2026-05-18 — Suppression effective de la page `/mobilite`
 
 - **Contexte** : L’ADR du 2025-09-27 prévoyait déjà la suppression de la page mobilité et le retrait des liens de navigation. Le fichier `app/mobilite/page.tsx` était resté en place et répondait encore en HTTP 200. Le produit Mobile 4G/5G avait déjà été retiré du catalogue (memory.md, 2026-04-28).

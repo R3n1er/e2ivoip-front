@@ -36,7 +36,7 @@ export function AboutSectionSimple() {
   const stats = [
     { value: "100+", label: "Entreprises clientes", icon: "lni-users" },
     { value: "15+", label: "Années d'expertise", icon: "lni-certificate" },
-    { value: "30%", label: "Économies garanties", icon: "lni-bolt" },
+    { value: "20%", label: "Économies garanties", icon: "lni-bolt" },
     {
       value: "24/7",
       label: "Support France Métropolitaine et DOM",

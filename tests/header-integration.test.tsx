@@ -111,12 +111,12 @@ describe("Header - Test d'intégration", () => {
       expect(screen.getByTestId('submenu-link-3cx-pro-dédiée')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-3cx-smb-mutualisée')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-pbx-yeastar')).toBeInTheDocument();
+      expect(screen.getByTestId('submenu-link-trunk-sip-agents-ia')).toBeInTheDocument();
     });
 
     fireEvent.mouseEnter(screen.getByTestId('nav-link-nos-services'));
     await waitFor(() => {
       expect(screen.getByTestId('submenu-link-studio-attente-téléphonique')).toBeInTheDocument();
-      expect(screen.getByTestId('submenu-link-assistants-vocaux-ia')).toBeInTheDocument();
       expect(screen.getByTestId('submenu-link-devis-en-ligne')).toBeInTheDocument();
     });
   });

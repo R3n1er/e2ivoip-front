@@ -77,7 +77,7 @@ export default function PBXYeastar() {
                 <div className="flex items-center gap-2">
                   <i className="lni lni-stats-up text-white"></i>
                   <span className="text-sm">
-                    30% d'économies sur vos coûts télécom
+                    20% d'économies sur vos coûts télécom
                   </span>
                 </div>
               </div>
@@ -809,7 +809,7 @@ export default function PBXYeastar() {
                   Pilotage ROI & SLA
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
-                  Mesure des gains et reporting mensuel pour garantir 30%
+                  Mesure des gains et reporting mensuel pour garantir 20%
                   d'économies télécoms.
                 </p>
               </div>

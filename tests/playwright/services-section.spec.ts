@@ -25,7 +25,7 @@ test.describe("Section Services", () => {
       "Trunk SIP DOM",
       "3CX SMB PRO",
       "3CX PRO Cloud",
-      "Assistants Vocaux IA",
+      "Trunk SIP agents IA",
       "Studio d'Enregistrement",
     ];
 

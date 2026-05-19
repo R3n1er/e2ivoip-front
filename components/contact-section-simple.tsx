@@ -13,7 +13,7 @@ export function ContactSectionSimple() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-900 mb-6">
-            Pret a economiser 30% sur vos
+            Pret a economiser 20% sur vos
             <span className="text-red-primary"> couts telecoms ?</span>
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">

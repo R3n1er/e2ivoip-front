@@ -112,6 +112,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/telephonie-entreprise/trunk-sip-agents-ia"
+                  className="hover:text-white transition-colors"
+                >
+                  Trunk SIP agents IA
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/studio-attente"
                   className="hover:text-white transition-colors"
                 >

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title:
     "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:
-    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 30%.",
+    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 20%.",
   keywords:
     "trunk SIP compteur DOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM, opérateur télécom local",
   openGraph: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trunk SIP au Compteur DOM - E2I VoIP",
     description:
-      "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 30%.",
+      "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 20%.",
   },
 };
 
@@ -70,7 +70,7 @@ export default function TrunkSIPCompteur() {
                 notre passerelle SIP DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                Économisez jusqu'à <strong>30%</strong> sur vos coûts télécom •
+                Économisez jusqu'à <strong>20%</strong> sur vos coûts télécom •
                 Connexions SIP locales Antilles-Guyane-Réunion
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">

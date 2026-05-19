@@ -37,7 +37,7 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
   },
   {
     content:
-      'Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.',
+      'Excellent service client et reactivite remarquable. L\'interconnexion SIP pour nos agents vocaux IA a transforme notre accueil telephonique 24/7.',
     author: 'Sophie Laurent',
     role: 'Responsable Qualite',
     company: 'Clinique Saint-Joseph',

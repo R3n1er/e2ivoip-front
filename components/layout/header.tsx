@@ -54,6 +54,10 @@ export function Header() {
           href: "/telephonie-entreprise/3cx-smb-mutualisee",
         },
         { name: "PBX Yeastar", href: "/telephonie-entreprise/pbx-yeastar" },
+        {
+          name: "Trunk SIP agents IA",
+          href: "/telephonie-entreprise/trunk-sip-agents-ia",
+        },
       ],
     },
     {
@@ -63,10 +67,6 @@ export function Header() {
         {
           name: "Studio attente téléphonique",
           href: "/studio-attente",
-        },
-        {
-          name: "Assistants vocaux IA",
-          href: "/nos-services/assistants-vocaux-ia",
         },
         { name: "Devis en ligne", href: "/nos-services/devis-en-ligne" },
       ],

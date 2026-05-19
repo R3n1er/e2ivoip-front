@@ -8,6 +8,10 @@ interface HotjarTrackingProps {
 
 export function HotjarTracking({ hjid = 6502550 }: HotjarTrackingProps) {
   useEffect(() => {
+    if (process.env.NODE_ENV !== "production") {
+      return;
+    }
+
     // Vérifier si le script Hotjar n'est pas déjà chargé
     if (document.getElementById("hotjar-script")) {
       return;

@@ -11,7 +11,7 @@ export function ServicesSectionSimple() {
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
-        "Économies jusqu'à 30%",
+        "Économies jusqu'à 20%",
         "Numéros locaux garantis",
         "Portabilité gratuite",
         "Support technique local",
@@ -52,19 +52,19 @@ export function ServicesSectionSimple() {
       href: "/3cx-cloud",
     },
     {
-      icon: "lni-comments",
-      title: "Assistants Vocaux IA",
+      icon: "lni-network",
+      title: "Trunk SIP agents IA",
       description:
-        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
+        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
       features: [
-        "Accueil 24/7",
-        "Compréhension naturelle",
-        "Transcription automatique",
-        "Intégration CRM",
+        "Numéros +596, +590, +594, +262",
+        "BYOC compatible",
+        "Trunk ou redirection",
+        "Offre revendeurs",
       ],
       badge: "Innovation",
       price: "Sur devis",
-      href: "/nos-services/assistants-vocaux-ia",
+      href: "/telephonie-entreprise/trunk-sip-agents-ia",
     },
     {
       icon: "lni-bar-chart",

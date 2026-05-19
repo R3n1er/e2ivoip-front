@@ -34,6 +34,10 @@ export function HeaderSimple() {
           name: "Téléphonie Yeastar",
           href: "/telephonie-entreprise/pbx-yeastar",
         },
+        {
+          name: "Trunk SIP agents IA",
+          href: "/telephonie-entreprise/trunk-sip-agents-ia",
+        },
       ],
     },
     {
@@ -43,10 +47,6 @@ export function HeaderSimple() {
         {
           name: "Studio attente téléphonique",
           href: "/studio-attente",
-        },
-        {
-          name: "Assistants vocaux IA",
-          href: "/nos-services/assistants-vocaux-ia",
         },
       ],
     },
