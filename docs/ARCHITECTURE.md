@@ -2,7 +2,7 @@
 
 > Référence technique du projet. Source de vérité pour la structure, les conventions et le workflow.
 
-**Dernière mise à jour** : 2026-05-16
+**Dernière mise à jour** : 2026-05-19
 
 ---
 
@@ -13,7 +13,7 @@ e2ivoip-front/
 ├── app/                          # Pages NextJS 15 App Router
 │   ├── layout.tsx                # Layout principal
 │   ├── page.tsx                  # Homepage
-│   ├── blog/                     # Pages blog (Contentful)
+│   ├── blog/                     # Pages blog (HubSpot CMS API)
 │   ├── contact/                  # Page contact
 │   └── [autres-routes]/
 ├── components/

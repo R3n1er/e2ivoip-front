@@ -5,13 +5,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  getContentfulBlogPosts,
-  getContentfulBlogPost,
-} from "@/lib/contentful-blog";
-
-import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-source";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -24,7 +18,7 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -43,13 +37,19 @@ export async function generateMetadata({
       publishedTime: post.publishDate,
       modifiedTime: post.publishDate, // Utiliser publishDate au lieu de modifiedDate
       authors: post.author ? [post.author] : [],
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
+      images:
+        post.featuredImageUrl || post.featuredImage
+          ? [post.featuredImageUrl || post.featuredImage!]
+          : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seoTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
+      images:
+        post.featuredImageUrl || post.featuredImage
+          ? [post.featuredImageUrl || post.featuredImage!]
+          : [],
     },
   };
 }
@@ -57,7 +57,7 @@ export async function generateMetadata({
 // Génération des routes statiques
 export async function generateStaticParams() {
   try {
-    const { posts } = await getContentfulBlogPosts(1, 100);
+    const { posts } = await getBlogPosts(1, 100);
     return posts.map((post) => ({
       slug: post.slug,
     }));
@@ -70,22 +70,33 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const mockPosts = getMockBlogPosts();
-  const relatedPosts = mockPosts
-    .filter(
-      (p) =>
-        p.slug !== slug && p.tags.some((tag) => (post.tags || []).includes(tag))
-    )
-    .slice(0, 3);
+  let relatedPosts: Awaited<ReturnType<typeof getBlogPosts>>["posts"] = [];
+  try {
+    const { posts: allPosts } = await getBlogPosts(1, 100);
+    relatedPosts = allPosts
+      .filter(
+        (p) =>
+          p.slug !== slug &&
+          (p.tags || []).some((tag) => (post.tags || []).includes(tag))
+      )
+      .slice(0, 3);
+  } catch (error) {
+    console.warn("Articles liés indisponibles:", error);
+  }
 
   const publishDate = new Date(post.publishDate || "");
-  const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
+  const contentText = post.content || "";
+  const readingTime = Math.max(
+    1,
+    Math.ceil(contentText.split(/\s+/).filter(Boolean).length / 200)
+  );
+  const featuredImageUrl = post.featuredImageUrl || post.featuredImage;
 
   return (
     <div className="min-h-screen bg-white">
@@ -113,10 +124,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="pt-8">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Image d'en-tête */}
-          {post.featuredImageUrl && (
+          {featuredImageUrl && (
             <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
               <Image
-                src={post.featuredImageUrl}
+                src={featuredImageUrl}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -182,7 +193,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Contenu de l'article */}
           <div className="prose prose-lg max-w-none mb-12">
             <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: contentText }}
               className="text-gray-700 leading-relaxed"
             />
           </div>

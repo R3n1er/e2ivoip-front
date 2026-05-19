@@ -14,7 +14,7 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 ## 2. Pré-requis & installation
 1. Node.js 22.12.0 (via `.nvmrc`).
 2. Cloner le dépôt puis installer les dépendances : `npm install`. Pour les scripts internes : `npm run install:all` (installe les dépendances dans `scripts/`).
-3. Copier `.env.example` → `.env.local` et compléter les clés (Contentful, HubSpot, URLR…).
+3. Copier `env.example` → `.env.local` et compléter les clés (HubSpot blog + CRM, URLR…).
 4. Démarrer le serveur local : `npm run dev` (port 3000). Le service worker charge `/sw.js` automatiquement en local.
 
 ## 3. Structure du projet
@@ -24,11 +24,11 @@ e2ivoip-front/
 │   ├── layout.tsx       # Layout global (fonts, header/footer, trackers)
 │   ├── page.tsx         # Homepage
 │   ├── [section]/       # Pages thématiques (blog, assistance, telephonie-3cx, etc.)
-│   └── api/             # Routes API (Contentful/HubsPot utilitaires)
+│   └── api/             # Routes API (blog HubSpot, HubSpot utilitaires)
 ├── components/          # Sections marketing et intégrations HubSpot/Tawk
 │   └── ui/              # Design system shadcn (Button, Card, etc.)
 ├── hooks/               # Hooks React maison (ex : service worker)
-├── lib/                 # Services (Contentful, HubSpot, URLR, utils…)
+├── lib/                 # Services (blog-source, hubspot-blog, URLR, utils…)
 ├── public/              # Assets statiques + Service Worker `sw.js`
 ├── scripts/             # Scripts Node de pipeline éditorial (blog, images)
 ├── tests/               # Suites Jest/Testing Library + Playwright
@@ -47,10 +47,11 @@ e2ivoip-front/
 Orchestre les sections marketing : hero, transformation, carousel clients, about, services, contact. Animations Tailwind (blobs) et CTA TawkTo.
 
 ### 5.2 Blog (`app/blog/...`)
-- `app/blog/page.tsx` (client) gère état, recherche (Contentful), paginition. Filtre `query` déjà implémenté, facettes auteur/années/tags à étendre côté API.
-- `components/blog/` contient `BlogSearch`, `BlogPostsGrid`, pagination, `optimized-blog-image.tsx`.
-- `app/api/blog/list/route.ts` et `lib/contentful-blog.ts` communiquent avec Contentful (Content Delivery API). Prévoir variables `CONTENTFUL_*`.
-- `app/api/blog/[slug]/route.ts` expose un fetch unitaire (slug).
+- `app/blog/page.tsx` (client) gère état, recherche et pagination via `/api/blog/list`.
+- `components/blog/` contient `BlogSearch`, `BlogPostsGrid`, pagination.
+- `lib/blog-source.ts` → `lib/hubspot-blog.ts` (API `GET /cms/v3/blogs/posts`). **Obligatoire** : `HUBSPOT_ACCESS_TOKEN` (scopes `cms.blog.read`, `cms.blog_posts.read`).
+- `app/api/blog/list/route.ts` et `app/api/blog/[slug]/route.ts` exposent le blog au front.
+- `app/blog/[slug]/page.tsx` charge l’article par slug via `getBlogPostBySlug`.
 
 ### 5.3 Pages services/produits
 Dossiers `app/telephonie-3cx`, `app/nos-services/...`, `app/assistance`, etc. Chaque page présente un hero, sections CTA, FAQ (`components/faq-working`) et intégrations (formulaires HubSpot, iframes TawkTo).
@@ -65,7 +66,7 @@ Page fallback PWA, propose actions Appeler/Email. Vérifier cohérence des numé
 | Intégration | Fichiers | Notes |
 |-------------|----------|-------|
 | **HubSpot** | `components/hubspot-*`, `app/api/hubspot/*`, `lib/hubspot-blog.ts` | Tracking, formulaires, OAuth blog. Nécessite `HUBSPOT_*` dans `.env.local`.
-| **Contentful** | `lib/contentful-blog.ts`, `scripts/extract-blog-content.js` | Blog marketing. Tokens Delivery/Preview.
+| **Blog HubSpot** | `lib/blog-source.ts`, `lib/hubspot-blog.ts` | Articles publics — token CMS obligatoire.
 | **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Support chat. Garder IDs à jour.
 | **URLR** | `lib/urlr.ts` | Raccourcis d’articles. Auth utilisateur/password + team.
 | **Hotjar & Tally** | `components/hotjar-tracking.tsx`, script Tally dans `app/layout.tsx` | Analytics, formulaires externes.
@@ -78,8 +79,7 @@ Page fallback PWA, propose actions Appeler/Email. Vérifier cohérence des numé
 ## 8. Scripts utilitaires (`scripts/`)
 - Extraction blog (`extract-blog-content.js`, `test-extraction.js`).
 - Vérifications PRD (`verify-prd-colors.js`).
-- Génération assets IA (`generate-ai-covers-openai.js`).
-- Import vers Contentful/HubSpot.
+- Extraction archives (`extract-blog-content.js`) — publication des articles dans HubSpot (interface HubSpot), pas via ce repo.
 Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 
 ## 9. Testing & QA
@@ -102,9 +102,9 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
   3. Mettre à jour navigation (`components/header-simple.tsx`) + sitemap (`app/sitemap.ts`).
   4. Ajouter tests Jest (render minimal) + Playwright (affichage).
 
-- **Ajouter un article blog depuis Contentful** :
-  1. Créer l’entrée Contentful (type `blogPost`).
-  2. Vérifier via `/api/blog/list` ou lancer `scripts/extract-blog-content.js` pour debug.
+- **Publier un article blog** :
+  1. Créer/publier l’article dans HubSpot CMS (état `PUBLISHED`).
+  2. Vérifier `rtk node scripts/test-api-connections.js` puis `/blog` en local.
   3. Ajouter tests de rendu blog si patterns nouveaux.
 
 - **Modifier une intégration HubSpot** :
@@ -120,8 +120,7 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 ## 13. Ressources complémentaires
 - [Next.js App Router Docs](https://nextjs.org/docs/app) – référence framework.
 - [TailwindCSS](https://tailwindcss.com/docs) & [DaisyUI](https://daisyui.com/) – design system.
-- [Contentful CDA](https://www.contentful.com/developers/docs/references/content-delivery-api/) – API blog.
-- [HubSpot CMS API](https://developers.hubspot.com/docs/api/cms/blog) – intégration articles.
+- [HubSpot CMS Blog API](https://developers.hubspot.com/docs/api/cms/blog) – source unique des articles.
 - [Playwright](https://playwright.dev/docs/test-intro) – tests E2E affichage.
 
 Bienvenue encore ! Une fois prêt, prenez une tâche, suivez le mémo `agents.md` et gardez ce guide ouvert pour naviguer dans le codebase.

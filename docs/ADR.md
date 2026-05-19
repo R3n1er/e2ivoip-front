@@ -10,6 +10,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-19 — Abandon de Contentful — blog 100 % HubSpot CMS API
+
+- **Contexte** : Le blog avait été migré vers Contentful puis partiellement doublé avec `lib/hubspot-blog.ts`. L’objectif produit est de ne plus maintenir deux CMS : les articles publics doivent provenir **uniquement** de l’API HubSpot (`/cms/v3/blogs/posts`).
+- **Décision** :
+  - Supprimer `lib/contentful-blog.ts`, la dépendance npm `contentful`, les scripts `import-to-contentful.js`, `generate-blog-covers.js`, `generate-ai-covers-openai.js` et toutes les variables `CONTENTFUL_*` / `BLOG_PROVIDER`.
+  - Conserver `lib/blog-source.ts` comme façade unique vers `lib/hubspot-blog.ts` (listing, slug, métadonnées, recherche).
+  - Images Next.js : `remotePatterns` HubSpot (`cdn2.hubspot.net`, `f.hubspotusercontent*.net`) à la place de `ctfassets.net`.
+  - `scripts/test-api-connections.js` : test HubSpot Forms + HubSpot Blog CMS uniquement.
+- **Conséquences** :
+  - **Obligatoire** en déploiement : `HUBSPOT_ACCESS_TOKEN` avec scopes `cms.blog.read` et `cms.blog_posts.read`.
+  - Contentful n’est plus référencé dans le code ni la doc opérationnelle ; l’extraction legacy (`scripts/extract-blog-content.js`) reste pour archives, pas pour publication.
+  - Les ADR historiques mentionnant Contentful restent en historique mais sont supplantées par cette décision.
+- **Tests associés** :
+  - `tests/lib/blog-source.test.ts`
+  - `tests/lib/hubspot-blog-strict.test.ts`
+  - `tests/blog-page-simple.test.tsx`
+
 ### 2026-05-18 — Pivot Trunk SIP agents vocaux IA (remplace offre Assistants Vocaux IA)
 
 - **Contexte** : E2I VoIP ne commercialise plus de service d'assistant vocal IA clé en main. L'entreprise accompagne désormais les intégrateurs et agences IA qui déploient des agents sur VAPI, Rounded, ElevenLabs ou Jambonz, en fournissant la couche télécom DOM (numéros locaux Antilles-Guyane-Réunion + trunk SIP / redirection) que Twilio/Telnyx ne couvrent pas.

@@ -20,7 +20,6 @@ dist/
 .env.production.local
 
 # CMS temp files
-contentful-export.json
 
 # Logs
 logs

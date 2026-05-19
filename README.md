@@ -1,6 +1,6 @@
 # E2I VoIP - Site Web Moderne
 
-Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui, avec migration du blog vers Contentful.
+Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui. Le blog public est alimenté par l’API CMS HubSpot.
 
 ## 🚀 Technologies Utilisées
 
@@ -9,7 +9,8 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 - **Animations** : Framer Motion
 - **État** : Zustand (gestion d'état UI)
 - **Tests** : Vitest + Testing Library
-- **CMS** : Contentful (blog) + HubSpot (CRM + Analytics)
+- **Blog** : HubSpot CMS API (`HUBSPOT_ACCESS_TOKEN`)
+- **CRM / formulaires** : HubSpot
 - **Formulaires** : Tally (devis spécialisés)
 - **Automatisation** : n8n (workflows)
 
@@ -191,11 +192,10 @@ e2ivoip-front/
 │   ├── ui/                # Composants shadcn/ui
 │   └── ...
 ├── lib/                   # Utilitaires et configurations
-│   ├── hubspot-blog.ts   # Ancien service HubSpot (déprécié)
-│   └── contentful-blog.ts # Nouveau service Contentful (à venir)
-├── scripts/               # Scripts de migration
+│   ├── hubspot-blog.ts    # API CMS HubSpot (articles blog)
+│   └── blog-source.ts     # Façade blog public → HubSpot
+├── scripts/               # Scripts d’archives blog (extraction legacy)
 │   ├── extract-blog-content.js
-│   ├── test-extraction.js
 │   └── package.json
 ├── tests/                 # Tests unitaires et d'intégration
 ├── public/                # Assets statiques
@@ -209,19 +209,15 @@ e2ivoip-front/
 Copiez `env.example` vers `.env.local` et configurez :
 
 ```env
-# Contentful
-CONTENTFUL_SPACE_ID=
-CONTENTFUL_ENVIRONMENT=master
-CONTENTFUL_DELIVERY_TOKEN=
-CONTENTFUL_PREVIEW_TOKEN=
+# Blog (obligatoire) — scopes cms.blog.read, cms.blog_posts.read
+HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
 
-# HubSpot Configuration
+# HubSpot CRM / formulaires
 HUBSPOT_API_KEY=your_hubspot_api_key
 HUBSPOT_PORTAL_ID=26878201
 HUBSPOT_CLIENT_ID=your_hubspot_client_id
 HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
 HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
-HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
 
 
 
@@ -232,10 +228,6 @@ TALLY_API_KEY=your_tally_api_key
 NEXT_PUBLIC_TAWK_TO_ID=688d3cc109ef001928d4773f
 NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
 ```
-
-## 🚀 Migration Contentful
-
-- Le backend Strapi est supprimé. Nous allons implémenter un service `lib/contentful-blog.ts` (delivery API) et scripts d'import ultérieurement si nécessaire (Management API).
 
 ## 🧪 Tests
 
@@ -300,5 +292,5 @@ Pour toute question ou support, contactez l'équipe de développement.
 - **Sprint 1** : ✅ Terminé (Fondations)
 - **Sprint 2** : ✅ Terminé (Homepage modernisée)
 - **Sprint 3** : ✅ Terminé (Fonctionnalités avancées + Blog + Pages légales)
-- **Sprint 4** : ✅ **Terminé** (Migration Contentful + UI/UX)
+- **Sprint 4** : ✅ **Terminé** (Blog HubSpot CMS + UI/UX)
 - **Sprint 5** : ⏳ Planifié (Optimisations et finalisation)

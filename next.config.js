@@ -12,16 +12,15 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 jours
     dangerouslyAllowSVG: true,
     qualities: [60, 70, 75, 80, 85, 90],
-    // Autoriser les images distantes depuis Contentful
+    // Images des articles HubSpot CMS
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.ctfassets.net",
-      },
-      {
-        protocol: "https",
-        hostname: "assets.ctfassets.net",
-      },
+      { protocol: "https", hostname: "cdn2.hubspot.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent00.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent10.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent20.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent30.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent40.net" },
+      { protocol: "https", hostname: "f.hubspotusercontent-eu1.net" },
     ],
   },
 

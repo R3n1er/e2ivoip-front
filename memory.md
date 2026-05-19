@@ -2,7 +2,7 @@
 
 > Mémoire centrale du projet : décisions, contexte, références.
 > Source de vérité partagée entre l'humain et les assistants IA (Claude Code, Cursor, Copilot).
-> Dernière mise à jour : 2026-05-18
+> Dernière mise à jour : 2026-05-19
 
 ---
 
@@ -107,7 +107,7 @@ e2ivoip-front/
 ## 🔗 Intégrations
 
 - **Tally** : popup conversion, ID `mDY1bl`, déclenchement 3s — composants `TallyPopupClean` + `ClientWrapperTally`
-- **HubSpot** : formulaires universels via `components/hubspot/`
+- **HubSpot** : formulaires (`components/hubspot/`) + **blog public** via API CMS (`lib/hubspot-blog.ts` → `lib/blog-source.ts`). Variable obligatoire : `HUBSPOT_ACCESS_TOKEN` (scopes `cms.blog.read`, `cms.blog_posts.read`). Contentful retiré (ADR 2026-05-19).
 - **Vercel** : déploiement continu, env vars gérées via `vercel env`
 - **dotenvx** : `.env` chiffré, `.env.keys` jamais committé, `.mcp.json` non tracké
 
@@ -132,6 +132,7 @@ gh pr create --title "feat: description"
 
 ## 📌 Décisions & Historique Récent
 
+- **2026-05-19** — **Blog 100 % HubSpot** : suppression Contentful (`lib/contentful-blog.ts`, dépendance npm, scripts import/covers). Publication des articles dans HubSpot CMS uniquement. Diagnostic : `node scripts/test-api-connections.js`.
 - **2026-05-18** — **Suppression page `/mobilite`** : fichier `app/mobilite/page.tsx` retiré (404 naturelle). Menus et tests déjà sans lien Mobilité depuis ADR 2025-09-27. Softphone 3CX mobile couvert par `/telephonie-3cx`.
 - **2026-04-28** — **Retrait du produit Mobile 4G/5G du catalogue** (offre MVNO Orange + Box 4G/5G nomades + backup 4G/5G). N'est plus commercialisé. Sections supprimées dans : `BrandBrief_e2ivoip.md` §E, `SPEC_STRATEGIE_VENTE_MARKETING.md` §4.5, `roadmap.md`, `ligne-editoriale.md`, `plan-revision-contenus.md` (page `/nos-services/box-4g-5g-secours` retirée). Conservé : mentions de "Box 4G" dans les FAQ Trunk SIP comme **type de connexion internet acceptée** (pas une offre commerciale E2I).
 - **2026-04-28** — Spec stratégie vente & marketing créée (`docs/SPEC_STRATEGIE_VENTE_MARKETING.md` + `.docx` généré via `scripts/build_spec_docx.py` avec charte E2I appliquée).

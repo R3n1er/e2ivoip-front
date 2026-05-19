@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getHubSpotAuthUrl } from "@/lib/hubspot-blog";
 
 interface ScopeTestResult {
   name: string;
@@ -48,15 +47,25 @@ export default function HubSpotAdminPage() {
     checkConnection();
   }, []);
 
-  const handleConnect = () => {
+  const handleConnect = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const authUrl = getHubSpotAuthUrl();
-      window.location.href = authUrl;
-    } catch {
-      setError("Erreur lors de la génération de l'URL d'autorisation");
+      const response = await fetch("/api/hubspot/auth-url");
+      const data = await response.json();
+
+      if (!response.ok || !data.authUrl) {
+        throw new Error(data.error || "URL d'autorisation indisponible");
+      }
+
+      window.location.href = data.authUrl;
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Erreur lors de la génération de l'URL d'autorisation"
+      );
       setIsLoading(false);
     }
   };

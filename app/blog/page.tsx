@@ -5,7 +5,7 @@ import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 
-import type { BlogPost } from "@/lib/contentful-blog";
+import type { PublicBlogPost as BlogPost } from "@/lib/blog-types";
 
 interface BlogFilters {
   query: string;

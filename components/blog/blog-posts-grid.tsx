@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { BlogPost } from "@/lib/contentful-blog";
+import type { PublicBlogPost as BlogPost } from "@/lib/blog-types";
 import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
 
 interface BlogPostsGridProps {
