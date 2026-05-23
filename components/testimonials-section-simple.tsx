@@ -1,4 +1,6 @@
+"use client";
 import Image from 'next/image'
+import { Star, Quotes } from '@/lib/icons'
 
 interface Testimonial {
   content: string
@@ -90,14 +92,11 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <i
-                    key={i}
-                    className="lni lni-star-filled h-5 w-5 text-yellow-400"
-                  ></i>
+                  <Star key={i} size={20} weight="fill" className="text-yellow-400" />
                 ))}
               </div>
 
-              <i className="lni lni-question-circle h-8 w-8 text-red-200 mb-4"></i>
+              <Quotes size={32} weight="fill" className="text-red-200 mb-4" />
 
               <p className="text-gray-secondary mb-6 leading-relaxed">
                 &ldquo;{testimonial.content}&rdquo;

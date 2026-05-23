@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-source";
+import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -108,12 +109,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               href="/blog"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <i className="lni lni-arrow-left w-4 h-4"></i>
+              <ArrowLeft size={16} aria-hidden="true" />
               Retour au blog
             </Link>
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm">
-                <i className="lni lni-share-alt w-4 h-4 mr-2"></i>
+                <ShareNetwork size={16} className="mr-2" aria-hidden="true" />
                 Partager
               </Button>
             </div>
@@ -163,11 +164,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Métadonnées */}
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
               <div className="flex items-center gap-2">
-                <i className="lni lni-user w-4 h-4"></i>
+                <UserCircle size={16} aria-hidden="true" />
                 <span>{post.author}</span>
               </div>
               <div className="flex items-center gap-2">
-                <i className="lni lni-calendar w-4 h-4"></i>
+                <Calendar size={16} aria-hidden="true" />
                 <span>
                   {publishDate.toLocaleDateString("fr-FR", {
                     day: "numeric",
@@ -177,7 +178,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <i className="lni lni-timer w-4 h-4"></i>
+                <Timer size={16} aria-hidden="true" />
                 <span>{readingTime} min de lecture</span>
               </div>
             </div>
@@ -257,7 +258,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPost.excerpt}
                     </p>
                     <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <i className="lni lni-calendar w-3 h-3"></i>
+                      <Calendar size={16} aria-hidden="true" />
                       <span>
                         {new Date(
                           relatedPost.publishDate || ""

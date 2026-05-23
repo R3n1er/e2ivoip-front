@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 import { SecureEmail } from "@/components/secure-email";
+import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle, Chat, ArrowRight } from '@/lib/icons';
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
@@ -40,11 +41,11 @@ export default function QuiSommesNous() {
   ];
 
   const locations = [
-    { name: "Guyane", phone: "0594 96 35 00", icon: "lni-map-marker" },
-    { name: "Guadeloupe", phone: "0590 173 500", icon: "lni-map-marker" },
-    { name: "Martinique", phone: "0596 313 500", icon: "lni-map-marker" },
-    { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },
-    { name: "France Métropole", phone: "0189 563 500", icon: "lni-world" },
+    { name: "Guyane", phone: "0594 96 35 00", Icon: MapPin },
+    { name: "Guadeloupe", phone: "0590 173 500", Icon: MapPin },
+    { name: "Martinique", phone: "0596 313 500", Icon: MapPin },
+    { name: "La Réunion", phone: "0262 263 085 500", Icon: MapPin },
+    { name: "France Métropole", phone: "0189 563 500", Icon: Globe },
   ];
 
   return (
@@ -117,7 +118,7 @@ export default function QuiSommesNous() {
               <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i className="lni lni-phone text-5xl text-white"></i>
+                    <Phone size={20} className="text-5xl text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Opérateur télécom certifié
@@ -164,7 +165,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-target text-2xl text-red-primary"></i>
+                  <Target size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Proximité et réactivité
@@ -180,7 +181,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-certificate text-2xl text-blue-marine"></i>
+                  <Seal size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Excellence technique
@@ -196,7 +197,7 @@ export default function QuiSommesNous() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-users text-2xl text-gray-secondary"></i>
+                  <Users size={32} className="text-gray-secondary" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Résultats garantis
@@ -229,7 +230,7 @@ export default function QuiSommesNous() {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Trunk SIP au compteur ou illimité
@@ -245,7 +246,7 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       3CX : IPBX cloud nouvelle génération
@@ -261,7 +262,7 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Services innovants inclus
@@ -340,7 +341,7 @@ export default function QuiSommesNous() {
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <i className="lni lni-user text-5xl text-gray-400"></i>
+                    <UserCircle size={20} className="text-5xl text-gray-400" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {member.name}
@@ -517,9 +518,7 @@ export default function QuiSommesNous() {
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <i
-                      className={`lni ${location.icon} text-2xl text-white`}
-                    ></i>
+                    <location.Icon size={24} className="text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {location.name}
@@ -546,9 +545,9 @@ export default function QuiSommesNous() {
               <Link href="/assistance">
                 <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
                   <span className="flex items-center justify-center">
-                    <i className="lni lni-comments text-xl mr-2"></i>
+                    <Chat size={24} className="mr-2" aria-hidden="true" />
                     Accéder au support complet
-                    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
                   <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
                 </button>
@@ -576,7 +575,7 @@ export default function QuiSommesNous() {
             >
               <span className="flex items-center justify-center">
                 Calculez vos économies
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </span>
               <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>
@@ -585,9 +584,9 @@ export default function QuiSommesNous() {
               className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300 group"
             >
               <span className="flex items-center justify-center">
-                <i className="lni lni-phone text-xl mr-2"></i>
+                <Phone size={24} className="mr-2" aria-hidden="true" />
                 Parler à un expert
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </span>
               <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
             </a>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { ContactFormTrunkSipIA } from "@/components/contact-form-trunk-sip-ia";
+import { Chat, Phone, Heart, Car, TreeStructure, CheckCircle, ArrowRight } from '@/lib/icons';
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +36,7 @@ const platforms = [
 
 const useCases = [
   {
-    icon: "lni-heart",
+    Icon: Heart,
     title: "Cabinets kinésithérapeutes",
     description:
       "Interconnexion d'agents IA pour la prise de rendez-vous automatique avec synchronisation agenda.",
@@ -43,7 +44,7 @@ const useCases = [
       "L'appelant compose un numéro local +596 ; l'agent IA qualifie la demande et crée le créneau.",
   },
   {
-    icon: "lni-car",
+    Icon: Car,
     title: "Dépannage automobile",
     description:
       "Qualification de l'appel (localisation, panne, urgence) avant transfert vers le chauffeur disponible.",
@@ -51,7 +52,7 @@ const useCases = [
       "Filtrage intelligent 24/7 : l'IA collecte les infos critiques puis route vers l'humain.",
   },
   {
-    icon: "lni-phone",
+    Icon: Phone,
     title: "Accueil PME 24/7",
     description:
       "Orientation des appelants, FAQ métier et transfert contextuel vers les bonnes équipes.",
@@ -109,7 +110,7 @@ export default function TrunkSipAgentsIA() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-network text-white mr-2" />
+                <TreeStructure size={20} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Carrier SIP DOM
                 </span>
@@ -127,7 +128,7 @@ export default function TrunkSipAgentsIA() {
                 IA — nous connectons vos agents aux appels locaux.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <CTAButton href="#contact" icon="lni-comments">
+                <CTAButton href="#contact" icon="Chat">
                   Parler à un commercial
                 </CTAButton>
               </div>
@@ -167,7 +168,7 @@ export default function TrunkSipAgentsIA() {
                     "Support local Antilles-Guyane-Réunion",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5" />
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -261,7 +262,7 @@ export default function TrunkSipAgentsIA() {
                     className="text-red-primary text-sm font-semibold hover:underline inline-flex items-center gap-1"
                   >
                     Documentation
-                    <i className="lni lni-arrow-right text-xs" />
+                    <ArrowRight size={16} aria-hidden="true" />
                   </a>
                 </div>
               ))}
@@ -289,9 +290,7 @@ export default function TrunkSipAgentsIA() {
                   className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm"
                 >
                   <div className="bg-red-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                    <i
-                      className={`lni ${useCase.icon} text-2xl text-red-primary`}
-                    />
+                    <useCase.Icon size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-dark mb-4">
                     {useCase.title}
@@ -347,7 +346,7 @@ export default function TrunkSipAgentsIA() {
                   key={req}
                   className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-200"
                 >
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl" />
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">{req}</span>
                 </div>
               ))}
@@ -366,14 +365,14 @@ export default function TrunkSipAgentsIA() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-primary text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
               >
                 Trunk SIP au compteur
-                <i className="lni lni-arrow-right" />
+                <ArrowRight size={20} aria-hidden="true" />
               </Link>
               <Link
                 href="/telephonie-entreprise/trunk-sip-illimite"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-marine text-white rounded-lg font-semibold hover:bg-blue-900 transition-colors"
               >
                 Trunk SIP illimité
-                <i className="lni lni-arrow-right" />
+                <ArrowRight size={20} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -396,13 +395,13 @@ export default function TrunkSipAgentsIA() {
               réseau téléphonique Antilles-Guyane-Réunion avec E2I VoIP.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CTAButton href="#contact" icon="lni-comments">
+              <CTAButton href="#contact" icon="Chat">
                 Parler à un commercial
               </CTAButton>
               <CTAButtonSecondary
                 href="tel:+33189560500"
                 external
-                icon="lni-phone"
+                icon="Phone"
               >
                 01 89 56 05 00
               </CTAButtonSecondary>

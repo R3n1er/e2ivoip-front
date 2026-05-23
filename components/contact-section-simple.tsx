@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { CTAButton, CTAButtonMarine } from '@/components/ui/cta-button'
+import { Calendar, Phone } from '@/lib/icons'
 import { trackEvent } from '@/lib/analytics/track-event'
 
 export function ContactSectionSimple() {
@@ -26,7 +27,7 @@ export function ContactSectionSimple() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <CTAButton
               href="/contact"
-              icon="lni-calendar"
+              icon={Calendar}
               onClick={() => trackEvent('cta_click', {
                 page: pathname || '/',
                 element_id: '/contact',
@@ -37,7 +38,7 @@ export function ContactSectionSimple() {
             </CTAButton>
             <CTAButtonMarine
               href="/devis-en-ligne"
-              icon="lni-phone"
+              icon={Phone}
               onClick={() => trackEvent('cta_click', {
                 page: pathname || '/',
                 element_id: '/devis-en-ligne',

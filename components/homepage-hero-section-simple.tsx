@@ -1,13 +1,14 @@
 "use client";
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { Users, Certificate, Phone, Star, Play } from "@/lib/icons";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
-    { icon: "lni-users", value: "100+", label: "Entreprises nous font confiance" },
-    { icon: "lni-certificate", value: "15+", label: "Années d'expertise télécom" },
-    { icon: "lni-phone", value: "24/7", label: "Support technique France Métropolitaine et DOM" },
-    { icon: "lni-star", value: "20%", label: "Économies garanties" },
+    { Icon: Users, value: "100+", label: "Entreprises nous font confiance" },
+    { Icon: Certificate, value: "15+", label: "Années d'expertise télécom" },
+    { Icon: Phone, value: "24/7", label: "Support technique France Métropolitaine et DOM" },
+    { Icon: Star, value: "20%", label: "Économies garanties" },
   ];
 
   return (
@@ -31,7 +32,7 @@ export function HomepageHeroSectionSimple() {
         <div className="text-center">
           {/* Badge — social proof uniquement (pas de doublon DOM avec le sous-titre) */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary/10 border border-red-primary/20 text-red-300 text-sm font-medium mb-8">
-            <i className="lni lni-star w-4 h-4 mr-2"></i>
+            <Star size={16} className="mr-2" />
             Plus de 100 clients nous font confiance
           </div>
 
@@ -56,11 +57,11 @@ export function HomepageHeroSectionSimple() {
 
           {/* CTA Buttons - Red + Blue pairing */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <CTAButton href="/devis-en-ligne" icon="lni-phone">
+            <CTAButton href="/devis-en-ligne" icon={Phone}>
               Calculez vos économies
             </CTAButton>
 
-            <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-compteur" icon="lni-play">
+            <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-compteur" icon={Play}>
               Découvrez nos offres Trunk SIP
             </CTAButtonMarine>
           </div>
@@ -70,7 +71,7 @@ export function HomepageHeroSectionSimple() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <i className={`lni ${stat.icon} w-6 h-6 text-red-300 mr-2`}></i>
+                  <stat.Icon size={24} className="text-red-300 mr-2" />
                   <span className="text-3xl font-bold text-white drop-shadow-lg">
                     {stat.value}
                   </span>

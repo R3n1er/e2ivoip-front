@@ -57,7 +57,7 @@ export function SecureEmail({
 type SecureMailtoButtonProps = {
   address: EmailAddressKey;
   children: ReactNode;
-  icon?: string;
+  icon?: import("@phosphor-icons/react").Icon | string;
   className?: string;
   variant?: "marine" | "primary";
 };
@@ -86,7 +86,7 @@ export function SecureMailtoButton({
       className={`monolith-btn ${className}`}
     >
       <span className={spanClass}>
-        {icon && <i className={`lni ${icon} mr-3`} />}
+        {icon && (() => { const IconComp = typeof icon === 'string' ? undefined : icon; return IconComp ? <IconComp size={16} weight="bold" className="inline mr-2 align-middle" aria-hidden="true" /> : null; })()}
         {children}
       </span>
     </button>

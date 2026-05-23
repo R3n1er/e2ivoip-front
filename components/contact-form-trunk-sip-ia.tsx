@@ -1,6 +1,7 @@
 "use client";
 
 import { HubSpotFormSimpleEmbed } from "@/components/hubspot-form-simple-embed";
+import { TreeStructure, MapPin, Rocket } from '@/lib/icons';
 
 export function ContactFormTrunkSipIA() {
   return (
@@ -42,7 +43,7 @@ export function ContactFormTrunkSipIA() {
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="lni lni-network text-xl text-red-primary"></i>
+              <TreeStructure size={24} className="text-red-primary" aria-hidden="true" />
             </div>
             <p className="font-semibold text-gray-dark">
               Accompagnement technique
@@ -50,13 +51,13 @@ export function ContactFormTrunkSipIA() {
           </div>
           <div className="text-center">
             <div className="bg-blue-marine/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="lni lni-map-marker text-xl text-blue-marine"></i>
+              <MapPin size={24} className="text-blue-marine" aria-hidden="true" />
             </div>
             <p className="font-semibold text-gray-dark">Numéros locaux DOM</p>
           </div>
           <div className="text-center">
             <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-              <i className="lni lni-rocket text-xl text-red-primary"></i>
+              <Rocket size={24} className="text-red-primary" aria-hidden="true" />
             </div>
             <p className="font-semibold text-gray-dark">Réponse rapide</p>
           </div>

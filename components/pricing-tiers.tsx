@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { Users, Check, Phone, CurrencyDollar } from '@/lib/icons';
 
 interface PricingTier {
   calls: number;
@@ -36,7 +38,7 @@ export function PricingTiers({
           <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl border border-blue-200">
             <div className="flex items-center justify-center mb-4">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i className="lni lni-users text-blue-600 text-2xl"></i>
+                <Users size={32} className="text-blue-600" aria-hidden="true" />
               </div>
               <h3 className="text-xl font-bold text-gray-800">Pourquoi Cette Approche ?</h3>
             </div>
@@ -90,7 +92,7 @@ export function PricingTiers({
                 {tier.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center text-sm">
                     <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                      <i className="lni lni-checkmark text-green-600 text-xs"></i>
+                      <Check size={16} className="text-green-600" aria-hidden="true" />
                     </div>
                     <span className="text-gray-700">{feature}</span>
                   </div>
@@ -106,7 +108,7 @@ export function PricingTiers({
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <i className="lni lni-phone mr-2"></i>
+                  <Phone size={20} className="mr-2" aria-hidden="true" />
                   Demander un devis
                 </button>
               </div>
@@ -118,7 +120,7 @@ export function PricingTiers({
         <div className="mt-12 text-center">
           <div className="inline-flex items-center p-4 bg-green-100 rounded-xl border border-green-200">
             <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center mr-4">
-              <i className="lni lni-dollar text-green-600 text-xl"></i>
+              <CurrencyDollar size={24} className="text-green-600" aria-hidden="true" />
             </div>
             <div className="text-left">
               <h3 className="font-bold text-green-800">Économisez jusqu'à 40%</h3>

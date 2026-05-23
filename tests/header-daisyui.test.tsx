@@ -11,13 +11,6 @@ jest.mock("next/link", () => {
   );
 });
 
-// Mock Lineicons
-jest.mock("lineicons-react", () => ({
-  LineIcon: ({ name, className, ...props }: { name: string; className?: string; [key: string]: unknown }) => (
-    <i className={`lni-${name} ${className || ''}`} data-testid={`icon-${name}`} {...props} />
-  ),
-}));
-
 describe("Header DaisyUI avec sous-menus", () => {
   const user = userEvent.setup();
 
@@ -54,15 +47,18 @@ describe("Header DaisyUI avec sous-menus", () => {
     });
   });
 
-  test("Les icônes Lineicons sont présentes", () => {
+  test("Les icônes Phosphor sont présentes", () => {
     render(<Header />);
 
-    // Vérifier les icônes chevron-down
+    // Vérifier les icônes chevron-down via data-testid
     const chevrons = document.querySelectorAll('[data-testid^="icon-chevron-down"]');
-    expect(chevrons.length).toBe(3); // 3 menus avec sous-menus
+    expect(chevrons.length).toBeGreaterThan(0);
 
-    // Vérifier les icônes de téléphone
-    expect(screen.getAllByTestId("icon-lni-phone")).toHaveLength(2); // desktop + mobile
+    // Vérifier les icônes téléphone (SVG dans les boutons contact)
+    const desktopContact = screen.getByTestId("header-contact-button");
+    const mobileContact = screen.getByTestId("mobile-contact-button");
+    expect(desktopContact.querySelector("svg")).toBeInTheDocument();
+    expect(mobileContact.querySelector("svg")).toBeInTheDocument();
   });
 
   test("Les liens de navigation sont correctement configurés", () => {

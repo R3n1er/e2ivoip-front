@@ -11,11 +11,12 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Chat, Phone, Users, Headphones } from '@/lib/icons';
 
 export default function TelephonieDentreprise() {
   const solutions = [
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "Standards téléphoniques IP",
       description:
         "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
@@ -27,7 +28,7 @@ export default function TelephonieDentreprise() {
       ],
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "Solutions multi-sites",
       description:
         "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
@@ -39,7 +40,7 @@ export default function TelephonieDentreprise() {
       ],
     },
     {
-      icon: "lni-headphone",
+      Icon: Headphones,
       title: "Centre d'appels",
       description:
         "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
@@ -66,7 +67,7 @@ export default function TelephonieDentreprise() {
                 Des solutions de téléphonie IP complètes et évolutives pour
                 répondre aux besoins de votre entreprise
               </p>
-              <CTAButton href="/devis-en-ligne?service=telephonie" icon="lni-bubble">
+              <CTAButton href="/devis-en-ligne?service=telephonie" icon="Chat">
                 MODERNISER MA TELEPHONIE
               </CTAButton>
             </div>
@@ -84,9 +85,7 @@ export default function TelephonieDentreprise() {
                 >
                   <CardHeader>
                     <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                      <i
-                        className={`lni ${solution.icon} w-6 h-6 text-red-600`}
-                      ></i>
+                      <solution.Icon size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <CardTitle className="text-xl">{solution.title}</CardTitle>
                     <CardDescription>{solution.description}</CardDescription>

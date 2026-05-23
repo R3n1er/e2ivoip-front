@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Phone, CaretDown, X, List } from "@/lib/icons";
 
 export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,14 +94,14 @@ export function HeaderSimple() {
                   >
                     {item.name}
                     {item.submenu && (
-                      <i className="lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180"></i>
+                      <CaretDown size={12} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
                     )}
                   </Link>
                 ) : (
                   <span className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer text-gray-700 hover:text-red-primary">
                     {item.name}
                     {item.submenu && (
-                      <i className="lni lni-chevron-down w-3 h-3 ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180"></i>
+                      <CaretDown size={12} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
                     )}
                   </span>
                 )}
@@ -129,7 +130,7 @@ export function HeaderSimple() {
           <div className="hidden lg:flex items-center flex-shrink-0">
             <CTAButton
               href="/contact"
-              icon="lni-phone"
+              icon={Phone}
               className="!text-sm !px-6 !py-2 !font-medium"
             >
               Contact
@@ -143,9 +144,9 @@ export function HeaderSimple() {
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isOpen ? (
-              <i className="lni lni-close h-5 w-5 text-gray-700"></i>
+              <X size={20} className="text-gray-700" />
             ) : (
-              <i className="lni lni-menu h-5 w-5 text-gray-700"></i>
+              <List size={20} className="text-gray-700" />
             )}
           </button>
 
@@ -185,7 +186,7 @@ export function HeaderSimple() {
                   </div>
                 ))}
                 <div className="mt-6">
-                  <CTAButton href="/contact" icon="lni-phone" className="w-full">
+                  <CTAButton href="/contact" icon={Phone} className="w-full">
                     Contact
                   </CTAButton>
                 </div>

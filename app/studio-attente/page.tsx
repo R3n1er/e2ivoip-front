@@ -12,29 +12,30 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Microphone, MusicNote, SpeakerHigh, DownloadSimple, Play } from '@/lib/icons';
 
 export default function StudioAttente() {
   const services = [
     {
-      icon: "lni-microphone",
+      Icon: Microphone,
       title: "Enregistrement professionnel",
       description:
         "Studio d'enregistrement avec voix off professionnelles en français et langues étrangères",
     },
     {
-      icon: "lni-music",
+      Icon: MusicNote,
       title: "Habillage musical",
       description:
         "Large choix de musiques libres de droits pour accompagner vos messages",
     },
     {
-      icon: "lni-volume",
+      Icon: SpeakerHigh,
       title: "Messages sur mesure",
       description:
         "Création de messages personnalisés selon votre image de marque",
     },
     {
-      icon: "lni-download",
+      Icon: DownloadSimple,
       title: "Formats multiples",
       description:
         "Livraison dans tous les formats compatibles avec votre système téléphonique",
@@ -56,7 +57,7 @@ export default function StudioAttente() {
                 Créez une expérience d'attente agréable et professionnelle avec
                 nos messages et musiques sur mesure
               </p>
-              <CTAButton href="/devis-en-ligne?service=studio" icon="lni-microphone">
+              <CTAButton href="/devis-en-ligne?service=studio" icon="Microphone">
                 CREER MON STUDIO
               </CTAButton>
             </div>
@@ -74,9 +75,7 @@ export default function StudioAttente() {
                 >
                   <CardHeader>
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <i
-                        className={`lni ${service.icon} w-8 h-8 text-red-600`}
-                      ></i>
+                      <service.Icon size={32} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <CardTitle className="text-xl">{service.title}</CardTitle>
                   </CardHeader>
@@ -116,7 +115,7 @@ export default function StudioAttente() {
                       variant="outline"
                       className="w-full bg-transparent"
                     >
-                      <i className="lni lni-play w-4 h-4 mr-2"></i>
+                      <Play size={16} className="mr-2" aria-hidden="true" />
                       Écouter l'exemple
                     </Button>
                   </div>
@@ -142,7 +141,7 @@ export default function StudioAttente() {
                       variant="outline"
                       className="w-full bg-transparent"
                     >
-                      <i className="lni lni-play w-4 h-4 mr-2"></i>
+                      <Play size={16} className="mr-2" aria-hidden="true" />
                       Écouter l'exemple
                     </Button>
                   </div>

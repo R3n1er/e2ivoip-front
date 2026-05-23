@@ -33,7 +33,7 @@ describe("SecureMailtoButton", () => {
 
   it("affiche un libellé personnalisé et ouvre mailto au clic", () => {
     render(
-      <SecureMailtoButton address="contact" icon="lni-envelope">
+      <SecureMailtoButton address="contact" icon={require('@/lib/icons').Envelope}>
         Nous écrire
       </SecureMailtoButton>
     );

@@ -4,6 +4,7 @@ import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedDevis } from "@/components/tally-embed-devis";
+import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, Info, ArrowRight, Timer, Shield } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
@@ -57,7 +58,7 @@ export default function TrunkSIPCompteur() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-phone text-white mr-2"></i>
+                <Phone size={20} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Opérateur SIP DOM
                 </span>
@@ -75,27 +76,27 @@ export default function TrunkSIPCompteur() {
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-checkmark-circle text-white"></i>
+                  <CheckCircle size={20} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Facturation à la seconde</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-phone text-white"></i>
+                  <Phone size={20} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Numéros locaux gratuits</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-users text-white"></i>
+                  <Users size={20} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Support technique local</span>
                 </div>
               </div>
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                <CTAButton href="/devis-en-ligne" icon="Calculator">
                   Calculer mes économies
                 </CTAButton>
                 <CTAButtonMarine
                   href="tel:+33189560500"
-                  icon="lni-phone"
+                  icon="Phone"
                   external
                 >
                   0594 96 35 00
@@ -108,7 +109,7 @@ export default function TrunkSIPCompteur() {
                   <span className="text-white/60 text-sm mb-2">
                     Découvrez nos tarifs
                   </span>
-                  <i className="lni lni-chevron-down text-white/60 text-xl"></i>
+                  <CaretDown size={24} className="text-white/60" aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -139,7 +140,7 @@ export default function TrunkSIPCompteur() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <i className="lni lni-checkmark-circle mr-2"></i>
+                  <CheckCircle size={20} className="mr-2" aria-hidden="true" />
                   Solution certifiée DOM
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
@@ -158,7 +159,7 @@ export default function TrunkSIPCompteur() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-money-location text-red-primary text-xl"></i>
+                      <Wallet size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -173,7 +174,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-gray-800 text-xl"></i>
+                      <Phone size={24} className="text-gray-800" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -188,7 +189,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-network text-red-primary text-xl"></i>
+                      <TreeStructure size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -204,7 +205,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-users text-gray-secondary text-xl"></i>
+                      <Users size={24} className="text-gray-secondary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -288,7 +289,7 @@ export default function TrunkSIPCompteur() {
                 </div>
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <div className="flex items-start space-x-2">
-                    <i className="lni lni-information text-blue-marine mt-0.5"></i>
+                    <Info size={20} className="text-blue-marine mt-0.5" aria-hidden="true" />
                     <div className="text-sm text-blue-800">
                       <p>
                         <strong>Facturation transparente :</strong> Pas de frais
@@ -403,7 +404,7 @@ export default function TrunkSIPCompteur() {
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
               >
                 Découvrir nos solutions IPBX
-                <i className="lni lni-arrow-right ml-2"></i>
+                <ArrowRight size={20} className="ml-2" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -435,26 +436,26 @@ export default function TrunkSIPCompteur() {
             {/* Avantages finaux */}
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-checkmark-circle text-white"></i>
+                <CheckCircle size={20} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Devis gratuit</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-timer text-white"></i>
+                <Timer size={20} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Réponse rapide</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-shield text-white"></i>
+                <Shield size={20} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Expert VoIP</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+              <CTAButton href="/devis-en-ligne" icon="Calculator">
                 Calculer mes économies gratuitement
               </CTAButton>
               <CTAButtonMarine
                 href="tel:+33189560500"
-                icon="lni-phone"
+                icon="Phone"
                 external
               >
                 Parler à un expert : 01 89 56 05 00

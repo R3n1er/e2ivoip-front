@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { PublicBlogPost as BlogPost } from "@/lib/blog-types";
 import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
+import { Calendar, UserCircle, Timer, ArrowRight } from '@/lib/icons';
 
 interface BlogPostsGridProps {
   posts: BlogPost[];
@@ -156,7 +157,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
         {/* Métadonnées */}
         <div className="flex items-center text-xs text-gray-500 mb-4 gap-4 flex-wrap">
           <div className="flex items-center gap-1">
-            <i className="lni lni-calendar w-3 h-3"></i>
+            <Calendar size={16} aria-hidden="true" />
             <span>
               {publishDate.toLocaleDateString("fr-FR", {
                 day: "numeric",
@@ -167,12 +168,12 @@ function BlogPostCard({ post }: { post: BlogPost }) {
           </div>
 
           <div className="flex items-center gap-1">
-            <i className="lni lni-user w-3 h-3"></i>
+            <UserCircle size={16} aria-hidden="true" />
             <span>{post.author}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <i className="lni lni-timer w-3 h-3"></i>
+            <Timer size={16} aria-hidden="true" />
             <span>{readingTime} min</span>
           </div>
         </div>
@@ -185,7 +186,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
             className="w-full bg-transparent hover:bg-red-primary hover:text-white hover:border-red-primary transition-all duration-200 group/btn"
           >
             Lire l&apos;article
-            <i className="lni lni-arrow-right w-3 h-3 ml-2 group-hover/btn:translate-x-1 transition-transform"></i>
+            <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
           </Button>
         </Link>
       </CardContent>

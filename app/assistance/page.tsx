@@ -8,6 +8,7 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Headphone, Phone, Chat } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
@@ -51,7 +52,7 @@ export default function AssistancePage() {
               Notre équipe d'experts est là pour vous accompagner dans
               l'utilisation de vos solutions téléphoniques
             </p>
-            <CTAButton href="/contact?objet=support" icon="lni-headphone">
+            <CTAButton href="/contact?objet=support" icon={Headphone}>
               DEMANDER UN SUPPORT
             </CTAButton>
           </div>
@@ -67,7 +68,7 @@ export default function AssistancePage() {
           <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
             <CardContent className="p-12">
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className="lni lni-phone w-10 h-10 text-white"></i>
+                <Phone size={20} className="text-white" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
@@ -101,7 +102,7 @@ export default function AssistancePage() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
-              <i className="lni lni-comments w-12 h-12 text-blue-marine mx-auto mb-4"></i>
+              <Chat size={20} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Support chat en direct
               </h3>

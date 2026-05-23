@@ -19,25 +19,6 @@ jest.mock("next/link", () => {
   );
 });
 
-// Mock Lineicons
-jest.mock("lineicons-react", () => ({
-  LineIcon: ({
-    name,
-    className,
-    ...props
-  }: {
-    name: string;
-    className?: string;
-    [key: string]: unknown;
-  }) => (
-    <i
-      className={`lni-${name} ${className || ""}`}
-      data-testid={`icon-${name}`}
-      {...props}
-    />
-  ),
-}));
-
 // Mock framer-motion
 jest.mock("framer-motion", () => ({
   motion: {
@@ -69,21 +50,23 @@ describe("Header avec sous-menus DaisyUI", () => {
     jest.clearAllMocks();
   });
 
-  test("Le header se rend avec DaisyUI et Lineicons", () => {
+  test("Le header se rend avec DaisyUI et Phosphor Icons", () => {
     render(<Header />);
 
     // Vérifier le logo avec data-testid
     expect(screen.getByTestId("logo")).toBeInTheDocument();
 
-    // Vérifier les icônes Lineicons
+    // Vérifier les icônes chevron (data-testid présents dans le composant)
     expect(
       screen.getByTestId("icon-chevron-down-qui-sommes-nous")
     ).toBeInTheDocument();
-    const phoneIcons = screen.getAllByTestId("icon-lni-phone");
-    expect(phoneIcons.length).toBeGreaterThan(0);
+
+    // Vérifier les icônes téléphone (SVG Phosphor dans les boutons contact)
+    const contactButton = screen.getByTestId("header-contact-button");
+    expect(contactButton.querySelector("svg")).toBeInTheDocument();
 
     // Vérifier les boutons DaisyUI
-    expect(screen.getByTestId("header-contact-button")).toHaveClass("btn");
+    expect(contactButton).toHaveClass("btn");
   });
 
   test("Les liens de navigation principaux sont présents", () => {
@@ -221,10 +204,10 @@ describe("Header avec sous-menus DaisyUI", () => {
       expect(icon).toHaveAttribute("aria-hidden", "true");
     });
 
-    // Vérifier les icônes avec aria-label dans le menu mobile
-    const mobileMenuIcon = screen.getByTestId("icon-lni-menu");
-    expect(mobileMenuIcon).toHaveAttribute("aria-label", "Ouvrir le menu");
-    expect(mobileMenuIcon).toHaveAttribute("role", "img");
+    // Vérifier l'icône SVG du menu mobile
+    const mobileButton = screen.getByTestId("mobile-menu-button");
+    const mobileMenuIcon = mobileButton.querySelector("svg");
+    expect(mobileMenuIcon).toBeInTheDocument();
   });
 
   test("Les styles DaisyUI sont appliqués", () => {

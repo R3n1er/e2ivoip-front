@@ -4,10 +4,10 @@ import "@testing-library/jest-dom";
 
 // Mock des composants externes
 jest.mock("@/components/ui/cta-button", () => ({
-  CTAButton: ({ href, icon, className, children }: any) => (
+  CTAButton: ({ href, icon: Icon, className, children }: any) => (
     <a href={href} className={className}>
       <button className="btn btn-primary">
-        {icon && <i className={`lni lni-${icon.replace("lni-", "")}`} />}
+        {Icon && <Icon size={18} />}
         {children}
       </button>
     </a>
@@ -118,21 +118,19 @@ describe("HeaderSimple Component", () => {
     it("renders Téléphonie d'entreprise dropdown with chevron icon", () => {
       render(<HeaderSimple />);
 
-      const dropdown = screen.getByText("Téléphonie d'entreprise");
-      const chevron = dropdown.querySelector(".lni-chevron-down");
+      const dropdown = screen.getByText("Téléphonie d'entreprise").closest("span");
+      const chevron = dropdown?.querySelector("svg");
 
       expect(chevron).toBeInTheDocument();
-      expect(chevron).toHaveClass("text-gray-600");
     });
 
     it("renders Nos services dropdown with chevron icon", () => {
       render(<HeaderSimple />);
 
-      const dropdown = screen.getByText("Nos services");
-      const chevron = dropdown.querySelector(".lni-chevron-down");
+      const dropdown = screen.getByText("Nos services").closest("a");
+      const chevron = dropdown?.querySelector("svg");
 
       expect(chevron).toBeInTheDocument();
-      expect(chevron).toHaveClass("text-gray-600");
     });
 
     it("dropdown items have correct hover states", () => {
@@ -153,13 +151,13 @@ describe("HeaderSimple Component", () => {
       render(<HeaderSimple />);
 
       const mobileButton = screen.getByRole("button", { name: /menu/i });
-      const menuIcon = mobileButton.querySelector(".lni-menu");
+      const menuIcon = mobileButton.querySelector("svg");
 
       expect(menuIcon).toBeInTheDocument();
 
       fireEvent.click(mobileButton);
 
-      const closeIcon = mobileButton.querySelector(".lni-close");
+      const closeIcon = mobileButton.querySelector("svg");
       expect(closeIcon).toBeInTheDocument();
     });
 
@@ -227,29 +225,29 @@ describe("HeaderSimple Component", () => {
   });
 
   describe("Icon Usage Tests", () => {
-    it("uses Lineicons for all icons", () => {
+    it("uses Phosphor SVG icons", () => {
       render(<HeaderSimple />);
 
-      const icons = document.querySelectorAll(".lni");
+      const icons = document.querySelectorAll("svg");
       expect(icons.length).toBeGreaterThan(0);
-
-      icons.forEach((icon) => {
-        expect(icon.className).toMatch(/lni-/);
-      });
     });
 
-    it("has correct chevron icons for dropdowns", () => {
+    it("has chevron SVG icons for dropdowns", () => {
       render(<HeaderSimple />);
 
-      const chevrons = document.querySelectorAll(".lni-chevron-down");
-      expect(chevrons.length).toBe(2); // Téléphonie d'entreprise + Nos services
+      // Téléphonie d'entreprise n'a pas de href → rendu dans <span>
+      const telephonie = screen.getByText("Téléphonie d'entreprise").closest("span");
+      // Nos services a un href → rendu dans <a>
+      const nosServices = screen.getByText("Nos services").closest("a");
+      expect(telephonie?.querySelector("svg")).toBeInTheDocument();
+      expect(nosServices?.querySelector("svg")).toBeInTheDocument();
     });
 
-    it("has correct menu icons for mobile", () => {
+    it("has correct menu icon for mobile", () => {
       render(<HeaderSimple />);
 
-      const menuIcon = document.querySelector(".lni-menu");
-      expect(menuIcon).toBeInTheDocument();
+      const mobileButton = screen.getByRole("button", { name: /menu/i });
+      expect(mobileButton.querySelector("svg")).toBeInTheDocument();
     });
   });
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { Question } from "@/lib/icons";
+
 interface FAQItem {
   question: string
   answer: string | React.ReactNode
@@ -106,7 +108,7 @@ export default function TrunkSipCompteurFAQ() {
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
-          <i className="lni lni-question-circle text-4xl text-red-primary" role="img" aria-label="FAQ"></i>
+          <Question size={20} className="text-4xl text-red-primary" aria-hidden="true" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
           Questions <span className="text-red-primary">fréquentes</span>

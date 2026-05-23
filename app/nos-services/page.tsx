@@ -15,6 +15,7 @@ import { TestimonialsSectionSimple } from "@/components/testimonials-section-sim
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 export default function NosServices() {
   const services = [
     {
-      icon: "lni-cloud",
+      Icon: Cloud,
       title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
@@ -57,7 +58,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "3CX SMB PRO",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -73,7 +74,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "3CX PRO Dédié",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -89,7 +90,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-network",
+      Icon: TreeStructure,
       title: "Trunk SIP agents IA",
       description:
         "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
@@ -105,7 +106,7 @@ export default function NosServices() {
       category: "Innovation",
     },
     {
-      icon: "lni-bar-chart",
+      Icon: ChartBar,
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -130,25 +131,25 @@ export default function NosServices() {
 
   const benefits = [
     {
-      icon: "lni-bolt",
+      Icon: Lightning,
       title: "Économies garanties",
       description: "Jusqu'à 20% de réduction sur vos factures télécom",
       color: "text-red-primary",
     },
     {
-      icon: "lni-map-marker",
+      Icon: MapPin,
       title: "Présence locale DOM",
       description: "Support technique réactif dans toutes les zones",
       color: "text-blue-marine",
     },
     {
-      icon: "lni-timer",
+      Icon: Timer,
       title: "Disponibilité 24/7",
       description: "Services et support disponibles en permanence",
       color: "text-green-600",
     },
     {
-      icon: "lni-shield",
+      Icon: Shield,
       title: "Sécurité maximale",
       description: "Infrastructure cloud France/UE conforme RGPD",
       color: "text-purple-600",
@@ -216,10 +217,10 @@ export default function NosServices() {
                   nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                  <CTAButton href="/devis-en-ligne" icon="Calculator">
                     DECOUVRIR NOS OFFRES
                   </CTAButton>
-                  <CTAButtonMarine href="/contact" icon="lni-phone">
+                  <CTAButtonMarine href="/contact" icon="Phone">
                     Audit telecom gratuit
                   </CTAButtonMarine>
                 </div>
@@ -249,9 +250,7 @@ export default function NosServices() {
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <i
-                          className={`lni ${benefit.icon} text-2xl ${benefit.color}`}
-                        ></i>
+                        <benefit.Icon size={32} className={benefit.color} aria-hidden="true" />
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
                         {benefit.title}
@@ -329,9 +328,7 @@ export default function NosServices() {
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <i
-                            className={`lni ${service.icon} h-6 w-6 text-red-primary`}
-                          ></i>
+                          <service.Icon size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
                         <Badge className="bg-red-primary text-white-primary">
                           {service.badge}
@@ -352,7 +349,7 @@ export default function NosServices() {
                             key={featureIndex}
                             className="flex items-center text-sm"
                           >
-                            <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
+                            <CheckCircle size={16} className="text-red-primary mr-2 flex-shrink-0" aria-hidden="true" />
                             <span className="text-gray-secondary">
                               {feature}
                             </span>
@@ -369,7 +366,7 @@ export default function NosServices() {
 
                         <CTAButton
                           href={service.href}
-                          icon="lni-arrow-right"
+                          icon="ArrowRight"
                           className="w-full"
                         >
                           En savoir plus
@@ -396,10 +393,10 @@ export default function NosServices() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <CTAButton href="/contact" icon="lni-phone">
+                <CTAButton href="/contact" icon="Phone">
                   Audit télécom gratuit
                 </CTAButton>
-                <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
+                <CTAButtonMarine href="/devis-en-ligne" icon="Chat">
                   Demander un devis
                 </CTAButtonMarine>
               </div>

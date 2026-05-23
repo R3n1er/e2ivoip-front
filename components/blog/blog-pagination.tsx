@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CaretLeft, CaretRight } from '@/lib/icons';
 
 interface BlogPaginationProps {
   currentPage: number;
@@ -59,7 +60,7 @@ export function BlogPagination({
         disabled={currentPage === 1 || isLoading}
         className="flex items-center gap-2"
       >
-        <i className="lni lni-chevron-left w-4 h-4"></i>
+        <CaretLeft size={16} aria-hidden="true" />
         Précédent
       </Button>
 
@@ -97,7 +98,7 @@ export function BlogPagination({
         className="flex items-center gap-2"
       >
         Suivant
-        <i className="lni lni-chevron-right w-4 h-4"></i>
+        <CaretRight size={16} aria-hidden="true" />
       </Button>
     </div>
   );

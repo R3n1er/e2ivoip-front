@@ -1,23 +1,24 @@
 "use client";
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { Users, Certificate, Timer, Bolt, Shield, CheckCircle, Phone, Rocket } from "@/lib/icons";
 
 export function AboutSectionSimple() {
   const features = [
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "Expertise reconnue",
       description:
         "Plus de 15 ans d'expérience dans les télécommunications d'entreprise DOM",
     },
     {
-      icon: "lni-certificate",
+      Icon: Certificate,
       title: "Solutions certifiées",
       description:
         "Partenaire Silver 3CX, certifié Yeastar, partenaire Fanvil et Yealink",
     },
     {
-      icon: "lni-timer",
+      Icon: Timer,
       title: "Support local 24/7",
       description:
         "Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane",
@@ -34,14 +35,10 @@ export function AboutSectionSimple() {
   ];
 
   const stats = [
-    { value: "100+", label: "Entreprises clientes", icon: "lni-users" },
-    { value: "15+", label: "Années d'expertise", icon: "lni-certificate" },
-    { value: "20%", label: "Économies garanties", icon: "lni-bolt" },
-    {
-      value: "24/7",
-      label: "Support France Métropolitaine et DOM",
-      icon: "lni-shield",
-    },
+    { value: "100+", label: "Entreprises clientes", Icon: Users },
+    { value: "15+", label: "Années d'expertise", Icon: Certificate },
+    { value: "20%", label: "Économies garanties", Icon: Bolt },
+    { value: "24/7", label: "Support France Métropolitaine et DOM", Icon: Shield },
   ];
 
   return (
@@ -67,17 +64,17 @@ export function AboutSectionSimple() {
             <div className="space-y-4 mb-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start">
-                  <i className="lni lni-checkmark-circle h-5 w-5 text-red-primary mr-3 mt-0.5 flex-shrink-0"></i>
+                  <CheckCircle size={20} weight="fill" className="text-red-primary mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-secondary">{benefit}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <CTAButton href="/devis-en-ligne" icon="lni-phone">
+              <CTAButton href="/devis-en-ligne" icon={Phone}>
                 Calculez vos économies
               </CTAButton>
-              <CTAButtonMarine href="/nos-services" icon="lni-rocket">
+              <CTAButtonMarine href="/nos-services" icon={Rocket}>
                 Découvrez nos offres 3CX
               </CTAButtonMarine>
             </div>
@@ -93,9 +90,7 @@ export function AboutSectionSimple() {
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                      <i
-                        className={`lni ${feature.icon} h-6 w-6 text-red-primary`}
-                      ></i>
+                      <feature.Icon size={24} className="text-red-primary" />
                     </div>
                   </div>
                   <div className="ml-4">
@@ -126,10 +121,8 @@ export function AboutSectionSimple() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <i
-                    className={`lni ${stat.icon} w-6 h-6 text-red-primary mr-2`}
-                  ></i>
-                  <span className="text-3xl font-bold text-gray-900">
+                  <stat.Icon size={24} className="text-red-primary mr-2" />
+                  <span className="text-3xl font-bold text-gray-dark">
                     {stat.value}
                   </span>
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Calculator, CheckCircle, Shield, Timer, Users } from '@/lib/icons';
 
 const TALLY_EMBED_URL =
   "https://tally.so/embed/mDY1bl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
@@ -67,7 +68,7 @@ export function TallyEmbedDevis() {
         {/* En-tête améliorée avec badge et icônes */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <i className="lni lni-calculator mr-2"></i>
+            <Calculator size={20} className="mr-2" aria-hidden="true" />
             Devis personnalisé gratuit
           </div>
 
@@ -84,19 +85,19 @@ export function TallyEmbedDevis() {
           {/* Avantages du formulaire */}
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+              <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
               <span>100% Gratuit</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-shield text-blue-marine text-xl"></i>
+              <Shield size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Sans engagement</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-timer text-red-primary text-xl"></i>
+              <Timer size={24} className="text-red-primary" aria-hidden="true" />
               <span>Réponse rapide</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-users text-blue-marine text-xl"></i>
+              <Users size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Expert dédié</span>
             </div>
           </div>

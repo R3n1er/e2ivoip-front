@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { LineIcon } from "lineicons-react";
+import { CaretDown, Phone, X, List } from "@/lib/icons";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
@@ -189,9 +189,9 @@ export function Header() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <LineIcon
-                          name="lni-chevron-down"
-                          className={`text-sm text-gray-600 transition-all duration-200 hover:text-red-primary ${
+                        <CaretDown
+                          size={14}
+                          className={`text-gray-600 transition-all duration-200 hover:text-red-primary ${
                             openMenu === item.name ? "rotate-180" : ""
                           }`}
                           aria-hidden="true"
@@ -254,11 +254,7 @@ export function Header() {
                   className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200"
                   data-testid="header-contact-button"
                 >
-                  <LineIcon
-                    name="lni-phone"
-                    className="text-lg mr-2"
-                    aria-hidden="true"
-                  />
+                  <Phone size={18} className="mr-2" aria-hidden="true" />
                   Contact
                 </button>
               </Link>
@@ -280,14 +276,10 @@ export function Header() {
                 className="btn btn-square btn-ghost drawer-button"
                 data-testid="mobile-menu-button"
               >
-                <LineIcon
-                  name={isOpen ? "lni-close" : "lni-menu"}
-                  className={`text-2xl ${
-                    isScrolled ? "text-gray-700" : "text-gray-700"
-                  }`}
-                  aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                  role="img"
-                />
+                {isOpen
+                  ? <X size={24} className="text-gray-700" aria-label="Fermer le menu" />
+                  : <List size={24} className="text-gray-700" aria-label="Ouvrir le menu" />
+                }
               </label>
             </div>
             <div className="drawer-side z-50">
@@ -344,11 +336,7 @@ export function Header() {
                         className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full"
                         data-testid="mobile-contact-button"
                       >
-                        <LineIcon
-                          name="lni-phone"
-                          className="text-lg mr-2"
-                          aria-hidden="true"
-                        />
+                        <Phone size={18} className="mr-2" aria-hidden="true" />
                         Contact
                       </button>
                     </Link>

@@ -10,6 +10,7 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Calculator, WhatsappLogo, CheckCircle, Database, Link, MicrosoftTeamsLogo, ArrowsClockwise, Brain, Lightbulb } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
@@ -29,71 +30,19 @@ export const metadata: Metadata = {
 export default function ThreeCXCloudPage() {
   // Données pour les composants
   const problems = [
-    {
-      icon: "phone-error",
-      title: "Saturation d'appels",
-      description:
-        "Vos clients potentiels fuient à cause des lignes occupées et de l'impossibilité de vous joindre aux heures de pointe.",
-    },
-    {
-      icon: "dollar",
-      title: "Coûts téléphoniques explosifs",
-      description:
-        "Votre facture téléphonique augmente sans transparence, avec des frais cachés et une tarification complexe.",
-    },
-    {
-      icon: "warning",
-      title: "Obsolescence technique",
-      description:
-        "L'arrêt du réseau cuivre approche et votre système actuel devient obsolète face aux nouveaux enjeux technologiques.",
-    },
-    {
-      icon: "map",
-      title: "Sites multiples non centralisés",
-      description:
-        "Impossible de centraliser les communications entre vos sites éloignés, créant des silos de communication.",
-    },
-    {
-      icon: "cog",
-      title: "Absence d'intégrations",
-      description:
-        "Aucune intégration avec vos outils CRM et Office 365, obligeant vos équipes à travailler en mode cloisonné.",
-    },
+    { icon: "phone-error", title: "Saturation d'appels", description: "Vos clients potentiels fuient à cause des lignes occupées et de l'impossibilité de vous joindre aux heures de pointe." },
+    { icon: "dollar", title: "Coûts téléphoniques explosifs", description: "Votre facture téléphonique augmente sans transparence, avec des frais cachés et une tarification complexe." },
+    { icon: "warning", title: "Obsolescence technique", description: "L'arrêt du réseau cuivre approche et votre système actuel devient obsolète face aux nouveaux enjeux technologiques." },
+    { icon: "map", title: "Sites multiples non centralisés", description: "Impossible de centraliser les communications entre vos sites éloignés, créant des silos de communication." },
+    { icon: "cog", title: "Absence d'intégrations", description: "Aucune intégration avec vos outils CRM et Office 365, obligeant vos équipes à travailler en mode cloisonné." },
   ];
 
   const solutions = [
-    {
-      icon: "cloud",
-      title: "Serveur cloud dédié",
-      description:
-        "Instance dédiée dans le cloud garantissant performances optimales et sécurité maximale.",
-      highlight: "AWS EU",
-    },
-    {
-      icon: "dollar-sign",
-      title: "Tarification transparente",
-      description:
-        "Vous payez uniquement pour votre capacité réelle d'appels simultanés, pas pour chaque collaborateur.",
-      highlight: "40% d'économies",
-    },
-    {
-      icon: "shield",
-      title: "Hébergement souverain France/UE",
-      description:
-        "Vos données restent en Europe sur notre infrastructure redondée, conformité RGPD garantie.",
-    },
-    {
-      icon: "award",
-      title: "Expertise certifiée 3CX",
-      description:
-        "Partenaire Silver 3CX maîtrisant les configurations complexes et le Call Flow Designer (CFD).",
-    },
-    {
-      icon: "phone",
-      title: "Minimum 8 appels simultanés",
-      description:
-        "Solution parfaite pour les entreprises exigeantes nécessitant une capacité d'appels professionnelle.",
-    },
+    { icon: "cloud", title: "Serveur cloud dédié", description: "Instance dédiée dans le cloud garantissant performances optimales et sécurité maximale.", highlight: "AWS EU" },
+    { icon: "dollar-sign", title: "Tarification transparente", description: "Vous payez uniquement pour votre capacité réelle d'appels simultanés, pas pour chaque collaborateur.", highlight: "40% d'économies" },
+    { icon: "shield", title: "Hébergement souverain France/UE", description: "Vos données restent en Europe sur notre infrastructure redondée, conformité RGPD garantie." },
+    { icon: "award", title: "Expertise certifiée 3CX", description: "Partenaire Silver 3CX maîtrisant les configurations complexes et le Call Flow Designer (CFD)." },
+    { icon: "phone", title: "Minimum 8 appels simultanés", description: "Solution parfaite pour les entreprises exigeantes nécessitant une capacité d'appels professionnelle." },
   ];
 
   const pricingTiers = [
@@ -240,7 +189,7 @@ export default function ThreeCXCloudPage() {
               moderne, évolutive et parfaitement intégrée à vos outils métier
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CTAButton href="/devis-en-ligne?service=3cx-cloud" icon="lni-calculator">
+              <CTAButton href="/devis-en-ligne?service=3cx-cloud" icon="Calculator">
                 MIGRER VERS LE CLOUD
               </CTAButton>
             </div>
@@ -285,7 +234,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <i className="lni lni-whatsapp text-3xl text-gray-800"></i>
+                    <WhatsappLogo size={20} className="text-3xl text-gray-800" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -300,7 +249,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                    <i className="lni lni-checkmark-circle mr-1"></i>
+                    <CheckCircle size={20} className="mr-1" aria-hidden="true" />
                     Intégration native
                   </span>
                 </div>
@@ -327,7 +276,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <i className="lni lni-database text-3xl text-red-primary"></i>
+                    <Database size={20} className="text-3xl text-red-primary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -342,7 +291,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                    <i className="lni lni-link mr-1"></i>
+                    <Link size={20} className="mr-1" aria-hidden="true" />
                     Multi-CRM
                   </span>
                 </div>
@@ -369,7 +318,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <i className="lni lni-microsoft text-3xl text-gray-secondary"></i>
+                    <MicrosoftTeamsLogo size={20} className="text-3xl text-gray-secondary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -384,7 +333,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                    <i className="lni lni-sync mr-1"></i>
+                    <ArrowsClockwise size={20} className="mr-1" aria-hidden="true" />
                     Sync complète
                   </span>
                 </div>
@@ -411,7 +360,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <i className="lni lni-brain text-3xl text-red-primary"></i>
+                    <Brain size={20} className="text-3xl text-red-primary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -426,7 +375,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                    <i className="lni lni-bulb mr-1"></i>
+                    <Lightbulb size={20} className="mr-1" aria-hidden="true" />
                     IA avancée
                   </span>
                 </div>

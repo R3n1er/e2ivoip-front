@@ -54,12 +54,7 @@ export default function RootLayout({
       data-theme="e2ivoip"
       suppressHydrationWarning
     >
-      <head>
-        <link
-          href="https://cdn.lineicons.com/4.0/lineicons.css"
-          rel="stylesheet"
-        />
-      </head>
+      <head />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning

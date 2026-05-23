@@ -1,11 +1,12 @@
 "use client";
 
 import { CTAButton } from "@/components/ui/cta-button";
+import { Cloud, Users, Phone, Network, BarChart, CheckCircle, ArrowRight } from "@/lib/icons";
 
 export function ServicesSectionSimple() {
   const services = [
     {
-      icon: "lni-cloud",
+      Icon: Cloud,
       title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
@@ -21,7 +22,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/trunk-sip-compteur",
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "3CX SMB PRO",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -36,7 +37,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
     },
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "3CX PRO Cloud",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -51,7 +52,7 @@ export function ServicesSectionSimple() {
       href: "/3cx-cloud",
     },
     {
-      icon: "lni-network",
+      Icon: Network,
       title: "Trunk SIP agents IA",
       description:
         "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
@@ -66,7 +67,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/trunk-sip-agents-ia",
     },
     {
-      icon: "lni-bar-chart",
+      Icon: BarChart,
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -113,7 +114,7 @@ export function ServicesSectionSimple() {
               <div className="card-body p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
-                    <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
+                    <service.Icon size={24} className="text-red-primary group-hover:scale-110 transition-transform duration-200" />
                   </div>
                   <div className="badge badge-primary badge-lg font-medium">
                     {service.badge}
@@ -131,7 +132,7 @@ export function ServicesSectionSimple() {
                 <div className="space-y-3 mb-6 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <CheckCircle size={18} className="text-success mr-3 flex-shrink-0" />
                       <span className="text-base-content/80">{feature}</span>
                     </div>
                   ))}
@@ -146,7 +147,7 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
 
-                  <CTAButton href={service.href} icon="lni-arrow-right" className="w-full">
+                  <CTAButton href={service.href} icon={ArrowRight} className="w-full">
                     En savoir plus
                   </CTAButton>
                 </div>
