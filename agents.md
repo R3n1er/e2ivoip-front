@@ -37,3 +37,25 @@
 ## Documentation Rules
 
 - Document in /docs automatically (inclure l'usage de Zustand si pertinent)
+
+## Learned User Preferences
+
+- Réponses en français, courtes et numérotées (max 3 étapes) — profil débutant / TDAH
+- UI alignée sur la maquette Google Stitch et la charte (`docs/Design.md`, `docs/CHARTE_GRAPHIQUE.md`)
+- Serveur de dev local sur le port 3000 ; préférer Turbopack en dev (`next dev --turbo --port 3000`) si erreurs Webpack
+- Tests UI via Playwright ; vérifier l’hydratation CSS après modification de pages ou layouts
+- Header desktop dès `lg` (1024px) ; hamburger uniquement en mobile/tablette (< lg)
+- Rédaction SEO : cibler explicitement Guadeloupe, Martinique, Guyane, La Réunion / DOM sur home et pages services
+- Éviter la répétition entre badge hero et paragraphe d’intro sur la home
+- Pas de commit ni push sans demande explicite
+
+## Learned Workspace Facts
+
+- Blog public : source unique HubSpot CMS API — **`.env.local` minimal** : `HUBSPOT_ACCESS_TOKEN` (Private App `pat-eu1-…`) ; pas de `CLIENT_SECRET` pour le blog ; OAuth optionnel pour `/admin/hubspot` (ADR 2026-05-23)
+- Offre téléphonie mobile `/mobilite` supprimée ; ne plus la proposer comme produit actif
+- Pivot produit : plus d’offre « Assistants vocaux IA » directe ; Trunk SIP pour interconnexion agents vocaux IA + numéros locaux DOM (VAPI, Retell, ElevenLabs, Jambonz, etc.)
+- URLs canoniques : `/studio-attente`, `/telephonie-3cx` (301 depuis anciennes routes)
+- Positionnement marque : « Opérateur de services télécom · Spécialiste des DOM »
+- Studio vocal : standards téléphoniques (accueil, SVI, attente, fermeture) + portail automatisé démos
+- Page « Qui sommes-nous » : `app/qui-sommes-nous/page.tsx`
+- Header actif : `components/layout/header-simple.tsx` (style Monolithe / Stitch)

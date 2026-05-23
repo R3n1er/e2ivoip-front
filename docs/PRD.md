@@ -462,19 +462,21 @@ Utiliser les composants `CTAButton` et `CTAButtonSecondary` qui implémentent d�
 ### Variables d'Environnement
 
 ```env
-# Blog (obligatoire)
+# Blog HubSpot (obligatoire) — Private App pat-eu1-…, scopes cms.blog.read + cms.blog_posts.read
 HUBSPOT_ACCESS_TOKEN=
 
-# HubSpot CRM / OAuth admin
-HUBSPOT_API_KEY=
-HUBSPOT_PORTAL_ID=
-HUBSPOT_CLIENT_ID=
-HUBSPOT_CLIENT_SECRET=
-HUBSPOT_REDIRECT_URI=
+# HubSpot OAuth admin (optionnel — /admin/hubspot uniquement)
+# HUBSPOT_CLIENT_ID=
+# HUBSPOT_CLIENT_SECRET=
+# HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
+
+# Formulaires HubSpot : portal 26878201 en code (lib/constants/hubspot.ts), pas de variable env
 
 # Tawk.to
 TAWK_TO_ID=
 ```
+
+> Détail : ADR **2026-05-23** (simplification `.env.local`, distinction token blog vs OAuth).
 
 ## Maintenance et Évolutions
 

@@ -107,7 +107,7 @@ e2ivoip-front/
 ## 🔗 Intégrations
 
 - **Tally** : popup conversion, ID `mDY1bl`, déclenchement 3s — composants `TallyPopupClean` + `ClientWrapperTally`
-- **HubSpot** : formulaires (`components/hubspot/`) + **blog public** via API CMS (`lib/hubspot-blog.ts` → `lib/blog-source.ts`). Variable obligatoire : `HUBSPOT_ACCESS_TOKEN` (scopes `cms.blog.read`, `cms.blog_posts.read`). Contentful retiré (ADR 2026-05-19).
+- **HubSpot** : formulaires (`components/hubspot/`, portal `26878201` en code) + **blog public** via API CMS (`lib/hubspot-blog.ts` → `lib/blog-source.ts`). **Seule variable env requise pour le blog** : `HUBSPOT_ACCESS_TOKEN` (Private App `pat-eu1-…`, scopes `cms.blog.read`, `cms.blog_posts.read`). OAuth (`CLIENT_ID` / `CLIENT_SECRET`) optionnel pour `/admin/hubspot` uniquement. Contentful retiré (ADR 2026-05-19). Config simplifiée (ADR 2026-05-23).
 - **Vercel** : déploiement continu, env vars gérées via `vercel env`
 - **dotenvx** : `.env` chiffré, `.env.keys` jamais committé, `.mcp.json` non tracké
 

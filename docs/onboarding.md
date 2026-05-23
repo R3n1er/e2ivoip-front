@@ -14,7 +14,7 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 ## 2. Pré-requis & installation
 1. Node.js 22.12.0 (via `.nvmrc`).
 2. Cloner le dépôt puis installer les dépendances : `npm install`. Pour les scripts internes : `npm run install:all` (installe les dépendances dans `scripts/`).
-3. Copier `env.example` → `.env.local` et compléter les clés (HubSpot blog + CRM, URLR…).
+3. Copier `env.example` → `.env.local` et compléter au minimum `HUBSPOT_ACCESS_TOKEN` (blog HubSpot). OAuth HubSpot optionnel (voir §6).
 4. Démarrer le serveur local : `npm run dev` (port 3000). Le service worker charge `/sw.js` automatiquement en local.
 
 ## 3. Structure du projet
@@ -65,8 +65,10 @@ Page fallback PWA, propose actions Appeler/Email. Vérifier cohérence des numé
 ## 6. Intégrations externes
 | Intégration | Fichiers | Notes |
 |-------------|----------|-------|
-| **HubSpot** | `components/hubspot-*`, `app/api/hubspot/*`, `lib/hubspot-blog.ts` | Tracking, formulaires, OAuth blog. Nécessite `HUBSPOT_*` dans `.env.local`.
-| **Blog HubSpot** | `lib/blog-source.ts`, `lib/hubspot-blog.ts` | Articles publics — token CMS obligatoire.
+| **HubSpot (formulaires / tracking)** | `components/hubspot-*`, `lib/constants/hubspot.ts` | Embed côté client — portal ID `26878201` en code, **sans** variable `.env.local`. |
+| **Blog HubSpot** | `lib/blog-source.ts`, `lib/hubspot-blog.ts`, `app/api/blog/*` | **Obligatoire** : `HUBSPOT_ACCESS_TOKEN` (`pat-eu1-…`, Private App). |
+| **HubSpot OAuth admin** | `app/admin/hubspot`, `app/api/hubspot/auth-url`, `callback` | **Optionnel** : `HUBSPOT_CLIENT_ID`, `HUBSPOT_CLIENT_SECRET`, `HUBSPOT_REDIRECT_URI`. |
+| **HubSpot CRM (chat ingest)** | `app/api/hubspot/ingest-conversation` | Utilise `HUBSPOT_ACCESS_TOKEN` (scopes CRM selon besoin). |
 | **Tawk.to** | `components/tawk-to.tsx`, `components/tawk-to-chat.tsx` | Support chat. Garder IDs à jour.
 | **URLR** | `lib/urlr.ts` | Raccourcis d’articles. Auth utilisateur/password + team.
 | **Hotjar & Tally** | `components/hotjar-tracking.tsx`, script Tally dans `app/layout.tsx` | Analytics, formulaires externes.
@@ -104,13 +106,18 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 
 - **Publier un article blog** :
   1. Créer/publier l’article dans HubSpot CMS (état `PUBLISHED`).
-  2. Vérifier `rtk node scripts/test-api-connections.js` puis `/blog` en local.
+  2. Vérifier `node scripts/test-api-connections.js` ou `GET /api/hubspot/test-connection`, puis `/blog` en local.
   3. Ajouter tests de rendu blog si patterns nouveaux.
 
-- **Modifier une intégration HubSpot** :
-  1. Mettre à jour `components/hubspot-*` ou route API.
-  2. Tester en local avec clés OAuth (penser à `HUBSPOT_REDIRECT_URI`).
+- **Modifier une intégration HubSpot (formulaire / tracking)** :
+  1. Mettre à jour `components/hubspot-*` ou `lib/constants/hubspot.ts`.
+  2. Tester en local (script embed HubSpot, pas de secret requis).
   3. Ajouter tests Playwright si formulaire ou CTA modifié.
+
+- **Tester le flux OAuth admin** (rare) :
+  1. Renseigner `HUBSPOT_CLIENT_ID`, `HUBSPOT_CLIENT_SECRET`, `HUBSPOT_REDIRECT_URI` dans `.env.local`.
+  2. Ouvrir `/admin/hubspot` → « Connecter HubSpot ».
+  3. Noter : le callback n’enregistre pas encore le token en base — usage diagnostic uniquement.
 
 ## 12. Suivi & documentation
 - Noter les décisions structurantes dans `docs/` (PRD, ligne éditoriale, ce document).

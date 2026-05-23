@@ -209,17 +209,13 @@ e2ivoip-front/
 Copiez `env.example` vers `.env.local` et configurez :
 
 ```env
-# Blog (obligatoire) — scopes cms.blog.read, cms.blog_posts.read
-HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
+# Blog HubSpot (obligatoire) — Private App, scopes cms.blog.read + cms.blog_posts.read
+HUBSPOT_ACCESS_TOKEN=your_hubspot_private_app_token
 
-# HubSpot CRM / formulaires
-HUBSPOT_API_KEY=your_hubspot_api_key
-HUBSPOT_PORTAL_ID=26878201
-HUBSPOT_CLIENT_ID=your_hubspot_client_id
-HUBSPOT_CLIENT_SECRET=your_hubspot_client_secret
-HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
-
-
+# OAuth admin HubSpot (optionnel — /admin/hubspot uniquement)
+# HUBSPOT_CLIENT_ID=...
+# HUBSPOT_CLIENT_SECRET=...
+# HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
 
 # Tally Configuration
 TALLY_API_KEY=your_tally_api_key

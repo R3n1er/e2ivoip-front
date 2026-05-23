@@ -10,6 +10,24 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-23 — Configuration HubSpot blog : Private App token uniquement
+
+- **Contexte** : Après migration blog 100 % HubSpot CMS, l’équipe a recréé une application HubSpot (Private App / token `pat-eu1-…`). Le `.env.local` contenait encore des variables OAuth (`CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT_URI`, `PORTAL_ID`) héritées d’une ancienne intégration, dont une clé `hapikey` expirée retrouvée dans l’historique Git. Ces variables ne sont pas utilisées pour charger les articles de blog.
+- **Décision** :
+  - **Blog, CRM ingest chat, tests admin connexion** : une seule variable obligatoire — `HUBSPOT_ACCESS_TOKEN` (Bearer `pat-eu1-…`, scopes `cms.blog.read` + `cms.blog_posts.read` ; CRM ingest requiert en plus les scopes contacts/notes si activé).
+  - **Formulaires embed + tracking** : pas de variable d’environnement — portal ID `26878201` et form IDs centralisés dans `lib/constants/hubspot.ts` / composants legacy.
+  - **OAuth admin** (`/admin/hubspot`, routes `/api/hubspot/auth-url` et `/api/hubspot/callback`) : optionnel — nécessite `HUBSPOT_CLIENT_ID`, `HUBSPOT_CLIENT_SECRET`, `HUBSPOT_REDIRECT_URI` uniquement si ce flux est utilisé. Le callback actuel n’persiste pas le token obtenu (diagnostic uniquement).
+  - Supprimer de `.env.local` : `HUBSPOT_API_KEY` (legacy hapikey), `HUBSPOT_PORTAL_ID`, `NEXT_PUBLIC_HUBSPOT_*` sauf besoin OAuth explicite.
+  - Aligner `env.example` sur ce modèle minimal blog + bloc OAuth commenté optionnel.
+- **Conséquences** :
+  - Setup local blog : copier `env.example` → `.env.local`, renseigner `HUBSPOT_ACCESS_TOKEN`, redémarrer `npm run dev -- --port 3000`, vérifier `/blog` et `/api/blog/list`.
+  - Vercel prod : configurer `HUBSPOT_ACCESS_TOKEN` dans les env vars du projet (pas le client secret pour le blog seul).
+  - Ne jamais committer `.env.local` ni tokens dans le dépôt.
+- **Tests associés** :
+  - Vérification manuelle : API HubSpot `GET /cms/v3/blogs/posts` (HTTP 200, articles publiés).
+  - `curl http://localhost:3000/api/hubspot/test-connection` → `{ connected: true }`.
+  - `tests/lib/blog-source.test.ts`, `tests/lib/hubspot-blog-strict.test.ts`.
+
 ### 2026-05-19 — Abandon de Contentful — blog 100 % HubSpot CMS API
 
 - **Contexte** : Le blog avait été migré vers Contentful puis partiellement doublé avec `lib/hubspot-blog.ts`. L’objectif produit est de ne plus maintenir deux CMS : les articles publics doivent provenir **uniquement** de l’API HubSpot (`/cms/v3/blogs/posts`).
