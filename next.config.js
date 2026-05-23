@@ -26,8 +26,7 @@ const nextConfig = {
 
   // Optimisations des performances
   experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ["@radix-ui/react-icons"],
+    optimizeCss: process.env.NODE_ENV === "production",
   },
 
   // Compression et minification

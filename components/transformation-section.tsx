@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 

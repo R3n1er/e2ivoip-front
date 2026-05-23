@@ -63,7 +63,7 @@ test.describe("Section Services", () => {
 
   test("affiche les icônes et la grille responsive", async ({ page }) => {
     await expect(
-      page.locator("#services .grid.md\\:grid-cols-2.lg\\:grid-cols-3")
+      page.locator("#services .grid.md\\:grid-cols-2")
     ).toBeVisible();
 
     const icons = page.locator("#services .lni");

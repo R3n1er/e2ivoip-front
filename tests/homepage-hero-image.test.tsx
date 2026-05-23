@@ -59,9 +59,9 @@ describe("HomepageHeroSectionSimple", () => {
       })
     ).toBeInTheDocument();
 
-    // Vérifier que le badge est présent
+    // Badge social proof (sans doublon DOM — voir sous-titre)
     expect(
-      screen.getByText("Opérateur télécom DOM • Plus de 100 clients")
+      screen.getByText("Plus de 100 clients nous font confiance")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
@@ -75,9 +75,14 @@ describe("HomepageHeroSectionSimple", () => {
   it("applique les styles de background image correctement", () => {
     render(<HomepageHeroSectionSimple />);
 
-    // Vérifier que la section principale est présente
-    const heroSection = document.querySelector("section");
+    const heroSection = document.querySelector("section#accueil");
     expect(heroSection).toBeInTheDocument();
+    expect(heroSection).toHaveClass("min-h-[100dvh]");
+  });
+
+  it("n'affiche pas d'indicateur de scroll « Découvrir »", () => {
+    render(<HomepageHeroSectionSimple />);
+    expect(screen.queryByText("Découvrir")).not.toBeInTheDocument();
   });
 
   it("affiche les statistiques", () => {

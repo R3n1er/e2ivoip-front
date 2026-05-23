@@ -38,15 +38,11 @@ describe('ContactSection', () => {
     expect(phoneNumbers).toHaveLength(2);
   });
 
-  it('affiche l\'adresse email sécurisée avec lien vers la page de contact', () => {
+  it("affiche l'adresse email sécurisée avec lien vers la page de contact", () => {
     render(<ContactSection />);
     
-    // L'email doit être présent mais masqué par des points
-    const emailLink = screen.getByText(/••••••••••••••••••••••••/);
-    expect(emailLink).toBeInTheDocument();
-    
-    // Vérifier que c'est un lien vers la page de contact
-    expect(emailLink.closest('a')).toHaveAttribute('href', '/contact');
+    const emailLink = screen.getByRole("link", { name: /commerciaux@…/ });
+    expect(emailLink).toHaveAttribute("href", "/contact");
   });
 
   it('n\'affiche pas de formulaire de contact', () => {

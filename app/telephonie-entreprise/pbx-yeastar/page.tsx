@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { SecureMailtoButton } from "@/components/secure-email";
 
 export const metadata: Metadata = {
   title: "Yeastar P-Series | PBX cloud et on-premise | E2I VoIP",
@@ -898,13 +899,9 @@ export default function PBXYeastar() {
               <CTAButton href="/devis-en-ligne" icon="lni-bubble">
                 Obtenir un devis Yeastar
               </CTAButton>
-              <CTAButtonMarine
-                href="mailto:contact@e2ivoip.com"
-                icon="lni-envelope"
-                external
-              >
-                contact@e2ivoip.com
-              </CTAButtonMarine>
+              <SecureMailtoButton address="contact" icon="lni-envelope">
+                Nous écrire
+              </SecureMailtoButton>
             </div>
           </div>
         </section>

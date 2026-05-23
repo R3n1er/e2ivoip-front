@@ -36,9 +36,9 @@ describe("HeaderSimple Component", () => {
       const logo2 = screen.getByText("2");
       const logoI = screen.getByText("I");
 
-      expect(logoE).toHaveClass("text-red-primary");
-      expect(logo2).toHaveClass("text-blue-marine");
-      expect(logoI).toHaveClass("text-red-primary");
+      expect(logoE).toHaveClass("text-blue-marine");
+      expect(logo2).toHaveClass("text-red-primary");
+      expect(logoI).toHaveClass("text-blue-marine");
     });
 
     it("renders company description with correct styling", () => {

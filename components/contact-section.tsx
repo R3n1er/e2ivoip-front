@@ -54,7 +54,7 @@ export function ContactSection() {
                       Email
                     </h3>
                     <p className="text-gray-900 font-medium mb-1">
-                      <SecureEmail email="commerciaux@e2i-voip.com" />
+                      <SecureEmail address="sales" />
                     </p>
                     <p className="text-sm text-gray-600">Réponse sous 24h</p>
                   </div>

@@ -13,7 +13,7 @@ beforeEach(() => {
   })
 
   it('présente les coordonnées de contact principales', () => {
-    expect(screen.getByText('contact@e2i-voip.com')).toBeInTheDocument()
+    expect(screen.getByText('contact@…')).toBeInTheDocument()
     expect(screen.getByText('Paris, France')).toBeInTheDocument()
   })
 

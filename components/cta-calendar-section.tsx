@@ -1,5 +1,6 @@
 import React from "react";
 import { HubSpotCalendar } from "@/components/hubspot/legacy/hubspot-calendar";
+import { SecureEmail } from "@/components/secure-email";
 
 interface CTACalendarSectionProps {
   title?: string;
@@ -131,12 +132,11 @@ export function CTACalendarSection({
                   <i className="lni lni-envelope text-blue-600 text-xl mr-2"></i>
                   <span className="font-semibold text-gray-800">Email</span>
                 </div>
-                <a 
-                  href="mailto:commerciaux@e2i-voip.com"
+                <SecureEmail
+                  address="sales"
+                  mode="mailto"
                   className="text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  commerciaux@e2i-voip.com
-                </a>
+                />
               </div>
               
               <div className="p-4 bg-white rounded-lg border border-gray-200">

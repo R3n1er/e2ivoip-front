@@ -1,7 +1,6 @@
 "use client";
 
 import { CTAButton } from "@/components/ui/cta-button";
-import Link from "next/link";
 
 export function ServicesSectionSimple() {
   const services = [
@@ -34,7 +33,7 @@ export function ServicesSectionSimple() {
       ],
       badge: "Idéal PME",
       price: "15€/mois/utilisateur",
-      href: "/telephonie-entreprise/3cx-smb-pro",
+      href: "/telephonie-entreprise/3cx-smb-mutualisee",
     },
     {
       icon: "lni-phone",
@@ -79,7 +78,7 @@ export function ServicesSectionSimple() {
       ],
       badge: "Pro",
       price: "À partir de 50€",
-      href: "/nos-services/studio-attente",
+      href: "/studio-attente",
     },
   ];
 
@@ -88,7 +87,7 @@ export function ServicesSectionSimple() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
             Nos solutions de
             <span className="text-red-primary"> téléphonie IP</span>
           </h2>
@@ -100,12 +99,16 @@ export function ServicesSectionSimple() {
 
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Services Grid — 2 colonnes ; 5e carte centrée */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
             <div
-              key={index}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full"
+              key={service.href}
+              className={`card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full ${
+                index === services.length - 1
+                  ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
+                  : ""
+              }`}
             >
               <div className="card-body p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">

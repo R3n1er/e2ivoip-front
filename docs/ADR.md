@@ -10,6 +10,32 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-23 — Protection anti-spam des adresses email publiques
+
+- **Contexte** : Les adresses `contact@`, `assistance@` et `commerciaux@` étaient en clair dans le HTML (`mailto:`, footer, pages marketing). Les robots pouvaient les aspirer facilement.
+- **Décision** :
+  - Centraliser les adresses dans `lib/constants/emails.ts` (payloads Base64, clés `contact` | `assistance` | `sales`).
+  - Composant unique `SecureEmail` / `SecureMailtoButton` (`components/secure-email.tsx`) : affichage masqué (`contact@…`), lien `/contact` par défaut, `mailto:` uniquement au clic via décodage client (`lib/email/decode-email.ts`).
+  - Remplacer les `mailto:` et textes bruts sur footer, `contact-section`, `cta-calendar-section`, `qui-sommes-nous`, `pbx-yeastar`, `offline`.
+  - Corriger `contact@e2ivoip.com` (typo) sur Yeastar → clé `contact` (`contact@e2i-voip.com`).
+- **Conséquences** :
+  - Aucune adresse complète dans le HTML statique ; protection partielle (bots avancés peuvent encore lire le JS).
+  - Formulaire HubSpot `/contact` reste le canal principal recommandé.
+  - Docs internes (PRD, BrandBrief) conservent les emails en clair pour l’équipe.
+- **Tests associés** : `tests/lib/decode-email.test.ts`, `tests/components/secure-email.test.tsx`, `tests/footer.test.tsx`, `npm run validate`.
+
+### 2026-05-23 — Phase 3 design system (alignement charte home)
+
+- **Contexte** : Audit design phase 1 (`docs/DESIGN-AUDIT.md`) et contrat `docs/DESIGN.md` : écarts logo, liens services, hero, grille 5 cartes, blobs décoratifs.
+- **Décision** :
+  - Logo header : `E`/`I` en `blue-marine`, `2` en `red-primary`.
+  - Cartes services : hrefs `/telephonie-entreprise/3cx-smb-mutualisee`, `/studio-attente` ; grille `md:grid-cols-2` avec 5e carte centrée.
+  - Hero : `min-h-[100dvh]`, badge social proof sans doublon DOM, suppression scroll « Découvrir », tokens `red-primary` sur accents.
+  - Home : suppression blobs `animate-blob`.
+  - Contact : accents FR corrigés.
+- **Conséquences** : Tokens charte sur composants home actifs ; pages `telephonie-entreprise/*` et classes `.gradient-*` legacy restent à harmoniser.
+- **Tests associés** : `tests/header-simple.test.tsx`, `tests/services-section-prd.test.tsx`, `tests/homepage-hero-image.test.tsx`, `tests/contact-section-simple.test.tsx`, `tests/playwright/services-section.spec.ts`, `npm run validate`.
+
 ### 2026-05-23 — Configuration HubSpot blog : Private App token uniquement
 
 - **Contexte** : Après migration blog 100 % HubSpot CMS, l’équipe a recréé une application HubSpot (Private App / token `pat-eu1-…`). Le `.env.local` contenait encore des variables OAuth (`CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT_URI`, `PORTAL_ID`) héritées d’une ancienne intégration, dont une clé `hapikey` expirée retrouvée dans l’historique Git. Ces variables ne sont pas utilisées pour charger les articles de blog.

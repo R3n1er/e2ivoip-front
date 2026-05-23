@@ -70,9 +70,9 @@ export function HeaderSimple() {
           >
             <div className="flex items-center">
               <div className="text-xl lg:text-2xl font-bold">
-                <span className="text-red-primary transition-colors">E</span>
-                <span className="text-blue-marine">2</span>
-                <span className="text-red-primary transition-colors">I</span>
+                <span className="text-blue-marine transition-colors">E</span>
+                <span className="text-red-primary">2</span>
+                <span className="text-blue-marine transition-colors">I</span>
               </div>
             </div>
             <div className="hidden sm:block">

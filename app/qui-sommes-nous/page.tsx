@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+import { SecureEmail } from "@/components/secure-email";
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
@@ -536,13 +537,12 @@ export default function QuiSommesNous() {
               <strong>Hotline Assistance technique :</strong> 0189 560 500
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:commerciaux@e2i-voip.com"
-                className="text-white hover:text-white/80 transition-colors"
-              >
-                <i className="lni lni-envelope inline text-xl mr-2"></i>
-                commerciaux@e2i-voip.com
-              </a>
+              <SecureEmail
+                address="sales"
+                mode="mailto"
+                className="text-white hover:text-white/80 transition-colors inline-flex items-center"
+                label="Nous écrire"
+              />
               <Link href="/assistance">
                 <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
                   <span className="flex items-center justify-center">

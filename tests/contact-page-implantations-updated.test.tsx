@@ -30,8 +30,8 @@ jest.mock("@/components/hubspot/legacy/hubspot-contact-form-global", () => ({
 }));
 
 jest.mock("@/components/secure-email", () => ({
-  SecureEmail: ({ email }: { email: string }) => (
-    <span data-testid="secure-email">{email}</span>
+  SecureEmail: ({ label }: { label?: string }) => (
+    <span data-testid="secure-email">{label ?? "contact@…"}</span>
   ),
 }));
 

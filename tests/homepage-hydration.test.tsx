@@ -77,9 +77,9 @@ describe("HomePage - Test d'hydratation", () => {
     expect(mainContainer).toBeInTheDocument();
     expect(mainContainer).toHaveClass("min-h-screen");
 
-    // Vérifier les éléments décoratifs
+    // Pas de blobs décoratifs (design system §7)
     const decorativeElements = container.querySelectorAll(".animate-blob");
-    expect(decorativeElements.length).toBeGreaterThan(0);
+    expect(decorativeElements.length).toBe(0);
   });
 
   it("applique les classes CSS correctement", () => {

@@ -19,7 +19,9 @@ jest.mock("next/link", () => {
 
 // Mock SecureEmail component
 jest.mock("@/components/secure-email", () => ({
-  SecureEmail: ({ children }: { children: React.ReactNode }) => <span data-testid="secure-email">{children}</span>,
+  SecureEmail: ({ label }: { label?: string }) => (
+    <span data-testid="secure-email">{label ?? "contact@…"}</span>
+  ),
 }));
 
 // Mock WorkingFAQ component

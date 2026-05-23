@@ -1,5 +1,7 @@
 
 
+import { decodeEmail } from '@/lib/email/decode-email'
+
 describe('Devis en ligne Page', () => {
   it('should have correct page structure', () => {
     const pageStructure = {
@@ -70,7 +72,7 @@ describe('Devis en ligne Page', () => {
     }
     
     expect(contactInfo.phone).toBe('05 94 96 35 00')
-    expect(contactInfo.email).toBe('contact@e2i-voip.com')
+    expect(decodeEmail('contact')).toBe('contact@e2i-voip.com')
     expect(contactInfo.title).toContain('projet urgent')
   })
 

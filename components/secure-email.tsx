@@ -1,44 +1,94 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import {
+  EMAIL_CONTACT_PAGE,
+  type EmailAddressKey,
+} from "@/lib/constants/emails";
+import { decodeEmail, getMaskedEmailLabel } from "@/lib/email/decode-email";
+import { openMailto } from "@/lib/email/open-mailto";
 
-/**
- * Composant pour sécuriser une adresse email contre le spam
- * L'email est encodé par défaut et décodé au survol
- */
-export function SecureEmail({ email }: { email: string }) {
+type SecureEmailProps = {
+  address: EmailAddressKey;
+  /** contact = lien /contact ; mailto = ouverture client mail au clic */
+  mode?: "contact" | "mailto";
+  className?: string;
+  /** Surcharge du libellé masqué (ex. « Nous écrire ») */
+  label?: string;
+};
+
+export function SecureEmail({
+  address,
+  mode = "contact",
+  className = "",
+  label,
+}: SecureEmailProps) {
+  const display = label ?? getMaskedEmailLabel(address);
+
+  if (mode === "contact") {
+    return (
+      <Link
+        href={EMAIL_CONTACT_PAGE}
+        className={`hover:text-red-primary transition-colors ${className}`}
+        title="Page contact"
+      >
+        {display}
+      </Link>
+    );
+  }
+
+  const handleMailto = () => {
+    openMailto(decodeEmail(address));
+  };
+
   return (
-    <a
-      href="/contact"
-      className="cursor-pointer select-none hover:text-red-600 transition-colors duration-200"
-      title="Cliquez pour aller à la page de contact"
+    <button
+      type="button"
+      onClick={handleMailto}
+      className={`cursor-pointer bg-transparent border-0 p-0 text-inherit hover:text-red-primary transition-colors ${className}`}
+      title="Ouvrir votre client mail"
     >
-      {email.replace(/./g, '•')}
-    </a>
+      {display}
+    </button>
   );
 }
 
-/**
- * Version simplifiée pour les liens mailto sécurisés
- */
-export function SecureMailtoLink({ email, children }: { email: string; children: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState(false);
-  
+type SecureMailtoButtonProps = {
+  address: EmailAddressKey;
+  children: ReactNode;
+  icon?: string;
+  className?: string;
+  variant?: "marine" | "primary";
+};
+
+/** Bouton style CTA qui n’expose pas mailto: dans le HTML. */
+export function SecureMailtoButton({
+  address,
+  children,
+  icon,
+  className = "",
+  variant = "marine",
+}: SecureMailtoButtonProps) {
+  const handleMailto = () => {
+    openMailto(decodeEmail(address));
+  };
+
+  const spanClass =
+    variant === "marine"
+      ? "block bg-blue-marine text-white px-10 py-4 text-sm font-black uppercase tracking-[0.2em]"
+      : "block bg-red-primary text-white px-10 py-4 text-sm font-black uppercase tracking-[0.2em]";
+
   return (
-    <span
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(false)}
-      className="cursor-pointer"
+    <button
+      type="button"
+      onClick={handleMailto}
+      className={`monolith-btn ${className}`}
     >
-      {isVisible ? (
-        <a href={`mailto:${email}`} className="text-blue-600 hover:text-blue-800 underline">
-          {children}
-        </a>
-      ) : (
-        <span className="text-gray-600 select-none">
-          {email.replace(/./g, '•')}
-        </span>
-      )}
-    </span>
+      <span className={spanClass}>
+        {icon && <i className={`lni ${icon} mr-3`} />}
+        {children}
+      </span>
+    </button>
   );
 }

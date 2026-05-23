@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { HotjarTracking } from "@/components/hotjar-tracking";
-import { HeaderSimple } from "@/components/layout/header-simple";
+import { LayoutClientChrome } from "@/components/layout/layout-client-chrome";
 import { Footer } from "@/components/layout/footer";
-import { ChatPreOverlay } from "@/components/chat-preoverlay";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
@@ -66,11 +64,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <HotjarTracking />
-        <HeaderSimple />
-        <main className="flex-1 pt-16">{children}</main>
+        <LayoutClientChrome>{children}</LayoutClientChrome>
         <Footer />
-        <ChatPreOverlay />
       </body>
     </html>
   );

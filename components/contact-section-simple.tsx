@@ -12,14 +12,14 @@ export function ContactSectionSimple() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-900 mb-6">
-            Pret a economiser 20% sur vos
-            <span className="text-red-primary"> couts telecoms ?</span>
+          <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-dark mb-6">
+            Prêt à économiser 20&nbsp;% sur vos
+            <span className="text-red-primary"> coûts télécoms&nbsp;?</span>
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
             Nos experts analysent gratuitement votre infrastructure actuelle et
-            vous accompagnent dans votre transformation vers la telephonie IP
-            nouvelle generation.
+            vous accompagnent dans votre transformation vers la téléphonie IP
+            nouvelle génération.
           </p>
 
           {/* Main CTAs */}
@@ -44,7 +44,7 @@ export function ContactSectionSimple() {
                 element_text: 'Calculez vos economies',
               })}
             >
-              Calculez vos economies
+              Calculez vos économies
             </CTAButtonMarine>
           </div>
         </div>
