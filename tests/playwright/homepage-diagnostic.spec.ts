@@ -120,7 +120,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
     ).toHaveLength(0);
   });
 
-  test("devrait charger les scripts externes (Hotjar, etc.)", async ({
+  test("devrait charger les scripts externes sans erreur 4xx/5xx", async ({
     page,
   }) => {
     const scriptErrors: string[] = [];

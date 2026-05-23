@@ -10,6 +10,35 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-23 — Suppression Hotjar + correction erreur d'hydratation SSR
+
+- **Contexte** : Hotjar n'est plus utilisé comme service d'analytics. Le composant `HotjarTracking` injectait un script externe en production et provoquait une erreur d'hydratation React car le build `.next` contenait encore d'anciennes balises `<i class="lni lni-star">` (cache obsolète post-migration Phosphor).
+- **Décision** :
+  - Supprimer `components/hotjar-tracking.tsx` (composant, interface `HotjarTrackingProps`, ID `hotjar-script`).
+  - Retirer l'import et l'usage de `HotjarTracking` dans `components/layout/layout-client-chrome.tsx`.
+  - Mettre à jour `tests/playwright/homepage-diagnostic.spec.ts` : renommer le test "Hotjar" en test générique de vérification des scripts 4xx/5xx.
+  - Purger le cache `.next` pour forcer la recompilation avec les icônes Phosphor SSR (résout le mismatch `<i>` vs `<svg>`).
+- **Conséquences** :
+  - Aucun script tiers Hotjar chargé en production ; l'erreur d'hydratation est résolue.
+  - Pour réintroduire un outil analytics, créer un nouveau composant dédié et l'intégrer proprement (ex. Plausible, PostHog).
+- **Tests associés** : `tests/playwright/homepage-diagnostic.spec.ts`, `npm run validate` (369 Jest + 66 Playwright — tous ✓).
+
+### 2026-05-23 — Migration système d'icônes : LineIcons CDN → Phosphor Icons SSR-safe
+
+- **Contexte** : Le projet utilisait LineIcons via CDN (`<i class="lni lni-*">`), incompatible SSR et dépendant d'un réseau externe. La migration vers Phosphor Icons (`@phosphor-icons/react`) a introduit `React.createContext()` dans les Server Components, causant des erreurs HTTP 500 sur toutes les pages.
+- **Décision** :
+  - Créer `lib/icons.ts` : source unique de 86 icônes Phosphor + aliases, importées depuis `@phosphor-icons/react/dist/ssr` (SSR-compatible, pas de `createContext`).
+  - Pattern string-based pour les props d'icônes cross-boundary : `icon="PhoneFill"` au lieu de `icon={PhoneIcon}` (évite la sérialisation de fonctions React entre Server et Client Components).
+  - Ajouter `"use client"` aux 7 composants réutilisables qui passent des icônes : `footer`, `testimonials`, `problem-solution-section`, etc.
+  - Migrer 375+ références `lni-*` → composants Phosphor via `ICON_MAP` dans `CTAButton`, `CTAButtonMarine`, `CTAButtonSecondary`, `SecureMailtoButton`.
+  - Mettre à jour les 369 tests Jest (sélecteurs SVG au lieu des classes `lni-*`).
+  - Corriger le test Playwright `services-section.spec.ts` : `.lni` → `svg`.
+- **Conséquences** :
+  - Zéro dépendance CDN externe pour les icônes ; rendu SSR cohérent.
+  - `lib/icons.ts` est le point d'entrée unique — toute nouvelle icône s'y ajoute.
+  - TypeScript strict : le type `Icon = React.ComponentType<IconProps>` assure la cohérence.
+- **Tests associés** : `tests/playwright/services-section.spec.ts`, `tests/components/`, `npm run validate`.
+
 ### 2026-05-23 — Protection anti-spam des adresses email publiques
 
 - **Contexte** : Les adresses `contact@`, `assistance@` et `commerciaux@` étaient en clair dans le HTML (`mailto:`, footer, pages marketing). Les robots pouvaient les aspirer facilement.

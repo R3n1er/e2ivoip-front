@@ -66,7 +66,7 @@ test.describe("Section Services", () => {
       page.locator("#services .grid.md\\:grid-cols-2")
     ).toBeVisible();
 
-    const icons = page.locator("#services .lni");
+    const icons = page.locator("#services svg");
     await expect(icons.first()).toBeVisible();
     expect(await icons.count()).toBeGreaterThan(10);
   });
