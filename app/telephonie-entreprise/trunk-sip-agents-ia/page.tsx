@@ -116,11 +116,12 @@ export default function TrunkSipAgentsIA() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                Trunk SIP pour{" "}
-                <span className="text-white">agents vocaux IA</span>
+                Trunk SIP{" "}
+                <span className="text-white">agents vocaux IA</span>{" "}
+                DOM
               </h1>
               <p className="text-xl text-white/95 mb-4 max-w-4xl mx-auto leading-relaxed">
-                Numéros locaux Antilles-Guyane-Réunion et interconnexion SIP
+                Numéros locaux +596, +590, +594, +262 et trunk SIP BYOC
                 pour VAPI, Rounded, ElevenLabs, Jambonz
               </p>
               <p className="text-lg text-white/90 mb-10 max-w-3xl mx-auto">
