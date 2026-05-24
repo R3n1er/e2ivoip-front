@@ -48,7 +48,7 @@ describe("Page Trunk SIP agents IA", () => {
   it("rend la page sans erreur", () => {
     render(<TrunkSipAgentsIA />);
     expect(
-      screen.getByRole("heading", { level: 1, name: /Trunk SIP pour agents vocaux IA/i })
+      screen.getByRole("heading", { level: 1, name: /Trunk SIP agents vocaux IA DOM/i })
     ).toBeInTheDocument();
   });
 
