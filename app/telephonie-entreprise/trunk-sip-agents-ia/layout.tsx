@@ -2,15 +2,15 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Trunk SIP DOM pour agents vocaux IA | Interconnexion VAPI, Rounded, ElevenLabs | E2I VoIP",
+    "Trunk SIP Agents Vocaux IA — Numéros DOM Antilles-Guyane-Réunion | E2I VoIP",
   description:
-    "Numéros locaux Antilles-Guyane-Réunion et trunk SIP pour interconnecter vos agents vocaux IA (VAPI, Rounded, ElevenLabs, Jambonz). Carrier DOM — BYOC compatible.",
+    "E2I VoIP, carrier SIP DOM : numéros locaux +596, +590, +594, +262 et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz. Trunk BYOC validé pour vos agents vocaux IA en zones DOM.",
   keywords:
-    "trunk SIP agents IA, BYOC DOM, interconnexion VAPI Martinique, numéro local Guadeloupe IA, SIP trunk Réunion, carrier SIP Antilles",
+    "trunk SIP agents vocaux IA, carrier SIP DOM, BYOC SIP DOM, numéros DOM Guadeloupe Martinique, revendeur SIP DOM France, interconnexion VAPI Rounded, SIP trunk Réunion Guyane, Jambonz DOM, ElevenLabs SIP DOM",
   openGraph: {
-    title: "Trunk SIP DOM pour agents vocaux IA | E2I VoIP",
+    title: "Trunk SIP Agents Vocaux IA — Numéros DOM | E2I VoIP",
     description:
-      "Numéros locaux DOM et trunk SIP pour interconnecter vos agents vocaux IA. Compatible VAPI, Rounded, ElevenLabs, Jambonz.",
+      "Carrier SIP DOM pour intégrateurs IA. Numéros locaux +596, +590, +594, +262. Interconnexion validée VAPI, Rounded, ElevenLabs, Jambonz.",
     type: "website",
     locale: "fr_FR",
     url: "https://e2ivoip.fr/telephonie-entreprise/trunk-sip-agents-ia",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trunk SIP DOM pour agents vocaux IA | E2I VoIP",
+    title: "Trunk SIP Agents Vocaux IA — Numéros DOM | E2I VoIP",
     description:
-      "Carrier SIP DOM pour intégrateurs IA. Numéros locaux Antilles-Guyane-Réunion.",
+      "Carrier SIP DOM pour intégrateurs IA. Numéros locaux Antilles-Guyane-Réunion. Trunk BYOC pour VAPI, Rounded, ElevenLabs, Jambonz.",
   },
 };
 
