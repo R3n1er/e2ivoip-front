@@ -302,11 +302,11 @@ export default function TrunkSipAgentsIA() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
                 Cas d&apos;usage{" "}
-                <span className="text-red-primary">déjà déployés</span>
+                <span className="text-red-primary">types</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Retours d&apos;expérience terrain avec des intégrateurs et leurs
-                clients en zone DOM.
+                Exemples concrets d&apos;agents vocaux IA déployés avec des numéros
+                locaux DOM via trunk SIP.
               </p>
             </div>
 
