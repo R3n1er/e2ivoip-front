@@ -140,6 +140,12 @@ export default function TrunkSipAgentsIA() {
                 <CTAButton href="#contact" icon="Chat">
                   Parler à un commercial
                 </CTAButton>
+                <CTAButtonSecondary
+                  href="/trunk-sip-agents-vocaux-ia-revendeurs"
+                  icon="ArrowRight"
+                >
+                  Programme Revendeur Early Access
+                </CTAButtonSecondary>
               </div>
             </div>
           </div>
@@ -417,20 +423,23 @@ export default function TrunkSipAgentsIA() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Déployez vos agents IA avec des numéros locaux DOM
             </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 mb-6 max-w-2xl mx-auto">
               Intégrateurs : connectez VAPI, Rounded, ElevenLabs ou Jambonz au
               réseau téléphonique Antilles-Guyane-Réunion avec E2I VoIP.
+            </p>
+            <p className="text-base text-white/75 mb-10 max-w-2xl mx-auto">
+              Vous revendez à vos clients ? Rejoignez notre programme Early Access
+              revendeur avec des marges de 40 à 60 %.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <CTAButton href="#contact" icon="Chat">
                 Parler à un commercial
               </CTAButton>
               <CTAButtonSecondary
-                href="tel:+33189560500"
-                external
-                icon="Phone"
+                href="/trunk-sip-agents-vocaux-ia-revendeurs"
+                icon="ArrowRight"
               >
-                01 89 56 05 00
+                Programme Revendeur Early Access
               </CTAButtonSecondary>
             </div>
           </div>
