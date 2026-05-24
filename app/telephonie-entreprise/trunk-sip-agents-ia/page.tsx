@@ -7,16 +7,20 @@ export const dynamic = "force-dynamic";
 
 const platforms = [
   {
-    name: "VAPI",
-    description:
-      "BYO SIP Trunk et numéro BYO. Credential byo-sip-trunk, routage entrant vers sip.vapi.ai.",
-    docUrl: "https://docs.vapi.ai/advanced/sip/sip-trunk",
-  },
-  {
     name: "Rounded",
     description:
       "Trunk SIP custom. Origination sip:sip.callrounded.com — numéro E.164 + URI de termination.",
     docUrl: "https://docs.callrounded.com/documentation/telephony/sip-trunk",
+    status: "validated" as const,
+    statusLabel: "Validé",
+  },
+  {
+    name: "VAPI",
+    description:
+      "BYO SIP Trunk et numéro BYO. Credential byo-sip-trunk, routage entrant vers sip.vapi.ai.",
+    docUrl: "https://docs.vapi.ai/advanced/sip/sip-trunk",
+    status: "in-progress" as const,
+    statusLabel: "Compatibilité en finalisation",
   },
   {
     name: "ElevenLabs Agents",
@@ -24,6 +28,8 @@ const platforms = [
       "SIP Trunking BYOC. Auth digest ou ACL IP, TLS/SRTP pour agents conversationnels.",
     docUrl:
       "https://elevenlabs.io/docs/eleven-agents/phone-numbers/sip-trunking",
+    status: "evaluating" as const,
+    statusLabel: "En évaluation",
   },
   {
     name: "Jambonz",
@@ -31,6 +37,8 @@ const platforms = [
       "CPaaS open-source. Trunks IP, auth ou registration — idéal pour intégrateurs self-hosted.",
     docUrl:
       "https://docs.jambonz.org/guides/using-the-jambonz-portal/basic-concepts/creating-carriers",
+    status: "evaluating" as const,
+    statusLabel: "En évaluation",
   },
 ];
 
@@ -248,11 +256,28 @@ export default function TrunkSipAgentsIA() {
               {platforms.map((platform) => (
                 <div
                   key={platform.name}
-                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+                  className={`bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border hover:shadow-lg transition-shadow ${
+                    platform.status === "validated"
+                      ? "border-green-500/40"
+                      : "border-gray-200"
+                  }`}
                 >
-                  <h3 className="text-xl font-bold text-gray-dark mb-3">
-                    {platform.name}
-                  </h3>
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="text-xl font-bold text-gray-dark">
+                      {platform.name}
+                    </h3>
+                    <span
+                      className={`text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap ml-2 ${
+                        platform.status === "validated"
+                          ? "bg-green-100 text-green-700"
+                          : platform.status === "in-progress"
+                          ? "bg-orange-100 text-orange-700"
+                          : "bg-gray-100 text-gray-500"
+                      }`}
+                    >
+                      {platform.statusLabel}
+                    </span>
+                  </div>
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                     {platform.description}
                   </p>
