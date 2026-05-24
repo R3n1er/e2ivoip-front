@@ -173,7 +173,8 @@ export default function TrunkSipAgentsIA() {
                   {[
                     "Numéros locaux +596, +590, +594, +262",
                     "Trunk SIP bidirectionnel ou redirection d'appels",
-                    "Accompagnement technique intégrateurs",
+                    "Guichet unique : contrat, facturation et support en un seul interlocuteur",
+                    "Accompagnement technique de l'intégration SIP",
                     "Support local Antilles-Guyane-Réunion",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
