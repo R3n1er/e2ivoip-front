@@ -3,7 +3,7 @@ import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
-import { TallyEmbedDevis } from "@/components/tally-embed-devis";
+import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
 import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, Info, ArrowRight, Timer, Shield } from '@/lib/icons';
 
 export const metadata: Metadata = {
@@ -107,7 +107,7 @@ export default function TrunkSIPCompteur() {
               <div className="mt-16 text-center">
                 <div className="inline-flex flex-col items-center animate-bounce">
                   <span className="text-white/60 text-sm mb-2">
-                    Découvrez nos tarifs
+                    Recevez nos tarifs personnalisés
                   </span>
                   <CaretDown size={24} className="text-white/60" aria-hidden="true" />
                 </div>
@@ -137,7 +137,7 @@ export default function TrunkSIPCompteur() {
         {/* Solution */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl mx-auto">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
                   <CheckCircle size={20} className="mr-2" aria-hidden="true" />
@@ -215,90 +215,6 @@ export default function TrunkSIPCompteur() {
                         Équipes présentes localement en{" "}
                         <strong>Martinique, Guadeloupe, Guyane</strong>. Réponse
                         en moins de 2h.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Tarifs des appels à la minute
-                  </h3>
-                  <p className="text-gray-600">
-                    Facturation à la seconde dès la première seconde • Pas de
-                    frais cachés
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-red-primary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">France Fixe</span>
-                      <span className="text-red-primary font-bold text-lg">
-                        0,0120 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-blue-marine">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">France Mobile</span>
-                      <span className="text-blue-marine font-bold text-lg">
-                        0,0600 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-800">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">
-                        DOM Fixe (Guadeloupe, Martinique, Guyane, Réunion,
-                        Mayotte)
-                      </span>
-                      <span className="text-gray-800 font-bold text-lg">
-                        0,0160 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-600">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">
-                        DOM Mobile (Guadeloupe, Martinique, Guyane, Réunion,
-                        Mayotte)
-                      </span>
-                      <span className="text-gray-600 font-bold text-lg">
-                        0,0800 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Création numéro SDA</span>
-                      <span className="text-gray-secondary font-semibold">
-                        Sur devis
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Portabilité</span>
-                      <span className="text-gray-secondary font-semibold">
-                        Sur devis
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <div className="flex items-start space-x-2">
-                    <Info size={20} className="text-blue-marine mt-0.5" aria-hidden="true" />
-                    <div className="text-sm text-blue-800">
-                      <p>
-                        <strong>Facturation transparente :</strong> Pas de frais
-                        de connexion, pas de minimum de consommation,
-                        facturation à la seconde dès la première seconde.
-                      </p>
-                      <p className="mt-1">
-                        <strong>Numéros locaux :</strong> Création et
-                        portabilité de numéros géographiques DOM
                       </p>
                     </div>
                   </div>
@@ -417,8 +333,8 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
 
-        {/* Formulaire Tally (embed) avec nouvelle UX améliorée */}
-        <TallyEmbedDevis />
+        {/* Formulaire Tally tarifs (embed) → webhook n8n */}
+        <TallyEmbedTarifs />
 
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
