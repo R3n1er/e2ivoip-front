@@ -172,7 +172,7 @@ describe("Page Trunk SIP au Compteur", () => {
   test("affiche le formulaire de demande de tarifs", () => {
     render(<TrunkSIPCompteur />);
     expect(
-      screen.getByText(/Recevez nos tarifs personnalisés/i)
+      screen.getByText(/grille tarifaire complète par email/i)
     ).toBeInTheDocument();
   });
 
