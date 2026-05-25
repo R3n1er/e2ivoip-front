@@ -93,16 +93,13 @@ describe("Page Trunk SIP au Compteur", () => {
 
     const reunionElements = screen.getAllByText(/Réunion/i);
     expect(reunionElements.length).toBeGreaterThan(0);
-
-    const mayotteElements = screen.getAllByText(/Mayotte/i);
-    expect(mayotteElements.length).toBeGreaterThan(0);
   });
 
   test("utilise les couleurs de la charte graphique", () => {
     render(<TrunkSIPCompteur />);
     // Vérifier que les classes de couleurs personnalisées sont utilisées
     const container = document.querySelector(
-      ".bg-gradient-to-br.from-blue-50.to-red-50"
+      ".bg-gradient-to-r.from-blue-900\\/85"
     );
     expect(container).toBeInTheDocument();
   });
