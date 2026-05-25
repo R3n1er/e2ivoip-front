@@ -4,7 +4,7 @@ import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
-import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, Info, ArrowRight, Timer, Shield } from '@/lib/icons';
+import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, ArrowRight, Timer, Shield } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
