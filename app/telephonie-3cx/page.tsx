@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
@@ -632,9 +631,6 @@ export default function Telephonie3CX() {
             </div>
           </div>
         </section>
-
-        {/* Social Proof */}
-        <TestimonialsSectionSimple />
 
         {/* Territory phone links -- D-09 */}
         <section className="bg-gray-50 py-8">

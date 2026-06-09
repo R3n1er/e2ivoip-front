@@ -193,6 +193,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              suppressHydrationWarning
             >
               <path
                 d="M7 14c-2.761 0-5-1.79-5-4s2.239-4 5-4h6c2.761 0 5 1.79 5 4s-2.239 4-5 4H9l-2 2v-2Z"

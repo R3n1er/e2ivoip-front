@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { cn } from "@/lib/utils";
 
 interface OptimizedImageProps {

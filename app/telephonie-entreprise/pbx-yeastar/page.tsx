@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { SecureMailtoButton } from "@/components/secure-email";
 import { Calculator, Phone, Chat, Envelope, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';

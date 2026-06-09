@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { CheckCircle, Chats, Phone } from "@/lib/icons";
 
@@ -16,6 +16,7 @@ export function TransformationSection() {
               alt="Femme souriante au téléphone - Communication d'entreprise optimisée"
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
           </div>

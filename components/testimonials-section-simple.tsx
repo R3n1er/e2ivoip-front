@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image'
+import { SafeImage as Image } from '@/components/ui/safe-image'
 import { Star, Quotes } from '@/lib/icons'
 
 interface Testimonial {

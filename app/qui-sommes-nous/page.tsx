@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { SecureEmail } from "@/components/secure-email";
 import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle, Chat, ArrowRight } from '@/lib/icons';
 // Tawk.to désactivé temporairement
