@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 import type { Icon } from '@phosphor-icons/react'
-import { Phone, Calculator, Chat, ArrowRight, Rocket, CheckCircle, Calendar, Envelope, Microphone, MusicNote, SpeakerHigh, DownloadSimple, WhatsappLogo, Brain, Lightbulb, Users, Globe, MapPin, Shield, Warning } from '@/lib/icons'
+import { Phone, Calculator, Chat, ArrowRight, Rocket, CheckCircle, Calendar, Envelope, Headphone, Microphone, MusicNote, SpeakerHigh, DownloadSimple, WhatsappLogo, Brain, Lightbulb, Users, Globe, MapPin, Shield, Warning } from '@/lib/icons'
 import { trackEvent } from '@/lib/analytics/track-event'
 
 const ICON_MAP: Record<string, Icon> = {
   Phone, Calculator, Chat, ArrowRight, Rocket, CheckCircle, Calendar,
-  Envelope, Microphone, MusicNote, SpeakerHigh, DownloadSimple,
+  Envelope, Headphone, Microphone, MusicNote, SpeakerHigh, DownloadSimple,
   WhatsappLogo, Brain, Lightbulb, Users, Globe, MapPin, Shield, Warning,
 }
 

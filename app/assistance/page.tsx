@@ -8,7 +8,7 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
-import { Headphone, Phone, Chat } from '@/lib/icons';
+import { Phone, Chat } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
@@ -52,7 +52,7 @@ export default function AssistancePage() {
               Notre équipe d'experts est là pour vous accompagner dans
               l'utilisation de vos solutions téléphoniques
             </p>
-            <CTAButton href="/contact?objet=support" icon={Headphone}>
+            <CTAButton href="/contact?objet=support" icon="Headphone">
               DEMANDER UN SUPPORT
             </CTAButton>
           </div>
