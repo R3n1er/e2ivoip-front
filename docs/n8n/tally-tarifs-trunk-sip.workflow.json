@@ -1,0 +1,108 @@
+{
+  "name": "Tally 7RpEBa — Envoi tarifs Trunk SIP + lead HubSpot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tally-tarifs-trunk-sip",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Webhook Tally",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "tally-tarifs-trunk-sip"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Payload Tally : { data: { fields: [{ label, value, type }] } }\nconst body = $json.body ?? $json;\nconst fields = body?.data?.fields ?? [];\n\nconst get = (needle) => {\n  const f = fields.find((f) =>\n    (f.label ?? \"\").toLowerCase().includes(needle)\n  );\n  if (!f) return \"\";\n  // Les champs téléphone Tally peuvent renvoyer un objet ou un tableau\n  if (typeof f.value === \"string\") return f.value;\n  if (Array.isArray(f.value)) return f.value.join(\", \");\n  return f.value?.toString?.() ?? \"\";\n};\n\nconst nomComplet = get(\"nom et prénom\") || get(\"nom\");\nconst [prenom, ...reste] = nomComplet.trim().split(/\\s+/);\n\nreturn {\n  json: {\n    nomComplet,\n    prenom: prenom ?? \"\",\n    nom: reste.join(\" \"),\n    email: get(\"email\"),\n    entreprise: get(\"entreprise\"),\n    telephone: get(\"téléphone\") || get(\"telephone\") || get(\"phone\"),\n    recuLe: body?.createdAt ?? new Date().toISOString(),\n  },\n};"
+      },
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "Extraire les champs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  from: \"E2I VoIP <commerciaux@e2i-voip.com>\",\n  to: [$json.email],\n  reply_to: \"commerciaux@e2i-voip.com\",\n  subject: \"Votre grille tarifaire Trunk SIP au compteur — E2I VoIP\",\n  html: `<div style=\\\"font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#1f2937\\\">\n    <h2 style=\\\"color:#1e3a8a\\\">Bonjour ${$json.prenom || $json.nomComplet},</h2>\n    <p>Merci pour votre demande de tarifs <strong>Trunk SIP au compteur</strong> pour ${$json.entreprise}.</p>\n    <p>Vous trouverez en pièce jointe notre <strong>grille tarifaire complète</strong> : appels France fixe/mobile, DOM fixe/mobile, numéros SDA et portabilité.</p>\n    <p>Un expert E2I VoIP vous recontacte rapidement pour étudier votre projet. Besoin d'une réponse immédiate&nbsp;?</p>\n    <p style=\\\"margin:24px 0\\\"><a href=\\\"https://www.e2i-voip.com/contact\\\" style=\\\"background:#dc2626;color:#ffffff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold\\\">Parler à un commercial</a></p>\n    <p>À très vite,<br/><strong>L'équipe E2I VoIP</strong><br/>Antilles · Guyane · Réunion</p>\n  </div>`,\n  attachments: [\n    {\n      path: \"REMPLACER_PAR_URL_DU_PDF_TARIFS\",\n      filename: \"E2I-VoIP-Grille-Tarifaire-Trunk-SIP.pdf\"\n    }\n  ]\n}) }}",
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Resend — Email tarifs au prospect",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, -120],
+      "credentials": {
+        "httpHeaderAuth": {
+          "name": "Resend API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "upsert",
+        "email": "={{ $json.email }}",
+        "additionalFields": {
+          "firstName": "={{ $json.prenom }}",
+          "lastName": "={{ $json.nom }}",
+          "companyName": "={{ $json.entreprise }}",
+          "phoneNumber": "={{ $json.telephone }}",
+          "lifeCycleStage": "lead"
+        }
+      },
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "HubSpot — Créer/MAJ le contact",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [460, 120],
+      "credentials": {
+        "hubspotApi": {
+          "name": "HubSpot E2I"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Tally": {
+      "main": [
+        [
+          {
+            "node": "Extraire les champs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraire les champs": {
+      "main": [
+        [
+          {
+            "node": "Resend — Email tarifs au prospect",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HubSpot — Créer/MAJ le contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
