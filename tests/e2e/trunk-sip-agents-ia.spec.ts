@@ -15,13 +15,14 @@ test.describe("Page Trunk SIP agents IA", () => {
 
     const h1 = page.locator("h1").first();
     await expect(h1).toBeVisible({ timeout: 10000 });
-    await expect(h1).toContainText("Trunk SIP pour");
+    await expect(h1).toContainText("Trunk SIP");
     await expect(h1).toContainText("agents vocaux IA");
+    await expect(h1).toContainText("DOM");
   });
 
   test("affiche la section Hero avec CTA", async ({ page }) => {
     await expect(
-      page.getByText(/Numéros locaux Antilles-Guyane-Réunion/)
+      page.getByText(/Numéros locaux \+596, \+590, \+594, \+262/).first()
     ).toBeVisible();
 
     const ctaButton = page.getByRole("link", {
@@ -101,7 +102,9 @@ test.describe("Page Trunk SIP agents IA", () => {
   });
 
   test("a les metadata SEO correctes", async ({ page }) => {
-    await expect(page).toHaveTitle(/Trunk SIP DOM pour agents vocaux IA/i);
+    await expect(page).toHaveTitle(
+      /Trunk SIP Agents Vocaux IA — Numéros DOM/i
+    );
   });
 
   test("l'ancienne URL assistants vocaux IA renvoie 404", async ({ page }) => {

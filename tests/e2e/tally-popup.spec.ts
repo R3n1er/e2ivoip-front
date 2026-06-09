@@ -8,13 +8,13 @@ test.describe("Tally Embed - Trunk SIP Compteur", () => {
     await page.waitForLoadState("networkidle");
 
     await expect(
-      page.getByRole("heading", { level: 2, name: /Obtenez votre devis sur-mesure/i })
+      page.getByRole("heading", { level: 2, name: /Recevez nos tarifs personnalisés/i })
     ).toBeVisible();
 
     const advantages = [
-      "100% Gratuit",
       "Sans engagement",
-      "Réponse rapide",
+      "Données confidentielles",
+      "Envoi rapide par email",
       "Expert dédié",
     ];
 
@@ -23,7 +23,7 @@ test.describe("Tally Embed - Trunk SIP Compteur", () => {
     }
 
     const tallyIframe = page.locator(
-      'iframe[src*="tally.so/embed/mDY1bl"]'
+      'iframe[src*="tally.so/embed/7RpEBa"]'
     );
     await expect(tallyIframe).toBeAttached();
   });
