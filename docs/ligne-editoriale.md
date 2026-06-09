@@ -115,6 +115,88 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - À ne pas promettre : E2I VoIP ne conçoit pas les workflows IA, ne fournit pas de LLM/STT/TTS et ne vend pas d'assistant vocal clé en main
 - Plateformes à citer naturellement : VAPI, Rounded, ElevenLabs, Jambonz ; Retell AI et Bland AI peuvent être mentionnés comme plateformes compatibles sur le même modèle BYOC
 
+### Revendeurs (Programme Early Access)
+
+> Source : Handoff Chantier 1 Tarification (2026-05-19) + Handoff Chantier 3 Communication (2026-05-20)
+
+**Profil cible V1** : Agences, freelances et builders d'agents vocaux IA (1 à 15 personnes), basés en métropole ou en DOM, maturité technique intermédiaire à senior. Use-cases dominants : standard téléphonique automatisé, prise de rendez-vous, qualification de leads entrants.
+
+**Positionnement validé — Agrégateur certifié**
+
+E2I VoIP se positionne en **agrégateur certifié**, pas en opérateur d'infrastructure propriétaire en V1. Ne pas mentionner de SBC propre en phase de communication. Le pitch est centré sur :
+
+- Expertise d'intégration plateformes agents vocaux IA + trunks SIP
+- Certification et validation préalable des plateformes IA
+- Guichet unique (contrat, facturation, support) à la place d'une relation directe revendeur ↔ opérateur
+- Ancrage DOM : connaissance du marché local, gestion portabilité, numéros locaux
+- Support francophone, fuseau horaire compatible
+
+**Angle éditorial** : Hybride équilibré — bénéfices business (guichet unique, marges revendeur, rapidité) **ET** maîtrise technique (plateformes validées, compatibilité SIP).
+
+**Statut des plateformes IA à respecter impérativement**
+
+| Plateforme | Statut à communiquer |
+|---|---|
+| Rounded | Validé |
+| VAPI | "Compatibilité en finalisation" |
+| ElevenLabs | "En évaluation" |
+| Jambonz | "En évaluation" |
+
+Ne jamais affirmer qu'une plateforme est validée si elle est en évaluation. Mettre à jour ce tableau dès qu'un statut change.
+
+**Grille tarifaire de référence (Option B validée — ne pas déroger sans décision formelle)**
+
+| Ligne | Prix public revendeur |
+|---|---|
+| Forfait Service Revendeur | 49 €/mois |
+| Canal SIP (dès le 1er) | 7 €/canal/mois |
+| Numéro SDA DOM ou France | 2 €/SDA/mois |
+| Mise en service trunk SIP | 49 € (one-shot) |
+| Création SDA | 35 € (one-shot) |
+| Appels entrants (toutes destinations DOM + France) | 0,04 €/min |
+
+Transparence tarifaire partielle en public : afficher le Forfait Service (49 €/mois) sur la page web ; réserver le détail complet à la plaquette revendeur.
+
+**CTA principal page Early Access** : parcours dual — "Candidater au programme Early Access" (primaire) + "Télécharger la plaquette" (secondaire).
+
+**Engagement contrat** : 12 mois. Facturation à la minute dès la 1ère seconde.
+
+**Géo-permissions à communiquer** : France métropolitaine + Guadeloupe, Martinique, Guyane, Réunion, Mayotte, Saint-Martin, Saint-Barthélemy. Toute autre destination internationale est fermée par défaut.
+
+**Formulations à privilégier (revendeur)**
+
+- ✅ "Guichet unique : contrat, facturation et support en un seul interlocuteur"
+- ✅ "Plateformes agents vocaux IA validées et certifiées par E2I VoIP"
+- ✅ "Numéros locaux DOM disponibles sous 5 à 10 jours ouvrés"
+- ✅ "Disponibilité contrôlée — Programme Early Access sur candidature"
+- ✅ "Ancrage DOM, spécialistes de l'intégration IA en territoires ultramarins"
+- ✅ "Laissez vos clients revendeurs 40 à 60 % de marge à faire"
+
+**Formulations à éviter (revendeur)**
+
+- ❌ "Infrastructure SBC propriétaire E2I VoIP" (non vrai en V1)
+- ❌ Mentionner Telcoz publiquement comme opérateur sous-jacent
+- ❌ "Opérateur télécom certifié Rounded/VAPI" (c'est E2I VoIP qui certifie, pas l'inverse)
+- ❌ Promettre une mise en service en moins de 5 jours sans validation Telcoz
+- ❌ Afficher les logos Rounded, VAPI, ElevenLabs, Jambonz sans accord formel
+
+**Hypothèses non encore validées (ne pas affirmer comme faits)**
+
+- Les chiffres des use-cases (ex : "80 appels par jour", "réduction de 40 %") sont des placeholders — les remplacer par des données réelles dès que Contact 1 ou Contact 2 fournissent des retours.
+- Délai de mise en service "5 jours ouvrés" : à valider techniquement avec Telcoz avant publication.
+
+**Structurel page web Early Access** (10 sections validées) :
+1. Hero — titre H1, sous-titre, CTAs dual, bandeau réassurance
+2. Le problème (difficulté accès numéros locaux DOM pour IA)
+3. Ce que vous obtenez (numéros DOM rapides, compatibilité IA validée, guichet unique)
+4. Comment ça marche (4 étapes onboarding)
+5. Plateformes compatibles (avec statuts)
+6. Tarification (partielle)
+7. Use-cases (3 mini-études de cas)
+8. Pourquoi E2I VoIP
+9. FAQ (8 questions)
+10. CTA final
+
 ## 📑 Structure des Contenus
 
 ### Page d'accueil
@@ -174,17 +256,20 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 - **Offres à présenter** :
   - Trunk SIP bidirectionnel pour production et volumes récurrents
   - Redirection SIP pour POC rapides ou flux entrants uniquement
+  - **Programme Revendeur Early Access** : pour les agences/builders qui revendent le trunk SIP à leurs clients finaux (voir section Revendeurs)
 - **Cas d'usage prioritaires** :
   - Cabinets de santé : prise de rendez-vous et qualification avant agenda
   - Dépannage automobile : collecte d'informations d'urgence et routage vers le bon intervenant
   - PME locales : accueil 24/7, FAQ métier et transfert contextuel vers un humain
 - **Prérequis techniques à vulgariser** : numéros E.164, codecs G.711, whitelist IP, credentials SIP, transferts SIP REFER
-- **CTA recommandé** : "Parler à un commercial"
+- **CTA recommandé** : "Parler à un commercial" ou "Candidater au programme Early Access" pour les revendeurs
 - **Formulations à éviter** :
   - "E2I crée votre assistant IA"
   - "Assistant vocal IA clé en main"
   - "Remplace vos équipes"
   - "Automatisation sans supervision"
+- **SEO page Early Access** (slug validé) : `/trunk-sip-agents-vocaux-ia-revendeurs`
+  - Mots-clés primaires : trunk SIP agents vocaux IA, numéros DOM Guadeloupe Martinique, revendeur SIP DOM France, VAPI Rounded SIP DOM
 
 ## ✍️ Exemples de Formulations
 
