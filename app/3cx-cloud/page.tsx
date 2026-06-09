@@ -2,10 +2,8 @@ import { Metadata } from "next";
 // Tawk.to désactivé temporairement
 import { ProblemSolutionSection } from "@/components/problem-solution-section";
 import { PricingTiers } from "@/components/pricing-tiers";
-import { TestimonialsSection } from "@/components/testimonial-card";
 import { GeographicAdvantage } from "@/components/geographic-advantage";
 import { CTACalendarSection } from "@/components/cta-calendar-section";
-import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
@@ -102,17 +100,6 @@ export default function ThreeCXCloudPage() {
         "Support dédié",
         "Consulting inclus",
       ],
-    },
-  ];
-
-  const testimonials = [
-    {
-      company: "Titeca BEAUPORT Finance",
-      description:
-        "Gestionnaire des bijouteries Eurogold aux Antilles-Guyane. Solution multi-sites parfaitement adaptée à nos besoins avec une centralisation entre les DOM et la Métropole.",
-      users: "90+",
-      solution: "Multi-sites",
-      industry: "Bijouteries / Finance",
     },
   ];
 
@@ -388,9 +375,6 @@ export default function ThreeCXCloudPage() {
       {/* Section Tarification */}
       <PricingTiers tiers={pricingTiers} />
 
-      {/* Section Témoignages */}
-      <TestimonialsSection testimonials={testimonials} />
-
       {/* Section Avantage géographique */}
       <GeographicAdvantage locations={locations} />
 
@@ -398,9 +382,6 @@ export default function ThreeCXCloudPage() {
       <div id="calendrier">
         <CTACalendarSection />
       </div>
-
-      {/* Social Proof */}
-      <TestimonialsSectionSimple />
 
       {/* Territory phone links -- D-09 */}
       <section className="bg-gray-50 py-8">

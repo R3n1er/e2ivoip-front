@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
-import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
@@ -402,9 +401,6 @@ export default function NosServices() {
               </div>
             </div>
           </section>
-
-          {/* Social Proof */}
-          <TestimonialsSectionSimple />
 
           {/* Territory phone links -- D-09 */}
           <section className="bg-gray-50 py-8">

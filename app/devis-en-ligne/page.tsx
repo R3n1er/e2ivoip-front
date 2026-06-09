@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
-import { ClientsCarousel } from "@/components/clients-carousel";
-
 export default function DevisEnLignePage() {
   const devisButtons = [
     {
@@ -152,9 +150,6 @@ export default function DevisEnLignePage() {
           </div>
         </div>
       </section>
-
-      {/* Ils nous font confiance - Carrousel de logos clients */}
-      <ClientsCarousel />
 
       {/* FAQ */}
       <section className="py-16 bg-gray-50">

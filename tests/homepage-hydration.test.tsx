@@ -23,10 +23,6 @@ jest.mock("@/components/about-section-simple", () => ({
   AboutSectionSimple: () => <section data-testid="about">À propos</section>,
 }));
 
-jest.mock("@/components/clients-carousel", () => ({
-  ClientsCarousel: () => <div data-testid="clients">Clients</div>,
-}));
-
 jest.mock("@/components/contact-section-simple", () => ({
   ContactSectionSimple: () => <section data-testid="contact">Contact</section>,
 }));
@@ -60,7 +56,6 @@ describe("HomePage - Test d'hydratation", () => {
     expect(screen.getByTestId("homepage-hero")).toBeInTheDocument();
     expect(screen.getByTestId("about")).toBeInTheDocument();
     expect(screen.getByTestId("services")).toBeInTheDocument();
-    expect(screen.getByTestId("clients")).toBeInTheDocument();
     expect(screen.getByTestId("contact")).toBeInTheDocument();
   });
 
