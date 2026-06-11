@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { ContactFormTrunkSipIA } from "@/components/contact-form-trunk-sip-ia";
 import { Chat, Phone, Heart, Car, TreeStructure, CheckCircle, ArrowRight } from '@/lib/icons';
 
@@ -118,7 +117,7 @@ export default function TrunkSipAgentsIA() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <TreeStructure size={20} className="text-white mr-2" aria-hidden="true" />
+                <TreeStructure size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Carrier SIP DOM
                 </span>
@@ -393,20 +392,12 @@ export default function TrunkSipAgentsIA() {
               Offres trunk SIP associées
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/telephonie-entreprise/trunk-sip-compteur"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-primary text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
-              >
+              <CTAButton href="/telephonie-entreprise/trunk-sip-compteur" icon="ArrowRight">
                 Trunk SIP au compteur
-                <ArrowRight size={20} aria-hidden="true" />
-              </Link>
-              <Link
-                href="/telephonie-entreprise/trunk-sip-illimite"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-marine text-white rounded-lg font-semibold hover:bg-blue-900 transition-colors"
-              >
+              </CTAButton>
+              <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-illimite" icon="ArrowRight">
                 Trunk SIP illimité
-                <ArrowRight size={20} aria-hidden="true" />
-              </Link>
+              </CTAButtonMarine>
             </div>
           </div>
         </section>

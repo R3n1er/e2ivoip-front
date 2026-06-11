@@ -94,14 +94,14 @@ export function HeaderSimple() {
                   >
                     {item.name}
                     {item.submenu && (
-                      <CaretDown size={12} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
+                      <CaretDown size={16} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
                     )}
                   </Link>
                 ) : (
                   <span className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer text-gray-700 hover:text-red-primary">
                     {item.name}
                     {item.submenu && (
-                      <CaretDown size={12} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
+                      <CaretDown size={16} className="ml-1 transition-transform duration-200 text-gray-600 group-hover:rotate-180" />
                     )}
                   </span>
                 )}
@@ -144,9 +144,9 @@ export function HeaderSimple() {
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isOpen ? (
-              <X size={20} className="text-gray-700" />
+              <X size={24} className="text-gray-700" />
             ) : (
-              <List size={20} className="text-gray-700" />
+              <List size={24} className="text-gray-700" />
             )}
           </button>
 

@@ -68,7 +68,7 @@ export default function AssistancePage() {
           <Card className="border-red-primary border-2 hover:shadow-md transition-shadow duration-300">
             <CardContent className="p-12">
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Phone size={20} className="text-white" aria-hidden="true" />
+                <Phone size={24} className="text-white" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
@@ -102,7 +102,7 @@ export default function AssistancePage() {
 
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
             <div className="text-center mb-6">
-              <Chat size={20} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
+              <Chat size={24} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Support chat en direct
               </h3>

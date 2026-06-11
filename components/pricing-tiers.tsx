@@ -108,7 +108,7 @@ export function PricingTiers({
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <Phone size={20} className="mr-2" aria-hidden="true" />
+                  <Phone size={16} className="mr-2" aria-hidden="true" />
                   Demander un devis
                 </button>
               </div>

@@ -38,7 +38,7 @@ export default function Smb3CXMutualisee() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Users size={20} className="text-white mr-2" aria-hidden="true" />
+                <Users size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Solution mutualisée
                 </span>

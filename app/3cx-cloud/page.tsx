@@ -221,7 +221,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <WhatsappLogo size={20} className="text-3xl text-gray-800" aria-hidden="true" />
+                    <WhatsappLogo size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -236,7 +236,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                    <CheckCircle size={20} className="mr-1" aria-hidden="true" />
+                    <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                     Intégration native
                   </span>
                 </div>
@@ -263,7 +263,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <Database size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                    <Database size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -278,7 +278,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                    <Link size={20} className="mr-1" aria-hidden="true" />
+                    <Link size={16} className="mr-1" aria-hidden="true" />
                     Multi-CRM
                   </span>
                 </div>
@@ -305,7 +305,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <MicrosoftTeamsLogo size={20} className="text-3xl text-gray-secondary" aria-hidden="true" />
+                    <MicrosoftTeamsLogo size={24} className="text-3xl text-gray-secondary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -320,7 +320,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                    <ArrowsClockwise size={20} className="mr-1" aria-hidden="true" />
+                    <ArrowsClockwise size={16} className="mr-1" aria-hidden="true" />
                     Sync complète
                   </span>
                 </div>
@@ -347,7 +347,7 @@ export default function ThreeCXCloudPage() {
                 {/* Icon avec style amélioré */}
                 <div className="relative mb-4">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-lg mx-auto group-hover:shadow-xl transition-shadow">
-                    <Brain size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                    <Brain size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -362,7 +362,7 @@ export default function ThreeCXCloudPage() {
                 {/* Badge en bas */}
                 <div className="text-center">
                   <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                    <Lightbulb size={20} className="mr-1" aria-hidden="true" />
+                    <Lightbulb size={16} className="mr-1" aria-hidden="true" />
                     IA avancée
                   </span>
                 </div>

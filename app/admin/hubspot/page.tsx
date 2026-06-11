@@ -126,7 +126,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Gear size={20} aria-hidden="true" />
+                <Gear size={24} aria-hidden="true" />
                 Statut de connexion
               </CardTitle>
             </CardHeader>
@@ -160,7 +160,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Lock size={20} aria-hidden="true" />
+                <Lock size={24} aria-hidden="true" />
                 Configuration OAuth
               </CardTitle>
             </CardHeader>
@@ -232,7 +232,7 @@ export default function HubSpotAdminPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Question size={20} aria-hidden="true" />
+                  <Question size={24} aria-hidden="true" />
                   Résultats des tests de scopes
                 </CardTitle>
               </CardHeader>
@@ -335,7 +335,7 @@ export default function HubSpotAdminPage() {
             <Card className="border-red-200 bg-red-50">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 text-red-700">
-                  <XCircle size={20} aria-hidden="true" />
+                  <XCircle size={24} aria-hidden="true" />
                   <p className="font-medium">Erreur : {error}</p>
                 </div>
               </CardContent>

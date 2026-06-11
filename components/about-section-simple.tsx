@@ -64,7 +64,7 @@ export function AboutSectionSimple() {
             <div className="space-y-4 mb-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start">
-                  <CheckCircle size={20} weight="fill" className="text-red-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-secondary">{benefit}</span>
                 </div>
               ))}

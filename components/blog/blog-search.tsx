@@ -83,7 +83,7 @@ export function BlogSearch({
     <div className="space-y-6">
       {/* Barre de recherche principale */}
       <div className="relative">
-        <MagnifyingGlass size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true" />
+        <MagnifyingGlass size={24} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true" />
         <Input
           type="text"
           placeholder="Rechercher dans les articles..."
@@ -193,7 +193,7 @@ export function BlogSearch({
         <Card className="border-gray-200">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg flex items-center gap-2">
-              <Funnel size={20} className="text-red-primary" aria-hidden="true" />
+              <Funnel size={24} className="text-red-primary" aria-hidden="true" />
               Filtres avancés
             </CardTitle>
             <CardDescription>

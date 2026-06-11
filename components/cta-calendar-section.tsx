@@ -66,7 +66,7 @@ export function CTACalendarSection({
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                  <Check size={18} weight="bold" className="text-blue-600" />
+                  <Check size={16} weight="bold" className="text-blue-600" />
                 </div>
                 <p className="text-gray-700 leading-relaxed">{benefit}</p>
               </div>

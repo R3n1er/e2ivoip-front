@@ -42,7 +42,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="mb-6">
         <div className="flex items-start mb-3">
           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
-            <Quotes size={20} className="text-blue-600" aria-hidden="true" />
+            <Quotes size={24} className="text-blue-600" aria-hidden="true" />
           </div>
           <p className="text-gray-700 italic leading-relaxed">{testimonial.description}</p>
         </div>
@@ -52,7 +52,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <Users size={20} className="text-blue-600 mr-1" aria-hidden="true" />
+            <Users size={16} className="text-blue-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-xl text-gray-800">{testimonial.users}</span>
           </div>
           <p className="text-xs text-gray-600">Utilisateurs</p>
@@ -60,7 +60,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
         
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <MapTrifold size={20} className="text-red-600 mr-1" aria-hidden="true" />
+            <MapTrifold size={16} className="text-red-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-sm text-gray-800">{testimonial.solution}</span>
           </div>
           <p className="text-xs text-gray-600">Solution</p>

@@ -66,7 +66,7 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Infinity size={20} className="text-white mr-2" aria-hidden="true" />
+                <Infinity size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Forfait illimité
                 </span>
@@ -84,15 +84,15 @@ export default function TrunkSIPIllimite() {
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Appels illimités France</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Globe size={20} className="text-white" aria-hidden="true" />
+                  <Globe size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Appels illimités DOM</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Users size={20} className="text-white" aria-hidden="true" />
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">2, 4 ou 8 lignes simultanées</span>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function TrunkSIPIllimite() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <Infinity size={20} className="mr-2" aria-hidden="true" />
+                  <Infinity size={16} className="mr-2" aria-hidden="true" />
                   Solution forfaitaire
                 </div>
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
@@ -243,7 +243,7 @@ export default function TrunkSIPIllimite() {
                   </div>
                   <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                     <div className="flex items-start space-x-2">
-                      <Info size={20} className="text-blue-marine mt-0.5" aria-hidden="true" />
+                      <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
                       <div className="text-sm text-blue-800">
                         <p>
                           <strong>Tout inclus :</strong> Appels illimités France
@@ -290,7 +290,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <Calculator size={20} className="text-3xl text-gray-800" aria-hidden="true" />
+                      <Calculator size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -303,7 +303,7 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Rouge principal E2I */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
-                    <CheckCircle size={20} className="mr-2" aria-hidden="true" />
+                    <CheckCircle size={16} className="mr-2" aria-hidden="true" />
                     <span>Économies garanties</span>
                   </div>
                 </div>
@@ -323,7 +323,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <Globe size={20} className="text-3xl text-gray-secondary" aria-hidden="true" />
+                      <Globe size={24} className="text-3xl text-gray-secondary" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -336,7 +336,7 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Bleu marine */}
                   <div className="flex items-center text-gray-800 font-medium text-sm">
-                    <MapPin size={20} className="mr-2" aria-hidden="true" />
+                    <MapPin size={16} className="mr-2" aria-hidden="true" />
                     <span>National & DOM-TOM</span>
                   </div>
                 </div>
@@ -356,7 +356,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <TrendUp size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                      <TrendUp size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -369,7 +369,7 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Rouge principal */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
-                    <Rocket size={20} className="mr-2" aria-hidden="true" />
+                    <Rocket size={16} className="mr-2" aria-hidden="true" />
                     <span>Croissance flexible</span>
                   </div>
                 </div>
@@ -434,7 +434,7 @@ export default function TrunkSIPIllimite() {
                           ${item.color === 'red' ? 'text-red-primary' : ''}
                           ${item.color === 'gray-secondary' ? 'text-gray-secondary' : ''}
                         `}>
-                          <CheckCircle size={20} className="mr-1" aria-hidden="true" />
+                          <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                           Inclus
                         </span>
                       </div>
@@ -451,7 +451,7 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Envelope size={20} className="mr-2" aria-hidden="true" />
+                <Envelope size={16} className="mr-2" aria-hidden="true" />
                 Contact commercial
               </div>
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
@@ -478,7 +478,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <PhoneCall size={20} aria-hidden="true" />
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>France : 01 89 56 05 00</span>
                 </a>
                 <a
@@ -486,7 +486,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <PhoneCall size={20} aria-hidden="true" />
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>Guyane : 0594 96 35 00</span>
                 </a>
                 <a
@@ -494,7 +494,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <PhoneCall size={20} aria-hidden="true" />
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>Guadeloupe : 0590 17 35 00</span>
                 </a>
               </div>
@@ -515,15 +515,15 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                <CheckCircle size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Activation rapide</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Timer size={20} className="text-white" aria-hidden="true" />
+                <Timer size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Sans engagement</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Shield size={20} className="text-white" aria-hidden="true" />
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Garantie qualité</span>
               </div>
             </div>

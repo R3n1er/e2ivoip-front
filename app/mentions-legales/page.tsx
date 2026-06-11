@@ -66,28 +66,28 @@ export default function MentionsLegales() {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div className="flex items-start space-x-3">
-                        <Shield size={20} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                        <Shield size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
                         <div>
                           <h3 className="font-semibold text-gray-900">Propriétaire du site</h3>
                           <p className="text-gray-600">Alban RENIER / E2I ASSISTANCE</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <TextT size={20} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                        <TextT size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
                         <div>
                           <h3 className="font-semibold text-gray-900">SIRET</h3>
                           <p className="text-gray-600">51743457700014</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <TextT size={20} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                        <TextT size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
                         <div>
                           <h3 className="font-semibold text-gray-900">Code APE</h3>
                           <p className="text-gray-600">6203Z</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <MapPin size={20} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                        <MapPin size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
                         <div>
                           <h3 className="font-semibold text-gray-900">Siège social</h3>
                           <p className="text-gray-600">23 Chemin Troubiran<br />97300 CAYENNE</p>

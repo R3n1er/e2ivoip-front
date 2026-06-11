@@ -132,7 +132,7 @@ export function ServicesSectionSimple() {
                 <div className="space-y-3 mb-6 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <CheckCircle size={18} className="text-success mr-3 flex-shrink-0" />
+                      <CheckCircle size={16} className="text-success mr-3 flex-shrink-0" />
                       <span className="text-base-content/80">{feature}</span>
                     </div>
                   ))}

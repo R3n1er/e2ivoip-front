@@ -22,6 +22,17 @@ jest.mock("@/components/ui/cta-button", () => ({
       {children}
     </a>
   ),
+  CTAButtonMarine: ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => (
+    <a href={href} data-testid="cta-button-marine">
+      {children}
+    </a>
+  ),
   CTAButtonSecondary: ({
     children,
     href,

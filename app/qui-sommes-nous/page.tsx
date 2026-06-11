@@ -118,7 +118,7 @@ export default function QuiSommesNous() {
               <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Phone size={20} className="text-5xl text-white" aria-hidden="true" />
+                    <Phone size={24} className="text-5xl text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Opérateur télécom certifié
@@ -341,7 +341,7 @@ export default function QuiSommesNous() {
               <Card key={index}>
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <UserCircle size={20} className="text-5xl text-gray-400" aria-hidden="true" />
+                    <UserCircle size={24} className="text-5xl text-gray-400" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {member.name}

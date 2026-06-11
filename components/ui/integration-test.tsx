@@ -101,11 +101,11 @@ export function IntegrationTest() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "success":
-        return <CheckCircle size={20} className="text-green-500" aria-hidden="true" />
+        return <CheckCircle size={24} className="text-green-500" aria-hidden="true" />
       case "error":
-        return <XCircle size={20} className="text-red-500" aria-hidden="true" />
+        return <XCircle size={24} className="text-red-500" aria-hidden="true" />
       default:
-        return <Question size={20} className="text-gray-400 animate-spin" aria-hidden="true" />
+        return <Question size={24} className="text-gray-400 animate-spin" aria-hidden="true" />
     }
   }
 

@@ -52,25 +52,25 @@ export function TransformationSection() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <CheckCircle size={20} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Téléphonie IP disponible par Internet</strong> - Accessibilité totale, où que vous soyez
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle size={20} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Coûts d'appels réduits</strong> - Fixe & Mobile Antilles, Guyane, La Réunion et Métropole
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle size={20} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>À partir de 4 canaux voix</strong> - 4 appels simultanés minimum
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle size={20} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Budget téléphonique maîtrisé</strong> - Transparence et contrôle total
                   </span>

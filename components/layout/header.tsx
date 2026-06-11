@@ -190,7 +190,7 @@ export function Header() {
                         whileTap={{ scale: 0.9 }}
                       >
                         <CaretDown
-                          size={14}
+                          size={16}
                           className={`text-gray-600 transition-all duration-200 hover:text-red-primary ${
                             openMenu === item.name ? "rotate-180" : ""
                           }`}
@@ -254,7 +254,7 @@ export function Header() {
                   className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white px-6 py-2 text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-200"
                   data-testid="header-contact-button"
                 >
-                  <Phone size={18} className="mr-2" aria-hidden="true" />
+                  <Phone size={16} className="mr-2" aria-hidden="true" />
                   Contact
                 </button>
               </Link>
@@ -336,7 +336,7 @@ export function Header() {
                         className="btn btn-primary bg-red-primary hover:bg-red-600 border-none text-white w-full"
                         data-testid="mobile-contact-button"
                       >
-                        <Phone size={18} className="mr-2" aria-hidden="true" />
+                        <Phone size={16} className="mr-2" aria-hidden="true" />
                         Contact
                       </button>
                     </Link>

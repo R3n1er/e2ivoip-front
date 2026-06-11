@@ -60,7 +60,7 @@ export function Footer() {
               </div>
               <div className="mt-3 pt-2 border-t border-gray-700">
                 <div className="flex items-center space-x-2">
-                  <Envelope size={12} className="text-red-primary flex-shrink-0" />
+                  <Envelope size={16} className="text-red-primary flex-shrink-0" />
                   <SecureEmail
                     address="assistance"
                     className="text-gray-secondary text-xs"

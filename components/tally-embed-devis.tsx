@@ -68,7 +68,7 @@ export function TallyEmbedDevis() {
         {/* En-tête améliorée avec badge et icônes */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Calculator size={20} className="mr-2" aria-hidden="true" />
+            <Calculator size={16} className="mr-2" aria-hidden="true" />
             Devis personnalisé gratuit
           </div>
 

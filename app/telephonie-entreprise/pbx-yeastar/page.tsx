@@ -65,19 +65,19 @@ export default function PBXYeastar() {
 
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-white/85">
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">
                     Expert certifié Yeastar (YSCE)
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield size={20} className="text-white" aria-hidden="true" />
+                  <Shield size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">
                     Support technique Antilles-Guyane & Réunion
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <TrendUp size={20} className="text-white" aria-hidden="true" />
+                  <TrendUp size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">
                     20% d'économies sur vos coûts télécom
                   </span>
@@ -163,7 +163,7 @@ export default function PBXYeastar() {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50">
-                      <CheckCircle size={20} className="text-red-primary" aria-hidden="true" />
+                      <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -177,7 +177,7 @@ export default function PBXYeastar() {
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-900/10">
-                      <Shield size={20} className="text-blue-marine" aria-hidden="true" />
+                      <Shield size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -191,7 +191,7 @@ export default function PBXYeastar() {
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50">
-                      <Rocket size={20} className="text-red-primary" aria-hidden="true" />
+                      <Rocket size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -232,7 +232,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="inline-flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
-                <Compass size={20} className="mr-2" aria-hidden="true" />
+                <Compass size={16} className="mr-2" aria-hidden="true" />
                 Deux approches complémentaires
               </div>
               <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -377,7 +377,7 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
-                  <Desktop size={20} className="mr-2" aria-hidden="true" />
+                  <Desktop size={16} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
                 <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -579,7 +579,7 @@ export default function PBXYeastar() {
               </div>
               <div className="order-1 lg:order-2">
                 <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-                  <WhatsappLogo size={20} className="mr-2" aria-hidden="true" />
+                  <WhatsappLogo size={16} className="mr-2" aria-hidden="true" />
                   Relation client simplifiée
                 </div>
                 <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -594,21 +594,21 @@ export default function PBXYeastar() {
                 </p>
                 <ul className="mt-8 space-y-4 text-sm text-gray-600">
                   <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="mt-0.5 text-red-primary" aria-hidden="true" />
+                    <CheckCircle size={24} className="mt-0.5 text-red-primary" aria-hidden="true" />
                     <span>
                       Scripts conversationnels et réponses rapides pour réduire
                       le temps de traitement.
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="mt-0.5 text-red-primary" aria-hidden="true" />
+                    <CheckCircle size={24} className="mt-0.5 text-red-primary" aria-hidden="true" />
                     <span>
                       Enregistrement automatique et transcription pour assurer
                       la conformité réglementaire.
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle size={20} className="mt-0.5 text-red-primary" aria-hidden="true" />
+                    <CheckCircle size={24} className="mt-0.5 text-red-primary" aria-hidden="true" />
                     <span>
                       Wallboard temps réel pour suivre vos SLA et l'expérience
                       client.
@@ -644,7 +644,7 @@ export default function PBXYeastar() {
               </div>
               <div>
                 <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-                  <Headphones size={20} className="mr-2" aria-hidden="true" />
+                  <Headphones size={16} className="mr-2" aria-hidden="true" />
                   Performance opérationnelle
                 </div>
                 <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -661,7 +661,7 @@ export default function PBXYeastar() {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
-                      <Users size={20} className="text-red-primary" aria-hidden="true" />
+                      <Users size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -675,7 +675,7 @@ export default function PBXYeastar() {
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-900/10">
-                      <TrendUp size={20} className="text-blue-marine" aria-hidden="true" />
+                      <TrendUp size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -689,7 +689,7 @@ export default function PBXYeastar() {
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
-                      <Microphone size={20} className="text-red-primary" aria-hidden="true" />
+                      <Microphone size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
@@ -713,7 +713,7 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
                 <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
-                  <PlugCharging size={20} className="mr-2" aria-hidden="true" />
+                  <PlugCharging size={16} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>
                 <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">

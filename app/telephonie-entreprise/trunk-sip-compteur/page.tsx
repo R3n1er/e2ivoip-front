@@ -58,7 +58,7 @@ export default function TrunkSIPCompteur() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Phone size={20} className="text-white mr-2" aria-hidden="true" />
+                <Phone size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Opérateur SIP DOM
                 </span>
@@ -76,15 +76,15 @@ export default function TrunkSIPCompteur() {
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Facturation à la seconde</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone size={20} className="text-white" aria-hidden="true" />
+                  <Phone size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Numéros locaux gratuits</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Users size={20} className="text-white" aria-hidden="true" />
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Support technique local</span>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function TrunkSIPCompteur() {
             <div className="max-w-3xl mx-auto">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <CheckCircle size={20} className="mr-2" aria-hidden="true" />
+                  <CheckCircle size={16} className="mr-2" aria-hidden="true" />
                   Solution certifiée DOM
                 </div>
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
@@ -320,7 +320,7 @@ export default function TrunkSIPCompteur() {
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
               >
                 Découvrir nos solutions IPBX
-                <ArrowRight size={20} className="ml-2" aria-hidden="true" />
+                <ArrowRight size={16} className="ml-2" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -352,15 +352,15 @@ export default function TrunkSIPCompteur() {
             {/* Avantages finaux */}
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                <CheckCircle size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Devis gratuit</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Timer size={20} className="text-white" aria-hidden="true" />
+                <Timer size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Réponse rapide</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Shield size={20} className="text-white" aria-hidden="true" />
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Expert VoIP</span>
               </div>
             </div>

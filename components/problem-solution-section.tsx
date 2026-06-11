@@ -68,7 +68,7 @@ export function ProblemSolutionSection({
                 <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                      {(() => { const I = ICON_MAP[problem.icon] ?? Warning; return <I size={20} className="text-red-600" aria-hidden="true" />; })()}
+                      {(() => { const I = ICON_MAP[problem.icon] ?? Warning; return <I size={24} className="text-red-600" aria-hidden="true" />; })()}
                     </div>
                   </div>
                   <div>
@@ -112,7 +112,7 @@ export function ProblemSolutionSection({
                 <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      {(() => { const I = ICON_MAP[solution.icon] ?? Check; return <I size={20} className="text-green-600" aria-hidden="true" />; })()}
+                      {(() => { const I = ICON_MAP[solution.icon] ?? Check; return <I size={24} className="text-green-600" aria-hidden="true" />; })()}
                     </div>
                   </div>
                   <div>

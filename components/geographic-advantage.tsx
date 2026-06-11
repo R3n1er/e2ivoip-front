@@ -118,7 +118,7 @@ export function GeographicAdvantage({
                       suppressHydrationWarning
                       className="inline-flex items-center text-red-primary hover:text-red-600 font-semibold"
                     >
-                      <Phone size={20} className="mr-2" aria-hidden="true" />
+                      <Phone size={16} className="mr-2" aria-hidden="true" />
                       {location.phone}
                     </a>
                   </div>
@@ -126,7 +126,7 @@ export function GeographicAdvantage({
                   <div className="space-y-2">
                     {location.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center justify-center text-sm text-gray-600">
-                        <Check size={20} className="text-red-primary mr-2" aria-hidden="true" />
+                        <Check size={16} className="text-red-primary mr-2" aria-hidden="true" />
                         {feature}
                       </div>
                     ))}

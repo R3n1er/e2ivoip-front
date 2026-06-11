@@ -78,15 +78,15 @@ export default function Telephonie3CX() {
               </div>
               <div className="flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <CheckCircle size={20} className="text-white" aria-hidden="true" />
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Certifié 3CX Silver Partner</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield size={20} className="text-white" aria-hidden="true" />
+                  <Shield size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Support expert local</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Users size={20} className="text-white" aria-hidden="true" />
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">+50 entreprises équipées</span>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function Telephonie3CX() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Compass size={20} className="mr-2" aria-hidden="true" />
+                <Compass size={16} className="mr-2" aria-hidden="true" />
                 Choisissez votre solution
               </div>
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
@@ -398,7 +398,7 @@ export default function Telephonie3CX() {
                 <div className="p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Phone size={20} className="text-3xl text-gray-800" aria-hidden="true" />
+                      <Phone size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -410,7 +410,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <CheckCircle size={20} className="mr-1" aria-hidden="true" />
+                      <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                       Haute qualité
                     </span>
                   </div>
@@ -432,7 +432,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <VideoCamera size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                      <VideoCamera size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -444,7 +444,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <Users size={20} className="mr-1" aria-hidden="true" />
+                      <Users size={16} className="mr-1" aria-hidden="true" />
                       Jusqu'à 250 participants
                     </span>
                   </div>
@@ -466,7 +466,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Chat size={20} className="text-3xl text-gray-800" aria-hidden="true" />
+                      <Chat size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -478,7 +478,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <Lightning size={20} className="mr-1" aria-hidden="true" />
+                      <Lightning size={16} className="mr-1" aria-hidden="true" />
                       Temps réel
                     </span>
                   </div>
@@ -500,7 +500,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <DeviceMobile size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                      <DeviceMobile size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -512,7 +512,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <DeviceMobile size={20} className="mr-1" aria-hidden="true" />
+                      <DeviceMobile size={16} className="mr-1" aria-hidden="true" />
                       iOS & Android
                     </span>
                   </div>
@@ -534,7 +534,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Link size={20} className="text-3xl text-red-primary" aria-hidden="true" />
+                      <Link size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -546,7 +546,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <Link size={20} className="mr-1" aria-hidden="true" />
+                      <Link size={16} className="mr-1" aria-hidden="true" />
                       Multi-CRM
                     </span>
                   </div>
@@ -568,7 +568,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Headphones size={20} className="text-3xl text-gray-800" aria-hidden="true" />
+                      <Headphones size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -580,7 +580,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <TrendUp size={20} className="mr-1" aria-hidden="true" />
+                      <TrendUp size={16} className="mr-1" aria-hidden="true" />
                       Rapports en temps réel
                     </span>
                   </div>
@@ -604,15 +604,15 @@ export default function Telephonie3CX() {
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <Seal size={20} className="text-white" aria-hidden="true" />
+                <Seal size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Certifié 3CX Silver</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Users size={20} className="text-white" aria-hidden="true" />
+                <Users size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Support expert local</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <Shield size={20} className="text-white" aria-hidden="true" />
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">15 ans d'expertise</span>
               </div>
             </div>
