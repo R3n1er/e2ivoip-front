@@ -142,7 +142,7 @@ describe('CTAButton - Link-only pattern', () => {
     expect(buttons).toHaveLength(0)
   })
 
-  test('CTAButtonSecondary renders with bg-white text-[#091421] variant', () => {
+  test('CTAButtonSecondary renders with bg-white text-blue-marine variant', () => {
     const { container } = render(
       <CTAButtonSecondary href="/test">
         Secondary
@@ -152,7 +152,7 @@ describe('CTAButton - Link-only pattern', () => {
     const span = container.querySelector('span')
     expect(span).not.toBeNull()
     expect(span!.className).toContain('bg-white')
-    expect(span!.className).toContain('text-[#091421]')
+    expect(span!.className).toContain('text-blue-marine')
 
     const buttons = screen.queryAllByRole('button')
     expect(buttons).toHaveLength(0)
