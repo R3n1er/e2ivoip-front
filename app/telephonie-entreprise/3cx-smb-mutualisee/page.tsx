@@ -71,7 +71,7 @@ export default function Smb3CXMutualisee() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 La solution <span className="text-red-primary">3CX économique</span> pour les petites entreprises
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
@@ -158,7 +158,7 @@ export default function Smb3CXMutualisee() {
         {/* CTA finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Démarrez avec <span className="text-white">3CX SMB</span> dès aujourd'hui
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

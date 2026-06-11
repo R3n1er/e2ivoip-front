@@ -55,7 +55,7 @@ export function ProblemSolutionSection({
           {/* Section Problèmes */}
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 {problemsTitle}
               </h2>
               <p className="text-lg text-gray-600">
@@ -96,7 +96,7 @@ export function ProblemSolutionSection({
           {/* Section Solutions */}
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 {solutionsTitle}
               </h2>
               <div className="p-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-lg border border-blue-200">

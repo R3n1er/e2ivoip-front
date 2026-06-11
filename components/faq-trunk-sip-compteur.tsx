@@ -110,7 +110,7 @@ export default function TrunkSipCompteurFAQ() {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
           <Question size={20} className="text-4xl text-red-primary" aria-hidden="true" />
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+        <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
           Questions <span className="text-red-primary">fréquentes</span>
         </h2>
         <p className="text-xl text-gray-600">

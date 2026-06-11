@@ -24,7 +24,7 @@ export function TransformationSection() {
           {/* Colonne texte à droite */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark">
                 Transformez votre{" "}
                 <span className="text-red-primary">communication d'entreprise</span>
               </h2>

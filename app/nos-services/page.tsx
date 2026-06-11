@@ -231,7 +231,7 @@ export default function NosServices() {
           <section className="py-16 bg-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-blue-marine mb-4">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
                   Pourquoi choisir{" "}
                   <span className="text-red-primary">E2I VoIP</span> ?
                 </h2>
@@ -270,7 +270,7 @@ export default function NosServices() {
           <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-blue-marine mb-4">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
                   Nos <span className="text-red-primary">catégories</span> de
                   services
                 </h2>
@@ -308,7 +308,7 @@ export default function NosServices() {
           <section className="py-20 bg-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-blue-marine mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-6">
                   Découvrez nos{" "}
                   <span className="text-red-primary">solutions</span>
                 </h2>
@@ -381,7 +381,7 @@ export default function NosServices() {
           {/* CTA Section */}
           <section className="py-20 bg-blue-marine">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white-primary mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white-primary mb-6">
                 Prêt à économiser <span className="text-red-primary">20%</span>{" "}
                 sur vos télécoms ?
               </h2>

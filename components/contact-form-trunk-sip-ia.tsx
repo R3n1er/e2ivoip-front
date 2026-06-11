@@ -11,7 +11,7 @@ export function ContactFormTrunkSipIA() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             Parlez-nous de votre projet d&rsquo;
             <span className="text-red-primary">interconnexion SIP</span>
           </h2>

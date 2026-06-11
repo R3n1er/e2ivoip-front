@@ -48,7 +48,7 @@ export function AboutSectionSimple() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
               Notre solution de téléphonie IP
               <span className="text-red-primary"> nouvelle génération</span>
             </h2>

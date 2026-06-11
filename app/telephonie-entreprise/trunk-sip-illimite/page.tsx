@@ -119,7 +119,7 @@ export default function TrunkSIPIllimite() {
                   <Infinity size={20} className="mr-2" aria-hidden="true" />
                   Solution forfaitaire
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                   <span className="text-red-primary">L'illimité</span> pour
                   votre téléphonie d'entreprise
                 </h2>
@@ -266,7 +266,7 @@ export default function TrunkSIPIllimite() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Pourquoi choisir notre{" "}
                 <span className="text-red-primary">Trunk SIP Illimité</span> ?
               </h2>
@@ -454,7 +454,7 @@ export default function TrunkSIPIllimite() {
                 <Envelope size={20} className="mr-2" aria-hidden="true" />
                 Contact commercial
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Obtenez votre <span className="text-red-primary">devis personnalisé</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -505,7 +505,7 @@ export default function TrunkSIPIllimite() {
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Passez à <span className="text-white">l'illimité</span> dès maintenant
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

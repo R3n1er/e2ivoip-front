@@ -72,7 +72,7 @@ export function TallyEmbedDevis() {
             Devis personnalisé gratuit
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             Obtenez votre{" "}
             <span className="text-red-primary">devis sur-mesure</span>
           </h2>

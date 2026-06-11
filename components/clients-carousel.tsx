@@ -70,7 +70,7 @@ export function ClientsCarousel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre de section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             Ils nous font <span className="text-red-primary">confiance</span>
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto">

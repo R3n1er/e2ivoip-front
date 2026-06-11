@@ -155,7 +155,7 @@ export default function TrunkSipAgentsIA() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                   Le blocage des plateformes IA en{" "}
                   <span className="text-red-primary">zone DOM</span>
                 </h2>
@@ -197,7 +197,7 @@ export default function TrunkSipAgentsIA() {
         <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Notre rôle : la{" "}
                 <span className="text-red-primary">couche télécom</span>
               </h2>
@@ -249,7 +249,7 @@ export default function TrunkSipAgentsIA() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Plateformes{" "}
                 <span className="text-red-primary">compatibles</span>
               </h2>
@@ -306,7 +306,7 @@ export default function TrunkSipAgentsIA() {
         <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Cas d&apos;usage{" "}
                 <span className="text-red-primary">types</span>
               </h2>
@@ -343,7 +343,7 @@ export default function TrunkSipAgentsIA() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Processus d&apos;
                 <span className="text-red-primary">intégration</span>
               </h2>
@@ -420,7 +420,7 @@ export default function TrunkSipAgentsIA() {
           </div>
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Déployez vos agents IA avec des numéros locaux DOM
             </h2>
             <p className="text-xl text-white/90 mb-6 max-w-2xl mx-auto">

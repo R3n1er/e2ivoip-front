@@ -44,7 +44,7 @@ export function CTACalendarSection({
       <div className="container mx-auto px-4">
         {/* En-tête principal */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             {title}
           </h2>
           <h3 className="text-2xl md:text-3xl font-semibold text-blue-800 mb-8">

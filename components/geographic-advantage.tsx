@@ -24,7 +24,7 @@ export function GeographicAdvantage({
       <div className="container mx-auto px-4">
         {/* En-tête */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             {title}
           </h2>
           <h3 className="text-2xl font-semibold text-blue-800 mb-6">

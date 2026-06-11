@@ -209,7 +209,7 @@ export default function WorkingFAQ() {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
           <span className="text-4xl" role="img" aria-label="FAQ">❓</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
           FAQ
         </h2>
         <p className="text-xl text-gray-600">

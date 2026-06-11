@@ -191,7 +191,7 @@ export default function ThreeCXCloudPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Des Intégrations qui{" "}
               <span className="text-red-600">Décuplent</span> votre Efficacité
             </h2>

@@ -98,7 +98,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Pourquoi choisir <span className="text-red-primary">3CX</span>{" "}
                 avec E2I VOIP ?
               </h2>
@@ -122,7 +122,7 @@ export default function Telephonie3CX() {
                 <Compass size={20} className="mr-2" aria-hidden="true" />
                 Choisissez votre solution
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Deux options adaptées à{" "}
                 <span className="text-red-primary">vos besoins</span>
               </h2>
@@ -297,7 +297,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Tableau <span className="text-red-primary">comparatif</span>
               </h2>
               <p className="text-xl text-gray-600">
@@ -382,7 +382,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Fonctionnalités <span className="text-red-primary">3CX</span>{" "}
                 incluses
               </h2>
@@ -593,7 +593,7 @@ export default function Telephonie3CX() {
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Prêt à transformer votre{" "}
               <span className="text-white">téléphonie d'entreprise</span> ?
             </h2>

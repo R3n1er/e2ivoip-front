@@ -105,7 +105,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             {/* Titre et paragraphes centrés */}
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-dark md:text-4xl">
+              <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                 Votre projet <span className="text-red-primary">Yeastar</span>{" "}
                 piloté par E2I VoIP
               </h2>
@@ -235,7 +235,7 @@ export default function PBXYeastar() {
                 <Compass size={20} className="mr-2" aria-hidden="true" />
                 Deux approches complémentaires
               </div>
-              <h2 className="mt-6 text-3xl font-bold text-gray-dark md:text-4xl">
+              <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                 Choisissez le{" "}
                 <span className="text-red-primary">modèle de déploiement</span>{" "}
                 adapté à votre structure
@@ -380,7 +380,7 @@ export default function PBXYeastar() {
                   <Desktop size={20} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
-                <h2 className="mt-6 text-3xl font-bold text-gray-dark md:text-4xl">
+                <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                   Une <span className="text-red-primary">console unique</span>{" "}
                   pour piloter vos communications
                 </h2>
@@ -464,7 +464,7 @@ export default function PBXYeastar() {
         <section className="bg-base-200 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-dark md:text-4xl">
+              <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                 Fonctionnalités{" "}
                 <span className="text-red-primary">Yeastar</span> incluses
               </h2>
@@ -582,7 +582,7 @@ export default function PBXYeastar() {
                   <WhatsappLogo size={20} className="mr-2" aria-hidden="true" />
                   Relation client simplifiée
                 </div>
-                <h2 className="mt-6 text-3xl font-bold text-gray-dark md:text-4xl">
+                <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                   Une expérience{" "}
                   <span className="text-red-primary">omnicanale</span> fluide
                   pour vos équipes de service client
@@ -647,7 +647,7 @@ export default function PBXYeastar() {
                   <Headphones size={20} className="mr-2" aria-hidden="true" />
                   Performance opérationnelle
                 </div>
-                <h2 className="mt-6 text-3xl font-bold text-gray-dark md:text-4xl">
+                <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                   Call center{" "}
                   <span className="text-red-primary">professionnel</span>{" "}
                   intégré
@@ -716,7 +716,7 @@ export default function PBXYeastar() {
                   <PlugCharging size={20} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>
-                <h2 className="mt-6 text-3xl font-bold text-gray-dark md:text-4xl">
+                <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                   Intégrations <span className="text-red-primary">métier</span>{" "}
                   et CRM
                 </h2>
@@ -783,7 +783,7 @@ export default function PBXYeastar() {
         {/* Pourquoi E2I */}
         <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-gray-900 py-20 text-white">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold md:text-4xl">
+            <h2 className="text-3xl font-black tracking-[-0.04em] md:text-4xl">
               Pourquoi confier votre{" "}
               <span className="text-red-300">projet Yeastar</span> à E2I VoIP ?
             </h2>
@@ -832,7 +832,7 @@ export default function PBXYeastar() {
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-dark md:text-4xl">
+              <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                 Cas d'usage <span className="text-red-primary">concrets</span>
               </h2>
               <p className="mt-6 text-lg text-gray-600">
@@ -887,7 +887,7 @@ export default function PBXYeastar() {
         {/* CTA final */}
         <section className="bg-gradient-to-r from-red-primary to-blue-marine py-20">
           <div className="mx-auto max-w-4xl px-4 text-center text-white sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold md:text-4xl">
+            <h2 className="text-3xl font-black tracking-[-0.04em] md:text-4xl">
               Lancez votre projet <span className="text-white">Yeastar</span>{" "}
               avec E2I VoIP
             </h2>

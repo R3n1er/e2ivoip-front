@@ -86,7 +86,7 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 L'histoire d'une{" "}
                 <span className="text-red-primary">réussite locale</span>
               </h2>
@@ -152,7 +152,7 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Nos{" "}
               <span className="text-red-primary">valeurs et engagements</span>
             </h2>
@@ -217,7 +217,7 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Nos <span className="text-red-primary">solutions phares</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -358,7 +358,7 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
               Nos{" "}
               <span className="text-red-primary">
                 certifications et partenariats
@@ -501,7 +501,7 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-4">
               Support local <span className="text-white">24/7</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
@@ -560,7 +560,7 @@ export default function QuiSommesNous() {
       {/* Section CTA finale */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             Prêt à <span className="text-red-primary">économiser 20%</span> sur
             vos coûts télécoms ?
           </h2>

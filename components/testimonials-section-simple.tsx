@@ -57,7 +57,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             Plus de 500 entreprises
             <span className="text-red-primary"> nous font confiance</span>
           </h2>
