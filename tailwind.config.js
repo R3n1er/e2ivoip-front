@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        // Charte §3.1 : Geist Sans (UI + marketing) / Geist Mono (données)
+        sans: ["var(--font-geist-sans)", ...defaultTheme.fontFamily.sans],
+        mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         // Couleurs officielles E2I VoIP
         "red-primary": "#E53E3E", // Rouge principal - Chiffre "2", lettres "IP" dans VOIP

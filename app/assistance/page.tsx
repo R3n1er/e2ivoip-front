@@ -73,7 +73,7 @@ export default function AssistancePage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
               </h3>
-              <p className="text-3xl font-bold text-red-primary mb-4">
+              <p className="text-3xl font-bold font-mono tabular-nums text-red-primary mb-4">
                 0189 560 500
               </p>
               <p className="text-lg text-gray-600 mb-4">

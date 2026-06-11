@@ -129,13 +129,13 @@ export default function QuiSommesNous() {
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-red-primary">
+                      <div className="text-2xl font-bold font-mono tabular-nums text-red-primary">
                         100+
                       </div>
                       <div className="text-gray-600">Clients satisfaits</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-marine">
+                      <div className="text-2xl font-bold font-mono tabular-nums text-blue-marine">
                         15+
                       </div>
                       <div className="text-gray-600">Années d'expertise</div>

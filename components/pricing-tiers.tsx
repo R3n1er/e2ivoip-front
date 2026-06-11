@@ -77,7 +77,7 @@ export function PricingTiers({
                     ? 'bg-gradient-to-r from-red-600 to-blue-600 text-white' 
                     : 'bg-gray-100 text-gray-600'
                 }`}>
-                  <span className="text-2xl font-bold">{tier.calls}</span>
+                  <span className="text-2xl font-bold font-mono tabular-nums">{tier.calls}</span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                   {tier.calls} appels simultanés

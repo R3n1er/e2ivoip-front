@@ -73,7 +73,7 @@ export function HomepageHeroSectionSimple() {
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
                   <stat.Icon size={24} className="text-red-300 mr-2" />
-                  <span className="text-3xl font-bold text-white drop-shadow-lg">
+                  <span className="text-3xl font-bold font-mono tabular-nums text-white drop-shadow-lg">
                     {stat.value}
                   </span>
                 </div>

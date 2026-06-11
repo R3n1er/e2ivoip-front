@@ -28,7 +28,7 @@ export function PhoneLink({ phone, className = '', showTerritory = false }: Phon
           {phone.territory}
         </span>
       )}
-      {phone.number}
+      <span className="font-mono tabular-nums">{phone.number}</span>
     </a>
   )
 }
