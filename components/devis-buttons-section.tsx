@@ -1,15 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { trackEvent } from "@/lib/analytics/track-event";
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 
 const PHONE_HREF = "tel:+594594963500";
 const PHONE_LABEL = "05 94 96 35 00";
 
 export function DevisButtonsSection() {
-  const pathname = usePathname();
-
   const devisButtons = [
     {
       title: "Devis Trunk SIP",
@@ -32,22 +29,6 @@ export function DevisButtonsSection() {
       variant: "secondary" as const,
     },
   ];
-
-  const handleDevisClick = (title: string, href: string) => {
-    trackEvent("cta_click", {
-      page: pathname || "/",
-      element_id: href,
-      element_text: title,
-    });
-  };
-
-  const handlePhoneClick = () => {
-    trackEvent("phone_click", {
-      page: pathname || "/",
-      element_id: PHONE_HREF,
-      element_text: PHONE_LABEL,
-    });
-  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -90,32 +71,26 @@ export function DevisButtonsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col items-center gap-4 max-w-md mx-auto"
+          className="flex flex-col items-stretch gap-4 max-w-md mx-auto"
         >
           {devisButtons.map((button, index) => (
-            <motion.a
+            <motion.div
               key={button.title}
-              href={button.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleDevisClick(button.title, button.href)}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              whileTap={{ scale: 0.98 }}
-              className={`
-                w-full py-4 px-8 text-center text-white font-bold text-lg rounded-lg
-                transition-all duration-300 shadow-lg hover:shadow-xl
-                ${
-                  button.variant === "primary"
-                    ? "bg-red-primary hover:opacity-90"
-                    : "bg-blue-marine hover:opacity-90"
-                }
-              `}
+              className="w-full"
             >
-              {button.title}
-            </motion.a>
+              {button.variant === "primary" ? (
+                <CTAButton href={button.href} external className="block w-full text-center">
+                  {button.title}
+                </CTAButton>
+              ) : (
+                <CTAButtonMarine href={button.href} external className="block w-full text-center">
+                  {button.title}
+                </CTAButtonMarine>
+              )}
+            </motion.div>
           ))}
         </motion.div>
 
@@ -129,15 +104,9 @@ export function DevisButtonsSection() {
           <p className="text-lg text-blue-marine font-medium mb-4">
             Un projet urgent ? Contactez directement notre équipe commerciale.
           </p>
-          <a
-            href={PHONE_HREF}
-            onClick={handlePhoneClick}
-            suppressHydrationWarning
-            className="inline-flex items-center justify-center bg-red-primary hover:opacity-90 text-white px-6 py-3 rounded-lg font-bold transition-opacity duration-300 shadow-lg hover:shadow-xl"
-          >
-            <span className="mr-2">📞</span>
+          <CTAButton href={PHONE_HREF} external icon="Phone" className="inline-block">
             {PHONE_LABEL}
-          </a>
+          </CTAButton>
         </motion.div>
       </div>
     </section>

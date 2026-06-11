@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { SecureEmail } from "@/components/secure-email";
-import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle, Chat, ArrowRight } from '@/lib/icons';
+import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } from '@/lib/icons';
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
@@ -542,16 +542,9 @@ export default function QuiSommesNous() {
                 className="text-white hover:text-white/80 transition-colors inline-flex items-center"
                 label="Nous écrire"
               />
-              <Link href="/assistance">
-                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
-                  <span className="flex items-center justify-center">
-                    <Chat size={24} className="mr-2" aria-hidden="true" />
-                    Accéder au support complet
-                    <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                  </span>
-                  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-                </button>
-              </Link>
+              <CTAButtonSecondary href="/assistance" icon="Chat">
+                Accéder au support complet
+              </CTAButtonSecondary>
             </div>
           </div>
         </div>
@@ -569,27 +562,12 @@ export default function QuiSommesNous() {
             Migration sans interruption
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/devis-en-ligne"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-            >
-              <span className="flex items-center justify-center">
-                Calculez vos économies
-                <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-            </a>
-            <a
-              href="/contact"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300 group"
-            >
-              <span className="flex items-center justify-center">
-                <Phone size={24} className="mr-2" aria-hidden="true" />
-                Parler à un expert
-                <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-            </a>
+            <CTAButton href="/devis-en-ligne" icon="Calculator">
+              Calculez vos économies
+            </CTAButton>
+            <CTAButtonMarine href="/contact" icon="Phone">
+              Parler à un expert
+            </CTAButtonMarine>
           </div>
         </div>
       </section>

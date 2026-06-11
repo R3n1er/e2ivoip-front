@@ -125,9 +125,10 @@ export function CTAButtonSecondary({
 }: CTAButtonProps) {
   const handleClick = useCTAClick(href, children, onClick)
 
+  const IconComp: Icon | undefined = typeof icon === 'string' ? ICON_MAP[icon] : icon
   const inner = (
     <span className="block bg-white text-blue-marine px-10 py-4 text-sm font-black uppercase tracking-[0.2em]">
-      {icon && (() => { const IconComp = icon; return <IconComp size={16} weight="bold" className="inline mr-2 align-middle" aria-hidden="true" />; })()}
+      {IconComp && <IconComp size={16} weight="bold" className="inline mr-2 align-middle" aria-hidden="true" />}
       {children}
     </span>
   )

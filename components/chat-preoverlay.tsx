@@ -335,7 +335,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               <button
                 type="button"
                 onClick={handleCancel}
-                className="btn btn-ghost flex-1"
+                className="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-600 rounded-lg hover:bg-gray-50 transition-colors duration-300"
                 data-testid="cancel-button"
               >
                 Annuler
@@ -343,7 +343,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               <button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="btn btn-primary flex-1"
+                className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-red-primary rounded-lg hover:bg-red-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="submit-button"
               >
                 {isSubmitting ? "Envoi..." : "Ouvrir le chat"}
