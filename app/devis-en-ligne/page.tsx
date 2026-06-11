@@ -54,7 +54,7 @@ export default function DevisEnLignePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/man-oniphone-business-min.jpg"
