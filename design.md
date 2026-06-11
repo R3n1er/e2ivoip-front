@@ -135,13 +135,13 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 3. **Remplacer `#091421`** (CTA inversé) par `gray-dark`/`blue-marine`
 4. Supprimer les fichiers `.bak`/`.backup` et `globals-backup.css`
 
-### P2 — Unification (un seul système)
-5. **Cards :** un seul style canonique — proposition : `bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300` ; réserver l'ombre forte (`shadow-xl`) à UNE card mise en avant par page (élévation = hiérarchie, pas décoration)
-6. **H2 :** généraliser le style « monolith » (`font-black tracking-[-0.04em]`) qui est la signature la plus distinctive du site, ou l'abandonner — mais trancher
-7. **Boutons :** tout passer par `CTAButton`/`CTAButtonMarine` ; supprimer les variantes DaisyUI `btn` et les liens stylés à la main
-8. **Conteneur :** `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` partout ; supprimer `container mx-auto`
-9. **Rythme :** `py-20` pour les sections majeures, `py-16` ailleurs — documenter et appliquer
-10. **Icônes :** tailles normalisées 16 (inline) / 24 (UI) / 32 (feature), `weight` unique (`bold`) ; remplacer les 3 emojis par des icônes Phosphor ; supprimer les classes `lni-` résiduelles
+### P2 — Unification (un seul système) — ✅ TERMINÉ 2026-06-11
+5. ✅ **Cards :** style canonique unique appliqué (commit e6c69da)
+6. ✅ **H2 :** style « monolith » généralisé — 75 H2 unifiés sur `text-3xl md:text-4xl font-black tracking-[-0.04em]`, gris hors charte → `gray-dark` (commit eac6b2d)
+7. ✅ **Boutons :** tout passe par `CTAButton`/`CTAButtonMarine`/`CTAButtonSecondary` ; faux boutons et classes `btn` DaisyUI éliminés ; tracking analytics dédupliqué (commits 7e39de5, d769e00)
+8. ✅ **Conteneur :** `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` partout ; `container mx-auto` éradiqué (commit 1b4eb3b)
+9. ✅ **Rythme :** `py-20`/`py-16` appliqué ; bandes utilitaires téléphones `py-8` (D-09) conservées comme exception volontaire (commit 1b4eb3b)
+10. ✅ **Icônes :** échelle 16/24/32 appliquée (101/170/40) ; emojis et `lni-` déjà absents ; `weight="fill"` conservé où sémantique (étoiles, checks pleins). ⏳ Reporté : `weight="bold"` global — à trancher avec validation visuelle (commit d769e00)
 
 ### P3 — Élévation du goût (anti-générique, charte respectée)
 11. **Casser le « 3 cards égales »** : sur services et avantages, passer en zig-zag 2 colonnes (texte gauche / visuel droit alterné) ou en grille bento asymétrique `2fr 1fr` — mêmes contenus, composition moins IA
