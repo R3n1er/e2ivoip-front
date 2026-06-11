@@ -29,8 +29,8 @@ test.describe("Services Section - Alignement des cartes", () => {
     await page.goto("http://localhost:3000/#services");
     await page.waitForTimeout(1000);
 
-    // Récupérer toutes les cartes
-    const cards = page.locator('.card.bg-base-100');
+    // Récupérer toutes les cartes (style canonique : rounded-xl + border)
+    const cards = page.locator('#services .grid > div.rounded-xl');
     const cardCount = await cards.count();
 
     expect(cardCount).toBeGreaterThan(0);
@@ -50,8 +50,9 @@ test.describe("Services Section - Alignement des cartes", () => {
     await page.waitForTimeout(1000);
 
     // Vérifier la structure flex des cartes
-    const cardBodies = page.locator('.card-body');
+    const cardBodies = page.locator('#services .grid > div.rounded-xl > div.p-6');
     const count = await cardBodies.count();
+    expect(count).toBeGreaterThan(0);
 
     for (let i = 0; i < count; i++) {
       const cardBody = cardBodies.nth(i);

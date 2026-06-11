@@ -37,7 +37,7 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    await expect(page.locator("#services .card")).toHaveCount(5);
+    await expect(page.locator("#services .grid > div.rounded-xl")).toHaveCount(5);
   });
 
   test("met en avant les badges et les CTA", async ({ page }) => {
