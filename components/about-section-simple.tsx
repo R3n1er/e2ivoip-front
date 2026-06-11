@@ -85,7 +85,7 @@ export function AboutSectionSimple() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
@@ -106,7 +106,7 @@ export function AboutSectionSimple() {
         </div>
 
         {/* Statistiques de réassurance */}
-        <div className="bg-white rounded-xl p-8 shadow-sm border">
+        <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Pourquoi plus de 100 entreprises nous font confiance ?

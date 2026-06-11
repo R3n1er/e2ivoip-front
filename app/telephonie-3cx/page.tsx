@@ -134,7 +134,7 @@ export default function Telephonie3CX() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {/* 3CX PRO - Instance Dédiée */}
-              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX PRO</h3>
@@ -149,7 +149,7 @@ export default function Telephonie3CX() {
                   </p>
                 </div>
 
-                <div className="card-body p-8">
+                <div className="flex flex-col p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
@@ -212,7 +212,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* 3CX SMB - Mutualisée */}
-              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-red-primary to-red-700 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX SMB PRO</h3>
@@ -225,7 +225,7 @@ export default function Telephonie3CX() {
                   </p>
                 </div>
 
-                <div className="card-body p-8">
+                <div className="flex flex-col p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />

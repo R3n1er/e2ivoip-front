@@ -240,8 +240,8 @@ export default function TrunkSIPCompteur() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {/* 3CX */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-3cx.webp"
@@ -249,7 +249,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">3CX</h3>
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">3CX</h3>
                   <p className="text-gray-600 text-sm">
                     IPBX cloud leader mondial
                   </p>
@@ -257,8 +257,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Yeastar */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/Yeastar_Logo.webp"
@@ -266,7 +266,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Yeastar
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -276,8 +276,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Grandstream */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-grandstream.webp"
@@ -285,7 +285,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Grandstream
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -295,8 +295,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Avaya */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/avaya-logo.webp"
@@ -304,7 +304,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">Avaya</h3>
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">Avaya</h3>
                   <p className="text-gray-600 text-sm">Solutions entreprise</p>
                 </div>
               </div>

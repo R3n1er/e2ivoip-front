@@ -39,7 +39,7 @@ export function GeographicAdvantage({
         {/* Avantages spécifiques DOM-TOM */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Expertise technique */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                 <Gear size={32} className="text-blue-600" aria-hidden="true" />
@@ -65,7 +65,7 @@ export function GeographicAdvantage({
           </div>
 
           {/* Support local */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
                 <Headphones size={32} className="text-red-600" aria-hidden="true" />
@@ -92,7 +92,7 @@ export function GeographicAdvantage({
         </div>
 
         {/* Carte des régions et contacts */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-red-600 p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-2">
               Nos Conseillers Régionaux

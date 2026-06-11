@@ -83,36 +83,36 @@ export default function Smb3CXMutualisee() {
 
             {/* Avantages clés avec DaisyUI */}
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <Calculator size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Économique</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-gray-600 text-center">
                     À partir de 15€/utilisateur/mois, sans frais d'infrastructure
                   </p>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <Timer size={32} className="text-gray-800" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Activation rapide</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
                   <p className="text-gray-600 text-center">
                     Mise en service en 24h, configuration pré-établie
                   </p>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <TrendUp size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Évolutif</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Évolutif</h3>
                   <p className="text-gray-600 text-center">
                     De 3 à 50 utilisateurs, ajustable selon vos besoins
                   </p>

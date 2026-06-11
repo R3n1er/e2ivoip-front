@@ -65,7 +65,7 @@ export default function AssistancePage() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             Hotline <span className="text-red-primary">Support</span>
           </h2>
-          <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
+          <Card className="border-red-primary border-2 hover:shadow-md transition-shadow duration-300">
             <CardContent className="p-12">
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <Phone size={20} className="text-white" aria-hidden="true" />
@@ -100,7 +100,7 @@ export default function AssistancePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
             <div className="text-center mb-6">
               <Chat size={20} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">

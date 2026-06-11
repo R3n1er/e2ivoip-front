@@ -18,7 +18,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial, className = "" }: TestimonialCardProps) {
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 ${className}`}>
+    <div className={`bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 ${className}`}>
       {/* Logo/En-tête */}
       <div className="flex items-center mb-4">
         {testimonial.logo ? (
@@ -126,7 +126,7 @@ export function TestimonialsSection({
               { Icon: Heart, title: "Secteur santé", desc: "Cliniques, cabinets médicaux, maisons de santé" },
               { Icon: Buildings, title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
             ].map((sector, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <sector.Icon size={24} className="text-blue-600" aria-hidden="true" />
                 </div>

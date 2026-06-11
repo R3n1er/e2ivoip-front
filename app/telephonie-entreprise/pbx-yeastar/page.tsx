@@ -128,7 +128,7 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
                         <Cloud size={24} className="text-red-primary" aria-hidden="true" />
@@ -143,7 +143,7 @@ export default function PBXYeastar() {
                       et dans l&rsquo;Union européenne.
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
                         <HardDrive size={24} className="text-gray-700" aria-hidden="true" />
@@ -248,7 +248,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <div className="card overflow-hidden bg-base-100 shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="bg-gradient-to-r from-red-primary to-red-600 p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar Cloud</h3>
@@ -262,7 +262,7 @@ export default function PBXYeastar() {
                     équipes.
                   </p>
                 </div>
-                <div className="card-body space-y-4 p-8">
+                <div className="flex flex-col space-y-4 p-8">
                   <div className="flex items-start gap-3">
                     <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     <div>
@@ -308,7 +308,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
 
-              <div className="card overflow-hidden bg-base-100 shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar On-Premise</h3>
@@ -322,7 +322,7 @@ export default function PBXYeastar() {
                     réseau voix.
                   </p>
                 </div>
-                <div className="card-body space-y-4 p-8">
+                <div className="flex flex-col space-y-4 p-8">
                   <div className="flex items-start gap-3">
                     <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     <div>
@@ -475,7 +475,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <Buildings size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
@@ -488,7 +488,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
                   <Headphones size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
@@ -501,7 +501,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <VideoCamera size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
@@ -513,7 +513,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <Shield size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
@@ -526,7 +526,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
                   <Database size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
@@ -539,7 +539,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
                   <DeviceMobile size={32} className="text-gray-700" aria-hidden="true" />
                 </div>

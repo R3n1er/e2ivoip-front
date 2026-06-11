@@ -209,7 +209,7 @@ export default function TrunkSipAgentsIA() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-red-primary/30">
+              <div className="bg-white rounded-xl p-8 shadow-sm border-2 border-red-primary/30">
                 <div className="inline-flex items-center bg-red-primary/10 rounded-full px-3 py-1 mb-4">
                   <span className="text-red-primary text-sm font-semibold">
                     Recommandé
@@ -229,7 +229,7 @@ export default function TrunkSipAgentsIA() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
                   Redirection d&apos;appels
                 </h3>
@@ -263,7 +263,7 @@ export default function TrunkSipAgentsIA() {
               {platforms.map((platform) => (
                 <div
                   key={platform.name}
-                  className={`bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border hover:shadow-lg transition-shadow ${
+                  className={`bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
                     platform.status === "validated"
                       ? "border-green-500/40"
                       : "border-gray-200"
@@ -320,7 +320,7 @@ export default function TrunkSipAgentsIA() {
               {useCases.map((useCase) => (
                 <div
                   key={useCase.title}
-                  className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm"
+                  className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm"
                 >
                   <div className="bg-red-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                     <useCase.Icon size={24} className="text-red-primary" aria-hidden="true" />

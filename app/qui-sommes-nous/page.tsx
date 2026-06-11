@@ -162,7 +162,7 @@ export default function QuiSommesNous() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card>
               <CardContent className="p-6">
                 <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                   <Target size={32} className="text-red-primary" aria-hidden="true" />
@@ -178,7 +178,7 @@ export default function QuiSommesNous() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card>
               <CardContent className="p-6">
                 <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                   <Seal size={32} className="text-blue-marine" aria-hidden="true" />
@@ -194,7 +194,7 @@ export default function QuiSommesNous() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card>
               <CardContent className="p-6">
                 <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                   <Users size={32} className="text-gray-secondary" aria-hidden="true" />
@@ -338,7 +338,7 @@ export default function QuiSommesNous() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index}>
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <UserCircle size={20} className="text-5xl text-gray-400" aria-hidden="true" />
@@ -372,7 +372,7 @@ export default function QuiSommesNous() {
 
           {/* Certifications principales */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -393,7 +393,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -424,7 +424,7 @@ export default function QuiSommesNous() {
 
             <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               {/* Fanvil */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
@@ -455,7 +455,7 @@ export default function QuiSommesNous() {
               </div>
 
               {/* Yealink */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/logo-yealink.webp"

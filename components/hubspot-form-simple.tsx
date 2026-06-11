@@ -2,16 +2,16 @@
 
 export function HubSpotFormSimple() {
   return (
-    <div className="card bg-base-100 shadow-xl border-0">
-      <div className="card-header bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-2xl p-6">
-        <h2 className="card-title text-2xl font-bold text-white mb-2">
+    <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-xl p-6">
+        <h2 className="flex items-center gap-2 text-2xl font-bold text-white mb-2">
           Contactez notre équipe
         </h2>
         <p className="text-white/90">
           Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais
         </p>
       </div>
-      <div className="card-body p-8">
+      <div className="flex flex-col p-8">
         <div id="hubspot-form-container" className="min-h-[400px]">
           <div 
             dangerouslySetInnerHTML={{

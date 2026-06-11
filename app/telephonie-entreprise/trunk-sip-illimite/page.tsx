@@ -207,7 +207,7 @@ export default function TrunkSIPIllimite() {
                     {forfaits.map((forfait) => (
                       <div
                         key={forfait.appels}
-                        className={`bg-white p-4 rounded-lg shadow ${
+                        className={`bg-white p-4 rounded-xl shadow-sm ${
                           forfait.popular
                             ? "border-2 border-red-primary relative"
                             : "border border-gray-200"
@@ -277,7 +277,7 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Palette rouge & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-blue-marine to-blue-marine"></div>
                 
@@ -310,7 +310,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Couverture complète */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Mélange bleu marine et rouge */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-marine via-red-primary to-blue-marine"></div>
                 
@@ -343,7 +343,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Évolutif */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Rouge principal & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 
@@ -378,7 +378,7 @@ export default function TrunkSIPIllimite() {
 
             {/* Points clés supplémentaires */}
             <div className="mt-16 relative">
-              <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100">
+              <div className="relative bg-white rounded-xl p-10 shadow-xl border border-gray-200">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">
                     Tout est inclus dans votre forfait

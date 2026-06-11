@@ -105,13 +105,13 @@ export function ServicesSectionSimple() {
           {services.map((service, index) => (
             <div
               key={service.href}
-              className={`card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full ${
+              className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
                 index === services.length - 1
                   ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
                   : ""
               }`}
             >
-              <div className="card-body p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
                     <service.Icon size={24} className="text-red-primary group-hover:scale-110 transition-transform duration-200" />
@@ -121,7 +121,7 @@ export function ServicesSectionSimple() {
                   </div>
                 </div>
 
-                <h3 className="card-title text-xl mb-3 text-base-content">
+                <h3 className="flex items-center gap-2 text-xl font-semibold mb-3 text-base-content">
                   {service.title}
                 </h3>
 

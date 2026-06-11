@@ -72,12 +72,12 @@ export default function ContactPage() {
             {/* Formulaire HubSpot */}
             <div>
               <div
-                className="card bg-base-100 shadow-xl border border-gray-200 overflow-hidden rounded-2xl"
+                className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
                 data-testid="contact-form-card"
               >
                 <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
                   <h2
-                    className="card-title text-2xl font-bold text-white mb-2"
+                    className="text-2xl font-bold text-white mb-2"
                     data-testid="contact-form-title"
                   >
                     Demande de contact
@@ -87,7 +87,7 @@ export default function ContactPage() {
                     les plus brefs délais
                   </p>
                 </div>
-                <div className="card-body p-8" data-testid="contact-form-body">
+                <div className="flex flex-col p-8" data-testid="contact-form-body">
                   <InlineContactForm className="w-full" />
                 </div>
               </div>
@@ -108,10 +108,10 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {/* Hotline Prioritaire */}
                 <div
-                  className="card bg-base-100 border-red-primary border-2 hover:shadow-xl transition-shadow"
+                  className="rounded-xl bg-white border-2 border-red-primary shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="hotline-card"
                 >
-                  <div className="card-body p-6">
+                  <div className="flex flex-col p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-red-primary p-3 rounded-lg">
                         <span className="text-2xl">📞</span>
@@ -139,10 +139,10 @@ export default function ContactPage() {
 
                 {/* WhatsApp */}
                 <div
-                  className="card bg-base-100 hover:shadow-lg transition-shadow"
+                  className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="whatsapp-card"
                 >
-                  <div className="card-body p-6">
+                  <div className="flex flex-col p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-blue-marine/10 p-3 rounded-lg">
                         <span className="text-2xl">💬</span>
@@ -189,10 +189,10 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {/* France */}
             <div
-              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"
               data-testid="location-france"
             >
-              <div className="card-body p-6 text-center">
+              <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
@@ -212,10 +212,10 @@ export default function ContactPage() {
 
             {/* Guyane */}
             <div
-              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"
               data-testid="location-guyane"
             >
-              <div className="card-body p-6 text-center">
+              <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
@@ -235,10 +235,10 @@ export default function ContactPage() {
 
             {/* Guadeloupe */}
             <div
-              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"
               data-testid="location-guadeloupe"
             >
-              <div className="card-body p-6 text-center">
+              <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
@@ -258,10 +258,10 @@ export default function ContactPage() {
 
             {/* Martinique */}
             <div
-              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"
               data-testid="location-martinique"
             >
-              <div className="card-body p-6 text-center">
+              <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>
@@ -281,10 +281,10 @@ export default function ContactPage() {
 
             {/* La Réunion */}
             <div
-              className="card bg-white/10 backdrop-blur-sm border-white/20"
+              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm"
               data-testid="location-reunion"
             >
-              <div className="card-body p-6 text-center">
+              <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📍</span>
                 </div>

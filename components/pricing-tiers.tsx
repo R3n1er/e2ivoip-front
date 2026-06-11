@@ -55,10 +55,10 @@ export function PricingTiers({
           {tiers.map((tier, index) => (
             <div 
               key={index} 
-              className={`relative rounded-xl p-6 border-2 transition-all duration-300 hover:shadow-lg ${
-                tier.highlighted 
-                  ? 'border-red-500 bg-gradient-to-b from-red-50 to-blue-50 shadow-lg transform scale-105' 
-                  : 'border-gray-200 bg-white hover:border-blue-300'
+              className={`relative rounded-xl p-6 border-2 transition-all duration-300 ${
+                tier.highlighted
+                  ? 'border-red-500 bg-gradient-to-b from-red-50 to-blue-50 shadow-lg transform scale-105'
+                  : 'border-gray-200 bg-white shadow-sm hover:shadow-md hover:border-blue-300'
               }`}
             >
               {/* Badge */}
