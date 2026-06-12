@@ -1,14 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import QuiSommesNous from "../app/qui-sommes-nous/page";
 
-// Mock des composants Header et Footer
-jest.mock("@/components/layout/header", () => ({
-  Header: () => <div data-testid="header">Header</div>,
-}));
-
-jest.mock("@/components/layout/footer", () => ({
-  Footer: () => <div data-testid="footer">Footer</div>,
-}));
+// Header et Footer sont rendus par le layout, pas par la page — aucun mock nécessaire.
 
 describe("Page Qui Sommes Nous", () => {
   it("rend la page sans erreur", () => {
