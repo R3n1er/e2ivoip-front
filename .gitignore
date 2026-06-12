@@ -127,6 +127,11 @@ public/blog-images/
 .env.keys
 .playwright-mcp/
 posthog-setup-report.md
+
+# Screenshots de test / debug (artefacts régénérés par Playwright — ne pas versionner)
+tests/screenshots/
+debug-*.png
+audit-*.png
 full-page-logo-check.png
 header-after-refresh.png
 header-logo-check.png
