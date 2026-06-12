@@ -10,8 +10,8 @@ describe("Page Nos Services", () => {
   it("rend la page sans erreur", () => {
     render(<NosServices />);
 
-    // Vérification des composants principaux
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+    // Vérification des composants principaux (le footer est rendu par le layout)
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
   it("affiche le titre principal avec la charte PRD", () => {
@@ -85,7 +85,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des messages clés
-    expect(screen.getByText(/économies garanties/)).toBeInTheDocument();
+    expect(screen.getAllByText(/20% d.économies/).length).toBeGreaterThan(0);
     // Utilisation de getAllByText pour gérer les éléments multiples
     const domTomElements = screen.getAllByText(/DOM/);
     expect(domTomElements.length).toBeGreaterThan(0);
