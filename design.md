@@ -144,13 +144,13 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 10. ✅ **Icônes :** échelle 16/24/32 appliquée (101/170/40) ; emojis et `lni-` déjà absents ; `weight="fill"` conservé où sémantique (étoiles, checks pleins). ⏳ Reporté : `weight="bold"` global — à trancher avec validation visuelle (commit d769e00)
 
 ### P3 — Élévation du goût (anti-générique, charte respectée)
-11. **Casser le « 3 cards égales »** : sur services et avantages, passer en zig-zag 2 colonnes (texte gauche / visuel droit alterné) ou en grille bento asymétrique `2fr 1fr` — mêmes contenus, composition moins IA
-12. **Heroes intérieurs en split 50/50** : garder le gradient PRD sur l'accueil ; sur les pages secondaires, texte aligné à gauche + visuel/illustration à droite plutôt que centré sur photo sombre
-13. **Geist Mono pour les chiffres** : stats hero, tarifs, compteurs en `font-mono tabular-nums` — crédibilité « télécom/technique » immédiate
-14. **Apparitions au scroll sobres** : fade + translate 12 px, `staggerChildren` 80 ms sur les grilles, via Framer Motion isolé en leaf components `"use client"` — durée unique 300 ms, easing `cubic-bezier(0.16,1,0.3,1)`
-15. **Feedback tactile uniforme** : `active:scale-[0.98]` sur tous les éléments cliquables
-16. **Stats organiques** : remplacer les rondes « 100+ / 20% » par des valeurs réelles précises (ex. « 117 entreprises », « 19,4 % d'économies moyennes ») — la précision crédibilise
-17. **États vides/chargement** : skeletons calqués sur le layout (pas de spinner circulaire) pour les embeds Tally/HubSpot
+11. ⏳ **Casser le « 3 cards égales »** : sur services et avantages, passer en zig-zag 2 colonnes (texte gauche / visuel droit alterné) ou en grille bento asymétrique `2fr 1fr` — mêmes contenus, composition moins IA. *À faire avec validation visuelle (screenshots).*
+12. ⏳ **Heroes intérieurs en split 50/50** : garder le gradient PRD sur l'accueil ; sur les pages secondaires, texte aligné à gauche + visuel/illustration à droite plutôt que centré sur photo sombre. *À faire avec validation visuelle (screenshots).*
+13. ✅ **Geist Mono pour les chiffres** : fait — et bug corrigé au passage : Geist n'était pas câblée dans `tailwind.config` (le site rendait en police système) (commit fd7cd12)
+14. ✅ **Apparitions au scroll sobres** : composants `Reveal`/`RevealGroup`/`RevealItem` (`components/motion/reveal.tsx`), appliqués aux grilles services et stats de l'accueil (commit ec2bacb)
+15. ✅ **Feedback tactile uniforme** : `active:scale-[0.98]` sur CTAButton, PhoneLink, chat ; widget chat remis en charte (gradient violet → rouge, Phosphor, Input shadcn) (commit 23b0e5a)
+16. ⏳ **Stats organiques** : remplacer les rondes « 100+ / 20% » par des valeurs réelles précises — *bloqué : nécessite les vrais chiffres (clients, % économies, années)*
+17. ✅ **États vides/chargement** : `FormSkeleton` calqué sur le layout, branché sur les embeds Tally tarifs/devis et HubSpot (spinner circulaire éliminé) (commit c72f770)
 
 ---
 
