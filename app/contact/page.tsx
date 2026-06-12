@@ -5,13 +5,13 @@ import { InlineContactForm } from "@/components/hubspot";
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
   description:
-    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
+    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
   keywords:
     "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
     title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
     description:
-      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support 24/7. Équipes locales partout en France.",
+      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Équipes locales partout en France.",
     type: "website",
   },
 };
@@ -41,7 +41,7 @@ export default function ContactPage() {
               téléphonie IP vous accompagnent dans votre projet
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Devis gratuit • Support 24/7 • Équipes locales France & DOM
+              Devis gratuit • Support par mail et téléphone • Équipes locales France & DOM
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">

@@ -149,7 +149,7 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 13. ✅ **Geist Mono pour les chiffres** : fait — et bug corrigé au passage : Geist n'était pas câblée dans `tailwind.config` (le site rendait en police système) (commit fd7cd12)
 14. ✅ **Apparitions au scroll sobres** : composants `Reveal`/`RevealGroup`/`RevealItem` (`components/motion/reveal.tsx`), appliqués aux grilles services et stats de l'accueil (commit ec2bacb)
 15. ✅ **Feedback tactile uniforme** : `active:scale-[0.98]` sur CTAButton, PhoneLink, chat ; widget chat remis en charte (gradient violet → rouge, Phosphor, Input shadcn) (commit 23b0e5a)
-16. ⏳ **Stats organiques** : remplacer les rondes « 100+ / 20% » par des valeurs réelles précises — *bloqué : nécessite les vrais chiffres (clients, % économies, années)*
+16. ✅ **Stats organiques** : décision Alban 2026-06-11 — pas de communication sur le nombre de clients (remplacé par « 4 territoires DOM couverts ») ; 15 ans d'expérience ; « 20 % d'économies sur le coût des communications DROM » ; support communiqué uniquement comme « par mail et téléphone » (fin des « 24/7 » et « support local réactif » pour le support humain ; les 24/7 produit — agents IA, monitoring, uptime — conservés)
 17. ✅ **États vides/chargement** : `FormSkeleton` calqué sur le layout, branché sur les embeds Tally tarifs/devis et HubSpot (spinner circulaire éliminé) (commit c72f770)
 
 ---

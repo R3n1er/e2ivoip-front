@@ -2,7 +2,7 @@
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { Users, Certificate, Timer, Bolt, Shield, CheckCircle, Phone, Rocket } from "@/lib/icons";
+import { Users, Certificate, Timer, Bolt, Shield, CheckCircle, Phone, Rocket, Globe } from "@/lib/icons";
 
 export function AboutSectionSimple() {
   const features = [
@@ -20,7 +20,7 @@ export function AboutSectionSimple() {
     },
     {
       Icon: Timer,
-      title: "Support local 24/7",
+      title: "Support par mail et téléphone",
       description:
         "Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane",
     },
@@ -36,10 +36,10 @@ export function AboutSectionSimple() {
   ];
 
   const stats = [
-    { value: "100+", label: "Entreprises clientes", Icon: Users },
-    { value: "15+", label: "Années d'expertise", Icon: Certificate },
-    { value: "20%", label: "Économies garanties", Icon: Bolt },
-    { value: "24/7", label: "Support France Métropolitaine et DOM", Icon: Shield },
+    { value: "4", label: "Territoires DOM couverts", Icon: Globe },
+    { value: "15", label: "Années d'expertise", Icon: Certificate },
+    { value: "20%", label: "D'économies sur les communications DROM", Icon: Bolt },
+    { value: "Mail & Tél", label: "Support France Métropolitaine et DOM", Icon: Shield },
   ];
 
   return (
@@ -110,7 +110,7 @@ export function AboutSectionSimple() {
         <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Pourquoi plus de 100 entreprises nous font confiance ?
+              Pourquoi les entreprises des DROM nous font confiance ?
             </h3>
             <p className="text-gray-secondary">
               Seul opérateur de services télécom avec Trunk SIP dédiés

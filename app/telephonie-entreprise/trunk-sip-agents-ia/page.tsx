@@ -180,7 +180,7 @@ export default function TrunkSipAgentsIA() {
                     "Trunk SIP bidirectionnel ou redirection d'appels",
                     "Guichet unique : contrat, facturation et support en un seul interlocuteur",
                     "Accompagnement technique de l'intégration SIP",
-                    "Support local Antilles-Guyane-Réunion",
+                    "Support par mail et téléphone Antilles-Guyane-Réunion",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />

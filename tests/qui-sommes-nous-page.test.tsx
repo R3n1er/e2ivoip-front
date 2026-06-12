@@ -150,8 +150,8 @@ describe("Page Qui Sommes Nous", () => {
     render(<QuiSommesNous />);
 
     // Vérifier le texte partiel car il est cassé par des éléments multiples
-    expect(screen.getByText("Support local")).toBeInTheDocument();
-    expect(screen.getByText("24/7")).toBeInTheDocument();
+    expect(screen.getByText("Support par")).toBeInTheDocument();
+    expect(screen.getByText("mail et téléphone")).toBeInTheDocument();
   });
 
   it("affiche tous les départements", () => {

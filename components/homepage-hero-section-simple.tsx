@@ -1,14 +1,14 @@
 "use client";
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { Users, Certificate, Phone, Star, Play } from "@/lib/icons";
+import { Globe, Certificate, Phone, Star, Play } from "@/lib/icons";
 
 export function HomepageHeroSectionSimple() {
   const stats = [
-    { Icon: Users, value: "100+", label: "Entreprises nous font confiance" },
-    { Icon: Certificate, value: "15+", label: "Années d'expertise télécom" },
-    { Icon: Phone, value: "24/7", label: "Support technique France Métropolitaine et DOM" },
-    { Icon: Star, value: "20%", label: "Économies garanties" },
+    { Icon: Globe, value: "4", label: "Territoires DOM couverts" },
+    { Icon: Certificate, value: "15", label: "Années d'expertise télécom" },
+    { Icon: Phone, value: "Mail & Tél", label: "Support technique France Métropolitaine et DOM" },
+    { Icon: Star, value: "20%", label: "D'économies sur le coût des communications DROM" },
   ];
 
   return (
@@ -34,7 +34,7 @@ export function HomepageHeroSectionSimple() {
           {/* Badge — social proof uniquement (pas de doublon DOM avec le sous-titre) */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary/10 border border-red-primary/20 text-red-300 text-sm font-medium mb-8">
             <Star size={16} className="mr-2" />
-            Plus de 100 clients nous font confiance
+            Opérateur télécom DOM depuis 15 ans
           </div>
 
           {/* Main Heading */}

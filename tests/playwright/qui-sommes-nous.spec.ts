@@ -19,7 +19,7 @@ test.describe("Page Qui sommes-nous", () => {
       "Nos solutions phares",
       "Une équipe locale et experte",
       "Nos certifications et partenariats",
-      "Support local 24/7",
+      "Support par mail et téléphone",
     ];
 
     for (const heading of sectionHeadings) {

@@ -131,20 +131,20 @@ export default function NosServices() {
   const benefits = [
     {
       Icon: Lightning,
-      title: "Économies garanties",
-      description: "Jusqu'à 20% de réduction sur vos factures télécom",
+      title: "20% d'économies",
+      description: "Sur le coût de vos communications dans les DROM",
       color: "text-red-primary",
     },
     {
       Icon: MapPin,
       title: "Présence locale DOM",
-      description: "Support technique réactif dans toutes les zones",
+      description: "Support par mail et téléphone dans toutes les zones",
       color: "text-blue-marine",
     },
     {
       Icon: Timer,
       title: "Disponibilité 24/7",
-      description: "Services et support disponibles en permanence",
+      description: "Votre téléphonie reste opérationnelle en permanence",
       color: "text-green-600",
     },
     {

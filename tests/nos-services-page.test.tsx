@@ -30,7 +30,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des 4 bénéfices
-    expect(screen.getByText("Économies garanties")).toBeInTheDocument();
+    expect(screen.getByText("20% d'économies")).toBeInTheDocument();
     expect(screen.getByText("Présence locale DOM")).toBeInTheDocument();
     expect(screen.getByText("Disponibilité 24/7")).toBeInTheDocument();
     expect(screen.getByText("Sécurité maximale")).toBeInTheDocument();

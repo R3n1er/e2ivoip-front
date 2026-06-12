@@ -52,7 +52,7 @@ export default function ThreeCXCloudPage() {
         "8 lignes simultanées",
         "Multi-appareils",
         "WhatsApp Business",
-        "Support local",
+        "Support par mail et téléphone",
       ],
     },
     {

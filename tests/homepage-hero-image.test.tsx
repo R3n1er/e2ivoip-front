@@ -61,7 +61,7 @@ describe("HomepageHeroSectionSimple", () => {
 
     // Badge social proof (sans doublon DOM — voir sous-titre)
     expect(
-      screen.getByText("Plus de 100 clients nous font confiance")
+      screen.getByText("Opérateur télécom DOM depuis 15 ans")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
@@ -88,11 +88,11 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les statistiques", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("100+")).toBeInTheDocument();
+    expect(screen.getByText("4")).toBeInTheDocument();
     expect(
-      screen.getByText("Entreprises nous font confiance")
+      screen.getByText("Territoires DOM couverts")
     ).toBeInTheDocument();
-    expect(screen.getByText("15+")).toBeInTheDocument();
+    expect(screen.getByText("15")).toBeInTheDocument();
     expect(screen.getByText("Années d'expertise télécom")).toBeInTheDocument();
   });
 

@@ -379,8 +379,8 @@ export default function TrunkSIPCompteur() {
             </div>
 
             <p className="text-white/70 text-sm mt-6">
-              <strong>Expertise DOM depuis 15 ans</strong> • Plus de 100
-              entreprises nous font confiance
+              <strong>Expertise DOM depuis 15 ans</strong> • Support par mail
+              et téléphone
             </p>
           </div>
         </section>

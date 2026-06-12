@@ -10,13 +10,13 @@ import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } fr
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
   description:
-    "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -20% sur vos coûts télécoms.",
+    "E2I VoIP : Opérateur de services télécom DOM, 15 ans d'expertise. Trunk SIP, 3CX, support par mail et téléphone — Martinique, Guadeloupe, Guyane. -20% sur le coût de vos communications.",
   keywords:
     "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM",
   openGraph: {
     title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
     description:
-      "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 20% sur vos coûts télécoms.",
+      "Opérateur de services télécom DOM depuis 15 ans. Support par mail et téléphone. Économisez 20% sur le coût de vos communications.",
     type: "website",
   },
 };
@@ -70,12 +70,11 @@ export default function QuiSommesNous() {
               <span className="text-white">DOM</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              15 ans d'expertise • 100+ entreprises nous font confiance •
-              Support local réactif
+              15 ans d'expertise télécom • Support par mail et téléphone
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Économisez jusqu'à 20% sur vos coûts télécoms avec nos solutions
-              de téléphonie IP
+              Économisez 20% sur le coût des communications dans les DROM avec
+              nos solutions de téléphonie IP
             </p>
           </div>
         </div>
@@ -93,10 +92,10 @@ export default function QuiSommesNous() {
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Depuis maintenant plusieurs années, E2I VoIP</strong>{" "}
                 est un opérateur de services télécom avec des Trunk SIP dédiés
-                aux Antilles-Guyane et La Réunion. Nous avons accompagné plus de{" "}
-                <strong>100 entreprises</strong> dans leur transformation
-                digitale, leur permettant d'économiser en moyenne{" "}
-                <strong>20% sur leurs coûts télécoms</strong>.
+                aux Antilles-Guyane et La Réunion. Nous accompagnons les
+                entreprises des DROM dans leur transformation digitale, en leur
+                permettant d'économiser{" "}
+                <strong>20% sur le coût de leurs communications</strong>.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Notre mission :</strong> Faciliter votre transition vers
@@ -130,13 +129,13 @@ export default function QuiSommesNous() {
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="text-center">
                       <div className="text-2xl font-bold font-mono tabular-nums text-red-primary">
-                        100+
+                        4
                       </div>
-                      <div className="text-gray-600">Clients satisfaits</div>
+                      <div className="text-gray-600">Territoires DOM couverts</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold font-mono tabular-nums text-blue-marine">
-                        15+
+                        15
                       </div>
                       <div className="text-gray-600">Années d'expertise</div>
                     </div>
@@ -309,8 +308,8 @@ export default function QuiSommesNous() {
                     ✓ Collaboration fluide pour tous les collaborateurs
                   </p>
                   <p className="text-sm text-gray-600">
-                    ✓ Support local réactif sur 3 départements (Guadeloupe,
-                    Martinique, Guyane)
+                    ✓ Support par mail et téléphone sur 3 départements
+                    (Guadeloupe, Martinique, Guyane)
                   </p>
                 </div>
               </div>
@@ -502,7 +501,7 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-4">
-              Support local <span className="text-white">24/7</span>
+              Support par <span className="text-white">mail et téléphone</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Équipes techniques présentes localement en Guadeloupe et en Guyane

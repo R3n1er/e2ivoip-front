@@ -304,7 +304,7 @@ export default function TrunkSIPIllimite() {
                   {/* Bottom accent - Rouge principal E2I */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
                     <CheckCircle size={16} className="mr-2" aria-hidden="true" />
-                    <span>Économies garanties</span>
+                    <span>20% d'économies sur vos communications</span>
                   </div>
                 </div>
               </div>

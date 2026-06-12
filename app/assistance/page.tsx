@@ -11,15 +11,15 @@ import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Phone, Chat } from '@/lib/icons';
 
 export const metadata: Metadata = {
-  title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
+  title: "Assistance & Support - E2I VoIP | Support technique DOM",
   description:
-    "Support technique E2I VoIP 24/7. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
+    "Support technique E2I VoIP par mail et téléphone. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
   openGraph: {
-    title: "Assistance & Support - E2I VoIP | Support technique 24/7",
+    title: "Assistance & Support - E2I VoIP | Support technique par mail et téléphone",
     description:
-      "Support technique E2I VoIP 24/7. Équipes locales DOM, chat en ligne, guides et tutoriels.",
+      "Support technique E2I VoIP par mail et téléphone. Équipes locales DOM, chat en ligne, guides et tutoriels.",
     type: "website",
   },
 };
