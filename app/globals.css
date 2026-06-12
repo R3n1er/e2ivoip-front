@@ -37,67 +37,13 @@
   background-color: var(--gray-dark);
 }
 
-/* Pattern de points pour les arrière-plans */
-.pattern-dots {
-  background-image: radial-gradient(circle, #e53e3e 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
 @layer base {
   body {
-    @apply bg-white text-gray-dark;
+    @apply bg-white text-gray-dark font-sans;
   }
 }
 
 @layer components {
-  /* Dégradés principaux selon la charte graphique E2I VoIP */
-  .gradient-primary-red-blue {
-    @apply bg-gradient-to-r from-red-600 to-blue-700;
-  }
-
-  .gradient-primary-red-green {
-    @apply bg-gradient-to-br from-red-600 to-green-600;
-  }
-
-  .gradient-primary-blue-gray {
-    @apply bg-gradient-to-b from-blue-700 to-gray-500;
-  }
-
-  /* Dégradés secondaires */
-  .gradient-secondary-red-orange {
-    @apply bg-gradient-to-r from-red-600 to-orange-500;
-  }
-
-  .gradient-secondary-blue-green {
-    @apply bg-gradient-to-br from-blue-700 to-green-600;
-  }
-
-  .gradient-secondary-gray-white {
-    @apply bg-gradient-to-b from-gray-100 to-white;
-  }
-
-  /* Dégradés spéciaux */
-  .gradient-special-transparent-red {
-    @apply bg-gradient-to-t from-red-600/80 to-transparent;
-  }
-
-  .gradient-special-radial-red {
-    @apply bg-gradient-radial from-red-600 to-transparent;
-  }
-
-  /* Composants avec dégradés */
-  .hero-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .services-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  .about-gradient {
-    @apply gradient-primary-blue-gray;
-  }
-
   /* Animation pour le carousel de clients */
   @keyframes scrollLeft {
     0% {
@@ -111,92 +57,9 @@
   .animate-scroll-left {
     animation: scrollLeft 60s linear infinite;
   }
-
-  .contact-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .footer-gradient {
-    @apply gradient-secondary-gray-white;
-  }
-
-  .button-primary-gradient {
-    @apply gradient-primary-red-blue;
-  }
-
-  .button-secondary-gradient {
-    @apply bg-gradient-to-r from-blue-700 to-gray-500;
-  }
-
-  .card-accent-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  .card-info-gradient {
-    @apply gradient-primary-blue-gray;
-  }
-
-  .badge-gradient {
-    @apply gradient-primary-red-green;
-  }
-
-  /* Effets hover pour les degrades */
-  .gradient-hover {
-    @apply transition-all duration-300 ease-in-out;
-  }
-
-  .gradient-hover:hover {
-    @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
-  }
-
-  /* Dégradés avec transparence pour les overlays */
-  .overlay-gradient {
-    @apply gradient-special-transparent-red;
-  }
-
-  .focus-gradient {
-    @apply gradient-special-radial-red;
-  }
-
-  /* Responsive gradients */
-  @media (max-width: 768px) {
-    .gradient-primary-red-blue {
-      @apply bg-gradient-to-b from-red-600 to-blue-700;
-    }
-
-    .gradient-primary-red-green {
-      @apply bg-gradient-to-b from-red-600 to-green-600;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .gradient-primary-blue-gray {
-      @apply bg-gradient-to-b from-blue-700 to-gray-500;
-    }
-  }
 }
 
 @layer utilities {
-  /* Utilitaires pour les dégradés */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-blue-700;
-  }
-
-  .border-gradient {
-    @apply border-2 border-transparent bg-gradient-to-r from-red-600 to-blue-700 bg-clip-border;
-  }
-
-  .shadow-gradient {
-    @apply shadow-lg;
-    box-shadow: 0 10px 25px -3px rgba(220, 38, 38, 0.3),
-      0 4px 6px -2px rgba(30, 64, 175, 0.2);
-  }
-
-  /* Pattern dots background */
-  .pattern-dots {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
   /* Animation de vibration pour le bouton chat */
   @keyframes shake {
     0%, 100% {
@@ -212,22 +75,5 @@
 
   .animate-shake {
     animation: shake 0.5s ease-in-out infinite;
-    animation-iteration-count: infinite;
-  }
-
-  /* Animation de pulsation douce */
-  @keyframes pulse-soft {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 25px 50px -12px rgba(236, 72, 153, 0.4), 0 10px 20px -5px rgba(147, 51, 234, 0.3);
-    }
-  }
-
-  .animate-pulse-soft {
-    animation: pulse-soft 2s ease-in-out infinite;
   }
 }

@@ -6,6 +6,7 @@ import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import type { BlogPost } from "@/lib/hubspot-blog";
 import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import { ArrowLeft, Tag } from '@/lib/icons';
 
 interface CategoryPageProps {
   params: Promise<{
@@ -81,7 +82,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               href="/blog"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <i className="lni lni-arrow-left w-4 h-4"></i>
+              <ArrowLeft size={16} aria-hidden="true" />
               Retour au blog
             </Link>
           </div>
@@ -103,7 +104,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <i className="lni lni-tag w-8 h-8 text-white"></i>
+                <Tag size={32} className="text-white" aria-hidden="true" />
                 <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
                   {categoryName}
                 </h1>
@@ -129,7 +130,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* CTA */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Besoin d&apos;expertise en téléphonie IP ?
             </h2>
             <p className="text-lg text-gray-600 mb-8">

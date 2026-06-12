@@ -16,7 +16,7 @@ export function PhoneLink({ phone, className = '', showTerritory = false }: Phon
   return (
     <a
       href={`tel:${phone.tel}`}
-      className={`min-h-[44px] inline-flex items-center ${className}`}
+      className={`min-h-[44px] inline-flex items-center transition-transform duration-150 active:scale-[0.98] ${className}`}
       onClick={() => trackEvent('phone_click', {
         page: pathname || '/',
         element_id: `tel:${phone.tel}`,
@@ -28,7 +28,7 @@ export function PhoneLink({ phone, className = '', showTerritory = false }: Phon
           {phone.territory}
         </span>
       )}
-      {phone.number}
+      <span className="font-mono tabular-nums">{phone.number}</span>
     </a>
   )
 }

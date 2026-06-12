@@ -1,23 +1,23 @@
 import { NextResponse } from "next/server";
 import {
-  getContentfulBlogPosts,
-  searchContentfulBlogPosts,
-  getContentfulBlogMetadata,
-} from "@/lib/contentful-blog";
+  getBlogMetadata,
+  getBlogPosts,
+  isBlogSourceConfigured,
+} from "@/lib/blog-source";
 
 export async function GET(request: Request) {
   try {
-    // Garde: si Contentful n'est pas configuré, retourner des listes vides
-    if (
-      !process.env.CONTENTFUL_SPACE_ID ||
-      (!process.env.CONTENTFUL_DELIVERY_TOKEN &&
-        !process.env.CONTENTFUL_ACCESS_TOKEN)
-    ) {
-      return NextResponse.json({
-        posts: [],
-        total: 0,
-        metadata: { tags: [], authors: [], years: [] },
-      });
+    if (!isBlogSourceConfigured()) {
+      const message = "HUBSPOT_ACCESS_TOKEN manquant";
+      return NextResponse.json(
+        {
+          error: message,
+          posts: [],
+          total: 0,
+          metadata: { tags: [], authors: [], years: [] },
+        },
+        { status: 503 }
+      );
     }
 
     const { searchParams } = new URL(request.url);
@@ -25,32 +25,24 @@ export async function GET(request: Request) {
     const pageSize = Number(searchParams.get("pageSize") || "12");
     const q = searchParams.get("q") || "";
 
-    const preview = false;
-    const { posts, total } = q
-      ? await searchContentfulBlogPosts(q, page, pageSize, preview)
-      : await getContentfulBlogPosts(page, pageSize, preview);
+    const { posts, total } = await getBlogPosts(page, pageSize, q);
+    const meta = await getBlogMetadata();
 
-    const meta = await getContentfulBlogMetadata(preview);
-
-    // Adapter la forme attendue par le grid (content string pour temps de lecture)
     const mapped = posts.map((p) => ({
       id: p.id,
       title: p.title,
       excerpt: p.excerpt || "",
-      content:
-        typeof p.content === "string"
-          ? p.content
-          : JSON.stringify(p.content || {}),
+      content: p.content || "",
       publishDate: p.publishDate || "",
-      modifiedDate: p.publishDate || "",
+      modifiedDate: p.modifiedDate || p.publishDate || "",
       author: p.author || "",
-      authorId: p.author || "",
+      authorId: p.authorId || p.author || "",
       tags: p.tags || [],
-      categories: [],
+      categories: p.categories || [],
       slug: p.slug,
-      url: `/blog/${p.slug}`,
-      featuredImage: p.featuredImageUrl,
-      featuredImageUrl: p.featuredImageUrl,
+      url: p.url || `/blog/${p.slug}`,
+      featuredImage: p.featuredImage || p.featuredImageUrl,
+      featuredImageUrl: p.featuredImageUrl || p.featuredImage,
       metaDescription: p.metaDescription || "",
       seoTitle: p.seoTitle || p.title,
     }));

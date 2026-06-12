@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Calculator, Phone, CheckCircle, Shield, Users, Compass, X, VideoCamera, Chat, Lightning, DeviceMobile, Link, Headphones, TrendUp, Seal } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",
@@ -72,21 +72,21 @@ export default function Telephonie3CX() {
                 <strong>hébergement mutualisé</strong>
               </p>
               <div className="mt-8 mb-8">
-                <CTAButton href="/devis-en-ligne?service=3cx" icon="lni-calculator">
+                <CTAButton href="/devis-en-ligne?service=3cx" icon="Calculator">
                   PASSER A 3CX
                 </CTAButton>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-checkmark-circle text-white"></i>
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Certifié 3CX Silver Partner</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-shield text-white"></i>
+                  <Shield size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Support expert local</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-users text-white"></i>
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">+50 entreprises équipées</span>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Pourquoi choisir <span className="text-red-primary">3CX</span>{" "}
                 avec E2I VOIP ?
               </h2>
@@ -119,10 +119,10 @@ export default function Telephonie3CX() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <i className="lni lni-direction-alt mr-2"></i>
+                <Compass size={16} className="mr-2" aria-hidden="true" />
                 Choisissez votre solution
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Deux options adaptées à{" "}
                 <span className="text-red-primary">vos besoins</span>
               </h2>
@@ -134,7 +134,7 @@ export default function Telephonie3CX() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {/* 3CX PRO - Instance Dédiée */}
-              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX PRO</h3>
@@ -149,10 +149,10 @@ export default function Telephonie3CX() {
                   </p>
                 </div>
 
-                <div className="card-body p-8">
+                <div className="flex flex-col p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Serveur dédié cloud AWS
@@ -163,7 +163,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           De 8 à 1024 utilisateurs
@@ -174,7 +174,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Personnalisation complète
@@ -185,7 +185,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Support et Assistance utilisateur
@@ -212,7 +212,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* 3CX SMB - Mutualisée */}
-              <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-red-primary to-red-700 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX SMB PRO</h3>
@@ -225,10 +225,10 @@ export default function Telephonie3CX() {
                   </p>
                 </div>
 
-                <div className="card-body p-8">
+                <div className="flex flex-col p-8">
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Hébergement mutualisé
@@ -239,7 +239,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           De 3 à 15 utilisateurs
@@ -250,7 +250,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Mise en service rapide
@@ -261,7 +261,7 @@ export default function Telephonie3CX() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl mt-0.5"></i>
+                      <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
                           Coûts optimisés
@@ -297,7 +297,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Tableau <span className="text-red-primary">comparatif</span>
               </h2>
               <p className="text-xl text-gray-600">
@@ -341,10 +341,10 @@ export default function Telephonie3CX() {
                   <tr className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium">Personnalisation</td>
                     <td className="px-6 py-4 text-center">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                      <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <i className="lni lni-close text-gray-400 text-xl"></i>
+                      <X size={24} className="text-gray-400" aria-hidden="true" />
                     </td>
                   </tr>
                   <tr className="hover:bg-gray-50">
@@ -352,10 +352,10 @@ export default function Telephonie3CX() {
                       Support prioritaire
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                      <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <i className="lni lni-close text-gray-400 text-xl"></i>
+                      <X size={24} className="text-gray-400" aria-hidden="true" />
                     </td>
                   </tr>
                   <tr className="hover:bg-gray-50">
@@ -382,7 +382,7 @@ export default function Telephonie3CX() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Fonctionnalités <span className="text-red-primary">3CX</span>{" "}
                 incluses
               </h2>
@@ -398,7 +398,7 @@ export default function Telephonie3CX() {
                 <div className="p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-phone text-3xl text-gray-800"></i>
+                      <Phone size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -410,7 +410,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <i className="lni lni-checkmark-circle mr-1"></i>
+                      <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                       Haute qualité
                     </span>
                   </div>
@@ -419,7 +419,7 @@ export default function Telephonie3CX() {
 
               {/* Visioconférence */}
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
                     className="absolute inset-0"
@@ -432,7 +432,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-video text-3xl text-red-primary"></i>
+                      <VideoCamera size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -444,7 +444,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <i className="lni lni-users mr-1"></i>
+                      <Users size={16} className="mr-1" aria-hidden="true" />
                       Jusqu'à 250 participants
                     </span>
                   </div>
@@ -466,7 +466,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-comments text-3xl text-gray-800"></i>
+                      <Chat size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -478,7 +478,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <i className="lni lni-bolt-alt mr-1"></i>
+                      <Lightning size={16} className="mr-1" aria-hidden="true" />
                       Temps réel
                     </span>
                   </div>
@@ -487,7 +487,7 @@ export default function Telephonie3CX() {
 
               {/* Applications mobiles */}
               <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
-                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-orange-500"></div>
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
                   <div
                     className="absolute inset-0"
@@ -500,7 +500,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-mobile text-3xl text-red-primary"></i>
+                      <DeviceMobile size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -512,7 +512,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <i className="lni lni-mobile mr-1"></i>
+                      <DeviceMobile size={16} className="mr-1" aria-hidden="true" />
                       iOS & Android
                     </span>
                   </div>
@@ -534,7 +534,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-link text-3xl text-red-primary"></i>
+                      <Link size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -546,7 +546,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
-                      <i className="lni lni-link mr-1"></i>
+                      <Link size={16} className="mr-1" aria-hidden="true" />
                       Multi-CRM
                     </span>
                   </div>
@@ -568,7 +568,7 @@ export default function Telephonie3CX() {
                 <div className="relative p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <i className="lni lni-headphone-alt text-3xl text-gray-800"></i>
+                      <Headphones size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
@@ -580,7 +580,7 @@ export default function Telephonie3CX() {
                   </p>
                   <div className="text-center">
                     <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
-                      <i className="lni lni-stats-up mr-1"></i>
+                      <TrendUp size={16} className="mr-1" aria-hidden="true" />
                       Rapports en temps réel
                     </span>
                   </div>
@@ -593,7 +593,7 @@ export default function Telephonie3CX() {
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Prêt à transformer votre{" "}
               <span className="text-white">téléphonie d'entreprise</span> ?
             </h2>
@@ -604,26 +604,26 @@ export default function Telephonie3CX() {
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-certificate text-white"></i>
+                <Seal size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Certifié 3CX Silver</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-users text-white"></i>
+                <Users size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Support expert local</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-shield text-white"></i>
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">15 ans d'expertise</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+              <CTAButton href="/devis-en-ligne" icon="Calculator">
                 Demander un devis
               </CTAButton>
               <CTAButtonMarine
                 href="tel:+33189560500"
-                icon="lni-phone"
+                icon="Phone"
                 external
               >
                 01 89 56 05 00
@@ -631,9 +631,6 @@ export default function Telephonie3CX() {
             </div>
           </div>
         </section>
-
-        {/* Social Proof */}
-        <TestimonialsSectionSimple />
 
         {/* Territory phone links -- D-09 */}
         <section className="bg-gray-50 py-8">

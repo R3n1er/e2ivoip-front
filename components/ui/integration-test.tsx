@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CheckCircle, XCircle, Question } from '@/lib/icons';
 
 interface IntegrationTest {
   name: string
@@ -100,11 +101,11 @@ export function IntegrationTest() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "success":
-        return <i className="lni lni-checkmark-circle w-5 h-5 text-green-500"></i>
+        return <CheckCircle size={24} className="text-green-500" aria-hidden="true" />
       case "error":
-        return <i className="lni lni-cross-circle w-5 h-5 text-red-500"></i>
+        return <XCircle size={24} className="text-red-500" aria-hidden="true" />
       default:
-        return <i className="lni lni-question-circle w-5 h-5 text-gray-400 animate-spin"></i>
+        return <Question size={24} className="text-gray-400 animate-spin" aria-hidden="true" />
     }
   }
 
@@ -136,7 +137,7 @@ export function IntegrationTest() {
           >
             {isRunning ? (
               <>
-                <i className="lni lni-question-circle w-4 h-4 mr-2 animate-spin"></i>
+                <Question size={16} className="mr-2 animate-spin" aria-hidden="true" />
                 Tests en cours...
               </>
             ) : (
@@ -165,27 +166,27 @@ export function IntegrationTest() {
           <h2 className="text-xl font-semibold mb-4">Résumé des Tests</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>HubSpot CRM</span>
             </div>
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>HubSpot Blog</span>
             </div>
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>HubSpot Analytics</span>
             </div>
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>Tally Formulaires</span>
             </div>
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>n8n Workflows</span>
             </div>
             <div className="flex items-center">
-              <i className="lni lni-checkmark-circle w-4 h-4 text-green-500 mr-2"></i>
+              <CheckCircle size={16} className="text-green-500 mr-2" aria-hidden="true" />
               <span>URLR API</span>
             </div>
           </div>

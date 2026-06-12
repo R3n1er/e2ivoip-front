@@ -1,27 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { HotjarTracking } from "@/components/hotjar-tracking";
-import { HeaderSimple } from "@/components/layout/header-simple";
+import { LayoutClientChrome } from "@/components/layout/layout-client-chrome";
 import { Footer } from "@/components/layout/footer";
-import { ChatPreOverlay } from "@/components/chat-preoverlay";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Police officielle E2I VoIP — Inter (cohérence avec le logo). Voir CHARTE_GRAPHIQUE.md
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Mono pour les données chiffrées (effet « télécom/data »)
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
   description:
-    "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar et assistants vocaux IA.",
+    "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar et interconnexion agents vocaux IA.",
   keywords:
     "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
   authors: [{ name: "E2I VoIP" }],
@@ -56,21 +59,13 @@ export default function RootLayout({
       data-theme="e2ivoip"
       suppressHydrationWarning
     >
-      <head>
-        <link
-          href="https://cdn.lineicons.com/4.0/lineicons.css"
-          rel="stylesheet"
-        />
-      </head>
+      <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${plexMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <HotjarTracking />
-        <HeaderSimple />
-        <main className="flex-1 pt-16">{children}</main>
+        <LayoutClientChrome>{children}</LayoutClientChrome>
         <Footer />
-        <ChatPreOverlay />
       </body>
     </html>
   );

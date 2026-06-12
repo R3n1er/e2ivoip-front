@@ -1,14 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import QuiSommesNous from "../app/qui-sommes-nous/page";
 
-// Mock des composants Header et Footer
-jest.mock("@/components/layout/header", () => ({
-  Header: () => <div data-testid="header">Header</div>,
-}));
-
-jest.mock("@/components/layout/footer", () => ({
-  Footer: () => <div data-testid="footer">Footer</div>,
-}));
+// Header et Footer sont rendus par le layout, pas par la page — aucun mock nécessaire.
 
 describe("Page Qui Sommes Nous", () => {
   it("rend la page sans erreur", () => {
@@ -150,8 +143,8 @@ describe("Page Qui Sommes Nous", () => {
     render(<QuiSommesNous />);
 
     // Vérifier le texte partiel car il est cassé par des éléments multiples
-    expect(screen.getByText("Support local")).toBeInTheDocument();
-    expect(screen.getByText("24/7")).toBeInTheDocument();
+    expect(screen.getByText("Support par")).toBeInTheDocument();
+    expect(screen.getByText("mail et téléphone")).toBeInTheDocument();
   });
 
   it("affiche tous les départements", () => {

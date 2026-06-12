@@ -10,8 +10,8 @@ describe("Page Nos Services", () => {
   it("rend la page sans erreur", () => {
     render(<NosServices />);
 
-    // Vérification des composants principaux
-    expect(screen.getByTestId("footer")).toBeInTheDocument();
+    // Vérification des composants principaux (le footer est rendu par le layout)
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
   it("affiche le titre principal avec la charte PRD", () => {
@@ -30,7 +30,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des 4 bénéfices
-    expect(screen.getByText("Économies garanties")).toBeInTheDocument();
+    expect(screen.getByText("20% d'économies")).toBeInTheDocument();
     expect(screen.getByText("Présence locale DOM")).toBeInTheDocument();
     expect(screen.getByText("Disponibilité 24/7")).toBeInTheDocument();
     expect(screen.getByText("Sécurité maximale")).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
     expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
-    expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
 
@@ -85,7 +85,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des messages clés
-    expect(screen.getByText(/économies garanties/)).toBeInTheDocument();
+    expect(screen.getAllByText(/20% d.économies/).length).toBeGreaterThan(0);
     // Utilisation de getAllByText pour gérer les éléments multiples
     const domTomElements = screen.getAllByText(/DOM/);
     expect(domTomElements.length).toBeGreaterThan(0);
@@ -93,7 +93,7 @@ describe("Page Nos Services", () => {
       screen.getByText(/500 entreprises nous font confiance/)
     ).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
-    const thirtyPercentElements = screen.getAllByText(/30%/);
+    const thirtyPercentElements = screen.getAllByText(/20%/);
     expect(thirtyPercentElements.length).toBeGreaterThan(0);
   });
 
@@ -126,7 +126,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification de quelques fonctionnalités clés
-    expect(screen.getByText("Économies jusqu'à 30%")).toBeInTheDocument();
+    expect(screen.getByText("Économies jusqu'à 20%")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux garantis")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();

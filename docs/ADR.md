@@ -10,6 +10,128 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-05-23 — Suppression Hotjar + correction erreur d'hydratation SSR
+
+- **Contexte** : Hotjar n'est plus utilisé comme service d'analytics. Le composant `HotjarTracking` injectait un script externe en production et provoquait une erreur d'hydratation React car le build `.next` contenait encore d'anciennes balises `<i class="lni lni-star">` (cache obsolète post-migration Phosphor).
+- **Décision** :
+  - Supprimer `components/hotjar-tracking.tsx` (composant, interface `HotjarTrackingProps`, ID `hotjar-script`).
+  - Retirer l'import et l'usage de `HotjarTracking` dans `components/layout/layout-client-chrome.tsx`.
+  - Mettre à jour `tests/playwright/homepage-diagnostic.spec.ts` : renommer le test "Hotjar" en test générique de vérification des scripts 4xx/5xx.
+  - Purger le cache `.next` pour forcer la recompilation avec les icônes Phosphor SSR (résout le mismatch `<i>` vs `<svg>`).
+- **Conséquences** :
+  - Aucun script tiers Hotjar chargé en production ; l'erreur d'hydratation est résolue.
+  - Pour réintroduire un outil analytics, créer un nouveau composant dédié et l'intégrer proprement (ex. Plausible, PostHog).
+- **Tests associés** : `tests/playwright/homepage-diagnostic.spec.ts`, `npm run validate` (369 Jest + 66 Playwright — tous ✓).
+
+### 2026-05-23 — Migration système d'icônes : LineIcons CDN → Phosphor Icons SSR-safe
+
+- **Contexte** : Le projet utilisait LineIcons via CDN (`<i class="lni lni-*">`), incompatible SSR et dépendant d'un réseau externe. La migration vers Phosphor Icons (`@phosphor-icons/react`) a introduit `React.createContext()` dans les Server Components, causant des erreurs HTTP 500 sur toutes les pages.
+- **Décision** :
+  - Créer `lib/icons.ts` : source unique de 86 icônes Phosphor + aliases, importées depuis `@phosphor-icons/react/dist/ssr` (SSR-compatible, pas de `createContext`).
+  - Pattern string-based pour les props d'icônes cross-boundary : `icon="PhoneFill"` au lieu de `icon={PhoneIcon}` (évite la sérialisation de fonctions React entre Server et Client Components).
+  - Ajouter `"use client"` aux 7 composants réutilisables qui passent des icônes : `footer`, `testimonials`, `problem-solution-section`, etc.
+  - Migrer 375+ références `lni-*` → composants Phosphor via `ICON_MAP` dans `CTAButton`, `CTAButtonMarine`, `CTAButtonSecondary`, `SecureMailtoButton`.
+  - Mettre à jour les 369 tests Jest (sélecteurs SVG au lieu des classes `lni-*`).
+  - Corriger le test Playwright `services-section.spec.ts` : `.lni` → `svg`.
+- **Conséquences** :
+  - Zéro dépendance CDN externe pour les icônes ; rendu SSR cohérent.
+  - `lib/icons.ts` est le point d'entrée unique — toute nouvelle icône s'y ajoute.
+  - TypeScript strict : le type `Icon = React.ComponentType<IconProps>` assure la cohérence.
+- **Tests associés** : `tests/playwright/services-section.spec.ts`, `tests/components/`, `npm run validate`.
+
+### 2026-05-23 — Protection anti-spam des adresses email publiques
+
+- **Contexte** : Les adresses `contact@`, `assistance@` et `commerciaux@` étaient en clair dans le HTML (`mailto:`, footer, pages marketing). Les robots pouvaient les aspirer facilement.
+- **Décision** :
+  - Centraliser les adresses dans `lib/constants/emails.ts` (payloads Base64, clés `contact` | `assistance` | `sales`).
+  - Composant unique `SecureEmail` / `SecureMailtoButton` (`components/secure-email.tsx`) : affichage masqué (`contact@…`), lien `/contact` par défaut, `mailto:` uniquement au clic via décodage client (`lib/email/decode-email.ts`).
+  - Remplacer les `mailto:` et textes bruts sur footer, `contact-section`, `cta-calendar-section`, `qui-sommes-nous`, `pbx-yeastar`, `offline`.
+  - Corriger `contact@e2ivoip.com` (typo) sur Yeastar → clé `contact` (`contact@e2i-voip.com`).
+- **Conséquences** :
+  - Aucune adresse complète dans le HTML statique ; protection partielle (bots avancés peuvent encore lire le JS).
+  - Formulaire HubSpot `/contact` reste le canal principal recommandé.
+  - Docs internes (PRD, BrandBrief) conservent les emails en clair pour l’équipe.
+- **Tests associés** : `tests/lib/decode-email.test.ts`, `tests/components/secure-email.test.tsx`, `tests/footer.test.tsx`, `npm run validate`.
+
+### 2026-05-23 — Phase 3 design system (alignement charte home)
+
+- **Contexte** : Audit design phase 1 (`docs/DESIGN-AUDIT.md`) et contrat `docs/DESIGN.md` : écarts logo, liens services, hero, grille 5 cartes, blobs décoratifs.
+- **Décision** :
+  - Logo header : `E`/`I` en `blue-marine`, `2` en `red-primary`.
+  - Cartes services : hrefs `/telephonie-entreprise/3cx-smb-mutualisee`, `/studio-attente` ; grille `md:grid-cols-2` avec 5e carte centrée.
+  - Hero : `min-h-[100dvh]`, badge social proof sans doublon DOM, suppression scroll « Découvrir », tokens `red-primary` sur accents.
+  - Home : suppression blobs `animate-blob`.
+  - Contact : accents FR corrigés.
+- **Conséquences** : Tokens charte sur composants home actifs ; pages `telephonie-entreprise/*` et classes `.gradient-*` legacy restent à harmoniser.
+- **Tests associés** : `tests/header-simple.test.tsx`, `tests/services-section-prd.test.tsx`, `tests/homepage-hero-image.test.tsx`, `tests/contact-section-simple.test.tsx`, `tests/playwright/services-section.spec.ts`, `npm run validate`.
+
+### 2026-05-23 — Configuration HubSpot blog : Private App token uniquement
+
+- **Contexte** : Après migration blog 100 % HubSpot CMS, l’équipe a recréé une application HubSpot (Private App / token `pat-eu1-…`). Le `.env.local` contenait encore des variables OAuth (`CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT_URI`, `PORTAL_ID`) héritées d’une ancienne intégration, dont une clé `hapikey` expirée retrouvée dans l’historique Git. Ces variables ne sont pas utilisées pour charger les articles de blog.
+- **Décision** :
+  - **Blog, CRM ingest chat, tests admin connexion** : une seule variable obligatoire — `HUBSPOT_ACCESS_TOKEN` (Bearer `pat-eu1-…`, scopes `cms.blog.read` + `cms.blog_posts.read` ; CRM ingest requiert en plus les scopes contacts/notes si activé).
+  - **Formulaires embed + tracking** : pas de variable d’environnement — portal ID `26878201` et form IDs centralisés dans `lib/constants/hubspot.ts` / composants legacy.
+  - **OAuth admin** (`/admin/hubspot`, routes `/api/hubspot/auth-url` et `/api/hubspot/callback`) : optionnel — nécessite `HUBSPOT_CLIENT_ID`, `HUBSPOT_CLIENT_SECRET`, `HUBSPOT_REDIRECT_URI` uniquement si ce flux est utilisé. Le callback actuel n’persiste pas le token obtenu (diagnostic uniquement).
+  - Supprimer de `.env.local` : `HUBSPOT_API_KEY` (legacy hapikey), `HUBSPOT_PORTAL_ID`, `NEXT_PUBLIC_HUBSPOT_*` sauf besoin OAuth explicite.
+  - Aligner `env.example` sur ce modèle minimal blog + bloc OAuth commenté optionnel.
+- **Conséquences** :
+  - Setup local blog : copier `env.example` → `.env.local`, renseigner `HUBSPOT_ACCESS_TOKEN`, redémarrer `npm run dev -- --port 3000`, vérifier `/blog` et `/api/blog/list`.
+  - Vercel prod : configurer `HUBSPOT_ACCESS_TOKEN` dans les env vars du projet (pas le client secret pour le blog seul).
+  - Ne jamais committer `.env.local` ni tokens dans le dépôt.
+- **Tests associés** :
+  - Vérification manuelle : API HubSpot `GET /cms/v3/blogs/posts` (HTTP 200, articles publiés).
+  - `curl http://localhost:3000/api/hubspot/test-connection` → `{ connected: true }`.
+  - `tests/lib/blog-source.test.ts`, `tests/lib/hubspot-blog-strict.test.ts`.
+
+### 2026-05-19 — Abandon de Contentful — blog 100 % HubSpot CMS API
+
+- **Contexte** : Le blog avait été migré vers Contentful puis partiellement doublé avec `lib/hubspot-blog.ts`. L’objectif produit est de ne plus maintenir deux CMS : les articles publics doivent provenir **uniquement** de l’API HubSpot (`/cms/v3/blogs/posts`).
+- **Décision** :
+  - Supprimer `lib/contentful-blog.ts`, la dépendance npm `contentful`, les scripts `import-to-contentful.js`, `generate-blog-covers.js`, `generate-ai-covers-openai.js` et toutes les variables `CONTENTFUL_*` / `BLOG_PROVIDER`.
+  - Conserver `lib/blog-source.ts` comme façade unique vers `lib/hubspot-blog.ts` (listing, slug, métadonnées, recherche).
+  - Images Next.js : `remotePatterns` HubSpot (`cdn2.hubspot.net`, `f.hubspotusercontent*.net`) à la place de `ctfassets.net`.
+  - `scripts/test-api-connections.js` : test HubSpot Forms + HubSpot Blog CMS uniquement.
+- **Conséquences** :
+  - **Obligatoire** en déploiement : `HUBSPOT_ACCESS_TOKEN` avec scopes `cms.blog.read` et `cms.blog_posts.read`.
+  - Contentful n’est plus référencé dans le code ni la doc opérationnelle ; l’extraction legacy (`scripts/extract-blog-content.js`) reste pour archives, pas pour publication.
+  - Les ADR historiques mentionnant Contentful restent en historique mais sont supplantées par cette décision.
+- **Tests associés** :
+  - `tests/lib/blog-source.test.ts`
+  - `tests/lib/hubspot-blog-strict.test.ts`
+  - `tests/blog-page-simple.test.tsx`
+
+### 2026-05-18 — Pivot Trunk SIP agents vocaux IA (remplace offre Assistants Vocaux IA)
+
+- **Contexte** : E2I VoIP ne commercialise plus de service d'assistant vocal IA clé en main. L'entreprise accompagne désormais les intégrateurs et agences IA qui déploient des agents sur VAPI, Rounded, ElevenLabs ou Jambonz, en fournissant la couche télécom DOM (numéros locaux Antilles-Guyane-Réunion + trunk SIP / redirection) que Twilio/Telnyx ne couvrent pas.
+- **Décision** :
+  - Créer la page `/telephonie-entreprise/trunk-sip-agents-ia` (audience intégrateurs B2B).
+  - Supprimer `/nos-services/assistants-vocaux-ia` sans redirection (SEO repart de zéro).
+  - Déplacer l'entrée menu sous **Téléphonie d'entreprise** (« Trunk SIP agents IA »).
+  - Remplacer `ContactFormAssistantIA` par `ContactFormTrunkSipIA` (même formId HubSpot, copy intégrateurs).
+  - Mettre à jour cartes services homepage et `/nos-services`, témoignages, metadata globale.
+- **Conséquences** :
+  - Positionnement clair : E2I = carrier SIP DOM, pas éditeur d'agents IA.
+  - Liens internes pointent vers la nouvelle URL uniquement.
+  - `/nos-services/assistants-vocaux-ia` → 404.
+  - Ligne éditoriale mise à jour pour cadrer le positionnement `trunk-sip-agents-ia` : E2I = carrier SIP DOM pour intégrateurs IA, pas éditeur d'assistants vocaux.
+  - BrandBrief/PRD non modifiés (dette doc restante).
+- **Tests associés** :
+  - `tests/trunk-sip-agents-ia.test.tsx`
+  - `tests/e2e/trunk-sip-agents-ia.spec.ts`
+  - Tests header, services-section, nos-services mis à jour
+
+### 2026-05-18 — Suppression effective de la page `/mobilite`
+
+- **Contexte** : L’ADR du 2025-09-27 prévoyait déjà la suppression de la page mobilité et le retrait des liens de navigation. Le fichier `app/mobilite/page.tsx` était resté en place et répondait encore en HTTP 200. Le produit Mobile 4G/5G avait déjà été retiré du catalogue (memory.md, 2026-04-28).
+- **Décision** :
+  - Supprimer définitivement `app/mobilite/page.tsx` et le dossier `app/mobilite/`.
+  - Conserver le 404 naturel Next.js (aucune redirection ajoutée — le projet n’a pas de pattern de redirect pour pages obsolètes).
+  - Les menus et sections services étaient déjà sans lien `/mobilite` ; aucune modification composant requise.
+- **Conséquences** :
+  - `/mobilite` renvoie 404.
+  - Le softphone 3CX mobile reste documenté via `/telephonie-3cx` et les contenus 3CX existants.
+- **Tests associés** : `npm test` (suites header/services déjà alignées sur l’absence de Mobilité).
+
 ### 2025-10-22 — Création page Assistants Vocaux IA alignée charte graphique
 
 - **Contexte** : La page `app/assistants-vocaux-ia/page.tsx` existante (142 lignes) utilisait des couleurs génériques non conformes à la charte graphique E2I VoIP (`red-600`, `blue-50`) et manquait d'intégration avec le formulaire de contact HubSpot. L'objectif était de créer une page de lancement professionnelle alignée avec le brand brief et la ligne éditoriale.

@@ -55,13 +55,13 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /Économisez 30%/i,
+        name: /Économisez 20%/i,
       })
     ).toBeInTheDocument();
 
-    // Vérifier que le badge est présent
+    // Badge social proof (sans doublon DOM — voir sous-titre)
     expect(
-      screen.getByText("Opérateur télécom DOM • Plus de 100 clients")
+      screen.getByText("Opérateur télécom DOM depuis 15 ans")
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
@@ -75,19 +75,24 @@ describe("HomepageHeroSectionSimple", () => {
   it("applique les styles de background image correctement", () => {
     render(<HomepageHeroSectionSimple />);
 
-    // Vérifier que la section principale est présente
-    const heroSection = document.querySelector("section");
+    const heroSection = document.querySelector("section#accueil");
     expect(heroSection).toBeInTheDocument();
+    expect(heroSection).toHaveClass("min-h-[100dvh]");
+  });
+
+  it("n'affiche pas d'indicateur de scroll « Découvrir »", () => {
+    render(<HomepageHeroSectionSimple />);
+    expect(screen.queryByText("Découvrir")).not.toBeInTheDocument();
   });
 
   it("affiche les statistiques", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("100+")).toBeInTheDocument();
+    expect(screen.getByText("4")).toBeInTheDocument();
     expect(
-      screen.getByText("Entreprises nous font confiance")
+      screen.getByText("Territoires DOM couverts")
     ).toBeInTheDocument();
-    expect(screen.getByText("15+")).toBeInTheDocument();
+    expect(screen.getByText("15")).toBeInTheDocument();
     expect(screen.getByText("Années d'expertise télécom")).toBeInTheDocument();
   });
 

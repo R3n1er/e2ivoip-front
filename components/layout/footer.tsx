@@ -1,24 +1,27 @@
+"use client";
 import Link from 'next/link'
 import { ThreeCXBadge } from '@/components/ui/3cx-badge'
 import { PhoneLink } from '@/components/ui/phone-link'
+import { SecureEmail } from '@/components/secure-email'
 import { TERRITORY_PHONES } from '@/lib/constants/phone-numbers'
+import { Envelope, MapMarker, Phone } from '@/lib/icons'
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="text-2xl lg:text-3xl font-black">
-                <span className="text-red-500">E</span>
-                <span className="text-white">2</span>
-                <span className="text-red-500">I</span>
+                <span className="text-blue-marine">E</span>
+                <span className="text-red-primary">2</span>
+                <span className="text-blue-marine">I</span>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 text-sm lg:text-base">
-              Solutions de telephonie IP et communications d&apos;entreprise depuis
+            <p className="text-gray-secondary mb-6 text-sm lg:text-base">
+              Solutions de téléphonie IP et communications d&apos;entreprise depuis
               plus de 15 ans.
             </p>
 
@@ -29,25 +32,25 @@ export function Footer() {
 
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
-                <i className="lni lni-envelope w-4 h-4 text-red-500 flex-shrink-0"></i>
-                <span>contact@e2i-voip.com</span>
+                <Envelope size={16} className="text-red-primary flex-shrink-0" />
+                <SecureEmail address="contact" className="text-gray-secondary text-sm" />
               </div>
               <div className="flex items-center space-x-3">
-                <i className="lni lni-map-marker w-4 h-4 text-red-500 flex-shrink-0"></i>
+                <MapMarker size={16} className="text-red-primary flex-shrink-0" />
                 <span>Paris, France</span>
               </div>
             </div>
 
             {/* Section Nous contacter */}
             <div className="mt-6 pt-4 border-t border-gray-700">
-              <h4 className="text-sm font-black text-white mb-4 flex items-center">
-                <i className="lni lni-phone w-4 h-4 text-red-500 mr-2"></i>
+              <h4 className="text-sm font-black text-white mb-4 flex items-center gap-2">
+                <Phone size={16} className="text-red-primary" />
                 Nous contacter
               </h4>
               <div className="space-y-2 text-xs">
                 {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
                   <div key={phone.territory} className="flex justify-between items-center py-1">
-                    <span className="text-gray-500 font-black text-[10px] uppercase tracking-[0.2em]">{phone.territory} :</span>
+                    <span className="text-gray-secondary font-black text-[10px] uppercase tracking-[0.2em]">{phone.territory} :</span>
                     <PhoneLink
                       phone={phone}
                       className="text-white font-black hover:text-red-primary transition-colors"
@@ -55,12 +58,13 @@ export function Footer() {
                   </div>
                 ))}
               </div>
-              <div className="mt-3 pt-2 border-t border-gray-600">
+              <div className="mt-3 pt-2 border-t border-gray-700">
                 <div className="flex items-center space-x-2">
-                  <i className="lni lni-envelope w-3 h-3 text-red-500 flex-shrink-0"></i>
-                  <span className="text-gray-300 text-xs">
-                    assistance@e2i-voip.com
-                  </span>
+                  <Envelope size={16} className="text-red-primary flex-shrink-0" />
+                  <SecureEmail
+                    address="assistance"
+                    className="text-gray-secondary text-xs"
+                  />
                 </div>
               </div>
             </div>
@@ -69,7 +73,7 @@ export function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-lg font-black mb-4 text-white">Services</h3>
-            <ul className="space-y-3 text-sm text-gray-400">
+            <ul className="space-y-3 text-sm text-gray-secondary">
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-compteur"
@@ -83,23 +87,23 @@ export function Footer() {
                   href="/telephonie-entreprise/trunk-sip-illimite"
                   className="hover:text-white transition-colors"
                 >
-                  Trunk SIP illimite
+                  Trunk SIP illimité
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/telephonie-entreprise/3cx-pro-dediee"
-                  className="hover:text-white transition-colors"
-                >
-                  3CX PRO dediee
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/telephonie-entreprise/3cx-smb-pro"
+                  href="/telephonie-entreprise/3cx-smb-mutualisee"
                   className="hover:text-white transition-colors"
                 >
                   3CX SMB PRO
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/3cx-cloud"
+                  className="hover:text-white transition-colors"
+                >
+                  3CX PRO dédié
                 </Link>
               </li>
               <li>
@@ -112,10 +116,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/nos-services/studio-attente"
+                  href="/telephonie-entreprise/trunk-sip-agents-ia"
                   className="hover:text-white transition-colors"
                 >
-                  Studio attente telephonique
+                  Trunk SIP agents IA
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/studio-attente"
+                  className="hover:text-white transition-colors"
+                >
+                  Studio attente téléphonique
                 </Link>
               </li>
             </ul>
@@ -124,10 +136,10 @@ export function Footer() {
           {/* Support */}
           <div>
             <h3 className="text-lg font-black mb-4 text-white">Support</h3>
-            <ul className="space-y-3 text-sm text-gray-400">
+            <ul className="space-y-3 text-sm text-gray-secondary">
               <li>
                 <Link
-                  href="/support/documentation"
+                  href="/assistance"
                   className="hover:text-white transition-colors"
                 >
                   Documentation
@@ -135,7 +147,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/support/faq"
+                  href="/assistance"
                   className="hover:text-white transition-colors"
                 >
                   FAQ
@@ -143,26 +155,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/support/technique"
+                  href="/contact"
                   className="hover:text-white transition-colors"
                 >
                   Support technique
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/support/formation"
-                  className="hover:text-white transition-colors"
-                >
-                  Formation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/support/garanties"
-                  className="hover:text-white transition-colors"
-                >
-                  Garanties
                 </Link>
               </li>
               <li>
@@ -181,13 +177,13 @@ export function Footer() {
             <h3 className="text-lg font-black mb-4 text-white">
               Informations
             </h3>
-            <ul className="space-y-3 text-sm text-gray-400">
+            <ul className="space-y-3 text-sm text-gray-secondary">
               <li>
                 <Link
                   href="/qui-sommes-nous"
                   className="hover:text-white transition-colors"
                 >
-                  A propos
+                  À propos
                 </Link>
               </li>
               <li>
@@ -203,7 +199,7 @@ export function Footer() {
                   href="/mentions-legales"
                   className="hover:text-white transition-colors"
                 >
-                  Mentions legales
+                  Mentions légales
                 </Link>
               </li>
               <li>
@@ -211,15 +207,7 @@ export function Footer() {
                   href="/politique-confidentialite"
                   className="hover:text-white transition-colors"
                 >
-                  Politique de confidentialite
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cgv"
-                  className="hover:text-white transition-colors"
-                >
-                  Conditions generales de vente
+                  Politique de confidentialité
                 </Link>
               </li>
               <li>
@@ -234,17 +222,17 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom section with partners and copyright */}
-        <div className="border-t border-gray-800 mt-8 lg:mt-12 pt-8">
+        {/* Bottom section */}
+        <div className="border-t border-gray-700 mt-8 lg:mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="text-sm text-gray-400">
-              <p>&copy; 2024 E2I VoIP. Tous droits reserves.</p>
+            <div className="text-sm text-gray-secondary">
+              <p>&copy; 2025 E2I VoIP. Tous droits réservés.</p>
             </div>
 
             {/* Partners logos */}
-            <div className="flex items-center space-x-6 text-gray-400 text-xs font-black uppercase tracking-wider">
-              <span className="text-gray-300">
-                Partenaires certifies :
+            <div className="flex items-center space-x-6 text-gray-secondary text-xs font-black uppercase tracking-wider">
+              <span className="text-white">
+                Partenaires certifiés :
               </span>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
@@ -252,14 +240,14 @@ export function Footer() {
                     href="https://www.3cx.fr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 font-black hover:text-blue-400 transition-colors"
+                    className="text-blue-marine font-black hover:text-white transition-colors"
                   >
                     3CX
                   </a>
-                  <span className="text-yellow-500">&#9733;</span>
-                  <span className="text-gray-400">Bronze Partner</span>
+                  <span className="text-yellow-400">&#9733;</span>
+                  <span className="text-gray-secondary">Bronze Partner</span>
                 </div>
-                <span className="text-gray-500">|</span>
+                <span className="text-gray-700">|</span>
                 <a
                   href="https://www.yeastar.com"
                   target="_blank"
@@ -268,7 +256,7 @@ export function Footer() {
                 >
                   Yeastar
                 </a>
-                <span className="text-gray-500">|</span>
+                <span className="text-gray-700">|</span>
                 <a
                   href="https://www.grandstream.com"
                   target="_blank"

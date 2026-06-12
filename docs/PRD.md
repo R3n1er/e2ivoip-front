@@ -2,7 +2,7 @@
 
 ## Vue d'ensemble
 
-Le site web E2I VoIP est une plateforme moderne et professionnelle présentant les solutions de téléphonie IP et de communications d'entreprise. Le site est construit avec Next.js 15, utilise Tailwind CSS avec DaisyUI, et intègre Contentful comme CMS principal.
+Le site web E2I VoIP est une plateforme moderne et professionnelle présentant les solutions de téléphonie IP et de communications d'entreprise. Le site est construit avec Next.js 15, utilise Tailwind CSS avec DaisyUI. Le **blog public** est alimenté uniquement par l’**API CMS HubSpot** (`HUBSPOT_ACCESS_TOKEN`).
 
 ### Statut d'avancement
 
@@ -22,12 +22,12 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 ### Backend & CMS
 
-- **CMS Principal** : Contentful
-  - Content Delivery API pour la lecture
-  - Content Management API pour l'import
-  - Rich Text pour le contenu des articles
-- **API Routes** : Next.js API routes (/api/blog/\*)
-- **Base de données** : Aucune (Contentful gère tout)
+- **Blog (CMS)** : HubSpot CMS API v3 (`/cms/v3/blogs/posts`)
+  - Lecture via `lib/hubspot-blog.ts` et façade `lib/blog-source.ts`
+  - Contenu HTML des articles (`postBody`)
+  - Publication et édition dans l’interface HubSpot (hors repo)
+- **API Routes** : Next.js API routes (`/api/blog/*`, `/api/hubspot/*`)
+- **Base de données** : Aucune (contenu blog côté HubSpot)
 
 ### Intégrations
 
@@ -46,10 +46,9 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 ### Articles de Blog
 
-- **Modèle Contentful** : `blogPost`
-- **Champs** : titre, slug, extrait, contenu (Rich Text), image de couverture, auteur, date de publication, meta description, SEO title, tags
-- **Images** : Génération automatique SVG + PNG via AI
-- **Import** : Scripts automatisés depuis l'ancien site
+- **Source** : posts HubSpot publiés (`state=PUBLISHED`)
+- **Champs mappés** : titre (`name`), slug, extrait (`postSummary`), contenu HTML (`postBody`), image (`featuredImage`), auteur (`blogAuthorId`), dates, meta SEO
+- **Archives** : `scripts/extract-blog-content.js` (legacy, pas de publication automatique)
 
 ### Navigation
 
@@ -64,7 +63,7 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 - **Liste des articles** : Grille responsive avec pagination
 - **Recherche** : Par titre, auteur, tags
 - **Filtres** : Par catégorie, année, auteur
-- **Articles individuels** : Rendu Rich Text avec métadonnées SEO
+- **Articles individuels** : Rendu HTML HubSpot avec métadonnées SEO
 
 ### Module Pré-Chat Interactif (V2)
 
@@ -463,34 +462,29 @@ Utiliser les composants `CTAButton` et `CTAButtonSecondary` qui implémentent d�
 ### Variables d'Environnement
 
 ```env
-# Contentful
-CONTENTFUL_SPACE_ID=
-CONTENTFUL_ENVIRONMENT=master
-CONTENTFUL_DELIVERY_TOKEN=
-CONTENTFUL_PREVIEW_TOKEN=
-CONTENTFUL_MANAGEMENT_TOKEN=
-CONTENTFUL_CONTENT_TYPE_ID=blogPost
-CONTENTFUL_LOCALE=en-US
+# Blog HubSpot (obligatoire) — Private App pat-eu1-…, scopes cms.blog.read + cms.blog_posts.read
+HUBSPOT_ACCESS_TOKEN=
 
-# OpenAI (Images de couverture)
-OPENAI_API_KEY=
+# HubSpot OAuth admin (optionnel — /admin/hubspot uniquement)
+# HUBSPOT_CLIENT_ID=
+# HUBSPOT_CLIENT_SECRET=
+# HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
 
-# HubSpot
-HUBSPOT_CLIENT_ID=
-HUBSPOT_CLIENT_SECRET=
-HUBSPOT_REFRESH_TOKEN=
+# Formulaires HubSpot : portal 26878201 en code (lib/constants/hubspot.ts), pas de variable env
 
 # Tawk.to
 TAWK_TO_ID=
 ```
 
+> Détail : ADR **2026-05-23** (simplification `.env.local`, distinction token blog vs OAuth).
+
 ## Maintenance et Évolutions
 
 ### Scripts de Maintenance
 
-- **Import Contentful** : Migration des articles
-- **Génération d'images** : SVG + PNG AI
-- **Sauvegarde** : Export des données
+- **Blog** : publication et mise à jour dans HubSpot CMS
+- **Diagnostic** : `node scripts/test-api-connections.js`
+- **Archives** : `scripts/extract-blog-content.js` (extraction legacy)
 
 ### Monitoring
 
@@ -701,8 +695,7 @@ Section Call-to-Action principale avec intégration calendrier :
 
 ### Phase 1 - Complétée ✅
 
-- [x] Migration Strapi → Contentful
-- [x] Intégration API Contentful
+- [x] Blog alimenté par HubSpot CMS API (abandon Contentful — ADR 2026-05-19)
 - [x] Refactorisation header
 - [x] Génération d'images de couverture
 - [x] Tests automatisés
@@ -712,7 +705,7 @@ Section Call-to-Action principale avec intégration calendrier :
 ### Phase 2 - En cours
 
 - [ ] Optimisation SEO avancée
-- [ ] Cache Contentful
+- [ ] Cache réponses API blog HubSpot
 - [ ] Analytics avancés
 - [ ] A/B Testing
 

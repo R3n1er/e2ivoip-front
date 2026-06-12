@@ -19,7 +19,9 @@ jest.mock("next/link", () => {
 
 // Mock SecureEmail component
 jest.mock("@/components/secure-email", () => ({
-  SecureEmail: ({ children }: { children: React.ReactNode }) => <span data-testid="secure-email">{children}</span>,
+  SecureEmail: ({ label }: { label?: string }) => (
+    <span data-testid="secure-email">{label ?? "contact@…"}</span>
+  ),
 }));
 
 // Mock WorkingFAQ component
@@ -57,26 +59,26 @@ describe("Page Contact - DaisyUI Migration", () => {
     expect(screen.getByText(/implantations/i)).toBeInTheDocument();
   });
 
-  test("Le formulaire de contact utilise DaisyUI", () => {
+  test("Le formulaire de contact utilise le style de card canonique", () => {
     render(<ContactPage />);
-    
-    // Vérifier la structure DaisyUI du formulaire
+
+    // Vérifier le style canonique de la card (design.md §8.5)
     const formCard = screen.getByTestId("contact-form-card");
-    expect(formCard).toHaveClass("card", "bg-base-100", "shadow-xl");
-    
+    expect(formCard).toHaveClass("rounded-xl", "bg-white", "border-gray-200");
+
     const formTitle = screen.getByTestId("contact-form-title");
-    expect(formTitle).toHaveClass("card-title", "text-2xl", "font-bold", "text-white");
-    
+    expect(formTitle).toHaveClass("text-2xl", "font-bold", "text-white");
+
     const formBody = screen.getByTestId("contact-form-body");
-    expect(formBody).toHaveClass("card-body", "p-8");
+    expect(formBody).toHaveClass("flex", "flex-col", "p-8");
   });
 
-  test("Les cartes de contact utilisent DaisyUI avec des emojis temporaires", () => {
+  test("Les cartes de contact utilisent le style canonique avec des emojis temporaires", () => {
     render(<ContactPage />);
-    
-    // Vérifier la carte hotline
+
+    // Vérifier la carte hotline (bordure accent rouge conservée)
     const hotlineCard = screen.getByTestId("hotline-card");
-    expect(hotlineCard).toHaveClass("card", "bg-base-100", "border-red-primary");
+    expect(hotlineCard).toHaveClass("rounded-xl", "bg-white", "border-red-primary");
     
     // Vérifier l'emoji à la place de l'icône (solution temporaire)
     expect(screen.getByText("📞")).toBeInTheDocument();
@@ -91,7 +93,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     // Vérifier la carte WhatsApp
     const whatsappCard = screen.getByTestId("whatsapp-card");
-    expect(whatsappCard).toHaveClass("card", "bg-base-100", "hover:shadow-lg");
+    expect(whatsappCard).toHaveClass("rounded-xl", "bg-white", "hover:shadow-md");
     
     // Vérifier l'emoji WhatsApp
     expect(screen.getByText("💬")).toBeInTheDocument();
@@ -108,7 +110,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     
     locations.forEach(location => {
       const locationCard = screen.getByTestId(`location-${location}`);
-      expect(locationCard).toHaveClass("card", "bg-white/10", "backdrop-blur-sm");
+      expect(locationCard).toHaveClass("rounded-xl", "bg-white/10", "backdrop-blur-sm");
     });
     
     // Vérifier qu'il y a des emojis de localisation (5 au total)

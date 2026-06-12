@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Phone } from '@/lib/icons';
 
 interface HubSpotCalendarProps {
   /**
@@ -129,21 +130,21 @@ export function HubSpotCalendar({
             </h3>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center space-x-2">
-                <i className="lni lni-phone text-red-600"></i>
+                <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Guyane :</span>
                 <a href="tel:0594963500" className="text-blue-600 hover:text-blue-800">
                   0594 963 500
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="lni lni-phone text-red-600"></i>
+                <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Guadeloupe :</span>
                 <a href="tel:0590173500" className="text-blue-600 hover:text-blue-800">
                   0590 173 500
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="lni lni-phone text-red-600"></i>
+                <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Martinique :</span>
                 <a href="tel:0596313500" className="text-blue-600 hover:text-blue-800">
                   0596 313 500
@@ -152,14 +153,14 @@ export function HubSpotCalendar({
             </div>
             <div className="mt-3 flex justify-center gap-4 text-sm">
               <div className="flex items-center space-x-2">
-                <i className="lni lni-phone text-red-600"></i>
+                <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">La Réunion :</span>
                 <a href="tel:+262263085500" className="text-blue-600 hover:text-blue-800">
                   +262 263 085 500
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="lni lni-phone text-red-600"></i>
+                <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">France :</span>
                 <a href="tel:0189563500" className="text-blue-600 hover:text-blue-800">
                   0189 563 500

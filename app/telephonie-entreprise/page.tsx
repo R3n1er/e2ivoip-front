@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -11,11 +10,12 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Chat, Phone, Users, Headphones, CheckCircle } from "@/lib/icons";
 
 export default function TelephonieDentreprise() {
   const solutions = [
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "Standards téléphoniques IP",
       description:
         "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
@@ -27,7 +27,7 @@ export default function TelephonieDentreprise() {
       ],
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "Solutions multi-sites",
       description:
         "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
@@ -39,7 +39,7 @@ export default function TelephonieDentreprise() {
       ],
     },
     {
-      icon: "lni-headphone",
+      Icon: Headphones,
       title: "Centre d'appels",
       description:
         "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
@@ -60,61 +60,69 @@ export default function TelephonieDentreprise() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Téléphonie <span className="text-red-600">d'entreprise</span>
+                Téléphonie <span className="text-red-primary">d'entreprise</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Des solutions de téléphonie IP complètes et évolutives pour
                 répondre aux besoins de votre entreprise
               </p>
-              <CTAButton href="/devis-en-ligne?service=telephonie" icon="lni-bubble">
+              <CTAButton href="/devis-en-ligne?service=telephonie" icon="Chat">
                 MODERNISER MA TELEPHONIE
               </CTAButton>
             </div>
           </div>
         </section>
 
-        {/* Solutions */}
+        {/* Solutions — zig-zag 2 colonnes alterné (design.md P3.11) */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-8">
-              {solutions.map((solution, index) => (
-                <Card
-                  key={index}
-                  className="border-gray-200 hover:shadow-lg transition-shadow"
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+            {solutions.map((solution, index) => (
+              <div
+                key={index}
+                className="grid lg:grid-cols-2 gap-12 items-center"
+              >
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                    <solution.Icon size={24} className="text-red-primary" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-dark mb-4">
+                    {solution.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed max-w-[65ch]">
+                    {solution.description}
+                  </p>
+                </div>
+                <div
+                  className={`bg-blue-marine/5 border border-blue-marine/20 rounded-2xl p-8 ${
+                    index % 2 === 1 ? "lg:order-1" : ""
+                  }`}
                 >
-                  <CardHeader>
-                    <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                      <i
-                        className={`lni ${solution.icon} w-6 h-6 text-red-600`}
-                      ></i>
-                    </div>
-                    <CardTitle className="text-xl">{solution.title}</CardTitle>
-                    <CardDescription>{solution.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {solution.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-center text-sm text-gray-600"
-                        >
-                          <div className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  <ul className="space-y-4">
+                    {solution.features.map((feature, featureIndex) => (
+                      <li
+                        key={featureIndex}
+                        className="flex items-start gap-3 text-gray-700"
+                      >
+                        <CheckCircle
+                          size={24}
+                          className="text-red-primary mt-0.5 flex-shrink-0"
+                          aria-hidden="true"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Sub-navigation */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Nos solutions <span className="text-red-600">spécialisées</span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-12">
+              Nos solutions <span className="text-red-primary">spécialisées</span>
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -174,7 +182,6 @@ export default function TelephonieDentreprise() {
         {/* Contact */}
         <ContactSectionSimple />
       </div>
-      <Footer />
     </div>
   );
 }

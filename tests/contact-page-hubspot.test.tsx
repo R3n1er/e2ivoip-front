@@ -42,7 +42,7 @@ describe("ContactPage HubSpot Integration", () => {
     // Vérifier que le conteneur HubSpot est dans la bonne section
     const formBody = screen.getByTestId("contact-form-body");
     expect(formBody).toBeInTheDocument();
-    expect(formBody).toHaveClass("card-body", "p-8");
+    expect(formBody).toHaveClass("flex", "flex-col", "p-8");
   });
 
   it("should display the contact form title", () => {

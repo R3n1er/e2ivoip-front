@@ -209,7 +209,7 @@ export default function WorkingFAQ() {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
           <span className="text-4xl" role="img" aria-label="FAQ">❓</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
           FAQ
         </h2>
         <p className="text-xl text-gray-600">
@@ -222,7 +222,7 @@ export default function WorkingFAQ() {
         {faqData.map((item, index) => (
           <details 
             key={index}
-            className="group bg-white rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
+            className="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md open:shadow-lg"
           >
             <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
               <span className="font-semibold text-gray-900 pr-4">

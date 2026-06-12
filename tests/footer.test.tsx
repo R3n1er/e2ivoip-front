@@ -8,12 +8,12 @@ beforeEach(() => {
 
   it("affiche l'accroche de marque", () => {
     expect(
-      screen.getByText(/Solutions de telephonie IP et communications d.entreprise/)
+      screen.getByText(/Solutions de téléphonie IP et communications d'entreprise/)
     ).toBeInTheDocument()
   })
 
   it('présente les coordonnées de contact principales', () => {
-    expect(screen.getByText('contact@e2i-voip.com')).toBeInTheDocument()
+    expect(screen.getByText('contact@…')).toBeInTheDocument()
     expect(screen.getByText('Paris, France')).toBeInTheDocument()
   })
 
@@ -39,7 +39,7 @@ beforeEach(() => {
       screen.getByAltText('3CX Bronze Partner Badge')
     ).toBeInTheDocument()
 
-    const partnerBar = screen.getByText('Partenaires certifies :').closest('div')
+    const partnerBar = screen.getByText('Partenaires certifiés :').closest('div')
     const { getByRole } = within(partnerBar as HTMLElement)
 
     expect(getByRole('link', { name: '3CX' })).toHaveAttribute('href', 'https://www.3cx.fr')
@@ -57,6 +57,6 @@ beforeEach(() => {
   })
 
   it('affiche le copyright annuel', () => {
-    expect(screen.getByText(/© 2024 E2I VoIP/)).toBeInTheDocument()
+    expect(screen.getByText(/© 2025 E2I VoIP/)).toBeInTheDocument()
   })
 })

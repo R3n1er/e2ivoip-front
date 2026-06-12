@@ -1,17 +1,18 @@
 "use client";
 
 import { CTAButton } from "@/components/ui/cta-button";
-import Link from "next/link";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { Cloud, Users, Phone, Network, BarChart, CheckCircle, ArrowRight } from "@/lib/icons";
 
 export function ServicesSectionSimple() {
   const services = [
     {
-      icon: "lni-cloud",
+      Icon: Cloud,
       title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
-        "Économies jusqu'à 30%",
+        "Économies jusqu'à 20%",
         "Numéros locaux garantis",
         "Portabilité gratuite",
         "Support technique local",
@@ -22,7 +23,7 @@ export function ServicesSectionSimple() {
       href: "/telephonie-entreprise/trunk-sip-compteur",
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "3CX SMB PRO",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -34,10 +35,10 @@ export function ServicesSectionSimple() {
       ],
       badge: "Idéal PME",
       price: "15€/mois/utilisateur",
-      href: "/telephonie-entreprise/3cx-smb-pro",
+      href: "/telephonie-entreprise/3cx-smb-mutualisee",
     },
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "3CX PRO Cloud",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -52,22 +53,22 @@ export function ServicesSectionSimple() {
       href: "/3cx-cloud",
     },
     {
-      icon: "lni-comments",
-      title: "Assistants Vocaux IA",
+      Icon: Network,
+      title: "Trunk SIP agents IA",
       description:
-        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
+        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
       features: [
-        "Accueil 24/7",
-        "Compréhension naturelle",
-        "Transcription automatique",
-        "Intégration CRM",
+        "Numéros +596, +590, +594, +262",
+        "BYOC compatible",
+        "Trunk ou redirection",
+        "Offre revendeurs",
       ],
       badge: "Innovation",
       price: "Sur devis",
-      href: "/nos-services/assistants-vocaux-ia",
+      href: "/telephonie-entreprise/trunk-sip-agents-ia",
     },
     {
-      icon: "lni-bar-chart",
+      Icon: BarChart,
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -79,7 +80,7 @@ export function ServicesSectionSimple() {
       ],
       badge: "Pro",
       price: "À partir de 50€",
-      href: "/nos-services/studio-attente",
+      href: "/studio-attente",
     },
   ];
 
@@ -88,7 +89,7 @@ export function ServicesSectionSimple() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             Nos solutions de
             <span className="text-red-primary"> téléphonie IP</span>
           </h2>
@@ -100,24 +101,28 @@ export function ServicesSectionSimple() {
 
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Services Grid — 2 colonnes ; 5e carte centrée */}
+        <RevealGroup className="grid md:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 group cursor-pointer border-0 flex flex-col h-full"
+            <RevealItem
+              key={service.href}
+              className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
+                index === services.length - 1
+                  ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
+                  : ""
+              }`}
             >
-              <div className="card-body p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
-                    <i className={`lni ${service.icon} text-xl text-red-primary group-hover:scale-110 transition-transform duration-200`}></i>
+                    <service.Icon size={24} className="text-red-primary group-hover:scale-110 transition-transform duration-200" />
                   </div>
                   <div className="badge badge-primary badge-lg font-medium">
                     {service.badge}
                   </div>
                 </div>
 
-                <h3 className="card-title text-xl mb-3 text-base-content">
+                <h3 className="flex items-center gap-2 text-xl font-semibold mb-3 text-base-content">
                   {service.title}
                 </h3>
 
@@ -128,7 +133,7 @@ export function ServicesSectionSimple() {
                 <div className="space-y-3 mb-6 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
-                      <i className="lni lni-checkmark-circle text-success mr-3 flex-shrink-0 text-lg"></i>
+                      <CheckCircle size={16} className="text-success mr-3 flex-shrink-0" />
                       <span className="text-base-content/80">{feature}</span>
                     </div>
                   ))}
@@ -143,14 +148,14 @@ export function ServicesSectionSimple() {
                     </span>
                   </div>
 
-                  <CTAButton href={service.href} icon="lni-arrow-right" className="w-full">
+                  <CTAButton href={service.href} icon={ArrowRight} className="w-full">
                     En savoir plus
                   </CTAButton>
                 </div>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
       </div>
     </section>

@@ -1,5 +1,8 @@
+"use client";
 import React from "react";
 import { HubSpotCalendar } from "@/components/hubspot/legacy/hubspot-calendar";
+import { SecureEmail } from "@/components/secure-email";
+import { Check, Alarm, Warning, Rocket, CurrencyDollar, Envelope, Globe } from "@/lib/icons";
 
 interface CTACalendarSectionProps {
   title?: string;
@@ -38,10 +41,10 @@ export function CTACalendarSection({
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête principal */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             {title}
           </h2>
           <h3 className="text-2xl md:text-3xl font-semibold text-blue-800 mb-8">
@@ -63,7 +66,7 @@ export function CTACalendarSection({
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                  <i className="lni lni-checkmark text-blue-600 text-lg"></i>
+                  <Check size={16} weight="bold" className="text-blue-600" />
                 </div>
                 <p className="text-gray-700 leading-relaxed">{benefit}</p>
               </div>
@@ -82,7 +85,7 @@ export function CTACalendarSection({
             <div className="bg-gradient-to-r from-red-100 to-orange-100 rounded-xl p-8 border border-red-200">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="lni lni-alarm text-red-600 text-2xl"></i>
+                  <Alarm size={32} className="text-red-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
                   Pourquoi Agir Maintenant ?
@@ -92,7 +95,7 @@ export function CTACalendarSection({
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div className="p-4 bg-white rounded-lg border border-red-200">
                   <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i className="lni lni-warning text-red-600 text-xl"></i>
+                    <Warning size={24} className="text-red-primary" />
                   </div>
                   <h4 className="font-bold text-gray-800 mb-2">Arrêt du réseau cuivre</h4>
                   <p className="text-sm text-gray-600">La migration vers l'IP est inévitable</p>
@@ -100,7 +103,7 @@ export function CTACalendarSection({
                 
                 <div className="p-4 bg-white rounded-lg border border-orange-200">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i className="lni lni-rocket text-orange-600 text-xl"></i>
+                    <Rocket size={24} className="text-red-primary" />
                   </div>
                   <h4 className="font-bold text-gray-800 mb-2">Vos concurrents modernisent</h4>
                   <p className="text-sm text-gray-600">Ne prenez pas de retard technologique</p>
@@ -108,7 +111,7 @@ export function CTACalendarSection({
                 
                 <div className="p-4 bg-white rounded-lg border border-red-200">
                   <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i className="lni lni-dollar text-red-600 text-xl"></i>
+                    <CurrencyDollar size={24} className="text-red-primary" />
                   </div>
                   <h4 className="font-bold text-gray-800 mb-2">Opportunités perdues</h4>
                   <p className="text-sm text-gray-600">Chaque jour de retard coûte cher</p>
@@ -128,20 +131,19 @@ export function CTACalendarSection({
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-4 bg-white rounded-lg border border-gray-200">
                 <div className="flex items-center justify-center mb-3">
-                  <i className="lni lni-envelope text-blue-600 text-xl mr-2"></i>
+                  <Envelope size={24} className="text-blue-600 mr-2" />
                   <span className="font-semibold text-gray-800">Email</span>
                 </div>
-                <a 
-                  href="mailto:commerciaux@e2i-voip.com"
+                <SecureEmail
+                  address="sales"
+                  mode="mailto"
                   className="text-blue-600 hover:text-blue-800 font-medium"
-                >
-                  commerciaux@e2i-voip.com
-                </a>
+                />
               </div>
               
               <div className="p-4 bg-white rounded-lg border border-gray-200">
                 <div className="flex items-center justify-center mb-3">
-                  <i className="lni lni-world text-red-600 text-xl mr-2"></i>
+                  <Globe size={24} className="text-red-primary mr-2" />
                   <span className="font-semibold text-gray-800">Devis en ligne</span>
                 </div>
                 <a 

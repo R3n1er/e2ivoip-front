@@ -2,7 +2,7 @@
 
 > Référence technique du projet. Source de vérité pour la structure, les conventions et le workflow.
 
-**Dernière mise à jour** : 2026-05-16
+**Dernière mise à jour** : 2026-05-19
 
 ---
 
@@ -13,7 +13,7 @@ e2ivoip-front/
 ├── app/                          # Pages NextJS 15 App Router
 │   ├── layout.tsx                # Layout principal
 │   ├── page.tsx                  # Homepage
-│   ├── blog/                     # Pages blog (Contentful)
+│   ├── blog/                     # Pages blog (HubSpot CMS API)
 │   ├── contact/                  # Page contact
 │   └── [autres-routes]/
 ├── components/
@@ -89,6 +89,21 @@ import { HUBSPOT_CONFIG, getHubSpotFormId } from "@/lib/constants/hubspot";
 const portalId = HUBSPOT_CONFIG.PORTAL_ID; // 26878201
 const formId = getHubSpotFormId("CONTACT_GENERAL");
 ```
+
+### Variables d'environnement HubSpot
+
+| Variable | Obligatoire | Usage |
+|----------|-------------|--------|
+| `HUBSPOT_ACCESS_TOKEN` | **Oui** (blog + API serveur) | Private App `pat-eu1-…` — `Authorization: Bearer` sur `/cms/v3/blogs/posts`, ingest CRM, test connexion |
+| `HUBSPOT_CLIENT_ID` | Non | OAuth admin (`getHubSpotAuthUrl`) |
+| `HUBSPOT_CLIENT_SECRET` | Non | Échange code OAuth (`exchangeCodeForToken`) |
+| `HUBSPOT_REDIRECT_URI` | Non | Callback OAuth local ou prod |
+
+Les formulaires embed n'utilisent **pas** de secret serveur : le portal ID est défini dans `lib/constants/hubspot.ts` (fallback `26878201`).
+
+Flux blog : `app/blog/*` → `lib/blog-source.ts` → `lib/hubspot-blog.ts` → API HubSpot CMS.
+
+Voir ADR **2026-05-23** pour le détail de la simplification `.env.local`.
 
 ---
 

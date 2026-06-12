@@ -8,17 +8,18 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Phone, Chat } from '@/lib/icons';
 
 export const metadata: Metadata = {
-  title: "Assistance & Support - E2I VoIP | Support technique 24/7 DOM",
+  title: "Assistance & Support - E2I VoIP | Support technique DOM",
   description:
-    "Support technique E2I VoIP 24/7. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
+    "Support technique E2I VoIP par mail et téléphone. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
   openGraph: {
-    title: "Assistance & Support - E2I VoIP | Support technique 24/7",
+    title: "Assistance & Support - E2I VoIP | Support technique par mail et téléphone",
     description:
-      "Support technique E2I VoIP 24/7. Équipes locales DOM, chat en ligne, guides et tutoriels.",
+      "Support technique E2I VoIP par mail et téléphone. Équipes locales DOM, chat en ligne, guides et tutoriels.",
     type: "website",
   },
 };
@@ -51,7 +52,7 @@ export default function AssistancePage() {
               Notre équipe d'experts est là pour vous accompagner dans
               l'utilisation de vos solutions téléphoniques
             </p>
-            <CTAButton href="/contact?objet=support" icon="lni-headphone">
+            <CTAButton href="/contact?objet=support" icon="Headphone">
               DEMANDER UN SUPPORT
             </CTAButton>
           </div>
@@ -61,18 +62,18 @@ export default function AssistancePage() {
       {/* Hotline Support */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-8">
             Hotline <span className="text-red-primary">Support</span>
           </h2>
-          <Card className="border-red-primary border-2 hover:shadow-xl transition-shadow">
+          <Card className="border-red-primary border-2 hover:shadow-md transition-shadow duration-300">
             <CardContent className="p-12">
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <i className="lni lni-phone w-10 h-10 text-white"></i>
+                <Phone size={24} className="text-white" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
               </h3>
-              <p className="text-3xl font-bold text-red-primary mb-4">
+              <p className="text-3xl font-bold font-mono tabular-nums text-red-primary mb-4">
                 0189 560 500
               </p>
               <p className="text-lg text-gray-600 mb-4">
@@ -90,7 +91,7 @@ export default function AssistancePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Chat{" "}
               <span className="text-red-primary">assistance instantanée</span>
             </h2>
@@ -99,9 +100,9 @@ export default function AssistancePage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
             <div className="text-center mb-6">
-              <i className="lni lni-comments w-12 h-12 text-blue-marine mx-auto mb-4"></i>
+              <Chat size={24} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 Support chat en direct
               </h3>

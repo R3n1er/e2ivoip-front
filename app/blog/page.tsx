@@ -5,7 +5,7 @@ import { BlogSearch } from "@/components/blog/blog-search";
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 
-import type { BlogPost } from "@/lib/contentful-blog";
+import type { PublicBlogPost as BlogPost } from "@/lib/blog-types";
 
 interface BlogFilters {
   query: string;
@@ -234,7 +234,7 @@ export default function Blog() {
         {/* Section CTA */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Besoin d&apos;expertise en téléphonie IP ?
             </h2>
             <p className="text-lg text-gray-600 mb-8">

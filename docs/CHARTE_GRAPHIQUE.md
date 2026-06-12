@@ -80,6 +80,17 @@ E2I VOIP
 
 #### Typographie
 
+**Police officielle : Inter** — cohérente avec le logo E2I VoIP (dessiné en Inter).
+Police conçue pour les écrans, optimale en lisibilité web. Chargée via
+`next/font/google` dans `app/layout.tsx`.
+
+- **Texte & titres** : Inter (toutes graisses)
+- **Données chiffrées** (stats, tarifs, compteurs) : IBM Plex Mono +
+  `tabular-nums` — effet « télécom/data », alignement des chiffres
+- **Interdit** : police serif sur l'UI produit
+
+Couleurs typographiques :
+
 - **Titre principal** : Gris foncé (#1F2937)
 - **Sous-titres** : Bleu marine (#2D3848)
 - **Texte principal** : Gris foncé (#1F2937)

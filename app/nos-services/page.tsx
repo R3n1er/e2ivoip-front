@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -11,21 +10,21 @@ import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
-import { TestimonialsSectionSimple } from "@/components/testimonials-section-simple";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, assistants vocaux IA. Économies 30% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. 20% d'économies sur vos communications DROM. Devis gratuit ☎",
   keywords:
-    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, assistants vocaux IA, studio enregistrement, VoIP Antilles",
+    "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 30% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. ",
     type: "website",
     locale: "fr_FR",
   },
@@ -40,12 +39,12 @@ export const metadata: Metadata = {
 export default function NosServices() {
   const services = [
     {
-      icon: "lni-cloud",
+      Icon: Cloud,
       title: "Trunk SIP DOM",
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
-        "Économies jusqu'à 30%",
+        "Économies jusqu'à 20%",
         "Numéros locaux garantis",
         "Portabilité gratuite",
         "Support technique local",
@@ -57,7 +56,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-users",
+      Icon: Users,
       title: "3CX SMB PRO",
       description:
         "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
@@ -73,7 +72,7 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-phone",
+      Icon: Phone,
       title: "3CX PRO Dédié",
       description:
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
@@ -89,23 +88,23 @@ export default function NosServices() {
       category: "Téléphonie IP",
     },
     {
-      icon: "lni-comments",
-      title: "Assistants Vocaux IA",
+      Icon: TreeStructure,
+      title: "Trunk SIP agents IA",
       description:
-        "Accueil client 24/7 avec intelligence artificielle et transcription des appels",
+        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
       features: [
-        "Accueil 24/7",
-        "Compréhension naturelle",
-        "Transcription automatique",
-        "Intégration CRM",
+        "Numéros +596, +590, +594, +262",
+        "BYOC compatible",
+        "Trunk ou redirection",
+        "Offre revendeurs",
       ],
       badge: "Innovation",
       price: "Sur devis",
-      href: "/nos-services/assistants-vocaux-ia",
+      href: "/telephonie-entreprise/trunk-sip-agents-ia",
       category: "Innovation",
     },
     {
-      icon: "lni-bar-chart",
+      Icon: ChartBar,
       title: "Studio d'Enregistrement",
       description:
         "Messages vocaux professionnels et musiques personnalisées pour votre standard",
@@ -130,25 +129,25 @@ export default function NosServices() {
 
   const benefits = [
     {
-      icon: "lni-bolt",
-      title: "Économies garanties",
-      description: "Jusqu'à 30% de réduction sur vos factures télécom",
+      Icon: Lightning,
+      title: "20% d'économies",
+      description: "Sur le coût de vos communications dans les DROM",
       color: "text-red-primary",
     },
     {
-      icon: "lni-map-marker",
+      Icon: MapPin,
       title: "Présence locale DOM",
-      description: "Support technique réactif dans toutes les zones",
+      description: "Support par mail et téléphone dans toutes les zones",
       color: "text-blue-marine",
     },
     {
-      icon: "lni-timer",
+      Icon: Timer,
       title: "Disponibilité 24/7",
-      description: "Services et support disponibles en permanence",
+      description: "Votre téléphonie reste opérationnelle en permanence",
       color: "text-green-600",
     },
     {
-      icon: "lni-shield",
+      Icon: Shield,
       title: "Sécurité maximale",
       description: "Infrastructure cloud France/UE conforme RGPD",
       color: "text-purple-600",
@@ -161,7 +160,7 @@ export default function NosServices() {
     "@type": "Organization",
     name: "E2I VoIP",
     description:
-      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et assistants vocaux IA.",
+      "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et interconnexion agents vocaux IA.",
     url: "https://e2ivoip.fr",
     logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
     contactPoint: {
@@ -212,14 +211,14 @@ export default function NosServices() {
                 </h1>
                 <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
                   Transformez votre téléphonie d&apos;entreprise avec des
-                  solutions complètes : économies garanties et fonctionnalités
+                  solutions complètes : 20% d'économies sur vos communications et fonctionnalités
                   nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                  <CTAButton href="/devis-en-ligne" icon="Calculator">
                     DECOUVRIR NOS OFFRES
                   </CTAButton>
-                  <CTAButtonMarine href="/contact" icon="lni-phone">
+                  <CTAButtonMarine href="/contact" icon="Phone">
                     Audit telecom gratuit
                   </CTAButtonMarine>
                 </div>
@@ -231,7 +230,7 @@ export default function NosServices() {
           <section className="py-16 bg-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-blue-marine mb-4">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
                   Pourquoi choisir{" "}
                   <span className="text-red-primary">E2I VoIP</span> ?
                 </h2>
@@ -249,9 +248,7 @@ export default function NosServices() {
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <i
-                          className={`lni ${benefit.icon} text-2xl ${benefit.color}`}
-                        ></i>
+                        <benefit.Icon size={32} className={benefit.color} aria-hidden="true" />
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
                         {benefit.title}
@@ -272,7 +269,7 @@ export default function NosServices() {
           <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-blue-marine mb-4">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
                   Nos <span className="text-red-primary">catégories</span> de
                   services
                 </h2>
@@ -310,7 +307,7 @@ export default function NosServices() {
           <section className="py-20 bg-white-primary">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-blue-marine mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-6">
                   Découvrez nos{" "}
                   <span className="text-red-primary">solutions</span>
                 </h2>
@@ -329,9 +326,7 @@ export default function NosServices() {
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <i
-                            className={`lni ${service.icon} h-6 w-6 text-red-primary`}
-                          ></i>
+                          <service.Icon size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
                         <Badge className="bg-red-primary text-white-primary">
                           {service.badge}
@@ -352,7 +347,7 @@ export default function NosServices() {
                             key={featureIndex}
                             className="flex items-center text-sm"
                           >
-                            <i className="lni lni-checkmark-circle h-4 w-4 text-red-primary mr-2 flex-shrink-0"></i>
+                            <CheckCircle size={16} className="text-red-primary mr-2 flex-shrink-0" aria-hidden="true" />
                             <span className="text-gray-secondary">
                               {feature}
                             </span>
@@ -369,7 +364,7 @@ export default function NosServices() {
 
                         <CTAButton
                           href={service.href}
-                          icon="lni-arrow-right"
+                          icon="ArrowRight"
                           className="w-full"
                         >
                           En savoir plus
@@ -385,8 +380,8 @@ export default function NosServices() {
           {/* CTA Section */}
           <section className="py-20 bg-blue-marine">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white-primary mb-6">
-                Prêt à économiser <span className="text-red-primary">30%</span>{" "}
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white-primary mb-6">
+                Prêt à économiser <span className="text-red-primary">20%</span>{" "}
                 sur vos télécoms ?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -396,18 +391,15 @@ export default function NosServices() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <CTAButton href="/contact" icon="lni-phone">
+                <CTAButton href="/contact" icon="Phone">
                   Audit télécom gratuit
                 </CTAButton>
-                <CTAButtonMarine href="/devis-en-ligne" icon="lni-bubble">
+                <CTAButtonMarine href="/devis-en-ligne" icon="Chat">
                   Demander un devis
                 </CTAButtonMarine>
               </div>
             </div>
           </section>
-
-          {/* Social Proof */}
-          <TestimonialsSectionSimple />
 
           {/* Territory phone links -- D-09 */}
           <section className="bg-gray-50 py-8">
@@ -431,7 +423,6 @@ export default function NosServices() {
           {/* Contact */}
           <ContactSectionSimple />
         </main>
-        <Footer />
       </div>
     </>
   );

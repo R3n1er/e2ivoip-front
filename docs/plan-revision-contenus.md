@@ -113,12 +113,12 @@
      • Musique libre de droits incluse
    - CTA : "Écoutez nos exemples"
 
-7. **Assistants Vocaux IA** (`/nos-services/assistants-vocaux-ia`)
-   - Titre : "Assistant vocal intelligent 24/7 pour votre entreprise"
-   - Focus : Accueil automatisé, qualification leads, prise RDV
-   - Technologies : ElevenLabs, Rounded
-   - 3 piliers : Accueil 24/7, qualification auto, transfert intelligent
-   - CTA : "Démonstration gratuite"
+7. **Trunk SIP agents IA** (`/telephonie-entreprise/trunk-sip-agents-ia`)
+   - Titre : "Trunk SIP DOM pour agents vocaux IA — interconnexion VAPI, Rounded, ElevenLabs, Jambonz"
+   - Focus : Carrier SIP DOM pour intégrateurs IA (BYOC, numéros locaux, trunk ou redirection)
+   - Cas d'usage : kinésithérapeutes (RDV), dépannage auto, accueil PME 24/7
+   - CTA : "Parler à un commercial"
+   - Note : remplace l'ancienne page `/nos-services/assistants-vocaux-ia` (supprimée, pas de redirect)
 
 ### Phase 3 : Pages Institutionnelles (Semaine 3)
 
@@ -143,7 +143,7 @@
 ### Phase 4 : Optimisation SEO (Semaine 4)
 
 #### Meta Descriptions (155 caractères max)
-- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM, numéros locaux, mobilité. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
+- Accueil : "E2I VoIP : -30% sur vos coûts télécoms. Trunk SIP DOM, numéros locaux, IPBX 3CX. Leader VoIP Antilles-Guyane. Devis gratuit ☎"
 - Téléphonie : "Téléphonie IP nouvelle génération. Trunk SIP compteur/illimité DOM. Création numéros locaux. Économies 30%. Support 24/7."
 - Trunk SIP : "Trunk SIP éligible DOM. Au compteur ou illimité. Numéros locaux inclus. Portabilité gratuite. -30% vs télécom classique."
 - Contact : "Contactez E2I VoIP pour vos besoins télécom. Réponse en 2h. Présence locale Martinique, Guadeloupe, Guyane. ☎ 0590 96 35 00"

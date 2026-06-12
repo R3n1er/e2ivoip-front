@@ -1,4 +1,6 @@
-import Image from 'next/image'
+"use client";
+import { SafeImage as Image } from '@/components/ui/safe-image'
+import { Star, Quotes } from '@/lib/icons'
 
 interface Testimonial {
   content: string
@@ -37,7 +39,7 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
   },
   {
     content:
-      'Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.',
+      'Excellent service client et reactivite remarquable. L\'interconnexion SIP pour nos agents vocaux IA a transforme notre accueil telephonique 24/7.',
     author: 'Sophie Laurent',
     role: 'Responsable Qualite',
     company: 'Clinique Saint-Joseph',
@@ -55,7 +57,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black tracking-[-0.04em] leading-[0.95] text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
             Plus de 500 entreprises
             <span className="text-red-primary"> nous font confiance</span>
           </h2>
@@ -90,14 +92,11 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <i
-                    key={i}
-                    className="lni lni-star-filled h-5 w-5 text-yellow-400"
-                  ></i>
+                  <Star key={i} size={24} weight="fill" className="text-yellow-400" />
                 ))}
               </div>
 
-              <i className="lni lni-question-circle h-8 w-8 text-red-200 mb-4"></i>
+              <Quotes size={32} weight="fill" className="text-red-200 mb-4" />
 
               <p className="text-gray-secondary mb-6 leading-relaxed">
                 &ldquo;{testimonial.content}&rdquo;

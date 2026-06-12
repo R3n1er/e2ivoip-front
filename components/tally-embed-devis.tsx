@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Calculator, CheckCircle, Shield, Timer, Users } from "@/lib/icons";
+import { FormSkeleton } from "@/components/ui/form-skeleton";
 
 const TALLY_EMBED_URL =
   "https://tally.so/embed/mDY1bl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
@@ -67,11 +69,11 @@ export function TallyEmbedDevis() {
         {/* En-tête améliorée avec badge et icônes */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <i className="lni lni-calculator mr-2"></i>
+            <Calculator size={16} className="mr-2" aria-hidden="true" />
             Devis personnalisé gratuit
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             Obtenez votre{" "}
             <span className="text-red-primary">devis sur-mesure</span>
           </h2>
@@ -84,19 +86,19 @@ export function TallyEmbedDevis() {
           {/* Avantages du formulaire */}
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+              <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
               <span>100% Gratuit</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-shield text-blue-marine text-xl"></i>
+              <Shield size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Sans engagement</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-timer text-red-primary text-xl"></i>
+              <Timer size={24} className="text-red-primary" aria-hidden="true" />
               <span>Réponse rapide</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
-              <i className="lni lni-users text-blue-marine text-xl"></i>
+              <Users size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Expert dédié</span>
             </div>
           </div>
@@ -127,11 +129,7 @@ export function TallyEmbedDevis() {
                   sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
                 />
               ) : (
-                <div className="flex items-center justify-center w-full h-[500px] bg-gray-50">
-                  <span className="text-gray-500">
-                    Chargement du formulaire…
-                  </span>
-                </div>
+                <FormSkeleton height={500} />
               )}
             </div>
           </div>

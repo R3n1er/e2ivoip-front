@@ -1,5 +1,8 @@
-import Image from "next/image";
+"use client";
+
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { CheckCircle, Chats, Phone } from "@/lib/icons";
 
 export function TransformationSection() {
   return (
@@ -13,6 +16,7 @@ export function TransformationSection() {
               alt="Femme souriante au téléphone - Communication d'entreprise optimisée"
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
           </div>
@@ -20,7 +24,7 @@ export function TransformationSection() {
           {/* Colonne texte à droite */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark">
                 Transformez votre{" "}
                 <span className="text-red-primary">communication d'entreprise</span>
               </h2>
@@ -48,25 +52,25 @@ export function TransformationSection() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <i className="lni lni-checkmark-circle text-green-600 mt-1 mr-3 text-lg"></i>
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Téléphonie IP disponible par Internet</strong> - Accessibilité totale, où que vous soyez
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <i className="lni lni-checkmark-circle text-green-600 mt-1 mr-3 text-lg"></i>
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Coûts d'appels réduits</strong> - Fixe & Mobile Antilles, Guyane, La Réunion et Métropole
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <i className="lni lni-checkmark-circle text-green-600 mt-1 mr-3 text-lg"></i>
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>À partir de 4 canaux voix</strong> - 4 appels simultanés minimum
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <i className="lni lni-checkmark-circle text-green-600 mt-1 mr-3 text-lg"></i>
+                  <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
                     <strong>Budget téléphonique maîtrisé</strong> - Transparence et contrôle total
                   </span>
@@ -76,10 +80,10 @@ export function TransformationSection() {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-              <CTAButton href="/devis-en-ligne" icon="lni-comments-alt">
+              <CTAButton href="/devis-en-ligne" icon={Chats}>
                 Parlez-nous de votre projet
               </CTAButton>
-              <CTAButtonMarine href="/contact" icon="lni-phone">
+              <CTAButtonMarine href="/contact" icon={Phone}>
                 Nous contacter
               </CTAButtonMarine>
             </div>

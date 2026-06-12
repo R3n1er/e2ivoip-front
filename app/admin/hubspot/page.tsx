@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getHubSpotAuthUrl } from "@/lib/hubspot-blog";
+import { Gear, CheckCircle, XCircle, Lock, ArrowsClockwise, Question, Link } from '@/lib/icons';
 
 interface ScopeTestResult {
   name: string;
@@ -48,15 +48,25 @@ export default function HubSpotAdminPage() {
     checkConnection();
   }, []);
 
-  const handleConnect = () => {
+  const handleConnect = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const authUrl = getHubSpotAuthUrl();
-      window.location.href = authUrl;
-    } catch {
-      setError("Erreur lors de la génération de l'URL d'autorisation");
+      const response = await fetch("/api/hubspot/auth-url");
+      const data = await response.json();
+
+      if (!response.ok || !data.authUrl) {
+        throw new Error(data.error || "URL d'autorisation indisponible");
+      }
+
+      window.location.href = data.authUrl;
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Erreur lors de la génération de l'URL d'autorisation"
+      );
       setIsLoading(false);
     }
   };
@@ -116,7 +126,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <i className="lni lni-cog w-5 h-5"></i>
+                <Gear size={24} aria-hidden="true" />
                 Statut de connexion
               </CardTitle>
             </CardHeader>
@@ -124,9 +134,9 @@ export default function HubSpotAdminPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   {isConnected ? (
-                    <i className="lni lni-checkmark-circle w-6 h-6 text-green-500"></i>
+                    <CheckCircle size={24} className="text-green-500" aria-hidden="true" />
                   ) : (
-                    <i className="lni lni-cross-circle w-6 h-6 text-red-500"></i>
+                    <XCircle size={24} className="text-red-500" aria-hidden="true" />
                   )}
                   <div>
                     <p className="font-medium">
@@ -150,7 +160,7 @@ export default function HubSpotAdminPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <i className="lni lni-lock w-5 h-5"></i>
+                <Lock size={24} aria-hidden="true" />
                 Configuration OAuth
               </CardTitle>
             </CardHeader>
@@ -183,9 +193,9 @@ export default function HubSpotAdminPage() {
                   className="flex items-center gap-2"
                 >
                   {isLoading ? (
-                    <i className="lni lni-reload w-4 h-4 animate-spin"></i>
+                    <ArrowsClockwise size={16} className="animate-spin" aria-hidden="true" />
                   ) : (
-                    <i className="lni lni-unlock w-4 h-4"></i>
+                    <Lock size={16} aria-hidden="true" />
                   )}
                   {isConnected ? "Reconnecter" : "Se connecter"}
                 </Button>
@@ -196,7 +206,7 @@ export default function HubSpotAdminPage() {
                   disabled={isLoading}
                   className="flex items-center gap-2"
                 >
-                  <i className="lni lni-reload w-4 h-4"></i>
+                  <ArrowsClockwise size={16} aria-hidden="true" />
                   Tester la connexion
                 </Button>
 
@@ -207,9 +217,9 @@ export default function HubSpotAdminPage() {
                   className="flex items-center gap-2"
                 >
                   {isTestingScopes ? (
-                    <i className="lni lni-reload w-4 h-4 animate-spin"></i>
+                    <ArrowsClockwise size={16} className="animate-spin" aria-hidden="true" />
                   ) : (
-                    <i className="lni lni-question-circle w-4 h-4"></i>
+                    <Question size={16} aria-hidden="true" />
                   )}
                   Tester les scopes
                 </Button>
@@ -222,7 +232,7 @@ export default function HubSpotAdminPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <i className="lni lni-question-circle w-5 h-5"></i>
+                  <Question size={24} aria-hidden="true" />
                   Résultats des tests de scopes
                 </CardTitle>
               </CardHeader>
@@ -299,7 +309,7 @@ export default function HubSpotAdminPage() {
                   className="w-full justify-start"
                   onClick={() => window.open("/blog", "_blank")}
                 >
-                  <i className="lni lni-link w-4 h-4 mr-2"></i>
+                  <Link size={16} className="mr-2" aria-hidden="true" />
                   Voir le blog
                 </Button>
 
@@ -313,7 +323,7 @@ export default function HubSpotAdminPage() {
                     )
                   }
                 >
-                  <i className="lni lni-link w-4 h-4 mr-2"></i>
+                  <Link size={16} className="mr-2" aria-hidden="true" />
                   Documentation API HubSpot
                 </Button>
               </div>
@@ -325,7 +335,7 @@ export default function HubSpotAdminPage() {
             <Card className="border-red-200 bg-red-50">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 text-red-700">
-                  <i className="lni lni-cross-circle w-5 h-5"></i>
+                  <XCircle size={24} aria-hidden="true" />
                   <p className="font-medium">Erreur : {error}</p>
                 </div>
               </CardContent>

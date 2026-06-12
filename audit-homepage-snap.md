@@ -1,0 +1,312 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "E2I Solutions de Téléphonie IP et communications d'entreprise" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: E2I
+        - generic [ref=e9]: Solutions de Téléphonie IP et communications d'entreprise
+      - navigation [ref=e10]:
+        - link "Qui sommes-nous" [ref=e12] [cursor=pointer]:
+          - /url: /qui-sommes-nous
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - text: Téléphonie d'entreprise
+            - generic [ref=e15]: 
+          - generic [ref=e17]:
+            - link "Trunk SIP au compteur" [ref=e18] [cursor=pointer]:
+              - /url: /telephonie-entreprise/trunk-sip-compteur
+            - link "Trunk SIP illimité" [ref=e19] [cursor=pointer]:
+              - /url: /telephonie-entreprise/trunk-sip-illimite
+            - link "Téléphonie 3CX" [ref=e20] [cursor=pointer]:
+              - /url: /telephonie-3cx
+            - link "Téléphonie Yeastar" [ref=e21] [cursor=pointer]:
+              - /url: /telephonie-entreprise/pbx-yeastar
+        - generic [ref=e22]:
+          - link "Nos services " [ref=e23] [cursor=pointer]:
+            - /url: /nos-services
+            - text: Nos services
+            - generic [ref=e24]: 
+          - generic [ref=e26]:
+            - link "Studio attente téléphonique" [ref=e27] [cursor=pointer]:
+              - /url: /nos-services/studio-attente
+            - link "Assistants vocaux IA" [ref=e28] [cursor=pointer]:
+              - /url: /assistants-vocaux-ia
+        - link "Blog" [ref=e30] [cursor=pointer]:
+          - /url: /blog
+        - link "Devis en ligne" [ref=e32] [cursor=pointer]:
+          - /url: /devis-en-ligne
+      - link " Contact" [ref=e34] [cursor=pointer]:
+        - /url: /contact
+        - generic [ref=e35]:
+          - generic [ref=e36]: 
+          - text: Contact
+      - button "Ouvrir le menu" [ref=e37]:
+        - generic [ref=e38]: 
+  - main [ref=e39]:
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - img "Personne utilisant la téléphonie d'entreprise moderne" [ref=e44]
+        - generic [ref=e46]:
+          - generic [ref=e47]: Opérateur télécom DOM • Plus de 100 clients
+          - heading "Économisez 30% sur vos coûts télécoms avec la téléphonie IP" [level=1] [ref=e48]:
+            - text: Économisez 30%
+            - text: sur vos coûts télécoms
+            - text: avec la téléphonie IP
+          - paragraph [ref=e49]:
+            - text: Trunk SIP éligible DOM • Création et portabilité de numéros locaux
+            - text: Automatisation et fonctionnalités nouvelle génération
+          - generic [ref=e50]:
+            - link " Calculez vos économies" [ref=e51] [cursor=pointer]:
+              - /url: /devis-en-ligne
+            - link " Découvrez nos offres Trunk SIP" [ref=e54] [cursor=pointer]:
+              - /url: /telephonie-entreprise/trunk-sip-compteur
+          - generic [ref=e57]:
+            - generic [ref=e58]
+            - generic [ref=e62]
+            - generic [ref=e66]
+            - generic [ref=e70]
+        - generic [ref=e74]: Découvrir
+      - generic [ref=e77]:
+        - img "Femme souriante au téléphone - Communication d'entreprise optimisée" [ref=e78]
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - heading "Transformez votre communication d'entreprise" [level=2] [ref=e81]
+            - generic [ref=e82]
+          - generic [ref=e87]:
+            - heading "Vos avantages avec E2I VoIP" [level=3] [ref=e88]
+            - list [ref=e89]
+          - generic [ref=e106]:
+            - link "Parlez-nous de votre projet" [ref=e107] [cursor=pointer]:
+              - /url: /devis-en-ligne
+            - link " Nous contacter" [ref=e109] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - heading "Ils nous font confiance" [level=2] [ref=e115]
+          - paragraph [ref=e116]: Découvrez les entreprises qui nous font confiance pour leurs solutions de téléphonie IP
+        - generic [ref=e118]:
+          - generic [ref=e120]:
+            - img "Logo APAJH Guyane" [ref=e121]
+            - paragraph [ref=e122]: APAJH Guyane
+          - generic [ref=e124]:
+            - img "Logo SFR" [ref=e125]
+            - paragraph [ref=e126]: SFR
+          - generic [ref=e128]:
+            - img "Logo Cateco" [ref=e129]
+            - paragraph [ref=e130]: Cateco
+          - generic [ref=e132]:
+            - img "Logo Groupe Lang" [ref=e133]
+            - paragraph [ref=e134]: Groupe Lang
+          - generic [ref=e136]:
+            - img "Logo Zoo Guadeloupe" [ref=e137]
+            - paragraph [ref=e138]: Zoo Guadeloupe
+          - generic [ref=e140]:
+            - img "Logo Callas Paris" [ref=e141]
+            - paragraph [ref=e142]: Callas Paris
+          - generic [ref=e144]:
+            - img "Logo Zoo de Martinique" [ref=e145]
+            - paragraph [ref=e146]: Zoo Martinique
+          - generic [ref=e148]:
+            - img "Logo Zoo Guyane" [ref=e149]
+            - paragraph [ref=e150]: Zoo Guyane
+          - generic [ref=e152]:
+            - img "Logo Eurogold" [ref=e153]
+            - paragraph [ref=e154]: Eurogold
+          - generic [ref=e156]:
+            - img "Logo APAJH Guyane" [ref=e157]
+            - paragraph [ref=e158]: APAJH Guyane
+          - generic [ref=e160]:
+            - img "Logo SFR" [ref=e161]
+            - paragraph [ref=e162]: SFR
+          - generic [ref=e164]:
+            - img "Logo Cateco" [ref=e165]
+            - paragraph [ref=e166]: Cateco
+          - generic [ref=e168]:
+            - img "Logo Groupe Lang" [ref=e169]
+            - paragraph [ref=e170]: Groupe Lang
+          - generic [ref=e172]:
+            - img "Logo Zoo Guadeloupe" [ref=e173]
+            - paragraph [ref=e174]: Zoo Guadeloupe
+          - generic [ref=e176]:
+            - img "Logo Callas Paris" [ref=e177]
+            - paragraph [ref=e178]: Callas Paris
+          - generic [ref=e180]:
+            - img "Logo Zoo de Martinique" [ref=e181]
+            - paragraph [ref=e182]: Zoo Martinique
+          - generic [ref=e184]:
+            - img "Logo Zoo Guyane" [ref=e185]
+            - paragraph [ref=e186]: Zoo Guyane
+          - generic [ref=e188]:
+            - img "Logo Eurogold" [ref=e189]
+            - paragraph [ref=e190]: Eurogold
+          - generic [ref=e192]:
+            - img "Logo APAJH Guyane" [ref=e193]
+            - paragraph [ref=e194]: APAJH Guyane
+          - generic [ref=e196]:
+            - img "Logo SFR" [ref=e197]
+            - paragraph [ref=e198]: SFR
+          - generic [ref=e200]:
+            - img "Logo Cateco" [ref=e201]
+            - paragraph [ref=e202]: Cateco
+          - generic [ref=e204]:
+            - img "Logo Groupe Lang" [ref=e205]
+            - paragraph [ref=e206]: Groupe Lang
+          - generic [ref=e208]:
+            - img "Logo Zoo Guadeloupe" [ref=e209]
+            - paragraph [ref=e210]: Zoo Guadeloupe
+          - generic [ref=e212]:
+            - img "Logo Callas Paris" [ref=e213]
+            - paragraph [ref=e214]: Callas Paris
+          - generic [ref=e216]:
+            - img "Logo Zoo de Martinique" [ref=e217]
+            - paragraph [ref=e218]: Zoo Martinique
+          - generic [ref=e220]:
+            - img "Logo Zoo Guyane" [ref=e221]
+            - paragraph [ref=e222]: Zoo Guyane
+          - generic [ref=e224]:
+            - img "Logo Eurogold" [ref=e225]
+            - paragraph [ref=e226]: Eurogold
+      - generic [ref=e228]:
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - heading "Notre solution de téléphonie IP nouvelle génération" [level=2] [ref=e231]
+            - paragraph [ref=e232]
+            - generic [ref=e234]
+            - generic [ref=e247]
+          - generic [ref=e254]:
+            - generic [ref=e256]
+            - generic [ref=e264]
+            - generic [ref=e272]
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - heading "Pourquoi plus de 100 entreprises nous font confiance ?" [level=3] [ref=e281]
+            - paragraph [ref=e282]: Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
+          - generic [ref=e283]:
+            - generic [ref=e284]
+            - generic [ref=e288]
+            - generic [ref=e292]
+            - generic [ref=e296]
+      - generic [ref=e301]:
+        - generic [ref=e302]:
+          - heading "Nos solutions de téléphonie IP" [level=2] [ref=e303]
+          - paragraph [ref=e304]: "Des solutions complètes pour transformer votre téléphonie d'entreprise : économies garanties et fonctionnalités nouvelle génération."
+        - generic [ref=e305]:
+          - generic [ref=e307]:
+            - generic [ref=e308]
+            - heading "Trunk SIP DOM" [level=3] [ref=e312]
+            - paragraph [ref=e313]: Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux
+            - generic [ref=e314]
+            - generic [ref=e325]
+          - generic [ref=e331]:
+            - generic [ref=e332]
+            - heading "3CX SMB PRO" [level=3] [ref=e336]
+            - paragraph [ref=e337]: IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié
+            - generic [ref=e338]
+            - generic [ref=e347]
+          - generic [ref=e353]:
+            - generic [ref=e354]
+            - heading "3CX PRO Cloud" [level=3] [ref=e358]
+            - paragraph [ref=e359]: Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées
+            - generic [ref=e360]
+            - generic [ref=e369]
+          - generic [ref=e375]:
+            - generic [ref=e376]
+            - heading "Assistants Vocaux IA" [level=3] [ref=e380]
+            - paragraph [ref=e381]: Accueil client 24/7 avec intelligence artificielle et transcription des appels
+            - generic [ref=e382]
+            - generic [ref=e391]
+          - generic [ref=e397]:
+            - generic [ref=e398]
+            - heading "Studio d'Enregistrement" [level=3] [ref=e402]
+            - paragraph [ref=e403]: Messages vocaux professionnels et musiques personnalisées pour votre standard
+            - generic [ref=e404]
+            - generic [ref=e413]
+      - generic [ref=e419]:
+        - generic [ref=e420]:
+          - heading "Plus de 500 entreprises nous font confiance" [level=2] [ref=e421]
+          - paragraph [ref=e422]: Decouvrez pourquoi E2I VoIP est le choix privilegie des entreprises DOM pour leur transformation telecom.
+        - generic [ref=e424]:
+          - img "3CX Silver Partner" [ref=e425]
+          - text: PARTENAIRE 3CX CERTIFIE
+        - generic [ref=e426]:
+          - generic [ref=e427]:
+            - generic [ref=e429]: 
+            - paragraph [ref=e430]: “E2I VoIP nous a permis de reduire nos couts telecom de 35% tout en ameliorant la qualite de nos communications. Le support technique local est exceptionnel.”
+            - generic [ref=e431]
+          - generic [ref=e436]:
+            - generic [ref=e438]: 
+            - paragraph [ref=e439]: “La migration vers 3CX s'est faite en douceur grace a l'accompagnement d'E2I VoIP. Nos equipes peuvent maintenant travailler en mobilite complete.”
+            - generic [ref=e440]
+          - generic [ref=e445]:
+            - generic [ref=e447]: 
+            - paragraph [ref=e448]: “Excellent service client et reactivite remarquable. Les assistants vocaux IA ont revolutionne notre accueil telephonique 24/7.”
+            - generic [ref=e449]
+      - generic [ref=e456]:
+        - heading "Pret a economiser 30% sur vos couts telecoms ?" [level=2] [ref=e457]
+        - paragraph [ref=e458]: Nos experts analysent gratuitement votre infrastructure actuelle et vous accompagnent dans votre transformation vers la telephonie IP nouvelle generation.
+        - generic [ref=e459]:
+          - link " Audit telecom gratuit" [ref=e460] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e461]
+          - link " Calculez vos economies" [ref=e463] [cursor=pointer]:
+            - /url: /devis-en-ligne
+            - generic [ref=e464]
+  - contentinfo [ref=e466]:
+    - generic [ref=e467]:
+      - generic [ref=e468]:
+        - generic [ref=e469]:
+          - generic [ref=e471]: E2I
+          - paragraph [ref=e472]: Solutions de telephonie IP et communications d'entreprise depuis plus de 15 ans.
+          - generic:
+            - link "3CX Bronze Partner Badge":
+              - /url: https://www.3cx.fr/
+          - generic [ref=e474]:
+            - generic [ref=e475]
+            - generic [ref=e477]
+          - generic [ref=e479]:
+            - heading " Nous contacter" [level=4] [ref=e480]
+            - generic [ref=e482]
+            - generic [ref=e496]
+        - generic [ref=e498]:
+          - heading "Services" [level=3] [ref=e499]
+          - list [ref=e500]:
+            - listitem [ref=e501]
+            - listitem [ref=e503]
+            - listitem [ref=e505]
+            - listitem [ref=e507]
+            - listitem [ref=e509]
+            - listitem [ref=e511]
+        - generic [ref=e513]:
+          - heading "Support" [level=3] [ref=e514]
+          - list [ref=e515]:
+            - listitem [ref=e516]
+            - listitem [ref=e518]
+            - listitem [ref=e520]
+            - listitem [ref=e522]
+            - listitem [ref=e524]
+            - listitem [ref=e526]
+        - generic [ref=e528]:
+          - heading "Informations" [level=3] [ref=e529]
+          - list [ref=e530]:
+            - listitem [ref=e531]
+            - listitem [ref=e533]
+            - listitem [ref=e535]
+            - listitem [ref=e537]
+            - listitem [ref=e539]
+            - listitem [ref=e541]
+      - generic [ref=e544]:
+        - paragraph [ref=e546]: © 2024 E2I VoIP. Tous droits reserves.
+        - generic [ref=e547]:
+          - text: "Partenaires certifies :"
+          - generic [ref=e548]:
+            - generic [ref=e549]
+            - text: "|"
+            - link "Yeastar" [ref=e551] [cursor=pointer]:
+              - /url: https://www.yeastar.com
+            - text: "|"
+            - link "Grandstream" [ref=e552] [cursor=pointer]:
+              - /url: https://www.grandstream.com
+  - generic [ref=e554]:
+    - paragraph [ref=e556]: Une question ?
+    - button "Ouvrir le pré‑chat" [ref=e557]:
+      - img [ref=e558]

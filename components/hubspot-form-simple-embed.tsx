@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { FormSkeleton } from "@/components/ui/form-skeleton";
 
 interface HubSpotFormSimpleProps {
   /**
@@ -112,15 +113,8 @@ export function HubSpotFormSimpleEmbed({
 
   return (
     <div className={className}>
-      {/* Conteneur du formulaire (vide au départ). Un loader léger s'affiche tant que le script n'est pas prêt. */}
-      {!isScriptReady && (
-        <div className="flex items-center justify-center min-h-[120px]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-primary mx-auto mb-2"></div>
-            <p className="text-gray-600 text-sm">Chargement du formulaire...</p>
-          </div>
-        </div>
-      )}
+      {/* Conteneur du formulaire (vide au départ). Skeleton calqué sur le layout tant que le script n'est pas prêt. */}
+      {!isScriptReady && <FormSkeleton rows={1} height={120} />}
       <div
         id={`hubspot-form-${formId}`}
         ref={formContainerRef}

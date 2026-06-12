@@ -1,17 +1,12 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  getContentfulBlogPosts,
-  getContentfulBlogPost,
-} from "@/lib/contentful-blog";
-
-import { useHubSpot } from "@/components/hubspot/legacy/hubspot-tracking";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-source";
+import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -24,7 +19,7 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -43,13 +38,19 @@ export async function generateMetadata({
       publishedTime: post.publishDate,
       modifiedTime: post.publishDate, // Utiliser publishDate au lieu de modifiedDate
       authors: post.author ? [post.author] : [],
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
+      images:
+        post.featuredImageUrl || post.featuredImage
+          ? [post.featuredImageUrl || post.featuredImage!]
+          : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seoTitle || post.title,
       description: post.metaDescription || post.excerpt,
-      images: post.featuredImageUrl ? [post.featuredImageUrl] : [],
+      images:
+        post.featuredImageUrl || post.featuredImage
+          ? [post.featuredImageUrl || post.featuredImage!]
+          : [],
     },
   };
 }
@@ -57,7 +58,7 @@ export async function generateMetadata({
 // Génération des routes statiques
 export async function generateStaticParams() {
   try {
-    const { posts } = await getContentfulBlogPosts(1, 100);
+    const { posts } = await getBlogPosts(1, 100);
     return posts.map((post) => ({
       slug: post.slug,
     }));
@@ -70,22 +71,33 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getContentfulBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const mockPosts = getMockBlogPosts();
-  const relatedPosts = mockPosts
-    .filter(
-      (p) =>
-        p.slug !== slug && p.tags.some((tag) => (post.tags || []).includes(tag))
-    )
-    .slice(0, 3);
+  let relatedPosts: Awaited<ReturnType<typeof getBlogPosts>>["posts"] = [];
+  try {
+    const { posts: allPosts } = await getBlogPosts(1, 100);
+    relatedPosts = allPosts
+      .filter(
+        (p) =>
+          p.slug !== slug &&
+          (p.tags || []).some((tag) => (post.tags || []).includes(tag))
+      )
+      .slice(0, 3);
+  } catch (error) {
+    console.warn("Articles liés indisponibles:", error);
+  }
 
   const publishDate = new Date(post.publishDate || "");
-  const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
+  const contentText = post.content || "";
+  const readingTime = Math.max(
+    1,
+    Math.ceil(contentText.split(/\s+/).filter(Boolean).length / 200)
+  );
+  const featuredImageUrl = post.featuredImageUrl || post.featuredImage;
 
   return (
     <div className="min-h-screen bg-white">
@@ -97,12 +109,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               href="/blog"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <i className="lni lni-arrow-left w-4 h-4"></i>
+              <ArrowLeft size={16} aria-hidden="true" />
               Retour au blog
             </Link>
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm">
-                <i className="lni lni-share-alt w-4 h-4 mr-2"></i>
+                <ShareNetwork size={16} className="mr-2" aria-hidden="true" />
                 Partager
               </Button>
             </div>
@@ -113,10 +125,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="pt-8">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Image d'en-tête */}
-          {post.featuredImageUrl && (
+          {featuredImageUrl && (
             <div className="relative w-full h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
               <Image
-                src={post.featuredImageUrl}
+                src={featuredImageUrl}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -152,11 +164,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Métadonnées */}
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
               <div className="flex items-center gap-2">
-                <i className="lni lni-user w-4 h-4"></i>
+                <UserCircle size={16} aria-hidden="true" />
                 <span>{post.author}</span>
               </div>
               <div className="flex items-center gap-2">
-                <i className="lni lni-calendar w-4 h-4"></i>
+                <Calendar size={16} aria-hidden="true" />
                 <span>
                   {publishDate.toLocaleDateString("fr-FR", {
                     day: "numeric",
@@ -166,7 +178,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <i className="lni lni-timer w-4 h-4"></i>
+                <Timer size={16} aria-hidden="true" />
                 <span>{readingTime} min de lecture</span>
               </div>
             </div>
@@ -182,7 +194,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Contenu de l'article */}
           <div className="prose prose-lg max-w-none mb-12">
             <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: contentText }}
               className="text-gray-700 leading-relaxed"
             />
           </div>
@@ -218,7 +230,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Articles liés */}
         {relatedPosts.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Articles liés
@@ -246,7 +258,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       {relatedPost.excerpt}
                     </p>
                     <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <i className="lni lni-calendar w-3 h-3"></i>
+                      <Calendar size={16} aria-hidden="true" />
                       <span>
                         {new Date(
                           relatedPost.publishDate || ""

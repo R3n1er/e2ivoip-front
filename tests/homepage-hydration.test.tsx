@@ -23,10 +23,6 @@ jest.mock("@/components/about-section-simple", () => ({
   AboutSectionSimple: () => <section data-testid="about">À propos</section>,
 }));
 
-jest.mock("@/components/clients-carousel", () => ({
-  ClientsCarousel: () => <div data-testid="clients">Clients</div>,
-}));
-
 jest.mock("@/components/contact-section-simple", () => ({
   ContactSectionSimple: () => <section data-testid="contact">Contact</section>,
 }));
@@ -60,7 +56,6 @@ describe("HomePage - Test d'hydratation", () => {
     expect(screen.getByTestId("homepage-hero")).toBeInTheDocument();
     expect(screen.getByTestId("about")).toBeInTheDocument();
     expect(screen.getByTestId("services")).toBeInTheDocument();
-    expect(screen.getByTestId("clients")).toBeInTheDocument();
     expect(screen.getByTestId("contact")).toBeInTheDocument();
   });
 
@@ -77,9 +72,9 @@ describe("HomePage - Test d'hydratation", () => {
     expect(mainContainer).toBeInTheDocument();
     expect(mainContainer).toHaveClass("min-h-screen");
 
-    // Vérifier les éléments décoratifs
+    // Pas de blobs décoratifs (design system §7)
     const decorativeElements = container.querySelectorAll(".animate-blob");
-    expect(decorativeElements.length).toBeGreaterThan(0);
+    expect(decorativeElements.length).toBe(0);
   });
 
   it("applique les classes CSS correctement", () => {

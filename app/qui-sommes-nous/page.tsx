@@ -1,20 +1,22 @@
 import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import Image from "next/image";
+import { SafeImage as Image } from "@/components/ui/safe-image";
+import { SecureEmail } from "@/components/secure-email";
+import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } from '@/lib/icons';
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM depuis 15 ans",
   description:
-    "E2I VoIP : Opérateur de servicestélécom DOM, 15 ans d'expertise, 100+ clients. Trunk SIP, 3CX, support local Martinique, Guadeloupe, Guyane. -30% sur vos coûts télécoms.",
+    "E2I VoIP : Opérateur de services télécom DOM, 15 ans d'expertise. Trunk SIP, 3CX, support par mail et téléphone — Martinique, Guadeloupe, Guyane. -20% sur le coût de vos communications.",
   keywords:
     "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM",
   openGraph: {
     title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
     description:
-      "Opérateur de services télécom DOM depuis 15 ans. Support local, 100+ clients satisfaits. Économisez 30% sur vos coûts télécoms.",
+      "Opérateur de services télécom DOM depuis 15 ans. Support par mail et téléphone. Économisez 20% sur le coût de vos communications.",
     type: "website",
   },
 };
@@ -39,11 +41,11 @@ export default function QuiSommesNous() {
   ];
 
   const locations = [
-    { name: "Guyane", phone: "0594 96 35 00", icon: "lni-map-marker" },
-    { name: "Guadeloupe", phone: "0590 173 500", icon: "lni-map-marker" },
-    { name: "Martinique", phone: "0596 313 500", icon: "lni-map-marker" },
-    { name: "La Réunion", phone: "0262 263 085 500", icon: "lni-map-marker" },
-    { name: "France Métropole", phone: "0189 563 500", icon: "lni-world" },
+    { name: "Guyane", phone: "0594 96 35 00", Icon: MapPin },
+    { name: "Guadeloupe", phone: "0590 173 500", Icon: MapPin },
+    { name: "Martinique", phone: "0596 313 500", Icon: MapPin },
+    { name: "La Réunion", phone: "0262 263 085 500", Icon: MapPin },
+    { name: "France Métropole", phone: "0189 563 500", Icon: Globe },
   ];
 
   return (
@@ -68,12 +70,11 @@ export default function QuiSommesNous() {
               <span className="text-white">DOM</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              15 ans d'expertise • 100+ entreprises nous font confiance •
-              Support local réactif
+              15 ans d'expertise télécom • Support par mail et téléphone
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Économisez jusqu'à 30% sur vos coûts télécoms avec nos solutions
-              de téléphonie IP
+              Économisez 20% sur le coût des communications dans les DROM avec
+              nos solutions de téléphonie IP
             </p>
           </div>
         </div>
@@ -84,17 +85,17 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 L'histoire d'une{" "}
                 <span className="text-red-primary">réussite locale</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Depuis maintenant plusieurs années, E2I VoIP</strong>{" "}
                 est un opérateur de services télécom avec des Trunk SIP dédiés
-                aux Antilles-Guyane et La Réunion. Nous avons accompagné plus de{" "}
-                <strong>100 entreprises</strong> dans leur transformation
-                digitale, leur permettant d'économiser en moyenne{" "}
-                <strong>30% sur leurs coûts télécoms</strong>.
+                aux Antilles-Guyane et La Réunion. Nous accompagnons les
+                entreprises des DROM dans leur transformation digitale, en leur
+                permettant d'économiser{" "}
+                <strong>20% sur le coût de leurs communications</strong>.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Notre mission :</strong> Faciliter votre transition vers
@@ -116,7 +117,7 @@ export default function QuiSommesNous() {
               <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i className="lni lni-phone text-5xl text-white"></i>
+                    <Phone size={24} className="text-5xl text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Opérateur télécom certifié
@@ -127,14 +128,14 @@ export default function QuiSommesNous() {
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-red-primary">
-                        100+
+                      <div className="text-2xl font-bold font-mono tabular-nums text-red-primary">
+                        4
                       </div>
-                      <div className="text-gray-600">Clients satisfaits</div>
+                      <div className="text-gray-600">Territoires DOM couverts</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-marine">
-                        15+
+                      <div className="text-2xl font-bold font-mono tabular-nums text-blue-marine">
+                        15
                       </div>
                       <div className="text-gray-600">Années d'expertise</div>
                     </div>
@@ -150,7 +151,7 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Nos{" "}
               <span className="text-red-primary">valeurs et engagements</span>
             </h2>
@@ -159,53 +160,55 @@ export default function QuiSommesNous() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-target text-2xl text-red-primary"></i>
+          {/* Zig-zag 2 colonnes alterné (design.md P3.11) */}
+          <div className="max-w-5xl mx-auto space-y-12">
+            {[
+              {
+                Icon: Target,
+                iconBg: "bg-red-primary/10",
+                iconColor: "text-red-primary",
+                title: "Proximité et réactivité",
+                description:
+                  "Équipes locales en France, Martinique, Guadeloupe et Guyane. Réponse en moins de 2h, intervention rapide sur site si nécessaire.",
+              },
+              {
+                Icon: Seal,
+                iconBg: "bg-blue-marine/10",
+                iconColor: "text-blue-marine",
+                title: "Excellence technique",
+                description:
+                  "Partenaire Silver 3CX, certifié Yeastar. Maîtrise des dernières technologies VoIP et intégrations WhatsApp, Microsoft Teams, CRM, IA, Microsoft 365.",
+              },
+              {
+                Icon: Users,
+                iconBg: "bg-gray-secondary/10",
+                iconColor: "text-gray-secondary",
+                title: "Résultats concrets",
+                description:
+                  "20% d'économies sur le coût de vos communications dans les DROM. Customer Success Manager dédié pour assurer votre satisfaction.",
+              },
+            ].map((value, index) => (
+              <div
+                key={value.title}
+                className="grid md:grid-cols-[auto_1fr] gap-6 items-start"
+              >
+                <div
+                  className={`${value.iconBg} w-16 h-16 rounded-xl flex items-center justify-center ${
+                    index % 2 === 1 ? "md:order-2" : ""
+                  }`}
+                >
+                  <value.Icon size={32} className={value.iconColor} aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Proximité et réactivité
-                </h3>
-                <p className="text-gray-600">
-                  Équipes locales en France, Martinique, Guadeloupe et Guyane.
-                  Réponse en moins de 2h, intervention rapide sur site si
-                  nécessaire.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-certificate text-2xl text-blue-marine"></i>
+                <div className={index % 2 === 1 ? "md:order-1 md:text-right" : ""}>
+                  <h3 className="text-2xl font-bold text-gray-dark mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Excellence technique
-                </h3>
-                <p className="text-gray-600">
-                  Partenaire Silver 3CX, certifié Yeastar. Maîtrise des
-                  dernières technologies VoIP et intégrations WhatsApp,
-                  Microsoft Teams, CRM, IA, Microsoft 365.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <i className="lni lni-users text-2xl text-gray-secondary"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Résultats garantis
-                </h3>
-                <p className="text-gray-600">
-                  Économies de 30% garanties sur vos factures télécom. Customer
-                  Success Manager dédié pour assurer votre satisfaction.
-                </p>
-              </CardContent>
-            </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -215,20 +218,20 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Nos <span className="text-red-primary">solutions phares</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
                 locaux incluses.
-                <strong>Économisez jusqu'à 30%</strong> par rapport à la
+                <strong>Économisez jusqu'à 20%</strong> par rapport à la
                 téléphonie traditionnelle.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Trunk SIP au compteur ou illimité
@@ -244,7 +247,7 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       3CX : IPBX cloud nouvelle génération
@@ -260,13 +263,14 @@ export default function QuiSommesNous() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <i className="lni lni-checkmark-circle text-2xl text-red-primary mt-1 flex-shrink-0"></i>
+                  <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       Services innovants inclus
                     </h3>
                     <p className="text-gray-600">
-                      <strong>Assistants vocaux IA</strong> pour accueil 24/7.
+                      <strong>Trunk SIP agents IA</strong> pour interconnexion
+                      plateformes VAPI, Rounded, ElevenLabs.
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.
                       <strong>Collaboration unifiée</strong> pour vos équipes.
                       Studio d'enregistrement pour messages professionnels.
@@ -297,7 +301,7 @@ export default function QuiSommesNous() {
                 </p>
                 <div className="space-y-2">
                   <p className="text-sm text-gray-600">
-                    ✓ <strong>-30% sur les coûts télécoms</strong>
+                    ✓ <strong>-20% sur les coûts télécoms</strong>
                   </p>
                   <p className="text-sm text-gray-600">
                     ✓ Parc de postes téléphoniques Fanvil
@@ -306,8 +310,8 @@ export default function QuiSommesNous() {
                     ✓ Collaboration fluide pour tous les collaborateurs
                   </p>
                   <p className="text-sm text-gray-600">
-                    ✓ Support local réactif sur 3 départements (Guadeloupe,
-                    Martinique, Guyane)
+                    ✓ Support par mail et téléphone sur 3 départements
+                    (Guadeloupe, Martinique, Guyane)
                   </p>
                 </div>
               </div>
@@ -335,10 +339,10 @@ export default function QuiSommesNous() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index}>
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <i className="lni lni-user text-5xl text-gray-400"></i>
+                    <UserCircle size={24} className="text-5xl text-gray-400" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {member.name}
@@ -355,7 +359,7 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
               Nos{" "}
               <span className="text-red-primary">
                 certifications et partenariats
@@ -369,7 +373,7 @@ export default function QuiSommesNous() {
 
           {/* Certifications principales */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -390,7 +394,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -421,7 +425,7 @@ export default function QuiSommesNous() {
 
             <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               {/* Fanvil */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
@@ -452,7 +456,7 @@ export default function QuiSommesNous() {
               </div>
 
               {/* Yealink */}
-              <div className="bg-white rounded-xl p-8 shadow-md text-center">
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/logo-yealink.webp"
@@ -498,8 +502,8 @@ export default function QuiSommesNous() {
       <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Support local <span className="text-white">24/7</span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-4">
+              Support par <span className="text-white">mail et téléphone</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Équipes techniques présentes localement en Guadeloupe et en Guyane
@@ -515,9 +519,7 @@ export default function QuiSommesNous() {
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <i
-                      className={`lni ${location.icon} text-2xl text-white`}
-                    ></i>
+                    <location.Icon size={24} className="text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {location.name}
@@ -535,23 +537,15 @@ export default function QuiSommesNous() {
               <strong>Hotline Assistance technique :</strong> 0189 560 500
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:commerciaux@e2i-voip.com"
-                className="text-white hover:text-white/80 transition-colors"
-              >
-                <i className="lni lni-envelope inline text-xl mr-2"></i>
-                commerciaux@e2i-voip.com
-              </a>
-              <Link href="/assistance">
-                <button className="relative overflow-hidden bg-white text-red-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group">
-                  <span className="flex items-center justify-center">
-                    <i className="lni lni-comments text-xl mr-2"></i>
-                    Accéder au support complet
-                    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                  </span>
-                  <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-                </button>
-              </Link>
+              <SecureEmail
+                address="sales"
+                mode="mailto"
+                className="text-white hover:text-white/80 transition-colors inline-flex items-center"
+                label="Nous écrire"
+              />
+              <CTAButtonSecondary href="/assistance" icon="Chat">
+                Accéder au support complet
+              </CTAButtonSecondary>
             </div>
           </div>
         </div>
@@ -560,8 +554,8 @@ export default function QuiSommesNous() {
       {/* Section CTA finale */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Prêt à <span className="text-red-primary">économiser 30%</span> sur
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
+            Prêt à <span className="text-red-primary">économiser 20%</span> sur
             vos coûts télécoms ?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
@@ -569,27 +563,12 @@ export default function QuiSommesNous() {
             Migration sans interruption
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/devis-en-ligne"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-primary hover:bg-red-primary/80 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-            >
-              <span className="flex items-center justify-center">
-                Calculez vos économies
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-              </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-            </a>
-            <a
-              href="/contact"
-              className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-red-primary bg-white border-2 border-red-primary hover:bg-red-50 rounded-lg transition-all duration-300 group"
-            >
-              <span className="flex items-center justify-center">
-                <i className="lni lni-phone text-xl mr-2"></i>
-                Parler à un expert
-                <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-              </span>
-              <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
-            </a>
+            <CTAButton href="/devis-en-ligne" icon="Calculator">
+              Calculez vos économies
+            </CTAButton>
+            <CTAButtonMarine href="/contact" icon="Phone">
+              Parler à un expert
+            </CTAButtonMarine>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { HubSpotForm } from "@/components/hubspot";
+import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PlugCharging, PhoneCall, Headphones, WifiHigh, Envelope, Timer } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
@@ -65,7 +66,7 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-infinite text-white mr-2"></i>
+                <Infinity size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Forfait illimité
                 </span>
@@ -78,30 +79,30 @@ export default function TrunkSIPIllimite() {
                 France métropolitaine & DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                <strong>2, 4 ou 8 appels simultanés</strong> • 
+                <strong>2, 4 ou 8 appels simultanés</strong> •
                 Forfait tout inclus avec politique fair use
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-checkmark-circle text-white"></i>
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Appels illimités France</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-world text-white"></i>
+                  <Globe size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Appels illimités DOM</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-users text-white"></i>
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">2, 4 ou 8 lignes simultanées</span>
                 </div>
               </div>
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="#contact-form" icon="lni-bubble">
+                <CTAButton href="#contact-form" icon="Chat">
                   Demander un devis
                 </CTAButton>
-                <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+                <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
                   01 89 56 05 00
                 </CTAButtonMarine>
               </div>
@@ -115,10 +116,10 @@ export default function TrunkSIPIllimite() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <i className="lni lni-infinite mr-2"></i>
+                  <Infinity size={16} className="mr-2" aria-hidden="true" />
                   Solution forfaitaire
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                   <span className="text-red-primary">L'illimité</span> pour
                   votre téléphonie d'entreprise
                 </h2>
@@ -131,7 +132,7 @@ export default function TrunkSIPIllimite() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-red-primary text-xl"></i>
+                      <Phone size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -146,7 +147,7 @@ export default function TrunkSIPIllimite() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-map text-blue-marine text-xl"></i>
+                      <MapTrifold size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -160,7 +161,7 @@ export default function TrunkSIPIllimite() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-users text-red-primary text-xl"></i>
+                      <Users size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -175,7 +176,7 @@ export default function TrunkSIPIllimite() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-shield text-blue-marine text-xl"></i>
+                      <Shield size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -206,7 +207,7 @@ export default function TrunkSIPIllimite() {
                     {forfaits.map((forfait) => (
                       <div
                         key={forfait.appels}
-                        className={`bg-white p-4 rounded-lg shadow ${
+                        className={`bg-white p-4 rounded-xl shadow-sm ${
                           forfait.popular
                             ? "border-2 border-red-primary relative"
                             : "border border-gray-200"
@@ -242,7 +243,7 @@ export default function TrunkSIPIllimite() {
                   </div>
                   <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                     <div className="flex items-start space-x-2">
-                      <i className="lni lni-information text-blue-marine mt-0.5"></i>
+                      <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
                       <div className="text-sm text-blue-800">
                         <p>
                           <strong>Tout inclus :</strong> Appels illimités France
@@ -265,7 +266,7 @@ export default function TrunkSIPIllimite() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Pourquoi choisir notre{" "}
                 <span className="text-red-primary">Trunk SIP Illimité</span> ?
               </h2>
@@ -276,7 +277,7 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Palette rouge & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-blue-marine to-blue-marine"></div>
                 
@@ -289,7 +290,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <i className="lni lni-calculator text-3xl text-gray-800"></i>
+                      <Calculator size={24} className="text-3xl text-gray-800" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -302,14 +303,14 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Rouge principal E2I */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
-                    <i className="lni lni-checkmark-circle mr-2"></i>
-                    <span>Économies garanties</span>
+                    <CheckCircle size={16} className="mr-2" aria-hidden="true" />
+                    <span>20% d'économies sur vos communications</span>
                   </div>
                 </div>
               </div>
 
               {/* Couverture complète */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Mélange bleu marine et rouge */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-marine via-red-primary to-blue-marine"></div>
                 
@@ -322,7 +323,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <i className="lni lni-world text-3xl text-gray-secondary"></i>
+                      <Globe size={24} className="text-3xl text-gray-secondary" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -335,14 +336,14 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Bleu marine */}
                   <div className="flex items-center text-gray-800 font-medium text-sm">
-                    <i className="lni lni-map-marker mr-2"></i>
+                    <MapPin size={16} className="mr-2" aria-hidden="true" />
                     <span>National & DOM-TOM</span>
                   </div>
                 </div>
               </div>
 
               {/* Évolutif */}
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Rouge principal & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 
@@ -355,7 +356,7 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <i className="lni lni-grow text-3xl text-red-primary"></i>
+                      <TrendUp size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
                   
@@ -368,7 +369,7 @@ export default function TrunkSIPIllimite() {
                   
                   {/* Bottom accent - Rouge principal */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
-                    <i className="lni lni-rocket mr-2"></i>
+                    <Rocket size={16} className="mr-2" aria-hidden="true" />
                     <span>Croissance flexible</span>
                   </div>
                 </div>
@@ -377,7 +378,7 @@ export default function TrunkSIPIllimite() {
 
             {/* Points clés supplémentaires */}
             <div className="mt-16 relative">
-              <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100">
+              <div className="relative bg-white rounded-xl p-10 shadow-xl border border-gray-200">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">
                     Tout est inclus dans votre forfait
@@ -390,22 +391,22 @@ export default function TrunkSIPIllimite() {
                   {[
                     {
                       text: "Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)",
-                      icon: "lni-plug",
+                      Icon: PlugCharging,
                       color: "gray"
                     },
                     {
                       text: "Portabilité gratuite de vos numéros existants",
-                      icon: "lni-phone-set",
+                      Icon: PhoneCall,
                       color: "red"
                     },
                     {
                       text: "Support technique local et réactif",
-                      icon: "lni-headphone-alt",
+                      Icon: Headphones,
                       color: "gray-secondary"
                     },
                     {
                       text: "Qualité HD garantie sur tous les appels",
-                      icon: "lni-signal",
+                      Icon: WifiHigh,
                       color: "red"
                     },
                   ].map((item, idx) => (
@@ -417,12 +418,11 @@ export default function TrunkSIPIllimite() {
                         ${item.color === 'gray-secondary' ? 'bg-gradient-to-br from-gray-200 to-gray-100' : ''}
                         shadow-md group-hover:shadow-lg transition-shadow
                       `}>
-                        <i className={`
-                          ${item.icon} text-xl
-                          ${item.color === 'gray' ? 'text-gray-800' : ''}
-                          ${item.color === 'red' ? 'text-red-primary' : ''}
-                          ${item.color === 'gray-secondary' ? 'text-gray-secondary' : ''}
-                        `}></i>
+                        <item.Icon size={24} className={
+                          item.color === 'gray' ? 'text-gray-800' :
+                          item.color === 'red' ? 'text-red-primary' :
+                          'text-gray-secondary'
+                        } aria-hidden="true" />
                       </div>
                       <div className="flex-1">
                         <span className="text-gray-800 font-medium leading-relaxed block">
@@ -434,7 +434,7 @@ export default function TrunkSIPIllimite() {
                           ${item.color === 'red' ? 'text-red-primary' : ''}
                           ${item.color === 'gray-secondary' ? 'text-gray-secondary' : ''}
                         `}>
-                          <i className="lni lni-checkmark-circle mr-1"></i>
+                          <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                           Inclus
                         </span>
                       </div>
@@ -451,10 +451,10 @@ export default function TrunkSIPIllimite() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <i className="lni lni-envelope mr-2"></i>
+                <Envelope size={16} className="mr-2" aria-hidden="true" />
                 Contact commercial
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Obtenez votre <span className="text-red-primary">devis personnalisé</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -478,7 +478,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <i className="lni lni-phone-set text-lg"></i>
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>France : 01 89 56 05 00</span>
                 </a>
                 <a
@@ -486,7 +486,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <i className="lni lni-phone-set text-lg"></i>
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>Guyane : 0594 96 35 00</span>
                 </a>
                 <a
@@ -494,7 +494,7 @@ export default function TrunkSIPIllimite() {
                   suppressHydrationWarning
                   className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
                 >
-                  <i className="lni lni-phone-set text-lg"></i>
+                  <PhoneCall size={24} aria-hidden="true" />
                   <span>Guadeloupe : 0590 17 35 00</span>
                 </a>
               </div>
@@ -505,7 +505,7 @@ export default function TrunkSIPIllimite() {
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Passez à <span className="text-white">l'illimité</span> dès maintenant
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
@@ -515,26 +515,26 @@ export default function TrunkSIPIllimite() {
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-checkmark-circle text-white"></i>
+                <CheckCircle size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Activation rapide</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-timer text-white"></i>
+                <Timer size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Sans engagement</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-shield text-white"></i>
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Garantie qualité</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="#contact-form" icon="lni-bubble">
+              <CTAButton href="#contact-form" icon="Chat">
                 Demander mon devis illimité
               </CTAButton>
               <CTAButtonMarine
                 href="tel:+33189560500"
-                icon="lni-phone"
+                icon="Phone"
                 external
               >
                 Appeler un conseiller

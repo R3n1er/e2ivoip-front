@@ -52,7 +52,7 @@ describe("HeaderSimple - Sous-menus", () => {
     expect(screen.getByText("Téléphonie 3CX")).toBeInTheDocument();
     expect(screen.getByText("Téléphonie Yeastar")).toBeInTheDocument();
     expect(screen.getByText("Studio attente téléphonique")).toBeInTheDocument();
-    expect(screen.getByText("Assistants vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
   });
 
   test("Les sous-menus ont les bonnes classes CSS", () => {

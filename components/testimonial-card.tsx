@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { Buildings, Quotes, Users, MapTrifold, CheckCircle, Calculator, Storefront, Heart } from '@/lib/icons';
 
 interface Testimonial {
   company: string;
@@ -16,7 +18,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial, className = "" }: TestimonialCardProps) {
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 ${className}`}>
+    <div className={`bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 ${className}`}>
       {/* Logo/En-tête */}
       <div className="flex items-center mb-4">
         {testimonial.logo ? (
@@ -27,7 +29,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
           />
         ) : (
           <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center mr-4">
-            <i className="lni lni-apartment text-white text-xl"></i>
+            <Buildings size={24} className="text-white" aria-hidden="true" />
           </div>
         )}
         <div>
@@ -40,7 +42,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="mb-6">
         <div className="flex items-start mb-3">
           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
-            <i className="lni lni-quotation text-blue-600"></i>
+            <Quotes size={24} className="text-blue-600" aria-hidden="true" />
           </div>
           <p className="text-gray-700 italic leading-relaxed">{testimonial.description}</p>
         </div>
@@ -50,7 +52,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <i className="lni lni-users text-blue-600 text-lg mr-1"></i>
+            <Users size={16} className="text-blue-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-xl text-gray-800">{testimonial.users}</span>
           </div>
           <p className="text-xs text-gray-600">Utilisateurs</p>
@@ -58,7 +60,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
         
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <i className="lni lni-map text-red-600 text-lg mr-1"></i>
+            <MapTrifold size={16} className="text-red-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-sm text-gray-800">{testimonial.solution}</span>
           </div>
           <p className="text-xs text-gray-600">Solution</p>
@@ -69,7 +71,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="pt-4 border-t border-gray-100">
         <div className="flex items-center justify-center">
           <div className="flex items-center bg-gradient-to-r from-green-100 to-blue-100 px-3 py-1 rounded-full">
-            <i className="lni lni-checkmark-circle text-green-600 text-sm mr-2"></i>
+            <CheckCircle size={16} className="text-green-600 mr-2" aria-hidden="true" />
             <span className="text-sm font-medium text-gray-700">Client satisfait</span>
           </div>
         </div>
@@ -91,10 +93,10 @@ export function TestimonialsSection({
 }: TestimonialsSection) {
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             {title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -119,14 +121,14 @@ export function TestimonialsSection({
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "calculator", title: "Cabinets d'expertise", desc: "Comptables, avocats, bureaux d'études BTP" },
-              { icon: "store", title: "Commerces", desc: "Enseignes locales, bijouteries, franchises" },
-              { icon: "heart", title: "Secteur santé", desc: "Cliniques, cabinets médicaux, maisons de santé" },
-              { icon: "apartment", title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
+              { Icon: Calculator, title: "Cabinets d'expertise", desc: "Comptables, avocats, bureaux d'études BTP" },
+              { Icon: Storefront, title: "Commerces", desc: "Enseignes locales, bijouteries, franchises" },
+              { Icon: Heart, title: "Secteur santé", desc: "Cliniques, cabinets médicaux, maisons de santé" },
+              { Icon: Buildings, title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
             ].map((sector, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <i className={`lni lni-${sector.icon} text-blue-600 text-xl`}></i>
+                  <sector.Icon size={24} className="text-blue-600" aria-hidden="true" />
                 </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{sector.title}</h4>
                 <p className="text-sm text-gray-600">{sector.desc}</p>

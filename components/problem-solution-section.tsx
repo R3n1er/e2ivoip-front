@@ -1,4 +1,26 @@
+"use client";
 import React from "react";
+import {
+  Warning, Check, Phone, CurrencyDollar, MapPin, Gear, Cloud, ShieldCheck,
+  Medal, PhoneDisconnect, Lightbulb, Brain, Rocket, CheckCircle, type Icon
+} from '@/lib/icons';
+
+const ICON_MAP: Record<string, Icon> = {
+  "phone-error": PhoneDisconnect,
+  "phone": Phone,
+  "dollar": CurrencyDollar,
+  "dollar-sign": CurrencyDollar,
+  "warning": Warning,
+  "map": MapPin,
+  "cog": Gear,
+  "cloud": Cloud,
+  "shield": ShieldCheck,
+  "award": Medal,
+  "check": CheckCircle,
+  "brain": Brain,
+  "bulb": Lightbulb,
+  "rocket": Rocket,
+};
 
 interface Problem {
   icon: string;
@@ -28,12 +50,12 @@ export function ProblemSolutionSection({
 }: ProblemSolutionSectionProps) {
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Section Problèmes */}
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 {problemsTitle}
               </h2>
               <p className="text-lg text-gray-600">
@@ -46,7 +68,7 @@ export function ProblemSolutionSection({
                 <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                      <i className={`lni lni-${problem.icon} text-red-600 text-xl`}></i>
+                      {(() => { const I = ICON_MAP[problem.icon] ?? Warning; return <I size={24} className="text-red-600" aria-hidden="true" />; })()}
                     </div>
                   </div>
                   <div>
@@ -60,7 +82,7 @@ export function ProblemSolutionSection({
             <div className="mt-8 p-6 bg-red-100 rounded-xl border border-red-200">
               <div className="text-center">
                 <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="lni lni-warning text-red-600 text-2xl"></i>
+                  <Warning size={32} className="text-red-600" aria-hidden="true" />
                 </div>
                 <h3 className="font-bold text-gray-800 mb-2">Impact sur votre entreprise</h3>
                 <p className="text-gray-700">
@@ -74,7 +96,7 @@ export function ProblemSolutionSection({
           {/* Section Solutions */}
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 {solutionsTitle}
               </h2>
               <div className="p-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-lg border border-blue-200">
@@ -90,7 +112,7 @@ export function ProblemSolutionSection({
                 <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <i className={`lni lni-${solution.icon} text-green-600 text-xl`}></i>
+                      {(() => { const I = ICON_MAP[solution.icon] ?? Check; return <I size={24} className="text-green-600" aria-hidden="true" />; })()}
                     </div>
                   </div>
                   <div>
@@ -111,7 +133,7 @@ export function ProblemSolutionSection({
             <div className="mt-8 p-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl border border-green-200">
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="lni lni-checkmark text-green-600 text-2xl"></i>
+                  <Check size={32} className="text-green-600" aria-hidden="true" />
                 </div>
                 <h3 className="font-bold text-gray-800 mb-2">Pourquoi 3CX PRO ?</h3>
                 <p className="text-gray-700">

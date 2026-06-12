@@ -50,7 +50,9 @@ describe('Hydration Fix', () => {
       'data-lt-installed',
       'cz-shortcut-listen',
       'data-grammarly-shadow-root',
-      'data-new-gr-c-s-check-loaded'
+      'data-new-gr-c-s-check-loaded',
+      'data-darkreader-inline-color',
+      'data-darkreader-inline-stroke',
     ]
     
     // Ces attributs peuvent être présents sans causer d'erreur d'hydratation

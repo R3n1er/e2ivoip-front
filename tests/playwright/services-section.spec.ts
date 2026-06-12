@@ -25,7 +25,7 @@ test.describe("Section Services", () => {
       "Trunk SIP DOM",
       "3CX SMB PRO",
       "3CX PRO Cloud",
-      "Assistants Vocaux IA",
+      "Trunk SIP agents IA",
       "Studio d'Enregistrement",
     ];
 
@@ -37,7 +37,7 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    await expect(page.locator("#services .card")).toHaveCount(5);
+    await expect(page.locator("#services .grid > div.rounded-xl")).toHaveCount(5);
   });
 
   test("met en avant les badges et les CTA", async ({ page }) => {
@@ -63,10 +63,10 @@ test.describe("Section Services", () => {
 
   test("affiche les icônes et la grille responsive", async ({ page }) => {
     await expect(
-      page.locator("#services .grid.md\\:grid-cols-2.lg\\:grid-cols-3")
+      page.locator("#services .grid.md\\:grid-cols-2")
     ).toBeVisible();
 
-    const icons = page.locator("#services .lni");
+    const icons = page.locator("#services svg");
     await expect(icons.first()).toBeVisible();
     expect(await icons.count()).toBeGreaterThan(10);
   });

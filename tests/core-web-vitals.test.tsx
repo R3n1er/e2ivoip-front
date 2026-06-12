@@ -321,7 +321,7 @@ Allow: /images/`;
           <button>Réessayer</button>
           <a href="/">Retour à l&apos;accueil</a>
           <a href="tel:+33123456789">Appeler</a>
-          <a href="mailto:contact@e2ivoip.fr">Email</a>
+          <button type="button">Email</button>
         </div>
       );
 
@@ -342,7 +342,7 @@ Allow: /images/`;
             📞 <strong>01 23 45 67 89</strong>
           </p>
           <p>
-            📧 <strong>contact@e2ivoip.fr</strong>
+            📧 <strong>contact@…</strong>
           </p>
         </div>
       );
@@ -350,7 +350,7 @@ Allow: /images/`;
       render(<MockOfflinePage />);
 
       expect(screen.getByText("01 23 45 67 89")).toBeInTheDocument();
-      expect(screen.getByText("contact@e2ivoip.fr")).toBeInTheDocument();
+      expect(screen.getByText("contact@…")).toBeInTheDocument();
     });
   });
 });

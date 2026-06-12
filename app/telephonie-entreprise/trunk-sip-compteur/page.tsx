@@ -3,13 +3,14 @@ import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
-import { TallyEmbedDevis } from "@/components/tally-embed-devis";
+import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
+import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, ArrowRight, Timer, Shield } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
     "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:
-    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 30%.",
+    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 20%.",
   keywords:
     "trunk SIP compteur DOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM, opérateur télécom local",
   openGraph: {
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trunk SIP au Compteur DOM - E2I VoIP",
     description:
-      "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 30%.",
+      "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 20%.",
   },
 };
 
@@ -57,7 +58,7 @@ export default function TrunkSIPCompteur() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-phone text-white mr-2"></i>
+                <Phone size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Opérateur SIP DOM
                 </span>
@@ -70,32 +71,32 @@ export default function TrunkSIPCompteur() {
                 notre passerelle SIP DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                Économisez jusqu'à <strong>30%</strong> sur vos coûts télécom •
+                Économisez jusqu'à <strong>20%</strong> sur vos coûts télécom •
                 Connexions SIP locales Antilles-Guyane-Réunion
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-checkmark-circle text-white"></i>
+                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Facturation à la seconde</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-phone text-white"></i>
+                  <Phone size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Numéros locaux gratuits</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <i className="lni lni-users text-white"></i>
+                  <Users size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">Support technique local</span>
                 </div>
               </div>
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                <CTAButton href="/devis-en-ligne" icon="Calculator">
                   Calculer mes économies
                 </CTAButton>
                 <CTAButtonMarine
                   href="tel:+33189560500"
-                  icon="lni-phone"
+                  icon="Phone"
                   external
                 >
                   0594 96 35 00
@@ -106,9 +107,9 @@ export default function TrunkSIPCompteur() {
               <div className="mt-16 text-center">
                 <div className="inline-flex flex-col items-center animate-bounce">
                   <span className="text-white/60 text-sm mb-2">
-                    Découvrez nos tarifs
+                    Recevez nos tarifs personnalisés
                   </span>
-                  <i className="lni lni-chevron-down text-white/60 text-xl"></i>
+                  <CaretDown size={24} className="text-white/60" aria-hidden="true" />
                 </div>
               </div>
             </div>
@@ -116,7 +117,7 @@ export default function TrunkSIPCompteur() {
         </section>
 
         {/* Section explicative */}
-        <section className="py-12 bg-white">
+        <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="prose prose-lg mx-auto text-center">
               <p className="text-gray-700 leading-relaxed">
@@ -136,13 +137,13 @@ export default function TrunkSIPCompteur() {
         {/* Solution */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl mx-auto">
               <div>
                 <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <i className="lni lni-checkmark-circle mr-2"></i>
+                  <CheckCircle size={16} className="mr-2" aria-hidden="true" />
                   Solution certifiée DOM
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+                <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                   <span className="text-red-primary">
                     Trunk SIP au compteur
                   </span>{" "}
@@ -158,7 +159,7 @@ export default function TrunkSIPCompteur() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-money-location text-red-primary text-xl"></i>
+                      <Wallet size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -173,7 +174,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-phone text-gray-800 text-xl"></i>
+                      <Phone size={24} className="text-gray-800" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -188,7 +189,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-network text-red-primary text-xl"></i>
+                      <TreeStructure size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -204,7 +205,7 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="lni lni-users text-gray-secondary text-xl"></i>
+                      <Users size={24} className="text-gray-secondary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
@@ -219,90 +220,6 @@ export default function TrunkSIPCompteur() {
                   </div>
                 </div>
               </div>
-
-              <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Tarifs des appels à la minute
-                  </h3>
-                  <p className="text-gray-600">
-                    Facturation à la seconde dès la première seconde • Pas de
-                    frais cachés
-                  </p>
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-red-primary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">France Fixe</span>
-                      <span className="text-red-primary font-bold text-lg">
-                        0,0120 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-blue-marine">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">France Mobile</span>
-                      <span className="text-blue-marine font-bold text-lg">
-                        0,0600 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-800">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">
-                        DOM Fixe (Guadeloupe, Martinique, Guyane, Réunion,
-                        Mayotte)
-                      </span>
-                      <span className="text-gray-800 font-bold text-lg">
-                        0,0160 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-600">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">
-                        DOM Mobile (Guadeloupe, Martinique, Guyane, Réunion,
-                        Mayotte)
-                      </span>
-                      <span className="text-gray-600 font-bold text-lg">
-                        0,0800 €
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Création numéro SDA</span>
-                      <span className="text-gray-secondary font-semibold">
-                        Sur devis
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow border-l-4 border-gray-secondary">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Portabilité</span>
-                      <span className="text-gray-secondary font-semibold">
-                        Sur devis
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <div className="flex items-start space-x-2">
-                    <i className="lni lni-information text-blue-marine mt-0.5"></i>
-                    <div className="text-sm text-blue-800">
-                      <p>
-                        <strong>Facturation transparente :</strong> Pas de frais
-                        de connexion, pas de minimum de consommation,
-                        facturation à la seconde dès la première seconde.
-                      </p>
-                      <p className="mt-1">
-                        <strong>Numéros locaux :</strong> Création et
-                        portabilité de numéros géographiques DOM
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -311,7 +228,7 @@ export default function TrunkSIPCompteur() {
         <section className="py-16 bg-base-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Compatible avec{" "}
                 <span className="text-red-primary">tous les IPBX</span>
               </h2>
@@ -323,8 +240,8 @@ export default function TrunkSIPCompteur() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {/* 3CX */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-3cx.webp"
@@ -332,7 +249,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">3CX</h3>
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">3CX</h3>
                   <p className="text-gray-600 text-sm">
                     IPBX cloud leader mondial
                   </p>
@@ -340,8 +257,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Yeastar */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/Yeastar_Logo.webp"
@@ -349,7 +266,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Yeastar
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -359,8 +276,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Grandstream */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/logo-grandstream.webp"
@@ -368,7 +285,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Grandstream
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -378,8 +295,8 @@ export default function TrunkSIPCompteur() {
               </div>
 
               {/* Avaya */}
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body items-center text-center p-6">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <img
                       src="/images/logos-sip-compatibility/avaya-logo.webp"
@@ -387,7 +304,7 @@ export default function TrunkSIPCompteur() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h3 className="card-title text-base text-gray-dark">Avaya</h3>
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">Avaya</h3>
                   <p className="text-gray-600 text-sm">Solutions entreprise</p>
                 </div>
               </div>
@@ -403,7 +320,7 @@ export default function TrunkSIPCompteur() {
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
               >
                 Découvrir nos solutions IPBX
-                <i className="lni lni-arrow-right ml-2"></i>
+                <ArrowRight size={16} className="ml-2" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -416,13 +333,13 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
 
-        {/* Formulaire Tally (embed) avec nouvelle UX améliorée */}
-        <TallyEmbedDevis />
+        {/* Formulaire Tally tarifs (embed) → webhook n8n */}
+        <TallyEmbedTarifs />
 
         {/* CTA Section finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Calculez vos <span className="text-white">économies</span>{" "}
               maintenant
             </h2>
@@ -435,26 +352,26 @@ export default function TrunkSIPCompteur() {
             {/* Avantages finaux */}
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-checkmark-circle text-white"></i>
+                <CheckCircle size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Devis gratuit</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-timer text-white"></i>
+                <Timer size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Réponse rapide</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <i className="lni lni-shield text-white"></i>
+                <Shield size={24} className="text-white" aria-hidden="true" />
                 <span className="text-sm">Expert VoIP</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+              <CTAButton href="/devis-en-ligne" icon="Calculator">
                 Calculer mes économies gratuitement
               </CTAButton>
               <CTAButtonMarine
                 href="tel:+33189560500"
-                icon="lni-phone"
+                icon="Phone"
                 external
               >
                 Parler à un expert : 01 89 56 05 00
@@ -462,8 +379,8 @@ export default function TrunkSIPCompteur() {
             </div>
 
             <p className="text-white/70 text-sm mt-6">
-              <strong>Expertise DOM depuis 15 ans</strong> • Plus de 100
-              entreprises nous font confiance
+              <strong>Expertise DOM depuis 15 ans</strong> • Support par mail
+              et téléphone
             </p>
           </div>
         </section>

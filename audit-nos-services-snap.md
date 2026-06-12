@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "E2I Solutions de Téléphonie IP et communications d'entreprise" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e10]
+      - link " Contact" [ref=e34] [cursor=pointer]:
+        - /url: /contact
+      - button "Ouvrir le menu" [ref=e37]
+  - main [ref=e39]:
+    - generic [ref=e40]:
+      - main [ref=e41]
+      - generic [ref=e297]
+  - contentinfo [ref=e383]:
+    - generic [ref=e384]:
+      - generic [ref=e385]
+      - generic [ref=e461]
+  - generic [ref=e471]:
+    - paragraph [ref=e473]: Une question ?
+    - button "Ouvrir le pré‑chat" [ref=e474]:
+      - img [ref=e475]

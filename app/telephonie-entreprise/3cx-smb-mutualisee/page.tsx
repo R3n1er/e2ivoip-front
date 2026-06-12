@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title: "3CX SMB Mutualisée - E2I VoIP | Solution économique TPE/PME",
@@ -37,7 +38,7 @@ export default function Smb3CXMutualisee() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <i className="lni lni-users text-white mr-2"></i>
+                <Users size={16} className="text-white mr-2" aria-hidden="true" />
                 <span className="text-white/90 text-sm font-medium">
                   Solution mutualisée
                 </span>
@@ -55,10 +56,10 @@ export default function Smb3CXMutualisee() {
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="/devis-en-ligne" icon="lni-calculator">
+                <CTAButton href="/devis-en-ligne" icon="Calculator">
                   Demander un devis
                 </CTAButton>
-                <CTAButtonMarine href="tel:+33189560500" icon="lni-phone" external>
+                <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
                   01 89 56 05 00
                 </CTAButtonMarine>
               </div>
@@ -70,7 +71,7 @@ export default function Smb3CXMutualisee() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 La solution <span className="text-red-primary">3CX économique</span> pour les petites entreprises
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
@@ -82,36 +83,36 @@ export default function Smb3CXMutualisee() {
 
             {/* Avantages clés avec DaisyUI */}
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <i className="lni lni-calculator text-red-primary text-2xl"></i>
+                    <Calculator size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Économique</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-gray-600 text-center">
                     À partir de 15€/utilisateur/mois, sans frais d'infrastructure
                   </p>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <i className="lni lni-timer text-gray-800 text-2xl"></i>
+                    <Timer size={32} className="text-gray-800" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Activation rapide</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
                   <p className="text-gray-600 text-center">
                     Mise en service en 24h, configuration pré-établie
                   </p>
                 </div>
               </div>
 
-              <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="card-body">
+              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <i className="lni lni-grow text-red-primary text-2xl"></i>
+                    <TrendUp size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
-                  <h3 className="card-title text-gray-dark justify-center">Évolutif</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Évolutif</h3>
                   <p className="text-gray-600 text-center">
                     De 3 à 50 utilisateurs, ajustable selon vos besoins
                   </p>
@@ -126,27 +127,27 @@ export default function Smb3CXMutualisee() {
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Appels VoIP illimités entre utilisateurs</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Visioconférence intégrée</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Applications mobiles iOS/Android</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Chat d'équipe et collaboration</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Standard automatique (SVI)</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <i className="lni lni-checkmark-circle text-red-primary text-xl"></i>
+                  <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                   <span className="text-gray-700">Support technique local</span>
                 </div>
               </div>
@@ -157,13 +158,13 @@ export default function Smb3CXMutualisee() {
         {/* CTA finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
               Démarrez avec <span className="text-white">3CX SMB</span> dès aujourd'hui
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Activation en 24h • Support expert local • Sans engagement
             </p>
-            <CTAButton href="/devis-en-ligne" icon="lni-rocket">
+            <CTAButton href="/devis-en-ligne" icon="Rocket">
               Commencer maintenant
             </CTAButton>
           </div>

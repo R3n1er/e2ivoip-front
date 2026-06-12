@@ -9,6 +9,14 @@ jest.mock("framer-motion", () => ({
       children,
       className,
       style,
+      initial: _i,
+      animate: _a,
+      transition: _t,
+      variants: _v,
+      whileInView: _w,
+      whileHover: _h,
+      whileTap: _wt,
+      viewport: _vp,
       ...props
     }: {
       children: React.ReactNode;
@@ -71,7 +79,7 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
     // « Solutions Mobilité » retiré du périmètre
     expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();
-    expect(screen.getByText("Assistants Vocaux IA")).toBeInTheDocument();
+    expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
   });
 
@@ -123,12 +131,25 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     expect(ctaLinks.length).toBeGreaterThan(0);
   });
 
+  it("pointe vers les URLs produit canoniques", () => {
+    render(<ServicesSectionSimple />);
+
+    const hrefs = screen
+      .getAllByRole("link", { name: /En savoir plus/i })
+      .map((link) => link.getAttribute("href"));
+
+    expect(hrefs).toContain("/telephonie-entreprise/3cx-smb-mutualisee");
+    expect(hrefs).toContain("/studio-attente");
+    expect(hrefs).not.toContain("/telephonie-entreprise/3cx-smb-pro");
+    expect(hrefs).not.toContain("/nos-services/studio-attente");
+  });
+
   it("affiche les bénéfices clés avec les bonnes couleurs", () => {
     render(<ServicesSectionSimple />);
 
-    expect(screen.getByText(/Économies jusqu'à 30%/)).toBeInTheDocument();
+    expect(screen.getByText(/Économies jusqu'à 20%/)).toBeInTheDocument();
     // Bénéfice « Mobilité intégrée » retiré du périmètre
     expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
-    expect(screen.getByText(/Transcription automatique/)).toBeInTheDocument();
+    expect(screen.getByText(/BYOC compatible/i)).toBeInTheDocument();
   });
 });

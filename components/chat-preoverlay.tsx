@@ -17,6 +17,8 @@
 import React, { useState, memo, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Chat } from "@/lib/icons";
 import { submitChatIntake } from "@/lib/api/chat-intake";
 import {
   chatIntakeSchema,
@@ -28,11 +30,6 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
   const [animationStopped, setAnimationStopped] = useState(false);
-
-  // Log pour debug
-  React.useEffect(() => {
-    console.log("✅ ChatPreOverlay monté et prêt");
-  }, []);
 
   // Animation de vibration par cycles : vibration 3s → pause 2s → répéter
   // Arrêt définitif après 20 secondes
@@ -170,16 +167,15 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
           {/* Bouton chat agrandi */}
           <button
             onClick={() => {
-              console.log("ChatPreOverlay: Bouton cliqué");
               setOpen(true);
               // Arrêter définitivement l'animation au clic
               setIsAnimating(false);
               setAnimationStopped(true);
             }}
             className={`
-              shadow-xl hover:shadow-2xl transition-all hover:scale-110
+              shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-[0.98]
               rounded-full w-20 h-20 flex items-center justify-center
-              bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500
+              bg-red-primary hover:bg-red-600
               text-white cursor-pointer
               ${isAnimating ? "animate-shake" : ""}
             `}
@@ -187,29 +183,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
             data-testid="open-chat-button"
             style={{ pointerEvents: "auto" }}
           >
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 14c-2.761 0-5-1.79-5-4s2.239-4 5-4h6c2.761 0 5 1.79 5 4s-2.239 4-5 4H9l-2 2v-2Z"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M15 16c2.209 0 4-1.343 4-3 0-1.657-1.791-3-4-3"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                opacity="0.8"
-              />
-            </svg>
+            <Chat size={32} weight="bold" aria-hidden="true" />
           </button>
         </div>
       )}
@@ -229,17 +203,15 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
             {/* Prénom */}
             <div>
-              <input
+              <Input
                 {...register("firstName")}
-                className={`input input-bordered w-full ${
-                  errors.firstName ? "input-error" : ""
-                }`}
+                className={errors.firstName ? "border-red-primary" : ""}
                 placeholder="Prénom*"
                 data-testid="firstname-input"
               />
               {errors.firstName && (
                 <p
-                  className="text-xs text-error mt-1"
+                  className="text-xs text-red-primary mt-1"
                   data-testid="firstname-error"
                 >
                   {errors.firstName.message}
@@ -249,17 +221,15 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
 
             {/* Nom */}
             <div>
-              <input
+              <Input
                 {...register("lastName")}
-                className={`input input-bordered w-full ${
-                  errors.lastName ? "input-error" : ""
-                }`}
+                className={errors.lastName ? "border-red-primary" : ""}
                 placeholder="Nom*"
                 data-testid="lastname-input"
               />
               {errors.lastName && (
                 <p
-                  className="text-xs text-error mt-1"
+                  className="text-xs text-red-primary mt-1"
                   data-testid="lastname-error"
                 >
                   {errors.lastName.message}
@@ -269,17 +239,15 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
 
             {/* Entreprise */}
             <div>
-              <input
+              <Input
                 {...register("company")}
-                className={`input input-bordered w-full ${
-                  errors.company ? "input-error" : ""
-                }`}
+                className={errors.company ? "border-red-primary" : ""}
                 placeholder="Entreprise*"
                 data-testid="company-input"
               />
               {errors.company && (
                 <p
-                  className="text-xs text-error mt-1"
+                  className="text-xs text-red-primary mt-1"
                   data-testid="company-error"
                 >
                   {errors.company.message}
@@ -289,18 +257,16 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
 
             {/* Email */}
             <div>
-              <input
+              <Input
                 {...register("email")}
                 type="email"
-                className={`input input-bordered w-full ${
-                  errors.email ? "input-error" : ""
-                }`}
+                className={errors.email ? "border-red-primary" : ""}
                 placeholder="Email*"
                 data-testid="email-input"
               />
               {errors.email && (
                 <p
-                  className="text-xs text-error mt-1"
+                  className="text-xs text-red-primary mt-1"
                   data-testid="email-error"
                 >
                   {errors.email.message}
@@ -310,18 +276,16 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
 
             {/* Téléphone (optionnel) */}
             <div>
-              <input
+              <Input
                 {...register("phone")}
                 type="tel"
-                className={`input input-bordered w-full ${
-                  errors.phone ? "input-error" : ""
-                }`}
+                className={errors.phone ? "border-red-primary" : ""}
                 placeholder="Téléphone (optionnel)"
                 data-testid="phone-input"
               />
               {errors.phone && (
                 <p
-                  className="text-xs text-error mt-1"
+                  className="text-xs text-red-primary mt-1"
                   data-testid="phone-error"
                 >
                   {errors.phone.message}
@@ -334,7 +298,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               <button
                 type="button"
                 onClick={handleCancel}
-                className="btn btn-ghost flex-1"
+                className="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-600 rounded-lg hover:bg-gray-50 transition-colors duration-300 transition-transform active:scale-[0.98]"
                 data-testid="cancel-button"
               >
                 Annuler
@@ -342,7 +306,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               <button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="btn btn-primary flex-1"
+                className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-red-primary rounded-lg hover:bg-red-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed transition-transform active:scale-[0.98]"
                 data-testid="submit-button"
               >
                 {isSubmitting ? "Envoi..." : "Ouvrir le chat"}
