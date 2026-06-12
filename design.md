@@ -141,7 +141,7 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 7. ✅ **Boutons :** tout passe par `CTAButton`/`CTAButtonMarine`/`CTAButtonSecondary` ; faux boutons et classes `btn` DaisyUI éliminés ; tracking analytics dédupliqué (commits 7e39de5, d769e00)
 8. ✅ **Conteneur :** `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` partout ; `container mx-auto` éradiqué (commit 1b4eb3b)
 9. ✅ **Rythme :** `py-20`/`py-16` appliqué ; bandes utilitaires téléphones `py-8` (D-09) conservées comme exception volontaire (commit 1b4eb3b)
-10. ✅ **Icônes :** échelle 16/24/32 appliquée (101/170/40) ; emojis et `lni-` déjà absents ; `weight="fill"` conservé où sémantique (étoiles, checks pleins). ⏳ Reporté : `weight="bold"` global — à trancher avec validation visuelle (commit d769e00)
+10. ✅ **Icônes :** échelle 16/24/32 appliquée (101/170/40) ; emojis et `lni-` déjà absents. **`weight="bold"` global** via `IconContext.Provider` dans `layout-client-chrome.tsx` (2026-06-12, validé visuellement) — une seule source, surchargeable au cas par cas. `weight="fill"` explicite préservé où sémantique (étoiles, checks pleins) : Phosphor donne priorité au prop sur le contexte (commits d769e00, ce commit)
 
 ### P3 — Élévation du goût (anti-générique, charte respectée)
 11. ✅ **Casser le « 3 cards égales »** : zig-zag appliqué de façon **ciblée** (pas massive, pour éviter un nouveau cliché) — `telephonie-entreprise` (3 solutions, commit 0f0e6d9) et `qui-sommes-nous` valeurs (3 blocs riches, commit f1471d0). Les grilles de cards courtes restent en grille centrée (bon format pour le contenu bref)
