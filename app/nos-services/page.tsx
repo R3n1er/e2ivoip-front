@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -19,13 +18,13 @@ import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, Chart
 export const metadata: Metadata = {
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. Économies 20% garanties. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. 20% d'économies sur vos communications DROM. Devis gratuit ☎",
   keywords:
     "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
   openGraph: {
     title: "Nos Services Téléphonie IP - E2I VoIP",
     description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. Économies 20% garanties.",
+      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. ",
     type: "website",
     locale: "fr_FR",
   },
@@ -212,7 +211,7 @@ export default function NosServices() {
                 </h1>
                 <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
                   Transformez votre téléphonie d&apos;entreprise avec des
-                  solutions complètes : économies garanties et fonctionnalités
+                  solutions complètes : 20% d'économies sur vos communications et fonctionnalités
                   nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -424,7 +423,6 @@ export default function NosServices() {
           {/* Contact */}
           <ContactSectionSimple />
         </main>
-        <Footer />
       </div>
     </>
   );

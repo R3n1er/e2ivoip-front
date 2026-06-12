@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-import { Footer } from "@/components/layout/footer";
 import {
   Card,
   CardContent,
@@ -172,7 +171,6 @@ export default function StudioAttente() {
         {/* Contact */}
         <ContactSectionSimple />
       </div>
-      <Footer />
     </div>
   );
 }

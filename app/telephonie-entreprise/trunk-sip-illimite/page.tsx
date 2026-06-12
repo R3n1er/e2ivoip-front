@@ -50,61 +50,66 @@ export default function TrunkSIPIllimite() {
   return (
     <div className="min-h-screen bg-white">
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img
-              src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
-              alt="Professionnel utilisant la téléphonie IP E2I VoIP"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Gradient Overlay uniforme */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>
-          </div>
+        {/* Hero Section — split 50/50 texte gauche / visuel droite (design.md P3.12) */}
+        <section className="py-20 bg-gray-50 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Texte */}
+              <div>
+                <div className="inline-flex items-center bg-red-primary/10 text-red-primary rounded-full px-4 py-2 mb-6">
+                  <Infinity size={16} className="mr-2" aria-hidden="true" />
+                  <span className="text-sm font-medium">Forfait illimité</span>
+                </div>
+                <h1 className="text-4xl md:text-6xl font-bold text-gray-dark mb-6">
+                  Trunk SIP <span className="text-red-primary">Illimité</span>
+                </h1>
+                <p className="text-xl text-gray-600 leading-relaxed mb-4">
+                  <strong>Appels illimités</strong> vers fixes et mobiles
+                  France métropolitaine & DOM
+                </p>
+                <p className="text-lg text-gray-600 mb-8">
+                  <strong>2, 4 ou 8 appels simultanés</strong> •
+                  Forfait tout inclus avec politique fair use
+                </p>
+                <div className="space-y-3 mb-10">
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <CheckCircle size={24} className="text-red-primary flex-shrink-0" aria-hidden="true" />
+                    <span>Appels illimités France</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <Globe size={24} className="text-blue-marine flex-shrink-0" aria-hidden="true" />
+                    <span>Appels illimités DOM</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <Users size={24} className="text-red-primary flex-shrink-0" aria-hidden="true" />
+                    <span>2, 4 ou 8 lignes simultanées</span>
+                  </div>
+                </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center">
-              <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <Infinity size={16} className="text-white mr-2" aria-hidden="true" />
-                <span className="text-white/90 text-sm font-medium">
-                  Forfait illimité
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                Trunk SIP <span className="text-white">Illimité</span>
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-                <strong>Appels illimités</strong> vers fixes et mobiles
-                France métropolitaine & DOM
-              </p>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                <strong>2, 4 ou 8 appels simultanés</strong> • 
-                Forfait tout inclus avec politique fair use
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
-                <div className="flex items-center gap-2">
-                  <CheckCircle size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Appels illimités France</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Appels illimités DOM</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">2, 4 ou 8 lignes simultanées</span>
+                {/* CTA Hero */}
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <CTAButton href="#contact-form" icon="Chat">
+                    Demander un devis
+                  </CTAButton>
+                  <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
+                    01 89 56 05 00
+                  </CTAButtonMarine>
                 </div>
               </div>
 
-              {/* CTA Hero - Unified homepage style */}
-              <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="#contact-form" icon="Chat">
-                  Demander un devis
-                </CTAButton>
-                <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
-                  01 89 56 05 00
-                </CTAButtonMarine>
+              {/* Visuel */}
+              <div className="relative">
+                <img
+                  src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
+                  alt="Professionnel utilisant la téléphonie IP E2I VoIP"
+                  className="w-full h-[420px] object-cover rounded-2xl shadow-xl"
+                />
+                <div className="absolute -bottom-6 left-8 bg-white rounded-xl border border-gray-200 shadow-xl px-6 py-4">
+                  <p className="font-mono tabular-nums text-3xl font-bold text-red-primary">
+                    2·4·8
+                  </p>
+                  <p className="text-sm text-gray-600">appels simultanés</p>
+                </div>
               </div>
             </div>
           </div>
