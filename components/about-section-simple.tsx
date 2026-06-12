@@ -1,6 +1,7 @@
 "use client";
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Users, Certificate, Timer, Bolt, Shield, CheckCircle, Phone, Rocket } from "@/lib/icons";
 
 export function AboutSectionSimple() {
@@ -117,9 +118,9 @@ export function AboutSectionSimple() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <RevealGroup className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <RevealItem key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
                   <stat.Icon size={24} className="text-red-primary mr-2" />
                   <span className="text-3xl font-bold font-mono tabular-nums text-gray-dark">
@@ -127,9 +128,9 @@ export function AboutSectionSimple() {
                   </span>
                 </div>
                 <p className="text-gray-secondary text-sm">{stat.label}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CTAButton } from "@/components/ui/cta-button";
+import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Cloud, Users, Phone, Network, BarChart, CheckCircle, ArrowRight } from "@/lib/icons";
 
 export function ServicesSectionSimple() {
@@ -101,9 +102,9 @@ export function ServicesSectionSimple() {
         </div>
 
         {/* Services Grid — 2 colonnes ; 5e carte centrée */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <RevealGroup className="grid md:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
-            <div
+            <RevealItem
               key={service.href}
               className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
                 index === services.length - 1
@@ -152,9 +153,9 @@ export function ServicesSectionSimple() {
                   </CTAButton>
                 </div>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
       </div>
     </section>

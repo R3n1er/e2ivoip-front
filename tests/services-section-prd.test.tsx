@@ -9,6 +9,14 @@ jest.mock("framer-motion", () => ({
       children,
       className,
       style,
+      initial: _i,
+      animate: _a,
+      transition: _t,
+      variants: _v,
+      whileInView: _w,
+      whileHover: _h,
+      whileTap: _wt,
+      viewport: _vp,
       ...props
     }: {
       children: React.ReactNode;
