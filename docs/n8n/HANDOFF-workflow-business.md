@@ -1,15 +1,12 @@
-# Handoff — Mise en production du workflow n8n (Tally 7RpEBa)
+# Handoff — Workflow n8n (Tally 7RpEBa) — ✅ EN PRODUCTION
 
-> **But** : passer le tunnel de leads « tarifs Trunk SIP au compteur » de l'état
-> *prêt mais non branché* à *opérationnel en production*.
+> **Statut : ✅ opérationnel** (mis en production le 2026-06-12). Le tunnel de leads
+> « tarifs Trunk SIP au compteur » tourne : credentials branchées, webhook relié à
+> Tally, test de bout en bout validé.
 >
-> **Statut actuel** : le workflow JSON et sa doc existent (`docs/n8n/`), mais aucune
-> credential n'est branchée et le webhook n'est pas relié à Tally. **Rien ne tourne
-> encore.**
->
-> **Nature des tâches** : ce sont des actions **dans des interfaces web**
-> (n8n, Tally, Resend, HubSpot) avec tes credentials — elles ne peuvent pas être
-> faites depuis le code. Ce handoff est ta checklist d'exécution.
+> Ce document est **conservé comme référence** (architecture, mapping des champs,
+> points de vigilance pour l'exploitation). La checklist d'installation ci-dessous
+> est archivée — utile uniquement en cas de re-déploiement ou de migration n8n.
 
 ---
 
