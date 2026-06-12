@@ -86,10 +86,10 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 
 | Rôle | Police | Source |
 |------|--------|--------|
-| **Sans (UI + marketing)** | Geist Sans | `next/font/google` — `app/layout.tsx` |
-| **Mono** | Geist Mono | IDs techniques, code si besoin |
+| **Sans (UI + marketing)** | Inter — police officielle, cohérence logo E2I | `next/font/google` — `app/layout.tsx` |
+| **Mono** | IBM Plex Mono — données chiffrées | `next/font/google` — `app/layout.tsx` |
 
-**Interdit :** Inter comme police principale. **Pas de serif** sur l’UI produit.
+**Pas de serif** sur l’UI produit. Inter est la police de marque (logo E2I), inscrite à `CHARTE_GRAPHIQUE.md`.
 
 ### 3.2 Échelle & hiérarchie
 
@@ -124,7 +124,7 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 | Marine | `bg-blue-marine` | Action secondaire (découvrir offre, lecture) |
 | Secondaire | `bg-white text-[#091421]` | Sur fond sombre / hero |
 
-**Structure :** wrapper `monolith-btn` + span interne `px-10 py-4`, icônes **Lineicons** (`lni-*`).  
+**Structure :** wrapper `monolith-btn` + span interne `px-10 py-4`.  
 **Analytics :** `trackEvent('cta_click', …)` via `usePathname`.
 
 **États :** hover via transition DaisyUI/Tailwind ; pas de glow néon. `:active` léger (`scale-[0.98]` optionnel).
@@ -329,6 +329,6 @@ Aligné sur `docs/DESIGN-AUDIT.md` — à traiter en phase 3 (code).
 
 **Prompt court à injecter :**
 
-> Site E2I VoIP — télécom B2B DOM. Tokens : red-primary #E53E3E, blue-marine #2D3848, gray-dark #1F2937. Hero overlay `from-blue-900/85 via-blue-800/80 to-red-600/85`. CTA Monolithe uppercase Geist. Pas d’emojis, pas de red-600, pas de blobs. Header desktop à lg. Voir `docs/DESIGN.md`.
+> Site E2I VoIP — télécom B2B DOM. Tokens : red-primary #E53E3E, blue-marine #2D3848, gray-dark #1F2937. Hero overlay `from-blue-900/85 via-blue-800/80 to-red-600/85`. CTA Monolithe uppercase Inter. Pas d’emojis, pas de red-600, pas de blobs. Header desktop à lg. Voir `docs/DESIGN.md`.
 
 **Stitch :** utiliser ce fichier comme `DESIGN.md` projet ; les écrans générés doivent respecter §2 et §4 avant toute créativité layout (§1 dials).

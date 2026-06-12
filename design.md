@@ -42,13 +42,13 @@ Densité actuelle : ~4/10 (app quotidienne, ni galerie ni cockpit). Motion : dis
 
 ## 3. Typographie
 
-- **Famille :** `Geist` (sans) + `Geist Mono`, chargées via `next/font/google` dans `app/layout.tsx` — excellent choix, aucune dérive « Inter générique »
+- **Famille :** `Inter` (sans, police officielle — cohérence avec le logo E2I) + `IBM Plex Mono` (données chiffrées), chargées via `next/font/google` dans `app/layout.tsx`
 - **H1 hero :** `text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight` — grande échelle, blanc sur voile sombre, accent `text-red-300`
 - **H2 — deux écoles concurrentes (incohérence à trancher) :**
   - Standard : `text-3xl md:text-4xl font-bold` (~30 occurrences)
   - « Monolith » : `text-4xl font-black tracking-[-0.04em] leading-[0.95]` (contact-section-simple, testimonials)
 - **Corps :** `text-gray-600`/`text-gray-dark`, `leading-relaxed`, pas de `max-w-[65ch]` systématique
-- **Chiffres clés :** `text-3xl font-bold` — Geist Mono disponible mais non exploité pour les données
+- **Chiffres clés :** `text-3xl font-bold font-mono tabular-nums` — IBM Plex Mono pour les données
 
 ---
 
@@ -100,7 +100,7 @@ Rayons en usage : `rounded-lg` (61×, dominant), `rounded-full` (47×, badges/ic
 ## 7. Audit « taste » — synthèse
 
 ### Points forts (à protéger)
-1. Geist via `next/font` — typo premium déjà en place
+1. Inter via `next/font` — police officielle (logo E2I), optimale pour le web
 2. Tokens couleurs charte présents dans Tailwind **et** CSS vars
 3. Abstraction icônes `lib/icons.ts`
 4. CTA « monolith » uppercase : une vraie signature, pas un bouton générique
@@ -146,7 +146,7 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 ### P3 — Élévation du goût (anti-générique, charte respectée)
 11. ⏳ **Casser le « 3 cards égales »** : sur services et avantages, passer en zig-zag 2 colonnes (texte gauche / visuel droit alterné) ou en grille bento asymétrique `2fr 1fr` — mêmes contenus, composition moins IA. *À faire avec validation visuelle (screenshots).*
 12. ⏳ **Heroes intérieurs en split 50/50** : garder le gradient PRD sur l'accueil ; sur les pages secondaires, texte aligné à gauche + visuel/illustration à droite plutôt que centré sur photo sombre. *À faire avec validation visuelle (screenshots).*
-13. ✅ **Geist Mono pour les chiffres** : fait — et bug corrigé au passage : Geist n'était pas câblée dans `tailwind.config` (le site rendait en police système) (commit fd7cd12)
+13. ✅ **Mono pour les chiffres** : fait. **Police révisée 2026-06-12** : Geist (défaut create-next-app, jamais validée) → **Inter** (police du logo E2I, inscrite à la charte) + **IBM Plex Mono** pour les chiffres. Le body applique désormais `font-sans` (avant : ni Geist ni Inter ne rendaient, fallback système/serif)
 14. ✅ **Apparitions au scroll sobres** : composants `Reveal`/`RevealGroup`/`RevealItem` (`components/motion/reveal.tsx`), appliqués aux grilles services et stats de l'accueil (commit ec2bacb)
 15. ✅ **Feedback tactile uniforme** : `active:scale-[0.98]` sur CTAButton, PhoneLink, chat ; widget chat remis en charte (gradient violet → rouge, Phosphor, Input shadcn) (commit 23b0e5a)
 16. ✅ **Stats organiques** : décision Alban 2026-06-11 — pas de communication sur le nombre de clients (remplacé par « 4 territoires DOM couverts ») ; 15 ans d'expérience ; « 20 % d'économies sur le coût des communications DROM » ; support communiqué uniquement comme « par mail et téléphone » (fin des « 24/7 » et « support local réactif » pour le support humain ; les 24/7 produit — agents IA, monitoring, uptime — conservés)
@@ -178,7 +178,7 @@ Règle d'accompagnement : **interdire** les teintes Tailwind génériques (`red-
 - H2 : `text-3xl md:text-4xl font-black tracking-[-0.04em]` (style « monolith » généralisé)
 - H3 : `text-xl font-semibold`
 - Corps : `text-base text-gray-600 leading-relaxed max-w-[65ch]`
-- Données/chiffres : `font-mono tabular-nums` (Geist Mono)
+- Données/chiffres : `font-mono tabular-nums` (IBM Plex Mono)
 
 ### 9.4 Élévation & rayons (3 niveaux maximum)
 - Rayons : `rounded-lg` (contrôles) · `rounded-xl` (cards) · `rounded-full` (badges/pills)

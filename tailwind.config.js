@@ -10,9 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Charte §3.1 : Geist Sans (UI + marketing) / Geist Mono (données)
-        sans: ["var(--font-geist-sans)", ...defaultTheme.fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono],
+        // Charte : Inter (police officielle, cohérence logo E2I) / IBM Plex Mono (données chiffrées)
+        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         // Couleurs officielles E2I VoIP

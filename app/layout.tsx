@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClientChrome } from "@/components/layout/layout-client-chrome";
 import { Footer } from "@/components/layout/footer";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Police officielle E2I VoIP — Inter (cohérence avec le logo). Voir CHARTE_GRAPHIQUE.md
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Mono pour les données chiffrées (effet « télécom/data »)
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +61,7 @@ export default function RootLayout({
     >
       <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${plexMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <LayoutClientChrome>{children}</LayoutClientChrome>
