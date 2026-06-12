@@ -60,7 +60,7 @@ export function CTAButton({
     return (
       <a
         href={href}
-        className={`monolith-btn ${className}`}
+        className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`}
         onClick={handleClick}
         {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
@@ -70,7 +70,7 @@ export function CTAButton({
   }
 
   return (
-    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+    <Link href={href} className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`} onClick={handleClick}>
       {inner}
     </Link>
   )
@@ -99,7 +99,7 @@ export function CTAButtonMarine({
     return (
       <a
         href={href}
-        className={`monolith-btn ${className}`}
+        className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`}
         onClick={handleClick}
         {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
@@ -109,7 +109,7 @@ export function CTAButtonMarine({
   }
 
   return (
-    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+    <Link href={href} className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`} onClick={handleClick}>
       {inner}
     </Link>
   )
@@ -138,7 +138,7 @@ export function CTAButtonSecondary({
     return (
       <a
         href={href}
-        className={`monolith-btn ${className}`}
+        className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`}
         onClick={handleClick}
         {...(isTelOrMailto ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
       >
@@ -148,7 +148,7 @@ export function CTAButtonSecondary({
   }
 
   return (
-    <Link href={href} className={`monolith-btn ${className}`} onClick={handleClick}>
+    <Link href={href} className={`monolith-btn inline-block transition-transform duration-150 active:scale-[0.98] ${className}`} onClick={handleClick}>
       {inner}
     </Link>
   )
