@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Calculator, CheckCircle, Shield, Timer, Users } from '@/lib/icons';
+import { FormSkeleton } from "@/components/ui/form-skeleton";
 
 const TALLY_EMBED_URL =
   "https://tally.so/embed/7RpEBa?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1";
@@ -125,11 +126,7 @@ export function TallyEmbedTarifs() {
                   sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
                 />
               ) : (
-                <div className="flex items-center justify-center w-full h-[500px] bg-gray-50">
-                  <span className="text-gray-500">
-                    Chargement du formulaire…
-                  </span>
-                </div>
+                <FormSkeleton height={500} />
               )}
             </div>
           </div>
