@@ -160,53 +160,55 @@ export default function QuiSommesNous() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <div className="bg-red-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Target size={32} className="text-red-primary" aria-hidden="true" />
+          {/* Zig-zag 2 colonnes alterné (design.md P3.11) */}
+          <div className="max-w-5xl mx-auto space-y-12">
+            {[
+              {
+                Icon: Target,
+                iconBg: "bg-red-primary/10",
+                iconColor: "text-red-primary",
+                title: "Proximité et réactivité",
+                description:
+                  "Équipes locales en France, Martinique, Guadeloupe et Guyane. Réponse en moins de 2h, intervention rapide sur site si nécessaire.",
+              },
+              {
+                Icon: Seal,
+                iconBg: "bg-blue-marine/10",
+                iconColor: "text-blue-marine",
+                title: "Excellence technique",
+                description:
+                  "Partenaire Silver 3CX, certifié Yeastar. Maîtrise des dernières technologies VoIP et intégrations WhatsApp, Microsoft Teams, CRM, IA, Microsoft 365.",
+              },
+              {
+                Icon: Users,
+                iconBg: "bg-gray-secondary/10",
+                iconColor: "text-gray-secondary",
+                title: "Résultats concrets",
+                description:
+                  "20% d'économies sur le coût de vos communications dans les DROM. Customer Success Manager dédié pour assurer votre satisfaction.",
+              },
+            ].map((value, index) => (
+              <div
+                key={value.title}
+                className="grid md:grid-cols-[auto_1fr] gap-6 items-start"
+              >
+                <div
+                  className={`${value.iconBg} w-16 h-16 rounded-xl flex items-center justify-center ${
+                    index % 2 === 1 ? "md:order-2" : ""
+                  }`}
+                >
+                  <value.Icon size={32} className={value.iconColor} aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Proximité et réactivité
-                </h3>
-                <p className="text-gray-600">
-                  Équipes locales en France, Martinique, Guadeloupe et Guyane.
-                  Réponse en moins de 2h, intervention rapide sur site si
-                  nécessaire.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="bg-blue-marine/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Seal size={32} className="text-blue-marine" aria-hidden="true" />
+                <div className={index % 2 === 1 ? "md:order-1 md:text-right" : ""}>
+                  <h3 className="text-2xl font-bold text-gray-dark mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Excellence technique
-                </h3>
-                <p className="text-gray-600">
-                  Partenaire Silver 3CX, certifié Yeastar. Maîtrise des
-                  dernières technologies VoIP et intégrations WhatsApp,
-                  Microsoft Teams, CRM, IA, Microsoft 365.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="bg-gray-secondary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Users size={32} className="text-gray-secondary" aria-hidden="true" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Résultats garantis
-                </h3>
-                <p className="text-gray-600">
-                  Économies de 20% garanties sur vos factures télécom. Customer
-                  Success Manager dédié pour assurer votre satisfaction.
-                </p>
-              </CardContent>
-            </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>

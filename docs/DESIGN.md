@@ -184,8 +184,8 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 
 ### 4.6 Icônes
 
-- **Lineicons 4.0** (CDN dans `layout.tsx`) — pas d’emojis dans le markup
-- `strokeWidth` cohérent si migration vers Phosphor/Radix plus tard
+- Lucide React — cohérence `strokeWidth` sur tous les composants
+- Pas d’emojis dans le markup
 
 ---
 
