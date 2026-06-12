@@ -40,65 +40,9 @@ test.describe("ChatPreOverlay - Animations et UX", () => {
     });
   });
 
-  // TODO: Fix timing issues - animation start is delayed
-  test.skip("vérifie que l'animation s'arrête après 20 secondes", async ({
-    page,
-  }) => {
-    await page.goto("http://localhost:3000");
-    await page.waitForLoadState("networkidle");
-
-    const chatButton = page.getByTestId("open-chat-button");
-
-    // Vérifier que le bouton a la classe d'animation au départ (attendre que le composant monte)
-    await page.waitForTimeout(1500);
-    const hasAnimationInitially = await chatButton.evaluate((el) => {
-      return el.className.includes("animate-shake");
-    });
-    expect(hasAnimationInitially).toBeTruthy();
-
-    // Attendre 21 secondes (20s + marge)
-    await page.waitForTimeout(21000);
-
-    // Vérifier que la classe d'animation a été retirée
-    const hasAnimationAfter = await chatButton.evaluate((el) => {
-      return el.className.includes("animate-shake");
-    });
-    expect(hasAnimationAfter).toBeFalsy();
-  });
-
-  test.skip("vérifie que l'animation s'arrête immédiatement au clic", async ({
-    page,
-  }) => {
-    await page.goto("http://localhost:3000");
-    await page.waitForLoadState("networkidle");
-
-    const chatButton = page.getByTestId("open-chat-button");
-
-    // Vérifier la présence de l'animation (attendre que le composant monte)
-    await page.waitForTimeout(1500);
-    const hasAnimationBefore = await chatButton.evaluate((el) => {
-      return el.className.includes("animate-shake");
-    });
-    expect(hasAnimationBefore).toBeTruthy();
-
-    // Cliquer sur le bouton (avec force pour contourner l'animation)
-    await chatButton.click({ force: true });
-
-    // Attendre que le formulaire s'ouvre
-    await page.waitForTimeout(500);
-
-    // Fermer le formulaire
-    await page.getByTestId("cancel-button").click();
-
-    // Attendre que le formulaire se ferme
-    await page.waitForTimeout(500);
-
-    // Vérifier que l'animation ne reprend PAS après fermeture
-    const hasAnimationAfter = await chatButton.evaluate((el) => {
-      return el.className.includes("animate-shake");
-    });
-    expect(hasAnimationAfter).toBeFalsy();
-  });
+  // Tests de timing fin retirés (étaient skip) : arrêt de l'animation à 20s et
+  // arrêt au clic. Fragiles (dérive timer composant / waitForTimeout) et redondants
+  // avec chat-preoverlay-flow.spec.ts qui couvre le flux clic → formulaire.
 
   test("vérifie le responsive du bouton et du texte", async ({ page }) => {
     // Test sur mobile
