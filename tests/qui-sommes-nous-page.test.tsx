@@ -125,7 +125,7 @@ describe("Page Qui Sommes Nous", () => {
     const badges = screen.getAllByText("Distributeur Officiel");
     expect(badges.length).toBeGreaterThan(0);
 
-    expect(screen.getByText("Partenaire Officiel")).toBeInTheDocument();
+    expect(screen.getAllByText("Partenaire Officiel").length).toBeGreaterThan(0);
     expect(screen.getByText("Expert Certifié")).toBeInTheDocument();
   });
 

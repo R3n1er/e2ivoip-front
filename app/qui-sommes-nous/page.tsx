@@ -371,13 +371,13 @@ export default function QuiSommesNous() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Partenaire Silver 3CX • Certifié Yeastar • Distributeur officiel
-              Fanvil & Yealink
+              Partenaire Silver 3CX • Certifié Yeastar • Partenaire Aircall •
+              Distributeur officiel Fanvil & Yealink
             </p>
           </div>
 
           {/* Certifications principales */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
               <div className="text-center">
                 <div className="mb-6">
@@ -416,6 +416,27 @@ export default function QuiSommesNous() {
                 </p>
                 <Badge className="bg-blue-marine text-white">
                   Expert Certifié
+                </Badge>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
+              <div className="text-center">
+                <div className="mb-6">
+                  <Image
+                    src="/images/logo-partners/dark-logo-aircall.png"
+                    alt="Logo Aircall Partner - Partenaire officiel E2I VoIP"
+                    width={160}
+                    height={60}
+                    className="mx-auto h-12 w-auto"
+                  />
+                </div>
+                <h3 className="font-bold text-xl mb-2">Partenaire Aircall</h3>
+                <p className="text-gray-600 mb-4">
+                  Plateforme de communication client connectée à votre CRM
+                </p>
+                <Badge className="bg-red-primary text-white">
+                  Partenaire Officiel
                 </Badge>
               </div>
             </div>

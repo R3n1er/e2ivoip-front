@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link'
 import { ThreeCXBadge } from '@/components/ui/3cx-badge'
+import { SafeImage as Image } from '@/components/ui/safe-image'
 import { PhoneLink } from '@/components/ui/phone-link'
 import { SecureEmail } from '@/components/secure-email'
 import { TERRITORY_PHONES } from '@/lib/constants/phone-numbers'
@@ -274,9 +275,16 @@ export function Footer() {
                   href="https://aircall.io/fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                  aria-label="Aircall - Partenaire officiel"
                 >
-                  Aircall
+                  <Image
+                    src="/images/logo-partners/white-logo-aircall.png"
+                    alt="Aircall Partner"
+                    width={90}
+                    height={24}
+                    className="h-5 w-auto"
+                  />
                 </a>
               </div>
             </div>

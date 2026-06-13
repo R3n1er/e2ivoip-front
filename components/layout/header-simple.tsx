@@ -39,6 +39,10 @@ export function HeaderSimple() {
           name: "Trunk SIP agents IA",
           href: "/telephonie-entreprise/trunk-sip-agents-ia",
         },
+        {
+          name: "Aircall",
+          href: "/telephonie-entreprise/aircall",
+        },
       ],
     },
     {
