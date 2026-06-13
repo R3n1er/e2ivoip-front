@@ -1,7 +1,6 @@
 "use client";
 import Link from 'next/link'
 import { ThreeCXBadge } from '@/components/ui/3cx-badge'
-import { SafeImage as Image } from '@/components/ui/safe-image'
 import { PhoneLink } from '@/components/ui/phone-link'
 import { SecureEmail } from '@/components/secure-email'
 import { TERRITORY_PHONES } from '@/lib/constants/phone-numbers'
@@ -47,10 +46,10 @@ export function Footer() {
                 <Phone size={16} className="text-red-primary" />
                 Nous contacter
               </h4>
-              <div className="space-y-2 text-xs">
+              <div className="space-y-2 text-sm">
                 {TERRITORY_PHONES.filter(p => p.territory !== 'France').map((phone) => (
-                  <div key={phone.territory} className="flex justify-between items-center py-1">
-                    <span className="text-gray-secondary font-black text-[10px] uppercase tracking-[0.2em]">{phone.territory} :</span>
+                  <div key={phone.territory} className="flex justify-between items-center py-1.5">
+                    <span className="text-gray-secondary font-black text-xs uppercase tracking-[0.15em]">{phone.territory} :</span>
                     <PhoneLink
                       phone={phone}
                       className="text-white font-black hover:text-red-primary transition-colors"
@@ -73,7 +72,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-compteur"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Trunk SIP au compteur
                 </Link>
@@ -81,7 +80,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-illimite"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Trunk SIP illimité
                 </Link>
@@ -89,7 +88,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/3cx-smb-mutualisee"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   3CX SMB PRO
                 </Link>
@@ -97,7 +96,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/3cx-cloud"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   3CX PRO dédié
                 </Link>
@@ -105,7 +104,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/pbx-yeastar"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   PBX Yeastar
                 </Link>
@@ -113,7 +112,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-agents-ia"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Trunk SIP agents IA
                 </Link>
@@ -121,7 +120,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/studio-attente"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Studio attente téléphonique
                 </Link>
@@ -136,7 +135,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/assistance"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Documentation
                 </Link>
@@ -144,7 +143,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/assistance"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   FAQ
                 </Link>
@@ -152,7 +151,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Support technique
                 </Link>
@@ -160,7 +159,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/devis-en-ligne"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Devis en ligne
                 </Link>
@@ -177,7 +176,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/qui-sommes-nous"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   À propos
                 </Link>
@@ -185,7 +184,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Blog
                 </Link>
@@ -193,7 +192,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/mentions-legales"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Mentions légales
                 </Link>
@@ -201,7 +200,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/politique-confidentialite"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Politique de confidentialité
                 </Link>
@@ -209,7 +208,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-white transition-colors"
+                  className="inline-block py-1 hover:text-white transition-colors"
                 >
                   Contact
                 </Link>
@@ -275,16 +274,9 @@ export function Footer() {
                   href="https://aircall.io/fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="opacity-80 hover:opacity-100 transition-opacity"
-                  aria-label="Aircall - Partenaire officiel"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
-                  <Image
-                    src="/images/logo-partners/white-logo-aircall.png"
-                    alt="Aircall Partner"
-                    width={90}
-                    height={24}
-                    className="h-5 w-auto"
-                  />
+                  Aircall
                 </a>
               </div>
             </div>

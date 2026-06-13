@@ -46,7 +46,7 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 | # | Page | Statut | Points de vigilance spécifiques |
 |---|------|:---:|---------------------------------|
 | 1 | `/` (accueil) | ⬜ | Stats hero (15 ans / Mail & Tél / 20 %). Cohérence H1. Maillage vers offres. |
-| 2 | `/qui-sommes-nous` | ⬜ | ⚠️ **Vérifier qu'aucune version « 100+ clients » / « 30 % » ne subsiste.** Confirmer version éditoriale corrigée. |
+| 2 | `/qui-sommes-nous` | ✅ | Recentrée installer/accompagner. Prix 3CX SMB → sur devis. Métas SEO alignées. « Réseau de partenaires ». Cas client TBF -20% (factuel) conservé. Badge Aircall ajouté. |
 | 3 | `/telephonie-entreprise` | ⬜ | Hub catégorie. Intro doit présenter les familles d'offres. |
 | 4 | `/telephonie-entreprise/trunk-sip-agents-ia` | ⬜ | **Page pivot.** Intro = réponse directe « carrier SIP DOM pour agents IA ». Vérifier VAPI / Rounded / ElevenLabs / Jambonz exacts. |
 | 5 | `/telephonie-entreprise/trunk-sip-compteur` | ⬜ | Tunnel de leads (tarifs cachés). Vérifier form Tally. Exemple de facturation (0,0275 €) exact. |

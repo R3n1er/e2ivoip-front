@@ -86,7 +86,10 @@ test.describe("Page Aircall — responsive desktop", () => {
     await page.goto("/");
     const trigger = page.getByText("Téléphonie d'entreprise", { exact: true });
     await trigger.hover();
-    const aircallLink = page.getByRole("link", { name: "Aircall", exact: true });
+    // Cible le lien Aircall VISIBLE du menu (href interne, pas le footer externe)
+    const aircallLink = page
+      .locator('a[href="/telephonie-entreprise/aircall"]:visible')
+      .first();
     await expect(aircallLink).toBeVisible();
     await aircallLink.click();
     await expect(page).toHaveURL(/\/telephonie-entreprise\/aircall$/);
@@ -129,7 +132,10 @@ test.describe("Page Aircall — responsive mobile", () => {
   }) => {
     await page.goto("/");
     await page.getByRole("button", { name: /Ouvrir le menu/i }).click();
-    const aircallLink = page.getByRole("link", { name: "Aircall", exact: true });
+    // Le DOM contient le menu desktop (caché) + le menu mobile : on cible le lien VISIBLE
+    const aircallLink = page
+      .locator('a[href="/telephonie-entreprise/aircall"]:visible')
+      .first();
     await expect(aircallLink).toBeVisible();
     await aircallLink.click();
     await expect(page).toHaveURL(/\/telephonie-entreprise\/aircall$/);
