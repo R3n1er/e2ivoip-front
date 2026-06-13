@@ -7,10 +7,14 @@
 > **Statut** : diagnostic réalisé le 2026-06-12 (audit statique du code source,
 > site pas encore en ligne).
 >
-> ⚠️ **BLOQUANT TRANSVERSE** : le **domaine de production n'est pas confirmé**.
-> `e2ivoip.fr` est codé en dur dans `sitemap.ts` et `robots.txt`, mais Alban a
-> indiqué que ce sera **un autre domaine**. Tout le SEO (canonical, sitemap, OG,
-> robots) en dépend → **à trancher avant toute correction SEO**.
+> ✅ **DOMAINE DE PRODUCTION CONFIRMÉ (2026-06-12)** : `https://www.e2i-voip.com`
+> (avec `www`, avec tiret — cohérent avec l'email `commerciaux@e2i-voip.com` du
+> workflow n8n). Tout le SEO doit pointer là-dessus.
+>
+> ⚠️ **À corriger partout** : `e2ivoip.fr` est codé en dur dans `sitemap.ts`,
+> `robots.txt` et le fallback `NEXT_PUBLIC_BASE_URL` → remplacer par
+> `https://www.e2i-voip.com`. Définir aussi la variable d'env `NEXT_PUBLIC_BASE_URL`
+> sur Vercel. Décider de la redirection apex → www (`e2i-voip.com` → `www.e2i-voip.com`).
 
 ---
 
@@ -175,8 +179,8 @@ un levier SEO fort, sous-exploité :
 ## Ordre d'exécution recommandé
 
 ```
-0. ⚠️ CONFIRMER LE DOMAINE DE PROD (bloque C1, C2, C4)
-1. C1 sitemap + C2 robots (refaire propre, vrai domaine)
+0. ✅ DOMAINE CONFIRMÉ : https://www.e2i-voip.com
+1. C1 sitemap + C2 robots (refaire propre, domaine www.e2i-voip.com)
 2. C3 metadata des 4 pages manquantes
 3. C4 metadataBase + canonical (layout + pages)
 4. C5 réactiver/généraliser JSON-LD (Organization + Service + FAQPage)
