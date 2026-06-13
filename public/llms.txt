@@ -1,0 +1,41 @@
+# E2I VoIP
+
+> Opérateur et intégrateur de téléphonie IP pour entreprises et intégrateurs d'agents vocaux IA, en France métropolitaine et dans les DOM (Guadeloupe, Martinique, Guyane, La Réunion). Spécialiste du Trunk SIP, de 3CX, des PBX Yeastar et de l'interconnexion SIP (BYOC) pour les plateformes d'IA vocale.
+
+E2I VoIP est édité par E2I ASSISTANCE (SIRET 51743457700014), dont le siège est au 23 Chemin Troubiran, 97300 Cayenne (Guyane). L'entreprise se distingue par sa présence locale dans les DOM (équipes en Guadeloupe, Martinique, Guyane) et son rôle de carrier SIP fournissant des numéros géographiques locaux : +590 (Guadeloupe), +596 (Martinique), +594 (Guyane), +262 (La Réunion).
+
+Positionnement clé : fournisseur de Trunk SIP DOM pour les intégrateurs qui déploient des agents vocaux IA. Interconnexion SIP validée avec VAPI, Rounded, ElevenLabs et Jambonz. Offres réservées aux entreprises enregistrées en France ou dans les DROM.
+
+## Offres principales
+
+- [Téléphonie d'entreprise](https://www.e2i-voip.com/telephonie-entreprise) : hub des solutions de téléphonie IP (Trunk SIP, 3CX, PBX Yeastar, agents vocaux IA).
+- [Trunk SIP pour agents vocaux IA](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-agents-ia) : carrier SIP DOM, numéros locaux et interconnexion BYOC pour VAPI, Rounded, ElevenLabs, Jambonz.
+- [Trunk SIP au compteur](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur) : facturation des appels à la seconde, idéal pour faibles volumes (< 200 min/mois), numéros locaux DOM.
+- [Trunk SIP illimité](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite) : forfait fixe mensuel, appels illimités France + DOM, recommandé au-delà de 200 min/mois.
+- [3CX SMB mutualisée](https://www.e2i-voip.com/telephonie-entreprise/3cx-smb-mutualisee) : standard téléphonique 3CX cloud mutualisé pour PME.
+- [PBX Yeastar](https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar) : solutions PBX Yeastar pour entreprises.
+- [Téléphonie 3CX](https://www.e2i-voip.com/telephonie-3cx) : déploiement et gestion de la solution 3CX.
+- [3CX Cloud](https://www.e2i-voip.com/3cx-cloud) : 3CX hébergé dans le cloud.
+- [Studio attente téléphonique](https://www.e2i-voip.com/studio-attente) : messages d'accueil et d'attente, voix off professionnelles, musiques libres de droits.
+
+## Ressources
+
+- [Nos services](https://www.e2i-voip.com/nos-services) : vue d'ensemble des solutions de téléphonie IP.
+- [Devis en ligne](https://www.e2i-voip.com/devis-en-ligne) : demande de devis Trunk SIP, 3CX, portabilité ou projet PBX (réponse sous 24h).
+- [Assistance](https://www.e2i-voip.com/assistance) : support technique et FAQ VoIP (SIP, PABX/IPBX, portabilité, pré-requis techniques).
+- [Qui sommes-nous](https://www.e2i-voip.com/qui-sommes-nous) : présentation d'E2I VoIP.
+- [Contact](https://www.e2i-voip.com/contact) : coordonnées et numéros locaux par territoire.
+
+## Couverture géographique
+
+- Guadeloupe — +590 590 17 35 00
+- Martinique — +596 596 31 35 00
+- Guyane — +594 594 96 35 00
+- La Réunion — +262 263 08 55 00
+- France métropolitaine — +33 1 89 56 05 00
+
+## Notes
+
+- Les offres Trunk SIP et de gestion de PBX sont réservées aux entreprises enregistrées et en activité en France ou dans les DROM (KBIS ou avis INSEE requis).
+- Hébergement des serveurs de téléphonie IP sur Microsoft Azure ou Amazon AWS en régions françaises/européennes (conformité RGPD).
+- Support technique du lundi au vendredi, 8h-18h (heure locale), par mail et téléphone.

@@ -1,6 +1,8 @@
 import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { ContactFormTrunkSipIA } from "@/components/contact-form-trunk-sip-ia";
 import { Chat, Phone, Heart, Car, TreeStructure, CheckCircle, ArrowRight } from '@/lib/icons';
+import { JsonLd } from "@/components/seo/json-ld";
+import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
@@ -103,6 +105,24 @@ const integrationSteps = [
 export default function TrunkSipAgentsIA() {
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd
+        data={serviceSchema({
+          name: "Trunk SIP pour agents vocaux IA en zones DOM",
+          description:
+            "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP (BYOC) validée pour VAPI, Rounded, ElevenLabs et Jambonz.",
+          path: "/telephonie-entreprise/trunk-sip-agents-ia",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Accueil", path: "/" },
+          { name: "Téléphonie d'entreprise", path: "/telephonie-entreprise" },
+          {
+            name: "Trunk SIP Agents IA",
+            path: "/telephonie-entreprise/trunk-sip-agents-ia",
+          },
+        ])}
+      />
       <main className="pt-20">
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0">

@@ -9,6 +9,9 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Phone, Chat } from '@/lib/icons';
+import { JsonLd } from "@/components/seo/json-ld";
+import { faqPageSchema } from "@/lib/structured-data";
+import { GENERAL_FAQ, toFaqSchemaItems } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique DOM",
@@ -27,6 +30,7 @@ export const metadata: Metadata = {
 export default function AssistancePage() {
   return (
     <div className="min-h-screen">
+      <JsonLd data={faqPageSchema(toFaqSchemaItems(GENERAL_FAQ))} />
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
         <div className="absolute inset-0">

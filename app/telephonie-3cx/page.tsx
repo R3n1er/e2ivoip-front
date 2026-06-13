@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "Solutions 3CX adaptées à votre entreprise : instance dédiée ou mutualisée. Communications unifiées complètes.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-3cx",
+    url: "https://www.e2i-voip.com/telephonie-3cx",
     siteName: "E2I VoIP",
   },
   twitter: {

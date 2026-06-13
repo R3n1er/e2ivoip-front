@@ -11,6 +11,7 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { JsonLd } from "@/components/seo/json-ld";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
@@ -161,8 +162,8 @@ export default function NosServices() {
     name: "E2I VoIP",
     description:
       "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et interconnexion agents vocaux IA.",
-    url: "https://e2ivoip.fr",
-    logo: "https://e2ivoip.fr/images/logo-e2i-voip.png",
+    url: "https://www.e2i-voip.com",
+    logo: "https://www.e2i-voip.com/images/logo-e2i-voip.png",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+590-96-35-00",
@@ -197,7 +198,7 @@ export default function NosServices() {
 
   return (
     <>
-      {/* JSON-LD temporairement désactivé pour corriger le pré-rendu */}
+      <JsonLd data={structuredData} />
 
       <div className="min-h-screen bg-white-primary">
         <main className="pt-6">

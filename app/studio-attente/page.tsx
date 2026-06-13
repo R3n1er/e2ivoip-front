@@ -12,6 +12,25 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Microphone, MusicNote, SpeakerHigh, DownloadSimple, Play } from '@/lib/icons';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Studio attente téléphonique — Messages & musiques sur mesure",
+  description:
+    "Studio d'enregistrement E2I VoIP : messages d'accueil et d'attente téléphonique avec voix off professionnelles en français et langues étrangères, musiques libres de droits. Valorisez votre image de marque dès le premier appel.",
+  keywords:
+    "studio attente téléphonique, message accueil téléphonique, voix off professionnelle, musique attente téléphonique, pré-décroché",
+  alternates: { canonical: "/studio-attente" },
+  openGraph: {
+    title: "Studio attente téléphonique — Messages & musiques sur mesure | E2I VoIP",
+    description:
+      "Messages d'accueil et d'attente avec voix off professionnelles et musiques libres de droits. Créez une expérience d'attente à votre image.",
+    type: "website",
+    locale: "fr_FR",
+    url: "/studio-attente",
+    siteName: "E2I VoIP",
+  },
+};
 
 export default function StudioAttente() {
   const services = [

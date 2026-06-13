@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Forfait trunk SIP illimité de 2 à 8 appels simultanés. Appels illimités vers fixes et mobiles France et DOM.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-entreprise/trunk-sip-illimite",
+    url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite",
     siteName: "E2I VoIP",
   },
   twitter: {

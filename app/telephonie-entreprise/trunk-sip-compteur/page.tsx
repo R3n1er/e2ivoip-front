@@ -5,6 +5,9 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
 import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, ArrowRight, Timer, Shield } from '@/lib/icons';
+import { JsonLd } from "@/components/seo/json-ld";
+import { faqPageSchema, serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { COMPTEUR_FAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title:
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
       "Connexions SIP au compteur pour entreprises DOM. Payez uniquement vos consommations réelles. Numéros locaux gratuits.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-entreprise/trunk-sip-compteur",
+    url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur",
     siteName: "E2I VoIP",
   },
   twitter: {
@@ -40,6 +43,25 @@ export default function TrunkSIPCompteur() {
 
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqPageSchema(COMPTEUR_FAQ)} />
+      <JsonLd
+        data={serviceSchema({
+          name: "Trunk SIP au compteur DOM",
+          description:
+            "Connexion SIP facturée à la seconde pour entreprises et intégrateurs en France et DOM. Payez uniquement vos consommations réelles, numéros locaux Antilles-Guyane-Réunion.",
+          path: "/telephonie-entreprise/trunk-sip-compteur",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Accueil", path: "/" },
+          { name: "Téléphonie d'entreprise", path: "/telephonie-entreprise" },
+          {
+            name: "Trunk SIP au compteur",
+            path: "/telephonie-entreprise/trunk-sip-compteur",
+          },
+        ])}
+      />
       <main className="pt-20">
         {/* Formulaire Tally intégré (embed) */}
         {/* Hero Section */}

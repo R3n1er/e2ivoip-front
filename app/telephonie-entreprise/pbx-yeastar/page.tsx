@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       "Modernisez votre standard téléphonique avec Yeastar P-Series : cloud, on-premise, omnicanal et support local DOM.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-entreprise/pbx-yeastar",
+    url: "https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar",
     siteName: "E2I VoIP",
   },
 };

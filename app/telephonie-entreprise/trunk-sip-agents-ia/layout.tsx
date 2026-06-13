@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       "Carrier SIP DOM pour intégrateurs IA. Numéros locaux +596, +590, +594, +262. Interconnexion validée VAPI, Rounded, ElevenLabs, Jambonz.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-entreprise/trunk-sip-agents-ia",
+    url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-agents-ia",
     siteName: "E2I VoIP",
   },
   twitter: {

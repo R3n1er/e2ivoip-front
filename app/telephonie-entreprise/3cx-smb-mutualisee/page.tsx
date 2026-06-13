@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Solution 3CX hébergée mutualisée. De 3 à 50 utilisateurs. Activation rapide et coûts optimisés.",
     type: "website",
     locale: "fr_FR",
-    url: "https://e2ivoip.fr/telephonie-entreprise/3cx-smb-mutualisee",
+    url: "https://www.e2i-voip.com/telephonie-entreprise/3cx-smb-mutualisee",
     siteName: "E2I VoIP",
   },
 };

@@ -3,6 +3,9 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClientChrome } from "@/components/layout/layout-client-chrome";
 import { Footer } from "@/components/layout/footer";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 // Tawk.to désactivé temporairement (on conserve uniquement HubSpot Conversations)
 // import { TawkTo } from "@/components/tawk-to";
 
@@ -22,18 +25,34 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
+  // metadataBase : résout toutes les URL relatives (OG images, canonical) en
+  // URL absolues sur le domaine de prod. Sans lui, Next logge un warning et les
+  // aperçus sociaux cassent.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "E2I VoIP - Solutions de téléphonie IP professionnelles",
+    // Les pages enfant qui définissent un title court héritent du suffixe marque.
+    template: `%s | ${SITE_NAME}`,
+  },
   description:
     "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar et interconnexion agents vocaux IA.",
   keywords:
     "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
-  authors: [{ name: "E2I VoIP" }],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  // Canonical par défaut = racine. Chaque page surcharge avec son propre chemin.
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
     description:
       "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
     type: "website",
     locale: "fr_FR",
+    url: SITE_URL,
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
@@ -44,6 +63,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -59,7 +85,11 @@ export default function RootLayout({
       data-theme="e2ivoip"
       suppressHydrationWarning
     >
-      <head />
+      <head>
+        {/* Données structurées globales (entité + site) sur toutes les pages */}
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
+      </head>
       <body
         className={`${inter.variable} ${plexMono.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
