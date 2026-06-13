@@ -235,11 +235,11 @@ export function Footer() {
             </div>
 
             {/* Partners logos */}
-            <div className="flex items-center space-x-6 text-gray-secondary text-xs font-black uppercase tracking-wider">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-gray-secondary text-xs font-black uppercase tracking-wider">
               <span className="text-white">
                 Partenaires certifiés :
               </span>
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
                 <div className="flex items-center space-x-1">
                   <a
                     href="https://www.3cx.fr"

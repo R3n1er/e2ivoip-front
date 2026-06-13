@@ -210,8 +210,8 @@ export default function AircallPage() {
               </div>
 
               <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
-                <CTAButton href="/devis-en-ligne" icon="Calculator">
-                  Faire un devis
+                <CTAButton href="https://tally.so/r/kdr0do" icon="Phone" external>
+                  Être rappelé
                 </CTAButton>
                 <CTAButtonMarine href="/contact" icon="Phone">
                   Parler à un expert
@@ -532,8 +532,8 @@ export default function AircallPage() {
               &amp; France
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row">
-              <CTAButton href="/devis-en-ligne" icon="Calculator">
-                Faire un devis
+              <CTAButton href="https://tally.so/r/kdr0do" icon="Phone" external>
+                Être rappelé
               </CTAButton>
               <CTAButtonMarine href="/contact" icon="Phone">
                 Parler à un expert
