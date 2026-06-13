@@ -31,7 +31,7 @@ describe("Page Qui Sommes Nous", () => {
     expect(
       screen.getByText((_, element) =>
         element?.textContent?.replace(/\s+/g, " ").trim() ===
-        "Une équipe locale et experte"
+        "Une équipe experte et proche de vous"
       )
     ).toBeInTheDocument();
   });
@@ -93,7 +93,7 @@ describe("Page Qui Sommes Nous", () => {
 
     // Vérification des logos des certifications
     const cx3Logo = screen.getByAltText(
-      "Logo 3CX Bronze Partner - Certification officielle E2I VoIP"
+      "Logo 3CX Silver Partner - Certification officielle E2I VoIP"
     );
     const yeastarLogo = screen.getByAltText(
       "Logo Yeastar Certified Expert - Certification officielle E2I VoIP"
@@ -160,7 +160,7 @@ describe("Page Qui Sommes Nous", () => {
   it("affiche la section CTA finale", () => {
     render(<QuiSommesNous />);
 
-    expect(screen.getByText("Calculez vos économies")).toBeInTheDocument();
+    expect(screen.getByText("Faire un devis")).toBeInTheDocument();
     expect(screen.getByText("Parler à un expert")).toBeInTheDocument();
   });
 });

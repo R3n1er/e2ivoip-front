@@ -99,7 +99,7 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les boutons CTA", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Calculez vos économies")).toBeInTheDocument();
+    expect(screen.getByText("Faire un devis")).toBeInTheDocument();
     expect(
       screen.getByText("Découvrez nos offres Trunk SIP")
     ).toBeInTheDocument();

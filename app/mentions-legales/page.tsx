@@ -240,11 +240,11 @@ export default function MentionsLegales() {
               Nous sommes <span className="text-red-600">certifiés</span> !
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              E2I Assistance est partenaire 3CX Bronze et certifié ! Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
+              E2I Assistance est partenaire 3CX Silver et certifié ! Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
             </p>
             <div className="bg-white rounded-lg p-8 shadow-lg inline-block">
               <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
-                <Badge variant="secondary" className="text-sm">3CX Bronze Partner</Badge>
+                <Badge variant="secondary" className="text-sm">3CX Silver Partner</Badge>
               </div>
             </div>
           </div>

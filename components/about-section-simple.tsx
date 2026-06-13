@@ -22,7 +22,7 @@ export function AboutSectionSimple() {
       Icon: Timer,
       title: "Support par mail et téléphone",
       description:
-        "Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane",
+        "Présents en Martinique, Guadeloupe, Guyane • Support à distance",
     },
   ];
 
@@ -55,7 +55,7 @@ export function AboutSectionSimple() {
             </h2>
 
             <p className="text-lg text-gray-secondary mb-8">
-              E2I VoIP, <strong>opérateur de services télécom </strong>, Expert
+              E2I VoIP, <strong>opérateur de services télécom</strong>, expert
               dans les DOM et la France Métropolitaine accompagne les
               entreprises dans leur transformation digitale avec des solutions
               de téléphonie IP innovantes comme 3CX ou Yeastar, spécialement
@@ -73,9 +73,9 @@ export function AboutSectionSimple() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <CTAButton href="/devis-en-ligne" icon={Phone}>
-                Calculez vos économies
+                Faire un devis
               </CTAButton>
-              <CTAButtonMarine href="/nos-services" icon={Rocket}>
+              <CTAButtonMarine href="/telephonie-3cx" icon={Rocket}>
                 Découvrez nos offres 3CX
               </CTAButtonMarine>
             </div>

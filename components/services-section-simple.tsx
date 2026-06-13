@@ -13,7 +13,7 @@ export function ServicesSectionSimple() {
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
         "Économies jusqu'à 20%",
-        "Numéros locaux garantis",
+        "Numéros locaux DOM",
         "Portabilité gratuite",
         "Support technique local",
         "2 appels simultanés inclus",
@@ -26,7 +26,7 @@ export function ServicesSectionSimple() {
       Icon: Users,
       title: "3CX SMB PRO",
       description:
-        "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
+        "IPBX 3CX sur serveur mutualisé multitenant, facturé à l'utilisateur (jusqu'à 10 utilisateurs). Compatible Trunk SIP : un Trunk SIP complémentaire est à souscrire pour téléphoner.",
       features: [
         "Instance sécurisée pro",
         "Formation incluse",
@@ -34,7 +34,7 @@ export function ServicesSectionSimple() {
         "Interface intuitive",
       ],
       badge: "Idéal PME",
-      price: "15€/mois/utilisateur",
+      price: "Sur devis",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
     },
     {
@@ -95,7 +95,7 @@ export function ServicesSectionSimple() {
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
             Des solutions complètes pour transformer votre téléphonie
-            d'entreprise : économies garanties et fonctionnalités
+            d'entreprise : économies réelles et fonctionnalités
             nouvelle génération.
           </p>
 

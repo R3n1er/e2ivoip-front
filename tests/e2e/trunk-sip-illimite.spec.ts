@@ -46,8 +46,8 @@ test.describe("Trunk SIP Illimité Page", () => {
 
     const contacts = [
       "France : 01 89 56 05 00",
-      "Guyane : 0594 96 35 00",
-      "Guadeloupe : 0590 17 35 00",
+      "Guyane : 05 94 96 35 00",
+      "Guadeloupe : 05 90 17 35 00",
     ];
 
     for (const contact of contacts) {

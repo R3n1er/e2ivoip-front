@@ -106,7 +106,8 @@ export default function ThreeCXCloudPage() {
   const locations = [
     {
       region: "Guyane",
-      phone: "0594 963 500",
+      phone: "05 94 96 35 00",
+      tel: "+594594963500",
       features: [
         "Support technique local",
         "Installation sur site",
@@ -115,12 +116,14 @@ export default function ThreeCXCloudPage() {
     },
     {
       region: "Guadeloupe",
-      phone: "0590 173 500",
+      phone: "05 90 17 35 00",
+      tel: "+590590173500",
       features: ["Équipe dédiée", "Formation utilisateurs", "Support réactif"],
     },
     {
       region: "Martinique",
-      phone: "0596 313 500",
+      phone: "05 96 31 35 00",
+      tel: "+596596313500",
       features: [
         "Techniciens certifiés",
         "Suivi personnalisé",
@@ -129,7 +132,8 @@ export default function ThreeCXCloudPage() {
     },
     {
       region: "La Réunion",
-      phone: "+262 263 085 500",
+      phone: "02 63 08 55 00",
+      tel: "+262263085500",
       features: [
         "Accompagnement local",
         "Support multi-sites",
@@ -138,7 +142,8 @@ export default function ThreeCXCloudPage() {
     },
     {
       region: "France Métropolitaine",
-      phone: "0189 563 500",
+      phone: "01 89 56 05 00",
+      tel: "+33189560500",
       features: [
         "Coordination nationale",
         "Support technique",

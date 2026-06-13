@@ -86,7 +86,7 @@ export default function PBXYeastar() {
 
               <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
                 <CTAButton href="/devis-en-ligne" icon="Calculator">
-                  Calculez vos économies
+                  Faire un devis
                 </CTAButton>
                 <CTAButtonMarine
                   href="tel:+33189560500"
@@ -199,7 +199,7 @@ export default function PBXYeastar() {
                       </p>
                       <p className="text-sm text-gray-600">
                         Infrastructures souveraines France/UE, sauvegardes
-                        chiffrées et monitoring 24/7 pour votre sérénité.
+                        chiffrées et supervision continue pour votre sérénité.
                       </p>
                     </div>
                   </div>

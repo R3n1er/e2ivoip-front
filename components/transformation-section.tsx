@@ -31,12 +31,12 @@ export function TransformationSection() {
               
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Comment gérez-vous actuellement les appels au sein de votre entreprise sans un standard téléphonique dédié?
-                  Vos communications avec vos clients sont-elles vraiment optimales, permettant à votre équipe de travailler en toute fluidité, que ce soit en télétravail ou en déplacement?
+                  Comment gérez-vous actuellement les appels au sein de votre entreprise sans un standard téléphonique dédié&nbsp;?
+                  Vos communications avec vos clients sont-elles vraiment optimales, permettant à votre équipe de travailler en toute fluidité, que ce soit en télétravail ou en déplacement&nbsp;?
                 </p>
                 
                 <p className="font-semibold text-gray-dark">
-                  Avec le passage à la fibre optique, découvrez avec nous les avantages potentiels sur l'efficacité et la réactivité de votre entreprise. Transformez votre communication d'entreprise avec la solution de téléphonie IP 3CX par E2I Assistance VOIP !
+                  Avec le passage à la fibre optique, découvrez avec nous les avantages potentiels sur l'efficacité et la réactivité de votre entreprise. Transformez votre communication d'entreprise avec la solution de téléphonie IP 3CX par E2I VoIP !
                 </p>
                 
                 <p>
@@ -66,7 +66,7 @@ export function TransformationSection() {
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>À partir de 4 canaux voix</strong> - 4 appels simultanés minimum
+                    <strong>À partir de 2 canaux voix</strong> - 2 appels simultanés minimum
                   </span>
                 </li>
                 <li className="flex items-start">

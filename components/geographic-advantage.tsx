@@ -4,7 +4,10 @@ import { Gear, Check, Headphones, MapPin, Phone, Heart } from '@/lib/icons';
 
 interface GeographicLocation {
   region: string;
+  /** Numéro affiché (lisible, ex : "05 94 96 35 00") */
   phone: string;
+  /** Numéro click-to-call au format E.164 (ex : "+594594963500"). Obligatoire pour le tel: */
+  tel: string;
   features: string[];
 }
 
@@ -75,7 +78,7 @@ export function GeographicAdvantage({
             
             <div className="space-y-4">
               {[
-                "Techniciens présents localement dans chaque DOM",
+                "Réseau de partenaires présents dans chaque DOM",
                 "Supervision cloud de votre parc téléphonique",
                 "Prise en main à distance pour résolution immédiate",
                 "Maintenance préventive proactive"
@@ -114,7 +117,7 @@ export function GeographicAdvantage({
                   
                   <div className="mb-4">
                     <a
-                      href={`tel:${location.phone.replace(/\s/g, '')}`}
+                      href={`tel:${location.tel}`}
                       suppressHydrationWarning
                       className="inline-flex items-center text-red-primary hover:text-red-600 font-semibold"
                     >

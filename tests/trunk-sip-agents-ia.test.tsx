@@ -99,7 +99,7 @@ describe("Page Trunk SIP agents IA", () => {
     render(<TrunkSipAgentsIA />);
     expect(screen.getByText("Cabinets kinésithérapeutes")).toBeInTheDocument();
     expect(screen.getByText("Dépannage automobile")).toBeInTheDocument();
-    expect(screen.getByText("Accueil PME 24/7")).toBeInTheDocument();
+    expect(screen.getByText("Accueil PME en continu")).toBeInTheDocument();
   });
 
   it("affiche le processus d'intégration en 5 étapes", () => {

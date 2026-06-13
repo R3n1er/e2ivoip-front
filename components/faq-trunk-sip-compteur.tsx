@@ -48,10 +48,10 @@ const faqData: FAQItem[] = [
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Oui, c'est notre avantage principal !</strong> Nos équipes techniques sont présentes en 
-          <strong> Martinique, Guadeloupe et Guyane</strong>. Support disponible du lundi au vendredi de 8h à 18h (heure locale).
+          <strong>Oui, c'est notre avantage principal !</strong> Nous sommes présents en
+          <strong> Martinique, Guadeloupe et Guyane</strong>. Support à distance du lundi au vendredi de 8h à 18h (heure locale).
         </p>
-        <p>Intervention sur site possible si nécessaire.</p>
+        <p>Gestion à distance de vos postes et de votre instance de téléphonie.</p>
         <div className="space-y-1">
           <p><strong>Nos numéros de support local :</strong></p>
           <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">

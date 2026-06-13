@@ -38,6 +38,7 @@ export {
   Info,
   Lightning,
   Lightbulb,
+  LinkedinLogo,
   Link,
   List,
   Lock,

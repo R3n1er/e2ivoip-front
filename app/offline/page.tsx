@@ -45,7 +45,7 @@ export default function OfflinePage() {
 
           <div className="flex gap-3">
             <a
-              href="tel:+33123456789"
+              href="tel:+33189560500"
               className="flex-1 bg-green-100 text-green-700 font-medium py-3 px-4 rounded-lg hover:bg-green-200 transition-colors duration-200 flex items-center justify-center gap-2"
             >
               <Phone size={16} aria-hidden="true" />
@@ -67,7 +67,10 @@ export default function OfflinePage() {
           </p>
           <div className="text-sm text-gray-600">
             <p>
-              📞 <strong>01 23 45 67 89</strong>
+              📞{" "}
+              <a href="tel:+33189560500" className="font-bold hover:underline">
+                01 89 56 05 00
+              </a>
             </p>
             <p>
               📧{" "}

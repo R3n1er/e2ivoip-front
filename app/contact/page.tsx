@@ -1,17 +1,18 @@
 import { Metadata } from "next";
 import WorkingFAQ from "@/components/faq-working";
 import { InlineContactForm } from "@/components/hubspot";
+import { LinkedinLogo } from "@/lib/icons";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
   description:
-    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Équipes locales en France, Martinique, Guadeloupe, Guyane, Réunion.",
+    "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Présents en France, Martinique, Guadeloupe, Guyane, Réunion.",
   keywords:
     "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
     title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
     description:
-      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Équipes locales partout en France.",
+      "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Présents en France et dans les DOM.",
     type: "website",
   },
 };
@@ -41,7 +42,7 @@ export default function ContactPage() {
               téléphonie IP vous accompagnent dans votre projet
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Devis gratuit • Support par mail et téléphone • Équipes locales France & DOM
+              Devis gratuit • Support par mail et téléphone • Présents en France & DOM
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
               <div className="flex items-center gap-2">
@@ -163,6 +164,47 @@ export default function ContactPage() {
                         <p className="text-sm text-gray-600">
                           Réponse rapide • Support commercial et technique
                         </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Réseaux sociaux */}
+                <div
+                  className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                  data-testid="social-card"
+                >
+                  <div className="flex flex-col p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-blue-marine/10 p-3 rounded-lg">
+                        <LinkedinLogo
+                          size={28}
+                          weight="fill"
+                          className="text-blue-marine"
+                        />
+                      </div>
+                      <div>
+                        <h3
+                          className="text-lg font-semibold text-gray-900 mb-1"
+                          data-testid="social-title"
+                        >
+                          Suivez-nous
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-3">
+                          Retrouvez nos actualités et conseils télécom sur
+                          LinkedIn
+                        </p>
+                        <a
+                          href="https://www.linkedin.com/company/e2i-voip/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
+                          className="inline-flex items-center gap-2 text-blue-marine font-semibold hover:text-red-primary transition-colors duration-200"
+                          data-testid="social-linkedin-link"
+                        >
+                          <LinkedinLogo size={20} weight="fill" />
+                          E2I VoIP sur LinkedIn
+                        </a>
                       </div>
                     </div>
                   </div>

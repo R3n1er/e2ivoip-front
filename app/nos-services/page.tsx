@@ -46,7 +46,7 @@ export default function NosServices() {
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
         "Économies jusqu'à 20%",
-        "Numéros locaux garantis",
+        "Numéros locaux DOM",
         "Portabilité gratuite",
         "Support technique local",
         "2 appels simultanés inclus",
@@ -137,14 +137,14 @@ export default function NosServices() {
     },
     {
       Icon: MapPin,
-      title: "Présence locale DOM",
+      title: "Présents dans les DOM",
       description: "Support par mail et téléphone dans toutes les zones",
       color: "text-blue-marine",
     },
     {
       Icon: Timer,
-      title: "Disponibilité 24/7",
-      description: "Votre téléphonie reste opérationnelle en permanence",
+      title: "Infrastructure fiable",
+      description: "Une téléphonie IP supervisée pour rester opérationnelle",
       color: "text-green-600",
     },
     {

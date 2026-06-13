@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { SecureEmail } from "@/components/secure-email";
 import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } from '@/lib/icons';
+import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle, LinkedinLogo } from '@/lib/icons';
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
@@ -40,13 +41,17 @@ export default function QuiSommesNous() {
     },
   ];
 
-  const locations = [
-    { name: "Guyane", phone: "0594 96 35 00", Icon: MapPin },
-    { name: "Guadeloupe", phone: "0590 173 500", Icon: MapPin },
-    { name: "Martinique", phone: "0596 313 500", Icon: MapPin },
-    { name: "La Réunion", phone: "0262 263 085 500", Icon: MapPin },
-    { name: "France Métropole", phone: "0189 563 500", Icon: Globe },
-  ];
+  // Source de vérité unique : lib/constants/phone-numbers.ts (tel en E.164 pour le click-to-call)
+  const displayNames: Record<string, string> = {
+    "La Reunion": "La Réunion",
+    France: "France Métropole",
+  };
+  const locations = TERRITORY_PHONES.map((p) => ({
+    name: displayNames[p.territory] ?? p.territory,
+    phone: p.number,
+    tel: p.tel,
+    Icon: p.territory === "France" ? Globe : MapPin,
+  }));
 
   return (
     <>
@@ -73,8 +78,8 @@ export default function QuiSommesNous() {
               15 ans d'expertise télécom • Support par mail et téléphone
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4">
-              Économisez 20% sur le coût des communications dans les DROM avec
-              nos solutions de téléphonie IP
+              Nous installons vos standards téléphoniques et accompagnons les
+              entreprises des DOM vers la téléphonie IP
             </p>
           </div>
         </div>
@@ -92,21 +97,21 @@ export default function QuiSommesNous() {
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Depuis maintenant plusieurs années, E2I VoIP</strong>{" "}
                 est un opérateur de services télécom avec des Trunk SIP dédiés
-                aux Antilles-Guyane et La Réunion. Nous accompagnons les
-                entreprises des DROM dans leur transformation digitale, en leur
-                permettant d'économiser{" "}
-                <strong>20% sur le coût de leurs communications</strong>.
+                aux Antilles-Guyane et La Réunion. Nous installons les standards
+                téléphoniques des entreprises des DOM et les{" "}
+                <strong>accompagnons vers la téléphonie IP</strong>, de
+                l'étude du projet jusqu'à la mise en service.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Notre mission :</strong> Faciliter votre transition vers
                 la téléphonie IP dans le contexte de l'arrêt du réseau cuivre.
-                Nous transformons cette contrainte en opportunité pour
-                moderniser vos communications et{" "}
-                <strong>réduire vos coûts</strong>.
+                Nous transformons cette contrainte en opportunité pour{" "}
+                <strong>moderniser vos communications</strong> et gagner en
+                fiabilité, en mobilité et en confort au quotidien.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                <strong>Notre différence :</strong> Des équipes techniques
-                présentes localement en Martinique, Guadeloupe et Guyane. Un
+                <strong>Notre différence :</strong> Un réseau de partenaires
+                présent en Martinique, Guadeloupe et Guyane. Un
                 Customer Success Manager dédié qui connaît vos besoins
                 spécifiques. Une assistance en français, dans votre fuseau
                 horaire, avec une connaissance parfaite du contexte des régions
@@ -120,7 +125,7 @@ export default function QuiSommesNous() {
                     <Phone size={24} className="text-5xl text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Opérateur télécom certifié
+                    Opérateur de service télécom
                   </h3>
                   <p className="text-gray-600 mb-6">
                     Partenaire Silver 3CX • Certifié Yeastar Cloud et On-Premise
@@ -169,7 +174,7 @@ export default function QuiSommesNous() {
                 iconColor: "text-red-primary",
                 title: "Proximité et réactivité",
                 description:
-                  "Équipes locales en France, Martinique, Guadeloupe et Guyane. Réponse en moins de 2h, intervention rapide sur site si nécessaire.",
+                  "Un réseau de partenaires en Guadeloupe, Martinique, Guyane et à La Réunion, et un support à distance réparti sur plusieurs fuseaux horaires (France métropolitaine et Antilles-Guyane) pour des réponses rapides.",
               },
               {
                 Icon: Seal,
@@ -183,9 +188,9 @@ export default function QuiSommesNous() {
                 Icon: Users,
                 iconBg: "bg-gray-secondary/10",
                 iconColor: "text-gray-secondary",
-                title: "Résultats concrets",
+                title: "Accompagnement de bout en bout",
                 description:
-                  "20% d'économies sur le coût de vos communications dans les DROM. Customer Success Manager dédié pour assurer votre satisfaction.",
+                  "De l'étude de votre projet à la mise en service de votre standard, un Customer Success Manager dédié vous suit à chaque étape.",
               },
             ].map((value, index) => (
               <div
@@ -224,8 +229,8 @@ export default function QuiSommesNous() {
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
-                locaux incluses.
-                <strong>Économisez jusqu'à 20%</strong> par rapport à la
+                locaux incluses.{" "}
+                <strong>Économisez jusqu'à 20&nbsp;%</strong> par rapport à la
                 téléphonie traditionnelle.
               </p>
 
@@ -238,8 +243,8 @@ export default function QuiSommesNous() {
                     </h3>
                     <p className="text-gray-600">
                       <strong>Au compteur :</strong> Payez uniquement vos
-                      consommations, idéal TPE/PME.
-                      <strong> Illimité :</strong> Budget fixe, appels illimités
+                      consommations, idéal TPE/PME.{" "}
+                      <strong>Illimité :</strong> Budget fixe, appels illimités
                       France + DOM. Tarifs préférentiels spéciaux
                       Antilles-Guyane-Réunion.
                     </p>
@@ -253,9 +258,9 @@ export default function QuiSommesNous() {
                       3CX : IPBX cloud nouvelle génération
                     </h3>
                     <p className="text-gray-600">
-                      <strong>3CX SMB :</strong> Dès 3 utilisateurs,
-                      15€/mois/utilisateur.
-                      <strong> 3CX PRO :</strong> Instance dédiée +50 postes,
+                      <strong>3CX SMB :</strong> De 3 à 10 utilisateurs,
+                      15&nbsp;€/mois/utilisateur.{" "}
+                      <strong>3CX PRO :</strong> Instance dédiée +50 postes,
                       intégrations CRM/M365. Formation incluse, Customer Success
                       Manager dédié.
                     </p>
@@ -270,8 +275,8 @@ export default function QuiSommesNous() {
                     </h3>
                     <p className="text-gray-600">
                       <strong>Trunk SIP agents IA</strong> pour interconnexion
-                      plateformes VAPI, Rounded, ElevenLabs.
-                      <strong>Intégrations</strong> WhatsApp, Teams, CRM.
+                      plateformes VAPI, Rounded, ElevenLabs.{" "}
+                      <strong>Intégrations</strong> WhatsApp, Teams, CRM.{" "}
                       <strong>Collaboration unifiée</strong> pour vos équipes.
                       Studio d'enregistrement pour messages professionnels.
                     </p>
@@ -329,10 +334,10 @@ export default function QuiSommesNous() {
               data-testid="team-section-title"
             >
               Une équipe{" "}
-              <span className="text-red-primary">locale et experte</span>
+              <span className="text-red-primary">experte et proche de vous</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Des experts présents localement pour un accompagnement
+              Des experts présents dans les DOM pour un accompagnement
               personnalisé
             </p>
           </div>
@@ -377,8 +382,8 @@ export default function QuiSommesNous() {
               <div className="text-center">
                 <div className="mb-6">
                   <Image
-                    src="/images/logo-partners/Bronze Partner badge-min.jpeg"
-                    alt="Logo 3CX Bronze Partner - Certification officielle E2I VoIP"
+                    src="/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp"
+                    alt="Logo 3CX Silver Partner - Certification officielle E2I VoIP"
                     width={120}
                     height={120}
                     className="mx-auto rounded-lg"
@@ -506,8 +511,8 @@ export default function QuiSommesNous() {
               Support par <span className="text-white">mail et téléphone</span>
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Équipes techniques présentes localement en Guadeloupe et en Guyane
-              • Réponse rapide en moins de 2h • Intervention sur site
+              Présents dans les Antilles, en Guyane et à La Réunion • Support à
+              distance du lundi au vendredi de 8h à 18h
             </p>
           </div>
 
@@ -524,9 +529,13 @@ export default function QuiSommesNous() {
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {location.name}
                   </h3>
-                  <p className="text-white/90 text-sm font-bold">
+                  <a
+                    href={`tel:${location.tel}`}
+                    suppressHydrationWarning
+                    className="text-white/90 text-sm font-bold font-mono tabular-nums hover:text-white transition-colors inline-flex min-h-[44px] items-center justify-center"
+                  >
                     {location.phone}
-                  </p>
+                  </a>
                 </CardContent>
               </Card>
             ))}
@@ -534,7 +543,14 @@ export default function QuiSommesNous() {
 
           <div className="mt-12 text-center">
             <p className="text-white text-lg mb-6">
-              <strong>Hotline Assistance technique :</strong> 0189 560 500
+              <strong>Hotline Assistance technique :</strong>{" "}
+              <a
+                href="tel:+33189560500"
+                suppressHydrationWarning
+                className="font-mono tabular-nums hover:underline"
+              >
+                01 89 56 05 00
+              </a>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <SecureEmail
@@ -543,6 +559,16 @@ export default function QuiSommesNous() {
                 className="text-white hover:text-white/80 transition-colors inline-flex items-center"
                 label="Nous écrire"
               />
+              <a
+                href="https://www.linkedin.com/company/e2i-voip/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
+                className="text-white hover:text-white/80 transition-colors inline-flex items-center gap-2"
+              >
+                <LinkedinLogo size={20} weight="fill" aria-hidden="true" />
+                Suivez-nous sur LinkedIn
+              </a>
               <CTAButtonSecondary href="/assistance" icon="Chat">
                 Accéder au support complet
               </CTAButtonSecondary>
@@ -555,8 +581,8 @@ export default function QuiSommesNous() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-            Prêt à <span className="text-red-primary">économiser 20%</span> sur
-            vos coûts télécoms ?
+            Prêt à passer à la{" "}
+            <span className="text-red-primary">téléphonie IP</span>&nbsp;?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             Audit gratuit de votre installation • Devis personnalisé en 24h •
@@ -564,7 +590,7 @@ export default function QuiSommesNous() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTAButton href="/devis-en-ligne" icon="Calculator">
-              Calculez vos économies
+              Faire un devis
             </CTAButton>
             <CTAButtonMarine href="/contact" icon="Phone">
               Parler à un expert

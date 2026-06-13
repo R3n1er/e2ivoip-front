@@ -440,7 +440,7 @@ export default function PolitiqueConfidentialitePage() {
                   Nous sommes certifiés !
                 </h3>
                 <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                  E2I Assistance est partenaire <strong>3CX Bronze</strong> et certifié ! 
+                  E2I Assistance est partenaire <strong>3CX Silver</strong> et certifié !
                   Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
                 </p>
                 <a 

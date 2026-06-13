@@ -8,7 +8,7 @@ beforeEach(() => {
 
   it("affiche l'accroche de marque", () => {
     expect(
-      screen.getByText(/Solutions de téléphonie IP et communications d'entreprise/)
+      screen.getByText(/Opérateur de service de télécommunication pour les entreprises/)
     ).toBeInTheDocument()
   })
 
@@ -36,7 +36,7 @@ beforeEach(() => {
 
   it('rend le badge partenaire 3CX et les liens certifiés', () => {
     expect(
-      screen.getByAltText('3CX Bronze Partner Badge')
+      screen.getByAltText('3CX Silver Partner Badge')
     ).toBeInTheDocument()
 
     const partnerBar = screen.getByText('Partenaires certifiés :').closest('div')

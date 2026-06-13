@@ -58,11 +58,11 @@ const useCases = [
     description:
       "Qualification de l'appel (localisation, panne, urgence) avant transfert vers le chauffeur disponible.",
     example:
-      "Filtrage intelligent 24/7 : l'IA collecte les infos critiques puis route vers l'humain.",
+      "Filtrage intelligent en continu : l'IA collecte les infos critiques puis route vers l'humain.",
   },
   {
     Icon: Phone,
-    title: "Accueil PME 24/7",
+    title: "Accueil PME en continu",
     description:
       "Orientation des appelants, FAQ métier et transfert contextuel vers les bonnes équipes.",
     example:

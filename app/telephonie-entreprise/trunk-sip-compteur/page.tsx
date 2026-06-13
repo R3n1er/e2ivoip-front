@@ -121,7 +121,7 @@ export default function TrunkSIPCompteur() {
                   icon="Phone"
                   external
                 >
-                  0594 96 35 00
+                  01 89 56 05 00
                 </CTAButtonMarine>
               </div>
 
@@ -234,9 +234,9 @@ export default function TrunkSIPCompteur() {
                         Support technique local réactif
                       </h3>
                       <p className="text-gray-600">
-                        Équipes présentes localement en{" "}
-                        <strong>Martinique, Guadeloupe, Guyane</strong>. Réponse
-                        en moins de 2h.
+                        Présents en{" "}
+                        <strong>Martinique, Guadeloupe, Guyane</strong>. Support
+                        à distance du lundi au vendredi de 8h à 18h.
                       </p>
                     </div>
                   </div>

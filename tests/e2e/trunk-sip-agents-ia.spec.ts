@@ -75,7 +75,7 @@ test.describe("Page Trunk SIP agents IA", () => {
       page.getByRole("heading", { name: /Dépannage automobile/i })
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: /Accueil PME 24\/7/i })
+      page.getByRole("heading", { name: /Accueil PME en continu/i })
     ).toBeVisible();
   });
 

@@ -4,7 +4,7 @@ import { ThreeCXBadge } from '@/components/ui/3cx-badge'
 import { PhoneLink } from '@/components/ui/phone-link'
 import { SecureEmail } from '@/components/secure-email'
 import { TERRITORY_PHONES } from '@/lib/constants/phone-numbers'
-import { Envelope, MapMarker, Phone } from '@/lib/icons'
+import { Envelope, LinkedinLogo, MapMarker, Phone } from '@/lib/icons'
 
 export function Footer() {
   return (
@@ -21,11 +21,10 @@ export function Footer() {
               </div>
             </div>
             <p className="text-gray-secondary mb-6 text-sm lg:text-base">
-              Solutions de téléphonie IP et communications d&apos;entreprise depuis
-              plus de 15 ans.
+              Opérateur de service de télécommunication pour les entreprises.
             </p>
 
-            {/* 3CX Bronze Partner Badge */}
+            {/* 3CX Silver Partner Badge */}
             <div className="mb-6">
               <ThreeCXBadge />
             </div>
@@ -59,13 +58,9 @@ export function Footer() {
                 ))}
               </div>
               <div className="mt-3 pt-2 border-t border-gray-700">
-                <div className="flex items-center space-x-2">
-                  <Envelope size={16} className="text-red-primary flex-shrink-0" />
-                  <SecureEmail
-                    address="assistance"
-                    className="text-gray-secondary text-xs"
-                  />
-                </div>
+                <Link href="/contact" className="text-gray-secondary text-xs hover:text-white transition-colors">
+                  Nous contacter →
+                </Link>
               </div>
             </div>
           </div>
@@ -225,8 +220,17 @@ export function Footer() {
         {/* Bottom section */}
         <div className="border-t border-gray-700 mt-8 lg:mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <div className="text-sm text-gray-secondary">
+            <div className="flex items-center gap-4 text-sm text-gray-secondary">
               <p>&copy; 2025 E2I VoIP. Tous droits réservés.</p>
+              <a
+                href="https://www.linkedin.com/company/e2i-voip/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
+                className="text-gray-secondary hover:text-white transition-colors"
+              >
+                <LinkedinLogo size={22} weight="fill" />
+              </a>
             </div>
 
             {/* Partners logos */}
@@ -245,7 +249,7 @@ export function Footer() {
                     3CX
                   </a>
                   <span className="text-yellow-400">&#9733;</span>
-                  <span className="text-gray-secondary">Bronze Partner</span>
+                  <span className="text-gray-secondary">Silver Partner</span>
                 </div>
                 <span className="text-gray-700">|</span>
                 <a
@@ -264,6 +268,15 @@ export function Footer() {
                   className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
                 >
                   Grandstream
+                </a>
+                <span className="text-gray-700">|</span>
+                <a
+                  href="https://aircall.io/fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-80 hover:opacity-100 hover:text-white transition-colors"
+                >
+                  Aircall
                 </a>
               </div>
             </div>

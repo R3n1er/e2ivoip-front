@@ -17,7 +17,7 @@ test.describe("Page Qui sommes-nous", () => {
       "L'histoire d'une réussite locale",
       "Nos valeurs et engagements",
       "Nos solutions phares",
-      "Une équipe locale et experte",
+      "Une équipe experte et proche de vous",
       "Nos certifications et partenariats",
       "Support par mail et téléphone",
     ];
@@ -53,20 +53,23 @@ test.describe("Page Qui sommes-nous", () => {
 
   test("affiche les implantations et numéros de téléphone", async ({ page }) => {
     const locations = [
-      { name: "Guyane", phone: "0594 96 35 00" },
-      { name: "Guadeloupe", phone: "0590 173 500" },
-      { name: "Martinique", phone: "0596 313 500" },
-      { name: "La Réunion", phone: "0262 263 085 500" },
-      { name: "France Métropole", phone: "0189 563 500" },
+      { name: "Guyane", phone: "05 94 96 35 00", tel: "+594594963500" },
+      { name: "Guadeloupe", phone: "05 90 17 35 00", tel: "+590590173500" },
+      { name: "Martinique", phone: "05 96 31 35 00", tel: "+596596313500" },
+      { name: "La Réunion", phone: "02 63 08 55 00", tel: "+262263085500" },
+      { name: "France Métropole", phone: "01 89 56 05 00", tel: "+33189560500" },
     ];
 
-    for (const { name, phone } of locations) {
+    for (const { name, phone, tel } of locations) {
       await expect(page.getByRole("heading", { level: 3, name })).toBeVisible();
-      await expect(page.getByText(phone)).toBeVisible();
+      // Numéro cliquable au format E.164 (click-to-call)
+      await expect(
+        page.getByRole("link", { name: phone }).first()
+      ).toHaveAttribute("href", `tel:${tel}`);
     }
 
     await expect(
-      page.getByText(/Hotline Assistance technique : 0189 560 500/)
+      page.getByText(/Hotline Assistance technique/)
     ).toBeVisible();
   });
 
@@ -75,7 +78,7 @@ test.describe("Page Qui sommes-nous", () => {
       page.getByRole("link", { name: /Accéder au support complet/i })
     ).toBeVisible();
     await expect(
-      page.getByRole("link", { name: /Calculez vos économies/i })
+      page.getByRole("link", { name: /Faire un devis/i })
     ).toHaveAttribute("href", "/devis-en-ligne");
     await expect(
       page.getByRole("link", { name: /Parler à un expert/i })

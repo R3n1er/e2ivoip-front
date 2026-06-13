@@ -46,7 +46,7 @@ describe('Page Politique de Confidentialité', () => {
   it('contient la certification 3CX', () => {
     render(<PolitiqueConfidentialitePage />)
     
-    expect(screen.getByText(/3CX Bronze/)).toBeInTheDocument()
+    expect(screen.getByText(/3CX Silver/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Découvrir 3CX/i })).toHaveAttribute('href', 'https://www.3cx.fr/pabx/download-pabx-ip/?resellerId=208715')
   })
 

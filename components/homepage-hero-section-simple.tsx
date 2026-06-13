@@ -59,7 +59,7 @@ export function HomepageHeroSectionSimple() {
           {/* CTA Buttons - Red + Blue pairing */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <CTAButton href="/devis-en-ligne" icon={Phone}>
-              Calculez vos économies
+              Faire un devis
             </CTAButton>
 
             <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-compteur" icon={Play}>

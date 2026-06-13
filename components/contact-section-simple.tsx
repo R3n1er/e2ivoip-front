@@ -45,8 +45,8 @@ export function ContactSectionSimple() {
                 element_text: 'Calculez vos economies',
               })}
             >
-              Calculez vos économies
-            </CTAButtonMarine>
+              Faire un devis
+</CTAButtonMarine>
           </div>
         </div>
 

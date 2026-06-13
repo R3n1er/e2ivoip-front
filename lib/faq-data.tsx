@@ -189,13 +189,13 @@ export const GENERAL_FAQ: RichFaqItem[] = [
   {
     question: "Vous assurez un support technique VoIP ?",
     answerText:
-      "Oui, nous proposons un support technique réactif grâce à nos équipes locales en Île-de-France, en Guadeloupe et en Guyane française. Nous supervisons et configurons à distance les postes Fanvil et Yealink via une console dédiée, et nos serveurs de téléphonie IP sont monitorés en temps réel. Cette combinaison de présence locale et de gestion à distance assure réactivité, disponibilité des lignes et suivi proactif.",
+      "Oui, nous proposons un support technique réactif grâce à notre présence en Île-de-France, en Guadeloupe et en Guyane française. Nous supervisons et configurons à distance les postes Fanvil et Yealink via une console dédiée, et nos serveurs de téléphonie IP sont monitorés en temps réel. Cette combinaison de présence dans les DOM et de gestion à distance assure réactivité, disponibilité des lignes et suivi proactif.",
     answer: (
       <div className="space-y-3">
         <p>
           Oui, nous proposons un <strong>support technique réactif</strong>{" "}
-          grâce à nos équipes locales en Île-de-France, en Guadeloupe et en
-          Guyane Française. Nos experts interviennent rapidement pour garantir
+          grâce à notre présence en Île-de-France, en Guadeloupe et en
+          Guyane Française. Nos experts vous accompagnent pour assurer
           la continuité de votre service.
         </p>
         <p>
@@ -215,7 +215,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
           </li>
         </ul>
         <p>
-          Cette approche combinant présence locale et gestion à distance vous
+          Cette approche combinant présence dans les DOM et gestion à distance vous
           offre :
         </p>
         <ul className="space-y-1 text-gray-600">
@@ -253,7 +253,7 @@ export const COMPTEUR_FAQ: FaqItem[] = [
   {
     question: "Le support technique est-il disponible localement ?",
     answer:
-      "Oui. Nos équipes techniques sont présentes en Martinique, Guadeloupe et Guyane. Le support est disponible du lundi au vendredi de 8h à 18h (heure locale), avec intervention sur site possible. Numéros : Guyane 05 94 96 35 00, France 01 89 56 05 00.",
+      "Oui. Nous sommes présents en Martinique, Guadeloupe et Guyane. Le support à distance est disponible du lundi au vendredi de 8h à 18h (heure locale). Numéros : Guyane 05 94 96 35 00, France 01 89 56 05 00.",
   },
   {
     question: "Quelle connexion Internet est recommandée ?",

@@ -31,8 +31,8 @@ describe("Page Nos Services", () => {
 
     // Vérification des 4 bénéfices
     expect(screen.getByText("20% d'économies")).toBeInTheDocument();
-    expect(screen.getByText("Présence locale DOM")).toBeInTheDocument();
-    expect(screen.getByText("Disponibilité 24/7")).toBeInTheDocument();
+    expect(screen.getByText("Présents dans les DOM")).toBeInTheDocument();
+    expect(screen.getByText("Infrastructure fiable")).toBeInTheDocument();
     expect(screen.getByText("Sécurité maximale")).toBeInTheDocument();
   });
 
@@ -127,7 +127,7 @@ describe("Page Nos Services", () => {
 
     // Vérification de quelques fonctionnalités clés
     expect(screen.getByText("Économies jusqu'à 20%")).toBeInTheDocument();
-    expect(screen.getByText("Numéros locaux garantis")).toBeInTheDocument();
+    expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();
     expect(screen.getByText("2 appels simultanés inclus")).toBeInTheDocument();

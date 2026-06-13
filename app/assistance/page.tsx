@@ -16,13 +16,13 @@ import { GENERAL_FAQ, toFaqSchemaItems } from "@/lib/faq-data";
 export const metadata: Metadata = {
   title: "Assistance & Support - E2I VoIP | Support technique DOM",
   description:
-    "Support technique E2I VoIP par mail et téléphone. Assistance locale DOM, hotline 0189 560 500, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
+    "Support technique E2I VoIP par mail et téléphone. Assistance locale DOM, hotline 01 89 56 05 00, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, support local Martinique Guadeloupe Guyane, chat assistance",
   openGraph: {
     title: "Assistance & Support - E2I VoIP | Support technique par mail et téléphone",
     description:
-      "Support technique E2I VoIP par mail et téléphone. Équipes locales DOM, chat en ligne, guides et tutoriels.",
+      "Support technique E2I VoIP par mail et téléphone. Présents dans les DOM, chat en ligne, guides et tutoriels.",
     type: "website",
   },
 };
@@ -49,8 +49,8 @@ export default function AssistancePage() {
               Assistance & <span className="text-white">Support VoIP</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Support technique 3CX et Yeastar • Équipes locales France et
-              Outre-mer (Antilles-Guyane, Réunion) • Réponse rapide
+              Support technique 3CX et Yeastar • Présents en France et
+              Outre-mer (Antilles-Guyane, Réunion) • Support à distance
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto mt-4 mb-8">
               Notre équipe d'experts est là pour vous accompagner dans
@@ -77,9 +77,13 @@ export default function AssistancePage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Assistance téléphonique directe
               </h3>
-              <p className="text-3xl font-bold font-mono tabular-nums text-red-primary mb-4">
-                0189 560 500
-              </p>
+              <a
+                href="tel:+33189560500"
+                suppressHydrationWarning
+                className="block text-3xl font-bold font-mono tabular-nums text-red-primary mb-4 hover:underline"
+              >
+                01 89 56 05 00
+              </a>
               <p className="text-lg text-gray-600 mb-4">
                 Lundi - Vendredi : 8h - 18h
               </p>
