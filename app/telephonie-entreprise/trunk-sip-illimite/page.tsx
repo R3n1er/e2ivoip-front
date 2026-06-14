@@ -247,11 +247,16 @@ export default function TrunkSIPIllimite() {
                       <div className="text-sm text-blue-800">
                         <p>
                           <strong>Tout inclus :</strong> Appels illimités France
-                          + DOM, numéros géographiques, support technique local.
+                          + DOM, numéros géographiques, support technique réactif.
                         </p>
                         <p className="mt-1">
                           <strong>Fair Use :</strong> Usage professionnel normal,
                           pas de centre d'appels sortants intensifs.
+                        </p>
+                        <p className="mt-1">
+                          <strong>Bon à savoir :</strong> au-delà de
+                          ~200 min/mois, l'illimité devient plus avantageux que la
+                          facturation à la minute.
                         </p>
                       </div>
                     </div>
@@ -304,7 +309,7 @@ export default function TrunkSIPIllimite() {
                   {/* Bottom accent - Rouge principal E2I */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
                     <CheckCircle size={16} className="mr-2" aria-hidden="true" />
-                    <span>20% d'économies sur vos communications</span>
+                    <span>Jusqu'à 20 % d'économies sur vos communications</span>
                   </div>
                 </div>
               </div>
@@ -400,7 +405,7 @@ export default function TrunkSIPIllimite() {
                       color: "red"
                     },
                     {
-                      text: "Support technique local et réactif",
+                      text: "Support technique réactif par mail et téléphone",
                       Icon: Headphones,
                       color: "gray-secondary"
                     },
