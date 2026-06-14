@@ -30,11 +30,6 @@ jest.mock('@/lib/analytics/track-event', () => ({
   trackEvent: jest.fn(),
 }))
 
-// Mock ThreeCXBadge
-jest.mock('@/components/ui/3cx-badge', () => ({
-  ThreeCXBadge: () => <div data-testid="3cx-badge">3CX Badge</div>,
-}))
-
 describe('Footer - Phone Links', () => {
   test('renders 4 territory phone numbers as clickable tel: links', () => {
     render(<Footer />)

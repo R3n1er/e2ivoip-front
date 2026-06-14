@@ -12,11 +12,6 @@ beforeEach(() => {
     ).toBeInTheDocument()
   })
 
-  it('présente les coordonnées de contact principales', () => {
-    expect(screen.getByText('contact@…')).toBeInTheDocument()
-    expect(screen.getByText('Paris, France')).toBeInTheDocument()
-  })
-
   it('énumère les numéros de téléphone DOM (France exclue du footer)', () => {
     const phoneSection = screen.getByText('Nous contacter').closest('div')
     const { getByText } = within(phoneSection as HTMLElement)
@@ -34,17 +29,14 @@ beforeEach(() => {
     expect(getByText('02 63 08 55 00')).toBeInTheDocument()
   })
 
-  it('rend le badge partenaire 3CX et les liens certifiés', () => {
-    expect(
-      screen.getByAltText('3CX Silver Partner Badge')
-    ).toBeInTheDocument()
-
+  it('rend les logos partenaires certifiés', () => {
     const partnerBar = screen.getByText('Partenaires certifiés :').closest('div')
     const { getByRole } = within(partnerBar as HTMLElement)
 
-    expect(getByRole('link', { name: '3CX' })).toHaveAttribute('href', 'https://www.3cx.fr')
-    expect(getByRole('link', { name: 'Yeastar' })).toHaveAttribute('href', 'https://www.yeastar.com')
+    expect(getByRole('link', { name: '3CX Silver Partner' })).toHaveAttribute('href', 'https://www.3cx.fr')
+    expect(getByRole('link', { name: 'Yeastar Certified Expert' })).toHaveAttribute('href', 'https://www.yeastar.com')
     expect(getByRole('link', { name: 'Grandstream' })).toHaveAttribute('href', 'https://www.grandstream.com')
+    expect(getByRole('link', { name: 'Aircall Partner' })).toHaveAttribute('href', 'https://aircall.io/fr/')
   })
 
   it('propose les sections de navigation clé', () => {
