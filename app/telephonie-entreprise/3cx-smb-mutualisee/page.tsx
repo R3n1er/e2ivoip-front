@@ -1,12 +1,15 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle } from '@/lib/icons';
+import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe } from '@/lib/icons';
+
+// Formulaire Tally dédié à l'offre 3CX SMB PRO Mutualisé (tunnel devis).
+const TALLY_3CX_SMB_URL = "https://tally.so/r/44Gprk";
 
 export const metadata: Metadata = {
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
-    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs, activation rapide, coûts optimisés. Tarif sur devis.",
+    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs, activation rapide, coûts optimisés. 29 €/utilisateur/mois.",
   keywords:
     "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
   openGraph: {
@@ -51,12 +54,12 @@ export default function Smb3CXMutualisee() {
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
                 De <strong>3 à 10 utilisateurs</strong> •
-                Tarif sur devis
+                29 €/utilisateur/mois
               </p>
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="/devis-en-ligne" icon="Calculator">
+                <CTAButton href={TALLY_3CX_SMB_URL} icon="Calculator" external>
                   Demander un devis
                 </CTAButton>
                 <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
@@ -90,7 +93,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-gray-600 text-center">
-                    Tarif sur devis, sans frais d'infrastructure
+                    29 €/utilisateur/mois, sans frais d'infrastructure
                   </p>
                 </div>
               </div>
@@ -155,6 +158,82 @@ export default function Smb3CXMutualisee() {
           </div>
         </section>
 
+        {/* Tarification 3CX par utilisateur */}
+        <section className="py-16 bg-base-200">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
+                Une tarification <span className="text-red-primary">simple par utilisateur</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Un tarif unique et transparent, tout compris, par utilisateur.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+              {/* En-tête prix */}
+              <div className="bg-gradient-to-r from-blue-900/95 to-red-600/90 px-8 py-8 text-center text-white">
+                <div className="text-5xl font-black">
+                  29 €
+                  <span className="text-xl font-medium text-white/80"> / utilisateur / mois</span>
+                </div>
+                <p className="mt-2 text-white/90">3CX Pro pour chaque utilisateur</p>
+              </div>
+
+              {/* Détail inclus */}
+              <div className="p-8 grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone size={24} className="text-red-primary" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-dark mb-1">Appels illimités vers les fixes</h3>
+                    <p className="text-gray-600 text-sm">
+                      Fixes des DOM et de France métropolitaine, inclus pour chaque utilisateur.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <DeviceMobile size={24} className="text-blue-marine" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-dark mb-1">Application mobile 3CX incluse</h3>
+                    <p className="text-gray-600 text-sm">
+                      Utilisable sur smartphone, PC et navigateur web.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Globe size={24} className="text-red-primary" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-dark mb-1">Multi-supports</h3>
+                    <p className="text-gray-600 text-sm">
+                      Smartphone, ordinateur ou directement depuis votre navigateur web.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Desktop size={24} className="text-blue-marine" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-dark mb-1">Téléphones SIP compatibles</h3>
+                    <p className="text-gray-600 text-sm">
+                      Connectez vos téléphones SIP compatibles, notamment Fanvil et Yealink.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA finale */}
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -164,7 +243,7 @@ export default function Smb3CXMutualisee() {
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Activation rapide • Support par mail et téléphone • Sans engagement
             </p>
-            <CTAButton href="/devis-en-ligne" icon="Rocket">
+            <CTAButton href={TALLY_3CX_SMB_URL} icon="Rocket" external>
               Commencer maintenant
             </CTAButton>
           </div>
