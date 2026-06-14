@@ -50,7 +50,7 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 | 3 | `/telephonie-entreprise` | ✅ | Hero aligné charte (gradient). 4 liens morts corrigés → 6 cartes cliquables (offres réelles + IA + Aircall). 3 blocs reformulés vers offres. `force-dynamic` retiré. |
 | 4 | `/telephonie-entreprise/trunk-sip-agents-ia` | ✅ | Metadata SEO ajoutée + force-dynamic retiré. Bandeau earlybird. Offre dédiée (facturation min. entrants+sortants). 5 plateformes + logos (VAPI/Rounded/ElevenLabs/Jambonz/Airagent). CTA → Tally (n8n). Page revendeur créée. Marges 40-60% retirées. |
 | 5 | `/telephonie-entreprise/trunk-sip-compteur` | ✅ | Validée en l'état (Alban). Form Tally tunnel (embed 7RpEBa) OK. Prix 0,0275 € non affiché (caché derrière le form → conforme tunnel). CTA → /devis-en-ligne (choix Alban). « E2I VOIP » conservé (choix Alban). |
-| 6 | `/telephonie-entreprise/trunk-sip-illimite` | ✅ | « jusqu'à 20 % » au lieu de « 20% garantis ». « support local » → « réactif par mail et téléphone ». Repère de bascule ~200 min/mois ajouté (cohérent compteur). Commit `53d6a25`. |
+| 6 | `/telephonie-entreprise/trunk-sip-illimite` | ✅ | Offre corrigée : **fixes uniquement** France+DOM (mobiles au compteur). Paliers **4/8/16** (pop. 8). Tableau tarifs mobiles HT/min (6 dest. dont Mayotte). Fair Use précisé. Bascule ~200 min. Form HubSpot retiré → 3 numéros + /contact. CTA → /devis-en-ligne. Engagement 36 mois. Commits `53d6a25`, `f2c8e42`. |
 | 7 | `/telephonie-entreprise/3cx-smb-mutualisee` | ⬜ | Prix « 15 €/utilisateur/mois » à confirmer. |
 | 8 | `/telephonie-entreprise/pbx-yeastar` | ⬜ | Vérifier mentions support (pas de « 24/7 » si non tenu). |
 | 9 | `/telephonie-3cx` | ⬜ | ⚠️ **Cannibalisation 3CX** : différencier de `/3cx-cloud` et `3cx-smb-mutualisee`. |
