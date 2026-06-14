@@ -49,7 +49,7 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 | 2 | `/qui-sommes-nous` | ✅ | Recentrée installer/accompagner. Prix 3CX SMB → sur devis. Métas SEO alignées. « Réseau de partenaires ». Cas client TBF -20% (factuel) conservé. Badge Aircall ajouté. |
 | 3 | `/telephonie-entreprise` | ✅ | Hero aligné charte (gradient). 4 liens morts corrigés → 6 cartes cliquables (offres réelles + IA + Aircall). 3 blocs reformulés vers offres. `force-dynamic` retiré. |
 | 4 | `/telephonie-entreprise/trunk-sip-agents-ia` | ✅ | Metadata SEO ajoutée + force-dynamic retiré. Bandeau earlybird. Offre dédiée (facturation min. entrants+sortants). 5 plateformes + logos (VAPI/Rounded/ElevenLabs/Jambonz/Airagent). CTA → Tally (n8n). Page revendeur créée. Marges 40-60% retirées. |
-| 5 | `/telephonie-entreprise/trunk-sip-compteur` | ⬜ | Tunnel de leads (tarifs cachés). Vérifier form Tally. Exemple de facturation (0,0275 €) exact. |
+| 5 | `/telephonie-entreprise/trunk-sip-compteur` | ✅ | Validée en l'état (Alban). Form Tally tunnel (embed 7RpEBa) OK. Prix 0,0275 € non affiché (caché derrière le form → conforme tunnel). CTA → /devis-en-ligne (choix Alban). « E2I VOIP » conservé (choix Alban). |
 | 6 | `/telephonie-entreprise/trunk-sip-illimite` | ⬜ | Seuil « > 200 min/mois » cohérent avec la page compteur. |
 | 7 | `/telephonie-entreprise/3cx-smb-mutualisee` | ⬜ | Prix « 15 €/utilisateur/mois » à confirmer. |
 | 8 | `/telephonie-entreprise/pbx-yeastar` | ⬜ | Vérifier mentions support (pas de « 24/7 » si non tenu). |
