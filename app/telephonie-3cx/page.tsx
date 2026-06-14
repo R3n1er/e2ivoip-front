@@ -305,76 +305,80 @@ export default function Telephonie3CX() {
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="table table-zebra w-full bg-base-100 rounded-lg shadow-lg">
-                <thead className="bg-gradient-to-r from-gray-800 to-red-primary text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left">Caractéristiques</th>
-                    <th className="px-6 py-4 text-center">3CX PRO</th>
-                    <th className="px-6 py-4 text-center">3CX SMB</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">
-                      Type d'hébergement
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      Instance dédiée AWS
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      Mutualisé multi-tenant
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">
-                      Nombre d'utilisateurs
-                    </td>
-                    <td className="px-6 py-4 text-center">8 à 1024</td>
-                    <td className="px-6 py-4 text-center">3 à 15</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Appels simultanés</td>
-                    <td className="px-6 py-4 text-center">Illimités</td>
-                    <td className="px-6 py-4 text-center">Selon forfait</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Personnalisation</td>
-                    <td className="px-6 py-4 text-center">
-                      <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <X size={24} className="text-gray-400" aria-hidden="true" />
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">
-                      Support prioritaire
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <X size={24} className="text-gray-400" aria-hidden="true" />
-                    </td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Délai activation</td>
-                    <td className="px-6 py-4 text-center">48-72h</td>
-                    <td className="px-6 py-4 text-center">24h</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 bg-gray-50">
-                    <td className="px-6 py-4 font-medium">Tarification</td>
-                    <td className="px-6 py-4 text-center font-bold text-gray-800">
-                      Sur devis
-                    </td>
-                    <td className="px-6 py-4 text-center font-bold text-red-primary">
-                      À partir de 15€/utilisateur
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            {(() => {
+              // Source unique de données — alimente la vue cartes (mobile) ET le tableau (desktop)
+              const rows = [
+                { feature: "Type d'hébergement", pro: "Instance dédiée AWS", smb: "Mutualisé multi-tenant" },
+                { feature: "Nombre d'utilisateurs", pro: "8 à 1024", smb: "3 à 15" },
+                { feature: "Appels simultanés", pro: "Illimités", smb: "Selon forfait" },
+                { feature: "Personnalisation", pro: true, smb: false },
+                { feature: "Support prioritaire", pro: true, smb: false },
+                { feature: "Délai activation", pro: "48-72h", smb: "24h" },
+                { feature: "Tarification", pro: "Sur devis", smb: "À partir de 15€/utilisateur", highlight: true },
+              ];
+              const renderValue = (v: string | boolean) =>
+                typeof v === "boolean"
+                  ? v
+                    ? <CheckCircle size={24} className="text-red-primary mx-auto" aria-label="Inclus" />
+                    : <X size={24} className="text-gray-400 mx-auto" aria-label="Non inclus" />
+                  : v;
+
+              return (
+                <>
+                  {/* Vue cartes empilées — mobile uniquement (pas de scroll horizontal) */}
+                  <div className="md:hidden space-y-4">
+                    {rows.map((row) => (
+                      <div
+                        key={row.feature}
+                        className={`rounded-lg shadow-md border border-gray-200 overflow-hidden ${row.highlight ? "ring-2 ring-red-primary" : ""}`}
+                      >
+                        <div className="bg-gradient-to-r from-gray-800 to-red-primary text-white px-4 py-3 font-bold text-sm">
+                          {row.feature}
+                        </div>
+                        <div className="grid grid-cols-2 divide-x divide-gray-200">
+                          <div className="px-4 py-3 text-center">
+                            <div className="text-xs font-black uppercase tracking-wider text-gray-500 mb-1">3CX PRO</div>
+                            <div className="text-sm font-medium text-gray-800 flex items-center justify-center min-h-[1.5rem]">
+                              {renderValue(row.pro)}
+                            </div>
+                          </div>
+                          <div className="px-4 py-3 text-center">
+                            <div className="text-xs font-black uppercase tracking-wider text-gray-500 mb-1">3CX SMB</div>
+                            <div className={`text-sm flex items-center justify-center min-h-[1.5rem] ${row.highlight ? "font-bold text-red-primary" : "font-medium text-gray-800"}`}>
+                              {renderValue(row.smb)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Vue tableau classique — desktop uniquement */}
+                  <div className="hidden md:block">
+                    <table className="table table-zebra w-full bg-base-100 rounded-lg shadow-lg">
+                      <thead className="bg-gradient-to-r from-gray-800 to-red-primary text-white">
+                        <tr>
+                          <th className="px-6 py-4 text-left">Caractéristiques</th>
+                          <th className="px-6 py-4 text-center">3CX PRO</th>
+                          <th className="px-6 py-4 text-center">3CX SMB</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((row) => (
+                          <tr key={row.feature} className={`hover:bg-gray-50 ${row.highlight ? "bg-gray-50" : ""}`}>
+                            <td className="px-6 py-4 font-medium">{row.feature}</td>
+                            <td className="px-6 py-4 text-center">{renderValue(row.pro)}</td>
+                            <td className={`px-6 py-4 text-center ${row.highlight ? "font-bold text-red-primary" : ""}`}>
+                              {renderValue(row.smb)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
+              );
+            })()}
           </div>
         </section>
 
