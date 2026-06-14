@@ -4,15 +4,15 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = {
-  title: "3CX SMB Mutualisée - E2I VoIP | Solution économique TPE/PME",
+  title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
-    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 50 utilisateurs, activation rapide, coûts optimisés. À partir de 15€/utilisateur.",
+    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs, activation rapide, coûts optimisés. Tarif sur devis.",
   keywords:
-    "3CX SMB, 3CX mutualisée, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
+    "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
   openGraph: {
-    title: "3CX SMB Mutualisée - Solution économique TPE/PME",
+    title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
     description:
-      "Solution 3CX hébergée mutualisée. De 3 à 50 utilisateurs. Activation rapide et coûts optimisés.",
+      "Solution 3CX hébergée mutualisée. De 3 à 10 utilisateurs. Activation rapide et coûts optimisés.",
     type: "website",
     locale: "fr_FR",
     url: "https://www.e2i-voip.com/telephonie-entreprise/3cx-smb-mutualisee",
@@ -44,14 +44,14 @@ export default function Smb3CXMutualisee() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                3CX SMB <span className="text-white">Mutualisée</span>
+                3CX SMB PRO <span className="text-white">Mutualisé</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
                 <strong>Solution économique</strong> pour TPE et PME
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                De <strong>3 à 50 utilisateurs</strong> • 
-                À partir de 15€/utilisateur/mois
+                De <strong>3 à 10 utilisateurs</strong> •
+                Tarif sur devis
               </p>
 
               {/* CTA Hero - Unified homepage style */}
@@ -77,7 +77,7 @@ export default function Smb3CXMutualisee() {
               <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
                 Notre offre <strong>3CX SMB mutualisée</strong> vous permet de bénéficier de toutes les 
                 fonctionnalités 3CX sans les coûts d'une infrastructure dédiée. Parfait pour les TPE 
-                et PME de 3 à 50 utilisateurs recherchant une solution professionnelle et économique.
+                et PME de 3 à 10 utilisateurs recherchant une solution professionnelle et économique.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-gray-600 text-center">
-                    À partir de 15€/utilisateur/mois, sans frais d'infrastructure
+                    Tarif sur devis, sans frais d'infrastructure
                   </p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
                   <p className="text-gray-600 text-center">
-                    Mise en service en 24h, configuration pré-établie
+                    Mise en service rapide, configuration pré-établie
                   </p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Évolutif</h3>
                   <p className="text-gray-600 text-center">
-                    De 3 à 50 utilisateurs, ajustable selon vos besoins
+                    De 3 à 10 utilisateurs, ajustable selon vos besoins
                   </p>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function Smb3CXMutualisee() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Support technique local</span>
+                  <span className="text-gray-700">Support par mail et téléphone</span>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Smb3CXMutualisee() {
               Démarrez avec <span className="text-white">3CX SMB</span> dès aujourd'hui
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Activation en 24h • Support expert local • Sans engagement
+              Activation rapide • Support par mail et téléphone • Sans engagement
             </p>
             <CTAButton href="/devis-en-ligne" icon="Rocket">
               Commencer maintenant
