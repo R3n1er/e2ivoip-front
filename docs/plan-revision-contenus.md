@@ -47,7 +47,7 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 |---|------|:---:|---------------------------------|
 | 1 | `/` (accueil) | ⬜ | Stats hero (15 ans / Mail & Tél / 20 %). Cohérence H1. Maillage vers offres. |
 | 2 | `/qui-sommes-nous` | ✅ | Recentrée installer/accompagner. Prix 3CX SMB → sur devis. Métas SEO alignées. « Réseau de partenaires ». Cas client TBF -20% (factuel) conservé. Badge Aircall ajouté. |
-| 3 | `/telephonie-entreprise` | ⬜ | Hub catégorie. Intro doit présenter les familles d'offres. |
+| 3 | `/telephonie-entreprise` | ✅ | Hero aligné charte (gradient). 4 liens morts corrigés → 6 cartes cliquables (offres réelles + IA + Aircall). 3 blocs reformulés vers offres. `force-dynamic` retiré. |
 | 4 | `/telephonie-entreprise/trunk-sip-agents-ia` | ⬜ | **Page pivot.** Intro = réponse directe « carrier SIP DOM pour agents IA ». Vérifier VAPI / Rounded / ElevenLabs / Jambonz exacts. |
 | 5 | `/telephonie-entreprise/trunk-sip-compteur` | ⬜ | Tunnel de leads (tarifs cachés). Vérifier form Tally. Exemple de facturation (0,0275 €) exact. |
 | 6 | `/telephonie-entreprise/trunk-sip-illimite` | ⬜ | Seuil « > 200 min/mois » cohérent avec la page compteur. |

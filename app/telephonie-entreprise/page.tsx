@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -35,38 +35,38 @@ export default function TelephonieDentreprise() {
   const solutions = [
     {
       Icon: Phone,
-      title: "Standards téléphoniques IP",
+      title: "Trunk SIP opérateur DOM",
       description:
-        "Solutions complètes de téléphonie d'entreprise avec toutes les fonctionnalités avancées",
+        "En tant qu'opérateur, nous fournissons des Trunk SIP dédiés aux Antilles, à la Guyane et à La Réunion, avec création et portabilité de numéros locaux.",
       features: [
-        "Auto-commutateur",
-        "Messagerie vocale",
-        "Transfert d'appels",
-        "Conférence téléphonique",
+        "Au compteur ou illimité",
+        "Numéros locaux DOM (0590, 0596, 0594, 0262)",
+        "Portabilité de vos numéros",
+        "Dès 2 utilisateurs",
       ],
     },
     {
       Icon: Users,
-      title: "Solutions multi-sites",
+      title: "Standards 3CX & Yeastar",
       description:
-        "Interconnectez tous vos sites avec une solution de téléphonie unifiée",
+        "Installation et accompagnement sur les standards téléphoniques 3CX et Yeastar, en cloud ou sur site, adaptés à la taille de votre entreprise.",
       features: [
-        "Numérotation abrégée",
-        "Transfert inter-sites",
-        "Annuaire centralisé",
-        "Gestion centralisée",
+        "3CX SMB mutualisée ou PRO dédiée",
+        "IPBX Yeastar cloud ou on-premise",
+        "Communications unifiées",
+        "Intégrations WhatsApp, Teams, M365",
       ],
     },
     {
       Icon: Headphones,
-      title: "Centre d'appels",
+      title: "Innovation IA & CRM",
       description:
-        "Optimisez votre relation client avec nos solutions de centre d'appels professionnelles",
+        "Connectez votre téléphonie à vos outils métiers : interconnexion d'agents vocaux IA et téléphonie cloud Aircall reliée à votre CRM.",
       features: [
-        "Distribution automatique",
-        "Supervision temps réel",
-        "Enregistrement",
-        "Statistiques détaillées",
+        "Trunk SIP pour agents vocaux IA",
+        "Aircall connecté à votre CRM",
+        "Click-to-dial et synchronisation",
+        "Studio d'attente téléphonique",
       ],
     },
   ];
@@ -75,18 +75,20 @@ export default function TelephonieDentreprise() {
     <div className="min-h-screen bg-white">
       <div className="pt-6">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-red-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Téléphonie <span className="text-red-primary">d'entreprise</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+                Téléphonie <span className="text-white">d'entreprise</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
                 Des solutions de téléphonie IP complètes et évolutives pour
-                répondre aux besoins de votre entreprise
+                répondre aux besoins de votre entreprise, dans les DOM et en
+                France métropolitaine
               </p>
               <CTAButton href="/devis-en-ligne?service=telephonie" icon="Chat">
-                MODERNISER MA TELEPHONIE
+                Moderniser ma téléphonie
               </CTAButton>
             </div>
           </div>
@@ -147,34 +149,43 @@ export default function TelephonieDentreprise() {
               {[
                 {
                   title: "Trunk SIP",
-                  href: "/trunk-sip",
-                  description: "Connexions SIP professionnelles",
+                  href: "/telephonie-entreprise/trunk-sip-compteur",
+                  description: "Connexions SIP professionnelles, au compteur ou illimité",
                 },
                 {
                   title: "3CX PRO dédiée",
-                  href: "/3cx-pro-dediee",
-                  description: "Solution 3CX dédiée",
+                  href: "/3cx-cloud",
+                  description: "Instance 3CX dédiée dans le cloud",
                 },
                 {
-                  title: "3CX SMB mutualisée",
-                  href: "/3cx-smb-mutualisee",
-                  description: "Solution 3CX partagée",
+                  title: "3CX SMB",
+                  href: "/telephonie-entreprise/3cx-smb-mutualisee",
+                  description: "Solution 3CX mutualisée pour PME",
                 },
                 {
-                  title: "Yeastar",
-                  href: "/yeastar",
-                  description: "IPBX Yeastar",
+                  title: "PBX Yeastar",
+                  href: "/telephonie-entreprise/pbx-yeastar",
+                  description: "IPBX Yeastar cloud ou sur site",
+                },
+                {
+                  title: "Trunk SIP agents IA",
+                  href: "/telephonie-entreprise/trunk-sip-agents-ia",
+                  description: "Interconnexion SIP pour agents vocaux IA",
+                },
+                {
+                  title: "Aircall",
+                  href: "/telephonie-entreprise/aircall",
+                  description: "Téléphonie cloud connectée à votre CRM",
                 },
               ].map((item, index) => (
-                <Card
-                  key={index}
-                  className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                    <CardDescription>{item.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <Link key={index} href={item.href} className="block">
+                  <Card className="h-full border-gray-200 hover:shadow-md hover:border-red-primary/30 transition-all">
+                    <CardHeader>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                      <CardDescription>{item.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
