@@ -139,7 +139,7 @@ describe("Page Trunk SIP au Compteur", () => {
 
   test("affiche les boutons d'action", () => {
     render(<TrunkSIPCompteur />);
-    const devisButtons = screen.getAllByText(/Calculer mes économies/i);
+    const devisButtons = screen.getAllByText(/Devis en ligne/i);
     expect(devisButtons.length).toBeGreaterThan(0);
 
     const expertButtons = screen.getAllByText(/Parler à un expert/i);

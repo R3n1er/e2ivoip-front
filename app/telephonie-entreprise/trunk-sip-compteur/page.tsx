@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
+import { ClientsCarousel } from "@/components/clients-carousel";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
@@ -114,7 +115,7 @@ export default function TrunkSIPCompteur() {
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <CTAButton href="/devis-en-ligne" icon="Calculator">
-                  Calculer mes économies
+                  Devis en ligne
                 </CTAButton>
                 <CTAButtonMarine
                   href="tel:+33189560500"
@@ -219,7 +220,7 @@ export default function TrunkSIPCompteur() {
                       </h3>
                       <p className="text-gray-600">
                         Compatible avec{" "}
-                        <strong>3CX, Yeastar, Grandstream, Avaya</strong>.
+                        <strong>3CX, Yeastar, Grandstream, Avaya, Asterisk</strong>.
                         Connexions flexibles de 2 à plus de 30 appels simultanés
                         sur un Trunk SIP.
                       </p>
@@ -338,7 +339,7 @@ export default function TrunkSIPCompteur() {
                 complètes incluant l&apos;équipement
               </p>
               <Link
-                href="/nos-services"
+                href="/telephonie-3cx"
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
               >
                 Découvrir nos solutions IPBX
@@ -347,6 +348,9 @@ export default function TrunkSIPCompteur() {
             </div>
           </div>
         </section>
+
+        {/* Ils nous font confiance */}
+        <ClientsCarousel />
 
         {/* FAQ */}
         <section className="py-16 bg-white">
@@ -389,7 +393,7 @@ export default function TrunkSIPCompteur() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <CTAButton href="/devis-en-ligne" icon="Calculator">
-                Calculer mes économies gratuitement
+                Devis en ligne
               </CTAButton>
               <CTAButtonMarine
                 href="tel:+33189560500"
