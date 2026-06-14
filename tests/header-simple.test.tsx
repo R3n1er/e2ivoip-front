@@ -29,16 +29,12 @@ describe("HeaderSimple Component", () => {
       );
     });
 
-    it("renders E2I logo with correct colors", () => {
+    it("renders the E2I VoIP logo image", () => {
       render(<HeaderSimple />);
 
-      const logoE = screen.getByText("E");
-      const logo2 = screen.getByText("2");
-      const logoI = screen.getByText("I");
-
-      expect(logoE).toHaveClass("text-blue-marine");
-      expect(logo2).toHaveClass("text-red-primary");
-      expect(logoI).toHaveClass("text-blue-marine");
+      const logo = screen.getByAltText("E2I VoIP");
+      expect(logo).toBeInTheDocument();
+      expect(logo).toHaveAttribute("src", "/images/Logo-e2ivoip-solo.png");
     });
 
     it("renders company description with correct styling", () => {
@@ -262,8 +258,8 @@ describe("HeaderSimple Component", () => {
     it("uses Tailwind utility classes correctly", () => {
       render(<HeaderSimple />);
 
-      const logo = screen.getByText("E").closest("div");
-      expect(logo).toHaveClass("text-xl", "lg:text-2xl", "font-bold");
+      const logo = screen.getByAltText("E2I VoIP");
+      expect(logo).toHaveClass("h-8", "lg:h-10", "w-auto");
     });
 
     it("has proper transition classes", () => {

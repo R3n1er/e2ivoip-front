@@ -28,9 +28,7 @@ describe("HeaderSimple - Sous-menus", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
     
     // Vérifier le logo
-    expect(screen.getByText("E")).toBeInTheDocument();
-    expect(screen.getByText("2")).toBeInTheDocument();
-    expect(screen.getByText("I")).toBeInTheDocument();
+    expect(screen.getByAltText("E2I VoIP")).toBeInTheDocument();
   });
 
   test("Les éléments de navigation avec sous-menus sont présents", () => {

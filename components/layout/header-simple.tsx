@@ -73,13 +73,12 @@ export function HeaderSimple() {
             href="/"
             className="flex items-center space-x-3 flex-shrink-0 group"
           >
-            <div className="flex items-center">
-              <div className="text-xl lg:text-2xl font-bold">
-                <span className="text-blue-marine transition-colors">E</span>
-                <span className="text-red-primary">2</span>
-                <span className="text-blue-marine transition-colors">I</span>
-              </div>
-            </div>
+            {/* Logo E2I VoIP — <img> natif (pas next/image : piège hydratation) */}
+            <img
+              src="/images/Logo-e2ivoip-solo.png"
+              alt="E2I VoIP"
+              className="h-8 lg:h-10 w-auto"
+            />
             <div className="hidden sm:block">
               <div className="text-xs lg:text-sm leading-tight max-w-[160px] lg:max-w-[180px] text-gray-secondary">
                 Solutions de Téléphonie IP et communications d&apos;entreprise

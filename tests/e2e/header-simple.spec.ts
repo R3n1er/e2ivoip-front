@@ -10,7 +10,7 @@ test.describe("Header navigation", () => {
 
     await expect(
       header.getByRole("link", {
-        name: /E2I Solutions de Téléphonie IP et communications d'entreprise/i,
+        name: /E2I VoIP Solutions de Téléphonie IP et communications d'entreprise/i,
       })
     ).toBeVisible();
 
@@ -89,7 +89,7 @@ test.describe("Header navigation", () => {
     await page.keyboard.press("Tab");
     await expect(
       page.getByRole("link", {
-        name: /E2I Solutions de Téléphonie IP et communications d'entreprise/i,
+        name: /E2I VoIP Solutions de Téléphonie IP et communications d'entreprise/i,
       })
     ).toBeFocused();
 
