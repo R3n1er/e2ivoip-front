@@ -90,20 +90,30 @@ test.describe("Page Trunk SIP agents IA", () => {
     await expect(page.getByText("Numéros au format E.164")).toBeVisible();
   });
 
-  test("affiche les liens vers les offres trunk SIP associées", async ({
+  test("présente l'offre dédiée agents IA (facturation à la minute)", async ({
     page,
   }) => {
     await expect(
-      page.getByRole("main").getByRole("link", { name: /Trunk SIP au compteur/i })
+      page.getByRole("heading", {
+        name: /Une offre dédiée aux agents vocaux IA/i,
+      })
     ).toBeVisible();
     await expect(
-      page.getByRole("main").getByRole("link", { name: /Trunk SIP illimité/i })
+      page.getByText(/à la minute, sur les appels entrants et sortants/i)
     ).toBeVisible();
+  });
+
+  test("redirige les CTA contact vers le formulaire Tally", async ({ page }) => {
+    const cta = page
+      .getByRole("main")
+      .getByRole("link", { name: /Parler à un commercial/i })
+      .first();
+    await expect(cta).toHaveAttribute("href", "https://tally.so/r/ODVd1K");
   });
 
   test("a les metadata SEO correctes", async ({ page }) => {
     await expect(page).toHaveTitle(
-      /Trunk SIP Agents Vocaux IA — Numéros DOM/i
+      /Trunk SIP pour agents vocaux IA en zones DOM/i
     );
   });
 

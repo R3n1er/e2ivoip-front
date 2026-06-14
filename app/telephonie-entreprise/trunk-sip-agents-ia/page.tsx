@@ -1,14 +1,33 @@
-import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { ContactFormTrunkSipIA } from "@/components/contact-form-trunk-sip-ia";
+import type { Metadata } from "next";
+import { SafeImage as Image } from "@/components/ui/safe-image";
+import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
+import { ContactFormTrunkSipIA, TALLY_AGENTS_IA_URL } from "@/components/contact-form-trunk-sip-ia";
 import { Chat, Phone, Heart, Car, TreeStructure, CheckCircle, ArrowRight } from '@/lib/icons';
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 
-export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Trunk SIP pour agents vocaux IA en zones DOM",
+  description:
+    "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz. Antilles, Guyane, Réunion.",
+  keywords:
+    "trunk SIP agents IA, carrier SIP DOM, BYOC VAPI, Rounded SIP, ElevenLabs SIP trunk, Jambonz, agent vocal IA DOM, numéro local Antilles Guyane Réunion",
+  alternates: { canonical: "/telephonie-entreprise/trunk-sip-agents-ia" },
+  openGraph: {
+    title: "Trunk SIP pour agents vocaux IA en zones DOM | E2I VoIP",
+    description:
+      "Carrier SIP DOM pour agents vocaux IA : numéros locaux et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz. Antilles, Guyane, Réunion.",
+    type: "website",
+    locale: "fr_FR",
+    url: "/telephonie-entreprise/trunk-sip-agents-ia",
+    siteName: "E2I VoIP",
+  },
+};
 
 const platforms = [
   {
     name: "Rounded",
+    logo: "/images/logos-ia-agent/logo-rounded.jpg",
     description:
       "Trunk SIP custom. Origination sip:sip.callrounded.com — numéro E.164 + URI de termination.",
     docUrl: "https://docs.callrounded.com/documentation/telephony/sip-trunk",
@@ -17,6 +36,7 @@ const platforms = [
   },
   {
     name: "VAPI",
+    logo: "/images/logos-ia-agent/logo-vapi.png",
     description:
       "BYO SIP Trunk et numéro BYO. Credential byo-sip-trunk, routage entrant vers sip.vapi.ai.",
     docUrl: "https://docs.vapi.ai/advanced/sip/sip-trunk",
@@ -25,6 +45,7 @@ const platforms = [
   },
   {
     name: "ElevenLabs Agents",
+    logo: "/images/logos-ia-agent/logo-elevenlabs.png",
     description:
       "SIP Trunking BYOC. Auth digest ou ACL IP, TLS/SRTP pour agents conversationnels.",
     docUrl:
@@ -34,10 +55,22 @@ const platforms = [
   },
   {
     name: "Jambonz",
+    logo: "/images/logos-ia-agent/logo-jambonz.jpg",
+    logoClassName: "max-h-7 max-w-[100px]",
     description:
       "CPaaS open-source. Trunks IP, auth ou registration — idéal pour intégrateurs self-hosted.",
     docUrl:
       "https://docs.jambonz.org/guides/using-the-jambonz-portal/basic-concepts/creating-carriers",
+    status: "evaluating" as const,
+    statusLabel: "En évaluation",
+  },
+  {
+    name: "Airagent",
+    logo: "/images/logos-ia-agent/logo-airagent.png",
+    logoClassName: "max-h-7 max-w-[100px]",
+    description:
+      "Plateforme française d'agents vocaux IA. Interconnexion SIP pour numéros locaux DOM.",
+    docUrl: "https://airagent.fr",
     status: "evaluating" as const,
     statusLabel: "En évaluation",
   },
@@ -156,7 +189,7 @@ export default function TrunkSipAgentsIA() {
                 IA — nous connectons vos agents aux appels locaux.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <CTAButton href="#contact" icon="Chat">
+                <CTAButton href={TALLY_AGENTS_IA_URL} icon="Chat" external>
                   Parler à un commercial
                 </CTAButton>
                 <CTAButtonSecondary
@@ -253,12 +286,12 @@ export default function TrunkSipAgentsIA() {
                   Redirection d&apos;appels
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Votre numéro local E2I redirige vers l&apos;URI SIP de la
-                  plateforme (ex.{" "}
+                  Votre numéro local E2I redirige vers le numéro de la
+                  plateforme choisie au format{" "}
                   <code className="text-sm bg-gray-100 px-2 py-0.5 rounded">
-                    sip:sip.callrounded.com
+                    E.164
                   </code>
-                  ). Idéal pour POC rapides ou flux entrant uniquement.
+                  . Idéal pour POC rapides ou flux entrant uniquement.
                 </p>
               </div>
             </div>
@@ -278,16 +311,29 @@ export default function TrunkSipAgentsIA() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {platforms.map((platform) => (
                 <div
                   key={platform.name}
-                  className={`bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
+                  className={`flex h-full flex-col bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
                     platform.status === "validated"
                       ? "border-green-500/40"
                       : "border-gray-200"
                   }`}
                 >
+                  <div className="mb-4 flex h-20 items-center">
+                    <Image
+                      src={platform.logo}
+                      alt={`Logo ${platform.name}`}
+                      width={240}
+                      height={80}
+                      className={`w-auto object-contain ${
+                        "logoClassName" in platform && platform.logoClassName
+                          ? platform.logoClassName
+                          : "max-h-16 max-w-[200px]"
+                      }`}
+                    />
+                  </div>
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-xl font-bold text-gray-dark">
                       {platform.name}
@@ -304,14 +350,14 @@ export default function TrunkSipAgentsIA() {
                       {platform.statusLabel}
                     </span>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">
                     {platform.description}
                   </p>
                   <a
                     href={platform.docUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-red-primary text-sm font-semibold hover:underline inline-flex items-center gap-1"
+                    className="mt-auto text-red-primary text-sm font-semibold hover:underline inline-flex items-center gap-1"
                   >
                     Documentation
                     <ArrowRight size={16} aria-hidden="true" />
@@ -361,11 +407,33 @@ export default function TrunkSipAgentsIA() {
 
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Processus d&apos;
                 <span className="text-red-primary">intégration</span>
               </h2>
+            </div>
+
+            {/* Étape préalable earlybird */}
+            <div className="mb-12 rounded-2xl border-2 border-red-primary/30 bg-red-50/60 p-6 sm:p-8">
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <div className="inline-flex items-center bg-red-primary text-white rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.15em] whitespace-nowrap">
+                  Earlybird
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-dark mb-2">
+                    Étape préalable : demande de validation
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Le programme étant en phase{" "}
+                    <strong>earlybird</strong>, chaque projet débute par une{" "}
+                    <strong>demande de validation</strong> que nous étudions en
+                    amont (plateforme IA, volumes, territoires, faisabilité
+                    technique). Une fois votre demande validée, nous poursuivons
+                    avec le processus d&apos;intégration ci-dessous.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-5 gap-6">
@@ -407,17 +475,24 @@ export default function TrunkSipAgentsIA() {
         </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-dark mb-8">
-              Offres trunk SIP associées
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="/telephonie-entreprise/trunk-sip-compteur" icon="ArrowRight">
-                Trunk SIP au compteur
-              </CTAButton>
-              <CTAButtonMarine href="/telephonie-entreprise/trunk-sip-illimite" icon="ArrowRight">
-                Trunk SIP illimité
-              </CTAButtonMarine>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-blue-marine/20 bg-blue-marine/5 p-8 text-center">
+              <h2 className="text-2xl font-bold text-gray-dark mb-4">
+                Une offre dédiée aux agents vocaux IA
+              </h2>
+              <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                Ce Trunk SIP est <strong>spécifique aux agents vocaux IA</strong>{" "}
+                et se distingue de nos offres de téléphonie d&apos;entreprise :
+                la facturation se fait <strong>à l&apos;usage, à la minute, sur
+                les appels entrants et sortants</strong>, selon l&apos;activité
+                réelle de vos agents.
+              </p>
+              <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mt-4">
+                Elle s&apos;adresse <strong>uniquement aux professionnels</strong>{" "}
+                (agences et prestataires) qui déploient et revendent des agents
+                IA auprès de leurs clients. Il n&apos;existe pas de forfait
+                illimité pour cet usage.
+              </p>
             </div>
           </div>
         </section>
@@ -440,10 +515,10 @@ export default function TrunkSipAgentsIA() {
             </p>
             <p className="text-base text-white/75 mb-10 max-w-2xl mx-auto">
               Vous revendez à vos clients ? Rejoignez notre programme Early Access
-              revendeur avec des marges de 40 à 60 %.
+              revendeur avec des conditions avantageuses.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CTAButton href="#contact" icon="Chat">
+              <CTAButton href={TALLY_AGENTS_IA_URL} icon="Chat" external>
                 Parler à un commercial
               </CTAButton>
               <CTAButtonSecondary

@@ -1,7 +1,11 @@
 "use client";
 
-import { HubSpotFormSimpleEmbed } from "@/components/hubspot-form-simple-embed";
+import { CTAButton } from "@/components/ui/cta-button";
 import { TreeStructure, MapPin, Rocket } from '@/lib/icons';
+
+// Formulaire Tally « plus d'informations agents IA » → alimente un flow n8n.
+// Source de vérité unique, réutilisée par les CTA des pages agents IA.
+export const TALLY_AGENTS_IA_URL = "https://tally.so/r/ODVd1K";
 
 export function ContactFormTrunkSipIA() {
   return (
@@ -31,12 +35,14 @@ export function ContactFormTrunkSipIA() {
             }}
           />
 
-          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-            <HubSpotFormSimpleEmbed
-              formId="312a9f67-e613-4651-9690-4586646554a0"
-              portalId="26878201"
-              region="eu1"
-            />
+          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-12 text-center">
+            <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+              Soumettez votre demande via notre formulaire en ligne. Nous
+              étudions votre projet et un commercial vous recontacte.
+            </p>
+            <CTAButton href={TALLY_AGENTS_IA_URL} icon="Chat" external>
+              Demander plus d&apos;informations
+            </CTAButton>
           </div>
         </div>
 
