@@ -75,9 +75,6 @@ test.describe("Page Qui sommes-nous", () => {
 
   test("propose des appels à l'action pertinents", async ({ page }) => {
     await expect(
-      page.getByRole("link", { name: /Accéder au support complet/i })
-    ).toBeVisible();
-    await expect(
       page.getByRole("link", { name: /Faire un devis/i })
     ).toHaveAttribute("href", "/devis-en-ligne");
     await expect(

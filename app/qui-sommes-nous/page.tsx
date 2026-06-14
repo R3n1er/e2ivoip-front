@@ -2,9 +2,8 @@ import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SafeImage as Image } from "@/components/ui/safe-image";
-import { SecureEmail } from "@/components/secure-email";
-import { CTAButton, CTAButtonMarine, CTAButtonSecondary } from "@/components/ui/cta-button";
-import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle, LinkedinLogo } from '@/lib/icons';
+import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } from '@/lib/icons';
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 // Tawk.to désactivé temporairement
 
@@ -573,27 +572,6 @@ export default function QuiSommesNous() {
                 01 89 56 05 00
               </a>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <SecureEmail
-                address="sales"
-                mode="mailto"
-                className="text-white hover:text-white/80 transition-colors inline-flex items-center"
-                label="Nous écrire"
-              />
-              <a
-                href="https://www.linkedin.com/company/e2i-voip/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
-                className="text-white hover:text-white/80 transition-colors inline-flex items-center gap-2"
-              >
-                <LinkedinLogo size={20} weight="fill" aria-hidden="true" />
-                Suivez-nous sur LinkedIn
-              </a>
-              <CTAButtonSecondary href="/assistance" icon="Chat">
-                Accéder au support complet
-              </CTAButtonSecondary>
-            </div>
           </div>
         </div>
       </section>
