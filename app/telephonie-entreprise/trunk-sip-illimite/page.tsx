@@ -1,20 +1,19 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { HubSpotForm } from "@/components/hubspot";
-import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PlugCharging, PhoneCall, Headphones, WifiHigh, Envelope, Timer } from '@/lib/icons';
+import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PhoneCall, Timer } from '@/lib/icons';
 
 export const metadata: Metadata = {
   title:
-    "Trunk SIP Illimité DOM - E2I VoIP | Appels Illimités France & DOM",
+    "Trunk SIP Illimité DOM - E2I VoIP | Appels Fixes Illimités France & DOM",
   description:
-    "Trunk SIP illimité vers fixes et mobiles France métropolitaine et DOM. De 2 à 8 appels simultanés. Forfait tout inclus avec fair use. Solution idéale pour centres d'appels et entreprises.",
+    "Trunk SIP illimité vers les fixes France métropolitaine et DOM. De 4 à 16 appels simultanés. Forfait avec fair use. Appels vers mobiles facturés au compteur. Idéal entreprises et centres d'appels.",
   keywords:
-    "trunk SIP illimité, appels illimités DOM, forfait téléphonie entreprise, 8 appels simultanés, VoIP illimité Guadeloupe Martinique Guyane Réunion, trunk SIP fair use",
+    "trunk SIP illimité, appels fixes illimités DOM, forfait téléphonie entreprise, 16 appels simultanés, VoIP illimité Guadeloupe Martinique Guyane Réunion, trunk SIP fair use",
   openGraph: {
-    title: "Trunk SIP Illimité - Appels Illimités France & DOM",
+    title: "Trunk SIP Illimité - Appels Fixes Illimités France & DOM",
     description:
-      "Forfait trunk SIP illimité de 2 à 8 appels simultanés. Appels illimités vers fixes et mobiles France et DOM.",
+      "Forfait trunk SIP illimité de 4 à 16 appels simultanés. Appels illimités vers les fixes France et DOM, mobiles au compteur.",
     type: "website",
     locale: "fr_FR",
     url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite",
@@ -24,27 +23,36 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trunk SIP Illimité - E2I VoIP",
     description:
-      "Forfait trunk SIP illimité. Appels illimités France & DOM. De 2 à 8 appels simultanés.",
+      "Forfait trunk SIP illimité. Appels fixes illimités France & DOM. De 4 à 16 appels simultanés.",
   },
 };
 
 export default function TrunkSIPIllimite() {
   const forfaits = [
     {
-      appels: 2,
-      ideal: "TPE, petites structures",
+      appels: 4,
+      ideal: "TPE et petites structures",
       popular: false,
     },
     {
-      appels: 4,
+      appels: 8,
       ideal: "PME et entreprises actives",
       popular: true,
     },
     {
-      appels: 8,
+      appels: 16,
       ideal: "Grandes structures et centres d'appels",
       popular: false,
     },
+  ];
+
+  const tarifsMobiles = [
+    { destination: "Mobile France métropolitaine", prix: "0,0700 €" },
+    { destination: "Mobile Guadeloupe, Saint-Martin, Saint-Barthélemy", prix: "0,0600 €" },
+    { destination: "Mobile Martinique", prix: "0,0180 €" },
+    { destination: "Mobile Guyane", prix: "0,0600 €" },
+    { destination: "Mobile La Réunion", prix: "0,0180 €" },
+    { destination: "Mobile Mayotte", prix: "0,3600 €" },
   ];
 
   return (
@@ -75,31 +83,31 @@ export default function TrunkSIPIllimite() {
                 Trunk SIP <span className="text-white">Illimité</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-                <strong>Appels illimités</strong> vers fixes et mobiles
+                <strong>Appels illimités</strong> vers les fixes
                 France métropolitaine & DOM
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                <strong>2, 4 ou 8 appels simultanés</strong> •
-                Forfait tout inclus avec politique fair use
+                <strong>4, 8 ou 16 appels simultanés</strong> •
+                Forfait avec politique fair use • Mobiles facturés au compteur
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
                   <CheckCircle size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Appels illimités France</span>
+                  <span className="text-sm">Fixes illimités France</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Appels illimités DOM</span>
+                  <span className="text-sm">Fixes illimités DOM</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">2, 4 ou 8 lignes simultanées</span>
+                  <span className="text-sm">4, 8 ou 16 lignes simultanées</span>
                 </div>
               </div>
 
               {/* CTA Hero - Unified homepage style */}
               <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <CTAButton href="#contact-form" icon="Chat">
+                <CTAButton href="/devis-en-ligne" icon="Chat">
                   Demander un devis
                 </CTAButton>
                 <CTAButtonMarine href="tel:+33189560500" icon="Phone" external>
@@ -136,12 +144,12 @@ export default function TrunkSIPIllimite() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
-                        Appels illimités France métropolitaine
+                        Fixes illimités France métropolitaine
                       </h3>
                       <p className="text-gray-600">
-                        <strong>Fixes et mobiles</strong> en illimité vers la France
-                        métropolitaine. Appelez sans compter, sans surprise sur
-                        votre facture.
+                        <strong>Numéros fixes</strong> en illimité vers la France
+                        métropolitaine. Appelez sans compter sur les fixes ; les
+                        appels vers mobiles sont facturés au compteur.
                       </p>
                     </div>
                   </div>
@@ -151,11 +159,11 @@ export default function TrunkSIPIllimite() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
-                        Appels illimités vers les DOM
+                        Fixes illimités vers les DOM
                       </h3>
                       <p className="text-gray-600">
                         <strong>Guadeloupe, Martinique, Guyane, Réunion</strong> :
-                        communiquez librement avec tous les DOM en illimité.
+                        appelez les fixes des DOM en illimité.
                       </p>
                     </div>
                   </div>
@@ -165,7 +173,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
-                        3 paliers : 2, 4 ou 8 appels simultanés
+                        3 paliers : 4, 8 ou 16 appels simultanés
                       </h3>
                       <p className="text-gray-600">
                         Choisissez le forfait adapté à votre volume d'appels.
@@ -183,9 +191,10 @@ export default function TrunkSIPIllimite() {
                         Politique Fair Use transparente
                       </h3>
                       <p className="text-gray-600">
-                        Usage professionnel normal sans limitation.
+                        Usage professionnel normal, sans usage intensif d'appels
+                        entrants et sortants (type centre d'appels).
                         <strong> Pas de frais cachés</strong>, pas de mauvaise
-                        surprise. Transparence garantie.
+                        surprise.
                       </p>
                     </div>
                   </div>
@@ -246,17 +255,22 @@ export default function TrunkSIPIllimite() {
                       <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
                       <div className="text-sm text-blue-800">
                         <p>
-                          <strong>Tout inclus :</strong> Appels illimités France
-                          + DOM, numéros géographiques, support technique réactif.
+                          <strong>Fixes illimités :</strong> France + DOM, numéros
+                          géographiques, support technique réactif.
+                        </p>
+                        <p className="mt-1">
+                          <strong>Mobiles au compteur :</strong> les appels vers
+                          mobiles sont facturés à la minute (voir grille ci-dessous).
                         </p>
                         <p className="mt-1">
                           <strong>Fair Use :</strong> Usage professionnel normal,
-                          pas de centre d'appels sortants intensifs.
+                          sans usage intensif d'appels entrants et sortants
+                          (type centre d'appels).
                         </p>
                         <p className="mt-1">
                           <strong>Bon à savoir :</strong> au-delà de
-                          ~200 min/mois, l'illimité devient plus avantageux que la
-                          facturation à la minute.
+                          ~200 min/mois sur les fixes, l'illimité devient plus
+                          avantageux que la facturation à la minute.
                         </p>
                       </div>
                     </div>
@@ -305,12 +319,6 @@ export default function TrunkSIPIllimite() {
                   <p className="text-gray-secondary leading-relaxed mb-4">
                     Un forfait mensuel fixe, pas de surprise. Idéal pour la gestion budgétaire de votre entreprise.
                   </p>
-                  
-                  {/* Bottom accent - Rouge principal E2I */}
-                  <div className="flex items-center text-red-primary font-medium text-sm">
-                    <CheckCircle size={16} className="mr-2" aria-hidden="true" />
-                    <span>Jusqu'à 20 % d'économies sur vos communications</span>
-                  </div>
                 </div>
               </div>
 
@@ -336,7 +344,7 @@ export default function TrunkSIPIllimite() {
                     Couverture France + DOM
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Appelez sans limite vers la métropole et tous les départements d'outre-mer.
+                    Appelez les fixes sans limite vers la métropole et tous les départements d'outre-mer.
                   </p>
                   
                   {/* Bottom accent - Bleu marine */}
@@ -381,129 +389,115 @@ export default function TrunkSIPIllimite() {
               </div>
             </div>
 
-            {/* Points clés supplémentaires */}
-            <div className="mt-16 relative">
-              <div className="relative bg-white rounded-xl p-10 shadow-xl border border-gray-200">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    Tout est inclus dans votre forfait
-                  </h3>
-                  <p className="text-gray-secondary">
-                    Une solution complète sans frais cachés
-                  </p>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {[
-                    {
-                      text: "Compatible avec tous les IPBX (3CX, Yeastar, Grandstream)",
-                      Icon: PlugCharging,
-                      color: "gray"
-                    },
-                    {
-                      text: "Portabilité gratuite de vos numéros existants",
-                      Icon: PhoneCall,
-                      color: "red"
-                    },
-                    {
-                      text: "Support technique réactif par mail et téléphone",
-                      Icon: Headphones,
-                      color: "gray-secondary"
-                    },
-                    {
-                      text: "Qualité HD garantie sur tous les appels",
-                      Icon: WifiHigh,
-                      color: "red"
-                    },
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                      <div className={`
-                        w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
-                        ${item.color === 'gray' ? 'bg-gradient-to-br from-gray-100 to-gray-50' : ''}
-                        ${item.color === 'red' ? 'bg-gradient-to-br from-red-100 to-red-50' : ''}
-                        ${item.color === 'gray-secondary' ? 'bg-gradient-to-br from-gray-200 to-gray-100' : ''}
-                        shadow-md group-hover:shadow-lg transition-shadow
-                      `}>
-                        <item.Icon size={24} className={
-                          item.color === 'gray' ? 'text-gray-800' :
-                          item.color === 'red' ? 'text-red-primary' :
-                          'text-gray-secondary'
-                        } aria-hidden="true" />
-                      </div>
-                      <div className="flex-1">
-                        <span className="text-gray-800 font-medium leading-relaxed block">
-                          {item.text}
-                        </span>
-                        <span className={`
-                          text-sm mt-1 inline-flex items-center
-                          ${item.color === 'gray' ? 'text-gray-800' : ''}
-                          ${item.color === 'red' ? 'text-red-primary' : ''}
-                          ${item.color === 'gray-secondary' ? 'text-gray-secondary' : ''}
-                        `}>
-                          <CheckCircle size={16} className="mr-1" aria-hidden="true" />
-                          Inclus
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* Section Contact / Formulaire HubSpot */}
+        {/* Section Contact commercial — numéros par région */}
         <section id="contact-form" className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Envelope size={16} className="mr-2" aria-hidden="true" />
+                <PhoneCall size={16} className="mr-2" aria-hidden="true" />
                 Contact commercial
               </div>
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-                Obtenez votre <span className="text-red-primary">devis personnalisé</span>
+                Parlons de votre <span className="text-red-primary">projet</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Nos experts vous conseillent et établissent un devis adapté à vos besoins
+                Contactez notre service commercial pour obtenir un devis et plus
+                d'informations. Un numéro dédié selon votre région :
               </p>
             </div>
 
-            {/* Formulaire HubSpot */}
-            <div id="hubspot-contact-form">
-              <HubSpotForm />
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="tel:+33189560500"
+                suppressHydrationWarning
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+              >
+                <PhoneCall size={24} aria-hidden="true" />
+                <span>France : 01 89 56 05 00</span>
+              </a>
+              <a
+                href="tel:+594594963500"
+                suppressHydrationWarning
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+              >
+                <PhoneCall size={24} aria-hidden="true" />
+                <span>Guyane : 05 94 96 35 00</span>
+              </a>
+              <a
+                href="tel:+590590173500"
+                suppressHydrationWarning
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+              >
+                <PhoneCall size={24} aria-hidden="true" />
+                <span>Guadeloupe : 05 90 17 35 00</span>
+              </a>
             </div>
 
-            {/* Alternative de contact */}
-            <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-4">
-                Vous préférez nous appeler directement ?
-              </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <a
-                  href="tel:+33189560500"
-                  suppressHydrationWarning
-                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
-                >
-                  <PhoneCall size={24} aria-hidden="true" />
-                  <span>France : 01 89 56 05 00</span>
-                </a>
-                <a
-                  href="tel:+594594963500"
-                  suppressHydrationWarning
-                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
-                >
-                  <PhoneCall size={24} aria-hidden="true" />
-                  <span>Guyane : 05 94 96 35 00</span>
-                </a>
-                <a
-                  href="tel:+590590173500"
-                  suppressHydrationWarning
-                  className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
-                >
-                  <PhoneCall size={24} aria-hidden="true" />
-                  <span>Guadeloupe : 05 90 17 35 00</span>
-                </a>
+            <div className="mt-10 text-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-blue-marine hover:text-blue-800 font-medium"
+              >
+                <MapPin size={20} aria-hidden="true" />
+                <span>Toutes nos coordonnées (Martinique, Réunion…)</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Tarifs mobiles */}
+        <section className="py-16 bg-base-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center bg-red-primary/10 text-red-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Phone size={16} className="mr-2" aria-hidden="true" />
+                Appels vers mobiles
               </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
+                Tarifs des <span className="text-red-primary">appels vers mobiles</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Les fixes sont en illimité. Les appels vers les mobiles sont
+                facturés au compteur, à la minute.
+              </p>
             </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-200">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-dark">
+                      Destination
+                    </th>
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-dark text-right">
+                      Tarif HT / min
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tarifsMobiles.map((tarif) => (
+                    <tr
+                      key={tarif.destination}
+                      className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
+                    >
+                      <td className="px-6 py-4 text-gray-700">
+                        {tarif.destination}
+                      </td>
+                      <td className="px-6 py-4 text-right font-semibold text-red-primary">
+                        {tarif.prix}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-sm text-gray-500 text-center mt-4">
+              Tarifs HT à la minute, hors taxes. Tarification en vigueur, susceptible d'évolution.
+            </p>
           </div>
         </section>
 
@@ -525,7 +519,7 @@ export default function TrunkSIPIllimite() {
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Timer size={24} className="text-white" aria-hidden="true" />
-                <span className="text-sm">Sans engagement</span>
+                <span className="text-sm">Engagement 36 mois</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Shield size={24} className="text-white" aria-hidden="true" />
@@ -534,7 +528,7 @@ export default function TrunkSIPIllimite() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CTAButton href="#contact-form" icon="Chat">
+              <CTAButton href="/devis-en-ligne" icon="Chat">
                 Demander mon devis illimité
               </CTAButton>
               <CTAButtonMarine

@@ -12,10 +12,10 @@ test.describe("Trunk SIP Illimité Page", () => {
     ).toBeVisible();
 
     await expect(page.getByText(/Forfait illimité/)).toBeVisible();
-    await expect(page.locator("text=/Appels illimités France/i").first()).toBeVisible();
-    await expect(page.locator("text=/Appels illimités DOM/i").first()).toBeVisible();
+    await expect(page.locator("text=/Fixes illimités France/i").first()).toBeVisible();
+    await expect(page.locator("text=/Fixes illimités DOM/i").first()).toBeVisible();
     await expect(
-      page.locator("text=/2, 4 ou 8 lignes simultanées/i").first()
+      page.locator("text=/4, 8 ou 16 lignes simultanées/i").first()
     ).toBeVisible();
   });
 
@@ -25,9 +25,9 @@ test.describe("Trunk SIP Illimité Page", () => {
     ).toBeVisible();
 
     const tiers = [
-      "2 appels simultanés",
       "4 appels simultanés",
       "8 appels simultanés",
+      "16 appels simultanés",
     ];
 
     for (const tier of tiers) {
@@ -39,10 +39,8 @@ test.describe("Trunk SIP Illimité Page", () => {
 
   test("affiche la section contact et les numéros", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { level: 2, name: /Obtenez votre devis personnalisé/i })
+      page.getByRole("heading", { level: 2, name: /Parlons de votre projet/i })
     ).toBeVisible();
-
-    await expect(page.locator("#hubspot-contact-form")).toBeAttached();
 
     const contacts = [
       "France : 01 89 56 05 00",
