@@ -9,7 +9,8 @@ export function trackEvent(event: AnalyticsEventName, payload: EventPayload): vo
         posthog.capture(event, payload)
       }
     })
-    .catch((error) => {
-      console.error('[Analytics] Failed to track event:', event, error)
+    .catch(() => {
+      // Analytics bloqué (bloqueur de pub/traceurs) ou indisponible : on ignore
+      // silencieusement. Le suivi est non bloquant et non critique pour l'UX.
     })
 }

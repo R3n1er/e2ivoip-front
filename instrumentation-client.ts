@@ -10,24 +10,29 @@ const host = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://eu.i.posthog.com'
 
 // Sans token (ex. preview, CI), on n'initialise pas : capture() restera silencieux.
 if (token) {
-  posthog.init(token, {
-    api_host: host,
-    // 'history_change' = capture les navigations App Router (SPA), pas seulement
-    // le chargement initial → toutes les pages sont suivies. autocapture couvre
-    // clics/soumissions sans instrumentation manuelle.
-    capture_pageview: 'history_change',
-    capture_pageleave: 'if_capture_pageview',
-    autocapture: true,
-    // Cookieless par défaut (RGPD) : aucun cookie tant que le visiteur n'a pas
-    // consenti. La bascule en mode cookies se fait via acceptCookies() (consent.ts).
-    persistence: 'memory',
-    // Jeu de défauts daté recommandé par PostHog (comportements à jour du SDK).
-    defaults: '2025-05-24',
-    loaded: (ph) => {
-      // Visiteur déjà consentant lors d'une visite précédente → cookies directs.
-      if (hasAcceptedCookies()) {
-        ph.set_config({ persistence: 'localStorage+cookie' })
-      }
-    },
-  })
+  // L'init peut échouer si le SDK est bloqué très tôt ; on protège l'amorçage.
+  try {
+    posthog.init(token, {
+      api_host: host,
+      // 'history_change' = capture les navigations App Router (SPA), pas seulement
+      // le chargement initial → toutes les pages sont suivies. autocapture couvre
+      // clics/soumissions sans instrumentation manuelle.
+      capture_pageview: 'history_change',
+      capture_pageleave: 'if_capture_pageview',
+      autocapture: true,
+      // Cookieless par défaut (RGPD) : aucun cookie tant que le visiteur n'a pas
+      // consenti. La bascule en mode cookies se fait via acceptCookies() (consent.ts).
+      persistence: 'memory',
+      // Jeu de défauts daté recommandé par PostHog (comportements à jour du SDK).
+      defaults: '2025-05-24',
+      loaded: (ph) => {
+        // Visiteur déjà consentant lors d'une visite précédente → cookies directs.
+        if (hasAcceptedCookies()) {
+          ph.set_config({ persistence: 'localStorage+cookie' })
+        }
+      },
+    })
+  } catch {
+    // Init impossible (SDK bloqué) : on ignore, l'app continue normalement.
+  }
 }
