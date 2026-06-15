@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { IconContext } from "@phosphor-icons/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { ChatPreOverlay } from "@/components/chat-preoverlay";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
       <HeaderSimple />
       <main className="flex-1 pt-16">{children}</main>
       <ChatPreOverlay />
+      <CookieConsentBanner />
     </IconContext.Provider>
   );
 }
