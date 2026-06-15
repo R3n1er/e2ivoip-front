@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { SecureMailtoButton } from "@/components/secure-email";
-import { Calculator, Phone, Chat, Envelope, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';
+import { Calculator, Phone, Chat, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';
+
+// Formulaire Tally dédié à l'offre Yeastar (tunnel devis, flow n8n).
+const TALLY_YEASTAR_URL = "https://tally.so/r/ODVoz8";
 
 export const metadata: Metadata = {
-  title: "Yeastar P-Series | PBX cloud et on-premise | E2I VoIP",
+  title: "Yeastar P-Series - PBX cloud et on-premise",
   description:
     "Déployez Yeastar P-Series avec E2I VoIP : PBX cloud ou on-premise, communications unifiées, call center et automatisations pour entreprises DOM et métropole.",
   keywords:
@@ -73,27 +75,23 @@ export default function PBXYeastar() {
                 <div className="flex items-center gap-2">
                   <Shield size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">
-                    Support technique Antilles-Guyane & Réunion
+                    Réseau de partenaires dans les DOM
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <TrendUp size={24} className="text-white" aria-hidden="true" />
                   <span className="text-sm">
-                    20% d'économies sur vos coûts télécom
+                    Jusqu'à 20 % d'économies sur vos coûts télécom
                   </span>
                 </div>
               </div>
 
               <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
-                <CTAButton href="/devis-en-ligne" icon="Calculator">
+                <CTAButton href={TALLY_YEASTAR_URL} icon="Calculator" external>
                   Faire un devis
                 </CTAButton>
-                <CTAButtonMarine
-                  href="tel:+33189560500"
-                  icon="Phone"
-                  external
-                >
-                  Expert Yeastar : 01 89 56 05 00
+                <CTAButtonMarine href="/contact" icon="Phone">
+                  Nous contacter
                 </CTAButtonMarine>
               </div>
             </div>
@@ -181,11 +179,11 @@ export default function PBXYeastar() {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-dark">
-                        Support expert local
+                        Support expert réactif
                       </p>
                       <p className="text-sm text-gray-600">
-                        Équipes basées en Guyane, Antilles, Réunion et métropole
-                        pour des interventions rapides et un support réactif.
+                        Réseau de partenaires dans les DOM et support par mail et
+                        téléphone pour un accompagnement réactif.
                       </p>
                     </div>
                   </div>
@@ -794,7 +792,7 @@ export default function PBXYeastar() {
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
                   Trunks SIP Antilles-Guyane, La Réunion et métropole, numéros
-                  locaux en 24h, continuité 4G/5G.
+                  locaux disponibles rapidement, continuité 4G/5G.
                 </p>
               </div>
               <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-lg">
@@ -811,7 +809,7 @@ export default function PBXYeastar() {
                   Pilotage ROI & SLA
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
-                  Mesure des gains et reporting mensuel pour garantir 20%
+                  Mesure des gains et reporting mensuel pour viser jusqu'à 20 %
                   d'économies télécoms.
                 </p>
               </div>
@@ -820,8 +818,8 @@ export default function PBXYeastar() {
                   Support premium
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
-                  Assistance utilisateur, interventions locales et temps de
-                  rétablissement contractuels.
+                  Assistance utilisateur par mail et téléphone et suivi réactif
+                  de vos demandes.
                 </p>
               </div>
             </div>
@@ -897,12 +895,9 @@ export default function PBXYeastar() {
               locales.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <CTAButton href="/devis-en-ligne" icon="Chat">
+              <CTAButton href={TALLY_YEASTAR_URL} icon="Chat" external>
                 Obtenir un devis Yeastar
               </CTAButton>
-              <SecureMailtoButton address="contact" icon="Envelope">
-                Nous écrire
-              </SecureMailtoButton>
             </div>
           </div>
         </section>
