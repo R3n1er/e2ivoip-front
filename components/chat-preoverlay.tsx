@@ -20,6 +20,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Chat } from "@/lib/icons";
 import { submitChatIntake } from "@/lib/api/chat-intake";
+import { getConsent, CONSENT_CHANGE_EVENT } from "@/lib/analytics/consent";
 import {
   chatIntakeSchema,
   type ChatIntakeFormData,
@@ -30,6 +31,16 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
   const [animationStopped, setAnimationStopped] = useState(false);
+  // Le bandeau cookies (fixed bottom, pleine largeur) recouvre le bouton chat
+  // tant qu'aucun choix n'est fait : on remonte le chat au-dessus dans ce cas.
+  const [bannerVisible, setBannerVisible] = useState(false);
+
+  React.useEffect(() => {
+    const sync = () => setBannerVisible(getConsent() === null);
+    sync();
+    window.addEventListener(CONSENT_CHANGE_EVENT, sync);
+    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, sync);
+  }, []);
 
   // Animation de vibration par cycles : vibration 3s → pause 2s → répéter
   // Arrêt définitif après 20 secondes
@@ -148,7 +159,11 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
   }, [reset]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999]">
+    <div
+      className={`fixed right-6 z-[9999] transition-all duration-300 ${
+        bannerVisible ? "bottom-44 sm:bottom-28" : "bottom-6"
+      }`}
+    >
       {/* Bouton pour ouvrir le chat */}
       {!open && (
         <div className="flex flex-col items-end gap-3">
