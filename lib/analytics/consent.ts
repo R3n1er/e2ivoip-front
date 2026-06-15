@@ -14,8 +14,15 @@ export function hasAcceptedCookies(): boolean {
 export async function acceptCookies(): Promise<void> {
   if (typeof window === 'undefined') return
   window.localStorage.setItem(CONSENT_KEY, 'accepted')
-  const { default: posthog } = await import('posthog-js')
-  posthog.set_config({ persistence: 'localStorage+cookie' })
+  await import('posthog-js')
+    .then(({ default: posthog }) => {
+      if (posthog?.set_config) {
+        posthog.set_config({ persistence: 'localStorage+cookie' })
+      }
+    })
+    .catch((error) => {
+      console.error('[Consent] Échec de la bascule persistance PostHog:', error)
+    })
 }
 
 export function declineCookies(): void {

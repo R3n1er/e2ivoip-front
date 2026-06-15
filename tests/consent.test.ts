@@ -39,8 +39,8 @@ describe('acceptCookies / declineCookies', () => {
     expect(setConfigMock).toHaveBeenCalledWith({ persistence: 'localStorage+cookie' })
   })
 
-  it('declineCookies mémorise declined sans toucher la persistance', async () => {
-    await declineCookies()
+  it('declineCookies mémorise declined sans toucher la persistance', () => {
+    declineCookies()
     expect(localStorage.getItem(CONSENT_KEY)).toBe('declined')
     expect(setConfigMock).not.toHaveBeenCalled()
   })
