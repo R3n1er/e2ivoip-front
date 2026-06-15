@@ -83,11 +83,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Shield size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Support expert local</span>
+                  <span className="text-sm">Support par mail et téléphone</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">+50 entreprises équipées</span>
+                  <span className="text-sm">15 ans d'expérience</span>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function Telephonie3CX() {
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
-                          De 3 à 15 utilisateurs
+                          De 3 à 10 utilisateurs
                         </p>
                         <p className="text-sm text-gray-600">
                           Parfait pour les TPE/PME
@@ -256,7 +256,7 @@ export default function Telephonie3CX() {
                           Mise en service rapide
                         </p>
                         <p className="text-sm text-gray-600">
-                          Activation en 24h
+                          Activation rapide
                         </p>
                       </div>
                     </div>
@@ -309,12 +309,12 @@ export default function Telephonie3CX() {
               // Source unique de données — alimente la vue cartes (mobile) ET le tableau (desktop)
               const rows = [
                 { feature: "Type d'hébergement", pro: "Instance dédiée AWS", smb: "Mutualisé multi-tenant" },
-                { feature: "Nombre d'utilisateurs", pro: "8 à 1024", smb: "3 à 15" },
+                { feature: "Nombre d'utilisateurs", pro: "8 à 1024", smb: "3 à 10" },
                 { feature: "Appels simultanés", pro: "Illimités", smb: "Selon forfait" },
                 { feature: "Personnalisation", pro: true, smb: false },
                 { feature: "Support prioritaire", pro: true, smb: false },
-                { feature: "Délai activation", pro: "48-72h", smb: "24h" },
-                { feature: "Tarification", pro: "Sur devis", smb: "À partir de 15€/utilisateur", highlight: true },
+                { feature: "Délai activation", pro: "Rapide", smb: "Rapide" },
+                { feature: "Tarification", pro: "Sur devis", smb: "Sur devis", highlight: true },
               ];
               const renderValue = (v: string | boolean) =>
                 typeof v === "boolean"
@@ -613,7 +613,7 @@ export default function Telephonie3CX() {
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Users size={24} className="text-white" aria-hidden="true" />
-                <span className="text-sm">Support expert local</span>
+                <span className="text-sm">Support par mail et téléphone</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Shield size={24} className="text-white" aria-hidden="true" />
