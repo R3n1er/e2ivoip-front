@@ -4,6 +4,8 @@ import * as consent from '@/lib/analytics/consent'
 
 jest.mock('@/lib/analytics/consent')
 
+afterEach(() => jest.restoreAllMocks())
+
 describe('CookieConsentBanner — visibilité', () => {
   it('ne rend rien si un choix a déjà été fait', () => {
     jest.spyOn(consent, 'getConsent').mockReturnValue('accepted')
