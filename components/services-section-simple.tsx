@@ -35,7 +35,7 @@ export function ServicesSectionSimple() {
       ],
       badge: "Idéal PME",
       price: "Sur devis",
-      href: "/telephonie-entreprise/3cx-smb-mutualisee",
+      href: "/telephonie-3cx",
     },
     {
       Icon: Phone,
@@ -50,7 +50,7 @@ export function ServicesSectionSimple() {
       ],
       badge: "Entreprise",
       price: "Sur devis",
-      href: "/3cx-cloud",
+      href: "/telephonie-3cx",
     },
     {
       Icon: Network,
@@ -105,7 +105,7 @@ export function ServicesSectionSimple() {
         <RevealGroup className="grid md:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
             <RevealItem
-              key={service.href}
+              key={service.title}
               className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
                 index === services.length - 1
                   ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"

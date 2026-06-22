@@ -98,18 +98,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/telephonie-entreprise/3cx-smb-mutualisee"
+                  href="/telephonie-3cx"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
-                  3CX SMB PRO
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/3cx-cloud"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  3CX PRO dédié
+                  Téléphonie 3CX
                 </Link>
               </li>
               <li>

@@ -153,14 +153,9 @@ export default function TelephonieDentreprise() {
                   description: "Connexions SIP professionnelles, au compteur ou illimité",
                 },
                 {
-                  title: "3CX PRO dédiée",
-                  href: "/3cx-cloud",
-                  description: "Instance 3CX dédiée dans le cloud",
-                },
-                {
-                  title: "3CX SMB",
-                  href: "/telephonie-entreprise/3cx-smb-mutualisee",
-                  description: "Solution 3CX mutualisée pour PME",
+                  title: "Téléphonie 3CX",
+                  href: "/telephonie-3cx",
+                  description: "3CX SMB mutualisée ou PRO en instance dédiée cloud",
                 },
                 {
                   title: "PBX Yeastar",

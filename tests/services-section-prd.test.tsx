@@ -138,9 +138,10 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
       .getAllByRole("link", { name: /En savoir plus/i })
       .map((link) => link.getAttribute("href"));
 
-    expect(hrefs).toContain("/telephonie-entreprise/3cx-smb-mutualisee");
+    expect(hrefs).toContain("/telephonie-3cx");
     expect(hrefs).toContain("/studio-attente");
-    expect(hrefs).not.toContain("/telephonie-entreprise/3cx-smb-pro");
+    expect(hrefs).not.toContain("/telephonie-entreprise/3cx-smb-mutualisee");
+    expect(hrefs).not.toContain("/3cx-cloud");
     expect(hrefs).not.toContain("/nos-services/studio-attente");
   });
 

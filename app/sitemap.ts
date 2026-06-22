@@ -32,12 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/telephonie-entreprise/trunk-sip-agents-ia", changeFrequency: "weekly", priority: 0.9 },
     { path: "/telephonie-entreprise/trunk-sip-compteur", changeFrequency: "monthly", priority: 0.8 },
     { path: "/telephonie-entreprise/trunk-sip-illimite", changeFrequency: "monthly", priority: 0.8 },
-    { path: "/telephonie-entreprise/3cx-smb-mutualisee", changeFrequency: "monthly", priority: 0.8 },
     { path: "/telephonie-entreprise/pbx-yeastar", changeFrequency: "monthly", priority: 0.8 },
 
-    // 3CX
-    { path: "/telephonie-3cx", changeFrequency: "monthly", priority: 0.8 },
-    { path: "/3cx-cloud", changeFrequency: "monthly", priority: 0.8 },
+    // 3CX (page unique : présente les offres SMB mutualisée et PRO dédiée)
+    { path: "/telephonie-3cx", changeFrequency: "monthly", priority: 0.9 },
 
     // Services & conversion
     { path: "/devis-en-ligne", changeFrequency: "monthly", priority: 0.8 },

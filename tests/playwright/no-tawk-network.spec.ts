@@ -4,7 +4,7 @@ const routes = [
   "/",
   "/contact",
   "/nos-services",
-  "/3cx-cloud",
+  "/telephonie-3cx",
   "/blog",
   "/blog/guide-telephonie-ip-entreprises",
   "/blog/3cx-vs-solutions-traditionnelles",

@@ -12,10 +12,8 @@ Positionnement clé : fournisseur de Trunk SIP DOM pour les intégrateurs qui d�
 - [Trunk SIP pour agents vocaux IA](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-agents-ia) : carrier SIP DOM, numéros locaux et interconnexion BYOC pour VAPI, Rounded, ElevenLabs, Jambonz.
 - [Trunk SIP au compteur](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur) : facturation des appels à la seconde, idéal pour faibles volumes (< 200 min/mois), numéros locaux DOM.
 - [Trunk SIP illimité](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite) : forfait fixe mensuel, appels illimités France + DOM, recommandé au-delà de 200 min/mois.
-- [3CX SMB mutualisée](https://www.e2i-voip.com/telephonie-entreprise/3cx-smb-mutualisee) : standard téléphonique 3CX cloud mutualisé pour PME.
 - [PBX Yeastar](https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar) : solutions PBX Yeastar pour entreprises.
-- [Téléphonie 3CX](https://www.e2i-voip.com/telephonie-3cx) : déploiement et gestion de la solution 3CX.
-- [3CX Cloud](https://www.e2i-voip.com/3cx-cloud) : 3CX hébergé dans le cloud.
+- [Téléphonie 3CX](https://www.e2i-voip.com/telephonie-3cx) : solution 3CX complète — offre SMB mutualisée (29 €/utilisateur/mois) et offre PRO en instance dédiée cloud (sur devis).
 - [Studio attente téléphonique](https://www.e2i-voip.com/studio-attente) : messages d'accueil et d'attente, voix off professionnelles, musiques libres de droits.
 
 ## Ressources

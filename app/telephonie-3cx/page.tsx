@@ -6,6 +6,10 @@ import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, CheckCircle, Shield, Users, Compass, X, VideoCamera, Chat, Lightning, DeviceMobile, Link, Headphones, TrendUp, Seal } from '@/lib/icons';
 
+// Formulaires Tally dédiés aux 2 offres 3CX (tunnels devis, flow n8n).
+const TALLY_3CX_SMB_URL = "https://tally.so/r/44Gprk";
+const TALLY_3CX_PRO_URL = "https://tally.so/r/EkALv4";
+
 export const metadata: Metadata = {
   title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",
   description:
@@ -198,13 +202,19 @@ export default function Telephonie3CX() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <p className="text-center text-gray-600 mb-2">Idéal pour</p>
-                    <p className="text-center font-semibold text-gray-dark mb-6">
+                    <p className="text-center text-gray-600 mb-1">Idéal pour</p>
+                    <p className="text-center font-semibold text-gray-dark mb-4">
                       PME et entreprises exigeantes avec besoin d'intégrations
                     </p>
+                    <p className="text-center mb-6">
+                      <span className="text-2xl font-black text-gray-dark">Sur devis</span>
+                      <span className="block text-xs text-gray-500">
+                        Instance dédiée cloud configurée sur-mesure
+                      </span>
+                    </p>
                     <div className="flex justify-center">
-                      <CTAButtonMarine href="/3cx-cloud" className="block">
-                        Découvrir 3CX PRO
+                      <CTAButtonMarine href={TALLY_3CX_PRO_URL} external className="block">
+                        Demander un devis 3CX PRO
                       </CTAButtonMarine>
                     </div>
                   </div>
@@ -274,16 +284,20 @@ export default function Telephonie3CX() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <p className="text-center text-gray-600 mb-2">Idéal pour</p>
-                    <p className="text-center font-semibold text-gray-dark mb-6">
+                    <p className="text-center text-gray-600 mb-1">Idéal pour</p>
+                    <p className="text-center font-semibold text-gray-dark mb-4">
                       TPE et petites PME recherchant l'efficacité
                     </p>
+                    <p className="text-center mb-6">
+                      <span className="text-2xl font-black text-red-primary">29 €</span>
+                      <span className="text-sm font-medium text-gray-600"> / utilisateur / mois</span>
+                      <span className="block text-xs text-gray-500">
+                        3CX Pro, appels fixes France &amp; DOM illimités inclus
+                      </span>
+                    </p>
                     <div className="flex justify-center">
-                      <CTAButton
-                        href="/telephonie-entreprise/3cx-smb-mutualisee"
-                        className="block"
-                      >
-                        Découvrir 3CX SMB PRO
+                      <CTAButton href={TALLY_3CX_SMB_URL} external className="block">
+                        Demander un devis 3CX SMB PRO
                       </CTAButton>
                     </div>
                   </div>
@@ -314,7 +328,7 @@ export default function Telephonie3CX() {
                 { feature: "Personnalisation", pro: true, smb: false },
                 { feature: "Support prioritaire", pro: true, smb: false },
                 { feature: "Délai activation", pro: "Rapide", smb: "Rapide" },
-                { feature: "Tarification", pro: "Sur devis", smb: "Sur devis", highlight: true },
+                { feature: "Tarification", pro: "Sur devis", smb: "29 €/utilisateur/mois", highlight: true },
               ];
               const renderValue = (v: string | boolean) =>
                 typeof v === "boolean"
