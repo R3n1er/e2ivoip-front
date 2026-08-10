@@ -1,9 +1,13 @@
 # Design System — E2I VoIP
 
-**Version :** 1.0 (2026-05-23)  
-**Statut :** Source de vérité opérationnelle pour agents, Stitch et développement UI  
-**Précédence :** `docs/CHARTE_GRAPHIQUE.md` > ce document > `design-taste-frontend` générique  
+**Version :** 1.1 (2026-08-09 — corrections ponctuelles ; base v1.0 du 2026-05-23)  
+**Statut :** Spécification normative pour Stitch, `agents.md` et le développement UI  
+**Précédence :** `docs/CHARTE_GRAPHIQUE.md` > `DESIGN.md` (racine) > ce document > guides génériques  
 **Audit source :** `docs/DESIGN-AUDIT.md` (phase 1)
+
+> ⚠️ **Lire d'abord `DESIGN.md` à la racine du projet.** C'est le fichier que les agents chargent automatiquement, et il reflète l'état réel du code (audit du 2026-06-11 + consolidation du 2026-08-09). Le présent document reste la spécification versionnée de référence, mais certaines de ses sections décrivent des cibles de migration désormais atteintes ou dépassées — voir §10.
+>
+> Contexte stratégique (cibles, ton, anti-références) : `PRODUCT.md` à la racine.
 
 ---
 
@@ -97,8 +101,10 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 |---------|----------------------|---------|
 | H1 hero | `text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight` | `text-white` sur hero |
 | Accent titre hero | span en `text-red-primary` (éviter `bg-clip-text` dégradé) | |
-| H2 section | `text-3xl md:text-4xl font-bold` | `text-gray-dark` ou `text-gray-900` → **migrer vers `gray-dark`** |
+| H2 section | `text-3xl md:text-4xl font-black tracking-[-0.04em]` | `text-gray-dark` |
 | H2 contact (Monolithe) | `text-4xl font-black tracking-[-0.04em] leading-[0.95]` | |
+
+> **Mis à jour le 2026-08-09.** Le style « monolithe » a été généralisé à tous les H2 le 2026-06-11 (75 titres migrés, commit `eac6b2d`). L'ancienne prescription `font-bold` réservée aux sections courantes est caduque.
 | Corps | `text-base` à `text-xl`, `leading-relaxed` | `text-gray-secondary` ou `text-gray-dark` |
 | CTA label | `text-sm font-black uppercase tracking-[0.2em]` | blanc sur fond rouge/marine |
 
@@ -162,7 +168,7 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 - Conteneur : `card bg-base-100 shadow-xl` (DaisyUI)
 - Icône : carré `bg-red-100`, icône `text-red-primary`
 - Badge : `badge badge-primary`
-- Liste features : `lni-checkmark-circle text-success`
+- Liste features : `CheckCircle` (Phosphor, via `@/lib/icons`) en `text-success`
 - **Alignement CTA :** `flex flex-col h-full` + `mt-auto` sur `card-actions` (tests Playwright)
 - **Grille cible :** éviter `lg:grid-cols-3` avec 5 items — préférer `md:grid-cols-2` + carte pleine largeur ou rangée 2+2+1
 
@@ -184,8 +190,12 @@ Fichier de référence : `components/homepage-hero-section-simple.tsx`.
 
 ### 4.6 Icônes
 
-- Lucide React — cohérence `strokeWidth` sur tous les composants
-- Pas d’emojis dans le markup
+> **Corrigé le 2026-08-09.** Ce document indiquait « Lucide React » ; la librairie réellement installée est `@phosphor-icons/react` (`package.json`). Aucune dépendance Lucide n'existe dans le projet.
+
+- **Phosphor Icons** (`@phosphor-icons/react`) — importer exclusivement depuis `@/lib/icons` (barrel centralisé), jamais directement depuis le paquet
+- `weight="bold"` appliqué globalement via `IconContext.Provider` dans `layout-client-chrome.tsx` ; `weight="fill"` explicite conservé là où il est sémantique (étoiles, coches pleines)
+- Échelle : 16 / 24 / 32 px
+- Pas d’emojis dans le markup ; pas de classes `lni-*` (Line Icons retiré du projet)
 
 ---
 

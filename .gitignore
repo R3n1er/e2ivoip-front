@@ -147,3 +147,4 @@ tsconfig.tsbuildinfo
 # Cursor local hook state
 .cursor/hooks/state/
 .worktrees/
+.vercel

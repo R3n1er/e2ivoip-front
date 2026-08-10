@@ -2,7 +2,12 @@
 
 **Projet :** e2ivoip-front (Next.js 15 App Router · Tailwind v3 · DaisyUI · shadcn/ui · Framer Motion)
 **Source de vérité couleurs :** `docs/CHARTE_GRAPHIQUE.md` (règle absolue — ne jamais sortir de la charte)
+**Contexte stratégique :** `PRODUCT.md` (racine) — cibles, ton, anti-références, principes
 **Dernière analyse :** 2026-06-11 — audit réalisé avec la grille « design-taste » (variance 8 / motion 6 / densité 4)
+**Consolidation :** 2026-08-09 — blocs normatifs remontés depuis `docs/DESIGN.md` (v1.0, 2026-05-23)
+
+**Précédence :** `docs/CHARTE_GRAPHIQUE.md` > ce document > `docs/DESIGN.md` > guides génériques.
+Ce fichier est celui que lisent les agents (résolution racine). `docs/DESIGN.md` reste la spécification versionnée de référence pour Stitch et `agents.md`.
 
 ---
 
@@ -31,6 +36,28 @@ Densité actuelle : ~4/10 (app quotidienne, ni galerie ni cockpit). Motion : dis
 | Gris lavande discret | `#818096` | `gray-secondary` | Baseline, textes secondaires, « VO » du logo |
 | Charbon doux | `#1F2937` | `gray-dark` | Texte principal, header non scrollé |
 | Blanc pur | `#FFFFFF` | `white` | Fonds, inversions, header scrollé |
+
+### Mapping logo E2I (non négociable)
+
+```
+E  → blue-marine   (#2D3848)
+2  → red-primary   (#E53E3E)
+I  → blue-marine   (#2D3848)
+VO → gray-secondary (#818096)
+IP → red-primary   (#E53E3E)
+```
+
+Implémentation de référence : `components/layout/header-simple.tsx`. Une inversion des couleurs du logo est un défaut bloquant, jamais une variante.
+
+### Arbitrage du dégradé hero
+
+Deux écritures coexistent dans la documentation. **Le dégradé semi-transparent du PRD prime** sur toutes les pages marketing :
+
+```
+bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85
+```
+
+L'exemple simplifié `from-red-primary to-blue-marine` de `CHARTE_GRAPHIQUE.md` est une illustration de principe, pas la valeur d'implémentation. Ne pas le substituer au dégradé PRD.
 
 ### Couleurs satellites en usage réel (hors charte, à officialiser ou purger — voir §8)
 
@@ -205,3 +232,82 @@ Règle d'accompagnement : **interdire** les teintes Tailwind génériques (`red-
 2. Les 5 couleurs officielles et leur mapping logo (§2)
 3. Header : charbon non scrollé / blanc scrollé
 4. CTA rouge `#E53E3E` comme couleur d'action unique
+
+---
+
+## 11. Anti-patterns bannis
+
+Liste opérationnelle. Un élément de cette liste dans une PR est un défaut, pas une préférence.
+
+### Identité & tokens
+- Teintes Tailwind génériques sur du code neuf : `red-600`, `blue-700`, `gray-900` — utiliser les tokens (§2)
+- Logo E2I avec couleurs inversées
+- Modifier `docs/CHARTE_GRAPHIQUE.md` sans permission explicite
+
+### UI générique (AI slop)
+- Emojis dans le markup ou le contenu UI — icônes Phosphor uniquement
+- Blobs et flous décoratifs multicolores
+- « Scroll to explore », chevrons rebondissants, indicateurs de scroll de remplissage
+- Dégradé sur les gros titres (`bg-clip-text`)
+- Grille 3 colonnes × N cartes sans traitement de la dernière ligne
+- `h-screen` sur un hero pleine page — utiliser `min-h-[100dvh]`
+
+### Contenu
+- Clichés : « Elevate », « Seamless », « Next-Gen », « révolutionnaire »
+- Répétition du même angle DOM entre le badge hero et le paragraphe d'intro (une seule couche sémantique)
+- URLs produit obsolètes : `/mobilite`, `/3cx-smb-pro`, `/nos-services/studio-attente`
+- Chiffres, adresses ou témoignages placeholder — voir `PRODUCT.md` § Anti-references
+
+### Technique
+- Importer une librairie d'icônes absente de `package.json`
+- Importer `@phosphor-icons/react` directement dans un composant — passer par `@/lib/icons`
+- Composants client lourds dans l'arbre RSC sans isolation `'use client'`
+- Listeners `window scroll`, animation de `top`/`left`/`width`/`height`
+
+---
+
+## 12. Responsive & breakpoints
+
+| Token | px | Usage |
+|---|---|---|
+| `sm` | 640 | Padding, échelle typographique |
+| `md` | 768 | Passage à 2 colonnes |
+| `lg` | 1024 | **Navigation desktop** (hamburger en dessous), grilles 3 colonnes si justifié |
+| `xl` | 1280 | Titres hero à leur taille maximale |
+
+- **Cibles tactiles :** minimum 44 × 44 px sur tous les liens et boutons en mobile
+- **Sous 768 px :** une seule colonne, aucun scroll horizontal
+- **Offset header :** `main` en `pt-16` pour compenser le header fixe (`h-16 lg:h-20`)
+
+---
+
+## 13. Liens produits canoniques
+
+Toute carte, tout CTA ou lien de navigation pointant vers une offre doit utiliser ces URLs.
+
+| Offre | href |
+|---|---|
+| Trunk SIP DOM (au compteur) | `/telephonie-entreprise/trunk-sip-compteur` |
+| 3CX SMB PRO (mutualisé) | `/telephonie-entreprise/3cx-smb-mutualisee` |
+| 3CX PRO Cloud (dédié) | `/3cx-cloud` |
+| Trunk SIP agents IA | `/telephonie-entreprise/trunk-sip-agents-ia` |
+| Studio d'attente | `/studio-attente` |
+| Devis | `/devis` |
+
+---
+
+## 14. Implementation map
+
+| Zone | Fichier(s) |
+|---|---|
+| Layout racine | `app/layout.tsx`, `app/globals.css` |
+| Accueil | `app/page.tsx`, `components/homepage-hero-section-simple.tsx` |
+| Services (accueil) | `components/services-section-simple.tsx` |
+| Header / footer | `components/layout/header-simple.tsx`, `components/layout/footer.tsx` |
+| CTA | `components/ui/cta-button.tsx` (`CTAButton`, `CTAButtonMarine`, `CTAButtonSecondary`) |
+| Icônes | `lib/icons.ts` (barrel Phosphor — point d'entrée unique) |
+| Motion | `components/motion/reveal.tsx` (`Reveal`, `RevealGroup`, `RevealItem`) |
+| Tokens Tailwind | `tailwind.config.js` (thème DaisyUI `e2ivoip`) |
+| Tests d'alignement | `tests/playwright/services-cards-alignment.spec.ts` |
+
+**Composants legacy à harmoniser ou retirer :** `header.tsx`, `contact-section.tsx`, `pricing-tiers.tsx`.
