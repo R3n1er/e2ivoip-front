@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import NextLink from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
@@ -217,6 +218,11 @@ export default function Telephonie3CX() {
                         Demander un devis 3CX PRO
                       </CTAButtonMarine>
                     </div>
+                    <p className="text-center mt-4">
+                      <NextLink href="/3cx-cloud" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                        En savoir plus sur notre offre 3CX PRO
+                      </NextLink>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -300,6 +306,11 @@ export default function Telephonie3CX() {
                         Demander un devis 3CX SMB PRO
                       </CTAButton>
                     </div>
+                    <p className="text-center mt-4">
+                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                        En savoir plus sur notre offre 3CX SMB PRO
+                      </NextLink>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -365,6 +376,15 @@ export default function Telephonie3CX() {
                         </div>
                       </div>
                     ))}
+                    {/* Liens vers les pages détail de chaque offre */}
+                    <div className="grid grid-cols-2 divide-x divide-gray-200 pt-2 text-center">
+                      <NextLink href="/3cx-cloud" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                        En savoir plus
+                      </NextLink>
+                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                        En savoir plus
+                      </NextLink>
+                    </div>
                   </div>
 
                   {/* Vue tableau classique — desktop uniquement */}
@@ -387,6 +407,20 @@ export default function Telephonie3CX() {
                             </td>
                           </tr>
                         ))}
+                        {/* Ligne de liens vers les pages détail de chaque offre */}
+                        <tr>
+                          <td className="px-6 py-4"></td>
+                          <td className="px-6 py-4 text-center">
+                            <NextLink href="/3cx-cloud" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                              En savoir plus sur notre offre
+                            </NextLink>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                              En savoir plus sur notre offre
+                            </NextLink>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

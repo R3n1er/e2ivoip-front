@@ -5,13 +5,20 @@ import Link from "next/link";
 import { CTAButton } from "@/components/ui/cta-button";
 import { Phone, CaretDown, X, List } from "@/lib/icons";
 
+// Élément de navigation récursif : un item peut avoir un href, un sous-menu, ou les deux.
+type NavItem = {
+  name: string;
+  href?: string;
+  submenu?: NavItem[];
+};
+
 export function HeaderSimple() {
   const [isOpen, setIsOpen] = useState(false);
   // Suppression de la logique complexe des sous-menus
 
   // Nettoyage simplifié
 
-  const navigation = [
+  const navigation: NavItem[] = [
     {
       name: "Qui sommes-nous",
       href: "/qui-sommes-nous",
@@ -30,14 +37,20 @@ export function HeaderSimple() {
         {
           name: "Téléphonie 3CX",
           href: "/telephonie-3cx",
+          submenu: [
+            {
+              name: "3CX PRO",
+              href: "/3cx-cloud",
+            },
+            {
+              name: "3CX SMB PRO",
+              href: "/telephonie-entreprise/3cx-smb-mutualisee",
+            },
+          ],
         },
         {
           name: "Téléphonie Yeastar",
           href: "/telephonie-entreprise/pbx-yeastar",
-        },
-        {
-          name: "Trunk SIP agents IA",
-          href: "/telephonie-entreprise/trunk-sip-agents-ia",
         },
         {
           name: "Aircall",
@@ -52,6 +65,10 @@ export function HeaderSimple() {
         {
           name: "Studio attente téléphonique",
           href: "/studio-attente",
+        },
+        {
+          name: "Trunk SIP agents IA",
+          href: "/telephonie-entreprise/trunk-sip-agents-ia",
         },
       ],
     },
@@ -114,13 +131,34 @@ export function HeaderSimple() {
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                     <div className="py-2">
                       {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
-                        >
-                          {subItem.name}
-                        </Link>
+                        <div key={subItem.name} className="relative group/sub">
+                          <Link
+                            href={subItem.href ?? "#"}
+                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
+                          >
+                            {subItem.name}
+                            {subItem.submenu && (
+                              <CaretDown size={14} className="-rotate-90 text-gray-500 group-hover/sub:text-red-primary" />
+                            )}
+                          </Link>
+
+                          {/* Sous-sous-menu latéral (3e niveau) */}
+                          {subItem.submenu && (
+                            <div className="absolute top-0 left-full ml-1 w-56 bg-white rounded-xl shadow-2xl border border-gray-200 z-[200] opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 ease-out">
+                              <div className="py-2">
+                                {subItem.submenu.map((leaf) => (
+                                  <Link
+                                    key={leaf.name}
+                                    href={leaf.href ?? "#"}
+                                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
+                                  >
+                                    {leaf.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -175,14 +213,29 @@ export function HeaderSimple() {
                     {item.submenu && (
                       <div className="ml-4 mt-2 space-y-2">
                         {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block text-sm text-gray-600 hover:text-red-primary transition-colors py-1"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {subItem.name}
-                          </Link>
+                          <div key={subItem.name}>
+                            <Link
+                              href={subItem.href ?? "#"}
+                              className="block text-sm text-gray-600 hover:text-red-primary transition-colors py-1"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {subItem.name}
+                            </Link>
+                            {subItem.submenu && (
+                              <div className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                                {subItem.submenu.map((leaf) => (
+                                  <Link
+                                    key={leaf.name}
+                                    href={leaf.href ?? "#"}
+                                    className="block text-sm text-gray-500 hover:text-red-primary transition-colors py-1"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {leaf.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </div>
                     )}
