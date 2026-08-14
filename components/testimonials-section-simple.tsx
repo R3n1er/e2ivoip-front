@@ -58,18 +58,18 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-            Plus de 500 entreprises
-            <span className="text-red-primary"> nous font confiance</span>
+            Ils nous font
+            <span className="text-red-primary"> confiance</span>
           </h2>
           <p className="text-xl text-gray-secondary max-w-3xl mx-auto">
-            Decouvrez pourquoi E2I VoIP est le choix privilegie des entreprises
-            DOM pour leur transformation telecom.
+            Découvrez pourquoi des entreprises des DOM et de France
+            métropolitaine choisissent E2I VoIP pour leur téléphonie.
           </p>
         </div>
 
         {/* 3CX Badge Strip -- D-02 */}
         <div className="flex items-center justify-center gap-8 py-6 mb-12">
-          <div className="flex items-center gap-4 border-l-4 border-red-primary pl-4">
+          <div className="flex items-center gap-4">
             <Image
               src="/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp"
               alt="3CX Silver Partner"

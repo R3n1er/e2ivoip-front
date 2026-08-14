@@ -33,7 +33,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("20% d'économies")).toBeInTheDocument();
     expect(screen.getByText("Présents dans les DOM")).toBeInTheDocument();
     expect(screen.getByText("Infrastructure fiable")).toBeInTheDocument();
-    expect(screen.getByText("Sécurité maximale")).toBeInTheDocument();
+    expect(screen.getByText("Hébergement souverain")).toBeInTheDocument();
   });
 
   it("affiche les catégories de services", () => {
@@ -89,8 +89,10 @@ describe("Page Nos Services", () => {
     // Utilisation de getAllByText pour gérer les éléments multiples
     const domTomElements = screen.getAllByText(/DOM/);
     expect(domTomElements.length).toBeGreaterThan(0);
+    // Ligne éditoriale : aucun nombre de clients publié (cf. plan-revision-contenus.md)
+    expect(screen.queryByText(/\d+\s*(\+|entreprises|clients)/i)).toBeNull();
     expect(
-      screen.getByText(/500 entreprises nous font confiance/)
+      screen.getByText(/15 ans d.expérience/)
     ).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
     const thirtyPercentElements = screen.getAllByText(/20%/);
@@ -116,7 +118,7 @@ describe("Page Nos Services", () => {
 
     // Vérification des prix
     expect(screen.getByText("À partir de 2 canaux voix")).toBeInTheDocument();
-    expect(screen.getByText("15€/mois/utilisateur")).toBeInTheDocument();
+    expect(screen.getByText("29 €/utilisateur/mois")).toBeInTheDocument();
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
     expect(screen.getByText("À partir de 50€")).toBeInTheDocument();

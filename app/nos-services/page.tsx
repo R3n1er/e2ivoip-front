@@ -60,7 +60,7 @@ export default function NosServices() {
       Icon: Users,
       title: "3CX SMB PRO",
       description:
-        "IPBX cloud nouvelle génération jusqu'à 10 utilisateurs avec Customer Success Manager dédié",
+        "IPBX cloud mutualisé de 3 à 10 utilisateurs avec Customer Success Manager dédié",
       features: [
         "Instance sécurisée pro",
         "Formation incluse",
@@ -68,8 +68,8 @@ export default function NosServices() {
         "Interface intuitive",
       ],
       badge: "Idéal PME",
-      price: "15€/mois/utilisateur",
-      href: "/telephonie-entreprise/3cx-smb-pro",
+      price: "29 €/utilisateur/mois",
+      href: "/telephonie-entreprise/3cx-smb-mutualisee",
       category: "Téléphonie IP",
     },
     {
@@ -85,7 +85,7 @@ export default function NosServices() {
       ],
       badge: "Entreprise",
       price: "Sur devis",
-      href: "/telephonie-entreprise/3cx-pro-dediee",
+      href: "/3cx-cloud",
       category: "Téléphonie IP",
     },
     {
@@ -117,15 +117,15 @@ export default function NosServices() {
       ],
       badge: "Pro",
       price: "À partir de 50€",
-      href: "/nos-services/studio-attente",
+      href: "/studio-attente",
       category: "Communication",
     },
   ];
 
   const categories = [
     { name: "Téléphonie IP", count: 3, color: "bg-red-primary" },
-    { name: "Innovation", count: 1, color: "bg-green-600" },
-    { name: "Communication", count: 1, color: "bg-purple-600" },
+    { name: "Innovation", count: 1, color: "bg-blue-marine" },
+    { name: "Communication", count: 1, color: "bg-gray-secondary" },
   ];
 
   const benefits = [
@@ -145,13 +145,13 @@ export default function NosServices() {
       Icon: Timer,
       title: "Infrastructure fiable",
       description: "Une téléphonie IP supervisée pour rester opérationnelle",
-      color: "text-green-600",
+      color: "text-blue-marine",
     },
     {
       Icon: Shield,
-      title: "Sécurité maximale",
+      title: "Hébergement souverain",
       description: "Infrastructure cloud France/UE conforme RGPD",
-      color: "text-purple-600",
+      color: "text-gray-secondary",
     },
   ];
 
@@ -236,8 +236,8 @@ export default function NosServices() {
                   <span className="text-red-primary">E2I VoIP</span> ?
                 </h2>
                 <p className="text-lg text-gray-secondary max-w-2xl mx-auto">
-                  Plus de 500 entreprises nous font confiance pour leur
-                  transformation numérique
+                  15 ans d&apos;expérience de la téléphonie d&apos;entreprise
+                  dans les DOM et en France métropolitaine
                 </p>
               </div>
 
