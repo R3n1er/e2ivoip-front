@@ -73,49 +73,51 @@ describe("Page Contact - DaisyUI Migration", () => {
     expect(formBody).toHaveClass("flex", "flex-col", "p-8");
   });
 
-  test("Les cartes de contact utilisent le style canonique avec des emojis temporaires", () => {
-    render(<ContactPage />);
+  test("Les cartes de contact utilisent le style canonique avec des icônes Phosphor", () => {
+    const { container } = render(<ContactPage />);
 
     // Vérifier la carte hotline (bordure accent rouge conservée)
     const hotlineCard = screen.getByTestId("hotline-card");
     expect(hotlineCard).toHaveClass("rounded-xl", "bg-white", "border-red-primary");
-    
-    // Vérifier l'emoji à la place de l'icône (solution temporaire)
-    expect(screen.getByText("📞")).toBeInTheDocument();
-    
+
+    // Icônes Phosphor (SVG) et non plus emojis — cf. DESIGN.md §11
+    expect(container.querySelector("svg")).toBeInTheDocument();
+    expect(screen.queryByText("📞")).toBeNull();
+
     // Vérifier les informations de contact
     expect(screen.getByTestId("hotline-title")).toHaveTextContent("Hotline Support");
     expect(screen.getByTestId("hotline-phone")).toHaveTextContent("0189 560 500");
   });
 
-  test("La carte WhatsApp utilise DaisyUI avec emojis temporaires", () => {
+  test("La carte WhatsApp utilise le style canonique avec une icône Phosphor", () => {
     render(<ContactPage />);
-    
+
     // Vérifier la carte WhatsApp
     const whatsappCard = screen.getByTestId("whatsapp-card");
     expect(whatsappCard).toHaveClass("rounded-xl", "bg-white", "hover:shadow-md");
-    
-    // Vérifier l'emoji WhatsApp
-    expect(screen.getByText("💬")).toBeInTheDocument();
-    
+
+    // Icône Phosphor (SVG) et non emoji — cf. DESIGN.md §11
+    expect(whatsappCard.querySelector("svg")).toBeInTheDocument();
+    expect(screen.queryByText("💬")).toBeNull();
+
     // Vérifier les informations WhatsApp
     expect(screen.getByTestId("whatsapp-title")).toHaveTextContent("WhatsApp Business");
     expect(screen.getByTestId("whatsapp-phone")).toHaveTextContent("0594 96 35 00");
   });
 
-  test("Les cartes d'implantations utilisent DaisyUI avec emojis temporaires", () => {
+  test("Les cartes d'implantations utilisent le style canonique avec une icône Phosphor", () => {
     render(<ContactPage />);
-    
+
     const locations = ["france", "guyane", "guadeloupe", "martinique", "reunion"];
-    
+
     locations.forEach(location => {
       const locationCard = screen.getByTestId(`location-${location}`);
       expect(locationCard).toHaveClass("rounded-xl", "bg-white/10", "backdrop-blur-sm");
+      // Chaque implantation porte une icône MapPin (SVG), plus d'emoji
+      expect(locationCard.querySelector("svg")).toBeInTheDocument();
     });
-    
-    // Vérifier qu'il y a des emojis de localisation (5 au total)
-    const locationEmojis = screen.getAllByText("📍");
-    expect(locationEmojis).toHaveLength(5);
+
+    expect(screen.queryByText("📍")).toBeNull();
   });
 
   test("Les numéros de téléphone sont des liens cliquables", () => {
@@ -148,17 +150,26 @@ describe("Page Contact - DaisyUI Migration", () => {
     expect(whatsappCard).toHaveClass("transition-shadow");
   });
 
-  test("L'accessibilité est respectée avec les emojis", () => {
-    render(<ContactPage />);
-    
-    // Vérifier que les emojis sont bien présents et accessibles
-    expect(screen.getByText("📞")).toBeInTheDocument(); // Téléphone
-    expect(screen.getByText("💬")).toBeInTheDocument(); // WhatsApp
-    expect(screen.getAllByText("📍")).toHaveLength(5); // Localisation (5 implantations)
-    expect(screen.getByText("❓")).toBeInTheDocument(); // FAQ
-    
-    // Vérifier l'attribut role sur l'emoji FAQ
-    expect(screen.getByLabelText("FAQ")).toBeInTheDocument();
+  test("Aucun emoji dans l'UI : les icônes sont décoratives et masquées aux lecteurs d'écran", () => {
+    const { container } = render(<ContactPage />);
+
+    // DESIGN.md §11 : pas d'emojis dans le markup, icônes Phosphor uniquement
+    expect(screen.queryByText("📞")).toBeNull();
+    expect(screen.queryByText("💬")).toBeNull();
+    expect(screen.queryByText("📍")).toBeNull();
+
+    // Les icônes sont rendues en SVG (Phosphor) et non en texte
+    const icons = container.querySelectorAll("svg");
+    expect(icons.length).toBeGreaterThan(0);
+
+    // Chaque icône est soit décorative (aria-hidden), soit porteuse d'un label
+    icons.forEach((icon) => {
+      const isDecorative = icon.getAttribute("aria-hidden") === "true";
+      const hasLabel =
+        Boolean(icon.getAttribute("aria-label")) ||
+        Boolean(icon.querySelector("title"));
+      expect(isDecorative || hasLabel).toBe(true);
+    });
   });
 
   test("Le composant FAQ est intégré", () => {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { SecureEmail } from "@/components/secure-email";
-import { Question, ArrowsClockwise, House, Phone } from '@/lib/icons';
+import { Question, ArrowsClockwise, House, Phone, Envelope } from '@/lib/icons';
 
 export default function OfflinePage() {
   const handleRefresh = () => {
@@ -66,14 +66,14 @@ export default function OfflinePage() {
             Besoin d&apos;aide immédiatement ?
           </p>
           <div className="text-sm text-gray-600">
-            <p>
-              📞{" "}
+            <p className="flex items-center justify-center gap-2">
+              <Phone size={16} aria-hidden="true" />
               <a href="tel:+33189560500" className="font-bold hover:underline">
                 01 89 56 05 00
               </a>
             </p>
-            <p>
-              📧{" "}
+            <p className="flex items-center justify-center gap-2">
+              <Envelope size={16} aria-hidden="true" />
               <SecureEmail
                 address="contact"
                 className="font-bold text-gray-600"

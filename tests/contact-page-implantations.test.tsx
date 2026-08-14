@@ -60,9 +60,10 @@ describe("ContactPage - Section Nos Implantations", () => {
 
     expect(screen.getByTestId("phone-france")).toHaveTextContent("01 89 56 05 00");
     expect(screen.getByTestId("phone-guyane")).toHaveTextContent("05 94 96 35 00");
-    expect(screen.getByTestId("phone-guadeloupe")).toHaveTextContent("+590 590 173 500");
-    expect(screen.getByTestId("phone-martinique")).toHaveTextContent("+596 596 313 500");
-    expect(screen.getByTestId("phone-reunion")).toHaveTextContent("+262 263 085 500");
+    // NAP : format national uniforme (cf. lib/constants/phone-numbers.ts) pour le SEO local
+    expect(screen.getByTestId("phone-guadeloupe")).toHaveTextContent("05 90 17 35 00");
+    expect(screen.getByTestId("phone-martinique")).toHaveTextContent("05 96 31 35 00");
+    expect(screen.getByTestId("phone-reunion")).toHaveTextContent("02 63 08 55 00");
   });
 
   it("affiche les liens téléphoniques cliquables", () => {

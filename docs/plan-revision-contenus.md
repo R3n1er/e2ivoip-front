@@ -56,12 +56,12 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 | 9 | `/telephonie-3cx` | ✅ | Hub 3CX (renvoie vers PRO `/3cx-cloud` + SMB `/3cx-smb-mutualisee`, pas de cannibalisation). « +50 entreprises » → « 15 ans d'expérience ». Support local → mail/tél (×2). Capacité SMB 3 à 10 (cohérent p.7). 24h → rapide. Prix SMB tableau → sur devis. Commit `6456c87`. |
 | 10 | `/3cx-cloud` | ✅ | Angle distinct : 3CX PRO sur instance cloud dédiée, dès 8 appels simultanés. Promesses non sourcées retirées. Page distillée : listes éditoriales, comparatif de capacités, contacts compacts, aucun callout répétitif. 2 CTA → Tally `EkALv4` + calendrier final. Canonical conservée vers le hub. Tests Jest + Playwright ajoutés. |
 | 11 | `/nos-services` | ✅ | 3 liens morts (404) corrigés → `3cx-smb-mutualisee`, `/3cx-cloud`, `/studio-attente`. Prix 3CX SMB aligné sur la page produit : 15 € → **29 €/utilisateur/mois**. « Plus de 500 entreprises » → « 15 ans d'expérience ». « Sécurité maximale » → « Hébergement souverain ». Couleurs hors charte (violet/vert décoratifs) → `blue-marine`/`gray-secondary`. Capacité SMB alignée « 3 à 10 utilisateurs ». Tests mis à jour. |
-| 12 | `/devis-en-ligne` | ⬜ | 4 types de devis + « réponse sous 24h ». Liens urlr.me valides. |
-| 13 | `/assistance` | ⬜ | Horaires hotline (L-V 8h-18h) cohérents. FAQ à jour. |
-| 14 | `/studio-attente` | ⬜ | Offre voix off + musiques libres de droits. |
-| 15 | `/contact` | ⬜ | **NAP** (nom / adresse / tél) cohérent pour le SEO local. 5 numéros par territoire. |
-| 16 | `/mentions-legales` | ⬜ | E2I ASSISTANCE, SIRET 51743457700014, APE 6203Z, siège Cayenne. |
-| 17 | `/politique-confidentialite` | ⬜ | Présence légale RGPD OK. |
+| 12 | `/devis-en-ligne` | ✅ | « Réponse sous 24h » → « Réponse rapide ». « Support technique réactif — Local dans les DOM » → « Support technique — par mail et téléphone ». 4 emojis (⏱️ ✓ ⭐ 📞) → icônes Phosphor. `bg-red-600` → `red-primary` + `active:scale-[0.98]`. Liens urlr.me inchangés. |
+| 13 | `/assistance` | ✅ | Horaires hotline L-V 8h-18h confirmés. Métadonnées SEO corrigées : « Assistance locale DOM » → « par mail et téléphone, du lundi au vendredi de 8h à 18h » ; keyword « support local » retiré (l'OpenGraph était déjà conforme). |
+| 14 | `/studio-attente` | ✅ | Aucune promesse non conforme, aucune couleur hors charte, aucun emoji. Validée en l'état. |
+| 15 | `/contact` | ✅ | **NAP uniformisé** : Guadeloupe / Martinique / Réunion passés du format international au format national canonique (`lib/constants/phone-numbers.ts`) — les 5 territoires sont désormais cohérents pour le SEO local. 7 emojis (📞 💬 📍×5) → icônes Phosphor. Icônes LinkedIn passées en `aria-hidden` (décoratives, le lien porte déjà un `aria-label`). |
+| 16 | `/mentions-legales` | ✅ | E2I ASSISTANCE, SIRET, APE, siège 23 Chemin Troubiran 97300 Cayenne — vérifiés, aucun placeholder. |
+| 17 | `/politique-confidentialite` | ✅ | Contenu RGPD vérifié, aucune promesse non conforme. **Charte** : 5 side-stripes `border-l-4` multicolores (rouge/bleu/vert/violet/orange) → cartes `rounded-xl border border-gray-200` ; pastilles violettes et vertes → `blue-marine`. ⚠️ Restent des teintes Tailwind génériques (`blue-*`, `red-*`) à migrer vers les tokens lors d'une passe dédiée. |
 
 > **Blog** (`/blog` + articles) : **hors scope** de cette révision (traité dans
 > une phase ultérieure avec la récupération des slugs HubSpot).

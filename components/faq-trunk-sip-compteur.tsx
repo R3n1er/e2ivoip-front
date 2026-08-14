@@ -53,7 +53,7 @@ const faqData: FAQItem[] = [
         </p>
         <p>Gestion à distance de vos postes et de votre instance de téléphonie.</p>
         <div className="space-y-1">
-          <p><strong>Nos numéros de support local :</strong></p>
+          <p><strong>Nos numéros de support :</strong></p>
           <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
             <li>Guyane : <a href="tel:+594594963500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">05 94 96 35 00</a></li>
             <li>France : <a href="tel:+33189560500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">01 89 56 05 00</a></li>

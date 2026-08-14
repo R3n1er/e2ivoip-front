@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "E2I VoIP : Opérateur de services télécom DOM, 15 ans d'expertise. Nous installons vos standards téléphoniques et accompagnons les entreprises des DOM vers la téléphonie IP. Trunk SIP, 3CX, support par mail et téléphone — Martinique, Guadeloupe, Guyane.",
   keywords:
-    "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support local DOM",
+    "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support télécom DOM",
   openGraph: {
     title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
     description:

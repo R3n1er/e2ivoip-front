@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Yeastar P-Series | PBX cloud et on-premise | E2I VoIP",
     description:
-      "Modernisez votre standard téléphonique avec Yeastar P-Series : cloud, on-premise, omnicanal et support local DOM.",
+      "Modernisez votre standard téléphonique avec Yeastar P-Series : cloud, on-premise, omnicanal et support par mail et téléphone.",
     type: "website",
     locale: "fr_FR",
     url: "https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar",

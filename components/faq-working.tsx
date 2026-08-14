@@ -1,6 +1,7 @@
 'use client'
 
 import { GENERAL_FAQ } from '@/lib/faq-data'
+import { Question } from '@/lib/icons'
 
 // Source unique des Q/R : lib/faq-data.tsx (partagée avec le JSON-LD FAQPage).
 const faqData = GENERAL_FAQ
@@ -12,7 +13,7 @@ export default function WorkingFAQ() {
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
-          <span className="text-4xl" role="img" aria-label="FAQ">❓</span>
+          <Question size={32} className="text-red-primary" aria-hidden="true" />
         </div>
         <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
           FAQ

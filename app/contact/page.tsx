@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import WorkingFAQ from "@/components/faq-working";
 import { InlineContactForm } from "@/components/hubspot";
-import { LinkedinLogo } from "@/lib/icons";
+import { LinkedinLogo, Phone, WhatsappLogo, MapPin } from "@/lib/icons";
 
 export const metadata: Metadata = {
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
@@ -115,7 +115,7 @@ export default function ContactPage() {
                   <div className="flex flex-col p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-red-primary p-3 rounded-lg">
-                        <span className="text-2xl">📞</span>
+                        <Phone size={24} className="text-white" aria-hidden="true" />
                       </div>
                       <div>
                         <h3
@@ -146,7 +146,7 @@ export default function ContactPage() {
                   <div className="flex flex-col p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-blue-marine/10 p-3 rounded-lg">
-                        <span className="text-2xl">💬</span>
+                        <WhatsappLogo size={24} className="text-white" aria-hidden="true" />
                       </div>
                       <div>
                         <h3
@@ -181,6 +181,7 @@ export default function ContactPage() {
                           size={28}
                           weight="fill"
                           className="text-blue-marine"
+                          aria-hidden="true"
                         />
                       </div>
                       <div>
@@ -202,7 +203,7 @@ export default function ContactPage() {
                           className="inline-flex items-center gap-2 text-blue-marine font-semibold hover:text-red-primary transition-colors duration-200"
                           data-testid="social-linkedin-link"
                         >
-                          <LinkedinLogo size={20} weight="fill" />
+                          <LinkedinLogo size={20} weight="fill" aria-hidden="true" />
                           E2I VoIP sur LinkedIn
                         </a>
                       </div>
@@ -236,7 +237,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📍</span>
+                  <MapPin size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   France
@@ -259,7 +260,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📍</span>
+                  <MapPin size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Guyane
@@ -282,7 +283,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📍</span>
+                  <MapPin size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Guadeloupe
@@ -293,7 +294,7 @@ export default function ContactPage() {
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-guadeloupe"
                 >
-                  +590 590 173 500
+                  05 90 17 35 00
                 </a>
               </div>
             </div>
@@ -305,7 +306,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📍</span>
+                  <MapPin size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   Martinique
@@ -316,7 +317,7 @@ export default function ContactPage() {
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-martinique"
                 >
-                  +596 596 313 500
+                  05 96 31 35 00
                 </a>
               </div>
             </div>
@@ -328,7 +329,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col p-6 text-center">
                 <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">📍</span>
+                  <MapPin size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   La Réunion
@@ -339,7 +340,7 @@ export default function ContactPage() {
                   className="text-white/90 text-sm hover:text-white transition-colors duration-200"
                   data-testid="phone-reunion"
                 >
-                  +262 263 085 500
+                  02 63 08 55 00
                 </a>
               </div>
             </div>

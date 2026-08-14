@@ -58,9 +58,10 @@ describe("ContactPage - Section Nos Implantations (Style mis à jour)", () => {
 
     // Vérifier que les numéros sont des liens cliquables
     const guyanePhone = screen.getByText("+594 594 963 500");
-    const guadeloupePhone = screen.getByText("+590 590 173 500");
-    const martiniquePhone = screen.getByText("+596 596 313 500");
-    const reunionPhone = screen.getByText("+262 263 085 500");
+    // NAP : format national uniforme (cf. lib/constants/phone-numbers.ts) pour le SEO local
+    const guadeloupePhone = screen.getByText("05 90 17 35 00");
+    const martiniquePhone = screen.getByText("05 96 31 35 00");
+    const reunionPhone = screen.getByText("02 63 08 55 00");
 
     expect(guyanePhone).toHaveAttribute("href", "tel:+594594963500");
     expect(guadeloupePhone).toHaveAttribute("href", "tel:+590590173500");

@@ -121,7 +121,7 @@ export default function PolitiqueConfidentialitePage() {
 
                 <div className="space-y-6">
                   {/* Cookies */}
-                  <div className="border-l-4 border-red-500 pl-6">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-red-100 p-2 rounded-lg">
                         <Question size={24} className="text-red-600" aria-hidden="true" />
@@ -138,7 +138,7 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
 
                   {/* Contact */}
-                  <div className="border-l-4 border-blue-500 pl-6">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-blue-100 p-2 rounded-lg">
                         <Envelope size={24} className="text-blue-600" aria-hidden="true" />
@@ -158,10 +158,10 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
 
                   {/* Candidatures */}
-                  <div className="border-l-4 border-green-500 pl-6">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-green-100 p-2 rounded-lg">
-                        <Users size={24} className="text-green-600" aria-hidden="true" />
+                      <div className="bg-blue-marine/10 p-2 rounded-lg">
+                        <Users size={24} className="text-blue-marine" aria-hidden="true" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -178,10 +178,10 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
 
                   {/* Paiements */}
-                  <div className="border-l-4 border-purple-500 pl-6">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-purple-100 p-2 rounded-lg">
-                        <Lock size={24} className="text-purple-600" aria-hidden="true" />
+                      <div className="bg-blue-marine/10 p-2 rounded-lg">
+                        <Lock size={24} className="text-blue-marine" aria-hidden="true" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -195,7 +195,7 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
 
                   {/* Images */}
-                  <div className="border-l-4 border-orange-500 pl-6">
+                  <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
                       <div className="bg-orange-100 p-2 rounded-lg">
                         <Eye size={24} className="text-orange-600" aria-hidden="true" />
@@ -240,8 +240,8 @@ export default function PolitiqueConfidentialitePage() {
 
                   {/* Protection */}
                   <div className="flex items-start space-x-4">
-                    <div className="bg-green-100 p-3 rounded-lg">
-                      <Lock size={32} className="text-green-600" aria-hidden="true" />
+                    <div className="bg-blue-marine/10 p-3 rounded-lg">
+                      <Lock size={32} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -310,8 +310,8 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-green-100 p-2 rounded-lg">
-                          <TextT size={24} className="text-green-600" aria-hidden="true" />
+                        <div className="bg-blue-marine/10 p-2 rounded-lg">
+                          <TextT size={24} className="text-blue-marine" aria-hidden="true" />
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -348,8 +348,8 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-purple-100 p-2 rounded-lg">
-                          <DownloadSimple size={24} className="text-purple-600" aria-hidden="true" />
+                        <div className="bg-blue-marine/10 p-2 rounded-lg">
+                          <DownloadSimple size={24} className="text-blue-marine" aria-hidden="true" />
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">

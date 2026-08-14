@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
+import { Timer, CheckCircle, Gear, Phone } from "@/lib/icons";
 export default function DevisEnLignePage() {
   const devisButtons = [
     {
@@ -30,24 +31,24 @@ export default function DevisEnLignePage() {
 
   const avantages = [
     {
-      icon: "⏱️",
-      title: "Réponse sous 24h",
+      Icon: Timer,
+      title: "Réponse rapide",
       description: "Par un expert en téléphonie IP",
     },
     {
-      icon: "✓",
+      Icon: CheckCircle,
       title: "Accompagnement gratuit",
       description: "Sans engagement",
     },
     {
-      icon: "⭐",
+      Icon: Gear,
       title: "Offres sur mesure",
       description: "Selon votre activité",
     },
     {
-      icon: "📞",
-      title: "Support technique réactif",
-      description: "Local dans les DOM et en France",
+      Icon: Phone,
+      title: "Support technique",
+      description: "Par mail et téléphone, dans les DOM et en France",
     },
   ];
 
@@ -122,9 +123,9 @@ export default function DevisEnLignePage() {
             </p>
             <a
               href="tel:+594594963500"
-              className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 bg-red-primary hover:bg-red-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-lg hover:shadow-xl active:scale-[0.98]"
             >
-              <span className="mr-2">📞</span>
+              <Phone size={20} aria-hidden="true" />
               05 94 96 35 00
             </a>
           </div>
@@ -140,7 +141,11 @@ export default function DevisEnLignePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {avantages.map((avantage) => (
               <div key={avantage.title} className="text-center">
-                <div className="text-4xl mb-4">{avantage.icon}</div>
+                <avantage.Icon
+                  size={32}
+                  className="mx-auto mb-4 text-red-primary"
+                  aria-hidden="true"
+                />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {avantage.title}
                 </h3>
