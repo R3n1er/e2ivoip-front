@@ -10,6 +10,18 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-13 — Repositionnement de la page 3CX PRO Cloud
+
+- **Contexte** : la page `/3cx-cloud` employait un discours promotionnel ancien et plusieurs promesses non documentées (`40 % d'économies`, `AWS EU`, `sécurité maximale`, `RGPD garantie`). Les cinq boutons des paliers d'appels simultanés n'avaient aucune action. Son angle se confondait avec le hub `/telephonie-3cx` et l'offre mutualisée 3CX SMB PRO.
+- **Décision** :
+  - Positionner `/3cx-cloud` comme page de détail de l'offre **3CX PRO sur instance cloud dédiée**, à partir de 8 appels simultanés, pour les PME, multisites et projets avec intégrations avancées.
+  - Conserver `/telephonie-3cx` comme URL canonique pendant la consolidation SEO des trois pages 3CX.
+  - Supprimer les chiffres et garanties non sourcés, ainsi que les promesses d'équipes locales ou d'interventions sur site ; employer « réseau de partenaires » et « support par mail et téléphone ».
+  - Limiter les actions commerciales à deux points : devis dans le hero et dimensionnement après les capacités, tous deux reliés au tunnel Tally 3CX PRO `EkALv4`. Le calendrier reste l'action finale.
+  - Remplacer les grilles de cartes décoratives par des listes éditoriales, un comparatif de capacités et des contacts territoriaux compacts. Supprimer les badges, callouts et résumés qui répétaient les titres.
+- **Conséquences** : la distinction hub / PRO dédié / SMB mutualisé est explicite. La page est plus courte, chaque section porte une information différente et le discours est aligné avec la charte éditoriale avant mise en ligne.
+- **Tests associés** : `tests/3cx-cloud-page.test.tsx`, `tests/playwright/3cx-cloud.spec.ts`, vérification desktop/mobile et hydratation CSS.
+
 ### 2026-05-23 — Suppression Hotjar + correction erreur d'hydratation SSR
 
 - **Contexte** : Hotjar n'est plus utilisé comme service d'analytics. Le composant `HotjarTracking` injectait un script externe en production et provoquait une erreur d'hydratation React car le build `.next` contenait encore d'anciennes balises `<i class="lni lni-star">` (cache obsolète post-migration Phosphor).

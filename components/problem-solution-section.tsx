@@ -1,38 +1,11 @@
-"use client";
-import React from "react";
-import {
-  Warning, Check, Phone, CurrencyDollar, MapPin, Gear, Cloud, ShieldCheck,
-  Medal, PhoneDisconnect, Lightbulb, Brain, Rocket, CheckCircle, type Icon
-} from '@/lib/icons';
-
-const ICON_MAP: Record<string, Icon> = {
-  "phone-error": PhoneDisconnect,
-  "phone": Phone,
-  "dollar": CurrencyDollar,
-  "dollar-sign": CurrencyDollar,
-  "warning": Warning,
-  "map": MapPin,
-  "cog": Gear,
-  "cloud": Cloud,
-  "shield": ShieldCheck,
-  "award": Medal,
-  "check": CheckCircle,
-  "brain": Brain,
-  "bulb": Lightbulb,
-  "rocket": Rocket,
-};
-
 interface Problem {
-  icon: string;
   title: string;
   description: string;
 }
 
 interface Solution {
-  icon: string;
   title: string;
   description: string;
-  highlight?: string;
 }
 
 interface ProblemSolutionSectionProps {
@@ -42,106 +15,48 @@ interface ProblemSolutionSectionProps {
   solutionsTitle?: string;
 }
 
+function EditorialList({ items }: { items: Array<Problem | Solution> }) {
+  return (
+    <ol className="border-t border-gray-200">
+      {items.map((item, index) => (
+        <li
+          key={item.title}
+          className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-gray-200 py-5"
+        >
+          <span className="font-mono text-sm tabular-nums text-gray-secondary">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div>
+            <h3 className="font-semibold text-gray-dark">{item.title}</h3>
+            <p className="mt-1 leading-relaxed text-gray-600">{item.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export function ProblemSolutionSection({
   problems,
   solutions,
-  problemsTitle = "Vos Défis Actuels Nous Parlent",
-  solutionsTitle = "3CX PRO : Votre Standard Téléphonique Nouvelle Génération"
+  problemsTitle = "Les limites de votre installation actuelle",
+  solutionsTitle = "Ce que change une instance dédiée",
 }: ProblemSolutionSectionProps) {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Section Problèmes */}
-          <div>
-            <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-                {problemsTitle}
-              </h2>
-              <p className="text-lg text-gray-600">
-                Votre entreprise grandit, vos équipes se multiplient, mais votre système téléphonique actuel vous freine ?
-              </p>
-            </div>
+    <section className="bg-gray-50 py-20">
+      <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div>
+          <h2 className="mb-8 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
+            {problemsTitle}
+          </h2>
+          <EditorialList items={problems} />
+        </div>
 
-            <div className="space-y-6">
-              {problems.map((problem, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                      {(() => { const I = ICON_MAP[problem.icon] ?? Warning; return <I size={24} className="text-red-600" aria-hidden="true" />; })()}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-2">{problem.title}</h3>
-                    <p className="text-gray-600">{problem.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 p-6 bg-red-100 rounded-xl border border-red-200">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Warning size={32} className="text-red-600" aria-hidden="true" />
-                </div>
-                <h3 className="font-bold text-gray-800 mb-2">Impact sur votre entreprise</h3>
-                <p className="text-gray-700">
-                  Ces problèmes impactent directement votre <strong>chiffre d'affaires</strong> et l'<strong>image de votre entreprise</strong>. 
-                  Il est temps d'y remédier définitivement.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Section Solutions */}
-          <div>
-            <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-                {solutionsTitle}
-              </h2>
-              <div className="p-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-lg border border-blue-200">
-                <p className="text-lg text-gray-700">
-                  <strong className="text-blue-800">Une Solution Cloud Dédiée</strong>, 
-                  Conçue pour les Entreprises Exigeantes
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              {solutions.map((solution, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      {(() => { const I = ICON_MAP[solution.icon] ?? Check; return <I size={24} className="text-green-600" aria-hidden="true" />; })()}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-2">
-                      {solution.title}
-                      {solution.highlight && (
-                        <span className="ml-2 px-2 py-1 bg-green-200 text-green-800 text-xs font-bold rounded-full">
-                          {solution.highlight}
-                        </span>
-                      )}
-                    </h3>
-                    <p className="text-gray-600">{solution.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 p-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl border border-green-200">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check size={32} className="text-green-600" aria-hidden="true" />
-                </div>
-                <h3 className="font-bold text-gray-800 mb-2">Pourquoi 3CX PRO ?</h3>
-                <p className="text-gray-700">
-                  Cette solution est parfaite pour les entreprises nécessitant un minimum de <strong className="text-blue-600">8 appels simultanés</strong>.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div>
+          <h2 className="mb-8 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
+            {solutionsTitle}
+          </h2>
+          <EditorialList items={solutions} />
         </div>
       </div>
     </section>

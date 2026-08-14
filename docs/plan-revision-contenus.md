@@ -54,7 +54,7 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 | 7 | `/telephonie-entreprise/3cx-smb-mutualisee` | ✅ | ⚖️ **Prix public assumé : 29€/utilisateur/mois** (exception règle prix masqués, décision Alban). Délai 24h → rapide. Support local → mail+tél. H1 + title SEO → « 3CX SMB PRO Mutualisé ». Capacité 3 à 10 utilisateurs. Bloc tarification détaillé (3CX Pro, fixes DOM+métro, app mobile, SIP Fanvil/Yealink). CTA → Tally `44Gprk` (flow n8n notif commerciale). Commits `f70eb64`, `aa554dd`. |
 | 8 | `/telephonie-entreprise/pbx-yeastar` | ✅ | Title dédupliqué (« \| E2I VoIP » retiré). « 20% » → « jusqu'à 20 % » (×2). Équipes/interventions locales → réseau de partenaires + support mail/tél (×3). « 24h » → « rapidement ». SLA contractuels → suivi réactif. 2 CTA → Tally `ODVoz8` (flow n8n). « Nous écrire » supprimé. Bouton tel → « Nous contacter » /contact. Commit `77c5618`. |
 | 9 | `/telephonie-3cx` | ✅ | Hub 3CX (renvoie vers PRO `/3cx-cloud` + SMB `/3cx-smb-mutualisee`, pas de cannibalisation). « +50 entreprises » → « 15 ans d'expérience ». Support local → mail/tél (×2). Capacité SMB 3 à 10 (cohérent p.7). 24h → rapide. Prix SMB tableau → sur devis. Commit `6456c87`. |
-| 10 | `/3cx-cloud` | ⬜ | ⚠️ Idem — clarifier l'angle propre vs les 2 autres pages 3CX. |
+| 10 | `/3cx-cloud` | ✅ | Angle distinct : 3CX PRO sur instance cloud dédiée, dès 8 appels simultanés. Promesses non sourcées retirées. Page distillée : listes éditoriales, comparatif de capacités, contacts compacts, aucun callout répétitif. 2 CTA → Tally `EkALv4` + calendrier final. Canonical conservée vers le hub. Tests Jest + Playwright ajoutés. |
 | 11 | `/nos-services` | ⬜ | Intro « 20 % d'économies » OK. Vérifier liste services à jour (mobilité retirée). |
 | 12 | `/devis-en-ligne` | ⬜ | 4 types de devis + « réponse sous 24h ». Liens urlr.me valides. |
 | 13 | `/assistance` | ⬜ | Horaires hotline (L-V 8h-18h) cohérents. FAQ à jour. |
@@ -70,9 +70,9 @@ Légende statut : ⬜ à faire · 🔄 en cours · ✅ validé · ⚠️ correct
 
 ## Décisions transverses à trancher (Alban)
 
-- [ ] **Cannibalisation 3CX** : garder 3 pages 3CX distinctes (telephonie-3cx,
-      3cx-cloud, 3cx-smb-mutualisee) ou en fusionner ? → définir l'angle unique
-      de chacune, ou rediriger.
+- [x] **Cannibalisation 3CX** : conserver le hub `/telephonie-3cx` comme page
+      canonique ; `/3cx-cloud` détaille l'instance PRO dédiée et
+      `/3cx-smb-mutualisee` l'offre mutualisée pour 3 à 10 utilisateurs.
 - [ ] **Prix affichés** : confirmer « 15 €/utilisateur/mois » (3CX SMB) et tout
       autre tarif public restant.
 - [ ] **Tally trunk-sip-compteur** : re-tester le tunnel de leads en conditions

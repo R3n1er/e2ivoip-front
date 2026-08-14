@@ -42,7 +42,7 @@ test.describe("Header navigation", () => {
     await expect(
       page
         .getByRole("navigation")
-        .getByRole("link", { name: "Trunk SIP agents IA" })
+        .getByRole("link", { name: "Trunk SIP au compteur" })
     ).toBeVisible();
 
     const services = page
@@ -53,6 +53,11 @@ test.describe("Header navigation", () => {
       page
         .getByRole("navigation")
         .getByRole("link", { name: "Studio attente téléphonique" })
+    ).toBeVisible();
+    await expect(
+      page
+        .getByRole("navigation")
+        .getByRole("link", { name: "Trunk SIP agents IA" })
     ).toBeVisible();
   });
 

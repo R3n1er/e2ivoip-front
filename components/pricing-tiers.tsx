@@ -1,134 +1,60 @@
-"use client";
-import React from "react";
-import { Users, Check, Phone, CurrencyDollar } from '@/lib/icons';
+import { CTAButton } from "@/components/ui/cta-button";
 
 interface PricingTier {
   calls: number;
-  title: string;
   description: string;
   features: string[];
-  highlighted?: boolean;
-  badge?: string;
 }
 
 interface PricingTiersProps {
   tiers: PricingTier[];
+  quoteUrl: string;
   title?: string;
-  subtitle?: string;
 }
 
 export function PricingTiers({
   tiers,
-  title = "Capacités et Tarification",
-  subtitle = "Notre modèle par appels simultanés s'adapte parfaitement aux réalités de votre activité"
+  quoteUrl,
+  title = "Choisir la capacité d'appels",
 }: PricingTiersProps) {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* En-tête */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 max-w-3xl">
+          <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
             {title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-            {subtitle}
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            Un appel simultané correspond à une conversation en cours. Le bon palier dépend de vos pics d'activité, pas du nombre total de collaborateurs.
           </p>
-          
-          {/* Avantage du modèle */}
-          <div className="max-w-3xl mx-auto p-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl border border-blue-200">
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <Users size={32} className="text-blue-600" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-800">Pourquoi Cette Approche ?</h3>
-            </div>
-            <p className="text-gray-700">
-              Contrairement aux licences par utilisateur, notre modèle par appels simultanés s'adapte 
-              parfaitement aux réalités de votre activité. Une équipe de <strong>50 personnes</strong> n'a 
-              rarement besoin de <strong>50 lignes simultanées</strong>.
-            </p>
-          </div>
         </div>
 
-        {/* Grille des paliers */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {tiers.map((tier, index) => (
-            <div 
-              key={index} 
-              className={`relative rounded-xl p-6 border-2 transition-all duration-300 ${
-                tier.highlighted
-                  ? 'border-red-500 bg-gradient-to-b from-red-50 to-blue-50 shadow-lg transform scale-105'
-                  : 'border-gray-200 bg-white shadow-sm hover:shadow-md hover:border-blue-300'
-              }`}
+        <div className="grid border-y border-gray-200 md:grid-cols-2 xl:grid-cols-5">
+          {tiers.map((tier) => (
+            <article
+              key={tier.calls}
+              className="border-b border-gray-200 py-8 md:px-6 md:[&:nth-child(odd)]:border-r xl:border-b-0 xl:border-r xl:last:border-r-0 xl:[&:nth-child(odd)]:border-r"
             >
-              {/* Badge */}
-              {tier.badge && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-red-600 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                    {tier.badge}
-                  </div>
-                </div>
-              )}
-
-              {/* En-tête du palier */}
-              <div className="text-center mb-6">
-                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 ${
-                  tier.highlighted 
-                    ? 'bg-gradient-to-r from-red-600 to-blue-600 text-white' 
-                    : 'bg-gray-100 text-gray-600'
-                }`}>
-                  <span className="text-2xl font-bold font-mono tabular-nums">{tier.calls}</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-2">
-                  {tier.calls} appels simultanés
-                </h3>
-                <p className="text-sm text-gray-600">
-                  {tier.description}
-                </p>
+              <div className="font-mono text-4xl font-bold tabular-nums text-blue-marine">
+                {tier.calls}
               </div>
-
-              {/* Fonctionnalités */}
-              <div className="space-y-3">
-                {tier.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-sm">
-                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                      <Check size={16} className="text-green-600" aria-hidden="true" />
-                    </div>
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
+              <h3 className="mt-1 font-semibold text-gray-dark">appels simultanés</h3>
+              <p className="mt-3 min-h-10 text-sm leading-relaxed text-gray-600">
+                {tier.description}
+              </p>
+              <ul className="mt-6 space-y-3 border-t border-gray-200 pt-5 text-sm text-gray-700">
+                {tier.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
                 ))}
-              </div>
-
-              {/* CTA */}
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <button 
-                  className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors duration-300 ${
-                    tier.highlighted
-                      ? 'bg-gradient-to-r from-red-600 to-blue-600 text-white hover:from-red-700 hover:to-blue-700'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  <Phone size={16} className="mr-2" aria-hidden="true" />
-                  Demander un devis
-                </button>
-              </div>
-            </div>
+              </ul>
+            </article>
           ))}
         </div>
 
-        {/* Message économies */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center p-4 bg-green-100 rounded-xl border border-green-200">
-            <div className="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center mr-4">
-              <CurrencyDollar size={24} className="text-green-600" aria-hidden="true" />
-            </div>
-            <div className="text-left">
-              <h3 className="font-bold text-green-800">Économisez jusqu'à 40%</h3>
-              <p className="text-green-700 text-sm">
-                sur vos coûts téléphoniques actuels avec notre approche transparente
-              </p>
-            </div>
-          </div>
+        <div className="mt-10">
+          <CTAButton href={quoteUrl} icon="Calculator" external>
+            Dimensionner mon projet
+          </CTAButton>
         </div>
       </div>
     </section>

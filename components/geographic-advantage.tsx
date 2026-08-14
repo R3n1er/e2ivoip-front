@@ -1,157 +1,76 @@
-"use client";
-import React from "react";
-import { Gear, Check, Headphones, MapPin, Phone, Heart } from '@/lib/icons';
+import { Phone } from "@/lib/icons";
 
 interface GeographicLocation {
   region: string;
-  /** Numéro affiché (lisible, ex : "05 94 96 35 00") */
   phone: string;
-  /** Numéro click-to-call au format E.164 (ex : "+594594963500"). Obligatoire pour le tel: */
   tel: string;
-  features: string[];
 }
 
 interface GeographicAdvantageProps {
-  title?: string;
-  subtitle?: string;
   locations: GeographicLocation[];
 }
 
-export function GeographicAdvantage({
-  title = "Votre Avantage Géographique Unique",
-  subtitle = "Expertise DOM-TOM Inégalée",
-  locations
-}: GeographicAdvantageProps) {
+const TERRITORY_EXPERTISE = [
+  "Centralisation des appels entre les DOM et la métropole",
+  "Gestion des horaires par site",
+  "Numéros locaux et portabilité selon éligibilité",
+  "Configuration des agences et utilisateurs mobiles",
+];
+
+const SUPPORT = [
+  "Supervision de l'instance 3CX",
+  "Prise en main à distance selon le besoin",
+  "Support par mail et téléphone",
+  "Coordination avec notre réseau de partenaires",
+];
+
+export function GeographicAdvantage({ locations }: GeographicAdvantageProps) {
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-red-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* En-tête */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-            {title}
+    <section className="bg-gray-50 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
+            Une téléphonie pensée pour vos sites
           </h2>
-          <h3 className="text-2xl font-semibold text-blue-800 mb-6">
-            {subtitle}
-          </h3>
-          <p className="text-lg text-gray-700 max-w-4xl mx-auto">
-            Présents en <strong>Guadeloupe, Martinique, Guyane, La Réunion</strong> et 
-            <strong> France métropolitaine</strong>, nous comprenons vos contraintes spécifiques
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            E2I VoIP accompagne les entreprises en Guadeloupe, Martinique, Guyane, à La Réunion et en France métropolitaine.
           </p>
         </div>
 
-        {/* Avantages spécifiques DOM-TOM */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {/* Expertise technique */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <Gear size={32} className="text-blue-600" aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800">Expertise DOM-TOM</h3>
-            </div>
-            
-            <div className="space-y-4">
-              {[
-                "Centralisation des appels entre DOM et Métropole",
-                "Gestion intelligente des décalages horaires", 
-                "Accompagnement technique local personnalisé",
-                "Configuration multi-sites optimisée"
-              ].map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <Check size={16} className="text-green-600" aria-hidden="true" />
-                  </div>
-                  <span className="text-gray-700">{feature}</span>
-                </div>
-              ))}
-            </div>
+        <div className="mt-12 grid gap-12 border-y border-gray-200 py-10 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xl font-semibold text-gray-dark">Déploiement multisite</h3>
+            <ul className="mt-5 space-y-3 text-gray-700">
+              {TERRITORY_EXPERTISE.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
-
-          {/* Support local */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="flex items-center mb-6">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
-                <Headphones size={32} className="text-red-600" aria-hidden="true" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800">Support Réactif</h3>
-            </div>
-            
-            <div className="space-y-4">
-              {[
-                "Réseau de partenaires présents dans chaque DOM",
-                "Supervision cloud de votre parc téléphonique",
-                "Prise en main à distance pour résolution immédiate",
-                "Maintenance préventive proactive"
-              ].map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <Check size={16} className="text-green-600" aria-hidden="true" />
-                  </div>
-                  <span className="text-gray-700">{feature}</span>
-                </div>
-              ))}
-            </div>
+          <div>
+            <h3 className="text-xl font-semibold text-gray-dark">Exploitation et support</h3>
+            <ul className="mt-5 space-y-3 text-gray-700">
+              {SUPPORT.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
         </div>
 
-        {/* Carte des régions et contacts */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-red-600 p-6 text-center">
-            <h3 className="text-2xl font-bold text-white mb-2">
-              Nos Conseillers Régionaux
-            </h3>
-            <p className="text-white/90">
-              Un interlocuteur local dans chaque région
-            </p>
-          </div>
-
-          <div className="p-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {locations.map((location, index) => (
-                <div key={index} className="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MapPin size={32} className="text-white" aria-hidden="true" />
-                  </div>
-                  
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">{location.region}</h4>
-                  
-                  <div className="mb-4">
-                    <a
-                      href={`tel:${location.tel}`}
-                      suppressHydrationWarning
-                      className="inline-flex items-center text-red-primary hover:text-red-600 font-semibold"
-                    >
-                      <Phone size={16} className="mr-2" aria-hidden="true" />
-                      {location.phone}
-                    </a>
-                  </div>
-
-                  <div className="space-y-2">
-                    {location.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center justify-center text-sm text-gray-600">
-                        <Check size={16} className="text-red-primary mr-2" aria-hidden="true" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Message de proximité */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center p-6 bg-gradient-to-r from-red-primary/10 via-white to-blue-marine/10 rounded-xl border border-red-primary/20">
-            <div className="w-12 h-12 bg-red-primary/20 rounded-full flex items-center justify-center mr-4">
-              <Heart size={24} className="text-red-primary" aria-hidden="true" />
-            </div>
-            <div className="text-left">
-              <h3 className="font-bold text-blue-marine text-lg">Proximité & Réactivité</h3>
-              <p className="text-blue-marine/80">
-                Parce que votre téléphonie ne peut pas attendre, nos équipes sont proches de vous
-              </p>
-            </div>
+        <div className="mt-12">
+          <h3 className="text-xl font-semibold text-gray-dark">Contacts par territoire</h3>
+          <div className="mt-5 grid border-t border-gray-200 sm:grid-cols-2 lg:grid-cols-5">
+            {locations.map((location) => (
+              <a
+                key={location.region}
+                href={`tel:${location.tel}`}
+                suppressHydrationWarning
+                className="group border-b border-gray-200 py-5 sm:px-4 lg:border-r lg:last:border-r-0"
+              >
+                <span className="block text-sm font-semibold text-gray-dark group-hover:text-red-primary">
+                  {location.region}
+                </span>
+                <span className="mt-2 flex items-center font-mono text-sm tabular-nums text-red-primary">
+                  <Phone size={16} className="mr-2" aria-hidden="true" />
+                  {location.phone}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
