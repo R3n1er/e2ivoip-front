@@ -96,12 +96,6 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
 
-  // Configuration ESLint
-  eslint: {
-    // Désactive l'exécution du lint pendant le build Next pour éviter l'erreur d'options obsolètes du CLI Next
-    ignoreDuringBuilds: true,
-  },
-
   // Configuration de build
   trailingSlash: false,
   skipTrailingSlashRedirect: true,

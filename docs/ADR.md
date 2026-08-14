@@ -10,6 +10,19 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-14 — Résolution des vulnérabilités npm et migration Next.js 16
+
+- **Contexte** : `npm audit` signalait 13 vulnérabilités dans l'application (9 élevées) et 15 dans le sous-projet d'extraction `scripts/` (dont 1 critique). Les trois dernières vulnérabilités de l'application ne pouvaient être corrigées sans quitter Next.js 15 ; celles de Puppeteer exigeaient également une montée majeure.
+- **Décision** :
+  - Appliquer `npm audit fix` sans `--force`, puis migrer explicitement Next.js et `@next/bundle-analyzer` vers `16.3.1`.
+  - Conserver React `18.3.1`, compatible avec Next.js 16, afin d'éviter les incompatibilités React 19 déclarées par Radix Select et Framer Motion.
+  - Migrer Puppeteer de `21.11.0` à `25.7.0` dans `scripts/` après les corrections transitives compatibles.
+  - Aligner ESLint sur `9.39.5` et `eslint-config-next` sur `16.3.1`, migrer la configuration vers le flat config natif et déplacer les exclusions de `.eslintignore` vers `globalIgnores`.
+  - Retirer l'option Next `eslint` supprimée, utiliser Turbopack par défaut et réserver `--webpack` au script `dev:webpack`.
+  - Accepter les ajustements TypeScript et fichiers agents générés par Next.js 16.
+- **Conséquences** : les deux arbres npm ne signalent plus aucune vulnérabilité. Le projet requiert toujours Node.js 22.12.0 via `.nvmrc`, au-dessus du minimum Next.js 16 (20.9). Les nouveaux diagnostics du compilateur React restent visibles comme avertissements afin de ne pas bloquer cette migration de sécurité.
+- **Tests associés** : `npm run lint` ✅ (0 erreur, avertissements historiques et nouveaux diagnostics non bloquants) ; `npm run type-check` ✅ ; `npm test -- --runInBand` ✅ (332/332) ; `npx playwright test` ✅ (80/80) ; audits racine et `scripts/` ✅ (0 vulnérabilité) ; test d'extraction Puppeteer ✅ ; `npm run build` ✅ (44 routes) ; démarrage Turbopack et requêtes `/`, `/blog`, `/telephonie-3cx` ✅ sans erreur CSS ni hydratation.
+
 ### 2026-08-13 — Repositionnement de la page 3CX PRO Cloud
 
 - **Contexte** : la page `/3cx-cloud` employait un discours promotionnel ancien et plusieurs promesses non documentées (`40 % d'économies`, `AWS EU`, `sécurité maximale`, `RGPD garantie`). Les cinq boutons des paliers d'appels simultanés n'avaient aucune action. Son angle se confondait avec le hub `/telephonie-3cx` et l'offre mutualisée 3CX SMB PRO.

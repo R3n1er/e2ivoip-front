@@ -1,27 +1,10 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  {
-    ignores: [
-      "**/.next/**",
-      "**/build/**",
-      "**/dist/**",
-      "**/coverage/**",
-      "**/playwright-report/**",
-      "**/test-results/**",
-      "**/scripts/node_modules/**",
-    ],
-  },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
   {
     rules: {
       // Permettre `any` dans les fichiers de test et de types
@@ -39,6 +22,12 @@ const eslintConfig = [
       "@next/next/no-html-link-for-pages": "warn",
       // Éviter les faux positifs sur les composants utilitaires
       "react/display-name": "off",
+      // Next 16 active de nouveaux diagnostics du compilateur React.
+      // Ils restent visibles sans bloquer la migration de sécurité.
+      "react-hooks/immutability": "warn",
+      "react-hooks/purity": "warn",
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/static-components": "warn",
       // Laisser Next gérer le routing généré
       "@typescript-eslint/triple-slash-reference": "off",
     },
@@ -51,6 +40,24 @@ const eslintConfig = [
       "@next/next/no-img-element": "warn",
     },
   },
-];
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "dist/**",
+    "node_modules/**",
+    "coverage/**",
+    "scripts/node_modules/**",
+    ".vercel/**",
+    "playwright-report/**",
+    "test-results/**",
+    ".claude/**",
+    "**/*.backup",
+    "**/*.bak",
+    "**/*.log",
+    "npm-debug.log*",
+    "next-env.d.ts",
+  ]),
+]);
 
 export default eslintConfig;
