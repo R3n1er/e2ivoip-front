@@ -1,11 +1,9 @@
-import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
-import { BlogPagination } from "@/components/blog/blog-pagination";
-import type { BlogPost } from "@/lib/hubspot-blog";
-import { getMockBlogPosts } from "@/lib/mock-blog-data";
+import { getBlogPostsByCategory } from "@/lib/blog-source";
+import type { PublicBlogPost } from "@/lib/blog-types";
 import { ArrowLeft, Tag } from '@/lib/icons';
 
 interface CategoryPageProps {
@@ -35,42 +33,21 @@ export async function generateMetadata({
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
-  
 
-  const mockPosts = getMockBlogPosts();
-  
-  // Filtrer les articles de cette catégorie
-  const filteredPosts = mockPosts.filter(post => 
-    post.tags.includes(categoryName) || post.categories.includes(categoryName)
-  );
-
-  if (filteredPosts.length === 0) {
-    notFound();
+  // Ces pages reçoivent les redirections 301 des URLs /blog/tag/<slug> de
+  // l'ancien site : elles ne doivent jamais renvoyer un 404, sous peine de
+  // perdre l'autorité SEO transmise par la redirection. En cas d'erreur API,
+  // on dégrade vers une liste vide plutôt que d'échouer.
+  let posts: PublicBlogPost[] = [];
+  try {
+    const result = await getBlogPostsByCategory(slug);
+    posts = result.posts;
+  } catch (error) {
+    console.error(
+      `[blog/categorie] Échec du chargement de la catégorie "${categoryName}":`,
+      error
+    );
   }
-
-  const results = {
-    hits: filteredPosts,
-    nbHits: filteredPosts.length
-  };
-
-  // Transformer les résultats
-  const posts: BlogPost[] = results.hits.map((hit: any) => ({
-    id: hit.objectID,
-    title: hit.title,
-    excerpt: hit.excerpt,
-    content: hit.content,
-    publishDate: hit.publishDate,
-    modifiedDate: hit.modifiedDate,
-    author: hit.author,
-    authorId: hit.authorId,
-    tags: hit.tags || [],
-    categories: hit.categories || [],
-    slug: hit.slug,
-    url: hit.url,
-    featuredImage: hit.featuredImage,
-    metaDescription: hit.metaDescription,
-    seoTitle: hit.seoTitle,
-  }));
 
   return (
     <div className="min-h-screen bg-white">
@@ -110,7 +87,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </h1>
               </div>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                {results.nbHits} article{results.nbHits !== 1 ? "s" : ""} trouvé{results.nbHits !== 1 ? "s" : ""} dans cette catégorie
+                {posts.length} article{posts.length !== 1 ? "s" : ""} trouvé{posts.length !== 1 ? "s" : ""} dans cette catégorie
               </p>
             </div>
           </div>

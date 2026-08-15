@@ -146,21 +146,30 @@ async function hubSpotFetch(
   init?: RequestInit
 ): Promise<Response> {
   const accessToken = getHubSpotAccessToken();
+  // `cache: "no-store"` par défaut : les routes d'administration doivent voir
+  // l'état courant de HubSpot. Les appelants qui tolèrent une donnée mise en
+  // cache (sitemap notamment) peuvent passer leur propre `cache`/`next`, sans
+  // quoi Next.js force un rendu à la demande de la route qui les appelle.
+  const { cache, next, ...rest } = init ?? {};
+  const cacheOptions =
+    cache || next ? { ...(cache ? { cache } : {}), ...(next ? { next } : {}) } : { cache: "no-store" as const };
+
   return fetch(`https://api.hubapi.com${path}`, {
-    ...init,
+    ...rest,
     headers: {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
       ...(init?.headers || {}),
     },
-    cache: "no-store",
+    ...cacheOptions,
   });
 }
 
 // Fonction pour récupérer les articles de blog via API REST
 async function fetchHubSpotBlogPosts(
   limit: number = 100,
-  after?: string
+  after?: string,
+  init?: RequestInit
 ): Promise<HubSpotBlogListResponse> {
   const params = new URLSearchParams({
     limit: String(Math.min(limit, 100)),
@@ -169,7 +178,7 @@ async function fetchHubSpotBlogPosts(
   });
   if (after) params.set("after", after);
 
-  const response = await hubSpotFetch(`/cms/v3/blogs/posts?${params}`);
+  const response = await hubSpotFetch(`/cms/v3/blogs/posts?${params}`, init);
 
   if (!response.ok) {
     const body = await response.text();
@@ -183,14 +192,15 @@ async function fetchHubSpotBlogPosts(
 
 /** Récupère tous les articles publiés (pagination HubSpot). */
 async function fetchAllHubSpotBlogPosts(
-  maxPosts = 500
+  maxPosts = 500,
+  init?: RequestInit
 ): Promise<HubSpotBlogPost[]> {
   const collected: HubSpotBlogPost[] = [];
   let after: string | undefined;
 
   while (collected.length < maxPosts) {
     const pageSize = Math.min(100, maxPosts - collected.length);
-    const data = await fetchHubSpotBlogPosts(pageSize, after);
+    const data = await fetchHubSpotBlogPosts(pageSize, after, init);
     const batch = data.results || [];
     collected.push(...batch);
 
@@ -221,6 +231,21 @@ async function fetchHubSpotBlogPost(
   return response.json();
 }
 
+/**
+ * Compare un slug de route au slug renvoyé par HubSpot.
+ *
+ * HubSpot stocke le chemin complet de l'article, préfixe du blog inclus
+ * (`blog/mon-article`), alors que la route `/blog/[slug]` ne transmet que le
+ * segment final. La comparaison doit donc ignorer ce préfixe, sans quoi aucun
+ * article n'est trouvé et toutes les URLs d'articles répondent 404.
+ */
+function slugMatches(hubSpotSlug: string | undefined, routeSlug: string): boolean {
+  if (!hubSpotSlug) return false;
+  const strip = (value: string) =>
+    decodeURIComponent(value).replace(/^\/+/, "").replace(/^blog\//, "");
+  return strip(hubSpotSlug) === strip(routeSlug);
+}
+
 async function fetchHubSpotBlogPostBySlug(
   slug: string
 ): Promise<HubSpotBlogPost | null> {
@@ -241,10 +266,10 @@ async function fetchHubSpotBlogPostBySlug(
 
   const data: HubSpotBlogListResponse = await response.json();
   const post = data.results?.[0];
-  if (post?.slug === slug) return post;
+  if (slugMatches(post?.slug, slug)) return post ?? null;
 
   const all = await fetchAllHubSpotBlogPosts();
-  return all.find((p) => p.slug === slug) ?? null;
+  return all.find((p) => slugMatches(p.slug, slug)) ?? null;
 }
 
 /** Version stricte : propage les erreurs (tests admin, diagnostic). */
@@ -304,6 +329,23 @@ export async function searchHubSpotBlogPosts(
     posts: sorted.slice(start, start + pageSize).map(mapHubSpotPost),
     total,
   };
+}
+
+/**
+ * Articles destinés au sitemap XML.
+ *
+ * Contrairement aux autres lectures du blog, cet appel autorise la mise en
+ * cache : sans cela le `cache: "no-store"` par défaut rendrait /sitemap.xml
+ * dynamique, et chaque passage d'un robot d'indexation déclencherait un appel
+ * à l'API HubSpot.
+ */
+export async function getHubSpotBlogPostsForSitemap(
+  revalidateSeconds = 3600
+): Promise<BlogPost[]> {
+  const posts = await fetchAllHubSpotBlogPosts(500, {
+    next: { revalidate: revalidateSeconds },
+  });
+  return posts.map(mapHubSpotPost);
 }
 
 export async function getHubSpotBlogMetadata(): Promise<{

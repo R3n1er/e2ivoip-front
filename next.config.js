@@ -77,18 +77,61 @@ const nextConfig = {
 
   // Redirections
   async redirects() {
-    return [
-      {
-        source: "/home",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/accueil",
-        destination: "/",
-        permanent: true,
-      },
+    // --- Migration SEO : ancien site HubSpot -> refonte Next.js ---------------
+    //
+    // Inventaire de référence : 29 URLs répondant en 200 sur www.e2i-voip.com
+    // (sitemap.xml + crawl de la navigation, relevé du 2026-08-15).
+    //
+    // Toutes ces redirections sont permanentes (301) : c'est le seul statut qui
+    // transfère l'autorité SEO accumulée par les backlinks vers la nouvelle URL.
+    // Un 302 indiquerait à Google de conserver l'ancienne URL dans son index.
+    //
+    // ⚠️ Les `source` accentués s'écrivent en clair (é, à), PAS en
+    // percent-encoding : Next.js décode l'URL entrante avant le matching.
+    //
+    // ⚠️ `skipTrailingSlashRedirect: true` est actif plus bas, donc Next.js ne
+    // normalise pas `/devis/` en `/devis`. HubSpot servant les deux formes, on
+    // ajoute explicitement les variantes avec slash final.
+    //
+    // Les 15 articles /blog/<slug> ne figurent pas ici : le blog lit l'API
+    // HubSpot (lib/blog-source.ts) et réutilise les slugs à l'identique.
+    // Leurs URLs sont donc préservées sans redirection.
+    const legacyRedirects = [
+      // Pages de service renommées
+      ["/integration-3cx", "/telephonie-3cx"],
+      ["/integration-pbx-voip", "/telephonie-entreprise/pbx-yeastar"],
+      ["/passerelles-trunk-sip", "/telephonie-entreprise/trunk-sip-compteur"],
+
+      // Pages transverses renommées
+      ["/devis", "/devis-en-ligne"],
+      ["/politique-confidentialites", "/politique-confidentialite"],
+      ["/fr/presentation-e2i-voip", "/qui-sommes-nous"],
+
+      // Gigaset Fusion : offre retirée du catalogue. Redirection vers la
+      // rubrique parente pour conserver l'URL, en assumant la perte de
+      // pertinence sur les requêtes de marque « Gigaset ».
+      ["/gigaset-fusion", "/telephonie-entreprise"],
+
+      // Pages de tags du blog HubSpot -> pages catégorie de la refonte.
+      // app/blog/categorie/[slug] filtre les articles HubSpot par mot-clé et
+      // ne renvoie jamais de 404, pour ne pas rediriger vers une page morte.
+      ["/blog/tag/3cx", "/blog/categorie/3cx"],
+      ["/blog/tag/pabx", "/blog/categorie/pabx"],
+      ["/blog/tag/trunk-sip", "/blog/categorie/trunk-sip"],
+      ["/blog/tag/voip", "/blog/categorie/voip"],
+
+      // Pagination HubSpot non reprise dans la refonte
+      ["/blog/page/2", "/blog"],
+
+      // Alias historiques d'accueil
+      ["/home", "/"],
+      ["/accueil", "/"],
     ];
+
+    return legacyRedirects.flatMap(([source, destination]) => [
+      { source, destination, permanent: true },
+      { source: `${source}/`, destination, permanent: true },
+    ]);
   },
 
   // Configuration TypeScript
