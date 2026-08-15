@@ -4,18 +4,19 @@ Lire aussi : `.agents.md` (règles techniques complètes)
 
 ## Profil utilisateur (TDAH)
 
-- Chef de projet / dev NextJS débutant
-- Réponses courtes, claires, **une chose à la fois**
-- Décomposer toute tâche complexe en étapes numérotées (max 3 à la fois)
-- Toujours résumer ce qu'on vient de faire avant de proposer la suite
-- Challenger l'approche si une meilleure voie existe
+**Source de vérité : `ME.md`** — à lire en début de session.
+
+L'essentiel : chef de projet, dev NextJS débutant. Réponses courtes, **une chose à la fois**, étapes numérotées (3 max), toujours résumer avant de proposer la suite, challenger l'approche si une meilleure voie existe.
 
 ## Références clés
 
+- **Profil utilisateur & attentes** : `ME.md`
 - Planification : `.planning/ROADMAP.md` + `.planning/STATE.md`
-- Suivi décisions : `memory.md`
+- Suivi décisions & historique des sessions : `memory.md`
+- Décisions d'architecture : `docs/ADR.md`
 - Architecture technique : `docs/ARCHITECTURE.md`
 - Charte graphique : `docs/CHARTE_GRAPHIQUE.md` (RÈGLE ABSOLUE)
+- Ligne éditoriale : `docs/ligne-editoriale.md`
 - Second cerveau : `/Users/alban/Documents/SIKS-BRAIN/` (lire AGENTS.md avant toute op.)
 
 ## Règles absolues

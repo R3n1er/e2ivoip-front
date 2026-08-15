@@ -2,7 +2,7 @@
 
 **Date**: 19 octobre 2025
 **Environnement**: Développement local (localhost:3000)
-**Framework**: Next.js 15
+**Framework**: Next.js 16
 
 ## 🎯 Résumé Exécutif
 

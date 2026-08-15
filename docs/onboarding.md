@@ -4,7 +4,7 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 
 ## 1. Vision d’ensemble
 - **Objectif produit :** site marketing Next.js pour promouvoir les offres téléphonie IP d’E2I (Trunk SIP, 3CX, assistants vocaux IA, Yeastar, studio d’attente, etc.). L’offre téléphonie mobile / MVNO et la page `/mobilite` ne sont plus commercialisées (voir ADR 2026-05-18).
-- **Stack principale :** Next.js 15 (App Router) + TypeScript + TailwindCSS/DaisyUI + composants shadcn-ui.
+- **Stack principale :** Next.js 16 (App Router) + TypeScript + TailwindCSS/DaisyUI + composants shadcn-ui.
 - **Modes de rendu :** pages statiques hybridées avec composants interactifs côté client, service worker pour support offline/PWA light.
 - **Références internes :**
   - `docs/PRD.md` : Product Requirement Document.

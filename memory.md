@@ -2,7 +2,8 @@
 
 > Mémoire centrale du projet : décisions, contexte, références.
 > Source de vérité partagée entre l'humain et les assistants IA (Claude Code, Cursor, Copilot).
-> Dernière mise à jour : 2026-05-19
+> Profil utilisateur et attentes de collaboration : `ME.md`.
+> Dernière mise à jour : 2026-08-15
 
 ---
 
@@ -132,6 +133,7 @@ gh pr create --title "feat: description"
 
 ## 📌 Décisions & Historique Récent
 
+- **2026-08-15** — **Migration SEO HubSpot → Next.js** : 15 redirections 301 dans `next.config.js` pour les 12 URLs de l'ancien site sans correspondance dans la refonte. `/gigaset-fusion` non recréée (offre retirée) → redirige vers `/telephonie-entreprise`. Vérification : `node scripts/verify-seo-migration.mjs <url>`. Détail : `docs/ADR.md` (2026-08-15).
 - **2026-05-19** — **Blog 100 % HubSpot** : suppression Contentful (`lib/contentful-blog.ts`, dépendance npm, scripts import/covers). Publication des articles dans HubSpot CMS uniquement. Diagnostic : `node scripts/test-api-connections.js`.
 - **2026-05-18** — **Suppression page `/mobilite`** : fichier `app/mobilite/page.tsx` retiré (404 naturelle). Menus et tests déjà sans lien Mobilité depuis ADR 2025-09-27. Softphone 3CX mobile couvert par `/telephonie-3cx`.
 - **2026-04-28** — **Retrait du produit Mobile 4G/5G du catalogue** (offre MVNO Orange + Box 4G/5G nomades + backup 4G/5G). N'est plus commercialisé. Sections supprimées dans : `BrandBrief_e2ivoip.md` §E, `SPEC_STRATEGIE_VENTE_MARKETING.md` §4.5, `roadmap.md`, `ligne-editoriale.md`, `plan-revision-contenus.md` (page `/nos-services/box-4g-5g-secours` retirée). Conservé : mentions de "Box 4G" dans les FAQ Trunk SIP comme **type de connexion internet acceptée** (pas une offre commerciale E2I).
@@ -159,6 +161,38 @@ gh pr create --title "feat: description"
 - `docs/BrandBrief_e2ivoip.md` ← idem
 - `.env.production`
 - Schémas DB / migrations
+
+---
+
+## 🗂 Historique des sessions
+
+> Suivi de fin de session : ce qui a été livré, ce qu'il faut retenir, où reprendre.
+> Une entrée par session, la plus récente en haut. À renseigner **avant de clore une session**.
+> Format : Commits · Livré · À retenir · Reprendre ici.
+
+### 2026-08-15 — Migration SEO : préserver les URLs de l'ancien site
+
+- **Commits** : `abadd4f` seo(migration): preserver les URLs de l'ancien site HubSpot
+
+- **Livré** :
+  - Inventaire de l'ancien site HubSpot : **29 URLs en 200** (sitemap + crawl). Le sitemap HubSpot seul était incomplet.
+  - **15 redirections 301** dans `next.config.js` (variantes avec slash final incluses).
+  - `app/blog/categorie/[slug]` rebranchée sur HubSpot — elle tournait sur des données factices et renvoyait 404.
+  - `app/sitemap.ts` complété : 13 articles + 4 catégories, `revalidate = 3600`.
+  - `scripts/verify-seo-migration.mjs` : rejoue les 29 URLs contre une cible, sort en code 1 si une URL se perd.
+  - Validation : TypeScript 0 erreur · 332/332 tests · build 44 routes.
+
+- **À retenir** :
+  - **Deux bugs latents corrigés, invisibles au build.** L'API HubSpot renvoie `blog/mon-article` et non `mon-article` : les URLs devenaient `/blog/blog/...`, et `getHubSpotBlogPostBySlug` ne trouvait aucun article — **les 13 articles auraient répondu 404 en production**. Corrigé via `normalizeSlug` et `slugMatches`.
+  - **Le succès d'un build ne valide pas une sortie SEO.** Seule la vérification du rendu réel de `/sitemap.xml` sur `next start` a révélé le problème.
+  - **Vérifier `git status` (`M` vs `??`) avant d'écrire un fichier supposé absent.** `app/sitemap.ts` et `app/robots.ts` existaient déjà et ont été écrasés par erreur, détruisant la stratégie GEO/AEO (11 crawlers IA autorisés). Restauré depuis `HEAD` avant le commit ; diff final purement additif.
+  - Un `try/catch` défensif qui avale une erreur transforme un échec bruyant en dégradation invisible : le premier sitemap publiait 0 article sans rien signaler.
+
+- **Reprendre ici** :
+  1. Déployer une preview Vercel, puis `node scripts/verify-seo-migration.mjs https://<preview>.vercel.app`. **Ne pas basculer** tant qu'il n'affiche pas « Aucune URL perdue ».
+  2. Après mise en ligne : soumettre `sitemap.xml` dans Google Search Console.
+  3. Conserver les redirections **au moins 12 mois** (transfert d'autorité progressif).
+  4. Mettre en place un monitoring de `HUBSPOT_ACCESS_TOKEN` : s'il expire en production, les 13 articles disparaissent du site et du sitemap.
 
 ---
 

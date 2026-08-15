@@ -10,6 +10,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-15 — Préservation du SEO lors de la bascule HubSpot → Next.js
+
+- **Contexte** : le site en production (`www.e2i-voip.com`) tourne encore sur HubSpot CMS. L'inventaire de l'existant (sitemap.xml + crawl de la navigation) a relevé **29 URLs répondant en 200**. Confrontées aux routes de la refonte, **12 d'entre elles n'avaient aucune correspondance** et seraient passées en 404 à la mise en ligne, entraînant la perte de l'autorité SEO accumulée par leurs backlinks. Le projet ne disposait d'aucun mécanisme de redirection (`redirects()` limité à `/home` et `/accueil`, pas de `middleware.ts`).
+- **Décision** :
+  - Déclarer **15 redirections 301** dans `next.config.js`, chacune doublée d'une variante avec slash final (`skipTrailingSlashRedirect` est actif et HubSpot servait les deux formes). Le statut 301 est requis : lui seul transfère l'autorité vers la nouvelle URL, là où un 302 demande à Google de conserver l'ancienne.
+  - Rebrancher `app/blog/categorie/[slug]` sur l'API HubSpot. Cette page tournait sur des données factices (`getMockBlogPosts`) et appelait `notFound()` dès qu'aucun mock ne correspondait : y rediriger les anciennes URLs `/blog/tag/*` aurait produit un *301 vers un 404*, pire qu'un 404 direct. Les tags HubSpot étant des identifiants numériques (`tagIds`) et non des slugs lisibles, le filtrage s'appuie sur le contenu textuel de l'article.
+  - Compléter `app/sitemap.ts` avec les 13 articles HubSpot et les 4 pages catégorie, en conservant les slugs à l'identique. Ajouter `revalidate = 3600` et rendre le cache de `hubSpotFetch` surchargeable : le `cache: "no-store"` codé en dur rendait `/sitemap.xml` dynamique, déclenchant un appel API à chaque passage d'un robot.
+  - Ne pas recréer `/gigaset-fusion` (offre retirée du catalogue) : redirection vers `/telephonie-entreprise`, la perte de pertinence sur les requêtes de marque étant assumée.
+  - Ajouter `scripts/verify-seo-migration.mjs`, qui rejoue les 29 URLs contre une cible au choix, distingue 301 et 302 et sort en code 1 si une URL se perd.
+- **Conséquences** :
+  - Aucune des 29 URLs de l'ancien site ne se perd à la bascule ; les 13 articles conservent leurs URLs sans redirection, le blog lisant les slugs directement depuis HubSpot.
+  - Les redirections doivent être **conservées au moins 12 mois** : le transfert d'autorité par Google est progressif.
+  - Le blog dépend entièrement de `HUBSPOT_ACCESS_TOKEN`. Si le token expire en production, les 13 articles disparaissent du site *et* du sitemap — un monitoring reste à mettre en place.
+  - Deux bugs latents ont été corrigés au passage, invisibles au build : l'API HubSpot renvoie le chemin complet de l'article (`blog/mon-article`) et non le seul segment final. Les URLs générées devenaient `/blog/blog/...`, et surtout `getHubSpotBlogPostBySlug` ne trouvait **aucun** article — les 13 articles auraient répondu 404 en production. Corrigé via `normalizeSlug` et `slugMatches`.
+  - Enseignement de méthode : dans les deux cas le build passait sans erreur. Seule la vérification du rendu réel de `/sitemap.xml` sur un serveur lancé localement a révélé le problème. Le succès d'un build ne vaut pas validation d'une sortie SEO.
+- **Tests associés** : `npx tsc --noEmit` ✅ (0 erreur) ; `npm test` ✅ (332/332) ; `npm run build` ✅ (44 routes, `/sitemap.xml` statique avec revalidation 1 h) ; vérification du rendu de `/robots.txt` (11 crawlers IA préservés) et de `/sitemap.xml` (33 URLs dont 13 articles) sur `next start`.
+
 ### 2026-08-14 — Résolution des vulnérabilités npm et migration Next.js 16
 
 - **Contexte** : `npm audit` signalait 13 vulnérabilités dans l'application (9 élevées) et 15 dans le sous-projet d'extraction `scripts/` (dont 1 critique). Les trois dernières vulnérabilités de l'application ne pouvaient être corrigées sans quitter Next.js 15 ; celles de Puppeteer exigeaient également une montée majeure.

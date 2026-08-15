@@ -10,7 +10,7 @@
 
 ```
 e2ivoip-front/
-├── app/                          # Pages NextJS 15 App Router
+├── app/                          # Pages NextJS 16 App Router
 │   ├── layout.tsx                # Layout principal
 │   ├── page.tsx                  # Homepage
 │   ├── blog/                     # Pages blog (HubSpot CMS API)

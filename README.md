@@ -1,10 +1,10 @@
 # E2I VoIP - Site Web Moderne
 
-Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/ui. Le blog public est alimenté par l’API CMS HubSpot.
+Site web moderne pour E2I VoIP avec Next.js 16, Tailwind CSS, DaisyUI et shadcn/ui. Le blog public est alimenté par l’API CMS HubSpot.
 
 ## 🚀 Technologies Utilisées
 
-- **Framework** : Next.js 15 (App Router)
+- **Framework** : Next.js 16 (App Router)
 - **Styling** : Tailwind CSS + DaisyUI + shadcn/ui
 - **Animations** : Framer Motion
 - **État** : Zustand (gestion d'état UI)
@@ -24,7 +24,7 @@ Site web moderne pour E2I VoIP avec Next.js 15, Tailwind CSS, DaisyUI et shadcn/
 
 ### Stack & Priorities
 
-- **Framework**: NextJS 15 (App Router)
+- **Framework**: NextJS 16 (App Router)
 - **CSS**: DaisyUI (priority) → Tailwind → shadcn/ui
 - Animations CSS avec Framer Motion
 - **Icons**: Lineicons (priority) → React Icons

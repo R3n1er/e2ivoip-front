@@ -60,7 +60,25 @@
 - Studio vocal : standards téléphoniques (accueil, SVI, attente, fermeture) + portail automatisé démos
 - Page « Qui sommes-nous » : `app/qui-sommes-nous/page.tsx`
 - Header actif : `components/layout/header-simple.tsx` (style Monolithe / Stitch)
-- Next.js **15.5.18** + `eslint-config-next` aligné (montée sécurité post-`npm audit`, mai 2026)
+- Next.js **16.3.1** + React 18.3.1 + ESLint 9 (flat config) — migration sécurité `npm audit`, août 2026 (ADR 2026-08-14)
+- Migration SEO HubSpot → Next.js : **15 redirections 301** dans `next.config.js` pour les URLs de l'ancien site. À conserver **au moins 12 mois**. Vérification : `node scripts/verify-seo-migration.mjs <url>` (ADR 2026-08-15)
+- Slugs d'articles HubSpot : l'API renvoie le **chemin complet** (`blog/mon-article`), pas le segment seul. Toujours passer par `normalizeSlug` / `slugMatches` (`lib/blog-source.ts`, `lib/hubspot-blog.ts`) — sinon les articles répondent 404
+
+## Références Documentation
+
+À lire selon le besoin, sans tout charger d'emblée :
+
+| Sujet | Fichier |
+|---|---|
+| **Profil utilisateur & attentes de collaboration** | `ME.md` |
+| Décisions, contexte projet, historique des sessions | `memory.md` |
+| Décisions d'architecture (ADR) | `docs/ADR.md` |
+| Règles techniques complètes | `.agents.md` |
+| Config Claude Code | `claude.md` |
+| Architecture technique | `docs/ARCHITECTURE.md` |
+| Charte graphique (RÈGLE ABSOLUE) | `docs/CHARTE_GRAPHIQUE.md` |
+| Ligne éditoriale | `docs/ligne-editoriale.md` |
+| Planification | `.planning/ROADMAP.md`, `.planning/STATE.md` |
 
 <!-- BEGIN:nextjs-agent-rules -->
 
