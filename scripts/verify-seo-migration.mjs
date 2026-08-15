@@ -17,6 +17,25 @@
 const BASE = (process.argv[2] || "https://www.e2i-voip.com").replace(/\/$/, "");
 
 /**
+ * Contournement de la protection Vercel (SSO / mot de passe).
+ *
+ * Le projet active `ssoProtection` sur toutes les URLs sauf les domaines
+ * personnalisés : une preview répond donc 401 à un client non authentifié, et
+ * les résultats seraient ininterprétables. Renseigner le secret de bypass
+ * permet de tester la preview telle que Google la verra.
+ *
+ *   VERCEL_AUTOMATION_BYPASS_SECRET=<secret> node scripts/verify-seo-migration.mjs <url>
+ *
+ * Le secret se génère dans Vercel : Project Settings → Deployment Protection →
+ * Protection Bypass for Automation.
+ */
+const BYPASS_SECRET = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
+
+const REQUEST_HEADERS = BYPASS_SECRET
+  ? { "x-vercel-protection-bypass": BYPASS_SECRET, "x-vercel-set-bypass-cookie": "true" }
+  : {};
+
+/**
  * Chaque entrée : [ancienne URL, destination attendue].
  * `null` signifie « doit répondre 200 directement, sans redirection ».
  */
@@ -71,7 +90,10 @@ async function trace(path) {
   let url = BASE + encodeURI(path);
 
   for (let i = 0; i < 10; i++) {
-    const response = await fetch(url, { redirect: "manual" });
+    const response = await fetch(url, {
+      redirect: "manual",
+      headers: REQUEST_HEADERS,
+    });
     const status = response.status;
 
     if (status >= 300 && status < 400) {
@@ -86,8 +108,45 @@ async function trace(path) {
   return { status: 0, hops, final: url, error: "Trop de redirections" };
 }
 
+/**
+ * Détecte une protection Vercel active avant de lancer la vérification.
+ *
+ * Sans ce garde-fou, toutes les URLs remonteraient en échec alors que le
+ * problème est l'authentification, pas les redirections — un faux négatif qui
+ * ferait douter d'une migration pourtant correcte.
+ */
+async function detectProtection() {
+  const response = await fetch(`${BASE}/`, {
+    redirect: "manual",
+    headers: REQUEST_HEADERS,
+  });
+
+  const location = response.headers.get("location") || "";
+  const blocked =
+    response.status === 401 ||
+    /vercel\.com\/(sso|login)/.test(location) ||
+    /_vercel\/sso/.test(location);
+
+  return { blocked, status: response.status, location };
+}
+
 async function main() {
   console.log(`\nVérification de la migration SEO sur ${BASE}\n`);
+
+  const protection = await detectProtection();
+  if (protection.blocked) {
+    console.log(`${RED}Protection de déploiement active — vérification impossible.${RESET}\n`);
+    console.log(`  L'URL répond ${protection.status}${protection.location ? ` et redirige vers ${protection.location}` : ""}.`);
+    console.log(`  Toutes les URLs remonteraient en échec à cause de l'authentification,`);
+    console.log(`  pas des redirections. Deux options :\n`);
+    console.log(`  1. Générer un secret de bypass dans Vercel :`);
+    console.log(`     ${DIM}Project Settings → Deployment Protection → Protection Bypass for Automation${RESET}`);
+    console.log(`     puis relancer :`);
+    console.log(`     ${DIM}VERCEL_AUTOMATION_BYPASS_SECRET=<secret> node scripts/verify-seo-migration.mjs ${BASE}${RESET}\n`);
+    console.log(`  2. Lancer la vérification sur un domaine personnalisé,`);
+    console.log(`     non couvert par la protection SSO du projet.\n`);
+    process.exit(2);
+  }
 
   const failures = [];
   const warnings = [];
@@ -128,8 +187,13 @@ async function main() {
       continue;
     }
 
-    // Une redirection de migration doit être permanente (301) : un 302 ne
-    // transfère pas l'autorité SEO vers la nouvelle URL.
+    // Une redirection de migration doit être permanente : seul un statut
+    // permanent transfère l'autorité SEO vers la nouvelle URL.
+    //
+    // Next.js émet des 308 (et non des 301) pour `permanent: true`. C'est
+    // correct : le 308 est l'équivalent moderne du 301, à ceci près qu'il
+    // préserve la méthode HTTP. Google les traite de façon identique.
+    // Seuls 302 et 307 (temporaires) posent problème.
     const temporary = result.hops.filter((code) => code === 302 || code === 307);
     if (expected && temporary.length > 0) {
       warnings.push({
