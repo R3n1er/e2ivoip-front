@@ -133,6 +133,7 @@ gh pr create --title "feat: description"
 
 ## 📌 Décisions & Historique Récent
 
+- **2026-08-15** — **PRD réaligné sur le code** : `docs/PRD.md` décrivait une stack périmée. Next.js 15 → 16, Lineicons → **Phosphor Icons** (`lib/icons.ts`, aucun `lni-` restant dans le code), et la section « HOTJAR Analytics » qui demandait d'intégrer le script est remplacée par une note de retrait (supprimé le 2026-05-23, erreur d'hydratation SSR). Analytics couvert par HubSpot + GA.
 - **2026-08-15** — **Migration SEO HubSpot → Next.js** : 15 redirections 301 dans `next.config.js` pour les 12 URLs de l'ancien site sans correspondance dans la refonte. `/gigaset-fusion` non recréée (offre retirée) → redirige vers `/telephonie-entreprise`. Vérification : `node scripts/verify-seo-migration.mjs <url>`. Détail : `docs/ADR.md` (2026-08-15).
 - **2026-05-19** — **Blog 100 % HubSpot** : suppression Contentful (`lib/contentful-blog.ts`, dépendance npm, scripts import/covers). Publication des articles dans HubSpot CMS uniquement. Diagnostic : `node scripts/test-api-connections.js`.
 - **2026-05-18** — **Suppression page `/mobilite`** : fichier `app/mobilite/page.tsx` retiré (404 naturelle). Menus et tests déjà sans lien Mobilité depuis ADR 2025-09-27. Softphone 3CX mobile couvert par `/telephonie-3cx`.

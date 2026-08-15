@@ -2,7 +2,7 @@
 
 ## Vue d'ensemble
 
-Le site web E2I VoIP est une plateforme moderne et professionnelle présentant les solutions de téléphonie IP et de communications d'entreprise. Le site est construit avec Next.js 15, utilise Tailwind CSS avec DaisyUI. Le **blog public** est alimenté uniquement par l’**API CMS HubSpot** (`HUBSPOT_ACCESS_TOKEN`).
+Le site web E2I VoIP est une plateforme moderne et professionnelle présentant les solutions de téléphonie IP et de communications d'entreprise. Le site est construit avec Next.js 16, utilise Tailwind CSS avec DaisyUI. Le **blog public** est alimenté uniquement par l’**API CMS HubSpot** (`HUBSPOT_ACCESS_TOKEN`).
 
 ### Statut d'avancement
 
@@ -13,9 +13,9 @@ Le site web E2I VoIP est une plateforme moderne et professionnelle présentant l
 
 ### Frontend
 
-- **Framework** : Next.js 15 (App Router)
+- **Framework** : Next.js 16 (App Router)
 - **Styling** : Tailwind CSS + DaisyUI
-- **Icônes** : Lineicons (CDN 4.0)
+- **Icônes** : Phosphor Icons, via le mapping centralisé `lib/icons.ts` (importer depuis `@/lib/icons`, jamais directement `@phosphor-icons/react`)
 - **Animations** : Framer Motion
 - **Tests** : Jest + Testing Library + Playwright
 - **État** : Zustand (state client) + React Hooks (useState, useEffect)
@@ -196,7 +196,7 @@ TallyConfig = {
 
 ### Performance
 
-- **SSR/SSG** : Next.js 15 avec génération statique
+- **SSR/SSG** : Next.js 16 avec génération statique
 - **Images** : Optimisation automatique Next.js
 - **Lazy Loading** : Composants et images
 
@@ -367,11 +367,13 @@ TallyConfig = {
 ##### Bouton Principal (Primary)
 
 ```tsx
+import { Phone, ArrowRight } from "@/lib/icons";
+
 <button className="btn btn-lg bg-red-primary text-white border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold min-w-[240px] relative overflow-hidden group">
   <span className="flex items-center justify-center">
-    <i className="lni lni-icon mr-2 text-lg"></i>
+    <Phone size={20} className="mr-2" aria-hidden="true" />
     Texte du bouton
-    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+    <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
   </span>
   <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
 </button>
@@ -380,11 +382,13 @@ TallyConfig = {
 ##### Bouton Secondaire (Secondary)
 
 ```tsx
+import { Calculator, ArrowRight } from "@/lib/icons";
+
 <button className="btn btn-lg bg-white/10 text-white border-2 border-white/60 backdrop-blur-sm shadow-xl hover:bg-white hover:text-red-primary hover:border-white hover:scale-105 transition-all duration-300 font-semibold min-w-[200px] relative overflow-hidden group">
   <span className="flex items-center justify-center">
-    <i className="lni lni-icon mr-2 text-lg"></i>
+    <Calculator size={20} className="mr-2" aria-hidden="true" />
     Texte du bouton
-    <i className="lni lni-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+    <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true" />
   </span>
   <div className="absolute inset-0 bg-black opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
 </button>
@@ -408,7 +412,7 @@ TallyConfig = {
 
 3. **Animation flèche** :
 
-   - Icône `lni-arrow-right` en fin de bouton
+   - Icône `ArrowRight` en fin de bouton
    - Animation au hover : `group-hover:translate-x-1`
 
 4. **Classes essentielles** :
@@ -424,7 +428,7 @@ TallyConfig = {
    - Ajustable selon le contenu
 
 6. **Icônes** :
-   - Lineicons en priorité (`lni-*`)
+   - Phosphor Icons, importées depuis `@/lib/icons`
    - Icône principale à gauche
    - Flèche à droite (obligatoire)
 
@@ -492,25 +496,15 @@ TAWK_TO_ID=
 - **Erreurs** : Logs Next.js + Sentry
 - **Analytics** : HubSpot + Google Analytics
 
-### HOTJAR Analytics
+### HOTJAR Analytics — ❌ retiré (2026-05-23)
 
-Mettre en place le script Hotjar
+Hotjar a été intégré puis **supprimé du projet** : son script provoquait une erreur
+d'hydratation SSR. Voir `docs/ADR.md` (2026-05-23, « Suppression Hotjar + correction
+erreur d'hydratation SSR ») et `memory.md`.
 
-Lien vers la documentation Hotjar : https://help.hotjar.com/hc/en-us
-
-Script Hotjar à intégrer :
-
-<!-- Hotjar Tracking Code for https://www.e2i-voip.com -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6502550,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+Ne pas réintroduire ce script sans avoir traité la cause d'origine. L'analyse de
+comportement reste couverte par HubSpot et Google Analytics (cf. section Monitoring
+ci-dessus).
 
 ## Nouveaux Composants de Conversion - Page 3CX Cloud
 
@@ -561,7 +555,7 @@ Composant de conversion présentant les problèmes clients vs solutions E2I VoIP
 
 **Structure** :
 
-- Section problèmes (fond rouge) avec icônes Lineicons
+- Section problèmes (fond rouge) avec icônes Phosphor
 - Section solutions (fond vert) avec badges de mise en valeur
 - Layout responsive en 2 colonnes sur desktop
 - Messages d'impact et d'urgence intégrés
