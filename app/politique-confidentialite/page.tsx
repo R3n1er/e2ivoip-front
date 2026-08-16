@@ -197,8 +197,8 @@ export default function PolitiqueConfidentialitePage() {
                   {/* Images */}
                   <div className="rounded-xl border border-gray-200 bg-white p-6">
                     <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-orange-100 p-2 rounded-lg">
-                        <Eye size={24} className="text-orange-600" aria-hidden="true" />
+                      <div className="bg-red-50 p-2 rounded-lg">
+                        <Eye size={24} className="text-red-primary" aria-hidden="true" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -255,8 +255,8 @@ export default function PolitiqueConfidentialitePage() {
 
                   {/* Contenu embarqué */}
                   <div className="flex items-start space-x-4">
-                    <div className="bg-orange-100 p-3 rounded-lg">
-                      <Eye size={32} className="text-orange-600" aria-hidden="true" />
+                    <div className="bg-red-50 p-3 rounded-lg">
+                      <Eye size={32} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -367,8 +367,8 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-orange-100 p-2 rounded-lg">
-                          <Question size={24} className="text-orange-600" aria-hidden="true" />
+                        <div className="bg-red-50 p-2 rounded-lg">
+                          <Question size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">
@@ -386,8 +386,8 @@ export default function PolitiqueConfidentialitePage() {
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-yellow-100 p-2 rounded-lg">
-                          <Lock size={24} className="text-yellow-600" aria-hidden="true" />
+                        <div className="bg-red-50 p-2 rounded-lg">
+                          <Lock size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">

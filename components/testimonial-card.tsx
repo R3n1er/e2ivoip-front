@@ -70,9 +70,9 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       {/* Badge de confiance */}
       <div className="pt-4 border-t border-gray-100">
         <div className="flex items-center justify-center">
-          <div className="flex items-center bg-gradient-to-r from-green-100 to-blue-100 px-3 py-1 rounded-full">
-            <CheckCircle size={16} className="text-green-600 mr-2" aria-hidden="true" />
-            <span className="text-sm font-medium text-gray-700">Client satisfait</span>
+          <div className="flex items-center rounded-full bg-red-50 px-3 py-1">
+            <CheckCircle size={16} className="mr-2 text-red-primary" aria-hidden="true" />
+            <span className="text-sm font-medium text-gray-dark">Client satisfait</span>
           </div>
         </div>
       </div>

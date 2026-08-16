@@ -1,6 +1,6 @@
 "use client";
 
-import { Question } from "@/lib/icons";
+import { Question, CheckCircle } from "@/lib/icons";
 
 interface FAQItem {
   question: string
@@ -88,12 +88,23 @@ const faqData: FAQItem[] = [
           Avec notre <strong>Trunk SIP au compteur</strong>, vous payez uniquement vos communications réelles :
         </p>
         <ul className="space-y-2 text-gray-600">
-          <li>✓ <strong>Facturation dès la première seconde</strong> de communication</li>
-          <li>✓ <strong>Pas de minimum de facturation</strong> (pas de paliers de 30 secondes)</li>
-          <li>✓ <strong>Transparence totale</strong> : facture détaillée avec chaque appel</li>
-          <li>✓ <strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</li>
+          {[
+            <><strong>Facturation dès la première seconde</strong> de communication</>,
+            <><strong>Pas de minimum de facturation</strong> (pas de paliers de 30 secondes)</>,
+            <><strong>Transparence totale</strong> : facture détaillée avec chaque appel</>,
+            <><strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</>,
+          ].map((item, i) => (
+            <li key={i} className="flex items-start">
+              <CheckCircle
+                size={16}
+                className="mr-2 mt-1 shrink-0 text-red-primary"
+                aria-hidden="true"
+              />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
-        <p className="text-sm bg-red-primary/5 p-3 rounded-lg border-l-4 border-red-primary/60 text-gray-700">
+        <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-700">
           <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
           vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
         </p>

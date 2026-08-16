@@ -159,10 +159,14 @@ export default function TrunkSipAgentsIA() {
       <main className="pt-20">
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
               alt="Trunk SIP pour agents vocaux IA E2I VoIP"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10" />
           </div>
@@ -394,7 +398,7 @@ export default function TrunkSipAgentsIA() {
                     {useCase.title}
                   </h3>
                   <p className="text-gray-600 mb-6">{useCase.description}</p>
-                  <div className="bg-blue-marine/5 p-4 rounded-lg border-l-4 border-blue-marine">
+                  <div className="rounded-lg border border-blue-marine/20 bg-blue-marine/5 p-4">
                     <p className="text-sm text-gray-700 italic">
                       {useCase.example}
                     </p>

@@ -92,7 +92,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={24} weight="fill" className="text-yellow-400" />
+                  <Star key={i} size={24} weight="fill" className="text-red-primary" />
                 ))}
               </div>
 

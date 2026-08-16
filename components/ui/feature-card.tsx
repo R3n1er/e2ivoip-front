@@ -23,7 +23,7 @@ export function FeatureCard({
   // Définition des couleurs selon la charte graphique E2I VoIP
   const variantStyles = {
     primary: {
-      border: "from-red-primary via-red-500 to-orange-500",
+      border: "from-red-primary via-red-500 to-blue-marine",
       iconBg: "from-red-100 via-red-50 to-white",
       iconColor: "text-red-primary",
       glowBg: "from-red-400 to-red-500",
