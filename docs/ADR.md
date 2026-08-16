@@ -10,6 +10,13 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-16 — Autorisation des images du blog HubSpot
+
+- **Contexte** : l'API CMS HubSpot et `/api/blog/list` renvoyaient correctement les 13 articles, mais `/blog` tombait dans la page d'erreur Next.js. Les images récentes sont servies depuis le domaine propre au portail `26878201.fs1.hubspotusercontent-eu1.net`, absent de `images.remotePatterns`.
+- **Décision** : autoriser uniquement ce domaine en HTTPS et le chemin `/hubfs/26878201/**` dans `next.config.js`, sans ouvrir tous les sous-domaines HubSpot.
+- **Conséquences** : les cartes et pages d'articles peuvent utiliser les images HubSpot du portail E2I VoIP tout en conservant une politique d'images distantes restrictive.
+- **Tests associés** : `tests/next-config-images.test.ts`, `tests/playwright/blog-hubspot-images.spec.ts` et vérification réelle de `/blog` sans erreur console ni réponse image en erreur.
+
 ### 2026-08-16 — Activation différée du widget HubSpot Conversations
 
 - **Contexte** : le pré-chat créait ou mettait à jour le contact dans HubSpot, mais aucun script de tracking n'était monté dans le layout. L'identification `_hsq` n'était donc jamais consommée et l'API `HubSpotConversations` restait absente. Les trois propriétés CRM requises ont été créées dans le portail 26878201.
