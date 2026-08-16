@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
@@ -57,10 +58,14 @@ export default function DevisEnLignePage() {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/man-oniphone-business-min.jpg"
             alt="Communications professionnelles"
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85"></div>
         </div>
@@ -230,9 +235,11 @@ export default function DevisEnLignePage() {
           </p>
           <div className="flex justify-center">
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <img
+              <Image
                 src="/images/logo-3CX-partner-e2i/3cx-Silver-Partner-badge.webp"
                 alt="3CX Silver Partner Badge"
+                width={128}
+                height={128}
                 className="h-32 w-auto mx-auto"
               />
             </div>

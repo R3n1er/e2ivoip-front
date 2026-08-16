@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import WorkingFAQ from "@/components/faq-working";
 import { InlineContactForm } from "@/components/hubspot";
 import { LinkedinLogo, Phone, WhatsappLogo, MapPin } from "@/lib/icons";
@@ -23,10 +24,14 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/photos/pexels-ketut-subiyanto-4559714-min.jpg"
             alt="Contact E2I VoIP - Experts téléphonie IP"
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover"
           />
           {/* Gradient Overlay uniforme */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>

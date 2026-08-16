@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
 import { ContactFormTrunkSipIA, TALLY_AGENTS_IA_URL } from "@/components/contact-form-trunk-sip-ia";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -79,10 +80,14 @@ export default function TrunkSipAgentsIARevendeurs() {
         {/* Hero */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
               alt="Programme revendeur Trunk SIP agents vocaux IA E2I VoIP"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10" />
           </div>

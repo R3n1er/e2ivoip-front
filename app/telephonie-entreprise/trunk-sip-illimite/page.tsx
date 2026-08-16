@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PhoneCall, Timer } from '@/lib/icons';
 
@@ -62,10 +63,14 @@ export default function TrunkSIPIllimite() {
         <section className="py-20 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/pexels-man-on-phone-e2ivoip-business-1.jpg"
               alt="Professionnel utilisant la téléphonie IP E2I VoIP"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
             />
             {/* Gradient Overlay uniforme */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-10"></div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import Image from "next/image";
 import { Globe, Certificate, Phone, Star, Play } from "@/lib/icons";
 
 export function HomepageHeroSectionSimple() {
@@ -18,11 +19,14 @@ export function HomepageHeroSectionSimple() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/images/photos/pexels-ketut-subiyanto-4559714-min.jpg"
           alt="Personne utilisant la téléphonie d'entreprise moderne"
-          className="absolute inset-0 w-full h-full object-cover"
-          suppressHydrationWarning
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          className="object-cover"
         />
         {/* Gradient Overlay — obligatoire PRD */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 pointer-events-none z-0" />
