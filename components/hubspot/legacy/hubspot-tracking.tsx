@@ -5,23 +5,35 @@ import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
 interface HubSpotTrackingProps {
   portalId?: string;
+  /**
+   * Charge le script de tracking (et donc les cookies HubSpot). Voir ADR
+   * 2026-08-16 : le script n'est monté qu'une fois le consentement donné, ou
+   * lorsque le visiteur demande explicitement le chat.
+   */
+  enabled?: boolean;
 }
 
 export function HubSpotTracking({
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
+  enabled = false,
 }: HubSpotTrackingProps) {
   return (
     <>
+      {/* Les réglages ne déposent aucun cookie : ils sont posés en amont pour
+          garantir que `loadImmediately: false` est lu dès l'exécution du
+          script, quel que soit le moment où celui-ci est monté. */}
       <Script id="hubspot-conversations-settings" strategy="afterInteractive">
         {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false};
 window.hsConversationsOnReady = window.hsConversationsOnReady || [];
 window._hsq = window._hsq || [];`}
       </Script>
-      <Script
-        id="hs-script-loader"
-        src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
-        strategy="afterInteractive"
-      />
+      {enabled && (
+        <Script
+          id="hs-script-loader"
+          src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
+          strategy="afterInteractive"
+        />
+      )}
     </>
   );
 }

@@ -17,6 +17,18 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Conséquences** : les cartes et pages d'articles peuvent utiliser les images HubSpot du portail E2I VoIP tout en conservant une politique d'images distantes restrictive.
 - **Tests associés** : `tests/next-config-images.test.ts`, `tests/playwright/blog-hubspot-images.spec.ts` et vérification réelle de `/blog` sans erreur console ni réponse image en erreur.
 
+### 2026-08-16 — Chargement à la demande du script HubSpot (consentement)
+
+- **Contexte** : la revue de code du flux pré-chat a relevé que `HubSpotTracking` était monté inconditionnellement dans `LayoutClientChrome`. Le script `js-eu1.hs-scripts.com` se chargeait donc dès l'arrivée sur le site, pour tous les visiteurs, et déposait ses cookies de suivi (`__hstc`, `hubspotutk`) avant tout choix cookies. Incohérence directe avec le reste du projet : PostHog respecte le consentement (mode `memory` cookieless par défaut) et le site affiche un bandeau qui promettait un comportement que le code ne tenait pas.
+- **Décision** : charger le script au premier des deux événements suivants, et jamais avant.
+  - **Consentement accepté** : `LayoutClientChrome` lit `getConsent()` et écoute `CONSENT_CHANGE_EVENT`.
+  - **Chat explicitement demandé** : `ChatPreOverlay` reçoit une prop `onRequestChat`, appelée à l'ouverture du formulaire (le script charge pendant la saisie, la latence reste invisible) et en filet de sécurité à la soumission.
+  - **Un refus des cookies ne bloque jamais la conversation** — arbitrage produit explicite : l'objectif est de pouvoir discuter avec le client qui le demande. Le chargement relève alors de l'exemption « service expressément demandé ».
+  - Les réglages `hsConversationsSettings` (aucun cookie) restent posés en amont, pour garantir que `loadImmediately: false` est lu quel que soit le moment de montage du script.
+  - L'activation est irréversible dans la session : démonter le `<Script>` ne supprimerait ni les cookies posés ni les globales `HubSpotConversations`, et donnerait une fausse impression de révocation.
+- **Conséquences** : seul change le cas du visiteur qui ne touche jamais au chat et n'accepte pas les cookies — précisément celui où le traçage n'a aucune justification. Parcours chat inchangé pour tous les autres. Nettoyage associé : suppression des dépendances devenues orphelines `react-hook-form`, `@hookform/resolvers`, `@tanstack/react-query` et `@tanstack/react-query-devtools` (0 import restant).
+- **Tests associés** : `tests/playwright/hubspot-consent-gating.spec.ts` (4 scénarios : absence par défaut, montage après acceptation, chat fonctionnel après refus, `loadImmediately: false` préservé) ; `no-hubspot-widget.spec.ts` adapté. `npm run type-check` ✅ ; Jest ✅ (317/317) ; Playwright ✅ (69/69).
+
 ### 2026-08-16 — Activation différée du widget HubSpot Conversations
 
 - **Contexte** : le pré-chat créait ou mettait à jour le contact dans HubSpot, mais aucun script de tracking n'était monté dans le layout. L'identification `_hsq` n'était donc jamais consommée et l'API `HubSpotConversations` restait absente. Les trois propriétés CRM requises ont été créées dans le portail 26878201.

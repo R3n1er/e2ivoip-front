@@ -170,7 +170,18 @@ function isFormValid(form: ChatFormData): boolean {
   );
 }
 
-export const ChatPreOverlay = memo(function ChatPreOverlay() {
+interface ChatPreOverlayProps {
+  /**
+   * Signale que le visiteur demande explicitement le chat. Le parent s'en sert
+   * pour monter le script HubSpot même sans consentement préalable (ADR
+   * 2026-08-16) : le refus des cookies ne doit jamais empêcher de discuter.
+   */
+  onRequestChat?: () => void;
+}
+
+export const ChatPreOverlay = memo(function ChatPreOverlay({
+  onRequestChat,
+}: ChatPreOverlayProps = {}) {
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const formErrorRef = useRef<HTMLParagraphElement>(null);
@@ -238,6 +249,9 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
     try {
       setIsSubmitting(true);
       setFormError(null);
+      // Filet de sécurité : garantit le montage du script même si le formulaire
+      // a été ouvert sans passer par le bouton (test, lien direct).
+      onRequestChat?.();
       const payload = {
         firstName: form.firstName.trim(),
         lastName: form.lastName.trim(),
@@ -284,7 +298,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [form]);
+  }, [form, onRequestChat]);
 
   const handleCancel = useCallback(() => {
     setOpen(false);
@@ -350,6 +364,9 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
               setOpen(true);
               setFormError(null);
               setWiggle(false);
+              // Le script HubSpot se charge pendant la saisie : au moment de
+              // l'envoi, le widget est prêt et la latence reste invisible.
+              onRequestChat?.();
             }}
             className={`
               shadow-xl hover:shadow-2xl transition-[transform,box-shadow,background-color] hover:scale-105 active:scale-[0.98]

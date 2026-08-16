@@ -11,6 +11,10 @@ test.describe("HubSpot Conversations différé", () => {
 
     await page.goto("/");
 
+    // Le script n'est monté qu'après consentement ou demande de chat
+    // (ADR 2026-08-16). Voir hubspot-consent-gating.spec.ts.
+    await page.getByRole("button", { name: "Accepter" }).click();
+
     await expect(page.locator("#hs-script-loader")).toHaveAttribute(
       "src",
       /js-eu1\.hs-scripts\.com\/26878201\.js/
