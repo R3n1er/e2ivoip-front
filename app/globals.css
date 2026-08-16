@@ -41,6 +41,22 @@
   body {
     @apply bg-white text-gray-dark font-sans;
   }
+
+  /* Accessibilité — WCAG 2.2 AA (2.3.3 Animation from Interactions).
+     Neutralise toutes les animations, transitions et défilements animés
+     quand l'utilisateur a activé « réduire les animations » au niveau système.
+     `!important` est nécessaire pour l'emporter sur les couches Tailwind
+     ultérieures et sur les styles inline générés par Framer Motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {

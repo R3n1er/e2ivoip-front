@@ -91,6 +91,13 @@ test.describe("Header navigation", () => {
   test("respecte l'ordre de focus clavier", async ({ page }) => {
     await page.goto("/");
 
+    // Le lien d'évitement (WCAG 2.2 A — 2.4.1) doit être le tout premier
+    // élément focusable, avant le logo, pour permettre de sauter la navigation.
+    await page.keyboard.press("Tab");
+    await expect(
+      page.getByRole("link", { name: "Aller au contenu" })
+    ).toBeFocused();
+
     await page.keyboard.press("Tab");
     await expect(
       page.getByRole("link", {

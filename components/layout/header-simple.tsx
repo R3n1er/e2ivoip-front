@@ -181,8 +181,10 @@ export function HeaderSimple() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg transition-colors"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isOpen}
+            aria-controls="menu-mobile"
           >
             {isOpen ? (
               <X size={24} className="text-gray-700" />
@@ -193,7 +195,10 @@ export function HeaderSimple() {
 
           {/* Mobile Menu */}
           {isOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-200 lg:hidden">
+            <div
+              id="menu-mobile"
+              className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-200 lg:hidden"
+            >
               <div className="flex flex-col space-y-4 p-4">
                 {navigation.map((item) => (
                   <div key={item.name}>
