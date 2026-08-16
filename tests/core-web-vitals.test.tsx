@@ -2,31 +2,6 @@
 import { render, screen } from "@testing-library/react";
 
 // Mock des composants
-jest.mock("@/components/ui/lazy-component", () => {
-  const MockWrapper = ({
-    children,
-    fallback,
-  }: {
-    children?: React.ReactNode;
-    fallback?: React.ReactNode;
-  }) => (
-    <div data-testid="lazy-component">
-      {fallback}
-      {children}
-    </div>
-  );
-
-  const Specialized = () => <div data-testid="lazy-component" />;
-
-  return {
-    __esModule: true,
-    LazyComponent: MockWrapper,
-    LazyHeroSection: Specialized,
-    LazyServicesSection: Specialized,
-    LazyContactSection: Specialized,
-  };
-});
-
 jest.mock("@/hooks/use-service-worker", () => ({
   useServiceWorker: () => ({
     isSupported: true,
@@ -68,32 +43,8 @@ describe("Core Web Vitals - Optimisations", () => {
     });
   });
 
-  describe("Lazy Loading des Composants", () => {
-    it("rend les composants lazy avec des fallbacks appropriés", () => {
-      // Test du composant LazyComponent
-      const { LazyComponent } = require("@/components/ui/lazy-component");
-
-      render(
-        <LazyComponent
-          component={() => Promise.resolve({ default: () => <div>Test</div> })}
-          fallback={<div data-testid="fallback">Chargement...</div>}
-        />
-      );
-
-      expect(screen.getByTestId("lazy-component")).toBeInTheDocument();
-      expect(screen.getByTestId("fallback")).toBeInTheDocument();
-    });
-
-    it("gère les composants spécialisés correctement", () => {
-      const {
-        LazyHeroSection,
-        LazyServicesSection,
-      } = require("@/components/ui/lazy-component");
-
-      render(<LazyHeroSection />);
-      expect(screen.getByTestId("lazy-component")).toBeInTheDocument();
-    });
-  });
+  // Bloc « Lazy Loading des Composants » retire : lazy-component.tsx
+  // etait du code mort (aucune page ne l'importait).
 
   describe("Service Worker", () => {
     it("vérifie la disponibilité du service worker", () => {

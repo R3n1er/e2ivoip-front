@@ -5,7 +5,6 @@ import {
   HeroImage,
   ContentImage,
 } from "@/components/ui/optimized-image";
-import { LazyBackgroundImage } from "@/components/ui/lazy-background-image";
 // BlogCoverImage removed - using OptimizedBlogImage instead
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 
@@ -89,39 +88,7 @@ describe("Composants d'Optimisation d'Images", () => {
     });
   });
 
-  describe("LazyBackgroundImage", () => {
-    test("rend le composant avec lazy loading", () => {
-      render(
-        <LazyBackgroundImage src="/background.jpg" alt="Arrière-plan de test" />
-      );
-
-      // Le composant affiche d'abord un placeholder
-      const container = screen.getByRole("img", { hidden: true });
-      expect(container).toBeInTheDocument();
-    });
-
-    test("affiche un fallback color par défaut", () => {
-      render(
-        <LazyBackgroundImage src="/background.jpg" alt="Arrière-plan de test" />
-      );
-
-      const container = screen.getByRole("img", { hidden: true });
-      expect(container).toHaveClass("bg-gray-200");
-    });
-
-    test("permet de personnaliser la couleur de fallback", () => {
-      render(
-        <LazyBackgroundImage
-          src="/background.jpg"
-          alt="Arrière-plan de test"
-          fallbackColor="bg-blue-200"
-        />
-      );
-
-      const container = screen.getByRole("img", { hidden: true });
-      expect(container).toHaveClass("bg-blue-200");
-    });
-  });
+  // LazyBackgroundImage tests removed - component deleted (code mort)
 
   // BlogCoverImage tests removed - component deleted
 
@@ -203,7 +170,6 @@ describe("Composants d'Optimisation d'Images", () => {
           width={100}
           height={100}
         />,
-        <LazyBackgroundImage key="2" src="/error.jpg" alt="Erreur 2" />,
         <ResponsiveImage key="3" src="/error.jpg" alt="Erreur 3" />,
       ];
 
@@ -213,10 +179,6 @@ describe("Composants d'Optimisation d'Images", () => {
         // Tous les composants affichent d'abord un placeholder
         if (component.type === OptimizedImage) {
           expect(screen.getByTestId("image-placeholder")).toBeInTheDocument();
-        } else if (component.type === LazyBackgroundImage) {
-          expect(
-            screen.getByTestId("lazy-background-container")
-          ).toBeInTheDocument();
         } else if (component.type === ResponsiveImage) {
           expect(
             screen.getByTestId("responsive-image-container")
