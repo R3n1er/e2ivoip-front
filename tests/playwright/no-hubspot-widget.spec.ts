@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("HubSpot Conversations désactivé", () => {
-  test("le widget HubSpot Conversations n'est pas chargé et le pré‑chat est visible", async ({
+test.describe("HubSpot Conversations différé", () => {
+  test("le tracking est chargé sans afficher automatiquement le widget", async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
@@ -11,14 +11,25 @@ test.describe("HubSpot Conversations désactivé", () => {
 
     await page.goto("/");
 
-    // Le script de widget ne doit pas être présent
-    const hasWidgetScript = await page.evaluate(
-      () =>
-        !!document.querySelector(
-          'script[src*="hs-scripts.com"]:not(#hs-script-loader)'
-        )
+    await expect(page.locator("#hs-script-loader")).toHaveAttribute(
+      "src",
+      /js-eu1\.hs-scripts\.com\/26878201\.js/
     );
-    expect(hasWidgetScript).toBeFalsy();
+
+    const settings = await page.evaluate(
+      () => (window as any).hsConversationsSettings
+    );
+    expect(settings?.loadImmediately).toBe(false);
+
+    await expect
+      .poll(
+        () =>
+          page.evaluate(
+            () => typeof (window as any).HubSpotConversations?.widget?.load
+          ),
+        { timeout: 15000 }
+      )
+      .toBe("function");
 
     // Le bouton du pré‑chat doit être visible
     const openBtn = page.getByTestId("open-chat-button");
@@ -34,4 +45,3 @@ test.describe("HubSpot Conversations désactivé", () => {
     );
   });
 });
-

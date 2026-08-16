@@ -1,6 +1,18 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
+  test.beforeEach(async ({ page }) => {
+    // Le SDK est testé avec son propre scénario. Ici, on neutralise le tiers
+    // pour que le diagnostic de la homepage ne dépende pas du réseau HubSpot.
+    await page.route("https://js-eu1.hs-scripts.com/**", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/javascript",
+        body: "window.HubSpotConversations = window.HubSpotConversations || { widget: {} };",
+      });
+    });
+  });
+
   test("devrait charger la page sans erreurs console", async ({ page }) => {
     const consoleErrors: string[] = [];
     const networkErrors: string[] = [];
@@ -19,6 +31,12 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
           `${response.status()} - ${response.url()}`
         );
       }
+    });
+
+    page.on("requestfailed", (request) => {
+      networkErrors.push(
+        `${request.failure()?.errorText ?? "échec réseau"} - ${request.url()}`
+      );
     });
 
     // Capturer les erreurs JavaScript non gérées

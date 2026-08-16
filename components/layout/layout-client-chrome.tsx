@@ -5,6 +5,7 @@ import { IconContext } from "@phosphor-icons/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { ChatPreOverlay } from "@/components/chat-preoverlay";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
+import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
   return (
@@ -23,6 +24,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
       <main id="contenu-principal" tabIndex={-1} className="flex-1 pt-16">
         {children}
       </main>
+      <HubSpotTracking />
       <ChatPreOverlay />
       <CookieConsentBanner />
     </IconContext.Provider>

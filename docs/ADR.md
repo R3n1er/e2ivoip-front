@@ -10,6 +10,19 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-16 — Activation différée du widget HubSpot Conversations
+
+- **Contexte** : le pré-chat créait ou mettait à jour le contact dans HubSpot, mais aucun script de tracking n'était monté dans le layout. L'identification `_hsq` n'était donc jamais consommée et l'API `HubSpotConversations` restait absente. Les trois propriétés CRM requises ont été créées dans le portail 26878201.
+- **Décision** :
+  - Monter `HubSpotTracking` dans `LayoutClientChrome` et charger le script européen via `next/script`, après avoir défini `loadImmediately: false`.
+  - Après une ingestion CRM réussie, pousser `identify`, puis `trackPageView` — nécessaire pour transmettre l'identité au tracker — avant d'attendre `hsConversationsOnReady`.
+  - Ouvrir un widget non chargé avec `widget.load({ widgetOpen: true })`, ou appeler `widget.open()` lorsqu'il est déjà chargé, avec un timeout de 10 secondes.
+  - Conserver les tests sans écriture CRM réelle : SDK déterministe dans le test du flux et contrôle séparé du chargement réel de l'API HubSpot.
+  - Finaliser l'accessibilité du pré-chat : dialogue modal nommé, labels visibles, attributs d'autocomplétion, erreurs reliées par ARIA, focus initial et confiné, fermeture par Échap avec restitution du focus.
+  - Garder le bouton d'envoi disponible avant la requête afin d'afficher les erreurs et de placer le focus sur le premier champ invalide. En cas d'échec API ou widget, conserver la saisie et afficher une action de réessai compréhensible.
+- **Conséquences** : le widget reste invisible au chargement initial et s'ouvre seulement après validation du pré-chat. L'identité est transmise dans l'ordre requis par HubSpot. Le flux clavier et les retours d'erreur sont désormais utilisables sans dépendre de la console.
+- **Tests associés** : `npm run type-check` ✅ ; `npm test -- --runInBand` ✅ (317/317) ; `npx playwright test` ✅ (65/65), dont disponibilité réelle de `HubSpotConversations.widget.load` et 8 scénarios dédiés au pré-chat ; ESLint ciblé ✅.
+
 ### 2026-08-15 — Préservation du SEO lors de la bascule HubSpot → Next.js
 
 - **Contexte** : le site en production (`www.e2i-voip.com`) tourne encore sur HubSpot CMS. L'inventaire de l'existant (sitemap.xml + crawl de la navigation) a relevé **29 URLs répondant en 200**. Confrontées aux routes de la refonte, **12 d'entre elles n'avaient aucune correspondance** et seraient passées en 404 à la mise en ligne, entraînant la perte de l'autorité SEO accumulée par leurs backlinks. Le projet ne disposait d'aucun mécanisme de redirection (`redirects()` limité à `/home` et `/accueil`, pas de `middleware.ts`).
@@ -339,6 +352,25 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - `docs/DIAGNOSTIC_CHAT_PREOVERLAY.md` - Rapport diagnostic
   - `docs/WORKFLOW_VALIDATION.md` - Workflow validation pré-push
 
+### 2026-08-15 — Simplification du flux ChatPreOverlay et suppression de Tawk.to
+
+- **Contexte** : Le flux de pré-chat embarquait plusieurs couches inutiles : `react-hook-form` + `zodResolver`, un schéma Zod de 166 lignes, un hook `useChatIntake` maison non utilisé, un fichier `lib/api/chat-intake.ts` qui ne faisait qu'un `fetch`, et deux composants Tawk.to inactifs depuis la désactivation globale. L'audit over-engineering a révélé que le formulaire de 5 champs pouvait tenir dans un seul composant avec `useState` natif.
+- **Décision** :
+  - Supprimer définitivement `components/tawk-to.tsx`, `components/tawk-to-chat.tsx`, `tests/tawk-to.test.tsx` et le test Playwright `no-tawk-network.spec.ts`.
+  - Supprimer `lib/hooks/forms/use-chat-intake.ts`, `lib/api/chat-intake.ts`, `lib/validation/chat-intake.ts` et `tests/use-chat-intake.test.tsx`.
+  - Réécrire `components/chat-preoverlay.tsx` avec `useState`, validation métier inline et `fetch` direct vers `/api/hubspot/ingest-conversation`.
+  - Remplacer l'animation par un simple `animate-bounce` Tailwind pendant 20 secondes.
+  - Supprimer les tests Playwright fragiles liés aux cycles d'animation (`chat-animation-cycles.spec.ts`) et au debug visuel (`debug-chat-button.spec.ts`).
+- **Conséquences** :
+  - `-~300 lignes` de code mort/supprimables dans le flux chat.
+  - Suppression des dépendances `react-hook-form` et `@hookform/resolvers` pour ce flux (à retirer du `package.json` lors du nettoyage des deps).
+  - Validation client/serveur maintenue : email, champs requis ≥ 2 caractères, téléphone optionnel mais formaté.
+  - UX inchangée : bouton "Une question ?", overlay, envoi lead → HubSpot, identification `_hsq`, fermeture automatique.
+  - Maintenance simplifiée : un seul fichier source pour tout le pré-chat.
+- **Tests associés** :
+  - `npm test` ✅ (313/313) ; `npm run type-check` ✅ (0 erreur).
+  - `tests/playwright/chat-preoverlay-flow.spec.ts` mis à jour (6/6 tests).
+
 ### 2025-10-05 — Workflow de Validation Obligatoire Pré-Push
 
 - **Contexte** : Besoin de garantir la qualité du code avant tout push Git vers GitHub et déploiement Vercel.
@@ -356,17 +388,6 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Déploiement Vercel sécurisé (Preview + Production)
   - Documentation technique (26 fichiers) automatiquement validée
 - **Tests associés** : Tous les tests projet (`npm run test:all`) ✅
-
-### 2025-10-05 — Hook pré-chat sans TanStack Query
-
-- **Contexte** : Après la refonte, `useChatIntake` avait été supprimé et le test unitaire échouait. La réintroduction temporaire via TanStack Query ne respectait pas la nouvelle orientation produit (suppression de TanStack Query côté client).
-- **Décision** :
-  - Recréer `lib/hooks/forms/use-chat-intake.ts` avec un hook maison (state + `submitChatIntake`) qui expose la même API (`mutateAsync`, `isSuccess`, etc.).
-  - Conserver le remplissage automatique de `source` et `pageUrl` pour le tracking HubSpot.
-- **Conséquences** :
-  - Les dépendances à TanStack Query sont éliminées du bundle client, tout en préservant la compatibilité avec les tests et composants existants.
-  - Les futures évolutions peuvent continuer à utiliser le hook sans se lier à une librairie externe.
-- **Tests associés** : `npm test -- --watchman=false use-chat-intake.test.tsx` ✅.
 
 ### 2025-10-05 — Correctif affichage formulaire HubSpot contact
 
@@ -431,19 +452,6 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Composants critiques (header, navigation) conservent animations immédiates
 - **Tests associés** : `npm test` ✅ (309/309) ; `npm run analyze` ✅ génère rapports bundle.
 
-### 2025-10-04 — Phase 4 : Validation Zod + React Hook Form
-
-- **Contexte** : Formulaire pré-chat nécessitait validation robuste côté client et serveur avec messages d'erreur clairs.
-- **Décision** :
-  - Créer `lib/validation/chat-intake.ts` avec schémas Zod (chatIntakeSchema, chatIntakeApiSchema)
-  - Intégrer React Hook Form avec zodResolver dans ChatPreOverlay
-  - Validation stricte : email format, téléphone français, champs requis
-- **Conséquences** :
-  - Validation unifiée client/serveur
-  - Messages d'erreur TypeScript type-safe
-  - UX améliorée avec retours immédiats
-- **Tests associés** : `npm test` ✅ (309/309).
-
 ### 2025-10-04 — Phase 2 : Composant HubSpot universel
 
 - **Contexte** : 8 composants HubSpot différents (hubspot-form.tsx, hubspot-simple.tsx, etc.) avec duplication de code et constantes hardcodées.
@@ -470,8 +478,9 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 ### 2025-10-04 — Désactivation temporaire de Tawk.to, conservation HubSpot Conversations
 
 - **Contexte** : Deux bulles de chat apparaissaient (Tawk.to et HubSpot Conversations). Pour homogénéiser l'UX et centraliser le tracking, la décision est de conserver uniquement le chat HubSpot.
-- **Décision** : Retirer l'initialisation du composant `TawkTo` du layout global (`app/layout.tsx`), garder `HubSpotTracking` actif. Aucune suppression de code du composant Tawk, simple désactivation.
-- **Conséquences** : Plus de bulle Tawk en bas de page, avertissement HubSpot Conversations attendu en HTTP local. Possibilité de réactiver Tawk ultérieurement si besoin.
+- **Décision** : Retirer l'initialisation du composant `TawkTo` du layout global (`app/layout.tsx`), garder `HubSpotTracking` actif. ~~Aucune suppression de code du composant Tawk, simple désactivation.~~
+- **Mise à jour 2026-08-15** : Tawk.to est définitivement retiré. Les composants `components/tawk-to.tsx`, `components/tawk-to-chat.tsx`, les tests associés et le test Playwright `no-tawk-network.spec.ts` ont été supprimés.
+- **Conséquences** : Plus de bulle Tawk en bas de page, avertissement HubSpot Conversations attendu en HTTP local. ~~Possibilité de réactiver Tawk ultérieurement si besoin.~~ Le code Tawk n'existe plus dans le repo.
 - **Tests associés** : Vérification Playwright sur `http://localhost:3000` confirmant l'absence de `embed.tawk.to` et la présence du script HubSpot (`js-eu1.hs-scripts.com`).
 
 ### 2025-09-28 — Adoption de Zustand pour états UI (formulaire HubSpot)

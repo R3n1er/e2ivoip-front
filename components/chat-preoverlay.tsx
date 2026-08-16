@@ -1,198 +1,363 @@
 "use client";
 
-/**
- * Composant ChatPreOverlay refactorisé avec React Hook Form + Zod
- *
- * Améliorations par rapport à la version précédente :
- * - Validation robuste avec Zod
- * - Gestion d'état simplifiée avec React Hook Form
- * - Messages d'erreur personnalisés
- * - Performance optimisée (moins de re-renders)
- * - Code plus maintenable
- * - Sans TanStack Query (utilise une fonction async simple)
- *
- * @see docs/REFACTORING.md - Phase 4
- */
-
-import React, { useState, memo, useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  memo,
+} from "react";
 import { Input } from "@/components/ui/input";
 import { Chat } from "@/lib/icons";
-import { submitChatIntake } from "@/lib/api/chat-intake";
 import { getConsent, CONSENT_CHANGE_EVENT } from "@/lib/analytics/consent";
-import {
-  chatIntakeSchema,
-  type ChatIntakeFormData,
-} from "@/lib/validation/chat-intake";
+
+interface ChatFormData {
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  phone: string;
+}
+
+const FIELDS: {
+  name: keyof ChatFormData;
+  label: string;
+  type?: string;
+  required?: boolean;
+  autoComplete: string;
+  inputMode?: "email" | "tel";
+  testId: string;
+  errorTestId: string;
+}[] = [
+  {
+    name: "firstName",
+    label: "Prénom",
+    required: true,
+    autoComplete: "given-name",
+    testId: "firstname-input",
+    errorTestId: "firstname-error",
+  },
+  {
+    name: "lastName",
+    label: "Nom",
+    required: true,
+    autoComplete: "family-name",
+    testId: "lastname-input",
+    errorTestId: "lastname-error",
+  },
+  {
+    name: "company",
+    label: "Entreprise",
+    required: true,
+    autoComplete: "organization",
+    testId: "company-input",
+    errorTestId: "company-error",
+  },
+  {
+    name: "email",
+    label: "Email professionnel",
+    type: "email",
+    required: true,
+    autoComplete: "email",
+    inputMode: "email",
+    testId: "email-input",
+    errorTestId: "email-error",
+  },
+  {
+    name: "phone",
+    label: "Téléphone (optionnel)",
+    type: "tel",
+    autoComplete: "tel",
+    inputMode: "tel",
+    testId: "phone-input",
+    errorTestId: "phone-error",
+  },
+];
+
+const initialForm: ChatFormData = {
+  firstName: "",
+  lastName: "",
+  company: "",
+  email: "",
+  phone: "",
+};
+
+const HUBSPOT_WIDGET_TIMEOUT_MS = 10000;
+
+function openHubSpotWidget(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    let settled = false;
+
+    const finish = (callback: () => void) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timeout);
+      callback();
+    };
+
+    const open = () => {
+      if (settled) return;
+
+      try {
+        const widget = window.HubSpotConversations?.widget;
+        if (!widget) {
+          finish(() =>
+            reject(new Error("Le widget HubSpot n'est pas disponible"))
+          );
+          return;
+        }
+
+        if (widget.status?.().loaded) {
+          widget.open();
+        } else {
+          widget.load({ widgetOpen: true });
+        }
+        finish(resolve);
+      } catch (error) {
+        finish(() => reject(error));
+      }
+    };
+
+    const timeout = window.setTimeout(() => {
+      finish(() =>
+        reject(new Error("Le chargement du widget HubSpot a expiré"))
+      );
+    }, HUBSPOT_WIDGET_TIMEOUT_MS);
+
+    if (window.HubSpotConversations) {
+      open();
+      return;
+    }
+
+    window.hsConversationsOnReady ??= [];
+    window.hsConversationsOnReady.push(open);
+  });
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function isValidPhone(phone: string): boolean {
+  if (!phone.trim()) return true;
+  return /^[\d\s+\-\(\)]{8,20}$/.test(phone);
+}
+
+function validateField(name: keyof ChatFormData, value: string): string | null {
+  const trimmed = value.trim();
+  if (name === "firstName" || name === "lastName" || name === "company") {
+    return trimmed.length >= 2
+      ? null
+      : "Ce champ doit contenir au moins 2 caractères";
+  }
+  if (name === "email") {
+    if (!trimmed) return "L'email est obligatoire";
+    return isValidEmail(trimmed) ? null : "L'adresse email n'est pas valide";
+  }
+  if (name === "phone") {
+    return isValidPhone(value) ? null : "Le numéro de téléphone n'est pas valide";
+  }
+  return null;
+}
+
+function isFormValid(form: ChatFormData): boolean {
+  return (
+    form.firstName.trim().length >= 2 &&
+    form.lastName.trim().length >= 2 &&
+    form.company.trim().length >= 2 &&
+    isValidEmail(form.email) &&
+    isValidPhone(form.phone)
+  );
+}
 
 export const ChatPreOverlay = memo(function ChatPreOverlay() {
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const formErrorRef = useRef<HTMLParagraphElement>(null);
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [animationStopped, setAnimationStopped] = useState(false);
-  // Le bandeau cookies (fixed bottom, pleine largeur) recouvre le bouton chat
-  // tant qu'aucun choix n'est fait : on remonte le chat au-dessus dans ce cas.
+  const [formError, setFormError] = useState<string | null>(null);
   const [bannerVisible, setBannerVisible] = useState(false);
+  const [form, setForm] = useState<ChatFormData>(initialForm);
+  const [errors, setErrors] = useState<Partial<Record<keyof ChatFormData, string | null>>>({});
+  const [touched, setTouched] = useState<Partial<Record<keyof ChatFormData, boolean>>>({});
+  const [wiggle, setWiggle] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const sync = () => setBannerVisible(getConsent() === null);
     sync();
     window.addEventListener(CONSENT_CHANGE_EVENT, sync);
     return () => window.removeEventListener(CONSENT_CHANGE_EVENT, sync);
   }, []);
 
-  // Animation de vibration par cycles : vibration 3s → pause 2s → répéter
-  // Arrêt définitif après 20 secondes
-  React.useEffect(() => {
-    if (animationStopped) return;
+  useEffect(() => {
+    if (!wiggle) return;
+    const timer = setTimeout(() => setWiggle(false), 20000);
+    return () => clearTimeout(timer);
+  }, [wiggle]);
 
-    const VIBRATION_DURATION = 3000; // 3 secondes de vibration
-    const PAUSE_DURATION = 2000; // 2 secondes de pause
-    const TOTAL_DURATION = 20000; // 20 secondes maximum
+  const updateField = useCallback((name: keyof ChatFormData, value: string) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setFormError((previous) => (previous ? null : previous));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  }, [touched]);
 
-    let currentCycleTimeout: NodeJS.Timeout;
-    const allTimers: NodeJS.Timeout[] = [];
+  const handleBlur = useCallback((name: keyof ChatFormData) => {
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, form[name]) }));
+  }, [form]);
 
-    // Timer global pour arrêter après 20 secondes
-    const stopTimer = setTimeout(() => {
-      setIsAnimating(false);
-      setAnimationStopped(true);
-    }, TOTAL_DURATION);
-    allTimers.push(stopTimer);
-
-    // Fonction pour gérer les cycles vibration/pause
-    const runAnimationCycle = () => {
-      // Phase 1: Vibration (3s)
-      setIsAnimating(true);
-
-      const vibrationTimer = setTimeout(() => {
-        // Phase 2: Pause (2s)
-        setIsAnimating(false);
-
-        const pauseTimer = setTimeout(() => {
-          // Répéter le cycle
-          runAnimationCycle();
-        }, PAUSE_DURATION);
-        allTimers.push(pauseTimer);
-      }, VIBRATION_DURATION);
-      allTimers.push(vibrationTimer);
-    };
-
-    // Démarrer le premier cycle immédiatement
-    runAnimationCycle();
-
-    return () => {
-      // Nettoyer tous les timers
-      allTimers.forEach((timer) => clearTimeout(timer));
-    };
-  }, [animationStopped]);
-
-  // Configuration React Hook Form avec Zod
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm<ChatIntakeFormData>({
-    resolver: zodResolver(chatIntakeSchema),
-    mode: "onChange", // Validation en temps réel
-  });
-
-  /**
-   * Soumission du formulaire
-   * Mémorisé avec useCallback pour optimiser les re-renders
-   */
-  const onSubmit = useCallback(
-    async (data: ChatIntakeFormData) => {
-      try {
-        setIsSubmitting(true);
-
-        // Envoi des données à l'API
-        await submitChatIntake({
-          ...data,
-          pageUrl: window.location.href,
-          source: "website-prechat",
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors: Partial<Record<keyof ChatFormData, string | null>> = {};
+    (Object.keys(form) as (keyof ChatFormData)[]).forEach((key) => {
+      newErrors[key] = validateField(key, form[key]);
+    });
+    setErrors(newErrors);
+    setTouched({
+      firstName: true,
+      lastName: true,
+      company: true,
+      email: true,
+      phone: true,
+    });
+    if (!isFormValid(form)) {
+      const firstInvalidField = FIELDS.find(
+        ({ name }) => newErrors[name] !== null
+      );
+      if (firstInvalidField) {
+        window.requestAnimationFrame(() => {
+          document.getElementById(`chat-${firstInvalidField.name}`)?.focus();
         });
-
-        // Identification HubSpot côté client
-        try {
-          (window as any)._hsq = (window as any)._hsq || [];
-          (window as any)._hsq.push([
-            "identify",
-            {
-              email: data.email,
-              firstname: data.firstName,
-              lastname: data.lastName,
-              phone: data.phone || "",
-            },
-          ]);
-          // Ne pas ouvrir automatiquement le widget de conversation HubSpot
-          (window as any).HubSpotConversations?.widget?.hide?.();
-        } catch (err) {
-          console.error("Erreur identification HubSpot:", err);
-        }
-
-        // Fermeture de l'overlay et reset du formulaire
-        setOpen(false);
-        reset();
-      } catch (error) {
-        console.error("Erreur lors de la soumission:", error);
-      } finally {
-        setIsSubmitting(false);
       }
-    },
-    [reset]
-  );
+      return;
+    }
 
-  /**
-   * Annulation et fermeture
-   * Mémorisé avec useCallback
-   * Arrête définitivement l'animation
-   */
+    try {
+      setIsSubmitting(true);
+      setFormError(null);
+      const payload = {
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        company: form.company.trim(),
+        email: form.email.trim().toLowerCase(),
+        phone: form.phone.trim(),
+        pageUrl: window.location.href,
+        source: "website-prechat",
+      };
+
+      const res = await fetch("/api/hubspot/ingest-conversation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Erreur lors de la soumission");
+      }
+
+      window._hsq ??= [];
+      window._hsq.push([
+        "identify",
+        {
+          email: payload.email,
+          firstname: payload.firstName,
+          lastname: payload.lastName,
+          phone: payload.phone,
+        },
+      ]);
+      window._hsq.push(["trackPageView"]);
+      await openHubSpotWidget();
+
+      setOpen(false);
+      setForm(initialForm);
+      setErrors({});
+      setTouched({});
+    } catch (error) {
+      console.error("Erreur lors de la soumission:", error);
+      setFormError(
+        "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
+      );
+      window.requestAnimationFrame(() => formErrorRef.current?.focus());
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [form]);
+
   const handleCancel = useCallback(() => {
     setOpen(false);
-    reset();
-    // Arrêter définitivement l'animation
-    setIsAnimating(false);
-    setAnimationStopped(true);
-  }, [reset]);
+    setForm(initialForm);
+    setErrors({});
+    setTouched({});
+    setFormError(null);
+    setWiggle(false);
+    window.requestAnimationFrame(() => openButtonRef.current?.focus());
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    dialogRef.current?.focus();
+
+    const handleDialogKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        handleCancel();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'input:not([disabled]), button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusableElements?.length) return;
+
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleDialogKeyDown);
+    return () => document.removeEventListener("keydown", handleDialogKeyDown);
+  }, [handleCancel, open]);
 
   return (
     <div
-      className={`fixed right-6 z-[9999] transition-all duration-300 ${
+      className={`fixed right-6 z-[9999] transition-[bottom] duration-300 ${
         bannerVisible ? "bottom-44 sm:bottom-28" : "bottom-6"
       }`}
     >
-      {/* Bouton pour ouvrir le chat */}
       {!open && (
         <div className="flex flex-col items-end gap-3">
-          {/* Texte "Une question?" */}
-          <div
-            className={`
-              bg-white px-4 py-2 rounded-full shadow-lg border border-gray-200
-              ${isAnimating ? "animate-bounce" : ""}
-            `}
-          >
+          <div className="bg-white px-4 py-2 rounded-full shadow-lg border border-gray-200">
             <p className="text-sm font-semibold text-gray-800 whitespace-nowrap">
               Une question ?
             </p>
           </div>
 
-          {/* Bouton chat agrandi */}
           <button
+            ref={openButtonRef}
             onClick={() => {
               setOpen(true);
-              // Arrêter définitivement l'animation au clic
-              setIsAnimating(false);
-              setAnimationStopped(true);
+              setFormError(null);
+              setWiggle(false);
             }}
             className={`
-              shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-[0.98]
+              shadow-xl hover:shadow-2xl transition-[transform,box-shadow,background-color] hover:scale-105 active:scale-[0.98]
               rounded-full w-20 h-20 flex items-center justify-center
               bg-red-primary hover:bg-red-600
-              text-white cursor-pointer
-              ${isAnimating ? "animate-shake" : ""}
+              text-white cursor-pointer touch-manipulation
+              focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-primary/30 focus-visible:ring-offset-2
+              ${wiggle ? "animate-bounce" : ""}
             `}
             aria-label="Ouvrir le pré‑chat"
             data-testid="open-chat-button"
@@ -203,128 +368,114 @@ export const ChatPreOverlay = memo(function ChatPreOverlay() {
         </div>
       )}
 
-      {/* Overlay du formulaire */}
       {open && (
         <div
-          className="w-[320px] p-4 rounded-2xl shadow-2xl bg-white border border-gray-200"
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="chat-preoverlay-title"
+          aria-describedby="chat-preoverlay-description"
+          tabIndex={-1}
+          className="w-[320px] overscroll-contain rounded-2xl border border-gray-200 bg-white p-4 shadow-2xl focus:outline-none"
           data-testid="chat-preoverlay"
           style={{ pointerEvents: "auto" }}
         >
-          <h3 className="font-bold text-gray-900 mb-2">Avant de commencer</h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <h3
+            id="chat-preoverlay-title"
+            className="mb-2 text-pretty font-bold text-gray-900"
+          >
+            Avant de commencer
+          </h3>
+          <p
+            id="chat-preoverlay-description"
+            className="mb-3 text-sm text-gray-600"
+          >
             On fait connaissance en quelques infos simples.
           </p>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
-            {/* Prénom */}
-            <div>
-              <Input
-                {...register("firstName")}
-                className={errors.firstName ? "border-red-primary" : ""}
-                placeholder="Prénom*"
-                data-testid="firstname-input"
-              />
-              {errors.firstName && (
-                <p
-                  className="text-xs text-red-primary mt-1"
-                  data-testid="firstname-error"
+          <form onSubmit={handleSubmit} className="space-y-2">
+            {FIELDS.map(({
+              name,
+              label,
+              type,
+              required,
+              autoComplete,
+              inputMode,
+              testId,
+              errorTestId,
+            }) => (
+              <div key={name}>
+                <label
+                  htmlFor={`chat-${name}`}
+                  className="mb-1 block text-xs font-semibold text-gray-700"
                 >
-                  {errors.firstName.message}
-                </p>
-              )}
-            </div>
+                  {label}
+                  {required && (
+                    <>
+                      <span aria-hidden="true"> *</span>
+                      <span className="sr-only"> (obligatoire)</span>
+                    </>
+                  )}
+                </label>
+                <Input
+                  id={`chat-${name}`}
+                  name={name}
+                  type={type || "text"}
+                  autoComplete={autoComplete}
+                  inputMode={inputMode}
+                  spellCheck={name === "email" ? false : undefined}
+                  aria-required={required || undefined}
+                  aria-invalid={Boolean(errors[name] && touched[name])}
+                  aria-describedby={
+                    errors[name] && touched[name] ? errorTestId : undefined
+                  }
+                  value={form[name]}
+                  onChange={(e) => updateField(name, e.target.value)}
+                  onBlur={() => handleBlur(name)}
+                  className={errors[name] && touched[name] ? "border-red-primary" : ""}
+                  data-testid={testId}
+                />
+                {errors[name] && touched[name] && (
+                  <p
+                    id={errorTestId}
+                    className="mt-1 text-xs text-red-primary"
+                    data-testid={errorTestId}
+                  >
+                    {errors[name]}
+                  </p>
+                )}
+              </div>
+            ))}
 
-            {/* Nom */}
-            <div>
-              <Input
-                {...register("lastName")}
-                className={errors.lastName ? "border-red-primary" : ""}
-                placeholder="Nom*"
-                data-testid="lastname-input"
-              />
-              {errors.lastName && (
-                <p
-                  className="text-xs text-red-primary mt-1"
-                  data-testid="lastname-error"
-                >
-                  {errors.lastName.message}
-                </p>
-              )}
-            </div>
+            {formError && (
+              <p
+                ref={formErrorRef}
+                role="status"
+                aria-live="polite"
+                tabIndex={-1}
+                className="rounded-lg border border-red-primary/30 bg-red-primary/5 p-2 text-sm text-red-primary focus:outline-none"
+                data-testid="chat-submit-error"
+              >
+                {formError}
+              </p>
+            )}
 
-            {/* Entreprise */}
-            <div>
-              <Input
-                {...register("company")}
-                className={errors.company ? "border-red-primary" : ""}
-                placeholder="Entreprise*"
-                data-testid="company-input"
-              />
-              {errors.company && (
-                <p
-                  className="text-xs text-red-primary mt-1"
-                  data-testid="company-error"
-                >
-                  {errors.company.message}
-                </p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div>
-              <Input
-                {...register("email")}
-                type="email"
-                className={errors.email ? "border-red-primary" : ""}
-                placeholder="Email*"
-                data-testid="email-input"
-              />
-              {errors.email && (
-                <p
-                  className="text-xs text-red-primary mt-1"
-                  data-testid="email-error"
-                >
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-
-            {/* Téléphone (optionnel) */}
-            <div>
-              <Input
-                {...register("phone")}
-                type="tel"
-                className={errors.phone ? "border-red-primary" : ""}
-                placeholder="Téléphone (optionnel)"
-                data-testid="phone-input"
-              />
-              {errors.phone && (
-                <p
-                  className="text-xs text-red-primary mt-1"
-                  data-testid="phone-error"
-                >
-                  {errors.phone.message}
-                </p>
-              )}
-            </div>
-
-            {/* Boutons d'action */}
             <div className="mt-3 flex gap-2">
               <button
                 type="button"
                 onClick={handleCancel}
-                className="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-600 rounded-lg hover:bg-gray-50 transition-colors duration-300 transition-transform active:scale-[0.98]"
+                className="flex-1 touch-manipulation rounded-lg px-4 py-2.5 text-sm font-semibold text-gray-600 transition-[color,background-color,transform] duration-300 hover:bg-gray-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
                 data-testid="cancel-button"
               >
                 Annuler
               </button>
               <button
                 type="submit"
-                disabled={!isValid || isSubmitting}
-                className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-red-primary rounded-lg hover:bg-red-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed transition-transform active:scale-[0.98]"
+                disabled={isSubmitting}
+                className="flex-1 touch-manipulation rounded-lg bg-red-primary px-4 py-2.5 text-sm font-semibold text-white transition-[background-color,transform] duration-300 hover:bg-red-600 active:scale-[0.98] disabled:cursor-wait disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
                 data-testid="submit-button"
               >
-                {isSubmitting ? "Envoi..." : "Ouvrir le chat"}
+                {isSubmitting ? "Ouverture…" : "Ouvrir le chat"}
               </button>
             </div>
           </form>

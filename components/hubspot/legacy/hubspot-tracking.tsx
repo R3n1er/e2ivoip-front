@@ -1,56 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
+import Script from "next/script";
+import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
 interface HubSpotTrackingProps {
   portalId?: string;
 }
 
 export function HubSpotTracking({
-  portalId = "26878201",
+  portalId = HUBSPOT_CONFIG.PORTAL_ID,
 }: HubSpotTrackingProps) {
-  useEffect(() => {
-    // Vérifier si le script HubSpot est déjà chargé
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    // Empêcher explicitement le chargement automatique du widget Conversations
-    // et s'assurer qu'il ne s'affiche pas.
-    (window as any).hsConversationsSettings = {
-      loadImmediately: false,
-    };
-
-    if (window.hbspt) {
-      return;
-    }
-
-    // Créer et charger le script HubSpot
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.id = "hs-script-loader";
-    script.async = true;
-    script.defer = true;
-    script.src = `//js-eu1.hs-scripts.com/${portalId}.js`;
-
-    document.head.appendChild(script);
-
-    // Nettoyer le script lors du démontage du composant
-    return () => {
-      const existingScript = document.getElementById("hs-script-loader");
-      if (existingScript) {
-        existingScript.remove();
-      }
-
-      // Tentative de suppression/masquage du widget s'il a été injecté
-      try {
-        (window as any).HubSpotConversations?.widget?.hide?.();
-        (window as any).HubSpotConversations?.widget?.remove?.();
-      } catch {}
-    };
-  }, [portalId]);
-
-  return null;
+  return (
+    <>
+      <Script id="hubspot-conversations-settings" strategy="afterInteractive">
+        {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false};
+window.hsConversationsOnReady = window.hsConversationsOnReady || [];
+window._hsq = window._hsq || [];`}
+      </Script>
+      <Script
+        id="hs-script-loader"
+        src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
+        strategy="afterInteractive"
+      />
+    </>
+  );
 }
 
 /**
@@ -62,7 +35,8 @@ export function useHubSpot() {
       return;
     }
 
-    window.hbspt?.push?.(["trackEvent", eventName, properties]);
+    window._hsq ??= [];
+    window._hsq.push(["trackEvent", eventName, properties]);
   };
 
   const identifyUser = (email: string, properties?: Record<string, any>) => {
@@ -70,7 +44,19 @@ export function useHubSpot() {
       return;
     }
 
-    window.hbspt?.push?.(["identify", email, properties]);
+    window._hsq ??= [];
+    window._hsq.push([
+      "identify",
+      {
+        email,
+        ...Object.fromEntries(
+          Object.entries(properties ?? {}).map(([key, value]) => [
+            key,
+            String(value),
+          ])
+        ),
+      },
+    ]);
   };
 
   const trackPageView = (url?: string) => {
@@ -78,7 +64,8 @@ export function useHubSpot() {
       return;
     }
 
-    window.hbspt?.push?.(["trackPageView", url]);
+    window._hsq ??= [];
+    window._hsq.push(["trackPageView", url]);
   };
 
   return {

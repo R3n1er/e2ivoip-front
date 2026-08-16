@@ -28,7 +28,7 @@ e2ivoip-front/
 │   ├── constants/hubspot.ts      # Constantes HubSpot centralisées
 │   ├── hooks/                    # Hooks organisés par domaine
 │   │   ├── hubspot/              # use-hubspot-script, etc.
-│   │   ├── forms/                # use-chat-intake, etc.
+│   │   ├── forms/                # hooks de formulaire si besoin
 │   │   └── ui/                   # use-image-optimization, etc.
 │   ├── utils/lazy-motion.tsx     # Lazy loading Framer Motion (-60KB bundle)
 │   └── validation/               # Schémas Zod
@@ -76,7 +76,6 @@ import { SimpleFadeIn, CardFadeIn, HeroAnimation } from "@/lib/utils/lazy-motion
 
 ```tsx
 import { useHubSpotFormsScript } from "@/lib/hooks/hubspot/use-hubspot-script";
-import { useChatIntake } from "@/lib/hooks/forms/use-chat-intake";
 ```
 
 ---
@@ -134,7 +133,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 // 2. Bibliothèques tierces
-import { useForm } from "react-hook-form";
 
 // 3. Composants internes (@/ absolu — jamais de chemin relatif)
 import { HubSpotForm } from "@/components/hubspot";
@@ -147,7 +145,6 @@ import { useHubSpotFormsScript } from "@/lib/hooks/hubspot/use-hubspot-script";
 import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
 // 6. Types
-import type { ChatIntakeFormData } from "@/lib/validation/chat-intake";
 ```
 
 ---
