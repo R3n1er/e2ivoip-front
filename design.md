@@ -1,9 +1,10 @@
 # Design System : E2I VoIP
 
-**Projet :** e2ivoip-front (Next.js 15 App Router · Tailwind v3 · DaisyUI · shadcn/ui · Framer Motion)
+**Projet :** e2ivoip-front (Next.js 16 App Router · Tailwind v3 · DaisyUI · shadcn/ui · Framer Motion)
 **Source de vérité couleurs :** `docs/CHARTE_GRAPHIQUE.md` (règle absolue — ne jamais sortir de la charte)
 **Contexte stratégique :** `PRODUCT.md` (racine) — cibles, ton, anti-références, principes
-**Dernière analyse :** 2026-06-11 — audit réalisé avec la grille « design-taste » (variance 8 / motion 6 / densité 4)
+**Dernière analyse :** 2026-08-15 — audit technique « impeccable » (a11y, perf, theming, responsive, anti-patterns) : **20/20**
+**Analyse précédente :** 2026-06-11 — grille « design-taste » (variance 8 / motion 6 / densité 4)
 **Consolidation :** 2026-08-09 — blocs normatifs remontés depuis `docs/DESIGN.md` (v1.0, 2026-05-23)
 
 **Précédence :** `docs/CHARTE_GRAPHIQUE.md` > ce document > `docs/DESIGN.md` > guides génériques.
@@ -133,22 +134,27 @@ Rayons en usage : `rounded-lg` (61×, dominant), `rounded-full` (47×, badges/ic
 4. CTA « monolith » uppercase : une vraie signature, pas un bouton générique
 5. `min-h-[100dvh]`, `max-w-7xl`, grilles CSS (pas de flex-math) — fondations saines
 
-### AI tells / clichés détectés
-| Tell | Où | Gravité |
-|---|---|---|
-| Hero texte centré sur image sombre ×2 | accueil, qui-sommes-nous | Moyenne (gradient verrouillé PRD, mais la *composition* peut évoluer) |
-| Rangées de 3–4 cards égales | services, stats, CTA « pourquoi » | Moyenne |
-| Callout boxes dégradées `from-blue-50 to-red-50` | pricing, transformation, CTA | Faible |
-| Stats rondes répétées « 100+ / 15+ / 20% » sur 4–5 pages | partout | Moyenne |
-| `.text-gradient` (texte dégradé rouge→bleu) défini dans globals.css | globals.css:181 | Faible (peu utilisé — à supprimer) |
-| Emojis dans le markup (❓ ★ 👋) | faq, footer, popup | Faible |
-| Adresse placeholder « 123 Avenue des Télécoms, 75001 Paris » | contact-section.tsx | **Haute** (fausse info publiée) |
-| Ombres rose/violet dans `animate-pulse-soft` | globals.css:226 | Haute (hors charte) |
+### AI tells / clichés — état au 2026-08-15
+Tous les tells du relevé de juin sont résolus. Vérifié par grep sur `app/` et `components/` :
 
-### Dette de cohérence
-- 3 écoles de cards, 2 écoles de H2, 5 écritures de boutons, 2 conteneurs, 2 headers (`header.tsx` / `header-simple.tsx`), 2 sections contact, 7 fichiers Tally
-- `globals.css` déclare ~15 classes de dégradés (`gradient-primary-red-green`, etc.) **jamais référencées** dans le markup — dont des verts/oranges hors charte
-- Fichiers morts : `globals-backup.css`, `chat-preoverlay-old.tsx.bak`, `chat-preoverlay.tsx.backup`
+| Tell | Statut |
+|---|---|
+| Adresse placeholder « 123 Avenue des Télécoms » | ✅ supprimée |
+| Ombres rose/violet dans `animate-pulse-soft` | ✅ supprimées |
+| `.text-gradient` / `bg-clip-text` | ✅ 0 occurrence |
+| `#091421` (hex hors tokens) | ✅ supprimé |
+| Emojis et `✓` dans le markup | ✅ 0 occurrence (icônes Phosphor) |
+| `h-screen` sur un hero | ✅ 0 occurrence |
+| Bordures latérales colorées (`border-l-4`) | ✅ 0 occurrence |
+| Fichiers `.bak` / `.backup` / `globals-backup.css` | ✅ 0 fichier |
+
+Tells de *composition* conservés comme choix assumés : heroes centrés sur dégradé PRD (décision Alban 2026-06-12, cf. §8 P3.12) et grilles de cards courtes (le zig-zag n'a été appliqué que là où le contenu le justifiait, cf. P3.11).
+
+### Dette de cohérence — résorbée
+- Cards, H2, boutons, conteneurs, rythme vertical, icônes : unifiés (cf. §8 P2, juin 2026)
+- **Variantes Tally : 9 fichiers → 2** (2026-08-15). Seuls `tally-embed-tarifs` (utilisé par `trunk-sip-compteur`) et `tally-tracking` subsistent ; les 7 autres étaient du code mort
+- **14 fichiers morts supprimés** au total le 2026-08-15 : variantes Tally, composants images obsolètes (`lazy-component`, `lazy-background-image`, `integration-test`, `tawk-test`), `devis-hero-section`, `hubspot-form-inline`
+- **Dette résiduelle connue :** la famille `optimized-image` → `optimized-blog-image` n'a plus aucun consommateur. Non supprimée : elle touche le blog, dont les pages peuvent évoluer. À trancher explicitement.
 
 ---
 
@@ -156,11 +162,11 @@ Rayons en usage : `rounded-lg` (61×, dominant), `rounded-full` (47×, badges/ic
 
 Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD.
 
-### P1 — Corrections (hors-charte ou factuel)
-1. **Purger `globals.css`** : supprimer les ~15 classes de dégradés inutilisées (vert, orange, radial) et corriger `animate-pulse-soft` (ombres rose/violet → ombre teintée `rgba(229,62,62,…)` ou neutre)
-2. **Remplacer l'adresse fictive** de `contact-section.tsx` par la vraie adresse
-3. **Remplacer `#091421`** (CTA inversé) par `gray-dark`/`blue-marine`
-4. Supprimer les fichiers `.bak`/`.backup` et `globals-backup.css`
+### P1 — Corrections (hors-charte ou factuel) — ✅ TERMINÉ
+1. ✅ **`globals.css` purgé** : classes de dégradés inutilisées et `animate-pulse-soft` (ombres rose/violet) supprimées
+2. ✅ **Adresse fictive supprimée** de `contact-section.tsx`
+3. ✅ **`#091421` remplacé** par les tokens charte
+4. ✅ Fichiers `.bak`/`.backup` et `globals-backup.css` supprimés
 
 ### P2 — Unification (un seul système) — ✅ TERMINÉ 2026-06-11
 5. ✅ **Cards :** style canonique unique appliqué (commit e6c69da)
@@ -178,6 +184,31 @@ Priorisées. Aucune ne touche aux 5 couleurs officielles ni au hero gradient PRD
 15. ✅ **Feedback tactile uniforme** : `active:scale-[0.98]` sur CTAButton, PhoneLink, chat ; widget chat remis en charte (gradient violet → rouge, Phosphor, Input shadcn) (commit 23b0e5a)
 16. ✅ **Stats organiques** : décision Alban 2026-06-11 — pas de communication sur le nombre de clients (remplacé par « 4 territoires DOM couverts ») ; 15 ans d'expérience ; « 20 % d'économies sur le coût des communications DROM » ; support communiqué uniquement comme « par mail et téléphone » (fin des « 24/7 » et « support local réactif » pour le support humain ; les 24/7 produit — agents IA, monitoring, uptime — conservés)
 17. ✅ **États vides/chargement** : `FormSkeleton` calqué sur le layout, branché sur les embeds Tally tarifs/devis et HubSpot (spinner circulaire éliminé) (commit c72f770)
+
+### P4 — Audit technique pré-mise en ligne — ✅ TERMINÉ 2026-08-15
+
+Audit « impeccable » sur 5 dimensions : **13/20 → 20/20**.
+
+18. ✅ **Accessibilité (WCAG 2.2 AA)**
+    - `prefers-reduced-motion` dans `globals.css` (`@layer base`, avec `!important` pour l'emporter sur les couches Tailwind et les styles inline de Framer Motion) — critère 2.3.3
+    - Lien d'évitement « Aller au contenu » dans `layout-client-chrome.tsx`, avec `tabIndex={-1}` sur `<main>` (sans lui, Safari déplace le scroll mais pas le focus) — critère 2.4.1
+    - `aria-expanded` + `aria-controls` sur le bouton du menu mobile
+    - `focus-visible:ring` sur les 6 variantes de CTA (aucune n'en avait) — 43 occurrences au total sur le site
+    - Cible tactile du hamburger : 40 → 44 px
+
+19. ✅ **Performance images**
+    - 17 `<img>` convertis en `next/image` (heroes en `fill`/`priority`/`sizes`, logos en `width`/`height`)
+    - 5 images sources redimensionnées de 4000–6000 px → 2560 px : **~5,5 Mo économisés**
+    - Mesuré en build de production : accueil servie en 768 px, chargement 187 ms
+    - **Exceptions volontaires :** `<img>` natifs conservés dans `header-simple.tsx` et `footer.tsx` (contournement documenté d'un bug d'hydratation, cf. commentaires en place) et sur le logo de `testimonial-card` (source dynamique, dimensions inconnues)
+
+20. ✅ **Couleurs hors charte (décoratives)**
+    - Dégradé orange de `feature-card` → marine ; badge témoignage vert-bleu et étoiles jaunes → `red-primary` ; 8 fonds d'icônes orange/jaune de `politique-confidentialite` → charte
+    - **Conservés délibérément :** statuts vert/orange de `trunk-sip-agents-ia` (sémantiques, doublés d'un libellé texte, cf. §9.2) et vert du logo WhatsApp (couleur de marque d'un tiers)
+
+21. ✅ **Nettoyage du code mort** : 14 fichiers supprimés (cf. §7 « Dette de cohérence »), 15 `console.log` éliminés avec eux. Les 4 restants sont légitimes : 2 en exemples JSDoc, 1 côté serveur, 1 fonctionnel dans du legacy référencé.
+
+> **Note d'environnement.** Le serveur de dev annule le preload d'image (`ERR_ABORTED`) lors d'un changement de viewport, si bien que l'événement `load` n'arrive jamais. Les tests Playwright concernés attendent donc `domcontentloaded`. Comportement vérifié sain en build de production (187 ms). Ne pas « corriger » ce point en repassant à `load`.
 
 ---
 
@@ -308,6 +339,8 @@ Toute carte, tout CTA ou lien de navigation pointant vers une offre doit utilise
 | Icônes | `lib/icons.ts` (barrel Phosphor — point d'entrée unique) |
 | Motion | `components/motion/reveal.tsx` (`Reveal`, `RevealGroup`, `RevealItem`) |
 | Tokens Tailwind | `tailwind.config.js` (thème DaisyUI `e2ivoip`) |
+| Images | `components/ui/safe-image.tsx` (wrapper `next/image` anti-mutation d'extensions) |
+| Formulaire Tally | `components/tally-embed-tarifs.tsx` (seul embed vivant), `components/tally-tracking.tsx` |
 | Tests d'alignement | `tests/playwright/services-cards-alignment.spec.ts` |
 
-**Composants legacy à harmoniser ou retirer :** `header.tsx`, `contact-section.tsx`, `pricing-tiers.tsx`.
+**Composants legacy restants :** `pricing-tiers.tsx` (1 import). `header.tsx` et `contact-section.tsx` ont été supprimés.
