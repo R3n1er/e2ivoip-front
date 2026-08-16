@@ -424,8 +424,6 @@ export default function TrunkSIPCompteur() {
           </div>
         </section>
       </main>
-
-      {/* TawkTo volontairement désactivé sur cette page */}
     </div>
   );
 }

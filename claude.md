@@ -6,7 +6,7 @@ Lire aussi : `.agents.md` (règles techniques complètes)
 
 **Source de vérité : `ME.md`** — à lire en début de session.
 
-L'essentiel : chef de projet, dev NextJS débutant. Réponses courtes, **une chose à la fois**, étapes numérotées (3 max), toujours résumer avant de proposer la suite, challenger l'approche si une meilleure voie existe.
+L'essentiel : chef de projet, dev NextJS débutant. Réponses courtes, **une chose à la fois**, étapes numérotées (3 max), toujours résumer avant de proposer la suite, challenger l'approche si une meilleure voie existe. Pour les phases d'exploration / brainstorming : poser les questions **une par une**, dans un ordre logique, en partant de la réponse précédente — jamais plusieurs questions ouvertes en vrac.
 
 ## Références clés
 

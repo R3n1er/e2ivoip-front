@@ -40,7 +40,8 @@
 
 ## Learned User Preferences
 
-- Réponses en français, courtes et numérotées (max 3 étapes) — profil débutant / TDAH
+- Profil utilisateur : **TDA** (trouble du déficit de l'attention), pas seulement TDAH. Réponses en français, courtes et numérotées (max 3 étapes) — profil débutant / TDAH
+- **Brainstorming : poser les questions une par une**, dans un ordre logique, en partant de la réponse précédente. Jamais plusieurs questions ouvertes en vrac dans un même message.
 - UI alignée sur la maquette Google Stitch et la charte (`docs/DESIGN.md`, `docs/CHARTE_GRAPHIQUE.md`)
 - Serveur de dev : `npm run dev` utilise Turbopack (`--turbo`) — requis depuis Next 15.5 pour éviter l’erreur Webpack `reading 'call'` en dev
 - Tests UI via Playwright ; vérifier l’hydratation CSS après modification de pages ou layouts

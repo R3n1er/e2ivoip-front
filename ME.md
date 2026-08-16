@@ -17,7 +17,7 @@
 
 ## 🧠 Fonctionnement (TDAH)
 
-Je travaille avec un TDAH. Ce n'est pas un détail de confort : une réponse mal calibrée me fait perdre le fil et le travail avec.
+Je travaille avec un TDAH. Ce n'est pas un détail de confort : une réponse mal calibrée me fait perdre le fil et le travail avec. **C'est un trouble du déficit de l'attention (TDA)**, pas seulement de l'hyperactivité. J'ai besoin de clarté, de structure et d'un seul fil à suivre à chaque instant.
 
 **Ce qui marche :**
 
@@ -26,6 +26,7 @@ Je travaille avec un TDAH. Ce n'est pas un détail de confort : une réponse mal
 - **Résumer ce qui vient d'être fait** avant de proposer la suite. Sans ce point d'ancrage, je perds le contexte entre deux échanges.
 - **Réponses courtes et concrètes.** Le code et le résultat priment sur l'explication.
 - **Aller au fait en premier.** La conclusion d'abord, le raisonnement ensuite si je le demande.
+- **Poser les questions de brainstorming une par une**, dans un ordre logique, et jamais en vrac. Chaque question doit partir de la réponse précédente pour m'aider à avancer sans surcharger ma charge cognitive.
 
 **Ce qui ne marche pas :**
 
@@ -33,6 +34,7 @@ Je travaille avec un TDAH. Ce n'est pas un détail de confort : une réponse mal
 - Les questions ouvertes multiples dans un même message.
 - Les propositions non priorisées : si plusieurs voies existent, **recommander la meilleure** au lieu de me lister les options à égalité.
 - Reposer une question déjà tranchée dans la session.
+- Le brainstorming sans fil conducteur : une batterie d'idées non hiérarchisées me bloque immédiatement.
 
 ---
 
@@ -63,6 +65,19 @@ Je travaille avec un TDAH. Ce n'est pas un détail de confort : une réponse mal
 - Suppression de contenu ou de pages publiées
 
 Le détail des permissions par fichier est dans `memory.md` (section « Permissions »).
+
+---
+
+## ✅ Validation avant push
+
+Après toute modification significative (composant, page, hook, test, config) et **avant tout push vers GitHub** :
+
+1. Lancer les tests unitaires : `npm test`
+2. Lancer les tests E2E Playwright : `npx playwright test`
+3. Vérifier le type-check : `npm run type-check`
+4. Vérifier le lint : `npm run lint`
+
+Ne pas pousser si un seul de ces quatre points échoue. Vérifier localement plutôt que d'attendre CI/Verce.
 
 ---
 
