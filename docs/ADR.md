@@ -44,6 +44,17 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Conséquences** : le chat s'ouvre dès que le script est disponible. Si un bloqueur l'empêche de charger, le visiteur comprend pourquoi et a un CTA de secours vers `/contact`.
 - **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341).
 
+### 2026-08-17 — Pré-chat : pré-remplissage du champ de saisie HubSpot
+
+- **Contexte** : le pré-chat demande nom, entreprise, email et téléphone, mais l'agent HubSpot ne récupérait pas immédiatement ce contexte dans la conversation. Le visiteur devait retaper manuellement sa demande après l'ouverture du widget.
+- **Décision** :
+  - Construire un message de contexte à partir des champs du pré-chat : « Bonjour, je suis {prénom} {nom} de {entreprise}. Mon email : {email}. Mon téléphone : {téléphone}. J'ai une question concernant vos solutions téléphonie IP. ». Le téléphone n'est ajouté que s'il est renseigné.
+  - Injecter ce texte dans le champ de saisie du chat via `window.HubSpotConversations.widget.setInputText`, avec un délai de 300 ms pour laisser l'iframe se rendre. Le message n'est pas envoyé automatiquement : le visiteur garde le contrôle et peut le modifier avant validation.
+  - Conserver la création/mise à jour du contact CRM et la note créée par `/api/hubspot/ingest-conversation`, afin que l'agent ait les informations dans le profil visiteur ET dans la conversation.
+  - Ajouter `setInputText` au type `HubSpotConversationsWidget` dans `types/hubspot.d.ts`.
+- **Conséquences** : l'agent voit d'emblée qui contacte et pourquoi, sans demander les informations déjà saisies. Le visiteur n'a qu'à appuyer sur Entrée (ou reformuler) pour démarrer l'échange.
+- **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` étendu pour vérifier le contenu du texte injecté ; `npm test` ; `npx playwright test`.
+
 ### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
 
 - **Contexte** : la page Devis n'exposait que quatre demandes, via des liens `urlr.me` opaques, alors que huit formulaires Tally existent dans l'espace E2I VoIP (Yeastar, Aircall, 3CX PRO, 3CX SMB, agents IA…). La résolution des raccourcis a par ailleurs révélé que « Devis VoIP 3CX » pointait vers un **Microsoft Forms**, vestige de l'ancien site, alors que deux formulaires Tally 3CX dédiés existent.

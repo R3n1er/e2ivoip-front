@@ -320,6 +320,20 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
       await waitForHubSpotConversations(HUBSPOT_WIDGET_TIMEOUT_MS);
       await openHubSpotWidget();
 
+      // Pré-remplir le champ de saisie du chat avec un message de contexte
+      // construit à partir des informations laissées dans le pré-chat. Un court
+      // délai laisse l'iframe du chat se rendre avant d'écrire dans son input.
+      const phoneLine = payload.phone
+        ? ` Mon téléphone : ${payload.phone}.`
+        : "";
+      const contextMessage =
+        `Bonjour, je suis ${payload.firstName} ${payload.lastName} de ${payload.company}. ` +
+        `Mon email : ${payload.email}.${phoneLine} ` +
+        "J'ai une question concernant vos solutions téléphonie IP.";
+      window.setTimeout(() => {
+        window.HubSpotConversations?.widget?.setInputText?.(contextMessage);
+      }, 300);
+
       setOpen(false);
       setForm(initialForm);
       setErrors({});
