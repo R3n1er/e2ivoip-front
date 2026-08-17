@@ -136,8 +136,12 @@ describe("HeaderSimple Component", () => {
         /Trunk SIP|3CX|PBX|Studio|Assistants/i
       );
 
+      // Charte : le survol doit dériver du rouge officiel (red-primary),
+      // jamais d'un ton Tailwind arbitraire type red-50 / red-600.
       dropdownItems.forEach((item) => {
-        expect(item).toHaveClass("hover:bg-red-50", "hover:text-red-primary");
+        expect(item).toHaveClass("hover:text-red-primary");
+        expect(item.className).toMatch(/hover:bg-red-primary\/\d+/);
+        expect(item.className).not.toMatch(/hover:bg-red-(50|100|600|700)\b/);
       });
     });
   });
