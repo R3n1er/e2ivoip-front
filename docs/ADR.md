@@ -10,6 +10,20 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Blog en rendu serveur et référencement des articles
+
+- **Contexte** : contrôle post-mise en ligne. `/blog` était un composant client qui chargeait les articles via `/api/blog/list` après hydratation : le HTML servi ne contenait **aucun lien d'article**. Les crawlers sans exécution JS — dont plusieurs crawlers IA explicitement autorisés dans `robots.txt` pour le GEO — voyaient un blog vide. Les articles restaient atteignables par le sitemap, mais la page ne jouait aucun rôle de maillage interne. L'audit a aussi relevé l'absence de `BlogPosting`, de `canonical` et de `BreadcrumbList` sur les articles.
+- **Décision** :
+  - Basculer `app/blog/page.tsx` en **Server Component** (`revalidate = 3600`, cohérent avec le sitemap) : les 12 premiers articles sont rendus en HTML. L'interactivité (recherche, tri, pagination) part dans `components/blog/blog-browser.tsx`, qui reçoit le listing initial en props et ne prend le relais qu'à la première interaction.
+  - Ajouter une `<nav>` « Tous les articles » listant chaque article en lien direct : le maillage survit même si le rendu client échoue.
+  - Nouveaux builders dans `lib/structured-data.ts` : `blogPostingSchema` (headline tronquée à 110 caractères, dates normalisées ISO avec repli sur la publication, auteur en `Person` ou rattaché à l'organisation, `wordCount`, `keywords`) et `blogSchema` (listing déclarant ses articles).
+  - Articles : ajout de `BlogPosting` + `BreadcrumbList`, `canonical` explicite, et correction de `modifiedTime` qui recopiait `publishDate` alors que `modifiedDate` existe dans les données — les mises à jour d'articles étaient invisibles aux moteurs.
+  - `stripHtml()` sur les extraits : HubSpot renvoie `<p>…</p>`, ces balises se retrouvaient dans les meta descriptions affichées en SERP.
+  - Pages catégorie : `canonical` + `BreadcrumbList`.
+  - En cas d'indisponibilité HubSpot, la page reste servie (hero, CTA, maillage) au lieu d'échouer.
+- **Conséquences** : le HTML de `/blog` expose désormais **12 liens d'articles** et un JSON-LD déclarant 12 `BlogPosting`. Les articles deviennent éligibles aux résultats enrichis et correctement attribuables par les moteurs génératifs.
+- **Tests associés** : `tests/playwright/blog-seo.spec.ts` (8, dont **3 avec `javaScriptEnabled: false`** — ils échouent si la page redevient client-only) ; `tests/lib/blog-structured-data.test.ts` (9) ; `blog-page-simple.test.tsx` réécrit pour un Server Component asynchrone (5) ; `blog-hubspot-images.spec.ts` rebranché sur les articles réels. `npm run validate` ✅ — Jest 341/341, Playwright 102/102, build ✅.
+
 ### 2026-08-17 — Fix pré-chat : note HubSpot et association contact
 
 - **Contexte** : après avoir rempli le formulaire du pré-chat, le visiteur recevait l'erreur « Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez. ». L'API `/api/hubspot/ingest-conversation` retournait une erreur 500. Les logs serveur montraient `HubSpot note creation failed: 400` puis, après correction du champ `hs_note_title` manquant, `Association note-contact failed: 400`.

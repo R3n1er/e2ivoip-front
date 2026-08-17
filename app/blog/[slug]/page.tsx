@@ -6,12 +6,32 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-source";
+import { JsonLd } from "@/components/seo/json-ld";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
 
 interface BlogPostPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+/**
+ * Les extraits HubSpot arrivent enrobés de HTML (`<p>…</p>`). Laissés tels
+ * quels, ces balises se retrouvent dans les meta descriptions et les extraits
+ * affichés en SERP.
+ */
+function stripHtml(value?: string): string {
+  if (!value) return "";
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 // Génération des métadonnées dynamiques
@@ -28,29 +48,34 @@ export async function generateMetadata({
     };
   }
 
+  const title = post.seoTitle || post.title;
+  const description = stripHtml(post.metaDescription || post.excerpt);
+  const image = post.featuredImageUrl || post.featuredImage;
+  const images = image ? [image] : [];
+
   return {
-    title: post.seoTitle || post.title,
-    description: post.metaDescription || post.excerpt,
+    title,
+    description,
+    // Sans canonical, les variantes d'URL (paramètres de campagne, casse)
+    // fragmentent l'autorité de l'article entre plusieurs adresses.
+    alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
     openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.metaDescription || post.excerpt,
+      title,
+      description,
       type: "article",
+      url: `${SITE_URL}/blog/${post.slug}`,
       publishedTime: post.publishDate,
-      modifiedTime: post.publishDate, // Utiliser publishDate au lieu de modifiedDate
+      // `modifiedDate` est disponible dans les données HubSpot : le recopier
+      // depuis `publishDate` masquait les mises à jour aux moteurs.
+      modifiedTime: post.modifiedDate || post.publishDate,
       authors: post.author ? [post.author] : [],
-      images:
-        post.featuredImageUrl || post.featuredImage
-          ? [post.featuredImageUrl || post.featuredImage!]
-          : [],
+      images,
     },
     twitter: {
       card: "summary_large_image",
-      title: post.seoTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      images:
-        post.featuredImageUrl || post.featuredImage
-          ? [post.featuredImageUrl || post.featuredImage!]
-          : [],
+      title,
+      description,
+      images,
     },
   };
 }
@@ -93,14 +118,32 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const publishDate = new Date(post.publishDate || "");
   const contentText = post.content || "";
-  const readingTime = Math.max(
-    1,
-    Math.ceil(contentText.split(/\s+/).filter(Boolean).length / 200)
-  );
+  const wordCount = stripHtml(contentText).split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   const featuredImageUrl = post.featuredImageUrl || post.featuredImage;
 
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd
+        data={[
+          blogPostingSchema({
+            title: post.seoTitle || post.title,
+            description: stripHtml(post.metaDescription || post.excerpt),
+            slug: post.slug,
+            publishDate: post.publishDate,
+            modifiedDate: post.modifiedDate,
+            author: post.author,
+            imageUrl: featuredImageUrl,
+            wordCount,
+            keywords: post.tags,
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
       {/* Header avec navigation */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

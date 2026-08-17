@@ -147,3 +147,95 @@ export function serviceSchema(service: ServiceInput) {
     areaServed: ["Guadeloupe", "Martinique", "Guyane", "La Réunion", "France"],
   };
 }
+
+/** Champs d'un article pour le schema BlogPosting. */
+export interface BlogPostingInput {
+  title: string;
+  description: string;
+  /** Slug seul, sans le préfixe `/blog/`. */
+  slug: string;
+  publishDate?: string;
+  modifiedDate?: string;
+  author?: string;
+  imageUrl?: string;
+  /** Nombre de mots du corps de l'article — signal de profondeur pour Google. */
+  wordCount?: number;
+  keywords?: string[];
+}
+
+/** Une date ISO valide, ou `undefined` si la donnée source est inexploitable. */
+function toIsoDate(value?: string): string | undefined {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
+
+/**
+ * Schema BlogPosting — à poser sur chaque article.
+ *
+ * C'est le schéma qui rend un article éligible aux résultats enrichis Google
+ * (date, auteur, image) et qui permet aux moteurs génératifs de l'attribuer
+ * correctement lorsqu'ils le citent.
+ */
+export function blogPostingSchema(post: BlogPostingInput) {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  const published = toIsoDate(post.publishDate);
+  const modified = toIsoDate(post.modifiedDate) ?? published;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: post.title.slice(0, 110), // Google ignore les titres plus longs.
+    description: post.description,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    ...(published ? { datePublished: published } : {}),
+    ...(modified ? { dateModified: modified } : {}),
+    author: post.author
+      ? { "@type": "Person", name: post.author }
+      : { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+    ...(post.imageUrl ? { image: post.imageUrl } : {}),
+    ...(post.wordCount ? { wordCount: post.wordCount } : {}),
+    ...(post.keywords?.length ? { keywords: post.keywords.join(", ") } : {}),
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+  };
+}
+
+/** Un article dans le listing du blog. */
+export interface BlogListEntry {
+  title: string;
+  slug: string;
+  publishDate?: string;
+}
+
+/**
+ * Schema Blog — à poser sur la page de listing.
+ *
+ * Le `blogPost` rattaché déclare explicitement les articles au moteur, ce qui
+ * complète le maillage HTML et évite que la page ne soit vue comme un index vide.
+ */
+export function blogSchema(entries: BlogListEntry[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE_URL}/blog#blog`,
+    name: `Blog ${SITE_NAME}`,
+    description:
+      "Actualités, conseils et guides sur la téléphonie IP et les communications d'entreprise.",
+    url: `${SITE_URL}/blog`,
+    publisher: { "@id": ORGANIZATION_ID },
+    inLanguage: "fr-FR",
+    blogPost: entries.map((entry) => {
+      const published = toIsoDate(entry.publishDate);
+      return {
+        "@type": "BlogPosting",
+        headline: entry.title.slice(0, 110),
+        url: `${SITE_URL}/blog/${entry.slug}`,
+        ...(published ? { datePublished: published } : {}),
+      };
+    }),
+  };
+}
