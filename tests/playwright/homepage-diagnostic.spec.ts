@@ -34,6 +34,11 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
     });
 
     page.on("requestfailed", (request) => {
+      // Le script de debug de Vercel Analytics n'est chargé qu'en
+      // développement et le navigateur le bloque en local (ERR_BLOCKED_BY_ORB).
+      // Sans incidence sur la production : on l'exclut du diagnostic.
+      if (request.url().includes("va.vercel-scripts.com")) return;
+
       networkErrors.push(
         `${request.failure()?.errorText ?? "échec réseau"} - ${request.url()}`
       );
