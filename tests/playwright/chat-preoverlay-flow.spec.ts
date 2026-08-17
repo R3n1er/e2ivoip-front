@@ -9,6 +9,7 @@ test.describe("ChatPreOverlay - Flux complet", () => {
         body: `
           window.__hubspotWidgetCalls = [];
           let loaded = false;
+          window.__hubspotInputTexts = [];
           window.HubSpotConversations = {
             widget: {
               status: () => ({ loaded }),
@@ -17,6 +18,8 @@ test.describe("ChatPreOverlay - Flux complet", () => {
                 window.__hubspotWidgetCalls.push(["load", options]);
               },
               open: () => window.__hubspotWidgetCalls.push(["open"]),
+              setInputText: (text) =>
+                window.__hubspotInputTexts.push(text),
             },
           };
           (window.hsConversationsOnReady || []).forEach((callback) => callback());
@@ -116,6 +119,17 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     );
     expect(loadCall).toBeDefined();
     expect(loadCall[1]).toMatchObject({ widgetOpen: true });
+
+    // Le champ de saisie du chat doit être pré-rempli avec les infos du pré-chat.
+    await page.waitForTimeout(500);
+    const inputTexts = await page.evaluate(
+      () => (window as any).__hubspotInputTexts ?? []
+    );
+    expect(inputTexts).toHaveLength(1);
+    expect(inputTexts[0]).toContain("Jean Dupont");
+    expect(inputTexts[0]).toContain("Test SARL");
+    expect(inputTexts[0]).toContain("jean.dupont@test.fr");
+    expect(inputTexts[0]).toContain("0612345678");
   });
 
   test("annonce les champs obligatoires et place le focus sur la première erreur", async ({
