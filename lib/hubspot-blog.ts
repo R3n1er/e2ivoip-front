@@ -35,37 +35,52 @@ interface HubSpotBlogPost {
 }
 
 // Cache des tags HubSpot : { tagId -> tagName }
-// Évite un appel API par article.
+// TTL de 10 minutes pour éviter les appels API répétés tout en
+// rafraîchissant les noms de tags après un renommage dans HubSpot.
+const TAG_CACHE_TTL_MS = 10 * 60 * 1000;
 let tagCache: Map<string, string> | null = null;
+let tagCacheTimestamp = 0;
 
 async function ensureTagCache(): Promise<Map<string, string>> {
-  if (tagCache) return tagCache;
+  // Cache encore valide ?
+  if (tagCache && Date.now() - tagCacheTimestamp < TAG_CACHE_TTL_MS) {
+    return tagCache;
+  }
 
   const map = new Map<string, string>();
   try {
     const accessToken = getHubSpotAccessToken();
-    const response = await fetch(
-      "https://api.hubapi.com/cms/v3/blogs/tags?limit=500",
-      {
+
+    // Pagination : récupère tous les tags (limite 500 par page)
+    let after: string | undefined = undefined;
+    do {
+      const url = new URL("https://api.hubapi.com/cms/v3/blogs/tags");
+      url.searchParams.set("limit", "500");
+      if (after) url.searchParams.set("after", after);
+
+      const response = await fetch(url.toString(), {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
         cache: "no-store",
-      }
-    );
+      });
 
-    if (response.ok) {
+      if (!response.ok) break;
+
       const data = await response.json();
       for (const tag of data.results || []) {
         map.set(String(tag.id), tag.name || tag.slug || String(tag.id));
       }
-    }
+
+      after = data.paging?.next?.after;
+    } while (after);
   } catch {
     // Si l'API tags échoue, on garde les IDs bruts
   }
 
   tagCache = map;
+  tagCacheTimestamp = Date.now();
   return map;
 }
 
