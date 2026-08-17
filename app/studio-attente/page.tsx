@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -10,22 +9,17 @@ import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
-import { AudioPlayer } from "@/components/ui/audio-player";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import {
-  Microphone,
   MusicNote,
   SpeakerHigh,
   DownloadSimple,
-  Play,
   Check,
   Brain,
   Users,
   ShieldCheck,
   Timer,
-  Star,
   Info,
-  Globe,
 } from "@/lib/icons";
 import type { Metadata } from "next";
 
@@ -78,8 +72,8 @@ export default function StudioAttente() {
         "Idéal pour itérer rapidement à moindre coût",
       ],
       delay: "Quelques heures",
-      cta: "Accéder au studio en ligne",
-      ctaHref: "#studio-online",
+      cta: "Demander un devis",
+      ctaHref: "/devis-en-ligne?service=studio-digital",
       highlight: true,
     },
   ];
@@ -117,45 +111,6 @@ export default function StudioAttente() {
     },
   ];
 
-  const audioExamples = [
-    {
-      client: "Clinique médicale — Martinique",
-      label: "Message d'accueil + attente",
-      duration: "0:42",
-      src: "/audio/exemples/exemple-accueil-clinique.mp3",
-    },
-    {
-      client: "Cabinet d'avocats — Guyane",
-      label: "Message d'accueil bilingue FR/EN",
-      duration: "0:35",
-      src: "/audio/exemples/exemple-accueil-bilingue.mp3",
-    },
-    {
-      client: "E-commerce — Guadeloupe",
-      label: "Message promotionnel d'attente",
-      duration: "0:28",
-      src: "/audio/exemples/exemple-promo-ecommerce.mp3",
-    },
-    {
-      client: "Hôtel — La Réunion",
-      label: "Message d'accueil + infos pratiques",
-      duration: "0:51",
-      src: "/audio/exemples/exemple-accueil-hotel.mp3",
-    },
-    {
-      client: "PME industrielle — France",
-      label: "Message de fermeture horaires",
-      duration: "0:22",
-      src: "/audio/exemples/exemple-fermeture-pme.mp3",
-    },
-    {
-      client: "Service support — France",
-      label: "Message d'attente IA (voix de synthèse)",
-      duration: "0:38",
-      src: "/audio/exemples/exemple-ia-support.mp3",
-    },
-  ];
-
   const comparisonRows = [
     { label: "Voix", human: "Voix off professionnelles", digital: "Voix de synthèse IA" },
     { label: "Langues", human: "Français + langues étrangères", digital: "30+ langues" },
@@ -171,34 +126,20 @@ export default function StudioAttente() {
     <div className="min-h-screen bg-white">
       <div className="pt-6">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-red-50 to-white">
+        <section className="py-20 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Studio attente{" "}
-                <span className="text-red-primary">téléphonique</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Studio attente téléphonique
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
                 Messages d'accueil et d'attente professionnels, avec voix
                 humaines ou assistées par IA. Musiques libres de droits, zéro
                 redevance SACEM. Valorisez votre image dès le premier appel.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <CTAButton href="/devis-en-ligne?service=studio" icon="Microphone">
-                  DEMANDER UN DEVIS
-                </CTAButton>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-blue-marine text-blue-marine hover:bg-blue-marine hover:text-white"
-                  asChild
-                >
-                  <a href="#studio-online">
-                    <Star size={20} className="mr-2" aria-hidden="true" />
-                    ACCÉDER AU STUDIO EN LIGNE
-                  </a>
-                </Button>
-              </div>
+              <CTAButton href="/devis-en-ligne?service=studio" icon="Microphone">
+                DEMANDER UN DEVIS
+              </CTAButton>
             </div>
           </div>
         </section>
@@ -208,7 +149,7 @@ export default function StudioAttente() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-4">
               Deux studios, à vous de{" "}
-              <span className="text-red-600">choisir</span>
+              <span className="text-red-primary">choisir</span>
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
               Que vous privilégiiez l'authenticité d'une voix humaine ou la
@@ -228,7 +169,7 @@ export default function StudioAttente() {
                 >
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center">
+                      <div className="bg-red-primary/10 w-14 h-14 rounded-full flex items-center justify-center">
                         <option.Icon
                           size={28}
                           className="text-red-primary"
@@ -266,8 +207,11 @@ export default function StudioAttente() {
                       <span>Délai : {option.delay}</span>
                     </div>
                     <Button
-                      className="w-full"
-                      variant={option.highlight ? "default" : "outline"}
+                      className={
+                        option.highlight
+                          ? "w-full bg-red-primary text-white hover:bg-red-700"
+                          : "w-full border border-blue-marine bg-transparent text-blue-marine hover:bg-blue-marine hover:text-white"
+                      }
                       asChild
                     >
                       <a href={option.ctaHref}>
@@ -284,13 +228,13 @@ export default function StudioAttente() {
               <table className="w-full border-collapse text-sm">
                 <thead>
                   <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-4 font-semibold text-gray-900">
+                    <th className="text-left py-4 px-4 font-semibold text-gray-dark">
                       Critère
                     </th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                    <th className="text-center py-4 px-4 font-semibold text-gray-dark">
                       Studio Voix Humaines
                     </th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-900">
+                    <th className="text-center py-4 px-4 font-semibold text-gray-dark">
                       Studio Digital IA
                     </th>
                   </tr>
@@ -301,7 +245,7 @@ export default function StudioAttente() {
                       key={i}
                       className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}
                     >
-                      <td className="py-3 px-4 font-medium text-gray-900">
+                      <td className="py-3 px-4 font-medium text-gray-dark">
                         {row.label}
                       </td>
                       <td className="py-3 px-4 text-center text-gray-600">
@@ -323,19 +267,19 @@ export default function StudioAttente() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-12">
               Comment ça{" "}
-              <span className="text-red-600">marche</span>
+              <span className="text-red-primary">marche</span>
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               {steps.map((step, index) => (
                 <div key={index} className="text-center">
-                  <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-red-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <step.Icon
                       size={28}
                       className="text-red-primary"
                       aria-hidden="true"
                     />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-gray-dark mb-2">
                     {step.title}
                   </h3>
                   <p className="text-sm text-gray-600">{step.description}</p>
@@ -345,45 +289,12 @@ export default function StudioAttente() {
           </div>
         </section>
 
-        {/* Exemples audio clients */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-4">
-              Exemples{" "}
-              <span className="text-red-600">réalisés</span> pour nos clients
-            </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Écoutez des messages d'accueil et d'attente que nous avons
-              produits pour des entreprises dans les DROM et en France
-              métropolitaine.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {audioExamples.map((example, index) => (
-                <Card key={index} className="border-gray-200">
-                  <CardContent className="p-4">
-                    <AudioPlayer
-                      src={example.src}
-                      client={example.client}
-                      label={example.label}
-                      duration={example.duration}
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            <p className="text-center text-sm text-gray-400 mt-6">
-              Les fichiers audio seront disponibles prochainement. Contactez-nous
-              pour des démonstrations en direct.
-            </p>
-          </div>
-        </section>
-
         {/* Bibliothèque musicale & infos légales SACEM */}
-        <section className="py-20 bg-gradient-to-r from-gray-50 to-red-50/30">
+        <section className="py-20 bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-4">
               Musiques{" "}
-              <span className="text-red-600">libres de droits</span>
+              <span className="text-red-primary">libres de droits</span>
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
               Importez vos propres musiques libres de droits ou choisissez dans
@@ -394,7 +305,7 @@ export default function StudioAttente() {
               <Card className="border-gray-200">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center">
+                    <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <MusicNote
                         size={24}
                         className="text-red-primary"
@@ -429,7 +340,7 @@ export default function StudioAttente() {
               <Card className="border-gray-200">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center">
+                    <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
                       <DownloadSimple
                         size={24}
                         className="text-red-primary"
@@ -474,7 +385,7 @@ export default function StudioAttente() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3">
+                    <h3 className="font-semibold text-gray-dark mb-3">
                       Pourquoi utiliser des musiques libres de droits ?
                     </h3>
                     <p className="text-sm text-gray-700 mb-3">
@@ -516,14 +427,14 @@ export default function StudioAttente() {
         {/* Validation humaine */}
         <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-red-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
               <ShieldCheck
                 size={40}
                 className="text-red-primary"
                 aria-hidden="true"
               />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
               Validation humaine sur{" "}
               <span className="text-red-primary">chaque message</span>
             </h2>
@@ -532,38 +443,6 @@ export default function StudioAttente() {
               IA, rien ne part sans une validation par notre équipe. Ton,
               qualité audio, conformité, prononciation — chaque détail est
               contrôlé pour représenter votre entreprise au mieux.
-            </p>
-          </div>
-        </section>
-
-        {/* Studio en ligne — section ancre */}
-        <section id="studio-online" className="py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Star
-                size={40}
-                className="text-red-primary"
-                aria-hidden="true"
-              />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Accédez à notre{" "}
-              <span className="text-red-primary">studio en ligne</span>
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Créez vos messages d'attente en toute autonomie avec notre studio
-              digital assisté par IA. Choisissez une voix, rédigez votre
-              script, et téléchargez en quelques minutes.
-            </p>
-            <CTAButton
-              href="/devis-en-ligne?service=studio-digital"
-              icon="Microphone"
-            >
-              ACCÉDER AU STUDIO DIGITAL
-            </CTAButton>
-            <p className="text-sm text-gray-400 mt-4">
-              Le lien vers notre studio partenaire sera disponible ici
-              prochainement.
             </p>
           </div>
         </section>
