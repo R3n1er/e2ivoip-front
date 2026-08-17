@@ -82,7 +82,35 @@ const initialForm: ChatFormData = {
   phone: "",
 };
 
-const HUBSPOT_WIDGET_TIMEOUT_MS = 10000;
+const HUBSPOT_WIDGET_TIMEOUT_MS = 20000;
+
+function waitForHubSpotConversations(timeoutMs: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (window.HubSpotConversations) {
+      resolve();
+      return;
+    }
+
+    const start = Date.now();
+    const timer = window.setInterval(() => {
+      if (window.HubSpotConversations) {
+        window.clearInterval(timer);
+        resolve();
+        return;
+      }
+      if (Date.now() - start > timeoutMs) {
+        window.clearInterval(timer);
+        reject(new Error("Le script HubSpot n'a pas chargé à temps"));
+      }
+    }, 100);
+
+    window.hsConversationsOnReady ??= [];
+    window.hsConversationsOnReady.push(() => {
+      window.clearInterval(timer);
+      resolve();
+    });
+  });
+}
 
 function openHubSpotWidget(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -283,6 +311,11 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
         },
       ]);
       window._hsq.push(["trackPageView"]);
+
+      // Sur les connexions lentes ou les cold-start Vercel, le script HubSpot
+      // n'est pas encore exécuté quand l'API répond. On attend explicitement la
+      // présence de l'API avant d'ouvrir le widget.
+      await waitForHubSpotConversations(HUBSPOT_WIDGET_TIMEOUT_MS);
       await openHubSpotWidget();
 
       setOpen(false);
@@ -295,8 +328,14 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
       if (process.env.NODE_ENV !== "production") {
         console.error("Erreur lors de la soumission:", error);
       }
+      const isLikelyBlocked =
+        typeof window !== "undefined" &&
+        !window.HubSpotConversations &&
+        !document.querySelector('script[src*="hs-scripts.com"]');
       setFormError(
-        "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
+        isLikelyBlocked
+          ? "Votre navigateur ou un bloqueur de traqueurs semble bloquer le chat. Essayez avec un autre navigateur, ou contactez-nous via notre formulaire."
+          : "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
       );
       window.requestAnimationFrame(() => formErrorRef.current?.focus());
     } finally {
@@ -479,6 +518,16 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
               >
                 {formError}
               </p>
+            )}
+
+            {formError?.includes("formulaire") && (
+              <a
+                href="/contact"
+                className="block rounded-lg border border-red-primary/30 bg-white px-3 py-2 text-center text-sm font-semibold text-red-primary hover:bg-red-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                data-testid="chat-fallback-contact-link"
+              >
+                Aller au formulaire de contact
+              </a>
             )}
 
             <div className="mt-3 flex gap-2">

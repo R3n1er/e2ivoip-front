@@ -10,6 +10,40 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Blog en rendu serveur et référencement des articles
+
+- **Contexte** : contrôle post-mise en ligne. `/blog` était un composant client qui chargeait les articles via `/api/blog/list` après hydratation : le HTML servi ne contenait **aucun lien d'article**. Les crawlers sans exécution JS — dont plusieurs crawlers IA explicitement autorisés dans `robots.txt` pour le GEO — voyaient un blog vide. Les articles restaient atteignables par le sitemap, mais la page ne jouait aucun rôle de maillage interne. L'audit a aussi relevé l'absence de `BlogPosting`, de `canonical` et de `BreadcrumbList` sur les articles.
+- **Décision** :
+  - Basculer `app/blog/page.tsx` en **Server Component** (`revalidate = 3600`, cohérent avec le sitemap) : les 12 premiers articles sont rendus en HTML. L'interactivité (recherche, tri, pagination) part dans `components/blog/blog-browser.tsx`, qui reçoit le listing initial en props et ne prend le relais qu'à la première interaction.
+  - Ajouter une `<nav>` « Tous les articles » listant chaque article en lien direct : le maillage survit même si le rendu client échoue.
+  - Nouveaux builders dans `lib/structured-data.ts` : `blogPostingSchema` (headline tronquée à 110 caractères, dates normalisées ISO avec repli sur la publication, auteur en `Person` ou rattaché à l'organisation, `wordCount`, `keywords`) et `blogSchema` (listing déclarant ses articles).
+  - Articles : ajout de `BlogPosting` + `BreadcrumbList`, `canonical` explicite, et correction de `modifiedTime` qui recopiait `publishDate` alors que `modifiedDate` existe dans les données — les mises à jour d'articles étaient invisibles aux moteurs.
+  - `stripHtml()` sur les extraits : HubSpot renvoie `<p>…</p>`, ces balises se retrouvaient dans les meta descriptions affichées en SERP.
+  - Pages catégorie : `canonical` + `BreadcrumbList`.
+  - En cas d'indisponibilité HubSpot, la page reste servie (hero, CTA, maillage) au lieu d'échouer.
+- **Conséquences** : le HTML de `/blog` expose désormais **12 liens d'articles** et un JSON-LD déclarant 12 `BlogPosting`. Les articles deviennent éligibles aux résultats enrichis et correctement attribuables par les moteurs génératifs.
+- **Tests associés** : `tests/playwright/blog-seo.spec.ts` (8, dont **3 avec `javaScriptEnabled: false`** — ils échouent si la page redevient client-only) ; `tests/lib/blog-structured-data.test.ts` (9) ; `blog-page-simple.test.tsx` réécrit pour un Server Component asynchrone (5) ; `blog-hubspot-images.spec.ts` rebranché sur les articles réels. `npm run validate` ✅ — Jest 341/341, Playwright 102/102, build ✅.
+
+### 2026-08-17 — Fix pré-chat : note HubSpot et association contact
+
+- **Contexte** : après avoir rempli le formulaire du pré-chat, le visiteur recevait l'erreur « Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez. ». L'API `/api/hubspot/ingest-conversation` retournait une erreur 500. Les logs serveur montraient `HubSpot note creation failed: 400` puis, après correction du champ `hs_note_title` manquant, `Association note-contact failed: 400`.
+- **Décision** :
+  - Supprimer la propriété `hs_note_title` inexistante sur l'objet `notes` du portail 26878201. Le titre est désormais intégré dans `hs_note_body` sous forme de texte en gras Markdown (`**Titre**\n\nCorps`).
+  - Corriger le payload de l'association note/contact : l'endpoint `PUT /crm/v4/objects/notes/{id}/associations/contacts/{contactId}` attend un **tableau** d'objets `[{ associationCategory, associationTypeId }]`, pas un objet unique.
+  - Conserver la structure existante de la route (identification `_hsq`, ouverture du widget, gestion des erreurs) ; seules les deux requêtes CRM erronées sont corrigées.
+- **Conséquences** : le pré-chat crée/met à jour le contact, attache la note, puis ouvre le widget sans erreur serveur. Le visiteur n'est plus invité à vérifier sa connexion pour un problème interne.
+- **Tests associés** : test manuel de la route en local (`curl` → 200) ; `npm test` ✅ (341/341) ; `npx playwright test` ✅ (93/93).
+
+### 2026-08-17 — Fix pré-chat : ouverture du widget sur connexions lentes + fallback bloqueur
+
+- **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». La console montrait des `ERR_BLOCKED_BY_CLIENT` sur `js-eu1.hs-scripts.com` et PostHog : Brave Shields (et les bloqueurs de traqueurs en général) bloquent le script HubSpot Conversations. En local, le script était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau pouvaient aussi dépasser le timeout de 10s.
+- **Décision** :
+  - Augmenter le timeout de `openHubSpotWidget` à 20s.
+  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`.
+  - Détecter quand le chat est probablement bloqué (`!window.HubSpotConversations` et aucun script `hs-scripts.com` injecté) et afficher un message explicite + lien vers le formulaire de contact au lieu du message générique « Vérifiez votre connexion ».
+- **Conséquences** : le chat s'ouvre dès que le script est disponible. Si un bloqueur l'empêche de charger, le visiteur comprend pourquoi et a un CTA de secours vers `/contact`.
+- **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341).
+
 ### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
 
 - **Contexte** : la page Devis n'exposait que quatre demandes, via des liens `urlr.me` opaques, alors que huit formulaires Tally existent dans l'espace E2I VoIP (Yeastar, Aircall, 3CX PRO, 3CX SMB, agents IA…). La résolution des raccourcis a par ailleurs révélé que « Devis VoIP 3CX » pointait vers un **Microsoft Forms**, vestige de l'ancien site, alors que deux formulaires Tally 3CX dédiés existent.

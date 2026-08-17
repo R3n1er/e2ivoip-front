@@ -2,7 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getBlogPostsByCategory } from "@/lib/blog-source";
+import { breadcrumbSchema } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 import type { PublicBlogPost } from "@/lib/blog-types";
 import { ArrowLeft, Tag } from '@/lib/icons';
 
@@ -19,13 +22,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
   
+  const title = `Articles ${categoryName} - Blog E2I VoIP`;
+  const description = `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`;
+
   return {
-    title: `Articles ${categoryName} - Blog E2I VoIP`,
-    description: `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/blog/categorie/${slug}` },
     openGraph: {
-      title: `Articles ${categoryName} - Blog E2I VoIP`,
-      description: `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`,
+      title,
+      description,
       type: "website",
+      url: `${SITE_URL}/blog/categorie/${slug}`,
     },
   };
 }
@@ -51,6 +59,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Accueil", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: categoryName, path: `/blog/categorie/${slug}` },
+        ])}
+      />
       {/* Header avec navigation */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

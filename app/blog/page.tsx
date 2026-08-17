@@ -1,259 +1,179 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { BlogSearch } from "@/components/blog/blog-search";
-import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
-import { BlogPagination } from "@/components/blog/blog-pagination";
-
-import type { PublicBlogPost as BlogPost } from "@/lib/blog-types";
-
-interface BlogFilters {
-  query: string;
-  author: string;
-  year: number | null;
-  tags: string[];
-  sortBy: "newest" | "oldest" | "relevance";
-}
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BlogBrowser } from "@/components/blog/blog-browser";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getBlogMetadata, getBlogPosts } from "@/lib/blog-source";
+import { blogSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
+import type { PublicBlogPost } from "@/lib/blog-types";
 
 const POSTS_PER_PAGE = 12;
 
-export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true); // Commencer en mode chargement
-  const [totalResults, setTotalResults] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [availableAuthors, setAvailableAuthors] = useState<string[]>([]);
-  const [availableYears, setAvailableYears] = useState<number[]>([]);
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
+// Les articles viennent de HubSpot : on revalide chaque heure plutôt que de
+// rendre la page dynamique, pour garder un HTML servi depuis le cache CDN.
+export const revalidate = 3600;
 
-  const handleSearch = async (filters: BlogFilters, page: number = 1) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const params = new URLSearchParams();
-      params.set("page", String(page));
-      params.set("pageSize", String(POSTS_PER_PAGE));
-      if (filters.query) params.set("q", filters.query);
+export const metadata: Metadata = {
+  title: "Blog téléphonie IP & VoIP entreprise - E2I VoIP",
+  description:
+    "Conseils, guides et actualités sur la téléphonie IP d'entreprise : Trunk SIP, 3CX, portabilité, fin du réseau cuivre. Expertise opérateur DOM et France.",
+  keywords:
+    "blog téléphonie IP, VoIP entreprise, Trunk SIP, 3CX, PABX, portabilité, fin du cuivre, DOM",
+  alternates: { canonical: `${SITE_URL}/blog` },
+  openGraph: {
+    title: "Blog téléphonie IP & VoIP entreprise - E2I VoIP",
+    description:
+      "Conseils, guides et actualités sur la téléphonie IP d'entreprise par un opérateur DOM.",
+    type: "website",
+    url: `${SITE_URL}/blog`,
+  },
+};
 
-      const res = await fetch(`/api/blog/list?${params.toString()}`, {
-        cache: "no-store",
-      });
+/**
+ * Listing du blog, rendu côté serveur.
+ *
+ * Historique : cette page était un composant client qui chargeait les articles
+ * après hydratation. Le HTML servi ne contenait donc aucun lien d'article, et
+ * les crawlers sans exécution JS — dont plusieurs crawlers IA autorisés dans
+ * `robots.txt` — voyaient un blog vide. Les articles sont désormais rendus par
+ * le serveur ; `BlogBrowser` ne gère que l'interactivité.
+ */
+export default async function BlogPage() {
+  let posts: PublicBlogPost[] = [];
+  let total = 0;
+  let metadataFacets = { tags: [] as string[], authors: [] as string[], years: [] as number[] };
 
-      if (!res.ok) {
-        throw new Error(`Erreur API: ${res.status}`);
-      }
-
-      const data = await res.json();
-
-      if (data.error) {
-        throw new Error(data.error);
-      }
-
-      const blogPosts: BlogPost[] = (data.posts || []).map(
-        (p: Record<string, unknown>) => ({
-          id: p.id as string,
-          title: p.title as string,
-          excerpt: p.excerpt as string,
-          content: p.content,
-          publishDate: p.publishDate as string,
-          author: p.author as string,
-          tags: (p.tags as string[]) || [],
-          slug: p.slug as string,
-          featuredImage: p.featuredImage, // Utiliser featuredImage directement
-          featuredImageUrl: p.featuredImage, // Garder pour compatibilité
-          metaDescription: p.metaDescription as string,
-          seoTitle: p.seoTitle as string,
-        })
-      );
-
-      // Appliquer le tri
-      const sortedPosts = [...blogPosts];
-      if (filters.sortBy === "newest") {
-        sortedPosts.sort(
-          (a, b) =>
-            new Date(b.publishDate || "").getTime() -
-            new Date(a.publishDate || "").getTime()
-        );
-      } else if (filters.sortBy === "oldest") {
-        sortedPosts.sort(
-          (a, b) =>
-            new Date(a.publishDate || "").getTime() -
-            new Date(b.publishDate || "").getTime()
-        );
-      }
-
-      setPosts(sortedPosts);
-      setTotalResults(data.total || blogPosts.length);
-      setCurrentPage(page);
-
-      // Extraire les facettes pour les filtres disponibles
-      if (data.metadata) {
-        setAvailableAuthors(data.metadata.authors || []);
-        setAvailableYears(data.metadata.years || []);
-        setAvailableTags(data.metadata.tags || []);
-      }
-    } catch (error) {
-      console.error("Erreur lors de la recherche:", error);
-      setError(error instanceof Error ? error.message : "Erreur inconnue");
-      setPosts([]);
-      setTotalResults(0);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePageChange = (page: number) => {
-    // Récupérer les filtres actuels et changer de page
-    const currentFilters = {
-      query: "",
-      author: "",
-      year: null,
-      tags: [],
-      sortBy: "newest" as const,
-    };
-    handleSearch(currentFilters, page);
-  };
-
-  // Recherche initiale au chargement
-  useEffect(() => {
-    handleSearch({
-      query: "",
-      author: "",
-      year: null,
-      tags: [],
-      sortBy: "newest",
-    });
-  }, []);
-
-  const totalPages = Math.ceil(totalResults / POSTS_PER_PAGE);
+  try {
+    const [list, facets] = await Promise.all([
+      getBlogPosts(1, POSTS_PER_PAGE),
+      getBlogMetadata(),
+    ]);
+    posts = list.posts;
+    total = list.total;
+    metadataFacets = facets;
+  } catch (cause) {
+    // Le blog dépend de HUBSPOT_ACCESS_TOKEN : en cas d'indisponibilité, la page
+    // doit rester servie (hero, CTA, maillage) plutôt que de renvoyer une erreur.
+    console.error("[blog] chargement des articles impossible:", cause);
+  }
 
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd
+        data={[
+          blogSchema(
+            posts.map((post) => ({
+              title: post.title,
+              slug: post.slug,
+              publishDate: post.publishDate,
+            }))
+          ),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Blog", path: "/blog" },
+          ]),
+        ]}
+      />
+
       <main className="pt-16">
-        {/* Hero Section - Charte PRD */}
-        <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
-          {/* Background Pattern */}
+        <section className="relative overflow-hidden bg-gradient-to-r from-red-primary to-blue-marine py-16">
           <div className="absolute inset-0 opacity-10">
             <div
               className="absolute inset-0"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
               }}
-            ></div>
+            />
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              <h1 className="mb-6 text-4xl font-bold text-white drop-shadow-lg md:text-6xl">
                 <span className="text-white">Blog</span> E2I VoIP
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              <p className="mx-auto max-w-3xl text-xl leading-relaxed text-white/90">
                 Actualités, conseils et guides sur la téléphonie IP et les
                 communications d&apos;entreprise
               </p>
-              <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-sm">Expertise téléphonie IP</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-sm">Conseils techniques</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  <span className="text-sm">Actualités secteur</span>
-                </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
+                {[
+                  "Expertise téléphonie IP",
+                  "Conseils techniques",
+                  "Actualités secteur",
+                ].map((label) => (
+                  <div key={label} className="flex items-center gap-2">
+                    <div
+                      className="h-2 w-2 rounded-full bg-white"
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm">{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Section de recherche et articles */}
         <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Composant de recherche */}
-            <div className="mb-12">
-              <BlogSearch
-                onSearch={(filters) => {
-                  setCurrentPage(1);
-                  handleSearch(filters, 1);
-                }}
-                availableAuthors={availableAuthors}
-                availableYears={availableYears}
-                availableTags={availableTags}
-                totalResults={totalResults}
-                isLoading={loading}
-              />
-            </div>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <BlogBrowser
+              initialPosts={posts}
+              initialTotal={total}
+              pageSize={POSTS_PER_PAGE}
+              availableAuthors={metadataFacets.authors}
+              availableYears={metadataFacets.years}
+              availableTags={metadataFacets.tags}
+            />
 
-            {/* Affichage des erreurs */}
-            {error && (
-              <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-800">
-                  <strong>Erreur :</strong> {error}
-                </p>
-                <button
-                  onClick={() =>
-                    handleSearch(
-                      {
-                        query: "",
-                        author: "",
-                        year: null,
-                        tags: [],
-                        sortBy: "newest",
-                      },
-                      1
-                    )
-                  }
-                  className="mt-2 text-red-600 hover:text-red-800 underline"
-                >
-                  Réessayer
-                </button>
-              </div>
+            {/* Maillage interne lisible sans JavaScript : garantit aux crawlers
+                un lien vers chaque article même si le rendu client échoue. */}
+            {posts.length > 0 && (
+              <nav
+                aria-label="Tous les articles du blog"
+                className="mt-16 border-t border-gray-200 pt-8"
+              >
+                <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-gray-500">
+                  Tous les articles
+                </h2>
+                <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {posts.map((post) => (
+                    <li key={post.id}>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="text-sm leading-relaxed text-gray-600 underline-offset-2 hover:text-red-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                      >
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             )}
-
-            {/* Grille d'articles */}
-            <BlogPostsGrid
-              posts={posts}
-              loading={loading}
-              emptyMessage="Aucun article ne correspond à votre recherche."
-            />
-
-            {/* Pagination */}
-            <BlogPagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              isLoading={loading}
-            />
           </div>
         </section>
 
-        {/* Section CTA */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
+        <section className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="mb-4 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
               Besoin d&apos;expertise en téléphonie IP ?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="mb-8 text-lg text-gray-600">
               Nos experts sont là pour vous accompagner dans vos projets de
               communication d&apos;entreprise.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link
                 href="/devis-en-ligne"
-                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center rounded-lg bg-red-primary px-8 py-3 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-red-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
               >
                 Demander un devis
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/nos-services"
-                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-8 py-3 font-medium text-gray-700 transition-colors duration-200 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
               >
                 Découvrir nos services
-              </a>
+              </Link>
             </div>
           </div>
         </section>
