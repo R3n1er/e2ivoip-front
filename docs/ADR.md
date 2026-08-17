@@ -18,7 +18,17 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Corriger le payload de l'association note/contact : l'endpoint `PUT /crm/v4/objects/notes/{id}/associations/contacts/{contactId}` attend un **tableau** d'objets `[{ associationCategory, associationTypeId }]`, pas un objet unique.
   - Conserver la structure existante de la route (identification `_hsq`, ouverture du widget, gestion des erreurs) ; seules les deux requêtes CRM erronées sont corrigées.
 - **Conséquences** : le pré-chat crée/met à jour le contact, attache la note, puis ouvre le widget sans erreur serveur. Le visiteur n'est plus invité à vérifier sa connexion pour un problème interne.
-- **Tests associés** : test manuel de la route en local (`curl` → 200) ; `npm test` ✅ (329/329) ; `npx playwright test` ✅ (93/93).
+- **Tests associés** : test manuel de la route en local (`curl` → 200) ; `npm test` ✅ (341/341) ; `npx playwright test` ✅ (93/93).
+
+### 2026-08-17 — Fix pré-chat : ouverture du widget sur connexions lentes
+
+- **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». En local, le script HubSpot était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau du script `js-eu1.hs-scripts.com/26878201.js` pouvaient dépasser le timeout de 10s, faisant expirer `openHubSpotWidget()` avant que `window.HubSpotConversations` ne soit disponible.
+- **Décision** :
+  - Augmenter le timeout de `openHubSpotWidget` à 20s.
+  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`. Cela garantit que l'API est prête avant toute action sur le widget.
+  - Appeler cette attente juste après `identify`/`trackPageView`, donc le script a déjà été demandé par `onRequestChat` à l'ouverture ou à la soumission du pré-chat.
+- **Conséquences** : le chat s'ouvre même si le script HubSpot met plusieurs secondes à arriver. L'expérience reste identique sur connexion rapide. Le spinner « Ouverture… » est affiché pendant l'attente.
+- **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341) ; test manuel local Playwright (widget visible, overlay fermé).
 
 ### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
 

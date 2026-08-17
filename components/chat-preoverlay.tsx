@@ -82,7 +82,35 @@ const initialForm: ChatFormData = {
   phone: "",
 };
 
-const HUBSPOT_WIDGET_TIMEOUT_MS = 10000;
+const HUBSPOT_WIDGET_TIMEOUT_MS = 20000;
+
+function waitForHubSpotConversations(timeoutMs: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (window.HubSpotConversations) {
+      resolve();
+      return;
+    }
+
+    const start = Date.now();
+    const timer = window.setInterval(() => {
+      if (window.HubSpotConversations) {
+        window.clearInterval(timer);
+        resolve();
+        return;
+      }
+      if (Date.now() - start > timeoutMs) {
+        window.clearInterval(timer);
+        reject(new Error("Le script HubSpot n'a pas chargé à temps"));
+      }
+    }, 100);
+
+    window.hsConversationsOnReady ??= [];
+    window.hsConversationsOnReady.push(() => {
+      window.clearInterval(timer);
+      resolve();
+    });
+  });
+}
 
 function openHubSpotWidget(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -283,6 +311,11 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
         },
       ]);
       window._hsq.push(["trackPageView"]);
+
+      // Sur les connexions lentes ou les cold-start Vercel, le script HubSpot
+      // n'est pas encore exécuté quand l'API répond. On attend explicitement la
+      // présence de l'API avant d'ouvrir le widget.
+      await waitForHubSpotConversations(HUBSPOT_WIDGET_TIMEOUT_MS);
       await openHubSpotWidget();
 
       setOpen(false);
