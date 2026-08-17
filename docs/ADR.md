@@ -10,6 +10,20 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Studio Voix Humaines : démos audio + formulaire étape par étape
+
+- **Contexte** : la page `/studio-attente` présentait les studios (voix humaines vs IA) mais ne proposait ni exemple audio, ni parcours guidé pour obtenir un devis studio humain. Le partenaire Romano (`attentetelephonique.fr`) autorise E2I VoIP à réutiliser ses démonstrations audio et textes types. L’objectif était double : laisser le visiteur écouter des exemples par type de message (pré-décroché, attente, fermeture, occupation, additionnel), puis l’accompagner dans la construction d’un message sur mesure via un formulaire simple, pensé TDA.
+- **Décision** :
+  - Récupérer 12 démos MP3 depuis le site du partenaire et les héberger dans `public/audio/studio-demos/` afin d’éviter le hotlinking.
+  - Créer `lib/studio-demos.ts` : source de vérité unique classant les démos en 5 catégories avec texte, durée, voix, langue et fichier.
+  - Ajouter une section « Exemples de messages » sur `/studio-attente` : onglets par catégorie, lecteur audio natif HTML5, CTA par démo vers le formulaire pré-rempli.
+  - Nouvelle page dédiée `/studio-attente/devis` : formulaire interactif en 5 étapes (type → modèle → personnalisation → coordonnées → récap). Une seule étape visible à la fois, barre de progression claire, aperçu du message final.
+  - Envoi via une nouvelle route API `/api/studio/devis` : email à l’équipe commerciale via Resend, création/mise à jour du contact HubSpot + note associée. L’adresse destinataire (`commerciaux@e2-voip.com`), l’expéditeur (`studio@notifications.e2i-voip.com`) et la clé API Resend sont injectées par variables d’environnement ; aucune adresse email sensible n’est écrite en dur dans le code source.
+  - Mise à jour de `.env.example` avec les nouvelles variables requises.
+  - **Durcissement issu de la revue de sécurité** : la route étant publique et non authentifiée, tout champ reçu est borné en longueur puis échappé (`escapeHtml`) avant interpolation dans l’email. Sans cela, un POST forgé pouvait injecter un lien de phishing dans un message expédié depuis notre domaine authentifié SPF/DKIM. Le sujet est débarrassé de ses CR/LF (injection d’en-tête) et la validation d’email restreinte à un jeu de caractères strict.
+- **Conséquences** : le visiteur peut désormais écouter, choisir un modèle, le personnaliser et demander un devis en quelques clics. L’équipe commerciale reçoit un email structuré et le contact est directement intégré dans HubSpot. Le hotlinking avec le site partenaire est supprimé. L’échec de synchronisation HubSpot n’interrompt pas la demande mais est désormais tracé en logs, l’email restant la source de vérité du lead.
+- **Prérequis HubSpot** : la route écrit deux propriétés non standard, `last_studio_request` (type `datetime`, l’horodatage complet étant envoyé via `toISOString()`) et `lead_source` (type `string`). HubSpot rejetant l’objet de propriétés en entier dès qu’une clé est inconnue, leur absence ferait échouer tout l’upsert en 400. Les deux ont été créées dans le portail et la chaîne complète (contact + note + association `associationTypeId: 202`) a été validée par un appel réel le 2026-08-17, sur un contact de test supprimé depuis.
+- **Tests associés** : `tests/lib/studio-demos.test.ts` (3) ; `tests/studio-devis.test.tsx` (6) ; `tests/api/studio-devis.test.ts` (10, environnement `node`) ; `tests/playwright/studio-attente.spec.ts` (2). `npm run validate` ✅ — Jest 390/390 (63 suites), Playwright 104/104, build ✅, 0 vulnérabilité.
 ### 2026-08-17 — Favicon blanc et image de partage sociale dédiée
 
 - **Contexte** : le favicon livré par l'App Router utilisait un carré bleu nuit, alors que le logo de référence dans `public/Logo-E2I-solo-favicon.png` doit être présenté sur fond blanc. La page d'accueil ne déclarait par ailleurs aucune image Open Graph : WhatsApp sélectionnait l'icône carrée comme image de secours, avec un recadrage peu lisible.

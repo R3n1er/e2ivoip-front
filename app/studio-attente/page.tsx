@@ -20,8 +20,18 @@ import {
   ShieldCheck,
   Timer,
   Info,
+  Play,
+  Microphone,
+  ArrowRight,
 } from "@/lib/icons";
 import type { Metadata } from "next";
+import {
+  STUDIO_DEMOS,
+  STUDIO_DEMO_CATEGORIES,
+  type StudioDemoCategory,
+} from "@/lib/studio-demos";
+import { StudioDemoSection } from "./components/studio-demo-section";
+
 
 export const metadata: Metadata = {
   title: "Studio attente téléphonique — Messages & musiques sur mesure",
@@ -75,6 +85,22 @@ export default function StudioAttente() {
       cta: "Demander un devis",
       ctaHref: "/devis-en-ligne?service=studio-digital",
       highlight: true,
+    },
+    {
+      Icon: Microphone,
+      title: "Studio Voix Humaines + Devis guidé",
+      tagline: "Modèles audio + formulaire interactif",
+      features: [
+        "Écoutez les démos par type de message",
+        "Choisissez un modèle ou rédigez votre texte",
+        "Formulaire étape par étape pensé TDA",
+        "Envoi direct à l’équipe commerciale",
+        "Réponse sous 24 h ouvrées",
+      ],
+      delay: "24 h",
+      cta: "Construire ma demande",
+      ctaHref: "/studio-attente/devis",
+      highlight: false,
     },
   ];
 
@@ -137,8 +163,8 @@ export default function StudioAttente() {
                 humaines ou assistées par IA. Musiques libres de droits, zéro
                 redevance SACEM. Valorisez votre image dès le premier appel.
               </p>
-              <CTAButton href="/devis-en-ligne?service=studio" icon="Microphone">
-                DEMANDER UN DEVIS
+              <CTAButton href="/studio-attente/devis" icon="Microphone">
+                CONSTRUIRE MA DEMANDE
               </CTAButton>
             </div>
           </div>
@@ -423,6 +449,9 @@ export default function StudioAttente() {
             </Card>
           </div>
         </section>
+
+        {/* Exemples audio */}
+        <StudioDemoSection />
 
         {/* Validation humaine */}
         <section className="py-20">
