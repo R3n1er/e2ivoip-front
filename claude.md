@@ -17,7 +17,16 @@ L'essentiel : chef de projet, dev NextJS débutant. Réponses courtes, **une cho
 - Architecture technique : `docs/ARCHITECTURE.md`
 - Charte graphique : `docs/CHARTE_GRAPHIQUE.md` (RÈGLE ABSOLUE)
 - Ligne éditoriale : `docs/ligne-editoriale.md`
-- Second cerveau : `/Users/alban/Documents/SIKS-BRAIN/` (lire AGENTS.md avant toute op.)
+
+## Mémoire de session
+
+Les mémoires de session sont conservées dans **claude-mem** (capture
+automatique). Les décisions d'architecture restent documentées dans
+`docs/ADR.md`, versionné avec le code.
+
+**Ne rien déposer dans le second cerveau** (`/Users/alban/Documents/SIKS-BRAIN/`) :
+ni journal de sessions, ni ADR, ni draft dans `20-propositions/`. Ce flux
+est abandonné pour ce projet.
 
 ## Règles absolues
 
