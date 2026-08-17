@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
+import { stripHtml } from "@/lib/blog-utils";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -20,19 +21,8 @@ interface BlogPostPageProps {
 /**
  * Les extraits HubSpot arrivent enrobés de HTML (`<p>…</p>`). Laissés tels
  * quels, ces balises se retrouvent dans les meta descriptions et les extraits
- * affichés en SERP.
+ * affichés en SERP. La fonction stripHtml est partagée via @/lib/blog-utils.
  */
-function stripHtml(value?: string): string {
-  if (!value) return "";
-  return value
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 // Génération des métadonnées dynamiques
 export async function generateMetadata({
@@ -229,7 +219,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Extrait */}
             {post.excerpt && (
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                {post.excerpt}
+                {stripHtml(post.excerpt)}
               </p>
             )}
           </header>
