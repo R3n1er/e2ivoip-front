@@ -135,11 +135,13 @@ function openHubSpotWidget(): Promise<void> {
           return;
         }
 
-        if (widget.status?.().loaded) {
-          widget.open();
-        } else {
-          widget.load({ widgetOpen: true });
+        const status = widget.status?.();
+        if (status?.loaded) {
+          // Le launcher est déjà affiché : on le supprime puis on le recharge
+          // avec widgetOpen: true pour forcer l'ouverture en grand.
+          widget.remove?.();
         }
+        widget.load({ widgetOpen: true, inline: false });
         finish(resolve);
       } catch (error) {
         finish(() => reject(error));
@@ -337,11 +339,18 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
           ? "Votre navigateur ou un bloqueur de traqueurs semble bloquer le chat. Essayez avec un autre navigateur, ou contactez-nous via notre formulaire."
           : "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
       );
-      window.requestAnimationFrame(() => formErrorRef.current?.focus());
     } finally {
       setIsSubmitting(false);
     }
   }, [form, onRequestChat]);
+
+  // Le focus doit être posé APRÈS le rendu du message : dans le gestionnaire de
+  // soumission, même via requestAnimationFrame, React n'a pas nécessairement
+  // encore commis le DOM et la ref est vide — le focus était alors perdu sans
+  // erreur visible, laissant l'utilisateur clavier sans retour.
+  useEffect(() => {
+    if (formError) formErrorRef.current?.focus();
+  }, [formError]);
 
   const handleCancel = useCallback(() => {
     setOpen(false);
@@ -407,8 +416,9 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
               setOpen(true);
               setFormError(null);
               setWiggle(false);
-              // Le script HubSpot se charge pendant la saisie : au moment de
-              // l'envoi, le widget est prêt et la latence reste invisible.
+              // On déclenche le montage du script HubSpot dès l'ouverture du
+              // pré-chat, mais sans charger le widget. Il s'initialise en
+              // arrière-plan pendant que le visiteur remplit le formulaire.
               onRequestChat?.();
             }}
             className={`
@@ -417,7 +427,7 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
               bg-red-primary hover:bg-red-600
               text-white cursor-pointer touch-manipulation
               focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-primary/30 focus-visible:ring-offset-2
-              ${wiggle ? "animate-bounce" : ""}
+              ${wiggle ? "animate-bounce motion-reduce:animate-none" : ""}
             `}
             aria-label="Ouvrir le pré‑chat"
             data-testid="open-chat-button"
