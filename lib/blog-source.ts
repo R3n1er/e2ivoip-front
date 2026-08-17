@@ -4,6 +4,7 @@ import type {
   PublicBlogPost,
 } from "@/lib/blog-types";
 import type { BlogPost } from "@/lib/hubspot-blog";
+import { localizeBlogImage, localizeBlogImagesInHtml } from "@/lib/blog-images";
 import {
   getHubSpotBlogMetadata,
   getHubSpotBlogPostBySlug,
@@ -37,9 +38,12 @@ function mapHubSpotToPublic(post: BlogPost): PublicBlogPost {
     title: post.title,
     slug,
     excerpt: stripHtml(post.excerpt || ""),
-    content: post.content || "",
-    featuredImageUrl: post.featuredImage,
-    featuredImage: post.featuredImage,
+    // Les visuels sont servis depuis `public/` : on réécrit ici, seul point de
+    // passage de tous les articles, pour couvrir aussi bien la page article que
+    // la liste, les catégories, le sitemap, les métadonnées OG et le JSON-LD.
+    content: localizeBlogImagesInHtml(post.content || ""),
+    featuredImageUrl: localizeBlogImage(post.featuredImage),
+    featuredImage: localizeBlogImage(post.featuredImage),
     author: post.author || "",
     authorId: post.authorId || "",
     publishDate: post.publishDate || "",
