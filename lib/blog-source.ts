@@ -12,6 +12,7 @@ import {
   isHubSpotAccessTokenConfigured,
   searchHubSpotBlogPosts,
 } from "@/lib/hubspot-blog";
+import { stripHtml } from "@/lib/blog-utils";
 
 export function isBlogSourceConfigured(): boolean {
   return isHubSpotAccessTokenConfigured();
@@ -35,7 +36,7 @@ function mapHubSpotToPublic(post: BlogPost): PublicBlogPost {
     id: post.id,
     title: post.title,
     slug,
-    excerpt: post.excerpt || "",
+    excerpt: stripHtml(post.excerpt || ""),
     content: post.content || "",
     featuredImageUrl: post.featuredImage,
     featuredImage: post.featuredImage,

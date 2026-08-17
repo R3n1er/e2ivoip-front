@@ -4,6 +4,7 @@ import {
   getBlogPosts,
   isBlogSourceConfigured,
 } from "@/lib/blog-source";
+import { stripHtml } from "@/lib/blog-utils";
 
 export async function GET(request: Request) {
   try {
@@ -31,7 +32,7 @@ export async function GET(request: Request) {
     const mapped = posts.map((p) => ({
       id: p.id,
       title: p.title,
-      excerpt: p.excerpt || "",
+      excerpt: stripHtml(p.excerpt || ""),
       content: p.content || "",
       publishDate: p.publishDate || "",
       modifiedDate: p.modifiedDate || p.publishDate || "",
