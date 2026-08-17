@@ -101,4 +101,32 @@ describe("StudioDevisPage", () => {
       })
     );
   });
+
+  // Régression : « Occupation » et « Additionnel » n'ont aucune démo associée.
+  // L'étape 2 masquait alors la liste des modèles tout en exigeant d'en
+  // choisir un, ce qui bloquait le visiteur sans issue possible.
+  it("permet de continuer avec un texte libre sur une catégorie sans modèle", () => {
+    render(<StudioDevisPage />);
+    fireEvent.click(screen.getByRole("button", { name: /Choisir Occupation/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Suivant/i }));
+
+    expect(
+      screen.getByText(/Aucun modèle enregistré pour cette catégorie/i)
+    ).toBeInTheDocument();
+
+    // Sans texte, l'erreur ne doit plus proposer de sélectionner un modèle.
+    fireEvent.click(screen.getByRole("button", { name: /Suivant/i }));
+    expect(
+      screen.getByText(/Rédigez votre texte pour continuer/i)
+    ).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText(/Votre texte/i), {
+      target: { value: "Toutes nos lignes sont occupées." },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Suivant/i }));
+
+    expect(
+      screen.getByRole("heading", { name: /Personnalisez votre message/i })
+    ).toBeInTheDocument();
+  });
 });

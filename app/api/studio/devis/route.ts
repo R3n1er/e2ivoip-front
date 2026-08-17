@@ -14,6 +14,54 @@ function requireEnv(name: string): string {
   return v;
 }
 
+/**
+ * Longueurs maximales acceptées par champ. Le corps de requête n'est pas
+ * validé à l'exécution (le cast TypeScript ne protège de rien) : sans
+ * plafond, un POST forgé peut pousser plusieurs Mo vers Resend et HubSpot.
+ */
+const FIELD_LIMITS = {
+  firstName: 100,
+  lastName: 100,
+  email: 254, // RFC 5321
+  phone: 30,
+  company: 200,
+  category: 50,
+  demoId: 100,
+  customScript: 5000,
+  finalScript: 5000,
+  tone: 50,
+  voice: 50,
+  language: 50,
+  music: 50,
+  notes: 2000,
+  pageUrl: 500,
+} as const;
+
+/** Normalise une valeur non fiable en chaîne bornée. */
+function sanitize(value: unknown, max: number): string {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, max);
+}
+
+/**
+ * Échappe les métacaractères HTML avant interpolation dans l'email.
+ * Sans cela, un champ du formulaire peut injecter un lien de phishing dans
+ * un message envoyé depuis notre domaine authentifié SPF/DKIM.
+ */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/** Échappe puis convertit les retours ligne : l'ordre est important. */
+function escapeHtmlMultiline(value: string): string {
+  return escapeHtml(value).replace(/\n/g, "<br />");
+}
+
 function normalizePhone(phone?: string): string {
   if (!phone) return "";
   return phone.replace(/[^\d+]/g, "");
@@ -101,8 +149,18 @@ async function createNoteForContact(
   return note;
 }
 
+/**
+ * Validation volontairement stricte : le jeu de caractères est restreint à
+ * ce qu'on attend d'une adresse professionnelle, ce qui exclut d'office les
+ * métacaractères utilisables pour forger un en-tête (`<`, `>`, `"`, `,`, `:`).
+ */
 function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
+}
+
+/** Un en-tête d'email tient sur une ligne : tout CR/LF est retiré. */
+function sanitizeHeader(value: string): string {
+  return value.replace(/[\r\n]+/g, " ").trim();
 }
 
 export interface StudioDevisPayload {
@@ -137,26 +195,27 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = (await request.json()) as StudioDevisPayload;
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      company,
-      category,
-      demoId,
-      customScript,
-      finalScript,
-      tone,
-      voice,
-      language,
-      music,
-      notes,
-      pageUrl,
-    } = body;
+    const body = (await request.json()) as Partial<StudioDevisPayload>;
 
-    if (!firstName?.trim() || !lastName?.trim() || !email?.trim()) {
+    // Toute valeur issue du client est bornée et ramenée à une chaîne avant
+    // d'atteindre Resend ou HubSpot.
+    const firstName = sanitize(body.firstName, FIELD_LIMITS.firstName);
+    const lastName = sanitize(body.lastName, FIELD_LIMITS.lastName);
+    const email = sanitize(body.email, FIELD_LIMITS.email);
+    const phone = sanitize(body.phone, FIELD_LIMITS.phone);
+    const company = sanitize(body.company, FIELD_LIMITS.company);
+    const category = sanitize(body.category, FIELD_LIMITS.category);
+    const demoId = sanitize(body.demoId, FIELD_LIMITS.demoId);
+    const customScript = sanitize(body.customScript, FIELD_LIMITS.customScript);
+    const finalScript = sanitize(body.finalScript, FIELD_LIMITS.finalScript);
+    const tone = sanitize(body.tone, FIELD_LIMITS.tone);
+    const voice = sanitize(body.voice, FIELD_LIMITS.voice);
+    const language = sanitize(body.language, FIELD_LIMITS.language);
+    const music = sanitize(body.music, FIELD_LIMITS.music);
+    const notes = sanitize(body.notes, FIELD_LIMITS.notes);
+    const pageUrl = sanitize(body.pageUrl, FIELD_LIMITS.pageUrl);
+
+    if (!firstName || !lastName || !email) {
       return NextResponse.json(
         { error: "Prénom, nom et email sont requis." },
         { status: 400 }
@@ -170,7 +229,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!finalScript?.trim()) {
+    if (!finalScript) {
       return NextResponse.json(
         { error: "Le message final est requis." },
         { status: 400 }
@@ -185,29 +244,33 @@ export async function POST(request: Request) {
     const demo = demoId ? getDemoById(demoId) : undefined;
     const categoryLabel = demo?.category ?? category;
 
-    const emailSubject = `[Studio Voix Humaines] Nouvelle demande de ${company || email}`;
+    const emailSubject = sanitizeHeader(
+      `[Studio Voix Humaines] Nouvelle demande de ${company || email}`
+    );
+    // `demo.title` provient de notre catalogue, mais on l'échappe comme le
+    // reste : le jour où le catalogue devient éditable, la protection tient.
     const emailHtml = `
       <h2>Nouvelle demande de devis — Studio Voix Humaines</h2>
-      <p><strong>Contact :</strong> ${firstName} ${lastName}</p>
-      <p><strong>Email :</strong> ${email}</p>
-      <p><strong>Téléphone :</strong> ${phone || "non renseigné"}</p>
-      <p><strong>Entreprise :</strong> ${company || "non renseignée"}</p>
+      <p><strong>Contact :</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
+      <p><strong>Email :</strong> ${escapeHtml(email)}</p>
+      <p><strong>Téléphone :</strong> ${escapeHtml(phone) || "non renseigné"}</p>
+      <p><strong>Entreprise :</strong> ${escapeHtml(company) || "non renseignée"}</p>
       <hr />
-      <p><strong>Type de message :</strong> ${categoryLabel}</p>
-      <p><strong>Ton :</strong> ${tone || "standard"}</p>
-      <p><strong>Voix :</strong> ${voice || "non précisée"}</p>
-      <p><strong>Langue :</strong> ${language || "français"}</p>
-      <p><strong>Musique :</strong> ${music || "non précisée"}</p>
-      <p><strong>Modèle choisi :</strong> ${demo?.title || "texte personnalisé"}</p>
+      <p><strong>Type de message :</strong> ${escapeHtml(categoryLabel)}</p>
+      <p><strong>Ton :</strong> ${escapeHtml(tone) || "standard"}</p>
+      <p><strong>Voix :</strong> ${escapeHtml(voice) || "non précisée"}</p>
+      <p><strong>Langue :</strong> ${escapeHtml(language) || "français"}</p>
+      <p><strong>Musique :</strong> ${escapeHtml(music) || "non précisée"}</p>
+      <p><strong>Modèle choisi :</strong> ${escapeHtml(demo?.title || "texte personnalisé")}</p>
       <hr />
       <h3>Message final</h3>
       <blockquote style="border-left:4px solid #ccc;padding-left:12px;font-style:italic;">
-        ${finalScript.replace(/\n/g, "<br />")}
+        ${escapeHtmlMultiline(finalScript)}
       </blockquote>
-      ${customScript ? `<h3>Texte libre initial</h3><p>${customScript.replace(/\n/g, "<br />")}</p>` : ""}
-      ${notes ? `<h3>Notes complémentaires</h3><p>${notes.replace(/\n/g, "<br />")}</p>` : ""}
+      ${customScript ? `<h3>Texte libre initial</h3><p>${escapeHtmlMultiline(customScript)}</p>` : ""}
+      ${notes ? `<h3>Notes complémentaires</h3><p>${escapeHtmlMultiline(notes)}</p>` : ""}
       <hr />
-      <p><small>Source : ${pageUrl || "studio-attente/devis"}</small></p>
+      <p><small>Source : ${escapeHtml(pageUrl || "studio-attente/devis")}</small></p>
     `;
     const emailText = `
 Nouvelle demande de devis — Studio Voix Humaines
@@ -232,7 +295,9 @@ ${customScript ? `Texte libre initial :\n${customScript}\n` : ""}${notes ? `Note
 Source : ${pageUrl || "studio-attente/devis"}
     `.trim();
 
-    const [emailResult] = await Promise.allSettled([
+    // L'email prime : c'est lui qui déclenche le traitement commercial.
+    // HubSpot est best-effort, mais son échec doit rester visible en logs.
+    const [emailResult, hubspotResult] = await Promise.allSettled([
       resend.emails.send({
         from,
         to,
@@ -273,6 +338,12 @@ Source : ${pageUrl || "studio-attente/devis"}
       })(),
     ]);
 
+    if (hubspotResult.status === "rejected") {
+      // Le lead n'est pas perdu (l'email part quand même), mais l'absence de
+      // synchro CRM ne doit pas passer inaperçue.
+      console.error("[studio/devis] HubSpot sync failed:", hubspotResult.reason);
+    }
+
     if (emailResult.status === "rejected") {
       console.error("[studio/devis] Resend failed:", emailResult.reason);
       return NextResponse.json(
@@ -282,8 +353,8 @@ Source : ${pageUrl || "studio-attente/devis"}
     }
 
     return NextResponse.json({ ok: true });
-  } catch (e: any) {
-    console.error("[studio/devis]", e?.message || e);
+  } catch (e: unknown) {
+    console.error("[studio/devis]", e instanceof Error ? e.message : e);
     return NextResponse.json(
       { error: "Une erreur est survenue. Veuillez réessayer." },
       { status: 500 }

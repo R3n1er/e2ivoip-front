@@ -157,7 +157,13 @@ function StudioDevisForm() {
   function goNext() {
     if (!validateStep(step)) return;
     if (step === 2 && !customScript.trim() && !demoId) {
-      setErrors({ script: "Sélectionnez un modèle ou rédigez votre texte." });
+      // Certaines catégories n'ont pas encore de modèle enregistré : le texte
+      // libre est alors la seule voie, le message doit le dire.
+      setErrors({
+        script: filteredDemos.length
+          ? "Sélectionnez un modèle ou rédigez votre texte."
+          : "Rédigez votre texte pour continuer.",
+      });
       return;
     }
     setStep((s) => Math.min(s + 1, 5));
@@ -328,8 +334,18 @@ function StudioDevisForm() {
               <div className="space-y-6">
                 <h2 className="text-lg font-bold text-gray-dark flex items-center gap-2">
                   <Microphone className="text-red-primary" size={24} />
-                  Choisissez un modèle ou rédigez votre texte
+                  {filteredDemos.length > 0
+                    ? "Choisissez un modèle ou rédigez votre texte"
+                    : "Rédigez votre texte"}
                 </h2>
+
+                {filteredDemos.length === 0 && (
+                  <p className="text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                    Aucun modèle enregistré pour cette catégorie&nbsp;: rédigez
+                    votre texte ci-dessous, notre studio vous accompagnera dans
+                    sa mise en forme.
+                  </p>
+                )}
 
                 {filteredDemos.length > 0 && (
                   <div className="space-y-3">
@@ -384,7 +400,9 @@ function StudioDevisForm() {
 
                 <div className="space-y-2">
                   <label htmlFor="custom-script" className="block text-sm font-medium text-gray-700">
-                    Ou rédigez votre propre texte
+                    {filteredDemos.length > 0
+                      ? "Ou rédigez votre propre texte"
+                      : "Votre texte *"}
                   </label>
                   <Textarea
                     id="custom-script"
