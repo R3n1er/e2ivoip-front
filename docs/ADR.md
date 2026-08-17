@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Fix pré-chat : note HubSpot et association contact
+
+- **Contexte** : après avoir rempli le formulaire du pré-chat, le visiteur recevait l'erreur « Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez. ». L'API `/api/hubspot/ingest-conversation` retournait une erreur 500. Les logs serveur montraient `HubSpot note creation failed: 400` puis, après correction du champ `hs_note_title` manquant, `Association note-contact failed: 400`.
+- **Décision** :
+  - Supprimer la propriété `hs_note_title` inexistante sur l'objet `notes` du portail 26878201. Le titre est désormais intégré dans `hs_note_body` sous forme de texte en gras Markdown (`**Titre**\n\nCorps`).
+  - Corriger le payload de l'association note/contact : l'endpoint `PUT /crm/v4/objects/notes/{id}/associations/contacts/{contactId}` attend un **tableau** d'objets `[{ associationCategory, associationTypeId }]`, pas un objet unique.
+  - Conserver la structure existante de la route (identification `_hsq`, ouverture du widget, gestion des erreurs) ; seules les deux requêtes CRM erronées sont corrigées.
+- **Conséquences** : le pré-chat crée/met à jour le contact, attache la note, puis ouvre le widget sans erreur serveur. Le visiteur n'est plus invité à vérifier sa connexion pour un problème interne.
+- **Tests associés** : test manuel de la route en local (`curl` → 200) ; `npm test` ✅ (329/329) ; `npx playwright test` ✅ (93/93).
+
 ### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
 
 - **Contexte** : la page Devis n'exposait que quatre demandes, via des liens `urlr.me` opaques, alors que huit formulaires Tally existent dans l'espace E2I VoIP (Yeastar, Aircall, 3CX PRO, 3CX SMB, agents IA…). La résolution des raccourcis a par ailleurs révélé que « Devis VoIP 3CX » pointait vers un **Microsoft Forms**, vestige de l'ancien site, alors que deux formulaires Tally 3CX dédiés existent.

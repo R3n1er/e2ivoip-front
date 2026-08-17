@@ -70,8 +70,7 @@ async function createNoteForContact(
     },
     body: JSON.stringify({
       properties: {
-        hs_note_title: title,
-        hs_note_body: body,
+        hs_note_body: `**${title}**\n\n${body}`,
         hs_timestamp: new Date().toISOString(),
       },
     }),
@@ -88,10 +87,12 @@ async function createNoteForContact(
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        associationCategory: "HUBSPOT_DEFINED",
-        associationTypeId: 202,
-      }),
+      body: JSON.stringify([
+        {
+          associationCategory: "HUBSPOT_DEFINED",
+          associationTypeId: 202,
+        },
+      ]),
     }
   );
   if (!assocRes.ok)
