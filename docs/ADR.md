@@ -10,6 +10,13 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Favicon blanc et image de partage sociale dédiée
+
+- **Contexte** : le favicon livré par l'App Router utilisait un carré bleu nuit, alors que le logo de référence dans `public/Logo-E2I-solo-favicon.png` doit être présenté sur fond blanc. La page d'accueil ne déclarait par ailleurs aucune image Open Graph : WhatsApp sélectionnait l'icône carrée comme image de secours, avec un recadrage peu lisible.
+- **Décision** : générer depuis l'unique logo source toutes les variantes favicon, Apple et PWA sur un fond blanc explicite, via `npm run assets:brand`. Ajouter une carte sociale dédiée de 1200×630 px (`public/images/e2i-voip-partage.png`) et la déclarer dans les métadonnées Open Graph et Twitter du layout racine. La composition garde le logo dans la zone carrée centrale afin qu'un recadrage WhatsApp ne coupe pas la marque.
+- **Conséquences** : les onglets, raccourcis mobiles et icônes installées utilisent la même présentation blanche. WhatsApp, Facebook, LinkedIn et X disposent d'un visuel explicite au bon ratio au lieu de choisir le favicon. Les plateformes sociales peuvent conserver leur ancien aperçu en cache jusqu'à une nouvelle exploration de l'URL.
+- **Tests associés** : `tests/brand-assets.test.ts` contrôle dimensions, fond blanc et identité des fichiers ICO ; `tests/playwright/metadata-sociale.spec.ts` contrôle les balises `og:image`, `og:image:width`, `og:image:height` et `twitter:image`. `npm run validate` ✅ — Jest 374/374, Playwright 103/103, audit 0 vulnérabilité, build Next.js ✅ ; aucun warning d'hydratation CSS.
+
 ### 2026-08-17 — Images du blog rapatriées dans `public/`
 
 - **Contexte** : la suppression du domaine `e2i-voip.com` dans HubSpot faisait craindre la perte des images d'articles et des signatures e-mail. Vérification faite, **aucun impact** : HubSpot sépare les *domaines d'hébergement* (qui servent les pages) du *CDN fichiers* `*.hubspotusercontent-eu1.net` (qui sert les images) ; les deux CDN répondaient en 200 et `next.config.js` déclarait déjà les `remotePatterns` correspondants. L'analyse a en revanche confirmé une dépendance réelle : tant que les visuels vivent sur le portail, une résiliation d'abonnement ou une suppression dans le File Manager casse l'ensemble du blog. Deux mécanismes de rendu coexistaient par ailleurs — les images « à la une » via `next/image`, et 3 images insérées dans le corps des articles en `<img>` brut, invisibles à `next/image` comme aux `remotePatterns`.

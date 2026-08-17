@@ -140,7 +140,7 @@ export function Footer() {
                   href="https://espace-client.e2i-voip.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-1 text-red-primary font-black hover:text-red-600 transition-colors"
+                  className="inline-block py-1 text-red-primary font-black hover:text-red-700 transition-colors"
                 >
                   Espace client
                 </a>

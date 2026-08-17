@@ -55,12 +55,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: SITE_URL,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: "/images/e2i-voip-partage.png",
+        width: 1200,
+        height: 630,
+        alt: "E2I VoIP — Opérateur de services télécom, spécialiste des DOM",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
     description:
       "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
+    images: ["/images/e2i-voip-partage.png"],
   },
   robots: {
     index: true,

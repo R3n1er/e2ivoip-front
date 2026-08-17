@@ -134,7 +134,7 @@ export function HeaderSimple() {
                         <div key={subItem.name} className="relative group/sub">
                           <Link
                             href={subItem.href ?? "#"}
-                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
+                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-red-primary/5 hover:text-red-primary transition-colors duration-200"
                           >
                             {subItem.name}
                             {subItem.submenu && (
@@ -150,7 +150,7 @@ export function HeaderSimple() {
                                   <Link
                                     key={leaf.name}
                                     href={leaf.href ?? "#"}
-                                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-primary transition-colors duration-200"
+                                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-primary/5 hover:text-red-primary transition-colors duration-200"
                                   >
                                     {leaf.name}
                                   </Link>
