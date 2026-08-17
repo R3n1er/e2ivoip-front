@@ -21,6 +21,7 @@
     "validate": "npm run lint && npm run type-check && npm run test:all && npm run security:audit && npm run build",
     "predeploy": "npm run validate",
     "analyze": "ANALYZE=true npm run build",
+    "assets:brand": "node scripts/generate-brand-assets.mjs",
     "extract:blog": "cd scripts && npm run extract",
     "install:all": "npm install && cd scripts && npm install"
   },
