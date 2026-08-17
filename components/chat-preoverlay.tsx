@@ -290,7 +290,11 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
       setErrors({});
       setTouched({});
     } catch (error) {
-      console.error("Erreur lors de la soumission:", error);
+      // Diagnostic réservé au développement : en production le détail n'apporte
+      // rien au visiteur et expose le fonctionnement interne dans la console.
+      if (process.env.NODE_ENV !== "production") {
+        console.error("Erreur lors de la soumission:", error);
+      }
       setFormError(
         "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
       );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Phone } from '@/lib/icons';
 
 interface HubSpotCalendarProps {
@@ -37,7 +37,10 @@ declare global {
 }
 
 export function HubSpotCalendar({
-  meetingUrl = "https://www.e2i-voip.com/meetings/alban-renier",
+  // Domaine HubSpot canonique (portail EU1). NE PAS pointer vers
+  // www.e2i-voip.com/meetings/* : ce chemin n'existe que tant que le site est
+  // servi par HubSpot CMS et disparaît à la bascule sur Next.js.
+  meetingUrl = "https://meetings-eu1.hubspot.com/alban-renier",
   title = "Planifiez votre démonstration gratuite",
   description = "Choisissez le créneau qui vous convient le mieux",
   height = 600,
@@ -46,45 +49,40 @@ export function HubSpotCalendar({
 }: HubSpotCalendarProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
+  const [failed, setFailed] = useState(false);
 
+  // `data-src` doit être posé AVANT l'exécution du script : celui-ci scanne les
+  // conteneurs `.meetings-iframe-container` au chargement et lit cet attribut.
   useEffect(() => {
-    // Ne charger le script qu'une seule fois
-    if (scriptLoadedRef.current) return;
-
-    const loadHubSpotScript = () => {
-      // Vérifier si le script est déjà chargé
-      if (document.querySelector('script[src*="MeetingsEmbedCode.js"]')) {
-        scriptLoadedRef.current = true;
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
-      script.async = true;
-      
-      script.onload = () => {
-        scriptLoadedRef.current = true;
-        // Le script se charge automatiquement et détecte les conteneurs
-      };
-      
-      script.onerror = () => {
-        console.error("Erreur lors du chargement du script HubSpot Calendar");
-      };
-
-      document.body.appendChild(script);
-    };
-
-    loadHubSpotScript();
-  }, []);
-
-  useEffect(() => {
-    // Configurer le conteneur après le montage du composant
     if (containerRef.current && meetingUrl) {
       const embedUrl = `${meetingUrl}${meetingUrl.includes('?') ? '&' : '?'}embed=true`;
       containerRef.current.setAttribute('data-src', embedUrl);
     }
   }, [meetingUrl]);
+
+  useEffect(() => {
+    if (scriptLoadedRef.current) return;
+
+    if (document.querySelector('script[src*="MeetingsEmbedCode.js"]')) {
+      scriptLoadedRef.current = true;
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+    script.async = true;
+
+    script.onload = () => {
+      scriptLoadedRef.current = true;
+    };
+
+    // Sans ce repli, l'échec du script (bloqueur, coupure) laissait le visiteur
+    // sur un spinner infini, sans autre moyen de prendre rendez-vous.
+    script.onerror = () => setFailed(true);
+
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div className={`hubspot-calendar-wrapper ${className}`}>
@@ -106,18 +104,47 @@ export function HubSpotCalendar({
 
       {/* Conteneur du calendrier HubSpot */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div 
+        <div
           ref={containerRef}
           className="meetings-iframe-container"
           style={{ minHeight: `${height}px` }}
+          data-testid="hubspot-calendar-container"
         >
-          {/* Placeholder pendant le chargement */}
-          <div className="flex items-center justify-center h-full bg-gray-50">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
-              <p className="text-gray-600">Chargement du calendrier...</p>
+          {failed ? (
+            <div
+              className="flex h-full items-center justify-center bg-gray-50 p-6"
+              data-testid="hubspot-calendar-fallback"
+            >
+              <div className="text-center">
+                <p className="mb-4 text-gray-700">
+                  Le calendrier de réservation n&apos;a pas pu se charger.
+                </p>
+                <a
+                  href={meetingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-red-primary px-6 py-3 font-bold text-white transition-colors hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                >
+                  Ouvrir le calendrier dans un nouvel onglet
+                </a>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className="flex h-full items-center justify-center bg-gray-50"
+              data-testid="hubspot-calendar-loading"
+            >
+              <div className="text-center">
+                <div
+                  className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-red-primary motion-reduce:animate-none"
+                  aria-hidden="true"
+                ></div>
+                <p className="text-gray-600" role="status">
+                  Chargement du calendrier…
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

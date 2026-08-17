@@ -16,7 +16,7 @@ export function CTACalendarSection() {
         </div>
 
         <HubSpotCalendar
-          meetingUrl="https://www.e2i-voip.com/meetings/alban-renier"
+          meetingUrl="https://meetings-eu1.hubspot.com/alban-renier"
           title=""
           description=""
           height={650}

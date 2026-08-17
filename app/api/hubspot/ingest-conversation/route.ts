@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
+import { checkRateLimit, getClientIdentifier } from "@/lib/api/rate-limit";
 
 const HS_BASE = "https://api.hubapi.com";
+
+// Route publique qui écrit dans le CRM : on plafonne les créations de contacts
+// par appelant. 5 demandes en 10 minutes couvrent largement un usage légitime
+// (un visiteur ouvre le chat une fois, éventuellement après un échec réseau).
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 function requireEnv(name: string): string {
   const v = process.env[name];
@@ -94,6 +101,18 @@ async function createNoteForContact(
 
 export async function POST(request: Request) {
   try {
+    const { allowed, retryAfter } = checkRateLimit(
+      getClientIdentifier(request),
+      RATE_LIMIT_MAX,
+      RATE_LIMIT_WINDOW_MS
+    );
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Trop de demandes. Réessayez dans quelques minutes." },
+        { status: 429, headers: { "Retry-After": String(retryAfter) } }
+      );
+    }
+
     const token = requireEnv("HUBSPOT_ACCESS_TOKEN");
     const {
       firstName,
@@ -137,9 +156,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, contactId: contact.id });
   } catch (e: any) {
-    return NextResponse.json(
-      { error: e?.message || "Erreur serveur" },
-      { status: 500 }
-    );
+    // Le détail reste côté serveur : il expose le statut HubSpot et le nom des
+    // variables d'environnement. Le client n'affiche qu'un message générique.
+    console.error("[ingest-conversation]", e?.message || e);
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
 }

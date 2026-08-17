@@ -10,6 +10,18 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-16 — Contrôles avant mise en ligne : calendrier, devis, SEO, durcissement API
+
+- **Contexte** : préparation de la bascule en production. La revue des parcours de contact a révélé trois défauts invisibles en développement, parce que le site de production tourne encore sur HubSpot CMS et masquait le problème.
+- **Décision** :
+  - **Calendrier de prise de RDV (bloquant)** : `HubSpotCalendar` pointait sur `www.e2i-voip.com/meetings/alban-renier`. Ce chemin n'existe que tant que HubSpot CMS sert le domaine et serait tombé en 404 à la bascule. Bascule sur le domaine canonique du portail EU1 : `meetings-eu1.hubspot.com/alban-renier`. Ajout d'un repli visible (lien vers le calendrier en nouvel onglet) là où un échec de script laissait un spinner infini, et pose de `data-src` avant l'injection du script, celui-ci lisant l'attribut au chargement.
+  - **Formulaires Tally fantômes** : `components/tally-tracking.tsx` exposait quatre URLs de démonstration (`tally.so/r/trunk-sip-devis`, …), toutes en 404, marquées « À remplacer par l'URL réelle ». Le composant n'était importé par aucune page — seul un mock de test le référençait. Supprimé, avec `devis-animations.tsx` et `devis-animations-optimized.tsx`, également orphelins. La page Devis utilise des liens `urlr.me` (4 × 200 vérifiés) et le formulaire HubSpot.
+  - **Durcissement de `/api/hubspot/ingest-conversation`** : la route renvoyait `e.message` au client, exposant le statut HubSpot et le nom des variables d'environnement ; le détail passe désormais en log serveur. Ajout d'une limitation de débit en mémoire (`lib/api/rate-limit.ts`, 5 requêtes / 10 min par IP, réponse 429 + `Retry-After`) sur cette route publique qui écrit dans le CRM. Portée assumée : le compteur est par instance de fonction, efficace contre un script naïf, pas contre une attaque distribuée — un store partagé ou Vercel BotID serait nécessaire pour cela.
+  - **`console.error` du pré-chat** conditionné à `NODE_ENV !== "production"`.
+  - **SEO** : titre de `/qui-sommes-nous` ramené de 75 à 57 caractères (Google tronque au-delà de ~70).
+- **Conséquences** : les trois parcours de conversion (chat, devis, prise de RDV) sont couverts par des tests qui échouent si une URL redevient fictive. Le site est vérifié prêt pour la bascule : 29/29 URLs de l'ancien site préservées (`scripts/verify-seo-migration.mjs`).
+- **Tests associés** : `hubspot-calendar.spec.ts` (4), `devis-contact-flows.spec.ts` (5), `seo-preflight.spec.ts` (13), `tests/lib/rate-limit.test.ts` (7). `npm run type-check` ✅ ; Jest ✅ (326/326) ; Playwright ✅ (92/92) ; build ✅ ; migration SEO ✅ (29/29).
+
 ### 2026-08-16 — Autorisation des images du blog HubSpot
 
 - **Contexte** : l'API CMS HubSpot et `/api/blog/list` renvoyaient correctement les 13 articles, mais `/blog` tombait dans la page d'erreur Next.js. Les images récentes sont servies depuis le domaine propre au portail `26878201.fs1.hubspotusercontent-eu1.net`, absent de `images.remotePatterns`.

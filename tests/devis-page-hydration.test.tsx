@@ -3,22 +3,6 @@
 import { render, screen } from "@testing-library/react";
 import DevisEnLignePage from "@/app/devis-en-ligne/page";
 
-// Mock des composants externes
-jest.mock("@/components/tally-tracking", () => ({
-  TrunkSIPTallyLink: ({ children }: any) => (
-    <div data-testid="trunk-sip-link">{children}</div>
-  ),
-  PortabiliteTallyLink: ({ children }: any) => (
-    <div data-testid="portabilite-link">{children}</div>
-  ),
-  VoIP3CXTallyLink: ({ children }: any) => (
-    <div data-testid="voip-3cx-link">{children}</div>
-  ),
-  ProjetPBXTallyLink: ({ children }: any) => (
-    <div data-testid="projet-pbx-link">{children}</div>
-  ),
-}));
-
 // Mock du hook useHubSpotFormsScript
 jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
   useHubSpotFormsScript: () => ({
@@ -32,24 +16,6 @@ jest.mock("@/lib/hooks/hubspot/use-hubspot-script", () => ({
 jest.mock("@/components/hubspot", () => ({
   FullContactForm: () => (
     <div data-testid="full-contact-form">Formulaire HubSpot</div>
-  ),
-}));
-
-jest.mock("@/components/devis-animations", () => ({
-  AnimatedSection: ({ children, className }: any) => (
-    <div className={className} data-testid="animated-section">
-      {children}
-    </div>
-  ),
-  AnimatedCard: ({ children, className, delay }: any) => (
-    <div className={className} data-testid="animated-card" data-delay={delay}>
-      {children}
-    </div>
-  ),
-  AnimatedGrid: ({ children, className }: any) => (
-    <div className={className} data-testid="animated-grid">
-      {children}
-    </div>
   ),
 }));
 
@@ -84,6 +50,24 @@ describe("Page Devis En Ligne - Test d'hydratation", () => {
 
     const devisLinks = screen.getAllByRole("link", { name: /Devis/ });
     expect(devisLinks).toHaveLength(4);
+  });
+
+  it("pointe chaque devis vers une URL de destination réelle", () => {
+    render(<DevisEnLignePage />);
+
+    const devisLinks = screen.getAllByRole("link", { name: /Devis/ });
+
+    devisLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      expect(href).toMatch(/^https:\/\//);
+      // Garde-fou : des URLs de démonstration (« …-devis ») ont déjà été
+      // livrées en 404. Une destination doit être un identifiant réel.
+      expect(href).not.toMatch(/tally\.so\/r\/[a-z-]+-devis$/);
+    });
+
+    // Les quatre destinations doivent être distinctes.
+    const hrefs = devisLinks.map((link) => link.getAttribute("href"));
+    expect(new Set(hrefs).size).toBe(4);
   });
 
   it("affiche la section FAQ", () => {
