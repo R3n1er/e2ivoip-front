@@ -29,8 +29,15 @@ interface HubSpotAPI {
   [key: string]: unknown;
 }
 
+interface HubSpotConversationsWidgetLoadOptions {
+  /** Ouvre la fenêtre de conversation en grand, pas seulement le launcher. */
+  widgetOpen?: boolean;
+  /** `false` force l'affichage flottant plutôt qu'un embed dans la page. */
+  inline?: boolean;
+}
+
 interface HubSpotConversationsWidget {
-  load(options?: { widgetOpen?: boolean }): void;
+  load(options?: HubSpotConversationsWidgetLoadOptions): void;
   open(): void;
   close?(): void;
   remove?(): void;

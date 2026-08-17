@@ -109,10 +109,13 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     );
     expect(identifyIndex).toBeGreaterThanOrEqual(0);
     expect(pageViewIndex).toBeGreaterThan(identifyIndex);
-    expect(hubspotState.widgetCalls).toContainEqual([
-      "load",
-      { widgetOpen: true },
-    ]);
+    // Ce qui compte est que le widget soit chargé en demandant son ouverture ;
+    // les autres options de `load` (ex. `inline`) peuvent évoluer.
+    const loadCall = hubspotState.widgetCalls.find(
+      (call: unknown[]) => call[0] === "load"
+    );
+    expect(loadCall).toBeDefined();
+    expect(loadCall[1]).toMatchObject({ widgetOpen: true });
   });
 
   test("annonce les champs obligatoires et place le focus sur la première erreur", async ({
