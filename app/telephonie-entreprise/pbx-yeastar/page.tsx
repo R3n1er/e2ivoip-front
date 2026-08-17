@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Calculator, Phone, Chat, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaire Tally dédié à l'offre Yeastar (tunnel devis, flow n8n).
-const TALLY_YEASTAR_URL = "https://tally.so/r/ODVoz8";
+const TALLY_YEASTAR_URL = TALLY_FORMS.YEASTAR;
 
 export const metadata: Metadata = {
   title: "Yeastar P-Series - PBX cloud et on-premise",

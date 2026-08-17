@@ -16,6 +16,7 @@ import {
   PlugCharging,
   Medal,
 } from "@/lib/icons";
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // ⚠️ ATTRIBUTION COMMERCIALE — voir docs/CHARTE_EDITORIALE_AIRCALL.md §8
 // Remplacer par le lien PartnerStack d'E2I (https://aircall.partnerstack.com/?fpr=ID-E2I)
@@ -214,7 +215,7 @@ export default function AircallPage() {
               </div>
 
               <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
-                <CTAButton href="https://tally.so/r/kdr0do" icon="Phone" external>
+                <CTAButton href={TALLY_FORMS.AIRCALL} icon="Phone" external>
                   Être rappelé
                 </CTAButton>
                 <CTAButtonMarine href="/contact" icon="Phone">
@@ -536,7 +537,7 @@ export default function AircallPage() {
               &amp; France
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row">
-              <CTAButton href="https://tally.so/r/kdr0do" icon="Phone" external>
+              <CTAButton href={TALLY_FORMS.AIRCALL} icon="Phone" external>
                 Être rappelé
               </CTAButton>
               <CTAButtonMarine href="/contact" icon="Phone">

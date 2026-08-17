@@ -10,6 +10,17 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
+
+- **Contexte** : la page Devis n'exposait que quatre demandes, via des liens `urlr.me` opaques, alors que huit formulaires Tally existent dans l'espace E2I VoIP (Yeastar, Aircall, 3CX PRO, 3CX SMB, agents IA…). La résolution des raccourcis a par ailleurs révélé que « Devis VoIP 3CX » pointait vers un **Microsoft Forms**, vestige de l'ancien site, alors que deux formulaires Tally 3CX dédiés existent.
+- **Décision** :
+  - Créer `lib/constants/tally.ts` comme source de vérité unique des huit identifiants. Les URLs étaient jusqu'ici dupliquées en constantes locales dans six fichiers — `EkALv4` et `44Gprk` apparaissaient chacun deux fois, une divergence n'attendait qu'une mise à jour partielle.
+  - Remplacer les liens `urlr.me` par les URLs Tally directes : un raccourcisseur tiers ajoute une redirection, une dépendance externe et masque la destination à la revue.
+  - Structurer la page en trois familles d'offre (Trunk SIP & portabilité · Standard 3CX · Équipements & intégration) plutôt qu'en liste plate : le visiteur sait quel projet il porte, pas quel formulaire remplir. Chaque carte porte un intitulé et une ligne de description.
+  - Identifiants récupérés depuis les raccourcis : `mDY1bl` (Trunk SIP), `w5r7rM` (portabilité), `mJgNo7` (intégration PBX). Les huit vérifiés en 200.
+- **Conséquences** : le Microsoft Forms résiduel disparaît du parcours. Toute évolution d'un formulaire se fait en un seul point. La grille passe en `max-w-6xl` pour accueillir trois colonnes.
+- **Tests associés** : `tests/lib/tally-urls.test.ts` (3 — format, absence de placeholder descriptif, unicité) ; `devis-page-hydration.test.tsx` étendu aux 8 liens ; `devis-contact-flows.spec.ts` vérifie les 8 destinations distinctes, `target="_blank"` et `rel="noopener"`. `npm run validate` ✅ — Jest 329/329, Playwright 93/93, build ✅.
+
 ### 2026-08-16 — Contrôles avant mise en ligne : calendrier, devis, SEO, durcissement API
 
 - **Contexte** : préparation de la bascule en production. La revue des parcours de contact a révélé trois défauts invisibles en développement, parce que le site de production tourne encore sur HubSpot CMS et masquait le problème.

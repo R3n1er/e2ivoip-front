@@ -2,10 +2,11 @@
 
 import { CTAButton } from "@/components/ui/cta-button";
 import { TreeStructure, MapPin, Rocket } from '@/lib/icons';
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaire Tally « plus d'informations agents IA » → alimente un flow n8n.
 // Source de vérité unique, réutilisée par les CTA des pages agents IA.
-export const TALLY_AGENTS_IA_URL = "https://tally.so/r/ODVd1K";
+export const TALLY_AGENTS_IA_URL = TALLY_FORMS.AGENTS_IA;
 
 export function ContactFormTrunkSipIA() {
   return (

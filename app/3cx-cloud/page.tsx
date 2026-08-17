@@ -11,8 +11,9 @@ import {
   MicrosoftTeamsLogo,
   WhatsappLogo,
 } from "@/lib/icons";
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
-const TALLY_3CX_PRO_URL = "https://tally.so/r/EkALv4";
+const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
 export const metadata: Metadata = {
   title: "3CX PRO Cloud - Standard téléphonique dédié",

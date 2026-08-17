@@ -6,10 +6,11 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, CheckCircle, Shield, Users, Compass, X, VideoCamera, Chat, Lightning, DeviceMobile, Link, Headphones, TrendUp, Seal } from '@/lib/icons';
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaires Tally dédiés aux 2 offres 3CX (tunnels devis, flow n8n).
-const TALLY_3CX_SMB_URL = "https://tally.so/r/44Gprk";
-const TALLY_3CX_PRO_URL = "https://tally.so/r/EkALv4";
+const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
+const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
 export const metadata: Metadata = {
   title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",

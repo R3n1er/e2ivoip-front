@@ -5,30 +5,86 @@ import { SafeImage as Image } from "@/components/ui/safe-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
+import { TALLY_FORMS } from "@/lib/constants/tally";
 import { Timer, CheckCircle, Gear, Phone } from "@/lib/icons";
+
+/**
+ * Les demandes de devis sont regroupées par famille d'offre : le visiteur
+ * arrive en sachant quel type de projet il porte, pas quel formulaire remplir.
+ */
+const devisGroups = [
+  {
+    title: "Trunk SIP & portabilité",
+    description:
+      "Vous cherchez un opérateur pour vos lignes, ou vous souhaitez conserver vos numéros actuels.",
+    items: [
+      {
+        title: "Devis Trunk SIP",
+        description: "Lignes opérateur dimensionnées pour votre consommation",
+        href: TALLY_FORMS.TRUNK_SIP,
+        variant: "primary" as const,
+      },
+      {
+        title: "Étude de portabilité",
+        description: "Conservez vos numéros existants",
+        href: TALLY_FORMS.PORTABILITE,
+        variant: "secondary" as const,
+      },
+      {
+        title: "Trunk SIP pour agents IA",
+        description: "Intégrateurs VAPI, ElevenLabs, Rounded, Jambonz",
+        href: TALLY_FORMS.AGENTS_IA,
+        variant: "secondary" as const,
+      },
+    ],
+  },
+  {
+    title: "Standard téléphonique 3CX",
+    description:
+      "Choisissez selon la taille de votre équipe et le niveau d'isolation souhaité.",
+    items: [
+      {
+        title: "Devis 3CX PRO & IA",
+        description: "Instance dédiée, fonctions IA incluses",
+        href: TALLY_FORMS.VOIP_3CX_PRO,
+        variant: "primary" as const,
+      },
+      {
+        title: "Devis 3CX SMB",
+        description: "Offre mutualisée, de 3 à 10 utilisateurs",
+        href: TALLY_FORMS.VOIP_3CX_SMB,
+        variant: "secondary" as const,
+      },
+    ],
+  },
+  {
+    title: "Équipements & intégration",
+    description:
+      "Vous disposez déjà d'une installation, ou vous visez une solution clé en main.",
+    items: [
+      {
+        title: "Devis PBX Yeastar",
+        description: "Standard Yeastar cloud ou sur site",
+        href: TALLY_FORMS.YEASTAR,
+        variant: "primary" as const,
+      },
+      {
+        title: "Projet d'intégration PBX",
+        description: "Raccordement de votre PBX existant",
+        href: TALLY_FORMS.PROJET_PBX,
+        variant: "secondary" as const,
+      },
+      {
+        title: "Être rappelé — Aircall",
+        description: "Solution Aircall pour équipes commerciales",
+        href: TALLY_FORMS.AIRCALL,
+        variant: "secondary" as const,
+      },
+    ],
+  },
+];
+
 export default function DevisEnLignePage() {
-  const devisButtons = [
-    {
-      title: "Devis Trunk SIP",
-      href: "https://urlr.me/!E2IVOIP-Devis-TrunkSIP",
-      variant: "primary" as const,
-    },
-    {
-      title: "Devis Portabilité",
-      href: "https://urlr.me/!E2IVOIP-EtudePortaVoIP",
-      variant: "secondary" as const,
-    },
-    {
-      title: "Devis VoIP 3CX",
-      href: "https://urlr.me/!mon-projet-Voip-E2I",
-      variant: "primary" as const,
-    },
-    {
-      title: "Devis Projet PBX",
-      href: "https://urlr.me/!E2I-Devis_IntegrationPBX",
-      variant: "secondary" as const,
-    },
-  ];
 
   const avantages = [
     {
@@ -85,39 +141,56 @@ export default function DevisEnLignePage() {
 
       {/* Section Boutons de Devis */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
               Que vous cherchiez à mettre en place un{" "}
               <strong>Trunk SIP professionnel</strong>, une solution{" "}
               <strong>3CX VoIP dédiée ou mutualisée</strong>, installer une
               solution Yeastar ou à{" "}
               <strong>porter vos numéros existants sur nos Trunk SIP operateur</strong>,
-              notre équipe vous accompagne. Choisissez ci-dessous le type de devis
-              souhaité.
+              notre équipe vous accompagne. Choisissez ci-dessous le formulaire
+              correspondant à votre projet.
             </p>
           </div>
 
-          {/* Boutons de devis */}
-          <div className="flex flex-col items-center gap-4 max-w-md mx-auto">
-            {devisButtons.map((button) => (
-              <a
-                key={button.title}
-                href={button.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-                  w-full py-4 px-8 text-center text-white font-bold text-lg rounded-lg
-                  transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1
-                  ${
-                    button.variant === "primary"
-                      ? "bg-red-600 hover:bg-red-700"
-                      : "bg-[#1d3557] hover:bg-[#2a4365]"
-                  }
-                `}
-              >
-                {button.title}
-              </a>
+          {/* Demandes de devis, groupées par famille d'offre */}
+          <div className="space-y-12">
+            {devisGroups.map((group) => (
+              <div key={group.title}>
+                <h2 className="text-xl font-black tracking-[-0.03em] text-gray-dark">
+                  {group.title}
+                </h2>
+                <p className="mt-2 mb-6 text-gray-600">{group.description}</p>
+
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.items.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`
+                        flex flex-col rounded-lg p-5 text-white shadow-lg
+                        transition-[background-color,box-shadow,transform] duration-300
+                        hover:-translate-y-1 hover:shadow-xl active:scale-[0.98]
+                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+                        motion-reduce:transform-none motion-reduce:transition-none
+                        ${
+                          item.variant === "primary"
+                            ? "bg-red-primary hover:bg-red-600 focus-visible:ring-red-primary"
+                            : "bg-blue-marine hover:bg-blue-marine/90 focus-visible:ring-blue-marine"
+                        }
+                      `}
+                    >
+                      <span className="text-lg font-bold">{item.title}</span>
+                      <span className="mt-1 text-sm leading-relaxed text-white/85">
+                        {item.description}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 

@@ -35,39 +35,52 @@ describe("Page Devis En Ligne - Test d'hydratation", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("affiche tous les types de devis", () => {
+  it("affiche les huit demandes de devis", () => {
     render(<DevisEnLignePage />);
 
-    // Vérifier que tous les types de devis sont présents
-    expect(screen.getByText("Devis Trunk SIP")).toBeInTheDocument();
-    expect(screen.getByText("Devis Portabilité")).toBeInTheDocument();
-    expect(screen.getByText("Devis VoIP 3CX")).toBeInTheDocument();
-    expect(screen.getByText("Devis Projet PBX")).toBeInTheDocument();
+    [
+      "Devis Trunk SIP",
+      "Étude de portabilité",
+      "Trunk SIP pour agents IA",
+      "Devis 3CX PRO & IA",
+      "Devis 3CX SMB",
+      "Devis PBX Yeastar",
+      "Projet d'intégration PBX",
+      "Être rappelé — Aircall",
+    ].forEach((intitule) => {
+      expect(screen.getByText(intitule)).toBeInTheDocument();
+    });
   });
 
-  it("affiche les boutons de demande de devis", () => {
+  it("regroupe les demandes par famille d'offre", () => {
     render(<DevisEnLignePage />);
 
-    const devisLinks = screen.getAllByRole("link", { name: /Devis/ });
-    expect(devisLinks).toHaveLength(4);
+    expect(screen.getByText("Trunk SIP & portabilité")).toBeInTheDocument();
+    expect(screen.getByText("Standard téléphonique 3CX")).toBeInTheDocument();
+    expect(screen.getByText("Équipements & intégration")).toBeInTheDocument();
   });
 
-  it("pointe chaque devis vers une URL de destination réelle", () => {
+  it("pointe chaque devis vers un formulaire Tally distinct", () => {
     render(<DevisEnLignePage />);
 
-    const devisLinks = screen.getAllByRole("link", { name: /Devis/ });
+    const liensTally = screen
+      .getAllByRole("link")
+      .filter((lien) => lien.getAttribute("href")?.includes("tally.so"));
 
-    devisLinks.forEach((link) => {
-      const href = link.getAttribute("href");
-      expect(href).toMatch(/^https:\/\//);
-      // Garde-fou : des URLs de démonstration (« …-devis ») ont déjà été
-      // livrées en 404. Une destination doit être un identifiant réel.
+    expect(liensTally).toHaveLength(8);
+
+    liensTally.forEach((lien) => {
+      const href = lien.getAttribute("href")!;
+      expect(href).toMatch(/^https:\/\/tally\.so\/r\/[A-Za-z0-9]+$/);
+      // Garde-fou : des URLs descriptives ont déjà été livrées en 404.
       expect(href).not.toMatch(/tally\.so\/r\/[a-z-]+-devis$/);
+      // Ouverture en nouvel onglet sans exposer la page appelante.
+      expect(lien).toHaveAttribute("target", "_blank");
+      expect(lien.getAttribute("rel")).toContain("noopener");
     });
 
-    // Les quatre destinations doivent être distinctes.
-    const hrefs = devisLinks.map((link) => link.getAttribute("href"));
-    expect(new Set(hrefs).size).toBe(4);
+    const hrefs = liensTally.map((lien) => lien.getAttribute("href"));
+    expect(new Set(hrefs).size).toBe(8);
   });
 
   it("affiche la section FAQ", () => {

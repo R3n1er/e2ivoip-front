@@ -3,9 +3,10 @@ import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe } from '@/lib/icons';
+import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaire Tally dédié à l'offre 3CX SMB PRO Mutualisé (tunnel devis).
-const TALLY_3CX_SMB_URL = "https://tally.so/r/44Gprk";
+const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 
 export const metadata: Metadata = {
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",

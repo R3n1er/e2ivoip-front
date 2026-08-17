@@ -5,33 +5,52 @@ import { test, expect } from "@playwright/test";
  * contact principal du site : toute rupture ici coûte directement des leads.
  */
 test.describe("Page Devis — parcours de contact", () => {
-  test("expose les quatre demandes de devis vers des destinations distinctes", async ({
+  test("expose les huit demandes de devis vers des formulaires distincts", async ({
     page,
   }) => {
     await page.goto("/devis-en-ligne");
 
     const attendus = [
       "Devis Trunk SIP",
-      "Devis Portabilité",
-      "Devis VoIP 3CX",
-      "Devis Projet PBX",
+      "Étude de portabilité",
+      "Trunk SIP pour agents IA",
+      "Devis 3CX PRO & IA",
+      "Devis 3CX SMB",
+      "Devis PBX Yeastar",
+      "Projet d'intégration PBX",
+      "Être rappelé — Aircall",
     ];
 
     const hrefs: string[] = [];
 
     for (const nom of attendus) {
-      const lien = page.getByRole("link", { name: nom, exact: true });
+      const lien = page.getByRole("link").filter({ hasText: nom }).first();
+      await lien.scrollIntoViewIfNeeded();
       await expect(lien).toBeVisible();
       await expect(lien).toHaveAttribute("target", "_blank");
       // Ouvrir un onglet sans rel="noopener" expose la page appelante.
       await expect(lien).toHaveAttribute("rel", /noopener/);
 
       const href = await lien.getAttribute("href");
-      expect(href).toMatch(/^https:\/\//);
+      expect(href).toMatch(/^https:\/\/tally\.so\/r\/[A-Za-z0-9]+$/);
       hrefs.push(href!);
     }
 
-    expect(new Set(hrefs).size).toBe(4);
+    expect(new Set(hrefs).size).toBe(8);
+  });
+
+  test("regroupe les demandes par famille d'offre", async ({ page }) => {
+    await page.goto("/devis-en-ligne");
+
+    for (const groupe of [
+      "Trunk SIP & portabilité",
+      "Standard téléphonique 3CX",
+      "Équipements & intégration",
+    ]) {
+      await expect(
+        page.getByRole("heading", { name: groupe })
+      ).toBeVisible();
+    }
   });
 
   test("affiche le formulaire de contact HubSpot", async ({ page }) => {
