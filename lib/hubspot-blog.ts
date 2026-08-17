@@ -30,6 +30,74 @@ interface HubSpotBlogPost {
   featuredImage?: string;
   metaDescription?: string;
   htmlTitle?: string;
+  // HubSpot peut renvoyer `tags` directement (objets avec `name` et `slug`)
+  tags?: Array<{ id: string; name: string; slug: string }>;
+}
+
+// Cache des tags HubSpot : { tagId -> tagName }
+// TTL de 10 minutes pour éviter les appels API répétés tout en
+// rafraîchissant les noms de tags après un renommage dans HubSpot.
+const TAG_CACHE_TTL_MS = 10 * 60 * 1000;
+let tagCache: Map<string, string> | null = null;
+let tagCacheTimestamp = 0;
+
+async function ensureTagCache(): Promise<Map<string, string>> {
+  // Cache encore valide ?
+  if (tagCache && Date.now() - tagCacheTimestamp < TAG_CACHE_TTL_MS) {
+    return tagCache;
+  }
+
+  const map = new Map<string, string>();
+  try {
+    const accessToken = getHubSpotAccessToken();
+
+    // Pagination : récupère tous les tags (limite 500 par page)
+    let after: string | undefined = undefined;
+    do {
+      const url = new URL("https://api.hubapi.com/cms/v3/blogs/tags");
+      url.searchParams.set("limit", "500");
+      if (after) url.searchParams.set("after", after);
+
+      const response = await fetch(url.toString(), {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        cache: "no-store",
+      });
+
+      if (!response.ok) break;
+
+      const data = await response.json();
+      for (const tag of data.results || []) {
+        map.set(String(tag.id), tag.name || tag.slug || String(tag.id));
+      }
+
+      after = data.paging?.next?.after;
+    } while (after);
+  } catch {
+    // Si l'API tags échoue, on garde les IDs bruts
+  }
+
+  tagCache = map;
+  tagCacheTimestamp = Date.now();
+  return map;
+}
+
+/** Convertit les tagIds numériques en noms lisibles via le cache. */
+async function resolveTagNames(
+  tagIds: string[] | undefined,
+  inlineTags: HubSpotBlogPost["tags"]
+): Promise<string[]> {
+  // Si HubSpot renvoie déjà des objets tags avec un name, on les utilise
+  if (inlineTags && inlineTags.length > 0) {
+    return inlineTags.map((t) => t.name || t.slug || t.id);
+  }
+
+  if (!tagIds || tagIds.length === 0) return [];
+
+  const cache = await ensureTagCache();
+  return tagIds.map((id) => cache.get(String(id)) || String(id));
 }
 
 // Configuration de l'application HubSpot via variables d'environnement
@@ -75,7 +143,8 @@ const getHubSpotAccessToken = () => {
   return accessToken;
 };
 
-function mapHubSpotPost(post: HubSpotBlogPost): BlogPost {
+async function mapHubSpotPost(post: HubSpotBlogPost): Promise<BlogPost> {
+  const tags = await resolveTagNames(post.tagIds, post.tags);
   return {
     id: post.id || "",
     title: post.name || "",
@@ -85,7 +154,7 @@ function mapHubSpotPost(post: HubSpotBlogPost): BlogPost {
     modifiedDate: post.updated || "",
     author: post.blogAuthorId || "E2I VoIP",
     authorId: post.blogAuthorId || "",
-    tags: post.tagIds || [],
+    tags,
     categories: [],
     slug: post.slug || "",
     url: post.url || "",
@@ -277,7 +346,7 @@ export async function getHubSpotBlogPostsStrict(
   limit: number = 100
 ): Promise<BlogPost[]> {
   const data = await fetchHubSpotBlogPosts(limit);
-  return (data.results || []).map(mapHubSpotPost);
+  return Promise.all((data.results || []).map(mapHubSpotPost));
 }
 
 export async function getHubSpotBlogPostsPaginated(
@@ -293,7 +362,7 @@ export async function getHubSpotBlogPostsPaginated(
   const total = sorted.length;
   const start = (page - 1) * pageSize;
   const slice = sorted.slice(start, start + pageSize);
-  return { posts: slice.map(mapHubSpotPost), total };
+  return { posts: await Promise.all(slice.map(mapHubSpotPost)), total };
 }
 
 export async function searchHubSpotBlogPosts(
@@ -326,7 +395,7 @@ export async function searchHubSpotBlogPosts(
   const total = sorted.length;
   const start = (page - 1) * pageSize;
   return {
-    posts: sorted.slice(start, start + pageSize).map(mapHubSpotPost),
+    posts: await Promise.all(sorted.slice(start, start + pageSize).map(mapHubSpotPost)),
     total,
   };
 }
@@ -345,7 +414,7 @@ export async function getHubSpotBlogPostsForSitemap(
   const posts = await fetchAllHubSpotBlogPosts(500, {
     next: { revalidate: revalidateSeconds },
   });
-  return posts.map(mapHubSpotPost);
+  return Promise.all(posts.map(mapHubSpotPost));
 }
 
 export async function getHubSpotBlogMetadata(): Promise<{
@@ -354,12 +423,15 @@ export async function getHubSpotBlogMetadata(): Promise<{
   years: number[];
 }> {
   const posts = await fetchAllHubSpotBlogPosts();
+  const tagCache = await ensureTagCache();
   const tags = new Set<string>();
   const authors = new Set<string>();
   const years = new Set<number>();
 
   for (const post of posts) {
-    (post.tagIds || []).forEach((t) => t && tags.add(t));
+    // Utiliser les noms résolus plutôt que les IDs bruts
+    const resolvedTags = await resolveTagNames(post.tagIds, post.tags);
+    resolvedTags.forEach((t) => t && tags.add(t));
     if (post.blogAuthorId) authors.add(post.blogAuthorId);
     if (post.publishDate) years.add(new Date(post.publishDate).getFullYear());
   }
@@ -375,7 +447,7 @@ export async function getHubSpotBlogPostBySlug(
   slug: string
 ): Promise<BlogPost | null> {
   const post = await fetchHubSpotBlogPostBySlug(slug);
-  return post ? mapHubSpotPost(post) : null;
+  return post ? await mapHubSpotPost(post) : null;
 }
 
 export async function getHubSpotBlogPosts(
@@ -397,7 +469,7 @@ export async function getHubSpotBlogPost(
 ): Promise<BlogPost | null> {
   try {
     const post = await fetchHubSpotBlogPost(postId);
-    return post ? mapHubSpotPost(post) : null;
+    return post ? await mapHubSpotPost(post) : null;
   } catch (error) {
     console.error(
       `Erreur lors de la récupération de l'article ${postId} :`,
