@@ -60,23 +60,30 @@ global.ResizeObserver = class ResizeObserver {
   }
 } as unknown as typeof ResizeObserver;
 
-// Mock HTMLCanvasElement.prototype.toDataURL
-HTMLCanvasElement.prototype.toDataURL = jest.fn(
-  () => "data:image/png;base64,mock"
-);
+// Les mocks ci-dessous supposent un DOM. Les suites qui testent du code
+// serveur (routes API) tournent en environnement `node` via la docblock
+// `@jest-environment node` : ces globales y sont absentes.
+if (typeof HTMLCanvasElement !== "undefined") {
+  // Mock HTMLCanvasElement.prototype.toDataURL
+  HTMLCanvasElement.prototype.toDataURL = jest.fn(
+    () => "data:image/png;base64,mock"
+  );
+}
 
-// Mock Image.prototype.src
-Object.defineProperty(Image.prototype, "src", {
-  set() {
-    // Simuler le chargement d'image
-    setTimeout(() => {
-      if (this.onload) {
-        this.onload();
-      }
-    }, 0);
-  },
-  configurable: true,
-});
+if (typeof Image !== "undefined") {
+  // Mock Image.prototype.src
+  Object.defineProperty(Image.prototype, "src", {
+    set() {
+      // Simuler le chargement d'image
+      setTimeout(() => {
+        if (this.onload) {
+          this.onload();
+        }
+      }, 0);
+    },
+    configurable: true,
+  });
+}
 
 // Mock fetch
 global.fetch = jest.fn(() =>
