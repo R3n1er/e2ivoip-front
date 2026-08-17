@@ -10,6 +10,19 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-17 — Studio Voix Humaines : démos audio + formulaire étape par étape
+
+- **Contexte** : la page `/studio-attente` présentait les studios (voix humaines vs IA) mais ne proposait ni exemple audio, ni parcours guidé pour obtenir un devis studio humain. Le partenaire Romano (`attentetelephonique.fr`) autorise E2I VoIP à réutiliser ses démonstrations audio et textes types. L’objectif était double : laisser le visiteur écouter des exemples par type de message (pré-décroché, attente, fermeture, occupation, additionnel), puis l’accompagner dans la construction d’un message sur mesure via un formulaire simple, pensé TDA.
+- **Décision** :
+  - Récupérer 12 démos MP3 depuis le site du partenaire et les héberger dans `public/audio/studio-demos/` afin d’éviter le hotlinking.
+  - Créer `lib/studio-demos.ts` : source de vérité unique classant les démos en 5 catégories avec texte, durée, voix, langue et fichier.
+  - Ajouter une section « Exemples de messages » sur `/studio-attente` : onglets par catégorie, lecteur audio natif HTML5, CTA par démo vers le formulaire pré-rempli.
+  - Nouvelle page dédiée `/studio-attente/devis` : formulaire interactif en 5 étapes (type → modèle → personnalisation → coordonnées → récap). Une seule étape visible à la fois, barre de progression claire, aperçu du message final.
+  - Envoi via une nouvelle route API `/api/studio/devis` : email à l’équipe commerciale via Resend, création/mise à jour du contact HubSpot + note associée. L’adresse destinataire (`commerciaux@e2-voip.com`), l’expéditeur (`studio@notifications.e2i-voip.com`) et la clé API Resend sont injectées par variables d’environnement ; aucune adresse email sensible n’est écrite en dur dans le code source.
+  - Mise à jour de `.env.example` avec les nouvelles variables requises.
+- **Conséquences** : le visiteur peut désormais écouter, choisir un modèle, le personnaliser et demander un devis en quelques clics. L’équipe commerciale reçoit un email structuré et le contact est directement intégré dans HubSpot. Le hotlinking avec le site partenaire est supprimé.
+- **Tests associés** : `tests/lib/studio-demos.test.ts` (3) ; `tests/studio-devis.test.tsx` (5) ; `tests/playwright/studio-attente.spec.ts` (2). `npm run validate` ✅ — Jest 379/379 (62 suites), Playwright 104/104, build ✅, 0 vulnérabilité haute.
+
 ### 2026-08-17 — Images du blog rapatriées dans `public/`
 
 - **Contexte** : la suppression du domaine `e2i-voip.com` dans HubSpot faisait craindre la perte des images d'articles et des signatures e-mail. Vérification faite, **aucun impact** : HubSpot sépare les *domaines d'hébergement* (qui servent les pages) du *CDN fichiers* `*.hubspotusercontent-eu1.net` (qui sert les images) ; les deux CDN répondaient en 200 et `next.config.js` déclarait déjà les `remotePatterns` correspondants. L'analyse a en revanche confirmé une dépendance réelle : tant que les visuels vivent sur le portail, une résiliation d'abonnement ou une suppression dans le File Manager casse l'ensemble du blog. Deux mécanismes de rendu coexistaient par ailleurs — les images « à la une » via `next/image`, et 3 images insérées dans le corps des articles en `<img>` brut, invisibles à `next/image` comme aux `remotePatterns`.
