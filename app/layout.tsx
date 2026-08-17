@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { Analytics } from "@vercel/analytics/next";
 // Police officielle E2I VoIP — Inter (cohérence avec le logo). Voir CHARTE_GRAPHIQUE.md
 const inter = Inter({
   variable: "--font-sans",
@@ -102,6 +103,7 @@ export default function RootLayout({
       >
         <LayoutClientChrome>{children}</LayoutClientChrome>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
