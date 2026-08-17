@@ -148,3 +148,4 @@ tsconfig.tsbuildinfo
 .cursor/hooks/state/
 .worktrees/
 .vercel
+.env*
