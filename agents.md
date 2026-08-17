@@ -15,7 +15,32 @@
 6. Vérifier l'hydratation CSS (aucun warning/erreur au lancement du serveur de développement).
 7. Documenter l'évolution dans `docs/ADR.md` (nouvelle décision, impacts, tests).
 8. Mettre à jour la roadmap et le plan d'implémentation.
-9. Quand tout est vert et que l'ADR est à jour : commit, puis push vers GitHub.
+9. Quand tout est vert et que l'ADR est à jour : commit sur une branche dédiée, puis **ouvrir une PR GitHub vers `dev`** (voir « Livraison par Pull Request »).
+
+## Livraison par Pull Request (RÈGLE ABSOLUE)
+
+**Toute modification du site passe obligatoirement par une Pull Request GitHub. Aucun commit direct sur `dev` ni sur `main`.**
+
+Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture et merge par Alban → `dev` → `main` (opération manuelle déclenchée par Alban).
+
+1. Créer une branche dédiée depuis `dev` à jour :
+   `git switch dev && git pull && git switch -c <type>/<sujet-court>`
+   Préfixes : `feat/`, `fix/`, `chore/`, `docs/`, `refactor/`, `test/`.
+2. Committer le travail sur cette branche (messages en français, format Conventional Commits).
+3. `npm run validate` doit passer — **6 contrôles, bloquer si un seul échoue**.
+4. Pousser et ouvrir la PR ciblant `dev` :
+   `git push -u origin <branche>`
+   `gh pr create --base dev --title "<titre>" --body "<corps>"`
+5. Le corps de PR doit contenir : objectif, liste des changements, résultat des tests (Jest + Playwright), entrée ADR associée, points de vigilance / risques.
+6. Rendre la main à Alban avec l'URL de la PR, puis **s'arrêter**.
+
+**Interdictions strictes pour l'agent** :
+- Ne jamais merger une PR (ni `--merge`, ni `--squash`, ni `--admin`, ni `--auto`).
+- Ne jamais pousser sur `dev` ou `main` directement, même pour un « petit » correctif.
+- Ne jamais fusionner `dev` dans `main` : c'est une décision d'Alban.
+- Ne jamais forcer un push (`--force`) sur une branche partagée.
+
+**Seule exception** : si Alban demande explicitement un commit direct sur `dev` ou `main` pour une intervention donnée. L'exception vaut pour cette intervention uniquement, jamais pour les suivantes.
 
 ## Validation Rapide
 
