@@ -328,8 +328,14 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
       if (process.env.NODE_ENV !== "production") {
         console.error("Erreur lors de la soumission:", error);
       }
+      const isLikelyBlocked =
+        typeof window !== "undefined" &&
+        !window.HubSpotConversations &&
+        !document.querySelector('script[src*="hs-scripts.com"]');
       setFormError(
-        "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
+        isLikelyBlocked
+          ? "Votre navigateur ou un bloqueur de traqueurs semble bloquer le chat. Essayez avec un autre navigateur, ou contactez-nous via notre formulaire."
+          : "Impossible d’ouvrir le chat pour le moment. Vérifiez votre connexion, puis réessayez."
       );
       window.requestAnimationFrame(() => formErrorRef.current?.focus());
     } finally {
@@ -512,6 +518,16 @@ export const ChatPreOverlay = memo(function ChatPreOverlay({
               >
                 {formError}
               </p>
+            )}
+
+            {formError?.includes("formulaire") && (
+              <a
+                href="/contact"
+                className="block rounded-lg border border-red-primary/30 bg-white px-3 py-2 text-center text-sm font-semibold text-red-primary hover:bg-red-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                data-testid="chat-fallback-contact-link"
+              >
+                Aller au formulaire de contact
+              </a>
             )}
 
             <div className="mt-3 flex gap-2">

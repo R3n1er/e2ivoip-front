@@ -20,15 +20,15 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Conséquences** : le pré-chat crée/met à jour le contact, attache la note, puis ouvre le widget sans erreur serveur. Le visiteur n'est plus invité à vérifier sa connexion pour un problème interne.
 - **Tests associés** : test manuel de la route en local (`curl` → 200) ; `npm test` ✅ (341/341) ; `npx playwright test` ✅ (93/93).
 
-### 2026-08-17 — Fix pré-chat : ouverture du widget sur connexions lentes
+### 2026-08-17 — Fix pré-chat : ouverture du widget sur connexions lentes + fallback bloqueur
 
-- **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». En local, le script HubSpot était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau du script `js-eu1.hs-scripts.com/26878201.js` pouvaient dépasser le timeout de 10s, faisant expirer `openHubSpotWidget()` avant que `window.HubSpotConversations` ne soit disponible.
+- **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». La console montrait des `ERR_BLOCKED_BY_CLIENT` sur `js-eu1.hs-scripts.com` et PostHog : Brave Shields (et les bloqueurs de traqueurs en général) bloquent le script HubSpot Conversations. En local, le script était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau pouvaient aussi dépasser le timeout de 10s.
 - **Décision** :
   - Augmenter le timeout de `openHubSpotWidget` à 20s.
-  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`. Cela garantit que l'API est prête avant toute action sur le widget.
-  - Appeler cette attente juste après `identify`/`trackPageView`, donc le script a déjà été demandé par `onRequestChat` à l'ouverture ou à la soumission du pré-chat.
-- **Conséquences** : le chat s'ouvre même si le script HubSpot met plusieurs secondes à arriver. L'expérience reste identique sur connexion rapide. Le spinner « Ouverture… » est affiché pendant l'attente.
-- **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341) ; test manuel local Playwright (widget visible, overlay fermé).
+  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`.
+  - Détecter quand le chat est probablement bloqué (`!window.HubSpotConversations` et aucun script `hs-scripts.com` injecté) et afficher un message explicite + lien vers le formulaire de contact au lieu du message générique « Vérifiez votre connexion ».
+- **Conséquences** : le chat s'ouvre dès que le script est disponible. Si un bloqueur l'empêche de charger, le visiteur comprend pourquoi et a un CTA de secours vers `/contact`.
+- **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341).
 
 ### 2026-08-16 — Page Devis : huit formulaires Tally, centralisés
 
