@@ -39,6 +39,7 @@
     "critters": "^0.0.23",
     "daisyui": "^5.0.50",
     "framer-motion": "^10.18.0",
+    "isomorphic-dompurify": "^3.19.0",
     "lineicons-react": "^2.0.0",
     "next": "^16.3.1",
     "node-fetch": "^3.3.2",

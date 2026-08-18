@@ -83,7 +83,7 @@ Ne pas pousser si un seul de ces quatre points échoue. Vérifier localement plu
 
 ## 🗣️ Langue et style
 
-- **Français** pour tout : explications, commentaires de code, messages de commit.
+- **Français** pour tout : réponses de l'assistant, explications, commentaires de code, messages de commit.
 - Accents et diacritiques **obligatoires** dans les textes et la documentation.
 - Les identifiants de code et termes techniques restent dans leur forme d'origine.
 

@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
-import { stripHtml } from "@/lib/blog-utils";
+import { stripHtml, sanitizeBlogHtml } from "@/lib/blog-utils";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -227,7 +227,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Contenu de l'article */}
           <div className="prose prose-lg max-w-none mb-12">
             <div
-              dangerouslySetInnerHTML={{ __html: contentText }}
+              dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(contentText) }}
               className="text-gray-700 leading-relaxed"
             />
           </div>

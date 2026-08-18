@@ -80,7 +80,8 @@ const server = http.createServer((req, res) => {
 });
 
 const PORT = 3002;
-server.listen(PORT, () => {
+const HOST = '127.0.0.1';
+server.listen(PORT, HOST, () => {
   console.log(`🚀 Serveur de test démarré sur http://localhost:${PORT}`);
   console.log(`📸 Test de l'image: http://localhost:${PORT}/test`);
   console.log(`🖼️  Image directe: http://localhost:${PORT}/man-oniphone-business-min.jpg`);

@@ -1,5 +1,9 @@
 # Agents Operating Memo
 
+## Langue
+
+Toujours répondre en français à l'utilisateur.
+
 ## Objectif
 
 - Rassembler les consignes essentielles pour limiter le contexte nécessaire aux agents (Codex, IA argentique).
