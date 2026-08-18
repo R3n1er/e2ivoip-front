@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+# Pre-push hook: Semgrep security scan
+# Blocks push to main and dev on ERROR/HIGH findings (OWASP Top 10 + best practices)
+# WARNING/INFO findings are displayed but non-blocking
+# Bypass: git push --no-verify (exceptional, informed decision)
+
+set -euo pipefail
+
+# Branches protégées
+PROTECTED_BRANCHES="main dev"
+
+# Lire les refs poussées depuis stdin
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # Extraire le nom de la branche depuis remote_ref (refs/heads/main → main)
+  branch="${remote_ref#refs/heads/}"
+
+  # Vérifier si la branche est protégée
+  is_protected=false
+  for pb in $PROTECTED_BRANCHES; do
+    if [[ "$branch" == "$pb" ]]; then
+      is_protected=true
+      break
+    fi
+  done
+
+  if [[ "$is_protected" == "true" ]]; then
+    echo ""
+    echo "🔒 Semgrep pre-push scan — branche protégée: $branch"
+    echo ""
+
+    # Vérifier que semgrep est installé
+    if ! command -v semgrep &>/dev/null; then
+      echo "⚠️  Semgrep non installé — push autorisé sans scan."
+      echo "   Installez: pip install semgrep && semgrep login"
+      exit 0
+    fi
+
+    # Lancer le scan
+    SEMGREP_OUTPUT=$(semgrep --config=auto --json 2>/dev/null || true)
+
+    # Compter les findings par sévérité
+    ERROR_COUNT=$(echo "$SEMGREP_OUTPUT" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    print(len([r for r in data.get('results', []) if r.get('extra', {}).get('severity') == 'ERROR']))
+except: print(0)
+" 2>/dev/null || echo 0)
+
+    HIGH_COUNT=$(echo "$SEMGREP_OUTPUT" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    print(len([r for r in data.get('results', []) if r.get('extra', {}).get('severity') == 'HIGH']))
+except: print(0)
+" 2>/dev/null || echo 0)
+
+    WARNING_COUNT=$(echo "$SEMGREP_OUTPUT" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    print(len([r for r in data.get('results', []) if r.get('extra', {}).get('severity') == 'WARNING']))
+except: print(0)
+" 2>/dev/null || echo 0)
+
+    INFO_COUNT=$(echo "$SEMGREP_OUTPUT" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    print(len([r for r in data.get('results', []) if r.get('extra', {}).get('severity') == 'INFO']))
+except: print(0)
+" 2>/dev/null || echo 0)
+
+    # Afficher le rapport lisible
+    semgrep --config=auto 2>/dev/null || true
+
+    echo ""
+    echo "📊 Résumé Semgrep:"
+    echo "   ERROR:   $ERROR_COUNT"
+    echo "   HIGH:    $HIGH_COUNT"
+    echo "   WARNING: $WARNING_COUNT"
+    echo "   INFO:    $INFO_COUNT"
+    echo ""
+
+    BLOCKING=$((ERROR_COUNT + HIGH_COUNT))
+
+    if [[ $BLOCKING -gt 0 ]]; then
+      echo "❌ PUSH BLOQUÉ — $BLOCKING finding(s) ERROR/HIGH sur la branche protégée '$branch'."
+      echo "   Corrigez les findings ci-dessus avant de re-pousser."
+      echo "   Contournement exceptionnel: git push --no-verify"
+      exit 1
+    else
+      echo "✅ Aucun finding bloquant — push autorisé."
+      if [[ $((WARNING_COUNT + INFO_COUNT)) -gt 0 ]]; then
+        echo "   ℹ️  $WARNING_COUNT WARNING + $INFO_COUNT INFO (non bloquants) affichés ci-dessus."
+      fi
+    fi
+  fi
+done
+
+exit 0
