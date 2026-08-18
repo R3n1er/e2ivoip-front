@@ -75,6 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Légal
     { path: "/mentions-legales", changeFrequency: "yearly", priority: 0.3 },
     { path: "/politique-confidentialite", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/exercer-mes-droits", changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = routes.map(

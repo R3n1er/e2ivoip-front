@@ -2,14 +2,26 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
-import { getConsent, acceptCookies, declineCookies } from "@/lib/analytics/consent";
+import {
+  getConsent,
+  acceptCookies,
+  declineCookies,
+  CONSENT_CHANGE_EVENT,
+} from "@/lib/analytics/consent";
 
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     // Côté client uniquement : on n'affiche que si aucun choix n'a été fait.
-    if (getConsent() === null) setVisible(true);
+    const sync = () => setVisible(getConsent() === null);
+    sync();
+
+    // « Gérer mes cookies » (footer) efface le choix mémorisé et émet cet
+    // événement : sans cette écoute, le bandeau ne reviendrait qu'au prochain
+    // chargement de page et le retrait paraîtrait sans effet.
+    window.addEventListener(CONSENT_CHANGE_EVENT, sync);
+    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, sync);
   }, []);
 
   const handleAccept = useCallback(async () => {

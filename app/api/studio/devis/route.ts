@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { checkRateLimit, getClientIdentifier } from "@/lib/api/rate-limit";
+import {
+  sanitize,
+  escapeHtml,
+  escapeHtmlMultiline,
+  isValidEmail,
+  sanitizeHeader,
+} from "@/lib/api/email-safety";
 import { StudioDemoCategory, getDemoById } from "@/lib/studio-demos";
 
 const HS_BASE = "https://api.hubapi.com";
@@ -36,31 +43,6 @@ const FIELD_LIMITS = {
   notes: 2000,
   pageUrl: 500,
 } as const;
-
-/** Normalise une valeur non fiable en chaîne bornée. */
-function sanitize(value: unknown, max: number): string {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, max);
-}
-
-/**
- * Échappe les métacaractères HTML avant interpolation dans l'email.
- * Sans cela, un champ du formulaire peut injecter un lien de phishing dans
- * un message envoyé depuis notre domaine authentifié SPF/DKIM.
- */
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-/** Échappe puis convertit les retours ligne : l'ordre est important. */
-function escapeHtmlMultiline(value: string): string {
-  return escapeHtml(value).replace(/\n/g, "<br />");
-}
 
 function normalizePhone(phone?: string): string {
   if (!phone) return "";
@@ -154,15 +136,6 @@ async function createNoteForContact(
  * ce qu'on attend d'une adresse professionnelle, ce qui exclut d'office les
  * métacaractères utilisables pour forger un en-tête (`<`, `>`, `"`, `,`, `:`).
  */
-function isValidEmail(email: string): boolean {
-  return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
-}
-
-/** Un en-tête d'email tient sur une ligne : tout CR/LF est retiré. */
-function sanitizeHeader(value: string): string {
-  return value.replace(/[\r\n]+/g, " ").trim();
-}
-
 export interface StudioDevisPayload {
   firstName: string;
   lastName: string;

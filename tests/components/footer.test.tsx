@@ -50,3 +50,20 @@ describe('Footer - Phone Links', () => {
     expect(telLinks.length).toBeGreaterThanOrEqual(4)
   })
 })
+
+describe('Footer — accès aux dispositifs RGPD', () => {
+  test('expose un lien vers le formulaire d’exercice des droits', () => {
+    render(<Footer />)
+
+    const lien = screen.getByRole('link', { name: /exercer mes droits/i })
+    expect(lien).toHaveAttribute('href', '/exercer-mes-droits')
+  })
+
+  test('permet de rouvrir le choix cookies : retirer doit être aussi simple qu’accepter', () => {
+    render(<Footer />)
+
+    expect(
+      screen.getByRole('button', { name: /gérer mes cookies/i })
+    ).toBeInTheDocument()
+  })
+})

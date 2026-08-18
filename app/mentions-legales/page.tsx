@@ -1,15 +1,21 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, TextT, MapPin, Globe, Question, Phone } from '@/lib/icons';
+import { Shield, TextT, MapPin, Globe, Question, Phone } from "@/lib/icons";
+import { COMPANY, HOSTING, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 
 export const metadata: Metadata = {
   title: "Mentions légales - E2I VoIP",
-  description: "Mentions légales et informations juridiques d'E2I Assistance (E2I VOIP). Découvrez nos informations légales, politique de confidentialité et droits d'auteur.",
-  keywords: "mentions légales, E2I VoIP, politique confidentialité, droits auteur, RGPD, cookies",
+  description:
+    "Mentions légales d’E2I ASSISTANCE (E2I VoIP) : éditeur du site, directeur de la publication, hébergeur, propriété intellectuelle et droit applicable.",
+  keywords:
+    "mentions légales, E2I VoIP, E2I ASSISTANCE, éditeur, hébergeur, propriété intellectuelle",
+  alternates: { canonical: "https://www.e2i-voip.com/mentions-legales" },
   openGraph: {
     title: "Mentions légales - E2I VoIP",
-    description: "Mentions légales et informations juridiques d'E2I Assistance (E2I VOIP).",
+    description:
+      "Mentions légales et informations juridiques d’E2I ASSISTANCE (E2I VoIP).",
     type: "website",
   },
 };
@@ -25,10 +31,9 @@ export default function MentionsLegales() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-primary/90 to-blue-marine/90 z-10"></div>
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -39,16 +44,18 @@ export default function MentionsLegales() {
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Mentions <span className="text-white">légales</span>
+              Mentions légales
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Informations juridiques et légales d'E2I Assistance (E2I VOIP)
+              Informations juridiques relatives au site {COMPANY.siteUrl},
+              publiées en application de la loi pour la confiance dans
+              l&rsquo;économie numérique.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section Éditeur */}
+      {/* Éditeur et hébergement */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -56,47 +63,91 @@ export default function MentionsLegales() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 <span className="text-red-600">Éditeur</span> du site
               </h2>
-              <div className="space-y-6">
-                <Card className="shadow-lg">
-                  <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                    <CardTitle className="text-xl font-bold">
-                      E2I ASSISTANCE
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <Shield size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Propriétaire du site</h3>
-                          <p className="text-gray-600">Alban RENIER / E2I ASSISTANCE</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <TextT size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                        <div>
-                          <h3 className="font-semibold text-gray-900">SIRET</h3>
-                          <p className="text-gray-600">51743457700014</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <TextT size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Code APE</h3>
-                          <p className="text-gray-600">6203Z</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <MapPin size={24} className="text-red-600 mt-1 flex-shrink-0" aria-hidden="true" />
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Siège social</h3>
-                          <p className="text-gray-600">23 Chemin Troubiran<br />97300 CAYENNE</p>
-                        </div>
+              <Card className="shadow-lg">
+                <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                  <CardTitle className="text-xl font-bold">
+                    {COMPANY.legalName}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Shield
+                        size={24}
+                        className="text-red-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gray-900">
+                          Directeur de la publication
+                        </h3>
+                        <p className="text-gray-600">
+                          {COMPANY.publicationDirector}
+                        </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    <div className="flex items-start space-x-3">
+                      <TextT
+                        size={24}
+                        className="text-red-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gray-900">
+                          Immatriculation
+                        </h3>
+                        <p className="text-gray-600">
+                          SIRET {COMPANY.siret}
+                          <br />
+                          RCS {COMPANY.rcs}
+                          <br />
+                          Code APE {COMPANY.ape} — {COMPANY.apeLabel}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <MapPin
+                        size={24}
+                        className="text-red-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gray-900">
+                          Siège social
+                        </h3>
+                        <p className="text-gray-600">
+                          {COMPANY.address.street}
+                          <br />
+                          {COMPANY.address.postalCode} {COMPANY.address.city}
+                          <br />
+                          {COMPANY.address.country}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Phone
+                        size={24}
+                        className="text-red-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gray-900">Contact</h3>
+                        <p className="text-gray-600">
+                          Par téléphone dans votre région (voir ci-dessous) ou
+                          via notre{" "}
+                          <Link
+                            href="/contact"
+                            className="text-red-600 underline"
+                          >
+                            formulaire de contact
+                          </Link>
+                          .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             <div>
@@ -107,11 +158,21 @@ export default function MentionsLegales() {
                 <Card className="shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
-                      <Globe size={32} className="text-blue-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                      <Globe
+                        size={32}
+                        className="text-blue-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Plateforme Vercel</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          Hébergeur du site
+                        </h3>
                         <p className="text-gray-600">
-                          Le site internet www.e2i-voip.com est hébergé par la plateforme Vercel.
+                          {HOSTING.provider}
+                          <br />
+                          {HOSTING.address}
+                          <br />
+                          {HOSTING.site}
                         </p>
                       </div>
                     </div>
@@ -120,11 +181,19 @@ export default function MentionsLegales() {
                 <Card className="shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-3">
-                      <Globe size={32} className="text-green-600 mt-1 flex-shrink-0" aria-hidden="true" />
+                      <Globe
+                        size={32}
+                        className="text-green-600 mt-1 flex-shrink-0"
+                        aria-hidden="true"
+                      />
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Gestion du domaine</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          Gestion du nom de domaine
+                        </h3>
                         <p className="text-gray-600">
-                          Le domaine www.e2i-voip.com est enregistré et géré par Hostinger.
+                          {HOSTING.registrar}
+                          <br />
+                          {HOSTING.registrarAddress}
                         </p>
                       </div>
                     </div>
@@ -136,58 +205,78 @@ export default function MentionsLegales() {
         </div>
       </section>
 
-      {/* Section Cookies */}
+      {/* Données personnelles — renvoi vers la politique */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-              Gestion des <span className="text-red-600">cookies</span>
+              Données personnelles et{" "}
+              <span className="text-red-600">cookies</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Notre politique de gestion des cookies et protection des données
+              Le détail figure dans notre politique de confidentialité, qui
+              fait foi
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
                 <CardTitle className="text-xl font-bold flex items-center">
                   <Question size={24} className="mr-2" aria-hidden="true" />
-                  Cookies et traces
+                  Cookies et traceurs
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4">
-                  <p className="text-gray-600">
-                    Le présent site internet dépose des cookies notamment de mesures d'audience avec votre consentement.
+                <div className="space-y-4 text-gray-600">
+                  <p>
+                    Aucun traceur de mesure d&rsquo;audience n&rsquo;est déposé
+                    avant votre acceptation. Le bandeau affiché à votre première
+                    visite vous permet d&rsquo;accepter ou de refuser ; le
+                    refus est le comportement par défaut tant que vous
+                    n&rsquo;avez pas choisi.
                   </p>
-                  <p className="text-gray-600">
-                    Ce dernier vous est proposé à l'aide d'un gestionnaire de site (bandeau) qui vous permet de refuser, d'accepter ou de choisir les traces que vous autorisez.
-                  </p>
-                  <p className="text-gray-600">
-                    Ces traces ne sont pas conservées plus de 13 mois.
+                  <p>
+                    Vous pouvez revenir sur votre choix à tout moment via le
+                    lien <strong>« Gérer mes cookies »</strong> en pied de page.
+                    La liste des traceurs figure dans la{" "}
+                    <Link
+                      href="/politique-confidentialite"
+                      className="text-red-600 underline"
+                    >
+                      politique de confidentialité
+                    </Link>
+                    .
                   </p>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
                 <CardTitle className="text-xl font-bold flex items-center">
                   <Shield size={24} className="mr-2" aria-hidden="true" />
-                  Protection des données
+                  Vos droits
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4">
-                  <p className="text-gray-600">
-                    Vous pouvez vous adresser à notre société pour exercer vos droits informatiques et libertés via notre <strong>Politique de confidentialité</strong> ou notre formulaire de contact.
+                <div className="space-y-4 text-gray-600">
+                  <p>
+                    {COMPANY.legalName} est responsable du traitement des
+                    données collectées sur ce site. Vous disposez d&rsquo;un
+                    droit d&rsquo;accès, de rectification, d&rsquo;effacement,
+                    de limitation, de portabilité et d&rsquo;opposition.
                   </p>
-                  <p className="text-gray-600">
-                    Notre politique de confidentialité se réfère au Règlement Général sur la Protection des Données (RGPD) qui est entré en vigueur le 25 mai 2018.
-                  </p>
-                  <p className="text-gray-600">
-                    Nous continuerons à vous informer et, le cas échéant, à solliciter votre consentement pour tous nouveaux traitements, dans le respect de cette réglementation.
+                  <p>
+                    Pour les exercer, utilisez notre{" "}
+                    <Link
+                      href="/exercer-mes-droits"
+                      className="text-red-600 underline"
+                    >
+                      formulaire dédié
+                    </Link>
+                    . Une réponse vous est adressée dans un délai d&rsquo;un
+                    mois.
                   </p>
                 </div>
               </CardContent>
@@ -196,39 +285,101 @@ export default function MentionsLegales() {
         </div>
       </section>
 
-      {/* Section Droits d'auteur */}
+      {/* Propriété intellectuelle et responsabilité */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-              <span className="text-red-600">Droits d'auteur</span>
+              <span className="text-red-600">Propriété intellectuelle</span> et
+              responsabilité
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Protection de la propriété intellectuelle et droits de reproduction
-            </p>
           </div>
 
-          <Card className="shadow-lg max-w-4xl mx-auto">
-            <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-              <CardTitle className="text-xl font-bold flex items-center">
-                <Question size={24} className="mr-2" aria-hidden="true" />
-                Propriété intellectuelle
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6">
-              <div className="space-y-4">
-                <p className="text-gray-600">
-                  L'ensemble de ce site relève de la législation française et internationale sur les droits d'auteur et la propriété intellectuelle.
-                </p>
-                <p className="text-gray-600">
-                  Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et visuelles.
-                </p>
-                <p className="text-gray-600">
-                  La reproduction de tout ou partie de ce site sur un support quel qu'il soit est formellement interdite sauf autorisation expresse.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <Card className="shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                <CardTitle className="text-xl font-bold">
+                  Propriété intellectuelle
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="space-y-4 text-gray-600">
+                  <p>
+                    L&rsquo;ensemble de ce site relève de la législation
+                    française et internationale sur le droit d&rsquo;auteur et
+                    la propriété intellectuelle. Tous les droits de reproduction
+                    sont réservés, y compris pour les documents téléchargeables
+                    et les représentations iconographiques et visuelles.
+                  </p>
+                  <p>
+                    La reproduction de tout ou partie de ce site sur quelque
+                    support que ce soit est interdite sans autorisation
+                    expresse. Les marques et logos cités, notamment 3CX et
+                    Yeastar, appartiennent à leurs titulaires respectifs.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                <CardTitle className="text-xl font-bold">
+                  Responsabilité et liens externes
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="space-y-4 text-gray-600">
+                  <p>
+                    Les informations publiées sur ce site sont fournies à titre
+                    indicatif. Les descriptions de services, tarifs et
+                    disponibilités ne constituent pas une offre contractuelle :
+                    seul un devis signé engage {COMPANY.legalName}.
+                  </p>
+                  <p>
+                    Ce site peut renvoyer vers des sites tiers dont nous ne
+                    maîtrisons ni le contenu ni les pratiques en matière de
+                    données. Leur consultation relève de votre seule
+                    responsabilité.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                <CardTitle className="text-xl font-bold">
+                  Droit applicable et litiges
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="space-y-4 text-gray-600">
+                  <p>
+                    Les présentes mentions légales sont régies par le droit
+                    français. En cas de litige, une solution amiable sera
+                    recherchée avant toute action contentieuse.
+                  </p>
+                  <p>
+                    Conformément au règlement (UE) n° 524/2013, la Commission
+                    européenne met à disposition une plateforme de règlement en
+                    ligne des litiges, accessible à l&rsquo;adresse{" "}
+                    <a
+                      href="https://ec.europa.eu/consumers/odr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-600 underline"
+                    >
+                      ec.europa.eu/consumers/odr
+                    </a>
+                    .
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <p className="text-sm text-gray-secondary text-center">
+              Dernière mise à jour : {LEGAL_LAST_UPDATE}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -240,11 +391,15 @@ export default function MentionsLegales() {
               Nous sommes <span className="text-red-600">certifiés</span> !
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              E2I Assistance est partenaire 3CX Silver et certifié ! Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
+              E2I Assistance est partenaire 3CX Silver et certifié ! Visitez le
+              site internet de notre partenaire et souscrivez à une version
+              d&rsquo;évaluation du standard téléphonique.
             </p>
             <div className="bg-white rounded-lg p-8 shadow-lg inline-block">
               <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
-                <Badge variant="secondary" className="text-sm">3CX Silver Partner</Badge>
+                <Badge variant="secondary" className="text-sm">
+                  3CX Silver Partner
+                </Badge>
               </div>
             </div>
           </div>
@@ -252,11 +407,11 @@ export default function MentionsLegales() {
       </section>
 
       {/* Section Contact par région */}
-      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine">
+      <section className="py-16 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-4">
-              Nos <span className="text-white">implantations</span>
+              Nos implantations
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Contactez-nous dans votre région
@@ -264,13 +419,18 @@ export default function MentionsLegales() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((contact, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
+            {contactInfo.map((contact) => (
+              <Card
+                key={contact.region}
+                className="bg-white/10 backdrop-blur-sm border-white/20"
+              >
                 <CardContent className="p-6 text-center">
                   <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Phone size={24} className="text-white" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{contact.region}</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {contact.region}
+                  </h3>
                   <p className="text-white/90 text-sm">{contact.phone}</p>
                 </CardContent>
               </Card>
@@ -280,4 +440,4 @@ export default function MentionsLegales() {
       </section>
     </>
   );
-} 
+}

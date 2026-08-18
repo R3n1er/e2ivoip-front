@@ -1,23 +1,65 @@
-import { Metadata } from 'next'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Shield, Users, Question, Envelope, Lock, Eye, Globe, TextT, DownloadSimple, Timer } from '@/lib/icons';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Shield, Lock, Globe, Timer } from "@/lib/icons";
+import {
+  COMPANY,
+  HOSTING,
+  LEGAL_LAST_UPDATE,
+  PROCESSINGS,
+  SUB_PROCESSORS,
+  COOKIES,
+} from "@/lib/legal/company";
+import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
 
 export const metadata: Metadata = {
-  title: 'Politique de confidentialité | E2I VoIP',
-  description: 'Notre politique de confidentialité - E2I ASSISTANCE. Découvrez comment nous protégeons vos données personnelles conformément au RGPD.',
-  keywords: 'politique confidentialité, RGPD, protection données, E2I VoIP, cookies, droits utilisateurs',
-  openGraph: {
-    title: 'Politique de confidentialité | E2I VoIP',
-    description: 'Notre politique de confidentialité - E2I ASSISTANCE. Découvrez comment nous protégeons vos données personnelles.',
+  title: "Politique de confidentialité | E2I VoIP",
+  description:
+    "Politique de confidentialité d’E2I ASSISTANCE : traitements mis en œuvre, bases légales, durées de conservation, sous-traitants et exercice de vos droits RGPD.",
+  keywords:
+    "politique de confidentialité, RGPD, protection des données, sous-traitants, cookies, E2I VoIP",
+  alternates: {
+    canonical: "https://www.e2i-voip.com/politique-confidentialite",
   },
+  openGraph: {
+    title: "Politique de confidentialité | E2I VoIP",
+    description:
+      "Comment E2I ASSISTANCE traite et protège vos données personnelles.",
+    type: "website",
+  },
+};
+
+/**
+ * Titre de section homogène sur toute la page.
+ *
+ * Le titre est un `h2` et non un `CardTitle` : ce dernier rend un `h3`, ce
+ * qui casserait la hiérarchie h1 → h2 → h3 dont dépendent les lecteurs
+ * d'écran et l'indexation d'une page aussi longue.
+ */
+function SectionCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card className="shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+        <h2 className="text-xl font-bold leading-none tracking-tight">
+          {title}
+        </h2>
+      </CardHeader>
+      <CardContent className="p-6">{children}</CardContent>
+    </Card>
+  );
 }
 
 export default function PolitiqueConfidentialitePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-r from-red-primary to-blue-marine relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -26,436 +68,348 @@ export default function PolitiqueConfidentialitePage() {
             }}
           ></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Politique de <span className="text-white">confidentialité</span>
+              Politique de confidentialité
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Découvrez comment E2I ASSISTANCE protège vos données personnelles conformément au RGPD
+              Quelles données {COMPANY.legalName} collecte, pourquoi, pour
+              combien de temps, et comment reprendre la main dessus.
             </p>
-            <div className="mt-8 flex items-center justify-center gap-6 text-white/80">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span className="text-sm">Conformité RGPD</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span className="text-sm">Protection des données</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span className="text-sm">Droits utilisateurs</span>
-              </div>
-            </div>
+            <p className="mt-6 text-sm text-white/80">
+              Dernière mise à jour : {LEGAL_LAST_UPDATE}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Contenu principal */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            
-            {/* Introduction */}
-            <Card className="shadow-lg mb-8">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="bg-red-100 p-3 rounded-lg">
-                    <Shield size={32} className="text-red-600" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                      Protection de vos données personnelles
-                    </h2>
-                    <p className="text-lg text-gray-600 mb-4">
-                      La société E2I ASSISTANCE est responsable du traitement des données que vous confiez à l'occasion de nos relations en ligne à travers ce site internet.
-                    </p>
-                    <p className="text-gray-600">
-                      Conformément au Règlement Général sur la Protection des Données (RGPD) en vigueur en Europe et à la Loi Informatique et Libertés, la société E2I ASSISTANCE vous informe des conditions d'utilisation et de protection de vos données et des moyens vous permettant d'exercer vos droits et recours.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
+          <div className="max-w-4xl mx-auto space-y-10">
             {/* Responsable du traitement */}
-            <Card className="shadow-lg mb-8">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <h2 className="text-2xl font-bold">
-                  1. Identité du responsable du traitement
-                </h2>
-              </CardHeader>
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-red-100 p-3 rounded-lg">
-                    <Users size={32} className="text-red-600" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      E2I ASSISTANCE
+            <SectionCard title="1. Qui est responsable de vos données">
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  {COMPANY.legalName} ({COMPANY.brand}), {COMPANY.address.street}
+                  , {COMPANY.address.postalCode} {COMPANY.address.city},{" "}
+                  {COMPANY.address.country}, immatriculée sous le SIRET{" "}
+                  {COMPANY.siret}, est responsable des traitements décrits
+                  ci-dessous.
+                </p>
+                <p>
+                  Nous n&rsquo;avons pas désigné de délégué à la protection des
+                  données : notre activité ne relève d&rsquo;aucun des cas où
+                  cette désignation est obligatoire (article 37 du RGPD). Vos
+                  demandes sont traitées par la direction, via le{" "}
+                  <Link
+                    href="/exercer-mes-droits"
+                    className="text-red-600 underline"
+                  >
+                    formulaire d&rsquo;exercice des droits
+                  </Link>
+                  .
+                </p>
+              </div>
+            </SectionCard>
+
+            {/* Traitements */}
+            <SectionCard title="2. Ce que nous traitons, et sur quelle base">
+              <p className="mb-6 text-gray-600">
+                Chaque traitement répond à une finalité précise. Nous ne
+                collectons jamais de données « au cas où ».
+              </p>
+              <div className="space-y-6">
+                {PROCESSINGS.map((processing) => (
+                  <div
+                    key={processing.purpose}
+                    className="rounded-lg border border-gray-100 bg-gray-50 p-4"
+                  >
+                    <h3 className="mb-3 font-semibold text-gray-900">
+                      {processing.purpose}
                     </h3>
-                    <p className="text-gray-600 mb-4">
-                      Responsable du traitement des données personnelles
+                    <dl className="space-y-2 text-sm text-gray-600">
+                      <div>
+                        <dt className="inline font-medium text-gray-900">
+                          Base légale :{" "}
+                        </dt>
+                        <dd className="inline">{processing.legalBasis}</dd>
+                      </div>
+                      <div>
+                        <dt className="inline font-medium text-gray-900">
+                          Données :{" "}
+                        </dt>
+                        <dd className="inline">{processing.data}</dd>
+                      </div>
+                      <div>
+                        <dt className="inline font-medium text-gray-900">
+                          Conservation :{" "}
+                        </dt>
+                        <dd className="inline">{processing.retention}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-gray-600">
+                Aucun de ces traitements ne donne lieu à une décision
+                automatisée produisant des effets juridiques à votre égard, ni
+                à la revente de vos données à des tiers.
+              </p>
+            </SectionCard>
+
+            {/* Cookies */}
+            <SectionCard title="3. Cookies et traceurs">
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  Tant que vous n&rsquo;avez pas accepté, aucun traceur de
+                  mesure d&rsquo;audience n&rsquo;est chargé : le refus est
+                  l&rsquo;état par défaut. Vous pouvez revenir sur votre choix à
+                  tout moment via le lien{" "}
+                  <strong>« Gérer mes cookies »</strong> en pied de page — le
+                  bandeau réapparaît immédiatement.
+                </p>
+              </div>
+
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full min-w-[640px] border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200 text-left">
+                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                        Traceur
+                      </th>
+                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                        Émetteur
+                      </th>
+                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                        Finalité
+                      </th>
+                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                        Durée
+                      </th>
+                      <th className="py-2 font-semibold text-gray-900">
+                        Consentement
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {COOKIES.map((cookie) => (
+                      <tr
+                        key={cookie.name}
+                        className="border-b border-gray-100 align-top text-gray-600"
+                      >
+                        <td className="py-3 pr-4 font-mono text-xs">
+                          {cookie.name}
+                        </td>
+                        <td className="py-3 pr-4">{cookie.origin}</td>
+                        <td className="py-3 pr-4">{cookie.purpose}</td>
+                        <td className="py-3 pr-4">{cookie.retention}</td>
+                        <td className="py-3">
+                          {cookie.requiresConsent ? "Requis" : "Non requis"}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-6 text-gray-600">
+                Certaines pages intègrent des contenus tiers (formulaires Tally,
+                vidéos). Ces contenus peuvent déposer leurs propres traceurs
+                lorsque vous interagissez avec eux ; leurs éditeurs en sont
+                responsables.
+              </p>
+            </SectionCard>
+
+            {/* Sous-traitants */}
+            <SectionCard title="4. À qui vos données sont transmises">
+              <p className="mb-6 text-gray-600">
+                Nous ne vendons ni ne louons vos données. Elles sont accessibles
+                à nos équipes internes et aux prestataires techniques
+                ci-dessous, qui agissent sur nos instructions et sont liés par
+                un contrat de sous-traitance au sens de l&rsquo;article 28 du
+                RGPD.
+              </p>
+              <div className="space-y-4">
+                {SUB_PROCESSORS.map((processor) => (
+                  <div
+                    key={processor.name}
+                    className="rounded-lg border border-gray-100 bg-gray-50 p-4"
+                  >
+                    <h3 className="mb-2 font-semibold text-gray-900">
+                      {processor.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">{processor.purpose}</p>
+                    <p className="mt-2 text-sm text-gray-600">
+                      <span className="font-medium text-gray-900">
+                        Données :{" "}
+                      </span>
+                      {processor.data}
                     </p>
-                    <p className="text-gray-600">
-                      Contact : via notre <a href="/contact" className="text-red-600 hover:text-red-700 font-medium">formulaire de contact</a>
+                    <p className="mt-1 text-sm text-gray-600">
+                      <span className="font-medium text-gray-900">
+                        Hébergement :{" "}
+                      </span>
+                      {processor.location}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-gray-600">
+                Vos données peuvent enfin être communiquées aux autorités
+                administratives ou judiciaires lorsque la loi nous y oblige.
+              </p>
+            </SectionCard>
+
+            {/* Sécurité */}
+            <SectionCard title="5. Comment vos données sont protégées">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="flex gap-3">
+                  <Lock
+                    size={24}
+                    className="mt-1 flex-shrink-0 text-red-600"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      Chiffrement en transit
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      L&rsquo;intégralité du site est servie en HTTPS. Les
+                      échanges avec nos prestataires sont chiffrés.
                     </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex gap-3">
+                  <Globe
+                    size={24}
+                    className="mt-1 flex-shrink-0 text-red-600"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Hébergement</h3>
+                    <p className="text-sm text-gray-600">
+                      Le site est hébergé par {HOSTING.provider}. Les données de
+                      relation client sont hébergées dans l&rsquo;Union
+                      européenne (instance HubSpot eu1).
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <Shield
+                    size={24}
+                    className="mt-1 flex-shrink-0 text-red-600"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      Accès restreint
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Les accès aux outils contenant des données personnelles
+                      sont nominatifs et limités aux personnes qui en ont besoin.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <Timer
+                    size={24}
+                    className="mt-1 flex-shrink-0 text-red-600"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      Effacement programmé
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Les durées annoncées au point 2 sont des maximums : au
+                      terme, les données sont supprimées ou anonymisées.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SectionCard>
 
-            {/* Collecte des données */}
-            <Card className="shadow-lg mb-8">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <h2 className="text-2xl font-bold capitalize">
-                  2. données recueillies et utilisées
-                </h2>
-              </CardHeader>
-              <CardContent className="p-8">
-                <p className="text-gray-600 mb-6">
-                  Notre société, selon les finalités des besoins, collecte et utilise vos données personnelles. Cela concerne plusieurs traitements.
+            {/* Droits */}
+            <SectionCard title="6. Vos droits">
+              <p className="mb-6 text-gray-600">
+                Le RGPD vous ouvre les droits suivants sur les données vous
+                concernant.
+              </p>
+              <dl className="space-y-3">
+                {RGPD_RIGHTS.map((right) => (
+                  <div key={right.id}>
+                    <dt className="font-semibold text-gray-900">
+                      {right.label}{" "}
+                      <span className="font-normal text-gray-secondary">
+                        ({right.article})
+                      </span>
+                    </dt>
+                    <dd className="text-gray-600">{right.description}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-6 rounded-lg border border-gray-100 bg-gray-50 p-4 text-gray-600">
+                <p>
+                  Pour exercer l&rsquo;un de ces droits, utilisez notre{" "}
+                  <Link
+                    href="/exercer-mes-droits"
+                    className="text-red-600 underline"
+                  >
+                    formulaire dédié
+                  </Link>
+                  . Un accusé de réception vous est envoyé immédiatement et
+                  notre réponse vous parvient dans un délai d&rsquo;un mois,
+                  prolongeable de deux mois pour une demande complexe. Un
+                  contrôle d&rsquo;identité proportionné à la demande peut être
+                  effectué.
                 </p>
+              </div>
+            </SectionCard>
 
-                <div className="space-y-6">
-                  {/* Cookies */}
-                  <div className="rounded-xl border border-gray-200 bg-white p-6">
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-red-100 p-2 rounded-lg">
-                        <Question size={24} className="text-red-600" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          2.1 Cookies et navigation
-                        </h3>
-                        <p className="text-gray-600">
-                          Le site peut collecter, lorsque vous l'y autorisez, des traces de votre navigation, appelées cookies. Ces traces, par défaut, ne sont pas collectées, sauf si vous l'acceptez par l'intermédiaire de notre bandeau concernant les cookies qui apparaît en page d'accueil. Elles sont utilisées par notre service informatique aux fins de statistiques et sont conservées 13 mois.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Contact */}
-                  <div className="rounded-xl border border-gray-200 bg-white p-6">
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
-                        <Envelope size={24} className="text-blue-600" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          2.2 Gestion des demandes de contact
-                        </h3>
-                        <p className="text-gray-600 mb-2">
-                          Le site peut collecter vos données à travers un formulaire de gestion de demande de contact. La base juridique de ce traitement est l'intérêt légitime de l'association. Les données concernent des données d'identification telles que le nom, prénom, e-mail, téléphone et des données d'information sur votre demande telles que l'objet, le détail de votre message et la date de votre demande.
-                        </p>
-                        <p className="text-sm font-medium text-red-600">
-                          Les données sont conservées 2 ans.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Candidatures */}
-                  <div className="rounded-xl border border-gray-200 bg-white p-6">
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-blue-marine/10 p-2 rounded-lg">
-                        <Users size={24} className="text-blue-marine" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          2.3 Gestion des candidatures
-                        </h3>
-                        <p className="text-gray-600 mb-2">
-                          Le site peut collecter vos données à travers une demande de candidature afin de postuler à une offre d'emploi. La base juridique de ce traitement est l'intérêt légitime de la société et des relations pré-contractuelles. Les données concernent des données d'identification telles que le nom, prénom, e-mail téléphone, adresse, et des données d'information professionnelle sur votre candidature.
-                        </p>
-                        <p className="text-sm font-medium text-red-600">
-                          Les données sont conservées 2 ans.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Paiements */}
-                  <div className="rounded-xl border border-gray-200 bg-white p-6">
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-blue-marine/10 p-2 rounded-lg">
-                        <Lock size={24} className="text-blue-marine" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          2.4 Gestion des paiements
-                        </h3>
-                        <p className="text-gray-600">
-                          Les données de paiement sont traitées de manière sécurisée par nos prestataires de paiement certifiés, conformément aux standards de sécurité PCI DSS.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Images */}
-                  <div className="rounded-xl border border-gray-200 bg-white p-6">
-                    <div className="flex items-start space-x-3 mb-3">
-                      <div className="bg-red-50 p-2 rounded-lg">
-                        <Eye size={24} className="text-red-primary" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          2.5 Gestion de vos images
-                        </h3>
-                        <p className="text-gray-600">
-                          Le site lorsque vous avez donné votre accord par écrit peut utiliser votre image. La base légale du traitement est votre consentement. La finalité est la diffusion de votre image dans le but de promouvoir les activités de la société. La durée de conservation des données correspond au temps de la durée de notre actualité et ne peut dépasser 10 ans.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Hébergement et sécurité */}
-            <Card className="shadow-lg mb-8">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <h2 className="text-2xl font-bold">
-                  3. Comment vos données sont-elles protégées ?
-                </h2>
-              </CardHeader>
-              <CardContent className="p-8">
-                <div className="space-y-6">
-                  {/* Hébergement */}
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Globe size={32} className="text-blue-600" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                        3.1 Lieux d'hébergement
-                      </h3>
-                      <p className="text-gray-600">
-                        Vos données sont stockées, en premier lieu, sur notre site, chez le prestataire hébergeur dûment conforme, puis sur nos serveurs en local. Dans le cas de certains traitements, vos données peuvent être stockées auprès de nos prestataires de services cloud comme Microsoft, Google, HubSpot.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Protection */}
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-blue-marine/10 p-3 rounded-lg">
-                      <Lock size={32} className="text-blue-marine" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                        3.2 Protection des données
-                      </h3>
-                      <p className="text-gray-600">
-                        Afin de préserver la confidentialité et la sécurité de vos données personnelles et notamment de les protéger contre la destruction illicite ou accidentelle, la perte ou l'altération accidentelle ou encore la divulgation ou l'accès non autorisé, notre société a pris les mesures techniques et organisationnelles appropriées, conformément aux dispositions légales applicables, comme, par exemple, le chiffrement des données pendant les transmissions.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Contenu embarqué */}
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-red-50 p-3 rounded-lg">
-                      <Eye size={32} className="text-red-primary" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                        3.3 Contenu embarqué
-                      </h3>
-                      <p className="text-gray-600 mb-2">
-                        Les articles de ce site peuvent inclure des contenus intégrés (par exemple des vidéos, images, articles...). Le contenu intégré depuis d'autres sites se comporte de la même manière que si le visiteur se rendait sur cet autre site.
-                      </p>
-                      <p className="text-gray-600">
-                        Ces sites web pourraient collecter des données sur vous, utiliser des cookies, embarquer des outils de suivis tiers, suivre vos interactions avec ces contenus embarqués si vous disposez d'un compte connecté sur leur site web.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Droits utilisateurs */}
-            <Card className="shadow-lg mb-8">
-              <CardHeader className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-lg">
-                <h2 className="text-2xl font-bold">
-                  4. Vos droits utilisateurs
-                </h2>
-              </CardHeader>
-              <CardContent className="p-8">
-                <p className="text-gray-600 mb-6">
-                  Vous disposez de droits dit informatique et libertés. Pour les exercer, vous pouvez nous écrire à notre adresse postale ou en nous écrivant par le <a href="/contact" className="text-red-600 hover:text-red-700 font-medium">formulaire de contact</a>.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  {/* Droit d'accès */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-blue-100 p-2 rounded-lg">
-                          <Eye size={24} className="text-blue-600" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Droit d'accès
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Vous pouvez exercer votre droit d'accès pour connaître les données personnelles vous concernant. Dans ce cas, nous pourrons vous demander une preuve de votre identité pour en vérifier l'exactitude.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Droit de rectification */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-blue-marine/10 p-2 rounded-lg">
-                          <TextT size={24} className="text-blue-marine" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Droit de rectification
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Si les données personnelles détenues par l'association sont inexactes, vous pouvez demander la mise à jour de vos informations.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Droit à l'oubli */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-red-100 p-2 rounded-lg">
-                          <Question size={24} className="text-red-600" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2 capitalize">
-                            droit à l'oubli
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Vous pouvez demander la suppression de vos données à caractère personnel dans les conditions prévues par l'article 17 du RGPD.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Droit à la portabilité */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-blue-marine/10 p-2 rounded-lg">
-                          <DownloadSimple size={24} className="text-blue-marine" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Droit à la portabilité
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Vous pouvez demander à l'association de vous remettre vos données pour les transmettre à un tiers dans les conditions prévues par l'article 20 du RGPD.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Droit d'opposition */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-red-50 p-2 rounded-lg">
-                          <Question size={24} className="text-red-primary" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Droit d'opposition
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Vous pouvez vous opposer à ce que vos données soient traitées conformément aux hypothèses prévues par l'article 21 du RGPD.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Limitation du traitement */}
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-3">
-                        <div className="bg-red-50 p-2 rounded-lg">
-                          <Lock size={24} className="text-red-primary" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                            Limitation du traitement
-                          </h4>
-                          <p className="text-gray-600 text-sm">
-                            Vous avez le droit de demander à l'association de limiter le traitement de vos données personnelles conformément aux hypothèses prévues par l'article 18 du RGPD.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Délai de réponse */}
-                <Card className="bg-blue-50 border-blue-200">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
-                        <Timer size={24} className="text-blue-600" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          Délai de réponse
-                        </h4>
-                        <p className="text-gray-600">
-                          Toute demande d'exercice de vos droits fera l'objet d'un contrôle d'identité proportionné à la demande. Une réponse vous sera adressée dans le délai d'un mois suivant la réception de la demande.
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Réclamation CNIL */}
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Réclamation auprès de la CNIL
-                  </h4>
-                  <p className="text-gray-600">
-                    Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Certification */}
-            <Card className="shadow-lg bg-gradient-to-r from-red-primary to-blue-marine text-white">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Nous sommes certifiés !
-                </h3>
-                <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                  E2I Assistance est partenaire <strong>3CX Silver</strong> et certifié !
-                  Visitez le site internet de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
-                </p>
-                <a 
-                  href="https://www.3cx.fr/pabx/download-pabx-ip/?resellerId=208715" 
-                  target="_blank" 
+            {/* Réclamation */}
+            <SectionCard title="7. Réclamation auprès de la CNIL">
+              <p className="text-gray-600">
+                Si vous estimez, après nous avoir contactés, que vos droits ne
+                sont pas respectés, vous pouvez introduire une réclamation
+                auprès de la Commission nationale de l&rsquo;informatique et
+                des libertés — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex
+                07, ou en ligne sur{" "}
+                <a
+                  href="https://www.cnil.fr/fr/plaintes"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 hover:bg-gray-100 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                  className="text-red-600 underline"
                 >
-                  Découvrir 3CX
+                  cnil.fr
                 </a>
-              </CardContent>
-            </Card>
+                .
+              </p>
+            </SectionCard>
+
+            {/* Évolution */}
+            <SectionCard title="8. Évolution de cette politique">
+              <p className="text-gray-600">
+                Cette politique peut être modifiée pour refléter un nouveau
+                traitement ou une évolution réglementaire. La date de dernière
+                mise à jour figure en tête de page. En cas de changement
+                substantiel affectant un traitement fondé sur votre
+                consentement, celui-ci vous sera à nouveau demandé.
+              </p>
+            </SectionCard>
+
+            <p className="text-center text-sm text-gray-secondary">
+              Voir aussi nos{" "}
+              <Link href="/mentions-legales" className="text-red-600 underline">
+                mentions légales
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }

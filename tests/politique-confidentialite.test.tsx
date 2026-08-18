@@ -1,66 +1,78 @@
 import { render, screen } from '@testing-library/react'
 
 import PolitiqueConfidentialitePage from '../app/politique-confidentialite/page'
+import { SUB_PROCESSORS } from '@/lib/legal/company'
+import { RGPD_RIGHTS } from '@/lib/rgpd/rights'
 
 describe('Page Politique de Confidentialité', () => {
   it('affiche le titre principal', () => {
     render(<PolitiqueConfidentialitePage />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Politique de confidentialité')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Politique de confidentialité'
+    )
   })
 
-  it('affiche le nom de la société', () => {
+  it('identifie le responsable du traitement', () => {
     render(<PolitiqueConfidentialitePage />)
-    const companyNames = screen.getAllByText('E2I ASSISTANCE')
-    expect(companyNames.length).toBeGreaterThan(0)
-    expect(companyNames[0]).toBeInTheDocument()
+    expect(screen.getAllByText(/E2I ASSISTANCE/).length).toBeGreaterThan(0)
+    expect(screen.getByText(/51743457700014/)).toBeInTheDocument()
   })
 
-  it('contient les sections principales', () => {
+  it('contient les sections attendues d’une politique conforme', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    expect(screen.getByText(/Identité du responsable du traitement/)).toBeInTheDocument()
-    expect(screen.getByText(/données recueillies et utilisées/)).toBeInTheDocument()
-    expect(screen.getByText(/Comment vos données sont-elles protégées/)).toBeInTheDocument()
+
+    expect(screen.getByText(/Qui est responsable de vos données/)).toBeInTheDocument()
+    expect(screen.getByText(/Ce que nous traitons, et sur quelle base/)).toBeInTheDocument()
+    expect(screen.getByText(/Cookies et traceurs/)).toBeInTheDocument()
+    expect(screen.getByText(/À qui vos données sont transmises/)).toBeInTheDocument()
+    expect(screen.getByText(/Comment vos données sont protégées/)).toBeInTheDocument()
     expect(screen.getByText(/Vos droits/)).toBeInTheDocument()
+    expect(screen.getByText(/Réclamation auprès de la CNIL/)).toBeInTheDocument()
   })
 
-  it('contient les droits RGPD', () => {
+  it('énumère les six droits RGPD depuis la source unique', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    expect(screen.getByText(/Droit d'accès/)).toBeInTheDocument()
-    expect(screen.getByText(/Droit de rectification/)).toBeInTheDocument()
-    expect(screen.getByText(/droit à l'oubli/)).toBeInTheDocument()
-    expect(screen.getByText(/Droit à la portabilité/)).toBeInTheDocument()
+
+    for (const right of RGPD_RIGHTS) {
+      expect(screen.getAllByText(new RegExp(right.label)).length).toBeGreaterThan(0)
+    }
   })
 
-  it('contient les liens vers le formulaire de contact', () => {
+  it('nomme chaque sous-traitant : l’information est due au visiteur', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    const contactLinks = screen.getAllByRole('link', { name: /formulaire de contact/i })
-    expect(contactLinks.length).toBeGreaterThan(0)
-    contactLinks.forEach(link => {
-      expect(link).toHaveAttribute('href', '/contact')
-    })
+
+    for (const processor of SUB_PROCESSORS) {
+      expect(screen.getByText(processor.name)).toBeInTheDocument()
+    }
   })
 
-  it('contient la certification 3CX', () => {
+  it('précise une base légale et une durée pour chaque traitement', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    expect(screen.getByText(/3CX Silver/)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /Découvrir 3CX/i })).toHaveAttribute('href', 'https://www.3cx.fr/pabx/download-pabx-ip/?resellerId=208715')
+
+    const basesLegales = screen.getAllByText(/Base légale :/)
+    const durees = screen.getAllByText(/Conservation :/)
+    expect(basesLegales.length).toBe(durees.length)
+    expect(basesLegales.length).toBeGreaterThanOrEqual(5)
   })
 
-  it('respecte la structure sémantique', () => {
+  it('renvoie vers le formulaire d’exercice des droits', () => {
     render(<PolitiqueConfidentialitePage />)
-    
-    const headings = screen.getAllByRole('heading')
-    expect(headings.length).toBeGreaterThan(5) // Au moins 6 titres
-    
-    // Vérifier la hiérarchie des titres
-    const h1 = screen.getByRole('heading', { level: 1 })
-    const h2s = screen.getAllByRole('heading', { level: 2 })
-    
-    expect(h1).toBeInTheDocument()
-    expect(h2s.length).toBeGreaterThan(3)
+
+    const liens = screen
+      .getAllByRole('link')
+      .filter((l) => l.getAttribute('href') === '/exercer-mes-droits')
+    expect(liens.length).toBeGreaterThan(0)
+  })
+
+  it('affiche une date de dernière mise à jour', () => {
+    render(<PolitiqueConfidentialitePage />)
+    expect(screen.getByText(/Dernière mise à jour/)).toBeInTheDocument()
+  })
+
+  it('respecte la hiérarchie des titres', () => {
+    render(<PolitiqueConfidentialitePage />)
+
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(screen.getAllByRole('heading', { level: 2 }).length).toBeGreaterThan(3)
   })
 })
