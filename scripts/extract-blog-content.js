@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 const path = require("path");
 const https = require("https");
 const http = require("http");
+const { assertSafeBlogUrl, safeSlugSegment } = require("./lib/url-safety");
 
 // Structure pour les articles de blog
 // BlogArticle: {
@@ -119,7 +120,7 @@ async function extractBlogContent() {
     try {
       console.log(`📖 Extraction de: ${article.title}`);
 
-      await page.goto(article.url, {
+      await page.goto(assertSafeBlogUrl(article.url), {
         waitUntil: "networkidle0",
         timeout: 30000,
       });
@@ -291,7 +292,7 @@ async function downloadImages(imageUrls, articleSlug) {
     process.cwd(),
     "public",
     "blog-images",
-    articleSlug
+    safeSlugSegment(articleSlug)
   );
   await fs.mkdir(imageDir, { recursive: true });
 
@@ -354,7 +355,7 @@ async function exploreBlogAndGetArticles() {
             article.url.includes("/blog/") &&
             !article.url.includes("/tag/") &&
             !article.url.includes("/author/") &&
-            article.slug.length > 0
+            /^[a-zA-Z0-9-]+$/.test(article.slug)
         );
 
       // Dédupliquer par URL

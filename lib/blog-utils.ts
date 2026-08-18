@@ -1,6 +1,31 @@
+import DOMPurify from "isomorphic-dompurify";
+
 /**
  * Utilitaires partagés pour le rendu du blog.
  */
+
+/**
+ * Assainit le HTML HubSpot avant rendu via dangerouslySetInnerHTML.
+ * HubSpot est une source tierce (éditeurs multiples, compte potentiellement
+ * compromis) : sans ce filtrage, du HTML/JS arbitraire s'exécuterait chez
+ * chaque visiteur de l'article (XSS stockée).
+ */
+export function sanitizeBlogHtml(value?: string): string {
+  if (!value) return "";
+  return DOMPurify.sanitize(value, {
+    ALLOWED_TAGS: [
+      "p", "br", "hr",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "strong", "em", "b", "i", "u", "s", "span",
+      "ul", "ol", "li",
+      "a", "img",
+      "blockquote", "pre", "code",
+      "table", "thead", "tbody", "tr", "th", "td",
+      "figure", "figcaption",
+    ],
+    ALLOWED_ATTR: ["href", "src", "alt", "title", "target", "rel", "class", "width", "height"],
+  });
+}
 
 /**
  * Nettoie le HTML HubSpot pour n'en garder que le texte.
