@@ -1,4 +1,4 @@
-import DOMPurify from "isomorphic-dompurify";
+import sanitizeHtml from "sanitize-html";
 
 /**
  * Utilitaires partagés pour le rendu du blog.
@@ -9,11 +9,16 @@ import DOMPurify from "isomorphic-dompurify";
  * HubSpot est une source tierce (éditeurs multiples, compte potentiellement
  * compromis) : sans ce filtrage, du HTML/JS arbitraire s'exécuterait chez
  * chaque visiteur de l'article (XSS stockée).
+ *
+ * `sanitize-html` (pur JS, sans jsdom) est utilisé plutôt que DOMPurify :
+ * la variante isomorphic-dompurify tire jsdom, dont une dépendance
+ * transitive (html-encoding-sniffer -> @exodus/bytes) casse au runtime
+ * sur Vercel (require() d'un module ESM), ce qui faisait planter /blog.
  */
 export function sanitizeBlogHtml(value?: string): string {
   if (!value) return "";
-  return DOMPurify.sanitize(value, {
-    ALLOWED_TAGS: [
+  return sanitizeHtml(value, {
+    allowedTags: [
       "p", "br", "hr",
       "h1", "h2", "h3", "h4", "h5", "h6",
       "strong", "em", "b", "i", "u", "s", "span",
@@ -23,7 +28,12 @@ export function sanitizeBlogHtml(value?: string): string {
       "table", "thead", "tbody", "tr", "th", "td",
       "figure", "figcaption",
     ],
-    ALLOWED_ATTR: ["href", "src", "alt", "title", "target", "rel", "class", "width", "height"],
+    allowedAttributes: {
+      "*": ["class", "title"],
+      a: ["href", "target", "rel"],
+      img: ["src", "alt", "width", "height"],
+    },
+    allowedSchemes: ["http", "https", "mailto", "tel"],
   });
 }
 
