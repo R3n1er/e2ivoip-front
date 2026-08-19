@@ -18,7 +18,12 @@ export const COMPANY = {
   brand: "E2I VoIP",
   siret: "51743457700014",
   siren: "517 434 577",
-  rcs: "Cayenne 517 434 577",
+  /**
+   * L'entreprise n'est pas immatriculée au RCS : son immatriculation est
+   * portée par le Registre National des Entreprises, guichet unique depuis
+   * 2023. Mentionner un RCS inexistant serait une information trompeuse.
+   */
+  registry: "Registre National des Entreprises (RNE)",
   ape: "6203Z",
   apeLabel: "Gestion d’installations informatiques",
   publicationDirector: "Alban RENIER",
@@ -32,15 +37,19 @@ export const COMPANY = {
 } as const;
 
 /** Date affichée en pied des pages légales. */
-export const LEGAL_LAST_UPDATE = "18 août 2026";
+export const LEGAL_LAST_UPDATE = "19 août 2026";
 
 export const HOSTING = {
   provider: "Vercel Inc.",
   address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
   site: "vercel.com",
-  registrar: "Hostinger International Ltd.",
-  registrarAddress:
-    "61 Lordou Vironos Street, 6023 Larnaca, Chypre",
+  /**
+   * Le nom de domaine est géré chez OVH, distinct de l'hébergement du site
+   * assuré par Vercel : les deux doivent être annoncés séparément.
+   */
+  registrar: "OVH SAS",
+  registrarAddress: "2 rue Kellermann, 59100 Roubaix, France",
+  registrarSite: "www.ovhcloud.com",
 } as const;
 
 export interface SubProcessor {
@@ -54,9 +63,8 @@ export interface SubProcessor {
 /**
  * Sous-traitants effectivement mobilisés par le site, vérifiés dans le code.
  *
- * PostHog figure dans les dépendances du projet mais n'est jamais initialisé
- * (aucun `posthog.init`) : il ne collecte donc rien aujourd'hui et n'a pas sa
- * place ici. À réintroduire le jour où il sera réellement activé.
+ * Google Analytics n'y figure pas : aucun `gtag`, aucun conteneur GTM n'est
+ * chargé par le site. Ne rien déclarer tant qu'il n'est pas déployé.
  */
 export const SUB_PROCESSORS: readonly SubProcessor[] = [
   {
@@ -75,6 +83,15 @@ export const SUB_PROCESSORS: readonly SubProcessor[] = [
       "Identité, coordonnées, contenu de vos demandes, pages consultées après consentement.",
     location:
       "Union européenne (instance eu1) — transferts encadrés par les clauses contractuelles types.",
+  },
+  {
+    name: "PostHog",
+    purpose:
+      "Mesure d’audience et analyse du parcours de navigation (pages vues, clics, formulaires soumis).",
+    data:
+      "Pages consultées, interactions, provenance, données techniques de navigation. Aucune donnée directement identifiante n’est envoyée.",
+    location:
+      "Union européenne (instance eu.i.posthog.com, hébergée à Francfort).",
   },
   {
     name: "Resend (Plus Five Five, Inc.)",
@@ -176,11 +193,41 @@ export const COOKIES: readonly CookieEntry[] = [
     requiresConsent: true,
   },
   {
+    name: "ph_phc_…_posthog",
+    origin: "PostHog",
+    purpose:
+      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience. Tant que vous n’avez pas accepté, PostHog fonctionne sans écrire sur votre terminal (mémoire de session uniquement).",
+    retention: "12 mois.",
+    requiresConsent: true,
+  },
+  {
     name: "Vercel Web Analytics",
     origin: "Vercel",
     purpose:
       "Compter les visites de façon agrégée. Ce dispositif ne dépose aucun cookie et ne suit pas les visiteurs entre les sites.",
     retention: "Sans objet — aucun identifiant déposé sur votre terminal.",
     requiresConsent: false,
+  },
+];
+
+export interface NonTrackingTool {
+  name: string;
+  purpose: string;
+  /** Pourquoi l'outil n'a pas sa place dans le tableau des traceurs. */
+  detail: string;
+}
+
+/**
+ * Outils tiers cités par transparence, mais qui n'écrivent rien sur le
+ * terminal du visiteur. Les lister avec les cookies laisserait croire à un
+ * dépôt de traceur soumis à consentement : ils ont donc leur propre bloc.
+ */
+export const NON_TRACKING_TOOLS: readonly NonTrackingTool[] = [
+  {
+    name: "Google Search Console",
+    purpose:
+      "Suivre la présence du site dans les résultats de recherche Google et détecter les erreurs d’indexation.",
+    detail:
+      "Aucun script n’est chargé sur le site et aucun traceur n’est déposé : l’outil ne restitue que des statistiques de recherche agrégées, sans donnée identifiante.",
   },
 ];

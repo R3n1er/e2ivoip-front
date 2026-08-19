@@ -42,7 +42,9 @@ describe('Page Politique de Confidentialité', () => {
     render(<PolitiqueConfidentialitePage />)
 
     for (const processor of SUB_PROCESSORS) {
-      expect(screen.getByText(processor.name)).toBeInTheDocument()
+      // getAllByText : un sous-traitant peut être cité deux fois sur la page,
+      // comme destinataire des données et comme origine d'un traceur.
+      expect(screen.getAllByText(processor.name).length).toBeGreaterThan(0)
     }
   })
 
