@@ -10,6 +10,17 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-19 — Durcissement anti-spam du formulaire d’exercice des droits RGPD
+
+- **Contexte** : la route publique `/api/rgpd/demande` déclenche des emails depuis un domaine authentifié et matérialise une obligation légale. Elle validait déjà les champs, bornait les longueurs, échappait le HTML, rejetait les droits inconnus et limitait le débit par IP, mais restait exposée aux POST automatisés simples et aux robots capables d’utiliser la route comme relais d’emails.
+- **Décision** :
+  - Ajouter une défense en couches conforme aux bonnes pratiques OWASP 2025/2026 : en-tête d’intention `X-E2I-Form`, rejet des requêtes `Sec-Fetch-Site: cross-site`, contrôle `Origin` quand présent, refus des content-types simples et limite de corps à 16 Ko.
+  - Ajouter deux signaux anti-bot côté formulaire : honeypot `company` et délai minimal de remplissage de 2,5 s, tous deux revalidés côté serveur.
+  - Prévoir Cloudflare Turnstile en mode optionnel : si `TURNSTILE_SECRET_KEY` est configurée, la route exige un jeton validé par Siteverify avant tout envoi d’email. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` active le widget côté client.
+  - Conserver la limitation de débit existante, en acceptant sa portée mémoire locale : suffisante contre les scripts naïfs, mais à remplacer par un store partagé ou une protection edge si attaque distribuée.
+- **Conséquences** : un formulaire légitime continue de fonctionner sans friction visible par défaut. Les soumissions cross-site, les corps anormaux, les robots simples et les environnements Turnstile mal validés sont bloqués avant tout appel Resend. Les déploiements qui veulent une preuve humaine forte doivent renseigner les deux variables Turnstile et mentionner l’usage dans la politique de confidentialité si le mode invisible est choisi.
+- **Tests associés** : `tests/api/rgpd-demande.test.ts` couvre l’en-tête d’intention, l’origine cross-site, le content-type, la taille de corps, le honeypot, le délai minimal et Turnstile ; `tests/components/rgpd-request-form.test.tsx` vérifie les signaux envoyés par le formulaire.
+
 ### 2026-08-17 — Studio Voix Humaines : démos audio + formulaire étape par étape
 
 - **Contexte** : la page `/studio-attente` présentait les studios (voix humaines vs IA) mais ne proposait ni exemple audio, ni parcours guidé pour obtenir un devis studio humain. Le partenaire Romano (`attentetelephonique.fr`) autorise E2I VoIP à réutiliser ses démonstrations audio et textes types. L’objectif était double : laisser le visiteur écouter des exemples par type de message (pré-décroché, attente, fermeture, occupation, additionnel), puis l’accompagner dans la construction d’un message sur mesure via un formulaire simple, pensé TDA.

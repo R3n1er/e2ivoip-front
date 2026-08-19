@@ -60,12 +60,18 @@ describe("RgpdRequestForm", () => {
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
     const [url, init] = (global.fetch as jest.Mock).mock.calls[0];
     expect(url).toBe("/api/rgpd/demande");
+    expect(init.headers).toMatchObject({
+      "Content-Type": "application/json",
+      "X-E2I-Form": "rgpd-rights",
+    });
     expect(JSON.parse(init.body)).toMatchObject({
       firstName: "Jean",
       lastName: "Dupont",
       email: "jean.dupont@example.fr",
       requestTypes: ["acces", "effacement"],
+      company: "",
     });
+    expect(JSON.parse(init.body).formStartedAt).toEqual(expect.any(Number));
   });
 
   it("confirme le dépôt et rappelle le délai d’un mois", async () => {

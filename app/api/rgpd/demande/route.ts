@@ -24,6 +24,12 @@ import { RGPD_RIGHTS, getRightById, type RgpdRight } from "@/lib/rgpd/rights";
 // et limite l'usage de la route comme relais d'emails.
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const MAX_BODY_BYTES = 16 * 1024;
+const MIN_SUBMIT_DELAY_MS = 2500;
+const FORM_INTENT_HEADER = "x-e2i-form";
+const FORM_INTENT_VALUE = "rgpd-rights";
+const TURNSTILE_VERIFY_URL =
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 const DELAI_LEGAL = "un mois";
 
@@ -40,6 +46,8 @@ const FIELD_LIMITS = {
   phone: 30,
   details: 2000,
   pageUrl: 500,
+  company: 120,
+  turnstileToken: 4096,
 } as const;
 
 /** Nombre maximum d'identifiants de droits acceptés dans un envoi. */
@@ -53,6 +61,105 @@ export interface RgpdDemandePayload {
   requestTypes: string[];
   details?: string;
   pageUrl?: string;
+  company?: string;
+  formStartedAt?: number;
+  turnstileToken?: string;
+}
+
+function json(
+  body: Record<string, unknown>,
+  init?: { status?: number; headers?: HeadersInit }
+) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: {
+      Vary: "Sec-Fetch-Site, Origin",
+      ...init?.headers,
+    },
+  });
+}
+
+function hasAcceptedContentType(request: Request): boolean {
+  return request.headers
+    .get("content-type")
+    ?.toLowerCase()
+    .startsWith("application/json") === true;
+}
+
+function hasAcceptedBodySize(request: Request): boolean {
+  const value = request.headers.get("content-length");
+  if (!value) return true;
+  const length = Number(value);
+  return Number.isFinite(length) && length <= MAX_BODY_BYTES;
+}
+
+function hasSameOriginSignal(request: Request): boolean {
+  const secFetchSite = request.headers.get("sec-fetch-site");
+  if (secFetchSite === "cross-site") return false;
+
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+
+  try {
+    return new URL(origin).origin === new URL(request.url).origin;
+  } catch {
+    return false;
+  }
+}
+
+function hasFormIntentHeader(request: Request): boolean {
+  return request.headers.get(FORM_INTENT_HEADER) === FORM_INTENT_VALUE;
+}
+
+function hasHumanTimingSignal(value: unknown): boolean {
+  if (typeof value !== "number" || !Number.isFinite(value)) return false;
+  return Date.now() - value >= MIN_SUBMIT_DELAY_MS;
+}
+
+async function parseJsonBody(
+  request: Request
+): Promise<Partial<RgpdDemandePayload> | "too-large" | null> {
+  try {
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) {
+      return "too-large";
+    }
+    return JSON.parse(raw) as Partial<RgpdDemandePayload>;
+  } catch {
+    return null;
+  }
+}
+
+async function verifyTurnstileToken(
+  token: string,
+  request: Request
+): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true;
+  if (!token) return false;
+
+  const ip = getClientIdentifier(request);
+  const formData = new FormData();
+  formData.append("secret", secret);
+  formData.append("response", token);
+  if (ip && ip !== "unknown") formData.append("remoteip", ip);
+
+  try {
+    const response = await fetch(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) return false;
+
+    const data = (await response.json()) as { success?: boolean };
+    return data.success === true;
+  } catch (error) {
+    console.error(
+      "[rgpd/demande] Turnstile failed:",
+      error instanceof Error ? error.message : error
+    );
+    return false;
+  }
 }
 
 /**
@@ -76,19 +183,53 @@ function resolveRights(value: unknown): RgpdRight[] | null {
 
 export async function POST(request: Request) {
   try {
+    if (!hasSameOriginSignal(request) || !hasFormIntentHeader(request)) {
+      return json(
+        { error: "La demande ne peut être envoyée que depuis le formulaire." },
+        { status: 403 }
+      );
+    }
+
+    if (!hasAcceptedContentType(request)) {
+      return json(
+        { error: "Format de requête non accepté." },
+        { status: 415 }
+      );
+    }
+
+    if (!hasAcceptedBodySize(request)) {
+      return json(
+        { error: "La demande est trop volumineuse." },
+        { status: 413 }
+      );
+    }
+
     const { allowed, retryAfter } = checkRateLimit(
       getClientIdentifier(request),
       RATE_LIMIT_MAX,
       RATE_LIMIT_WINDOW_MS
     );
     if (!allowed) {
-      return NextResponse.json(
+      return json(
         { error: "Trop de demandes. Réessayez dans quelques minutes." },
         { status: 429, headers: { "Retry-After": String(retryAfter) } }
       );
     }
 
-    const body = (await request.json()) as Partial<RgpdDemandePayload>;
+    const body = await parseJsonBody(request);
+    if (body === "too-large") {
+      return json(
+        { error: "La demande est trop volumineuse." },
+        { status: 413 }
+      );
+    }
+
+    if (!body) {
+      return json(
+        { error: "Le contenu de la demande est illisible." },
+        { status: 400 }
+      );
+    }
 
     const firstName = sanitize(body.firstName, FIELD_LIMITS.firstName);
     const lastName = sanitize(body.lastName, FIELD_LIMITS.lastName);
@@ -96,16 +237,28 @@ export async function POST(request: Request) {
     const phone = sanitize(body.phone, FIELD_LIMITS.phone);
     const details = sanitize(body.details, FIELD_LIMITS.details);
     const pageUrl = sanitize(body.pageUrl, FIELD_LIMITS.pageUrl);
+    const company = sanitize(body.company, FIELD_LIMITS.company);
+    const turnstileToken = sanitize(
+      body.turnstileToken,
+      FIELD_LIMITS.turnstileToken
+    );
+
+    if (company || !hasHumanTimingSignal(body.formStartedAt)) {
+      return json(
+        { error: "Votre demande n’a pas pu être validée. Réessayez." },
+        { status: 400 }
+      );
+    }
 
     if (!firstName || !lastName || !email) {
-      return NextResponse.json(
+      return json(
         { error: "Prénom, nom et email sont requis." },
         { status: 400 }
       );
     }
 
     if (!isValidEmail(email)) {
-      return NextResponse.json(
+      return json(
         { error: "L’adresse email n’est pas valide." },
         { status: 400 }
       );
@@ -113,8 +266,16 @@ export async function POST(request: Request) {
 
     const rights = resolveRights(body.requestTypes);
     if (!rights) {
-      return NextResponse.json(
+      return json(
         { error: "Sélectionnez au moins un droit à exercer." },
+        { status: 400 }
+      );
+    }
+
+    const turnstileOk = await verifyTurnstileToken(turnstileToken, request);
+    if (!turnstileOk) {
+      return json(
+        { error: "La vérification anti-robot a échoué. Réessayez." },
         { status: 400 }
       );
     }
@@ -222,7 +383,7 @@ E2I ASSISTANCE
 
     if (internalResult.status === "rejected") {
       console.error("[rgpd/demande] Resend (interne) failed:", internalResult.reason);
-      return NextResponse.json(
+      return json(
         { error: "L’envoi de votre demande a échoué. Veuillez réessayer." },
         { status: 500 }
       );
@@ -234,10 +395,10 @@ E2I ASSISTANCE
       console.error("[rgpd/demande] Resend (accusé) failed:", ackResult.reason);
     }
 
-    return NextResponse.json({ ok: true });
+    return json({ ok: true });
   } catch (e: unknown) {
     console.error("[rgpd/demande]", e instanceof Error ? e.message : e);
-    return NextResponse.json(
+    return json(
       { error: "Une erreur est survenue. Veuillez réessayer." },
       { status: 500 }
     );

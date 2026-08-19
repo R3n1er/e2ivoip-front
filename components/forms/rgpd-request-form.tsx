@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import Script from "next/script";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
 
 type Status = "idle" | "sending" | "success" | "error";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+declare global {
+  interface Window {
+    __e2iSetRgpdTurnstileToken?: (token: string) => void;
+  }
+}
 
 /**
  * Dépôt d'une demande d'exercice de droits RGPD.
@@ -23,8 +31,18 @@ export function RgpdRequestForm() {
   const [phone, setPhone] = useState("");
   const [selectedRights, setSelectedRights] = useState<string[]>([]);
   const [details, setDetails] = useState("");
+  const [company, setCompany] = useState("");
+  const [formStartedAt] = useState(() => Date.now());
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    window.__e2iSetRgpdTurnstileToken = setTurnstileToken;
+    return () => {
+      delete window.__e2iSetRgpdTurnstileToken;
+    };
+  }, []);
 
   function toggleRight(id: string) {
     setSelectedRights((current) =>
@@ -48,7 +66,10 @@ export function RgpdRequestForm() {
     try {
       const res = await fetch("/api/rgpd/demande", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-E2I-Form": "rgpd-rights",
+        },
         body: JSON.stringify({
           firstName,
           lastName,
@@ -60,6 +81,9 @@ export function RgpdRequestForm() {
             selectedRights.includes(right.id)
           ).map((right) => right.id),
           details,
+          company,
+          formStartedAt,
+          turnstileToken,
           pageUrl: typeof window !== "undefined" ? window.location.href : "",
         }),
       });
@@ -107,6 +131,13 @@ export function RgpdRequestForm() {
       noValidate
       className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8"
     >
+      {TURNSTILE_SITE_KEY ? (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+        />
+      ) : null}
+
       <fieldset className="mb-8">
         <legend className="mb-4 text-lg font-bold text-gray-dark">
           Vos coordonnées
@@ -241,13 +272,43 @@ export function RgpdRequestForm() {
         />
       </div>
 
+      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden">
+        <label htmlFor="rgpd-company">Entreprise</label>
+        <Input
+          id="rgpd-company"
+          name="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
+      {TURNSTILE_SITE_KEY ? (
+        <div
+          className="mb-4 min-h-16"
+          aria-label="Vérification anti-robot"
+        >
+          <div
+            className="cf-turnstile"
+            data-sitekey={TURNSTILE_SITE_KEY}
+            data-callback="__e2iSetRgpdTurnstileToken"
+            data-theme="light"
+          />
+        </div>
+      ) : null}
+
       {error && (
         <p role="alert" className="mb-4 text-sm font-medium text-red-primary">
           {error}
         </p>
       )}
 
-      <Button type="submit" disabled={status === "sending"} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        disabled={status === "sending" || Boolean(TURNSTILE_SITE_KEY && !turnstileToken)}
+        className="w-full sm:w-auto"
+      >
         {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}
       </Button>
 

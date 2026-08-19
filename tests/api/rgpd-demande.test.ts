@@ -32,14 +32,22 @@ const VALID_PAYLOAD = {
   requestTypes: ["acces", "effacement"],
   details: "Je souhaite connaître les données détenues me concernant.",
   pageUrl: "https://www.e2i-voip.com/exercer-mes-droits",
+  formStartedAt: Date.now() - 3000,
+  company: "",
 };
 
-function buildRequest(payload: unknown, ip = "1.2.3.4"): Request {
+function buildRequest(
+  payload: unknown,
+  ip = "1.2.3.4",
+  headers: Record<string, string> = {}
+): Request {
   return new Request("https://e2i-voip.com/api/rgpd/demande", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-E2I-Form": "rgpd-rights",
       "x-forwarded-for": ip,
+      ...headers,
     },
     body: JSON.stringify(payload),
   });
@@ -77,6 +85,80 @@ describe("POST /api/rgpd/demande", () => {
 
   afterEach(() => {
     process.env = originalEnv;
+  });
+
+  it("refuse une requête sans en-tête d'intention du formulaire", async () => {
+    const request = new Request("https://e2i-voip.com/api/rgpd/demande", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-forwarded-for": "1.2.3.4",
+      },
+      body: JSON.stringify(VALID_PAYLOAD),
+    });
+
+    const res = await POST(request);
+
+    expect(res.status).toBe(403);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("refuse une requête cross-site", async () => {
+    const res = await POST(
+      buildRequest(VALID_PAYLOAD, "1.2.3.4", {
+        Origin: "https://spam.example",
+        "Sec-Fetch-Site": "cross-site",
+      })
+    );
+
+    expect(res.status).toBe(403);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("refuse un type de contenu simple exploitable par un formulaire externe", async () => {
+    const request = new Request("https://e2i-voip.com/api/rgpd/demande", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-E2I-Form": "rgpd-rights",
+      },
+      body: JSON.stringify(VALID_PAYLOAD),
+    });
+
+    const res = await POST(request);
+
+    expect(res.status).toBe(415);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("refuse un corps trop volumineux avant parsing JSON", async () => {
+    const res = await POST(
+      buildRequest(VALID_PAYLOAD, "1.2.3.4", {
+        "Content-Length": String(20 * 1024),
+      })
+    );
+
+    expect(res.status).toBe(413);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("refuse un corps trop volumineux même sans Content-Length fiable", async () => {
+    const request = new Request("https://e2i-voip.com/api/rgpd/demande", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-E2I-Form": "rgpd-rights",
+      },
+      body: JSON.stringify({
+        ...VALID_PAYLOAD,
+        details: "a".repeat(20 * 1024),
+      }),
+    });
+
+    const res = await POST(request);
+
+    expect(res.status).toBe(413);
+    expect(mockSend).not.toHaveBeenCalled();
   });
 
   it("accepte une demande valide et envoie les deux emails", async () => {
@@ -140,6 +222,54 @@ describe("POST /api/rgpd/demande", () => {
     expect(mockSend).not.toHaveBeenCalled();
   });
 
+  it("refuse une soumission trop rapide pour être humaine", async () => {
+    const res = await POST(
+      buildRequest({ ...VALID_PAYLOAD, formStartedAt: Date.now() })
+    );
+
+    expect(res.status).toBe(400);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("refuse une soumission qui remplit le honeypot", async () => {
+    const res = await POST(
+      buildRequest({ ...VALID_PAYLOAD, company: "Robot SARL" })
+    );
+
+    expect(res.status).toBe(400);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("exige un jeton Turnstile si la clé serveur est configurée", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "turnstile-secret";
+
+    const res = await POST(buildRequest(VALID_PAYLOAD));
+
+    expect(res.status).toBe(400);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("valide le jeton Turnstile avant d'envoyer les emails", async () => {
+    process.env.TURNSTILE_SECRET_KEY = "turnstile-secret";
+    const fetchMock = jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(
+        new Response(JSON.stringify({ success: true }), { status: 200 })
+      );
+
+    const res = await POST(
+      buildRequest({ ...VALID_PAYLOAD, turnstileToken: "token-ok" })
+    );
+
+    expect(res.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockSend).toHaveBeenCalledTimes(2);
+    fetchMock.mockRestore();
+  });
+
   it("refuse un droit inconnu plutôt que de le relayer tel quel", async () => {
     const res = await POST(
       buildRequest({ ...VALID_PAYLOAD, requestTypes: ["acces", "<script>"] })
@@ -165,7 +295,7 @@ describe("POST /api/rgpd/demande", () => {
   });
 
   it("tronque un champ démesuré avant l'envoi", async () => {
-    await POST(buildRequest({ ...VALID_PAYLOAD, details: "a".repeat(20000) }));
+    await POST(buildRequest({ ...VALID_PAYLOAD, details: "a".repeat(2500) }));
 
     const { text } = internalEmail();
     expect(text).toContain("a".repeat(2000));
