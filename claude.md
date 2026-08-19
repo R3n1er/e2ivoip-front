@@ -2,6 +2,10 @@
 
 Lire aussi : `.agents.md` (règles techniques complètes)
 
+## Langue
+
+Toujours répondre en français, y compris les messages de statut, résumés et questions.
+
 ## Profil utilisateur (TDAH)
 
 **Source de vérité : `ME.md`** — à lire en début de session.
