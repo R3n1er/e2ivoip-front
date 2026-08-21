@@ -13,3 +13,7 @@ export const SITE_URL = (
 
 /** Nom commercial officiel, réutilisé dans les métadonnées et le JSON-LD. */
 export const SITE_NAME = "E2I VoIP";
+
+/** Titre SEO de la page d'accueil, partagé avec les métadonnées sociales. */
+export const HOME_PAGE_TITLE =
+  "Opérateur de services télécom DOM | E2I VoIP";

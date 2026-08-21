@@ -3,7 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { LayoutClientChrome } from "@/components/layout/layout-client-chrome";
 import { Footer } from "@/components/layout/footer";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { HOME_PAGE_TITLE, SITE_URL, SITE_NAME } from "@/lib/site";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { Analytics } from "@vercel/analytics/next";
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   // références manuelles. Les anciens fichiers public/favicon-*.png restent
   // disponibles comme fallback pour les anciens navigateurs.
   title: {
-    default: "E2I VoIP - Solutions de téléphonie IP professionnelles",
+    default: HOME_PAGE_TITLE,
     // Les pages enfant qui définissent un title court héritent du suffixe marque.
     template: `%s | ${SITE_NAME}`,
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
+    title: HOME_PAGE_TITLE,
     description:
       "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
     type: "website",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "E2I VoIP - Solutions de téléphonie IP professionnelles",
+    title: HOME_PAGE_TITLE,
     description:
       "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
     images: ["/images/e2i-voip-partage.png"],
