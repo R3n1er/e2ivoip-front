@@ -10,6 +10,13 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-21 — Titre SEO de la page d’accueil ciblé sur les DOM
+
+- **Contexte** : le titre de la page d’accueil décrivait des solutions de téléphonie IP professionnelles sans exprimer le positionnement différenciant d’E2I VoIP ni sa zone prioritaire.
+- **Décision** : remplacer le titre HTML par « Opérateur de services télécom DOM | E2I VoIP » et aligner `og:title` ainsi que `twitter:title`. Les titres spécifiques des pages internes et la description SEO restent inchangés.
+- **Conséquences** : l’intention « opérateur télécom DOM » apparaît dès le début du titre, la marque reste identifiable et les aperçus sociaux emploient le même message.
+- **Tests associés** : `tests/playwright/metadata-sociale.spec.ts` vérifie le `<title>`, `og:title` et `twitter:title` rendus sur la page d’accueil.
+
 ### 2026-08-19 — Durcissement anti-spam du formulaire d’exercice des droits RGPD
 
 - **Contexte** : la route publique `/api/rgpd/demande` déclenche des emails depuis un domaine authentifié et matérialise une obligation légale. Elle validait déjà les champs, bornait les longueurs, échappait le HTML, rejetait les droits inconnus et limitait le débit par IP, mais restait exposée aux POST automatisés simples et aux robots capables d’utiliser la route comme relais d’emails.
