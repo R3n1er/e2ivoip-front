@@ -75,8 +75,22 @@ export default function PolitiqueConfidentialitePage() {
               Politique de confidentialité
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Quelles données {COMPANY.legalName} collecte, pourquoi, pour
-              combien de temps, et comment reprendre la main dessus.
+              Quelles données {COMPANY.legalName} collecte sur{" "}
+              <strong className="text-white">{COMPANY.siteUrl}</strong>, pourquoi,
+              pour combien de temps, et comment reprendre la main dessus.
+            </p>
+            <p className="mt-4 text-sm text-white/80 max-w-2xl mx-auto">
+              Cette politique s’applique uniquement au site internet{" "}
+              {COMPANY.siteUrl}. Pour les traitements réalisés dans le cadre de
+              nos Services contractuels (VoIP, IPBX, Trunk SIP), se référer à
+              l’
+              <Link
+                href="/accord-sous-traitance-rgpd"
+                className="text-white underline"
+              >
+                accord de sous-traitance RGPD
+              </Link>
+              .
             </p>
             <p className="mt-6 text-sm text-white/80">
               Dernière mise à jour : {LEGAL_LAST_UPDATE}
@@ -92,11 +106,17 @@ export default function PolitiqueConfidentialitePage() {
             <SectionCard title="1. Qui est responsable de vos données">
               <div className="space-y-4 text-gray-600">
                 <p>
-                  {COMPANY.legalName} ({COMPANY.brand}), {COMPANY.address.street}
-                  , {COMPANY.address.postalCode} {COMPANY.address.city},{" "}
-                  {COMPANY.address.country}, immatriculée sous le SIRET{" "}
-                  {COMPANY.siret}, est responsable des traitements décrits
-                  ci-dessous.
+                  Le responsable de traitement est :{" "}
+                  <strong className="text-gray-900">
+                    EI Alban RENIER — E2I ASSISTANCE exploitant la marque{" "}
+                    {COMPANY.brand}
+                  </strong>
+                  . L’entreprise individuelle est domiciliée au{" "}
+                  {COMPANY.address.street}, {COMPANY.address.postalCode}{" "}
+                  {COMPANY.address.city}, {COMPANY.address.country}, et est
+                  immatriculée sous le SIRET {COMPANY.siret}. Elle est
+                  responsable des traitements décrits dans cette politique,
+                  qui ne concernent que le site internet {COMPANY.siteUrl}.
                 </p>
                 <p>
                   Nous n&rsquo;avons pas désigné de délégué à la protection des
