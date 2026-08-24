@@ -32,7 +32,7 @@ export const COMPANY = {
 } as const;
 
 /** Date affichée en pied des pages légales. */
-export const LEGAL_LAST_UPDATE = "18 août 2026";
+export const LEGAL_LAST_UPDATE = "24 août 2026";
 
 export const HOSTING = {
   provider: "Vercel Inc.",
