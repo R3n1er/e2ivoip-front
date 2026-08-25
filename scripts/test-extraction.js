@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const { assertSafeBlogUrl } = require("./lib/url-safety");
 
 async function exploreBlog() {
   console.log("🔍 Exploration du blog E2I VoIP...");
@@ -83,7 +84,7 @@ async function exploreBlog() {
       const firstArticle = pageInfo.articleLinks[0];
       console.log(`\n🧪 Test d'extraction de: ${firstArticle.href}`);
 
-      await page.goto(firstArticle.href, {
+      await page.goto(assertSafeBlogUrl(firstArticle.href), {
         waitUntil: "networkidle0",
         timeout: 30000,
       });

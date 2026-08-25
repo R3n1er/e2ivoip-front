@@ -3,6 +3,10 @@
 const fs = require('fs');
 const path = require('path');
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // Mapping des icônes lucide-react vers Lineicons
 const iconMapping = {
   // Navigation & UI
@@ -219,23 +223,24 @@ function processFile(filePath) {
     // Remplacer chaque utilisation d'icône
     iconsUsed.forEach(icon => {
       const lineiconName = getLineiconName(icon);
-      
+      const safeIcon = escapeRegExp(icon);
+
       // Pattern 1: <Icon className="..." />
-      const pattern1 = new RegExp(`<${icon}\\s+className="([^"]*)"\\s*/?>`, 'g');
+      const pattern1 = new RegExp(`<${safeIcon}\\s+className="([^"]*)"\\s*/?>`, 'g');
       content = content.replace(pattern1, (match, className) => {
         return `<i className="lni ${lineiconName} ${className}"></i>`;
       });
-      
+
       // Pattern 2: <Icon />
-      const pattern2 = new RegExp(`<${icon}\\s*/?>`, 'g');
+      const pattern2 = new RegExp(`<${safeIcon}\\s*/?>`, 'g');
       content = content.replace(pattern2, `<i className="lni ${lineiconName}"></i>`);
-      
+
       // Pattern 3: icon: Icon dans les objets
-      const pattern3 = new RegExp(`icon:\\s*${icon}([,\\s}])`, 'g');
+      const pattern3 = new RegExp(`icon:\\s*${safeIcon}([,\\s}])`, 'g');
       content = content.replace(pattern3, `icon: "${lineiconName}"$1`);
-      
+
       // Pattern 4: Icon={Icon} dans les props
-      const pattern4 = new RegExp(`Icon={${icon}}`, 'g');
+      const pattern4 = new RegExp(`Icon={${safeIcon}}`, 'g');
       content = content.replace(pattern4, `icon="${lineiconName}"`);
       
       // Pattern 5: <location.icon ... /> pour les objets avec propriété icon
