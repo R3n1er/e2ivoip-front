@@ -30,6 +30,8 @@ export interface LegalPdfDoc {
   version: string;
   requiredAcceptance: boolean;
   category: "contractuel" | "rgpd";
+  /** Slug de la page HTML en ligne correspondante (optionnel). */
+  onlinePageSlug?: string;
 }
 
 export type LegalDoc = LegalPageDoc | LegalPdfDoc;
@@ -90,6 +92,7 @@ export const LEGAL_PDFS: readonly LegalPdfDoc[] = [
     version: "v1.2",
     requiredAcceptance: true,
     category: "contractuel",
+    onlinePageSlug: "conditions-generales-de-vente",
   },
   {
     kind: "pdf",
@@ -123,6 +126,7 @@ export const LEGAL_PDFS: readonly LegalPdfDoc[] = [
     version: "v1.2",
     requiredAcceptance: false,
     category: "rgpd",
+    onlinePageSlug: "accord-sous-traitance-rgpd",
   },
   {
     kind: "pdf",
@@ -134,6 +138,7 @@ export const LEGAL_PDFS: readonly LegalPdfDoc[] = [
     version: "v1.1",
     requiredAcceptance: true,
     category: "rgpd",
+    onlinePageSlug: "politique-confidentialite",
   },
 ] as const;
 

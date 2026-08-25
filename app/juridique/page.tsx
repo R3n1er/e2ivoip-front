@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { DownloadSimple, FileText, Shield, Scales } from "@/lib/icons";
+import { DownloadSimple, Shield, Scales } from "@/lib/icons";
 import {
   LEGAL_PAGES,
   LEGAL_PDFS,
@@ -53,10 +53,7 @@ export default function JuridiqueHubPage() {
             {/* Pages de l'espace juridique */}
             <Card className="shadow-lg">
               <CardContent className="p-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                  <FileText size={24} className="text-red-600 mr-3" aria-hidden="true" />
-                  Pages
-                </h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>Pages</h2>
                 <ul className="divide-y divide-gray-200">
                   {LEGAL_PAGES.map((doc) => (
                     <li key={doc.slug}>
@@ -107,9 +104,14 @@ export default function JuridiqueHubPage() {
                           <p className="font-medium text-gray-900">{doc.title}</p>
                           <p className="text-sm text-gray-500 mt-0.5">
                             {doc.version} · {doc.pages} pages
-                            {doc.requiredAcceptance && (
-                              <span className="ml-2 inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
-                                acceptation requise à la commande
+                            {doc.onlinePageSlug && (
+                              <span className="ml-2">
+                                <Link
+                                  href={legalHref(doc.onlinePageSlug)}
+                                  className="text-red-primary underline hover:text-red-700 transition-colors"
+                                >
+                                  Lire en ligne
+                                </Link>
                               </span>
                             )}
                           </p>

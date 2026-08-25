@@ -207,13 +207,27 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                {/* Hub unique : toutes les pages et tous les PDFs juridiques
-                    sont listés sur /juridique — le footer reste allégé. */}
                 <Link
                   href="/juridique"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
                   Documents juridiques
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/juridique/conditions-generales-de-vente"
+                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                >
+                  Conditions générales de vente
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/juridique/mentions-legales"
+                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                >
+                  Mentions légales
                 </Link>
               </li>
               <li>
