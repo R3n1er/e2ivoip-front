@@ -127,6 +127,69 @@ export default function ConditionsGeneralesVentePage() {
               </Card>
             </div>
 
+            {/* Documents connexes */}
+            <Card className="shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                <h2 className="text-xl font-bold">Documents contractuels connexes</h2>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col">
+                    <Link
+                      href="/documents/conditions-particulieres-voip.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
+                      <div>
+                        <p className="font-medium text-gray-900">Conditions particulières — VoIP / IPBX</p>
+                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/documents/conditions-particulieres-trunk-sip.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
+                      <div>
+                        <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
+                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/juridique/accord-sous-traitance-rgpd"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
+                      <div>
+                        <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
+                        <p className="text-sm text-gray-500">Lire en ligne · v1.2</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/juridique/politique-confidentialite"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
+                      <div>
+                        <p className="font-medium text-gray-900">Politique de confidentialité</p>
+                        <p className="text-sm text-gray-500">Lire en ligne · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Sommaire par thèmes */}
             <Card className="shadow-lg">
               <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
@@ -274,69 +337,6 @@ export default function ConditionsGeneralesVentePage() {
               </CardHeader>
               <CardContent className="p-8">
                 <CgvContent />
-              </CardContent>
-            </Card>
-
-            {/* Documents connexes */}
-            <Card className="shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
-                <h2 className="text-xl font-bold">Documents contractuels connexes</h2>
-              </CardHeader>
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex flex-col">
-                    <Link
-                      href="/documents/conditions-particulieres-voip.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                    >
-                      <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-gray-900">Conditions particulières — VoIP / IPBX</p>
-                        <p className="text-sm text-gray-500">PDF · v1.1</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col">
-                    <Link
-                      href="/documents/conditions-particulieres-trunk-sip.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                    >
-                      <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
-                        <p className="text-sm text-gray-500">PDF · v1.1</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col">
-                    <Link
-                      href="/juridique/accord-sous-traitance-rgpd"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                    >
-                      <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
-                        <p className="text-sm text-gray-500">Lire en ligne · v1.2</p>
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col">
-                    <Link
-                      href="/juridique/politique-confidentialite"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                    >
-                      <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-gray-900">Politique de confidentialité</p>
-                        <p className="text-sm text-gray-500">Lire en ligne · v1.1</p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
               </CardContent>
             </Card>
 
