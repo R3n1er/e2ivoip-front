@@ -17,7 +17,7 @@ test.describe("Formulaire RGPD - sécurité anti-spam", () => {
       });
     });
 
-    await page.goto("/exercer-mes-droits");
+    await page.goto("/juridique/exercer-mes-droits");
 
     await expect(
       page.getByRole("heading", { name: /Exercer mes droits/i })

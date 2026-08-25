@@ -52,11 +52,17 @@ describe('Footer - Phone Links', () => {
 })
 
 describe('Footer — accès aux dispositifs RGPD', () => {
-  test('expose un lien vers le formulaire d’exercice des droits', () => {
+  test('expose les liens directs CGV, mentions légales et exercer mes droits', () => {
     render(<Footer />)
 
-    const lien = screen.getByRole('link', { name: /exercer mes droits/i })
-    expect(lien).toHaveAttribute('href', '/exercer-mes-droits')
+    const cgv = screen.getByRole('link', { name: /conditions générales de vente/i })
+    expect(cgv).toHaveAttribute('href', '/juridique/conditions-generales-de-vente')
+
+    const mentions = screen.getByRole('link', { name: /mentions légales/i })
+    expect(mentions).toHaveAttribute('href', '/juridique/mentions-legales')
+
+    const droits = screen.getByRole('link', { name: /exercer mes droits/i })
+    expect(droits).toHaveAttribute('href', '/juridique/exercer-mes-droits')
   })
 
   test('permet de rouvrir le choix cookies : retirer doit être aussi simple qu’accepter', () => {

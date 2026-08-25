@@ -10,6 +10,22 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-24 — Espace juridique unifié /juridique avec hub et fil d'Ariane
+
+- **Contexte** : les 5 pages légales vivaient à plat à la racine (`/mentions-legales`, `/politique-confidentialite`, `/exercer-mes-droits`, `/conditions-generales-de-vente`, `/accord-sous-traitance-rgpd`) sans point d'entrée commun ; le footer accumulait 5 liens directs + 2 PDFs. L'ajout des CGV/DPA (PR #29) a saturé cette organisation plate.
+- **Décision** :
+  - Regrouper les 5 pages sous `app/juridique/` avec une page hub `/juridique` listant pages HTML **et** PDFs contractuels.
+  - Créer un registre typé `lib/legal/documents.ts` (miroir du manifest Cowork `~/Cowork/e2ivoip/website-ready/manifest.json`) : le hub, ses tests et les liens croisés lisent ce registre — aucune URL codée en dur dans la page.
+  - Ajouter un composant `LegalBreadcrumb` (`components/legal/breadcrumb.tsx`) rendu par chaque page : fil « Accueil › Espace juridique › [page] » + JSON-LD schema.org BreadcrumbList pour Google. Le dernier segment n'est jamais un lien (pas d'auto-référence).
+  - Rediriger les anciennes URLs en permanentes (`permanent: true` → 308 Next.js) via `next.config.js`, y compris l'ancien alias HubSpot `/politique-confidentialites`, sans chaîne de redirection.
+  - Alléger le footer : un seul lien « Documents juridiques » vers le hub.
+- **Conséquences** :
+  - Les 6 routes `/juridique/*` sont prérendues en statique au build.
+  - Le sitemap expose le hub (priority 0.4) et les nouvelles URLs ; les 301 préservent l'autorité SEO acquise sur les anciennes URLs.
+  - L'ancienne convention manifest `/docs/*.pdf` est corrigée en `/documents/*.pdf` côté site (le manifest Cowork reste inchangé).
+  - Point d'attention : `.env.local` local ne contient plus `HUBSPOT_ACCESS_TOKEN` — les 9 tests Playwright blog échouent hors CI tant que le token n'est pas restauré (indépendant du présent chantier).
+- **Tests associés** : `npm test` ✅ (455/455, dont 17 nouveaux : registre, breadcrumb, hub, redirections) ; Playwright `legal-space.spec.ts` ✅ (4/4 : hub, fil d'Ariane + JSON-LD, redirections, footer) ; `npm run lint` ✅ ; `type-check` ✅ ; `build` ✅.
+
 ### 2026-08-19 — Durcissement anti-spam du formulaire d’exercice des droits RGPD
 
 - **Contexte** : la route publique `/api/rgpd/demande` déclenche des emails depuis un domaine authentifié et matérialise une obligation légale. Elle validait déjà les champs, bornait les longueurs, échappait le HTML, rejetait les droits inconnus et limitait le débit par IP, mais restait exposée aux POST automatisés simples et aux robots capables d’utiliser la route comme relais d’emails.

@@ -208,7 +208,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/conditions-generales-de-vente"
+                  href="/juridique/conditions-generales-de-vente"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
                   Conditions générales de vente
@@ -216,15 +216,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/accord-sous-traitance-rgpd"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Accord de sous-traitance RGPD
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mentions-legales"
+                  href="/juridique/mentions-legales"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
                   Mentions légales
@@ -232,15 +224,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/politique-confidentialite"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Politique de confidentialité
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/exercer-mes-droits"
+                  href="/juridique/exercer-mes-droits"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
                   Exercer mes droits

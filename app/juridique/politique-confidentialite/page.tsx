@@ -11,6 +11,7 @@ import {
   COOKIES,
 } from "@/lib/legal/company";
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
+import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité | E2I VoIP",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   keywords:
     "politique de confidentialité, RGPD, protection des données, sous-traitants, cookies, E2I VoIP",
   alternates: {
-    canonical: "https://www.e2i-voip.com/politique-confidentialite",
+    canonical: "https://www.e2i-voip.com/juridique/politique-confidentialite",
   },
   openGraph: {
     title: "Politique de confidentialité | E2I VoIP",
@@ -58,6 +59,8 @@ function SectionCard({
 export default function PolitiqueConfidentialitePage() {
   return (
     <>
+      <LegalBreadcrumb current="Politique de confidentialité" />
+
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -85,7 +88,7 @@ export default function PolitiqueConfidentialitePage() {
               nos Services contractuels (VoIP, IPBX, Trunk SIP), se référer à
               l’
               <Link
-                href="/accord-sous-traitance-rgpd"
+                href="/juridique/accord-sous-traitance-rgpd"
                 className="text-white underline"
               >
                 accord de sous-traitance RGPD
@@ -124,7 +127,7 @@ export default function PolitiqueConfidentialitePage() {
                   cette désignation est obligatoire (article 37 du RGPD). Vos
                   demandes sont traitées par la direction, via le{" "}
                   <Link
-                    href="/exercer-mes-droits"
+                    href="/juridique/exercer-mes-droits"
                     className="text-red-600 underline"
                   >
                     formulaire d&rsquo;exercice des droits
@@ -375,7 +378,7 @@ export default function PolitiqueConfidentialitePage() {
                 <p>
                   Pour exercer l&rsquo;un de ces droits, utilisez notre{" "}
                   <Link
-                    href="/exercer-mes-droits"
+                    href="/juridique/exercer-mes-droits"
                     className="text-red-600 underline"
                   >
                     formulaire dédié
@@ -422,7 +425,7 @@ export default function PolitiqueConfidentialitePage() {
 
             <p className="text-center text-sm text-gray-secondary">
               Voir aussi nos{" "}
-              <Link href="/mentions-legales" className="text-red-600 underline">
+              <Link href="/juridique/mentions-legales" className="text-red-600 underline">
                 mentions légales
               </Link>
               .
