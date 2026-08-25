@@ -15,3 +15,5 @@
 > **Statut actuel** : Milestone v1.0 COMPLET (2026-05-09) — 3/3 phases livrées en production.
 >
 > **Maintenance sécurité (2026-08-14)** : 28 vulnérabilités npm résolues ; Next.js 16.3.1 et Puppeteer 25.7.0 validés. Voir `docs/superpowers/plans/2026-08-14-npm-security-next16.md`.
+>
+> **Maintenance sécurité (2026-08-19)** : formulaire `/exercer-mes-droits` durci contre spam/robots : contrôles Origin/Fetch Metadata, en-tête d’intention, limite de corps, honeypot, délai minimal et Turnstile optionnel. Voir `docs/ADR.md`.

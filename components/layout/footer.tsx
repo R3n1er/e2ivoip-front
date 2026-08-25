@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link'
 import { PhoneLink } from '@/components/ui/phone-link'
+import { resetConsent } from '@/lib/analytics/consent'
 import { TERRITORY_PHONES } from '@/lib/constants/phone-numbers'
 import { LinkedinLogo, Phone, Headphones } from '@/lib/icons'
 
@@ -207,7 +208,15 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/mentions-legales"
+                  href="/juridique/conditions-generales-de-vente"
+                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                >
+                  Conditions générales de vente
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/juridique/mentions-legales"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
                   Mentions légales
@@ -215,11 +224,23 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/politique-confidentialite"
+                  href="/juridique/exercer-mes-droits"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
-                  Politique de confidentialité
+                  Exercer mes droits
                 </Link>
+              </li>
+              <li>
+                {/* Le RGPD impose que retirer son consentement soit aussi
+                    simple que le donner : ce bouton oublie le choix mémorisé
+                    et fait réapparaître le bandeau. */}
+                <button
+                  type="button"
+                  onClick={() => resetConsent()}
+                  className="inline-block py-1 text-left hover:text-red-primary transition-colors"
+                >
+                  Gérer mes cookies
+                </button>
               </li>
               <li>
                 <Link

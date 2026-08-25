@@ -41,3 +41,26 @@ export function declineCookies(): void {
   notifyConsentChange()
   // PostHog reste en persistence:'memory' (cookieless) — rien à changer.
 }
+
+/**
+ * Oublie le choix mémorisé : le bandeau réapparaît au prochain rendu.
+ *
+ * Le RGPD impose que retirer son consentement soit aussi simple que le
+ * donner. Repasser PostHog en persistance mémoire est indispensable — sans
+ * cela, le retrait n'aurait aucun effet tant que le visiteur n'a pas
+ * explicitement refusé dans le bandeau réaffiché.
+ */
+export async function resetConsent(): Promise<void> {
+  if (typeof window === 'undefined') return
+  window.localStorage.removeItem(CONSENT_KEY)
+  notifyConsentChange()
+  await import('posthog-js')
+    .then(({ default: posthog }) => {
+      if (posthog?.set_config) {
+        posthog.set_config({ persistence: 'memory' })
+      }
+    })
+    .catch(() => {
+      // SDK bloqué : le choix est oublié malgré tout, le bandeau reviendra.
+    })
+}

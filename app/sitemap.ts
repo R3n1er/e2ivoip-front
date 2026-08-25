@@ -73,8 +73,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
 
     // Légal
-    { path: "/mentions-legales", changeFrequency: "yearly", priority: 0.3 },
-    { path: "/politique-confidentialite", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/juridique/mentions-legales", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/juridique", changeFrequency: "yearly", priority: 0.4 },
+    { path: "/juridique/politique-confidentialite", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/juridique/exercer-mes-droits", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/juridique/conditions-generales-de-vente", changeFrequency: "yearly", priority: 0.3 },
+    { path: "/juridique/accord-sous-traitance-rgpd", changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = routes.map(
