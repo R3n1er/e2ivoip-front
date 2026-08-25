@@ -38,9 +38,9 @@ export const HOSTING = {
   provider: "Vercel Inc.",
   address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
   site: "vercel.com",
-  registrar: "Hostinger International Ltd.",
+  registrar: "OVHcloud",
   registrarAddress:
-    "61 Lordou Vironos Street, 6023 Larnaca, Chypre",
+    "2 rue Kellermann, 59100 Roubaix, France",
 } as const;
 
 export interface SubProcessor {
