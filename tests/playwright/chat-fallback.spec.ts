@@ -26,9 +26,9 @@ test.describe("ChatFallback - bannière alternative quand le chat est bloqué", 
     const contactLink = fallback.getByRole("link", { name: /formulaire de contact/i });
     await expect(contactLink).toHaveAttribute("href", "/contact");
 
-    // Lien tel:
+    // Lien tel: — doit correspondre à la constante TERRITORY_PHONES (France)
     const telLink = fallback.locator('a[href^="tel:"]');
-    await expect(telLink).toHaveAttribute("href", /tel:\+33189056000/);
+    await expect(telLink).toHaveAttribute("href", "tel:+33189560500");
   });
 
   test("peut être masqué via la croix — mémorisation localStorage", async ({
@@ -65,8 +65,12 @@ test.describe("ChatFallback - bannière alternative quand le chat est bloqué", 
     );
     await page.goto("/");
 
-    // Attendre largement plus que les 6 s de délai du composant.
-    await page.waitForTimeout(8000);
+    // Ancrer le test : le script mocké est bien monté et expose l'API.
+    await expect(page.locator("#hs-script-loader")).toHaveCount(1);
+
+    // Dépasser la fenêtre de détection du composant (6 s) puis vérifier
+    // l'absence persistante du fallback — sans dépendre d'un timing interne.
+    await page.waitForTimeout(7000);
 
     await expect(page.getByTestId("chat-fallback")).toHaveCount(0);
   });

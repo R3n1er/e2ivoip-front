@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
+
+const FRANCE_PHONE =
+  TERRITORY_PHONES.find((p) => p.territory === "France") ?? null;
 
 /**
  * Fallback statique pour le widget HubSpot Conversations.
@@ -16,9 +20,10 @@ import Link from "next/link";
  *
  * Détection : après 6 s, on vérifie que `window.HubSpotConversations`
  * ET `#hubspot-conversations-iframe` existent. Si l'un manque, on
- * affiche un bandeau persistant en bas de viewport avec 3 canaux de
- * contact directs (téléphone, email, formulaire). Le bandeau est
- * dismissable par bouton croix (localStorage).
+ * affiche un bandeau persistant en bas de viewport avec 2 canaux de
+ * contact directs (téléphone, formulaire). Le bandeau est
+ * dismissable par bouton croix (localStorage, sans expiration :
+ * choix UX assumé — voir ADR 2026-08-26).
  *
  * Désactivation : si `?nochat=1` est dans l'URL (utile pour les tests
  * E2E et la maintenance), on force l'affichage immédiat sans attendre.
@@ -118,18 +123,20 @@ export function ChatFallback() {
       </div>
 
       <div className="flex flex-col gap-2 text-sm">
-        <a
-          href="tel:+33189056000"
-          className="flex items-center gap-2 rounded-lg bg-red-primary text-white px-4 py-3 font-bold hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary"
-        >
-          <span aria-hidden="true">📞</span>
-          <span>
-            <span className="block text-[10px] font-normal opacity-90">
-              France
+        {FRANCE_PHONE && (
+          <a
+            href={`tel:${FRANCE_PHONE.tel}`}
+            className="flex items-center gap-2 rounded-lg bg-red-primary text-white px-4 py-3 font-bold hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary"
+          >
+            <span aria-hidden="true">📞</span>
+            <span>
+              <span className="block text-[10px] font-normal opacity-90">
+                France
+              </span>
+              {FRANCE_PHONE.number}
             </span>
-            01 89 56 05 00
-          </span>
-        </a>
+          </a>
+        )}
         <Link
           href="/contact"
           className="rounded-lg border border-gray-300 px-4 py-3 font-semibold hover:border-red-primary hover:text-red-primary transition-colors"

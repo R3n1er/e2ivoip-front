@@ -41,7 +41,7 @@ interface HubSpotConversationsWidget {
   open(): void;
   close?(): void;
   remove?(): void;
-  status?(): { loaded: boolean; pending?: boolean };
+  status?(): { loaded: boolean };
   /** Pré-remplit le champ de saisie du chat sans l'envoyer. */
   setInputText?(text: string): void;
 }
