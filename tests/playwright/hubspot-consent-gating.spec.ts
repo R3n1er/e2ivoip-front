@@ -59,21 +59,38 @@ test.describe("HubSpot Conversations — chargement à la demande", () => {
         status: 200,
         contentType: "application/javascript",
         body: `
+          let initialized = false;
+          const startInit = () => {
+            if (initialized) return;
+            initialized = true;
+            setTimeout(() => {
+              const mountIframe = () => {
+                let f = document.getElementById("hubspot-conversations-iframe");
+                if (!f) {
+                  f = document.createElement("iframe");
+                  f.id = "hubspot-conversations-iframe";
+                  f.style.width = "448px";
+                  f.style.height = "804px";
+                  document.body.appendChild(f);
+                }
+              };
+              window.HubSpotConversations.widget = {
+                status: () => ({ loaded: true, pending: false }),
+                load: (options) => {
+                  if (options && options.widgetOpen) mountIframe();
+                },
+                open: () => mountIframe(),
+              };
+            }, 200);
+          };
           window.HubSpotConversations = {
             widget: {
-              status: () => ({ loaded: false, pending: true }),
-              load: () => {},
+              status: () => ({ loaded: false, pending: false }),
+              load: () => startInit(),
               open: () => {},
             },
           };
           (window.hsConversationsOnReady || []).forEach((cb) => cb());
-          setTimeout(() => {
-            window.HubSpotConversations.widget = {
-              status: () => ({ loaded: true, pending: false }),
-              load: () => {},
-              open: () => {},
-            };
-          }, 300);
         `,
       });
     });

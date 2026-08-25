@@ -6,38 +6,56 @@ test.describe("ChatPreOverlay - Flux complet", () => {
       await route.fulfill({
         status: 200,
         contentType: "application/javascript",
-        // Reproduit le comportement réel du SDK Conversations : l'API apparaît
-        // immédiatement mais le widget s'initialise de façon asynchrone, et un
-        // `load({ widgetOpen: true })` lancé avant la fin de l'initialisation
-        // rend un launcher fermé (ignoré). Seul `open()` appelé après
-        // `status().loaded` ouvre réellement la fenêtre — cf. ADR 2026-08-25.
+        // Reproduit le comportement réel du SDK Conversations vérifié en prod
+        // (ADR 2026-08-25) : avec `loadImmediately: false`, l'API apparaît mais
+        // le widget ne s'initialise QUE si un `load()` est émis (kick). Après
+        // l'initialisation, `open()` ouvre la fenêtre et crée l'iframe visible
+        // (~448×804) ; `widgetOpen` sur un `load()` prématuré est ignoré.
         body: `
           window.__hubspotWidgetCalls = [];
           window.__hubspotInputTexts = [];
+          let initialized = false;
+          const startInit = () => {
+            if (initialized) return;
+            initialized = true;
+            setTimeout(() => {
+              const mountIframe = () => {
+                let f = document.getElementById("hubspot-conversations-iframe");
+                if (!f) {
+                  f = document.createElement("iframe");
+                  f.id = "hubspot-conversations-iframe";
+                  f.style.width = "448px";
+                  f.style.height = "804px";
+                  document.body.appendChild(f);
+                }
+              };
+              window.HubSpotConversations.widget = {
+                status: () => ({ loaded: true, pending: false }),
+                load: (options) => {
+                  window.__hubspotWidgetCalls.push(["load", options]);
+                  if (options && options.widgetOpen) mountIframe();
+                },
+                open: () => {
+                  window.__hubspotWidgetCalls.push(["open"]);
+                  mountIframe();
+                },
+                setInputText: (text) => {
+                  window.__hubspotInputTexts.push(text);
+                },
+              };
+            }, 200);
+          };
           window.HubSpotConversations = {
             widget: {
-              status: () => ({ loaded: false, pending: true }),
-              load: () => {},
+              status: () => ({ loaded: false, pending: false }),
+              load: () => {
+                window.__hubspotWidgetCalls.push(["load"]);
+                startInit();
+              },
               open: () => {},
             },
           };
           (window.hsConversationsOnReady || []).forEach((callback) => callback());
-          setTimeout(() => {
-            let isOpen = false;
-            window.HubSpotConversations.widget = {
-              status: () => ({ loaded: true, pending: false, open: isOpen }),
-              load: (options) => {
-                isOpen = !!options?.widgetOpen;
-                window.__hubspotWidgetCalls.push(["load", options]);
-              },
-              open: () => {
-                isOpen = true;
-                window.__hubspotWidgetCalls.push(["open"]);
-              },
-              setInputText: (text) =>
-                window.__hubspotInputTexts.push(text),
-            };
-          }, 300);
         `,
       });
     });

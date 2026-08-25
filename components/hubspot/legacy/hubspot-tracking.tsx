@@ -20,10 +20,14 @@ export function HubSpotTracking({
   return (
     <>
       {/* Les réglages ne déposent aucun cookie : ils sont posés en amont pour
-          garantir que `loadImmediately: false` est lu dès l'exécution du
-          script, quel que soit le moment où celui-ci est monté. */}
+          garantir que `loadImmediately: false` et `enableWidgetCookieBanner:
+          false` sont lus dès l'exécution du script, quel que soit le moment
+          où celui-ci est monté. La seconde option supprime la bannière
+          cookies européenne du widget (`#hs-eu-cookie-confirmation`) : le site
+          a déjà son propre bandeau RGPD et la modale HS bloquait l'ouverture
+          du chat jusqu'à acceptation explicite (vérifié en prod 2026-08-25). */}
       <Script id="hubspot-conversations-settings" strategy="afterInteractive">
-        {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false};
+        {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false, enableWidgetCookieBanner: false};
 window.hsConversationsOnReady = window.hsConversationsOnReady || [];
 window._hsq = window._hsq || [];`}
       </Script>

@@ -115,21 +115,28 @@ function waitForHubSpotConversations(timeoutMs: number): Promise<void> {
 function waitForWidgetLoaded(timeoutMs: number): Promise<void> {
   return new Promise((resolve, reject) => {
     const start = Date.now();
+    let kicked = false;
     const timer = window.setInterval(() => {
-      let initialized = false;
       try {
-        // `loaded === true` seul marque la fin de l'initialisation. `pending`
-        // signifie au contraire qu'elle est EN COURS : ouvrir maintenant ne
-        // servirait à rien, l'appel serait dirigé vers un widget non prêt.
-        initialized =
-          window.HubSpotConversations?.widget?.status?.()?.loaded === true;
+        const status = window.HubSpotConversations?.widget?.status?.();
+        if (status?.loaded) {
+          window.clearInterval(timer);
+          resolve();
+          return;
+        }
+        // Avec `loadImmediately: false`, l'initialisation ne démarre JAMAIS
+        // seule : status() reste { loaded: false } tant qu'aucun load() n'a
+        // été émis. Au bout d'1 s sans init, on la déclenche (kick).
+        if (!kicked && Date.now() - start > 1000) {
+          kicked = true;
+          try {
+            window.HubSpotConversations?.widget?.load();
+          } catch {
+            /* le tick suivant réessaiera */
+          }
+        }
       } catch {
-        initialized = false;
-      }
-      if (initialized) {
-        window.clearInterval(timer);
-        resolve();
-        return;
+        /* API pas encore prête : on attend */
       }
       if (Date.now() - start > timeoutMs) {
         window.clearInterval(timer);
@@ -142,23 +149,66 @@ function waitForWidgetLoaded(timeoutMs: number): Promise<void> {
 /**
  * Ouvre le widget HubSpot Conversations après validation du pré-chat.
  *
- * ⚠️ Le flag `widgetOpen` de `widget.load()` est ignoré par HubSpot quand le
- * widget n'a pas encore terminé son initialisation (cas systématique en
- * production où le script est monté à la demande avec `loadImmediately:
- * false`). Vérifié sur www.e2i-voip.com le 2026-08-25 : un `load({
- * widgetOpen: true })` appelé juste après l'apparition de l'API rend un
- * launcher fermé (iframe ~100×96), sans erreur. La séquence fiable est donc :
- * attendre la fin de l'initialisation (`status().loaded`, cf. ADR 2026-08-25),
- * puis appeler `open()`.
+ * ⚠️ Deux pièges du SDK Conversations, vérifiés sur www.e2i-voip.com le
+ * 2026-08-25 (Chrome headless + CDP) :
+ * 1. Avec `loadImmediately: false`, rien ne s'initialise tant qu'aucun
+ *    `load()` n'est émis — un simple `open()` sur widget non chargé est
+ *    ignoré, et `widgetOpen: true` ne survit jamais à l'initialisation.
+ * 2. Même après `status().loaded === true`, un unique `open()` peut être avalé :
+ *    l'iframe reste au format launcher (~100×96). Un appel suivant passe.
+ * D'où : kick d'initialisation → attente de `loaded` → `open()` avec
+ * vérification de la taille RÉELLE de l'iframe et retries alternés
+ * (`open()`, puis `load({ widgetOpen: true })`) jusqu'à ouverture effective.
  */
 async function openHubSpotWidget(): Promise<void> {
   await waitForWidgetLoaded(HUBSPOT_WIDGET_TIMEOUT_MS);
 
+  const getIframeSize = () =>
+    document
+      .querySelector<HTMLIFrameElement>("#hubspot-conversations-iframe")
+      ?.getBoundingClientRect();
+
+  const isOpen = () => {
+    const rect = getIframeSize();
+    return !!rect && rect.width > 250 && rect.height > 200;
+  };
+
   const widget = window.HubSpotConversations?.widget;
-  if (!widget?.open) {
+  if (!widget) {
     throw new Error("Le widget HubSpot n'est pas disponible");
   }
-  widget.open();
+
+  const attemptOpen = () => {
+    try {
+      widget.open();
+    } catch {
+      /* retenté au prochain tour */
+    }
+  };
+  const attemptLoadOpen = () => {
+    try {
+      widget.load({ widgetOpen: true, inline: false });
+    } catch {
+      /* retenté au prochain tour */
+    }
+  };
+
+  attemptOpen();
+  const deadline = Date.now() + HUBSPOT_WIDGET_TIMEOUT_MS;
+  let useLoad = false;
+
+  while (!isOpen()) {
+    await new Promise((resolve) => window.setTimeout(resolve, 1000));
+    if (useLoad) {
+      attemptLoadOpen();
+    } else {
+      attemptOpen();
+    }
+    useLoad = !useLoad;
+    if (Date.now() > deadline) {
+      throw new Error("Le widget HubSpot ne s'est pas ouvert à temps");
+    }
+  }
 }
 
 function isValidEmail(email: string): boolean {
