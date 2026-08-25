@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Shield, TextT, MapPin, Globe, Question, Phone } from "@/lib/icons";
 import { COMPANY, HOSTING, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
+import { LegalHelpCard } from "@/components/legal/help-card";
 
 export const metadata: Metadata = {
   title: "Mentions légales - E2I VoIP",
@@ -382,6 +383,8 @@ export default function MentionsLegales() {
             <p className="text-sm text-gray-secondary text-center">
               Dernière mise à jour : {LEGAL_LAST_UPDATE}
             </p>
+
+            <LegalHelpCard />
           </div>
         </div>
       </section>

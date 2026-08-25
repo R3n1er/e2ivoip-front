@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { DownloadSimple, FileText, Shield, Clock, Scales } from "@/lib/icons";
 import { COMPANY, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
+import { LegalHelpCard } from "@/components/legal/help-card";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente | E2I VoIP",
@@ -317,6 +318,8 @@ export default function ConditionsGeneralesVentePage() {
                 </div>
               </CardContent>
             </Card>
+
+            <LegalHelpCard />
           </div>
         </div>
       </section>

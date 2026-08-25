@@ -231,6 +231,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/juridique/exercer-mes-droits"
+                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                >
+                  Exercer mes droits
+                </Link>
+              </li>
+              <li>
                 {/* Le RGPD impose que retirer son consentement soit aussi
                     simple que le donner : ce bouton oublie le choix mémorisé
                     et fait réapparaître le bandeau. */}
