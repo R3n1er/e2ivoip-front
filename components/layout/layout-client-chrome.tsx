@@ -5,6 +5,7 @@ import { IconContext } from "@phosphor-icons/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
+import { ChatFallback } from "@/components/chat-fallback";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
   // Le chat HubSpot est désormais géré par le widget natif (snippet loader
@@ -29,6 +30,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
         {children}
       </main>
       <HubSpotTracking />
+      <ChatFallback />
       <CookieConsentBanner />
     </IconContext.Provider>
   );
