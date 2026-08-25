@@ -12,6 +12,10 @@
 const fs = require('fs');
 const path = require('path');
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // Couleurs PRD officielles
 const PRD_COLORS = {
   'red-primary': '#E53E3E',
@@ -57,7 +61,7 @@ function checkFile(filePath) {
   
   // Vérifier les couleurs interdites
   for (const forbiddenColor of FORBIDDEN_COLORS) {
-    const regex = new RegExp(`\\b${forbiddenColor}\\b`, 'g');
+    const regex = new RegExp(`\\b${escapeRegExp(forbiddenColor)}\\b`, 'g');
     const matches = content.match(regex);
     
     if (matches) {
