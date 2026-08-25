@@ -42,6 +42,15 @@
     @apply bg-white text-gray-dark font-sans;
   }
 
+  /* Masquer les bannières "web interactives" injectées par HubSpot
+     (data-hs-container-type="BANNER"). Ces bannières sont configurées
+     dans le portail HubSpot et chargées par le script de tracking ;
+     elles ne correspondent pas à la charte E2I VoIP et créent un
+     overlay intrusif. */
+  [data-hs-container-type="BANNER"] {
+    display: none !important;
+  }
+
   /* Accessibilité — WCAG 2.2 AA (2.3.3 Animation from Interactions).
      Neutralise toutes les animations, transitions et défilements animés
      quand l'utilisateur a activé « réduire les animations » au niveau système.

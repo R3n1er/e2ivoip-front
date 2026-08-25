@@ -8,11 +8,37 @@ import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
 import { getConsent, CONSENT_CHANGE_EVENT } from "@/lib/analytics/consent";
 
+/**
+ * Supprime les bannières "web interactives" injectées par HubSpot
+ * (data-hs-container-type="BANNER"). HubSpot les charge via le script
+ * de tracking indépendamment de notre code ; elles créent un overlay
+ * intrusif non conforme à la charte E2I VoIP.
+ *
+ * Le CSS global les masque immédiatement (display: none !important) ;
+ * ce MutationObserver les supprime du DOM pour libérer les ressources
+ * et éviter tout flash résiduel.
+ */
+function useRemoveHubSpotBanners() {
+  useEffect(() => {
+    const remove = () => {
+      document
+        .querySelectorAll('[data-hs-container-type="BANNER"]')
+        .forEach((el) => el.remove());
+    };
+    remove();
+    const observer = new MutationObserver(remove);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
+}
+
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
   // Le script HubSpot dépose des cookies de suivi : il n'est monté qu'une fois
   // le consentement accordé, ou lorsque le visiteur demande le chat (service
   // expressément demandé). Un refus ne bloque donc jamais la conversation.
   const [trackingEnabled, setTrackingEnabled] = useState(false);
+
+  useRemoveHubSpotBanners();
 
   useEffect(() => {
     const sync = () => {
