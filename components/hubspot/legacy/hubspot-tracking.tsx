@@ -3,42 +3,36 @@
 import Script from "next/script";
 import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
-interface HubSpotTrackingProps {
-  portalId?: string;
-  /**
-   * Charge le script de tracking (et donc les cookies HubSpot). Voir ADR
-   * 2026-08-16 : le script n'est monté qu'une fois le consentement donné, ou
-   * lorsque le visiteur demande explicitement le chat.
-   */
-  enabled?: boolean;
-}
-
+/**
+ * Charge le widget natif HubSpot Conversations (snippet loader HubSpot).
+ *
+ * Choix produit (ADR 2026-08-26) : on utilise le script de tracking officiel
+ * `//js-eu1.hs-scripts.com/${portalId}.js` sans réglages préalables — le
+ * widget natif apparaît alors automatiquement comme un launcher flottant en
+ * bas à droite, sans aucun pré-chat. C'est l'expérience recommandée par
+ * HubSpot (voir leur documentation du chat) : pas de formulaire
+ * intermédiaire, pas de bannière cookies européenne HS, pas de logique
+ * d'initiation conditionnelle. La conversation est ouverte par le visiteur
+ * sur l'icône chat.
+ *
+ * Tous les cookies HS (hubspotutk, __hstc, etc.) sont déposés dès
+ * l'arrivée sur le site, sans passer par le bandeau cookies du site. Si
+ * tu veux rebrancher un consentement RGPD préalable : voir l'ADR
+ * 2026-08-16 archivé — c'était l'ancien comportement avec pré-chat.
+ */
 export function HubSpotTracking({
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
-  enabled = false,
-}: HubSpotTrackingProps) {
+}: {
+  portalId?: string;
+}) {
   return (
-    <>
-      {/* Les réglages ne déposent aucun cookie : ils sont posés en amont pour
-          garantir que `loadImmediately: false` et `enableWidgetCookieBanner:
-          false` sont lus dès l'exécution du script, quel que soit le moment
-          où celui-ci est monté. La seconde option supprime la bannière
-          cookies européenne du widget (`#hs-eu-cookie-confirmation`) : le site
-          a déjà son propre bandeau RGPD et la modale HS bloquait l'ouverture
-          du chat jusqu'à acceptation explicite (vérifié en prod 2026-08-25). */}
-      <Script id="hubspot-conversations-settings" strategy="afterInteractive">
-        {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false, enableWidgetCookieBanner: false};
-window.hsConversationsOnReady = window.hsConversationsOnReady || [];
-window._hsq = window._hsq || [];`}
-      </Script>
-      {enabled && (
-        <Script
-          id="hs-script-loader"
-          src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
-          strategy="afterInteractive"
-        />
-      )}
-    </>
+    <Script
+      id="hs-script-loader"
+      src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
+      strategy="afterInteractive"
+      async
+      defer
+    />
   );
 }
 
