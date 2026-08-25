@@ -23,27 +23,6 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Le diagnostic local des échecs blog Playwright (`blog-seo`, `blog-hubspot-images`) est un problème d'environnement indépendant : le token HubSpot local manque du scope CMS `content` (403 MISSING_SCOPES sur `/api/blog/list`). La production sert les articles correctement.
 - **Tests associés** : `npm run type-check` ✅ ; Jest 473/473 ✅ ; `chat-preoverlay-flow.spec.ts` 8/8 (×2 runs) ✅ ; suite Playwright 102 passées (échecs restants = scope blog ci-dessus, préexistant).
 
-### 2026-08-25 — Fil d'Ariane global sur tout le site (hors accueil)
-
-- **Contexte** : le fil d'Ariane n'existait que sur les 5 pages juridiques (`LegalBreadcrumb`). Les ~17 autres pages (services, blog, contact, studio, assistance…) n'avaient aucun fil d'Ariane. Étude SEO/GEO demandée en amont.
-- **Étude impact SEO/GEO (août 2026)** :
-  - *SERP Google* : Google a retiré l'affichage des fils d'Ariane des SERP desktop (sept. 2024) puis mobiles (août 2026) — le bénéfice « riche résultat » en SERP est donc faible aujourd'hui.
-  - *JSON-LD BreadcrumbList* : toujours supporté et documenté par Google Search Central ; alimente la compréhension de hiérarchie et reste un signal pour les surfaces IA (AI Overviews citent à 92 % des pages bien classées ; structure claire = meilleure sélection des passages).
-  - *GEO/AEO* : les crawlers IA (GPTBot, ClaudeBot, PerplexityBot — tous autorisés dans `app/robots.ts`) ne lisent pas la navigation JS de façon fiable mais exploitent le JSON-LD et le maillage interne. Le fil renforce les silos thématiques (téléphonie-entreprise → offres), critère « Structural Readability » du score GEO (20 %).
-  - *UX* : profondeur 3 sur les offres (Accueil › Téléphonie › Trunk SIP Illimité) — réduction du taux de rebond, navigation contextuelle vers la page hub.
-  - *Conclusion* : impact SERP direct marginal, bénéfices réels = maillage interne + hiérarchie machine-lisible + UX. Coût quasi nul (composant global).
-- **Décision** :
-  - Extraire `Breadcrumb`/`BreadcrumbItem`/`BREADCRUMB_HOME` dans `components/layout/breadcrumb.tsx` (source unique) ; `components/legal/breadcrumb.tsx` devient un réexport (compat imports existants).
-  - Nouveau registre `lib/navigation/breadcrumbs.ts` : chemins → libellés, routes dynamiques blog par regex, fallback générique humanisant le segment d'URL.
-  - Nouveau composant client `PageBreadcrumb` (`components/layout/page-breadcrumb.tsx`, `usePathname`) monté une seule fois dans `LayoutClientChrome` sous le header — aucune édition des 17 pages, couverture automatique des futures pages via le fallback.
-  - Exclusions : `/` (accueil), `/juridique/*` (LegalBreadcrumb natif des pages, évite le doublon), `/admin/*` et `/offline` (non indexables).
-  - SSR : le HTML et le JSON-LD BreadcrumbList sont rendus serveur, accessibles aux crawlers classiques et IA.
-- **Conséquences** :
-  - Toute nouvelle page hors juridique obtient automatiquement `Accueil › [Segment humanisé]` ; il est recommandé d'ajouter une entrée dédiée au registre pour des libellés soignés.
-  - Les libellés du JSON-LD doivent refléter les titres visibles des pages (convention Search Console : cohérence breadcrumb visible / données structurées).
-  - Aucun changement d'URL ni de canonical — zéro impact sur l'indexation existante.
-- **Tests associés** : `tests/navigation-breadcrumbs.test.ts` (8 : intégrité du registre, routes dynamiques, fallback) ; `tests/page-breadcrumb.test.tsx` (5 : exclusions accueil/juridique/admin, JSON-LD, hiérarchie services). Jest 473/473 ✅.
-
 ### 2026-08-24 — Espace juridique unifié /juridique avec hub et fil d'Ariane
 
 - **Contexte** : les 5 pages légales vivaient à plat à la racine (`/mentions-legales`, `/politique-confidentialite`, `/exercer-mes-droits`, `/conditions-generales-de-vente`, `/accord-sous-traitance-rgpd`) sans point d'entrée commun ; le footer accumulait 5 liens directs + 2 PDFs. L'ajout des CGV/DPA (PR #29) a saturé cette organisation plate.
