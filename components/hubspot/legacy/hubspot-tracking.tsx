@@ -30,8 +30,6 @@ export function HubSpotTracking({
       id="hs-script-loader"
       src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
       strategy="afterInteractive"
-      async
-      defer
     />
   );
 }
