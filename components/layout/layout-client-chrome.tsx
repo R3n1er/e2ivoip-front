@@ -6,6 +6,7 @@ import { HeaderSimple } from "@/components/layout/header-simple";
 import { ChatPreOverlay } from "@/components/chat-preoverlay";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
+import { PageBreadcrumb } from "@/components/layout/page-breadcrumb";
 import { getConsent, CONSENT_CHANGE_EVENT } from "@/lib/analytics/consent";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
@@ -39,6 +40,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
       </a>
       <HeaderSimple />
       <main id="contenu-principal" tabIndex={-1} className="flex-1 pt-16">
+        <PageBreadcrumb />
         {children}
       </main>
       <HubSpotTracking enabled={trackingEnabled} />
