@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Services Section - Alignement des cartes", () => {
   test("les boutons des cartes doivent être alignés en bas", async ({ page }) => {
-    await page.goto("http://localhost:3000/#services");
+    await page.goto("/#services");
     await page.waitForTimeout(1000);
 
     // Récupérer tous les boutons "En savoir plus"
@@ -26,7 +26,7 @@ test.describe("Services Section - Alignement des cartes", () => {
   });
 
   test("toutes les cartes doivent avoir la même hauteur", async ({ page }) => {
-    await page.goto("http://localhost:3000/#services");
+    await page.goto("/#services");
     await page.waitForTimeout(1000);
 
     // Récupérer toutes les cartes (style canonique : rounded-xl + border)
@@ -46,7 +46,7 @@ test.describe("Services Section - Alignement des cartes", () => {
   });
 
   test("les sections de features doivent utiliser flex-grow", async ({ page }) => {
-    await page.goto("http://localhost:3000/#services");
+    await page.goto("/#services");
     await page.waitForTimeout(1000);
 
     // Vérifier la structure flex des cartes
@@ -67,7 +67,7 @@ test.describe("Services Section - Alignement des cartes", () => {
   });
 
   test("les boutons doivent être en position mt-auto", async ({ page }) => {
-    await page.goto("http://localhost:3000/#services");
+    await page.goto("/#services");
     await page.waitForTimeout(1000);
 
     // Vérifier que les card-actions ont mt-auto

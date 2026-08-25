@@ -61,12 +61,19 @@ test.describe("HubSpot Conversations — chargement à la demande", () => {
         body: `
           window.HubSpotConversations = {
             widget: {
-              status: () => ({ loaded: false }),
+              status: () => ({ loaded: false, pending: true }),
               load: () => {},
               open: () => {},
             },
           };
           (window.hsConversationsOnReady || []).forEach((cb) => cb());
+          setTimeout(() => {
+            window.HubSpotConversations.widget = {
+              status: () => ({ loaded: true, pending: false }),
+              load: () => {},
+              open: () => {},
+            };
+          }, 300);
         `,
       });
     });

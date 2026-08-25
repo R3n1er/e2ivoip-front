@@ -6,23 +6,38 @@ test.describe("ChatPreOverlay - Flux complet", () => {
       await route.fulfill({
         status: 200,
         contentType: "application/javascript",
+        // Reproduit le comportement réel du SDK Conversations : l'API apparaît
+        // immédiatement mais le widget s'initialise de façon asynchrone, et un
+        // `load({ widgetOpen: true })` lancé avant la fin de l'initialisation
+        // rend un launcher fermé (ignoré). Seul `open()` appelé après
+        // `status().loaded` ouvre réellement la fenêtre — cf. ADR 2026-08-25.
         body: `
           window.__hubspotWidgetCalls = [];
-          let loaded = false;
           window.__hubspotInputTexts = [];
           window.HubSpotConversations = {
             widget: {
-              status: () => ({ loaded }),
-              load: (options) => {
-                loaded = true;
-                window.__hubspotWidgetCalls.push(["load", options]);
-              },
-              open: () => window.__hubspotWidgetCalls.push(["open"]),
-              setInputText: (text) =>
-                window.__hubspotInputTexts.push(text),
+              status: () => ({ loaded: false, pending: true }),
+              load: () => {},
+              open: () => {},
             },
           };
           (window.hsConversationsOnReady || []).forEach((callback) => callback());
+          setTimeout(() => {
+            let isOpen = false;
+            window.HubSpotConversations.widget = {
+              status: () => ({ loaded: true, pending: false, open: isOpen }),
+              load: (options) => {
+                isOpen = !!options?.widgetOpen;
+                window.__hubspotWidgetCalls.push(["load", options]);
+              },
+              open: () => {
+                isOpen = true;
+                window.__hubspotWidgetCalls.push(["open"]);
+              },
+              setInputText: (text) =>
+                window.__hubspotInputTexts.push(text),
+            };
+          }, 300);
         `,
       });
     });
@@ -112,13 +127,19 @@ test.describe("ChatPreOverlay - Flux complet", () => {
     );
     expect(identifyIndex).toBeGreaterThanOrEqual(0);
     expect(pageViewIndex).toBeGreaterThan(identifyIndex);
-    // Ce qui compte est que le widget soit chargé en demandant son ouverture ;
-    // les autres options de `load` (ex. `inline`) peuvent évoluer.
-    const loadCall = hubspotState.widgetCalls.find(
-      (call: unknown[]) => call[0] === "load"
+    // Le SDK ignore `widgetOpen` tant que le widget n'est pas initialisé : le
+    // flux fiable est d'attendre `status().loaded` puis d'appeler `open()`.
+    // Un appel `load({ widgetOpen: true })` sur widget non initialisé laisse
+    // le launcher fermé en production (ADR 2026-08-25) — on l'interdit donc.
+    const openCall = hubspotState.widgetCalls.find(
+      (call: unknown[]) => call[0] === "open"
     );
-    expect(loadCall).toBeDefined();
-    expect(loadCall[1]).toMatchObject({ widgetOpen: true });
+    expect(openCall).toBeDefined();
+    const prematureLoad = hubspotState.widgetCalls.find(
+      (call: unknown[]) =>
+        call[0] === "load" && (call[1] as any)?.widgetOpen === true
+    );
+    expect(prematureLoad).toBeUndefined();
 
     // Le champ de saisie du chat doit être pré-rempli avec les infos du pré-chat.
     await page.waitForTimeout(500);

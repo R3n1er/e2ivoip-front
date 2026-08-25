@@ -112,56 +112,53 @@ function waitForHubSpotConversations(timeoutMs: number): Promise<void> {
   });
 }
 
-function openHubSpotWidget(): Promise<void> {
+function waitForWidgetLoaded(timeoutMs: number): Promise<void> {
   return new Promise((resolve, reject) => {
-    let settled = false;
-
-    const finish = (callback: () => void) => {
-      if (settled) return;
-      settled = true;
-      window.clearTimeout(timeout);
-      callback();
-    };
-
-    const open = () => {
-      if (settled) return;
-
+    const start = Date.now();
+    const timer = window.setInterval(() => {
+      let initialized = false;
       try {
-        const widget = window.HubSpotConversations?.widget;
-        if (!widget) {
-          finish(() =>
-            reject(new Error("Le widget HubSpot n'est pas disponible"))
-          );
-          return;
-        }
-
-        const status = widget.status?.();
-        if (status?.loaded) {
-          // Le launcher est déjà affiché : on le supprime puis on le recharge
-          // avec widgetOpen: true pour forcer l'ouverture en grand.
-          widget.remove?.();
-        }
-        widget.load({ widgetOpen: true, inline: false });
-        finish(resolve);
-      } catch (error) {
-        finish(() => reject(error));
+        // `loaded === true` seul marque la fin de l'initialisation. `pending`
+        // signifie au contraire qu'elle est EN COURS : ouvrir maintenant ne
+        // servirait à rien, l'appel serait dirigé vers un widget non prêt.
+        initialized =
+          window.HubSpotConversations?.widget?.status?.()?.loaded === true;
+      } catch {
+        initialized = false;
       }
-    };
-
-    const timeout = window.setTimeout(() => {
-      finish(() =>
-        reject(new Error("Le chargement du widget HubSpot a expiré"))
-      );
-    }, HUBSPOT_WIDGET_TIMEOUT_MS);
-
-    if (window.HubSpotConversations) {
-      open();
-      return;
-    }
-
-    window.hsConversationsOnReady ??= [];
-    window.hsConversationsOnReady.push(open);
+      if (initialized) {
+        window.clearInterval(timer);
+        resolve();
+        return;
+      }
+      if (Date.now() - start > timeoutMs) {
+        window.clearInterval(timer);
+        reject(new Error("Le widget HubSpot ne s'est pas initialisé à temps"));
+      }
+    }, 100);
   });
+}
+
+/**
+ * Ouvre le widget HubSpot Conversations après validation du pré-chat.
+ *
+ * ⚠️ Le flag `widgetOpen` de `widget.load()` est ignoré par HubSpot quand le
+ * widget n'a pas encore terminé son initialisation (cas systématique en
+ * production où le script est monté à la demande avec `loadImmediately:
+ * false`). Vérifié sur www.e2i-voip.com le 2026-08-25 : un `load({
+ * widgetOpen: true })` appelé juste après l'apparition de l'API rend un
+ * launcher fermé (iframe ~100×96), sans erreur. La séquence fiable est donc :
+ * attendre la fin de l'initialisation (`status().loaded`, cf. ADR 2026-08-25),
+ * puis appeler `open()`.
+ */
+async function openHubSpotWidget(): Promise<void> {
+  await waitForWidgetLoaded(HUBSPOT_WIDGET_TIMEOUT_MS);
+
+  const widget = window.HubSpotConversations?.widget;
+  if (!widget?.open) {
+    throw new Error("Le widget HubSpot n'est pas disponible");
+  }
+  widget.open();
 }
 
 function isValidEmail(email: string): boolean {

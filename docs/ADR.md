@@ -10,6 +10,40 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-25 — Fix pré-chat : `widgetOpen` ignoré par le SDK, ouverture via `open()` après initialisation
+
+- **Contexte** : en production, après validation du pré-chat, le chat HubSpot ne s'ouvrait pas — l'overlay se fermait pourtant sans erreur. Diagnostic sur www.e2i-voip.com (Chrome headless + CDP) : l'iframe Conversations restait au format launcher (≈100×96) alors que le code avait appelé `widget.load({ widgetOpen: true })`. Instrumentation des appels (`load` à t+1,7 s, événement `widgetLoaded` à t+2,7 s) et contre-expérience : un second `load()` après chargement complet ouvre bien la fenêtre. Cause racine : avec `hsConversationsSettings.loadImmediately = false` (chargement à la demande, ADR 2026-08-16), l'apparition de `window.HubSpotConversations` ne signifie pas que le widget est prêt ; HubSpot ignore silencieusement le flag `widgetOpen` d'un `load()` lancé avant la fin de son initialisation. Les tests Playwright ne détectaient rien : leur mock créait un widget instantanément disponible honorant `widgetOpen`, contrairement au SDK réel.
+- **Décision** :
+  - Remplacer la séquence `load({ widgetOpen: true })` par : attendre `widget.status().loaded === true` (nouveau helper `waitForWidgetLoaded`, timeout conservé à 20 s), puis appeler `widget.open()` (API canonique, vérifiée fonctionnelle).
+  - Typage : `status()` retourne aussi `pending?: boolean` (observé en production pendant l'initialisation).
+  - Mocks de test fidélisés (`chat-preoverlay-flow.spec.ts`, `hubspot-consent-gating.spec.ts`) : phase initiale `loaded:false, pending:true`, widget réel injecté après 300 ms, `open()` tracé. L'assertion vérifie désormais qu'un `open()` a été émis **et** qu'aucun `load({ widgetOpen: true })` prématuré n'a eu lieu.
+  - Environnement de test : le port 3000 est occupé en permanence par la WebUI du gateway Hermes → `playwright.config.ts` passe sur le port 3100 (surchargeable via `PORT`) ; les `page.goto("http://localhost:3000")` codés en dur dans `homepage-diagnostic.spec.ts` et `services-cards-alignment.spec.ts` sont remplacés par des chemins relatifs (ils naviguaient vers la page de login Hermes).
+- **Conséquences** :
+  - Le chat s'ouvre de façon fiable en production, y compris cold-start script (cas courant : visiteur sans consentement cookies qui demande le chat).
+  - Le diagnostic local des échecs blog Playwright (`blog-seo`, `blog-hubspot-images`) est un problème d'environnement indépendant : le token HubSpot local manque du scope CMS `content` (403 MISSING_SCOPES sur `/api/blog/list`). La production sert les articles correctement.
+- **Tests associés** : `npm run type-check` ✅ ; Jest 473/473 ✅ ; `chat-preoverlay-flow.spec.ts` 8/8 (×2 runs) ✅ ; suite Playwright 102 passées (échecs restants = scope blog ci-dessus, préexistant).
+
+### 2026-08-25 — Fil d'Ariane global sur tout le site (hors accueil)
+
+- **Contexte** : le fil d'Ariane n'existait que sur les 5 pages juridiques (`LegalBreadcrumb`). Les ~17 autres pages (services, blog, contact, studio, assistance…) n'avaient aucun fil d'Ariane. Étude SEO/GEO demandée en amont.
+- **Étude impact SEO/GEO (août 2026)** :
+  - *SERP Google* : Google a retiré l'affichage des fils d'Ariane des SERP desktop (sept. 2024) puis mobiles (août 2026) — le bénéfice « riche résultat » en SERP est donc faible aujourd'hui.
+  - *JSON-LD BreadcrumbList* : toujours supporté et documenté par Google Search Central ; alimente la compréhension de hiérarchie et reste un signal pour les surfaces IA (AI Overviews citent à 92 % des pages bien classées ; structure claire = meilleure sélection des passages).
+  - *GEO/AEO* : les crawlers IA (GPTBot, ClaudeBot, PerplexityBot — tous autorisés dans `app/robots.ts`) ne lisent pas la navigation JS de façon fiable mais exploitent le JSON-LD et le maillage interne. Le fil renforce les silos thématiques (téléphonie-entreprise → offres), critère « Structural Readability » du score GEO (20 %).
+  - *UX* : profondeur 3 sur les offres (Accueil › Téléphonie › Trunk SIP Illimité) — réduction du taux de rebond, navigation contextuelle vers la page hub.
+  - *Conclusion* : impact SERP direct marginal, bénéfices réels = maillage interne + hiérarchie machine-lisible + UX. Coût quasi nul (composant global).
+- **Décision** :
+  - Extraire `Breadcrumb`/`BreadcrumbItem`/`BREADCRUMB_HOME` dans `components/layout/breadcrumb.tsx` (source unique) ; `components/legal/breadcrumb.tsx` devient un réexport (compat imports existants).
+  - Nouveau registre `lib/navigation/breadcrumbs.ts` : chemins → libellés, routes dynamiques blog par regex, fallback générique humanisant le segment d'URL.
+  - Nouveau composant client `PageBreadcrumb` (`components/layout/page-breadcrumb.tsx`, `usePathname`) monté une seule fois dans `LayoutClientChrome` sous le header — aucune édition des 17 pages, couverture automatique des futures pages via le fallback.
+  - Exclusions : `/` (accueil), `/juridique/*` (LegalBreadcrumb natif des pages, évite le doublon), `/admin/*` et `/offline` (non indexables).
+  - SSR : le HTML et le JSON-LD BreadcrumbList sont rendus serveur, accessibles aux crawlers classiques et IA.
+- **Conséquences** :
+  - Toute nouvelle page hors juridique obtient automatiquement `Accueil › [Segment humanisé]` ; il est recommandé d'ajouter une entrée dédiée au registre pour des libellés soignés.
+  - Les libellés du JSON-LD doivent refléter les titres visibles des pages (convention Search Console : cohérence breadcrumb visible / données structurées).
+  - Aucun changement d'URL ni de canonical — zéro impact sur l'indexation existante.
+- **Tests associés** : `tests/navigation-breadcrumbs.test.ts` (8 : intégrité du registre, routes dynamiques, fallback) ; `tests/page-breadcrumb.test.tsx` (5 : exclusions accueil/juridique/admin, JSON-LD, hiérarchie services). Jest 473/473 ✅.
+
 ### 2026-08-24 — Espace juridique unifié /juridique avec hub et fil d'Ariane
 
 - **Contexte** : les 5 pages légales vivaient à plat à la racine (`/mentions-legales`, `/politique-confidentialite`, `/exercer-mes-droits`, `/conditions-generales-de-vente`, `/accord-sous-traitance-rgpd`) sans point d'entrée commun ; le footer accumulait 5 liens directs + 2 PDFs. L'ajout des CGV/DPA (PR #29) a saturé cette organisation plate.
