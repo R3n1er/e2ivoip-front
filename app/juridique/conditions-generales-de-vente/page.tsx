@@ -5,6 +5,7 @@ import { DownloadSimple, FileText, Shield, Clock, Scales } from "@/lib/icons";
 import { COMPANY, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 import { LegalHelpCard } from "@/components/legal/help-card";
+import { CgvContent } from "@/components/legal/cgv-content";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente | E2I VoIP",
@@ -264,6 +265,18 @@ export default function ConditionsGeneralesVentePage() {
               </CardContent>
             </Card>
 
+            {/* Contenu intégral des CGV en ligne */}
+            <Card className="shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
+                <h2 className="text-xl font-bold">
+                  Lire en ligne — Conditions générales de vente
+                </h2>
+              </CardHeader>
+              <CardContent className="p-8">
+                <CgvContent />
+              </CardContent>
+            </Card>
+
             {/* Documents connexes */}
             <Card className="shadow-lg">
               <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
@@ -271,50 +284,58 @@ export default function ConditionsGeneralesVentePage() {
               </CardHeader>
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <Link
-                    href="/documents/conditions-particulieres-voip.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                  >
-                    <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Conditions particulières — VoIP / IPBX</p>
-                      <p className="text-sm text-gray-500">PDF · v1.1</p>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/documents/conditions-particulieres-trunk-sip.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                  >
-                    <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
-                      <p className="text-sm text-gray-500">PDF · v1.1</p>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/juridique/accord-sous-traitance-rgpd"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                  >
-                    <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
-                      <p className="text-sm text-gray-500">Page dédiée · v1.2</p>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/juridique/politique-confidentialite"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
-                  >
-                    <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-900">Politique de confidentialité</p>
-                      <p className="text-sm text-gray-500">Page dédiée · v1.1</p>
-                    </div>
-                  </Link>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/documents/conditions-particulieres-voip.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Conditions particulières — VoIP / IPBX</p>
+                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/documents/conditions-particulieres-trunk-sip.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
+                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/juridique/accord-sous-traitance-rgpd"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
+                        <p className="text-sm text-gray-500">Lire en ligne · v1.2</p>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="flex flex-col">
+                    <Link
+                      href="/juridique/politique-confidentialite"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    >
+                      <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Politique de confidentialité</p>
+                        <p className="text-sm text-gray-500">Lire en ligne · v1.1</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </CardContent>
             </Card>

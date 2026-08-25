@@ -1,42 +1,18 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Espace juridique — hub, fil d'ariane, redirections", () => {
-  test("le hub /juridique liste les pages et les PDFs", async ({ page }) => {
-    await page.goto("/juridique");
-
-    await expect(
-      page.getByRole("heading", { level: 1, name: /Documents juridiques/i })
-    ).toBeVisible();
-
-    // Les 5 pages du registre (le lien « Exercer mes droits » existe aussi
-    // dans l'encart d'aide → au moins une occurrence par slug)
-    for (const slug of [
-      "conditions-generales-de-vente",
-      "accord-sous-traitance-rgpd",
-      "politique-confidentialite",
-      "exercer-mes-droits",
-      "mentions-legales",
-    ]) {
-      await expect(
-        page.locator(`a[href="/juridique/${slug}"]`).first()
-      ).toBeVisible();
-    }
-
-    // Les 5 PDFs téléchargeables
-    for (const pdf of [
-      "cgv.pdf",
-      "conditions-particulieres-voip.pdf",
-      "conditions-particulieres-trunk-sip.pdf",
-      "dpa-rgpd.pdf",
-      "politique-confidentialite.pdf",
-    ]) {
-      await expect(
-        page.locator(`a[href="/documents/${pdf}"]`)
-      ).toBeVisible();
-    }
+test.describe("Pages juridiques — fil d'ariane, redirections, footer", () => {
+  test("/juridique redirige 301 vers les CGV", async ({ request }) => {
+    const response = await request.get("/juridique", { maxRedirects: 0 });
+    expect(
+      [301, 308].includes(response.status()),
+      "redirection permanente attendue pour /juridique"
+    ).toBe(true);
+    expect(response.headers()["location"]).toBe(
+      "/juridique/conditions-generales-de-vente"
+    );
   });
 
-  test("chaque page légale affiche le fil d'ariane complet avec JSON-LD", async ({
+  test("chaque page légale affiche le fil d'ariane avec JSON-LD", async ({
     page,
   }) => {
     await page.goto("/juridique/politique-confidentialite");
@@ -47,16 +23,16 @@ test.describe("Espace juridique — hub, fil d'ariane, redirections", () => {
       "href",
       "/"
     );
+    // Le hub n'existe plus : pas de niveau "Espace juridique"
     await expect(
       nav.getByRole("link", { name: "Espace juridique" })
-    ).toHaveAttribute("href", "/juridique");
+    ).toHaveCount(0);
     // La page courante n'est pas un lien
     await expect(
       nav.getByRole("link", { name: "Politique de confidentialité" })
     ).toHaveCount(0);
 
-    // Plusieurs blocs JSON-LD peuvent coexister (layout + fil d'ariane) :
-    // on cherche celui qui est une BreadcrumbList à 3 niveaux.
+    // BreadcrumbList à 2 niveaux (Accueil + page courante)
     const scripts = await page
       .locator('script[type="application/ld+json"]')
       .allTextContents();
@@ -64,8 +40,8 @@ test.describe("Espace juridique — hub, fil d'ariane, redirections", () => {
       .map((s) => JSON.parse(s))
       .find((p) => p["@type"] === "BreadcrumbList");
     expect(breadcrumb).toBeDefined();
-    expect(breadcrumb.itemListElement).toHaveLength(3);
-    expect(breadcrumb.itemListElement[2].name).toBe(
+    expect(breadcrumb.itemListElement).toHaveLength(2);
+    expect(breadcrumb.itemListElement[1].name).toBe(
       "Politique de confidentialité"
     );
   });
@@ -86,8 +62,6 @@ test.describe("Espace juridique — hub, fil d'ariane, redirections", () => {
 
     for (const [from, to] of cases) {
       const response = await request.get(from, { maxRedirects: 0 });
-      // Next.js émet un 308 (équivalent permanent moderne du 301,
-      // même traitement par les moteurs de recherche).
       expect(
         [301, 308].includes(response.status()),
         `redirection permanente attendue pour ${from}`
@@ -98,16 +72,23 @@ test.describe("Espace juridique — hub, fil d'ariane, redirections", () => {
     }
   });
 
-  test("le footer expose le hub et ne liste plus les liens directs", async ({
+  test("le footer expose les liens directs CGV, mentions légales et exercer mes droits", async ({
     page,
   }) => {
-    await page.goto("/juridique");
+    await page.goto("/");
     const footer = page.getByRole("contentinfo");
     await expect(
-      footer.getByRole("link", { name: /Documents juridiques/i })
-    ).toHaveAttribute("href", "/juridique");
-    await expect(
       footer.getByRole("link", { name: /Conditions générales de vente/i })
+    ).toHaveAttribute("href", "/juridique/conditions-generales-de-vente");
+    await expect(
+      footer.getByRole("link", { name: /Mentions légales/i })
+    ).toHaveAttribute("href", "/juridique/mentions-legales");
+    await expect(
+      footer.getByRole("link", { name: /Exercer mes droits/i })
+    ).toHaveAttribute("href", "/juridique/exercer-mes-droits");
+    // Le hub n'existe plus : pas de lien "Documents juridiques"
+    await expect(
+      footer.getByRole("link", { name: /Documents juridiques/i })
     ).toHaveCount(0);
   });
 });

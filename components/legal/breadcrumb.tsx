@@ -73,30 +73,21 @@ const LEGAL_BREADCRUMB_HOME: BreadcrumbItem = {
   href: "/",
 };
 
-const LEGAL_BREADCRUMB_SPACE: BreadcrumbItem = {
-  label: "Espace juridique",
-  href: "/juridique",
-};
-
 /**
- * Items standards + composant prêt à l'emploi pour les pages de l'espace
- * juridique. Chaque page rend <LegalBreadcrumb current="…" /> en tête :
- * - hub (/juridique)            → Accueil › Espace juridique (courant)
- * - sous-page                   → Accueil › Espace juridique › [page]
+ * Items standards + composant prêt à l'emploi pour les pages juridiques.
+ * Chaque page rend <LegalBreadcrumb current="…" /> en tête :
+ *   Accueil › [page courante]
  */
 export function LegalBreadcrumb({
   current,
 }: {
-  /** Libellé de la page courante ; absent sur le hub lui-même. */
-  current?: string;
+  /** Libellé de la page courante. */
+  current: string;
 }) {
-  const items: BreadcrumbItem[] = current
-    ? [
-        LEGAL_BREADCRUMB_HOME,
-        LEGAL_BREADCRUMB_SPACE,
-        { label: current },
-      ]
-    : [{ ...LEGAL_BREADCRUMB_HOME }, { label: LEGAL_BREADCRUMB_SPACE.label }];
+  const items: BreadcrumbItem[] = [
+    LEGAL_BREADCRUMB_HOME,
+    { label: current },
+  ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">

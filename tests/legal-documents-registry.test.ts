@@ -31,8 +31,6 @@ describe('Registre des documents juridiques', () => {
       )
       expect(existsSync(pagePath)).toBe(true)
     }
-    // Le hub lui-même
-    expect(existsSync(path.join(process.cwd(), 'app', 'juridique', 'page.tsx'))).toBe(true)
   })
 
   it('les PDFs du registre existent dans public/documents/ avec version cohérente', () => {

@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import { Breadcrumb, LegalBreadcrumb } from '@/components/legal/breadcrumb'
 
-describe('Fil d’Ariane (Breadcrumb)', () => {
+describe("Fil d'Ariane (Breadcrumb)", () => {
   it('rend les liens intermédiaires et le courant en aria-current', () => {
     render(
       <Breadcrumb
         items={[
           { label: 'Accueil', href: '/' },
-          { label: 'Espace juridique', href: '/juridique' },
           { label: 'Mentions légales' },
         ]}
       />
@@ -18,9 +17,6 @@ describe('Fil d’Ariane (Breadcrumb)', () => {
 
     const home = screen.getByRole('link', { name: 'Accueil' })
     expect(home).toHaveAttribute('href', '/')
-
-    const space = screen.getByRole('link', { name: 'Espace juridique' })
-    expect(space).toHaveAttribute('href', '/juridique')
 
     expect(screen.getByText('Mentions légales')).toHaveAttribute(
       'aria-current',
@@ -57,7 +53,7 @@ describe('Fil d’Ariane (Breadcrumb)', () => {
 })
 
 describe('LegalBreadcrumb', () => {
-  it('sur une sous-page : Accueil › Espace juridique › [page]', () => {
+  it('sur une page juridique : Accueil › [page courante]', () => {
     render(<LegalBreadcrumb current="Politique de confidentialité" />)
     expect(
       screen.queryByRole('link', { name: 'Politique de confidentialité' })
@@ -68,12 +64,10 @@ describe('LegalBreadcrumb', () => {
     )
   })
 
-  it('sur le hub : Espace juridique est le courant et non un lien', () => {
-    render(<LegalBreadcrumb />)
-    const space = screen.getByText('Espace juridique')
-    expect(space).toHaveAttribute('aria-current', 'page')
+  it('ne contient pas de niveau "Espace juridique" (hub supprimé)', () => {
+    render(<LegalBreadcrumb current="CGV" />)
     expect(
-      screen.queryByRole('link', { name: 'Espace juridique' })
+      screen.queryByText('Espace juridique')
     ).not.toBeInTheDocument()
   })
 })

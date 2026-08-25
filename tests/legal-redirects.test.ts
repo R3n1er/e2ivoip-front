@@ -26,6 +26,10 @@ describe('Redirections 301 de l’espace juridique', () => {
     }
   })
 
+  it('redirige aussi /juridique (hub supprimé) vers les CGV', () => {
+    expect(config).toContain('["/juridique", "/juridique/conditions-generales-de-vente"]')
+  })
+
   it('les anciens chemins ne correspondent plus à des routes physiques', () => {
     const removed = [
       'app/mentions-legales',

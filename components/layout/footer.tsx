@@ -208,14 +208,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/juridique"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Documents juridiques
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/juridique/conditions-generales-de-vente"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
