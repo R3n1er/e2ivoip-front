@@ -234,11 +234,13 @@ export default function MentionsLegales() {
               <CardContent className="p-6">
                 <div className="space-y-4 text-gray-600">
                   <p>
-                    Aucun traceur de mesure d&rsquo;audience n&rsquo;est déposé
-                    avant votre acceptation. Le bandeau affiché à votre première
-                    visite vous permet d&rsquo;accepter ou de refuser ; le
-                    refus est le comportement par défaut tant que vous
-                    n&rsquo;avez pas choisi.
+                    Notre outil de mesure d&rsquo;audience ne dépose aucun
+                    traceur avant votre acceptation : le bandeau affiché à
+                    votre première visite vous permet d&rsquo;accepter ou de
+                    refuser, et le refus est le comportement par défaut tant
+                    que vous n&rsquo;avez pas choisi. Le chat en ligne fait
+                    exception : son script est chargé dès l&rsquo;ouverture de
+                    la page et dépose ses propres cookies avant tout choix.
                   </p>
                   <p>
                     Vous pouvez revenir sur votre choix à tout moment via le

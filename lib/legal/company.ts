@@ -32,7 +32,7 @@ export const COMPANY = {
 } as const;
 
 /** Date affichée en pied des pages légales. */
-export const LEGAL_LAST_UPDATE = "24 août 2026";
+export const LEGAL_LAST_UPDATE = "25 août 2026";
 
 export const HOSTING = {
   provider: "Vercel Inc.",
@@ -54,9 +54,10 @@ export interface SubProcessor {
 /**
  * Sous-traitants effectivement mobilisés par le site, vérifiés dans le code.
  *
- * PostHog figure dans les dépendances du projet mais n'est jamais initialisé
- * (aucun `posthog.init`) : il ne collecte donc rien aujourd'hui et n'a pas sa
- * place ici. À réintroduire le jour où il sera réellement activé.
+ * PostHog est initialisé par `instrumentation-client.ts` dès qu'une clé de
+ * projet est configurée (`NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`), avec
+ * autocapture et suivi des navigations : il figure donc dans cette liste.
+ * Sans clé (previews, CI), aucune donnée ne part.
  */
 export const SUB_PROCESSORS: readonly SubProcessor[] = [
   {
@@ -70,11 +71,20 @@ export const SUB_PROCESSORS: readonly SubProcessor[] = [
   {
     name: "HubSpot Inc.",
     purpose:
-      "Gestion de la relation client, formulaires, chat et suivi de navigation après consentement.",
+      "Gestion de la relation client, formulaires, chat en ligne et suivi de navigation.",
     data:
-      "Identité, coordonnées, contenu de vos demandes, pages consultées après consentement.",
+      "Identité, coordonnées, contenu de vos demandes, pages consultées.",
     location:
       "Union européenne (instance eu1) — transferts encadrés par les clauses contractuelles types.",
+  },
+  {
+    name: "PostHog Inc.",
+    purpose:
+      "Mesure d’audience et analyse d’usage du site (pages vues, clics, soumissions de formulaires).",
+    data:
+      "Adresse IP, pages consultées, interactions avec l’interface, identifiant de session.",
+    location:
+      "Union européenne — instance eu.i.posthog.com ; éditeur établi aux États-Unis.",
   },
   {
     name: "Resend (Plus Five Five, Inc.)",
@@ -144,19 +154,46 @@ export const PROCESSINGS: readonly Processing[] = [
   },
 ];
 
+/**
+ * Statut d'un traceur vis-à-vis du bandeau de consentement du site.
+ *
+ * - `exempt` : aucun consentement n'est requis (fonctionnement du site, ou
+ *   dispositif ne déposant aucun identifiant sur le terminal) ;
+ * - `apres-acceptation` : traceur soumis à consentement, effectivement déposé
+ *   seulement après acceptation dans le bandeau ;
+ * - `des-larrivee` : traceur soumis à consentement, mais déposé dès l'ouverture
+ *   de la première page, avant tout choix du visiteur.
+ *
+ * Le troisième cas décrit une situation de fait, pas une exemption : il permet
+ * au tableau publié de dire ce que le site fait réellement plutôt que ce qu'il
+ * devrait faire. Voir la note sous le tableau de la politique de
+ * confidentialité, et l'ADR 2026-08-26 côté technique.
+ */
+export type CookieConsentStatus = "exempt" | "apres-acceptation" | "des-larrivee";
+
+/** Libellés affichés dans la colonne « Consentement » du tableau publié. */
+export const COOKIE_CONSENT_LABELS: Record<CookieConsentStatus, string> = {
+  exempt: "Non requis",
+  "apres-acceptation": "Requis — déposé après acceptation",
+  "des-larrivee": "Requis — déposé dès l’arrivée",
+};
+
 export interface CookieEntry {
   name: string;
   origin: string;
   purpose: string;
   retention: string;
-  /** Un traceur soumis à consentement n'est déposé qu'après acceptation. */
-  requiresConsent: boolean;
+  /** Statut réel vis-à-vis du bandeau, vérifié dans le code. */
+  consent: CookieConsentStatus;
 }
 
 /**
  * Traceurs réellement déposés par le site, vérifiés dans le code.
- * Le bandeau conditionne le chargement du script HubSpot : sans acceptation,
- * aucun cookie de suivi n'est écrit.
+ *
+ * Le script HubSpot est chargé sans condition par `HubSpotTracking` (le chat
+ * doit rester joignable à tout moment, cf. ADR 2026-08-26) : ses cookies sont
+ * donc écrits dès l'arrivée, que le visiteur ait accepté ou non. PostHog, lui,
+ * reste en persistance mémoire tant que le bandeau n'a pas été accepté.
  */
 export const COOKIES: readonly CookieEntry[] = [
   {
@@ -165,15 +202,23 @@ export const COOKIES: readonly CookieEntry[] = [
     purpose:
       "Mémoriser votre choix d’accepter ou de refuser la mesure d’audience.",
     retention: "Jusqu’à ce que vous l’effaciez via « Gérer mes cookies ».",
-    requiresConsent: false,
+    consent: "exempt",
   },
   {
     name: "__hstc, hubspotutk, __hssc, __hssrc",
     origin: "HubSpot",
     purpose:
-      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience et le chat.",
+      "Faire fonctionner le chat en ligne et reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience.",
     retention: "6 mois maximum pour le plus long d’entre eux.",
-    requiresConsent: true,
+    consent: "des-larrivee",
+  },
+  {
+    name: "ph_<clé de projet>_posthog",
+    origin: "PostHog",
+    purpose:
+      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience. Avant acceptation, PostHog fonctionne sans cookie (mémoire de l’onglet uniquement).",
+    retention: "12 mois à compter du dépôt.",
+    consent: "apres-acceptation",
   },
   {
     name: "Vercel Web Analytics",
@@ -181,6 +226,6 @@ export const COOKIES: readonly CookieEntry[] = [
     purpose:
       "Compter les visites de façon agrégée. Ce dispositif ne dépose aucun cookie et ne suit pas les visiteurs entre les sites.",
     retention: "Sans objet — aucun identifiant déposé sur votre terminal.",
-    requiresConsent: false,
+    consent: "exempt",
   },
 ];

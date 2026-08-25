@@ -9,6 +9,7 @@ import {
   PROCESSINGS,
   SUB_PROCESSORS,
   COOKIES,
+  COOKIE_CONSENT_LABELS,
 } from "@/lib/legal/company";
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
@@ -186,12 +187,21 @@ export default function PolitiqueConfidentialitePage() {
             <SectionCard title="3. Cookies et traceurs">
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Tant que vous n&rsquo;avez pas accepté, aucun traceur de
-                  mesure d&rsquo;audience n&rsquo;est chargé : le refus est
-                  l&rsquo;état par défaut. Vous pouvez revenir sur votre choix à
-                  tout moment via le lien{" "}
+                  Le bandeau affiché à votre première visite commande notre
+                  outil de mesure d&rsquo;audience : tant que vous
+                  n&rsquo;avez pas accepté, il fonctionne sans cookie et rien
+                  n&rsquo;est déposé sur votre terminal. Vous pouvez revenir
+                  sur votre choix à tout moment via le lien{" "}
                   <strong>« Gérer mes cookies »</strong> en pied de page — le
                   bandeau réapparaît immédiatement.
+                </p>
+                <p>
+                  Le chat en ligne fait exception, et nous préférons
+                  l&rsquo;écrire clairement : son script est chargé dès
+                  l&rsquo;ouverture de la page pour rester joignable à tout
+                  moment, de sorte que les cookies HubSpot du tableau
+                  ci-dessous sont déposés avant votre choix, et que
+                  «&nbsp;Refuser&nbsp;» ne les supprime pas.
                 </p>
               </div>
 
@@ -229,13 +239,29 @@ export default function PolitiqueConfidentialitePage() {
                         <td className="py-3 pr-4">{cookie.purpose}</td>
                         <td className="py-3 pr-4">{cookie.retention}</td>
                         <td className="py-3">
-                          {cookie.requiresConsent ? "Requis" : "Non requis"}
+                          {COOKIE_CONSENT_LABELS[cookie.consent]}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
+
+              <p className="mt-6 text-gray-600">
+                Pour vous opposer aux cookies marqués{" "}
+                <em>« déposé dès l&rsquo;arrivée »</em>, vous pouvez les
+                bloquer depuis les paramètres de votre navigateur ou une
+                extension de blocage, et les supprimer à tout moment ; le reste
+                du site continue de fonctionner, seul le chat en ligne devient
+                indisponible. Vous pouvez également nous écrire via{" "}
+                <Link
+                  href="/juridique/exercer-mes-droits"
+                  className="text-red-600 underline"
+                >
+                  Exercer mes droits
+                </Link>
+                .
+              </p>
 
               <p className="mt-6 text-gray-600">
                 Certaines pages intègrent des contenus tiers (formulaires Tally,

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
 import PolitiqueConfidentialitePage from '../app/juridique/politique-confidentialite/page'
-import { SUB_PROCESSORS } from '@/lib/legal/company'
+import { COOKIES, COOKIE_CONSENT_LABELS, SUB_PROCESSORS } from '@/lib/legal/company'
 import { RGPD_RIGHTS } from '@/lib/rgpd/rights'
 
 describe('Page Politique de Confidentialité', () => {
@@ -62,6 +62,30 @@ describe('Page Politique de Confidentialité', () => {
       .getAllByRole('link')
       .filter((l) => l.getAttribute('href') === '/juridique/exercer-mes-droits')
     expect(liens.length).toBeGreaterThan(0)
+  })
+
+  it('publie chaque traceur du registre avec son statut de consentement réel', () => {
+    render(<PolitiqueConfidentialitePage />)
+
+    for (const cookie of COOKIES) {
+      expect(screen.getByText(cookie.name)).toBeInTheDocument()
+      expect(
+        screen.getAllByText(COOKIE_CONSENT_LABELS[cookie.consent]).length
+      ).toBeGreaterThan(0)
+    }
+  })
+
+  it('signale que les cookies du chat sont déposés avant tout choix', () => {
+    // Le script HubSpot est chargé sans condition (ADR 2026-08-26) : tant que
+    // c'est le cas, la page ne doit pas laisser croire au visiteur que
+    // « Refuser » suffit à l'en préserver.
+    render(<PolitiqueConfidentialitePage />)
+
+    const hubspot = COOKIES.find((c) => c.origin === 'HubSpot')
+    expect(hubspot?.consent).toBe('des-larrivee')
+    expect(
+      screen.getByText(/cookies HubSpot du tableau/)
+    ).toBeInTheDocument()
   })
 
   it('affiche une date de dernière mise à jour', () => {
