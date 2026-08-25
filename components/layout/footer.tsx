@@ -207,43 +207,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                {/* Hub unique : toutes les pages et tous les PDFs juridiques
+                    sont listés sur /juridique — le footer reste allégé. */}
                 <Link
-                  href="/conditions-generales-de-vente"
+                  href="/juridique"
                   className="inline-block py-1 hover:text-red-primary transition-colors"
                 >
-                  Conditions générales de vente
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/accord-sous-traitance-rgpd"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Accord de sous-traitance RGPD
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mentions-legales"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Mentions légales
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/politique-confidentialite"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Politique de confidentialité
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/exercer-mes-droits"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
-                >
-                  Exercer mes droits
+                  Documents juridiques
                 </Link>
               </li>
               <li>

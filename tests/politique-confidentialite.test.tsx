@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import PolitiqueConfidentialitePage from '../app/politique-confidentialite/page'
+import PolitiqueConfidentialitePage from '../app/juridique/politique-confidentialite/page'
 import { SUB_PROCESSORS } from '@/lib/legal/company'
 import { RGPD_RIGHTS } from '@/lib/rgpd/rights'
 
@@ -60,7 +60,7 @@ describe('Page Politique de Confidentialité', () => {
 
     const liens = screen
       .getAllByRole('link')
-      .filter((l) => l.getAttribute('href') === '/exercer-mes-droits')
+      .filter((l) => l.getAttribute('href') === '/juridique/exercer-mes-droits')
     expect(liens.length).toBeGreaterThan(0)
   })
 

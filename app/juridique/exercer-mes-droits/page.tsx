@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RgpdRequestForm } from "@/components/forms/rgpd-request-form";
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
+import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Exercer mes droits RGPD | E2I VoIP",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     "Formulaire d’exercice des droits RGPD d’E2I ASSISTANCE : accès, rectification, effacement, limitation, portabilité, opposition. Réponse sous un mois.",
   keywords:
     "exercer mes droits, RGPD, droit d’accès, droit à l’effacement, portabilité, E2I VoIP",
-  alternates: { canonical: "https://www.e2i-voip.com/exercer-mes-droits" },
+  alternates: { canonical: "https://www.e2i-voip.com/juridique/exercer-mes-droits" },
   openGraph: {
     title: "Exercer mes droits RGPD | E2I VoIP",
     description:
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
 export default function ExercerMesDroitsPage() {
   return (
     <>
+      <LegalBreadcrumb current="Exercer mes droits" />
+
       <section className="py-20 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -120,7 +123,7 @@ export default function ExercerMesDroitsPage() {
               Pour comprendre quelles données nous traitons et pourquoi,
               consultez notre{" "}
               <Link
-                href="/politique-confidentialite"
+                href="/juridique/politique-confidentialite"
                 className="text-red-primary underline"
               >
                 politique de confidentialité

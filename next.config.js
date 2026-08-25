@@ -131,6 +131,19 @@ const nextConfig = {
       // Alias historiques d'accueil
       ["/home", "/"],
       ["/accueil", "/"],
+
+      // --- Espace juridique : regroupement sous /juridique ------------------
+      // Les 5 pages légales vivent désormais dans un espace dédié avec page
+      // hub listant l'ensemble des documents (pages HTML + PDFs). Redirections
+      // 301 pour préserver l'autorité SEO des anciennes URLs déjà indexées.
+      // L'ancienne coquille HubSpot « politique-confidentialites » est
+      // redirigée directement vers la destination finale (pas de chaîne 301).
+      ["/mentions-legales", "/juridique/mentions-legales"],
+      ["/politique-confidentialite", "/juridique/politique-confidentialite"],
+      ["/politique-confidentialites", "/juridique/politique-confidentialite"],
+      ["/exercer-mes-droits", "/juridique/exercer-mes-droits"],
+      ["/conditions-generales-de-vente", "/juridique/conditions-generales-de-vente"],
+      ["/accord-sous-traitance-rgpd", "/juridique/accord-sous-traitance-rgpd"],
     ];
 
     return legacyRedirects.flatMap(([source, destination]) => [

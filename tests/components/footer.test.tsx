@@ -52,11 +52,11 @@ describe('Footer - Phone Links', () => {
 })
 
 describe('Footer — accès aux dispositifs RGPD', () => {
-  test('expose un lien vers le formulaire d’exercice des droits', () => {
+  test('expose le hub « Documents juridiques » qui liste tous les dispositifs', () => {
     render(<Footer />)
 
-    const lien = screen.getByRole('link', { name: /exercer mes droits/i })
-    expect(lien).toHaveAttribute('href', '/exercer-mes-droits')
+    const lien = screen.getByRole('link', { name: /documents juridiques/i })
+    expect(lien).toHaveAttribute('href', '/juridique')
   })
 
   test('permet de rouvrir le choix cookies : retirer doit être aussi simple qu’accepter', () => {

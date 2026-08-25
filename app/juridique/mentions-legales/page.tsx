@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, TextT, MapPin, Globe, Question, Phone } from "@/lib/icons";
 import { COMPANY, HOSTING, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
+import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Mentions légales - E2I VoIP",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     "Mentions légales d’E2I ASSISTANCE (E2I VoIP) : éditeur du site, directeur de la publication, hébergeur, propriété intellectuelle et droit applicable.",
   keywords:
     "mentions légales, E2I VoIP, E2I ASSISTANCE, éditeur, hébergeur, propriété intellectuelle",
-  alternates: { canonical: "https://www.e2i-voip.com/mentions-legales" },
+  alternates: { canonical: "https://www.e2i-voip.com/juridique/mentions-legales" },
   openGraph: {
     title: "Mentions légales - E2I VoIP",
     description:
@@ -30,6 +31,8 @@ export default function MentionsLegales() {
 
   return (
     <>
+      <LegalBreadcrumb current="Mentions légales" />
+
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 overflow-hidden">
         <div className="absolute inset-0">
@@ -241,7 +244,7 @@ export default function MentionsLegales() {
                     lien <strong>« Gérer mes cookies »</strong> en pied de page.
                     La liste des traceurs figure dans la{" "}
                     <Link
-                      href="/politique-confidentialite"
+                      href="/juridique/politique-confidentialite"
                       className="text-red-600 underline"
                     >
                       politique de confidentialité
@@ -270,7 +273,7 @@ export default function MentionsLegales() {
                   <p>
                     Pour les exercer, utilisez notre{" "}
                     <Link
-                      href="/exercer-mes-droits"
+                      href="/juridique/exercer-mes-droits"
                       className="text-red-600 underline"
                     >
                       formulaire dédié

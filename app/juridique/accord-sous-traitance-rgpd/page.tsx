@@ -13,6 +13,7 @@ import {
   Seal,
 } from "@/lib/icons";
 import { COMPANY, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
+import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Accord de sous-traitance RGPD | E2I VoIP",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   keywords:
     "DPA, sous-traitance RGPD, article 28, E2I VoIP, données personnelles, RGPD",
   alternates: {
-    canonical: "https://www.e2i-voip.com/accord-sous-traitance-rgpd",
+    canonical: "https://www.e2i-voip.com/juridique/accord-sous-traitance-rgpd",
   },
   openGraph: {
     title: "Accord de sous-traitance RGPD | E2I VoIP",
@@ -34,6 +35,8 @@ export const metadata: Metadata = {
 export default function AccordSousTraitanceRgpdPage() {
   return (
     <>
+      <LegalBreadcrumb current="Accord de sous-traitance RGPD" />
+
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -280,7 +283,7 @@ export default function AccordSousTraitanceRgpdPage() {
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   <Link
-                    href="/conditions-generales-de-vente"
+                    href="/juridique/conditions-generales-de-vente"
                     className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
                   >
                     <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
@@ -290,7 +293,7 @@ export default function AccordSousTraitanceRgpdPage() {
                     </div>
                   </Link>
                   <Link
-                    href="/politique-confidentialite"
+                    href="/juridique/politique-confidentialite"
                     className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
                   >
                     <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />

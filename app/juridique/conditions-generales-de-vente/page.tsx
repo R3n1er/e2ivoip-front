@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { DownloadSimple, FileText, Shield, Clock, Scales } from "@/lib/icons";
 import { COMPANY, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
+import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente | E2I VoIP",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     "CGV, conditions générales de vente, E2I VoIP, contrat téléphonie, VoIP DOM",
   alternates: {
-    canonical: "https://www.e2i-voip.com/conditions-generales-de-vente",
+    canonical: "https://www.e2i-voip.com/juridique/conditions-generales-de-vente",
   },
   openGraph: {
     title: "Conditions générales de vente | E2I VoIP",
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
 export default function ConditionsGeneralesVentePage() {
   return (
     <>
+      <LegalBreadcrumb current="Conditions générales de vente" />
+
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -292,7 +295,7 @@ export default function ConditionsGeneralesVentePage() {
                     </div>
                   </Link>
                   <Link
-                    href="/accord-sous-traitance-rgpd"
+                    href="/juridique/accord-sous-traitance-rgpd"
                     className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
                   >
                     <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
@@ -302,7 +305,7 @@ export default function ConditionsGeneralesVentePage() {
                     </div>
                   </Link>
                   <Link
-                    href="/politique-confidentialite"
+                    href="/juridique/politique-confidentialite"
                     className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
                   >
                     <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />

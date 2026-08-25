@@ -46,7 +46,7 @@ export function CookieConsentBanner() {
         <p className="text-sm leading-relaxed">
           Nous utilisons des cookies pour mesurer l&apos;audience du site et
           améliorer votre expérience.{" "}
-          <Link href="/politique-confidentialite" className="underline">
+          <Link href="/juridique/politique-confidentialite" className="underline">
             En savoir plus
           </Link>
           .
