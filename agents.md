@@ -106,6 +106,33 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture et merge p
 | Ligne éditoriale | `docs/ligne-editoriale.md` |
 | Planification | `.planning/ROADMAP.md`, `.planning/STATE.md` |
 
+## Scan sécurité Semgrep (pre-push gate)
+
+- **Semgrep** (`--config=auto`) scanne le code avant push vers `main` **et `dev`** via un hook git `pre-push`
+- Bloque sur les findings **ERROR** et **HIGH** (OWASP Top 10 + best practices JS/TS/React/Next.js)
+- Les findings **WARNING** et **INFO** sont affichés mais non bloquants
+- Le hook vit dans `.githooks/pre-push` du repo — activé via `git config core.hooksPath .githooks`
+- Contournement exceptionnel : `git push --no-verify` en connaissance de cause
+- Login Semgrep : `semgrep login` (token stocké dans `~/.semgrep/settings.yml`)
+
+### Vérifier que le hook est actif
+
+```bash
+git config core.hooksPath
+# doit retourner: .githooks
+```
+
+Si vide, l'activer :
+```bash
+git config core.hooksPath .githooks
+```
+
+### Lancer Semgrep manuellement
+
+```bash
+semgrep --config=auto
+```
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
