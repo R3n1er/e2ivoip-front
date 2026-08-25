@@ -1,30 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { IconContext } from "@phosphor-icons/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
-import { ChatPreOverlay } from "@/components/chat-preoverlay";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
-import { getConsent, CONSENT_CHANGE_EVENT } from "@/lib/analytics/consent";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
-  // Le script HubSpot dépose des cookies de suivi : il n'est monté qu'une fois
-  // le consentement accordé, ou lorsque le visiteur demande le chat (service
-  // expressément demandé). Un refus ne bloque donc jamais la conversation.
-  const [trackingEnabled, setTrackingEnabled] = useState(false);
-
-  useEffect(() => {
-    const sync = () => {
-      if (getConsent() === "accepted") setTrackingEnabled(true);
-    };
-    sync();
-    window.addEventListener(CONSENT_CHANGE_EVENT, sync);
-    return () => window.removeEventListener(CONSENT_CHANGE_EVENT, sync);
-  }, []);
-
-  const enableTracking = useCallback(() => setTrackingEnabled(true), []);
-
+  // Le chat HubSpot est désormais géré par le widget natif (snippet loader
+  // HubSpot, ADR 2026-08-26). Aucune interaction préalable n'est nécessaire :
+  // le launcher s'affiche directement en bas à droite dès que le script est
+  // chargé. Le script est monté inconditionnellement, comme dans la doc
+  // officielle HubSpot (`//js-eu1.hs-scripts.com/26878201.js`).
   return (
     // weight « bold » par défaut sur toutes les icônes Phosphor (design.md P3.10).
     // Surchargeable au cas par cas (ex. weight="fill" sur les étoiles/checks pleins).
@@ -41,8 +28,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
       <main id="contenu-principal" tabIndex={-1} className="flex-1 pt-16">
         {children}
       </main>
-      <HubSpotTracking enabled={trackingEnabled} />
-      <ChatPreOverlay onRequestChat={enableTracking} />
+      <HubSpotTracking />
       <CookieConsentBanner />
     </IconContext.Provider>
   );
