@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Script from "next/script";
 import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
@@ -19,12 +20,29 @@ import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
  * l'arrivée sur le site, sans passer par le bandeau cookies du site. Si
  * tu veux rebrancher un consentement RGPD préalable : voir l'ADR
  * 2026-08-16 archivé — c'était l'ancien comportement avec pré-chat.
+ *
+ * `enableWidgetCookieBanner: false` reste nécessaire : sans ce réglage,
+ * la modale UE `#hs-eu-cookie-confirmation` de HubSpot bloque l'ouverture
+ * du widget tant qu'elle n'est pas acceptée (cause du hotfix 82e3c42 du
+ * 2026-08-25). `hsConversationsSettings` doit être posé avant le chargement
+ * du script pour être pris en compte : on le fait dans un `useEffect`, qui
+ * s'exécute avant le montage du script `afterInteractive`.
+ *
+ * Note dev-only : en mode développement (Turbopack), la console affiche un
+ * hydration mismatch bénin causé par l'injection dynamique de `<script>`
+ * du SDK HubSpot dans le DOM. Absent en build de production (`npm run
+ * build && npm run start`, vérifié) — le widget fonctionne normalement
+ * dans les deux cas.
  */
 export function HubSpotTracking({
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
 }: {
   portalId?: string;
 }) {
+  useEffect(() => {
+    window.hsConversationsSettings = { enableWidgetCookieBanner: false };
+  }, []);
+
   return (
     <Script
       id="hs-script-loader"

@@ -45,7 +45,8 @@ export function CookieConsentBanner() {
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-relaxed">
           Nous utilisons des cookies pour mesurer l&apos;audience du site et
-          améliorer votre expérience.{" "}
+          améliorer votre expérience. Le chat en ligne dépose ses propres
+          cookies dès votre arrivée, indépendamment de ce choix.{" "}
           <Link href="/juridique/politique-confidentialite" className="underline">
             En savoir plus
           </Link>

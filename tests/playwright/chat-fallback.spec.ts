@@ -54,13 +54,21 @@ test.describe("ChatFallback - bannière alternative quand le chat est bloqué", 
   test("ne s'affiche PAS quand le widget HubSpot charge normalement", async ({
     page,
   }) => {
-    // Mock léger : on simule que l'API HubSpot est créée. Le composant
-    // détecte la présence et ne doit PAS afficher le fallback.
+    // Mock fidèle au comportement réel HubSpot : le script appelle chaque
+    // callback déjà présent dans `hsConversationsOnReady` puis pousse à son
+    // tour dedans pour les abonnements ultérieurs. C'est ce déclenchement
+    // que ChatFallback attend désormais (pas la simple existence de
+    // `window.HubSpotConversations`, qui peut être vraie même si l'appel
+    // réseau nécessaire au widget est bloqué).
     await page.route("https://js-eu1.hs-scripts.com/**", (route) =>
       route.fulfill({
         status: 200,
         contentType: "application/javascript",
-        body: "window.HubSpotConversations = window.HubSpotConversations || { widget: {} };",
+        body: `
+          window.HubSpotConversations = window.HubSpotConversations || { widget: {} };
+          (window.hsConversationsOnReady || []).forEach((cb) => cb());
+          window.hsConversationsOnReady = { push: (cb) => cb() };
+        `,
       })
     );
     await page.goto("/");

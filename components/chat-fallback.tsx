@@ -18,12 +18,16 @@ const FRANCE_PHONE =
  * alternative visible, le visiteur ne trouve plus aucun moyen rapide de
  * nous contacter.
  *
- * Détection : après 6 s, on vérifie que `window.HubSpotConversations`
- * ET `#hubspot-conversations-iframe` existent. Si l'un manque, on
- * affiche un bandeau persistant en bas de viewport avec 2 canaux de
- * contact directs (téléphone, formulaire). Le bandeau est
- * dismissable par bouton croix (localStorage, sans expiration :
- * choix UX assumé — voir ADR 2026-08-26).
+ * Détection : on s'abonne à `window.hsConversationsOnReady`, le callback
+ * officiel HubSpot déclenché seulement quand l'API Conversations a fini
+ * son initialisation réelle (pas juste quand le script loader a défini
+ * un objet global — un blocage partiel, ex. `api-eu1.hubspot.com`
+ * bloqué alors que le script loader passe, laisserait sinon passer un
+ * faux positif). Si ce callback n'a pas été appelé après 6 s, on affiche
+ * un bandeau persistant en bas de viewport avec 2 canaux de contact
+ * directs (téléphone, formulaire). Le bandeau est dismissable par bouton
+ * croix (localStorage, sans expiration : choix UX assumé — voir ADR
+ * 2026-08-26).
  *
  * Désactivation : si `?nochat=1` est dans l'URL (utile pour les tests
  * E2E et la maintenance), on force l'affichage immédiat sans attendre.
@@ -49,39 +53,31 @@ export function ChatFallback() {
       typeof window !== "undefined" &&
       new URLSearchParams(window.location.search).get("nochat") === "1";
 
-    const checkChatLoaded = () => {
-      const w = window as unknown as {
-        HubSpotConversations?: { widget?: unknown };
-      };
-      const iframe = document.getElementById("hubspot-conversations-iframe");
-      // L'API globale existe-t-elle ? Un objet vide suffit à considérer HS chargé
-      // — un blocage laisse `HubSpotConversations` undefined.
-      const apiLoaded = !!w.HubSpotConversations;
-      const iframeLoaded = !!iframe;
-      return apiLoaded || iframeLoaded;
-    };
-
     // Test forcé (debug/tests) : on affiche tout de suite.
     if (forceViaUrl) {
       setShowFallback(true);
       return;
     }
 
-    // Sinon, polling 500 ms pendant 6 s.
-    const deadline = Date.now() + 6000;
-    const interval = window.setInterval(() => {
-      if (checkChatLoaded()) {
-        setShowFallback(false);
-        window.clearInterval(interval);
-        return;
-      }
-      if (Date.now() > deadline) {
-        window.clearInterval(interval);
-        setShowFallback(true);
-      }
-    }, 500);
+    let ready = false;
+    const onReady = () => {
+      ready = true;
+      setShowFallback(false);
+    };
 
-    return () => window.clearInterval(interval);
+    // `hsConversationsOnReady` est le callback officiel HubSpot : il n'est
+    // déclenché que lorsque l'API Conversations a réellement fini son
+    // initialisation, contrairement à un simple test d'existence de
+    // `window.HubSpotConversations` (qui peut être vrai même si l'appel
+    // réseau vers api-eu1.hubspot.com nécessaire au widget est bloqué).
+    window.hsConversationsOnReady = window.hsConversationsOnReady ?? [];
+    window.hsConversationsOnReady.push(onReady);
+
+    const timeout = window.setTimeout(() => {
+      if (!ready) setShowFallback(true);
+    }, 6000);
+
+    return () => window.clearTimeout(timeout);
   }, [dismissed]);
 
   const handleDismiss = () => {
