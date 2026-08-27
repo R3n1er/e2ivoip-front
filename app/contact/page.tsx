@@ -144,8 +144,12 @@ export default function ContactPage() {
                 </div>
 
                 {/* WhatsApp */}
-                <div
-                  className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                <a
+                  href="https://wa.me/33757023601"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Contacter E2I VoIP sur WhatsApp (nouvelle fenêtre)"
+                  className="block rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="whatsapp-card"
                 >
                   <div className="flex flex-col p-6">
@@ -164,7 +168,7 @@ export default function ContactPage() {
                           className="text-gray-900 font-medium mb-1"
                           data-testid="whatsapp-phone"
                         >
-                          0594 96 35 00
+                          +33 7 57 02 36 01
                         </p>
                         <p className="text-sm text-gray-600">
                           Réponse rapide • Support commercial et technique
@@ -172,7 +176,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
 
                 {/* Réseaux sociaux */}
                 <div
