@@ -148,6 +148,7 @@ export default function ContactPage() {
                   href="https://wa.me/33757023601"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Contacter E2I VoIP sur WhatsApp (nouvelle fenêtre)"
                   className="block rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="whatsapp-card"
                 >
