@@ -58,6 +58,25 @@ test.describe("Calendrier HubSpot — prise de rendez-vous", () => {
     expect(src).toMatch(/meetings(-eu1)?\.hubspot\.com/);
   });
 
+  test("masque le message de chargement une fois l'iframe affichée", async ({
+    page,
+  }) => {
+    await page.goto(PAGE);
+
+    const container = page.getByTestId("hubspot-calendar-container");
+    await container.scrollIntoViewIfNeeded();
+
+    await expect(container.locator("iframe")).toBeVisible({ timeout: 30000 });
+
+    // Bug observé en prod : le message de chargement React reste affiché
+    // par-dessus l'iframe injectée par le script HubSpot, faute de détection
+    // de la fin du chargement (le composant ne connaît que "failed", jamais
+    // "loaded").
+    await expect(
+      page.getByTestId("hubspot-calendar-loading")
+    ).not.toBeVisible();
+  });
+
   test("propose un lien de repli si le script échoue", async ({ page }) => {
     // Simule un bloqueur de traceurs ou une coupure réseau.
     await page.route("**/MeetingsEmbedCode.js", (route) => route.abort());

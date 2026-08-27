@@ -50,6 +50,7 @@ export function HubSpotCalendar({
   const containerRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   // `data-src` doit être posé AVANT l'exécution du script : celui-ci scanne les
   // conteneurs `.meetings-iframe-container` au chargement et lit cet attribut.
@@ -82,6 +83,31 @@ export function HubSpotCalendar({
     script.onerror = () => setFailed(true);
 
     document.body.appendChild(script);
+  }, []);
+
+  // `MeetingsEmbedCode.js` injecte l'iframe directement dans le DOM du
+  // conteneur, en dehors du rendu React : sans cette détection, le message
+  // "Chargement du calendrier…" reste affiché indéfiniment par-dessus
+  // l'iframe pourtant fonctionnelle (bug observé en prod sur /3cx-cloud).
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (container.querySelector("iframe")) {
+      setLoaded(true);
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (container.querySelector("iframe")) {
+        setLoaded(true);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(container, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -129,7 +155,7 @@ export function HubSpotCalendar({
                 </a>
               </div>
             </div>
-          ) : (
+          ) : !loaded ? (
             <div
               className="flex h-full items-center justify-center bg-gray-50"
               data-testid="hubspot-calendar-loading"
@@ -144,7 +170,7 @@ export function HubSpotCalendar({
                 </p>
               </div>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 
