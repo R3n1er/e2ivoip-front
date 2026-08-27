@@ -112,56 +112,103 @@ function waitForHubSpotConversations(timeoutMs: number): Promise<void> {
   });
 }
 
-function openHubSpotWidget(): Promise<void> {
+function waitForWidgetLoaded(timeoutMs: number): Promise<void> {
   return new Promise((resolve, reject) => {
-    let settled = false;
-
-    const finish = (callback: () => void) => {
-      if (settled) return;
-      settled = true;
-      window.clearTimeout(timeout);
-      callback();
-    };
-
-    const open = () => {
-      if (settled) return;
-
+    const start = Date.now();
+    let kicked = false;
+    const timer = window.setInterval(() => {
       try {
-        const widget = window.HubSpotConversations?.widget;
-        if (!widget) {
-          finish(() =>
-            reject(new Error("Le widget HubSpot n'est pas disponible"))
-          );
+        const status = window.HubSpotConversations?.widget?.status?.();
+        if (status?.loaded) {
+          window.clearInterval(timer);
+          resolve();
           return;
         }
-
-        const status = widget.status?.();
-        if (status?.loaded) {
-          // Le launcher est déjà affiché : on le supprime puis on le recharge
-          // avec widgetOpen: true pour forcer l'ouverture en grand.
-          widget.remove?.();
+        // Avec `loadImmediately: false`, l'initialisation ne démarre JAMAIS
+        // seule : status() reste { loaded: false } tant qu'aucun load() n'a
+        // été émis. Au bout d'1 s sans init, on la déclenche (kick).
+        if (!kicked && Date.now() - start > 1000) {
+          kicked = true;
+          try {
+            window.HubSpotConversations?.widget?.load();
+          } catch {
+            /* le tick suivant réessaiera */
+          }
         }
-        widget.load({ widgetOpen: true, inline: false });
-        finish(resolve);
-      } catch (error) {
-        finish(() => reject(error));
+      } catch {
+        /* API pas encore prête : on attend */
       }
-    };
-
-    const timeout = window.setTimeout(() => {
-      finish(() =>
-        reject(new Error("Le chargement du widget HubSpot a expiré"))
-      );
-    }, HUBSPOT_WIDGET_TIMEOUT_MS);
-
-    if (window.HubSpotConversations) {
-      open();
-      return;
-    }
-
-    window.hsConversationsOnReady ??= [];
-    window.hsConversationsOnReady.push(open);
+      if (Date.now() - start > timeoutMs) {
+        window.clearInterval(timer);
+        reject(new Error("Le widget HubSpot ne s'est pas initialisé à temps"));
+      }
+    }, 100);
   });
+}
+
+/**
+ * Ouvre le widget HubSpot Conversations après validation du pré-chat.
+ *
+ * ⚠️ Deux pièges du SDK Conversations, vérifiés sur www.e2i-voip.com le
+ * 2026-08-25 (Chrome headless + CDP) :
+ * 1. Avec `loadImmediately: false`, rien ne s'initialise tant qu'aucun
+ *    `load()` n'est émis — un simple `open()` sur widget non chargé est
+ *    ignoré, et `widgetOpen: true` ne survit jamais à l'initialisation.
+ * 2. Même après `status().loaded === true`, un unique `open()` peut être avalé :
+ *    l'iframe reste au format launcher (~100×96). Un appel suivant passe.
+ * D'où : kick d'initialisation → attente de `loaded` → `open()` avec
+ * vérification de la taille RÉELLE de l'iframe et retries alternés
+ * (`open()`, puis `load({ widgetOpen: true })`) jusqu'à ouverture effective.
+ */
+async function openHubSpotWidget(): Promise<void> {
+  await waitForWidgetLoaded(HUBSPOT_WIDGET_TIMEOUT_MS);
+
+  const getIframeSize = () =>
+    document
+      .querySelector<HTMLIFrameElement>("#hubspot-conversations-iframe")
+      ?.getBoundingClientRect();
+
+  const isOpen = () => {
+    const rect = getIframeSize();
+    return !!rect && rect.width > 250 && rect.height > 200;
+  };
+
+  const widget = window.HubSpotConversations?.widget;
+  if (!widget) {
+    throw new Error("Le widget HubSpot n'est pas disponible");
+  }
+
+  const attemptOpen = () => {
+    try {
+      widget.open();
+    } catch {
+      /* retenté au prochain tour */
+    }
+  };
+  const attemptLoadOpen = () => {
+    try {
+      widget.load({ widgetOpen: true, inline: false });
+    } catch {
+      /* retenté au prochain tour */
+    }
+  };
+
+  attemptOpen();
+  const deadline = Date.now() + HUBSPOT_WIDGET_TIMEOUT_MS;
+  let useLoad = false;
+
+  while (!isOpen()) {
+    await new Promise((resolve) => window.setTimeout(resolve, 1000));
+    if (useLoad) {
+      attemptLoadOpen();
+    } else {
+      attemptOpen();
+    }
+    useLoad = !useLoad;
+    if (Date.now() > deadline) {
+      throw new Error("Le widget HubSpot ne s'est pas ouvert à temps");
+    }
+  }
 }
 
 function isValidEmail(email: string): boolean {

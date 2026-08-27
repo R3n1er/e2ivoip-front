@@ -10,6 +10,47 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-25 — Fix pré-chat : init forcée + ouverture par retry alterné + suppression bannière HS
+
+- **Contexte** : après validation du pré-chat, le chat HubSpot ne s'ouvrait pas — l'overlay se fermait pourtant sans erreur. Premier diagnostic (Chrome headless + CDP sur www.e2i-voip.com, instrumentation `load`/`open`) : `widget.load({ widgetOpen: true })` était appelé alors que le widget n'avait jamais démarré son initialisation, l'iframe restait au format launcher (~100×96). Mock Playwright trompeur : il créait un widget instantanément disponible honorant `widgetOpen`, contrairement au SDK réel.
+- **Diagnostic approfondi** (2ᵉ déploiement, après un premier fix insuffisant) :
+  - Avec `hsConversationsSettings.loadImmediately: false`, `status()` reste `{ loaded: false, pending: false }` **indéfiniment** si aucun `load()` n'est émis. Sans init, aucun `open()` ni `load({widgetOpen:true})` ne peut ouvrir l'iframe.
+  - La bannière cookies européenne HubSpot (`#hs-eu-cookie-confirmation`, `enableWidgetCookieBanner`) reste affichée tant que le visiteur ne l'a pas validée. Elle bloque l'init du widget : `open()` est ignoré tant qu'elle est visible.
+  - Le site expose déjà son propre bandeau RGPD : la modale HS est **redondante** et **bloquante**.
+- **Décision** :
+  - `waitForWidgetLoaded` (timeout 20 s) : kick explicite de `widget.load()` si `status().loaded` reste faux après 1 s (sans init déclenchée, on attend pour toujours).
+  - `openHubSpotWidget` : appeler `open()`, puis **vérifier la taille RÉELLE de l'iframe** (au moins ~250×200). Tant que l'iframe reste un launcher fermé, alterner `open()` et `load({ widgetOpen: true, inline: false })` toutes les secondes pendant le même timeout (un seul appel peut être avalé sans erreur par le SDK).
+  - `HubSpotTracking` : ajouter `enableWidgetCookieBanner: false` à `hsConversationsSettings`. Supprime la modale redondante, le bandeau RGPD du site reste l'unique interface de consentement.
+  - Mocks Playwright (`chat-preoverlay-flow.spec.ts`, `hubspot-consent-gating.spec.ts`) refactorés : initialisation déclenchée par `load()`, iframe montée par `open()` ou `load({widgetOpen:true})`, traçages alignés sur le comportement réel.
+  - Le `pending?: boolean` observé en prod reste dans le type `status()` pour mémoire.
+  - Test infra : port Playwright 3100 (3000 = WebUI Hermes), `page.goto` en chemins relatifs.
+- **Conséquences** :
+  - Côté code : la séquence d'init et d'ouverture est conforme à ce que le SDK observe en production (vérifié à plusieurs reprises via CDP).
+  - Limite identifiée : en environnement headless sans user-gesture réel (CDP synthétique), le SDK HubSpot peut rester sur le launcher malgré les bons appels. Sur navigateur réel d'utilisateur, l'ouverture fonctionne — les screenshots en environnement dégradé (modale HS présente + viewport réduit) ont confirmé 448×627 = widget ouvert.
+  - Le diagnostic local des échecs blog Playwright (`blog-seo`, `blog-hubspot-images`) reste un problème d'environnement indépendant : token HubSpot local sans scope CMS `content` (403 MISSING_SCOPES sur `/api/blog/list`). La production sert les articles correctement.
+- **Tests associés** : `npm run type-check` ✅ ; Jest 473/473 ✅ ; `chat-preoverlay-flow.spec.ts` 8/8 ✅ ; `hubspot-consent-gating.spec.ts` 4/4 ✅ ; `no-hubspot-widget.spec.ts` 1/1 ✅. Branche de hotfix `hotfix/prechat-widget-open` (worktree dédié depuis `origin/main`), déploiement prod `vercel --prod --yes` validé.
+
+### 2026-08-25 — Fil d'Ariane global sur tout le site (hors accueil)
+
+- **Contexte** : le fil d'Ariane n'existait que sur les 5 pages juridiques (`LegalBreadcrumb`). Les ~17 autres pages (services, blog, contact, studio, assistance…) n'avaient aucun fil d'Ariane. Étude SEO/GEO demandée en amont.
+- **Étude impact SEO/GEO (août 2026)** :
+  - *SERP Google* : Google a retiré l'affichage des fils d'Ariane des SERP desktop (sept. 2024) puis mobiles (août 2026) — le bénéfice « riche résultat » en SERP est donc faible aujourd'hui.
+  - *JSON-LD BreadcrumbList* : toujours supporté et documenté par Google Search Central ; alimente la compréhension de hiérarchie et reste un signal pour les surfaces IA (AI Overviews citent à 92 % des pages bien classées ; structure claire = meilleure sélection des passages).
+  - *GEO/AEO* : les crawlers IA (GPTBot, ClaudeBot, PerplexityBot — tous autorisés dans `app/robots.ts`) ne lisent pas la navigation JS de façon fiable mais exploitent le JSON-LD et le maillage interne. Le fil renforce les silos thématiques (téléphonie-entreprise → offres), critère « Structural Readability » du score GEO (20 %).
+  - *UX* : profondeur 3 sur les offres (Accueil › Téléphonie › Trunk SIP Illimité) — réduction du taux de rebond, navigation contextuelle vers la page hub.
+  - *Conclusion* : impact SERP direct marginal, bénéfices réels = maillage interne + hiérarchie machine-lisible + UX. Coût quasi nul (composant global).
+- **Décision** :
+  - Extraire `Breadcrumb`/`BreadcrumbItem`/`BREADCRUMB_HOME` dans `components/layout/breadcrumb.tsx` (source unique) ; `components/legal/breadcrumb.tsx` devient un réexport (compat imports existants).
+  - Nouveau registre `lib/navigation/breadcrumbs.ts` : chemins → libellés, routes dynamiques blog par regex, fallback générique humanisant le segment d'URL.
+  - Nouveau composant client `PageBreadcrumb` (`components/layout/page-breadcrumb.tsx`, `usePathname`) monté une seule fois dans `LayoutClientChrome` sous le header — aucune édition des 17 pages, couverture automatique des futures pages via le fallback.
+  - Exclusions : `/` (accueil), `/juridique/*` (LegalBreadcrumb natif des pages, évite le doublon), `/admin/*` et `/offline` (non indexables).
+  - SSR : le HTML et le JSON-LD BreadcrumbList sont rendus serveur, accessibles aux crawlers classiques et IA.
+- **Conséquences** :
+  - Toute nouvelle page hors juridique obtient automatiquement `Accueil › [Segment humanisé]` ; il est recommandé d'ajouter une entrée dédiée au registre pour des libellés soignés.
+  - Les libellés du JSON-LD doivent refléter les titres visibles des pages (convention Search Console : cohérence breadcrumb visible / données structurées).
+  - Aucun changement d'URL ni de canonical — zéro impact sur l'indexation existante.
+- **Tests associés** : `tests/navigation-breadcrumbs.test.ts` (8 : intégrité du registre, routes dynamiques, fallback) ; `tests/page-breadcrumb.test.tsx` (5 : exclusions accueil/juridique/admin, JSON-LD, hiérarchie services). Jest 473/473 ✅.
+
 ### 2026-08-24 — Espace juridique unifié /juridique avec hub et fil d'Ariane
 
 - **Contexte** : les 5 pages légales vivaient à plat à la racine (`/mentions-legales`, `/politique-confidentialite`, `/exercer-mes-droits`, `/conditions-generales-de-vente`, `/accord-sous-traitance-rgpd`) sans point d'entrée commun ; le footer accumulait 5 liens directs + 2 PDFs. L'ajout des CGV/DPA (PR #29) a saturé cette organisation plate.
@@ -107,7 +148,7 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». La console montrait des `ERR_BLOCKED_BY_CLIENT` sur `js-eu1.hs-scripts.com` et PostHog : Brave Shields (et les bloqueurs de traqueurs en général) bloquent le script HubSpot Conversations. En local, le script était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau pouvaient aussi dépasser le timeout de 10s.
 - **Décision** :
   - Augmenter le timeout de `openHubSpotWidget` à 20s.
-  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`.
+  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`. *[Remplacé par l'ADR du 2026-08-25 : cette approche ignore silencieusement le flag sur widget non initialisé]*
   - Détecter quand le chat est probablement bloqué (`!window.HubSpotConversations` et aucun script `hs-scripts.com` injecté) et afficher un message explicite + lien vers le formulaire de contact au lieu du message générique « Vérifiez votre connexion ».
 - **Conséquences** : le chat s'ouvre dès que le script est disponible. Si un bloqueur l'empêche de charger, le visiteur comprend pourquoi et a un CTA de secours vers `/contact`.
 - **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341).
@@ -171,7 +212,7 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Décision** :
   - Monter `HubSpotTracking` dans `LayoutClientChrome` et charger le script européen via `next/script`, après avoir défini `loadImmediately: false`.
   - Après une ingestion CRM réussie, pousser `identify`, puis `trackPageView` — nécessaire pour transmettre l'identité au tracker — avant d'attendre `hsConversationsOnReady`.
-  - Ouvrir un widget non chargé avec `widget.load({ widgetOpen: true })`, ou appeler `widget.open()` lorsqu'il est déjà chargé, avec un timeout de 10 secondes.
+  - Ouvrir un widget non chargé avec `widget.load({ widgetOpen: true })`, ou appeler `widget.open()` lorsqu'il est déjà chargé, avec un timeout de 10 secondes. *[Remplacé par l'ADR du 2026-08-25 : kick `load()` + attente de `status().loaded` + `open()` vérifié]*
   - Conserver les tests sans écriture CRM réelle : SDK déterministe dans le test du flux et contrôle séparé du chargement réel de l'API HubSpot.
   - Finaliser l'accessibilité du pré-chat : dialogue modal nommé, labels visibles, attributs d'autocomplétion, erreurs reliées par ARIA, focus initial et confiné, fermeture par Échap avec restitution du focus.
   - Garder le bouton d'envoi disponible avant la requête afin d'afficher les erreurs et de placer le focus sur le premier champ invalide. En cas d'échec API ou widget, conserver la saisie et afficher une action de réessai compréhensible.
