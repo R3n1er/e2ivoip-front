@@ -5,6 +5,7 @@ import { IconContext } from "@phosphor-icons/react";
 import { HeaderSimple } from "@/components/layout/header-simple";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { HubSpotTracking } from "@/components/hubspot/legacy/hubspot-tracking";
+import { PageBreadcrumb } from "@/components/layout/page-breadcrumb";
 import { ChatFallback } from "@/components/chat-fallback";
 
 export function LayoutClientChrome({ children }: { children: ReactNode }) {
@@ -27,6 +28,7 @@ export function LayoutClientChrome({ children }: { children: ReactNode }) {
       </a>
       <HeaderSimple />
       <main id="contenu-principal" tabIndex={-1} className="flex-1 pt-16">
+        <PageBreadcrumb />
         {children}
       </main>
       <HubSpotTracking />
