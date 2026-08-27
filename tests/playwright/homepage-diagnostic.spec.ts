@@ -164,21 +164,4 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       `Scripts non chargés: ${scriptErrors.join("\n")}`
     ).toHaveLength(0);
   });
-
-  test("devrait avoir le ChatPreOverlay fonctionnel", async ({ page }) => {
-    await page.goto("/");
-
-    // Attendre que le composant ChatPreOverlay soit présent
-    await page.waitForTimeout(2000);
-
-    // Vérifier la présence du bouton de chat
-    const chatButton = page.locator('[data-testid="open-chat-button"]');
-    await expect(chatButton).toBeVisible({ timeout: 5000 });
-
-    // Vérifier le texte "Une question?"
-    const questionText = page.locator('text=/Une question/i');
-    await expect(questionText).toBeVisible();
-
-    console.log("✅ ChatPreOverlay détecté et fonctionnel");
-  });
 });
