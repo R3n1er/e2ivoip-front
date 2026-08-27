@@ -107,7 +107,19 @@ export function HubSpotCalendar({
 
     observer.observe(container, { childList: true, subtree: true });
 
-    return () => observer.disconnect();
+    // Le script peut charger avec succès (`onerror` ne se déclenche pas) sans
+    // jamais injecter l'iframe : lien de meeting invalide/désactivé côté
+    // HubSpot, ou un outil de confidentialité qui laisse passer le script
+    // mais bloque l'appel réseau de l'embed. Sans ce filet, le visiteur
+    // resterait bloqué sur le spinner indéfiniment.
+    const timeout = window.setTimeout(() => {
+      if (!container.querySelector("iframe")) setFailed(true);
+    }, 15000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   return (

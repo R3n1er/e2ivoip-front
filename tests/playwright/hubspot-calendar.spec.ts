@@ -95,4 +95,34 @@ test.describe("Calendrier HubSpot — prise de rendez-vous", () => {
       /^https:\/\/meetings(-eu1)?\.hubspot\.com\//
     );
   });
+
+  test("propose un lien de repli si le script charge sans jamais injecter l'iframe", async ({
+    page,
+  }) => {
+    // Cas distinct du précédent : le script répond 200 (onerror ne se
+    // déclenche pas) mais n'injecte aucune iframe — lien de meeting
+    // désactivé côté HubSpot, ou un outil de confidentialité qui laisse
+    // passer le script mais bloque l'appel réseau de l'embed lui-même.
+    await page.route("**/MeetingsEmbedCode.js", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/javascript",
+        body: "// script HubSpot chargé, mais n'injecte volontairement aucune iframe (test)",
+      })
+    );
+
+    await page.goto(PAGE);
+
+    const fallback = page.getByTestId("hubspot-calendar-fallback");
+    await fallback.scrollIntoViewIfNeeded();
+    await expect(fallback).toBeVisible({ timeout: 20000 });
+
+    const link = fallback.getByRole("link", {
+      name: /Ouvrir le calendrier/i,
+    });
+    await expect(link).toHaveAttribute(
+      "href",
+      /^https:\/\/meetings(-eu1)?\.hubspot\.com\//
+    );
+  });
 });
