@@ -109,7 +109,7 @@ export function getBreadcrumbForPath(path: string): BreadcrumbItem[] {
   if (path === "/" || path.startsWith("/index")) {
     return [];
   }
-  const blogArticleMatch = path.match(/^\/blog\/(?!\bcategorie\b)[^/]+$/);
+  const blogArticleMatch = path.match(/^\/blog\/(?!categorie$)[^/]+$/);
   if (blogArticleMatch) {
     return [
       BREADCRUMB_HOME,
