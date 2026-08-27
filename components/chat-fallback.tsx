@@ -18,12 +18,19 @@ const FRANCE_PHONE =
  * alternative visible, le visiteur ne trouve plus aucun moyen rapide de
  * nous contacter.
  *
- * Détection : après 6 s, on vérifie que `window.HubSpotConversations`
- * ET `#hubspot-conversations-iframe` existent. Si l'un manque, on
- * affiche un bandeau persistant en bas de viewport avec 2 canaux de
- * contact directs (téléphone, formulaire). Le bandeau est
- * dismissable par bouton croix (localStorage, sans expiration :
- * choix UX assumé — voir ADR 2026-08-26).
+ * Détection : pendant 6 s, on vérifie toutes les 500 ms que
+ * `window.HubSpotConversations` OU `#hubspot-conversations-iframe`
+ * existe. Si rien n'est détecté au bout de 6 s, on affiche un bandeau
+ * persistant en bas de viewport avec 2 canaux de contact directs
+ * (téléphone, formulaire). Le bandeau est dismissable par bouton croix
+ * (localStorage, sans expiration : choix UX assumé — voir ADR 2026-08-26).
+ *
+ * La surveillance ne s'arrête PAS à l'affichage du bandeau : sur une
+ * connexion lente (3G, DNS lent), le script HubSpot peut arriver après
+ * les 6 s. On continue donc à sonder jusqu'à 30 s au total et on retire
+ * le bandeau dès que le widget apparaît — sinon le visiteur se
+ * retrouverait avec le bandeau superposé au launcher natif (même coin
+ * bas-droit), soit deux points de contact concurrents.
  *
  * Désactivation : si `?nochat=1` est dans l'URL (utile pour les tests
  * E2E et la maintenance), on force l'affichage immédiat sans attendre.
@@ -67,17 +74,22 @@ export function ChatFallback() {
       return;
     }
 
-    // Sinon, polling 500 ms pendant 6 s.
-    const deadline = Date.now() + 6000;
+    // Sinon, polling 500 ms : affichage du bandeau après 6 s sans widget,
+    // puis surveillance prolongée jusqu'à 30 s pour le retirer si le widget
+    // finit par se charger (connexion lente).
+    const showAfter = Date.now() + 6000;
+    const stopWatchingAt = Date.now() + 30000;
     const interval = window.setInterval(() => {
       if (checkChatLoaded()) {
         setShowFallback(false);
         window.clearInterval(interval);
         return;
       }
-      if (Date.now() > deadline) {
-        window.clearInterval(interval);
+      if (Date.now() > showAfter) {
         setShowFallback(true);
+      }
+      if (Date.now() > stopWatchingAt) {
+        window.clearInterval(interval);
       }
     }, 500);
 
