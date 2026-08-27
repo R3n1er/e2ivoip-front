@@ -4,33 +4,12 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Gear, CheckCircle, XCircle, Lock, ArrowsClockwise, Question, Link } from '@/lib/icons';
-
-interface ScopeTestResult {
-  name: string;
-  scopes: string[];
-  success: boolean;
-  error?: string;
-}
-
-interface ScopeTestRecommendation {
-  name: string;
-  recommendation: string;
-  error?: string;
-}
-
-interface ScopeTestResults {
-  tests: ScopeTestResult[];
-  recommendations: ScopeTestRecommendation[];
-}
+import { Gear, CheckCircle, XCircle, Lock, ArrowsClockwise, Link } from '@/lib/icons';
 
 export default function HubSpotAdminPage() {
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [scopeTestResults, setScopeTestResults] =
-    useState<ScopeTestResults | null>(null);
-  const [isTestingScopes, setIsTestingScopes] = useState(false);
 
   useEffect(() => {
     // Vérifier si l'access token est disponible
@@ -90,21 +69,6 @@ export default function HubSpotAdminPage() {
       setIsConnected(false);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleTestScopes = async () => {
-    setIsTestingScopes(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/hubspot/test-scopes");
-      const data = await response.json();
-      setScopeTestResults(data);
-    } catch {
-      setError("Erreur lors du test des scopes");
-    } finally {
-      setIsTestingScopes(false);
     }
   };
 
@@ -209,62 +173,9 @@ export default function HubSpotAdminPage() {
                   <ArrowsClockwise size={16} aria-hidden="true" />
                   Tester la connexion
                 </Button>
-
-                <Button
-                  variant="outline"
-                  onClick={handleTestScopes}
-                  disabled={isTestingScopes}
-                  className="flex items-center gap-2"
-                >
-                  {isTestingScopes ? (
-                    <ArrowsClockwise size={16} className="animate-spin" aria-hidden="true" />
-                  ) : (
-                    <Question size={16} aria-hidden="true" />
-                  )}
-                  Tester les scopes
-                </Button>
               </div>
             </CardContent>
           </Card>
-
-          {/* Résultats des tests de scopes */}
-          {scopeTestResults && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Question size={24} aria-hidden="true" />
-                  Résultats des tests de scopes
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {scopeTestResults.recommendations?.map(
-                    (test: ScopeTestRecommendation, index: number) => (
-                      <div key={index} className="border rounded-lg p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium">{test.name}</h4>
-                          <Badge
-                            variant={
-                              test.recommendation.includes("✅")
-                                ? "default"
-                                : "destructive"
-                            }
-                          >
-                            {test.recommendation}
-                          </Badge>
-                        </div>
-                        {test.error && (
-                          <p className="text-sm text-red-600 mt-2">
-                            Erreur: {test.error}
-                          </p>
-                        )}
-                      </div>
-                    )
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          )}
 
           {/* Scopes autorisés */}
           <Card>

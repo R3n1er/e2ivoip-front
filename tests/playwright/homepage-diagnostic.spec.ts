@@ -50,7 +50,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
     });
 
     // Charger la page
-    await page.goto("http://localhost:3000", {
+    await page.goto("/", {
       waitUntil: "networkidle",
       timeout: 30000,
     });
@@ -82,7 +82,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
   });
 
   test("devrait afficher tous les composants principaux", async ({ page }) => {
-    await page.goto("http://localhost:3000");
+    await page.goto("/");
 
     // Vérifier le header
     const header = page.locator("header, nav").first();
@@ -108,7 +108,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
   });
 
   test("devrait charger les styles correctement", async ({ page }) => {
-    await page.goto("http://localhost:3000");
+    await page.goto("/");
 
     // Vérifier que les styles sont appliqués
     const body = page.locator("body");
@@ -132,7 +132,7 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       }
     });
 
-    await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
 
     // Attendre que toutes les images soient chargées
     await page.waitForLoadState("load");
@@ -157,28 +157,11 @@ test.describe("Homepage - Diagnostic des erreurs de chargement", () => {
       }
     });
 
-    await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
 
     expect(
       scriptErrors,
       `Scripts non chargés: ${scriptErrors.join("\n")}`
     ).toHaveLength(0);
-  });
-
-  test("devrait avoir le ChatPreOverlay fonctionnel", async ({ page }) => {
-    await page.goto("http://localhost:3000");
-
-    // Attendre que le composant ChatPreOverlay soit présent
-    await page.waitForTimeout(2000);
-
-    // Vérifier la présence du bouton de chat
-    const chatButton = page.locator('[data-testid="open-chat-button"]');
-    await expect(chatButton).toBeVisible({ timeout: 5000 });
-
-    // Vérifier le texte "Une question?"
-    const questionText = page.locator('text=/Une question/i');
-    await expect(questionText).toBeVisible();
-
-    console.log("✅ ChatPreOverlay détecté et fonctionnel");
   });
 });

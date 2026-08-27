@@ -1,40 +1,54 @@
 "use client";
 
+import { useEffect } from "react";
 import Script from "next/script";
 import { HUBSPOT_CONFIG } from "@/lib/constants/hubspot";
 
-interface HubSpotTrackingProps {
-  portalId?: string;
-  /**
-   * Charge le script de tracking (et donc les cookies HubSpot). Voir ADR
-   * 2026-08-16 : le script n'est monté qu'une fois le consentement donné, ou
-   * lorsque le visiteur demande explicitement le chat.
-   */
-  enabled?: boolean;
-}
-
+/**
+ * Charge le widget natif HubSpot Conversations (snippet loader HubSpot).
+ *
+ * Choix produit (ADR 2026-08-26) : on utilise le script de tracking officiel
+ * `//js-eu1.hs-scripts.com/${portalId}.js` sans réglages préalables — le
+ * widget natif apparaît alors automatiquement comme un launcher flottant en
+ * bas à droite, sans aucun pré-chat. C'est l'expérience recommandée par
+ * HubSpot (voir leur documentation du chat) : pas de formulaire
+ * intermédiaire, pas de bannière cookies européenne HS, pas de logique
+ * d'initiation conditionnelle. La conversation est ouverte par le visiteur
+ * sur l'icône chat.
+ *
+ * Tous les cookies HS (hubspotutk, __hstc, etc.) sont déposés dès
+ * l'arrivée sur le site, sans passer par le bandeau cookies du site. Si
+ * tu veux rebrancher un consentement RGPD préalable : voir l'ADR
+ * 2026-08-16 archivé — c'était l'ancien comportement avec pré-chat.
+ *
+ * `enableWidgetCookieBanner: false` reste nécessaire : sans ce réglage,
+ * la modale UE `#hs-eu-cookie-confirmation` de HubSpot bloque l'ouverture
+ * du widget tant qu'elle n'est pas acceptée (cause du hotfix 82e3c42 du
+ * 2026-08-25). `hsConversationsSettings` doit être posé avant le chargement
+ * du script pour être pris en compte : on le fait dans un `useEffect`, qui
+ * s'exécute avant le montage du script `afterInteractive`.
+ *
+ * Note dev-only : en mode développement (Turbopack), la console affiche un
+ * hydration mismatch bénin causé par l'injection dynamique de `<script>`
+ * du SDK HubSpot dans le DOM. Absent en build de production (`npm run
+ * build && npm run start`, vérifié) — le widget fonctionne normalement
+ * dans les deux cas.
+ */
 export function HubSpotTracking({
   portalId = HUBSPOT_CONFIG.PORTAL_ID,
-  enabled = false,
-}: HubSpotTrackingProps) {
+}: {
+  portalId?: string;
+}) {
+  useEffect(() => {
+    window.hsConversationsSettings = { enableWidgetCookieBanner: false };
+  }, []);
+
   return (
-    <>
-      {/* Les réglages ne déposent aucun cookie : ils sont posés en amont pour
-          garantir que `loadImmediately: false` est lu dès l'exécution du
-          script, quel que soit le moment où celui-ci est monté. */}
-      <Script id="hubspot-conversations-settings" strategy="afterInteractive">
-        {`window.hsConversationsSettings = {...window.hsConversationsSettings, loadImmediately: false};
-window.hsConversationsOnReady = window.hsConversationsOnReady || [];
-window._hsq = window._hsq || [];`}
-      </Script>
-      {enabled && (
-        <Script
-          id="hs-script-loader"
-          src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
-          strategy="afterInteractive"
-        />
-      )}
-    </>
+    <Script
+      id="hs-script-loader"
+      src={`https://js-eu1.hs-scripts.com/${portalId}.js`}
+      strategy="afterInteractive"
+    />
   );
 }
 

@@ -102,7 +102,10 @@ describe("Page Contact - DaisyUI Migration", () => {
 
     // Vérifier les informations WhatsApp
     expect(screen.getByTestId("whatsapp-title")).toHaveTextContent("WhatsApp Business");
-    expect(screen.getByTestId("whatsapp-phone")).toHaveTextContent("0594 96 35 00");
+    expect(screen.getByTestId("whatsapp-phone")).toHaveTextContent("+33 7 57 02 36 01");
+
+    // Vérifier le lien wa.me
+    expect(whatsappCard).toHaveAttribute("href", "https://wa.me/33757023601");
   });
 
   test("Les cartes d'implantations utilisent le style canonique avec une icône Phosphor", () => {

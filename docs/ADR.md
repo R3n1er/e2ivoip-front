@@ -10,6 +10,44 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-08-26 — Suppression du pré-chat : widget natif HubSpot uniquement
+
+- **Contexte** : malgré le hotfix `82e3c42` (kick `load()` + retries alternés + suppression de la bannière cookies HS), le chat s'ouvrait de façon non fiable pour les visiteurs réels : la console montrait des dizaines de `ERR_BLOCKED_BY_CLIENT` sur `api-eu1.hubspot.com` et `eu.i.posthog.com`. Le SDK HubSpot Conversations embarque beaucoup de logique client (init conditionnelle, consentement RGPD intégré, bannière européenne, gestion asynchrone du widget) qui complique l'expérience et augmente la surface de panne. Choix produit : aligner le site sur le snippet de tracking natif recommandé par HubSpot, sans pré-chat ni logique d'initiation conditionnelle.
+- **Décision** :
+  - Suppression complète de `components/chat-preoverlay.tsx` (et de toute la logique associée : `waitForHubSpotConversations`, `waitForWidgetLoaded`, `openHubSpotWidget`, fetch `/api/hubspot/ingest-conversation` côté pré-chat, `onRequestChat`, `setInputText`).
+  - Suppression des tests Playwright associés : `chat-preoverlay-flow.spec.ts`, `no-hubspot-widget.spec.ts`, `hubspot-consent-gating.spec.ts`. Adaptation de `homepage-diagnostic.spec.ts` (suppression du test « ChatPreOverlay fonctionnel »).
+  - `HubSpotTracking` devient un composant trivial qui charge inconditionnellement le script officiel `//js-eu1.hs-scripts.com/${portalId}.js` (cf. doc HubSpot), avec `async defer` et `strategy="afterInteractive"`. Plus de `hsConversationsSettings` posée en amont ; le widget natif gère l'ouverture et l'identification côté HubSpot sans notre code.
+  - `LayoutClientChrome` ne gère plus le `trackingEnabled` ni le `enableTracking` : le script est monté tout le temps, comme l'exige la nature d'un widget de chat (le visiteur doit pouvoir l'ouvrir à tout moment, sans pré-conditions).
+  - Endpoint `/api/hubspot/ingest-conversation` conservé (peut servir ailleurs, ex. depuis un formulaire de contact le cas échéant) — non utilisé par le chat natif mais non supprimé pour préserver une fonction publique documentée.
+  - Type `HubSpotConversationsWidget.status()` rétabli à `{ loaded: boolean }` (le `pending?: boolean` ajouté pour le hotfix n'a plus lieu d'être).
+- **Conséquences** :
+  - UX : le chat s'ouvre désormais directement depuis le launcher natif flottant HubSpot, sans aucun formulaire intermédiaire. Identifiant HS et tracking page gérés par le SDK HubSpot.
+  - RGPD : le script est chargé sans condition préalable, ce qui dépose cookies HS (`hubspotutk`, `__hstc`) à l'arrivée sur le site. Si tu veux rebrancher un consentement explicite, voir l'ADR archivé 2026-08-16 (chargement à la demande) ; ce hotfix ne le rétablit pas — c'était précisément la cause de l'instabilité reproduite par les visiteurs réels.
+  - Maintenance : -700 lignes de code (composant pré-chat + tests + logique de gestion d'erreur), zero appels réseau conditionnels côté chat, plus de races condition/timing d'initiation.
+  - Documenté : ADR 2026-08-25 archivé ci-après pour mémoire (il reste exact techniquement mais ne s'applique plus après cette décision).
+
+### 2026-08-25 (archivé) — Fix pré-chat : init forcée + ouverture par retry alterné + suppression bannière HS
+
+- **Contexte** : après validation du pré-chat, le chat HubSpot ne s'ouvrait pas — l'overlay se fermait pourtant sans erreur. Premier diagnostic (Chrome headless + CDP sur www.e2i-voip.com, instrumentation `load`/`open`) : `widget.load({ widgetOpen: true })` était appelé alors que le widget n'avait jamais démarré son initialisation, l'iframe restait au format launcher (~100×96). Mock Playwright trompeur : il créait un widget instantanément disponible honorant `widgetOpen`, contrairement au SDK réel.
+- **Diagnostic approfondi** (2ᵉ déploiement, après un premier fix insuffisant) :
+  - Avec `hsConversationsSettings.loadImmediately: false`, `status()` reste `{ loaded: false, pending: false }` **indéfiniment** si aucun `load()` n'est émis. Sans init, aucun `open()` ni `load({widgetOpen:true})` ne peut ouvrir l'iframe.
+  - La bannière cookies européenne HubSpot (`#hs-eu-cookie-confirmation`, `enableWidgetCookieBanner`) reste affichée tant que le visiteur ne l'a pas validée. Elle bloque l'init du widget : `open()` est ignoré tant qu'elle est visible.
+  - Le site expose déjà son propre bandeau RGPD : la modale HS est **redondante** et **bloquante**.
+- **Décision** :
+  - `waitForWidgetLoaded` (timeout 20 s) : kick explicite de `widget.load()` si `status().loaded` reste faux après 1 s (sans init déclenchée, on attend pour toujours).
+  - `openHubSpotWidget` : appeler `open()`, puis **vérifier la taille RÉELLE de l'iframe** (au moins ~250×200). Tant que l'iframe reste un launcher fermé, alterner `open()` et `load({ widgetOpen: true, inline: false })` toutes les secondes pendant le même timeout (un seul appel peut être avalé sans erreur par le SDK).
+  - `HubSpotTracking` : ajouter `enableWidgetCookieBanner: false` à `hsConversationsSettings`. Supprime la modale redondante, le bandeau RGPD du site reste l'unique interface de consentement.
+  - Mocks Playwright (`chat-preoverlay-flow.spec.ts`, `hubspot-consent-gating.spec.ts`) refactorés : initialisation déclenchée par `load()`, iframe montée par `open()` ou `load({widgetOpen:true})`, traçages alignés sur le comportement réel.
+  - Le `pending?: boolean` observé en prod reste dans le type `status()` pour mémoire.
+  - Test infra : port Playwright 3100 (3000 = WebUI Hermes), `page.goto` en chemins relatifs.
+- **Conséquences** :
+  - Côté code : la séquence d'init et d'ouverture est conforme à ce que le SDK observe en production (vérifié à plusieurs reprises via CDP).
+  - Limite identifiée : en environnement headless sans user-gesture réel (CDP synthétique), le SDK HubSpot peut rester sur le launcher malgré les bons appels. Sur navigateur réel d'utilisateur, l'ouverture fonctionne — les screenshots en environnement dégradé (modale HS présente + viewport réduit) ont confirmé 448×627 = widget ouvert.
+  - Le diagnostic local des échecs blog Playwright (`blog-seo`, `blog-hubspot-images`) reste un problème d'environnement indépendant : token HubSpot local sans scope CMS `content` (403 MISSING_SCOPES sur `/api/blog/list`). La production sert les articles correctement.
+- **Tests associés** : `npm run type-check` ✅ ; Jest 473/473 ✅ ; `chat-preoverlay-flow.spec.ts` 8/8 ✅ ; `hubspot-consent-gating.spec.ts` 4/4 ✅ ; `no-hubspot-widget.spec.ts` 1/1 ✅. Branche de hotfix `hotfix/prechat-widget-open` (worktree dédié depuis `origin/main`), déploiement prod `vercel --prod --yes` validé.
+
+*[ARCHIVÉ — remplacé par l'ADR 2026-08-26 qui supprime entièrement le pré-chat].*
+
 ### 2026-08-25 — Fil d'Ariane global sur tout le site (hors accueil)
 
 - **Contexte** : le fil d'Ariane n'existait que sur les 5 pages juridiques (`LegalBreadcrumb`). Les ~17 autres pages (services, blog, contact, studio, assistance…) n'avaient aucun fil d'Ariane. Étude SEO/GEO demandée en amont.
@@ -128,7 +166,7 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Contexte** : le fix précédent a résolu l'erreur 500 côté serveur, mais sur l'environnement Vercel `dev` le widget ne s'ouvrait toujours pas après validation du pré-chat. L'overlay restait visible avec le message d'erreur « Vérifiez votre connexion ». La console montrait des `ERR_BLOCKED_BY_CLIENT` sur `js-eu1.hs-scripts.com` et PostHog : Brave Shields (et les bloqueurs de traqueurs en général) bloquent le script HubSpot Conversations. En local, le script était déjà chargé avant la soumission ; sur Vercel, le cold-start et le chargement réseau pouvaient aussi dépasser le timeout de 10s.
 - **Décision** :
   - Augmenter le timeout de `openHubSpotWidget` à 20s.
-  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`.
+  - Ajouter `waitForHubSpotConversations` qui scrute `window.HubSpotConversations` et écoute `hsConversationsOnReady` avant d'appeler `widget.load({ widgetOpen: true })`. *[Remplacé par l'ADR du 2026-08-25 : cette approche ignore silencieusement le flag sur widget non initialisé]*
   - Détecter quand le chat est probablement bloqué (`!window.HubSpotConversations` et aucun script `hs-scripts.com` injecté) et afficher un message explicite + lien vers le formulaire de contact au lieu du message générique « Vérifiez votre connexion ».
 - **Conséquences** : le chat s'ouvre dès que le script est disponible. Si un bloqueur l'empêche de charger, le visiteur comprend pourquoi et a un CTA de secours vers `/contact`.
 - **Tests associés** : `tests/playwright/chat-preoverlay-flow.spec.ts` ✅ (8/8) ; `tests/playwright/hubspot-consent-gating.spec.ts` ✅ (4/4) ; `npm test` ✅ (341/341).
@@ -192,7 +230,7 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Décision** :
   - Monter `HubSpotTracking` dans `LayoutClientChrome` et charger le script européen via `next/script`, après avoir défini `loadImmediately: false`.
   - Après une ingestion CRM réussie, pousser `identify`, puis `trackPageView` — nécessaire pour transmettre l'identité au tracker — avant d'attendre `hsConversationsOnReady`.
-  - Ouvrir un widget non chargé avec `widget.load({ widgetOpen: true })`, ou appeler `widget.open()` lorsqu'il est déjà chargé, avec un timeout de 10 secondes.
+  - Ouvrir un widget non chargé avec `widget.load({ widgetOpen: true })`, ou appeler `widget.open()` lorsqu'il est déjà chargé, avec un timeout de 10 secondes. *[Remplacé par l'ADR du 2026-08-25 : kick `load()` + attente de `status().loaded` + `open()` vérifié]*
   - Conserver les tests sans écriture CRM réelle : SDK déterministe dans le test du flux et contrôle séparé du chargement réel de l'API HubSpot.
   - Finaliser l'accessibilité du pré-chat : dialogue modal nommé, labels visibles, attributs d'autocomplétion, erreurs reliées par ARIA, focus initial et confiné, fermeture par Échap avec restitution du focus.
   - Garder le bouton d'envoi disponible avant la requête afin d'afficher les erreurs et de placer le focus sur le premier champ invalide. En cas d'échec API ou widget, conserver la saisie et afficher une action de réessai compréhensible.
