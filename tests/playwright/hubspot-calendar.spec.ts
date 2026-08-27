@@ -58,6 +58,25 @@ test.describe("Calendrier HubSpot — prise de rendez-vous", () => {
     expect(src).toMatch(/meetings(-eu1)?\.hubspot\.com/);
   });
 
+  test("masque le message de chargement une fois l'iframe affichée", async ({
+    page,
+  }) => {
+    await page.goto(PAGE);
+
+    const container = page.getByTestId("hubspot-calendar-container");
+    await container.scrollIntoViewIfNeeded();
+
+    await expect(container.locator("iframe")).toBeVisible({ timeout: 30000 });
+
+    // Bug observé en prod : le message de chargement React reste affiché
+    // par-dessus l'iframe injectée par le script HubSpot, faute de détection
+    // de la fin du chargement (le composant ne connaît que "failed", jamais
+    // "loaded").
+    await expect(
+      page.getByTestId("hubspot-calendar-loading")
+    ).not.toBeVisible();
+  });
+
   test("propose un lien de repli si le script échoue", async ({ page }) => {
     // Simule un bloqueur de traceurs ou une coupure réseau.
     await page.route("**/MeetingsEmbedCode.js", (route) => route.abort());
@@ -67,6 +86,36 @@ test.describe("Calendrier HubSpot — prise de rendez-vous", () => {
     const fallback = page.getByTestId("hubspot-calendar-fallback");
     await fallback.scrollIntoViewIfNeeded();
     await expect(fallback).toBeVisible({ timeout: 15000 });
+
+    const link = fallback.getByRole("link", {
+      name: /Ouvrir le calendrier/i,
+    });
+    await expect(link).toHaveAttribute(
+      "href",
+      /^https:\/\/meetings(-eu1)?\.hubspot\.com\//
+    );
+  });
+
+  test("propose un lien de repli si le script charge sans jamais injecter l'iframe", async ({
+    page,
+  }) => {
+    // Cas distinct du précédent : le script répond 200 (onerror ne se
+    // déclenche pas) mais n'injecte aucune iframe — lien de meeting
+    // désactivé côté HubSpot, ou un outil de confidentialité qui laisse
+    // passer le script mais bloque l'appel réseau de l'embed lui-même.
+    await page.route("**/MeetingsEmbedCode.js", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/javascript",
+        body: "// script HubSpot chargé, mais n'injecte volontairement aucune iframe (test)",
+      })
+    );
+
+    await page.goto(PAGE);
+
+    const fallback = page.getByTestId("hubspot-calendar-fallback");
+    await fallback.scrollIntoViewIfNeeded();
+    await expect(fallback).toBeVisible({ timeout: 20000 });
 
     const link = fallback.getByRole("link", {
       name: /Ouvrir le calendrier/i,
