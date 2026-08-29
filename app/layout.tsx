@@ -44,10 +44,9 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  // Canonical par défaut = racine. Chaque page surcharge avec son propre chemin.
-  alternates: {
-    canonical: "/",
-  },
+  // Pas de canonical par défaut ici : il serait hérité par toute page n'en
+  // déclarant pas, qui se signalerait alors à Google comme doublon de la home.
+  // Chaque page déclare le sien — y compris app/page.tsx pour la home.
   openGraph: {
     title: HOME_PAGE_TITLE,
     description:
