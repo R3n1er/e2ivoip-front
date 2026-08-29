@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trunk SIP Illimité - E2I VoIP",
+    title: "Trunk SIP Illimité - Appels Fixes Illimités France & DOM",
     description:
       "Forfait trunk SIP illimité. Appels fixes illimités France & DOM. De 4 à 16 appels simultanés.",
   },
