@@ -113,7 +113,7 @@ export function AboutSectionSimple() {
               Pourquoi les entreprises des DROM nous font confiance ?
             </h3>
             <p className="text-gray-secondary">
-              Seul opérateur de services télécom avec Trunk SIP dédiés
+              L&apos;un des rares opérateurs à proposer des Trunk SIP dédiés
               Antilles-Guyane et La Réunion
             </p>
           </div>
