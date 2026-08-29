@@ -38,7 +38,7 @@ export function AboutSectionSimple() {
   const stats = [
     { value: "4", label: "Territoires DOM couverts", Icon: Globe },
     { value: "15", label: "Années d'expertise", Icon: Certificate },
-    { value: "20%", label: "D'économies sur les communications DROM", Icon: Bolt },
+    { value: "60+", label: "Postes migrés sur 3 territoires", Icon: Bolt },
     { value: "Mail & Tél", label: "Support France Métropolitaine et DOM", Icon: Shield },
   ];
 
