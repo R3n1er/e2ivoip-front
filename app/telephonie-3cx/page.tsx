@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/telephonie-3cx",
   },
-  title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",
+  title: "Solutions 3CX | Téléphonie 3CX Professionnelle",
   description:
     "Découvrez nos solutions de téléphonie 3CX : instance dédiée PRO ou hébergement mutualisé SMB. Solution complète de communications unifiées pour entreprises.",
   keywords:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Solutions 3CX - E2I VoIP",
+    title: "Solutions 3CX",
     description:
       "Choisissez votre solution 3CX : dédiée PRO ou mutualisée SMB.",
   },

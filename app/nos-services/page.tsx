@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/nos-services",
   },
-  title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
+  title: "Nos Services Téléphonie IP | Solutions DOM",
   description:
     "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. 20% d'économies sur vos communications DROM. Devis gratuit ☎",
   keywords:
     "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
   openGraph: {
-    title: "Nos Services Téléphonie IP - E2I VoIP",
+    title: "Nos Services Téléphonie IP",
     description:
       "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. ",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nos Services Téléphonie IP - E2I VoIP",
+    title: "Nos Services Téléphonie IP",
     description:
       "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA.",
   },

@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/assistance",
   },
-  title: "Assistance & Support - E2I VoIP | Support technique DOM",
+  title: "Assistance & Support | Support technique DOM",
   description:
     "Support technique E2I VoIP par mail et téléphone, du lundi au vendredi de 8h à 18h. Hotline 01 89 56 05 00, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, assistance Martinique Guadeloupe Guyane, chat assistance",
   openGraph: {
-    title: "Assistance & Support - E2I VoIP | Support technique par mail et téléphone",
+    title: "Assistance & Support | Support technique par mail et téléphone",
     description:
       "Support technique E2I VoIP par mail et téléphone. Présents dans les DOM, chat en ligne, guides et tutoriels.",
     type: "website",

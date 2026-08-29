@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/contact",
   },
-  title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
+  title: "Contact | Experts téléphonie IP France & DOM",
   description:
     "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Présents en France, Martinique, Guadeloupe, Guyane, Réunion.",
   keywords:
     "contact E2I VoIP, expert téléphonie IP, devis VoIP gratuit, support technique DOM, standard téléphonique entreprise, 3CX Yeastar",
   openGraph: {
-    title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
+    title: "Contact | Experts téléphonie IP France & DOM",
     description:
       "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Présents en France et dans les DOM.",
     type: "website",
