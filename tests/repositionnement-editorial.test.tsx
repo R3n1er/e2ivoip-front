@@ -39,6 +39,19 @@ describe("repositionnement éditorial — nos-services", () => {
   })
 })
 
+describe("repositionnement éditorial — bloc de contact partagé", () => {
+  // Ce composant est rendu sur la home, /nos-services et /assistance : une
+  // allégation de prix qui y subsiste ressurgit sur tout le parcours d'entrée.
+  const bloc = () => read("components/contact-section-simple.tsx")
+
+  it("ne promet plus d'économie chiffrée", () => {
+    // La graphie « 20&nbsp;% » échappe à une recherche de « 20% » : le test
+    // couvre les variantes d'espacement et d'entité HTML.
+    expect(bloc()).not.toMatch(/20(&nbsp;|\s)*%/)
+    expect(bloc()).not.toContain("Prêt à économiser")
+  })
+})
+
 describe("conformité juridique", () => {
   it("aucun superlatif absolu non prouvable", () => {
     expect(read("components/about-section-simple.tsx")).not.toMatch(
