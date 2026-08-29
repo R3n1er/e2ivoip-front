@@ -8,6 +8,9 @@ import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 // Tawk.to désactivé temporairement
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/qui-sommes-nous",
+  },
   title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
   description:
     "E2I VoIP : Opérateur de services télécom DOM, 15 ans d'expertise. Nous installons vos standards téléphoniques et accompagnons les entreprises des DOM vers la téléphonie IP. Trunk SIP, 3CX, support par mail et téléphone — Martinique, Guadeloupe, Guyane.",

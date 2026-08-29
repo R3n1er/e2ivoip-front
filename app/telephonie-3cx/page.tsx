@@ -13,6 +13,9 @@ const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/telephonie-3cx",
+  },
   title: "Solutions 3CX - E2I VoIP | Téléphonie 3CX Professionnelle",
   description:
     "Découvrez nos solutions de téléphonie 3CX : instance dédiée PRO ou hébergement mutualisé SMB. Solution complète de communications unifiées pour entreprises.",

@@ -12,6 +12,9 @@ import { faqPageSchema, serviceSchema, breadcrumbSchema } from "@/lib/structured
 import { COMPTEUR_FAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/telephonie-entreprise/trunk-sip-compteur",
+  },
   title:
     "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:

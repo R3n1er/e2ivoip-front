@@ -41,7 +41,9 @@ describe("canonical SEO", () => {
     // Un canonical à la racine est hérité par toute page n'en déclarant pas :
     // elle signale alors à Google qu'elle duplique la home.
     const rootLayout = readFileSync(path.join(APP_DIR, "layout.tsx"), "utf-8")
-    expect(rootLayout).not.toMatch(/alternates:\s*\{[^}]*canonical/s)
+    // [\s\S] plutôt que le flag /s : le tsconfig du projet cible une version
+    // d'ECMAScript antérieure à es2018, où le flag dotAll n'existe pas.
+    expect(rootLayout).not.toMatch(/alternates:[\s\S]*?\{[^}]*canonical/)
   })
 
   it("chaque page exportant des métadonnées déclare un canonical explicite", () => {

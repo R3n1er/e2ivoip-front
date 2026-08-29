@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/telephonie-entreprise/trunk-sip-agents-ia",
+  },
   title:
     "Trunk SIP Agents Vocaux IA — Numéros DOM Antilles-Guyane-Réunion | E2I VoIP",
   description:

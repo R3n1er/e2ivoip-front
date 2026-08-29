@@ -14,6 +14,9 @@ import { faqPageSchema } from "@/lib/structured-data";
 import { GENERAL_FAQ, toFaqSchemaItems } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/assistance",
+  },
   title: "Assistance & Support - E2I VoIP | Support technique DOM",
   description:
     "Support technique E2I VoIP par mail et téléphone, du lundi au vendredi de 8h à 18h. Hotline 01 89 56 05 00, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",

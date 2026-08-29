@@ -8,6 +8,9 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 const TALLY_YEASTAR_URL = TALLY_FORMS.YEASTAR;
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/telephonie-entreprise/pbx-yeastar",
+  },
   title: "Yeastar P-Series - PBX cloud et on-premise",
   description:
     "Déployez Yeastar P-Series avec E2I VoIP : PBX cloud ou on-premise, communications unifiées, call center et automatisations pour entreprises DOM et métropole.",

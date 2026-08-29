@@ -17,6 +17,9 @@ import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/nos-services",
+  },
   title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
   description:
     "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. 20% d'économies sur vos communications DROM. Devis gratuit ☎",

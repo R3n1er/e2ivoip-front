@@ -5,6 +5,9 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PhoneCall, Timer } from '@/lib/icons';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/telephonie-entreprise/trunk-sip-illimite",
+  },
   title:
     "Trunk SIP Illimité DOM - E2I VoIP | Appels Fixes Illimités France & DOM",
   description:

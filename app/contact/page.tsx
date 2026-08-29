@@ -5,6 +5,9 @@ import { InlineContactForm } from "@/components/hubspot";
 import { LinkedinLogo, Phone, WhatsappLogo, MapPin } from "@/lib/icons";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "/contact",
+  },
   title: "Contact - E2I VoIP | Experts téléphonie IP France & DOM",
   description:
     "Contactez nos experts VoIP pour votre projet de téléphonie IP. Devis gratuit, support par mail et téléphone. Présents en France, Martinique, Guadeloupe, Guyane, Réunion.",
