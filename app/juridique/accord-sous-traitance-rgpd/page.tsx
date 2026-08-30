@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -15,22 +16,14 @@ import {
 import { COMPANY, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Accord de sous-traitance RGPD | E2I VoIP",
   description:
     "Accord de sous-traitance RGPD (DPA) d’E2I ASSISTANCE : encadrement des traitements de données personnelles au sens de l’article 28 du RGPD.",
   keywords:
     "DPA, sous-traitance RGPD, article 28, E2I VoIP, données personnelles, RGPD",
-  alternates: {
-    canonical: "https://www.e2i-voip.com/juridique/accord-sous-traitance-rgpd",
-  },
-  openGraph: {
-    title: "Accord de sous-traitance RGPD | E2I VoIP",
-    description:
-      "Consultez et téléchargez l’accord de sous-traitance RGPD d’E2I VoIP.",
-    type: "website",
-  },
-};
+  path: "/juridique/accord-sous-traitance-rgpd",
+});
 
 export default function AccordSousTraitanceRgpdPage() {
   return (

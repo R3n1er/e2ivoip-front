@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 export const dynamic = "force-dynamic";
 import {
   Card,
@@ -33,24 +34,14 @@ import {
 import { StudioDemoSection } from "./components/studio-demo-section";
 
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Studio attente téléphonique — Messages & musiques sur mesure",
   description:
     "Studio d'enregistrement E2I VoIP : messages d'accueil et d'attente téléphonique avec voix off professionnelles ou IA, musiques libres de droits. Valorisez votre image de marque dès le premier appel.",
   keywords:
     "studio attente téléphonique, message accueil téléphonique, voix off professionnelle, voix off IA, musique attente téléphonique, musique libre de droits, pré-décroché, studio digital",
-  alternates: { canonical: "/studio-attente" },
-  openGraph: {
-    title:
-      "Studio attente téléphonique — Messages & musiques sur mesure | E2I VoIP",
-    description:
-      "Messages d'accueil et d'attente avec voix off professionnelles ou IA et musiques libres de droits. Créez une expérience d'attente à votre image.",
-    type: "website",
-    locale: "fr_FR",
-    url: "/studio-attente",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/studio-attente",
+});
 
 export default function StudioAttente() {
   const studioOptions = [

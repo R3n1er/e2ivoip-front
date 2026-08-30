@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
@@ -6,23 +7,14 @@ import { Chat, Phone, Heart, Car, TreeStructure, CheckCircle, ArrowRight } from 
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Trunk SIP pour agents vocaux IA en zones DOM",
   description:
     "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz. Antilles, Guyane, Réunion.",
   keywords:
     "trunk SIP agents IA, carrier SIP DOM, BYOC VAPI, Rounded SIP, ElevenLabs SIP trunk, Jambonz, agent vocal IA DOM, numéro local Antilles Guyane Réunion",
-  alternates: { canonical: "/telephonie-entreprise/trunk-sip-agents-ia" },
-  openGraph: {
-    title: "Trunk SIP pour agents vocaux IA en zones DOM | E2I VoIP",
-    description:
-      "Carrier SIP DOM pour agents vocaux IA : numéros locaux et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz. Antilles, Guyane, Réunion.",
-    type: "website",
-    locale: "fr_FR",
-    url: "/telephonie-entreprise/trunk-sip-agents-ia",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/telephonie-entreprise/trunk-sip-agents-ia",
+});
 
 const platforms = [
   {

@@ -8,7 +8,9 @@ test.describe("Page de contact", () => {
   });
 
   test("affiche le hero et le conteneur HubSpot", async ({ page }) => {
-    await expect(page).toHaveTitle(/Contact - E2I VoIP/);
+    // Le suffixe marque est ajouté une seule fois par title.template du layout
+    // racine : la page ne doit pas le contenir elle-même (sinon doublon).
+    await expect(page).toHaveTitle(/^Contact \|.*\| E2I VoIP$/);
     await expect(
       page.getByRole("heading", { level: 1, name: /Contactez nos experts VoIP/i })
     ).toBeVisible();

@@ -258,7 +258,7 @@ export function Footer() {
         <div className="border-t border-gray-200 mt-8 lg:mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4 text-sm text-gray-secondary">
-              <p>&copy; 2025 E2I VoIP. Tous droits réservés.</p>
+              <p>&copy; {new Date().getFullYear()} E2I VoIP. Tous droits réservés.</p>
               <a
                 href="https://www.linkedin.com/company/e2i-voip/"
                 target="_blank"

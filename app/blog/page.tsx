@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { BlogBrowser } from "@/components/blog/blog-browser";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -13,21 +14,14 @@ const POSTS_PER_PAGE = 12;
 // rendre la page dynamique, pour garder un HTML servi depuis le cache CDN.
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Blog téléphonie IP & VoIP entreprise - E2I VoIP",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog téléphonie IP & VoIP entreprise",
   description:
     "Conseils, guides et actualités sur la téléphonie IP d'entreprise : Trunk SIP, 3CX, portabilité, fin du réseau cuivre. Expertise opérateur DOM et France.",
   keywords:
     "blog téléphonie IP, VoIP entreprise, Trunk SIP, 3CX, PABX, portabilité, fin du cuivre, DOM",
-  alternates: { canonical: `${SITE_URL}/blog` },
-  openGraph: {
-    title: "Blog téléphonie IP & VoIP entreprise - E2I VoIP",
-    description:
-      "Conseils, guides et actualités sur la téléphonie IP d'entreprise par un opérateur DOM.",
-    type: "website",
-    url: `${SITE_URL}/blog`,
-  },
-};
+  path: "/blog",
+});
 
 /**
  * Listing du blog, rendu côté serveur.

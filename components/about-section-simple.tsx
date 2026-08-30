@@ -38,7 +38,7 @@ export function AboutSectionSimple() {
   const stats = [
     { value: "4", label: "Territoires DOM couverts", Icon: Globe },
     { value: "15", label: "Années d'expertise", Icon: Certificate },
-    { value: "20%", label: "D'économies sur les communications DROM", Icon: Bolt },
+    { value: "4 à 64", label: "Appels simultanés par instance 3CX PRO", Icon: Bolt },
     { value: "Mail & Tél", label: "Support France Métropolitaine et DOM", Icon: Shield },
   ];
 
@@ -113,7 +113,7 @@ export function AboutSectionSimple() {
               Pourquoi les entreprises des DROM nous font confiance ?
             </h3>
             <p className="text-gray-secondary">
-              Seul opérateur de services télécom avec Trunk SIP dédiés
+              L&apos;un des rares opérateurs à proposer des Trunk SIP dédiés
               Antilles-Guyane et La Réunion
             </p>
           </div>

@@ -66,8 +66,23 @@ test.describe("Page Devis — parcours de contact", () => {
     await expect(iframe).toBeVisible({ timeout: 30000 });
 
     // Une hauteur nulle signalerait un formulaire monté mais vide.
-    const hauteur = await iframe.evaluate((el) => el.clientHeight);
-    expect(hauteur).toBeGreaterThan(100);
+    //
+    // Le SDK insère successivement DEUX iframes (la seconde remplace la
+    // première), chacune à `clientHeight` 0 avant son dimensionnement. Un
+    // locator Playwright se re-résout à chaque usage : une lecture ponctuelle
+    // après `toBeVisible()` peut donc tomber sur l'iframe de remplacement
+    // fraîchement insérée et lire 0. La fenêtre est de quelques millisecondes,
+    // d'où un échec qui n'apparaît que sous charge parallèle.
+    //
+    // `expect.poll` re-résout et réessaie jusqu'à la hauteur stabilisée, ce qui
+    // couvre le remplacement sans masquer un vrai formulaire vide : un
+    // formulaire réellement cassé reste à 0 et fait expirer le poll.
+    await expect
+      .poll(
+        async () => iframe.evaluate((el) => el.clientHeight).catch(() => 0),
+        { timeout: 15000 }
+      )
+      .toBeGreaterThan(100);
   });
 
   test("propose un contact téléphonique direct", async ({ page }) => {

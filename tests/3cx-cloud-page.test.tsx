@@ -13,8 +13,12 @@ describe("Page 3CX PRO Cloud", () => {
     expect(
       screen.getByText(/standard téléphonique sur une instance cloud dédiée/i),
     ).toBeInTheDocument();
-    expect(screen.getByText("8")).toBeInTheDocument();
-    expect(screen.getAllByText("appels simultanés")).toHaveLength(5);
+    // Grille officielle 3CX PRO : 4 / 8 / 16 / 24 / 32 / 64 appels simultanés
+    // (voir docs/ligne-editoriale.md § « Specs produit »).
+    for (const palier of ["4", "8", "16", "24", "32", "64"]) {
+      expect(screen.getByText(palier)).toBeInTheDocument();
+    }
+    expect(screen.getAllByText("appels simultanés")).toHaveLength(6);
   });
 
   it("relie tous les CTA de devis 3CX PRO au tunnel Tally", () => {

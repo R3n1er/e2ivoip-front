@@ -10,32 +10,21 @@ import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
-export const metadata: Metadata = {
-  title: "Nos Services Téléphonie IP - E2I VoIP | Solutions DOM",
+export const metadata: Metadata = pageMetadata({
+  title: "Nos Services Téléphonie IP | Solutions DOM",
   description:
-    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. 20% d'économies sur vos communications DROM. Devis gratuit ☎",
+    "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. Éligibilité Antilles-Guyane-Réunion et portabilité de vos numéros locaux ☎",
   keywords:
     "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
-  openGraph: {
-    title: "Nos Services Téléphonie IP - E2I VoIP",
-    description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. ",
-    type: "website",
-    locale: "fr_FR",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Nos Services Téléphonie IP - E2I VoIP",
-    description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA.",
-  },
-};
+  path: "/nos-services",
+});
 
 export default function NosServices() {
   const services = [
@@ -45,7 +34,7 @@ export default function NosServices() {
       description:
         "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
       features: [
-        "Économies jusqu'à 20%",
+        "Éligibilité Trunk SIP DOM",
         "Numéros locaux DOM",
         "Portabilité gratuite",
         "Support technique local",
@@ -79,7 +68,7 @@ export default function NosServices() {
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
       features: [
         "Serveur dédié",
-        "8 appels simultanés minimum",
+        "4 à 64 appels simultanés",
         "Multi-sites",
         "Tableau de bord avancé",
       ],
@@ -131,8 +120,9 @@ export default function NosServices() {
   const benefits = [
     {
       Icon: Lightning,
-      title: "20% d'économies",
-      description: "Sur le coût de vos communications dans les DROM",
+      title: "Continuité de service",
+      description:
+        "Migration sans coupure et portabilité de vos numéros locaux",
       color: "text-red-primary",
     },
     {
@@ -212,7 +202,8 @@ export default function NosServices() {
                 </h1>
                 <p className="text-xl text-gray-secondary max-w-3xl mx-auto mb-8">
                   Transformez votre téléphonie d&apos;entreprise avec des
-                  solutions complètes : 20% d'économies sur vos communications et fonctionnalités
+                  solutions complètes : Trunk SIP éligibles dans les DOM,
+                  portabilité de vos numéros locaux et fonctionnalités
                   nouvelle génération.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -382,8 +373,8 @@ export default function NosServices() {
           <section className="py-20 bg-blue-marine">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white-primary mb-6">
-                Prêt à économiser <span className="text-red-primary">20%</span>{" "}
-                sur vos télécoms ?
+                Prêt à préparer la fin du{" "}
+                <span className="text-red-primary">cuivre</span> ?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Nos experts analysent gratuitement votre infrastructure actuelle

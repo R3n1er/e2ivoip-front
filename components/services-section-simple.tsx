@@ -44,7 +44,7 @@ export function ServicesSectionSimple() {
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
       features: [
         "Serveur dédié dans le cloud",
-        "4 appels simultanés minimum",
+        "4 à 64 appels simultanés",
         "Multi-sites",
         "Tableau de bord avancé",
       ],

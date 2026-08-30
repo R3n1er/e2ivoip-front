@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import {
   Card,
@@ -13,23 +14,14 @@ import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Chat, Phone, Users, Headphones, CheckCircle } from "@/lib/icons";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Téléphonie d'entreprise — Trunk SIP, 3CX & PBX",
   description:
     "Solutions de téléphonie IP pour entreprises et intégrateurs en France et DOM : Trunk SIP, 3CX cloud, PBX Yeastar et interconnexion d'agents vocaux IA. Numéros locaux Antilles, Guyane, Réunion.",
   keywords:
     "téléphonie d'entreprise, trunk SIP, 3CX, PBX Yeastar, VoIP DOM, téléphonie IP entreprise",
-  alternates: { canonical: "/telephonie-entreprise" },
-  openGraph: {
-    title: "Téléphonie d'entreprise — Trunk SIP, 3CX & PBX | E2I VoIP",
-    description:
-      "Solutions de téléphonie IP complètes et évolutives pour entreprises et intégrateurs : Trunk SIP, 3CX, PBX Yeastar, agents vocaux IA. France & DOM.",
-    type: "website",
-    locale: "fr_FR",
-    url: "/telephonie-entreprise",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/telephonie-entreprise",
+});
 
 export default function TelephonieDentreprise() {
   const solutions = [

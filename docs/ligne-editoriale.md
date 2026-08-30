@@ -26,12 +26,20 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Proposition de valeur principale
 
-**"Réduisez de 30% vos coûts télécoms avec la téléphonie IP"**
+**"Aux Antilles-Guyane, le cuivre ferme en 2027. Votre téléphonie DOM est-elle prête ?"**
 
-- Économies garanties jusqu'à 30% sur vos factures télécom
 - Trunk SIP au compteur et illimité, éligibles DOM (Antilles, Guyane et La Réunion)
 - Création et portabilité de numéros en zone locale
+- Migration sans coupure depuis vos anciens PABX
 - Support assistance utilisateur local et réactif dans les DOM
+
+> ⚠️ **L'économie tarifaire n'est plus la proposition de valeur principale.**
+> Voir « Allégations chiffrées » ci-dessous. L'accroche porte la continuité de
+> service et la maîtrise technique, pas le prix.
+>
+> Cette accroche est **datée et territorialisée** : voir « Calendrier de
+> fermeture du cuivre » ci-dessous. Ne jamais écrire « le cuivre DOM ferme en
+> 2027 » — ce serait faux pour La Réunion.
 
 ### Proposition de valeur secondaire
 
@@ -47,13 +55,119 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Arguments différenciateurs
 
-1. **Opérateur télécom DOM** : Seul opérateur de services télécom avec Trunk SIP dédiés Antilles-Guyane et La Réunion
+1. **Opérateur télécom DOM** : L'un des rares opérateurs à proposer des Trunk SIP dédiés Antilles-Guyane et La Réunion
 2. **Customer Success dédié** : Un accompagnement personnalisé avec un Customer Success Manager attitré pour chaque client
-3. **Double économie** : -30% sur les coûts + nouvelles fonctionnalités incluses (IA, CRM, automatisation)
+3. **Continuité de service** : migration sans coupure, portabilité de vos numéros locaux, nouvelles fonctionnalités incluses (IA, CRM, automatisation)
 4. **Support local réactif** : Équipes techniques présentes localement en Martinique, Guadeloupe, Guyane
 5. **Expertise certifiée** : Partenaire Silver 3CX, certifié Yeastar, partenaire Fanvil et Yealink
 6. **Migration PABX vers IP** : Spécialiste de l'évolution des anciens PABX face à l'arrêt du cuivre
 7. **Hébergement souverain** : Infrastructure cloud France/UE (AWS, Azure) conforme RGPD
+
+## ⚖️ Allégations chiffrées
+
+Règles arbitrées le 2026-08-30. Elles priment sur toute formulation contraire
+ailleurs dans ce document.
+
+### Économies
+
+| Contexte | Règle |
+|---|---|
+| Accroche, H1, titre de section | ❌ **Interdit.** Aucune promesse d'économie chiffrée |
+| Cas client nommé et attesté | ✅ Autorisé (ex. Groupe TBF : « -20 % sur les coûts télécoms ») |
+| Page produit, argument secondaire | ✅ « jusqu'à 20 % » — jamais en titre |
+| Partout | ❌ Le mot **« garanties »** est proscrit |
+
+**Pourquoi.** « Économies garanties » est une allégation ferme au sens de
+l'article L121-2 du code de la consommation : elle engage sur un résultat que
+rien ne permet de tenir pour tout client. « Jusqu'à » est une formulation de
+plafond, nettement plus défendable. Un chiffre adossé à un cas client nommé
+est une preuve ; le même chiffre flottant en accroche est une allégation.
+
+**Effet commercial recherché.** Le prix en accroche attire des demandes de
+devis, pas des demandes d'expertise. La tension est portée par l'échéance
+cuivre 2027, pas par la remise.
+
+### Superlatifs
+
+❌ **Aucun superlatif absolu non prouvable** : « seul », « le premier »,
+« le meilleur », « n°1 ». Même exposition juridique.
+
+✅ Formulation admise : « L'un des rares opérateurs à… »
+
+### Volumes de clientèle
+
+❌ **Aucun volume publié** : « plus de X clients », « X entreprises nous font
+confiance ». Voir « Éléments de réassurance » pour ce qui les remplace.
+
+### Chiffres d'un client unique
+
+Un volume observé chez un client (« 60+ utilisateurs », « 3 territoires »)
+appartient à **son cas client**. Il ne remonte jamais au rang de statistique
+d'entreprise en page d'accueil : le lecteur le lirait comme un agrégat.
+
+### Chiffres produit
+
+Les caractéristiques techniques chiffrées sont encouragées — elles donnent la
+matière technique qu'un acheteur cherche avant de parler prix. Elles doivent
+être exactes et cohérentes sur toutes les pages (voir « Specs produit »).
+
+## 📅 Calendrier de fermeture du cuivre
+
+Vérifié le 2026-08-30 auprès de l'Arcep et d'Orange. **L'échéance n'est pas la
+même sur tous nos territoires** : toute formulation qui l'attribue globalement
+aux « DOM » est factuellement fausse.
+
+| Territoire | Communes | Arrêt commercial | Fermeture technique |
+|---|---|---|---|
+| Martinique | Schœlcher | — | ✅ **déjà fermé (2025)** |
+| Guyane | Remire-Montjoly | — | ✅ **déjà fermé (2025)** |
+| Guadeloupe | Petit-Bourg | — | ✅ **déjà fermé (2025)** |
+| Guadeloupe | Basse-Terre, Deshaies | 31 janv. 2026 | **31 janv. 2027** |
+| Guyane | Kourou | 31 janv. 2026 | **31 janv. 2027** |
+| La Réunion | tout le département (lot 5) | — | **janv. / mai / oct. 2029** |
+
+**Deux dates par commune, à ne pas confondre :**
+
+- **Fermeture commerciale** : plus aucune souscription cuivre possible
+- **Fermeture technique** : les lignes sont coupées (environ 3 ans plus tard)
+
+**Règles de rédaction :**
+
+- ❌ « Le réseau cuivre DOM s'arrête en 2027 » — faux pour La Réunion
+- ✅ « Aux Antilles-Guyane, le cuivre ferme en 2027 »
+- ✅ « À La Réunion, la fermeture technique intervient en 2029 »
+- ✅ Le fait accompli est l'argument le plus fort : Schœlcher, Petit-Bourg et
+  Remire-Montjoly sont **déjà coupées**. Un précédent ne se conteste pas et ne
+  périme jamais.
+
+Le calendrier évolue avec le déploiement de la fibre. **Revérifier avant toute
+campagne** sur [reseaux.orange.fr](https://reseaux.orange.fr/fin-adsl-arret-cuivre/quand-calendrier-fermeture)
+(recherche par commune) et sur le
+[dossier Arcep](https://www.arcep.fr/nos-sujets/la-fermeture-du-reseau-cuivre.html).
+
+Verrouillé par `tests/repositionnement-editorial.test.tsx` : le H1 ne peut pas
+associer « 2027 » à « DOM » sans nommer les Antilles-Guyane.
+
+## 🔧 Specs produit — source de vérité
+
+Arbitrage du 2026-08-30. Toute page présentant ces offres reprend ces valeurs.
+
+| Offre | Dimensionnement | Grille |
+|---|---|---|
+| **3CX PRO** | Appels simultanés | 4 / 8 / 16 / 24 / 32 / 64 → afficher « 4 à 64 appels simultanés » |
+| **3CX SMB PRO** | Utilisateurs | 3 à 10 utilisateurs |
+| **Trunk SIP illimité** | Appels simultanés | 4 / 8 / 16 (**plafond 16**) |
+| **Trunk SIP au compteur** | Canaux voix | à partir de 2 canaux voix |
+
+**3CX PRO ne se dimensionne jamais en postes ni en utilisateurs.** La mention
+« instance dédiée +50 postes » provenait du cas client TBF et décrivait un
+déploiement, pas l'offre.
+
+**Afficher l'amplitude complète pour 3CX PRO**, pas un plancher : c'est ce qui
+le distingue du Trunk SIP illimité, plafonné à 16. Un plancher (« 4 appels
+simultanés minimum ») laisse croire que l'offre s'arrête bas.
+
+Ces règles sont verrouillées par `tests/specs-produit-3cx.test.ts`.
 
 ## 📊 Mots-clés Principaux
 
@@ -73,7 +187,9 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 - Création numéros géographiques locaux
 - Standard téléphonique
-- Économies 30% factures télécom
+- Migration PABX vers IP
+- Fin du réseau cuivre 2027
+- Portabilité numéros DOM
 - Téléphonie IP nouvelle génération
 - Centre d'appels virtuel
 - Trunk SIP agents IA
@@ -276,7 +392,8 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 ### Titres
 
 - ❌ "Solutions de téléphonie IP"
-- ✅ "Économisez 30% sur vos coûts télécoms avec la VoIP"
+- ❌ "Économisez 30% sur vos coûts télécoms" — allégation chiffrée en accroche, interdite
+- ✅ "Le réseau cuivre s'arrête en 2027. Votre téléphonie DOM est-elle prête ?"
 - ✅ "Trunk SIP illimité éligible DOM"
 - ✅ "Créez vos numéros locaux en 24h"
 - ✅ "Connectez vos agents vocaux IA aux numéros locaux DOM"
@@ -294,7 +411,9 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 ### CTAs
 
 - ❌ "En savoir plus"
-- ✅ "Calculez vos économies"
+- ❌ "Faire un devis" en action principale — conditionne le visiteur à demander un prix avant d'avoir vu la valeur. À conserver en menu et en CTA secondaire.
+- ✅ "Parler à un expert DOM"
+- ✅ "Faire le point sur votre installation"
 - ✅ "Commander votre Trunk SIP"
 - ✅ "Lancer la portabilité de vos numéros"
 - ✅ "Créez votre numéro local"
@@ -323,11 +442,17 @@ Pour chaque page/section :
 - [ ] Titre accrocheur avec bénéfice client
 - [ ] Problématique identifiée
 - [ ] Solution clairement expliquée
-- [ ] Preuves sociales ou chiffres
-- [ ] CTA orienté action
+- [ ] Preuves : certifications, cas client attesté ou caractéristique produit
+      exacte — **jamais** de volume de clientèle
+- [ ] Aucune allégation d'économie chiffrée en accroche (voir « Allégations
+      chiffrées »)
+- [ ] Aucun superlatif absolu ("seul", "n°1", "le meilleur")
+- [ ] Specs produit conformes à la source de vérité (voir « Specs produit »)
+- [ ] CTA orienté action, sans conditionner au prix ("Parler à un expert DOM"
+      plutôt que "Faire un devis" en action principale)
 - [ ] Mots-clés SEO intégrés naturellement
 - [ ] Ton professionnel mais accessible
-- [ ] Orthographe et grammaire vérifiées
+- [ ] Orthographe et grammaire vérifiées, accents inclus
 
 ## 🤝 Mise en Avant des Partenariats
 
@@ -340,8 +465,16 @@ Pour chaque page/section :
 
 ### Éléments de réassurance
 
-- Toujours mentionner : "Plus de 500 clients nous font confiance"
-- Cas clients emblématiques : Titeca BEAUPORT Finance (90+ utilisateurs)
+- ❌ **Ne jamais publier de volume de clientèle** ("plus de X clients",
+  "X entreprises nous font confiance"). Invérifiable de l'extérieur, donc
+  faible en réassurance, et exposé au titre de l'article L121-2.
+- ✅ Certifications avec liens sortants : Partenaire Silver 3CX, Yeastar
+  Certified Expert, Aircall, Fanvil, Yealink — meilleur signal E-E-A-T du site
+- ✅ Équipe nommée : Alban, Valérie, Fabien
+- ✅ Numéros locaux par territoire (0590 / 0594 / 0596 / 0262) — ancrage
+  territorial vérifiable
+- ✅ Cas clients attestés : Groupe TBF / Titeca BEAUPORT Finance
+  (60+ utilisateurs migrés vers 3CX PRO, 3 territoires, parc Fanvil)
 - Infrastructure : AWS et Azure, hébergement France/UE
 - Support : Équipes locales DOM + métropole
 
