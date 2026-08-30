@@ -1,23 +1,18 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RgpdRequestForm } from "@/components/forms/rgpd-request-form";
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Exercer mes droits RGPD | E2I VoIP",
   description:
     "Formulaire d’exercice des droits RGPD d’E2I ASSISTANCE : accès, rectification, effacement, limitation, portabilité, opposition. Réponse sous un mois.",
   keywords:
     "exercer mes droits, RGPD, droit d’accès, droit à l’effacement, portabilité, E2I VoIP",
-  alternates: { canonical: "https://www.e2i-voip.com/juridique/exercer-mes-droits" },
-  openGraph: {
-    title: "Exercer mes droits RGPD | E2I VoIP",
-    description:
-      "Déposez votre demande d’exercice de droits auprès d’E2I ASSISTANCE. Réponse dans un délai d’un mois.",
-    type: "website",
-  },
-};
+  path: "/juridique/exercer-mes-droits",
+});
 
 export default function ExercerMesDroitsPage() {
   return (

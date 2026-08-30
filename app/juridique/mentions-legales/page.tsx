@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,20 +8,14 @@ import { COMPANY, HOSTING, LEGAL_LAST_UPDATE } from "@/lib/legal/company";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 import { LegalHelpCard } from "@/components/legal/help-card";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Mentions légales - E2I VoIP",
   description:
     "Mentions légales d’E2I ASSISTANCE (E2I VoIP) : éditeur du site, directeur de la publication, hébergeur, propriété intellectuelle et droit applicable.",
   keywords:
     "mentions légales, E2I VoIP, E2I ASSISTANCE, éditeur, hébergeur, propriété intellectuelle",
-  alternates: { canonical: "https://www.e2i-voip.com/juridique/mentions-legales" },
-  openGraph: {
-    title: "Mentions légales - E2I VoIP",
-    description:
-      "Mentions légales et informations juridiques d’E2I ASSISTANCE (E2I VoIP).",
-    type: "website",
-  },
-};
+  path: "/juridique/mentions-legales",
+});
 
 export default function MentionsLegales() {
   const contactInfo = [

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
@@ -11,32 +12,14 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { faqPageSchema, serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { COMPTEUR_FAQ } from "@/lib/faq-data";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/telephonie-entreprise/trunk-sip-compteur",
-  },
-  title:
-    "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
+export const metadata: Metadata = pageMetadata({
+  title: "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:
     "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 20%.",
   keywords:
     "trunk SIP compteur DOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM, opérateur télécom local",
-  openGraph: {
-    title: "Trunk SIP au Compteur DOM - E2I VoIP",
-    description:
-      "Connexions SIP au compteur pour entreprises DOM. Payez uniquement vos consommations réelles. Numéros locaux gratuits.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur",
-    siteName: "E2I VoIP",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Trunk SIP au Compteur DOM - E2I VoIP",
-    description:
-      "Connexions SIP au compteur pour entreprises DOM. Économisez jusqu'à 20%.",
-  },
-};
+  path: "/telephonie-entreprise/trunk-sip-compteur",
+});
 
 export default function TrunkSIPCompteur() {
   const compatibleBrands = [

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import WorkingFAQ from "@/components/faq-working";
@@ -13,22 +14,14 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { faqPageSchema } from "@/lib/structured-data";
 import { GENERAL_FAQ, toFaqSchemaItems } from "@/lib/faq-data";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/assistance",
-  },
+export const metadata: Metadata = pageMetadata({
   title: "Assistance & Support | Support technique DOM",
   description:
     "Support technique E2I VoIP par mail et téléphone, du lundi au vendredi de 8h à 18h. Hotline 01 89 56 05 00, chat en ligne. Guides, tutoriels 3CX, dépannage téléphonie IP.",
   keywords:
     "assistance E2I VoIP, support technique DOM, hotline téléphonie IP, dépannage 3CX, assistance Martinique Guadeloupe Guyane, chat assistance",
-  openGraph: {
-    title: "Assistance & Support | Support technique par mail et téléphone",
-    description:
-      "Support technique E2I VoIP par mail et téléphone. Présents dans les DOM, chat en ligne, guides et tutoriels.",
-    type: "website",
-  },
-};
+  path: "/assistance",
+});
 
 export default function AssistancePage() {
   return (

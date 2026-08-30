@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/page-metadata";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { CTACalendarSection } from "@/components/cta-calendar-section";
@@ -15,23 +17,18 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 
 const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "3CX PRO Cloud - Standard téléphonique dédié",
   description:
     "Déployez 3CX PRO sur une instance cloud dédiée, dimensionnée par appels simultanés. Intégrations CRM, Microsoft 365 et accompagnement en France et dans les DOM.",
   keywords:
     "3CX PRO, téléphonie cloud entreprise, standard téléphonique cloud, IPBX dédié, appels simultanés, intégration CRM, téléphonie DOM",
-  openGraph: {
-    title: "3CX PRO Cloud - Standard téléphonique dédié | E2I VoIP",
-    description:
-      "Une instance 3CX PRO cloud dédiée, dimensionnée selon vos appels simultanés et adaptée aux entreprises multisites.",
-    type: "website",
-    url: "https://www.e2i-voip.com/3cx-cloud",
-  },
-  alternates: {
-    canonical: "https://www.e2i-voip.com/telephonie-3cx",
-  },
-};
+  path: "/3cx-cloud",
+  // Décision SEO délibérée : /telephonie-3cx est le hub de référence pour
+  // l'offre 3CX. Les deux pages présentent la même offre ; concentrer le
+  // signal sur une seule URL évite qu'elles se concurrencent.
+  canonicalOverride: `${SITE_URL}/telephonie-3cx`,
+});
 
 const problems = [
   {
@@ -116,8 +113,17 @@ const integrations = [
 
 const pricingTiers = [
   {
-    calls: 8,
+    calls: 4,
     description: "Premier palier pour une instance dédiée",
+    features: [
+      "Applications web et mobile",
+      "Files d'attente",
+      "Support par mail et téléphone",
+    ],
+  },
+  {
+    calls: 8,
+    description: "Pour une équipe avec un flux d'appels régulier",
     features: [
       "Applications web et mobile",
       "Files d'attente",
