@@ -24,9 +24,13 @@ describe("repositionnement éditorial — home", () => {
     expect(hero()).not.toContain("Faire un devis")
   })
 
-  it("la stat d'économie est remplacée par une preuve de déploiement", () => {
+  it("les statistiques ne portent que des caractéristiques de l'offre", () => {
     expect(hero()).not.toMatch(/value:\s*"20%"/)
-    expect(hero()).toContain("60+")
+    // Un volume observé chez un client unique (« 60+ postes », issu du cas
+    // TBF) n'est pas une statistique d'entreprise : la 4e stat porte une
+    // caractéristique produit vérifiable.
+    expect(hero()).not.toMatch(/\d+\+/)
+    expect(hero()).toContain("4 à 64")
   })
 })
 

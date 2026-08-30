@@ -266,9 +266,9 @@ export default function QuiSommesNous() {
                     <p className="text-gray-600">
                       <strong>3CX SMB :</strong> De 3 à 10 utilisateurs, sur
                       devis.{" "}
-                      <strong>3CX PRO :</strong> Instance dédiée +50 postes,
-                      intégrations CRM/M365. Formation incluse, Customer Success
-                      Manager dédié.
+                      <strong>3CX PRO :</strong> Instance dédiée de 4 à 64
+                      appels simultanés, intégrations CRM/M365. Formation
+                      incluse, Customer Success Manager dédié.
                     </p>
                   </div>
                 </div>

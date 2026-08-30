@@ -82,7 +82,7 @@ export default function NosServices() {
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
       features: [
         "Serveur dédié",
-        "8 appels simultanés minimum",
+        "4 à 64 appels simultanés",
         "Multi-sites",
         "Tableau de bord avancé",
       ],
