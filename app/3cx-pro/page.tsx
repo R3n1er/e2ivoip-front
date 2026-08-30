@@ -23,7 +23,7 @@ export const metadata: Metadata = pageMetadata({
     "Déployez 3CX PRO sur une instance cloud dédiée, dimensionnée par appels simultanés. Intégrations CRM, Microsoft 365 et accompagnement en France et dans les DOM.",
   keywords:
     "3CX PRO, téléphonie cloud entreprise, standard téléphonique cloud, IPBX dédié, appels simultanés, intégration CRM, téléphonie DOM",
-  path: "/3cx-cloud",
+  path: "/3cx-pro",
   // Décision SEO délibérée : /telephonie-3cx est le hub de référence pour
   // l'offre 3CX. Les deux pages présentent la même offre ; concentrer le
   // signal sur une seule URL évite qu'elles se concurrencent.
@@ -180,7 +180,7 @@ const locations = [
   },
 ];
 
-export default function ThreeCXCloudPage() {
+export default function ThreeCXProPage() {
   return (
     <div className="min-h-screen">
       <section className="relative overflow-hidden py-20">

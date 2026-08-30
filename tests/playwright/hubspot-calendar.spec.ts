@@ -10,7 +10,7 @@ import { test, expect } from "@playwright/test";
  * à la bascule sur Next.js. L'URL doit viser le domaine HubSpot canonique.
  */
 test.describe("Calendrier HubSpot — prise de rendez-vous", () => {
-  const PAGE = "/3cx-cloud";
+  const PAGE = "/3cx-pro";
 
   test("expose un conteneur d'embed pointant vers le domaine HubSpot", async ({
     page,

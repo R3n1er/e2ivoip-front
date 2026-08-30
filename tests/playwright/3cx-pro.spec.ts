@@ -4,7 +4,7 @@ const TALLY_3CX_PRO_URL = "https://tally.so/r/EkALv4";
 
 test.describe("Page 3CX PRO Cloud", () => {
   test("affiche l'offre dédiée et des CTA de devis fonctionnels", async ({ page }) => {
-    await page.goto("/3cx-cloud");
+    await page.goto("/3cx-pro");
 
     await expect(page.getByRole("heading", { level: 1, name: /3CX PRO/i })).toBeVisible();
     await expect(
@@ -22,7 +22,7 @@ test.describe("Page 3CX PRO Cloud", () => {
 
   test("reste lisible sans débordement horizontal sur mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/3cx-cloud");
+    await page.goto("/3cx-pro");
 
     await expect(page.getByRole("heading", { level: 1, name: /3CX PRO/i })).toBeVisible();
     const hasHorizontalOverflow = await page.evaluate(
