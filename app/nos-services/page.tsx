@@ -10,35 +10,21 @@ import { Badge } from "@/components/ui/badge";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Link from "next/link";
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/nos-services",
-  },
+export const metadata: Metadata = pageMetadata({
   title: "Nos Services Téléphonie IP | Solutions DOM",
   description:
     "Découvrez nos solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO, interconnexion agents vocaux IA. Éligibilité Antilles-Guyane-Réunion et portabilité de vos numéros locaux ☎",
   keywords:
     "téléphonie IP entreprise, trunk SIP DOM, 3CX PRO, trunk SIP agents IA, studio enregistrement, VoIP Antilles",
-  openGraph: {
-    title: "Nos Services Téléphonie IP",
-    description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA. ",
-    type: "website",
-    locale: "fr_FR",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Nos Services Téléphonie IP",
-    description:
-      "Solutions complètes de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX et IA.",
-  },
-};
+  path: "/nos-services",
+});
 
 export default function NosServices() {
   const services = [
@@ -82,7 +68,7 @@ export default function NosServices() {
         "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
       features: [
         "Serveur dédié",
-        "8 appels simultanés minimum",
+        "4 à 64 appels simultanés",
         "Multi-sites",
         "Tableau de bord avancé",
       ],

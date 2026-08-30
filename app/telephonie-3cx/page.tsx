@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import NextLink from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
@@ -12,31 +13,14 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/telephonie-3cx",
-  },
+export const metadata: Metadata = pageMetadata({
   title: "Solutions 3CX | Téléphonie 3CX Professionnelle",
   description:
     "Découvrez nos solutions de téléphonie 3CX : instance dédiée PRO ou hébergement mutualisé SMB. Solution complète de communications unifiées pour entreprises.",
   keywords:
     "3CX, téléphonie 3CX, IPBX 3CX, 3CX PRO, 3CX SMB, communications unifiées, VoIP entreprise",
-  openGraph: {
-    title: "Solutions 3CX - Téléphonie Professionnelle",
-    description:
-      "Solutions 3CX adaptées à votre entreprise : instance dédiée ou mutualisée. Communications unifiées complètes.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-3cx",
-    siteName: "E2I VoIP",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Solutions 3CX",
-    description:
-      "Choisissez votre solution 3CX : dédiée PRO ou mutualisée SMB.",
-  },
-};
+  path: "/telephonie-3cx",
+});
 
 export default function Telephonie3CX() {
   return (
@@ -179,7 +163,7 @@ export default function Telephonie3CX() {
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
-                          De 8 à 1024 utilisateurs
+                          De 4 à 64 appels simultanés
                         </p>
                         <p className="text-sm text-gray-600">
                           Évolutif selon vos besoins

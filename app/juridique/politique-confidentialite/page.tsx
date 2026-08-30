@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -13,22 +14,14 @@ import {
 import { RGPD_RIGHTS } from "@/lib/rgpd/rights";
 import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Politique de confidentialité | E2I VoIP",
   description:
     "Politique de confidentialité d’E2I ASSISTANCE : traitements mis en œuvre, bases légales, durées de conservation, sous-traitants et exercice de vos droits RGPD.",
   keywords:
     "politique de confidentialité, RGPD, protection des données, sous-traitants, cookies, E2I VoIP",
-  alternates: {
-    canonical: "https://www.e2i-voip.com/juridique/politique-confidentialite",
-  },
-  openGraph: {
-    title: "Politique de confidentialité | E2I VoIP",
-    description:
-      "Comment E2I ASSISTANCE traite et protège vos données personnelles.",
-    type: "website",
-  },
-};
+  path: "/juridique/politique-confidentialite",
+});
 
 /**
  * Titre de section homogène sur toute la page.

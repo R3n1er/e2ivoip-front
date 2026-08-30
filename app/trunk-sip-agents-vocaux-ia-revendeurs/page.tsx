@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonSecondary } from "@/components/ui/cta-button";
@@ -13,24 +14,14 @@ import {
   Users,
 } from "@/lib/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Programme revendeur Trunk SIP agents vocaux IA — Early Access",
   description:
     "Intégrateurs et agences IA : revendez nos Trunk SIP DOM pour agents vocaux. Numéros locaux Antilles-Guyane-Réunion, guichet unique, conditions revendeur avantageuses et accompagnement technique.",
   keywords:
     "revendeur trunk SIP, programme revendeur agents IA, intégrateur VAPI DOM, carrier SIP revendeur, white label SIP agents vocaux IA",
-  alternates: { canonical: "/trunk-sip-agents-vocaux-ia-revendeurs" },
-  openGraph: {
-    title:
-      "Programme revendeur Trunk SIP agents vocaux IA — Early Access | E2I VoIP",
-    description:
-      "Intégrateurs et agences IA : revendez nos Trunk SIP DOM pour agents vocaux. Numéros locaux DOM, guichet unique et conditions revendeur avantageuses.",
-    type: "website",
-    locale: "fr_FR",
-    url: "/trunk-sip-agents-vocaux-ia-revendeurs",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/trunk-sip-agents-vocaux-ia-revendeurs",
+});
 
 const benefits = [
   {

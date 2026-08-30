@@ -2,18 +2,16 @@
 
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import Image from "next/image";
-import Link from "next/link";
 import { Globe, Certificate, Phone, Star, Play } from "@/lib/icons";
 
-/** Valeur de la statistique adossée au cas client TBF (lien vers sa preuve). */
-const STAT_PREUVE_TBF = "60+";
-
 export function HomepageHeroSectionSimple() {
+  // Caractéristiques de l'offre uniquement : un volume observé chez un client
+  // n'est pas une statistique d'entreprise (voir docs/ligne-editoriale.md).
   const stats = [
     { Icon: Globe, value: "4", label: "Territoires DOM couverts" },
     { Icon: Certificate, value: "15", label: "Années d'expertise télécom" },
     { Icon: Phone, value: "Mail & Tél", label: "Support technique France Métropolitaine et DOM" },
-    { Icon: Star, value: STAT_PREUVE_TBF, label: "Postes migrés sur 3 territoires" },
+    { Icon: Star, value: "4 à 64", label: "Appels simultanés par instance 3CX PRO" },
   ];
 
   return (
@@ -45,9 +43,19 @@ export function HomepageHeroSectionSimple() {
             Opérateur de services télécom · Antilles, Guyane, La Réunion
           </div>
 
-          {/* Main Heading — l'échéance cuivre porte la tension, à la place du prix */}
+          {/*
+            Main Heading — l'échéance cuivre porte la tension, à la place du prix.
+
+            La date est territorialisée : fermeture technique au 31 janvier 2027
+            pour le lot 3 (Basse-Terre, Deshaies, Kourou), après un arrêt
+            commercial au 31 janvier 2026. La Réunion relève du lot 5
+            (janvier / mai / octobre 2029) — d'où « Antilles-Guyane » et non
+            « DOM » sur la date elle-même.
+            Source : Arcep, plan de fermeture de la boucle locale cuivre.
+          */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-            Le réseau cuivre <span className="text-red-300">s&apos;arrête en 2027</span>.
+            Aux Antilles-Guyane, le cuivre{" "}
+            <span className="text-red-300">ferme en 2027</span>.
             <br />
             Votre téléphonie DOM est-elle prête&nbsp;?
           </h1>
@@ -58,7 +66,8 @@ export function HomepageHeroSectionSimple() {
             vos numéros locaux, migration sans coupure.
             <br />
             <span className="text-gray-300 font-medium">
-              Nous accompagnons les entreprises des DOM depuis 15 ans.
+              La Réunion suit en 2029. Nous accompagnons les entreprises des DOM
+              depuis 15 ans.
             </span>
           </p>
 
@@ -75,38 +84,19 @@ export function HomepageHeroSectionSimple() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {stats.map((stat, index) => {
-              const content = (
-                <>
-                  <div className="flex items-center justify-center mb-2">
-                    <stat.Icon size={24} className="text-red-300 mr-2" />
-                    <span className="text-3xl font-bold font-mono tabular-nums text-white drop-shadow-lg">
-                      {stat.value}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 text-sm drop-shadow-md">
-                    {stat.label}
-                  </p>
-                </>
-              );
-
-              return (
-                <div key={index} className="text-center">
-                  {/* Un chiffre avancé doit être vérifiable : la stat issue du
-                      cas client TBF renvoie vers sa preuve. */}
-                  {stat.value === STAT_PREUVE_TBF ? (
-                    <Link
-                      href="/qui-sommes-nous#cas-client-tbf"
-                      className="block rounded-lg transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
-                      {content}
-                    </Link>
-                  ) : (
-                    content
-                  )}
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <stat.Icon size={24} className="text-red-300 mr-2" />
+                  <span className="text-3xl font-bold font-mono tabular-nums text-white drop-shadow-lg">
+                    {stat.value}
+                  </span>
                 </div>
-              );
-            })}
+                <p className="text-gray-300 text-sm drop-shadow-md">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

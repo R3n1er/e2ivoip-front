@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -24,27 +25,14 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 // les CTA pointent vers le parcours devis/contact E2I.
 const PARTNERSTACK_URL = "";
 
-export const metadata: Metadata = {
-  title:
-    "Aircall pour entreprises | Plateforme de communication client connectée à votre CRM | E2I VoIP",
+export const metadata: Metadata = pageMetadata({
+  title: "Aircall pour entreprises | Plateforme de communication client connectée à votre CRM | E2I VoIP",
   description:
     "Déployez Aircall avec E2I VoIP, partenaire Aircall : la plateforme de communication client propulsée par l'IA, connectée à votre CRM (HubSpot, Salesforce, Zendesk). Pour vos équipes commerciales et support, dans les DOM et en France.",
   keywords:
     "Aircall, plateforme de communication client, intégration Aircall HubSpot, Aircall Salesforce, système téléphonique moderne CRM, Agent vocal IA, partenaire Aircall DOM",
-  alternates: {
-    canonical: "https://www.e2i-voip.com/telephonie-entreprise/aircall",
-  },
-  openGraph: {
-    title:
-      "Aircall pour entreprises | Plateforme de communication client connectée à votre CRM | E2I VoIP",
-    description:
-      "E2I VoIP, partenaire Aircall : la plateforme de communication client propulsée par l'IA, connectée à votre CRM pour vos équipes commerciales et support, dans les DOM et en France.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-entreprise/aircall",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/telephonie-entreprise/aircall",
+});
 
 export default function AircallPage() {
   // Intégrations CRM / outils phares (logos déposés dans public/images/integrations/ si dispo)
