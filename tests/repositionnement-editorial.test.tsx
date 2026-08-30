@@ -18,6 +18,20 @@ describe("repositionnement éditorial — home", () => {
     expect(h1Match![1]).toContain("DOM")
   })
 
+  it("n'attribue l'échéance cuivre 2027 qu'aux Antilles-Guyane", () => {
+    // Calendrier Arcep : fermeture technique du lot 3 (Basse-Terre, Deshaies,
+    // Kourou) au 31/01/2027. La Réunion relève du lot 5 — 2029. Annoncer
+    // « le cuivre DOM ferme en 2027 » serait faux pour La Réunion.
+    const h1Match = hero().match(/<h1[^>]*>([\s\S]*?)<\/h1>/)
+    expect(h1Match).not.toBeNull()
+
+    const h1 = h1Match![1]
+    if (h1.includes("2027")) {
+      expect(h1).toContain("Antilles-Guyane")
+      expect(h1).not.toMatch(/cuivre[^.]*DOM[^.]*2027|DOM[^.]*cuivre[^.]*2027/)
+    }
+  })
+
   it("le CTA principal ouvre une conversation, pas un devis", () => {
     // Le mot « devis » conditionne le visiteur à demander un prix.
     expect(hero()).toContain('href="/contact"')

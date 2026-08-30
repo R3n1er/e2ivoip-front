@@ -43,9 +43,19 @@ export function HomepageHeroSectionSimple() {
             Opérateur de services télécom · Antilles, Guyane, La Réunion
           </div>
 
-          {/* Main Heading — l'échéance cuivre porte la tension, à la place du prix */}
+          {/*
+            Main Heading — l'échéance cuivre porte la tension, à la place du prix.
+
+            La date est territorialisée : fermeture technique au 31 janvier 2027
+            pour le lot 3 (Basse-Terre, Deshaies, Kourou), après un arrêt
+            commercial au 31 janvier 2026. La Réunion relève du lot 5
+            (janvier / mai / octobre 2029) — d'où « Antilles-Guyane » et non
+            « DOM » sur la date elle-même.
+            Source : Arcep, plan de fermeture de la boucle locale cuivre.
+          */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-            Le réseau cuivre <span className="text-red-300">s&apos;arrête en 2027</span>.
+            Aux Antilles-Guyane, le cuivre{" "}
+            <span className="text-red-300">ferme en 2027</span>.
             <br />
             Votre téléphonie DOM est-elle prête&nbsp;?
           </h1>
@@ -56,7 +66,8 @@ export function HomepageHeroSectionSimple() {
             vos numéros locaux, migration sans coupure.
             <br />
             <span className="text-gray-300 font-medium">
-              Nous accompagnons les entreprises des DOM depuis 15 ans.
+              La Réunion suit en 2029. Nous accompagnons les entreprises des DOM
+              depuis 15 ans.
             </span>
           </p>
 

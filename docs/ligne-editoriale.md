@@ -26,7 +26,7 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Proposition de valeur principale
 
-**"Le réseau cuivre s'arrête en 2027. Votre téléphonie DOM est-elle prête ?"**
+**"Aux Antilles-Guyane, le cuivre ferme en 2027. Votre téléphonie DOM est-elle prête ?"**
 
 - Trunk SIP au compteur et illimité, éligibles DOM (Antilles, Guyane et La Réunion)
 - Création et portabilité de numéros en zone locale
@@ -37,8 +37,9 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 > Voir « Allégations chiffrées » ci-dessous. L'accroche porte la continuité de
 > service et la maîtrise technique, pas le prix.
 >
-> Cette accroche est **datée** : l'échéance cuivre porte jusqu'à fin 2027 et
-> devra être repensée ensuite.
+> Cette accroche est **datée et territorialisée** : voir « Calendrier de
+> fermeture du cuivre » ci-dessous. Ne jamais écrire « le cuivre DOM ferme en
+> 2027 » — ce serait faux pour La Réunion.
 
 ### Proposition de valeur secondaire
 
@@ -109,6 +110,43 @@ d'entreprise en page d'accueil : le lecteur le lirait comme un agrégat.
 Les caractéristiques techniques chiffrées sont encouragées — elles donnent la
 matière technique qu'un acheteur cherche avant de parler prix. Elles doivent
 être exactes et cohérentes sur toutes les pages (voir « Specs produit »).
+
+## 📅 Calendrier de fermeture du cuivre
+
+Vérifié le 2026-08-30 auprès de l'Arcep et d'Orange. **L'échéance n'est pas la
+même sur tous nos territoires** : toute formulation qui l'attribue globalement
+aux « DOM » est factuellement fausse.
+
+| Territoire | Communes | Arrêt commercial | Fermeture technique |
+|---|---|---|---|
+| Martinique | Schœlcher | — | ✅ **déjà fermé (2025)** |
+| Guyane | Remire-Montjoly | — | ✅ **déjà fermé (2025)** |
+| Guadeloupe | Petit-Bourg | — | ✅ **déjà fermé (2025)** |
+| Guadeloupe | Basse-Terre, Deshaies | 31 janv. 2026 | **31 janv. 2027** |
+| Guyane | Kourou | 31 janv. 2026 | **31 janv. 2027** |
+| La Réunion | tout le département (lot 5) | — | **janv. / mai / oct. 2029** |
+
+**Deux dates par commune, à ne pas confondre :**
+
+- **Fermeture commerciale** : plus aucune souscription cuivre possible
+- **Fermeture technique** : les lignes sont coupées (environ 3 ans plus tard)
+
+**Règles de rédaction :**
+
+- ❌ « Le réseau cuivre DOM s'arrête en 2027 » — faux pour La Réunion
+- ✅ « Aux Antilles-Guyane, le cuivre ferme en 2027 »
+- ✅ « À La Réunion, la fermeture technique intervient en 2029 »
+- ✅ Le fait accompli est l'argument le plus fort : Schœlcher, Petit-Bourg et
+  Remire-Montjoly sont **déjà coupées**. Un précédent ne se conteste pas et ne
+  périme jamais.
+
+Le calendrier évolue avec le déploiement de la fibre. **Revérifier avant toute
+campagne** sur [reseaux.orange.fr](https://reseaux.orange.fr/fin-adsl-arret-cuivre/quand-calendrier-fermeture)
+(recherche par commune) et sur le
+[dossier Arcep](https://www.arcep.fr/nos-sujets/la-fermeture-du-reseau-cuivre.html).
+
+Verrouillé par `tests/repositionnement-editorial.test.tsx` : le H1 ne peut pas
+associer « 2027 » à « DOM » sans nommer les Antilles-Guyane.
 
 ## 🔧 Specs produit — source de vérité
 

@@ -55,7 +55,7 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /Le réseau cuivre s'arrête en 2027/i,
+        name: /Aux Antilles-Guyane, le cuivre ferme en 2027/i,
       })
     ).toBeInTheDocument();
 
