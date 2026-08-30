@@ -21,13 +21,13 @@ const PALIERS_TRUNK_ILLIMITE = [4, 8, 16]
  * Cette liste doit rester exhaustive : une page absente d'ici peut afficher
  * des specs contradictoires sans qu'aucun test ne le voie. C'est ce qui s'est
  * produit pour /telephonie-3cx (« De 8 à 1024 utilisateurs », valeur reprise
- * de la documentation éditeur 3CX) et /3cx-cloud (grille démarrant à 8).
+ * de la documentation éditeur 3CX) et /3cx-pro (grille démarrant à 8).
  */
 const SOURCES_3CX_PRO = [
   "components/services-section-simple.tsx",
   "app/nos-services/page.tsx",
   "app/telephonie-3cx/page.tsx",
-  "app/3cx-cloud/page.tsx",
+  "app/3cx-pro/page.tsx",
 ]
 
 describe("specs produit 3CX PRO", () => {
@@ -48,7 +48,7 @@ describe("specs produit 3CX PRO", () => {
 
   // Pages annonçant l'offre par une mention textuelle d'amplitude.
   const SOURCES_AMPLITUDE_TEXTUELLE = SOURCES_3CX_PRO.filter(
-    (s) => s !== "app/3cx-cloud/page.tsx",
+    (s) => s !== "app/3cx-pro/page.tsx",
   )
 
   it.each(SOURCES_AMPLITUDE_TEXTUELLE)(
@@ -58,10 +58,10 @@ describe("specs produit 3CX PRO", () => {
     },
   )
 
-  it("/3cx-cloud décline exactement les paliers de la grille", () => {
+  it("/3cx-pro décline exactement les paliers de la grille", () => {
     // Cette page présente les paliers un par un (`pricingTiers`) plutôt qu'une
     // amplitude textuelle : on vérifie la grille elle-même.
-    const source = read("app/3cx-cloud/page.tsx")
+    const source = read("app/3cx-pro/page.tsx")
     const paliers = [...source.matchAll(/calls:\s*(\d+)/g)].map((m) =>
       Number(m[1]),
     )

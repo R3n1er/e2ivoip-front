@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import ThreeCXCloudPage, { metadata } from "@/app/3cx-cloud/page";
+import ThreeCXProPage, { metadata } from "@/app/3cx-pro/page";
 
 const TALLY_3CX_PRO_URL = "https://tally.so/r/EkALv4";
 
 describe("Page 3CX PRO Cloud", () => {
   it("positionne clairement l'offre comme une instance cloud dédiée", () => {
-    render(<ThreeCXCloudPage />);
+    render(<ThreeCXProPage />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: /3CX PRO/i }),
@@ -22,7 +22,7 @@ describe("Page 3CX PRO Cloud", () => {
   });
 
   it("relie tous les CTA de devis 3CX PRO au tunnel Tally", () => {
-    render(<ThreeCXCloudPage />);
+    render(<ThreeCXProPage />);
 
     const quoteLinks = screen
       .getAllByRole("link")
@@ -37,7 +37,7 @@ describe("Page 3CX PRO Cloud", () => {
   });
 
   it("ne contient plus les promesses commerciales non justifiées", () => {
-    render(<ThreeCXCloudPage />);
+    render(<ThreeCXProPage />);
 
     const content = document.body.textContent ?? "";
     expect(content).not.toMatch(/40\s*% d'économies/i);
@@ -49,7 +49,7 @@ describe("Page 3CX PRO Cloud", () => {
   });
 
   it("ne répète pas les coordonnées sous le calendrier", () => {
-    render(<ThreeCXCloudPage />);
+    render(<ThreeCXProPage />);
 
     expect(
       screen.queryByText(/Vous préférez nous appeler directement/i),

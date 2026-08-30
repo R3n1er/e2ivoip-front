@@ -27,7 +27,7 @@ describe("Registre des fils d'Ariane", () => {
       "/devis-en-ligne",
       "/nos-services",
       "/qui-sommes-nous",
-      "/3cx-cloud",
+      "/3cx-pro",
       "/studio-attente",
       "/telephonie-entreprise",
     ]) {

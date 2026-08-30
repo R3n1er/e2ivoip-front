@@ -30,7 +30,7 @@ export type PageMetadataInput = {
    * Canonical différent de la route, quand deux URL présentent la même offre
    * et qu'une seule doit concentrer le signal SEO.
    *
-   * Exemple : `/3cx-cloud` désigne `/telephonie-3cx` comme page de référence.
+   * Exemple : `/3cx-pro` désigne `/telephonie-3cx` comme page de référence.
    * À n'utiliser que sur décision explicite — un canonical erroné désindexe.
    */
   canonicalOverride?: string;

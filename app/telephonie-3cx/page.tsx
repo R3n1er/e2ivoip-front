@@ -211,7 +211,7 @@ export default function Telephonie3CX() {
                       </CTAButtonMarine>
                     </div>
                     <p className="text-center mt-4">
-                      <NextLink href="/3cx-cloud" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
                         En savoir plus sur notre offre 3CX PRO
                       </NextLink>
                     </p>
@@ -370,7 +370,7 @@ export default function Telephonie3CX() {
                     ))}
                     {/* Liens vers les pages détail de chaque offre */}
                     <div className="grid grid-cols-2 divide-x divide-gray-200 pt-2 text-center">
-                      <NextLink href="/3cx-cloud" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/3cx-pro" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
                         En savoir plus
                       </NextLink>
                       <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
@@ -403,7 +403,7 @@ export default function Telephonie3CX() {
                         <tr>
                           <td className="px-6 py-4"></td>
                           <td className="px-6 py-4 text-center">
-                            <NextLink href="/3cx-cloud" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                            <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
                               En savoir plus sur notre offre
                             </NextLink>
                           </td>

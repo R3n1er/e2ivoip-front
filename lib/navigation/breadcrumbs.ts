@@ -36,9 +36,9 @@ export const PAGE_BREADCRUMBS: Record<string, BreadcrumbItem[]> = {
     BREADCRUMB_HOME,
     { label: "Qui sommes-nous" },
   ],
-  "/3cx-cloud": [
+  "/3cx-pro": [
     BREADCRUMB_HOME,
-    { label: "3CX Cloud" },
+    { label: "3CX PRO" },
   ],
   "/studio-attente": [
     BREADCRUMB_HOME,
