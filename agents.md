@@ -25,7 +25,7 @@ Toujours répondre en français à l'utilisateur.
 
 **Toute modification du site passe obligatoirement par une Pull Request GitHub. Aucun commit direct sur `dev` ni sur `main`.**
 
-Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture et merge par Alban → `dev` → `main` (opération manuelle déclenchée par Alban).
+Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merge sur demande d'Alban → `dev` → `main` (également sur demande d'Alban).
 
 1. Créer une branche dédiée depuis `dev` à jour :
    `git switch dev && git pull && git switch -c <type>/<sujet-court>`
@@ -38,11 +38,16 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture et merge p
 5. Le corps de PR doit contenir : objectif, liste des changements, résultat des tests (Jest + Playwright), entrée ADR associée, points de vigilance / risques.
 6. Rendre la main à Alban avec l'URL de la PR, puis **s'arrêter**.
 
+**Merge** : l'agent ne merge jamais de sa propre initiative. Sur demande explicite d'Alban :
+- Vérifier d'abord que les checks CI sont verts (`gh pr view <n> --json statusCheckRollup`) et la PR `MERGEABLE`.
+- Vers `dev` : `gh pr merge <n> --squash --delete-branch`.
+- `dev → main` : annoncer l'écart de commits (`git log origin/main..origin/dev`), puis `gh pr merge <n> --merge` — le merge classique évite de faire diverger `dev` et `main`.
+- Vérifier le déploiement en production après un merge vers `main`.
+
 **Interdictions strictes pour l'agent** :
-- Ne jamais merger une PR (ni `--merge`, ni `--squash`, ni `--admin`, ni `--auto`).
 - Ne jamais pousser sur `dev` ou `main` directement, même pour un « petit » correctif.
-- Ne jamais fusionner `dev` dans `main` : c'est une décision d'Alban.
 - Ne jamais forcer un push (`--force`) sur une branche partagée.
+- Ne jamais utiliser `--admin` ou `--auto` pour passer outre un check en échec.
 
 **Seule exception** : si Alban demande explicitement un commit direct sur `dev` ou `main` pour une intervention donnée. L'exception vaut pour cette intervention uniquement, jamais pour les suivantes.
 

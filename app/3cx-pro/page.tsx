@@ -18,7 +18,7 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 const TALLY_3CX_PRO_URL = TALLY_FORMS.VOIP_3CX_PRO;
 
 export const metadata: Metadata = pageMetadata({
-  title: "3CX PRO Cloud - Standard téléphonique dédié",
+  title: "3CX PRO - Standard téléphonique cloud dédié",
   description:
     "Déployez 3CX PRO sur une instance cloud dédiée, dimensionnée par appels simultanés. Intégrations CRM, Microsoft 365 et accompagnement en France et dans les DOM.",
   keywords:

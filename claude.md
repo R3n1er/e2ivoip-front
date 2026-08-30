@@ -39,7 +39,7 @@ est abandonné pour ce projet.
 3. Charte (`CHARTE_GRAPHIQUE.md`, `.docx`, `BrandBrief`) : permission requise pour modifier
 4. Pre-push : `npm run validate` obligatoire (6 contrôles — bloquer si 1 échoue)
 5. TDD : RED → GREEN → REFACTOR → DOCUMENT → COMMIT → PR
-6. **Pull Request obligatoire** : toute modif passe par une branche dédiée → PR vers `dev` (`gh pr create --base dev`). Jamais de commit direct sur `dev` ou `main`, jamais de merge par l'agent. `dev → main` est déclenché par Alban. Détail : `agents.md` § « Livraison par Pull Request »
+6. **Pull Request obligatoire** : toute modif passe par une branche dédiée → PR vers `dev` (`gh pr create --base dev`). Jamais de commit direct sur `dev` ou `main`. Le merge est fait par l'agent **sur demande d'Alban**, jamais de sa propre initiative — et uniquement si les checks CI sont verts. Squash pour `→ dev`, merge classique pour `dev → main`. Détail : `agents.md` § « Livraison par Pull Request »
 
 ## Permissions
 
