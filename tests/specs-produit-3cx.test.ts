@@ -15,10 +15,19 @@ const read = (relativePath: string) =>
 const PALIERS_3CX_PRO = [4, 8, 16, 24, 32, 64]
 const PALIERS_TRUNK_ILLIMITE = [4, 8, 16]
 
-/** Pages et composants présentant l'offre 3CX PRO. */
+/**
+ * Toute page ou composant présentant l'offre 3CX PRO.
+ *
+ * Cette liste doit rester exhaustive : une page absente d'ici peut afficher
+ * des specs contradictoires sans qu'aucun test ne le voie. C'est ce qui s'est
+ * produit pour /telephonie-3cx (« De 8 à 1024 utilisateurs », valeur reprise
+ * de la documentation éditeur 3CX) et /3cx-cloud (grille démarrant à 8).
+ */
 const SOURCES_3CX_PRO = [
   "components/services-section-simple.tsx",
   "app/nos-services/page.tsx",
+  "app/telephonie-3cx/page.tsx",
+  "app/3cx-cloud/page.tsx",
 ]
 
 describe("specs produit 3CX PRO", () => {
@@ -37,10 +46,34 @@ describe("specs produit 3CX PRO", () => {
     },
   )
 
-  it.each(SOURCES_3CX_PRO)(
+  // Pages annonçant l'offre par une mention textuelle d'amplitude.
+  const SOURCES_AMPLITUDE_TEXTUELLE = SOURCES_3CX_PRO.filter(
+    (s) => s !== "app/3cx-cloud/page.tsx",
+  )
+
+  it.each(SOURCES_AMPLITUDE_TEXTUELLE)(
     "%s annonce l'amplitude complète de la grille 3CX PRO",
     (relativePath) => {
       expect(read(relativePath)).toContain("4 à 64 appels simultanés")
+    },
+  )
+
+  it("/3cx-cloud décline exactement les paliers de la grille", () => {
+    // Cette page présente les paliers un par un (`pricingTiers`) plutôt qu'une
+    // amplitude textuelle : on vérifie la grille elle-même.
+    const source = read("app/3cx-cloud/page.tsx")
+    const paliers = [...source.matchAll(/calls:\s*(\d+)/g)].map((m) =>
+      Number(m[1]),
+    )
+    expect(paliers).toEqual(PALIERS_3CX_PRO)
+  })
+
+  it.each(SOURCES_3CX_PRO)(
+    "%s ne dimensionne pas 3CX PRO en milliers d'utilisateurs",
+    (relativePath) => {
+      // « De 8 à 1024 utilisateurs » est une limite de licence 3CX reprise de
+      // la documentation éditeur, pas une caractéristique de notre offre.
+      expect(read(relativePath)).not.toMatch(/\d{3,}\s*utilisateurs/)
     },
   )
 
