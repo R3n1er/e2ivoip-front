@@ -107,6 +107,11 @@ const nextConfig = {
       ["/integration-pbx-voip", "/telephonie-entreprise/pbx-yeastar"],
       ["/passerelles-trunk-sip", "/telephonie-entreprise/trunk-sip-compteur"],
 
+      // Renommage produit : l'offre est commercialisée sous le nom « 3CX PRO »
+      // (le hero, la navigation et les devis Tally utilisaient déjà ce nom).
+      // L'URL suit le nom du produit.
+      ["/3cx-cloud", "/3cx-pro"],
+
       // Pages transverses renommées
       ["/devis", "/devis-en-ligne"],
       ["/politique-confidentialites", "/politique-confidentialite"],

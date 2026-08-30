@@ -40,7 +40,7 @@ export function HeaderSimple() {
           submenu: [
             {
               name: "3CX PRO",
-              href: "/3cx-cloud",
+              href: "/3cx-pro",
             },
             {
               name: "3CX SMB PRO",

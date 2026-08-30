@@ -74,7 +74,7 @@ export default function NosServices() {
       ],
       badge: "Entreprise",
       price: "Sur devis",
-      href: "/3cx-cloud",
+      href: "/3cx-pro",
       category: "Téléphonie IP",
     },
     {

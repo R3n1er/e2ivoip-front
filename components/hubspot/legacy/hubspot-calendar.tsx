@@ -88,7 +88,7 @@ export function HubSpotCalendar({
   // `MeetingsEmbedCode.js` injecte l'iframe directement dans le DOM du
   // conteneur, en dehors du rendu React : sans cette détection, le message
   // "Chargement du calendrier…" reste affiché indéfiniment par-dessus
-  // l'iframe pourtant fonctionnelle (bug observé en prod sur /3cx-cloud).
+  // l'iframe pourtant fonctionnelle (bug observé en prod sur /3cx-pro).
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;

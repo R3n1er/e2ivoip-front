@@ -8,7 +8,7 @@ const PAGES = [
   "/",
   "/telephonie-entreprise",
   "/telephonie-3cx",
-  "/3cx-cloud",
+  "/3cx-pro",
   "/nos-services",
   "/devis-en-ligne",
   "/contact",
