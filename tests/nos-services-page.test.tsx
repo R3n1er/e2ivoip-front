@@ -30,7 +30,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des 4 bénéfices
-    expect(screen.getByText("20% d'économies")).toBeInTheDocument();
+    expect(screen.getByText("Continuité de service")).toBeInTheDocument();
     expect(screen.getByText("Présents dans les DOM")).toBeInTheDocument();
     expect(screen.getByText("Infrastructure fiable")).toBeInTheDocument();
     expect(screen.getByText("Hébergement souverain")).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des messages clés
-    expect(screen.getAllByText(/20% d.économies/).length).toBeGreaterThan(0);
+    expect(screen.getByText("Continuité de service")).toBeInTheDocument();
     // Utilisation de getAllByText pour gérer les éléments multiples
     const domTomElements = screen.getAllByText(/DOM/);
     expect(domTomElements.length).toBeGreaterThan(0);
@@ -94,9 +94,9 @@ describe("Page Nos Services", () => {
     expect(
       screen.getByText(/15 ans d.expérience/)
     ).toBeInTheDocument();
-    // Utilisation de getAllByText pour gérer les éléments multiples
-    const thirtyPercentElements = screen.getAllByText(/20%/);
-    expect(thirtyPercentElements.length).toBeGreaterThan(0);
+    // Le discours ne repose plus sur l'économie tarifaire : plus aucune
+    // allégation chiffrée de pourcentage sur cette page.
+    expect(screen.queryByText(/20\s*%|20%/)).toBeNull();
   });
 
   it("affiche les badges de service appropriés", () => {
@@ -128,7 +128,7 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification de quelques fonctionnalités clés
-    expect(screen.getByText("Économies jusqu'à 20%")).toBeInTheDocument();
+    expect(screen.getByText("Éligibilité Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
     expect(screen.getByText("Support technique local")).toBeInTheDocument();

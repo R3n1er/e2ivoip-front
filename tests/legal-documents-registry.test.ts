@@ -33,22 +33,42 @@ describe('Registre des documents juridiques', () => {
     }
   })
 
-  it('les PDFs du registre existent dans public/documents/ avec version cohérente', () => {
-    const manifest = JSON.parse(
-      readFileSync(
-        path.join(process.cwd(), '..', '..', 'Cowork', 'e2ivoip', 'website-ready', 'manifest.json'),
-        'utf-8'
-      )
-    ) as { documents: Array<{ filename: string; pages: number }> }
-
+  it('les PDFs du registre existent physiquement dans public/documents/', () => {
     for (const pdf of LEGAL_PDFS) {
       const filePath = path.join(process.cwd(), 'public', 'documents', pdf.slug)
       expect(existsSync(filePath)).toBe(true)
-
-      const mirror = manifest.documents.find((d) => d.filename === pdf.slug)
-      expect(mirror).toBeDefined()
-      expect(pdf.pages).toBe(mirror!.pages)
     }
+  })
+
+  // Le manifeste de génération des PDFs vit hors du dépôt (poste de travail
+  // dédié à leur production), donc absent de toute machine de dev/CI standard.
+  // Cette vérification croisée du nombre de pages est un contrôle annexe de
+  // cohérence : elle ne doit jamais bloquer `npm run validate` faute d'accès
+  // à ce fichier — seul le test ci-dessus (existence physique des PDFs) est
+  // requis pour la CI.
+  const manifestPath = path.join(
+    process.cwd(),
+    '..',
+    '..',
+    'Cowork',
+    'e2ivoip',
+    'website-ready',
+    'manifest.json'
+  )
+  const describeIfManifest = existsSync(manifestPath) ? describe : describe.skip
+
+  describeIfManifest('cohérence avec le manifeste de génération (hors CI)', () => {
+    it('le nombre de pages déclaré correspond au manifeste', () => {
+      const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8')) as {
+        documents: Array<{ filename: string; pages: number }>
+      }
+
+      for (const pdf of LEGAL_PDFS) {
+        const mirror = manifest.documents.find((d) => d.filename === pdf.slug)
+        expect(mirror).toBeDefined()
+        expect(pdf.pages).toBe(mirror!.pages)
+      }
+    })
   })
 
   it('les hrefs PDF ne pointent jamais vers /docs/ (ancienne convention manifest)', () => {

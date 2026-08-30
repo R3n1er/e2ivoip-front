@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SafeImage as Image } from "@/components/ui/safe-image";
@@ -7,19 +8,14 @@ import { MapPin, Globe, Phone, Target, Seal, Users, CheckCircle, UserCircle } fr
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 // Tawk.to désactivé temporairement
 
-export const metadata: Metadata = {
-  title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
+export const metadata: Metadata = pageMetadata({
+  title: "Qui sommes-nous | Opérateur télécom DOM",
   description:
     "E2I VoIP : Opérateur de services télécom DOM, 15 ans d'expertise. Nous installons vos standards téléphoniques et accompagnons les entreprises des DOM vers la téléphonie IP. Trunk SIP, 3CX, support par mail et téléphone — Martinique, Guadeloupe, Guyane.",
   keywords:
     "E2I VoIP, opérateur télécom DOM, téléphonie IP Antilles, 3CX Martinique, Trunk SIP Guadeloupe, VoIP Guyane, téléphonie Réunion, support télécom DOM",
-  openGraph: {
-    title: "Qui sommes-nous - E2I VoIP | Opérateur télécom DOM",
-    description:
-      "Opérateur de services télécom DOM depuis 15 ans. Nous installons vos standards téléphoniques et accompagnons les entreprises des DOM vers la téléphonie IP. Support par mail et téléphone.",
-    type: "website",
-  },
-};
+  path: "/qui-sommes-nous",
+});
 
 export default function QuiSommesNous() {
   const teamMembers = [
@@ -263,9 +259,9 @@ export default function QuiSommesNous() {
                     <p className="text-gray-600">
                       <strong>3CX SMB :</strong> De 3 à 10 utilisateurs, sur
                       devis.{" "}
-                      <strong>3CX PRO :</strong> Instance dédiée +50 postes,
-                      intégrations CRM/M365. Formation incluse, Customer Success
-                      Manager dédié.
+                      <strong>3CX PRO :</strong> Instance dédiée de 4 à 64
+                      appels simultanés, intégrations CRM/M365. Formation
+                      incluse, Customer Success Manager dédié.
                     </p>
                   </div>
                 </div>
@@ -288,7 +284,10 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8">
+            <div
+              id="cas-client-tbf"
+              className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8 scroll-mt-24"
+            >
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Cas client emblématique
               </h3>

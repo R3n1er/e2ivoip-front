@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Calculator, Phone, Chat, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';
@@ -7,22 +8,14 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 // Formulaire Tally dédié à l'offre Yeastar (tunnel devis, flow n8n).
 const TALLY_YEASTAR_URL = TALLY_FORMS.YEASTAR;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Yeastar P-Series - PBX cloud et on-premise",
   description:
     "Déployez Yeastar P-Series avec E2I VoIP : PBX cloud ou on-premise, communications unifiées, call center et automatisations pour entreprises DOM et métropole.",
   keywords:
     "Yeastar, Yeastar P-Series, téléphonie Yeastar DOM, PBX software, IPBX cloud, call center Yeastar, VoIP Antilles",
-  openGraph: {
-    title: "Yeastar P-Series | PBX cloud et on-premise | E2I VoIP",
-    description:
-      "Modernisez votre standard téléphonique avec Yeastar P-Series : cloud, on-premise, omnicanal et support par mail et téléphone.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar",
-    siteName: "E2I VoIP",
-  },
-};
+  path: "/telephonie-entreprise/pbx-yeastar",
+});
 
 export default function PBXYeastar() {
   return (

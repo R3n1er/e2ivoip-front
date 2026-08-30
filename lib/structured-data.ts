@@ -46,6 +46,9 @@ export function organizationSchema() {
       areaServed: p.territory,
       availableLanguage: "French",
     })),
+    // Profils officiels : relie l'entité du site à ses présences externes
+    // (désambiguïsation d'entité pour Google et les moteurs génératifs).
+    sameAs: ["https://www.linkedin.com/company/e2i-voip/"],
     // Zones desservies : les 4 DOM + France métropolitaine.
     areaServed: [
       { "@type": "Country", name: "Guadeloupe" },

@@ -38,20 +38,19 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise. Trunk SIP, 3CX, PBX Yeastar et interconnexion agents vocaux IA.",
+    "Opérateur de services télécom pour les entreprises des DOM. Trunk SIP éligibles Guadeloupe, Martinique, Guyane et La Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar. Préparez la fin du réseau cuivre.",
   keywords:
     "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  // Canonical par défaut = racine. Chaque page surcharge avec son propre chemin.
-  alternates: {
-    canonical: "/",
-  },
+  // Pas de canonical par défaut ici : il serait hérité par toute page n'en
+  // déclarant pas, qui se signalerait alors à Google comme doublon de la home.
+  // Chaque page déclare le sien — y compris app/page.tsx pour la home.
   openGraph: {
     title: HOME_PAGE_TITLE,
     description:
-      "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
+      "Opérateur de services télécom des DOM : Trunk SIP éligibles Antilles-Guyane-Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar.",
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
@@ -69,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: HOME_PAGE_TITLE,
     description:
-      "Solutions de téléphonie IP professionnelles pour optimiser vos communications d'entreprise.",
+      "Opérateur de services télécom des DOM : Trunk SIP éligibles Antilles-Guyane-Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar.",
     images: ["/images/e2i-voip-partage.png"],
   },
   robots: {

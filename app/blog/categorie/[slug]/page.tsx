@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 
 import { BlogPostsGrid } from "@/components/blog/blog-posts-grid";
@@ -22,20 +23,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const categoryName = decodeURIComponent(slug);
   
-  const title = `Articles ${categoryName} - Blog E2I VoIP`;
+  // Le suffixe marque est ajouté par title.template du layout racine.
+  const title = `Articles ${categoryName} - Blog`;
   const description = `Découvrez tous nos articles sur ${categoryName} dans le domaine de la téléphonie IP et des communications d'entreprise.`;
 
-  return {
+  return pageMetadata({
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/blog/categorie/${slug}` },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `${SITE_URL}/blog/categorie/${slug}`,
-    },
-  };
+    path: `/blog/categorie/${slug}`,
+  });
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

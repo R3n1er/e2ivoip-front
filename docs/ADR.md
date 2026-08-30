@@ -10,7 +10,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
-### 2026-08-25 — Fix pré-chat : init forcée + ouverture par retry alterné + suppression bannière HS
+### 2026-08-26 — Suppression du pré-chat : widget natif HubSpot uniquement
+
+- **Contexte** : malgré le hotfix `82e3c42` (kick `load()` + retries alternés + suppression de la bannière cookies HS), le chat s'ouvrait de façon non fiable pour les visiteurs réels : la console montrait des dizaines de `ERR_BLOCKED_BY_CLIENT` sur `api-eu1.hubspot.com` et `eu.i.posthog.com`. Le SDK HubSpot Conversations embarque beaucoup de logique client (init conditionnelle, consentement RGPD intégré, bannière européenne, gestion asynchrone du widget) qui complique l'expérience et augmente la surface de panne. Choix produit : aligner le site sur le snippet de tracking natif recommandé par HubSpot, sans pré-chat ni logique d'initiation conditionnelle.
+- **Décision** :
+  - Suppression complète de `components/chat-preoverlay.tsx` (et de toute la logique associée : `waitForHubSpotConversations`, `waitForWidgetLoaded`, `openHubSpotWidget`, fetch `/api/hubspot/ingest-conversation` côté pré-chat, `onRequestChat`, `setInputText`).
+  - Suppression des tests Playwright associés : `chat-preoverlay-flow.spec.ts`, `no-hubspot-widget.spec.ts`, `hubspot-consent-gating.spec.ts`. Adaptation de `homepage-diagnostic.spec.ts` (suppression du test « ChatPreOverlay fonctionnel »).
+  - `HubSpotTracking` devient un composant trivial qui charge inconditionnellement le script officiel `//js-eu1.hs-scripts.com/${portalId}.js` (cf. doc HubSpot), avec `async defer` et `strategy="afterInteractive"`. Plus de `hsConversationsSettings` posée en amont ; le widget natif gère l'ouverture et l'identification côté HubSpot sans notre code.
+  - `LayoutClientChrome` ne gère plus le `trackingEnabled` ni le `enableTracking` : le script est monté tout le temps, comme l'exige la nature d'un widget de chat (le visiteur doit pouvoir l'ouvrir à tout moment, sans pré-conditions).
+  - Endpoint `/api/hubspot/ingest-conversation` conservé (peut servir ailleurs, ex. depuis un formulaire de contact le cas échéant) — non utilisé par le chat natif mais non supprimé pour préserver une fonction publique documentée.
+  - Type `HubSpotConversationsWidget.status()` rétabli à `{ loaded: boolean }` (le `pending?: boolean` ajouté pour le hotfix n'a plus lieu d'être).
+- **Conséquences** :
+  - UX : le chat s'ouvre désormais directement depuis le launcher natif flottant HubSpot, sans aucun formulaire intermédiaire. Identifiant HS et tracking page gérés par le SDK HubSpot.
+  - RGPD : le script est chargé sans condition préalable, ce qui dépose cookies HS (`hubspotutk`, `__hstc`) à l'arrivée sur le site. Si tu veux rebrancher un consentement explicite, voir l'ADR archivé 2026-08-16 (chargement à la demande) ; ce hotfix ne le rétablit pas — c'était précisément la cause de l'instabilité reproduite par les visiteurs réels.
+  - Maintenance : -700 lignes de code (composant pré-chat + tests + logique de gestion d'erreur), zero appels réseau conditionnels côté chat, plus de races condition/timing d'initiation.
+  - Documenté : ADR 2026-08-25 archivé ci-après pour mémoire (il reste exact techniquement mais ne s'applique plus après cette décision).
+
+### 2026-08-25 (archivé) — Fix pré-chat : init forcée + ouverture par retry alterné + suppression bannière HS
 
 - **Contexte** : après validation du pré-chat, le chat HubSpot ne s'ouvrait pas — l'overlay se fermait pourtant sans erreur. Premier diagnostic (Chrome headless + CDP sur www.e2i-voip.com, instrumentation `load`/`open`) : `widget.load({ widgetOpen: true })` était appelé alors que le widget n'avait jamais démarré son initialisation, l'iframe restait au format launcher (~100×96). Mock Playwright trompeur : il créait un widget instantanément disponible honorant `widgetOpen`, contrairement au SDK réel.
 - **Diagnostic approfondi** (2ᵉ déploiement, après un premier fix insuffisant) :
@@ -29,6 +45,8 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Limite identifiée : en environnement headless sans user-gesture réel (CDP synthétique), le SDK HubSpot peut rester sur le launcher malgré les bons appels. Sur navigateur réel d'utilisateur, l'ouverture fonctionne — les screenshots en environnement dégradé (modale HS présente + viewport réduit) ont confirmé 448×627 = widget ouvert.
   - Le diagnostic local des échecs blog Playwright (`blog-seo`, `blog-hubspot-images`) reste un problème d'environnement indépendant : token HubSpot local sans scope CMS `content` (403 MISSING_SCOPES sur `/api/blog/list`). La production sert les articles correctement.
 - **Tests associés** : `npm run type-check` ✅ ; Jest 473/473 ✅ ; `chat-preoverlay-flow.spec.ts` 8/8 ✅ ; `hubspot-consent-gating.spec.ts` 4/4 ✅ ; `no-hubspot-widget.spec.ts` 1/1 ✅. Branche de hotfix `hotfix/prechat-widget-open` (worktree dédié depuis `origin/main`), déploiement prod `vercel --prod --yes` validé.
+
+*[ARCHIVÉ — remplacé par l'ADR 2026-08-26 qui supprime entièrement le pré-chat].*
 
 ### 2026-08-25 — Fil d'Ariane global sur tout le site (hors accueil)
 

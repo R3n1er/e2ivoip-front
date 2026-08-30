@@ -50,6 +50,7 @@ export function HubSpotCalendar({
   const containerRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   // `data-src` doit être posé AVANT l'exécution du script : celui-ci scanne les
   // conteneurs `.meetings-iframe-container` au chargement et lit cet attribut.
@@ -82,6 +83,43 @@ export function HubSpotCalendar({
     script.onerror = () => setFailed(true);
 
     document.body.appendChild(script);
+  }, []);
+
+  // `MeetingsEmbedCode.js` injecte l'iframe directement dans le DOM du
+  // conteneur, en dehors du rendu React : sans cette détection, le message
+  // "Chargement du calendrier…" reste affiché indéfiniment par-dessus
+  // l'iframe pourtant fonctionnelle (bug observé en prod sur /3cx-cloud).
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (container.querySelector("iframe")) {
+      setLoaded(true);
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (container.querySelector("iframe")) {
+        setLoaded(true);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(container, { childList: true, subtree: true });
+
+    // Le script peut charger avec succès (`onerror` ne se déclenche pas) sans
+    // jamais injecter l'iframe : lien de meeting invalide/désactivé côté
+    // HubSpot, ou un outil de confidentialité qui laisse passer le script
+    // mais bloque l'appel réseau de l'embed. Sans ce filet, le visiteur
+    // resterait bloqué sur le spinner indéfiniment.
+    const timeout = window.setTimeout(() => {
+      if (!container.querySelector("iframe")) setFailed(true);
+    }, 15000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   return (
@@ -129,7 +167,7 @@ export function HubSpotCalendar({
                 </a>
               </div>
             </div>
-          ) : (
+          ) : !loaded ? (
             <div
               className="flex h-full items-center justify-center bg-gray-50"
               data-testid="hubspot-calendar-loading"
@@ -144,7 +182,7 @@ export function HubSpotCalendar({
                 </p>
               </div>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 

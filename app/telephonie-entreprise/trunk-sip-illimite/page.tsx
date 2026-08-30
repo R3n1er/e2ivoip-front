@@ -1,32 +1,18 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PhoneCall, Timer } from '@/lib/icons';
 
-export const metadata: Metadata = {
-  title:
-    "Trunk SIP Illimité DOM - E2I VoIP | Appels Fixes Illimités France & DOM",
+export const metadata: Metadata = pageMetadata({
+  title: "Trunk SIP Illimité DOM - E2I VoIP | Appels Fixes Illimités France & DOM",
   description:
     "Trunk SIP illimité vers les fixes France métropolitaine et DOM. De 4 à 16 appels simultanés. Forfait avec fair use. Appels vers mobiles facturés au compteur. Idéal entreprises et centres d'appels.",
   keywords:
     "trunk SIP illimité, appels fixes illimités DOM, forfait téléphonie entreprise, 16 appels simultanés, VoIP illimité Guadeloupe Martinique Guyane Réunion, trunk SIP fair use",
-  openGraph: {
-    title: "Trunk SIP Illimité - Appels Fixes Illimités France & DOM",
-    description:
-      "Forfait trunk SIP illimité de 4 à 16 appels simultanés. Appels illimités vers les fixes France et DOM, mobiles au compteur.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite",
-    siteName: "E2I VoIP",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Trunk SIP Illimité - E2I VoIP",
-    description:
-      "Forfait trunk SIP illimité. Appels fixes illimités France & DOM. De 4 à 16 appels simultanés.",
-  },
-};
+  path: "/telephonie-entreprise/trunk-sip-illimite",
+});
 
 export default function TrunkSIPIllimite() {
   const forfaits = [

@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -7,22 +8,14 @@ import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 import { LegalHelpCard } from "@/components/legal/help-card";
 import { CgvContent } from "@/components/legal/cgv-content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Conditions générales de vente | E2I VoIP",
   description:
     "Conditions générales de vente d’E2I ASSISTANCE (E2I VoIP) : contrat, commande, tarifs, support, responsabilité et réversibilité.",
   keywords:
     "CGV, conditions générales de vente, E2I VoIP, contrat téléphonie, VoIP DOM",
-  alternates: {
-    canonical: "https://www.e2i-voip.com/juridique/conditions-generales-de-vente",
-  },
-  openGraph: {
-    title: "Conditions générales de vente | E2I VoIP",
-    description:
-      "Consultez et téléchargez les conditions générales de vente d’E2I VoIP.",
-    type: "website",
-  },
-};
+  path: "/juridique/conditions-generales-de-vente",
+});
 
 export default function ConditionsGeneralesVentePage() {
   return (

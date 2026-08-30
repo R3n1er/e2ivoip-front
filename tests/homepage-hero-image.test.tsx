@@ -55,19 +55,21 @@ describe("HomepageHeroSectionSimple", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /Économisez 20%/i,
+        name: /Aux Antilles-Guyane, le cuivre ferme en 2027/i,
       })
     ).toBeInTheDocument();
 
     // Badge social proof (sans doublon DOM — voir sous-titre)
     expect(
-      screen.getByText("Opérateur télécom DOM depuis 15 ans")
+      screen.getByText(
+        "Opérateur de services télécom · Antilles, Guyane, La Réunion",
+      )
     ).toBeInTheDocument();
 
     // Vérifier que la description est présente
     expect(
       screen.getByText(
-        /Trunk SIP éligible DOM • Création et portabilité de numéros locaux/
+        /Trunk SIP éligibles Antilles-Guyane et La Réunion/
       )
     ).toBeInTheDocument();
   });
@@ -99,7 +101,7 @@ describe("HomepageHeroSectionSimple", () => {
   it("affiche les boutons CTA", () => {
     render(<HomepageHeroSectionSimple />);
 
-    expect(screen.getByText("Faire un devis")).toBeInTheDocument();
+    expect(screen.getByText("Parler à un expert DOM")).toBeInTheDocument();
     expect(
       screen.getByText("Découvrez nos offres Trunk SIP")
     ).toBeInTheDocument();

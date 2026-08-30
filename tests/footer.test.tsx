@@ -48,7 +48,13 @@ beforeEach(() => {
     expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument()
   })
 
-  it('affiche le copyright annuel', () => {
-    expect(screen.getByText(/© 2025 E2I VoIP/)).toBeInTheDocument()
+  it('affiche le copyright de l\'année courante', () => {
+    // L'année est calculée dynamiquement : le test vérifie la propriété
+    // (l'année en cours s'affiche) plutôt qu'une valeur figée qui périme
+    // chaque 1er janvier.
+    const anneeCourante = new Date().getFullYear()
+    expect(
+      screen.getByText(new RegExp(`© ${anneeCourante} E2I VoIP`)),
+    ).toBeInTheDocument()
   })
 })

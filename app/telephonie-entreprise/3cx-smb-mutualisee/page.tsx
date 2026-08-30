@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
@@ -8,27 +9,14 @@ import { TALLY_FORMS } from "@/lib/constants/tally";
 // Formulaire Tally dédié à l'offre 3CX SMB PRO Mutualisé (tunnel devis).
 const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
     "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs, activation rapide, coûts optimisés. 29 €/utilisateur/mois.",
   keywords:
     "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
-  openGraph: {
-    title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
-    description:
-      "Solution 3CX hébergée mutualisée. De 3 à 10 utilisateurs. Activation rapide et coûts optimisés.",
-    type: "website",
-    locale: "fr_FR",
-    url: "https://www.e2i-voip.com/telephonie-entreprise/3cx-smb-mutualisee",
-    siteName: "E2I VoIP",
-  },
-  // Page de détail : canonical vers le hub 3CX pour éviter la cannibalisation
-  // (le hub /telephonie-3cx reste la page référencée par les moteurs).
-  alternates: {
-    canonical: "https://www.e2i-voip.com/telephonie-3cx",
-  },
-};
+  path: "/telephonie-entreprise/3cx-smb-mutualisee",
+});
 
 export default function Smb3CXMutualisee() {
   return (
