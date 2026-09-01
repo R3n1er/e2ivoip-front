@@ -229,41 +229,233 @@ export const GENERAL_FAQ: RichFaqItem[] = [
 ];
 
 /**
- * FAQ spécifique Trunk SIP au compteur (texte brut pour le JSON-LD FAQPage).
- * Le rendu visuel reste dans components/faq-trunk-sip-compteur.tsx ; ici on ne
- * garde que la version texte qui alimente le schema de la page compteur.
+ * FAQ spécifique Trunk SIP au compteur (RichFaqItem[] — rendu JSX + texte pour JSON-LD).
+ * Utilisée par le composant FaqSection sur la page /telephonie-entreprise/trunk-sip-compteur.
  */
-export const COMPTEUR_FAQ: FaqItem[] = [
+export const COMPTEUR_FAQ: RichFaqItem[] = [
   {
     question:
       "Quelle est la différence entre Trunk SIP au compteur et illimité ?",
-    answer:
+    answerText:
       "Le Trunk SIP au compteur facture uniquement vos appels émis à la seconde (idéal pour un faible volume, moins de 200 min/mois). L'offre illimitée propose un forfait fixe mensuel pour des appels illimités vers la France et les DOM (recommandée au-delà de 200 minutes/mois).",
+    answer: (
+      <p>
+        Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois),
+        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM
+        (recommandé pour plus de 200 minutes/mois).
+      </p>
+    ),
   },
   {
     question: "Puis-je garder mes numéros actuels ?",
-    answer:
+    answerText:
       "Oui. Nous gérons gratuitement la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).",
+    answer: (
+      <p>
+        <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants.
+        Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM
+        (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
+      </p>
+    ),
   },
   {
     question: "Quel équipement faut-il pour utiliser le Trunk SIP ?",
-    answer:
+    answerText:
       "Il faut un IPBX (3CX, Yeastar) ou une passerelle SIP, ainsi qu'une connexion Internet stable (ADSL/Fibre). Si vous n'en avez pas, nous proposons des solutions complètes avec l'équipement et la configuration. Marques compatibles : 3CX, Yeastar, Grandstream, Avaya, Asterisk, et d'autres.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Vous avez besoin d'un <strong>IPBX</strong> (comme 3CX, Yeastar) ou d'une <strong>passerelle SIP</strong>.
+          Si vous n'en avez pas, nous proposons des solutions complètes incluant l'équipement et la configuration.
+        </p>
+        <p>Une connexion Internet stable (ADSL/Fibre) est également requise.</p>
+        <p>
+          <strong>Marques compatibles :</strong> 3CX, Yeastar, Grandstream, Avaya, Asterisk, et bien d'autres.
+        </p>
+      </div>
+    ),
   },
   {
     question: "Le support technique est-il disponible localement ?",
-    answer:
+    answerText:
       "Oui. Nous sommes présents en Martinique, Guadeloupe et Guyane. Le support à distance est disponible du lundi au vendredi de 8h à 18h (heure locale). Numéros : Guyane 05 94 96 35 00, France 01 89 56 05 00.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui, c'est notre avantage principal !</strong> Nous sommes présents en
+          <strong> Martinique, Guadeloupe et Guyane</strong>. Support à distance du lundi au vendredi de 8h à 18h (heure locale).
+        </p>
+        <p>Gestion à distance de vos postes et de votre instance de téléphonie.</p>
+        <div className="space-y-1">
+          <p><strong>Nos numéros de support :</strong></p>
+          <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+            <li>Guyane : <a href="tel:+594****3500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">05 94 96 35 00</a></li>
+            <li>France : <a href="tel:+331****0500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">01 89 56 05 00</a></li>
+          </ul>
+        </div>
+      </div>
+    ),
   },
   {
     question: "Quelle connexion Internet est recommandée ?",
-    answer:
+    answerText:
       "Nous recommandons une fibre optique FTTO entreprise (idéal), une SDSL cuivre avec au moins 2 Mb dédiés à la VoIP, une box 4G 200 Go/illimitée en secours, ou une fibre FTTH avec priorité VoIP. La qualité de la connexion impacte directement la qualité des appels.",
+    answer: (
+      <div className="space-y-3">
+        <p><strong>Recommandations techniques :</strong></p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>Fibre optique FTTO Entreprise</strong> (idéal)</li>
+          <li><strong>SDSL Cuivre</strong> avec 2Mb dédiés à la VoIP minimum</li>
+          <li><strong>Box 4G</strong> avec forfait 200GB/illimité VoIP en secours</li>
+          <li><strong>Fibre FTTH</strong> avec priorité VoIP</li>
+        </ul>
+        <p className="text-sm text-gray-600 mt-3">
+          <strong>Important :</strong> La qualité de votre connexion Internet impacte directement
+          la qualité de vos appels. Nous vous accompagnons pour optimiser votre infrastructure.
+        </p>
+      </div>
+    ),
   },
   {
     question: "Comment fonctionne la facturation à la seconde ?",
-    answer:
+    answerText:
       "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits ; seuls les appels sortants sont facturés. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0275 € (83 s × 0,02 €/min ÷ 60).",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Avec notre <strong>Trunk SIP au compteur</strong>, vous payez uniquement vos communications réelles :
+        </p>
+        <ul className="space-y-2 text-gray-600">
+          <li className="flex items-start">
+            <span className="mr-2 mt-1">✓</span>
+            <span><strong>Facturation dès la première seconde</strong> de communication</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-1">✓</span>
+            <span><strong>Pas de minimum de facturation</strong> (pas de paliers de 30 secondes)</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-1">✓</span>
+            <span><strong>Transparence totale</strong> : facture détaillée avec chaque appel</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-1">✓</span>
+            <span><strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</span>
+          </li>
+        </ul>
+        <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-700">
+          <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
+          vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
+        </p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ Aircall (page /telephonie-entreprise/aircall). */
+export const AIRCALL_FAQ: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce qu'Aircall ?",
+    answerText:
+      "Aircall est la plateforme de communication client propulsée par l'IA, pensée pour les équipes commerciales et support modernes. Fondée à Paris en 2014, elle équipe plus de 22 000 entreprises dans 110+ pays et s'intègre nativement à plus de 200 CRM et outils métiers pour gérer appels, SMS et messages WhatsApp depuis un espace de travail unifié.",
+    answer: (
+      <p>
+        Aircall est la plateforme de communication client propulsée par l'IA, pensée pour les équipes commerciales et support modernes. Fondée à Paris en 2014, elle équipe plus de 22 000 entreprises dans 110+ pays et s'intègre nativement à plus de 200 CRM et outils métiers pour gérer appels, SMS et messages WhatsApp depuis un espace de travail unifié.
+      </p>
+    ),
+  },
+  {
+    question: "Quelle différence entre Aircall et nos solutions 3CX ou Yeastar ?",
+    answerText:
+      "3CX et Yeastar sont des standards téléphoniques (IPBX) qui équipent toute l'entreprise. Aircall est une plateforme de communication client 100 % cloud, pensée pour les équipes commerciales et support, avec une intégration native dans votre CRM. Les deux approches sont complémentaires : E2I VoIP vous conseille sur la solution la plus adaptée à votre usage.",
+    answer: (
+      <p>
+        3CX et Yeastar sont des standards téléphoniques (IPBX) qui équipent toute l'entreprise. Aircall est une plateforme de communication client 100 % cloud, pensée pour les équipes commerciales et support, avec une intégration native dans votre CRM. Les deux approches sont complémentaires : E2I VoIP vous conseille sur la solution la plus adaptée à votre usage.
+      </p>
+    ),
+  },
+  {
+    question: "Comment Aircall s'intègre-t-il à mon CRM ?",
+    answerText:
+      "Aircall propose plus de 200 intégrations natives, dont HubSpot, Salesforce, Zendesk, Pipedrive, Zoho ou Microsoft Teams. La fiche client s'ouvre à chaque appel et les données se synchronisent automatiquement. E2I VoIP paramètre l'intégration avec votre CRM de bout en bout.",
+    answer: (
+      <p>
+        Aircall propose plus de 200 intégrations natives, dont HubSpot, Salesforce, Zendesk, Pipedrive, Zoho ou Microsoft Teams. La fiche client s'ouvre à chaque appel et les données se synchronisent automatiquement. E2I VoIP paramètre l'intégration avec votre CRM de bout en bout.
+      </p>
+    ),
+  },
+  {
+    question: "Puis-je avoir des numéros locaux dans les DOM avec Aircall ?",
+    answerText:
+      "Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.",
+    answer: (
+      <p>
+        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.
+      </p>
+    ),
+  },
+  {
+    question: "Combien coûte Aircall avec E2I VoIP ?",
+    answerText:
+      "La tarification dépend du nombre d'utilisateurs, des intégrations et de l'accompagnement souhaité. Nous établissons un devis personnalisé après l'étude de votre projet.",
+    answer: (
+      <p>
+        La tarification dépend du nombre d'utilisateurs, des intégrations et de l'accompagnement souhaité. Nous établissons un devis personnalisé après l'étude de votre projet.
+      </p>
+    ),
+  },
+];
+
+/** FAQ Devis en ligne (page /devis-en-ligne). */
+export const DEVIS_FAQ: RichFaqItem[] = [
+  {
+    question: "Quel est le délai moyen pour obtenir un devis personnalisé ?",
+    answerText:
+      "Nous traitons votre demande de devis du lundi au vendredi. Si votre formulaire est complet, vous recevrez une proposition sous 24 heures ouvrées. Si des informations complémentaires sont nécessaires, notre équipe vous contactera rapidement pour affiner votre demande.",
+    answer: (
+      <p>
+        Nous traitons votre demande de devis du lundi au vendredi. Si votre formulaire est complet,
+        vous recevrez une proposition sous 24 heures ouvrées. Si des informations complémentaires
+        sont nécessaires, notre équipe vous contactera rapidement pour affiner votre demande.
+      </p>
+    ),
+  },
+  {
+    question: "Quelles différences entre un Trunk SIP 'au compteur' et 'illimité' ?",
+    answerText:
+      "Nous recommandons systématiquement à nos clients des Trunk SIP au compteur, soigneusement dimensionnés pour correspondre à leur consommation réelle. Cette solution offre l'avantage de ne payer que les appels effectués, ce qui est particulièrement adapté aux PME ayant un volume d'appels variable.",
+    answer: (
+      <p>
+        Nous recommandons systématiquement à nos clients des Trunk SIP au compteur, soigneusement
+        dimensionnés pour correspondre à leur consommation réelle. Cette solution offre l'avantage
+        de ne payer que les appels effectués, ce qui est particulièrement adapté aux PME ayant un
+        volume d'appels variable.
+      </p>
+    ),
+  },
+  {
+    question: "Puis-je conserver mes numéros actuels avec votre solution ?",
+    answerText:
+      "Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous proposons des solutions flexibles adaptées à votre infrastructure existante.",
+    answer: (
+      <p>
+        Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et
+        dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous
+        proposons des solutions flexibles adaptées à votre infrastructure existante.
+      </p>
+    ),
+  },
+  {
+    question: "Quel débit internet est nécessaire pour une qualité d'appel optimale ?",
+    answerText:
+      "Pour bénéficier d'une qualité d'appel optimale avec nos solutions de téléphonie IP, votre accès Internet doit être conforme à nos spécifications techniques. Nous acceptons les connexions Fibre, 4G, 5G et Starlink. Le débit nécessaire est de 100 Kbps par appel simultané.",
+    answer: (
+      <p>
+        Pour bénéficier d'une qualité d'appel optimale avec nos solutions de téléphonie IP, votre
+        accès Internet doit être conforme à nos spécifications techniques. Nous acceptons les
+        connexions Fibre, 4G, 5G et Starlink. Le débit nécessaire est de 100 Kbps par appel simultané.
+      </p>
+    ),
   },
 ];
 

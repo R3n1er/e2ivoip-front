@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/page-metadata";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import WorkingFAQ from "@/components/faq-working";
 import Link from "next/link";
 import Script from "next/script";
 import { CTAButton } from "@/components/ui/cta-button";
@@ -10,9 +9,8 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Phone, Chat } from '@/lib/icons';
-import { JsonLd } from "@/components/seo/json-ld";
-import { faqPageSchema } from "@/lib/structured-data";
-import { GENERAL_FAQ, toFaqSchemaItems } from "@/lib/faq-data";
+import { FaqSection } from "@/components/faq-section";
+import { GENERAL_FAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = pageMetadata({
   title: "Assistance & Support | Support technique DOM",
@@ -26,7 +24,6 @@ export const metadata: Metadata = pageMetadata({
 export default function AssistancePage() {
   return (
     <div className="min-h-screen">
-      <JsonLd data={faqPageSchema(toFaqSchemaItems(GENERAL_FAQ))} />
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-red-primary to-blue-marine overflow-hidden">
         <div className="absolute inset-0">
@@ -123,7 +120,7 @@ export default function AssistancePage() {
       {/* FAQ */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <WorkingFAQ />
+          <FaqSection items={GENERAL_FAQ} title="Questions fréquentes" />
         </div>
       </section>
 
