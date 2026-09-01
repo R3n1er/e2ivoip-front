@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { FaqSection } from "@/components/faq-section";
+import { FAQ_PBX_YEASTAR } from "@/lib/faq-data";
 import { Calculator, Phone, Chat, CheckCircle, Shield, TrendUp, Cloud, HardDrive, Rocket, Compass, Desktop, Users, Pulse, Buildings, Headphones, VideoCamera, Database, DeviceMobile, WhatsappLogo, Microphone, PlugCharging, MicrosoftTeamsLogo, Gear, HeartbeatIcon, Briefcase, ShoppingCart } from '@/lib/icons';
 import { TALLY_FORMS } from "@/lib/constants/tally";
 
@@ -899,6 +901,9 @@ export default function PBXYeastar() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <FaqSection items={FAQ_PBX_YEASTAR} title="Questions fréquentes sur les PBX Yeastar" />
       </main>
     </div>
   );

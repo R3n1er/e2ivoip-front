@@ -4,6 +4,8 @@ import NextLink from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { FaqSection } from "@/components/faq-section";
+import { FAQ_3CX } from "@/lib/faq-data";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Calculator, Phone, CheckCircle, Shield, Users, Compass, X, VideoCamera, Chat, Lightning, DeviceMobile, Link, Headphones, TrendUp, Seal } from '@/lib/icons';
@@ -696,6 +698,7 @@ export default function Telephonie3CX() {
         </section>
 
         {/* Contact */}
+        <FaqSection items={FAQ_3CX} title="Questions fréquentes sur 3CX" />
         <ContactSectionSimple />
       </main>
     </div>

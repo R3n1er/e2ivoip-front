@@ -3,6 +3,8 @@ import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { FaqSection } from "@/components/faq-section";
+import { FAQ_TRUNK_ILLIMITE } from "@/lib/faq-data";
 import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, Info, Calculator, MapPin, TrendUp, Rocket, PhoneCall, Timer } from '@/lib/icons';
 
 export const metadata: Metadata = pageMetadata({
@@ -532,6 +534,9 @@ export default function TrunkSIPIllimite() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <FaqSection items={FAQ_TRUNK_ILLIMITE} title="Questions fréquentes sur le Trunk SIP Illimité" />
       </main>
     </div>
   );
