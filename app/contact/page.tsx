@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SafeImage as Image } from "@/components/ui/safe-image";
-import WorkingFAQ from "@/components/faq-working";
+import { FaqSection } from "@/components/faq-section";
+import { GENERAL_FAQ } from "@/lib/faq-data";
 import { InlineContactForm } from "@/components/hubspot";
 import { LinkedinLogo, Phone, WhatsappLogo, MapPin } from "@/lib/icons";
 
@@ -356,7 +357,7 @@ export default function ContactPage() {
       {/* FAQ */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <WorkingFAQ />
+          <FaqSection items={GENERAL_FAQ} title="Questions fréquentes" />
         </div>
       </section>
     </>

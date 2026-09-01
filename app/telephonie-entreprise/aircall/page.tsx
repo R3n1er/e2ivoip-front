@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { JsonLd } from "@/components/seo/json-ld";
+import { FaqSection } from "@/components/faq-section";
 import {
   CheckCircle,
   Shield,
@@ -18,6 +18,7 @@ import {
   Medal,
 } from "@/lib/icons";
 import { TALLY_FORMS } from "@/lib/constants/tally";
+import { AIRCALL_FAQ } from "@/lib/faq-data";
 
 // ⚠️ ATTRIBUTION COMMERCIALE — voir docs/CHARTE_EDITORIALE_AIRCALL.md §8
 // Remplacer par le lien PartnerStack d'E2I (https://aircall.partnerstack.com/?fpr=ID-E2I)
@@ -101,48 +102,8 @@ export default function AircallPage() {
     },
   ];
 
-  const faq = [
-    {
-      question: "Qu'est-ce qu'Aircall ?",
-      answer:
-        "Aircall est la plateforme de communication client propulsée par l'IA, pensée pour les équipes commerciales et support modernes. Fondée à Paris en 2014, elle équipe plus de 22 000 entreprises dans 110+ pays et s'intègre nativement à plus de 200 CRM et outils métiers pour gérer appels, SMS et messages WhatsApp depuis un espace de travail unifié.",
-    },
-    {
-      question: "Quelle différence entre Aircall et nos solutions 3CX ou Yeastar ?",
-      answer:
-        "3CX et Yeastar sont des standards téléphoniques (IPBX) qui équipent toute l'entreprise. Aircall est une plateforme de communication client 100 % cloud, pensée pour les équipes commerciales et support, avec une intégration native dans votre CRM. Les deux approches sont complémentaires : E2I VoIP vous conseille sur la solution la plus adaptée à votre usage.",
-    },
-    {
-      question: "Comment Aircall s'intègre-t-il à mon CRM ?",
-      answer:
-        "Aircall propose plus de 200 intégrations natives, dont HubSpot, Salesforce, Zendesk, Pipedrive, Zoho ou Microsoft Teams. La fiche client s'ouvre à chaque appel et les données se synchronisent automatiquement. E2I VoIP paramètre l'intégration avec votre CRM de bout en bout.",
-    },
-    {
-      question: "Puis-je avoir des numéros locaux dans les DOM avec Aircall ?",
-      answer:
-        "Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.",
-    },
-    {
-      question: "Combien coûte Aircall avec E2I VoIP ?",
-      answer:
-        "La tarification dépend du nombre d'utilisateurs, des intégrations et de l'accompagnement souhaité. Nous établissons un devis personnalisé après l'étude de votre projet.",
-    },
-  ];
-
-  // Données structurées AEO — schema FAQPage (voir docs/CHARTE_EDITORIALE_AIRCALL.md §6)
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faq.map(({ question, answer }) => ({
-      "@type": "Question",
-      name: question,
-      acceptedAnswer: { "@type": "Answer", text: answer },
-    })),
-  };
-
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={faqJsonLd} />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
@@ -490,27 +451,7 @@ export default function AircallPage() {
 
         {/* FAQ */}
         <section className="bg-white py-16">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
-                Questions <span className="text-red-primary">fréquentes</span>
-              </h2>
-            </div>
-
-            <div className="space-y-4">
-              {faq.map(({ question, answer }) => (
-                <div
-                  key={question}
-                  className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
-                >
-                  <h3 className="text-lg font-semibold text-gray-dark">
-                    {question}
-                  </h3>
-                  <p className="mt-2 text-base text-gray-600">{answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <FaqSection items={AIRCALL_FAQ} title="Questions fréquentes" />
         </section>
 
         {/* CTA finale */}

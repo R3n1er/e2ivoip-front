@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
-import TrunkSipCompteurFAQ from "@/components/faq-trunk-sip-compteur";
+import { FaqSection } from "@/components/faq-section";
 import { ClientsCarousel } from "@/components/clients-carousel";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 // Tally embed inséré en iframe (pas de popup)
 import { TallyEmbedTarifs } from "@/components/tally-embed-tarifs";
 import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure, ArrowRight, Timer, Shield } from '@/lib/icons';
 import { JsonLd } from "@/components/seo/json-ld";
-import { faqPageSchema, serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { COMPTEUR_FAQ } from "@/lib/faq-data";
 
 export const metadata: Metadata = pageMetadata({
@@ -31,7 +31,6 @@ export default function TrunkSIPCompteur() {
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={faqPageSchema(COMPTEUR_FAQ)} />
       <JsonLd
         data={serviceSchema({
           name: "Trunk SIP au compteur DOM",
@@ -354,7 +353,7 @@ export default function TrunkSIPCompteur() {
         {/* FAQ */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <TrunkSipCompteurFAQ />
+            <FaqSection items={COMPTEUR_FAQ} title="Questions fréquentes" />
           </div>
         </section>
 

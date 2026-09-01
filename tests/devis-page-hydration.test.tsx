@@ -86,7 +86,8 @@ describe("Page Devis En Ligne - Test d'hydratation", () => {
   it("affiche la section FAQ", () => {
     render(<DevisEnLignePage />);
 
-    expect(screen.getByText("F.A.Q")).toBeInTheDocument();
+    expect(screen.getByText(/Questions/)).toBeInTheDocument();
+    expect(screen.getByText(/fréquentes/)).toBeInTheDocument();
     expect(screen.getByText(/Quel est le délai moyen/)).toBeInTheDocument();
   });
 

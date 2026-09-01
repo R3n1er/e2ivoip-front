@@ -24,16 +24,16 @@ jest.mock("@/components/secure-email", () => ({
   ),
 }));
 
-// Mock WorkingFAQ component
-jest.mock("@/components/faq-working", () => {
-  const WorkingFAQ = () => (
-    <div data-testid="working-faq">
+// Mock FaqSection component (replaces old WorkingFAQ mock)
+jest.mock("@/components/faq-section", () => {
+  const FaqSection = () => (
+    <div data-testid="faq-section">
       <span role="img" aria-label="FAQ">❓</span>
       FAQ Component
     </div>
   );
-  WorkingFAQ.displayName = "WorkingFAQ";
-  return WorkingFAQ;
+  FaqSection.displayName = "FaqSection";
+  return { FaqSection, default: FaqSection };
 });
 
 describe("Page Contact - DaisyUI Migration", () => {
@@ -179,7 +179,7 @@ describe("Page Contact - DaisyUI Migration", () => {
     render(<ContactPage />);
     
     // Vérifier que le composant FAQ est présent
-    expect(screen.getByTestId("working-faq")).toBeInTheDocument();
+    expect(screen.getByTestId("faq-section")).toBeInTheDocument();
   });
 
   test("La structure responsive est maintenue", () => {
