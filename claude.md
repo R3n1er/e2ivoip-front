@@ -40,6 +40,35 @@ est abandonné pour ce projet.
 4. Pre-push : `npm run validate` obligatoire (6 contrôles — bloquer si 1 échoue)
 5. TDD : RED → GREEN → REFACTOR → DOCUMENT → COMMIT → PR
 6. **Pull Request obligatoire** : toute modif passe par une branche dédiée → PR vers `dev` (`gh pr create --base dev`). Jamais de commit direct sur `dev` ou `main`. Le merge est fait par l'agent **sur demande d'Alban**, jamais de sa propre initiative — et uniquement si les checks CI sont verts. Squash pour `→ dev`, merge classique pour `dev → main`. Détail : `agents.md` § « Livraison par Pull Request »
+7. **Claudex-Loop : sur demande explicite uniquement** — jamais de sa propre initiative. Voir § « Claudex-Loop » ci-dessous.
+
+## Claudex-Loop (plan durci avant grosse feature)
+
+Plugin installé (`.claude/settings.json`). Fait relire un plan par **Codex (OpenAI)** en lecture
+seule avant d'écrire du code — celui qui construit ne note jamais son propre travail.
+
+**Déclenchement : uniquement quand Alban le demande** (`/claudex-loop`, « passe ça au claudex »).
+L'agent ne le lance jamais spontanément, même sur une grosse feature.
+
+| Utiliser pour | Ne pas utiliser pour |
+|---|---|
+| Nouvelle page ou refonte complète | Correction de texte, couleur, typo |
+| Migration SEO structurelle (ex. renommage de route) | Ajustement de composant existant |
+| Intégration externe (HubSpot, API tierce) | Bugfix localisé |
+| Changement d'architecture ou de schéma de données | Mise à jour de dépendance |
+
+**Place dans le workflow** — en amont du cycle TDD, jamais à la place :
+
+```
+/claudex-loop → PLAN.md validé → RED → GREEN → REFACTOR → DOCUMENT → COMMIT → PR
+```
+
+**Sorties** : `PLAN.md` (la décision) + `PLAN-REVIEW-LOG.md` (le débat Claude ↔ Codex).
+Les décisions structurantes qui en sortent sont reportées dans `docs/ADR.md`.
+
+**Prérequis** (vérifiés OK) : Codex CLI ≥ 0.130, `codex login` effectué, projet déclaré
+`trusted` dans `~/.codex/config.toml`. En cas d'échec d'un round sur une erreur de modèle,
+retirer la ligne `model = "..."` de `~/.codex/config.toml`.
 
 ## Permissions
 

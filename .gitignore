@@ -149,3 +149,8 @@ tsconfig.tsbuildinfo
 .worktrees/
 .vercel
 .env*
+
+# Claudex-Loop : artefacts de plan (transient, écrasés à chaque run)
+# Les décisions durables sont reportées dans docs/ADR.md
+PLAN.md
+PLAN-REVIEW-LOG.md
