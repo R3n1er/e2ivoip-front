@@ -459,6 +459,480 @@ export const DEVIS_FAQ: RichFaqItem[] = [
   },
 ];
 
+/** FAQ 3CX — page /telephonie-3cx */
+export const FAQ_3CX: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce que 3CX et pourquoi choisir cette solution ?",
+    answerText:
+      "3CX est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud. Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP. E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>3CX</strong> est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard
+          téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud.
+        </p>
+        <p>
+          Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP.
+          E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Quels téléphones et appareils sont compatibles avec 3CX ?",
+    answerText:
+      "3CX est compatible avec la plupart des téléphones IP du marché (Fanvil, Yealink, Grandstream, Snom) ainsi que les softphones 3CX gratuits pour Windows, Mac, iOS et Android. Vous pouvez aussi utiliser un casque USB. Si vous avez déjà des téléphones IP, ils sont probablement compatibles.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          3CX est compatible avec la plupart des téléphones IP du marché : <strong>Fanvil, Yealink,
+          Grandstream, Snom</strong> et bien d'autres.
+        </p>
+        <p>
+          Les softphones 3CX sont <strong>gratuits</strong> pour Windows, Mac, iOS et Android. Vous pouvez
+          aussi utiliser un casque USB pour passer et recevoir vos appels depuis votre ordinateur.
+        </p>
+        <p>Si vous avez déjà des téléphones IP, ils sont probablement compatibles — contactez-nous pour vérifier.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Combien de temps faut-il pour installer 3CX ?",
+    answerText:
+      "L'installation d'un système 3CX prend généralement entre 1 et 3 jours selon le nombre de postes et la complexité de votre configuration (groupes d'appels, files d'attente, IVR). E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros et formation de vos équipes.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          L'installation prend généralement <strong>entre 1 et 3 jours</strong> selon le nombre de postes et
+          la complexité de votre configuration (groupes d'appels, files d'attente, IVR).
+        </p>
+        <p>
+          E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros
+          et formation de vos équipes.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Puis-je garder mes numéros actuels avec 3CX ?",
+    answerText:
+      "Oui, nous prenons en charge la portabilité de vos numéros fixes et mobiles en France métropolitaine et dans les DOM-TOM. Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans interruption de service.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui</strong>, nous prenons en charge la portabilité de vos numéros fixes et mobiles en
+          France métropolitaine et dans les DOM-TOM.
+        </p>
+        <p>
+          Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans
+          interruption de service.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Quel support technique E2I propose-t-il pour 3CX ?",
+    answerText:
+      "E2I propose un support technique local en Martinique, Guadeloupe et Guyane, du lundi au vendredi de 8h à 18h. Nous gérons à distance vos postes et votre instance 3CX. Nous sommes certifiés 3CX et assurons l'installation, la configuration et la maintenance de votre système.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          E2I propose un support technique <strong>local</strong> en Martinique, Guadeloupe et Guyane, du
+          lundi au vendredi de 8h à 18h.
+        </p>
+        <p>
+          Nous gérons à distance vos postes et votre instance 3CX. Nous sommes <strong>certifiés 3CX</strong> et
+          assurons l'installation, la configuration et la maintenance de votre système.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Comment se passe la migration depuis mon ancien standard ?",
+    answerText:
+      "E2I accompagne la migration depuis votre ancien standard (PBX classique, autre IPBX) vers 3CX. Nous auditons votre installation actuelle, planifions la migration sans coupure, portons vos numéros et configurons les fonctionnalités équivalentes (groups, IVR, files d'attente). La transition est transparente pour vos collaborateurs.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          E2I accompagne la migration depuis votre ancien standard (PBX classique, autre IPBX) vers 3CX.
+        </p>
+        <p>Nous auditons votre installation actuelle, planifions la migration <strong>sans coupure</strong>,
+          portons vos numéros et configurons les fonctionnalités équivalentes (groups, IVR, files d'attente).</p>
+        <p>La transition est transparente pour vos collaborateurs.</p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ Téléphonie Entreprise — page /telephonie-entreprise (hub) */
+export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce que la téléphonie d'entreprise IP ?",
+    answerText:
+      "La téléphonie d'entreprise IP (VoIP) utilise votre connexion Internet pour passer et recevoir des appels, remplaçant les lignes téléphoniques traditionnelles. Elle offre plus de flexibilité, des coûts réduits et des fonctionnalités avancées (transfert, conférence, IVR, mobilité) accessibles depuis un PC, smartphone ou téléphone IP.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          La téléphonie d'entreprise IP (VoIP) utilise votre <strong>connexion Internet</strong> pour passer
+          et recevoir des appels, remplaçant les lignes téléphoniques traditionnelles.
+        </p>
+        <p>
+          Elle offre plus de flexibilité, des coûts réduits et des fonctionnalités avancées : transfert,
+          conférence, IVR, mobilité — accessibles depuis un PC, smartphone ou téléphone IP.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Quels sont les avantages par rapport à un standard traditionnel ?",
+    answerText:
+      "La téléphonie IP supprime les contraintes matérielles (pas de carte T2/E1), réduit les coûts (appels via Internet), permet la mobilité (appels depuis n'importe où), et s'adapte à la croissance de l'entreprise (ajout de postes en quelques clics). Elle inclut aussi des fonctionnalités modernes : intégration CRM, vidéo, chat, présence.",
+    answer: (
+      <div className="space-y-3">
+        <p>La téléphonie IP offre des avantages majeurs :</p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>Coûts réduits</strong> — appels via Internet, pas de lignes téléphoniques dédiées</li>
+          <li><strong>Mobilité</strong> — passez vos appels depuis n'importe où</li>
+          <li><strong>Évolutivité</strong> — ajout de postes en quelques clics</li>
+          <li><strong>Fonctionnalités modernes</strong> — intégration CRM, vidéo, chat, présence</li>
+          <li><strong>Pas de contraintes matérielles</strong> — pas de carte T2/E1 à installer</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    question: "Quelles solutions E2I propose-t-elle pour la téléphonie d'entreprise ?",
+    answerText:
+      "E2I propose plusieurs solutions : 3CX (IPBX logiciel), PBX Yeastar (IPBX matériel), Trunk SIP (au compteur ou illimité pour relier votre IPBX existant), et 3CX SMB mutualisée pour les TPE. Nous adaptons la solution à vos besoins, votre budget et votre infrastructure existante.",
+    answer: (
+      <div className="space-y-3">
+        <p>E2I propose plusieurs solutions adaptées à chaque besoin :</p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>3CX</strong> — IPBX logiciel, idéal pour PME</li>
+          <li><strong>PBX Yeastar</strong> — IPBX matériel, robuste et autonome</li>
+          <li><strong>Trunk SIP</strong> — au compteur ou illimité, pour relier votre IPBX existant</li>
+          <li><strong>3CX SMB mutualisée</strong> — solution légère pour TPE</li>
+        </ul>
+        <p>Nous adaptons la solution à vos besoins, votre budget et votre infrastructure existante.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Comment choisir la bonne solution pour mon entreprise ?",
+    answerText:
+      "Le choix dépend de votre nombre de collaborateurs, votre volume d'appels, votre infrastructure existante et votre budget. Pour une TPE : 3CX SMB mutualisée. Pour une PME : 3CX ou Yeastar avec Trunk SIP. Pour une structure avec un IPBX existant : Trunk SIP seul. Contactez-nous pour un audit gratuit et un devis personnalisé.",
+    answer: (
+      <div className="space-y-3">
+        <p>Le choix dépend de plusieurs critères :</p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>TPE</strong> : 3CX SMB mutualisée — solution légère et économique</li>
+          <li><strong>PME</strong> : 3CX ou Yeastar avec Trunk SIP</li>
+          <li><strong>IPBX existant</strong> : Trunk SIP seul pour vos appels sortants</li>
+        </ul>
+        <p>Contactez-nous pour un audit gratuit et un devis personnalisé.</p>
+      </div>
+    ),
+  },
+  {
+    question: "E2I est-elle compatible avec mon opérateur actuel ?",
+    answerText:
+      "Oui. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs proposant un service SIP. Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros fixes et mobiles sans interruption.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui</strong>. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs
+          proposant un service SIP.
+        </p>
+        <p>
+          Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros
+          fixes et mobiles sans interruption.
+        </p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ Trunk SIP Illimité — page /telephonie-entreprise/trunk-sip-illimite */
+export const FAQ_TRUNK_ILLIMITE: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce qu'un Trunk SIP illimité ?",
+    answerText:
+      "Un Trunk SIP illimité est une liaison VoIP qui vous permet de passer un nombre illimité d'appels vers les fixes et mobiles en France métropolitaine et DOM-TOM, pour un coût mensuel fixe. Il se connecte à votre IPBX (3CX, Yeastar, Asterisk) et remplace vos abonnements téléphoniques traditionnels.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Un <strong>Trunk SIP illimité</strong> est une liaison VoIP qui vous permet de passer un nombre
+          <strong> illimité d'appels</strong> vers les fixes et mobiles en France métropolitaine et DOM-TOM,
+          pour un coût mensuel fixe.
+        </p>
+        <p>
+          Il se connecte à votre IPBX (3CX, Yeastar, Asterisk) et remplace vos abonnements téléphoniques
+          traditionnels.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Trunk SIP illimité ou au compteur : que choisir ?",
+    answerText:
+      "Le Trunk SIP illimité est intéressant si vous avez un volume d'appels important et régulier. Le Trunk SIP au compteur, où vous ne payez que les appels effectués, est souvent plus avantageux pour les PME ayant un volume variable. E2I vous aide à choisir en fonction de votre consommation réelle — demandez une étude personnalisée.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Le <strong>Trunk SIP illimité</strong> est intéressant si vous avez un volume d'appels important et
+          régulier.
+        </p>
+        <p>
+          Le <strong>Trunk SIP au compteur</strong>, où vous ne payez que les appels effectués, est souvent
+          plus avantageux pour les PME ayant un volume variable.
+        </p>
+        <p>E2I vous aide à choisir en fonction de votre consommation réelle — demandez une étude personnalisée.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Le Trunk SIP illimité est-il compatible avec mon PBX ?",
+    answerText:
+      "Oui, notre Trunk SIP est compatible avec 3CX, Yeastar, Asterisk, Grandstream, Avaya et la plupart des IPBX du marché supportant le protocole SIP standard. Si vous avez un doute sur la compatibilité, contactez-nous pour vérification.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Oui, notre Trunk SIP est compatible avec <strong>3CX, Yeastar, Asterisk, Grandstream, Avaya</strong> et
+          la plupart des IPBX du marché supportant le protocole SIP standard.
+        </p>
+        <p>Si vous avez un doute sur la compatibilité, contactez-nous pour vérification.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Quelle est la qualité d'appel avec le Trunk SIP illimité ?",
+    answerText:
+      "La qualité d'appel dépend de votre connexion Internet. Nous recommandons la fibre optique (FTTO ou FTTH) pour une qualité optimale. Le codec G.711 assure une qualité voix identique au RTC. Nous surveillons en permanence la qualité de nos Trunks SIP et garantissons un taux de disponibilité élevé.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          La qualité d'appel dépend de votre connexion Internet. Nous recommandons la <strong>fibre
+          optique</strong> (FTTO ou FTTH) pour une qualité optimale.
+        </p>
+        <p>
+          Le codec <strong>G.711</strong> assure une qualité voix identique au RTC. Nous surveillons en
+          permanence la qualité de nos Trunks SIP et garantissons un taux de disponibilité élevé.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Combien de canaux simultanés sont inclus ?",
+    answerText:
+      "Le Trunk SIP illimité inclut un nombre de canaux simultanés défini selon votre forfait. Les appels illimités couvrent les fixes et mobiles en France métropolitaine et DOM-TOM. Pour les appels internationaux, un forfait au compteur est ajouté. Contactez-nous pour définir le nombre de canaux adapté à votre activité.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Le Trunk SIP illimité inclut un nombre de <strong>canaux simultanés</strong> défini selon votre
+          forfait.
+        </p>
+        <p>
+          Les appels illimités couvrent les <strong>fixes et mobiles en France métropolitaine et DOM-TOM</strong>.
+          Pour les appels internationaux, un forfait au compteur est ajouté.
+        </p>
+        <p>Contactez-nous pour définir le nombre de canaux adapté à votre activité.</p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ 3CX SMB Mutualisée — page /telephonie-entreprise/3cx-smb-mutualisee */
+export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce que 3CX SMB mutualisée ?",
+    answerText:
+      "3CX SMB mutualisée est une solution de téléphonie IP hébergée sur une infrastructure mutualisée. Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) sans héberger le serveur chez vous. E2I gère l'infrastructure, vous ne gérez que vos postes. Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie IP hébergée sur une
+          infrastructure mutualisée.
+        </p>
+        <p>
+          Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) <strong>sans héberger le serveur
+          chez vous</strong>. E2I gère l'infrastructure, vous ne gérez que vos postes.
+        </p>
+        <p>Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
+    answerText:
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale jusqu'à 10-15 postes, le dédié au-delà.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Avec <strong>3CX SMB mutualisée</strong>, l'infrastructure est partagée entre plusieurs clients :
+        </p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li>Coût réduit</li>
+          <li>Mise en service rapide</li>
+          <li>Maintenance incluse</li>
+        </ul>
+        <p>
+          Avec <strong>3CX dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
+          avancée, capacité supérieure.
+        </p>
+        <p>La mutualisée est idéale jusqu'à 10-15 postes, le dédié au-delà.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Pour qui est destinée la solution 3CX SMB mutualisée ?",
+    answerText:
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (1 à 15 postes) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (1 à 15 postes) qui veulent une
+          téléphonie professionnelle sans gérer de serveur.
+        </p>
+        <p>
+          Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels
+          depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Mes données sont-elles sécurisées en mutualisé ?",
+    answerText:
+      "Oui. Chaque client a son propre environnement isolé. Les données d'appels, configurations et journaux sont séparés entre les clients. L'accès à votre interface d'administration est protégé par mot de passe et chiffrement. E2I applique les mises à jour de sécurité 3CX régulièrement.",
+    answer: (
+      <div className="space-y-3">
+        <p><strong>Oui</strong>. Chaque client a son propre <strong>environnement isolé</strong>.</p>
+        <p>
+          Les données d'appels, configurations et journaux sont séparés entre les clients. L'accès à votre
+          interface d'administration est protégé par mot de passe et chiffrement.
+        </p>
+        <p>E2I applique les mises à jour de sécurité 3CX régulièrement.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Puis-je migrer de 3CX SMB mutualisée vers un 3CX dédié ?",
+    answerText:
+      "Oui, la migration de 3CX SMB mutualisée vers une instance dédiée est possible à tout moment. E2I gère la transition sans interruption : export de votre configuration, déploiement de l'instance dédiée, bascule des canaux SIP. C'est une évolution naturelle quand votre entreprise grandit.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui</strong>, la migration de 3CX SMB mutualisée vers une instance dédiée est possible à
+          tout moment.
+        </p>
+        <p>
+          E2I gère la transition sans interruption : export de votre configuration, déploiement de l'instance
+          dédiée, bascule des canaux SIP.
+        </p>
+        <p>C'est une évolution naturelle quand votre entreprise grandit.</p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ PBX Yeastar — page /telephonie-entreprise/pbx-yeastar */
+export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce qu'un PBX Yeastar ?",
+    answerText:
+      "Un PBX Yeastar est un standard téléphonique IP matériel (IPBX) fabriqué par Yeastar, leader des solutions de communications unifiées. Il s'installe dans vos locaux et gère tous vos appels. Contrairement à un IPBX logiciel, le Yeastar est un appareil autonome avec son propre système d'exploitation. E2I est partenaire Yeastar et assure vente, installation et support.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Un <strong>PBX Yeastar</strong> est un standard téléphonique IP matériel (IPBX) fabriqué par Yeastar,
+          leader des solutions de communications unifiées.
+        </p>
+        <p>
+          Il s'installe dans vos locaux et gère tous vos appels. Contrairement à un IPBX logiciel, le Yeastar
+          est un appareil <strong>autonome</strong> avec son propre système d'exploitation.
+        </p>
+        <p>E2I est partenaire Yeastar et assure vente, installation et support.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Pourquoi choisir Yeastar plutôt que 3CX ?",
+    answerText:
+      "Yeastar est un IPBX matériel — il fonctionne de manière autonome, sans dépendre d'un serveur Windows/Linux. Il est idéal si vous voulez une solution robuste, peu gourmande en ressources, qui tourne 24/7 sans intervention. 3CX est un logiciel plus flexible et évolutif. Le choix dépend de vos préférences : matériel autonome (Yeastar) vs logiciel flexible (3CX).",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Yeastar est un <strong>IPBX matériel</strong> — il fonctionne de manière autonome, sans dépendre
+          d'un serveur Windows/Linux.
+        </p>
+        <p>Il est idéal si vous voulez une solution :</p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>Robuste</strong> et peu gourmande en ressources</li>
+          <li>Qui tourne <strong>24/7</strong> sans intervention</li>
+          <li><strong>Autonome</strong> sans dépendance serveur</li>
+        </ul>
+        <p>
+          3CX est un logiciel plus flexible et évolutif. Le choix dépend de vos préférences : matériel autonome
+          (Yeastar) vs logiciel flexible (3CX).
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Quels modèles Yeastar sont disponibles chez E2I ?",
+    answerText:
+      "E2I propose plusieurs modèles Yeastar selon la taille de votre entreprise : P-Series pour les PME (20 à 200 postes), S-Series pour les petites entreprises (jusqu'à 100 postes). Chaque modèle supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour déterminer le modèle adapté à vos besoins.",
+    answer: (
+      <div className="space-y-3">
+        <p>E2I propose plusieurs modèles Yeastar selon la taille de votre entreprise :</p>
+        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <li><strong>P-Series</strong> — PME (20 à 200 postes)</li>
+          <li><strong>S-Series</strong> — petites entreprises (jusqu'à 100 postes)</li>
+        </ul>
+        <p>
+          Chaque modèle supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour
+          déterminer le modèle adapté à vos besoins.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Le PBX Yeastar est-il compatible avec les opérateurs SIP ?",
+    answerText:
+      "Oui, le PBX Yeastar est compatible avec tous les opérateurs proposant un service SIP standard. E2I fournit son propre Trunk SIP (au compteur ou illimité) mais vous pouvez aussi utiliser un opérateur tiers. La configuration des trunks SIP se fait via l'interface web du Yeastar.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui</strong>, le PBX Yeastar est compatible avec tous les opérateurs proposant un service
+          SIP standard.
+        </p>
+        <p>
+          E2I fournit son propre <strong>Trunk SIP</strong> (au compteur ou illimité) mais vous pouvez aussi
+          utiliser un opérateur tiers.
+        </p>
+        <p>La configuration des trunks SIP se fait via l'interface web du Yeastar.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Quel support E2I propose-t-elle pour les PBX Yeastar ?",
+    answerText:
+      "E2I est partenaire Yeastar et propose un support complet : installation, configuration, maintenance et mise à jour. Support local en Martinique, Guadeloupe et Guyane du lundi au vendredi de 8h à 18h. Nous gérons à distance votre PBX et assurons les évolutions de firmware.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          E2I est <strong>partenaire Yeastar</strong> et propose un support complet : installation,
+          configuration, maintenance et mise à jour.
+        </p>
+        <p>
+          Support <strong>local</strong> en Martinique, Guadeloupe et Guyane, du lundi au vendredi de 8h à 18h.
+        </p>
+        <p>Nous gérons à distance votre PBX et assurons les évolutions de firmware.</p>
+      </div>
+    ),
+  },
+];
+
 /** Extrait les paires Q/R en texte brut pour le JSON-LD FAQPage. */
 export function toFaqSchemaItems(items: RichFaqItem[]): FaqItem[] {
   return items.map(({ question, answerText }) => ({
