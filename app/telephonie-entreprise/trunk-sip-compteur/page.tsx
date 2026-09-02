@@ -353,7 +353,11 @@ export default function TrunkSIPCompteur() {
         {/* FAQ */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <FaqSection items={COMPTEUR_FAQ} title="Questions fréquentes" />
+            <FaqSection
+              items={COMPTEUR_FAQ}
+              title="Questions fréquentes"
+              subtitle="Tout ce qu'il faut savoir sur notre Trunk SIP au compteur DOM"
+            />
           </div>
         </section>
 

@@ -17,7 +17,7 @@ export interface RichFaqItem {
   answerText: string;
 }
 
-/** FAQ générale VoIP (composant WorkingFAQ — pages assistance, contact, compteur). */
+/** FAQ générale VoIP — pages assistance, contact, trunk SIP au compteur. */
 export const GENERAL_FAQ: RichFaqItem[] = [
   {
     question: "Définition de SIP et de la VoIP",
