@@ -24,7 +24,7 @@ jest.mock("@/components/secure-email", () => ({
   ),
 }));
 
-// Mock FaqSection component (replaces old WorkingFAQ mock)
+// Mock du composant FaqSection
 jest.mock("@/components/faq-section", () => {
   const FaqSection = () => (
     <div data-testid="faq-section">

@@ -54,7 +54,7 @@ Orchestre les sections marketing : hero, transformation, carousel clients, abou
 - `app/blog/[slug]/page.tsx` charge l’article par slug via `getBlogPostBySlug`.
 
 ### 5.3 Pages services/produits
-Dossiers `app/telephonie-3cx`, `app/nos-services/...`, `app/assistance`, etc. Chaque page présente un hero, sections CTA, FAQ (`components/faq-working`) et intégrations (formulaires HubSpot, iframes TawkTo).
+Dossiers `app/telephonie-3cx`, `app/nos-services/...`, `app/assistance`, etc. Chaque page présente un hero, sections CTA, FAQ (`components/faq-section`) et intégrations (formulaires HubSpot, iframes TawkTo).
 
 ### 5.4 Contact (`app/contact/page.tsx`)
 Hero illustré + carte HubSpot inline, hotline/WhatsApp, implantations DOM. Vérifier correspondance des pictos et data-tests (`data-testid`) utilisés en tests.
