@@ -1,9 +1,6 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
 import { TALLY_FORMS } from "@/lib/constants/tally";
 import { Timer, CheckCircle, Gear, Phone } from "@/lib/icons";
