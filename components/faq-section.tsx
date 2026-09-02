@@ -41,7 +41,9 @@ export function FaqSection({
       {jsonLd && (
         <JsonLd data={faqPageSchema(toFaqSchemaItems(items))} />
       )}
-      <div className="w-full max-w-4xl mx-auto">
+      {/* Le padding horizontal est porté par le composant : la majorité des
+          pages appelantes ne fournissent aucun conteneur avec gouttière. */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">

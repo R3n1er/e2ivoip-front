@@ -97,6 +97,22 @@ describe("FaqSection — sémantique et accessibilité", () => {
   });
 });
 
+describe("FaqSection — mise en page responsive", () => {
+  test("le composant porte son propre padding horizontal", () => {
+    // 7 des 10 pages appelant FaqSection ne fournissent aucun conteneur
+    // avec padding : sans cela, les cartes touchent les bords sur mobile.
+    // Le composant réutilisable est responsable de sa propre gouttière.
+    const { container } = render(
+      <FaqSection items={mockItems} title="Questions fréquentes" />
+    );
+
+    // Le premier enfant est le <script> JSON-LD : on cible le conteneur visuel.
+    const wrapper = container.querySelector("div.max-w-4xl");
+    expect(wrapper).not.toBeNull();
+    expect(wrapper!.className).toMatch(/px-4/);
+  });
+});
+
 describe("Anciens composants FAQ supprimés", () => {
   test("faq-working et faq-trunk-sip-compteur ne sont plus résolvables", () => {
     // La factorisation de la PR #51 devait supprimer cette duplication.
