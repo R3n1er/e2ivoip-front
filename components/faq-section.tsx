@@ -1,0 +1,118 @@
+import { Question } from "@/lib/icons";
+import { JsonLd } from "@/components/seo/json-ld";
+import { faqPageSchema } from "@/lib/structured-data";
+import {
+  RichFaqItem,
+  toFaqSchemaItems,
+} from "@/lib/faq-data";
+
+interface FaqSectionProps {
+  /** Questions/réponses à afficher (JSX pour l'affichage + texte pour le JSON-LD). */
+  items: RichFaqItem[];
+  /** Titre de la section (défaut: "FAQ"). */
+  title?: string;
+  /** Sous-titre optionnel sous le titre. */
+  subtitle?: string;
+  /** Injecter automatiquement le JSON-LD FAQPage (défaut: true). */
+  jsonLd?: boolean;
+}
+
+/**
+ * Composant FAQ unifié pour toutes les pages e2i-voip.com.
+ *
+ * - Affiche les Q/R en `<details>/<summary>` accessibles (accordéon natif).
+ * - Chaque question est un `<h3>`, navigable via la liste des titres des
+ *   lecteurs d'écran ; le chevron est purement décoratif.
+ * - Injecte automatiquement le JSON-LD FAQPage si `jsonLd` est true (défaut).
+ *
+ * Usage:
+ * ```tsx
+ * <FaqSection items={THREE_CX_FAQ} title="Questions fréquentes" subtitle="Tout savoir sur 3CX" />
+ * ```
+ */
+export function FaqSection({
+  items,
+  title = "FAQ",
+  subtitle,
+  jsonLd = true,
+}: FaqSectionProps) {
+  return (
+    <>
+      {jsonLd && (
+        <JsonLd data={faqPageSchema(toFaqSchemaItems(items))} />
+      )}
+      {/* Le padding horizontal est porté par le composant : la majorité des
+          pages appelantes ne fournissent aucun conteneur avec gouttière. */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-primary/10 rounded-full mb-4">
+            <Question size={32} className="text-red-primary" aria-hidden="true" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
+            {/* Dernier mot en rouge (accent de la charte), quel que soit le titre. */}
+            {title.split(" ").map((word, i, arr) =>
+              i === arr.length - 1 ? (
+                <span key={i} className="text-red-primary">{word}</span>
+              ) : (
+                <span key={i}>{word} </span>
+              )
+            )}
+          </h2>
+          {subtitle && (
+            <p className="text-xl text-gray-600">{subtitle}</p>
+          )}
+        </div>
+
+        {/* FAQ Items */}
+        <div className="space-y-4">
+          {items.map((item) => (
+            <details
+              key={item.question}
+              className="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-shadow duration-300 motion-reduce:transition-none hover:shadow-md open:shadow-lg"
+            >
+              {/* <summary> n'accepte que du phrasing content ou un heading
+                  unique : la question est un <h3> et le chevron un <span>
+                  décoratif, tous deux enfants directs. */}
+              <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors motion-reduce:transition-none hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
+                <h3 className="font-semibold text-gray-900 pr-4 text-base">
+                  {item.question}
+                </h3>
+                <span
+                  aria-hidden="true"
+                  className="flex-shrink-0 transition-transform duration-300 motion-reduce:transition-none motion-reduce:transform-none group-open:rotate-180"
+                >
+                  <svg
+                    className="w-5 h-5 text-red-primary"
+                    aria-hidden="true"
+                    focusable="false"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </span>
+              </summary>
+
+              <div className="border-t border-gray-100 bg-gray-50">
+                <div className="px-6 py-6 text-gray-600">
+                  {typeof item.answer === "string" ? (
+                    <p>{item.answer}</p>
+                  ) : (
+                    item.answer
+                  )}
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default FaqSection;

@@ -1,12 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { FullContactForm } from "@/components/hubspot";
 import { TALLY_FORMS } from "@/lib/constants/tally";
 import { Timer, CheckCircle, Gear, Phone } from "@/lib/icons";
+import { FaqSection } from "@/components/faq-section";
+import { DEVIS_FAQ } from "@/lib/faq-data";
 
 /**
  * Les demandes de devis sont regroupées par famille d'offre : le visiteur
@@ -236,57 +235,7 @@ export default function DevisEnLignePage() {
 
       {/* FAQ */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark text-center mb-12">
-            F.A.Q
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Quel est le délai moyen pour obtenir un devis personnalisé ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Nous traitons votre demande de devis du lundi au vendredi. Si votre formulaire est complet, 
-                vous recevrez une proposition sous 24 heures ouvrées. Si des informations complémentaires 
-                sont nécessaires, notre équipe vous contactera rapidement pour affiner votre demande.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Quelles différences entre un Trunk SIP 'au compteur' et 'illimité' ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Nous recommandons systématiquement à nos clients des Trunk SIP au compteur, soigneusement 
-                dimensionnés pour correspondre à leur consommation réelle. Cette solution offre l'avantage 
-                de ne payer que les appels effectués, ce qui est particulièrement adapté aux PME ayant un 
-                volume d'appels variable.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Puis-je conserver mes numéros actuels avec votre solution ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et 
-                dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous 
-                proposons des solutions flexibles adaptées à votre infrastructure existante.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Quel débit internet est nécessaire pour une qualité d'appel optimale ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Pour bénéficier d'une qualité d'appel optimale avec nos solutions de téléphonie IP, votre 
-                accès Internet doit être conforme à nos spécifications techniques. Nous acceptons les 
-                connexions Fibre, 4G, 5G et Starlink. Le débit nécessaire est de 100 Kbps par appel simultané.
-              </p>
-            </div>
-          </div>
-        </div>
+        <FaqSection items={DEVIS_FAQ} title="Questions fréquentes" />
       </section>
 
       {/* Formulaire de Contact HubSpot */}

@@ -3,6 +3,8 @@ import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
+import { FaqSection } from "@/components/faq-section";
+import { FAQ_SMB_MUTUALISEE } from "@/lib/faq-data";
 import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe } from '@/lib/icons';
 import { TALLY_FORMS } from "@/lib/constants/tally";
 
@@ -247,6 +249,9 @@ export default function Smb3CXMutualisee() {
             </CTAButton>
           </div>
         </section>
+
+        {/* FAQ */}
+        <FaqSection items={FAQ_SMB_MUTUALISEE} title="Questions fréquentes sur 3CX SMB Mutualisée" />
       </main>
     </div>
   );

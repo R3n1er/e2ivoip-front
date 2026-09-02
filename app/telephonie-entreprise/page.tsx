@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
+import { FaqSection } from "@/components/faq-section";
+import { FAQ_TELEPHONIE_ENTREPRISE } from "@/lib/faq-data";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 import { Chat, Phone, Users, Headphones, CheckCircle } from "@/lib/icons";
@@ -197,6 +199,7 @@ export default function TelephonieDentreprise() {
         </section>
 
         {/* Contact */}
+        <FaqSection items={FAQ_TELEPHONIE_ENTREPRISE} title="Questions fréquentes" />
         <ContactSectionSimple />
       </div>
     </div>
