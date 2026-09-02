@@ -289,8 +289,8 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
         <div className="space-y-1">
           <p><strong>Nos numéros de support :</strong></p>
           <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
-            <li>Guyane : <a href="tel:+594****3500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">05 94 96 35 00</a></li>
-            <li>France : <a href="tel:+331****0500" suppressHydrationWarning className="text-red-primary hover:underline font-semibold">01 89 56 05 00</a></li>
+            <li>Guyane : <a href="tel:+594594963500" className="text-red-primary hover:underline font-semibold">05 94 96 35 00</a></li>
+            <li>France : <a href="tel:+33189560500" className="text-red-primary hover:underline font-semibold">01 89 56 05 00</a></li>
           </ul>
         </div>
       </div>
@@ -657,13 +657,14 @@ export const FAQ_TRUNK_ILLIMITE: RichFaqItem[] = [
   {
     question: "Qu'est-ce qu'un Trunk SIP illimité ?",
     answerText:
-      "Un Trunk SIP illimité est une liaison VoIP qui vous permet de passer un nombre illimité d'appels vers les fixes et mobiles en France métropolitaine et DOM-TOM, pour un coût mensuel fixe. Il se connecte à votre IPBX (3CX, Yeastar, Asterisk) et remplace vos abonnements téléphoniques traditionnels.",
+      "Un Trunk SIP illimité est une liaison VoIP qui vous permet de passer un nombre illimité d'appels vers les fixes de France métropolitaine et des DOM éligibles, pour un coût mensuel fixe. Les appels vers les mobiles sont facturés au compteur. Il se connecte à votre IPBX (3CX, Yeastar, Asterisk) et remplace vos abonnements téléphoniques traditionnels.",
     answer: (
       <div className="space-y-3">
         <p>
           Un <strong>Trunk SIP illimité</strong> est une liaison VoIP qui vous permet de passer un nombre
-          <strong> illimité d'appels</strong> vers les fixes et mobiles en France métropolitaine et DOM-TOM,
-          pour un coût mensuel fixe.
+          <strong> illimité d'appels</strong> vers les <strong>fixes</strong> de France métropolitaine et des
+          DOM éligibles, pour un coût mensuel fixe. Les appels vers les <strong>mobiles</strong> sont facturés
+          au compteur.
         </p>
         <p>
           Il se connecte à votre IPBX (3CX, Yeastar, Asterisk) et remplace vos abonnements téléphoniques
@@ -724,7 +725,7 @@ export const FAQ_TRUNK_ILLIMITE: RichFaqItem[] = [
   {
     question: "Combien de canaux simultanés sont inclus ?",
     answerText:
-      "Le Trunk SIP illimité inclut un nombre de canaux simultanés défini selon votre forfait. Les appels illimités couvrent les fixes et mobiles en France métropolitaine et DOM-TOM. Pour les appels internationaux, un forfait au compteur est ajouté. Contactez-nous pour définir le nombre de canaux adapté à votre activité.",
+      "Le Trunk SIP illimité inclut un nombre de canaux simultanés défini selon votre forfait. Les appels illimités couvrent les fixes de France métropolitaine et des DOM éligibles. Les appels vers les mobiles et à l'international sont facturés au compteur. Contactez-nous pour définir le nombre de canaux adapté à votre activité.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -732,8 +733,8 @@ export const FAQ_TRUNK_ILLIMITE: RichFaqItem[] = [
           forfait.
         </p>
         <p>
-          Les appels illimités couvrent les <strong>fixes et mobiles en France métropolitaine et DOM-TOM</strong>.
-          Pour les appels internationaux, un forfait au compteur est ajouté.
+          Les appels illimités couvrent les <strong>fixes de France métropolitaine et des DOM éligibles</strong>.
+          Les appels vers les <strong>mobiles</strong> et à l'international sont facturés au compteur.
         </p>
         <p>Contactez-nous pour définir le nombre de canaux adapté à votre activité.</p>
       </div>
@@ -764,7 +765,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale jusqu'à 10-15 postes, le dédié au-delà.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -779,18 +780,18 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
           Avec <strong>3CX dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
           avancée, capacité supérieure.
         </p>
-        <p>La mutualisée est idéale jusqu'à 10-15 postes, le dédié au-delà.</p>
+        <p>La mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.</p>
       </div>
     ),
   },
   {
     question: "Pour qui est destinée la solution 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée s'adresse aux TPE et petites PME (1 à 15 postes) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 10 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
     answer: (
       <div className="space-y-3">
         <p>
-          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (1 à 15 postes) qui veulent une
+          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 10 utilisateurs) qui veulent une
           téléphonie professionnelle sans gérer de serveur.
         </p>
         <p>
@@ -881,17 +882,17 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
   {
     question: "Quels modèles Yeastar sont disponibles chez E2I ?",
     answerText:
-      "E2I propose plusieurs modèles Yeastar selon la taille de votre entreprise : P-Series pour les PME (20 à 200 postes), S-Series pour les petites entreprises (jusqu'à 100 postes). Chaque modèle supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour déterminer le modèle adapté à vos besoins.",
+      "E2I déploie la gamme Yeastar P-Series en deux éditions : la P-Series Cloud Edition, hébergée et opérée par E2I, et les P-Series Appliances, installées dans vos locaux pour garder la maîtrise de votre infrastructure. Chaque édition supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour déterminer l'édition adaptée à vos besoins.",
     answer: (
       <div className="space-y-3">
-        <p>E2I propose plusieurs modèles Yeastar selon la taille de votre entreprise :</p>
+        <p>E2I déploie la gamme <strong>Yeastar P-Series</strong> en deux éditions :</p>
         <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
-          <li><strong>P-Series</strong> — PME (20 à 200 postes)</li>
-          <li><strong>S-Series</strong> — petites entreprises (jusqu'à 100 postes)</li>
+          <li><strong>P-Series Cloud Edition</strong> — hébergée et opérée par E2I</li>
+          <li><strong>P-Series Appliances</strong> — installées dans vos locaux (on-premise)</li>
         </ul>
         <p>
-          Chaque modèle supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour
-          déterminer le modèle adapté à vos besoins.
+          Chaque édition supporte un nombre différent de canaux SIP et d'extensions. Contactez-nous pour
+          déterminer l'édition adaptée à vos besoins.
         </p>
       </div>
     ),
