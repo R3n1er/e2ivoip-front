@@ -43,7 +43,7 @@ export default function ConditionsGeneralesVentePage() {
               avec les clients professionnels.
             </p>
             <p className="mt-4 text-sm text-white/80">
-              Version 1.2 · entrée en vigueur le 30 août 2026
+              Version 1.3 · entrée en vigueur le 8 septembre 2026
             </p>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function ConditionsGeneralesVentePage() {
                     <Clock size={24} className="text-red-600" aria-hidden="true" />
                     <h3 className="font-semibold text-gray-900">Entrée en vigueur</h3>
                   </div>
-                  <p className="text-gray-600">30 août 2026</p>
+                  <p className="text-gray-600">8 septembre 2026</p>
                 </CardContent>
               </Card>
               <Card className="shadow hover:shadow-lg transition-shadow">
@@ -163,7 +163,7 @@ export default function ConditionsGeneralesVentePage() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
                       <div>
                         <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
-                        <p className="text-sm text-gray-500">Lire en ligne · v1.2</p>
+                        <p className="text-sm text-gray-500">Lire en ligne · v1.3</p>
                       </div>
                     </Link>
                   </div>
