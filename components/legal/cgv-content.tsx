@@ -1,6 +1,6 @@
 /**
  * Contenu HTML des CGV E2I VoIP — version en ligne.
- * Généré à partir du PDF cgv.pdf (v1.1, 30 août 2026).
+ * Généré à partir du PDF cgv.pdf (v1.3, 8 septembre 2026).
  */
 
 export function CgvContent() {
@@ -167,6 +167,12 @@ export function CgvContent() {
           <li>demander un dépôt de garantie ou un paiement d&rsquo;avance ;</li>
           <li>résilier le Contrat selon l&rsquo;article 11.</li>
         </ul>
+        <p className="text-gray-700 leading-relaxed">E2I peut aussi engager, sans saisir le tribunal, une procédure simplifiée de recouvrement confiée à un commissaire de justice. Deux cas existent selon la loi :</p>
+        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+          <li>créance facturée entre commerçants : le commissaire de justice signifie au Client un commandement de payer. Le Client a un mois pour payer ou contester. À défaut de paiement et de contestation dans ce délai, le commissaire de justice dresse un procès-verbal de non-contestation. Le greffier de la juridiction compétente en matière commerciale le rend exécutoire (articles L. 126-1 et suivants du Code des procédures civiles d&rsquo;exécution) ;</li>
+          <li>créance inférieure ou égale à cinq mille euros lorsqu&rsquo;au moins une partie n&rsquo;est pas commerçante : le commissaire de justice invite le Client à participer à la procédure simplifiée de recouvrement des petites créances. Si le Client accepte l&rsquo;accord proposé sur le montant et les modalités de paiement, le commissaire de justice délivre un titre exécutoire constatant cet accord (article L. 125-1 du même code).</li>
+        </ul>
+        <p className="text-gray-700 leading-relaxed">Le titre exécutoire obtenu permet les mesures d&rsquo;exécution forcée prévues par la loi. La contestation du Client dans le délai d&rsquo;un mois met fin à la procédure simplifiée, sans préjudice des autres voies de droit d&rsquo;E2I. Les frais de la procédure sont supportés selon les textes applicables ; lorsque la loi les met à la charge du débiteur, le Client les supporte.</p>
         <p className="text-gray-700 leading-relaxed">Le service reprend après encaissement effectif de toutes les sommes requises. Cette reprise peut engager des frais prévus par la grille tarifaire en vigueur.</p>
       </div>
       <div>
@@ -417,7 +423,7 @@ export function CgvContent() {
       </div>
       <div>
         <h3 className="text-lg font-bold text-gray-900 mt-8 first:mt-0">Article 50 — Entrée en vigueur</h3>
-        <p className="text-gray-700 leading-relaxed">Ces CGV entrent en vigueur le 30 août 2026. Elles portent le numéro de version v1.1.</p>
+        <p className="text-gray-700 leading-relaxed">Ces CGV entrent en vigueur le 8 septembre 2026. Elles portent le numéro de version v1.3.</p>
         
       </div>
     </div>
