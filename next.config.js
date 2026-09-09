@@ -104,6 +104,7 @@ const nextConfig = {
     const legacyRedirects = [
       // Pages de service renommées
       ["/integration-3cx", "/telephonie-3cx"],
+      ["/integration-wazo", "/telephonie-3cx"],
       ["/integration-pbx-voip", "/telephonie-entreprise/pbx-yeastar"],
       ["/passerelles-trunk-sip", "/telephonie-entreprise/trunk-sip-compteur"],
 
