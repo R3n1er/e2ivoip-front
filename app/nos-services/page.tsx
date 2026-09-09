@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-dynamic";
 import {
   Card,
@@ -152,8 +153,8 @@ export default function NosServices() {
     name: "E2I VoIP",
     description:
       "Solutions de téléphonie IP pour entreprises. Trunk SIP DOM, 3CX PRO et interconnexion agents vocaux IA.",
-    url: "https://www.e2i-voip.com",
-    logo: "https://www.e2i-voip.com/images/logo-e2i-voip.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo-e2i-voip.png`,
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+590-96-35-00",

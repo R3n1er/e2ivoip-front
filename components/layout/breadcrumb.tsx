@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SITE_URL } from "@/lib/site";
+
 /**
  * Fil d'Ariane global du site — affiché sur toutes les pages sauf l'accueil.
  *
@@ -23,7 +25,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      ...(item.href ? { item: `https://www.e2i-voip.com${item.href}` } : {}),
+      ...(item.href ? { item: `${SITE_URL}${item.href}` } : {}),
     })),
   };
 
