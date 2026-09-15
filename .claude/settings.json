@@ -11,5 +11,8 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "claudex-loop@claudex-loop": true
   }
 }
