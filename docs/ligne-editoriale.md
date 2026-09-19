@@ -152,12 +152,30 @@ associer « 2027 » à « DOM » sans nommer les Antilles-Guyane.
 
 Arbitrage du 2026-08-30. Toute page présentant ces offres reprend ces valeurs.
 
-| Offre | Dimensionnement | Grille |
-|---|---|---|
-| **3CX PRO** | Appels simultanés | 4 / 8 / 16 / 24 / 32 / 64 → afficher « 4 à 64 appels simultanés » |
-| **3CX SMB PRO** | Utilisateurs | 3 à 10 utilisateurs |
-| **Trunk SIP illimité** | Appels simultanés | 4 / 8 / 16 (**plafond 16**) |
-| **Trunk SIP au compteur** | Canaux voix | à partir de 2 canaux voix |
+| Offre | Dimensionnement | Grille | Prix public |
+|---|---|---|---|
+| **3CX PRO** | Appels simultanés | 4 / 8 / 16 / 24 / 32 / 64 → afficher « 4 à 64 appels simultanés » | Sur devis |
+| **3CX SMB PRO** | Utilisateurs | 3 à 10 utilisateurs | **15 €/utilisateur/mois au compteur** · **29 €/utilisateur/mois en illimité** |
+| **Trunk SIP illimité** | Appels simultanés | 4 / 8 / 16 (**plafond 16**) | Sur devis |
+| **Trunk SIP au compteur** | Canaux voix | à partir de 2 canaux voix | Sur devis |
+
+### 3CX SMB PRO — deux formules, arbitrage du 2026-09-19
+
+⚠️ **15 € et 29 € ne sont pas un ancien et un nouveau tarif : ce sont deux
+formules distinctes.** Les présenter comme un prix unique est une erreur
+factuelle (c'est l'état de la page `/3cx-smb-mutualisee` en production, qui
+affiche 29 € seul).
+
+- **Au compteur — 15 €/utilisateur/mois** : la licence mutualisée seule. Les
+  appels sont facturés au compteur, et un **Trunk SIP au compteur doit être
+  ajouté au niveau de l'instance** (pas par utilisateur), dimensionné en
+  canaux d'appels simultanés.
+- **Illimité — 29 €/utilisateur/mois** : appels **fixes France métropolitaine
+  et DOM inclus**. Les appels **mobiles restent au compteur**. Aucun Trunk SIP
+  à ajouter.
+
+Cette grille vient du spec `docs/superpowers/specs/2026-06-22-3cx-smb-pro-refonte-design.md`,
+qui n'avait jamais été implémenté.
 
 **3CX PRO ne se dimensionne jamais en postes ni en utilisateurs.** La mention
 « instance dédiée +50 postes » provenait du cas client TBF et décrivait un
@@ -353,7 +371,7 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 
 ### Solutions 3CX
 
-- **3CX SMB** : "La téléphonie pro accessible dès 3 utilisateurs" à partir de 15 €/mois/utilisateur. Une instance mutualisée et sécurisée jusqu'à 10 utilisateurs.
+- **3CX SMB** : "La téléphonie pro accessible dès 3 utilisateurs". **Deux formules**, pour 3 à 10 utilisateurs : **15 €/utilisateur/mois au compteur** (appels facturés au compteur, un Trunk SIP au compteur est à ajouter **au niveau de l'instance**, pas par utilisateur, par canaux d'appels simultanés 2 · 4 · 8 · 16) ou **29 €/utilisateur/mois en illimité** (appels fixes France métropolitaine et DOM inclus, appels mobiles facturés au compteur). Une instance mutualisée et sécurisée jusqu'à 10 utilisateurs. ⚠️ Ne jamais afficher un prix unique : 15 € et 29 € sont **deux formules distinctes**, pas une remise ni un ancien tarif.
 - **3CX PRO** : "Votre IPBX dédié haute performance". Dimensionnement en **appels simultanés** : 4 à 64. ⚠️ Ne jamais écrire « +50 postes » ni un plancher d'appels (« à partir de 8 ») : cette offre se dimensionne en appels simultanés, et la mention « +50 postes » provenait du cas client TBF, pas de l'offre. Voir « Specs produit — source de vérité ».
 - Mettre en avant : Customer Success Manager dédié, formation incluse, support local
 

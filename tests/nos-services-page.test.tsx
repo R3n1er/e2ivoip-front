@@ -118,7 +118,7 @@ describe("Page Nos Services", () => {
 
     // Vérification des prix
     expect(screen.getByText("À partir de 2 canaux voix")).toBeInTheDocument();
-    expect(screen.getByText("29 €/utilisateur/mois")).toBeInTheDocument();
+    expect(screen.getByText("Dès 15 €/utilisateur/mois")).toBeInTheDocument();
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
     expect(screen.getByText("À partir de 50€")).toBeInTheDocument();

@@ -289,10 +289,10 @@ export default function Telephonie3CX() {
                       TPE et petites PME recherchant l'efficacité
                     </p>
                     <p className="text-center mb-6">
-                      <span className="text-2xl font-black text-red-primary">29 €</span>
+                      <span className="text-2xl font-black text-red-primary">15 €</span>
                       <span className="text-sm font-medium text-gray-600"> / utilisateur / mois</span>
                       <span className="block text-xs text-gray-500">
-                        3CX Pro, appels fixes France &amp; DOM illimités inclus
+                        formule au compteur · 29 € en illimité fixes France &amp; DOM
                       </span>
                     </p>
                     <div className="flex justify-center">
@@ -333,7 +333,7 @@ export default function Telephonie3CX() {
                 { feature: "Personnalisation", pro: true, smb: false },
                 { feature: "Support prioritaire", pro: true, smb: false },
                 { feature: "Délai activation", pro: "Rapide", smb: "Rapide" },
-                { feature: "Tarification", pro: "Sur devis", smb: "29 €/utilisateur/mois", highlight: true },
+                { feature: "Tarification", pro: "Sur devis", smb: "Dès 15 €/utilisateur/mois", highlight: true },
               ];
               const renderValue = (v: string | boolean) =>
                 typeof v === "boolean"

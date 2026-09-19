@@ -58,7 +58,7 @@ export default function NosServices() {
         "Interface intuitive",
       ],
       badge: "Idéal PME",
-      price: "29 €/utilisateur/mois",
+      price: "Dès 15 €/utilisateur/mois",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       category: "Téléphonie IP",
     },
