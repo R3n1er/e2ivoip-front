@@ -50,10 +50,16 @@ describe('Chantier 0 — registre légal (lib/legal/company.ts)', () => {
     expect(traceur?.requiresConsent).toBe(true)
   })
 
-  it('conserve HubSpot déclaré avec consentement requis', () => {
+  // Arbitrage Alban (2026-09-19) : HubSpot est un outil de travail quotidien,
+  // chargé sans condition (components/layout/layout-client-chrome.tsx). Le
+  // registre doit décrire ce comportement réel. Déclarer « consentement requis »
+  // pour un script monté inconditionnellement reviendrait à publier une
+  // affirmation que le code contredit.
+  it('déclare HubSpot comme actif dès la visite, conformément au code', () => {
     const hubspot = COOKIES.find((c) => /hubspot/i.test(c.origin))
     expect(hubspot).toBeDefined()
-    expect(hubspot?.requiresConsent).toBe(true)
+    expect(hubspot?.requiresConsent).toBe(false)
+    expect(hubspot?.purpose).toMatch(/dès votre arrivée/i)
   })
 })
 
@@ -82,6 +88,24 @@ describe('Chantier 0 — bandeau cookies', () => {
   it('ne contredit plus la politique de confidentialité sur le dépôt des cookies du chat', () => {
     const { container } = render(<CookieConsentBanner />)
     expect(container.textContent).not.toMatch(/indépendamment de ce choix/i)
+  })
+
+  // Arbitrage Alban (2026-09-19) : PostHog et HubSpot sont chargés dès l'arrivée,
+  // sans attendre le consentement — c'est un choix assumé. Le bandeau doit donc
+  // décrire CE comportement, et jamais promettre l'inverse : une déclaration
+  // contredite par le code est plus exposée qu'un comportement assumé.
+  it("n'affirme pas que les traceurs attendent le consentement", () => {
+    const { container } = render(<CookieConsentBanner />)
+    const texte = container.textContent ?? ''
+
+    expect(texte).not.toMatch(/aucun traceur[^.]*avant votre choix/i)
+    expect(texte).not.toMatch(/aucun cookie[^.]*avant (votre choix|acceptation)/i)
+    expect(texte).not.toMatch(/n'est (déposé|activé)[^.]*tant que vous n'avez pas/i)
+  })
+
+  it('annonce que les outils de mesure sont actifs dès la visite', () => {
+    const { container } = render(<CookieConsentBanner />)
+    expect(container.textContent).toMatch(/actifs dès votre arrivée/i)
   })
 })
 

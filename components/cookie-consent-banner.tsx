@@ -44,9 +44,9 @@ export function CookieConsentBanner() {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-relaxed">
-          Nous utilisons des cookies pour mesurer l&apos;audience du site et
-          améliorer votre expérience. Aucun traceur de mesure n&apos;est déposé
-          avant votre choix.{" "}
+          Nous mesurons l&apos;audience du site et utilisons un chat en ligne.
+          Ces outils sont actifs dès votre arrivée ; votre choix détermine si
+          vos données de navigation sont conservées sur cet appareil.{" "}
           <Link href="/juridique/politique-confidentialite" className="underline">
             En savoir plus
           </Link>
@@ -56,14 +56,14 @@ export function CookieConsentBanner() {
           <button
             type="button"
             onClick={handleDecline}
-            className="rounded border border-white/60 px-4 py-2 text-sm font-medium text-white hover:bg-white/10"
+            className="rounded border border-white/60 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-marine"
           >
             Refuser
           </button>
           <button
             type="button"
             onClick={handleAccept}
-            className="rounded bg-red-primary px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+            className="rounded bg-red-primary px-4 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-marine"
           >
             Accepter
           </button>
