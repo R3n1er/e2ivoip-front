@@ -174,6 +174,13 @@ affiche 29 € seul).
   et DOM inclus**. Les appels **mobiles restent au compteur**. Aucun Trunk SIP
   à ajouter.
 
+**Forfait maintenance et support : 49 €/mois, fixe** quel que soit le nombre
+d'utilisateurs (arbitrage du 2026-09-19). Il ne se multiplie jamais par le
+nombre de postes — c'est un forfait d'instance, pas un prix par utilisateur.
+
+Frais de mise en service : **150 € serveur** (one-shot) + **90 €/utilisateur**
+(one-shot). Minimum 3 utilisateurs.
+
 Cette grille vient du spec `docs/superpowers/specs/2026-06-22-3cx-smb-pro-refonte-design.md`,
 qui n'avait jamais été implémenté.
 

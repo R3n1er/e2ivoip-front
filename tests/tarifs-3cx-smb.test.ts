@@ -61,6 +61,21 @@ describe('Tarifs 3CX SMB PRO — deux formules distinctes', () => {
     });
   });
 
+  describe('Ligne éditoriale — forfait maintenance fixe', () => {
+    const ligne = read('docs/ligne-editoriale.md');
+
+    it('fixe le forfait maintenance et support à 49 €/mois, sans le multiplier par utilisateur', () => {
+      expect(ligne).toMatch(/Forfait maintenance et support\s*:\s*49 €\/mois, fixe/);
+      // Le forfait ne doit jamais être présenté « par utilisateur ».
+      expect(ligne).not.toMatch(/49 €\/utilisateur/);
+    });
+
+    it('rappelle que la MES est 150 € serveur + 90 €/utilisateur', () => {
+      expect(ligne).toMatch(/150 € serveur/);
+      expect(ligne).toMatch(/90 €\/utilisateur/);
+    });
+  });
+
   describe('Page /telephonie-3cx', () => {
     const page = read('app/telephonie-3cx/page.tsx');
 
