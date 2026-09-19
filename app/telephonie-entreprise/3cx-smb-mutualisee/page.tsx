@@ -242,16 +242,22 @@ export default function Smb3CXMutualisee() {
             </p>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mt-10">
-              {/* Détail inclus */}
+              <div className="px-8 pt-8 pb-0">
+                <h3 className="text-xl font-bold text-gray-dark mb-1">Inclus dans les deux formules</h3>
+                <p className="text-sm text-gray-600">
+                  Ce qui ne dépend pas de votre choix entre au compteur et illimité.
+                </p>
+              </div>
+              {/* Détail inclus — commun aux deux formules */}
               <div className="p-8 grid md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-dark mb-1">Appels illimités vers les fixes</h3>
+                    <h3 className="font-semibold text-gray-dark mb-1">Appels vers les fixes France et DOM</h3>
                     <p className="text-gray-600 text-sm">
-                      Fixes des DOM et de France métropolitaine, inclus pour chaque utilisateur.
+                      Inclus dans la formule illimitée ; facturés au compteur dans la formule au compteur.
                     </p>
                   </div>
                 </div>

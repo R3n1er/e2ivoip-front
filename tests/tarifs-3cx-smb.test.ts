@@ -52,6 +52,13 @@ describe('Tarifs 3CX SMB PRO — deux formules distinctes', () => {
       expect(page).not.toMatch(/tarif unique/i);
       expect(page).not.toMatch(/tout compris, par utilisateur/i);
     });
+
+    it("le bloc « inclus » ne présente pas l'illimité comme valable pour les deux formules", () => {
+      // « Appels illimités vers les fixes » nu laisserait croire que l'illimité
+      // s'applique aussi à la formule au compteur.
+      expect(page).not.toMatch(/Appels illimités vers les fixes/);
+      expect(page).toMatch(/factur[ée]s au compteur dans la formule au compteur/);
+    });
   });
 
   describe('Page /telephonie-3cx', () => {
