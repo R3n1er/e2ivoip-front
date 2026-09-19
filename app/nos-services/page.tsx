@@ -58,7 +58,7 @@ export default function NosServices() {
         "Interface intuitive",
       ],
       badge: "Idéal PME",
-      price: "29 €/utilisateur/mois",
+      price: "Dès 15 € HT/utilisateur/mois",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       category: "Téléphonie IP",
     },
@@ -174,6 +174,12 @@ export default function NosServices() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services Téléphonie IP",
+      // `price` volontairement absent : schema.org/Offer attend une valeur
+      // numérique accompagnée de `priceCurrency`. Nos libellés commerciaux
+      // (« Dès 15 € HT/utilisateur/mois », « Sur devis ») ne sont pas
+      // analysables et produisaient un balisage invalide. Un Offer sans prix
+      // reste valide — mieux vaut pas de prix qu'un prix que Google pourrait
+      // afficher comme ferme, sans le « dès » ni le Trunk SIP en sus.
       itemListElement: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
@@ -181,7 +187,6 @@ export default function NosServices() {
           name: service.title,
           description: service.description,
         },
-        price: service.price,
         category: service.category,
       })),
     },

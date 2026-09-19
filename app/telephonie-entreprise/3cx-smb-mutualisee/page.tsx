@@ -5,7 +5,7 @@ import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { FaqSection } from "@/components/faq-section";
 import { FAQ_SMB_MUTUALISEE } from "@/lib/faq-data";
-import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe } from '@/lib/icons';
+import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe, Info } from '@/lib/icons';
 import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaire Tally dédié à l'offre 3CX SMB PRO Mutualisé (tunnel devis).
@@ -14,7 +14,7 @@ const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 export const metadata: Metadata = pageMetadata({
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
-    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs, activation rapide, coûts optimisés. 29 €/utilisateur/mois.",
+    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs : 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus) ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités, mobiles au compteur.",
   keywords:
     "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
   path: "/telephonie-entreprise/3cx-smb-mutualisee",
@@ -55,7 +55,7 @@ export default function Smb3CXMutualisee() {
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
                 De <strong>3 à 10 utilisateurs</strong> •
-                29 €/utilisateur/mois
+                à partir de <strong>15 € HT/utilisateur/mois</strong>
               </p>
 
               {/* CTA Hero - Unified homepage style */}
@@ -94,7 +94,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-gray-600 text-center">
-                    29 €/utilisateur/mois, sans frais d'infrastructure
+                    À partir de 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus), ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités — mobiles au compteur — sans frais d&apos;infrastructure
                   </p>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function Smb3CXMutualisee() {
           </div>
         </section>
 
-        {/* Tarification 3CX par utilisateur */}
+        {/* Tarification 3CX par utilisateur — deux formules */}
         <section className="py-16 bg-base-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
@@ -167,30 +167,105 @@ export default function Smb3CXMutualisee() {
                 Une tarification <span className="text-red-primary">simple par utilisateur</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Un tarif unique et transparent, tout compris, par utilisateur.
+                Deux formules selon la façon dont vous consommez vos appels. Dans les deux cas, le tarif est par utilisateur et par mois.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-              {/* En-tête prix */}
-              <div className="bg-gradient-to-r from-blue-900/95 to-red-600/90 px-8 py-8 text-center text-white">
-                <div className="text-5xl font-black">
-                  29 €
-                  <span className="text-xl font-medium text-white/80"> / utilisateur / mois</span>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Formule au compteur */}
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
+                <div className="bg-gradient-to-r from-blue-900/95 to-blue-800/90 px-8 py-8 text-center text-white">
+                  <div className="font-mono tabular-nums text-5xl font-black">
+                    15 €
+                    <span className="font-sans text-xl font-medium text-white"> HT / utilisateur / mois</span>
+                  </div>
+                  <p className="mt-2 text-white font-semibold">Formule au compteur</p>
+                  <p className="mt-1 text-sm text-white/90">
+                    Licence seule — Trunk SIP et appels en sus
+                  </p>
                 </div>
-                <p className="mt-2 text-white/90">3CX Pro pour chaque utilisateur</p>
+                <div className="p-8 flex-1">
+                  <ul className="space-y-3 text-gray-600">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>Licence 3CX Pro mutualisée, par utilisateur</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>Appels facturés au compteur, à la seconde</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Info size={20} className="text-blue-marine mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>
+                        Un Trunk SIP au compteur est à ajouter : c&apos;est la ligne qui
+                        raccorde votre standard au réseau téléphonique. Il se dimensionne
+                        au niveau de l&apos;instance, à partir de 2 canaux voix — jamais
+                        par utilisateur.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              {/* Détail inclus */}
+              {/* Formule illimitée */}
+              <div className="bg-white rounded-2xl shadow-md border-2 border-red-primary overflow-hidden flex flex-col relative">
+                <span className="absolute top-4 right-4 bg-blue-marine text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  Recommandée
+                </span>
+                <div className="bg-gradient-to-r from-blue-900/95 to-red-600/90 px-8 py-8 text-center text-white">
+                  <div className="font-mono tabular-nums text-5xl font-black">
+                    29 €
+                    <span className="font-sans text-xl font-medium text-white"> HT / utilisateur / mois</span>
+                  </div>
+                  <p className="mt-2 text-white font-semibold">Fixes illimités</p>
+                  <p className="mt-1 text-sm text-white/90">
+                    France métropolitaine et DOM — mobiles au compteur
+                  </p>
+                </div>
+                <div className="p-8 flex-1">
+                  <ul className="space-y-3 text-gray-600">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>Licence 3CX Pro mutualisée, par utilisateur</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>
+                        <strong className="text-gray-dark">Appels fixes France métropolitaine et DOM inclus</strong>,
+                        sans Trunk SIP à ajouter
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Info size={20} className="text-blue-marine mt-0.5 flex-shrink-0" aria-hidden="true" />
+                      <span>Les appels vers les mobiles restent facturés au compteur</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-6 text-center text-gray-600">
+              Le Trunk SIP se dimensionne <strong>au niveau de l&apos;instance</strong>, jamais par
+              utilisateur : c&apos;est le nombre d&apos;appels simultanés qui compte, pas le nombre de postes.
+            </p>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mt-10">
+              <div className="px-8 pt-8 pb-0">
+                <h3 className="text-xl font-bold text-gray-dark mb-1">Inclus dans les deux formules</h3>
+                <p className="text-sm text-gray-600">
+                  Ce qui ne dépend pas de votre choix entre au compteur et illimité.
+                </p>
+              </div>
+              {/* Détail inclus — commun aux deux formules */}
               <div className="p-8 grid md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-red-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-dark mb-1">Appels illimités vers les fixes</h3>
+                    <h3 className="font-semibold text-gray-dark mb-1">Appels vers les fixes France et DOM</h3>
                     <p className="text-gray-600 text-sm">
-                      Fixes des DOM et de France métropolitaine, inclus pour chaque utilisateur.
+                      Inclus dans la formule illimitée ; facturés au compteur dans la formule au compteur.
                     </p>
                   </div>
                 </div>
