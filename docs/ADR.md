@@ -741,6 +741,43 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Les suites de tests reflètent le nouveau périmètre (aucun badge « Télétravail », pas de lien `/mobilite`).
 - **Tests associés** : `npm test` ✅ (42/42) ; `npx playwright test` ✅ (21/21).
 
+### 2026-09-19 — Traceurs chargés sans consentement : aligner les textes, pas le code
+
+- **Contexte** : La revue croisée (Codex + Opus) des PR #64/#65/#66 a établi que PostHog (`instrumentation-client.ts`) et HubSpot (`components/layout/layout-client-chrome.tsx`) sont initialisés sans condition, dès l'arrivée du visiteur. `persistence: 'memory'` ne conditionne que le **stockage** de l'identifiant, jamais l'**émission** des événements : `opt_out_capturing` est absent du dépôt, et `declineCookies()` n'interrompt aucune collecte. La PR #64 aggravait la situation en remplaçant un aveu honnête par « Aucun traceur de mesure n'est déposé avant votre choix ».
+- **Décision (Alban)** : HubSpot et PostHog sont des outils de travail quotidiens et **restent chargés systématiquement**. Le code n'est pas modifié. Ce sont les **déclarations** qui sont alignées sur le comportement réel : bandeau, politique de confidentialité, registre des traceurs.
+- **Raisonnement** : un comportement non conforme assumé expose moins qu'un comportement non conforme **documenté à l'inverse**. L'écart entre le texte et le code se constate en ouvrant l'onglet réseau, et une déclaration écrite affichée à chaque visiteur retire l'argument de la négligence.
+- **Conséquences** :
+  - Le bandeau annonce que les outils sont actifs dès l'arrivée, et que le choix pilote la conservation des données sur l'appareil.
+  - `COOKIES.requiresConsent` décrit désormais ce que le code fait : `false` pour HubSpot (monté sans condition). Toute valeur `true` doit correspondre à un chargement réellement conditionné.
+  - Durée de conservation PostHog alignée sur 13 mois (incohérence 12/13 entre `COOKIES` et `PROCESSINGS` pour un même traitement).
+  - Le test exigeant HubSpot « consentement requis » verrouillait l'affirmation fausse et donnait une illusion de conformité : renversé.
+- **Reste à arbitrer (hors code)** : email de contact et TVA intracommunautaire absents des mentions légales (LCEN art. 6) ; déclaration ARCEP (CPCE L.33-1) non mentionnée.
+- **Tests associés** : `npm run validate` ✅ exit 0.
+
+### 2026-09-19 — Titre de la home : additionner les champs SEO, ne pas les échanger
+
+- **Contexte** : Le site est 2e sur « telephonie ip guyane », derrière 2iibm-tech et devant/derrière Alxone Technologies — deux intégrateurs locaux dont les titres portent tous deux « téléphonie » et un ancrage Guyane explicite. Le titre historique (« Opérateur de services télécom DOM ») décrivait une entité, pas une offre : Google recomposait son encart à partir des puces de la page. La PR #66 basculait vers « Standard téléphonique & Trunk SIP Antilles-Guyane », ce qui **évacuait « téléphonie IP »** du signal le plus visible.
+- **Décision (Alban)** : `Opérateur téléphonie IP & standard téléphonique | E2I VoIP` (58 caractères).
+- **Raisonnement** : le risque n'est pas symétrique. Le gain sur « standard téléphonique » est hypothétique — champ sans antériorité ; la 2e position sur « téléphonie IP » est un actif existant. En SEO local, on **additionne** un champ, on n'échange pas un acquis contre une hypothèse. Les trois actifs sont conservés par ordre de poids : « Opérateur » (le différenciant — les concurrents sont intégrateurs et renvoient vers un opérateur tiers), « téléphonie IP » (la position acquise), « standard téléphonique » (le champ ouvert).
+- **Conséquences** :
+  - « Trunk SIP » sort du titre de la home : terme d'acheteur technique, qui ranke déjà sur sa page dédiée.
+  - L'ancrage géographique bascule dans la meta description, qui nomme Guyane, Antilles et Réunion.
+  - Les `toBe` littéraux sur le titre sont remplacés par des vérifications de contrat : un test littéral transformait tout ajustement futur en cassage de test, décourageant un retour en arrière si Search Console montrait une perte.
+- **À mesurer** : impressions et CTR de la home sur « téléphonie ip » vs « standard téléphonique » dans Search Console, sur 6 mois glissants. Cet arbitrage est réversible et doit être réévalué sur données.
+- **Tests associés** : `npm run validate` ✅ exit 0 (84 suites Jest, 103 Playwright).
+
+### 2026-09-19 — Les canaux publics non-HTML font partie du périmètre produit
+
+- **Contexte** : La PR #65 corrigeait un prix unique erroné (29 €) en deux formules (15 € au compteur / 29 € fixes illimités) sur trois pages HTML. `public/llms.txt`, servi publiquement et destiné aux moteurs de réponse (ChatGPT, Perplexity, AI Overviews), continuait d'annoncer l'ancien prix unique. La PR #66 introduisait par ailleurs « appels simultanés de 22 à 64 canaux voix » dans `og:description` et `twitter:description` — un palier inexistant, sur le texte qu'affichent LinkedIn et WhatsApp.
+- **Décision** : les fichiers publics non-HTML (`llms.txt`) et les **métadonnées sociales** sont traités comme des vitrines commerciales à part entière, couvertes par les tests au même titre que les pages.
+- **Raisonnement** : deux PR successives ont soigné le HTML visible et oublié ce qui est servi aux machines. Un garde-fou qui ne lit que les composants de page laisse passer les fautes introduites dans `app/layout.tsx` — c'est exactement ce qui s'est produit avec le « 22 ».
+- **Conséquences** :
+  - `public/llms.txt` entre dans le périmètre de `tests/tarifs-3cx-smb.test.ts`.
+  - `tests/home-snippet-produits.test.ts` couvre `app/layout.tsx`, `lib/site.ts` et `app/page.tsx`, et contrôle le mélange d'unités (appels simultanés vs canaux voix).
+  - Les vérifications tarifaires passent d'un contrôle de **présence** à un contrôle de **proximité** : chercher « illimité » n'importe où dans un fichier laissait passer un « 29 € » isolé.
+  - « Formule illimitée » devient « Fixes illimités » : porter la restriction dans le **nom** la rend inséparable de l'allégation (art. L121-2 du code de la consommation).
+- **Tests associés** : `npm run validate` ✅ exit 0.
+
 ### 2025-09-27 — Neutralisation temporaire du pré-rendu sur pages problématiques
 
 - **Contexte** : Le build échouait avec des erreurs « Objects are not valid as a React child » sur certaines pages présentant des contenus dynamiques/JSX. Il fallait débloquer la CI/CD rapidement pour poursuivre les révisions.
