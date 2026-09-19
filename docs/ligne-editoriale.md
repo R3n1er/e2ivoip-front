@@ -353,8 +353,8 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 
 ### Solutions 3CX
 
-- **3CX SMB** : "La téléphonie pro accessible dès 3 utilisateurs" à partir de 15€/mois/utilisateur. Une instance mutualisée et sécurisée jusqu'a 10 utilisateurs.
-- **3CX PRO** : "Votre IPBX dédié haute performance pour +50 postes". A partir de 8 appels simultanés sur votre instance serveur dédiée.
+- **3CX SMB** : "La téléphonie pro accessible dès 3 utilisateurs" à partir de 15 €/mois/utilisateur. Une instance mutualisée et sécurisée jusqu'à 10 utilisateurs.
+- **3CX PRO** : "Votre IPBX dédié haute performance". Dimensionnement en **appels simultanés** : 4 à 64. ⚠️ Ne jamais écrire « +50 postes » ni un plancher d'appels (« à partir de 8 ») : cette offre se dimensionne en appels simultanés, et la mention « +50 postes » provenait du cas client TBF, pas de l'offre. Voir « Specs produit — source de vérité ».
 - Mettre en avant : Customer Success Manager dédié, formation incluse, support local
 
 ### Services innovants
