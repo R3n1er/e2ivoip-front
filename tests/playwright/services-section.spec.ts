@@ -21,10 +21,12 @@ test.describe("Section Services", () => {
   });
 
   test("liste les offres phares", async ({ page }) => {
+    // « 3CX SMB PRO » et « 3CX PRO Cloud » sont réunis sous une seule carte
+    // « Standard téléphonique 3CX » : le prospect cherche un standard, pas un
+    // nom de licence (arbitrage Alban, 2026-09-19). La grille passe de 5 à 4.
     const titles = [
+      "Standard téléphonique 3CX",
       "Trunk SIP DOM",
-      "3CX SMB PRO",
-      "3CX PRO Cloud",
       "Trunk SIP agents IA",
       "Studio d'Enregistrement",
     ];
@@ -37,17 +39,14 @@ test.describe("Section Services", () => {
       ).toBeVisible();
     }
 
-    await expect(page.locator("#services .grid > div.rounded-xl")).toHaveCount(5);
+    await expect(page.locator("#services .grid > div.rounded-xl")).toHaveCount(4);
   });
 
   test("met en avant les badges et les CTA", async ({ page }) => {
-    const badges = [
-      "Populaire",
-      "Idéal PME",
-      "Entreprise",
-      "Innovation",
-      "Pro",
-    ];
+    // Le badge « Entreprise » disparaît avec la fusion des deux cartes 3CX :
+    // il portait la carte « 3CX PRO Cloud », désormais réunie sous
+    // « Standard téléphonique 3CX » (badge « Idéal PME »).
+    const badges = ["Populaire", "Idéal PME", "Innovation", "Pro"];
 
     for (const badge of badges) {
       await expect(
@@ -58,7 +57,7 @@ test.describe("Section Services", () => {
     const ctaButtons = page
       .locator("#services")
       .getByRole("link", { name: "En savoir plus" });
-    await expect(ctaButtons).toHaveCount(5);
+    await expect(ctaButtons).toHaveCount(4);
   });
 
   test("affiche les icônes et la grille responsive", async ({ page }) => {

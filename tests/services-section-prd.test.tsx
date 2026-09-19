@@ -73,10 +73,13 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
   it("affiche tous les services de téléphonie IP", () => {
     render(<ServicesSectionSimple />);
 
-    // Vérifier que tous les services sont présents
+    // Vérifier que tous les services sont présents.
+    // Les deux cartes 3CX (SMB mutualisée et PRO dédiée) sont réunies sous une
+    // seule carte « Standard téléphonique 3CX » (arbitrage Alban, 2026-09-19).
+    expect(screen.getByText("Standard téléphonique 3CX")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
-    expect(screen.getByText("3CX PRO Cloud")).toBeInTheDocument();
+    expect(screen.queryByText("3CX SMB PRO")).not.toBeInTheDocument();
+    expect(screen.queryByText("3CX PRO Cloud")).not.toBeInTheDocument();
     // « Solutions Mobilité » retiré du périmètre
     expect(screen.queryByText("Solutions Mobilité")).not.toBeInTheDocument();
     expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
@@ -88,7 +91,6 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
 
     expect(screen.getByText("Populaire")).toBeInTheDocument();
     expect(screen.getByText("Idéal PME")).toBeInTheDocument();
-    expect(screen.getByText("Entreprise")).toBeInTheDocument();
     expect(screen.getByText("Innovation")).toBeInTheDocument();
     expect(screen.getByText("Pro")).toBeInTheDocument();
   });
@@ -149,8 +151,12 @@ describe("ServicesSectionSimple - Charte Graphique PRD (Icônes Corrigées)", ()
     render(<ServicesSectionSimple />);
 
     expect(screen.getByText(/Économies jusqu'à 20%/)).toBeInTheDocument();
-    // Bénéfice « Mobilité intégrée » retiré du périmètre
-    expect(screen.getByText(/Support utilisateur dédié/)).toBeInTheDocument();
+    // Bénéfice « Mobilité intégrée » retiré du périmètre.
+    // « Canaux dimensionnés à votre trafic » reformulé en langage de
+    // dirigeant : « canal » n'était jamais expliqué nulle part sur la home.
+    expect(
+      screen.getByText(/Autant d'appels simultanés que nécessaire/),
+    ).toBeInTheDocument();
     expect(screen.getByText(/BYOC compatible/i)).toBeInTheDocument();
   });
 });

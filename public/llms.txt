@@ -13,7 +13,7 @@ Positionnement clé : fournisseur de Trunk SIP DOM pour les intégrateurs qui d�
 - [Trunk SIP au compteur](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur) : facturation des appels à la seconde, idéal pour faibles volumes (< 200 min/mois), numéros locaux DOM.
 - [Trunk SIP illimité](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-illimite) : forfait fixe mensuel, appels illimités France + DOM, recommandé au-delà de 200 min/mois.
 - [PBX Yeastar](https://www.e2i-voip.com/telephonie-entreprise/pbx-yeastar) : solutions PBX Yeastar pour entreprises.
-- [Téléphonie 3CX](https://www.e2i-voip.com/telephonie-3cx) : solution 3CX complète — offre SMB mutualisée (29 €/utilisateur/mois) et offre PRO en instance dédiée cloud (sur devis).
+- [Téléphonie 3CX](https://www.e2i-voip.com/telephonie-3cx) : solution 3CX complète — offre SMB mutualisée en deux formules (15 € HT/utilisateur/mois au compteur, Trunk SIP à ajouter au niveau de l'instance ; ou 29 € HT/utilisateur/mois avec les appels vers les fixes France métropolitaine et DOM inclus, les mobiles restant facturés au compteur) et offre PRO en instance dédiée cloud (sur devis).
 - [Studio attente téléphonique](https://www.e2i-voip.com/studio-attente) : messages d'accueil et d'attente, voix off professionnelles, musiques libres de droits.
 
 ## Ressources

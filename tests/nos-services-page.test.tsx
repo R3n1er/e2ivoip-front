@@ -50,12 +50,16 @@ describe("Page Nos Services", () => {
   it("affiche tous les services avec leurs détails", () => {
     render(<NosServices />);
 
-    // Vérification des services (sans Mobilité)
+    // Vérification des services (sans Mobilité).
+    // « 3CX SMB PRO » et « 3CX PRO Dédié » sont désormais réunis sous une seule
+    // carte « Standard téléphonique 3CX » : le visiteur cherche un standard, pas
+    // un nom de licence (arbitrage Alban, 2026-09-19).
+    expect(screen.getByText("Standard téléphonique 3CX")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP DOM")).toBeInTheDocument();
-    expect(screen.getByText("3CX SMB PRO")).toBeInTheDocument();
-    expect(screen.getByText("3CX PRO Dédié")).toBeInTheDocument();
     expect(screen.getByText("Trunk SIP agents IA")).toBeInTheDocument();
     expect(screen.getByText("Studio d'Enregistrement")).toBeInTheDocument();
+    expect(screen.queryByText("3CX SMB PRO")).not.toBeInTheDocument();
+    expect(screen.queryByText("3CX PRO Dédié")).not.toBeInTheDocument();
   });
 
   it("respecte la charte graphique PRD", () => {
@@ -102,10 +106,10 @@ describe("Page Nos Services", () => {
   it("affiche les badges de service appropriés", () => {
     render(<NosServices />);
 
-    // Vérification des badges
+    // Vérification des badges (le badge « Entreprise » a disparu avec la
+    // fusion des deux cartes 3CX en un seul standard téléphonique).
     expect(screen.getByText("Populaire")).toBeInTheDocument();
     expect(screen.getByText("Idéal PME")).toBeInTheDocument();
-    expect(screen.getByText("Entreprise")).toBeInTheDocument();
     // Badge "Télétravail" retiré avec la suppression du service Mobilité
     // Utilisation de getAllByText pour gérer les éléments multiples
     const innovationElements = screen.getAllByText("Innovation");
@@ -116,9 +120,15 @@ describe("Page Nos Services", () => {
   it("affiche les prix des services", () => {
     render(<NosServices />);
 
-    // Vérification des prix
+    // Vérification des prix.
     expect(screen.getByText("À partir de 2 canaux voix")).toBeInTheDocument();
-    expect(screen.getByText("29 €/utilisateur/mois")).toBeInTheDocument();
+    // La carte fusionnée couvre les deux déclinaisons 3CX : le prix affiche
+    // donc le plancher SMB ET le « sur devis » du PRO. Afficher le seul
+    // « dès 15 € » sur une carte qui promet aussi l'instance dédiée laissait
+    // croire qu'un serveur dédié coûte 15 €/utilisateur/mois.
+    expect(
+      screen.getByText("SMB dès 15 € HT/utilisateur/mois · PRO sur devis"),
+    ).toBeInTheDocument();
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
     expect(screen.getByText("À partir de 50€")).toBeInTheDocument();
@@ -131,8 +141,7 @@ describe("Page Nos Services", () => {
     expect(screen.getByText("Éligibilité Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
     expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
-    expect(screen.getByText("Support technique local")).toBeInTheDocument();
-    expect(screen.getByText("2 appels simultanés inclus")).toBeInTheDocument();
-    expect(screen.getByText("Support utilisateur dédié")).toBeInTheDocument();
+    expect(screen.getByText("Canaux dimensionnés à votre trafic")).toBeInTheDocument();
+    expect(screen.getByText("Formation et support dédiés")).toBeInTheDocument();
   });
 });

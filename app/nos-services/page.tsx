@@ -16,7 +16,7 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { JsonLd } from "@/components/seo/json-ld";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
-import { Calculator, Phone, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
+import { Calculator, ArrowRight, Chat, Cloud, Users, TreeStructure, ChartBar, Lightning, MapPin, Timer, Shield, CheckCircle } from '@/lib/icons';
 
 export const metadata: Metadata = pageMetadata({
   title: "Nos Services Téléphonie IP | Solutions DOM",
@@ -28,54 +28,44 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function NosServices() {
+  // Ordre volontaire : le standard téléphonique d'abord (ce que le prospect
+  // cherche), le Trunk SIP qui le raccorde ensuite. Voir
+  // tests/home-snippet-produits.test.ts.
   const services = [
+    {
+      Icon: Users,
+      title: "Standard téléphonique 3CX",
+      description:
+        "Votre standard téléphonique 3CX : IPBX cloud mutualisé de 3 à 10 utilisateurs, ou instance dédiée pour les structures multisites. Compatible Trunk SIP — le raccordement est à souscrire.",
+      features: [
+        "Cloud mutualisé ou instance dédiée",
+        "3 à 10 utilisateurs (mutualisé)",
+        "4 à 64 appels simultanés (dédié)",
+        "Formation et support dédiés",
+      ],
+      badge: "Idéal PME",
+      // La carte couvre les deux déclinaisons (mutualisée et dédiée) : elle
+      // pointe donc vers la page parapluie, pas vers la seule offre SMB. Le
+      // prix affiché est le plancher de la formule mutualisée — l'instance
+      // dédiée reste sur devis, comme l'indique la page cible.
+      price: "SMB dès 15 € HT/utilisateur/mois · PRO sur devis",
+      href: "/telephonie-3cx",
+      category: "Téléphonie IP",
+    },
     {
       Icon: Cloud,
       title: "Trunk SIP DOM",
       description:
-        "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
+        "Le raccordement de votre standard au réseau téléphonique : au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux.",
       features: [
         "Éligibilité Trunk SIP DOM",
         "Numéros locaux DOM",
         "Portabilité gratuite",
-        "Support technique local",
-        "2 appels simultanés inclus",
+        "Canaux dimensionnés à votre trafic",
       ],
       badge: "Populaire",
       price: "À partir de 2 canaux voix",
       href: "/telephonie-entreprise/trunk-sip-compteur",
-      category: "Téléphonie IP",
-    },
-    {
-      Icon: Users,
-      title: "3CX SMB PRO",
-      description:
-        "IPBX cloud mutualisé de 3 à 10 utilisateurs avec Customer Success Manager dédié",
-      features: [
-        "Instance sécurisée pro",
-        "Formation incluse",
-        "Support utilisateur dédié",
-        "Interface intuitive",
-      ],
-      badge: "Idéal PME",
-      price: "29 €/utilisateur/mois",
-      href: "/telephonie-entreprise/3cx-smb-mutualisee",
-      category: "Téléphonie IP",
-    },
-    {
-      Icon: Phone,
-      title: "3CX PRO Dédié",
-      description:
-        "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
-      features: [
-        "Serveur dédié",
-        "4 à 64 appels simultanés",
-        "Multi-sites",
-        "Tableau de bord avancé",
-      ],
-      badge: "Entreprise",
-      price: "Sur devis",
-      href: "/3cx-pro",
       category: "Téléphonie IP",
     },
     {
@@ -112,11 +102,17 @@ export default function NosServices() {
     },
   ];
 
+  // Compteurs dérivés de `services` et non codés en dur : la fusion des deux
+  // cartes 3CX avait laissé « 3 » affiché au-dessus d'une grille n'en
+  // contenant plus que 2. Dériver la valeur supprime la classe de bug.
   const categories = [
-    { name: "Téléphonie IP", count: 3, color: "bg-red-primary" },
-    { name: "Innovation", count: 1, color: "bg-blue-marine" },
-    { name: "Communication", count: 1, color: "bg-gray-secondary" },
-  ];
+    { name: "Téléphonie IP", color: "bg-red-primary" },
+    { name: "Innovation", color: "bg-blue-marine" },
+    { name: "Communication", color: "bg-gray-secondary" },
+  ].map((categorie) => ({
+    ...categorie,
+    count: services.filter((service) => service.category === categorie.name).length,
+  }));
 
   const benefits = [
     {
@@ -174,6 +170,12 @@ export default function NosServices() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services Téléphonie IP",
+      // `price` volontairement absent : schema.org/Offer attend une valeur
+      // numérique accompagnée de `priceCurrency`. Nos libellés commerciaux
+      // (« Dès 15 € HT/utilisateur/mois », « Sur devis ») ne sont pas
+      // analysables et produisaient un balisage invalide. Un Offer sans prix
+      // reste valide — mieux vaut pas de prix qu'un prix que Google pourrait
+      // afficher comme ferme, sans le « dès » ni le Trunk SIP en sus.
       itemListElement: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
@@ -181,7 +183,6 @@ export default function NosServices() {
           name: service.title,
           description: service.description,
         },
-        price: service.price,
         category: service.category,
       })),
     },
@@ -191,10 +192,10 @@ export default function NosServices() {
     <>
       <JsonLd data={structuredData} />
 
-      <div className="min-h-screen bg-white-primary">
+      <div className="min-h-screen bg-white">
         <main className="pt-6">
           {/* Hero Section */}
-          <section className="py-20 bg-gradient-to-r from-red-50 to-white-primary">
+          <section className="py-20 bg-gradient-to-r from-red-50 to-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h1 className="text-4xl md:text-5xl font-bold text-blue-marine mb-6">
@@ -220,7 +221,7 @@ export default function NosServices() {
           </section>
 
           {/* Bénéfices clés */}
-          <section className="py-16 bg-white-primary">
+          <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
@@ -282,7 +283,7 @@ export default function NosServices() {
                       <div
                         className={`w-16 h-16 mx-auto ${category.color} rounded-full flex items-center justify-center mb-4`}
                       >
-                        <span className="text-white-primary text-2xl font-bold">
+                        <span className="text-white text-2xl font-bold">
                           {category.count}
                         </span>
                       </div>
@@ -297,7 +298,7 @@ export default function NosServices() {
           </section>
 
           {/* Services Grid */}
-          <section className="py-20 bg-white-primary">
+          <section className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-6">
@@ -321,7 +322,7 @@ export default function NosServices() {
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <service.Icon size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
-                        <Badge className="bg-red-primary text-white-primary">
+                        <Badge className="bg-red-primary text-white">
                           {service.badge}
                         </Badge>
                       </div>
@@ -373,7 +374,7 @@ export default function NosServices() {
           {/* CTA Section */}
           <section className="py-20 bg-blue-marine">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white-primary mb-6">
+              <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
                 Prêt à préparer la fin du{" "}
                 <span className="text-red-primary">cuivre</span> ?
               </h2>

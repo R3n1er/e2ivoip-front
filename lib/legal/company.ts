@@ -18,7 +18,9 @@ export const COMPANY = {
   brand: "E2I VoIP",
   siret: "51743457700014",
   siren: "517 434 577",
-  rcs: "Cayenne 517 434 577",
+  // Pas de numéro RCS : E2I ASSISTANCE est une entreprise individuelle
+  // immatriculée en Guyane, pas au registre du commerce et des sociétés.
+  // Ne jamais afficher d'inscription RCS qui n'existe pas.
   ape: "6203Z",
   apeLabel: "Gestion d’installations informatiques",
   publicationDirector: "Alban RENIER",
@@ -54,9 +56,11 @@ export interface SubProcessor {
 /**
  * Sous-traitants effectivement mobilisés par le site, vérifiés dans le code.
  *
- * PostHog figure dans les dépendances du projet mais n'est jamais initialisé
- * (aucun `posthog.init`) : il ne collecte donc rien aujourd'hui et n'a pas sa
- * place ici. À réintroduire le jour où il sera réellement activé.
+ * PostHog est initialisé sur toutes les pages dès qu'un token est présent
+ * (`instrumentation-client.ts`, `capture_pageview: 'history_change'`,
+ * `autocapture: true`) : il traite donc réellement des données et doit figurer
+ * ici au titre de l'article 28 du RGPD. Son hébergement est européen
+ * (`eu.i.posthog.com`).
  */
 export const SUB_PROCESSORS: readonly SubProcessor[] = [
   {
@@ -68,11 +72,20 @@ export const SUB_PROCESSORS: readonly SubProcessor[] = [
       "États-Unis — clauses contractuelles types de la Commission européenne.",
   },
   {
+    name: "PostHog Inc.",
+    purpose:
+      "Mesure d’audience et suivi des interactions sur le site (pages consultées, clics, soumissions de formulaires).",
+    data:
+      "Identifiant pseudonyme de visiteur, pages et interactions observées, données techniques de navigation.",
+    location:
+      "Hébergement Union européenne (eu.i.posthog.com). La mesure d’audience est active dès la visite ; sans acceptation, aucun identifiant n’est conservé sur votre appareil (session en mémoire, effacée à la fermeture de l’onglet).",
+  },
+  {
     name: "HubSpot Inc.",
     purpose:
-      "Gestion de la relation client, formulaires, chat et suivi de navigation après consentement.",
+      "Gestion de la relation client, formulaires, chat en ligne et suivi de navigation. Le chat et son suivi sont actifs dès votre arrivée sur le site.",
     data:
-      "Identité, coordonnées, contenu de vos demandes, pages consultées après consentement.",
+      "Identité, coordonnées, contenu de vos demandes, pages consultées.",
     location:
       "Union européenne (instance eu1) — transferts encadrés par les clauses contractuelles types.",
   },
@@ -155,8 +168,16 @@ export interface CookieEntry {
 
 /**
  * Traceurs réellement déposés par le site, vérifiés dans le code.
- * Le bandeau conditionne le chargement du script HubSpot : sans acceptation,
- * aucun cookie de suivi n'est écrit.
+ *
+ * Arbitrage Alban (2026-09-19) : PostHog et HubSpot sont chargés dès l'arrivée
+ * du visiteur, sans attendre le bandeau — ce sont des outils de travail
+ * quotidiens. `requiresConsent` décrit donc ici ce que le code fait vraiment,
+ * pas ce qu'on souhaiterait qu'il fasse. Toute valeur `true` doit correspondre
+ * à un chargement effectivement conditionné dans le code.
+ *
+ * HubSpot : monté sans condition (components/layout/layout-client-chrome.tsx).
+ * PostHog : initialisé sans condition (instrumentation-client.ts) ; le
+ * consentement ne pilote que la persistance (mémoire vs cookie/localStorage).
  */
 export const COOKIES: readonly CookieEntry[] = [
   {
@@ -168,12 +189,20 @@ export const COOKIES: readonly CookieEntry[] = [
     requiresConsent: false,
   },
   {
+    name: "ph_phc_…_posthog",
+    origin: "PostHog",
+    purpose:
+      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience et le suivi des interactions.",
+    retention: "13 mois maximum, conformément à la recommandation de la CNIL.",
+    requiresConsent: true,
+  },
+  {
     name: "__hstc, hubspotutk, __hssc, __hssrc",
     origin: "HubSpot",
     purpose:
-      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience et le chat.",
+      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience et le chat. Déposés dès votre arrivée sur le site.",
     retention: "6 mois maximum pour le plus long d’entre eux.",
-    requiresConsent: true,
+    requiresConsent: false,
   },
   {
     name: "Vercel Web Analytics",

@@ -38,6 +38,14 @@ export function TransformationSection() {
                 <p className="font-semibold text-gray-dark">
                   Avec le passage à la fibre optique, découvrez avec nous les avantages potentiels sur l'efficacité et la réactivité de votre entreprise. Transformez votre communication d'entreprise avec la solution de téléphonie IP 3CX par E2I VoIP !
                 </p>
+
+                <p>
+                  <strong>Standard téléphonique 3CX ou Yeastar</strong> installé,
+                  configuré et supporté pour vous — et le <strong>Trunk SIP</strong>{" "}
+                  E2I VoIP qui le raccorde au réseau téléphonique, avec vos
+                  numéros locaux. Un seul interlocuteur pour le standard et la
+                  ligne.
+                </p>
                 
                 <p>
                   <strong>Dites adieu à votre ancien standard téléphonique PABX !</strong> Optez pour notre solution nouvelle génération. En tant qu'intégrateur privilégié de téléphonie IP en Guadeloupe, Martinique, Guyane, La Réunion et en France Métropolitaine, nous assurons l'installation, la configuration et le support de votre serveur 3CX dans le cloud.
@@ -54,19 +62,19 @@ export function TransformationSection() {
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>Téléphonie IP disponible par Internet</strong> - Accessibilité totale, où que vous soyez
+                    <strong>Standard téléphonique clé en main</strong> - 3CX ou Yeastar installés, configurés et supportés, sur cloud ou sur site
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>Coûts d'appels réduits</strong> - Fixe & Mobile Antilles, Guyane, La Réunion et Métropole
+                    <strong>Tarifs d'appel maîtrisés</strong> - fixes et mobiles Antilles, Guyane, La Réunion, Métropole facturés au compteur
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>À partir de 2 canaux voix</strong> - 2 appels simultanés minimum
+                    <strong>Trunk SIP au compteur ou illimité</strong> - à partir de 2 canaux voix, dimensionnés à votre trafic
                   </span>
                 </li>
                 <li className="flex items-start">

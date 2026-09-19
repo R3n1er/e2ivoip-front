@@ -1,8 +1,9 @@
 import { pageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 
-// La page devis-en-ligne est un client component ("use client") : les metadata
-// ne peuvent pas y être exportées, on les définit donc via ce layout serveur.
+// Les metadata sont définies via ce layout serveur afin de garder la page
+// libre de toute contrainte de rendu. Ne pas y réintroduire d'hypothèse sur
+// la nature (client/serveur) de la page : ce commentaire a déjà été faux.
 export const metadata: Metadata = pageMetadata({
   title: "Devis en ligne — Trunk SIP, 3CX, portabilité & projets PBX",
   description:

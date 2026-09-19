@@ -1,6 +1,12 @@
 import { expect, test } from "@playwright/test";
+import { HOME_PAGE_TITLE } from "@/lib/site";
 
-const HOME_TITLE = "Opérateur de services télécom DOM | E2I VoIP";
+// Le titre est importé de sa source unique (lib/site.ts) plutôt que recopié :
+// la version en dur avait divergé du code, et ce test vérifiait une chaîne
+// que plus aucune page ne servait. Ce qui compte ici est que le titre servi
+// dans le HTML soit bien celui déclaré — pas sa valeur littérale, déjà
+// verrouillée par tests/site-metadata.test.ts.
+const HOME_TITLE = HOME_PAGE_TITLE;
 
 test("la page d'accueil expose ses métadonnées sociales", async ({ page }) => {
   await page.goto("/");
