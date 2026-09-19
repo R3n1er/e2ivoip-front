@@ -97,7 +97,9 @@ describe('Tarifs 3CX SMB PRO — deux formules distinctes', () => {
     const page = read('app/nos-services/page.tsx');
 
     it('annonce le prix d\'entrée 15 €, pas 29 € comme prix unique', () => {
-      expect(page).toMatch(/D[èe]s 15 €\/utilisateur\/mois/);
+      // « HT » toléré : la convention du site (CGV, page Trunk SIP, FAQ) est
+      // d'afficher les tarifs hors taxes, mention qui manquait ici.
+      expect(page).toMatch(/D[èe]s 15 €\s*(HT\s*)?\/utilisateur\/mois/);
     });
   });
 
@@ -123,21 +125,50 @@ describe('Tarifs 3CX SMB PRO — deux formules distinctes', () => {
   });
 
   describe('Cohérence — aucune page n\'isole 29 € comme unique tarif SMB', () => {
+    // public/llms.txt est inclus délibérément : c'est la vitrine servie aux
+    // moteurs de réponse (ChatGPT, Perplexity, AI Overviews). Il avait été
+    // oublié lors du passage aux deux formules et continuait d'annoncer
+    // 29 €/utilisateur/mois comme prix unique, sur un canal public.
     const pages = [
       'app/telephonie-entreprise/3cx-smb-mutualisee/page.tsx',
       'app/telephonie-3cx/page.tsx',
       'app/nos-services/page.tsx',
+      'public/llms.txt',
     ];
 
-    it.each(pages)('%s : 29 € n\'apparaît pas sans le contexte des deux formules', (rel) => {
+    it.each(pages)('%s : chaque 29 € est qualifié à proximité immédiate', (rel) => {
       const content = read(rel);
-      if (!content.includes('29 €')) return; // page sans mention, rien à vérifier
 
-      // Partout où 29 € figure, la formulation « deux formules » ou « illimité »
-      // doit être présente sur la page pour lever l'ambiguïté.
-      const hasIllimite = /illimit[ée]/i.test(content);
-      const hasCompteur = /compteur/i.test(content);
-      expect(hasIllimite || hasCompteur).toBe(true);
+      // Vérification de PROXIMITÉ, et non de simple présence sur la page :
+      // chercher « illimité » n'importe où dans le fichier laissait passer un
+      // 29 € isolé dès qu'une autre carte mentionnait « au compteur ».
+      const FENETRE = 220;
+      for (const found of content.matchAll(/29\s*€/g)) {
+        const debut = Math.max(0, (found.index ?? 0) - FENETRE);
+        const contexte = content.slice(debut, (found.index ?? 0) + FENETRE);
+
+        expect(contexte).toMatch(/illimit[ée]s?|compteur/i);
+      }
+    });
+
+    it.each(pages)('%s : « illimité » accolé à un prix porte la réserve mobile', (rel) => {
+      const content = read(rel);
+
+      // « Illimité » non qualifié est une allégation ferme au sens de
+      // l'article L121-2 du code de la consommation : la restriction doit
+      // figurer à proximité immédiate, pas ailleurs sur la page.
+      //
+      // On ne cible que les emplois qui QUALIFIENT UN PRIX — c'est là que
+      // l'allégation engage. Les autres emplois (« appels illimités entre
+      // utilisateurs », « appels simultanés illimités », commentaires de code)
+      // ne promettent aucune gratuité d'appel sortant.
+      const FENETRE = 260;
+      for (const found of content.matchAll(/(\d+\s*€[^.\n]{0,120}?illimit[ée]s?|illimit[ée]s?[^.\n]{0,120}?\d+\s*€)/gi)) {
+        const debut = Math.max(0, (found.index ?? 0) - FENETRE);
+        const contexte = content.slice(debut, (found.index ?? 0) + found[0].length + FENETRE);
+
+        expect(contexte).toMatch(/mobiles?\s+(?:restent\s+)?(?:factur|au compteur)|mobiles au compteur/i);
+      }
     });
   });
 });
