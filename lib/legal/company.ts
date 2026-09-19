@@ -18,7 +18,9 @@ export const COMPANY = {
   brand: "E2I VoIP",
   siret: "51743457700014",
   siren: "517 434 577",
-  rcs: "Cayenne 517 434 577",
+  // Pas de numéro RCS : E2I ASSISTANCE est une entreprise individuelle
+  // immatriculée en Guyane, pas au registre du commerce et des sociétés.
+  // Ne jamais afficher d'inscription RCS qui n'existe pas.
   ape: "6203Z",
   apeLabel: "Gestion d’installations informatiques",
   publicationDirector: "Alban RENIER",
@@ -54,9 +56,11 @@ export interface SubProcessor {
 /**
  * Sous-traitants effectivement mobilisés par le site, vérifiés dans le code.
  *
- * PostHog figure dans les dépendances du projet mais n'est jamais initialisé
- * (aucun `posthog.init`) : il ne collecte donc rien aujourd'hui et n'a pas sa
- * place ici. À réintroduire le jour où il sera réellement activé.
+ * PostHog est initialisé sur toutes les pages dès qu'un token est présent
+ * (`instrumentation-client.ts`, `capture_pageview: 'history_change'`,
+ * `autocapture: true`) : il traite donc réellement des données et doit figurer
+ * ici au titre de l'article 28 du RGPD. Son hébergement est européen
+ * (`eu.i.posthog.com`).
  */
 export const SUB_PROCESSORS: readonly SubProcessor[] = [
   {
@@ -66,6 +70,15 @@ export const SUB_PROCESSORS: readonly SubProcessor[] = [
     data: "Adresse IP, journaux de connexion, pages consultées.",
     location:
       "États-Unis — clauses contractuelles types de la Commission européenne.",
+  },
+  {
+    name: "PostHog Inc.",
+    purpose:
+      "Mesure d’audience et suivi des interactions sur le site (pages consultées, clics, soumissions de formulaires).",
+    data:
+      "Identifiant pseudonyme de visiteur, pages et interactions observées, données techniques de navigation.",
+    location:
+      "Hébergement Union européenne (eu.i.posthog.com). Sans consentement, aucun cookie n’est déposé : la session reste en mémoire.",
   },
   {
     name: "HubSpot Inc.",
@@ -166,6 +179,14 @@ export const COOKIES: readonly CookieEntry[] = [
       "Mémoriser votre choix d’accepter ou de refuser la mesure d’audience.",
     retention: "Jusqu’à ce que vous l’effaciez via « Gérer mes cookies ».",
     requiresConsent: false,
+  },
+  {
+    name: "ph_phc_…_posthog",
+    origin: "PostHog",
+    purpose:
+      "Reconnaître votre navigateur d’une visite à l’autre pour la mesure d’audience et le suivi des interactions.",
+    retention: "12 mois maximum.",
+    requiresConsent: true,
   },
   {
     name: "__hstc, hubspotutk, __hssc, __hssrc",

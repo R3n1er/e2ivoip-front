@@ -114,7 +114,7 @@ export default function ConditionsGeneralesVentePage() {
                     <h3 className="font-semibold text-gray-900">Droit applicable</h3>
                   </div>
                   <p className="text-gray-600">
-                    Droit français · Tribunaux compétents de Cayenne
+                    Droit français · Juridiction déterminée selon l’article 49
                   </p>
                 </CardContent>
               </Card>
