@@ -1088,13 +1088,42 @@ export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
  * source unique, donc aucune page ne peut afficher une date cuivre périmée.
  * Le paramètre `territory` est construit par `buildTerritoryFaq()`.
  */
-export function buildTerritoryFaq(territory: {
+interface TerritoryFaqInput {
   label: string;
   indicatif: string;
   phone: { number: string };
-  copper: { commercialDate: string; technicalDate: string; lot: string };
+  copper: {
+    alreadyClosed: { commune: string; technicalDate: string }[];
+    scheduled: { commune: string; technicalDate: string }[];
+    lot: string;
+  };
   zones: string[];
-}): RichFaqItem[] {
+}
+
+/**
+ * Phrase du calendrier cuivre d'un territoire, commune par commune.
+ *
+ * Énumère d'abord les communes DÉJÀ coupées — un fait accompli ne se conteste
+ * pas et ne périme jamais — puis les échéances planifiées. Un territoire sans
+ * aucune commune datée le dit, au lieu d'hériter de la date d'un voisin.
+ */
+function copperAnswerText(territory: TerritoryFaqInput): string {
+  const fait = territory.copper.alreadyClosed.map(
+    (c) => `${c.commune} est coupée depuis ${c.technicalDate}`,
+  );
+  const prevu = territory.copper.scheduled.map(
+    (c) => `${c.commune} bascule au ${c.technicalDate}`,
+  );
+  const phrases = [...fait, ...prevu];
+
+  if (phrases.length === 0) {
+    return `En ${territory.label} (${territory.copper.lot}), aucune commune n'a encore de date de fermeture publiée.`;
+  }
+
+  return `En ${territory.label}, le réseau cuivre ferme commune par commune (${territory.copper.lot}) : ${phrases.join(", ")}.`;
+}
+
+export function buildTerritoryFaq(territory: TerritoryFaqInput): RichFaqItem[] {
   const zonesSample = territory.zones.slice(0, 4).join(", ");
   return [
     {
@@ -1116,18 +1145,18 @@ export function buildTerritoryFaq(territory: {
     },
     {
       question: `Quand le réseau cuivre ferme-t-il en ${territory.label} ?`,
-      answerText: `En ${territory.label}, la fermeture commerciale est intervenue le ${territory.copper.commercialDate} et la fermeture technique est prévue le ${territory.copper.technicalDate} (${territory.copper.lot}). Après cette date, les installations raccordées au cuivre cessent de fonctionner. Les dates exactes dépendent de la commune.`,
+      // Le calendrier est COMMUNAL, jamais départemental : annoncer une date
+      // unique pour un territoire entier est factuellement faux, et c'est aussi
+      // se priver du meilleur argument — une commune déjà coupée est une preuve
+      // qui ne se conteste pas.
+      answerText: `${copperAnswerText(territory)} Les communes non citées n'ont pas encore de date publiée : nous la vérifions pour votre adresse avant tout engagement.`,
       answer: (
         <div className="space-y-3">
+          <p>{copperAnswerText(territory)}</p>
           <p>
-            En <strong>{territory.label}</strong>, la fermeture commerciale est intervenue
-            le <strong>{territory.copper.commercialDate}</strong> et la fermeture technique
-            est prévue le <strong>{territory.copper.technicalDate}</strong> (
-            {territory.copper.lot}).
-          </p>
-          <p>
-            Après cette date, les installations raccordées au cuivre cessent de fonctionner.
-            Les dates exactes dépendent de la commune.
+            Après la coupure, les installations raccordées au cuivre cessent de
+            fonctionner. Les communes non citées n&apos;ont pas encore de date
+            publiée : nous la vérifions pour votre adresse avant tout engagement.
           </p>
         </div>
       ),
@@ -1150,12 +1179,16 @@ export function buildTerritoryFaq(territory: {
     },
     {
       question: `Intervenez-vous sur site en ${territory.label} ?`,
-      answerText: `E2I VoIP est établi en Guyane et dispose d'équipes en Martinique et en Guadeloupe. Selon la nature du chantier, l'installation se fait à distance ou sur site. Les besoins qui exigent un déplacement sont qualifiés lors de l'audit préalable.`,
+      // La réponse doit parler du territoire de la page. Une version antérieure
+      // répondait « nous sommes établis en Guyane » quel que soit le territoire,
+      // ce qui, sur une future page Martinique, répondait à côté de la question.
+      answerText: `Oui. Nous intervenons en ${territory.label}, notamment à ${zonesSample}, avec une ligne locale en ${territory.indicatif}. Selon la nature du chantier, l'installation se fait à distance ou sur site. Les besoins qui exigent un déplacement sont qualifiés lors de l'audit préalable.`,
       answer: (
         <div className="space-y-3">
           <p>
-            E2I VoIP est <strong>établi en Guyane</strong> et dispose d&apos;équipes en
-            Martinique et en Guadeloupe.
+            Oui. Nous intervenons <strong>en {territory.label}</strong>,
+            notamment à {zonesSample}, avec une ligne locale en{" "}
+            {territory.indicatif}.
           </p>
           <p>
             Selon la nature du chantier, l&apos;installation se fait <strong>à distance

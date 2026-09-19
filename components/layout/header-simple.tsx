@@ -26,6 +26,12 @@ export function HeaderSimple() {
     {
       name: "Téléphonie d'entreprise",
       submenu: [
+        // En tête du sous-menu : c'est l'entrée en vocabulaire d'acheteur,
+        // là où les suivantes nomment des produits.
+        {
+          name: "Standard téléphonique",
+          href: "/standard-telephonique",
+        },
         {
           name: "Trunk SIP au compteur",
           href: "/telephonie-entreprise/trunk-sip-compteur",

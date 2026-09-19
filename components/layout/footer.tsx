@@ -81,6 +81,19 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-black mb-4 text-gray-dark">Services</h3>
             <ul className="space-y-3 text-sm text-gray-secondary">
+              {/* En tête : « standard téléphonique » est le vocabulaire de
+                  l'acheteur, « Trunk SIP » celui du technicien. Ce lien donne
+                  aussi au hub le maillage interne sans lequel un silo met des
+                  mois à se positionner — le sitemap fait découvrir une page,
+                  il ne lui transmet pas d'autorité. */}
+              <li>
+                <Link
+                  href="/standard-telephonique"
+                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                >
+                  Standard téléphonique
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-compteur"

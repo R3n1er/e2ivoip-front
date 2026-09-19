@@ -6,6 +6,8 @@ import { test, expect } from "@playwright/test";
  */
 const PAGES = [
   "/",
+  "/standard-telephonique",
+  "/standard-telephonique/guyane",
   "/telephonie-entreprise",
   "/telephonie-3cx",
   "/3cx-pro",
@@ -95,5 +97,15 @@ test.describe("SEO — contrôles avant mise en ligne", () => {
         expect(entree["@type"]).toBeTruthy();
       }
     }
+  });
+
+  // Les territoires déclarés `published: false` doivent renvoyer un vrai 404,
+  // pas une page vide : une URL qui répond 200 avec du contenu générique est
+  // indexable, et c'est précisément la page satellite que le registre refuse.
+  test("un territoire non publié renvoie un 404 réel", async ({ page }) => {
+    const reponse = await page.goto("/standard-telephonique/martinique", {
+      waitUntil: "domcontentloaded",
+    });
+    expect(reponse?.status()).toBe(404);
   });
 });

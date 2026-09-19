@@ -73,10 +73,15 @@ export default function StandardTelephoniqueGuyanePage() {
               </h1>
               <p className="text-xl text-gray-secondary leading-relaxed mb-8">
                 Migration de votre PABX, portabilité de vos numéros {t.indicatif}{" "}
-                et accompagnement local par un opérateur établi à Cayenne. Le
-                réseau cuivre guyanais ferme au{" "}
-                <strong>{t.copper.technicalDate}</strong> : mieux vaut migrer
-                avant la coupure.
+                et accompagnement local par un opérateur établi à Cayenne. En
+                Guyane, la fermeture du cuivre a déjà commencé :{" "}
+                <strong>
+                  {t.copper.alreadyClosed[0]?.commune} est coupée depuis{" "}
+                  {t.copper.alreadyClosed[0]?.technicalDate}
+                </strong>
+                , {t.copper.scheduled[0]?.commune} suit au{" "}
+                <strong>{t.copper.scheduled[0]?.technicalDate}</strong>. La date
+                de votre commune se vérifie au cas par cas.
               </p>
 
               {/* Preuve locale vérifiable */}
@@ -88,7 +93,16 @@ export default function StandardTelephoniqueGuyanePage() {
                   },
                   {
                     icon: Certificate,
-                    text: `Entreprise immatriculée en Guyane · SIRET ${COMPANY.siret}`,
+                    // Le SIRET est une donnée chiffrée : IBM Plex Mono +
+                    // tabular-nums, comme partout ailleurs sur le site.
+                    text: (
+                      <>
+                        Entreprise immatriculée en Guyane · SIRET{" "}
+                        <span className="font-mono tabular-nums">
+                          {COMPANY.siret}
+                        </span>
+                      </>
+                    ),
                   },
                   {
                     icon: Phone,
@@ -110,12 +124,15 @@ export default function StandardTelephoniqueGuyanePage() {
                 ))}
               </ul>
 
+              {/* CTA principal en conseil, pas en devis : la ligne éditoriale
+                  réserve « Demander un devis » au CTA secondaire. */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <CTAButton href="/devis-en-ligne?service=standard-telephonique-guyane">
+                <CTAButton href="/contact">Parler à un expert DOM</CTAButton>
+                <CTAButtonMarine
+                  href="/devis-en-ligne?service=standard-telephonique-guyane"
+                  icon="ArrowRight"
+                >
                   Demander un devis
-                </CTAButton>
-                <CTAButtonMarine href="/contact" icon="ArrowRight">
-                  Parler à un technicien
                 </CTAButtonMarine>
               </div>
             </div>
@@ -126,18 +143,32 @@ export default function StandardTelephoniqueGuyanePage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-              Le cuivre guyanais ferme le{" "}
-              <span className="text-red-primary">{t.copper.technicalDate}</span>
+              En Guyane, le cuivre ferme commune par commune —{" "}
+              <span className="text-red-primary">
+                {t.copper.alreadyClosed[0]?.commune} est déjà coupée
+              </span>
             </h2>
             <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
               <p>
                 La Guyane relève du <strong>{t.copper.lot}</strong> du plan de
-                fermeture piloté par Orange sous contrôle de l&apos;Arcep. La
-                fermeture commerciale — la fin de toute nouvelle souscription
-                sur cuivre — est intervenue le{" "}
-                <strong>{t.copper.commercialDate}</strong>. La fermeture
-                technique, qui coupe physiquement les lignes, est prévue le{" "}
-                <strong>{t.copper.technicalDate}</strong>.
+                fermeture piloté par Orange sous contrôle de l&apos;Arcep. Ce
+                plan avance <strong>commune par commune</strong>, pas par
+                département :{" "}
+                {t.copper.alreadyClosed.map((c) => (
+                  <span key={c.commune}>
+                    <strong>{c.commune}</strong> est coupée depuis{" "}
+                    {c.technicalDate}
+                  </span>
+                ))}
+                , et{" "}
+                {t.copper.scheduled.map((c) => (
+                  <span key={c.commune}>
+                    <strong>{c.commune}</strong> bascule au {c.technicalDate},
+                    après un arrêt des nouvelles souscriptions au{" "}
+                    {c.commercialDate}
+                  </span>
+                ))}
+                . Les autres communes n&apos;ont pas encore de date publiée.
               </p>
               <p>
                 À cette date, les installations raccordées au cuivre cessent de
@@ -148,11 +179,11 @@ export default function StandardTelephoniqueGuyanePage() {
               </p>
             </div>
 
-            <div className="mt-8 max-w-4xl rounded-lg border border-amber-200 bg-amber-50 p-6">
+            <div className="mt-8 max-w-4xl rounded-lg border border-red-primary/20 bg-red-primary/5 p-6">
               <div className="flex items-start gap-3">
                 <Warning
                   size={24}
-                  className="text-amber-600 shrink-0 mt-0.5"
+                  className="text-red-primary shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
                 <div className="text-gray-700">
@@ -242,7 +273,7 @@ export default function StandardTelephoniqueGuyanePage() {
                     <li key={p.client} className="flex items-start gap-3">
                       <CheckCircle
                         size={20}
-                        className="text-green-600 shrink-0 mt-0.5"
+                        className="text-red-primary shrink-0 mt-0.5"
                         aria-hidden="true"
                       />
                       <div>

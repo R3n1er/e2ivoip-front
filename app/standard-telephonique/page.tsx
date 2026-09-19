@@ -45,8 +45,10 @@ export default function StandardTelephoniquePage() {
                 Standard téléphonique d&apos;entreprise
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark mb-6 leading-tight">
-                Votre standard téléphonique,{" "}
-                <span className="text-red-primary">enfin simple</span>
+                Remplacer votre standard téléphonique{" "}
+                <span className="text-red-primary">
+                  en Guyane, aux Antilles et à La Réunion
+                </span>
               </h1>
               <p className="text-xl text-gray-secondary leading-relaxed mb-8">
                 Un seul numéro, les appels orientés vers la bonne personne, et
@@ -54,15 +56,26 @@ export default function StandardTelephoniquePage() {
                 ordinateur ou un mobile. Sans jargon et sans matériel obsolète
                 dans un placard.
               </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Un seul interlocuteur pour le standard et la ligne qui le
+                raccorde : nous sommes à la fois l&apos;
+                <strong>opérateur</strong> du réseau et l&apos;
+                <strong>intégrateur</strong> qui installe.
+              </p>
+              {/* « Demander un devis » ne peut pas être l'action principale
+                  (ligne éditoriale) : il conditionne le visiteur à demander un
+                  prix avant d'avoir vu la valeur. Sur une requête
+                  informationnelle comme « standard téléphonique », c'est aussi
+                  perdre celui qui découvre le sujet. */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <CTAButton href="/devis-en-ligne?service=standard-telephonique">
-                  Demander un devis
+                <CTAButton href="/contact">
+                  Faire le point sur votre installation
                 </CTAButton>
                 <CTAButtonMarine
-                  href="/telephonie-entreprise"
+                  href="/devis-en-ligne?service=standard-telephonique"
                   icon="ArrowRight"
                 >
-                  Voir les solutions techniques
+                  Demander un devis
                 </CTAButtonMarine>
               </div>
             </div>
@@ -79,11 +92,11 @@ export default function StandardTelephoniquePage() {
             <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
               <p>
                 Le réseau téléphonique historique en cuivre est démonté par
-                Orange, sous contrôle de l&apos;Arcep. La fermeture commerciale —
-                c&apos;est-à-dire la fin de toute nouvelle souscription — est
-                intervenue le <strong>31 janvier 2026</strong> sur la majorité du
-                territoire, métropole et outre-mer. La coupure physique des
-                lignes suit, par lots, jusqu&apos;en 2030.
+                Orange, sous contrôle de l&apos;Arcep. Le calendrier est découpé
+                en <strong>lots de communes</strong>, et non par département :
+                aux Antilles-Guyane, les premières communes sont{" "}
+                <strong>déjà coupées depuis 2025</strong>, d&apos;autres
+                basculent au 31 janvier 2027, et La Réunion suit en 2029.
               </p>
               <p>
                 Concrètement, si votre standard est raccordé au cuivre, il cesse
@@ -93,11 +106,11 @@ export default function StandardTelephoniquePage() {
                 utilisent parfois encore la même ligne.
               </p>
             </div>
-            <div className="mt-8 max-w-4xl rounded-lg border border-amber-200 bg-amber-50 p-6">
+            <div className="mt-8 max-w-4xl rounded-lg border border-red-primary/20 bg-red-primary/5 p-6">
               <div className="flex items-start gap-3">
                 <Warning
                   size={24}
-                  className="text-amber-600 shrink-0 mt-0.5"
+                  className="text-red-primary shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
                 <div className="text-gray-700">
@@ -146,7 +159,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Idéal jusqu&apos;à quelques dizaines de postes
@@ -154,7 +167,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Accueil, transfert, messagerie inclus
@@ -162,7 +175,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Poste IP, ordinateur ou mobile
@@ -186,7 +199,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Pour les sites multi-bâtiments et les centres d&apos;appels
@@ -194,7 +207,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Configuration sur mesure
@@ -202,7 +215,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Hébergement France / UE, conforme RGPD
@@ -226,7 +239,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     2 à 4 canaux suffisent pour 5 à 10 postes
@@ -234,7 +247,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Numéros locaux et portabilité incluses
@@ -242,7 +255,7 @@ export default function StandardTelephoniquePage() {
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
-                      className="text-green-600 shrink-0 mt-0.5"
+                      className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
                     Facturation au compteur ou forfait
@@ -342,10 +355,21 @@ export default function StandardTelephoniquePage() {
                     </h3>
                   </div>
                   <p className="text-sm text-gray-secondary mb-3">
-                    Indicatif {t.indicatif} · {t.phone.number}
+                    Indicatif{" "}
+                    <span className="font-mono tabular-nums">{t.indicatif}</span>{" "}
+                    ·{" "}
+                    <span className="font-mono tabular-nums">
+                      {t.phone.number}
+                    </span>
                   </p>
                   <p className="text-sm text-gray-600">
-                    Cuivre : {t.copper.technicalDate}
+                    {/* Fait accompli d'abord : une commune déjà coupée est une
+                        preuve, une échéance future se discute. */}
+                    {t.copper.alreadyClosed[0]
+                      ? `Cuivre : ${t.copper.alreadyClosed[0].commune} déjà coupée`
+                      : t.copper.scheduled[0]
+                        ? `Cuivre : ${t.copper.scheduled[0].commune} au ${t.copper.scheduled[0].technicalDate}`
+                        : "Calendrier cuivre à vérifier par commune"}
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm text-red-primary mt-3 group-hover:gap-2 transition-all">
                     Voir la page <ArrowRight size={14} aria-hidden="true" />

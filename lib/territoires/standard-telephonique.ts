@@ -26,16 +26,50 @@
 
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
-export interface CopperSchedule {
-  /** Fin des nouvelles souscriptions sur cuivre (lot du territoire). */
-  commercialDate: string;
+/**
+ * Une échéance de fermeture du cuivre, pour UNE commune.
+ *
+ * La granularité est communale et non départementale : l'Arcep publie ses lots
+ * commune par commune. Une version antérieure de ce registre ne portait qu'une
+ * paire de dates par territoire, ce qui rendait structurellement impossible
+ * d'écrire la vérité — la page Guyane annonçait « le cuivre guyanais ferme le
+ * 31 janvier 2027 » en listant Rémire-Montjoly, coupée depuis 2025.
+ */
+export interface CopperCommune {
+  /** Nom de la commune, tel qu'il s'écrit sur la page. */
+  commune: string;
+  /** Fin des nouvelles souscriptions cuivre. `null` si le lot n'en publie pas. */
+  commercialDate: string | null;
   /** Coupure physique des lignes — au moins 12 mois après la commerciale. */
   technicalDate: string;
+}
+
+export interface CopperSchedule {
+  /**
+   * Communes DÉJÀ coupées. C'est l'argument le plus fort du corpus : un
+   * précédent ne se conteste pas et ne périme jamais. À citer avant les
+   * échéances futures, jamais après.
+   */
+  alreadyClosed: CopperCommune[];
+  /** Communes dont la fermeture est planifiée et sourcée. */
+  scheduled: CopperCommune[];
   /** Libellé court du lot, tel que publié par le régulateur. */
   lot: string;
   /** Source vérifiable — jamais une date de mémoire. */
   sourceLabel: string;
   sourceUrl: string;
+}
+
+/**
+ * Prochaine échéance connue d'un territoire, pour les usages où une seule date
+ * peut être affichée (carte de liste, meta description).
+ *
+ * Retourne `null` quand aucune commune n'a d'échéance planifiée : le territoire
+ * n'a alors pas de date à annoncer, et la page doit le dire plutôt que d'en
+ * inventer une.
+ */
+export function nextCopperDeadline(copper: CopperSchedule): CopperCommune | null {
+  return copper.scheduled[0] ?? null;
 }
 
 export interface StandardTerritory {
@@ -70,9 +104,9 @@ export interface StandardTerritory {
 
 export const STANDARD_TELEPHONE_HUB = {
   slug: "standard-telephonique",
-  title: "Standard téléphonique d'entreprise",
+  title: "Standard téléphonique entreprise DOM",
   description:
-    "Ce qu'est un standard téléphonique, comment il remplace un PABX analogique, combien ça coûte et comment se passe l'installation chez vous.",
+    "Remplacer votre PABX avant la fermeture du cuivre : standard hébergé pour les entreprises de Guyane, des Antilles et de La Réunion. Opérateur et intégrateur.",
 } as const;
 
 /**
@@ -97,12 +131,25 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "Guyane",
     title: "Standard téléphonique en Guyane",
     description:
-      "Installation et migration de standard téléphonique d'entreprise en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité de vos numéros et fin du réseau cuivre au 31 janvier 2027.",
+      "Standard téléphonique en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité incluse. Le cuivre ferme déjà — vérifions votre commune.",
     indicatif: "0594",
     phone: phoneFor("Guyane"),
     copper: {
-      commercialDate: "31 janvier 2026",
-      technicalDate: "31 janvier 2027",
+      // Source : docs/ligne-editoriale.md, tableau vérifié le 2026-08-30.
+      alreadyClosed: [
+        {
+          commune: "Rémire-Montjoly",
+          commercialDate: null,
+          technicalDate: "2025",
+        },
+      ],
+      scheduled: [
+        {
+          commune: "Kourou",
+          commercialDate: "31 janvier 2026",
+          technicalDate: "31 janvier 2027",
+        },
+      ],
       lot: "lot 3",
       sourceLabel: "Arcep / Orange — plan de fermeture du réseau cuivre",
       sourceUrl:
@@ -130,18 +177,23 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "Martinique",
     title: "Standard téléphonique en Martinique",
     description:
-      "Standard téléphonique d'entreprise en Martinique : migration de votre PABX, portabilité des numéros 0596, zones d'intervention et calendrier de fermeture du cuivre.",
+      "Standard téléphonique d'entreprise en Martinique : migration de votre PABX, portabilité des numéros 0596 et calendrier communal de fermeture du cuivre.",
     indicatif: "0596",
     phone: phoneFor("Martinique"),
     copper: {
-      commercialDate: "31 janvier 2026",
-      technicalDate: "31 janvier 2027",
+      // Source : docs/ligne-editoriale.md, tableau vérifié le 2026-08-30.
+      // Aucune commune martiniquaise n'est publiée au 31/01/2027 : ne pas
+      // reprendre l'échéance guyanaise ou guadeloupéenne par analogie de lot.
+      alreadyClosed: [
+        { commune: "Schœlcher", commercialDate: null, technicalDate: "2025" },
+      ],
+      scheduled: [],
       lot: "lot 3",
       sourceLabel: "Arcep / Orange — plan de fermeture du réseau cuivre",
       sourceUrl:
         "https://www.arcep.fr/nos-sujets/la-fermeture-du-reseau-cuivre.html",
     },
-    zones: ["Fort-de-France", "Le Lamentin", "Ducos", "Schoelcher", "Le Robert"],
+    zones: ["Fort-de-France", "Le Lamentin", "Ducos", "Schœlcher", "Le Robert"],
     localProof: [{ client: "Zoo de Martinique", sector: "loisirs et tourisme" }],
     context:
       "La Martinique concentre son activité tertiaire autour de Fort-de-France et de la zone d'activité du Lamentin. Les parcs installés y sont souvent des PABX constructeur arrivés en fin de commercialisation : c'est le moment de basculer vers un standard hébergé.",
@@ -156,12 +208,26 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "Guadeloupe",
     title: "Standard téléphonique en Guadeloupe",
     description:
-      "Standard téléphonique d'entreprise en Guadeloupe : installation, migration de votre PABX et portabilité des numéros 0590. Support local et calendrier cuivre du territoire.",
+      "Standard téléphonique en Guadeloupe : migration de votre PABX, portabilité des numéros 0590 et calendrier communal de fermeture du cuivre.",
     indicatif: "0590",
     phone: phoneFor("Guadeloupe"),
     copper: {
-      commercialDate: "31 janvier 2026",
-      technicalDate: "31 janvier 2027",
+      // Source : docs/ligne-editoriale.md, tableau vérifié le 2026-08-30.
+      alreadyClosed: [
+        { commune: "Petit-Bourg", commercialDate: null, technicalDate: "2025" },
+      ],
+      scheduled: [
+        {
+          commune: "Basse-Terre",
+          commercialDate: "31 janvier 2026",
+          technicalDate: "31 janvier 2027",
+        },
+        {
+          commune: "Deshaies",
+          commercialDate: "31 janvier 2026",
+          technicalDate: "31 janvier 2027",
+        },
+      ],
       lot: "lot 3",
       sourceLabel: "Arcep / Orange — plan de fermeture du réseau cuivre",
       sourceUrl:
@@ -186,12 +252,22 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "La Réunion",
     title: "Standard téléphonique à La Réunion",
     description:
-      "Standard téléphonique d'entreprise à La Réunion : installation, migration de votre PABX et portabilité des numéros 0262. Support local et calendrier cuivre du territoire.",
-    indicatif: "0262",
+      "Standard téléphonique à La Réunion : migration de votre PABX, portabilité des numéros 0263 et calendrier communal de fermeture du cuivre.",
+    indicatif: "0263",
     phone: phoneFor("La Reunion"),
     copper: {
-      commercialDate: "31 janvier 2026",
-      technicalDate: "janvier 2029",
+      // Source : docs/ligne-editoriale.md, tableau vérifié le 2026-08-30.
+      // Le lot 5 s'étale sur trois vagues (janvier, mai, octobre 2029) et
+      // l'Arcep ne publie pas d'arrêt commercial : `commercialDate: null`
+      // plutôt qu'une date fabriquée par analogie avec le lot 3.
+      alreadyClosed: [],
+      scheduled: [
+        {
+          commune: "tout le département",
+          commercialDate: null,
+          technicalDate: "janvier, mai ou octobre 2029 selon la commune",
+        },
+      ],
       lot: "lot 5",
       sourceLabel: "Arcep / Orange — plan de fermeture du réseau cuivre",
       sourceUrl:
