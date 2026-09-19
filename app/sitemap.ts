@@ -1,6 +1,10 @@
 import { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { getBlogPostsForSitemap } from "@/lib/blog-source";
+import {
+  getPublishedTerritories,
+  standardTelephoneHref,
+} from "@/lib/territoires/standard-telephonique";
 
 /**
  * Sitemap généré à partir des routes RÉELLES de l'application (`app/**`),
@@ -34,14 +38,36 @@ export const revalidate = 3600;
  */
 const BLOG_CATEGORIES = ["3cx", "pabx", "trunk-sip", "voip"];
 
+type Entry = {
+  path: string;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  priority: number;
+};
+
+/**
+ * Entrées de la section /standard-telephonique.
+ *
+ * Construites depuis le registre (`lib/territoires/standard-telephonique.ts`) :
+ * le hub puis les seuls territoires publiés. Ajouter un territoire au registre
+ * suffit à l'inscrire au sitemap — aucun risque d'oublier une page ici.
+ */
+function standardTelephoneSitemapEntries(): Entry[] {
+  return [
+    {
+      path: standardTelephoneHref(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    ...getPublishedTerritories().map((t) => ({
+      path: standardTelephoneHref(t.slug),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-
-  type Entry = {
-    path: string;
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-    priority: number;
-  };
 
   const routes: Entry[] = [
     // Accueil
@@ -59,6 +85,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 3CX (page unique : présente les offres SMB mutualisée et PRO dédiée)
     { path: "/telephonie-3cx", changeFrequency: "monthly", priority: 0.9 },
+
+    // Standard téléphonique (phase 3 SEO) — hub + déclinaisons territoriales.
+    // Les déclinaisons proviennent du registre : une page non publiée
+    // (published: false) n'entre pas au sitemap, donc pas d'URL fantôme.
+    ...standardTelephoneSitemapEntries(),
 
     // Services & conversion
     { path: "/devis-en-ligne", changeFrequency: "monthly", priority: 0.8 },
