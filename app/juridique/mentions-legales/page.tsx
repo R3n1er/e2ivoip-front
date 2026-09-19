@@ -98,7 +98,7 @@ export default function MentionsLegales() {
                         <p className="text-gray-600">
                           SIRET {COMPANY.siret}
                           <br />
-                          RCS {COMPANY.rcs}
+                          Entreprise immatriculée en Guyane
                           <br />
                           Code APE {COMPANY.ape} — {COMPANY.apeLabel}
                         </p>
