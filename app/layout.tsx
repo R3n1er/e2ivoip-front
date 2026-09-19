@@ -37,10 +37,15 @@ export const metadata: Metadata = {
     // Les pages enfant qui définissent un title court héritent du suffixe marque.
     template: `%s | ${SITE_NAME}`,
   },
+  // 158 caractères. L'ancrage géographique est porté ici, puisqu'il sort du
+  // titre : Guyane nommée en premier (requête la plus disputée), puis les
+  // Antilles et La Réunion. Le différenciant (opérateur ET intégrateur, un
+  // seul interlocuteur) est ce que les concurrents locaux, simples
+  // intégrateurs, ne peuvent pas revendiquer.
   description:
-    "Opérateur de services télécom pour les entreprises des DOM. Trunk SIP éligibles Guadeloupe, Martinique, Guyane et La Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar. Préparez la fin du réseau cuivre.",
+    "Opérateur et intégrateur en Guyane, Antilles et Réunion : votre standard téléphonique 3CX ou Yeastar et le Trunk SIP qui le raccorde, un seul interlocuteur.",
   keywords:
-    "téléphonie IP, trunk SIP, 3CX, PBX Yeastar, communications d'entreprise, VoIP",
+    "téléphonie IP, standard téléphonique, trunk SIP, 3CX, IPBX Yeastar, opérateur télécom DOM, VoIP Guyane, numéros locaux Guadeloupe Martinique Guyane Réunion",
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: HOME_PAGE_TITLE,
     description:
-      "Opérateur de services télécom des DOM : Trunk SIP éligibles Antilles-Guyane-Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar.",
+      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité gratuite.",
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
@@ -68,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: HOME_PAGE_TITLE,
     description:
-      "Opérateur de services télécom des DOM : Trunk SIP éligibles Antilles-Guyane-Réunion, portabilité de vos numéros locaux, 3CX et PBX Yeastar.",
+      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité gratuite.",
     images: ["/images/e2i-voip-partage.png"],
   },
   robots: {

@@ -2,55 +2,48 @@
 
 import { CTAButton } from "@/components/ui/cta-button";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
-import { Cloud, Users, Phone, Network, BarChart, CheckCircle, ArrowRight } from "@/lib/icons";
+import { Cloud, Users, Network, BarChart, CheckCircle, ArrowRight } from "@/lib/icons";
 
 export function ServicesSectionSimple() {
+  // Ordre volontaire : le standard téléphonique (ce que le prospect cherche) en
+  // premier, le Trunk SIP qui l'alimente en second. Inversé, la home vendait le
+  // raccordement avant le produit — c'est ce qu'a repris l'encart Google.
   const services = [
     {
-      Icon: Cloud,
-      title: "Trunk SIP DOM",
-      description:
-        "Au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux",
-      features: [
-        "Économies jusqu'à 20%",
-        "Numéros locaux DOM",
-        "Portabilité gratuite",
-        "Support technique local",
-        "2 appels simultanés inclus",
-      ],
-      badge: "Populaire",
-      price: "À partir de 2 canaux voix",
-      href: "/telephonie-entreprise/trunk-sip-compteur",
-    },
-    {
       Icon: Users,
-      title: "3CX SMB PRO",
+      title: "Standard téléphonique 3CX",
       description:
-        "IPBX 3CX sur serveur mutualisé multitenant, facturé à l'utilisateur (jusqu'à 10 utilisateurs). Compatible Trunk SIP : un Trunk SIP complémentaire est à souscrire pour téléphoner.",
+        "Votre IPBX 3CX installé, configuré et supporté : serveur mutualisé jusqu'à 10 utilisateurs, ou instance dédiée pour les structures multisites. Compatible Trunk SIP — le raccordement au réseau téléphonique est à souscrire.",
       features: [
-        "Instance sécurisée pro",
-        "Formation incluse",
-        "Support utilisateur dédié",
-        "Interface intuitive",
+        "Cloud mutualisé ou instance dédiée",
+        "4 à 64 appels simultanés",
+        "Installation et configuration incluses",
+        "Formation de vos équipes",
+        "Intégrations CRM et Microsoft 365",
       ],
       badge: "Idéal PME",
       price: "Sur devis",
       href: "/telephonie-3cx",
     },
     {
-      Icon: Phone,
-      title: "3CX PRO Cloud",
+      Icon: Cloud,
+      title: "Trunk SIP DOM",
       description:
-        "Votre IPBX dédié haute performance pour entreprises multisites avec communications unifiées",
+        "Le raccordement téléphonique de votre standard : au compteur ou illimité, éligible Antilles-Guyane-Réunion avec création de numéros locaux.",
+      // L'allégation « Économies jusqu'à 20% » est descendue en dernière
+      // position : la ligne éditoriale l'autorise en argument secondaire de
+      // page produit, mais l'interdit en accroche — et c'est précisément la
+      // première puce que Google reprend pour composer l'encart de marque.
       features: [
-        "Serveur dédié dans le cloud",
-        "4 à 64 appels simultanés",
-        "Multi-sites",
-        "Tableau de bord avancé",
+        "Numéros locaux Guadeloupe, Martinique, Guyane et La Réunion",
+        "Portabilité gratuite de vos numéros existants",
+        "Autant d'appels simultanés que nécessaire",
+        "Support technique local",
+        "Économies jusqu'à 20%",
       ],
-      badge: "Entreprise",
+      badge: "Populaire",
       price: "Sur devis",
-      href: "/telephonie-3cx",
+      href: "/telephonie-entreprise/trunk-sip-compteur",
     },
     {
       Icon: Network,
@@ -107,7 +100,9 @@ export function ServicesSectionSimple() {
             <RevealItem
               key={service.title}
               className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
-                index === services.length - 1
+                // Carte orpheline en fin de grille (nombre impair) : pleine
+                // largeur centrée. Nombre pair : la grille se ferme seule.
+                services.length % 2 === 1 && index === services.length - 1
                   ? "md:col-span-2 md:max-w-xl md:mx-auto md:w-full"
                   : ""
               }`}
