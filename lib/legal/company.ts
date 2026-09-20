@@ -6,11 +6,21 @@
  * l'ajout d'un sous-traitant ne puisse pas être appliqué à une page en
  * oubliant l'autre, situation qui a produit les incohérences corrigées ici.
  *
- * TODO(alban) — informations à obtenir avant publication définitive :
- *  - forme juridique exacte (SARL, SAS…) et montant du capital social ;
- *  - numéro de TVA intracommunautaire, ou mention « TVA non applicable »
- *    (la TVA n'est pas applicable en Guyane, article 294 du CGI) ;
- *  - confirmation qu'Alban RENIER est bien directeur de la publication.
+ * ── Arbitrages Alban (2026-09-19), tous vérifiés ────────────────────────────
+ *  - Forme juridique : entreprise individuelle sous régime micro-entreprise
+ *    (auto-entrepreneur). Ni capital social ni RCS : ces mentions n'existent
+ *    pas pour une EI, les afficher serait une fausse déclaration d'identité.
+ *  - TVA : « TVA non applicable ». DOUBLE fondement — l'article 293 B du CGI
+ *    (franchise en base du micro-entrepreneur) ET l'article 294, qui place la
+ *    Guyane hors du champ territorial de la TVA. Mention obligatoire sur les
+ *    supports commerciaux, absente jusqu'ici.
+ *  - Pas d'adresse e-mail publiée : le site expose un formulaire de contact
+ *    et quatre numéros de téléphone. L'article 6-III de la LCEN exige des
+ *    « coordonnées permettant de contacter rapidement » l'éditeur, sans
+ *    imposer l'e-mail ; publier une adresse exposerait la boîte au spam.
+ *    Corollaire : le formulaire doit rester fonctionnel — c'est lui qui
+ *    porte la conformité.
+ *  - Directeur de la publication : Alban RENIER (confirmé).
  */
 
 export const COMPANY = {
@@ -18,9 +28,15 @@ export const COMPANY = {
   brand: "E2I VoIP",
   siret: "51743457700014",
   siren: "517 434 577",
-  // Pas de numéro RCS : E2I ASSISTANCE est une entreprise individuelle
-  // immatriculée en Guyane, pas au registre du commerce et des sociétés.
-  // Ne jamais afficher d'inscription RCS qui n'existe pas.
+  /**
+   * Forme juridique — mention obligatoire (LCEN art. 6-III), absente de la
+   * page jusqu'au 2026-09-19 : elle affichait le nom sans dire ce qu'il
+   * désigne.
+   */
+  legalForm: "Entreprise individuelle (micro-entreprise)",
+  // Ni RCS ni capital social : une entreprise individuelle n'en a pas.
+  // Les afficher — même « pour faire sérieux » — serait une fausse mention
+  // d'identité de l'éditeur. Ne jamais ajouter ces champs ici.
   ape: "6203Z",
   apeLabel: "Gestion d’installations informatiques",
   publicationDirector: "Alban RENIER",
@@ -30,6 +46,13 @@ export const COMPANY = {
     city: "Cayenne",
     country: "Guyane française",
   },
+  /**
+   * Mention TVA. Obligatoire sur les supports commerciaux d'un assujetti
+   * qui ne facture pas de TVA (CGI art. 293 B), et doublement fondée ici :
+   * la Guyane est hors du champ territorial de la taxe (CGI art. 294).
+   * Aucun numéro de TVA intracommunautaire n'est donc à publier.
+   */
+  vatStatus: "TVA non applicable — articles 293 B et 294 du CGI",
   siteUrl: "www.e2i-voip.com",
 } as const;
 

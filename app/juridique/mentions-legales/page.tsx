@@ -96,11 +96,20 @@ export default function MentionsLegales() {
                           Immatriculation
                         </h3>
                         <p className="text-gray-600">
-                          SIRET {COMPANY.siret}
+                          {COMPANY.legalForm}
+                          <br />
+                          {/* Le SIRET est une donnée chiffrée : IBM Plex Mono
+                              + tabular-nums, comme partout sur le site. */}
+                          SIRET{" "}
+                          <span className="font-mono tabular-nums">
+                            {COMPANY.siret}
+                          </span>
                           <br />
                           Entreprise immatriculée en Guyane
                           <br />
                           Code APE {COMPANY.ape} — {COMPANY.apeLabel}
+                          <br />
+                          {COMPANY.vatStatus}
                         </p>
                       </div>
                     </div>
