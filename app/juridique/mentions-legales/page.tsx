@@ -111,6 +111,19 @@ export default function MentionsLegales() {
                           <br />
                           {COMPANY.vatStatus}
                         </p>
+                        {/* Adresse de contact — article 19 de la LCEN, qui
+                            l'impose à toute activité de commerce
+                            électronique. Le formulaire et les numéros ne
+                            suffisent pas à ce titre. */}
+                        <p className="text-gray-600 mt-2">
+                          Contact :{" "}
+                          <a
+                            href={`mailto:${COMPANY.contactEmail}`}
+                            className="text-red-primary hover:underline"
+                          >
+                            {COMPANY.contactEmail}
+                          </a>
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
