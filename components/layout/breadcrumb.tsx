@@ -36,13 +36,13 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
         // Données statiques construites ci-dessus, jamais d'entrée utilisateur.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+      <ol className="flex flex-wrap items-center gap-2 text-sm text-ui-muted">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (
             <li key={item.href ?? item.label} className="flex items-center gap-2">
               {index > 0 && (
-                <span aria-hidden="true" className="text-gray-400">
+                <span aria-hidden="true" className="text-ui-muted">
                   ›
                 </span>
               )}
@@ -54,7 +54,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
                   {item.label}
                 </Link>
               ) : (
-                <span aria-current="page" className="font-medium text-gray-700">
+                <span aria-current="page" className="font-medium text-gray-dark">
                   {item.label}
                 </span>
               )}

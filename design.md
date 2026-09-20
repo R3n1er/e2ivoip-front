@@ -156,6 +156,46 @@ Tells de *composition* conservés comme choix assumés : heroes centrés sur dé
 - **14 fichiers morts supprimés** au total le 2026-08-15 : variantes Tally, composants images obsolètes (`lazy-component`, `lazy-background-image`, `integration-test`, `tawk-test`), `devis-hero-section`, `hubspot-form-inline`
 - **Dette résiduelle connue :** la famille `optimized-image` → `optimized-blog-image` n'a plus aucun consommateur. Non supprimée : elle touche le blog, dont les pages peuvent évoluer. À trancher explicitement.
 
+### Gris d'interface — deux tokens ajoutés (2026-09-20)
+
+Le layout global (`components/layout/`) portait 27 utilitaires Tailwind hors
+charte, visibles sur **toutes** les pages du site. La charte n'offrait aucune
+valeur utilisable pour deux rôles précis :
+
+| Token | Valeur | Contraste / blanc | Rôle | Remplaçait |
+|---|---|---|---|---|
+| `ui-muted` | `#4B5563` | 7,56:1 — AA texte | Navigation niv. 2-3, chevrons | `text-gray-600/500/400` |
+| `ui-border` | `#E5E7EB` | 1,24:1 — surface | Séparateurs, bordures | `border-gray-200` |
+
+Ce sont des **gris fonctionnels, pas des couleurs de marque** : la charte reste
+à 5 couleurs et n'a pas été modifiée (règle absolue n°3 respectée). Ils suivent
+la même rampe bleutée que `gray-dark`, lui-même identique au `gray-800` de
+Tailwind — la charte employait donc déjà ce procédé.
+
+Arbitrage écarté : substituer `gray-secondary` (3,85:1) à `text-gray-600`
+(7,56:1) aurait fait tomber le menu **sous le seuil AA**. Une conformité
+nominale au prix de l'accessibilité — exactement la faute corrigée en PR #72.
+
+Hiérarchie du menu retenue : niv. 1 `gray-dark` (14,68:1) · niv. 2-3
+`ui-muted` (7,56:1). Deux niveaux au lieu de trois, l'indentation portant le
+troisième.
+
+**Exception assumée :** `hover:text-red-700` sur le lien « Espace client » du
+footer. `red-primary` vaut 4,13:1, sous le seuil AA à 14px ; le survol vers
+`red-700` (6,47:1) fait *remonter* le contraste. Documentée dans le composant
+et gardée par `tests/charte-couleurs-layout-global.test.ts`.
+
+### Dette de charte — reste du site (non traitée)
+
+Mesure du 2026-09-20 : **~1066 occurrences sur 59 fichiers** hors
+`components/layout/`, `app/juridique/` et `components/legal/` (les trois
+surfaces traitées). Priorité basse par surface, mais le volume est réel : ce
+n'est pas un reliquat, c'est la majeure partie du site.
+
+Prochaines surfaces par nombre de vues : `components/ui/` (card, feature-card,
+partagés partout), puis les sections de la page d'accueil
+(`problem-solution`, `transformation`, `about`, `pricing-tiers`).
+
 ---
 
 ## 8. Améliorations recommandées — dans le respect strict de la charte
