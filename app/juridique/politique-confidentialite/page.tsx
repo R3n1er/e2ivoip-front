@@ -100,10 +100,10 @@ export default function PolitiqueConfidentialitePage() {
           <div className="max-w-4xl mx-auto space-y-10">
             {/* Responsable du traitement */}
             <SectionCard title="1. Qui est responsable de vos données">
-              <div className="space-y-4 text-gray-600">
+              <div className="space-y-4 text-gray-dark">
                 <p>
                   Le responsable de traitement est :{" "}
-                  <strong className="text-gray-900">
+                  <strong className="text-gray-dark">
                     EI Alban RENIER — E2I ASSISTANCE exploitant la marque{" "}
                     {COMPANY.brand}
                   </strong>
@@ -121,7 +121,7 @@ export default function PolitiqueConfidentialitePage() {
                   demandes sont traitées par la direction, via le{" "}
                   <Link
                     href="/juridique/exercer-mes-droits"
-                    className="text-red-600 underline"
+                    className="text-blue-marine underline"
                   >
                     formulaire d&rsquo;exercice des droits
                   </Link>
@@ -132,7 +132,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Traitements */}
             <SectionCard title="2. Ce que nous traitons, et sur quelle base">
-              <p className="mb-6 text-gray-600">
+              <p className="mb-6 text-gray-dark">
                 Chaque traitement répond à une finalité précise. Nous ne
                 collectons jamais de données « au cas où ».
               </p>
@@ -142,24 +142,24 @@ export default function PolitiqueConfidentialitePage() {
                     key={processing.purpose}
                     className="rounded-lg border border-gray-100 bg-gray-50 p-4"
                   >
-                    <h3 className="mb-3 font-semibold text-gray-900">
+                    <h3 className="mb-3 font-semibold text-gray-dark">
                       {processing.purpose}
                     </h3>
-                    <dl className="space-y-2 text-sm text-gray-600">
+                    <dl className="space-y-2 text-sm text-gray-dark">
                       <div>
-                        <dt className="inline font-medium text-gray-900">
+                        <dt className="inline font-medium text-gray-dark">
                           Base légale :{" "}
                         </dt>
                         <dd className="inline">{processing.legalBasis}</dd>
                       </div>
                       <div>
-                        <dt className="inline font-medium text-gray-900">
+                        <dt className="inline font-medium text-gray-dark">
                           Données :{" "}
                         </dt>
                         <dd className="inline">{processing.data}</dd>
                       </div>
                       <div>
-                        <dt className="inline font-medium text-gray-900">
+                        <dt className="inline font-medium text-gray-dark">
                           Conservation :{" "}
                         </dt>
                         <dd className="inline">{processing.retention}</dd>
@@ -168,7 +168,7 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-6 text-gray-600">
+              <p className="mt-6 text-gray-dark">
                 Aucun de ces traitements ne donne lieu à une décision
                 automatisée produisant des effets juridiques à votre égard, ni
                 à la revente de vos données à des tiers.
@@ -177,7 +177,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Cookies */}
             <SectionCard title="3. Cookies et traceurs">
-              <div className="space-y-4 text-gray-600">
+              <div className="space-y-4 text-gray-dark">
                 <p>
                   Tant que vous n&rsquo;avez pas accepté, aucun traceur de
                   mesure d&rsquo;audience n&rsquo;est chargé : le refus est
@@ -192,19 +192,19 @@ export default function PolitiqueConfidentialitePage() {
                 <table className="w-full min-w-[640px] border-collapse text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 text-left">
-                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                      <th className="py-2 pr-4 font-semibold text-gray-dark">
                         Traceur
                       </th>
-                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                      <th className="py-2 pr-4 font-semibold text-gray-dark">
                         Émetteur
                       </th>
-                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                      <th className="py-2 pr-4 font-semibold text-gray-dark">
                         Finalité
                       </th>
-                      <th className="py-2 pr-4 font-semibold text-gray-900">
+                      <th className="py-2 pr-4 font-semibold text-gray-dark">
                         Durée
                       </th>
-                      <th className="py-2 font-semibold text-gray-900">
+                      <th className="py-2 font-semibold text-gray-dark">
                         Consentement
                       </th>
                     </tr>
@@ -213,7 +213,7 @@ export default function PolitiqueConfidentialitePage() {
                     {COOKIES.map((cookie) => (
                       <tr
                         key={cookie.name}
-                        className="border-b border-gray-100 align-top text-gray-600"
+                        className="border-b border-gray-100 align-top text-gray-dark"
                       >
                         <td className="py-3 pr-4 font-mono text-xs">
                           {cookie.name}
@@ -230,7 +230,7 @@ export default function PolitiqueConfidentialitePage() {
                 </table>
               </div>
 
-              <p className="mt-6 text-gray-600">
+              <p className="mt-6 text-gray-dark">
                 Certaines pages intègrent des contenus tiers (formulaires Tally,
                 vidéos). Ces contenus peuvent déposer leurs propres traceurs
                 lorsque vous interagissez avec eux ; leurs éditeurs en sont
@@ -240,7 +240,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Sous-traitants */}
             <SectionCard title="4. À qui vos données sont transmises">
-              <p className="mb-6 text-gray-600">
+              <p className="mb-6 text-gray-dark">
                 Nous ne vendons ni ne louons vos données. Elles sont accessibles
                 à nos équipes internes et aux prestataires techniques
                 ci-dessous, qui agissent sur nos instructions et sont liés par
@@ -253,18 +253,18 @@ export default function PolitiqueConfidentialitePage() {
                     key={processor.name}
                     className="rounded-lg border border-gray-100 bg-gray-50 p-4"
                   >
-                    <h3 className="mb-2 font-semibold text-gray-900">
+                    <h3 className="mb-2 font-semibold text-gray-dark">
                       {processor.name}
                     </h3>
-                    <p className="text-sm text-gray-600">{processor.purpose}</p>
-                    <p className="mt-2 text-sm text-gray-600">
-                      <span className="font-medium text-gray-900">
+                    <p className="text-sm text-gray-dark">{processor.purpose}</p>
+                    <p className="mt-2 text-sm text-gray-dark">
+                      <span className="font-medium text-gray-dark">
                         Données :{" "}
                       </span>
                       {processor.data}
                     </p>
-                    <p className="mt-1 text-sm text-gray-600">
-                      <span className="font-medium text-gray-900">
+                    <p className="mt-1 text-sm text-gray-dark">
+                      <span className="font-medium text-gray-dark">
                         Hébergement :{" "}
                       </span>
                       {processor.location}
@@ -272,7 +272,7 @@ export default function PolitiqueConfidentialitePage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-6 text-gray-600">
+              <p className="mt-6 text-gray-dark">
                 Vos données peuvent enfin être communiquées aux autorités
                 administratives ou judiciaires lorsque la loi nous y oblige.
               </p>
@@ -284,14 +284,14 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="flex gap-3">
                   <Lock
                     size={24}
-                    className="mt-1 flex-shrink-0 text-red-600"
+                    className="mt-1 flex-shrink-0 text-red-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-dark">
                       Chiffrement en transit
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-dark">
                       L&rsquo;intégralité du site est servie en HTTPS. Les
                       échanges avec nos prestataires sont chiffrés.
                     </p>
@@ -300,12 +300,12 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="flex gap-3">
                   <Globe
                     size={24}
-                    className="mt-1 flex-shrink-0 text-red-600"
+                    className="mt-1 flex-shrink-0 text-red-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Hébergement</h3>
-                    <p className="text-sm text-gray-600">
+                    <h3 className="font-semibold text-gray-dark">Hébergement</h3>
+                    <p className="text-sm text-gray-dark">
                       Le site est hébergé par {HOSTING.provider}. Les données de
                       relation client sont hébergées dans l&rsquo;Union
                       européenne (instance HubSpot eu1).
@@ -315,14 +315,14 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="flex gap-3">
                   <Shield
                     size={24}
-                    className="mt-1 flex-shrink-0 text-red-600"
+                    className="mt-1 flex-shrink-0 text-red-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-dark">
                       Accès restreint
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-dark">
                       Les accès aux outils contenant des données personnelles
                       sont nominatifs et limités aux personnes qui en ont besoin.
                     </p>
@@ -331,14 +331,14 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="flex gap-3">
                   <Timer
                     size={24}
-                    className="mt-1 flex-shrink-0 text-red-600"
+                    className="mt-1 flex-shrink-0 text-red-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-dark">
                       Effacement programmé
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-dark">
                       Les durées annoncées au point 2 sont des maximums : au
                       terme, les données sont supprimées ou anonymisées.
                     </p>
@@ -349,30 +349,30 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Droits */}
             <SectionCard title="6. Vos droits">
-              <p className="mb-6 text-gray-600">
+              <p className="mb-6 text-gray-dark">
                 Le RGPD vous ouvre les droits suivants sur les données vous
                 concernant.
               </p>
               <dl className="space-y-3">
                 {RGPD_RIGHTS.map((right) => (
                   <div key={right.id}>
-                    <dt className="font-semibold text-gray-900">
+                    <dt className="font-semibold text-gray-dark">
                       {right.label}{" "}
                       <span className="font-normal text-gray-secondary">
                         ({right.article})
                       </span>
                     </dt>
-                    <dd className="text-gray-600">{right.description}</dd>
+                    <dd className="text-gray-dark">{right.description}</dd>
                   </div>
                 ))}
               </dl>
 
-              <div className="mt-6 rounded-lg border border-gray-100 bg-gray-50 p-4 text-gray-600">
+              <div className="mt-6 rounded-lg border border-gray-100 bg-gray-50 p-4 text-gray-dark">
                 <p>
                   Pour exercer l&rsquo;un de ces droits, utilisez notre{" "}
                   <Link
                     href="/juridique/exercer-mes-droits"
-                    className="text-red-600 underline"
+                    className="text-blue-marine underline"
                   >
                     formulaire dédié
                   </Link>
@@ -387,7 +387,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Réclamation */}
             <SectionCard title="7. Réclamation auprès de la CNIL">
-              <p className="text-gray-600">
+              <p className="text-gray-dark">
                 Si vous estimez, après nous avoir contactés, que vos droits ne
                 sont pas respectés, vous pouvez introduire une réclamation
                 auprès de la Commission nationale de l&rsquo;informatique et
@@ -397,7 +397,7 @@ export default function PolitiqueConfidentialitePage() {
                   href="https://www.cnil.fr/fr/plaintes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-600 underline"
+                  className="text-blue-marine underline"
                 >
                   cnil.fr
                 </a>
@@ -407,7 +407,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Évolution */}
             <SectionCard title="8. Évolution de cette politique">
-              <p className="text-gray-600">
+              <p className="text-gray-dark">
                 Cette politique peut être modifiée pour refléter un nouveau
                 traitement ou une évolution réglementaire. La date de dernière
                 mise à jour figure en tête de page. En cas de changement
@@ -418,7 +418,7 @@ export default function PolitiqueConfidentialitePage() {
 
             <p className="text-center text-sm text-gray-secondary">
               Voir aussi nos{" "}
-              <Link href="/juridique/mentions-legales" className="text-red-600 underline">
+              <Link href="/juridique/mentions-legales" className="text-blue-marine underline">
                 mentions légales
               </Link>
               .
