@@ -26,7 +26,14 @@ E2I VoIP est un **opérateur de services télécom et intégrateur VoIP** spéci
 
 ### Proposition de valeur principale
 
-**"Aux Antilles-Guyane, le cuivre ferme en 2027. Votre téléphonie DOM est-elle prête ?"**
+**"Aux Antilles-Guyane, le cuivre ferme en 2027. Votre téléphonie IP est-elle prête ?"**
+
+> **Arbitrage Alban (2026-09-19)** — « téléphonie DOM » a été remplacé par
+> « téléphonie IP ». « DOM » n'a aucun volume de recherche : le H1, deuxième
+> signal de pertinence après le `<title>`, ne renforçait donc pas la requête
+> sur laquelle le site se positionne. L'ancrage territorial reste porté par
+> « Aux Antilles-Guyane » en tête de la même accroche.
+> Contrat vérifié par `tests/home-hero-h1.test.ts`.
 
 - Trunk SIP au compteur et illimité, éligibles DOM (Antilles, Guyane et La Réunion)
 - Création et portabilité de numéros en zone locale
@@ -418,7 +425,8 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 
 - ❌ "Solutions de téléphonie IP"
 - ❌ "Économisez 30% sur vos coûts télécoms" — allégation chiffrée en accroche, interdite
-- ✅ "Le réseau cuivre s'arrête en 2027. Votre téléphonie DOM est-elle prête ?"
+- ✅ "Le réseau cuivre s'arrête en 2027. Votre téléphonie IP est-elle prête ?"
+- ❌ "… Votre téléphonie DOM est-elle prête ?" — « DOM » sans volume de recherche
 - ✅ "Trunk SIP illimité éligible DOM"
 - ✅ "Créez vos numéros locaux en 24h"
 - ✅ "Connectez vos agents vocaux IA aux numéros locaux DOM"

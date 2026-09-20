@@ -57,7 +57,7 @@ export function HomepageHeroSectionSimple() {
             Aux Antilles-Guyane, le cuivre{" "}
             <span className="text-red-300">ferme en 2027</span>.
             <br />
-            Votre téléphonie DOM est-elle prête&nbsp;?
+            Votre téléphonie IP est-elle prête&nbsp;?
           </h1>
 
           {/* Subtitle — preuve d'exécution : éligibilité, portabilité, continuité */}

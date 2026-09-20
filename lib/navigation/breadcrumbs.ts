@@ -21,6 +21,21 @@ export const PAGE_BREADCRUMBS: Record<string, BreadcrumbItem[]> = {
     { label: "Standard téléphonique", href: "/standard-telephonique" },
     { label: "Guyane" },
   ],
+  "/standard-telephonique/martinique": [
+    BREADCRUMB_HOME,
+    { label: "Standard téléphonique", href: "/standard-telephonique" },
+    { label: "Martinique" },
+  ],
+  "/standard-telephonique/guadeloupe": [
+    BREADCRUMB_HOME,
+    { label: "Standard téléphonique", href: "/standard-telephonique" },
+    { label: "Guadeloupe" },
+  ],
+  "/standard-telephonique/la-reunion": [
+    BREADCRUMB_HOME,
+    { label: "Standard téléphonique", href: "/standard-telephonique" },
+    { label: "La Réunion" },
+  ],
   "/contact": [
     BREADCRUMB_HOME,
     { label: "Contact" },

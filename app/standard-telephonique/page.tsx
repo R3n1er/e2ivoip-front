@@ -187,13 +187,20 @@ export default function StandardTelephoniquePage() {
                 <div className="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-4">
                   <Shield size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
+                {/* « Instance dédiée » seul est du vocabulaire
+                    d'infrastructure : personne ne le recherche, et un
+                    dirigeant peut comprendre qu'on lui vend une machine à
+                    poser dans ses locaux. Le H3 nomme donc la chose —
+                    un serveur de téléphonie dans le cloud — et garde le
+                    terme métier en apposition. */}
                 <h3 className="text-xl font-bold text-gray-dark mb-3">
-                  Instance dédiée
+                  Serveur de téléphonie dans le cloud — l&apos;instance dédiée
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Votre propre serveur de téléphonie, isolé, avec vos règles de
-                  routage, vos files d&apos;attente et votre superviseur qualité
-                  d&apos;appel.
+                  Votre propre serveur de téléphonie dans le cloud, isolé, avec
+                  vos règles de routage, vos files d&apos;attente et votre
+                  superviseur qualité d&apos;appel. Rien à installer ni à
+                  maintenir dans vos locaux.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
@@ -227,13 +234,21 @@ export default function StandardTelephoniquePage() {
                 <div className="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-4">
                   <Phone size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
+                {/* Le H3 garde le vocabulaire de l'acheteur — un dirigeant
+                    cherche à « raccorder » son standard, il ne connaît pas
+                    forcément le terme du métier. Celui-ci est posé dès la
+                    première phrase du corps, en équivalence explicite : la
+                    page reste lisible sans jargon tout en portant « Trunk
+                    SIP », que les prospects avertis recherchent et sur
+                    lequel deux pages dédiées existent. */}
                 <h3 className="text-xl font-bold text-gray-dark mb-3">
-                  Raccordement au réseau téléphonique
+                  Raccordement au réseau téléphonique — le Trunk SIP
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Le lien entre votre standard et le réseau public, facturé au
-                  canal d&apos;appel simultané — pas par personne. C&apos;est ce
-                  qui détermine combien d&apos;appels passent en même temps.
+                  Le Trunk SIP est le lien entre votre standard et le réseau
+                  téléphonique public. Il se facture au canal d&apos;appel
+                  simultané — pas par personne : c&apos;est lui qui détermine
+                  combien d&apos;appels passent en même temps.
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
@@ -258,7 +273,24 @@ export default function StandardTelephoniquePage() {
                       className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
-                    Facturation au compteur ou forfait
+                    {/* Les deux formules ont chacune leur page : lier ici
+                        donne au hub le maillage descendant qui lui manquait
+                        vers le silo Trunk SIP, à l'endroit exact où le
+                        lecteur se demande laquelle le concerne. */}
+                    Facturation{" "}
+                    <NextLink
+                      href="/telephonie-entreprise/trunk-sip-compteur"
+                      className="text-red-primary hover:underline"
+                    >
+                      au compteur
+                    </NextLink>{" "}
+                    ou{" "}
+                    <NextLink
+                      href="/telephonie-entreprise/trunk-sip-illimite"
+                      className="text-red-primary hover:underline"
+                    >
+                      au forfait
+                    </NextLink>
                   </li>
                 </ul>
               </div>
@@ -333,8 +365,9 @@ export default function StandardTelephoniquePage() {
               <span className="text-red-primary">intervenons</span>
             </h2>
             <p className="text-lg text-gray-secondary mb-12 max-w-3xl">
-              Chaque territoire a son indicatif, ses zones d&apos;intervention et
-              sa propre date de fermeture du réseau cuivre.
+              Chaque territoire a son numéro local, ses zones
+              d&apos;intervention et sa propre date de fermeture du réseau
+              cuivre.
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -354,13 +387,13 @@ export default function StandardTelephoniquePage() {
                       {t.label}
                     </h3>
                   </div>
-                  <p className="text-sm text-gray-secondary mb-3">
-                    Indicatif{" "}
-                    <span className="font-mono tabular-nums">{t.indicatif}</span>{" "}
-                    ·{" "}
-                    <span className="font-mono tabular-nums">
-                      {t.phone.number}
-                    </span>
+                  {/* L'indicatif n'est pas affiché : il est le préfixe du
+                      numéro juste à côté (0594 → 05 94 96 35 00), donc il
+                      répétait l'information sans rien y ajouter. Il reste
+                      dans le registre, où un test vérifie qu'il préfixe
+                      bien le numéro réel du territoire. */}
+                  <p className="text-sm text-gray-secondary mb-3 font-mono tabular-nums">
+                    {t.phone.number}
                   </p>
                   <p className="text-sm text-gray-600">
                     {/* Fait accompli d'abord : une commune déjà coupée est une
