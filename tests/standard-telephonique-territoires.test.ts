@@ -89,6 +89,20 @@ describe("Registre /standard-telephonique", () => {
     }
   });
 
+  it("aucun territoire n'est illustré par un seul secteur", () => {
+    // Trois territoires sur quatre n'avaient qu'un zoo. Chaque référence
+    // était vraie, mais la répétition faisait ressembler le silo à un
+    // gabarit dupliqué — exactement ce que l'en-tête du registre appelle
+    // une « page satellite ». Deux secteurs distincts par page évitent cet
+    // effet de série, que seule une lecture transversale révèle.
+    for (const t of getPublishedTerritories()) {
+      const secteurs = new Set(t.localProof.map((p) => p.sector));
+      expect(secteurs.size).toBeGreaterThanOrEqual(
+        t.localProof.length > 1 ? 2 : 1,
+      );
+    }
+  });
+
   it("chaque client cité figure dans le carrousel public", () => {
     // Règle du registre : ne jamais inventer une référence. Un client cité
     // sur une page territoriale doit déjà être affiché publiquement —

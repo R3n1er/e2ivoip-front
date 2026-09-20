@@ -204,9 +204,18 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
       "Saint-Laurent-du-Maroni",
       "Macouria",
     ],
+    // Eurogold est l'enseigne de distribution du groupe Titeca Beauport
+    // Finance, présent sur les trois territoires antillo-guyanais. C'est le
+    // seul nom du groupe figurant au carrousel public : on ne cite donc ni
+    // « TBF », ni ses autres enseignes, faute d'accord de citation acquis.
+    //
+    // Sa présence sur trois pages illustre le multi-sites — et évite que
+    // chaque territoire ne soit illustré par un zoo, répétition qui ferait
+    // ressembler le silo à un gabarit dupliqué.
     localProof: [
       { client: "APAJH Guyane", sector: "médico-social" },
       { client: "Zoo de Guyane", sector: "loisirs et tourisme" },
+      { client: "Eurogold", sector: "joaillerie et horlogerie" },
     ],
     presence: "established",
     supportTimezone: "heure de Guyane (UTC−3)",
@@ -240,7 +249,10 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
         "https://www.arcep.fr/nos-sujets/la-fermeture-du-reseau-cuivre.html",
     },
     zones: ["Fort-de-France", "Le Lamentin", "Ducos", "Schœlcher", "Le Robert"],
-    localProof: [{ client: "Zoo de Martinique", sector: "loisirs et tourisme" }],
+    localProof: [
+      { client: "Zoo de Martinique", sector: "loisirs et tourisme" },
+      { client: "Eurogold", sector: "joaillerie et horlogerie" },
+    ],
     presence: "served",
     supportTimezone: "heure des Antilles (UTC−4)",
     context:
@@ -291,11 +303,14 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
       "Le Gosier",
       "Petit-Bourg",
     ],
-    localProof: [{ client: "Zoo de Guadeloupe", sector: "loisirs et tourisme" }],
+    localProof: [
+      { client: "Zoo de Guadeloupe", sector: "loisirs et tourisme" },
+      { client: "Eurogold", sector: "joaillerie et horlogerie" },
+    ],
     presence: "served",
     supportTimezone: "heure des Antilles (UTC−4)",
     context:
-      "La zone industrielle de Jarry à Baie-Mahault concentre une part importante de l'activité économique de l'archipel, avec des sites multi-bâtiments où le routage des appels entre services est le premier irritant.",
+      "La zone industrielle de Jarry à Baie-Mahault concentre une part importante de l'activité économique de l'archipel, avec des sites multi-bâtiments où le routage des appels entre services est le premier irritant. Le commerce de centre commercial pose une autre contrainte : un réseau de boutiques a besoin d'un numéro unique qui distribue vers le bon point de vente, et d'un accueil qui tienne aux heures d'ouverture.",
     // Publié le 2026-09-19 : calendrier distinct (Petit-Bourg coupée,
     // Basse-Terre et Deshaies au 31/01/2027), contexte propre à Jarry,
     // client nommable.
