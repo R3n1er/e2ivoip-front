@@ -34,12 +34,34 @@ const HERO_GRADIENT = "from-blue-900/85 via-blue-800/80 to-red-600/85";
 const PALETTES_INTERDITES =
   /(?:text|bg|border|ring|divide|from|via|to)-(?:red|green|blue|yellow|orange|amber|lime|emerald|teal|cyan|sky|indigo|violet|purple|fuchsia|pink|rose|slate|zinc|neutral|stone)-\d{2,3}(?:\/\d{1,3})?/g;
 
+/** Composants dédiés aux pages juridiques, hors app/juridique/. */
+const DOSSIER_COMPOSANTS = path.join(process.cwd(), "components/legal");
+
+/**
+ * Toutes les surfaces juridiques : les pages ET les composants qu'elles
+ * importent.
+ *
+ * La première version ne lisait que les `page.tsx`. `components/legal/
+ * help-card.tsx` portait donc `text-gray-600` et deux liens en
+ * `red-primary` — invisibles au test, visibles en production, constatés
+ * après déploiement. Un test qui lit des fichiers ne suit pas les imports :
+ * il faut lui donner explicitement toutes les surfaces concernées.
+ */
 function pagesJuridiques(): string[] {
-  return fs
+  const pages = fs
     .readdirSync(DOSSIER, { withFileTypes: true })
     .filter((e) => e.isDirectory())
     .map((e) => path.join(DOSSIER, e.name, "page.tsx"))
     .filter((p) => fs.existsSync(p));
+
+  const composants = fs.existsSync(DOSSIER_COMPOSANTS)
+    ? fs
+        .readdirSync(DOSSIER_COMPOSANTS)
+        .filter((f) => f.endsWith(".tsx"))
+        .map((f) => path.join(DOSSIER_COMPOSANTS, f))
+    : [];
+
+  return [...pages, ...composants];
 }
 
 function classesInterdites(fichier: string): string[] {
@@ -51,10 +73,14 @@ function classesInterdites(fichier: string): string[] {
 }
 
 describe("charte graphique — pages juridiques", () => {
-  it("le dossier contient bien les pages attendues", () => {
-    // Si ce test échoue parce qu'une page a disparu, les suivants ne
+  it("couvre bien les pages et leurs composants", () => {
+    // Si ce test échoue parce qu'un fichier a disparu, les suivants ne
     // vérifieraient plus rien en silence.
-    expect(pagesJuridiques().length).toBeGreaterThanOrEqual(5);
+    const surfaces = pagesJuridiques();
+    expect(surfaces.filter((f) => f.includes("app/juridique")).length)
+      .toBeGreaterThanOrEqual(5);
+    expect(surfaces.filter((f) => f.includes("components/legal")).length)
+      .toBeGreaterThan(0);
   });
 
   it.each(pagesJuridiques().map((p) => [path.relative(process.cwd(), p), p]))(
