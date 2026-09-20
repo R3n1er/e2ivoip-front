@@ -15,12 +15,23 @@ module.exports = {
         mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        // Couleurs officielles E2I VoIP
+        // ── Couleurs officielles E2I VoIP (charte — intouchables) ──
         "red-primary": "#E53E3E", // Rouge principal - Chiffre "2", lettres "IP" dans VOIP
         "blue-marine": "#2D3848", // Bleu marine - Lettres E et I dans E2I
         "gray-secondary": "#818096", // Gris secondaire - Lettres "VO" dans VOIP, baseline
         "gray-dark": "#1F2937", // Gris foncé - Texte, header non scrolled
         white: "#FFFFFF", // Blanc - Fond clair, inversions
+
+        // ── Gris d'interface (fonctionnels, PAS des couleurs de marque) ──
+        // Même rampe bleutée que `gray-dark`, qui est déjà le `gray-800` de
+        // Tailwind : la charte a donc déjà adopté ce procédé. Ces deux tokens
+        // nomment des valeurs en usage dans le layout depuis l'origine, ils
+        // n'introduisent aucune teinte nouvelle. Décision du 2026-09-20.
+        //
+        // Ne pas les employer pour un accent ou une couleur de marque : la
+        // règle « 1 seule couleur d'accent par écran, le rouge » reste entière.
+        "ui-muted": "#4B5563", // 7,56:1 sur blanc — AA texte. Navigation niv. 2-3, chevrons
+        "ui-border": "#E5E7EB", // 1,24:1 — séparateurs et bordures, jamais du texte
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

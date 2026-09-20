@@ -25,7 +25,11 @@ describe("HeaderSimple Component", () => {
         "backdrop-blur-md",
         "shadow-lg",
         "border-b",
-        "border-gray-200"
+        // Token de charte, pas l'utilitaire Tailwind `border-gray-200` qu'il
+        // remplace (2026-09-20). Assertion volontairement sur le NOM du token :
+        // sa valeur appartient à tailwind.config.js, et c'est
+        // tests/charte-couleurs-layout-global.test.ts qui la garde.
+        "border-ui-border"
       );
     });
 
@@ -59,7 +63,12 @@ describe("HeaderSimple Component", () => {
 
       navItems.forEach((item) => {
         const navItem = screen.getByText(item);
-        expect(navItem).toHaveClass("text-gray-700", "hover:text-red-primary");
+        // `text-gray-dark` (14,68:1) remplace `text-gray-700` (10,31:1) :
+        // niveau 1 du menu, le plus contrasté de la hiérarchie. Les niveaux 2
+        // et 3 sont en `text-ui-muted` (7,56:1) — cf.
+        // tests/charte-couleurs-layout-global.test.ts, qui vérifie que les
+        // deux niveaux restent distincts.
+        expect(navItem).toHaveClass("text-gray-dark", "hover:text-red-primary");
       });
     });
 
