@@ -96,11 +96,33 @@ export default function MentionsLegales() {
                           Immatriculation
                         </h3>
                         <p className="text-gray-600">
-                          SIRET {COMPANY.siret}
+                          {COMPANY.legalForm}
+                          <br />
+                          {/* Le SIRET est une donnée chiffrée : IBM Plex Mono
+                              + tabular-nums, comme partout sur le site. */}
+                          SIRET{" "}
+                          <span className="font-mono tabular-nums">
+                            {COMPANY.siret}
+                          </span>
                           <br />
                           Entreprise immatriculée en Guyane
                           <br />
                           Code APE {COMPANY.ape} — {COMPANY.apeLabel}
+                          <br />
+                          {COMPANY.vatStatus}
+                        </p>
+                        {/* Adresse de contact — article 19 de la LCEN, qui
+                            l'impose à toute activité de commerce
+                            électronique. Le formulaire et les numéros ne
+                            suffisent pas à ce titre. */}
+                        <p className="text-gray-600 mt-2">
+                          Contact :{" "}
+                          <a
+                            href={`mailto:${COMPANY.contactEmail}`}
+                            className="text-red-primary hover:underline"
+                          >
+                            {COMPANY.contactEmail}
+                          </a>
                         </p>
                       </div>
                     </div>
