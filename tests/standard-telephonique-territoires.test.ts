@@ -81,23 +81,44 @@ describe("Registre /standard-telephonique", () => {
   });
 
   // La preuve client nommée est l'élément qu'un concurrent ne peut pas
-  // reproduire. Elle est exigée partout SAUF à La Réunion, où aucun client
-  // n'est nommable à ce jour — exception explicite et datée, pour qu'elle se
-  // voie en revue au lieu de se dissoudre dans un assouplissement général.
-  const SANS_PREUVE_CLIENT = ["la-reunion"];
-
-  it("chaque territoire publié nomme un client, sauf exception déclarée", () => {
+  // reproduire. L'exception qui couvrait La Réunion est levée depuis le
+  // 2026-09-20 : les quatre territoires nomment désormais un client.
+  it("chaque territoire publié nomme au moins un client", () => {
     for (const t of getPublishedTerritories()) {
-      if (SANS_PREUVE_CLIENT.includes(t.slug)) continue;
       expect(t.localProof.length).toBeGreaterThan(0);
     }
   });
 
-  it("l'exception de preuve client ne couvre que des territoires réels", () => {
-    // Empêche la liste d'exceptions de devenir une décharge : un slug qui
-    // n'existe plus doit faire échouer le test, pas dormir dans le tableau.
-    for (const slug of SANS_PREUVE_CLIENT) {
-      expect(getTerritory(slug)).toBeDefined();
+  it("aucun territoire n'est illustré par un seul secteur", () => {
+    // Trois territoires sur quatre n'avaient qu'un zoo. Chaque référence
+    // était vraie, mais la répétition faisait ressembler le silo à un
+    // gabarit dupliqué — exactement ce que l'en-tête du registre appelle
+    // une « page satellite ». Deux secteurs distincts par page évitent cet
+    // effet de série, que seule une lecture transversale révèle.
+    for (const t of getPublishedTerritories()) {
+      const secteurs = new Set(t.localProof.map((p) => p.sector));
+      expect(secteurs.size).toBeGreaterThanOrEqual(
+        t.localProof.length > 1 ? 2 : 1,
+      );
+    }
+  });
+
+  it("chaque client cité figure dans le carrousel public", () => {
+    // Règle du registre : ne jamais inventer une référence. Un client cité
+    // sur une page territoriale doit déjà être affiché publiquement —
+    // c'est ce qui vaut accord de citation.
+    const carrousel = fs.readFileSync(
+      path.join(process.cwd(), "components/clients-carousel.tsx"),
+      "utf8",
+    );
+    for (const t of getPublishedTerritories()) {
+      for (const preuve of t.localProof) {
+        // Le carrousel porte parfois une forme courte (« Groupe Lang »)
+        // là où la page développe (« Groupe Lang & Associés ») : on
+        // cherche donc les deux premiers mots significatifs.
+        const noyau = preuve.client.split(/\s+/).slice(0, 2).join(" ");
+        expect(carrousel).toContain(noyau);
+      }
     }
   });
 
