@@ -54,18 +54,18 @@ export default function ConditionsGeneralesVentePage() {
           <div className="max-w-4xl mx-auto space-y-10">
 
             {/* Téléchargement PDF */}
-            <Card className="shadow-lg border-l-4 border-red-600">
+            <Card className="shadow-lg border-l-4 border-red-primary">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                   <div className="flex items-start space-x-4">
-                    <div className="bg-red-100 p-3 rounded-lg">
-                      <FileText size={32} className="text-red-600" aria-hidden="true" />
+                    <div className="bg-red-primary/10 p-3 rounded-lg">
+                      <FileText size={32} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900">
+                      <h2 className="text-xl font-bold text-gray-dark">
                         Document contractuel complet
                       </h2>
-                      <p className="text-gray-600 mt-1">
+                      <p className="text-gray-dark mt-1">
                         Pour toute souscription de Services E2I VoIP, les présentes CGV
                         s’appliquent conjointement avec les conditions particulières
                         du Service commandé.
@@ -76,7 +76,7 @@ export default function ConditionsGeneralesVentePage() {
                     href="/documents/cgv.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl whitespace-nowrap"
+                    className="inline-flex items-center px-6 py-3 bg-red-primary text-white hover:-translate-y-0.5 active:translate-y-0 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl whitespace-nowrap"
                   >
                     <DownloadSimple size={20} className="mr-2" aria-hidden="true" />
                     Télécharger le PDF
@@ -90,19 +90,19 @@ export default function ConditionsGeneralesVentePage() {
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Clock size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Entrée en vigueur</h3>
+                    <Clock size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Entrée en vigueur</h3>
                   </div>
-                  <p className="text-gray-600">8 septembre 2026</p>
+                  <p className="text-gray-dark">8 septembre 2026</p>
                 </CardContent>
               </Card>
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Shield size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Prestataire</h3>
+                    <Shield size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Prestataire</h3>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-dark">
                     {COMPANY.legalName} · SIRET {COMPANY.siret}
                   </p>
                 </CardContent>
@@ -110,10 +110,10 @@ export default function ConditionsGeneralesVentePage() {
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Scales size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Droit applicable</h3>
+                    <Scales size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Droit applicable</h3>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-dark">
                     Droit français · Juridiction déterminée selon l’article 49
                   </p>
                 </CardContent>
@@ -132,12 +132,12 @@ export default function ConditionsGeneralesVentePage() {
                       href="/documents/conditions-particulieres-voip.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-primary mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
                       <div>
-                        <p className="font-medium text-gray-900">Conditions particulières — VoIP / IPBX</p>
-                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                        <p className="font-medium text-gray-dark">Conditions particulières — VoIP / IPBX</p>
+                        <p className="text-sm text-gray-secondary">PDF · v1.1</p>
                       </div>
                     </Link>
                   </div>
@@ -146,36 +146,36 @@ export default function ConditionsGeneralesVentePage() {
                       href="/documents/conditions-particulieres-trunk-sip.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-primary mr-3 flex-shrink-0" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"></path></svg>
                       <div>
-                        <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
-                        <p className="text-sm text-gray-500">PDF · v1.1</p>
+                        <p className="font-medium text-gray-dark">Conditions particulières — Trunk SIP</p>
+                        <p className="text-sm text-gray-secondary">PDF · v1.1</p>
                       </div>
                     </Link>
                   </div>
                   <div className="flex flex-col">
                     <Link
                       href="/juridique/accord-sous-traitance-rgpd"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-primary mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
                       <div>
-                        <p className="font-medium text-gray-900">Accord de sous-traitance RGPD (DPA)</p>
-                        <p className="text-sm text-gray-500">Lire en ligne · v1.3</p>
+                        <p className="font-medium text-gray-dark">Accord de sous-traitance RGPD (DPA)</p>
+                        <p className="text-sm text-gray-secondary">Lire en ligne · v1.3</p>
                       </div>
                     </Link>
                   </div>
                   <div className="flex flex-col">
                     <Link
                       href="/juridique/politique-confidentialite"
-                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                      className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-600 mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-red-primary mr-3 flex-shrink-0" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.27,47,25.53a8,8,0,0,0,4.2,0c1-.26,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0Z"></path></svg>
                       <div>
-                        <p className="font-medium text-gray-900">Politique de confidentialité</p>
-                        <p className="text-sm text-gray-500">Lire en ligne · v1.1</p>
+                        <p className="font-medium text-gray-dark">Politique de confidentialité</p>
+                        <p className="text-sm text-gray-secondary">Lire en ligne · v1.1</p>
                       </div>
                     </Link>
                   </div>
@@ -193,11 +193,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 1 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Préambule et définitions
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 1 — Identité du Prestataire</li>
                       <li>Art. 2 — Définitions</li>
                       <li>Art. 3 — Objet et champ d’application</li>
@@ -207,11 +207,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 2 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Commande et exécution
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 5 — Commande, acompte et annulation</li>
                       <li>Art. 6 — Conditions préalables et coopération</li>
                       <li>Art. 7 — Déploiement et délais</li>
@@ -221,11 +221,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 3 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Durée, prix et facturation
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 9 — Durée et prise d’effet</li>
                       <li>Art. 10 — Non-renouvellement et résiliation</li>
                       <li>Art. 12 — Prix</li>
@@ -238,11 +238,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 4 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Support et prestations
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 17 — Support et niveaux de service</li>
                       <li>Art. 18 — Interventions hors périmètre</li>
                       <li>Art. 19 — Conditions techniques et QoS</li>
@@ -254,11 +254,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 5 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Équipements et numérotation
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 22 — Équipements vendus</li>
                       <li>Art. 23 — Équipements loués</li>
                       <li>Art. 24 — Équipements et solutions de tiers</li>
@@ -270,11 +270,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 6 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Réglementation et responsabilité
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 27 — Utilisation licite et loyale</li>
                       <li>Art. 28 — Démarchage, appels automatisés et agents IA</li>
                       <li>Art. 29 — Forfaits, usage raisonnable</li>
@@ -288,11 +288,11 @@ export default function ConditionsGeneralesVentePage() {
 
                   {/* Groupe 7 */}
                   <div className="md:col-span-2">
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Fin de contrat et dispositions diverses
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm md:columns-2">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm md:columns-2">
                       <li>Art. 36 — Propriété intellectuelle</li>
                       <li>Art. 37 — Réversibilité et fin des Services</li>
                       <li>Art. 40 — Assurance</li>
@@ -311,7 +311,7 @@ export default function ConditionsGeneralesVentePage() {
                 </div>
 
                 <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-dark">
                     <strong>Ordre de priorité :</strong> en cas de contradiction entre
                     plusieurs documents, la Commande et ses dérogations acceptées
                     expressément prévalent, puis les Conditions particulières, puis les

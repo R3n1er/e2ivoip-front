@@ -40,7 +40,7 @@ export default function ExercerMesDroitsPage() {
             Comment <span className="text-red-primary">ça se passe</span>
           </h2>
 
-          <ol className="mb-12 space-y-4 text-gray-600">
+          <ol className="mb-12 space-y-4 text-gray-dark">
             <li className="flex gap-4">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-primary font-bold text-white">
                 1
@@ -89,7 +89,7 @@ export default function ExercerMesDroitsPage() {
                     ({right.article} du RGPD)
                   </span>
                 </dt>
-                <dd className="mt-1 text-gray-600">{right.description}</dd>
+                <dd className="mt-1 text-gray-dark">{right.description}</dd>
               </div>
             ))}
           </dl>
@@ -100,7 +100,7 @@ export default function ExercerMesDroitsPage() {
             <h2 className="mb-3 text-xl font-bold text-gray-dark">
               Si notre réponse ne vous satisfait pas
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-dark">
               Vous pouvez introduire une réclamation auprès de la Commission
               nationale de l&rsquo;informatique et des libertés (CNIL), 3 place
               de Fontenoy, TSA 80715, 75334 Paris Cedex 07, ou en ligne sur{" "}
@@ -108,18 +108,18 @@ export default function ExercerMesDroitsPage() {
                 href="https://www.cnil.fr/fr/plaintes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-red-primary underline"
+                className="text-blue-marine underline"
               >
                 cnil.fr
               </a>
               .
             </p>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-gray-dark">
               Pour comprendre quelles données nous traitons et pourquoi,
               consultez notre{" "}
               <Link
                 href="/juridique/politique-confidentialite"
-                className="text-red-primary underline"
+                className="text-blue-marine underline"
               >
                 politique de confidentialité
               </Link>
