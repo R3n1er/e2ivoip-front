@@ -76,10 +76,10 @@ export default function HubSpotAdminPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-dark mb-2">
             Administration HubSpot
           </h1>
-          <p className="text-gray-600">
+          <p className="text-ui-muted">
             Gérez l&apos;authentification OAuth et la synchronisation du blog
             HubSpot
           </p>
@@ -106,7 +106,7 @@ export default function HubSpotAdminPage() {
                     <p className="font-medium">
                       {isConnected ? "Connecté" : "Non connecté"}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-ui-muted">
                       {isConnected
                         ? "L'application est authentifiée avec HubSpot"
                         : "Authentification requise pour accéder au blog"}
@@ -131,7 +131,7 @@ export default function HubSpotAdminPage() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-dark mb-1">
                     Client ID
                   </label>
                   <div className="bg-gray-100 p-2 rounded text-sm font-mono">
@@ -140,7 +140,7 @@ export default function HubSpotAdminPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-dark mb-1">
                     Redirect URI
                   </label>
                   <div className="bg-gray-100 p-2 rounded text-sm font-mono">

@@ -75,7 +75,7 @@ export default function ContactPage() {
             {/* Formulaire HubSpot */}
             <div>
               <div
-                className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
+                className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
                 data-testid="contact-form-card"
               >
                 <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white p-6">
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                   Nos coordonnées
                 </h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <p className="text-lg text-ui-muted mb-8">
                   Notre équipe d&apos;experts est là pour vous accompagner dans
                   vos projets de téléphonie IP
                 </p>
@@ -121,18 +121,18 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3
-                          className="text-lg font-semibold text-gray-900 mb-1"
+                          className="text-lg font-semibold text-gray-dark mb-1"
                           data-testid="hotline-title"
                         >
                           Hotline Support
                         </h3>
                         <p
-                          className="text-gray-900 font-bold text-xl mb-1"
+                          className="text-gray-dark font-bold text-xl mb-1"
                           data-testid="hotline-phone"
                         >
                           0189 560 500
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Support technique prioritaire • Lun-Ven 8h-18h
                         </p>
                       </div>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contacter E2I VoIP sur WhatsApp (nouvelle fenêtre)"
-                  className="block rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="block rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="whatsapp-card"
                 >
                   <div className="flex flex-col p-6">
@@ -156,18 +156,18 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3
-                          className="text-lg font-semibold text-gray-900 mb-1"
+                          className="text-lg font-semibold text-gray-dark mb-1"
                           data-testid="whatsapp-title"
                         >
                           WhatsApp Business
                         </h3>
                         <p
-                          className="text-gray-900 font-medium mb-1"
+                          className="text-gray-dark font-medium mb-1"
                           data-testid="whatsapp-phone"
                         >
                           +33 7 57 02 36 01
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Réponse rapide • Support commercial et technique
                         </p>
                       </div>
@@ -177,7 +177,7 @@ export default function ContactPage() {
 
                 {/* Réseaux sociaux */}
                 <div
-                  className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
                   data-testid="social-card"
                 >
                   <div className="flex flex-col p-6">
@@ -192,12 +192,12 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3
-                          className="text-lg font-semibold text-gray-900 mb-1"
+                          className="text-lg font-semibold text-gray-dark mb-1"
                           data-testid="social-title"
                         >
                           Suivez-nous
                         </h3>
-                        <p className="text-sm text-gray-600 mb-3">
+                        <p className="text-sm text-ui-muted mb-3">
                           Retrouvez nos actualités et conseils télécom sur
                           LinkedIn
                         </p>

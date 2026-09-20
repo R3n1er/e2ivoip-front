@@ -32,21 +32,21 @@ export function GeographicAdvantage({ locations }: GeographicAdvantageProps) {
           <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
             Une téléphonie pensée pour vos sites
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+          <p className="mt-4 text-lg leading-relaxed text-ui-muted">
             E2I VoIP accompagne les entreprises en Guadeloupe, Martinique, Guyane, à La Réunion et en France métropolitaine.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-12 border-y border-gray-200 py-10 lg:grid-cols-2">
+        <div className="mt-12 grid gap-12 border-y border-ui-border py-10 lg:grid-cols-2">
           <div>
             <h3 className="text-xl font-semibold text-gray-dark">Déploiement multisite</h3>
-            <ul className="mt-5 space-y-3 text-gray-700">
+            <ul className="mt-5 space-y-3 text-gray-dark">
               {TERRITORY_EXPERTISE.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
           <div>
             <h3 className="text-xl font-semibold text-gray-dark">Exploitation et support</h3>
-            <ul className="mt-5 space-y-3 text-gray-700">
+            <ul className="mt-5 space-y-3 text-gray-dark">
               {SUPPORT.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
@@ -54,13 +54,13 @@ export function GeographicAdvantage({ locations }: GeographicAdvantageProps) {
 
         <div className="mt-12">
           <h3 className="text-xl font-semibold text-gray-dark">Contacts par territoire</h3>
-          <div className="mt-5 grid border-t border-gray-200 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-5 grid border-t border-ui-border sm:grid-cols-2 lg:grid-cols-5">
             {locations.map((location) => (
               <a
                 key={location.region}
                 href={`tel:${location.tel}`}
                 suppressHydrationWarning
-                className="group border-b border-gray-200 py-5 sm:px-4 lg:border-r lg:last:border-r-0"
+                className="group border-b border-ui-border py-5 sm:px-4 lg:border-r lg:last:border-r-0"
               >
                 <span className="block text-sm font-semibold text-gray-dark group-hover:text-red-primary">
                   {location.region}

@@ -106,17 +106,17 @@ export function RgpdRequestForm() {
     return (
       <div
         role="status"
-        className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg"
+        className="rounded-2xl border border-ui-border bg-white p-8 shadow-lg"
       >
         <h2 className="mb-4 text-2xl font-bold text-gray-dark">
           Votre demande est enregistrée
         </h2>
-        <p className="mb-4 text-gray-600">
+        <p className="mb-4 text-ui-muted">
           Un accusé de réception vient de vous être envoyé à l&rsquo;adresse{" "}
           <strong>{email}</strong>. Conservez-le : il atteste de votre
           démarche.
         </p>
-        <p className="text-gray-600">
+        <p className="text-ui-muted">
           Nous vous répondrons dans un délai d&rsquo;un mois à compter de
           aujourd&rsquo;hui. Un justificatif d&rsquo;identité pourra vous être
           demandé avant toute communication de données personnelles.
@@ -129,7 +129,7 @@ export function RgpdRequestForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8"
+      className="rounded-2xl border border-ui-border bg-white p-6 shadow-lg sm:p-8"
     >
       {TURNSTILE_SITE_KEY ? (
         <Script
@@ -228,7 +228,7 @@ export function RgpdRequestForm() {
           {RGPD_RIGHTS.map((right) => (
             <div
               key={right.id}
-              className="flex gap-3 rounded-lg border border-gray-100 p-3 transition-colors hover:border-red-primary/40"
+              className="flex gap-3 rounded-lg border border-ui-border p-3 transition-colors hover:border-red-primary/40"
             >
               <input
                 type="checkbox"
@@ -247,7 +247,7 @@ export function RgpdRequestForm() {
                     ({right.article})
                   </span>
                 </span>
-                <span className="block text-sm text-gray-600">
+                <span className="block text-sm text-ui-muted">
                   {right.description}
                 </span>
               </label>

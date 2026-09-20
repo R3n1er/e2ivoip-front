@@ -128,12 +128,12 @@ export function HubSpotCalendar({
       {(title || description) && (
         <div className="text-center mb-8">
           {title && (
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-dark mb-4">
               {title}
             </h2>
           )}
           {description && (
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-ui-muted max-w-2xl mx-auto">
               {description}
             </p>
           )}
@@ -154,7 +154,7 @@ export function HubSpotCalendar({
               data-testid="hubspot-calendar-fallback"
             >
               <div className="text-center">
-                <p className="mb-4 text-gray-700">
+                <p className="mb-4 text-gray-dark">
                   Le calendrier de réservation n&apos;a pas pu se charger.
                 </p>
                 <a
@@ -177,7 +177,7 @@ export function HubSpotCalendar({
                   className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-red-primary motion-reduce:animate-none"
                   aria-hidden="true"
                 ></div>
-                <p className="text-gray-600" role="status">
+                <p className="text-ui-muted" role="status">
                   Chargement du calendrier…
                 </p>
               </div>
@@ -188,9 +188,9 @@ export function HubSpotCalendar({
 
       {/* Informations de contact alternatives */}
       {showContactInfo && (
-        <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-ui-border">
           <div className="text-center">
-            <h3 className="font-semibold text-gray-800 mb-3">
+            <h3 className="font-semibold text-gray-dark mb-3">
               Vous préférez nous appeler directement ?
             </h3>
             <div className="flex flex-wrap justify-center gap-4 text-sm">

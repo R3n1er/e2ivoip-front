@@ -17,18 +17,18 @@ interface ProblemSolutionSectionProps {
 
 function EditorialList({ items }: { items: Array<Problem | Solution> }) {
   return (
-    <ol className="border-t border-gray-200">
+    <ol className="border-t border-ui-border">
       {items.map((item, index) => (
         <li
           key={item.title}
-          className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-gray-200 py-5"
+          className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-ui-border py-5"
         >
           <span className="font-mono text-sm tabular-nums text-gray-secondary">
             {String(index + 1).padStart(2, "0")}
           </span>
           <div>
             <h3 className="font-semibold text-gray-dark">{item.title}</h3>
-            <p className="mt-1 leading-relaxed text-gray-600">{item.description}</p>
+            <p className="mt-1 leading-relaxed text-ui-muted">{item.description}</p>
           </div>
         </li>
       ))}

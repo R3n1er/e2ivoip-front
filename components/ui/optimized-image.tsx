@@ -82,7 +82,7 @@ export function OptimizedImage({
         ref={imageRef}
         data-testid="image-error"
         className={cn(
-          "flex items-center justify-center bg-gray-200 text-gray-500",
+          "flex items-center justify-center bg-gray-200 text-ui-muted",
           className
         )}
         style={{ width: fill ? "100%" : width, height: fill ? "100%" : height }}

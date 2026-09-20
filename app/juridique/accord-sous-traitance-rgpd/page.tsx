@@ -257,7 +257,7 @@ export default function AccordSousTraitanceRgpdPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-ui-border">
                   <p className="text-sm text-gray-dark">
                     <strong>Ordre de priorité :</strong> en cas de contradiction sur la
                     protection des Données personnelles, le DPA prévaut sur les
@@ -277,7 +277,7 @@ export default function AccordSousTraitanceRgpdPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <Link
                     href="/juridique/conditions-generales-de-vente"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-ui-border hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
                     <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
@@ -287,7 +287,7 @@ export default function AccordSousTraitanceRgpdPage() {
                   </Link>
                   <Link
                     href="/juridique/politique-confidentialite"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-ui-border hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
                     <Shield size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
@@ -299,7 +299,7 @@ export default function AccordSousTraitanceRgpdPage() {
                     href="/documents/conditions-particulieres-voip.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-ui-border hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
                     <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
@@ -311,7 +311,7 @@ export default function AccordSousTraitanceRgpdPage() {
                     href="/documents/conditions-particulieres-trunk-sip.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-ui-border hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
                     <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>

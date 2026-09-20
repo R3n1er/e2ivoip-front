@@ -83,7 +83,7 @@ export function BlogSearch({
     <div className="space-y-6">
       {/* Barre de recherche principale */}
       <div className="relative">
-        <MagnifyingGlass size={24} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true" />
+        <MagnifyingGlass size={24} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-ui-muted" aria-hidden="true" />
         <Input
           type="text"
           placeholder="Rechercher dans les articles..."
@@ -94,7 +94,7 @@ export function BlogSearch({
               onSearch(filters);
             }
           }}
-          className="pl-10 pr-4 py-3 text-lg border-gray-200 focus:border-red-primary focus:ring-red-primary"
+          className="pl-10 pr-4 py-3 text-lg border-ui-border focus:border-red-primary focus:ring-red-primary"
           disabled={isLoading}
         />
         {isLoading && (
@@ -107,7 +107,7 @@ export function BlogSearch({
       {/* Statistiques et boutons de tri */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         {/* Statistiques */}
-        <div className="flex items-center gap-4 text-sm text-gray-600">
+        <div className="flex items-center gap-4 text-sm text-ui-muted">
           <div className="flex items-center gap-1">
             <Question size={16} aria-hidden="true" />
             <span>
@@ -125,7 +125,7 @@ export function BlogSearch({
         <div className="flex items-center gap-3">
           {/* Tri */}
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-gray-dark">
               Trier par :
             </span>
             <div className="flex gap-1">
@@ -180,7 +180,7 @@ export function BlogSearch({
               variant="ghost"
               size="sm"
               onClick={clearFilters}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-ui-muted hover:text-gray-dark"
               disabled={isLoading}
             >
               Effacer
@@ -190,7 +190,7 @@ export function BlogSearch({
       </div>
       {/* Panneau de filtres */}
       {showFilters && (
-        <Card className="border-gray-200">
+        <Card className="border-ui-border">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg flex items-center gap-2">
               <Funnel size={24} className="text-red-primary" aria-hidden="true" />
@@ -203,7 +203,7 @@ export function BlogSearch({
           <CardContent className="space-y-6">
             {/* Filtre par auteur */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-gray-dark flex items-center gap-2">
                 <UserCircle size={16} aria-hidden="true" />
                 Auteur
               </label>
@@ -241,7 +241,7 @@ export function BlogSearch({
             </div>
             {/* Filtre par année */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-gray-dark flex items-center gap-2">
                 <Calendar size={16} aria-hidden="true" />
                 Année de publication
               </label>
@@ -281,7 +281,7 @@ export function BlogSearch({
             </div>
             {/* Filtre par tags */}
             <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+              <label className="text-sm font-medium text-gray-dark flex items-center gap-2">
                 <Tag size={16} aria-hidden="true" />
                 Mots-clés
               </label>
@@ -310,7 +310,7 @@ export function BlogSearch({
       {/* Affichage des filtres actifs */}
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2">
-          <span className="text-sm text-gray-600">Filtres actifs :</span>
+          <span className="text-sm text-ui-muted">Filtres actifs :</span>
           {filters.author && (
             <Badge variant="secondary" className="flex items-center gap-1">
               <UserCircle size={16} aria-hidden="true" />

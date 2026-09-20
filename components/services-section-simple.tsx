@@ -99,7 +99,7 @@ export function ServicesSectionSimple() {
           {services.map((service, index) => (
             <RevealItem
               key={service.title}
-              className={`rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
+              className={`rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300 group cursor-pointer flex flex-col h-full ${
                 // Carte orpheline en fin de grille (nombre impair) : pleine
                 // largeur centrée. Nombre pair : la grille se ferme seule.
                 services.length % 2 === 1 && index === services.length - 1

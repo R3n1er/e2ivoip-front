@@ -400,10 +400,10 @@ export function QuickContactForm({
 }) {
   return (
     <div className={`bg-white rounded-lg p-6 shadow-lg ${className}`}>
-      <h3 className="text-xl font-bold text-gray-900 mb-4">
+      <h3 className="text-xl font-bold text-gray-dark mb-4">
         Contactez-nous rapidement
       </h3>
-      <p className="text-gray-600 mb-6">
+      <p className="text-ui-muted mb-6">
         Notre équipe d'experts est là pour vous accompagner
       </p>
       <HubSpotForm
@@ -440,8 +440,8 @@ export function FullContactForm({
 }) {
   return (
     <div className={`bg-white rounded-lg p-8 shadow-lg ${className}`}>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
-      <p className="text-gray-600 mb-6">{description}</p>
+      <h3 className="text-2xl font-bold text-gray-dark mb-4">{title}</h3>
+      <p className="text-ui-muted mb-6">{description}</p>
       <HubSpotForm
         formId="CONTACT_GENERAL"
         onFormSubmitted={() => {

@@ -238,7 +238,7 @@ export default function NosServices() {
                 {benefits.map((benefit, index) => (
                   <Card
                     key={index}
-                    className="text-center border-gray-200 hover:shadow-lg transition-shadow"
+                    className="text-center border-ui-border hover:shadow-lg transition-shadow"
                   >
                     <CardHeader>
                       <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -277,7 +277,7 @@ export default function NosServices() {
                 {categories.map((category, index) => (
                   <Card
                     key={index}
-                    className="text-center border-gray-200 hover:shadow-lg transition-shadow cursor-pointer"
+                    className="text-center border-ui-border hover:shadow-lg transition-shadow cursor-pointer"
                   >
                     <CardHeader>
                       <div
@@ -315,7 +315,7 @@ export default function NosServices() {
                 {services.map((service, index) => (
                   <Card
                     key={index}
-                    className="h-full hover:shadow-lg transition-shadow duration-300 group cursor-pointer border-gray-200"
+                    className="h-full hover:shadow-lg transition-shadow duration-300 group cursor-pointer border-ui-border"
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">

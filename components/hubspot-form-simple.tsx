@@ -2,7 +2,7 @@
 
 export function HubSpotFormSimple() {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="bg-gradient-to-r from-red-primary to-blue-marine text-white rounded-t-xl p-6">
         <h2 className="flex items-center gap-2 text-2xl font-bold text-white mb-2">
           Contactez notre équipe

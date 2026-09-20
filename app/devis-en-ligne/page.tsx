@@ -142,7 +142,7 @@ export default function DevisEnLignePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-dark max-w-3xl mx-auto">
               Que vous cherchiez à mettre en place un{" "}
               <strong>Trunk SIP professionnel</strong>, une solution{" "}
               <strong>3CX VoIP dédiée ou mutualisée</strong>, installer une
@@ -160,7 +160,7 @@ export default function DevisEnLignePage() {
                 <h2 className="text-xl font-black tracking-[-0.03em] text-gray-dark">
                   {group.title}
                 </h2>
-                <p className="mt-2 mb-6 text-gray-600">{group.description}</p>
+                <p className="mt-2 mb-6 text-ui-muted">{group.description}</p>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {group.items.map((item) => (
@@ -223,10 +223,10 @@ export default function DevisEnLignePage() {
                   className="mx-auto mb-4 text-red-primary"
                   aria-hidden="true"
                 />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-gray-dark mb-2">
                   {avantage.title}
                 </h3>
-                <p className="text-gray-600">{avantage.description}</p>
+                <p className="text-ui-muted">{avantage.description}</p>
               </div>
             ))}
           </div>
@@ -251,7 +251,7 @@ export default function DevisEnLignePage() {
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             Nous sommes certifiés !
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-ui-muted mb-8">
             E2I Assistance est partenaire 3CX Silver et certifié ! Visitez le site internet 
             de notre partenaire et souscrivez à une version d'évaluation du standard téléphonique.
           </p>

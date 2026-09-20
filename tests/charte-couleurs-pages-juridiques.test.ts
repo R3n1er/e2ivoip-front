@@ -27,12 +27,32 @@ const DOSSIER = path.join(process.cwd(), "app/juridique");
 const HERO_GRADIENT = "from-blue-900/85 via-blue-800/80 to-red-600/85";
 
 /**
- * Palettes Tailwind interdites pour les couleurs de MARQUE. Les gris
- * d'interface (`border-gray-200`, `bg-gray-50`) restent tolérés : la charte
- * régit le texte et les accents, pas les bordures et fonds neutres.
+ * Palettes Tailwind interdites.
+ *
+ * DOCTRINE RÉVISÉE (2026-09-20). La version initiale de ce test tolérait les
+ * gris d'interface — `gray` était absent de cette liste — au motif que « la
+ * charte régit le texte et les accents, pas les bordures et fonds neutres ».
+ * C'était vrai TANT QUE la charte n'offrait aucune valeur pour ces rôles.
+ *
+ * La PR #75 a créé `ui-muted` (#4B5563) et `ui-border` (#E5E7EB). Les gris de
+ * TEXTE et de BORDURE ont donc un remplaçant, et la tolérance n'a plus d'objet.
+ * `gray` entre dans la liste, ce qui a fait apparaître 258 occurrences que ce
+ * test laissait passer — dont 230 dans `cgv-content.tsx`, qu'il scannait
+ * pourtant depuis la PR #73.
+ *
+ * Les FONDS (`bg-gray-50`, `bg-gray-100`) restent hors de portée : aucun token
+ * ne les couvre encore, cf. DESIGN.md §9.1. D'où le ciblage sur `text` et
+ * `border` pour la famille `gray`, et sur tous les préfixes pour les autres.
  */
-const PALETTES_INTERDITES =
-  /(?:text|bg|border|ring|divide|from|via|to)-(?:red|green|blue|yellow|orange|amber|lime|emerald|teal|cyan|sky|indigo|violet|purple|fuchsia|pink|rose|slate|zinc|neutral|stone)-\d{2,3}(?:\/\d{1,3})?/g;
+const PALETTES_INTERDITES = new RegExp(
+  [
+    // Couleurs de marque et palettes vives : tous les préfixes.
+    "(?:text|bg|border|ring|divide|from|via|to)-(?:red|green|blue|yellow|orange|amber|lime|emerald|teal|cyan|sky|indigo|violet|purple|fuchsia|pink|rose|slate|zinc|neutral|stone)-\\d{2,3}(?:\\/\\d{1,3})?",
+    // Gris : texte et bordures seulement, les fonds n'ont pas encore de token.
+    "(?:text|border)-gray-\\d{2,3}(?:\\/\\d{1,3})?",
+  ].join("|"),
+  "g",
+);
 
 /** Composants dédiés aux pages juridiques, hors app/juridique/. */
 const DOSSIER_COMPOSANTS = path.join(process.cwd(), "components/legal");

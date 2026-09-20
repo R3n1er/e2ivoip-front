@@ -95,7 +95,7 @@ export function HubSpotContactForm({
         <div className="flex justify-center items-center min-h-[400px]">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Chargement du formulaire...</p>
+            <p className="text-ui-muted">Chargement du formulaire...</p>
           </div>
         </div>
       )}
@@ -123,10 +123,10 @@ export function QuickContactForm() {
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-lg">
-      <h3 className="text-xl font-bold text-gray-900 mb-4">
+      <h3 className="text-xl font-bold text-gray-dark mb-4">
         Contactez-nous rapidement
       </h3>
-      <p className="text-gray-600 mb-6">
+      <p className="text-ui-muted mb-6">
         Notre équipe d'experts est là pour vous accompagner
       </p>
       <HubSpotContactForm
@@ -152,10 +152,10 @@ export function FullContactForm() {
 
   return (
     <div className="bg-white rounded-lg p-8 shadow-lg">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+      <h3 className="text-2xl font-bold text-gray-dark mb-4">
         Contactez notre équipe
       </h3>
-      <p className="text-gray-600 mb-6">
+      <p className="text-ui-muted mb-6">
         Remplissez ce formulaire et nous vous recontacterons dans les plus brefs
         délais
       </p>

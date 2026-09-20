@@ -125,7 +125,7 @@ export function ResponsiveImage({
         ref={containerRef}
         data-testid="responsive-image-error"
         className={cn(
-          "flex items-center justify-center bg-gray-200 text-gray-500 rounded-lg",
+          "flex items-center justify-center bg-gray-200 text-ui-muted rounded-lg",
           getAspectRatioClass(),
           className
         )}

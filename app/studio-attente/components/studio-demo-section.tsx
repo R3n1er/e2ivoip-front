@@ -30,7 +30,7 @@ export function StudioDemoSection() {
             Écoutez des{" "}
             <span className="text-red-primary">exemples de messages</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-ui-muted max-w-2xl mx-auto">
             Sélectionnez une catégorie, écoutez les démos, puis personnalisez le
             modèle dans votre demande de devis.
           </p>
@@ -46,7 +46,7 @@ export function StudioDemoSection() {
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors
                 ${active === tab.value
                   ? "bg-red-primary text-white"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-red-primary/50"}`}
+                  : "bg-white text-ui-muted border border-ui-border hover:border-red-primary/50"}`}
               aria-pressed={active === tab.value}
             >
               {tab.label}
@@ -57,7 +57,7 @@ export function StudioDemoSection() {
         {/* Liste des démos */}
         <div className="grid md:grid-cols-2 gap-4 mb-10">
           {demos.map((demo) => (
-            <Card key={demo.id} className="border-gray-200">
+            <Card key={demo.id} className="border-ui-border">
               <CardContent className="p-5">
                 <div className="flex items-start gap-3">
                   <div className="bg-red-primary/10 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
@@ -68,11 +68,11 @@ export function StudioDemoSection() {
                       <h3 className="font-semibold text-gray-dark truncate">
                         {demo.title}
                       </h3>
-                      <span className="text-xs text-gray-400 shrink-0">
+                      <span className="text-xs text-ui-muted shrink-0">
                         {demo.duration}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1 italic">
+                    <p className="text-sm text-ui-muted mt-1 italic">
                       &ldquo;{demo.script.replace(/\{entreprise\}/g, "votre entreprise")}&rdquo;
                     </p>
                     <audio
@@ -102,7 +102,7 @@ export function StudioDemoSection() {
         </div>
 
         {demos.length === 0 && (
-          <p className="text-center text-gray-500">
+          <p className="text-center text-ui-muted">
             Aucune démo audio pour cette catégorie pour le moment.
           </p>
         )}

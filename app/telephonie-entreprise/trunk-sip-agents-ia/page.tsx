@@ -207,13 +207,13 @@ export default function TrunkSipAgentsIA() {
                   Le blocage des plateformes IA en{" "}
                   <span className="text-red-primary">zone DOM</span>
                 </h2>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                   VAPI, Rounded, ElevenLabs et Jambonz s&apos;appuient sur le
                   modèle BYOC (Bring Your Own Carrier). En pratique, Twilio,
                   Telnyx ou Plivo ne proposent pas de numéros géographiques
                   locaux en Martinique, Guadeloupe, Guyane ou Réunion.
                 </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-lg text-ui-muted leading-relaxed">
                   Résultat : vos clients DOM ne peuvent pas déployer d&apos;agents
                   vocaux IA avec un numéro local rassurant — sauf si vous
                   connectez un carrier régional comme E2I VoIP.
@@ -233,7 +233,7 @@ export default function TrunkSipAgentsIA() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
-                      <span className="text-gray-600">{item}</span>
+                      <span className="text-ui-muted">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -249,7 +249,7 @@ export default function TrunkSipAgentsIA() {
                 Notre rôle : la{" "}
                 <span className="text-red-primary">couche télécom</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ui-muted max-w-3xl mx-auto">
                 E2I VoIP ne développe pas d&apos;agents IA. Nous interconnectons
                 votre plateforme (workflows, STT, LLM, TTS) au réseau téléphonique
                 local DOM.
@@ -266,22 +266,22 @@ export default function TrunkSipAgentsIA() {
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
                   Trunk SIP bidirectionnel
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-ui-muted mb-4 leading-relaxed">
                   Infrastructure SBC dédiée aux agents vocaux IA. Credentials SIP,
                   routage entrant et sortant, contrôle des volumes et des
                   transferts (SIP REFER).
                 </p>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-ui-muted leading-relaxed">
                   <strong>Offre spéciale revendeurs</strong> pour intégrateurs et
                   agences qui déploient plusieurs clients DOM.
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
+              <div className="bg-white rounded-xl p-8 shadow-sm border border-ui-border">
                 <h3 className="text-2xl font-bold text-gray-dark mb-4">
                   Redirection d&apos;appels
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-ui-muted leading-relaxed">
                   Votre numéro local E2I redirige vers le numéro de la
                   plateforme choisie au format{" "}
                   <code className="text-sm bg-gray-100 px-2 py-0.5 rounded">
@@ -301,7 +301,7 @@ export default function TrunkSipAgentsIA() {
                 Plateformes{" "}
                 <span className="text-red-primary">compatibles</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ui-muted max-w-3xl mx-auto">
                 Interconnexion testée avec les principales plateformes d&apos;agents
                 vocaux IA. Retell AI et Bland AI : même pattern BYOC SIP.
               </p>
@@ -314,7 +314,7 @@ export default function TrunkSipAgentsIA() {
                   className={`flex h-full flex-col bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
                     platform.status === "validated"
                       ? "border-green-500/40"
-                      : "border-gray-200"
+                      : "border-ui-border"
                   }`}
                 >
                   <div className="mb-4 flex h-20 items-center">
@@ -340,13 +340,13 @@ export default function TrunkSipAgentsIA() {
                           ? "bg-green-100 text-green-700"
                           : platform.status === "in-progress"
                           ? "bg-orange-100 text-orange-700"
-                          : "bg-gray-100 text-gray-500"
+                          : "bg-gray-100 text-ui-muted"
                       }`}
                     >
                       {platform.statusLabel}
                     </span>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">
+                  <p className="text-ui-muted text-sm mb-4 leading-relaxed flex-grow">
                     {platform.description}
                   </p>
                   <a
@@ -371,7 +371,7 @@ export default function TrunkSipAgentsIA() {
                 Cas d&apos;usage{" "}
                 <span className="text-red-primary">types</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ui-muted max-w-3xl mx-auto">
                 Exemples concrets d&apos;agents vocaux IA déployés avec des numéros
                 locaux DOM via trunk SIP.
               </p>
@@ -381,7 +381,7 @@ export default function TrunkSipAgentsIA() {
               {useCases.map((useCase) => (
                 <div
                   key={useCase.title}
-                  className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm"
+                  className="bg-white rounded-xl p-8 border border-ui-border shadow-sm"
                 >
                   <div className="bg-red-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                     <useCase.Icon size={24} className="text-red-primary" aria-hidden="true" />
@@ -389,9 +389,9 @@ export default function TrunkSipAgentsIA() {
                   <h3 className="text-xl font-bold text-gray-dark mb-4">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-600 mb-6">{useCase.description}</p>
+                  <p className="text-ui-muted mb-6">{useCase.description}</p>
                   <div className="rounded-lg border border-blue-marine/20 bg-blue-marine/5 p-4">
-                    <p className="text-sm text-gray-700 italic">
+                    <p className="text-sm text-gray-dark italic">
                       {useCase.example}
                     </p>
                   </div>
@@ -420,7 +420,7 @@ export default function TrunkSipAgentsIA() {
                   <h3 className="text-xl font-bold text-gray-dark mb-2">
                     Étape préalable : demande de validation
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-ui-muted leading-relaxed">
                     Le programme étant en phase{" "}
                     <strong>earlybird</strong>, chaque projet débute par une{" "}
                     <strong>demande de validation</strong> que nous étudions en
@@ -439,7 +439,7 @@ export default function TrunkSipAgentsIA() {
                     {item.step}
                   </div>
                   <h3 className="font-bold text-gray-dark mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  <p className="text-sm text-ui-muted">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -460,10 +460,10 @@ export default function TrunkSipAgentsIA() {
               ].map((req) => (
                 <div
                   key={req}
-                  className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-200"
+                  className="flex items-center gap-3 bg-white p-4 rounded-xl border border-ui-border"
                 >
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">{req}</span>
+                  <span className="text-gray-dark">{req}</span>
                 </div>
               ))}
             </div>
@@ -476,14 +476,14 @@ export default function TrunkSipAgentsIA() {
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 Une offre dédiée aux agents vocaux IA
               </h2>
-              <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-ui-muted leading-relaxed max-w-2xl mx-auto">
                 Ce Trunk SIP est <strong>spécifique aux agents vocaux IA</strong>{" "}
                 et se distingue de nos offres de téléphonie d&apos;entreprise :
                 la facturation se fait <strong>à l&apos;usage, à la minute, sur
                 les appels entrants et sortants</strong>, selon l&apos;activité
                 réelle de vos agents.
               </p>
-              <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mt-4">
+              <p className="text-ui-muted leading-relaxed max-w-2xl mx-auto mt-4">
                 Elle s&apos;adresse <strong>uniquement aux professionnels</strong>{" "}
                 (agences et prestataires) qui déploient et revendent des agents
                 IA auprès de leurs clients. Il n&apos;existe pas de forfait

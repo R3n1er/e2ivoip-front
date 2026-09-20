@@ -107,14 +107,14 @@ export default function PBXYeastar() {
                 Votre projet <span className="text-red-primary">Yeastar</span>{" "}
                 piloté par E2I VoIP
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600 max-w-4xl mx-auto">
+              <p className="mt-6 text-lg leading-relaxed text-ui-muted max-w-4xl mx-auto">
                 Votre standard téléphonique doit aujourd&rsquo;hui faire bien
                 plus que transférer des appels. Avec Yeastar, vous déployez une
                 téléphonie IP moderne, souple et connectée pour fluidifier les
                 échanges internes et offrir une relation client cohérente sur
                 tous vos canaux.
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-gray-600 max-w-4xl mx-auto">
+              <p className="mt-4 text-lg leading-relaxed text-ui-muted max-w-4xl mx-auto">
                 En tant qu&rsquo;intégrateur certifié, E2I VoIP prend en charge
                 le déploiement, la migration et l&rsquo;exploitation de votre
                 plateforme, qu&rsquo;elle soit hébergée dans le cloud ou
@@ -126,7 +126,7 @@ export default function PBXYeastar() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
                         <Cloud size={24} className="text-red-primary" aria-hidden="true" />
@@ -135,22 +135,22 @@ export default function PBXYeastar() {
                         P-Series Cloud Edition
                       </h3>
                     </div>
-                    <p className="mt-3 text-sm text-gray-600">
+                    <p className="mt-3 text-sm text-ui-muted">
                       Solution 100&nbsp;% hébergée, sans matériel à maintenir,
                       sécurisée et supervisée par nos équipes basées en France
                       et dans l&rsquo;Union européenne.
                     </p>
                   </div>
-                  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-                        <HardDrive size={24} className="text-gray-700" aria-hidden="true" />
+                        <HardDrive size={24} className="text-gray-dark" aria-hidden="true" />
                       </div>
                       <h3 className="text-base font-semibold text-gray-dark">
                         P-Series Appliances
                       </h3>
                     </div>
-                    <p className="mt-3 text-sm text-gray-600">
+                    <p className="mt-3 text-sm text-ui-muted">
                       PBX installés dans vos locaux ou sur votre hyperviseur
                       pour conserver la maîtrise de votre infrastructure et
                       intégrer vos applications métiers.
@@ -167,7 +167,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Transition orchestrée
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Migration depuis vos anciens PABX, portabilité de vos
                         numéros DOM et supervision continue du service.
                       </p>
@@ -181,7 +181,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Support expert réactif
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Réseau de partenaires dans les DOM et support par mail et
                         téléphone pour un accompagnement réactif.
                       </p>
@@ -195,7 +195,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Garantie de disponibilité
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Infrastructures souveraines France/UE, sauvegardes
                         chiffrées et supervision continue pour votre sérénité.
                       </p>
@@ -229,7 +229,7 @@ export default function PBXYeastar() {
         <section className="bg-gradient-to-br from-gray-50 to-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="inline-flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
+              <div className="inline-flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-dark">
                 <Compass size={16} className="mr-2" aria-hidden="true" />
                 Deux approches complémentaires
               </div>
@@ -238,7 +238,7 @@ export default function PBXYeastar() {
                 <span className="text-red-primary">modèle de déploiement</span>{" "}
                 adapté à votre structure
               </h2>
-              <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              <p className="mt-4 max-w-3xl mx-auto text-lg text-ui-muted">
                 Que vous privilégiez la flexibilité du cloud ou la maîtrise
                 d'une infrastructure on-premise, E2I VoIP déploie et opère votre
                 solution Yeastar selon vos contraintes métier.
@@ -246,7 +246,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="overflow-hidden rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="bg-gradient-to-r from-red-primary to-red-600 p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar Cloud</h3>
@@ -267,7 +267,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Provisioning express
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Portabilité, trunks SIP DOM et configuration initiale
                         gérés par E2I VoIP.
                       </p>
@@ -279,7 +279,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Sécurité renforcée
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         SRTP/TLS, 2FA, anti-fraude globale et sauvegardes
                         quotidiennes avec rétention.
                       </p>
@@ -291,14 +291,14 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Évolutivité immédiate
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Ajout d&rsquo;utilisateurs, files et canaux en temps
                         réel sans interruption de service.
                       </p>
                     </div>
                   </div>
                   <div className="border-t pt-6 text-center">
-                    <p className="text-sm text-gray-600">Idéal pour</p>
+                    <p className="text-sm text-ui-muted">Idéal pour</p>
                     <p className="font-semibold text-gray-dark">
                       PME multi-sites et équipes hybrides
                     </p>
@@ -306,7 +306,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="overflow-hidden rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar On-Premise</h3>
@@ -327,7 +327,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Infrastructure maîtrisée
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Serveurs P-Series configurés par E2I VoIP avec
                         alimentation secourue et monitoring.
                       </p>
@@ -339,7 +339,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Continuité d'activité
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Hot standby, sauvegardes locales + déportées, redondance
                         PSTN/4G pour sites critiques.
                       </p>
@@ -351,14 +351,14 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Intégrations SI
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Annuaire AD/LDAP, CRM, systèmes métiers et compatibilité
                         équipements existants.
                       </p>
                     </div>
                   </div>
                   <div className="border-t pt-6 text-center">
-                    <p className="text-sm text-gray-600">Idéal pour</p>
+                    <p className="text-sm text-ui-muted">Idéal pour</p>
                     <p className="font-semibold text-gray-dark">
                       Collectivités, santé, sites isolés ou sensibles
                     </p>
@@ -382,7 +382,7 @@ export default function PBXYeastar() {
                   Une <span className="text-red-primary">console unique</span>{" "}
                   pour piloter vos communications
                 </h2>
-                <p className="mt-6 text-lg text-gray-600">
+                <p className="mt-6 text-lg text-ui-muted">
                   Le portail Yeastar P-Series offre une expérience full web :
                   supervision en temps réel, gestion des files, vidéo conférence
                   et analytics détaillés. Les extensions Linkus (desktop,
@@ -396,7 +396,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Analytics détaillés
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Tableaux de bord appels reçus, temps d'attente, SLA.
                       </p>
                     </div>
@@ -407,7 +407,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Collaboration fluide
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Présence instantanée, chat d'équipe, visioconférence HD.
                       </p>
                     </div>
@@ -418,7 +418,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Sécurité renforcée
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Chiffrement SRTP/TLS, politique antifraude opérateur.
                       </p>
                     </div>
@@ -429,7 +429,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Supervision temps réel
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Wallboard call center et alertes proactives.
                       </p>
                     </div>
@@ -466,85 +466,85 @@ export default function PBXYeastar() {
                 Fonctionnalités{" "}
                 <span className="text-red-primary">Yeastar</span> incluses
               </h2>
-              <p className="mt-6 text-lg text-gray-600">
+              <p className="mt-6 text-lg text-ui-muted">
                 Toutes les briques nécessaires pour centraliser vos interactions
                 clients et optimiser vos opérations.
               </p>
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <Buildings size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Standard automatique
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Arborescences vocales intelligentes, messages d'accueil
                   personnalisés.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
                   <Headphones size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Call center Omnicanal
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Files d'attente avancées, campagnes sortantes, WhatsApp
                   Business Connect.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <VideoCamera size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Visioconférence & Webinar
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Réunions HD, partage d'écran, enregistrement et chat intégré.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
                   <Shield size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Sécurité opérée
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   SRTP/TLS, 2FA, listes anti-hacking globales et politiques
                   anti-fraude opérateur pour préserver vos communications.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
                   <Database size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Haute disponibilité & sauvegardes
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Backups automatisés, restauration granulaire et mode
                   hot-standby pour assurer votre continuité de service.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
-                  <DeviceMobile size={32} className="text-gray-700" aria-hidden="true" />
+                  <DeviceMobile size={32} className="text-gray-dark" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Applications Linkus
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Clients web, desktop, mobiles iOS/Android et extension Chrome
                   pour connecter vos équipes partout.
                 </p>
@@ -585,12 +585,12 @@ export default function PBXYeastar() {
                   <span className="text-red-primary">omnicanale</span> fluide
                   pour vos équipes de service client
                 </h2>
-                <p className="mt-6 text-lg text-gray-600">
+                <p className="mt-6 text-lg text-ui-muted">
                   Centralisez appels voix, WhatsApp, SMS, webchat et emails dans
                   la même interface. Les tickets sont triés automatiquement et
                   assignés au bon agent selon ses compétences et ses horaires.
                 </p>
-                <ul className="mt-8 space-y-4 text-sm text-gray-600">
+                <ul className="mt-8 space-y-4 text-sm text-ui-muted">
                   <li className="flex items-start gap-3">
                     <CheckCircle size={24} className="mt-0.5 text-red-primary" aria-hidden="true" />
                     <span>
@@ -650,7 +650,7 @@ export default function PBXYeastar() {
                   <span className="text-red-primary">professionnel</span>{" "}
                   intégré
                 </h2>
-                <p className="mt-6 text-lg text-gray-600">
+                <p className="mt-6 text-lg text-ui-muted">
                   Pilotez vos équipes de support et de vente avec des outils
                   avancés : files d'attente intelligentes, campagnes sortantes
                   automatisées, supervision temps réel et statistiques
@@ -665,7 +665,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Routage intelligent
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Distribution des appels selon les compétences, la
                         disponibilité et la charge des agents.
                       </p>
@@ -679,7 +679,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Wallboard & Analytics
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Tableaux de bord en direct avec temps d'attente, SLA et
                         taux de décrochage.
                       </p>
@@ -693,7 +693,7 @@ export default function PBXYeastar() {
                       <p className="font-semibold text-gray-dark">
                         Enregistrements & Conformité
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-ui-muted">
                         Enregistrement automatique, transcription et archivage
                         sécurisé pour la conformité RGPD.
                       </p>
@@ -718,39 +718,39 @@ export default function PBXYeastar() {
                   Intégrations <span className="text-red-primary">métier</span>{" "}
                   et CRM
                 </h2>
-                <p className="mt-6 text-lg text-gray-600">
+                <p className="mt-6 text-lg text-ui-muted">
                   Yeastar P-Series se connecte nativement à vos outils
                   quotidiens : CRM, ERP, messageries et plateformes
                   collaboratives. Automatisez vos workflows et enrichissez votre
                   relation client sans développement.
                 </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-xl border border-ui-border bg-white p-4 shadow-sm">
                     <WhatsappLogo size={32} className="text-green-600" aria-hidden="true" />
                     <span className="font-semibold text-gray-dark">
                       WhatsApp Business
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-xl border border-ui-border bg-white p-4 shadow-sm">
                     <MicrosoftTeamsLogo size={32} className="text-blue-600" aria-hidden="true" />
                     <span className="font-semibold text-gray-dark">
                       Microsoft 365
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-xl border border-ui-border bg-white p-4 shadow-sm">
                     <Chat size={32} className="text-blue-500" aria-hidden="true" />
                     <span className="font-semibold text-gray-dark">
                       Slack / Teams
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex items-center gap-3 rounded-xl border border-ui-border bg-white p-4 shadow-sm">
                     <Gear size={32} className="text-red-primary" aria-hidden="true" />
                     <span className="font-semibold text-gray-dark">
                       Zoho CRM / Salesforce
                     </span>
                   </div>
                 </div>
-                <p className="mt-6 text-sm text-gray-600">
+                <p className="mt-6 text-sm text-ui-muted">
                   <strong>API REST complète</strong> pour créer vos propres
                   intégrations et automatisations personnalisées avec vos
                   systèmes métier.
@@ -833,7 +833,7 @@ export default function PBXYeastar() {
               <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                 Cas d'usage <span className="text-red-primary">concrets</span>
               </h2>
-              <p className="mt-6 text-lg text-gray-600">
+              <p className="mt-6 text-lg text-ui-muted">
                 Yeastar P-Series s'adapte à vos métiers et répond aux enjeux de
                 disponibilité, de conformité et de productivité.
               </p>
@@ -847,20 +847,20 @@ export default function PBXYeastar() {
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Santé & médico-social
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Files d'attente dédiées, rappel automatique des patients,
                   journalisation sécurisée et gestion multi-sites.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
+              <div className="rounded-2xl border border-ui-border bg-gray-50 p-6 shadow-sm">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
-                  <Briefcase size={32} className="text-gray-700" aria-hidden="true" />
+                  <Briefcase size={32} className="text-gray-dark" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
                   PME multi-agences
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Numérotation unique DOM + métropole, standard virtuel
                   intelligent et statistiques par site.
                 </p>
@@ -873,7 +873,7 @@ export default function PBXYeastar() {
                 <h3 className="text-lg font-semibold text-gray-dark">
                   Commerce & centres d'appels
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
+                <p className="mt-3 text-sm text-ui-muted">
                   Campagnes outbound, scripts agents, intégrations e-commerce et
                   suivi du panier abandonné par call back.
                 </p>

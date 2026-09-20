@@ -18,7 +18,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial, className = "" }: TestimonialCardProps) {
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300 ${className}`}>
+    <div className={`bg-white rounded-xl p-6 shadow-sm border border-ui-border hover:shadow-md transition-shadow duration-300 ${className}`}>
       {/* Logo/En-tête */}
       <div className="flex items-center mb-4">
         {testimonial.logo ? (
@@ -33,8 +33,8 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
           </div>
         )}
         <div>
-          <h3 className="font-bold text-gray-800 text-lg">{testimonial.company}</h3>
-          <p className="text-sm text-gray-600">{testimonial.industry}</p>
+          <h3 className="font-bold text-gray-dark text-lg">{testimonial.company}</h3>
+          <p className="text-sm text-ui-muted">{testimonial.industry}</p>
         </div>
       </div>
 
@@ -44,7 +44,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
             <Quotes size={24} className="text-blue-600" aria-hidden="true" />
           </div>
-          <p className="text-gray-700 italic leading-relaxed">{testimonial.description}</p>
+          <p className="text-gray-dark italic leading-relaxed">{testimonial.description}</p>
         </div>
       </div>
 
@@ -53,22 +53,22 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
             <Users size={16} className="text-blue-600 mr-1" aria-hidden="true" />
-            <span className="font-bold text-xl text-gray-800">{testimonial.users}</span>
+            <span className="font-bold text-xl text-gray-dark">{testimonial.users}</span>
           </div>
-          <p className="text-xs text-gray-600">Utilisateurs</p>
+          <p className="text-xs text-ui-muted">Utilisateurs</p>
         </div>
         
         <div className="text-center p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-center mb-1">
             <MapTrifold size={16} className="text-red-600 mr-1" aria-hidden="true" />
-            <span className="font-bold text-sm text-gray-800">{testimonial.solution}</span>
+            <span className="font-bold text-sm text-gray-dark">{testimonial.solution}</span>
           </div>
-          <p className="text-xs text-gray-600">Solution</p>
+          <p className="text-xs text-ui-muted">Solution</p>
         </div>
       </div>
 
       {/* Badge de confiance */}
-      <div className="pt-4 border-t border-gray-100">
+      <div className="pt-4 border-t border-ui-border">
         <div className="flex items-center justify-center">
           <div className="flex items-center rounded-full bg-red-50 px-3 py-1">
             <CheckCircle size={16} className="mr-2 text-red-primary" aria-hidden="true" />
@@ -99,7 +99,7 @@ export function TestimonialsSection({
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             {title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-ui-muted max-w-3xl mx-auto">
             {subtitle}
           </p>
         </div>
@@ -114,7 +114,7 @@ export function TestimonialsSection({
         {/* Secteurs qui choisissent E2I VoIP */}
         <div className="mt-16">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            <h3 className="text-2xl font-bold text-gray-dark mb-4">
               Secteurs qui nous Choisissent
             </h3>
           </div>
@@ -126,12 +126,12 @@ export function TestimonialsSection({
               { Icon: Heart, title: "Secteur santé", desc: "Cliniques, cabinets médicaux, maisons de santé" },
               { Icon: Buildings, title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
             ].map((sector, index) => (
-              <div key={index} className="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div key={index} className="bg-white rounded-xl border border-ui-border p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <sector.Icon size={24} className="text-blue-600" aria-hidden="true" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">{sector.title}</h4>
-                <p className="text-sm text-gray-600">{sector.desc}</p>
+                <h4 className="font-semibold text-gray-dark mb-2">{sector.title}</h4>
+                <p className="text-sm text-ui-muted">{sector.desc}</p>
               </div>
             ))}
           </div>

@@ -31,7 +31,7 @@ export function BlogPostsGrid({
       <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="animate-pulse">
-            <Card className="border-gray-200">
+            <Card className="border-ui-border">
               <div className="w-full h-48 bg-gray-200 rounded-t-lg"></div>
               <CardHeader>
                 <div className="w-20 h-4 bg-gray-200 rounded mb-2"></div>
@@ -56,7 +56,7 @@ export function BlogPostsGrid({
     return (
       <div className="text-center py-12">
         <div className="max-w-md mx-auto">
-          <div className="w-16 h-16 mx-auto mb-4 text-gray-400">
+          <div className="w-16 h-16 mx-auto mb-4 text-ui-muted">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
@@ -66,10 +66,10 @@ export function BlogPostsGrid({
               />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-gray-dark mb-2">
             {emptyMessage}
           </h3>
-          <p className="text-gray-600">
+          <p className="text-ui-muted">
             Essayez de modifier vos critères de recherche ou vos filtres.
           </p>
         </div>
@@ -106,7 +106,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
   };
 
   return (
-    <Card className="border-gray-200 hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+    <Card className="border-ui-border hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
       {/* Image si disponible */}
       {post.featuredImageUrl && (
         <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
@@ -135,7 +135,7 @@ function BlogPostCard({ post }: { post: BlogPost }) {
               </Badge>
             ))}
             {post.tags.length > 2 && (
-              <Badge variant="secondary" className="text-xs text-gray-500">
+              <Badge variant="secondary" className="text-xs text-ui-muted">
                 +{post.tags.length - 2}
               </Badge>
             )}
@@ -148,14 +148,14 @@ function BlogPostCard({ post }: { post: BlogPost }) {
           </Link>
         </CardTitle>
 
-        <CardDescription className="line-clamp-3 text-gray-600 mb-4">
+        <CardDescription className="line-clamp-3 text-ui-muted mb-4">
           {post.excerpt}
         </CardDescription>
       </CardHeader>
 
       <CardContent className="mt-auto">
         {/* Métadonnées */}
-        <div className="flex items-center text-xs text-gray-500 mb-4 gap-4 flex-wrap">
+        <div className="flex items-center text-xs text-ui-muted mb-4 gap-4 flex-wrap">
           <div className="flex items-center gap-1">
             <Calendar size={16} aria-hidden="true" />
             <span>

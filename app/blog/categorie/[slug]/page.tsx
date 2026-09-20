@@ -63,12 +63,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         ])}
       />
       {/* Header avec navigation */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white border-b border-ui-border sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link
               href="/blog"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-ui-muted hover:text-gray-dark transition-colors"
             >
               <ArrowLeft size={16} aria-hidden="true" />
               Retour au blog
@@ -121,7 +121,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Besoin d&apos;expertise en téléphonie IP ?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-ui-muted mb-8">
               Nos experts sont là pour vous accompagner dans vos projets de
               communication d&apos;entreprise.
             </p>
@@ -134,7 +134,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </a>
               <a
                 href="/nos-services"
-                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-lg transition-colors duration-200"
+                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-dark font-medium rounded-lg transition-colors duration-200"
               >
                 Découvrir nos services
               </a>
