@@ -56,7 +56,7 @@ export default function StandardTelephoniquePage() {
                 ordinateur ou un mobile. Sans jargon et sans matériel obsolète
                 dans un placard.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-lg text-ui-muted leading-relaxed mb-8">
                 Un seul interlocuteur pour le standard et la ligne qui le
                 raccorde : nous sommes à la fois l&apos;
                 <strong>opérateur</strong> du réseau et l&apos;
@@ -89,7 +89,7 @@ export default function StandardTelephoniquePage() {
               Le cuivre ferme. Votre standard actuel{" "}
               <span className="text-red-primary">suivra</span>.
             </h2>
-            <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
+            <div className="max-w-4xl space-y-4 text-lg text-ui-muted leading-relaxed">
               <p>
                 Le réseau téléphonique historique en cuivre est démonté par
                 Orange, sous contrôle de l&apos;Arcep. Le calendrier est découpé
@@ -113,7 +113,7 @@ export default function StandardTelephoniquePage() {
                   className="text-red-primary shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
-                <div className="text-gray-700">
+                <div className="text-gray-dark">
                   <p className="font-semibold mb-2">
                     La date qui vous concerne n&apos;est pas celle du département
                   </p>
@@ -143,19 +143,19 @@ export default function StandardTelephoniquePage() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+              <div className="bg-white rounded-xl p-8 shadow-sm border border-ui-border">
                 <div className="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-4">
                   <Users size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-dark mb-3">
                   Standard hébergé partagé
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   La solution la plus simple : aucun matériel chez vous. Vos
                   postes sont facturés par utilisateur et par mois, et le
                   standard vit dans le cloud.
                 </p>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-sm text-ui-muted">
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
@@ -183,7 +183,7 @@ export default function StandardTelephoniquePage() {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+              <div className="bg-white rounded-xl p-8 shadow-sm border border-ui-border">
                 <div className="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-4">
                   <Shield size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
@@ -196,13 +196,13 @@ export default function StandardTelephoniquePage() {
                 <h3 className="text-xl font-bold text-gray-dark mb-3">
                   Serveur de téléphonie dans le cloud — l&apos;instance dédiée
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Votre propre serveur de téléphonie dans le cloud, isolé, avec
                   vos règles de routage, vos files d&apos;attente et votre
                   superviseur qualité d&apos;appel. Rien à installer ni à
                   maintenir dans vos locaux.
                 </p>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-sm text-ui-muted">
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
@@ -230,7 +230,7 @@ export default function StandardTelephoniquePage() {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+              <div className="bg-white rounded-xl p-8 shadow-sm border border-ui-border">
                 <div className="w-12 h-12 rounded-lg bg-red-primary/10 flex items-center justify-center mb-4">
                   <Phone size={24} className="text-red-primary" aria-hidden="true" />
                 </div>
@@ -244,13 +244,13 @@ export default function StandardTelephoniquePage() {
                 <h3 className="text-xl font-bold text-gray-dark mb-3">
                   Raccordement au réseau téléphonique — le Trunk SIP
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Le Trunk SIP est le lien entre votre standard et le réseau
                   téléphonique public. Il se facture au canal d&apos;appel
                   simultané — pas par personne : c&apos;est lui qui détermine
                   combien d&apos;appels passent en même temps.
                 </p>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-sm text-ui-muted">
                   <li className="flex items-start gap-2">
                     <CheckCircle
                       size={16}
@@ -348,7 +348,7 @@ export default function StandardTelephoniquePage() {
                   <h3 className="text-lg font-bold text-gray-dark mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-ui-muted text-sm leading-relaxed">
                     {item.text}
                   </p>
                 </li>
@@ -375,7 +375,7 @@ export default function StandardTelephoniquePage() {
                 <NextLink
                   key={t.slug}
                   href={standardTelephoneHref(t.slug)}
-                  className="group bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-red-primary/30 transition-all"
+                  className="group bg-white rounded-xl p-6 shadow-sm border border-ui-border hover:shadow-md hover:border-red-primary/30 transition-all"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <MapPin
@@ -395,7 +395,7 @@ export default function StandardTelephoniquePage() {
                   <p className="text-sm text-gray-secondary mb-3 font-mono tabular-nums">
                     {t.phone.number}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-ui-muted">
                     {/* Fait accompli d'abord : une commune déjà coupée est une
                         preuve, une échéance future se discute. */}
                     {t.copper.alreadyClosed[0]

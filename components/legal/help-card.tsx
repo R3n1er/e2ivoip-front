@@ -14,7 +14,7 @@ import Link from "next/link";
  */
 export function LegalHelpCard() {
   return (
-    <div className="p-6 bg-gray-50 rounded-lg border border-gray-200">
+    <div className="p-6 bg-gray-50 rounded-lg border border-ui-border">
       <p className="text-sm text-gray-dark">
         <strong>Besoin d&rsquo;aide ?</strong> Pour toute question sur ces
         documents ou pour exercer vos droits sur vos données personnelles,

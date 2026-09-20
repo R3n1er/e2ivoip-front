@@ -126,7 +126,7 @@ export default function TrunkSipAgentsIARevendeurs() {
                 Pourquoi revendre avec{" "}
                 <span className="text-red-primary">E2I VoIP</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-ui-muted max-w-3xl mx-auto">
                 Nous sommes l'opérateur télécom des DOM. Vous apportez l'IA et la
                 relation client, nous fournissons l'infrastructure locale.
               </p>
@@ -136,7 +136,7 @@ export default function TrunkSipAgentsIARevendeurs() {
               {benefits.map(({ Icon, title, description }) => (
                 <div
                   key={title}
-                  className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                  className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
                     <Icon size={24} className="text-red-primary" aria-hidden="true" />
@@ -144,7 +144,7 @@ export default function TrunkSipAgentsIARevendeurs() {
                   <h3 className="mt-4 text-lg font-semibold text-gray-dark">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-600">{description}</p>
+                  <p className="mt-2 text-sm text-ui-muted">{description}</p>
                 </div>
               ))}
             </div>
@@ -165,7 +165,7 @@ export default function TrunkSipAgentsIARevendeurs() {
                       className="mt-0.5 flex-shrink-0 text-red-primary"
                       aria-hidden="true"
                     />
-                    <span className="text-gray-600">{item}</span>
+                    <span className="text-ui-muted">{item}</span>
                   </li>
                 ))}
               </ul>

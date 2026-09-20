@@ -78,26 +78,26 @@ export function TallyEmbedTarifs() {
             <span className="text-red-primary">tarifs personnalisés</span>
           </h2>
 
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-ui-muted max-w-2xl mx-auto mb-8">
             Laissez-nous vos coordonnées, nous vous envoyons notre{" "}
             <strong>grille tarifaire complète par email</strong>
           </p>
 
           {/* Avantages du formulaire */}
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <div className="flex items-center gap-2 text-gray-600">
+            <div className="flex items-center gap-2 text-ui-muted">
               <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
               <span>Sans engagement</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
+            <div className="flex items-center gap-2 text-ui-muted">
               <Shield size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Données confidentielles</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
+            <div className="flex items-center gap-2 text-ui-muted">
               <Timer size={24} className="text-red-primary" aria-hidden="true" />
               <span>Envoi rapide par email</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
+            <div className="flex items-center gap-2 text-ui-muted">
               <Users size={24} className="text-blue-marine" aria-hidden="true" />
               <span>Expert dédié</span>
             </div>
@@ -109,7 +109,7 @@ export function TallyEmbedTarifs() {
           <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-red-primary/20 to-transparent rounded-full blur-2xl"></div>
           <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-blue-600/20 to-transparent rounded-full blur-2xl"></div>
 
-          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <div className="relative bg-white rounded-2xl shadow-xl border border-ui-border p-8">
             <div className="rounded-xl overflow-hidden">
               {isClient ? (
                 <iframe

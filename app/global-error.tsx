@@ -22,7 +22,7 @@ export default function GlobalError({
           revenir à l&apos;accueil.
         </p>
         {process.env.NODE_ENV === "development" && error.message ? (
-          <pre className="mb-6 max-w-lg overflow-auto rounded-lg bg-gray-100 p-4 text-left text-xs text-gray-700">
+          <pre className="mb-6 max-w-lg overflow-auto rounded-lg bg-gray-100 p-4 text-left text-xs text-gray-dark">
             {error.message}
             {error.digest ? `\n\ndigest: ${error.digest}` : ""}
           </pre>

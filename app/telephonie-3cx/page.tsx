@@ -101,7 +101,7 @@ export default function Telephonie3CX() {
                 Pourquoi choisir <span className="text-red-primary">3CX</span>{" "}
                 avec E2I VOIP ?
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl text-ui-muted leading-relaxed">
                 <strong>3CX</strong> est le système de communications unifiées
                 leader mondial, offrant téléphonie VoIP, visioconférence, chat
                 en équipe et centre de contact dans une solution unique. En tant
@@ -117,7 +117,7 @@ export default function Telephonie3CX() {
         <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center bg-gray-100 text-gray-dark px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Compass size={16} className="mr-2" aria-hidden="true" />
                 Choisissez votre solution
               </div>
@@ -125,7 +125,7 @@ export default function Telephonie3CX() {
                 Deux options adaptées à{" "}
                 <span className="text-red-primary">vos besoins</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-3xl mx-auto">
                 Sélectionnez la solution 3CX qui correspond le mieux à votre
                 entreprise
               </p>
@@ -133,7 +133,7 @@ export default function Telephonie3CX() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {/* 3CX PRO - Instance Dédiée */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX PRO</h3>
@@ -156,7 +156,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Serveur dédié cloud AWS
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Instance cloud dédiée à votre entreprise
                         </p>
                       </div>
@@ -167,7 +167,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           De 4 à 64 appels simultanés
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Évolutif selon vos besoins
                         </p>
                       </div>
@@ -178,7 +178,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Personnalisation complète
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Configuration et intégrations sur-mesure
                         </p>
                       </div>
@@ -189,7 +189,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Support et Assistance utilisateur
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Sauvegardes sécurisées externalisées
                         </p>
                       </div>
@@ -197,13 +197,13 @@ export default function Telephonie3CX() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <p className="text-center text-gray-600 mb-1">Idéal pour</p>
+                    <p className="text-center text-ui-muted mb-1">Idéal pour</p>
                     <p className="text-center font-semibold text-gray-dark mb-4">
                       PME et entreprises exigeantes avec besoin d'intégrations
                     </p>
                     <p className="text-center mb-6">
                       <span className="text-2xl font-black text-gray-dark">Sur devis</span>
-                      <span className="block text-xs text-gray-500">
+                      <span className="block text-xs text-ui-muted">
                         Instance dédiée cloud configurée sur-mesure
                       </span>
                     </p>
@@ -222,7 +222,7 @@ export default function Telephonie3CX() {
               </div>
 
               {/* 3CX SMB - Mutualisée */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
                 <div className="bg-gradient-to-r from-red-primary to-red-700 p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX SMB PRO</h3>
@@ -243,7 +243,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Hébergement mutualisé
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Infrastructure partagée sécurisée
                         </p>
                       </div>
@@ -254,7 +254,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           De 3 à 10 utilisateurs
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Parfait pour les TPE/PME
                         </p>
                       </div>
@@ -265,7 +265,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Mise en service rapide
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Activation rapide
                         </p>
                       </div>
@@ -276,7 +276,7 @@ export default function Telephonie3CX() {
                         <p className="font-semibold text-gray-dark">
                           Coûts optimisés
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-ui-muted">
                           Solution économique tout inclus
                         </p>
                       </div>
@@ -284,14 +284,14 @@ export default function Telephonie3CX() {
                   </div>
 
                   <div className="border-t pt-6">
-                    <p className="text-center text-gray-600 mb-1">Idéal pour</p>
+                    <p className="text-center text-ui-muted mb-1">Idéal pour</p>
                     <p className="text-center font-semibold text-gray-dark mb-4">
                       TPE et petites PME recherchant l'efficacité
                     </p>
                     <p className="text-center mb-6">
                       <span className="font-mono tabular-nums text-2xl font-black text-red-primary">15 €</span>
-                      <span className="text-sm font-medium text-gray-600"> HT / utilisateur / mois</span>
-                      <span className="block text-xs text-gray-600">
+                      <span className="text-sm font-medium text-ui-muted"> HT / utilisateur / mois</span>
+                      <span className="block text-xs text-ui-muted">
                         formule au compteur, Trunk SIP en sus · 29 € HT avec les fixes
                         France &amp; DOM illimités, mobiles au compteur
                       </span>
@@ -320,7 +320,7 @@ export default function Telephonie3CX() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Tableau <span className="text-red-primary">comparatif</span>
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-ui-muted">
                 Trouvez la solution 3CX qui correspond à vos besoins
               </p>
             </div>
@@ -340,7 +340,7 @@ export default function Telephonie3CX() {
                 typeof v === "boolean"
                   ? v
                     ? <CheckCircle size={24} className="text-red-primary mx-auto" aria-label="Inclus" />
-                    : <X size={24} className="text-gray-400 mx-auto" aria-label="Non inclus" />
+                    : <X size={24} className="text-ui-muted mx-auto" aria-label="Non inclus" />
                   : v;
 
               return (
@@ -350,21 +350,21 @@ export default function Telephonie3CX() {
                     {rows.map((row) => (
                       <div
                         key={row.feature}
-                        className={`rounded-lg shadow-md border border-gray-200 overflow-hidden ${row.highlight ? "ring-2 ring-red-primary" : ""}`}
+                        className={`rounded-lg shadow-md border border-ui-border overflow-hidden ${row.highlight ? "ring-2 ring-red-primary" : ""}`}
                       >
                         <div className="bg-gradient-to-r from-gray-800 to-red-primary text-white px-4 py-3 font-bold text-sm">
                           {row.feature}
                         </div>
                         <div className="grid grid-cols-2 divide-x divide-gray-200">
                           <div className="px-4 py-3 text-center">
-                            <div className="text-xs font-black uppercase tracking-wider text-gray-500 mb-1">3CX PRO</div>
-                            <div className="text-sm font-medium text-gray-800 flex items-center justify-center min-h-[1.5rem]">
+                            <div className="text-xs font-black uppercase tracking-wider text-ui-muted mb-1">3CX PRO</div>
+                            <div className="text-sm font-medium text-gray-dark flex items-center justify-center min-h-[1.5rem]">
                               {renderValue(row.pro)}
                             </div>
                           </div>
                           <div className="px-4 py-3 text-center">
-                            <div className="text-xs font-black uppercase tracking-wider text-gray-500 mb-1">3CX SMB</div>
-                            <div className={`text-sm flex items-center justify-center min-h-[1.5rem] ${row.highlight ? "font-bold text-red-primary" : "font-medium text-gray-800"}`}>
+                            <div className="text-xs font-black uppercase tracking-wider text-ui-muted mb-1">3CX SMB</div>
+                            <div className={`text-sm flex items-center justify-center min-h-[1.5rem] ${row.highlight ? "font-bold text-red-primary" : "font-medium text-gray-dark"}`}>
                               {renderValue(row.smb)}
                             </div>
                           </div>
@@ -433,22 +433,22 @@ export default function Telephonie3CX() {
                 Fonctionnalités <span className="text-red-primary">3CX</span>{" "}
                 incluses
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-3xl mx-auto">
                 Toutes nos solutions incluent l'ensemble des fonctionnalités 3CX
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* Téléphonie VoIP */}
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-gray-200">
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border border-ui-border">
                 <div className="h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500 rounded-t-2xl"></div>
                 <div className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Phone size={24} className="text-3xl text-gray-800" aria-hidden="true" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                      <Phone size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Téléphonie VoIP
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -456,7 +456,7 @@ export default function Telephonie3CX() {
                     intelligent
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
                       <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                       Haute qualité
                     </span>
@@ -478,11 +478,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <VideoCamera size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Visioconférence
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -512,11 +512,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Chat size={24} className="text-3xl text-gray-800" aria-hidden="true" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                      <Chat size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Chat & Collaboration
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -524,7 +524,7 @@ export default function Telephonie3CX() {
                     présence
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
                       <Lightning size={16} className="mr-1" aria-hidden="true" />
                       Temps réel
                     </span>
@@ -546,11 +546,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <DeviceMobile size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Applications mobiles
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -580,11 +580,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <Link size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Intégrations CRM
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -614,11 +614,11 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100">
-                      <Headphones size={24} className="text-3xl text-gray-800" aria-hidden="true" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                      <Headphones size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
                     Centre de contact
                   </h3>
                   <p className="text-gray-secondary text-center mb-4 text-sm leading-relaxed">
@@ -626,7 +626,7 @@ export default function Telephonie3CX() {
                     enregistrements
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-800 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
                       <TrendUp size={16} className="mr-1" aria-hidden="true" />
                       Rapports en temps réel
                     </span>

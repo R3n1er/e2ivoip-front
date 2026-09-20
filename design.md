@@ -185,16 +185,62 @@ footer. `red-primary` vaut 4,13:1, sous le seuil AA à 14px ; le survol vers
 `red-700` (6,47:1) fait *remonter* le contraste. Documentée dans le composant
 et gardée par `tests/charte-couleurs-layout-global.test.ts`.
 
-### Dette de charte — reste du site (non traitée)
+### Dette de charte — vague 1 traitée (2026-09-20)
 
-Mesure du 2026-09-20 : **~1066 occurrences sur 59 fichiers** hors
-`components/layout/`, `app/juridique/` et `components/legal/` (les trois
-surfaces traitées). Priorité basse par surface, mais le volume est réel : ce
-n'est pas un reliquat, c'est la majeure partie du site.
+**797 substitutions sur 61 fichiers**, site entier. Gris de texte et de bordure
+uniquement, tous mappés sur des tokens déjà décidés — aucun arbitrage de marque
+n'a été nécessaire :
 
-Prochaines surfaces par nombre de vues : `components/ui/` (card, feature-card,
-partagés partout), puis les sections de la page d'accueil
-(`problem-solution`, `transformation`, `about`, `pricing-tiers`).
+```
+text-gray-900/800/700  →  text-gray-dark     (#1F2937, 14,68:1)
+text-gray-600/500/400  →  text-ui-muted      (#4B5563,  7,56:1)
+border-gray-200/100    →  border-ui-border   (#E5E7EB)
+```
+
+**375 de ces substitutions sont à hexadécimal identique** — `text-gray-600` et
+`ui-muted` valent tous deux `#4B5563`. Le travail relève du nommage plus que de
+la retouche graphique. Les 174 restantes vont toutes vers plus de contraste,
+sauf `text-gray-900 → gray-dark` (17,74 → 14,68:1, largement au-dessus de AAA).
+
+Contrôle visuel Playwright avant/après sur 5 pages à fort trafic : **0,09 % à
+0,58 % de pixels modifiés**. Le maximum est sur `/studio-attente`, dont le
+tableau comparatif est dense en texte. Hero gradient intact sur ses 20 fichiers.
+
+**Doctrine révisée.** Le garde-fou des pages juridiques tolérait les gris
+(« la charte régit le texte et les accents, pas les bordures et fonds
+neutres »). C'était vrai tant qu'aucun token ne couvrait ces rôles ; la PR #75
+en a créé deux. `gray` a donc été ajouté à sa regex, révélant 258 occurrences
+qu'il laissait passer — dont 230 dans `cgv-content.tsx`, qu'il scannait pourtant
+depuis la PR #73. Une seule doctrine vaut désormais pour tout le site.
+
+Garde-fou global : `tests/charte-gris-site-entier.test.ts`, qui balaie
+`components/` et `app/` en entier.
+
+### Exceptions de la vague 1 (6 fichiers)
+
+Deux familles, toutes deux en attente de la vague 2 :
+
+| Famille | Fichiers | Raison |
+|---|---|---|
+| Gris clairs sur fond sombre | `homepage-hero-section-simple.tsx`, `app/nos-services/page.tsx` | `text-gray-200/300` posés sur le hero. `ui-muted` (#4B5563, foncé) les rendrait illisibles sur bleu profond. |
+| Bordures à survol actif | `chat-fallback.tsx`, `app/blog/page.tsx`, `app/blog/categorie/[slug]/page.tsx`, `app/global-error.tsx` | `border-gray-300` + `hover:border-gray-400` : le survol repose sur l'écart entre les deux nuances. Un token unique le rendrait inerte. |
+
+Le test plafonne cette liste à 6 : au-delà, c'est que la vague 2 doit être
+traitée plutôt que contournée.
+
+### Dette restante — vague 2 (non traitée)
+
+**~359 occurrences**, qui demandent toutes un arbitrage de marque :
+
+| Famille | Volume | Question ouverte |
+|---|---|---|
+| Fonds neutres | `bg-gray-50` (53), `bg-gray-100/200` (37) | Officialiser `gray-50` comme token ? DESIGN.md §9.1 le propose déjà. |
+| Accents rouges | `text-red-600` (24), `bg-red-50` (23), `bg-red-100` | Dérivées de `red-primary` à créer, ou basculer sur le token existant ? |
+| Accents bleus | `text-blue-600/700/800` (23), `bg-blue-50/100` (12) | Aucun équivalent en charte : `blue-marine` est structurel, pas décoratif. |
+| Gris clairs fond sombre | 4 | Token de texte clair à créer (la charte suppose un fond blanc). |
+| Bordure survolée | 6 | Second token de bordure pour l'état `hover`. |
+
+Contrairement à la vague 1, aucune de ces familles ne se traite mécaniquement.
 
 ---
 

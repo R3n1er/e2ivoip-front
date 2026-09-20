@@ -124,9 +124,9 @@ export default async function BlogPage() {
             {posts.length > 0 && (
               <nav
                 aria-label="Tous les articles du blog"
-                className="mt-16 border-t border-gray-200 pt-8"
+                className="mt-16 border-t border-ui-border pt-8"
               >
-                <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-gray-500">
+                <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-ui-muted">
                   Tous les articles
                 </h2>
                 <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +134,7 @@ export default async function BlogPage() {
                     <li key={post.id}>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="text-sm leading-relaxed text-gray-600 underline-offset-2 hover:text-red-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                        className="text-sm leading-relaxed text-ui-muted underline-offset-2 hover:text-red-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
                       >
                         {post.title}
                       </Link>
@@ -151,7 +151,7 @@ export default async function BlogPage() {
             <h2 className="mb-4 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
               Besoin d&apos;expertise en téléphonie IP ?
             </h2>
-            <p className="mb-8 text-lg text-gray-600">
+            <p className="mb-8 text-lg text-ui-muted">
               Nos experts sont là pour vous accompagner dans vos projets de
               communication d&apos;entreprise.
             </p>
@@ -164,7 +164,7 @@ export default async function BlogPage() {
               </Link>
               <Link
                 href="/nos-services"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-8 py-3 font-medium text-gray-700 transition-colors duration-200 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-8 py-3 font-medium text-gray-dark transition-colors duration-200 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
               >
                 Découvrir nos services
               </Link>

@@ -17,7 +17,7 @@ export default function Error({
         instants.
       </p>
       {process.env.NODE_ENV === "development" && error.message ? (
-        <p className="mb-6 max-w-lg text-left text-xs text-gray-500">
+        <p className="mb-6 max-w-lg text-left text-xs text-ui-muted">
           {error.message}
         </p>
       ) : null}

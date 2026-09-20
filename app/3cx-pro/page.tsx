@@ -222,21 +222,21 @@ export default function ThreeCXProPage() {
             <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
               Intégrations disponibles
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            <p className="mt-4 text-lg leading-relaxed text-ui-muted">
               Nous validons chaque connexion selon votre version 3CX, vos licences et vos outils existants.
             </p>
           </div>
 
-          <div className="mt-10 grid border-t border-gray-200 md:grid-cols-2">
+          <div className="mt-10 grid border-t border-ui-border md:grid-cols-2">
             {integrations.map(({ icon: Icon, title, description }) => (
               <article
                 key={title}
-                className="grid grid-cols-[2rem_1fr] gap-4 border-b border-gray-200 py-6 md:px-6 md:[&:nth-child(odd)]:border-r"
+                className="grid grid-cols-[2rem_1fr] gap-4 border-b border-ui-border py-6 md:px-6 md:[&:nth-child(odd)]:border-r"
               >
                 <Icon size={24} className="text-blue-marine" aria-hidden="true" />
                 <div>
                   <h3 className="font-semibold text-gray-dark">{title}</h3>
-                  <p className="mt-1 leading-relaxed text-gray-600">{description}</p>
+                  <p className="mt-1 leading-relaxed text-ui-muted">{description}</p>
                 </div>
               </article>
             ))}

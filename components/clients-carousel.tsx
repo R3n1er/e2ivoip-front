@@ -110,7 +110,7 @@ export function ClientsCarousel() {
                       unoptimized
                     />
                   </div>
-                  <p className="text-xs text-gray-500 text-center mt-2 font-medium">
+                  <p className="text-xs text-ui-muted text-center mt-2 font-medium">
                     {client.name}
                   </p>
                 </div>

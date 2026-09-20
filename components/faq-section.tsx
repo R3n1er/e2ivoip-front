@@ -60,7 +60,7 @@ export function FaqSection({
             )}
           </h2>
           {subtitle && (
-            <p className="text-xl text-gray-600">{subtitle}</p>
+            <p className="text-xl text-ui-muted">{subtitle}</p>
           )}
         </div>
 
@@ -69,13 +69,13 @@ export function FaqSection({
           {items.map((item) => (
             <details
               key={item.question}
-              className="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-shadow duration-300 motion-reduce:transition-none hover:shadow-md open:shadow-lg"
+              className="group bg-white rounded-xl border border-ui-border shadow-sm overflow-hidden transition-shadow duration-300 motion-reduce:transition-none hover:shadow-md open:shadow-lg"
             >
               {/* <summary> n'accepte que du phrasing content ou un heading
                   unique : la question est un <h3> et le chevron un <span>
                   décoratif, tous deux enfants directs. */}
               <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors motion-reduce:transition-none hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
-                <h3 className="font-semibold text-gray-900 pr-4 text-base">
+                <h3 className="font-semibold text-gray-dark pr-4 text-base">
                   {item.question}
                 </h3>
                 <span
@@ -98,8 +98,8 @@ export function FaqSection({
                 </span>
               </summary>
 
-              <div className="border-t border-gray-100 bg-gray-50">
-                <div className="px-6 py-6 text-gray-600">
+              <div className="border-t border-ui-border bg-gray-50">
+                <div className="px-6 py-6 text-ui-muted">
                   {typeof item.answer === "string" ? (
                     <p>{item.answer}</p>
                   ) : (

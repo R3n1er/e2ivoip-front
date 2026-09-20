@@ -181,7 +181,7 @@ export default function AircallPage() {
             <p className="mb-6 text-sm font-black uppercase tracking-[0.2em] text-red-primary">
               Nouveau partenariat
             </p>
-            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-ui-border bg-white shadow-xl">
               <Image
                 src="/images/img-aircall/aircall-starter-partner-annoucement.png"
                 alt="E2I VoIP, partenaire Aircall Starter Partner"
@@ -201,7 +201,7 @@ export default function AircallPage() {
                 <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
                   Qu&rsquo;est-ce qu&rsquo;<span className="text-red-primary">Aircall</span> ?
                 </h2>
-                <p className="mt-6 text-lg leading-relaxed text-gray-600">
+                <p className="mt-6 text-lg leading-relaxed text-ui-muted">
                   <a
                     href="https://aircall.io/"
                     target="_blank"
@@ -218,7 +218,7 @@ export default function AircallPage() {
                   outils métiers — pour gérer appels, SMS et messages WhatsApp
                   depuis un espace de travail unifié.
                 </p>
-                <p className="mt-4 text-lg leading-relaxed text-gray-600">
+                <p className="mt-4 text-lg leading-relaxed text-ui-muted">
                   Pas d&rsquo;installation complexe : vos collaborateurs passent
                   et reçoivent leurs appels depuis leur navigateur ou leur
                   mobile, partout. En complément de nos solutions 3CX et
@@ -229,7 +229,7 @@ export default function AircallPage() {
                 </p>
               </div>
               <div className="relative">
-                <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-xl">
+                <div className="overflow-hidden rounded-2xl border border-ui-border shadow-xl">
                   <Image
                     src="/images/img-aircall/aircall-conversation-demo-FR-product-team02.png"
                     alt="Interface de conversation Aircall pour les équipes"
@@ -251,13 +251,13 @@ export default function AircallPage() {
                 Comment Aircall se connecte-t-il à vos{" "}
                 <span className="text-red-primary">outils du quotidien</span> ?
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
+              <p className="mt-6 text-lg leading-relaxed text-ui-muted max-w-3xl mx-auto">
                 Plus de 200 intégrations natives. La fiche client s&rsquo;ouvre
                 à chaque appel, les données se synchronisent automatiquement.
               </p>
             </div>
 
-            <div className="mb-12 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+            <div className="mb-12 overflow-hidden rounded-2xl border border-ui-border bg-white shadow-xl">
               <Image
                 src="/images/img-aircall/aircall-crm-integradion-FR-hero-04.png"
                 alt="Intégration CRM Aircall : la fiche client s'ouvre à chaque appel"
@@ -271,7 +271,7 @@ export default function AircallPage() {
               {integrations.map((name) => (
                 <div
                   key={name}
-                  className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-6 text-center shadow-sm transition-shadow hover:shadow-md"
+                  className="flex items-center justify-center rounded-xl border border-ui-border bg-white px-4 py-6 text-center shadow-sm transition-shadow hover:shadow-md"
                 >
                   <span className="text-base font-semibold text-gray-dark">
                     {name}
@@ -295,7 +295,7 @@ export default function AircallPage() {
               {features.map(({ Icon, title, description }) => (
                 <div
                   key={title}
-                  className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                  className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
                     <Icon size={24} className="text-red-primary" aria-hidden="true" />
@@ -303,7 +303,7 @@ export default function AircallPage() {
                   <h3 className="mt-4 text-lg font-semibold text-gray-dark">
                     {title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-600">{description}</p>
+                  <p className="mt-2 text-sm text-ui-muted">{description}</p>
                 </div>
               ))}
             </div>
@@ -315,7 +315,7 @@ export default function AircallPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="relative order-2 lg:order-1">
-                <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-xl">
+                <div className="overflow-hidden rounded-2xl border border-ui-border shadow-xl">
                   <Image
                     src="/images/img-aircall/aircall-FR-product-AI-assisted-01.png"
                     alt="Assistance par IA Aircall : transcription et résumés d'appels"
@@ -330,17 +330,17 @@ export default function AircallPage() {
                   Comment l&rsquo;<span className="text-red-primary">IA</span>{" "}
                   d&rsquo;Aircall fait-elle gagner du temps à vos équipes ?
                 </h2>
-                <p className="mt-6 text-lg leading-relaxed text-gray-600">
+                <p className="mt-6 text-lg leading-relaxed text-ui-muted">
                   Avec AI Assist Pro et les Agents vocaux IA, Aircall automatise
                   le travail avant, pendant et après chaque conversation :
                   transcription, résumés d&rsquo;appels, coaching en temps réel
                   et mise à jour automatique du CRM. Chaque échange devient une
                   donnée exploitable.
                 </p>
-                <p className="mt-4 text-lg leading-relaxed text-gray-600">
+                <p className="mt-4 text-lg leading-relaxed text-ui-muted">
                   Les entreprises qui adoptent l&rsquo;IA d&rsquo;Aircall
                   génèrent en moyenne <strong>+162 % de valeur de deal</strong>{" "}
-                  <span className="text-sm text-gray-500">(source&nbsp;: Aircall)</span>.
+                  <span className="text-sm text-ui-muted">(source&nbsp;: Aircall)</span>.
                   Un atout précieux pour suivre la qualité de service et
                   accompagner les équipes commerciales comme support.
                 </p>
@@ -362,7 +362,7 @@ export default function AircallPage() {
               {audiences.map(({ Icon, title, description }) => (
                 <div
                   key={title}
-                  className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+                  className="rounded-2xl border border-ui-border bg-white p-8 shadow-sm"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-900/10">
                     <Icon size={28} className="text-blue-marine" aria-hidden="true" />
@@ -370,7 +370,7 @@ export default function AircallPage() {
                   <h3 className="mt-4 text-xl font-bold text-gray-dark">
                     {title}
                   </h3>
-                  <p className="mt-3 text-base text-gray-600">{description}</p>
+                  <p className="mt-3 text-base text-ui-muted">{description}</p>
                 </div>
               ))}
             </div>
@@ -385,7 +385,7 @@ export default function AircallPage() {
                 Quels résultats Aircall apporte-t-il aux{" "}
                 <span className="text-red-primary">équipes</span> ?
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto">
+              <p className="mt-6 text-lg leading-relaxed text-ui-muted max-w-3xl mx-auto">
                 Des résultats mesurés chez les clients Aircall et par la
                 recherche indépendante.
               </p>
@@ -400,13 +400,13 @@ export default function AircallPage() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl border border-gray-200 bg-gray-50 p-6 text-center"
+                  className="rounded-xl border border-ui-border bg-gray-50 p-6 text-center"
                 >
                   <div className="text-3xl font-black font-mono tabular-nums text-red-primary md:text-4xl">
                     {stat.value}
                   </div>
                   <div className="mt-2 text-sm text-gray-dark">{stat.label}</div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-gray-400">
+                  <div className="mt-1 text-xs uppercase tracking-wider text-ui-muted">
                     {stat.source}
                   </div>
                 </div>
@@ -422,7 +422,7 @@ export default function AircallPage() {
               Pourquoi déployer Aircall avec{" "}
               <span className="text-red-primary">E2I VoIP</span> ?
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+            <p className="mt-6 text-lg leading-relaxed text-ui-muted">
               Partenaire Aircall, nous ne nous contentons pas de revendre une
               licence. Nous étudions votre projet, paramétrons l&rsquo;intégration
               avec votre CRM et accompagnons vos équipes, avec un support en
@@ -442,7 +442,7 @@ export default function AircallPage() {
                     className="mt-0.5 flex-shrink-0 text-red-primary"
                     aria-hidden="true"
                   />
-                  <span className="text-base text-gray-600">{item}</span>
+                  <span className="text-base text-ui-muted">{item}</span>
                 </div>
               ))}
             </div>

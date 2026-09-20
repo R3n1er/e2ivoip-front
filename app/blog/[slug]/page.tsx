@@ -135,12 +135,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         ]}
       />
       {/* Header avec navigation */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white border-b border-ui-border sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link
               href="/blog"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-ui-muted hover:text-gray-dark transition-colors"
             >
               <ArrowLeft size={16} aria-hidden="true" />
               Retour au blog
@@ -190,12 +190,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             {/* Titre */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-dark mb-4 leading-tight">
               {post.title}
             </h1>
 
             {/* Métadonnées */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-6">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-ui-muted mb-6">
               <div className="flex items-center gap-2">
                 <UserCircle size={16} aria-hidden="true" />
                 <span>{post.author}</span>
@@ -218,7 +218,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Extrait */}
             {post.excerpt && (
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-lg text-ui-muted leading-relaxed mb-8">
                 {stripHtml(post.excerpt)}
               </p>
             )}
@@ -228,7 +228,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="prose prose-lg max-w-none mb-12">
             <div
               dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(contentText) }}
-              className="text-gray-700 leading-relaxed"
+              className="text-gray-dark leading-relaxed"
             />
           </div>
 
@@ -265,10 +265,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {relatedPosts.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 className="text-2xl font-bold text-gray-dark mb-2">
                 Articles liés
               </h2>
-              <p className="text-gray-600">
+              <p className="text-ui-muted">
                 Découvrez d&apos;autres articles sur des sujets similaires
               </p>
             </div>
@@ -279,7 +279,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   className="hover:shadow-lg transition-shadow"
                 >
                   <CardContent className="p-6">
-                    <h3 className="font-semibold text-gray-900 mb-2">
+                    <h3 className="font-semibold text-gray-dark mb-2">
                       <Link
                         href={`/blog/${relatedPost.slug}`}
                         className="hover:text-red-primary transition-colors"
@@ -287,10 +287,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         {relatedPost.title}
                       </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm line-clamp-2 mb-3">
+                    <p className="text-ui-muted text-sm line-clamp-2 mb-3">
                       {relatedPost.excerpt}
                     </p>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-2 text-xs text-ui-muted">
                       <Calendar size={16} aria-hidden="true" />
                       <span>
                         {new Date(

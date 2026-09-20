@@ -78,7 +78,7 @@ export default function Smb3CXMutualisee() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 La solution <span className="text-red-primary">3CX économique</span> pour les petites entreprises
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-xl text-ui-muted leading-relaxed max-w-4xl mx-auto">
                 Notre offre <strong>3CX SMB mutualisée</strong> vous permet de bénéficier de toutes les 
                 fonctionnalités 3CX sans les coûts d'une infrastructure dédiée. Parfait pour les TPE 
                 et PME de 3 à 10 utilisateurs recherchant une solution professionnelle et économique.
@@ -87,37 +87,37 @@ export default function Smb3CXMutualisee() {
 
             {/* Avantages clés avec DaisyUI */}
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <Calculator size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-ui-muted text-center">
                     À partir de 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus), ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités — mobiles au compteur — sans frais d&apos;infrastructure
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <Timer size={32} className="text-gray-800" aria-hidden="true" />
+                    <Timer size={32} className="text-gray-dark" aria-hidden="true" />
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-ui-muted text-center">
                     Mise en service rapide, configuration pré-établie
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col p-8">
                   <div className="w-16 h-16 bg-red-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <TrendUp size={32} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Évolutif</h3>
-                  <p className="text-gray-600 text-center">
+                  <p className="text-ui-muted text-center">
                     De 3 à 10 utilisateurs, ajustable selon vos besoins
                   </p>
                 </div>
@@ -132,27 +132,27 @@ export default function Smb3CXMutualisee() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Appels VoIP illimités entre utilisateurs</span>
+                  <span className="text-gray-dark">Appels VoIP illimités entre utilisateurs</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Visioconférence intégrée</span>
+                  <span className="text-gray-dark">Visioconférence intégrée</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Applications mobiles iOS/Android</span>
+                  <span className="text-gray-dark">Applications mobiles iOS/Android</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Chat d'équipe et collaboration</span>
+                  <span className="text-gray-dark">Chat d'équipe et collaboration</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Standard automatique (SVI)</span>
+                  <span className="text-gray-dark">Standard automatique (SVI)</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-700">Support par mail et téléphone</span>
+                  <span className="text-gray-dark">Support par mail et téléphone</span>
                 </div>
               </div>
             </div>
@@ -166,14 +166,14 @@ export default function Smb3CXMutualisee() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Une tarification <span className="text-red-primary">simple par utilisateur</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-3xl mx-auto">
                 Deux formules selon la façon dont vous consommez vos appels. Dans les deux cas, le tarif est par utilisateur et par mois.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {/* Formule au compteur */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
+              <div className="bg-white rounded-2xl shadow-sm border border-ui-border overflow-hidden flex flex-col">
                 <div className="bg-gradient-to-r from-blue-900/95 to-blue-800/90 px-8 py-8 text-center text-white">
                   <div className="font-mono tabular-nums text-5xl font-black">
                     15 €
@@ -185,7 +185,7 @@ export default function Smb3CXMutualisee() {
                   </p>
                 </div>
                 <div className="p-8 flex-1">
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-ui-muted">
                     <li className="flex items-start gap-3">
                       <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
                       <span>Licence 3CX Pro mutualisée, par utilisateur</span>
@@ -223,7 +223,7 @@ export default function Smb3CXMutualisee() {
                   </p>
                 </div>
                 <div className="p-8 flex-1">
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-ui-muted">
                     <li className="flex items-start gap-3">
                       <CheckCircle size={20} className="text-red-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
                       <span>Licence 3CX Pro mutualisée, par utilisateur</span>
@@ -244,15 +244,15 @@ export default function Smb3CXMutualisee() {
               </div>
             </div>
 
-            <p className="mt-6 text-center text-gray-600">
+            <p className="mt-6 text-center text-ui-muted">
               Le Trunk SIP se dimensionne <strong>au niveau de l&apos;instance</strong>, jamais par
               utilisateur : c&apos;est le nombre d&apos;appels simultanés qui compte, pas le nombre de postes.
             </p>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mt-10">
+            <div className="bg-white rounded-2xl shadow-sm border border-ui-border overflow-hidden mt-10">
               <div className="px-8 pt-8 pb-0">
                 <h3 className="text-xl font-bold text-gray-dark mb-1">Inclus dans les deux formules</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-ui-muted">
                   Ce qui ne dépend pas de votre choix entre au compteur et illimité.
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-dark mb-1">Appels vers les fixes France et DOM</h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-ui-muted text-sm">
                       Inclus dans la formule illimitée ; facturés au compteur dans la formule au compteur.
                     </p>
                   </div>
@@ -276,7 +276,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-dark mb-1">Application mobile 3CX incluse</h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-ui-muted text-sm">
                       Utilisable sur smartphone, PC et navigateur web.
                     </p>
                   </div>
@@ -288,7 +288,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-dark mb-1">Multi-supports</h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-ui-muted text-sm">
                       Smartphone, ordinateur ou directement depuis votre navigateur web.
                     </p>
                   </div>
@@ -300,7 +300,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-dark mb-1">Téléphones SIP compatibles</h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-ui-muted text-sm">
                       Connectez vos téléphones SIP compatibles, notamment Fanvil et Yealink.
                     </p>
                   </div>
