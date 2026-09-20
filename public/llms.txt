@@ -8,6 +8,8 @@ Positionnement clé : fournisseur de Trunk SIP DOM pour les intégrateurs qui d�
 
 ## Offres principales
 
+- [Standard téléphonique d'entreprise](https://www.e2i-voip.com/standard-telephonique) : ce qu'est un standard téléphonique, comment il remplace un PABX analogique, ce que coûte l'installation et comment elle se déroule.
+- [Standard téléphonique en Guyane](https://www.e2i-voip.com/standard-telephonique/guyane) : opérateur établi à Cayenne, ligne locale 0594, zones d'intervention et calendrier communal de fermeture du cuivre (Rémire-Montjoly déjà coupée, Kourou au 31 janvier 2027).
 - [Téléphonie d'entreprise](https://www.e2i-voip.com/telephonie-entreprise) : hub des solutions de téléphonie IP (Trunk SIP, 3CX, PBX Yeastar, agents vocaux IA).
 - [Trunk SIP pour agents vocaux IA](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-agents-ia) : carrier SIP DOM, numéros locaux et interconnexion BYOC pour VAPI, Rounded, ElevenLabs, Jambonz.
 - [Trunk SIP au compteur](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur) : facturation des appels à la seconde, idéal pour faibles volumes (< 200 min/mois), numéros locaux DOM.

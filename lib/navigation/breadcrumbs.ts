@@ -12,6 +12,15 @@ import { Breadcrumb, BREADCRUMB_HOME, type BreadcrumbItem } from "@/components/l
  *   SEO (le JSON-LD doit refléter la hiérarchie visible).
  */
 export const PAGE_BREADCRUMBS: Record<string, BreadcrumbItem[]> = {
+  "/standard-telephonique": [
+    BREADCRUMB_HOME,
+    { label: "Standard téléphonique" },
+  ],
+  "/standard-telephonique/guyane": [
+    BREADCRUMB_HOME,
+    { label: "Standard téléphonique", href: "/standard-telephonique" },
+    { label: "Guyane" },
+  ],
   "/contact": [
     BREADCRUMB_HOME,
     { label: "Contact" },

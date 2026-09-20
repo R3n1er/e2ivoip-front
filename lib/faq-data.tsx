@@ -941,3 +941,262 @@ export function toFaqSchemaItems(items: RichFaqItem[]): FaqItem[] {
     answer: answerText,
   }));
 }
+
+/**
+ * FAQ du hub /standard-telephonique — vocabulaire de l'acheteur.
+ *
+ * Format imposé par la citabilité (Aperçu IA, Perplexity, ChatGPT) : question
+ * littérale posée par un dirigeant, réponse directe d'environ 40 mots dans le
+ * premier paragraphe. Une réponse qui commence par du contexte avant de
+ * répondre ne se fait pas extraire.
+ */
+export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce qu'un standard téléphonique, en clair ?",
+    answerText:
+      "C'est le système qui reçoit les appels de votre entreprise, les oriente vers la bonne personne et permet de transférer, mettre en attente ou laisser un message. Un standard sert aussi à présenter un numéro unique et un accueil professionnel au lieu de plusieurs lignes séparées.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          C'est le système qui <strong>reçoit les appels de votre entreprise</strong>,
+          les oriente vers la bonne personne et permet de transférer, mettre en attente
+          ou laisser un message.
+        </p>
+        <p>
+          Un standard sert aussi à présenter un <strong>numéro unique</strong> et un
+          accueil professionnel, au lieu de plusieurs lignes séparées.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Quelle différence entre standard téléphonique, PABX et IPBX ?",
+    answerText:
+      "« Standard téléphonique » désigne ce que voit l'utilisateur : l'accueil et l'orientation des appels. PABX et IPBX désignent l'équipement qui se cache derrière. Un PABX fonctionne sur lignes cuivre classiques, un IPBX passe par internet. Peu importe le nom : l'usage visé est le même.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>« Standard téléphonique »</strong> désigne ce que voit l'utilisateur :
+          l&apos;accueil et l&apos;orientation des appels.
+        </p>
+        <p>
+          <strong>PABX</strong> et <strong>IPBX</strong> désignent l&apos;équipement qui
+          se cache derrière. Un PABX fonctionne sur lignes cuivre classiques, un IPBX
+          passe par internet.
+        </p>
+        <p>Peu importe le nom : l&apos;usage visé est le même.</p>
+      </div>
+    ),
+  },
+  {
+    question: "Faut-il changer de standard à cause de la fin du réseau cuivre ?",
+    answerText:
+      "Oui, si votre installation dépend de lignes cuivre. Après la fermeture commerciale, plus aucun nouvel abonnement cuivre n'est possible ; la coupure physique suit par lots. Un standard analogique raccordé au cuivre cesse alors de fonctionner. La date dépend de votre commune, pas du département.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui</strong>, si votre installation dépend de lignes cuivre. Après la
+          fermeture commerciale, plus aucun nouvel abonnement cuivre n&apos;est possible ;
+          la coupure physique suit par lots.
+        </p>
+        <p>
+          Un standard analogique raccordé au cuivre <strong>cesse alors de fonctionner</strong>.
+          La date dépend de votre commune, pas du département.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Peut-on garder son numéro actuel en changeant de standard ?",
+    answerText:
+      "Oui. La portabilité de vos numéros existants est prise en charge et gratuite, y compris pour les numéros géographiques 0590, 0596, 0594 et 0262. Vos clients continuent de vous joindre sur le même numéro après la bascule : aucun changement à communiquer.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> La portabilité de vos numéros existants est prise en charge
+          et gratuite, y compris pour les numéros géographiques{" "}
+          <strong>0590, 0596, 0594 et 0262</strong>.
+        </p>
+        <p>
+          Vos clients continuent de vous joindre sur le même numéro après la bascule :
+          aucun changement à communiquer.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Combien coûte un standard téléphonique d'entreprise ?",
+    answerText:
+      "Le coût dépend du nombre de postes et du mode d'hébergement. Une solution hébergée partagée se facture par utilisateur et par mois, sans matériel sur site ; une instance dédiée se facture au forfait. Le trunk SIP, lui, se facture au canal d'appel simultané, jamais par utilisateur.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Le coût dépend du <strong>nombre de postes</strong> et du mode d&apos;hébergement.
+        </p>
+        <p>
+          Une solution hébergée partagée se facture <strong>par utilisateur et par mois</strong>,
+          sans matériel sur site ; une instance dédiée se facture au forfait.
+        </p>
+        <p>
+          Le <strong>trunk SIP</strong>, lui, se facture au <strong>canal d&apos;appel
+          simultané</strong>, jamais par utilisateur.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Combien de temps prend le remplacement d'un standard ?",
+    answerText:
+      "Comptez quelques jours entre la validation de la configuration et la bascule pour une installation simple, davantage si le câblage ou les postes physiques sont à revoir. La continuité est assurée : les numéros sont portés et l'ancien standard reste actif jusqu'au basculement.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Comptez <strong>quelques jours</strong> entre la validation de la configuration
+          et la bascule pour une installation simple, davantage si le câblage ou les postes
+          physiques sont à revoir.
+        </p>
+        <p>
+          La <strong>continuité est assurée</strong> : les numéros sont portés et l&apos;ancien
+          standard reste actif jusqu&apos;au basculement.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Faut-il un téléphone fixe sur chaque bureau ?",
+    answerText:
+      "Non. Un standard hébergé permet de recevoir et d'émettre depuis un poste IP, un ordinateur ou un mobile, avec le même numéro d'entreprise. Les postes physiques restent utiles à l'accueil et aux fonctions qui exigent un combiné dédié.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> Un standard hébergé permet de recevoir et d&apos;émettre
+          depuis un poste IP, un ordinateur ou un mobile, avec le même numéro d&apos;entreprise.
+        </p>
+        <p>
+          Les postes physiques restent utiles à <strong>l&apos;accueil</strong> et aux
+          fonctions qui exigent un combiné dédié.
+        </p>
+      </div>
+    ),
+  },
+];
+
+/**
+ * FAQ des pages territoriales /standard-telephonique/<territoire>.
+ *
+ * Générée à partir du registre : la date, le lot et le numéro proviennent de la
+ * source unique, donc aucune page ne peut afficher une date cuivre périmée.
+ * Le paramètre `territory` est construit par `buildTerritoryFaq()`.
+ */
+interface TerritoryFaqInput {
+  label: string;
+  indicatif: string;
+  phone: { number: string };
+  copper: {
+    alreadyClosed: { commune: string; technicalDate: string }[];
+    scheduled: { commune: string; technicalDate: string }[];
+    lot: string;
+  };
+  zones: string[];
+}
+
+/**
+ * Phrase du calendrier cuivre d'un territoire, commune par commune.
+ *
+ * Énumère d'abord les communes DÉJÀ coupées — un fait accompli ne se conteste
+ * pas et ne périme jamais — puis les échéances planifiées. Un territoire sans
+ * aucune commune datée le dit, au lieu d'hériter de la date d'un voisin.
+ */
+function copperAnswerText(territory: TerritoryFaqInput): string {
+  const fait = territory.copper.alreadyClosed.map(
+    (c) => `${c.commune} est coupée depuis ${c.technicalDate}`,
+  );
+  const prevu = territory.copper.scheduled.map(
+    (c) => `${c.commune} bascule au ${c.technicalDate}`,
+  );
+  const phrases = [...fait, ...prevu];
+
+  if (phrases.length === 0) {
+    return `En ${territory.label} (${territory.copper.lot}), aucune commune n'a encore de date de fermeture publiée.`;
+  }
+
+  return `En ${territory.label}, le réseau cuivre ferme commune par commune (${territory.copper.lot}) : ${phrases.join(", ")}.`;
+}
+
+export function buildTerritoryFaq(territory: TerritoryFaqInput): RichFaqItem[] {
+  const zonesSample = territory.zones.slice(0, 4).join(", ");
+  return [
+    {
+      question: `Quel opérateur de standard téléphonique pour une entreprise en ${territory.label} ?`,
+      answerText: `E2I VoIP installe et maintient des standards téléphoniques hébergés en ${territory.label}. Nos clients sont joints sur une ligne locale en ${territory.indicatif} au ${territory.phone.number}. Nous intervenons notamment à ${zonesSample}, avec portabilité des numéros ${territory.indicatif} existants.`,
+      answer: (
+        <div className="space-y-3">
+          <p>
+            <strong>E2I VoIP</strong> installe et maintient des standards téléphoniques
+            hébergés en <strong>{territory.label}</strong>.
+          </p>
+          <p>
+            Nos clients sont joints sur une ligne locale en {territory.indicatif} au{" "}
+            <strong>{territory.phone.number}</strong>. Nous intervenons notamment à{" "}
+            {zonesSample}, avec portabilité des numéros {territory.indicatif} existants.
+          </p>
+        </div>
+      ),
+    },
+    {
+      question: `Quand le réseau cuivre ferme-t-il en ${territory.label} ?`,
+      // Le calendrier est COMMUNAL, jamais départemental : annoncer une date
+      // unique pour un territoire entier est factuellement faux, et c'est aussi
+      // se priver du meilleur argument — une commune déjà coupée est une preuve
+      // qui ne se conteste pas.
+      answerText: `${copperAnswerText(territory)} Les communes non citées n'ont pas encore de date publiée : nous la vérifions pour votre adresse avant tout engagement.`,
+      answer: (
+        <div className="space-y-3">
+          <p>{copperAnswerText(territory)}</p>
+          <p>
+            Après la coupure, les installations raccordées au cuivre cessent de
+            fonctionner. Les communes non citées n&apos;ont pas encore de date
+            publiée : nous la vérifions pour votre adresse avant tout engagement.
+          </p>
+        </div>
+      ),
+    },
+    {
+      question: `Peut-on garder ses numéros ${territory.indicatif} en changeant de standard ?`,
+      answerText: `Oui. La portabilité des numéros ${territory.indicatif} est prise en charge et gratuite. Vos correspondants continuent de vous joindre sur le même numéro après la migration vers un standard hébergé, sans interruption de service ni changement de coordonnées à communiquer.`,
+      answer: (
+        <div className="space-y-3">
+          <p>
+            <strong>Oui.</strong> La portabilité des numéros {territory.indicatif} est
+            prise en charge et <strong>gratuite</strong>.
+          </p>
+          <p>
+            Vos correspondants continuent de vous joindre sur le même numéro après la
+            migration vers un standard hébergé, sans interruption de service.
+          </p>
+        </div>
+      ),
+    },
+    {
+      question: `Intervenez-vous sur site en ${territory.label} ?`,
+      // La réponse doit parler du territoire de la page. Une version antérieure
+      // répondait « nous sommes établis en Guyane » quel que soit le territoire,
+      // ce qui, sur une future page Martinique, répondait à côté de la question.
+      answerText: `Oui. Nous intervenons en ${territory.label}, notamment à ${zonesSample}, avec une ligne locale en ${territory.indicatif}. Selon la nature du chantier, l'installation se fait à distance ou sur site. Les besoins qui exigent un déplacement sont qualifiés lors de l'audit préalable.`,
+      answer: (
+        <div className="space-y-3">
+          <p>
+            Oui. Nous intervenons <strong>en {territory.label}</strong>,
+            notamment à {zonesSample}, avec une ligne locale en{" "}
+            {territory.indicatif}.
+          </p>
+          <p>
+            Selon la nature du chantier, l&apos;installation se fait <strong>à distance
+            ou sur site</strong>. Les besoins qui exigent un déplacement sont qualifiés
+            lors de l&apos;audit préalable.
+          </p>
+        </div>
+      ),
+    },
+  ];
+}
