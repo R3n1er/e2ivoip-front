@@ -9,7 +9,9 @@ import { FaqSection } from "@/components/faq-section";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { buildTerritoryFaq } from "@/lib/faq-data";
 import {
+  getPublishedTerritories,
   getTerritory,
+  copperSentence,
   standardTelephoneHref,
 } from "@/lib/territoires/standard-telephonique";
 import { serviceSchema } from "@/lib/structured-data";
@@ -25,24 +27,44 @@ import {
   Certificate,
 } from "@/lib/icons";
 
-const TERRITORY_SLUG = "guyane";
+type PageProps = { params: Promise<{ territoire: string }> };
 
 /**
- * Page territoriale du pilote phase 3.
+ * Page territoriale — une route dynamique, N pages statiques.
  *
- * ⚠️ Le slug est validé contre le registre avant tout rendu : une page publiée
- * sur un territoire non déclaré (`published: false`) ne doit jamais passer.
+ * Un fichier par territoire aurait multiplié par quatre le coût de chaque
+ * correction factuelle, et la revue croisée de septembre a montré que ce
+ * sont précisément les corrections répétées qui se perdent en route.
+ *
+ * ⚠️ Le slug est validé contre le registre avant tout rendu : un territoire
+ * non déclaré ou `published: false` renvoie un 404 réel, jamais une page
+ * générique — celle-ci serait indexable, et c'est exactement la page
+ * satellite que le registre refuse de produire.
  */
-function loadTerritory() {
-  const territory = getTerritory(TERRITORY_SLUG);
+function loadTerritory(slug: string) {
+  const territory = getTerritory(slug);
   if (!territory || !territory.published) {
     notFound();
   }
   return territory;
 }
 
-export function generateMetadata(): Metadata {
-  const t = loadTerritory();
+/** Les pages réellement générées au build : les territoires publiés. */
+export function generateStaticParams() {
+  return getPublishedTerritories().map((t) => ({ territoire: t.slug }));
+}
+
+/**
+ * Tout slug hors de `generateStaticParams` renvoie 404 sans rendu : c'est la
+ * garantie qu'aucune URL /standard-telephonique/<inventé> ne répond 200.
+ */
+export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { territoire } = await params;
+  const t = loadTerritory(territoire);
   return pageMetadata({
     title: t.title,
     description: t.description,
@@ -51,8 +73,11 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function StandardTelephoniqueGuyanePage() {
-  const t = loadTerritory();
+export default async function StandardTelephoniqueTerritoirePage({
+  params,
+}: PageProps) {
+  const { territoire } = await params;
+  const t = loadTerritory(territoire);
   const faq = buildTerritoryFaq(t);
 
   return (
@@ -65,23 +90,37 @@ export default function StandardTelephoniqueGuyanePage() {
             <div className="max-w-4xl">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary/10 border border-red-primary/20 text-red-primary text-sm font-medium mb-6">
                 <MapPin size={16} className="mr-2" aria-hidden="true" />
-                Guyane · indicatif {t.indicatif}
+                {t.label} ·{" "}
+                <span className="font-mono tabular-nums ml-1">
+                  {t.phone.number}
+                </span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark mb-6 leading-tight">
                 Standard téléphonique d&apos;entreprise{" "}
-                <span className="text-red-primary">en Guyane</span>
+                <span className="text-red-primary">
+                  {t.preposition} {t.label}
+                </span>
               </h1>
               <p className="text-xl text-gray-secondary leading-relaxed mb-8">
-                Migration de votre PABX, portabilité de vos numéros {t.indicatif}{" "}
-                et accompagnement local par un opérateur établi à Cayenne. En
-                Guyane, la fermeture du cuivre a déjà commencé :{" "}
-                <strong>
-                  {t.copper.alreadyClosed[0]?.commune} est coupée depuis{" "}
-                  {t.copper.alreadyClosed[0]?.technicalDate}
-                </strong>
-                , {t.copper.scheduled[0]?.commune} suit au{" "}
-                <strong>{t.copper.scheduled[0]?.technicalDate}</strong>. La date
-                de votre commune se vérifie au cas par cas.
+                Migration de votre PABX, portabilité de vos numéros{" "}
+                {t.indicatif} et accompagnement par un opérateur{" "}
+                {t.presence === "established"
+                  ? "établi à Cayenne"
+                  : "des DOM, établi à Cayenne"}
+                . {t.copper.alreadyClosed.length > 0 ? (
+                  <>
+                    {t.preposition === "à" ? "À" : "En"} {t.label}, la
+                    fermeture du cuivre a déjà commencé :{" "}
+                    <strong>{copperSentence(t.copper)}</strong>.
+                  </>
+                ) : (
+                  <>
+                    {t.preposition === "à" ? "À" : "En"} {t.label}, le
+                    calendrier du cuivre est publié :{" "}
+                    <strong>{copperSentence(t.copper)}</strong>.
+                  </>
+                )}{" "}
+                La date de votre commune se vérifie au cas par cas.
               </p>
 
               {/* Preuve locale vérifiable */}
@@ -93,8 +132,12 @@ export default function StandardTelephoniqueGuyanePage() {
                   },
                   {
                     icon: Certificate,
-                    // Le SIRET est une donnée chiffrée : IBM Plex Mono +
-                    // tabular-nums, comme partout ailleurs sur le site.
+                    // « immatriculée en Guyane » n'est PAS interpolé : E2I VoIP
+                    // n'a qu'une immatriculation, en Guyane. L'écrire avec
+                    // {t.label} produirait « immatriculée en Martinique », une
+                    // mention d'établissement fausse — L121-2 du code de la
+                    // consommation. Le SIRET reste en IBM Plex Mono +
+                    // tabular-nums, comme toute donnée chiffrée du site.
                     text: (
                       <>
                         Entreprise immatriculée en Guyane · SIRET{" "}
@@ -106,7 +149,7 @@ export default function StandardTelephoniqueGuyanePage() {
                   },
                   {
                     icon: Phone,
-                    text: "Ligne fixe locale, support sur heure guyanaise",
+                    text: `Ligne fixe locale ${t.indicatif}, support sur ${t.supportTimezone}`,
                   },
                   {
                     icon: Shield,
@@ -129,7 +172,7 @@ export default function StandardTelephoniqueGuyanePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <CTAButton href="/contact">Parler à un expert DOM</CTAButton>
                 <CTAButtonMarine
-                  href="/devis-en-ligne?service=standard-telephonique-guyane"
+                  href={`/devis-en-ligne?service=standard-telephonique-${t.slug}`}
                   icon="ArrowRight"
                 >
                   Demander un devis
@@ -143,32 +186,31 @@ export default function StandardTelephoniqueGuyanePage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-              En Guyane, le cuivre ferme commune par commune —{" "}
-              <span className="text-red-primary">
-                {t.copper.alreadyClosed[0]?.commune} est déjà coupée
-              </span>
+              {t.preposition === "à" ? "À" : "En"} {t.label}, le cuivre ferme
+              commune par commune
+              {t.copper.alreadyClosed[0] ? (
+                <>
+                  {" — "}
+                  <span className="text-red-primary">
+                    {t.copper.alreadyClosed[0].commune} est déjà coupée
+                  </span>
+                </>
+              ) : (
+                "."
+              )}
             </h2>
             <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
+              {/* L'énumération passe par `copperSentence` : la version
+                  précédente concaténait les communes sans séparateur, ce qui
+                  ne se voyait pas en Guyane (une commune par liste) mais
+                  aurait collé « Basse-Terre…Deshaies… » en Guadeloupe. */}
               <p>
-                La Guyane relève du <strong>{t.copper.lot}</strong> du plan de
-                fermeture piloté par Orange sous contrôle de l&apos;Arcep. Ce
-                plan avance <strong>commune par commune</strong>, pas par
-                département :{" "}
-                {t.copper.alreadyClosed.map((c) => (
-                  <span key={c.commune}>
-                    <strong>{c.commune}</strong> est coupée depuis{" "}
-                    {c.technicalDate}
-                  </span>
-                ))}
-                , et{" "}
-                {t.copper.scheduled.map((c) => (
-                  <span key={c.commune}>
-                    <strong>{c.commune}</strong> bascule au {c.technicalDate},
-                    après un arrêt des nouvelles souscriptions au{" "}
-                    {c.commercialDate}
-                  </span>
-                ))}
-                . Les autres communes n&apos;ont pas encore de date publiée.
+                {t.subjectLabel} relève du <strong>{t.copper.lot}</strong>{" "}
+                du plan de fermeture piloté
+                par Orange sous contrôle de l&apos;Arcep. Ce plan avance{" "}
+                <strong>commune par commune</strong>, pas par département :{" "}
+                {copperSentence(t.copper)}. Les autres communes n&apos;ont pas
+                encore de date publiée.
               </p>
               <p>
                 À cette date, les installations raccordées au cuivre cessent de
@@ -192,7 +234,8 @@ export default function StandardTelephoniqueGuyanePage() {
                   </p>
                   <p>
                     Le plan procède par lots de communes : deux communes
-                    guyanaises peuvent basculer à des dates différentes. La date
+                    d&apos;un même territoire peuvent basculer à des dates
+                    différentes. La date
                     qui vous concerne se vérifie commune par commune sur le
                     calendrier officiel — c&apos;est ce que nous faisons lors de
                     l&apos;audit.
@@ -219,8 +262,9 @@ export default function StandardTelephoniqueGuyanePage() {
         <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-              Nos zones d&apos;intervention en{" "}
-              <span className="text-red-primary">Guyane</span>
+              Nos zones d&apos;intervention{" "}
+              {t.preposition}{" "}
+              <span className="text-red-primary">{t.label}</span>
             </h2>
             <p className="text-lg text-gray-secondary mb-8 max-w-3xl">
               Selon la nature du chantier, l&apos;installation se fait à distance
@@ -250,23 +294,28 @@ export default function StandardTelephoniqueGuyanePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
               Un standard adapté à la réalité{" "}
-              <span className="text-red-primary">guyanaise</span>
+              <span className="text-red-primary">{t.adjective}</span>
             </h2>
             <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
               <p>{t.context}</p>
+              {/* Les villes citées sont celles du territoire courant : la
+                  version précédente nommait Cayenne, Kourou et
+                  Saint-Laurent-du-Maroni, ce qui aurait été faux partout
+                  ailleurs. */}
               <p>
-                Le climat et l&apos;éloignement des sites comptent aussi : entre
-                Cayenne, Kourou et Saint-Laurent-du-Maroni, envoyer un technicien
-                prend du temps. Un standard hébergé se maintient et se
-                reconfigure à distance, ce qui réduit les interventions sur site
-                au strict nécessaire.
+                Le climat et l&apos;éloignement des sites comptent aussi : entre{" "}
+                {t.zones.slice(0, 3).join(", ")}, envoyer un technicien prend du
+                temps. Un standard hébergé se maintient et se reconfigure à
+                distance, ce qui réduit les interventions sur site au strict
+                nécessaire.
               </p>
             </div>
 
             {t.localProof.length > 0 && (
               <div className="mt-10 rounded-xl border border-gray-100 bg-gray-50 p-8">
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
-                  Ils nous font confiance en Guyane
+                  Ils nous font confiance{" "}
+                  {t.preposition} {t.label}
                 </h3>
                 <ul className="grid sm:grid-cols-2 gap-4">
                   {t.localProof.map((p) => (
@@ -296,8 +345,9 @@ export default function StandardTelephoniqueGuyanePage() {
         <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-              Ce que nous installons en{" "}
-              <span className="text-red-primary">Guyane</span>
+              Ce que nous installons{" "}
+              {t.preposition}{" "}
+              <span className="text-red-primary">{t.label}</span>
             </h2>
             <p className="text-lg text-gray-secondary mb-10 max-w-3xl">
               Toutes les briques d&apos;un standard moderne, avec des numéros
@@ -354,7 +404,7 @@ export default function StandardTelephoniqueGuyanePage() {
             <div className="mt-10 p-6 bg-white rounded-xl border border-gray-100">
               <p className="text-gray-700">
                 <strong>Une question technique avant de décider ?</strong>{" "}
-                Appelez notre ligne guyanaise :{" "}
+                Appelez notre ligne {t.adjective} :{" "}
                 <PhoneLink phone={t.phone} className="text-red-primary font-mono" />
               </p>
             </div>
@@ -364,7 +414,7 @@ export default function StandardTelephoniqueGuyanePage() {
         <FaqSection
           items={faq}
           title={`Questions fréquentes — ${t.label}`}
-          subtitle="Ce que les entreprises guyanaises nous demandent avant de basculer"
+          subtitle={`Ce que les entreprises ${t.adjective}s nous demandent avant de basculer`}
         />
 
         <ContactSectionSimple />

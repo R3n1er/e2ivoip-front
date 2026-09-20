@@ -11,11 +11,18 @@ describe("repositionnement éditorial — home", () => {
     expect(hero()).not.toContain("Économisez 20")
   })
 
-  it("le H1 porte l'ancrage territorial DOM", () => {
+  it("le H1 porte un ancrage territorial", () => {
     // Finding n°4 de l'audit : ni « DOM » ni « Antilles-Guyane » dans le H1.
+    //
+    // Le test exigeait littéralement « DOM ». Il confondait l'intention
+    // — un ancrage géographique — avec une seule de ses réalisations, et
+    // faisait donc échouer « Aux Antilles-Guyane », qui est un ancrage plus
+    // précis. Depuis l'arbitrage du 2026-09-19, le H1 dit « téléphonie IP »
+    // et non « téléphonie DOM » : c'est le contrat territorial qui est
+    // vérifié ici, pas le mot retenu pour l'exprimer.
     const h1Match = hero().match(/<h1[^>]*>([\s\S]*?)<\/h1>/)
     expect(h1Match).not.toBeNull()
-    expect(h1Match![1]).toContain("DOM")
+    expect(h1Match![1]).toMatch(/Antilles|Guyane|Réunion|DOM/i)
   })
 
   it("n'attribue l'échéance cuivre 2027 qu'aux Antilles-Guyane", () => {

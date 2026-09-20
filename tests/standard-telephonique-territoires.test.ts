@@ -50,8 +50,16 @@ describe("Registre /standard-telephonique", () => {
   // `filter(t => t.published)` — donc le test rejouait l'implémentation au
   // lieu de la vérifier, et restait vert même si les 4 territoires passaient
   // à `published: true`. On affirme désormais le résultat attendu.
-  it("seule la Guyane est publiée à ce jour", () => {
-    expect(getPublishedTerritories().map((t) => t.slug)).toEqual(["guyane"]);
+  // Arbitrage Alban (2026-09-19) : les quatre territoires sont publiés.
+  // La liste est affirmée en dur et dans l'ordre : publier un cinquième
+  // territoire doit être une décision, pas un effet de bord.
+  it("les quatre territoires DOM sont publiés", () => {
+    expect(getPublishedTerritories().map((t) => t.slug)).toEqual([
+      "guyane",
+      "martinique",
+      "guadeloupe",
+      "la-reunion",
+    ]);
   });
 
   it("getTerritory retourne le territoire demandé ou undefined", () => {
@@ -66,7 +74,30 @@ describe("Registre /standard-telephonique", () => {
       expect(t.indicatif).toMatch(/^0\d{3}$/);
       expect(t.copper.sourceUrl).toMatch(/^https:\/\//);
       expect(t.zones.length).toBeGreaterThanOrEqual(3);
+      // Contexte terrain : c'est lui qui porte la différenciation quand la
+      // preuve client manque.
+      expect(t.context.length).toBeGreaterThan(80);
+    }
+  });
+
+  // La preuve client nommée est l'élément qu'un concurrent ne peut pas
+  // reproduire. Elle est exigée partout SAUF à La Réunion, où aucun client
+  // n'est nommable à ce jour — exception explicite et datée, pour qu'elle se
+  // voie en revue au lieu de se dissoudre dans un assouplissement général.
+  const SANS_PREUVE_CLIENT = ["la-reunion"];
+
+  it("chaque territoire publié nomme un client, sauf exception déclarée", () => {
+    for (const t of getPublishedTerritories()) {
+      if (SANS_PREUVE_CLIENT.includes(t.slug)) continue;
       expect(t.localProof.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("l'exception de preuve client ne couvre que des territoires réels", () => {
+    // Empêche la liste d'exceptions de devenir une décharge : un slug qui
+    // n'existe plus doit faire échouer le test, pas dormir dans le tableau.
+    for (const slug of SANS_PREUVE_CLIENT) {
+      expect(getTerritory(slug)).toBeDefined();
     }
   });
 
@@ -125,20 +156,57 @@ describe("Correspondance registre ↔ fichiers physiques", () => {
     expect(fs.existsSync(p)).toBe(true);
   });
 
-  it("chaque territoire publié a son dossier avec une page", () => {
-    for (const t of getPublishedTerritories()) {
-      const p = path.join(APP_DIR, "standard-telephonique", t.slug, "page.tsx");
-      expect(fs.existsSync(p)).toBe(true);
-    }
+  // Les territoires étaient servis par un fichier chacun ; ils le sont
+  // désormais par une route dynamique [territoire]. Quatre copies du même
+  // gabarit auraient multiplié par quatre le coût de chaque correction
+  // factuelle — et ce sont précisément les corrections répétées qui se
+  // perdent, comme l'a montré `llms.txt`, oublié trois fois.
+  it("la route dynamique de territoire existe sur disque", () => {
+    const p = path.join(
+      APP_DIR,
+      "standard-telephonique",
+      "[territoire]",
+      "page.tsx",
+    );
+    expect(fs.existsSync(p)).toBe(true);
   });
 
-  it("aucun territoire non publié n'a de page sur disque", () => {
-    // Éviter qu'une page orpheline (non liée, non enregistrée) parte en prod.
+  it("aucun dossier de territoire en dur ne subsiste", () => {
+    // Un fichier oublié à l'ancien emplacement prendrait le pas sur la route
+    // dynamique : Next.js sert la route statique en priorité, et la page
+    // servie divergerait silencieusement du registre.
     for (const t of STANDARD_TELEPHONE_TERRITORIES) {
-      if (t.published) continue;
       const p = path.join(APP_DIR, "standard-telephonique", t.slug, "page.tsx");
       expect(fs.existsSync(p)).toBe(false);
     }
+  });
+});
+
+/**
+ * `generateStaticParams` remplace l'ancien contrôle « un dossier par
+ * territoire » : c'est lui qui décide des pages réellement générées au build.
+ * Associé à `dynamicParams = false`, tout slug absent renvoie 404 sans rendu.
+ */
+describe("Pages générées au build", () => {
+  it("génère exactement les territoires publiés", async () => {
+    const { generateStaticParams } = await import(
+      "@/app/standard-telephonique/[territoire]/page"
+    );
+    const slugs = generateStaticParams().map(
+      (p: { territoire: string }) => p.territoire,
+    );
+    expect(slugs.sort()).toEqual(
+      getPublishedTerritories()
+        .map((t) => t.slug)
+        .sort(),
+    );
+  });
+
+  it("n'autorise aucun slug hors de cette liste", async () => {
+    const mod = await import("@/app/standard-telephonique/[territoire]/page");
+    // Sans ce réglage, un slug inventé serait rendu à la demande et
+    // répondrait 200 — la page satellite que le registre refuse.
+    expect(mod.dynamicParams).toBe(false);
   });
 });
 
@@ -219,7 +287,12 @@ describe("public/llms.txt référence la section", () => {
  * repli — le mode de défaillance que le registre prétend justement empêcher.
  */
 describe("Aucune page orpheline dans la section", () => {
-  it("les dossiers de /standard-telephonique correspondent aux publiés", () => {
+  it("la section ne contient que la route dynamique de territoire", () => {
+    // Depuis le passage en route dynamique, le seul sous-dossier légitime
+    // est `[territoire]`. Tout autre dossier serait une page en dur qui
+    // court-circuiterait le registre : Next.js sert la route statique en
+    // priorité, et cette page-là ne serait vérifiée par aucun des tests
+    // registre ⇒ disque ci-dessus.
     const dossiers = fs
       .readdirSync(path.join(APP_DIR, "standard-telephonique"), {
         withFileTypes: true,
@@ -227,10 +300,6 @@ describe("Aucune page orpheline dans la section", () => {
       .filter((e) => e.isDirectory())
       .map((e) => e.name);
 
-    expect(dossiers.sort()).toEqual(
-      getPublishedTerritories()
-        .map((t) => t.slug)
-        .sort(),
-    );
+    expect(dossiers).toEqual(["[territoire]"]);
   });
 });

@@ -72,7 +72,7 @@ export function ServicesSectionSimple() {
         "Qualité studio",
       ],
       badge: "Pro",
-      price: "À partir de 50€",
+      price: "Sur devis",
       href: "/studio-attente",
     },
   ];
