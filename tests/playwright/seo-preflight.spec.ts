@@ -6,6 +6,11 @@ import { test, expect } from "@playwright/test";
  */
 const PAGES = [
   "/",
+  "/standard-telephonique",
+  "/standard-telephonique/guyane",
+  "/standard-telephonique/martinique",
+  "/standard-telephonique/guadeloupe",
+  "/standard-telephonique/la-reunion",
   "/telephonie-entreprise",
   "/telephonie-3cx",
   "/3cx-pro",
@@ -96,4 +101,30 @@ test.describe("SEO — contrôles avant mise en ligne", () => {
       }
     }
   });
+
+  // Un slug absent du registre doit renvoyer un vrai 404, pas une page vide :
+  // une URL qui répond 200 avec du contenu générique est indexable, et c'est
+  // précisément la page satellite que le registre refuse de produire.
+  //
+  // La cible était « martinique », publiée depuis le 2026-09-19. Le contrôle
+  // porte désormais sur un slug qui ne sera jamais publié — sinon le test se
+  // désarme tout seul à chaque nouveau territoire.
+  test("un territoire hors registre renvoie un 404 réel", async ({ page }) => {
+    const reponse = await page.goto("/standard-telephonique/atlantide", {
+      waitUntil: "domcontentloaded",
+    });
+    expect(reponse?.status()).toBe(404);
+  });
+
+  // Les quatre territoires publiés doivent être servis : le pendant positif
+  // du test ci-dessus, sans lequel un `generateStaticParams` cassé passerait
+  // inaperçu tant que les 404 tombent juste.
+  for (const slug of ["guyane", "martinique", "guadeloupe", "la-reunion"]) {
+    test(`le territoire ${slug} est servi en 200`, async ({ page }) => {
+      const reponse = await page.goto(`/standard-telephonique/${slug}`, {
+        waitUntil: "domcontentloaded",
+      });
+      expect(reponse?.status()).toBe(200);
+    });
+  }
 });

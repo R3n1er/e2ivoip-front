@@ -8,6 +8,11 @@ Positionnement clé : fournisseur de Trunk SIP DOM pour les intégrateurs qui d�
 
 ## Offres principales
 
+- [Standard téléphonique d'entreprise](https://www.e2i-voip.com/standard-telephonique) : ce qu'est un standard téléphonique, comment il remplace un PABX analogique, ce que coûte l'installation et comment elle se déroule.
+- [Standard téléphonique en Guyane](https://www.e2i-voip.com/standard-telephonique/guyane) : opérateur établi à Cayenne, ligne locale 0594, zones d'intervention et calendrier communal de fermeture du cuivre (Rémire-Montjoly déjà coupée, Kourou au 31 janvier 2027).
+- [Standard téléphonique en Martinique](https://www.e2i-voip.com/standard-telephonique/martinique) : ligne locale 0596, zones d'intervention Fort-de-France et Le Lamentin, calendrier communal de fermeture du cuivre (Schœlcher déjà coupée ; aucune commune martiniquaise au 31 janvier 2027).
+- [Standard téléphonique en Guadeloupe](https://www.e2i-voip.com/standard-telephonique/guadeloupe) : ligne locale 0590, zones d'intervention Baie-Mahault (zone industrielle de Jarry) et Pointe-à-Pitre, calendrier communal de fermeture du cuivre (Petit-Bourg déjà coupée ; Basse-Terre et Deshaies au 31 janvier 2027).
+- [Standard téléphonique à La Réunion](https://www.e2i-voip.com/standard-telephonique/la-reunion) : ligne locale 0263, zones d'intervention Saint-Denis et Saint-Pierre. La Réunion relève du lot 5 : la fermeture technique intervient en janvier, mai ou octobre 2029 selon la commune — pas en 2027 comme aux Antilles-Guyane.
 - [Téléphonie d'entreprise](https://www.e2i-voip.com/telephonie-entreprise) : hub des solutions de téléphonie IP (Trunk SIP, 3CX, PBX Yeastar, agents vocaux IA).
 - [Trunk SIP pour agents vocaux IA](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-agents-ia) : carrier SIP DOM, numéros locaux et interconnexion BYOC pour VAPI, Rounded, ElevenLabs, Jambonz.
 - [Trunk SIP au compteur](https://www.e2i-voip.com/telephonie-entreprise/trunk-sip-compteur) : facturation des appels à la seconde, idéal pour faibles volumes (< 200 min/mois), numéros locaux DOM.

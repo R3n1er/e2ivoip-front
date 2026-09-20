@@ -60,7 +60,7 @@ export default function MentionsLegales() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-                <span className="text-red-600">Éditeur</span> du site
+                <span className="text-red-primary">Éditeur</span> du site
               </h2>
               <Card className="shadow-lg">
                 <CardHeader className="bg-gradient-to-r from-blue-900/85 via-blue-800/80 to-red-600/85 text-white rounded-t-lg">
@@ -73,14 +73,14 @@ export default function MentionsLegales() {
                     <div className="flex items-start space-x-3">
                       <Shield
                         size={24}
-                        className="text-red-600 mt-1 flex-shrink-0"
+                        className="text-red-primary mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-gray-dark">
                           Directeur de la publication
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-dark">
                           {COMPANY.publicationDirector}
                         </p>
                       </div>
@@ -88,33 +88,55 @@ export default function MentionsLegales() {
                     <div className="flex items-start space-x-3">
                       <TextT
                         size={24}
-                        className="text-red-600 mt-1 flex-shrink-0"
+                        className="text-red-primary mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-gray-dark">
                           Immatriculation
                         </h3>
-                        <p className="text-gray-600">
-                          SIRET {COMPANY.siret}
+                        <p className="text-gray-dark">
+                          {COMPANY.legalForm}
+                          <br />
+                          {/* Le SIRET est une donnée chiffrée : IBM Plex Mono
+                              + tabular-nums, comme partout sur le site. */}
+                          SIRET{" "}
+                          <span className="font-mono tabular-nums">
+                            {COMPANY.siret}
+                          </span>
                           <br />
                           Entreprise immatriculée en Guyane
                           <br />
                           Code APE {COMPANY.ape} — {COMPANY.apeLabel}
+                          <br />
+                          {COMPANY.vatStatus}
+                        </p>
+                        {/* Adresse de contact — article 19 de la LCEN, qui
+                            l'impose à toute activité de commerce
+                            électronique. Le formulaire et les numéros ne
+                            suffisent pas à ce titre. */}
+                        <p className="text-gray-dark mt-2">
+                          Contact :{" "}
+                          <a
+                            href={`mailto:${COMPANY.contactEmail}`}
+                            className="text-blue-marine hover:underline"
+                          >
+                            {COMPANY.contactEmail}
+                          </a>
                         </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <MapPin
                         size={24}
-                        className="text-red-600 mt-1 flex-shrink-0"
+                        className="text-red-primary mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-gray-dark">
                           Siège social
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-dark">
                           {COMPANY.address.street}
                           <br />
                           {COMPANY.address.postalCode} {COMPANY.address.city}
@@ -126,17 +148,17 @@ export default function MentionsLegales() {
                     <div className="flex items-start space-x-3">
                       <Phone
                         size={24}
-                        className="text-red-600 mt-1 flex-shrink-0"
+                        className="text-red-primary mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="font-semibold text-gray-900">Contact</h3>
-                        <p className="text-gray-600">
+                        <h3 className="font-semibold text-gray-dark">Contact</h3>
+                        <p className="text-gray-dark">
                           Par téléphone dans votre région (voir ci-dessous) ou
                           via notre{" "}
                           <Link
                             href="/contact"
-                            className="text-red-600 underline"
+                            className="text-blue-marine underline"
                           >
                             formulaire de contact
                           </Link>
@@ -151,7 +173,7 @@ export default function MentionsLegales() {
 
             <div>
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-                <span className="text-red-600">Hébergement</span>
+                <span className="text-red-primary">Hébergement</span>
               </h2>
               <div className="space-y-6">
                 <Card className="shadow-lg">
@@ -159,14 +181,14 @@ export default function MentionsLegales() {
                     <div className="flex items-start space-x-3">
                       <Globe
                         size={32}
-                        className="text-blue-600 mt-1 flex-shrink-0"
+                        className="text-blue-marine mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        <h3 className="text-lg font-semibold text-gray-dark mb-2">
                           Hébergeur du site
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-dark">
                           {HOSTING.provider}
                           <br />
                           {HOSTING.address}
@@ -182,14 +204,14 @@ export default function MentionsLegales() {
                     <div className="flex items-start space-x-3">
                       <Globe
                         size={32}
-                        className="text-green-600 mt-1 flex-shrink-0"
+                        className="text-blue-marine mt-1 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        <h3 className="text-lg font-semibold text-gray-dark mb-2">
                           Gestion du nom de domaine
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-dark">
                           {HOSTING.registrar}
                           <br />
                           {HOSTING.registrarAddress}
@@ -210,9 +232,9 @@ export default function MentionsLegales() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Données personnelles et{" "}
-              <span className="text-red-600">cookies</span>
+              <span className="text-red-primary">cookies</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-dark max-w-3xl mx-auto">
               Le détail figure dans notre politique de confidentialité, qui
               fait foi
             </p>
@@ -227,7 +249,7 @@ export default function MentionsLegales() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4 text-gray-600">
+                <div className="space-y-4 text-gray-dark">
                   <p>
                     Aucun traceur de mesure d&rsquo;audience n&rsquo;est déposé
                     avant votre acceptation. Le bandeau affiché à votre première
@@ -241,7 +263,7 @@ export default function MentionsLegales() {
                     La liste des traceurs figure dans la{" "}
                     <Link
                       href="/juridique/politique-confidentialite"
-                      className="text-red-600 underline"
+                      className="text-blue-marine underline"
                     >
                       politique de confidentialité
                     </Link>
@@ -259,7 +281,7 @@ export default function MentionsLegales() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4 text-gray-600">
+                <div className="space-y-4 text-gray-dark">
                   <p>
                     {COMPANY.legalName} est responsable du traitement des
                     données collectées sur ce site. Vous disposez d&rsquo;un
@@ -270,7 +292,7 @@ export default function MentionsLegales() {
                     Pour les exercer, utilisez notre{" "}
                     <Link
                       href="/juridique/exercer-mes-droits"
-                      className="text-red-600 underline"
+                      className="text-blue-marine underline"
                     >
                       formulaire dédié
                     </Link>
@@ -289,7 +311,7 @@ export default function MentionsLegales() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
-              <span className="text-red-600">Propriété intellectuelle</span> et
+              <span className="text-red-primary">Propriété intellectuelle</span> et
               responsabilité
             </h2>
           </div>
@@ -302,7 +324,7 @@ export default function MentionsLegales() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4 text-gray-600">
+                <div className="space-y-4 text-gray-dark">
                   <p>
                     L&rsquo;ensemble de ce site relève de la législation
                     française et internationale sur le droit d&rsquo;auteur et
@@ -327,7 +349,7 @@ export default function MentionsLegales() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4 text-gray-600">
+                <div className="space-y-4 text-gray-dark">
                   <p>
                     Les informations publiées sur ce site sont fournies à titre
                     indicatif. Les descriptions de services, tarifs et
@@ -351,7 +373,7 @@ export default function MentionsLegales() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="space-y-4 text-gray-600">
+                <div className="space-y-4 text-gray-dark">
                   <p>
                     Les présentes mentions légales sont régies par le droit
                     français. En cas de litige, une solution amiable sera
@@ -365,7 +387,7 @@ export default function MentionsLegales() {
                       href="https://ec.europa.eu/consumers/odr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-red-600 underline"
+                      className="text-blue-marine underline"
                     >
                       ec.europa.eu/consumers/odr
                     </a>
@@ -389,9 +411,9 @@ export default function MentionsLegales() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-              Nous sommes <span className="text-red-600">certifiés</span> !
+              Nous sommes <span className="text-red-primary">certifiés</span> !
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-dark mb-8 max-w-3xl mx-auto">
               E2I Assistance est partenaire 3CX Silver et certifié ! Visitez le
               site internet de notre partenaire et souscrivez à une version
               d&rsquo;évaluation du standard téléphonique.

@@ -63,18 +63,18 @@ export default function AccordSousTraitanceRgpdPage() {
           <div className="max-w-4xl mx-auto space-y-10">
 
             {/* Téléchargement PDF */}
-            <Card className="shadow-lg border-l-4 border-red-600">
+            <Card className="shadow-lg border-l-4 border-red-primary">
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                   <div className="flex items-start space-x-4">
-                    <div className="bg-red-100 p-3 rounded-lg">
-                      <FileText size={32} className="text-red-600" aria-hidden="true" />
+                    <div className="bg-red-primary/10 p-3 rounded-lg">
+                      <FileText size={32} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900">
+                      <h2 className="text-xl font-bold text-gray-dark">
                         Document contractuel complet
                       </h2>
-                      <p className="text-gray-600 mt-1">
+                      <p className="text-gray-dark mt-1">
                         Ce DPA fait partie du Contrat. Il s’applique pendant toute la
                         durée où E2I traite des Données personnelles pour le compte
                         du Client.
@@ -85,7 +85,7 @@ export default function AccordSousTraitanceRgpdPage() {
                     href="/documents/dpa-rgpd.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl whitespace-nowrap"
+                    className="inline-flex items-center px-6 py-3 bg-red-primary text-white hover:-translate-y-0.5 active:translate-y-0 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl whitespace-nowrap"
                   >
                     <DownloadSimple size={20} className="mr-2" aria-hidden="true" />
                     Télécharger le PDF
@@ -99,19 +99,19 @@ export default function AccordSousTraitanceRgpdPage() {
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Clock size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Entrée en vigueur</h3>
+                    <Clock size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Entrée en vigueur</h3>
                   </div>
-                  <p className="text-gray-600">30 août 2026</p>
+                  <p className="text-gray-dark">30 août 2026</p>
                 </CardContent>
               </Card>
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Shield size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Sous-traitant</h3>
+                    <Shield size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Sous-traitant</h3>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-dark">
                     {COMPANY.legalName} · SIRET {COMPANY.siret}
                   </p>
                 </CardContent>
@@ -119,10 +119,10 @@ export default function AccordSousTraitanceRgpdPage() {
               <Card className="shadow hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-3 mb-3">
-                    <Lock size={24} className="text-red-600" aria-hidden="true" />
-                    <h3 className="font-semibold text-gray-900">Cadre juridique</h3>
+                    <Lock size={24} className="text-red-primary" aria-hidden="true" />
+                    <h3 className="font-semibold text-gray-dark">Cadre juridique</h3>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-dark">
                     Règlement (UE) 2016/679 · art. 28
                   </p>
                 </CardContent>
@@ -139,11 +139,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 1 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Cadre et définitions
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 1 — Parties et objet</li>
                       <li>Art. 2 — Cadre contractuel et ordre de priorité</li>
                       <li>Art. 3 — Définitions</li>
@@ -152,11 +152,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 2 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Rôles et qualification
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 4 — Rôles respectifs des parties</li>
                       <li>Art. 5 — Traitements où E2I agit comme responsable</li>
                       <li>Art. 6 — Qualification des CDR et données de trafic</li>
@@ -165,11 +165,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 3 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Traitement et instructions
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 7 — Caractéristiques du Traitement</li>
                       <li>Art. 8 — Obligations générales du Client</li>
                       <li>Art. 9 — Instructions documentées</li>
@@ -179,11 +179,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 4 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Sécurité et habilitations
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 11 — Confidentialité des personnes autorisées</li>
                       <li>Art. 12 — Sécurité du Traitement</li>
                       <li>Art. 13 — Sécurité relevant du Client</li>
@@ -195,11 +195,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 5 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Sous-traitants et transferts
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 17 — Sous-traitants ultérieurs : autorisation</li>
                       <li>Art. 18 — Information sur les sous-traitants ultérieurs</li>
                       <li>Art. 19 — Objection à un sous-traitant ultérieur</li>
@@ -211,11 +211,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 6 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Droits des personnes et violations
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 23 — Droits des Personnes concernées</li>
                       <li>Art. 24 — Modalités d’assistance aux droits</li>
                       <li>Art. 25 — Analyses d’impact et consultation</li>
@@ -226,11 +226,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 7 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Contrôle et fin
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 28 — Assistance réglementaire et coopération</li>
                       <li>Art. 29 — Registre des activités de Traitement</li>
                       <li>Art. 30 — Audits</li>
@@ -243,11 +243,11 @@ export default function AccordSousTraitanceRgpdPage() {
 
                   {/* Groupe 8 */}
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                    <h3 className="font-semibold text-gray-dark mb-2 flex items-center">
+                      <span className="w-2 h-2 bg-red-primary rounded-full mr-2"></span>
                       Dispositions finales
                     </h3>
-                    <ul className="text-gray-600 space-y-1 pl-4 text-sm">
+                    <ul className="text-gray-dark space-y-1 pl-4 text-sm">
                       <li>Art. 35 — Données sensibles et secteurs réglementés</li>
                       <li>Art. 36 — Modifications du DPA</li>
                       <li>Art. 37 — Responsabilité</li>
@@ -258,7 +258,7 @@ export default function AccordSousTraitanceRgpdPage() {
                 </div>
 
                 <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-dark">
                     <strong>Ordre de priorité :</strong> en cas de contradiction sur la
                     protection des Données personnelles, le DPA prévaut sur les
                     Conditions particulières, puis sur les CGV. La Commande prévaut
@@ -277,46 +277,46 @@ export default function AccordSousTraitanceRgpdPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <Link
                     href="/juridique/conditions-generales-de-vente"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
-                    <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                    <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Conditions générales de vente</p>
-                      <p className="text-sm text-gray-500">Page dédiée · v1.2</p>
+                      <p className="font-medium text-gray-dark">Conditions générales de vente</p>
+                      <p className="text-sm text-gray-secondary">Page dédiée · v1.2</p>
                     </div>
                   </Link>
                   <Link
                     href="/juridique/politique-confidentialite"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
-                    <Shield size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                    <Shield size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Politique de confidentialité</p>
-                      <p className="text-sm text-gray-500">Page dédiée · v1.1</p>
+                      <p className="font-medium text-gray-dark">Politique de confidentialité</p>
+                      <p className="text-sm text-gray-secondary">Page dédiée · v1.1</p>
                     </div>
                   </Link>
                   <Link
                     href="/documents/conditions-particulieres-voip.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
-                    <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                    <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Conditions particulières — VoIP</p>
-                      <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      <p className="font-medium text-gray-dark">Conditions particulières — VoIP</p>
+                      <p className="text-sm text-gray-secondary">PDF · v1.1</p>
                     </div>
                   </Link>
                   <Link
                     href="/documents/conditions-particulieres-trunk-sip.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-colors"
+                    className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-red-primary/30 hover:bg-red-primary/5 transition-colors"
                   >
-                    <FileText size={24} className="text-red-600 mr-3 flex-shrink-0" />
+                    <FileText size={24} className="text-red-primary mr-3 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Conditions particulières — Trunk SIP</p>
-                      <p className="text-sm text-gray-500">PDF · v1.1</p>
+                      <p className="font-medium text-gray-dark">Conditions particulières — Trunk SIP</p>
+                      <p className="text-sm text-gray-secondary">PDF · v1.1</p>
                     </div>
                   </Link>
                 </div>

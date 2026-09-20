@@ -10,6 +10,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-09-19 — Section /standard-telephonique : hub + pilote Guyane
+
+- **Contexte** : « standard téléphonique » est le vocabulaire de l'acheteur, « IPBX » et « Trunk SIP » celui du technicien — or le site n'avait **aucune page** servant cette requête (`/standard-telephonique` → 404, relevé du 19/09/2026). Le terme n'apparaissait qu'**une fois** dans les 2,4 Mo de HTML de `/telephonie-3cx`, et zéro fois sur la home et `/nos-services`. Sur la SERP (`standard téléphonique <territoire>`), E2I ressortait 7e en Guadeloupe et 6e en Martinique — **via sa seule home** — derrière des acteurs à page dédiée (Proximus-VoIP, 2iibm, GADE, IPTE, IPER Telecom).
+- **Décision** :
+  - Créer un silo `/standard-telephonique` (le sujet expliqué à un acheteur) avec un registre typé `lib/territoires/standard-telephonique.ts` comme source unique des URL, des numéros et du contenu factuel.
+  - **Pilote = Guyane**, pas la Guadeloupe. Relevé SERP : la Guadeloupe est le terrain **le plus disputé** (5 acteurs à page dédiée dont 3 locaux), la Guyane le **moins disputé** (SERP d'annuaires, aucune page dédiée en face, E2I absent des 8 premiers). S'y ajoutent l'ancrage vérifiable (siège à Cayenne, SIRET, ligne 0594) et la place de n°1 déjà acquise sur « telephonie ip guyane ».
+  - Les 3 autres territoires (Martinique, Guadeloupe, La Réunion) sont **déclarés au registre mais `published: false`** : leur contenu existe, leur page n'est pas rendue. Motif : publier le même gabarit sur 4 territoires produirait des déclinaisons dupliquées, précisément le pattern « page satellite » que l'audit concurrentiel du 21/08 interdisait (« 60 % de contenu unique minimum »).
+  - Le registre est la source des entrées de sitemap : un territoire non publié ne peut pas produire d'URL fantôme.
+  - Dates cuivre sourcées à l'Arcep, jamais de mémoire : Guyane/Martinique/Guadeloupe = lot 3, fermeture commerciale 31/01/2026, technique 31/01/2027 ; La Réunion = lot 5, technique janvier 2029. La date **communale** est explicitement présentée comme variable — c'est la donnée locale que personne ne publie et qui rend la page citable.
+- **Conséquences** :
+  - Les numéros locaux sont **importés** de `lib/constants/phone-numbers.ts` : une correction du numéro ne peut plus se désynchroniser d'une page.
+  - Preuve sociale : le silo n'utilise **que** des clients figurant déjà publiquement dans `components/clients-carousel.tsx` (APAJH Guyane, Zoo de Guyane). `components/testimonials-section-simple.tsx` contient des témoignages **fictifs** (« Marie Dubois / Titeca BEAUPORT », « Clinique Saint-Joseph ») et n'est monté nulle part — jamais réutilisé comme preuve.
+  - Pas de `LocalBusiness` avec une adresse hors Guyane : le schéma reste `Service` + `areaServed`, l'adresse légale unique restant celle de Cayenne.
+  - Réutiliser le hub comme précédent : `/juridique` **n'est pas** un modèle valide, son hub a été supprimé et redirige vers les CGV. Le précédent vivant est `/telephonie-entreprise`.
+- **Tests associés** : `tests/standard-telephonique-territoires.test.ts` (12) — intégrité du registre, correspondance registre ↔ fichiers physiques dans les deux sens (aucune page orpheline), exigence de source sur chaque date cuivre, et enregistrement dans les deux oublis de registre (`lib/navigation/breadcrumbs.ts`, `app/sitemap.ts`). Suite complète : 83 suites / 564 tests ✅.
+- **À mesurer** : impressions, clics et position de la page Guyane + du hub dans Search Console (propriété `sc-domain:e2i-voip.com`). Le service account `~/.config/claude-seo/service_account.json` est **absent** — la mesure suppose de le recréer. Délais : on-site 8-16 semaines, citation en Aperçu IA imprévisible (3-9 mois).
+
 ### 2026-08-26 — Suppression du pré-chat : widget natif HubSpot uniquement
 
 - **Contexte** : malgré le hotfix `82e3c42` (kick `load()` + retries alternés + suppression de la bannière cookies HS), le chat s'ouvrait de façon non fiable pour les visiteurs réels : la console montrait des dizaines de `ERR_BLOCKED_BY_CLIENT` sur `api-eu1.hubspot.com` et `eu.i.posthog.com`. Le SDK HubSpot Conversations embarque beaucoup de logique client (init conditionnelle, consentement RGPD intégré, bannière européenne, gestion asynchrone du widget) qui complique l'expérience et augmente la surface de panne. Choix produit : aligner le site sur le snippet de tracking natif recommandé par HubSpot, sans pré-chat ni logique d'initiation conditionnelle.

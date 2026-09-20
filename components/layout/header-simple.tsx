@@ -26,6 +26,10 @@ export function HeaderSimple() {
     {
       name: "Téléphonie d'entreprise",
       submenu: [
+        // Arbitrage Alban (2026-09-19) : le hub /standard-telephonique n'est
+        // PAS dans ce menu, qui reste une liste de produits. Son maillage
+        // interne passe par le footer (colonne « Services »), suffisant pour
+        // transmettre l'autorité que le seul sitemap ne transmet pas.
         {
           name: "Trunk SIP au compteur",
           href: "/telephonie-entreprise/trunk-sip-compteur",

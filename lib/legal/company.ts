@@ -6,11 +6,34 @@
  * l'ajout d'un sous-traitant ne puisse pas être appliqué à une page en
  * oubliant l'autre, situation qui a produit les incohérences corrigées ici.
  *
- * TODO(alban) — informations à obtenir avant publication définitive :
- *  - forme juridique exacte (SARL, SAS…) et montant du capital social ;
- *  - numéro de TVA intracommunautaire, ou mention « TVA non applicable »
- *    (la TVA n'est pas applicable en Guyane, article 294 du CGI) ;
- *  - confirmation qu'Alban RENIER est bien directeur de la publication.
+ * ── Arbitrages Alban (2026-09-19), tous vérifiés ────────────────────────────
+ *  - Forme juridique : entreprise individuelle sous régime micro-entreprise
+ *    (auto-entrepreneur). Ni capital social ni RCS : ces mentions n'existent
+ *    pas pour une EI, les afficher serait une fausse déclaration d'identité.
+ *  - TVA : « TVA non applicable ». DOUBLE fondement — l'article 293 B du CGI
+ *    (franchise en base du micro-entrepreneur) ET l'article 294, qui place la
+ *    Guyane hors du champ territorial de la TVA. Mention obligatoire sur les
+ *    supports commerciaux, absente jusqu'ici.
+ *  - Adresse e-mail : PUBLIÉE, sur adresse dédiée.
+ *
+ *    Une version antérieure n'en publiait aucune, au motif que le formulaire
+ *    et les quatre numéros satisfaisaient l'article 6-III de la LCEN. La
+ *    revue Codex (2026-09-20) a montré que le texte applicable n'est pas
+ *    celui-là : l'article 19 de la LCEN vise le COMMERCE ÉLECTRONIQUE —
+ *    défini à l'article 14 comme « l'activité par laquelle une personne
+ *    propose ou assure à distance et par voie électronique la fourniture de
+ *    biens ou de services » — et impose, lui, une adresse de courrier
+ *    électronique. Un site qui présente des offres et recueille des demandes
+ *    de devis entre dans cette définition.
+ *
+ *    Arbitrage : adresse DÉDIÉE et filtrable, jamais une boîte de travail.
+ *    Le risque spam est réel ; il se traite par le filtrage, pas par
+ *    l'absence.
+ *
+ *    ⚠️ L'adresse doit être opérationnelle AVANT mise en production. Une
+ *    adresse qui rebondit constitue le manquement même que l'article 19
+ *    cherche à prévenir — pire que pas d'adresse du tout.
+ *  - Directeur de la publication : Alban RENIER (confirmé).
  */
 
 export const COMPANY = {
@@ -18,9 +41,32 @@ export const COMPANY = {
   brand: "E2I VoIP",
   siret: "51743457700014",
   siren: "517 434 577",
-  // Pas de numéro RCS : E2I ASSISTANCE est une entreprise individuelle
-  // immatriculée en Guyane, pas au registre du commerce et des sociétés.
-  // Ne jamais afficher d'inscription RCS qui n'existe pas.
+  /**
+   * Qualité de l'éditeur.
+   *
+   * Revue Codex (2026-09-20) : l'article 6-III de la LCEN n'exige pas
+   * littéralement une « forme juridique ». Pour une personne physique il
+   * demande nom, prénoms, domicile, téléphone et numéro d'immatriculation
+   * lorsqu'il s'applique. La mention reste utile — elle dit au lecteur ce
+   * que « E2I ASSISTANCE » désigne — mais elle relève du confort de
+   * lecture, pas d'une obligation textuelle. Ne pas la présenter comme
+   * imposée par la LCEN.
+   */
+  legalForm: "Entrepreneur individuel (régime micro-entreprise)",
+  /**
+   * ⚠️ PAS de capital social : une entreprise individuelle n'en a pas.
+   *
+   * En revanche l'absence de RCS n'est PAS une conséquence de la forme
+   * juridique — une EI exerçant une activité commerciale EST immatriculée
+   * au RCS. Ce qui tranche, c'est la nature de l'activité, pas le statut.
+   * Le code APE 6203Z ne le dit pas à lui seul.
+   *
+   * TODO(alban) — vérifier sur l'extrait RNE si E2I ASSISTANCE porte un
+   * numéro RCS. Si oui, il doit être publié ici et sur la page. Tant que
+   * ce point n'est pas vérifié, ne RIEN affirmer sur le RCS : ni l'inscrire
+   * (fausse mention), ni écrire qu'il n'existe pas (l'affirmation qui
+   * figurait ici et que la revue a invalidée).
+   */
   ape: "6203Z",
   apeLabel: "Gestion d’installations informatiques",
   publicationDirector: "Alban RENIER",
@@ -30,6 +76,28 @@ export const COMPANY = {
     city: "Cayenne",
     country: "Guyane française",
   },
+  /**
+   * Mention TVA — article 294 du CGI SEUL.
+   *
+   * Revue Codex (2026-09-20) : une version antérieure citait aussi
+   * l'article 293 B. Ce n'est pas faux, mais c'est ambigu — 293 B est la
+   * franchise en base, qui présuppose un territoire SOUMIS à la TVA et
+   * dépend d'un seuil de chiffre d'affaires. Or la Guyane est hors du champ
+   * territorial de la taxe : la non-application y est inconditionnelle et
+   * ne cessera pas si le chiffre d'affaires augmente. Citer les deux
+   * laissait croire à un statut révocable.
+   *
+   * Aucun numéro de TVA intracommunautaire n'est donc à publier.
+   */
+  /**
+   * Adresse de contact publiée — exigée par l'article 19 de la LCEN pour
+   * une activité de commerce électronique.
+   *
+   * Adresse DÉDIÉE : ne jamais y mettre une boîte nominative ni une boîte
+   * de travail. Elle est publique par construction et sera collectée.
+   */
+  contactEmail: "contact@e2i-voip.com",
+  vatStatus: "TVA non applicable — article 294 du CGI",
   siteUrl: "www.e2i-voip.com",
 } as const;
 

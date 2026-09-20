@@ -121,7 +121,12 @@ describe("Page Nos Services", () => {
     render(<NosServices />);
 
     // Vérification des prix.
-    expect(screen.getByText("À partir de 2 canaux voix")).toBeInTheDocument();
+    //
+    // La carte Trunk SIP affichait « À partir de 2 canaux voix » : un
+    // dimensionnement présenté comme un prix, de la même famille que les
+    // bornes inventées retirées des métadonnées par la PR #66. Elle est
+    // repassée « Sur devis », comme les autres cartes sans tarif public.
+    expect(screen.queryByText(/canaux voix/)).not.toBeInTheDocument();
     // La carte fusionnée couvre les deux déclinaisons 3CX : le prix affiche
     // donc le plancher SMB ET le « sur devis » du PRO. Afficher le seul
     // « dès 15 € » sur une carte qui promet aussi l'instance dédiée laissait
@@ -131,7 +136,13 @@ describe("Page Nos Services", () => {
     ).toBeInTheDocument();
     const surDevisElements = screen.getAllByText("Sur devis");
     expect(surDevisElements.length).toBeGreaterThan(0);
-    expect(screen.getByText("À partir de 50€")).toBeInTheDocument();
+
+    // Arbitrage Alban (2026-09-19) : aucun prix d'appel sur les cartes de
+    // service. Le studio affichait « À partir de 50€ » — sans mention HT,
+    // ce qui contrevient à l'arrêté du 3 décembre 1987 sur l'affichage des
+    // prix en B2B, et exposait un plancher qui ne couvre aucune prestation
+    // réelle. Seul subsiste le tarif 3CX SMB, public et libellé HT.
+    expect(screen.queryByText(/À partir de 50/)).not.toBeInTheDocument();
   });
 
   it("affiche les fonctionnalités des services", () => {
