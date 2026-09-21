@@ -37,7 +37,7 @@ export default function GlobalError({
           </button>
           <a
             href="/"
-            className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-dark hover:bg-gray-50"
+            className="rounded-lg border border-ui-border px-6 py-3 text-sm font-semibold text-gray-dark hover:bg-gray-50"
           >
             Accueil
           </a>

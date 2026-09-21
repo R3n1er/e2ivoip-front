@@ -216,17 +216,51 @@ depuis la PR #73. Une seule doctrine vaut désormais pour tout le site.
 Garde-fou global : `tests/charte-gris-site-entier.test.ts`, qui balaie
 `components/` et `app/` en entier.
 
-### Exceptions de la vague 1 (6 fichiers)
-
-Deux familles, toutes deux en attente de la vague 2 :
+### Exceptions de la vague 1 (4 fichiers, après relecture)
 
 | Famille | Fichiers | Raison |
 |---|---|---|
-| Gris clairs sur fond sombre | `homepage-hero-section-simple.tsx`, `app/nos-services/page.tsx` | `text-gray-200/300` posés sur le hero. `ui-muted` (#4B5563, foncé) les rendrait illisibles sur bleu profond. |
-| Bordures à survol actif | `chat-fallback.tsx`, `app/blog/page.tsx`, `app/blog/categorie/[slug]/page.tsx`, `app/global-error.tsx` | `border-gray-300` + `hover:border-gray-400` : le survol repose sur l'écart entre les deux nuances. Un token unique le rendrait inerte. |
+| Gris clairs sur fond sombre | `homepage-hero-section-simple.tsx`, `app/nos-services/page.tsx` | `text-gray-200/300` posés sur le hero. `ui-muted` (#4B5563) vaut **1,57:1 sur blue-marine** : illisible. Aucun token de texte clair en charte. |
+| Bordures à survol actif | `app/blog/page.tsx`, `app/blog/categorie/[slug]/page.tsx` | `border-gray-300` + `hover:border-gray-400` : le survol repose sur l'écart entre les deux nuances. Un token unique le rendrait inerte. |
 
-Le test plafonne cette liste à 6 : au-delà, c'est que la vague 2 doit être
-traitée plutôt que contournée.
+**Deux exceptions ont été retirées** après relecture adverse : `chat-fallback.tsx`
+survole en `border-red-primary` et `global-error.tsx` en `bg-gray-50` — ni l'un
+ni l'autre n'avait le `hover:border-gray-400` que leur justification invoquait.
+Leurs bordures ont été substituées sans risque.
+
+L'exception porte désormais sur **la classe, pas sur le fichier** : un gris
+ajouté ailleurs dans un fichier excepté est détecté.
+
+### Relecture adverse croisée (2026-09-20)
+
+Avant release, le diff `main...dev` a été soumis à deux relecteurs
+indépendants — **Codex** (`gpt-6-astra`) et **Kimi 2.7 code** (via OpenCode /
+Ollama Cloud). Verdicts : `NE PAS RELEASER` pour l'un, `RELEASE OK` pour
+l'autre.
+
+**Convergence sur le code livré** — aucune régression visuelle, aucun contraste
+dégradé, aucun survol inerte, hero intact (34 occurrences, 20 fichiers), cinq
+couleurs de marque inchangées.
+
+**Divergence sur les garde-fous.** Codex est allé plus loin : il a **muté le
+code en mémoire** et constaté que les tests restaient verts sur quatre fautes
+réelles. Kimi s'était arrêté à « les tests passent ». Les quatre failles,
+toutes corrigées :
+
+| Faille | Conséquence | Correctif |
+|---|---|---|
+| Exceptions portées par le fichier | Tout gris ajouté dans un fichier excepté passait | Exception liée à la classe précise |
+| `drop-shadow` comme indice de fond sombre | `bg-blue-marine text-ui-muted` (1,57:1) passait | Détection du fond réellement déclaré |
+| Lecture des seuls `className="…"` | `className={"a hover:a"}` passait | Extraction des expressions JSX |
+| Hero gardé sur « au moins un » fichier | En retirer 19 sur 20 passait | Compte exact des 20 fichiers |
+
+Les quatre mutations ont été rejouées après correction : **toutes échouent
+désormais**, et le code sain reste vert. Un garde-fou qu'on n'a pas essayé de
+tromper n'est pas un garde-fou.
+
+**Correction factuelle** : un commentaire affirmait que `text-lg` (18px)
+bénéficiait du seuil WCAG 3:1. C'est faux — le palier « grand texte » commence
+à 24px, ou 18,66px en gras.
 
 ### Dette restante — vague 2 (non traitée)
 
