@@ -118,9 +118,14 @@ describe("contraste — la navigation reste lisible", () => {
       //
       // SEUIL VARIABLE — ce test ne peut pas se contenter de « lien + gris
       // faible ». WCAG applique trois seuils selon ce qui est rendu :
-      //   texte normal          4,5:1  (critère 1.4.3)
-      //   grand texte (≥18,66px) 3:1   (critère 1.4.3)
-      //   composant d'interface   3:1   (critère 1.4.11)
+      //   texte normal                       4,5:1  (critère 1.4.3)
+      //   grand texte : ≥24px, ou ≥18,66px GRAS  3:1  (critère 1.4.3)
+      //   composant d'interface                3:1  (critère 1.4.11)
+      //
+      // Correction du 2026-09-20 (relecture Codex) : une version antérieure de
+      // ce commentaire affirmait que `text-lg` (18px) bénéficiait du seuil
+      // 3:1. C'est faux — 18px en graisse normale reste du texte normal. Le
+      // seuil « grand texte » demande 24px, ou 18,66px en gras.
       //
       // Le lien LinkedIn du footer est une icône de 22px avec `aria-label` :
       // à 3,85:1 il est conforme, et une version antérieure de ce test le
@@ -137,9 +142,10 @@ describe("contraste — la navigation reste lisible", () => {
             /\btext-gray-secondary\b/.test(classes) &&
             /\b(?:hover:text-|group-hover:text-)/.test(classes) &&
             // Une classe de taille de texte signe un contenu textuel.
-            // `text-xs`/`text-sm`/`text-base` restent sous 18,66px, donc
-            // seuil 4,5:1 ; au-delà (`text-lg`+) le seuil retombe à 3:1.
-            /\btext-(?:xs|sm|base)\b/.test(classes),
+            // `text-xs` (12), `sm` (14), `base` (16) et `lg` (18) relèvent
+            // tous du seuil 4,5:1 en graisse normale : le palier « grand
+            // texte » commence à 24px (`text-2xl`), ou 18,66px en gras.
+            /\btext-(?:xs|sm|base|lg)\b/.test(classes),
         );
       expect(liensGrisFaible).toEqual([]);
     },
