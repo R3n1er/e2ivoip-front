@@ -399,6 +399,48 @@ différents (le gradient protégé pèse 102 classes réparties sur 34 chaînes 
 et non reproductible** ; le nombre de fichiers porteurs du gradient, lui, reste
 verrouillé par `HERO_FICHIERS_ATTENDUS`.
 
+### Vague 4 traitée (2026-09-21) — le bleu vif arbitré
+
+Première vague d'**arbitrage de marque**, pas de mécanique. La question posée :
+`text-blue-600` est-il une nuance du bleu de charte, ou une couleur étrangère ?
+
+**La mesure a tranché.** `text-blue-600` (#2563EB) est un bleu VIF ; le
+`blue-marine` de charte (#2D3848) est un bleu-gris sombre. Écart perçu
+ΔE≈288 — ce n'est pas une nuance. Et le bleu vif contraste **moins** :
+5,17:1 contre 11,86:1 sur blanc.
+
+Comparaison éclairante avec le rouge : `text-red-600` (#DC2626) est à ΔE≈61 du
+rouge de charte, imperceptible. Les deux familles ne posaient pas du tout le
+même problème — d'où le choix de ne traiter que le bleu dans cette vague.
+
+**Décisions d'Alban :**
+
+| Usage | Décision | Résultat |
+|---|---|---|
+| Liens (téléphones, liens internes) | `text-blue-marine` + `hover:text-red-700` | 5,17:1 → **11,86:1** |
+| Icônes décoratives (Quotes, Users, Chat, sector.Icon) | `text-blue-marine` | en charte |
+| **Logo Microsoft Teams** | **préservé** en `text-blue-600` | marque tierce |
+
+Le survol emploie `red-700` (6,47:1) et non `red-primary` (#E53E3E, **4,13:1**,
+sous le seuil AA) — même arbitrage qu'en vague 2 pour les badges. La charte ne
+peut pas primer sur la lisibilité d'un texte.
+
+Fonds pâles substitués après mesure de l'écart composé : `bg-blue-900/10` →
+`bg-blue-marine/10` donne ΔE≈9,3, imperceptible.
+
+**Bilan : 78 `text-blue-marine`, 1 seul `text-blue-600`** — le logo Teams.
+
+### Un principe qui sort de cette vague
+
+Repeindre le logo d'une marque tierce aux couleurs de E2I serait un contresens :
+**une charte régit sa propre identité, pas celle des autres.** L'exception est
+portée par l'occurrence (`LOGOS_TIERS`), jamais par le fichier — vérifié par
+mutation : un autre bleu ajouté dans ce même fichier fait échouer le test.
+
+Garde-fou : 727 → **870 assertions**.
+
+---
+
 ### Dette connue, non traitée par la vague 3
 
 Signalée par les relecteurs, hors périmètre faute d'arbitrage ou de valeur :

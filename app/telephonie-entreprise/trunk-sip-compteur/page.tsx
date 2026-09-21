@@ -338,7 +338,7 @@ export default function TrunkSIPCompteur() {
               </p>
               <Link
                 href="/telephonie-3cx"
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                className="inline-flex items-center text-blue-marine hover:text-red-700 font-medium"
               >
                 Découvrir nos solutions IPBX
                 <ArrowRight size={16} className="ml-2" aria-hidden="true" />
