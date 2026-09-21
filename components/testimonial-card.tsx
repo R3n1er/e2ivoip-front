@@ -42,7 +42,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="mb-6">
         <div className="flex items-start mb-3">
           <div className="w-8 h-8 bg-blue-marine-100 rounded-full flex items-center justify-center mr-3 mt-1">
-            <Quotes size={24} className="text-blue-600" aria-hidden="true" />
+            <Quotes size={24} className="text-blue-marine" aria-hidden="true" />
           </div>
           <p className="text-gray-dark italic leading-relaxed">{testimonial.description}</p>
         </div>
@@ -52,7 +52,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="text-center p-3 bg-ui-surface rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <Users size={16} className="text-blue-600 mr-1" aria-hidden="true" />
+            <Users size={16} className="text-blue-marine mr-1" aria-hidden="true" />
             <span className="font-bold text-xl text-gray-dark">{testimonial.users}</span>
           </div>
           <p className="text-xs text-ui-muted">Utilisateurs</p>
@@ -128,7 +128,7 @@ export function TestimonialsSection({
             ].map((sector, index) => (
               <div key={index} className="bg-white rounded-xl border border-ui-border p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="w-12 h-12 bg-blue-marine-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <sector.Icon size={24} className="text-blue-600" aria-hidden="true" />
+                  <sector.Icon size={24} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h4 className="font-semibold text-gray-dark mb-2">{sector.title}</h4>
                 <p className="text-sm text-ui-muted">{sector.desc}</p>
