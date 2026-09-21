@@ -490,7 +490,7 @@ export default function Telephonie3CX() {
                     250 participants
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
                       <Users size={16} className="mr-1" aria-hidden="true" />
                       Jusqu'à 250 participants
                     </span>
@@ -558,7 +558,7 @@ export default function Telephonie3CX() {
                     notifications
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
                       <DeviceMobile size={16} className="mr-1" aria-hidden="true" />
                       iOS & Android
                     </span>
@@ -592,7 +592,7 @@ export default function Telephonie3CX() {
                     plus
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
                       <Link size={16} className="mr-1" aria-hidden="true" />
                       Multi-CRM
                     </span>

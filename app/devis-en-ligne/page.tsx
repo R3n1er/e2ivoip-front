@@ -195,7 +195,7 @@ export default function DevisEnLignePage() {
 
           {/* Contact urgent */}
           <div className="text-center mt-16">
-            <p className="text-lg text-[#1d3557] font-medium mb-4">
+            <p className="text-lg text-blue-marine font-medium mb-4">
               Un projet urgent ? Contactez directement notre équipe commerciale.
             </p>
             <a

@@ -374,7 +374,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
                   <Desktop size={16} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
@@ -710,7 +710,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
                   <PlugCharging size={16} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>

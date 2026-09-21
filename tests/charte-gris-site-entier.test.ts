@@ -74,6 +74,20 @@ const FONDS_INTERDITS =
   /\b(?:bg|from|via|to)-(?:gray|red|blue)-(?:50|100|200)(?:\/\d{1,3})?\b/g;
 
 /**
+ * Couleurs arbitraires — `bg-[#FEF2F2]`, `from-[#F9FAFB]`…
+ *
+ * Relevé par la relecture Codex du 2026-09-21 : réécrire `bg-ui-surface` en
+ * `bg-[#F9FAFB]` restituait la valeur interdite sous une notation que le test
+ * ne lisait pas. La classe nommée était gardée, la valeur ne l'était pas.
+ *
+ * Tailwind autorise cette syntaxe partout, donc la porte restait grande
+ * ouverte. On interdit toute couleur hexadécimale littérale sur un fond ou un
+ * dégradé : si une valeur mérite d'exister, elle mérite un token.
+ */
+const COULEURS_ARBITRAIRES =
+  /\b(?:bg|from|via|to|text|border)-\[#[0-9a-fA-F]{3,8}\]/g;
+
+/**
  * EXCEPTIONS — portées par l'OCCURRENCE, jamais par le fichier.
  *
  * La première version listait des chemins : tout gris ajouté ailleurs dans ces
@@ -233,6 +247,16 @@ describe("charte graphique — gris du site entier", () => {
       expect(trouves).toEqual([]);
     },
   );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucune couleur hexadécimale littérale",
+    (_rel, fichier) => {
+      // Sans ce contrôle, `bg-[#F9FAFB]` restitue la valeur qu'un token venait
+      // de nommer, sans qu'aucun test ne le voie.
+      const source = fs.readFileSync(fichier, "utf8");
+      expect([...new Set(source.match(COULEURS_ARBITRAIRES) ?? [])]).toEqual([]);
+    },
+  );
 });
 
 /**
@@ -283,10 +307,17 @@ describe("interaction — aucun survol annulé par la substitution", () => {
     "%s ne redéclare aucun survol à l'identique",
     (_r, fichier) => {
       const source = fs.readFileSync(fichier, "utf8");
+      // `group-hover:` et `focus-visible:` comptent autant que `hover:` : un
+      // survol de groupe redéclaré à l'identique est tout aussi inerte. La
+      // relecture Codex du 2026-09-21 a montré que `bg-red-200
+      // group-hover:bg-red-200` passait, le test ne connaissant que `hover:`.
+      const VARIANTES = ["hover", "group-hover", "focus", "focus-visible"];
       const inertes = attributsDeClasse(source).filter((classes) =>
         [...classes.matchAll(/(?:^|\s)((?:bg|text|border)-[\w/-]+)/g)].some(
           ([, utilitaire]) =>
-            new RegExp(`(?:^|\\s)hover:${utilitaire}(?:\\s|$)`).test(classes),
+            VARIANTES.some((v) =>
+              new RegExp(`(?:^|\\s)${v}:${utilitaire}(?:\\s|$)`).test(classes),
+            ),
         ),
       );
       expect(inertes).toEqual([]);
@@ -308,8 +339,13 @@ describe("contraste — les tokens posés restent lisibles", () => {
    * Fonds sombres du site. `ui-muted` (#4B5563) posé sur l'un d'eux tombe
    * sous 2:1 : illisible, quel que soit le seuil retenu.
    */
+  // `(?!-)` est indispensable : `\b` accepte la frontière avant un tiret, donc
+  // `\bbg-blue-marine\b` matchait aussi `bg-blue-marine-50` — une nuance CLAIRE
+  // introduite en vague 2. Le test signalait alors `bg-blue-marine-50
+  // text-gray-dark` (12,96:1), parfaitement lisible, comme une faute.
+  // Relevé par la relecture Codex du 2026-09-21.
   const FONDS_SOMBRES =
-    /\b(?:bg-(?:blue-marine|gray-dark|gray-800|gray-900|slate-800|slate-900|black)|bg-gradient-to-\w+)\b/;
+    /\b(?:bg-(?:blue-marine|gray-dark|gray-800|gray-900|slate-800|slate-900|black)(?!-)|bg-gradient-to-\w+)\b/;
 
   it("ne pose jamais un gris foncé sur un fond sombre", () => {
     // La version initiale cherchait `drop-shadow` — un INDICE de fond sombre,

@@ -278,7 +278,30 @@ bg-blue-100  (6) → bg-blue-marine-100   #D8DEE7
 ```
 
 Écart RGB de 6 à 23 sur 43 pastilles : perceptible à la pipette, pas à l'œil.
-Contraste préservé partout (>10:1 avec `gray-dark`).
+Mesure Playwright avant/après, 4 pages : 0,15 % à 2,24 % de pixels touchés,
+écart RGB maximal constaté **23**. Les fonds couvrent des surfaces, d'où un
+pourcentage plus élevé qu'en vague 1 (0,09 à 0,58 %) où seuls des glyphes
+changeaient.
+**Contraste — par couple texte/fond, pas de statut général.** La première
+rédaction affirmait « contraste préservé partout » ; c'était faux, et la
+relecture Codex du 2026-09-21 l'a relevé. Le détail :
+
+| Texte sur `red-primary-50` (#FDECEC) | Ratio | AA |
+|---|---|---|
+| `gray-dark` #1F2937 | 12,85:1 | ✅ |
+| `blue-marine` #2D3848 | 10,38:1 | ✅ |
+| `red-700` #B91C1C | 5,66:1 | ✅ |
+| `red-600` #DC2626 | 4,23:1 | ❌ |
+| `red-primary` #E53E3E | 3,61:1 | ❌ |
+
+Cinq badges portaient `text-red-primary` sur ce fond : **3,77:1 avant, 3,61:1
+après** — un défaut AA antérieur à ce chantier, que la substitution aggravait.
+Corrigés en `text-red-700` (5,66:1), ils deviennent conformes. Le rouge est
+conservé, la lisibilité aussi.
+
+Leçon : j'avais vérifié `gray-dark` sur les nouveaux fonds (rassurant) sans
+jamais tester le couple rouge-sur-rouge. Vérifier la combinaison qu'on attend
+ne remplace pas vérifier celle qui pose problème.
 
 **Deux surfaces neutres**, à valeur identique donc invisibles :
 
