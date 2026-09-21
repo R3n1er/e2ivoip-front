@@ -28,7 +28,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
             className="w-12 h-12 object-contain mr-4"
           />
         ) : (
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-lg flex items-center justify-center mr-4">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-text rounded-lg flex items-center justify-center mr-4">
             <Buildings size={24} className="text-white" aria-hidden="true" />
           </div>
         )}
@@ -60,7 +60,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
         
         <div className="text-center p-3 bg-ui-surface rounded-lg">
           <div className="flex items-center justify-center mb-1">
-            <MapTrifold size={16} className="text-red-600 mr-1" aria-hidden="true" />
+            <MapTrifold size={16} className="text-red-text mr-1" aria-hidden="true" />
             <span className="font-bold text-sm text-gray-dark">{testimonial.solution}</span>
           </div>
           <p className="text-xs text-ui-muted">Solution</p>

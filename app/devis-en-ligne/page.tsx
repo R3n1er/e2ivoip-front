@@ -177,7 +177,7 @@ export default function DevisEnLignePage() {
                         motion-reduce:transform-none motion-reduce:transition-none
                         ${
                           item.variant === "primary"
-                            ? "bg-red-primary hover:bg-red-600 focus-visible:ring-red-primary"
+                            ? "bg-red-primary hover:bg-red-text focus-visible:ring-red-primary"
                             : "bg-blue-marine hover:bg-blue-marine/90 focus-visible:ring-blue-marine"
                         }
                       `}

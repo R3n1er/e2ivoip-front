@@ -88,6 +88,26 @@ const FONDS_INTERDITS =
   /\b(?:bg|from|via|to)-(?:gray|red|blue)-(?:50|100|200)(?:\/\d{1,3})?\b/g;
 
 /**
+ * Vague 5 (2026-09-21) — les rouges Tailwind bruts, remplacés par des tokens.
+ *
+ * `red-primary` (#E53E3E) donne 4,13:1 sur blanc : sous le seuil AA pour du
+ * texte normal ET pour du texte blanc sur aplat rouge. Le code contournait
+ * déjà le problème ~53 fois avec `text-red-600`/`bg-red-600`/`red-700` — une
+ * règle appliquée partout, nommée nulle part, donc impossible à faire
+ * respecter.
+ *
+ * La charte s'est dotée de deux tokens (accord d'Alban, règle absolue n°3) :
+ *
+ *   text-red-600 / bg-red-600 → red-text       (#DC2626, 4,83:1)
+ *   text-red-700 / bg-red-700 → red-text-hover (#B91C1C, 6,47:1)
+ *
+ * Les valeurs sont IDENTIQUES : seul le nom change. Une couleur qui mérite
+ * d'exister mérite un token — c'est le même principe que pour les gris.
+ */
+const ROUGES_BRUTS_INTERDITS =
+  /\b(?:text|bg|border|ring|divide|from|via|to)-red-(?:600|700)(?:\/\d{1,3})?\b/g;
+
+/**
  * Couleurs arbitraires — `bg-[#FEF2F2]`, `from-[#F9FAFB]`…
  *
  * Relevé par la relecture Codex du 2026-09-21 : réécrire `bg-ui-surface` en
@@ -347,6 +367,21 @@ describe("charte graphique — gris du site entier", () => {
         ),
       ].filter((h) => !PALETTE.has(`#${h}`));
       expect(hors).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucun rouge Tailwind brut",
+    (_rel, fichier) => {
+      // Le gradient hero porte `to-red-600/85` : règle absolue n°2, neutralisé
+      // en amont comme pour toutes les autres gardes.
+      const source = fs
+        .readFileSync(fichier, "utf8")
+        .split(HERO_GRADIENT)
+        .join("");
+      expect([
+        ...new Set(source.match(ROUGES_BRUTS_INTERDITS) ?? []),
+      ]).toEqual([]);
     },
   );
 });

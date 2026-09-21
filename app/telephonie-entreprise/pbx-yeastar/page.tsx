@@ -247,7 +247,7 @@ export default function PBXYeastar() {
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
               <div className="overflow-hidden rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-red-primary to-red-600 p-6 text-white">
+                <div className="bg-gradient-to-r from-red-primary to-red-text p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar Cloud</h3>
                     <span className="rounded-full bg-white/20 px-3 py-1 text-sm font-medium">
@@ -374,7 +374,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-text-hover">
                   <Desktop size={16} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
@@ -710,7 +710,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-text-hover">
                   <PlugCharging size={16} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>

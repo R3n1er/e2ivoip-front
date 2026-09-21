@@ -406,7 +406,7 @@ export default function TrunkSIPIllimite() {
               <a
                 href="tel:+33189560500"
                 suppressHydrationWarning
-                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-text font-medium"
               >
                 <PhoneCall size={24} aria-hidden="true" />
                 <span>France : 01 89 56 05 00</span>
@@ -414,7 +414,7 @@ export default function TrunkSIPIllimite() {
               <a
                 href="tel:+594594963500"
                 suppressHydrationWarning
-                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-text font-medium"
               >
                 <PhoneCall size={24} aria-hidden="true" />
                 <span>Guyane : 05 94 96 35 00</span>
@@ -422,7 +422,7 @@ export default function TrunkSIPIllimite() {
               <a
                 href="tel:+590590173500"
                 suppressHydrationWarning
-                className="inline-flex items-center gap-2 text-red-primary hover:text-red-600 font-medium"
+                className="inline-flex items-center gap-2 text-red-primary hover:text-red-text font-medium"
               >
                 <PhoneCall size={24} aria-hidden="true" />
                 <span>Guadeloupe : 05 90 17 35 00</span>
