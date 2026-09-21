@@ -164,7 +164,7 @@ export default async function BlogPage() {
               </Link>
               <Link
                 href="/nos-services"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-8 py-3 font-medium text-gray-dark transition-colors duration-200 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-8 py-3 font-medium text-gray-dark transition-colors duration-200 hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ui-muted focus-visible:ring-offset-2"
               >
                 Découvrir nos services
               </Link>

@@ -441,7 +441,7 @@ export default function PBXYeastar() {
                   className="absolute -inset-4 rounded-3xl blur-3xl"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(229,62,62,0.2), rgba(45,56,72,0.2), rgba(209,213,219,0.3))",
+                      "linear-gradient(135deg, rgba(229,62,62,0.2), rgba(45,56,72,0.2), rgba(216,222,231,0.3))",
                   }}
                 />
                 <div className="relative rounded-3xl border border-white/60 bg-white/90 p-4 shadow-2xl backdrop-blur">
@@ -538,7 +538,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-ui-border/70">
                   <DeviceMobile size={32} className="text-gray-dark" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -562,7 +562,7 @@ export default function PBXYeastar() {
                   className="absolute -inset-4 rounded-3xl blur-3xl"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(229,62,62,0.15), rgba(45,56,72,0.2), rgba(209,213,219,0.25))",
+                      "linear-gradient(135deg, rgba(229,62,62,0.15), rgba(45,56,72,0.2), rgba(216,222,231,0.25))",
                   }}
                 />
                 <div className="relative rounded-3xl border border-white/60 bg-white/95 p-4 shadow-2xl backdrop-blur">
@@ -854,7 +854,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-2xl border border-ui-border bg-ui-surface p-6 shadow-sm">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-ui-border/70">
                   <Briefcase size={32} className="text-gray-dark" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
