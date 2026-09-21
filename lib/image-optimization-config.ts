@@ -83,9 +83,9 @@ export const IMAGE_OPTIMIZATION_CONFIG = {
   // Fallback colors par type
   fallbackColors: {
     hero: "bg-gray-800",
-    cover: "bg-gray-200",
-    content: "bg-gray-100",
-    thumbnail: "bg-gray-50",
+    cover: "bg-ui-border",
+    content: "bg-ui-surface-2",
+    thumbnail: "bg-ui-surface",
     background: "bg-gray-300",
   },
 

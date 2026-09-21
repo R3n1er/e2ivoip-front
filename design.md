@@ -341,6 +341,78 @@ sont presque toutes des occurrences uniques.
 Le gros du travail mécanique est fait : ce qui reste demande soit une décision
 de design, soit un passage au cas par cas.
 
+### Vague 3 traitée (2026-09-21) — les angles morts du garde-fou
+
+Cette vague n'a presque pas substitué de classes. Elle a corrigé **ce que les
+vagues 1 et 2 ne pouvaient pas voir**. Le constat de départ : un garde-fou
+vert ne prouve la conformité que de ce qu'il regarde.
+
+**Quatre angles morts, tous confirmés par du code en production :**
+
+| Angle mort | Ce qui échappait | Preuve |
+|---|---|---|
+| **Périmètre** — `lib/` jamais scanné | 19 gris de texte | `lib/faq-data.tsx` |
+| **Extension** — `.tsx` seulement | 3 fonds interdits depuis la vague 2 | `lib/image-optimization-config.ts:85-89` |
+| **Préfixes** — `text-`/`border-` seulement, famille `gray` seule | `divide-gray-200` ×2, `ring-gray-400` | `app/telephonie-3cx/page.tsx:358,375`, `app/blog/page.tsx:167` |
+| **Représentation** — la couleur lue comme une classe, jamais comme une valeur | 3 couleurs hors charte en SVG `data:` (`%23ef4444`, `%23dc2626`, `%233b82f6`) et 1 en `rgba()` | `trunk-sip-illimite/page.tsx:298,325,358`, `pbx-yeastar/page.tsx:444,565` |
+
+**Corrections appliquées** — 19 gris FAQ → tokens ; 3 fonds de config → tokens ;
+`divide-gray-200` → `divide-ui-border` ; `bg-slate-200/70` → `bg-ui-border/70` ;
+les hex hors charte → `#E53E3E` / `#2D3848` / `#D8DEE7`.
+
+**Le garde-fou couvre désormais** `lib/`, les `.ts`, les préfixes
+`divide-`/`ring-`/`outline-`/directionnels, les familles neutres voisines
+(slate, zinc, neutral, stone), les classes hors attribut `className` (objets de
+config, `cva()`, maps de variants), et les hex encodés `%23` comparés à la
+palette lue directement dans `tailwind.config.js`.
+
+Trois mutations distinctes ont été injectées puis vérifiées comme détectées :
+gris dans un `.ts`, classe hors `className` dans un `.tsx`, hex hors charte en
+SVG inline. Chacune fait échouer le test.
+
+### Deux mesures qui contredisent l'intuition
+
+La conformité à la charte et l'accessibilité ne vont pas dans le même sens :
+seule la mesure tranche.
+
+- **Bordures de bouton** (`app/blog/page.tsx:167`, `blog/categorie/[slug]`) —
+  substituer `border-gray-300` (1,47:1) par `border-ui-border` (1,24:1)
+  **dégraderait** une bordure déjà sous le seuil WCAG 1.4.11 (3:1).
+  *Non substitué*, exception documentée, arbitrage ouvert : ces boutons
+  demandent un token de bordure accessible, pas un remplacement.
+- **Anneau de focus** (`app/blog/page.tsx:167`) — `ring-gray-400` était à
+  2,54:1, sous le même seuil. `ring-ui-muted` (7,56:1) est à la fois en charte
+  et conforme. *Substitué* : ici la charte répare l'accessibilité.
+
+### Relecture adverse croisée (2026-09-21)
+
+Codex (lecture seule) et Kimi K2.7 Code (via OpenCode / ollama-cloud) ont
+relu la vague en parallèle. Les deux ont trouvé indépendamment l'angle mort
+`.ts` ; Kimi a identifié les hex en SVG inline, Codex les préfixes
+`divide-`/`ring-` et le `rgba()` gris. **Tous ces signalements portaient sur du
+code réel, pas des hypothèses** — d'où leur correction.
+
+Codex a également contesté le décompte « 172 » de la section précédente :
+son recompte, dédoublonné et par catégories disjointes, donne des chiffres
+différents (le gradient protégé pèse 102 classes réparties sur 34 chaînes dans
+20 fichiers, pas 109). **Le décompte de la section ci-dessus est donc indicatif
+et non reproductible** ; le nombre de fichiers porteurs du gradient, lui, reste
+verrouillé par `HERO_FICHIERS_ATTENDUS`.
+
+### Dette connue, non traitée par la vague 3
+
+Signalée par les relecteurs, hors périmètre faute d'arbitrage ou de valeur :
+
+- `app/globals.css` — variables CSS et `@apply` jamais scannés.
+- `tailwind.config.js:5` — le `content` ne liste pas `lib/` : une classe
+  présente uniquement là pourrait être auditée sans être générée.
+- Classes des articles HubSpot distants (`lib/blog-utils.ts:7` conserve
+  `class`) : non auditables au build.
+- Exceptions portées par la classe et non par l'occurrence ; hero compté par
+  fichier et non par emplacement (34 chaînes, 20 fichiers).
+- `text-[rgb(...)]`, `[color:#hex]`, concaténation `"text-gray-" + "600"` :
+  aucun cas présent dans le dépôt, non couverts.
+
 ---
 
 ## 8. Améliorations recommandées — dans le respect strict de la charte

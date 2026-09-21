@@ -42,7 +42,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
       <div className="space-y-4">
         <div>
           <h3 className="font-bold text-lg mb-2">Définition d'un PABX</h3>
-          <p className="text-gray-600 mb-3">
+          <p className="text-ui-muted mb-3">
             Aujourd'hui, les entreprises utilisent ou sont équipées d'un{" "}
             <strong>PABX</strong>, acronyme anglophone pour <strong>P</strong>
             rivate <strong>A</strong>utomatic <strong>B</strong>ranch{" "}
@@ -50,7 +50,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
             privé qui permet de livrer les fonctionnalités essentiels pour
             disposer d'un standard téléphonique.
           </p>
-          <p className="text-gray-600">
+          <p className="text-ui-muted">
             Un <strong>PABX</strong> est utilisé dans les systèmes de
             communication d'entreprise pour relier les standards et postes
             téléphoniques internes au réseau téléphonique.
@@ -58,7 +58,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
         </div>
         <div>
           <h3 className="font-bold text-lg mb-2">Définition d'un IPBX</h3>
-          <p className="text-gray-600 mb-3">
+          <p className="text-ui-muted mb-3">
             La téléphonie IP et la VoIP ont pris le dessus sur les réseaux
             téléphoniques commutées (RTC) et cuivres classiques. Les IPBX, pour{" "}
             <strong>I</strong>nternet protocol <strong>P</strong>rivate{" "}
@@ -66,11 +66,11 @@ export const GENERAL_FAQ: RichFaqItem[] = [
             se sont ainsi imposés comme autocommutateurs téléphoniques privés de
             référence.
           </p>
-          <p className="font-semibold text-gray-800 mb-3">
+          <p className="font-semibold text-gray-dark mb-3">
             Un IPBX c'est un PABX fonctionnant avec le protocole internet (IP)
             et la VoIP.
           </p>
-          <p className="text-gray-600">
+          <p className="text-ui-muted">
             Enfin, plus que de la simple téléphonie, un PBX IP vous permet de
             disposer de fonctionnalités de communication enrichies. On parle
             d'ailleurs souvent de communication unifiée lorsque l'on évoque un
@@ -129,7 +129,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
           Dans le but de garantir un bon fonctionnement et une bonne qualité de
           la voix, nous vous recommandons d'avoir les accès internet suivants :
         </p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li>Fibre Optique FFTO Entreprise</li>
           <li>Fibre Optique FTTH</li>
           <li>Starlink</li>
@@ -202,7 +202,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
           La téléphonie IP offre une grande flexibilité, permettant une{" "}
           <strong>gestion à distance optimale</strong> :
         </p>
-        <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-2 text-ui-muted ml-4">
           <li>
             Si vous utilisez des postes <strong>Fanvil ou Yealink</strong>,
             notre console dédiée nous permet de superviser et configurer vos
@@ -218,7 +218,7 @@ export const GENERAL_FAQ: RichFaqItem[] = [
           Cette approche combinant présence dans les DOM et gestion à distance vous
           offre :
         </p>
-        <ul className="space-y-1 text-gray-600">
+        <ul className="space-y-1 text-ui-muted">
           <li>✓ <strong>Réactivité</strong> pour les interventions urgentes</li>
           <li>✓ <strong>Disponibilité</strong> permanente de vos lignes</li>
           <li>✓ <strong>Sérénité</strong> avec un suivi proactif</li>
@@ -288,7 +288,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
         <p>Gestion à distance de vos postes et de votre instance de téléphonie.</p>
         <div className="space-y-1">
           <p><strong>Nos numéros de support :</strong></p>
-          <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+          <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
             <li>Guyane : <a href="tel:+594594963500" className="text-red-primary hover:underline font-semibold">05 94 96 35 00</a></li>
             <li>France : <a href="tel:+33189560500" className="text-red-primary hover:underline font-semibold">01 89 56 05 00</a></li>
           </ul>
@@ -303,13 +303,13 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p><strong>Recommandations techniques :</strong></p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>Fibre optique FTTO Entreprise</strong> (idéal)</li>
           <li><strong>SDSL Cuivre</strong> avec 2Mb dédiés à la VoIP minimum</li>
           <li><strong>Box 4G</strong> avec forfait 200GB/illimité VoIP en secours</li>
           <li><strong>Fibre FTTH</strong> avec priorité VoIP</li>
         </ul>
-        <p className="text-sm text-gray-600 mt-3">
+        <p className="text-sm text-ui-muted mt-3">
           <strong>Important :</strong> La qualité de votre connexion Internet impacte directement
           la qualité de vos appels. Nous vous accompagnons pour optimiser votre infrastructure.
         </p>
@@ -325,7 +325,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
         <p>
           Avec notre <strong>Trunk SIP au compteur</strong>, vous payez uniquement vos communications réelles :
         </p>
-        <ul className="space-y-2 text-gray-600">
+        <ul className="space-y-2 text-ui-muted">
           <li className="flex items-start">
             <span className="mr-2 mt-1">✓</span>
             <span><strong>Facturation dès la première seconde</strong> de communication</span>
@@ -343,7 +343,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
             <span><strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</span>
           </li>
         </ul>
-        <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-700">
+        <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-dark">
           <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
           vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
         </p>
@@ -590,7 +590,7 @@ export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p>La téléphonie IP offre des avantages majeurs :</p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>Coûts réduits</strong> — appels via Internet, pas de lignes téléphoniques dédiées</li>
           <li><strong>Mobilité</strong> — passez vos appels depuis n'importe où</li>
           <li><strong>Évolutivité</strong> — ajout de postes en quelques clics</li>
@@ -607,7 +607,7 @@ export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p>E2I propose plusieurs solutions adaptées à chaque besoin :</p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>3CX</strong> — IPBX logiciel, idéal pour PME</li>
           <li><strong>PBX Yeastar</strong> — IPBX matériel, robuste et autonome</li>
           <li><strong>Trunk SIP</strong> — au compteur ou illimité, pour relier votre IPBX existant</li>
@@ -624,7 +624,7 @@ export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p>Le choix dépend de plusieurs critères :</p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>TPE</strong> : 3CX SMB mutualisée — solution légère et économique</li>
           <li><strong>PME</strong> : 3CX ou Yeastar avec Trunk SIP</li>
           <li><strong>IPBX existant</strong> : Trunk SIP seul pour vos appels sortants</li>
@@ -771,7 +771,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
         <p>
           Avec <strong>3CX SMB mutualisée</strong>, l'infrastructure est partagée entre plusieurs clients :
         </p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li>Coût réduit</li>
           <li>Mise en service rapide</li>
           <li>Maintenance incluse</li>
@@ -867,7 +867,7 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
           d'un serveur Windows/Linux.
         </p>
         <p>Il est idéal si vous voulez une solution :</p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>Robuste</strong> et peu gourmande en ressources</li>
           <li>Qui tourne <strong>24/7</strong> sans intervention</li>
           <li><strong>Autonome</strong> sans dépendance serveur</li>
@@ -886,7 +886,7 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
     answer: (
       <div className="space-y-3">
         <p>E2I déploie la gamme <strong>Yeastar P-Series</strong> en deux éditions :</p>
-        <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
+        <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li><strong>P-Series Cloud Edition</strong> — hébergée et opérée par E2I</li>
           <li><strong>P-Series Appliances</strong> — installées dans vos locaux (on-premise)</li>
         </ul>
