@@ -80,18 +80,33 @@ reste le rouge principal, le bleu marine reste structurel.
 | Surface claire | `#F9FAFB` | `ui-surface` | — | Fond de section alterné au blanc |
 | Surface marquée | `#F3F4F6` | `ui-surface-2` | — | Fond de section plus soutenu |
 
-### Exceptions d'accessibilité assumées
+### Le rouge de texte — `red-text` (ajouté le 2026-09-21)
 
-Deux couleurs hors charte sont **délibérément conservées**, parce qu'un token
-de charte y dégraderait le contraste :
+Le rouge de marque `red-primary` (#E53E3E) donne **4,13:1** sur blanc. C'est
+**sous le seuil AA** (4,5:1) pour du texte normal, et sous le seuil pour du
+texte blanc posé sur un aplat rouge.
 
-| Classe | Hex | Contraste | Le token échouerait |
+Ce n'est pas une exception ponctuelle : le code appliquait déjà ce contournement
+**~53 fois**. Une règle de fait, appliquée partout et nommée nulle part — donc
+impossible à faire respecter. Elle est désormais nommée.
+
+| Token | Hex | Contraste /blanc | Usage |
 |---|---|---|---|
-| `text-red-600` | `#DC2626` | **4,83:1** — AA OK | `red-primary` : 4,13:1, sous le seuil |
-| `hover:text-red-700` | `#B91C1C` | **6,47:1** — AA OK | idem, sur le lien « Espace client » du footer |
+| `red-primary` | `#E53E3E` | 4,13:1 | Logo, titres **18px+** (ou 14px gras), aplats décoratifs, bordures, icônes |
+| `red-text` | `#DC2626` | **4,83:1** — AA | Texte courant, liens, fonds pleins portant du texte blanc |
+| `red-text-hover` | `#B91C1C` | **6,47:1** — AA | Survol des liens |
+
+**L'écart entre les deux rouges est ΔE≈61 : imperceptible en usage réel.**
+L'identité visuelle est préservée, la lisibilité est gagnée.
+
+#### La règle
+
+> `red-primary` est interdit sur du texte de moins de 18px et sur tout aplat
+> portant du texte blanc. Dans ces deux cas, employer `red-text`.
 
 La conformité ne prime pas sur la lisibilité : un texte conforme et illisible
-est un défaut, pas une réussite.
+est un défaut, pas une réussite. C'est pourquoi la charte se dote d'un second
+rouge plutôt que d'imposer le premier partout.
 
 ## 🏷️ Application dans l'Identité Visuelle
 

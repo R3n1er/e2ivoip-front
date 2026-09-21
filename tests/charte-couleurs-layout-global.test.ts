@@ -46,8 +46,21 @@ const HERO_GRADIENT = "from-blue-900/85 via-blue-800/80 to-red-600/85";
  * Décision (2026-09-20) : on conserve `red-700` comme correctif
  * d'accessibilité assumé. Cette constante existe pour que l'exception soit
  * VISIBLE et argumentée, plutôt que silencieusement absente de la regex.
+ *
+ * MISE À JOUR (2026-09-21, vague 5) — l'exception est devenue la RÈGLE.
+ *
+ * Ce raisonnement, écrit ici pour un seul lien, s'appliquait en fait ~53 fois
+ * dans le dépôt sans être nommé nulle part. La charte s'est donc dotée d'un
+ * rouge de texte officiel (accord d'Alban, règle absolue n°3) :
+ *
+ *   red-text       #DC2626  4,83:1  texte courant, liens, fonds à texte blanc
+ *   red-text-hover #B91C1C  6,47:1  survol des liens
+ *
+ * La couleur du footer n'a pas changé — #B91C1C hier, #B91C1C aujourd'hui.
+ * Seul son nom a changé : ce n'est plus une classe Tailwind tolérée par
+ * exception, c'est un token de charte. Voir docs/CHARTE_GRAPHIQUE.md.
  */
-const EXCEPTION_A11Y_FOOTER = "hover:text-red-700";
+const EXCEPTION_A11Y_FOOTER = "hover:text-red-text-hover";
 
 /**
  * Palettes Tailwind interdites. Contrairement au test des pages juridiques,

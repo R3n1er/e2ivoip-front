@@ -213,7 +213,7 @@ export default function Telephonie3CX() {
                       </CTAButtonMarine>
                     </div>
                     <p className="text-center mt-4">
-                      <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                         En savoir plus sur notre offre 3CX PRO
                       </NextLink>
                     </p>
@@ -223,7 +223,7 @@ export default function Telephonie3CX() {
 
               {/* 3CX SMB - Mutualisée */}
               <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden group">
-                <div className="bg-gradient-to-r from-red-primary to-red-700 p-6 text-white">
+                <div className="bg-gradient-to-r from-red-primary to-red-text-hover p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-2xl font-bold">3CX SMB PRO</h3>
                     <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -302,7 +302,7 @@ export default function Telephonie3CX() {
                       </CTAButton>
                     </div>
                     <p className="text-center mt-4">
-                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                         En savoir plus sur notre offre 3CX SMB PRO
                       </NextLink>
                     </p>
@@ -373,10 +373,10 @@ export default function Telephonie3CX() {
                     ))}
                     {/* Liens vers les pages détail de chaque offre */}
                     <div className="grid grid-cols-2 divide-x divide-ui-border pt-2 text-center">
-                      <NextLink href="/3cx-pro" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/3cx-pro" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                         En savoir plus
                       </NextLink>
-                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                      <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                         En savoir plus
                       </NextLink>
                     </div>
@@ -406,12 +406,12 @@ export default function Telephonie3CX() {
                         <tr>
                           <td className="px-6 py-4"></td>
                           <td className="px-6 py-4 text-center">
-                            <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                            <NextLink href="/3cx-pro" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                               En savoir plus sur notre offre
                             </NextLink>
                           </td>
                           <td className="px-6 py-4 text-center">
-                            <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
+                            <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-text transition-colors">
                               En savoir plus sur notre offre
                             </NextLink>
                           </td>
@@ -490,7 +490,7 @@ export default function Telephonie3CX() {
                     250 participants
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-text-hover text-xs font-semibold rounded-full">
                       <Users size={16} className="mr-1" aria-hidden="true" />
                       Jusqu'à 250 participants
                     </span>
@@ -558,7 +558,7 @@ export default function Telephonie3CX() {
                     notifications
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-text-hover text-xs font-semibold rounded-full">
                       <DeviceMobile size={16} className="mr-1" aria-hidden="true" />
                       iOS & Android
                     </span>
@@ -592,7 +592,7 @@ export default function Telephonie3CX() {
                     plus
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-700 text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-text-hover text-xs font-semibold rounded-full">
                       <Link size={16} className="mr-1" aria-hidden="true" />
                       Multi-CRM
                     </span>

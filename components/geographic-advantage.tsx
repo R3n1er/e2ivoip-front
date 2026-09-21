@@ -62,7 +62,7 @@ export function GeographicAdvantage({ locations }: GeographicAdvantageProps) {
                 suppressHydrationWarning
                 className="group border-b border-ui-border py-5 sm:px-4 lg:border-r lg:last:border-r-0"
               >
-                <span className="block text-sm font-semibold text-gray-dark group-hover:text-red-primary">
+                <span className="block text-sm font-semibold text-gray-dark group-hover:text-red-text">
                   {location.region}
                 </span>
                 <span className="mt-2 flex items-center font-mono text-sm tabular-nums text-red-primary">

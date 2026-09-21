@@ -134,7 +134,7 @@ export default async function BlogPage() {
                     <li key={post.id}>
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="text-sm leading-relaxed text-ui-muted underline-offset-2 hover:text-red-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                        className="text-sm leading-relaxed text-ui-muted underline-offset-2 hover:text-red-text hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
                       >
                         {post.title}
                       </Link>
@@ -158,7 +158,7 @@ export default async function BlogPage() {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/devis-en-ligne"
-                className="inline-flex items-center justify-center rounded-lg bg-red-primary px-8 py-3 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-red-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-lg bg-red-primary px-8 py-3 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-red-text hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
               >
                 Demander un devis
               </Link>
