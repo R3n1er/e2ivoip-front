@@ -10,9 +10,9 @@ export default function OfflinePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-red-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-marine-50 to-red-primary-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-        <div className="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+        <div className="mx-auto w-20 h-20 bg-red-primary-100 rounded-full flex items-center justify-center mb-6">
           <Question size={24} className="text-red-600" aria-hidden="true" />
         </div>
 
@@ -37,7 +37,7 @@ export default function OfflinePage() {
         <div className="space-y-3">
           <Link
             href="/"
-            className="w-full bg-gray-100 text-gray-dark font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-ui-surface-2 text-gray-dark font-medium py-3 px-6 rounded-lg hover:bg-ui-border transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <House size={24} aria-hidden="true" />
             Retour à l&apos;accueil
@@ -55,7 +55,7 @@ export default function OfflinePage() {
             <SecureEmail
               address="contact"
               mode="mailto"
-              className="flex-1 bg-blue-100 text-blue-700 font-medium py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-blue-marine-100 text-blue-700 font-medium py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors duration-200 flex items-center justify-center gap-2"
               label="Email"
             />
           </div>

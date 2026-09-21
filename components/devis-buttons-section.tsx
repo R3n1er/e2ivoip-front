@@ -31,7 +31,7 @@ export function DevisButtonsSection() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-ui-surface">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre principal */}
         <motion.div

@@ -227,7 +227,7 @@ export default function MentionsLegales() {
       </section>
 
       {/* Données personnelles — renvoi vers la politique */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
@@ -407,7 +407,7 @@ export default function MentionsLegales() {
       </section>
 
       {/* Section Certification */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
@@ -419,7 +419,7 @@ export default function MentionsLegales() {
               d&rsquo;évaluation du standard téléphonique.
             </p>
             <div className="bg-white rounded-lg p-8 shadow-lg inline-block">
-              <div className="w-32 h-16 bg-gray-200 rounded flex items-center justify-center">
+              <div className="w-32 h-16 bg-ui-border rounded flex items-center justify-center">
                 <Badge variant="secondary" className="text-sm">
                   3CX Silver Partner
                 </Badge>

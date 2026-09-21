@@ -257,7 +257,7 @@ export default function AccordSousTraitanceRgpdPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-ui-border">
+                <div className="mt-8 p-4 bg-ui-surface rounded-lg border border-ui-border">
                   <p className="text-sm text-gray-dark">
                     <strong>Ordre de priorité :</strong> en cas de contradiction sur la
                     protection des Données personnelles, le DPA prévaut sur les

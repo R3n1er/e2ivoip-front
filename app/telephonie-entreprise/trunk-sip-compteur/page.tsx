@@ -186,7 +186,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-ui-surface-2 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Phone size={24} className="text-gray-dark" aria-hidden="true" />
                     </div>
                     <div>
@@ -217,7 +217,7 @@ export default function TrunkSIPCompteur() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-ui-surface-2 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Users size={24} className="text-gray-secondary" aria-hidden="true" />
                     </div>
                     <div>

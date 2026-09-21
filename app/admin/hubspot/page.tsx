@@ -73,7 +73,7 @@ export default function HubSpotAdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-ui-surface py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-dark mb-2">
@@ -134,7 +134,7 @@ export default function HubSpotAdminPage() {
                   <label className="block text-sm font-medium text-gray-dark mb-1">
                     Client ID
                   </label>
-                  <div className="bg-gray-100 p-2 rounded text-sm font-mono">
+                  <div className="bg-ui-surface-2 p-2 rounded text-sm font-mono">
                     {process.env.NEXT_PUBLIC_HUBSPOT_CLIENT_ID ||
                       "Non configuré"}
                   </div>
@@ -143,7 +143,7 @@ export default function HubSpotAdminPage() {
                   <label className="block text-sm font-medium text-gray-dark mb-1">
                     Redirect URI
                   </label>
-                  <div className="bg-gray-100 p-2 rounded text-sm font-mono">
+                  <div className="bg-ui-surface-2 p-2 rounded text-sm font-mono">
                     {process.env.NEXT_PUBLIC_HUBSPOT_REDIRECT_URI ||
                       "Non configuré"}
                   </div>
@@ -243,7 +243,7 @@ export default function HubSpotAdminPage() {
 
           {/* Messages d'erreur */}
           {error && (
-            <Card className="border-red-200 bg-red-50">
+            <Card className="border-red-200 bg-red-primary-50">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-2 text-red-700">
                   <XCircle size={24} aria-hidden="true" />

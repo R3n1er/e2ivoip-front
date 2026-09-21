@@ -140,7 +140,7 @@ export default function PolitiqueConfidentialitePage() {
                 {PROCESSINGS.map((processing) => (
                   <div
                     key={processing.purpose}
-                    className="rounded-lg border border-ui-border bg-gray-50 p-4"
+                    className="rounded-lg border border-ui-border bg-ui-surface p-4"
                   >
                     <h3 className="mb-3 font-semibold text-gray-dark">
                       {processing.purpose}
@@ -251,7 +251,7 @@ export default function PolitiqueConfidentialitePage() {
                 {SUB_PROCESSORS.map((processor) => (
                   <div
                     key={processor.name}
-                    className="rounded-lg border border-ui-border bg-gray-50 p-4"
+                    className="rounded-lg border border-ui-border bg-ui-surface p-4"
                   >
                     <h3 className="mb-2 font-semibold text-gray-dark">
                       {processor.name}
@@ -367,7 +367,7 @@ export default function PolitiqueConfidentialitePage() {
                 ))}
               </dl>
 
-              <div className="mt-6 rounded-lg border border-ui-border bg-gray-50 p-4 text-gray-dark">
+              <div className="mt-6 rounded-lg border border-ui-border bg-ui-surface p-4 text-gray-dark">
                 <p>
                   Pour exercer l&rsquo;un de ces droits, utilisez notre{" "}
                   <Link

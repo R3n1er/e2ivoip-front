@@ -50,6 +50,49 @@
   - Inversions de couleurs
   - Version scrolled du header
 
+## 🎨 Teintes dérivées (ajoutées le 2026-09-21)
+
+> Extension validée explicitement par Alban. Les cinq couleurs principales
+> ci-dessus restent inchangées : ces teintes en dérivent et ne s'y substituent
+> jamais.
+
+Ce sont des **fonds uniquement** — trop claires pour porter du texte. L'accent
+reste le rouge principal, le bleu marine reste structurel.
+
+| Teinte | Hex | Token | Utilisation |
+|---|---|---|---|
+| Rouge très clair | `#FDECEC` | `red-primary-50` | Fonds de badges et callouts |
+| Rouge clair | `#FAD4D4` | `red-primary-100` | Fonds d'icônes (pastilles rondes) |
+| Marine très clair | `#EEF1F5` | `blue-marine-50` | Fonds de sections alternées |
+| Marine clair | `#D8DEE7` | `blue-marine-100` | Fonds d'icônes, bordures douces |
+
+## ⚙️ Gris d'interface (hors charte de marque)
+
+> Ce ne sont **pas** des couleurs de marque : ce sont des valeurs
+> fonctionnelles, nommées pour éviter les utilitaires Tailwind bruts. Elles
+> suivent la rampe de `gray-dark`, lui-même identique au `gray-800` de
+> Tailwind.
+
+| Valeur | Hex | Token | Contraste / blanc | Utilisation |
+|---|---|---|---|---|
+| Gris texte secondaire | `#4B5563` | `ui-muted` | 7,56:1 — AA | Navigation niv. 2-3, corps de texte |
+| Gris bordure | `#E5E7EB` | `ui-border` | — | Séparateurs, bordures |
+| Surface claire | `#F9FAFB` | `ui-surface` | — | Fond de section alterné au blanc |
+| Surface marquée | `#F3F4F6` | `ui-surface-2` | — | Fond de section plus soutenu |
+
+### Exceptions d'accessibilité assumées
+
+Deux couleurs hors charte sont **délibérément conservées**, parce qu'un token
+de charte y dégraderait le contraste :
+
+| Classe | Hex | Contraste | Le token échouerait |
+|---|---|---|---|
+| `text-red-600` | `#DC2626` | **4,83:1** — AA OK | `red-primary` : 4,13:1, sous le seuil |
+| `hover:text-red-700` | `#B91C1C` | **6,47:1** — AA OK | idem, sur le lien « Espace client » du footer |
+
+La conformité ne prime pas sur la lisibilité : un texte conforme et illisible
+est un défaut, pas une réussite.
+
 ## 🏷️ Application dans l'Identité Visuelle
 
 ### Logo E2I VoIP

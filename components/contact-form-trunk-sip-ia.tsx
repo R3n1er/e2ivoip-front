@@ -12,7 +12,7 @@ export function ContactFormTrunkSipIA() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-gray-50 via-white to-red-50"
+      className="py-20 bg-gradient-to-br from-ui-surface via-white to-red-primary-50"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">

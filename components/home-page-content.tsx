@@ -8,7 +8,7 @@ import { ContactSectionSimple } from "@/components/contact-section-simple";
 
 export function HomePageContent() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-ui-surface to-white">
       <div className="relative">
         <HomepageHeroSectionSimple />
         <TransformationSection />

@@ -43,7 +43,7 @@ export function ProblemSolutionSection({
   solutionsTitle = "Ce que change une instance dédiée",
 }: ProblemSolutionSectionProps) {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-ui-surface py-20">
       <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div>
           <h2 className="mb-8 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">

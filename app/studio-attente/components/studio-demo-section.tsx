@@ -23,7 +23,7 @@ export function StudioDemoSection() {
   const demos = STUDIO_DEMOS.filter((d) => d.category === active);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-ui-surface">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-3">

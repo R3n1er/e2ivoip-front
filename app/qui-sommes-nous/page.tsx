@@ -118,7 +118,7 @@ export default function QuiSommesNous() {
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-red-100 to-blue-100 rounded-2xl p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-red-primary-100 to-blue-marine-100 rounded-2xl p-8 shadow-xl">
                 <div className="text-center">
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <Phone size={24} className="text-5xl text-white" aria-hidden="true" />
@@ -152,7 +152,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Section Nos Missions */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
@@ -286,7 +286,7 @@ export default function QuiSommesNous() {
 
             <div
               id="cas-client-tbf"
-              className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8 scroll-mt-24"
+              className="bg-gradient-to-br from-blue-marine-50 to-red-primary-50 rounded-2xl p-8 scroll-mt-24"
             >
               <h3 className="text-2xl font-bold text-gray-dark mb-6 text-center">
                 Cas client emblématique
@@ -332,7 +332,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Section Équipe */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2
@@ -352,7 +352,7 @@ export default function QuiSommesNous() {
             {teamMembers.map((member, index) => (
               <Card key={index}>
                 <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-ui-border rounded-full mx-auto mb-6 flex items-center justify-center">
                     <UserCircle size={24} className="text-5xl text-ui-muted" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-dark mb-2">
@@ -449,7 +449,7 @@ export default function QuiSommesNous() {
           </div>
 
           {/* Logos des partenaires */}
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="bg-ui-surface rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-dark mb-8 text-center">
               Nos{" "}
               <span className="text-red-primary">partenaires matériels</span>

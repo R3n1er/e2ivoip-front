@@ -260,7 +260,7 @@ export default function StudioAttente() {
                   {comparisonRows.map((row, i) => (
                     <tr
                       key={i}
-                      className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                      className={i % 2 === 0 ? "bg-ui-surface" : "bg-white"}
                     >
                       <td className="py-3 px-4 font-medium text-gray-dark">
                         {row.label}
@@ -280,7 +280,7 @@ export default function StudioAttente() {
         </section>
 
         {/* Étapes du parcours */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-ui-surface">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-12">
               Comment ça{" "}
@@ -307,7 +307,7 @@ export default function StudioAttente() {
         </section>
 
         {/* Bibliothèque musicale & infos légales SACEM */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-ui-surface">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-4">
               Musiques{" "}
@@ -468,7 +468,7 @@ export default function StudioAttente() {
         </section>
 
         {/* Territory phone links */}
-        <section className="bg-gray-50 py-8">
+        <section className="bg-ui-surface py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
               APPELEZ-NOUS DIRECTEMENT

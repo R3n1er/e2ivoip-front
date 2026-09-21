@@ -195,7 +195,7 @@ export default function NosServices() {
       <div className="min-h-screen bg-white">
         <main className="pt-6">
           {/* Hero Section */}
-          <section className="py-20 bg-gradient-to-r from-red-50 to-white">
+          <section className="py-20 bg-gradient-to-r from-red-primary-50 to-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h1 className="text-4xl md:text-5xl font-bold text-blue-marine mb-6">
@@ -241,7 +241,7 @@ export default function NosServices() {
                     className="text-center border-ui-border hover:shadow-lg transition-shadow"
                   >
                     <CardHeader>
-                      <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                      <div className="w-16 h-16 mx-auto bg-ui-surface-2 rounded-full flex items-center justify-center mb-4">
                         <benefit.Icon size={32} className={benefit.color} aria-hidden="true" />
                       </div>
                       <CardTitle className="text-lg text-blue-marine">
@@ -260,7 +260,7 @@ export default function NosServices() {
           </section>
 
           {/* Catégories de services */}
-          <section className="py-16 bg-gray-50">
+          <section className="py-16 bg-ui-surface">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-blue-marine mb-4">
@@ -319,7 +319,7 @@ export default function NosServices() {
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                        <div className="w-12 h-12 bg-red-primary-100 rounded-lg flex items-center justify-center">
                           <service.Icon size={24} className="text-red-primary" aria-hidden="true" />
                         </div>
                         <Badge className="bg-red-primary text-white">
@@ -396,7 +396,7 @@ export default function NosServices() {
           </section>
 
           {/* Territory phone links -- D-09 */}
-          <section className="bg-gray-50 py-8">
+          <section className="bg-ui-surface py-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
                 APPELEZ-NOUS DIRECTEMENT

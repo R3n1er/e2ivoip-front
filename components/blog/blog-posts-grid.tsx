@@ -32,18 +32,18 @@ export function BlogPostsGrid({
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="animate-pulse">
             <Card className="border-ui-border">
-              <div className="w-full h-48 bg-gray-200 rounded-t-lg"></div>
+              <div className="w-full h-48 bg-ui-border rounded-t-lg"></div>
               <CardHeader>
-                <div className="w-20 h-4 bg-gray-200 rounded mb-2"></div>
-                <div className="w-full h-6 bg-gray-200 rounded"></div>
-                <div className="w-full h-16 bg-gray-200 rounded"></div>
+                <div className="w-20 h-4 bg-ui-border rounded mb-2"></div>
+                <div className="w-full h-6 bg-ui-border rounded"></div>
+                <div className="w-full h-16 bg-ui-border rounded"></div>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-20 h-3 bg-gray-200 rounded"></div>
-                  <div className="w-24 h-3 bg-gray-200 rounded"></div>
+                  <div className="w-20 h-3 bg-ui-border rounded"></div>
+                  <div className="w-24 h-3 bg-ui-border rounded"></div>
                 </div>
-                <div className="w-full h-8 bg-gray-200 rounded"></div>
+                <div className="w-full h-8 bg-ui-border rounded"></div>
               </CardContent>
             </Card>
           </div>

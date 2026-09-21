@@ -43,7 +43,7 @@ export function AboutSectionSimple() {
   ];
 
   return (
-    <section id="problematique-solution" className="py-20 bg-gray-50">
+    <section id="problematique-solution" className="py-20 bg-ui-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Solution */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -90,7 +90,7 @@ export function AboutSectionSimple() {
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-red-primary-100 rounded-lg flex items-center justify-center">
                       <feature.Icon size={24} className="text-red-primary" />
                     </div>
                   </div>

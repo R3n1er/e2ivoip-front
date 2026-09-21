@@ -41,7 +41,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       {/* Description */}
       <div className="mb-6">
         <div className="flex items-start mb-3">
-          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+          <div className="w-8 h-8 bg-blue-marine-100 rounded-full flex items-center justify-center mr-3 mt-1">
             <Quotes size={24} className="text-blue-600" aria-hidden="true" />
           </div>
           <p className="text-gray-dark italic leading-relaxed">{testimonial.description}</p>
@@ -50,7 +50,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
 
       {/* Statistiques */}
       <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="text-center p-3 bg-gray-50 rounded-lg">
+        <div className="text-center p-3 bg-ui-surface rounded-lg">
           <div className="flex items-center justify-center mb-1">
             <Users size={16} className="text-blue-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-xl text-gray-dark">{testimonial.users}</span>
@@ -58,7 +58,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
           <p className="text-xs text-ui-muted">Utilisateurs</p>
         </div>
         
-        <div className="text-center p-3 bg-gray-50 rounded-lg">
+        <div className="text-center p-3 bg-ui-surface rounded-lg">
           <div className="flex items-center justify-center mb-1">
             <MapTrifold size={16} className="text-red-600 mr-1" aria-hidden="true" />
             <span className="font-bold text-sm text-gray-dark">{testimonial.solution}</span>
@@ -70,7 +70,7 @@ export function TestimonialCard({ testimonial, className = "" }: TestimonialCard
       {/* Badge de confiance */}
       <div className="pt-4 border-t border-ui-border">
         <div className="flex items-center justify-center">
-          <div className="flex items-center rounded-full bg-red-50 px-3 py-1">
+          <div className="flex items-center rounded-full bg-red-primary-50 px-3 py-1">
             <CheckCircle size={16} className="mr-2 text-red-primary" aria-hidden="true" />
             <span className="text-sm font-medium text-gray-dark">Client satisfait</span>
           </div>
@@ -92,7 +92,7 @@ export function TestimonialsSection({
   subtitle = "Découvrez comment nos clients ont transformé leurs communications"
 }: TestimonialsSection) {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-ui-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <div className="text-center mb-12">
@@ -127,7 +127,7 @@ export function TestimonialsSection({
               { Icon: Buildings, title: "Entreprises", desc: "Entreprises locales et groupes régionaux" }
             ].map((sector, index) => (
               <div key={index} className="bg-white rounded-xl border border-ui-border p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-blue-marine-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <sector.Icon size={24} className="text-blue-600" aria-hidden="true" />
                 </div>
                 <h4 className="font-semibold text-gray-dark mb-2">{sector.title}</h4>

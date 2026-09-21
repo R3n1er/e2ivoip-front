@@ -128,7 +128,7 @@ export default function PBXYeastar() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-primary-50">
                         <Cloud size={24} className="text-red-primary" aria-hidden="true" />
                       </div>
                       <h3 className="text-base font-semibold text-gray-dark">
@@ -143,7 +143,7 @@ export default function PBXYeastar() {
                   </div>
                   <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ui-surface-2">
                         <HardDrive size={24} className="text-gray-dark" aria-hidden="true" />
                       </div>
                       <h3 className="text-base font-semibold text-gray-dark">
@@ -160,7 +160,7 @@ export default function PBXYeastar() {
 
                 <div className="mt-8 space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-primary-50">
                       <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
@@ -188,7 +188,7 @@ export default function PBXYeastar() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-primary-50">
                       <Rocket size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
@@ -226,10 +226,10 @@ export default function PBXYeastar() {
         </section>
 
         {/* Modes de déploiement */}
-        <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+        <section className="bg-gradient-to-br from-ui-surface to-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="inline-flex items-center rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-dark">
+              <div className="inline-flex items-center rounded-full bg-ui-surface-2 px-4 py-2 text-sm font-medium text-gray-dark">
                 <Compass size={16} className="mr-2" aria-hidden="true" />
                 Deux approches complémentaires
               </div>
@@ -374,7 +374,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
                   <Desktop size={16} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
@@ -474,7 +474,7 @@ export default function PBXYeastar() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-primary-50">
                   <Buildings size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -500,7 +500,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-primary-50">
                   <VideoCamera size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -512,7 +512,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-primary-50">
                   <Shield size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -576,7 +576,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-700">
                   <WhatsappLogo size={16} className="mr-2" aria-hidden="true" />
                   Relation client simplifiée
                 </div>
@@ -641,7 +641,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div>
-                <div className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-700">
                   <Headphones size={16} className="mr-2" aria-hidden="true" />
                   Performance opérationnelle
                 </div>
@@ -658,7 +658,7 @@ export default function PBXYeastar() {
                 </p>
                 <div className="mt-8 space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-primary-50">
                       <Users size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
@@ -686,7 +686,7 @@ export default function PBXYeastar() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-primary-50">
                       <Microphone size={24} className="text-red-primary" aria-hidden="true" />
                     </div>
                     <div>
@@ -706,11 +706,11 @@ export default function PBXYeastar() {
         </section>
 
         {/* Section Intégrations */}
-        <section className="bg-gradient-to-br from-gray-50 to-white py-20">
+        <section className="bg-gradient-to-br from-ui-surface to-white py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center rounded-full bg-red-50 px-4 py-2 text-sm font-medium text-red-primary">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
                   <PlugCharging size={16} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>
@@ -840,8 +840,8 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-3">
-              <div className="rounded-2xl border border-blue-900/20 bg-blue-50 p-6 shadow-sm">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100">
+              <div className="rounded-2xl border border-blue-900/20 bg-blue-marine-50 p-6 shadow-sm">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-marine-100">
                   <HeartbeatIcon size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -853,7 +853,7 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-ui-border bg-gray-50 p-6 shadow-sm">
+              <div className="rounded-2xl border border-ui-border bg-ui-surface p-6 shadow-sm">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-slate-200/70">
                   <Briefcase size={32} className="text-gray-dark" aria-hidden="true" />
                 </div>
@@ -866,8 +866,8 @@ export default function PBXYeastar() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-red-200 bg-red-50 p-6 shadow-sm">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-100">
+              <div className="rounded-2xl border border-red-200 bg-red-primary-50 p-6 shadow-sm">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-red-primary-100">
                   <ShoppingCart size={32} className="text-red-primary" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
