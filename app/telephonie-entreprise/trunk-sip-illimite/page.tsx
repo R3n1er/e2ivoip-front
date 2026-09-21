@@ -124,7 +124,7 @@ export default function TrunkSIPIllimite() {
                   <span className="text-red-primary">L'illimité</span> pour
                   votre téléphonie d'entreprise
                 </h2>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-xl text-ui-muted mb-8">
                   Notre <strong>Trunk SIP Illimité</strong> est la solution idéale
                   pour les entreprises avec un volume d'appels important. 
                   Maîtrisez votre budget télécom avec un forfait tout inclus.
@@ -139,7 +139,7 @@ export default function TrunkSIPIllimite() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Fixes illimités France métropolitaine
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         <strong>Numéros fixes</strong> en illimité vers la France
                         métropolitaine. Appelez sans compter sur les fixes ; les
                         appels vers mobiles sont facturés au compteur.
@@ -154,7 +154,7 @@ export default function TrunkSIPIllimite() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Fixes illimités vers les DOM
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         <strong>Guadeloupe, Martinique, Guyane, Réunion</strong> :
                         appelez les fixes des DOM en illimité.
                       </p>
@@ -168,7 +168,7 @@ export default function TrunkSIPIllimite() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         3 paliers : 4, 8 ou 16 appels simultanés
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         Choisissez le forfait adapté à votre volume d'appels.
                         <strong> Évolutif à tout moment</strong> pour
                         accompagner votre croissance.
@@ -183,7 +183,7 @@ export default function TrunkSIPIllimite() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Politique Fair Use transparente
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         Usage professionnel normal, sans usage intensif d'appels
                         entrants et sortants (type centre d'appels).
                         <strong> Pas de frais cachés</strong>, pas de mauvaise
@@ -198,10 +198,10 @@ export default function TrunkSIPIllimite() {
                 {/* Tableau des forfaits */}
                 <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-gray-dark mb-2">
                       Nos forfaits illimités
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-ui-muted">
                       Choisissez selon vos besoins en appels simultanés
                     </p>
                   </div>
@@ -212,7 +212,7 @@ export default function TrunkSIPIllimite() {
                         className={`bg-white p-4 rounded-xl shadow-sm ${
                           forfait.popular
                             ? "border-2 border-red-primary relative"
-                            : "border border-gray-200"
+                            : "border border-ui-border"
                         }`}
                       >
                         {forfait.popular && (
@@ -227,7 +227,7 @@ export default function TrunkSIPIllimite() {
                             <span className="font-bold text-lg text-gray-dark">
                               {forfait.appels} appels simultanés
                             </span>
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className="text-sm text-ui-muted mt-1">
                               {forfait.ideal}
                             </p>
                           </div>
@@ -235,7 +235,7 @@ export default function TrunkSIPIllimite() {
                             <span className="text-red-primary font-bold text-xl">
                               Sur devis
                             </span>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-ui-muted mt-1">
                               /mois
                             </p>
                           </div>
@@ -282,14 +282,14 @@ export default function TrunkSIPIllimite() {
                 Pourquoi choisir notre{" "}
                 <span className="text-red-primary">Trunk SIP Illimité</span> ?
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-3xl mx-auto">
                 Une solution complète pour maîtriser vos coûts télécom
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Budget maîtrisé */}
-              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-ui-border shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Palette rouge & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-blue-marine to-blue-marine"></div>
                 
@@ -302,11 +302,11 @@ export default function TrunkSIPIllimite() {
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
                     <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                      <Calculator size={24} className="text-3xl text-gray-800" aria-hidden="true" />
+                      <Calculator size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-red-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-dark mb-3 group-hover:text-red-primary transition-colors">
                     Budget maîtrisé
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
@@ -316,7 +316,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Couverture complète */}
-              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-ui-border shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Mélange bleu marine et rouge */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-marine via-red-primary to-blue-marine"></div>
                 
@@ -333,7 +333,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-red-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-dark mb-3 group-hover:text-red-primary transition-colors">
                     Couverture France + DOM
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
@@ -341,7 +341,7 @@ export default function TrunkSIPIllimite() {
                   </p>
                   
                   {/* Bottom accent - Bleu marine */}
-                  <div className="flex items-center text-gray-800 font-medium text-sm">
+                  <div className="flex items-center text-gray-dark font-medium text-sm">
                     <MapPin size={16} className="mr-2" aria-hidden="true" />
                     <span>National & DOM-TOM</span>
                   </div>
@@ -349,7 +349,7 @@ export default function TrunkSIPIllimite() {
               </div>
 
               {/* Évolutif */}
-              <div className="relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
+              <div className="relative overflow-hidden bg-white rounded-xl border border-ui-border shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 group">
                 {/* Gradient border top - Rouge principal & bleu marine */}
                 <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-red-primary via-red-500 to-blue-marine"></div>
                 
@@ -366,7 +366,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-red-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-dark mb-3 group-hover:text-red-primary transition-colors">
                     Solution évolutive
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
@@ -396,7 +396,7 @@ export default function TrunkSIPIllimite() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Parlons de votre <span className="text-red-primary">projet</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-2xl mx-auto">
                 Contactez notre service commercial pour obtenir un devis et plus
                 d'informations. Un numéro dédié selon votre région :
               </p>
@@ -452,16 +452,16 @@ export default function TrunkSIPIllimite() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
                 Tarifs des <span className="text-red-primary">appels vers mobiles</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-2xl mx-auto">
                 Les fixes sont en illimité. Les appels vers les mobiles sont
                 facturés au compteur, à la minute.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-sm border border-ui-border overflow-hidden">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200">
+                  <tr className="bg-gray-50 border-b border-ui-border">
                     <th className="px-6 py-4 text-sm font-semibold text-gray-dark">
                       Destination
                     </th>
@@ -474,9 +474,9 @@ export default function TrunkSIPIllimite() {
                   {tarifsMobiles.map((tarif) => (
                     <tr
                       key={tarif.destination}
-                      className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors"
+                      className="border-b border-ui-border last:border-0 hover:bg-gray-50 transition-colors"
                     >
-                      <td className="px-6 py-4 text-gray-700">
+                      <td className="px-6 py-4 text-gray-dark">
                         {tarif.destination}
                       </td>
                       <td className="px-6 py-4 text-right font-semibold text-red-primary">
@@ -488,7 +488,7 @@ export default function TrunkSIPIllimite() {
               </table>
             </div>
 
-            <p className="text-sm text-gray-500 text-center mt-4">
+            <p className="text-sm text-ui-muted text-center mt-4">
               Tarifs HT à la minute, hors taxes. Tarification en vigueur, susceptible d'évolution.
             </p>
           </div>

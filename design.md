@@ -156,6 +156,126 @@ Tells de *composition* conservés comme choix assumés : heroes centrés sur dé
 - **14 fichiers morts supprimés** au total le 2026-08-15 : variantes Tally, composants images obsolètes (`lazy-component`, `lazy-background-image`, `integration-test`, `tawk-test`), `devis-hero-section`, `hubspot-form-inline`
 - **Dette résiduelle connue :** la famille `optimized-image` → `optimized-blog-image` n'a plus aucun consommateur. Non supprimée : elle touche le blog, dont les pages peuvent évoluer. À trancher explicitement.
 
+### Gris d'interface — deux tokens ajoutés (2026-09-20)
+
+Le layout global (`components/layout/`) portait 27 utilitaires Tailwind hors
+charte, visibles sur **toutes** les pages du site. La charte n'offrait aucune
+valeur utilisable pour deux rôles précis :
+
+| Token | Valeur | Contraste / blanc | Rôle | Remplaçait |
+|---|---|---|---|---|
+| `ui-muted` | `#4B5563` | 7,56:1 — AA texte | Navigation niv. 2-3, chevrons | `text-gray-600/500/400` |
+| `ui-border` | `#E5E7EB` | 1,24:1 — surface | Séparateurs, bordures | `border-gray-200` |
+
+Ce sont des **gris fonctionnels, pas des couleurs de marque** : la charte reste
+à 5 couleurs et n'a pas été modifiée (règle absolue n°3 respectée). Ils suivent
+la même rampe bleutée que `gray-dark`, lui-même identique au `gray-800` de
+Tailwind — la charte employait donc déjà ce procédé.
+
+Arbitrage écarté : substituer `gray-secondary` (3,85:1) à `text-gray-600`
+(7,56:1) aurait fait tomber le menu **sous le seuil AA**. Une conformité
+nominale au prix de l'accessibilité — exactement la faute corrigée en PR #72.
+
+Hiérarchie du menu retenue : niv. 1 `gray-dark` (14,68:1) · niv. 2-3
+`ui-muted` (7,56:1). Deux niveaux au lieu de trois, l'indentation portant le
+troisième.
+
+**Exception assumée :** `hover:text-red-700` sur le lien « Espace client » du
+footer. `red-primary` vaut 4,13:1, sous le seuil AA à 14px ; le survol vers
+`red-700` (6,47:1) fait *remonter* le contraste. Documentée dans le composant
+et gardée par `tests/charte-couleurs-layout-global.test.ts`.
+
+### Dette de charte — vague 1 traitée (2026-09-20)
+
+**797 substitutions sur 61 fichiers**, site entier. Gris de texte et de bordure
+uniquement, tous mappés sur des tokens déjà décidés — aucun arbitrage de marque
+n'a été nécessaire :
+
+```
+text-gray-900/800/700  →  text-gray-dark     (#1F2937, 14,68:1)
+text-gray-600/500/400  →  text-ui-muted      (#4B5563,  7,56:1)
+border-gray-200/100    →  border-ui-border   (#E5E7EB)
+```
+
+**375 de ces substitutions sont à hexadécimal identique** — `text-gray-600` et
+`ui-muted` valent tous deux `#4B5563`. Le travail relève du nommage plus que de
+la retouche graphique. Les 174 restantes vont toutes vers plus de contraste,
+sauf `text-gray-900 → gray-dark` (17,74 → 14,68:1, largement au-dessus de AAA).
+
+Contrôle visuel Playwright avant/après sur 5 pages à fort trafic : **0,09 % à
+0,58 % de pixels modifiés**. Le maximum est sur `/studio-attente`, dont le
+tableau comparatif est dense en texte. Hero gradient intact sur ses 20 fichiers.
+
+**Doctrine révisée.** Le garde-fou des pages juridiques tolérait les gris
+(« la charte régit le texte et les accents, pas les bordures et fonds
+neutres »). C'était vrai tant qu'aucun token ne couvrait ces rôles ; la PR #75
+en a créé deux. `gray` a donc été ajouté à sa regex, révélant 258 occurrences
+qu'il laissait passer — dont 230 dans `cgv-content.tsx`, qu'il scannait pourtant
+depuis la PR #73. Une seule doctrine vaut désormais pour tout le site.
+
+Garde-fou global : `tests/charte-gris-site-entier.test.ts`, qui balaie
+`components/` et `app/` en entier.
+
+### Exceptions de la vague 1 (4 fichiers, après relecture)
+
+| Famille | Fichiers | Raison |
+|---|---|---|
+| Gris clairs sur fond sombre | `homepage-hero-section-simple.tsx`, `app/nos-services/page.tsx` | `text-gray-200/300` posés sur le hero. `ui-muted` (#4B5563) vaut **1,57:1 sur blue-marine** : illisible. Aucun token de texte clair en charte. |
+| Bordures à survol actif | `app/blog/page.tsx`, `app/blog/categorie/[slug]/page.tsx` | `border-gray-300` + `hover:border-gray-400` : le survol repose sur l'écart entre les deux nuances. Un token unique le rendrait inerte. |
+
+**Deux exceptions ont été retirées** après relecture adverse : `chat-fallback.tsx`
+survole en `border-red-primary` et `global-error.tsx` en `bg-gray-50` — ni l'un
+ni l'autre n'avait le `hover:border-gray-400` que leur justification invoquait.
+Leurs bordures ont été substituées sans risque.
+
+L'exception porte désormais sur **la classe, pas sur le fichier** : un gris
+ajouté ailleurs dans un fichier excepté est détecté.
+
+### Relecture adverse croisée (2026-09-20)
+
+Avant release, le diff `main...dev` a été soumis à deux relecteurs
+indépendants — **Codex** (`gpt-6-astra`) et **Kimi 2.7 code** (via OpenCode /
+Ollama Cloud). Verdicts : `NE PAS RELEASER` pour l'un, `RELEASE OK` pour
+l'autre.
+
+**Convergence sur le code livré** — aucune régression visuelle, aucun contraste
+dégradé, aucun survol inerte, hero intact (34 occurrences, 20 fichiers), cinq
+couleurs de marque inchangées.
+
+**Divergence sur les garde-fous.** Codex est allé plus loin : il a **muté le
+code en mémoire** et constaté que les tests restaient verts sur quatre fautes
+réelles. Kimi s'était arrêté à « les tests passent ». Les quatre failles,
+toutes corrigées :
+
+| Faille | Conséquence | Correctif |
+|---|---|---|
+| Exceptions portées par le fichier | Tout gris ajouté dans un fichier excepté passait | Exception liée à la classe précise |
+| `drop-shadow` comme indice de fond sombre | `bg-blue-marine text-ui-muted` (1,57:1) passait | Détection du fond réellement déclaré |
+| Lecture des seuls `className="…"` | `className={"a hover:a"}` passait | Extraction des expressions JSX |
+| Hero gardé sur « au moins un » fichier | En retirer 19 sur 20 passait | Compte exact des 20 fichiers |
+
+Les quatre mutations ont été rejouées après correction : **toutes échouent
+désormais**, et le code sain reste vert. Un garde-fou qu'on n'a pas essayé de
+tromper n'est pas un garde-fou.
+
+**Correction factuelle** : un commentaire affirmait que `text-lg` (18px)
+bénéficiait du seuil WCAG 3:1. C'est faux — le palier « grand texte » commence
+à 24px, ou 18,66px en gras.
+
+### Dette restante — vague 2 (non traitée)
+
+**~359 occurrences**, qui demandent toutes un arbitrage de marque :
+
+| Famille | Volume | Question ouverte |
+|---|---|---|
+| Fonds neutres | `bg-gray-50` (53), `bg-gray-100/200` (37) | Officialiser `gray-50` comme token ? DESIGN.md §9.1 le propose déjà. |
+| Accents rouges | `text-red-600` (24), `bg-red-50` (23), `bg-red-100` | Dérivées de `red-primary` à créer, ou basculer sur le token existant ? |
+| Accents bleus | `text-blue-600/700/800` (23), `bg-blue-50/100` (12) | Aucun équivalent en charte : `blue-marine` est structurel, pas décoratif. |
+| Gris clairs fond sombre | 4 | Token de texte clair à créer (la charte suppose un fond blanc). |
+| Bordure survolée | 6 | Second token de bordure pour l'état `hover`. |
+
+Contrairement à la vague 1, aucune de ces familles ne se traite mécaniquement.
+
 ---
 
 ## 8. Améliorations recommandées — dans le respect strict de la charte

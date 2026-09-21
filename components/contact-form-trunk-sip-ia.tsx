@@ -20,7 +20,7 @@ export function ContactFormTrunkSipIA() {
             Parlez-nous de votre projet d&rsquo;
             <span className="text-red-primary">interconnexion SIP</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-ui-muted max-w-2xl mx-auto">
             Intégrateurs et agences IA : décrivez votre plateforme (VAPI,
             Rounded, ElevenLabs, Jambonz&hellip;) et vos besoins en numéros
             locaux DOM. Un commercial vous recontacte rapidement.
@@ -36,8 +36,8 @@ export function ContactFormTrunkSipIA() {
             }}
           />
 
-          <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-8 sm:p-12 text-center">
-            <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+          <div className="relative bg-white rounded-2xl shadow-xl border border-ui-border p-8 sm:p-12 text-center">
+            <p className="text-lg text-ui-muted mb-8 max-w-xl mx-auto">
               Soumettez votre demande via notre formulaire en ligne. Nous
               étudions votre projet et un commercial vous recontacte.
             </p>

@@ -33,9 +33,9 @@ export function FeatureCard({
     secondary: {
       border: "from-gray-800 via-gray-600 to-gray-500",
       iconBg: "from-gray-100 via-gray-50 to-white",
-      iconColor: "text-gray-800",
+      iconColor: "text-gray-dark",
       glowBg: "from-gray-400 to-gray-500",
-      badgeBg: "bg-gray-100 text-gray-800",
+      badgeBg: "bg-gray-100 text-gray-dark",
       patternColor: "%232D3848"
     },
     accent: {
@@ -56,7 +56,7 @@ export function FeatureCard({
       shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
-      border border-gray-200
+      border border-ui-border
       ${className}
     `}>
       {/* Gradient border top - Couleurs de la charte graphique */}
@@ -65,13 +65,13 @@ export function FeatureCard({
       <div className="p-6">
         {/* Icon avec style simplifié */}
         <div className="mb-4">
-          <div className={`w-16 h-16 ${styles.iconBg} rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-gray-100`}>
+          <div className={`w-16 h-16 ${styles.iconBg} rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border`}>
             <i className={`lni ${icon} text-3xl ${styles.iconColor}`}></i>
           </div>
         </div>
         
         {/* Titre avec hover rouge principal */}
-        <h3 className="text-xl font-bold text-gray-800 mb-3 text-center group-hover:text-red-primary transition-colors">
+        <h3 className="text-xl font-bold text-gray-dark mb-3 text-center group-hover:text-red-primary transition-colors">
           {title}
         </h3>
         
@@ -110,7 +110,7 @@ export function FeatureCardCustom({
       shadow-lg hover:shadow-xl 
       transform hover:-translate-y-1 
       transition-all duration-300 group
-      border border-gray-200
+      border border-ui-border
       ${className}
     `}>
       {/* Gradient border top personnalisable */}

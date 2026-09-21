@@ -64,7 +64,11 @@ describe("Page Contact - DaisyUI Migration", () => {
 
     // Vérifier le style canonique de la card (design.md §8.5)
     const formCard = screen.getByTestId("contact-form-card");
-    expect(formCard).toHaveClass("rounded-xl", "bg-white", "border-gray-200");
+    // `border-ui-border` remplace `border-gray-200` (2026-09-20, vague 1 de la
+    // mise en charte). Assertion sur le NOM du token : sa valeur appartient à
+    // tailwind.config.js, et c'est tests/charte-gris-site-entier.test.ts qui
+    // la garde.
+    expect(formCard).toHaveClass("rounded-xl", "bg-white", "border-ui-border");
 
     const formTitle = screen.getByTestId("contact-form-title");
     expect(formTitle).toHaveClass("text-2xl", "font-bold", "text-white");

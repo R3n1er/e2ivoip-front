@@ -10,7 +10,7 @@ export function CTACalendarSection() {
           <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
             Parlons de votre projet 3CX
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+          <p className="mt-4 text-lg leading-relaxed text-ui-muted">
             Présentez-nous votre installation, vos sites et vos usages. Nous vous aiderons à choisir la capacité adaptée.
           </p>
         </div>

@@ -88,7 +88,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="h-full bg-white border border-gray-200 p-6"
+              className="h-full bg-white border border-ui-border p-6"
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -103,7 +103,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
               </p>
 
               <div className="border-t pt-4">
-                <div className="font-black text-gray-900">
+                <div className="font-black text-gray-dark">
                   {testimonial.author}
                 </div>
                 <div className="text-red-primary text-sm font-black">
@@ -116,7 +116,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
                   <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary">
                     {testimonial.location}
                   </span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-ui-muted">
                     {testimonial.users}
                   </span>
                 </div>

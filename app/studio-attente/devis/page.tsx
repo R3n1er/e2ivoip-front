@@ -219,10 +219,10 @@ function StudioDevisForm() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check size={32} className="text-green-600" aria-hidden="true" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-gray-dark mb-2">
               Demande envoyée
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-ui-muted mb-6">
               Notre équipe commerciale étudie votre projet et vous recontacte
               sous 24 h ouvrées.
             </p>
@@ -247,7 +247,7 @@ function StudioDevisForm() {
           <h1 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-3">
             Devis studio voix humaines
           </h1>
-          <p className="text-gray-600 max-w-xl mx-auto">
+          <p className="text-ui-muted max-w-xl mx-auto">
             Construisez votre message étape par étape. Notre équipe vous envoie
             un devis personnalisé sous 24 h.
           </p>
@@ -264,13 +264,13 @@ function StudioDevisForm() {
                 <div key={title} className="flex flex-col items-center flex-1">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-1
-                      ${done ? "bg-green-500 text-white" : active ? "bg-red-primary text-white" : "bg-gray-200 text-gray-500"}`}
+                      ${done ? "bg-green-500 text-white" : active ? "bg-red-primary text-white" : "bg-gray-200 text-ui-muted"}`}
                     aria-current={active ? "step" : undefined}
                   >
                     {done ? <Check size={16} /> : num}
                   </div>
                   <span
-                    className={`hidden sm:block text-xs text-center ${active ? "font-semibold text-gray-dark" : "text-gray-400"}`}
+                    className={`hidden sm:block text-xs text-center ${active ? "font-semibold text-gray-dark" : "text-ui-muted"}`}
                   >
                     {title}
                   </span>
@@ -286,7 +286,7 @@ function StudioDevisForm() {
           </div>
         </div>
 
-        <Card className="border-gray-200 shadow-sm">
+        <Card className="border-ui-border shadow-sm">
           <CardContent className="p-6 md:p-8">
             {/* ÉTAPE 1 : Type de message */}
             {step === 1 && (
@@ -310,12 +310,12 @@ function StudioDevisForm() {
                       className={`text-left p-4 rounded-xl border-2 transition-all
                         ${category === opt.value
                           ? "border-red-primary bg-red-50"
-                          : "border-gray-200 hover:border-red-primary/50"}`}
+                          : "border-ui-border hover:border-red-primary/50"}`}
                     >
                       <span className="font-semibold text-gray-dark">
                         {opt.label}
                       </span>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-ui-muted mt-1">
                         {STUDIO_DEMO_CATEGORIES[opt.value].description}
                       </p>
                     </button>
@@ -340,7 +340,7 @@ function StudioDevisForm() {
                 </h2>
 
                 {filteredDemos.length === 0 && (
-                  <p className="text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                  <p className="text-sm text-ui-muted bg-gray-50 border border-ui-border rounded-xl p-4">
                     Aucun modèle enregistré pour cette catégorie&nbsp;: rédigez
                     votre texte ci-dessous, notre studio vous accompagnera dans
                     sa mise en forme.
@@ -349,7 +349,7 @@ function StudioDevisForm() {
 
                 {filteredDemos.length > 0 && (
                   <div className="space-y-3">
-                    <p className="text-sm text-gray-500">Modèles suggérés :</p>
+                    <p className="text-sm text-ui-muted">Modèles suggérés :</p>
                     {filteredDemos.map((demo) => (
                       <button
                         key={demo.id}
@@ -363,7 +363,7 @@ function StudioDevisForm() {
                         className={`w-full text-left p-4 rounded-xl border-2 transition-all
                           ${demoId === demo.id
                             ? "border-red-primary bg-red-50"
-                            : "border-gray-200 hover:border-red-primary/50"}`}
+                            : "border-ui-border hover:border-red-primary/50"}`}
                       >
                         <div className="flex items-start gap-3">
                           <Play
@@ -376,11 +376,11 @@ function StudioDevisForm() {
                               <span className="font-semibold text-gray-dark">
                                 {demo.title}
                               </span>
-                              <span className="text-xs text-gray-400">
+                              <span className="text-xs text-ui-muted">
                                 {demo.duration}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-600 mt-1 italic">
+                            <p className="text-sm text-ui-muted mt-1 italic">
                               &ldquo;{demo.script.replace(/\{entreprise\}/g, "votre entreprise")}&rdquo;
                             </p>
                             <audio
@@ -399,7 +399,7 @@ function StudioDevisForm() {
                 )}
 
                 <div className="space-y-2">
-                  <label htmlFor="custom-script" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="custom-script" className="block text-sm font-medium text-gray-dark">
                     {filteredDemos.length > 0
                       ? "Ou rédigez votre propre texte"
                       : "Votre texte *"}
@@ -434,7 +434,7 @@ function StudioDevisForm() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-dark">
                       Nom de l’entreprise
                     </label>
                     <Input
@@ -445,7 +445,7 @@ function StudioDevisForm() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="contact-name" className="block text-sm font-medium text-gray-dark">
                       Nom du contact (si répondeur mobile)
                     </label>
                     <Input
@@ -459,7 +459,7 @@ function StudioDevisForm() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="tone" className="block text-sm font-medium text-gray-700">Ton</label>
+                    <label htmlFor="tone" className="block text-sm font-medium text-gray-dark">Ton</label>
                     <select
                       id="tone"
                       value={tone}
@@ -475,7 +475,7 @@ function StudioDevisForm() {
                     {errors.tone && <p className="text-xs text-red-600">{errors.tone}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="voice" className="block text-sm font-medium text-gray-700">Voix</label>
+                    <label htmlFor="voice" className="block text-sm font-medium text-gray-dark">Voix</label>
                     <select
                       id="voice"
                       value={voice}
@@ -494,7 +494,7 @@ function StudioDevisForm() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="language" className="block text-sm font-medium text-gray-700">Langue</label>
+                    <label htmlFor="language" className="block text-sm font-medium text-gray-dark">Langue</label>
                     <select
                       id="language"
                       value={language}
@@ -510,7 +510,7 @@ function StudioDevisForm() {
                     {errors.language && <p className="text-xs text-red-600">{errors.language}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="music" className="block text-sm font-medium text-gray-700">Musique</label>
+                    <label htmlFor="music" className="block text-sm font-medium text-gray-dark">Musique</label>
                     <select
                       id="music"
                       value={music}
@@ -528,7 +528,7 @@ function StudioDevisForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="notes" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="notes" className="block text-sm font-medium text-gray-dark">
                     Notes complémentaires
                   </label>
                   <Textarea
@@ -551,7 +551,7 @@ function StudioDevisForm() {
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-dark">
                       Prénom *
                     </label>
                     <Input
@@ -565,7 +565,7 @@ function StudioDevisForm() {
                     {errors.firstName && <p className="text-xs text-red-600">{errors.firstName}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-dark">
                       Nom *
                     </label>
                     <Input
@@ -580,7 +580,7 @@ function StudioDevisForm() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-dark">
                     Email professionnel *
                   </label>
                   <Input
@@ -595,7 +595,7 @@ function StudioDevisForm() {
                   {errors.email && <p className="text-xs text-red-600">{errors.email}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-dark">
                     Téléphone
                   </label>
                   <Input
@@ -622,42 +622,42 @@ function StudioDevisForm() {
                     <Music size={20} className="text-blue-marine" />
                     Votre message final
                   </h3>
-                  <p className="text-gray-700 italic whitespace-pre-wrap">
+                  <p className="text-gray-dark italic whitespace-pre-wrap">
                     &ldquo;{finalScript}&rdquo;
                   </p>
                 </div>
 
                 <dl className="grid sm:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <dt className="text-gray-500">Type</dt>
+                    <dt className="text-ui-muted">Type</dt>
                     <dd className="font-medium text-gray-dark">
                       {STUDIO_DEMO_CATEGORIES[category].label}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Modèle</dt>
+                    <dt className="text-ui-muted">Modèle</dt>
                     <dd className="font-medium text-gray-dark">
                       {selectedDemo?.title || "Texte personnalisé"}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Ton / Voix / Langue</dt>
+                    <dt className="text-ui-muted">Ton / Voix / Langue</dt>
                     <dd className="font-medium text-gray-dark">
                       {tone} / {voice} / {language}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Musique</dt>
+                    <dt className="text-ui-muted">Musique</dt>
                     <dd className="font-medium text-gray-dark">
                       {MUSIC_OPTIONS.find((o) => o.value === music)?.label}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Entreprise</dt>
+                    <dt className="text-ui-muted">Entreprise</dt>
                     <dd className="font-medium text-gray-dark">{company || "—"}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Contact</dt>
+                    <dt className="text-ui-muted">Contact</dt>
                     <dd className="font-medium text-gray-dark">
                       {firstName} {lastName} — {email}
                     </dd>
@@ -673,7 +673,7 @@ function StudioDevisForm() {
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-ui-border">
               <Button
                 type="button"
                 variant="outline"
@@ -711,7 +711,7 @@ function StudioDevisForm() {
 
         {/* Bloc appel */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500 mb-3">
+          <p className="text-sm text-ui-muted mb-3">
             Vous préférez en parler directement ?
           </p>
           <Button asChild variant="outline" className="gap-2">
@@ -733,7 +733,7 @@ export default function StudioDevisPage() {
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <Card className="max-w-lg w-full text-center">
             <CardContent className="p-8">
-              <p className="text-gray-600">Chargement du formulaire…</p>
+              <p className="text-ui-muted">Chargement du formulaire…</p>
             </CardContent>
           </Card>
         </div>

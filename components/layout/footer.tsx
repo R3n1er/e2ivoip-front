@@ -37,7 +37,7 @@ const PARTNER_LOGOS = [
 
 export function Footer() {
   return (
-    <footer className="bg-white text-gray-secondary border-t border-gray-200">
+    <footer className="bg-white text-gray-secondary border-t border-ui-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -55,7 +55,7 @@ export function Footer() {
             </p>
 
             {/* Section Nous contacter */}
-            <div className="mt-6 pt-4 border-t border-gray-200">
+            <div className="mt-6 pt-4 border-t border-ui-border">
               <Link
                 href="/contact"
                 className="text-sm font-black text-gray-dark mb-4 flex items-center gap-2 hover:text-red-primary transition-colors"
@@ -150,6 +150,17 @@ export function Footer() {
             <h3 className="text-lg font-black mb-4 text-gray-dark">Support</h3>
             <ul className="space-y-3 text-sm text-gray-secondary">
               <li>
+                {/*
+                  EXCEPTION CHARTE ASSUMÉE — `hover:text-red-700` (#B91C1C).
+                  `red-primary` vaut 4,13:1 sur blanc, sous le seuil AA de
+                  4,5:1 : à 14px (`text-sm`), même en `font-black`, WCAG classe
+                  ce libellé en texte normal — le seuil « grand texte » exige
+                  18,66px. Le survol vers `red-700` (6,47:1) fait donc REMONTER
+                  le contraste. Le ramener à `red-primary` casserait ce
+                  correctif ; `blue-marine` le tiendrait mais changerait la
+                  teinte du survol. Décision du 2026-09-20 : on conserve.
+                  Le garde-fou est dans tests/charte-couleurs-layout-global.test.ts.
+                */}
                 <a
                   href="https://espace-client.e2i-voip.com/"
                   target="_blank"
@@ -268,7 +279,7 @@ export function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="border-t border-gray-200 mt-8 lg:mt-12 pt-8">
+        <div className="border-t border-ui-border mt-8 lg:mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4 text-sm text-gray-secondary">
               <p>&copy; {new Date().getFullYear()} E2I VoIP. Tous droits réservés.</p>
@@ -296,7 +307,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={logo.name}
-                    className="flex items-center justify-center bg-white rounded-lg border border-gray-200 px-3 py-2 shadow-sm transition hover:shadow-md"
+                    className="flex items-center justify-center bg-white rounded-lg border border-ui-border px-3 py-2 shadow-sm transition hover:shadow-md"
                   >
                     <img
                       src={logo.src}

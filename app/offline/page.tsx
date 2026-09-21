@@ -16,11 +16,11 @@ export default function OfflinePage() {
           <Question size={24} className="text-red-600" aria-hidden="true" />
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
+        <h1 className="text-2xl font-bold text-gray-dark mb-4">
           Vous êtes hors ligne
         </h1>
 
-        <p className="text-gray-600 mb-8">
+        <p className="text-ui-muted mb-8">
           Il semble que vous n&apos;ayez pas de connexion internet. Vérifiez votre
           connexion et réessayez.
         </p>
@@ -37,7 +37,7 @@ export default function OfflinePage() {
         <div className="space-y-3">
           <Link
             href="/"
-            className="w-full bg-gray-100 text-gray-700 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
+            className="w-full bg-gray-100 text-gray-dark font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center justify-center gap-2"
           >
             <House size={24} aria-hidden="true" />
             Retour à l&apos;accueil
@@ -61,11 +61,11 @@ export default function OfflinePage() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-500 mb-2">
+        <div className="mt-8 pt-6 border-t border-ui-border">
+          <p className="text-sm text-ui-muted mb-2">
             Besoin d&apos;aide immédiatement ?
           </p>
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-ui-muted">
             <p className="flex items-center justify-center gap-2">
               <Phone size={16} aria-hidden="true" />
               <a href="tel:+33189560500" className="font-bold hover:underline">
@@ -76,7 +76,7 @@ export default function OfflinePage() {
               <Envelope size={16} aria-hidden="true" />
               <SecureEmail
                 address="contact"
-                className="font-bold text-gray-600"
+                className="font-bold text-ui-muted"
               />
             </p>
           </div>

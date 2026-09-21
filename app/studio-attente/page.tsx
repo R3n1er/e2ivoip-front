@@ -168,7 +168,7 @@ export default function StudioAttente() {
               Deux studios, à vous de{" "}
               <span className="text-red-primary">choisir</span>
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-ui-muted mb-12 max-w-2xl mx-auto">
               Que vous privilégiiez l'authenticité d'une voix humaine ou la
               rapidité de l'IA, tous nos messages sont validés par un humain
               avant livraison.
@@ -181,7 +181,7 @@ export default function StudioAttente() {
                   className={
                     option.highlight
                       ? "border-red-primary shadow-lg ring-2 ring-red-primary/20"
-                      : "border-gray-200 hover:shadow-lg transition-shadow"
+                      : "border-ui-border hover:shadow-lg transition-shadow"
                   }
                 >
                   <CardHeader>
@@ -197,7 +197,7 @@ export default function StudioAttente() {
                         <CardTitle className="text-xl">
                           {option.title}
                         </CardTitle>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-ui-muted">
                           {option.tagline}
                         </p>
                       </div>
@@ -208,7 +208,7 @@ export default function StudioAttente() {
                       {option.features.map((feature, i) => (
                         <li
                           key={i}
-                          className="flex items-start gap-2 text-sm text-gray-700"
+                          className="flex items-start gap-2 text-sm text-gray-dark"
                         >
                           <Check
                             size={18}
@@ -219,7 +219,7 @@ export default function StudioAttente() {
                         </li>
                       ))}
                     </ul>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                    <div className="flex items-center gap-2 text-sm text-ui-muted mb-4">
                       <Timer size={16} aria-hidden="true" />
                       <span>Délai : {option.delay}</span>
                     </div>
@@ -244,7 +244,7 @@ export default function StudioAttente() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-sm">
                 <thead>
-                  <tr className="border-b-2 border-gray-200">
+                  <tr className="border-b-2 border-ui-border">
                     <th className="text-left py-4 px-4 font-semibold text-gray-dark">
                       Critère
                     </th>
@@ -265,10 +265,10 @@ export default function StudioAttente() {
                       <td className="py-3 px-4 font-medium text-gray-dark">
                         {row.label}
                       </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
+                      <td className="py-3 px-4 text-center text-ui-muted">
                         {row.human}
                       </td>
-                      <td className="py-3 px-4 text-center text-gray-600">
+                      <td className="py-3 px-4 text-center text-ui-muted">
                         {row.digital}
                       </td>
                     </tr>
@@ -299,7 +299,7 @@ export default function StudioAttente() {
                   <h3 className="font-semibold text-gray-dark mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+                  <p className="text-sm text-ui-muted">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -313,13 +313,13 @@ export default function StudioAttente() {
               Musiques{" "}
               <span className="text-red-primary">libres de droits</span>
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-ui-muted mb-12 max-w-2xl mx-auto">
               Importez vos propres musiques libres de droits ou choisissez dans
               notre bibliothèque. Zéro redevance, zéro souci.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <Card className="border-gray-200">
+              <Card className="border-ui-border">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
@@ -333,7 +333,7 @@ export default function StudioAttente() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <ul className="space-y-2 text-sm text-gray-dark">
                     <li className="flex items-start gap-2">
                       <Check size={16} className="text-red-primary shrink-0 mt-0.5" aria-hidden="true" />
                       Large catalogue de musiques libres de droits
@@ -354,7 +354,7 @@ export default function StudioAttente() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200">
+              <Card className="border-ui-border">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className="bg-red-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
@@ -368,7 +368,7 @@ export default function StudioAttente() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <ul className="space-y-2 text-sm text-gray-dark">
                     <li className="flex items-start gap-2">
                       <Check size={16} className="text-red-primary shrink-0 mt-0.5" aria-hidden="true" />
                       Import depuis votre ordinateur ou URL
@@ -405,7 +405,7 @@ export default function StudioAttente() {
                     <h3 className="font-semibold text-gray-dark mb-3">
                       Pourquoi utiliser des musiques libres de droits ?
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3">
+                    <p className="text-sm text-gray-dark mb-3">
                       En France, diffuser une musique commerciale en attente
                       téléphonique déclenche{" "}
                       <strong>deux obligations cumulatives</strong> : la
@@ -414,14 +414,14 @@ export default function StudioAttente() {
                       même pour un extrait court et sont rétroactives en cas de
                       contrôle (jusqu'à 3 ans, majoration de 50% à 100%).
                     </p>
-                    <p className="text-sm text-gray-700 mb-3">
+                    <p className="text-sm text-gray-dark mb-3">
                       En utilisant des <strong>musiques libres de droits</strong>,
                       vous n'avez <strong>aucune redevance SACEM ni SCPA</strong>{" "}
                       à payer. Les auteurs ou compositeurs sont décédés depuis
                       plus de 70 ans, ou les musiques proviennent de catalogues
                       hors gestion collective.
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-ui-muted">
                       Source :{" "}
                       <a
                         href="https://entreprendre.service-public.gouv.fr/vosdroits/F3094"
@@ -458,7 +458,7 @@ export default function StudioAttente() {
               Validation humaine sur{" "}
               <span className="text-red-primary">chaque message</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-ui-muted max-w-2xl mx-auto">
               Que votre message soit produit par une voix humaine ou par notre
               IA, rien ne part sans une validation par notre équipe. Ton,
               qualité audio, conformité, prononciation — chaque détail est

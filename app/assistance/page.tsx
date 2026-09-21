@@ -67,7 +67,7 @@ export default function AssistancePage() {
               <div className="w-20 h-20 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <Phone size={24} className="text-white" aria-hidden="true" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-dark mb-4">
                 Assistance téléphonique directe
               </h3>
               <a
@@ -77,7 +77,7 @@ export default function AssistancePage() {
               >
                 01 89 56 05 00
               </a>
-              <p className="text-lg text-gray-600 mb-4">
+              <p className="text-lg text-ui-muted mb-4">
                 Lundi - Vendredi : 8h - 18h
               </p>
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-100 text-red-800 font-medium">
@@ -96,18 +96,18 @@ export default function AssistancePage() {
               Chat{" "}
               <span className="text-red-primary">assistance instantanée</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-ui-muted mb-8">
               Discutez directement avec nos experts techniques en temps réel
             </p>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-8">
+          <div className="bg-white rounded-xl border border-ui-border shadow-sm p-8">
             <div className="text-center mb-6">
               <Chat size={24} className="text-blue-marine mx-auto mb-4" aria-hidden="true" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-2xl font-bold text-gray-dark mb-2">
                 Support chat en direct
               </h3>
-              <p className="text-gray-600">
+              <p className="text-ui-muted">
                 Notre équipe est disponible pour répondre à toutes vos questions
               </p>
             </div>

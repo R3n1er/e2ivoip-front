@@ -96,15 +96,15 @@ export function ChatFallback() {
     <div
       role="region"
       aria-label="Contact direct"
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-[9998] rounded-2xl border border-gray-200 bg-white shadow-2xl p-4 flex flex-col gap-3"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-[9998] rounded-2xl border border-ui-border bg-white shadow-2xl p-4 flex flex-col gap-3"
       data-testid="chat-fallback"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold text-gray-900">
+          <p className="text-sm font-bold text-gray-dark">
             Le chat en ligne n&rsquo;a pas pu se charger
           </p>
-          <p className="text-xs text-gray-600 mt-1">
+          <p className="text-xs text-ui-muted mt-1">
             Un bloqueur peut empêcher l&rsquo;affichage. Contactez-nous directement&nbsp;:
           </p>
         </div>
@@ -112,7 +112,7 @@ export function ChatFallback() {
           type="button"
           onClick={handleDismiss}
           aria-label="Masquer ce bandeau"
-          className="text-gray-400 hover:text-gray-700 text-lg leading-none px-2 -mt-1 -mr-1"
+          className="text-ui-muted hover:text-gray-dark text-lg leading-none px-2 -mt-1 -mr-1"
         >
           ×
         </button>
@@ -135,7 +135,7 @@ export function ChatFallback() {
         )}
         <Link
           href="/contact"
-          className="rounded-lg border border-gray-300 px-4 py-3 font-semibold hover:border-red-primary hover:text-red-primary transition-colors"
+          className="rounded-lg border border-ui-border px-4 py-3 font-semibold hover:border-red-primary hover:text-red-primary transition-colors"
         >
           📬 Formulaire de contact
         </Link>

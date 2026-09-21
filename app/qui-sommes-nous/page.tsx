@@ -93,7 +93,7 @@ export default function QuiSommesNous() {
                 L'histoire d'une{" "}
                 <span className="text-red-primary">réussite locale</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                 <strong>Depuis maintenant plusieurs années, E2I VoIP</strong>{" "}
                 est un opérateur de services télécom avec des Trunk SIP dédiés
                 aux Antilles-Guyane et La Réunion. Nous installons les standards
@@ -101,14 +101,14 @@ export default function QuiSommesNous() {
                 <strong>accompagnons vers la téléphonie IP</strong>, de
                 l'étude du projet jusqu'à la mise en service.
               </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                 <strong>Notre mission :</strong> Faciliter votre transition vers
                 la téléphonie IP dans le contexte de l'arrêt du réseau cuivre.
                 Nous transformons cette contrainte en opportunité pour{" "}
                 <strong>moderniser vos communications</strong> et gagner en
                 fiabilité, en mobilité et en confort au quotidien.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-ui-muted leading-relaxed">
                 <strong>Notre différence :</strong> Un réseau de partenaires
                 présent en Martinique, Guadeloupe et Guyane. Un
                 Customer Success Manager dédié qui connaît vos besoins
@@ -123,10 +123,10 @@ export default function QuiSommesNous() {
                   <div className="w-24 h-24 bg-red-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <Phone size={24} className="text-5xl text-white" aria-hidden="true" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-gray-dark mb-4">
                     Opérateur de service télécom
                   </h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-ui-muted mb-6">
                     Partenaire Silver 3CX • Certifié Yeastar Cloud et On-Premise
                     • Trunk SIP dédiés DOM
                   </p>
@@ -135,13 +135,13 @@ export default function QuiSommesNous() {
                       <div className="text-2xl font-bold font-mono tabular-nums text-red-primary">
                         4
                       </div>
-                      <div className="text-gray-600">Territoires DOM couverts</div>
+                      <div className="text-ui-muted">Territoires DOM couverts</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold font-mono tabular-nums text-blue-marine">
                         15
                       </div>
-                      <div className="text-gray-600">Années d'expertise</div>
+                      <div className="text-ui-muted">Années d'expertise</div>
                     </div>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function QuiSommesNous() {
               Nos{" "}
               <span className="text-red-primary">valeurs et engagements</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ui-muted max-w-3xl mx-auto">
               Proximité, expertise et résultats concrets pour votre entreprise
             </p>
           </div>
@@ -207,7 +207,7 @@ export default function QuiSommesNous() {
                   <h3 className="text-2xl font-bold text-gray-dark mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-lg text-ui-muted leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -225,7 +225,7 @@ export default function QuiSommesNous() {
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
                 Nos <span className="text-red-primary">solutions phares</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
                 locaux incluses.{" "}
@@ -237,10 +237,10 @@ export default function QuiSommesNous() {
                 <div className="flex items-start space-x-4">
                   <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-gray-dark mb-2">
                       Trunk SIP au compteur ou illimité
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-ui-muted">
                       <strong>Au compteur :</strong> Payez uniquement vos
                       consommations, idéal TPE/PME.{" "}
                       <strong>Illimité :</strong> Budget fixe, appels illimités
@@ -253,10 +253,10 @@ export default function QuiSommesNous() {
                 <div className="flex items-start space-x-4">
                   <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-gray-dark mb-2">
                       3CX : IPBX cloud nouvelle génération
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-ui-muted">
                       <strong>3CX SMB :</strong> De 3 à 10 utilisateurs, sur
                       devis.{" "}
                       <strong>3CX PRO :</strong> Instance dédiée de 4 à 64
@@ -269,10 +269,10 @@ export default function QuiSommesNous() {
                 <div className="flex items-start space-x-4">
                   <CheckCircle size={32} className="text-red-primary mt-1 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-gray-dark mb-2">
                       Services innovants inclus
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-ui-muted">
                       <strong>Trunk SIP agents IA</strong> pour interconnexion
                       plateformes VAPI, Rounded, ElevenLabs.{" "}
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.{" "}
@@ -288,21 +288,21 @@ export default function QuiSommesNous() {
               id="cas-client-tbf"
               className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8 scroll-mt-24"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              <h3 className="text-2xl font-bold text-gray-dark mb-6 text-center">
                 Cas client emblématique
               </h3>
               <div className="bg-white rounded-lg p-6">
-                <h4 className="font-bold text-lg text-gray-900 mb-2">
+                <h4 className="font-bold text-lg text-gray-dark mb-2">
                   Titeca BEAUPORT Finance
                 </h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Le Groupe TBF gère des magasins sur la Guadeloupe, La
                   Martinique et la Guyane dans le secteur de l'horlogerie et la
                   joaillerie. Connu plus particulièrement avec l'enseigne
                   Eurogold, Grain d'Or et Callas aux Antilles et les bijouteries
                   Buirettes en Guyane.
                 </p>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   <strong>60+ utilisateurs</strong> migrés vers 3CX PRO -
                   Instance dédiée cloud
                 </p>
@@ -315,7 +315,7 @@ export default function QuiSommesNous() {
                     "Collaboration fluide pour tous les collaborateurs",
                     "Support par mail et téléphone sur 3 départements (Guadeloupe, Martinique, Guyane)",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start text-sm text-gray-600">
+                    <li key={i} className="flex items-start text-sm text-ui-muted">
                       <CheckCircle
                         size={16}
                         className="mr-2 mt-0.5 shrink-0 text-red-primary"
@@ -336,13 +336,13 @@ export default function QuiSommesNous() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-dark mb-4"
               data-testid="team-section-title"
             >
               Une équipe{" "}
               <span className="text-red-primary">experte et proche de vous</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-ui-muted max-w-3xl mx-auto">
               Des experts présents dans les DOM pour un accompagnement
               personnalisé
             </p>
@@ -353,12 +353,12 @@ export default function QuiSommesNous() {
               <Card key={index}>
                 <CardContent className="p-8 text-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <UserCircle size={24} className="text-5xl text-gray-400" aria-hidden="true" />
+                    <UserCircle size={24} className="text-5xl text-ui-muted" aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-dark mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-gray-600">{member.role}</p>
+                  <p className="text-ui-muted">{member.role}</p>
                 </CardContent>
               </Card>
             ))}
@@ -376,7 +376,7 @@ export default function QuiSommesNous() {
                 certifications et partenariats
               </span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-ui-muted mb-8 max-w-3xl mx-auto">
               Partenaire Silver 3CX • Certifié Yeastar • Partenaire Aircall •
               Distributeur officiel Fanvil & Yealink
             </p>
@@ -384,7 +384,7 @@ export default function QuiSommesNous() {
 
           {/* Certifications principales */}
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-ui-border">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -396,7 +396,7 @@ export default function QuiSommesNous() {
                   />
                 </div>
                 <h3 className="font-bold text-xl mb-2">3CX Silver Partner</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Expertise CFD avancée et solutions IPBX cloud
                 </p>
                 <Badge className="bg-red-primary text-white">
@@ -405,7 +405,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-ui-border">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -417,7 +417,7 @@ export default function QuiSommesNous() {
                   />
                 </div>
                 <h3 className="font-bold text-xl mb-2">Certifié Yeastar</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Solutions économiques pour PME et entreprises
                 </p>
                 <Badge className="bg-blue-marine text-white">
@@ -426,7 +426,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200">
+            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-ui-border">
               <div className="text-center">
                 <div className="mb-6">
                   <Image
@@ -438,7 +438,7 @@ export default function QuiSommesNous() {
                   />
                 </div>
                 <h3 className="font-bold text-xl mb-2">Partenaire Aircall</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Plateforme de communication client connectée à votre CRM
                 </p>
                 <Badge className="bg-red-primary text-white">
@@ -450,14 +450,14 @@ export default function QuiSommesNous() {
 
           {/* Logos des partenaires */}
           <div className="bg-gray-50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-dark mb-8 text-center">
               Nos{" "}
               <span className="text-red-primary">partenaires matériels</span>
             </h3>
 
             <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               {/* Fanvil */}
-              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+              <div className="bg-white rounded-xl p-8 border border-ui-border shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/Fanvil-Logo-PNG-300x117.webp"
@@ -467,8 +467,8 @@ export default function QuiSommesNous() {
                     className="mx-auto"
                   />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3">Fanvil</h4>
-                <p className="text-gray-600 mb-4">
+                <h4 className="text-xl font-bold text-gray-dark mb-3">Fanvil</h4>
+                <p className="text-ui-muted mb-4">
                   Distributeur officiel des téléphones SIP haute qualité et
                   accessoires
                 </p>
@@ -488,7 +488,7 @@ export default function QuiSommesNous() {
               </div>
 
               {/* Yealink */}
-              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+              <div className="bg-white rounded-xl p-8 border border-ui-border shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
                 <div className="mb-6">
                   <Image
                     src="/images/logo-partners/logo-yealink.webp"
@@ -498,10 +498,10 @@ export default function QuiSommesNous() {
                     className="mx-auto"
                   />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-gray-dark mb-3">
                   Yealink
                 </h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-ui-muted mb-4">
                   Distributeur officiel des solutions de communication unifiée
                 </p>
                 <Badge className="bg-gray-800 text-white">
@@ -521,7 +521,7 @@ export default function QuiSommesNous() {
             </div>
 
             <div className="text-center mt-8">
-              <p className="text-gray-600 text-sm">
+              <p className="text-ui-muted text-sm">
                 Tous nos partenaires sont sélectionnés pour leur qualité et leur
                 fiabilité
               </p>
@@ -590,7 +590,7 @@ export default function QuiSommesNous() {
             Prêt à passer à la{" "}
             <span className="text-red-primary">téléphonie IP</span>&nbsp;?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-ui-muted mb-8">
             Audit gratuit de votre installation • Devis personnalisé en 24h •
             Migration sans interruption
           </p>

@@ -29,7 +29,7 @@ export function TransformationSection() {
                 <span className="text-red-primary">communication d'entreprise</span>
               </h2>
               
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-4 text-ui-muted leading-relaxed">
                 <p>
                   Comment gérez-vous actuellement les appels au sein de votre entreprise sans un standard téléphonique dédié&nbsp;?
                   Vos communications avec vos clients sont-elles vraiment optimales, permettant à votre équipe de travailler en toute fluidité, que ce soit en télétravail ou en déplacement&nbsp;?
@@ -61,25 +61,25 @@ export function TransformationSection() {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-dark">
                     <strong>Standard téléphonique clé en main</strong> - 3CX ou Yeastar installés, configurés et supportés, sur cloud ou sur site
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-dark">
                     <strong>Tarifs d'appel maîtrisés</strong> - fixes et mobiles Antilles, Guyane, La Réunion, Métropole facturés au compteur
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-dark">
                     <strong>Trunk SIP au compteur ou illimité</strong> - à partir de 2 canaux voix, dimensionnés à votre trafic
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle size={16} weight="fill" className="text-red-primary mt-0.5 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-dark">
                     <strong>Budget téléphonique maîtrisé</strong> - Transparence et contrôle total
                   </span>
                 </li>

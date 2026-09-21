@@ -133,7 +133,7 @@ export default function TrunkSIPCompteur() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="prose prose-lg mx-auto text-center">
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-dark leading-relaxed">
                 <strong>E2I VOIP</strong> est opérateur de service télécom et
                 est capable de vous fournir des passerelles Trunk SIP de qualité
                 en France et dans les DOM. Le Trunk SIP est un des éléments
@@ -162,7 +162,7 @@ export default function TrunkSIPCompteur() {
                   </span>{" "}
                   : payez seulement ce que vous consommez
                 </h2>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-xl text-ui-muted mb-8">
                   <strong>Passerelle SIP spécialisée DOM</strong> qui connecte
                   votre IPBX au réseau téléphonique. Facturation{" "}
                   <strong>transparente à la seconde</strong> dès la première
@@ -178,7 +178,7 @@ export default function TrunkSIPCompteur() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Facturation au compteur transparente
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         <strong>Payez uniquement vos appels émis</strong>,
                         facturation à la seconde dès le premier décroché. Idéal
                         pour les centres d'appels et TPE/PME.
@@ -187,13 +187,13 @@ export default function TrunkSIPCompteur() {
                   </div>
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone size={24} className="text-gray-800" aria-hidden="true" />
+                      <Phone size={24} className="text-gray-dark" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Numéros locaux DOM (Création et Portabilité)
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         <strong>Création et portabilité</strong> de numéros
                         géographiques Antilles-Guyane-Réunion pour renforcer
                         votre image locale.
@@ -208,7 +208,7 @@ export default function TrunkSIPCompteur() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Compatible tous IPBX
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         Compatible avec{" "}
                         <strong>3CX, Yeastar, Grandstream, Avaya, Asterisk</strong>.
                         Connexions flexibles de 2 à plus de 30 appels simultanés
@@ -224,7 +224,7 @@ export default function TrunkSIPCompteur() {
                       <h3 className="font-semibold text-gray-dark mb-2">
                         Support technique local réactif
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-ui-muted">
                         Présents en{" "}
                         <strong>Martinique, Guadeloupe, Guyane</strong>. Support
                         à distance du lundi au vendredi de 8h à 18h.
@@ -245,7 +245,7 @@ export default function TrunkSIPCompteur() {
                 Compatible avec{" "}
                 <span className="text-red-primary">tous les IPBX</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-ui-muted max-w-3xl mx-auto">
                 Notre Trunk SIP s&apos;intègre parfaitement avec toutes les
                 marques d&apos;IPBX du marché
               </p>
@@ -253,7 +253,7 @@ export default function TrunkSIPCompteur() {
 
             <div className="grid md:grid-cols-4 gap-6">
               {/* 3CX */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <Image
@@ -265,14 +265,14 @@ export default function TrunkSIPCompteur() {
                     />
                   </div>
                   <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">3CX</h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-ui-muted text-sm">
                     IPBX cloud leader mondial
                   </p>
                 </div>
               </div>
 
               {/* Yeastar */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <Image
@@ -286,14 +286,14 @@ export default function TrunkSIPCompteur() {
                   <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Yeastar
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-ui-muted text-sm">
                     Solutions économiques PME
                   </p>
                 </div>
               </div>
 
               {/* Grandstream */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <Image
@@ -307,14 +307,14 @@ export default function TrunkSIPCompteur() {
                   <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">
                     Grandstream
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-ui-muted text-sm">
                     Passerelles VoIP robustes
                   </p>
                 </div>
               </div>
 
               {/* Avaya */}
-              <div className="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mb-4 p-2">
                     <Image
@@ -326,13 +326,13 @@ export default function TrunkSIPCompteur() {
                     />
                   </div>
                   <h3 className="flex items-center gap-2 text-base font-semibold text-gray-dark">Avaya</h3>
-                  <p className="text-gray-600 text-sm">Solutions entreprise</p>
+                  <p className="text-ui-muted text-sm">Solutions entreprise</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-4">
+              <p className="text-ui-muted mb-4">
                 <strong>Pas d&apos;IPBX ?</strong> Nous proposons des solutions
                 complètes incluant l&apos;équipement
               </p>

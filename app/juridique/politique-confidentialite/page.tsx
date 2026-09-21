@@ -140,7 +140,7 @@ export default function PolitiqueConfidentialitePage() {
                 {PROCESSINGS.map((processing) => (
                   <div
                     key={processing.purpose}
-                    className="rounded-lg border border-gray-100 bg-gray-50 p-4"
+                    className="rounded-lg border border-ui-border bg-gray-50 p-4"
                   >
                     <h3 className="mb-3 font-semibold text-gray-dark">
                       {processing.purpose}
@@ -191,7 +191,7 @@ export default function PolitiqueConfidentialitePage() {
               <div className="mt-6 overflow-x-auto">
                 <table className="w-full min-w-[640px] border-collapse text-sm">
                   <thead>
-                    <tr className="border-b border-gray-200 text-left">
+                    <tr className="border-b border-ui-border text-left">
                       <th className="py-2 pr-4 font-semibold text-gray-dark">
                         Traceur
                       </th>
@@ -213,7 +213,7 @@ export default function PolitiqueConfidentialitePage() {
                     {COOKIES.map((cookie) => (
                       <tr
                         key={cookie.name}
-                        className="border-b border-gray-100 align-top text-gray-dark"
+                        className="border-b border-ui-border align-top text-gray-dark"
                       >
                         <td className="py-3 pr-4 font-mono text-xs">
                           {cookie.name}
@@ -251,7 +251,7 @@ export default function PolitiqueConfidentialitePage() {
                 {SUB_PROCESSORS.map((processor) => (
                   <div
                     key={processor.name}
-                    className="rounded-lg border border-gray-100 bg-gray-50 p-4"
+                    className="rounded-lg border border-ui-border bg-gray-50 p-4"
                   >
                     <h3 className="mb-2 font-semibold text-gray-dark">
                       {processor.name}
@@ -367,7 +367,7 @@ export default function PolitiqueConfidentialitePage() {
                 ))}
               </dl>
 
-              <div className="mt-6 rounded-lg border border-gray-100 bg-gray-50 p-4 text-gray-dark">
+              <div className="mt-6 rounded-lg border border-ui-border bg-gray-50 p-4 text-gray-dark">
                 <p>
                   Pour exercer l&rsquo;un de ces droits, utilisez notre{" "}
                   <Link

@@ -103,7 +103,7 @@ export default function TelephonieDentreprise() {
                   <h3 className="text-2xl font-bold text-gray-dark mb-4">
                     {solution.title}
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed max-w-[65ch]">
+                  <p className="text-lg text-ui-muted leading-relaxed max-w-[65ch]">
                     {solution.description}
                   </p>
                 </div>
@@ -116,7 +116,7 @@ export default function TelephonieDentreprise() {
                     {solution.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
-                        className="flex items-start gap-3 text-gray-700"
+                        className="flex items-start gap-3 text-gray-dark"
                       >
                         <CheckCircle
                           size={24}
@@ -168,7 +168,7 @@ export default function TelephonieDentreprise() {
                 },
               ].map((item, index) => (
                 <Link key={index} href={item.href} className="block">
-                  <Card className="h-full border-gray-200 hover:shadow-md hover:border-red-primary/30 transition-all">
+                  <Card className="h-full border-ui-border hover:shadow-md hover:border-red-primary/30 transition-all">
                     <CardHeader>
                       <CardTitle className="text-lg">{item.title}</CardTitle>
                       <CardDescription>{item.description}</CardDescription>

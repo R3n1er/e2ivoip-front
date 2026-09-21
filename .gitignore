@@ -154,3 +154,6 @@ tsconfig.tsbuildinfo
 # Les décisions durables sont reportées dans docs/ADR.md
 PLAN.md
 PLAN-REVIEW-LOG.md
+
+# Généré par Next.js à chaque build/dev, oscille entre .next/types et .next/dev/types
+next-env.d.ts

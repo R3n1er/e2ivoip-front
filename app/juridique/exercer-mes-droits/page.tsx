@@ -81,7 +81,7 @@ export default function ExercerMesDroitsPage() {
             {RGPD_RIGHTS.map((right) => (
               <div
                 key={right.id}
-                className="rounded-lg border border-gray-100 bg-gray-50 p-4"
+                className="rounded-lg border border-ui-border bg-gray-50 p-4"
               >
                 <dt className="font-semibold text-gray-dark">
                   {right.label}{" "}
@@ -96,7 +96,7 @@ export default function ExercerMesDroitsPage() {
 
           <RgpdRequestForm />
 
-          <div className="mt-12 rounded-lg border border-gray-100 bg-gray-50 p-6">
+          <div className="mt-12 rounded-lg border border-ui-border bg-gray-50 p-6">
             <h2 className="mb-3 text-xl font-bold text-gray-dark">
               Si notre réponse ne vous satisfait pas
             </h2>

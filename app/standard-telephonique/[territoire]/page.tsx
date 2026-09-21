@@ -162,7 +162,7 @@ export default async function StandardTelephoniqueTerritoirePage({
                       className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
-                    <span className="text-gray-700 text-sm">{item.text}</span>
+                    <span className="text-gray-dark text-sm">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -199,7 +199,7 @@ export default async function StandardTelephoniqueTerritoirePage({
                 "."
               )}
             </h2>
-            <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
+            <div className="max-w-4xl space-y-4 text-lg text-ui-muted leading-relaxed">
               {/* L'énumération passe par `copperSentence` : la version
                   précédente concaténait les communes sans séparateur, ce qui
                   ne se voyait pas en Guyane (une commune par liste) mais
@@ -228,7 +228,7 @@ export default async function StandardTelephoniqueTerritoirePage({
                   className="text-red-primary shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
-                <div className="text-gray-700">
+                <div className="text-gray-dark">
                   <p className="font-semibold mb-2">
                     La date exacte dépend de votre commune
                   </p>
@@ -275,14 +275,14 @@ export default async function StandardTelephoniqueTerritoirePage({
               {t.zones.map((zone) => (
                 <li
                   key={zone}
-                  className="flex items-center gap-3 bg-white rounded-lg p-4 border border-gray-100"
+                  className="flex items-center gap-3 bg-white rounded-lg p-4 border border-ui-border"
                 >
                   <MapPin
                     size={18}
                     className="text-red-primary shrink-0"
                     aria-hidden="true"
                   />
-                  <span className="text-gray-700 font-medium">{zone}</span>
+                  <span className="text-gray-dark font-medium">{zone}</span>
                 </li>
               ))}
             </ul>
@@ -296,7 +296,7 @@ export default async function StandardTelephoniqueTerritoirePage({
               Un standard adapté à la réalité{" "}
               <span className="text-red-primary">{t.adjective}</span>
             </h2>
-            <div className="max-w-4xl space-y-4 text-lg text-gray-600 leading-relaxed">
+            <div className="max-w-4xl space-y-4 text-lg text-ui-muted leading-relaxed">
               <p>{t.context}</p>
               {/* Les villes citées sont celles du territoire courant : la
                   version précédente nommait Cayenne, Kourou et
@@ -312,7 +312,7 @@ export default async function StandardTelephoniqueTerritoirePage({
             </div>
 
             {t.localProof.length > 0 && (
-              <div className="mt-10 rounded-xl border border-gray-100 bg-gray-50 p-8">
+              <div className="mt-10 rounded-xl border border-ui-border bg-gray-50 p-8">
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
                   Ils nous font confiance{" "}
                   {t.preposition} {t.label}
@@ -383,12 +383,12 @@ export default async function StandardTelephoniqueTerritoirePage({
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
+                  className="bg-white rounded-xl p-6 shadow-sm border border-ui-border"
                 >
                   <h3 className="text-xl font-bold text-gray-dark mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-ui-muted mb-4 text-sm leading-relaxed">
                     {item.text}
                   </p>
                   <NextLink
@@ -401,8 +401,8 @@ export default async function StandardTelephoniqueTerritoirePage({
               ))}
             </div>
 
-            <div className="mt-10 p-6 bg-white rounded-xl border border-gray-100">
-              <p className="text-gray-700">
+            <div className="mt-10 p-6 bg-white rounded-xl border border-ui-border">
+              <p className="text-gray-dark">
                 <strong>Une question technique avant de décider ?</strong>{" "}
                 Appelez notre ligne {t.adjective} :{" "}
                 <PhoneLink phone={t.phone} className="text-red-primary font-mono" />
