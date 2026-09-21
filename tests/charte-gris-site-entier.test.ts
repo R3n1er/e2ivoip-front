@@ -55,6 +55,25 @@ const HERO_FICHIERS_ATTENDUS = 20;
 const GRIS_INTERDITS = /\b(?:text|border)-gray-\d{2,3}(?:\/\d{1,3})?\b/g;
 
 /**
+ * Vague 2 (2026-09-21) — fonds neutres et fonds de marque.
+ *
+ * Les fonds n'avaient aucun token en vague 1, d'où leur exclusion. Quatre ont
+ * été créés depuis :
+ *
+ *   bg-gray-50  → bg-ui-surface     (#F9FAFB, valeur identique)
+ *   bg-gray-100 → bg-ui-surface-2   (#F3F4F6, valeur identique)
+ *   bg-gray-200 → bg-ui-border      (#E5E7EB, valeur identique)
+ *   bg-red-50   → bg-red-primary-50 (#FDECEC, teinte de marque)
+ *   bg-blue-50  → bg-blue-marine-50 (#EEF1F5, teinte de marque)
+ *
+ * Seules les nuances CLAIRES (50/100/200) sont couvertes : les fonds soutenus
+ * (`bg-red-600` sur un bouton, `bg-gray-800` sur une section sombre) relèvent
+ * des accents, qui restent hors périmètre faute d'arbitrage — cf. DESIGN.md.
+ */
+const FONDS_INTERDITS =
+  /\b(?:bg|from|via|to)-(?:gray|red|blue)-(?:50|100|200)(?:\/\d{1,3})?\b/g;
+
+/**
  * EXCEPTIONS — portées par l'OCCURRENCE, jamais par le fichier.
  *
  * La première version listait des chemins : tout gris ajouté ailleurs dans ces
@@ -99,6 +118,21 @@ const EXCEPTIONS: ReadonlyArray<{
     fichier: "app/blog/categorie/[slug]/page.tsx",
     classes: ["border-gray-300", "border-gray-400"],
     motif: "idem — même bouton, même mécanique de survol.",
+  },
+  {
+    fichier: "components/services-section-simple.tsx",
+    classes: ["bg-red-200"],
+    motif:
+      "état de survol d'une pastille d'icône : `bg-red-primary-100` au repos, " +
+      "`hover:bg-red-200` au survol. La charte s'arrête à -100 : la mapper " +
+      "dessus rendrait le survol inerte. Un token -200 reste à arbitrer.",
+  },
+  {
+    fichier: "app/offline/page.tsx",
+    classes: ["bg-blue-200"],
+    motif:
+      "idem côté bleu : `bg-blue-marine-100` au repos, `hover:bg-blue-200` " +
+      "au survol. Même arbitrage en attente.",
   },
 ];
 
@@ -179,6 +213,21 @@ describe("charte graphique — gris du site entier", () => {
       // L'exception ne blanchit QUE ses classes nommées : tout autre gris du
       // même fichier reste une violation.
       const trouves = [...new Set(source.match(GRIS_INTERDITS) ?? [])].filter(
+        (c) => !permis.includes(c),
+      );
+      expect(trouves).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucun fond clair Tailwind (vague 2)",
+    (rel, fichier) => {
+      const source = fs
+        .readFileSync(fichier, "utf8")
+        .split(HERO_GRADIENT)
+        .join("");
+      const permis = toleres(rel);
+      const trouves = [...new Set(source.match(FONDS_INTERDITS) ?? [])].filter(
         (c) => !permis.includes(c),
       );
       expect(trouves).toEqual([]);

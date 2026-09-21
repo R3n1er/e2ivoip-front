@@ -22,7 +22,7 @@ export default function GlobalError({
           revenir à l&apos;accueil.
         </p>
         {process.env.NODE_ENV === "development" && error.message ? (
-          <pre className="mb-6 max-w-lg overflow-auto rounded-lg bg-gray-100 p-4 text-left text-xs text-gray-dark">
+          <pre className="mb-6 max-w-lg overflow-auto rounded-lg bg-ui-surface-2 p-4 text-left text-xs text-gray-dark">
             {error.message}
             {error.digest ? `\n\ndigest: ${error.digest}` : ""}
           </pre>
@@ -37,7 +37,7 @@ export default function GlobalError({
           </button>
           <a
             href="/"
-            className="rounded-lg border border-ui-border px-6 py-3 text-sm font-semibold text-gray-dark hover:bg-gray-50"
+            className="rounded-lg border border-ui-border px-6 py-3 text-sm font-semibold text-gray-dark hover:bg-ui-surface"
           >
             Accueil
           </a>

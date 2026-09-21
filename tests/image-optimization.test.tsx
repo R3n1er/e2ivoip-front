@@ -66,7 +66,11 @@ describe("Composants d'Optimisation d'Images", () => {
       );
 
       const placeholder = screen.getByTestId("image-placeholder");
-      expect(placeholder).toHaveClass("bg-gray-200", "animate-pulse");
+      // `bg-ui-border` (#E5E7EB) remplace `bg-gray-200`, même valeur
+      // (2026-09-21, vague 2). Assertion sur le NOM du token : sa valeur
+      // appartient à tailwind.config.js, et c'est le test de charte qui la
+      // garde.
+      expect(placeholder).toHaveClass("bg-ui-border", "animate-pulse");
     });
 
     test("gère les erreurs de chargement", async () => {

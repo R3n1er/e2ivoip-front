@@ -150,7 +150,7 @@ export function HubSpotCalendar({
         >
           {failed ? (
             <div
-              className="flex h-full items-center justify-center bg-gray-50 p-6"
+              className="flex h-full items-center justify-center bg-ui-surface p-6"
               data-testid="hubspot-calendar-fallback"
             >
               <div className="text-center">
@@ -169,7 +169,7 @@ export function HubSpotCalendar({
             </div>
           ) : !loaded ? (
             <div
-              className="flex h-full items-center justify-center bg-gray-50"
+              className="flex h-full items-center justify-center bg-ui-surface"
               data-testid="hubspot-calendar-loading"
             >
               <div className="text-center">
@@ -188,7 +188,7 @@ export function HubSpotCalendar({
 
       {/* Informations de contact alternatives */}
       {showContactInfo && (
-        <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-ui-border">
+        <div className="mt-8 p-6 bg-ui-surface rounded-lg border border-ui-border">
           <div className="text-center">
             <h3 className="font-semibold text-gray-dark mb-3">
               Vous préférez nous appeler directement ?

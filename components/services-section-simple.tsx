@@ -109,7 +109,7 @@ export function ServicesSectionSimple() {
             >
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
+                  <div className="w-12 h-12 bg-red-primary-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors duration-200">
                     <service.Icon size={24} className="text-red-primary group-hover:scale-110 transition-transform duration-200" />
                   </div>
                   <div className="badge badge-primary badge-lg font-medium">

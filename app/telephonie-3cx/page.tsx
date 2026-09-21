@@ -114,10 +114,10 @@ export default function Telephonie3CX() {
         </section>
 
         {/* Section Choix des Solutions */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-20 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center bg-gray-100 text-gray-dark px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center bg-ui-surface-2 text-gray-dark px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Compass size={16} className="mr-2" aria-hidden="true" />
                 Choisissez votre solution
               </div>
@@ -394,7 +394,7 @@ export default function Telephonie3CX() {
                       </thead>
                       <tbody>
                         {rows.map((row) => (
-                          <tr key={row.feature} className={`hover:bg-gray-50 ${row.highlight ? "bg-gray-50" : ""}`}>
+                          <tr key={row.feature} className={`hover:bg-ui-surface ${row.highlight ? "bg-ui-surface" : ""}`}>
                             <td className="px-6 py-4 font-medium">{row.feature}</td>
                             <td className="px-6 py-4 text-center">{renderValue(row.pro)}</td>
                             <td className={`px-6 py-4 text-center ${row.highlight ? "font-bold text-red-primary" : ""}`}>
@@ -444,7 +444,7 @@ export default function Telephonie3CX() {
                 <div className="h-1.5 bg-gradient-to-r from-gray-800 via-gray-600 to-gray-500 rounded-t-2xl"></div>
                 <div className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ui-surface-2 via-ui-surface to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <Phone size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
@@ -456,7 +456,7 @@ export default function Telephonie3CX() {
                     intelligent
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-ui-surface-2 text-gray-dark text-xs font-semibold rounded-full">
                       <CheckCircle size={16} className="mr-1" aria-hidden="true" />
                       Haute qualité
                     </span>
@@ -478,7 +478,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-primary-100 via-red-primary-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <VideoCamera size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
@@ -490,7 +490,7 @@ export default function Telephonie3CX() {
                     250 participants
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
                       <Users size={16} className="mr-1" aria-hidden="true" />
                       Jusqu'à 250 participants
                     </span>
@@ -512,7 +512,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ui-surface-2 via-ui-surface to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <Chat size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
@@ -524,7 +524,7 @@ export default function Telephonie3CX() {
                     présence
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-ui-surface-2 text-gray-dark text-xs font-semibold rounded-full">
                       <Lightning size={16} className="mr-1" aria-hidden="true" />
                       Temps réel
                     </span>
@@ -546,7 +546,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-primary-100 via-red-primary-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <DeviceMobile size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
@@ -558,7 +558,7 @@ export default function Telephonie3CX() {
                     notifications
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
                       <DeviceMobile size={16} className="mr-1" aria-hidden="true" />
                       iOS & Android
                     </span>
@@ -580,7 +580,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-primary-50 via-ui-surface to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <Link size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
@@ -592,7 +592,7 @@ export default function Telephonie3CX() {
                     plus
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-primary text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-red-primary-50 text-red-primary text-xs font-semibold rounded-full">
                       <Link size={16} className="mr-1" aria-hidden="true" />
                       Multi-CRM
                     </span>
@@ -614,7 +614,7 @@ export default function Telephonie3CX() {
                 </div>
                 <div className="relative p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ui-surface-2 via-ui-surface to-white rounded-xl flex items-center justify-center shadow-sm mx-auto group-hover:shadow-md transition-shadow border border-ui-border">
                       <Headphones size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
@@ -626,7 +626,7 @@ export default function Telephonie3CX() {
                     enregistrements
                   </p>
                   <div className="text-center">
-                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-dark text-xs font-semibold rounded-full">
+                    <span className="inline-flex items-center px-3 py-1 bg-ui-surface-2 text-gray-dark text-xs font-semibold rounded-full">
                       <TrendUp size={16} className="mr-1" aria-hidden="true" />
                       Rapports en temps réel
                     </span>
@@ -680,7 +680,7 @@ export default function Telephonie3CX() {
         </section>
 
         {/* Territory phone links -- D-09 */}
-        <section className="bg-gray-50 py-8">
+        <section className="bg-ui-surface py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
               APPELEZ-NOUS DIRECTEMENT

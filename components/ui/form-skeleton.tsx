@@ -15,12 +15,12 @@ export function FormSkeleton({ rows = 4, height = 500 }: FormSkeletonProps) {
       role="status"
       aria-label="Chargement du formulaire"
       style={{ height: `${height}px` }}
-      className="w-full overflow-hidden rounded-xl bg-gray-50 p-6 animate-pulse space-y-6"
+      className="w-full overflow-hidden rounded-xl bg-ui-surface p-6 animate-pulse space-y-6"
     >
       {Array.from({ length: rows }).map((_, i) => (
         <div key={i} data-skeleton-row className="space-y-2">
-          <div className="h-3 w-24 rounded bg-gray-200" />
-          <div className="h-10 w-full rounded-lg bg-gray-200" />
+          <div className="h-3 w-24 rounded bg-ui-border" />
+          <div className="h-10 w-full rounded-lg bg-ui-border" />
         </div>
       ))}
       <div className="h-12 w-40 rounded-lg bg-gray-300" />

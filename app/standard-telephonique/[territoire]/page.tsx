@@ -85,7 +85,7 @@ export default async function StandardTelephoniqueTerritoirePage({
       <main className="pt-20">
         {/* Hero — preuve locale above the fold : ce qu'un concurrent hors-sol
             ne peut pas revendiquer. */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 md:py-20 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary/10 border border-red-primary/20 text-red-primary text-sm font-medium mb-6">
@@ -259,7 +259,7 @@ export default async function StandardTelephoniqueTerritoirePage({
         </section>
 
         {/* Zones d'intervention */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Nos zones d&apos;intervention{" "}
@@ -312,7 +312,7 @@ export default async function StandardTelephoniqueTerritoirePage({
             </div>
 
             {t.localProof.length > 0 && (
-              <div className="mt-10 rounded-xl border border-ui-border bg-gray-50 p-8">
+              <div className="mt-10 rounded-xl border border-ui-border bg-ui-surface p-8">
                 <h3 className="text-xl font-bold text-gray-dark mb-4">
                   Ils nous font confiance{" "}
                   {t.preposition} {t.label}
@@ -342,7 +342,7 @@ export default async function StandardTelephoniqueTerritoirePage({
         </section>
 
         {/* Offres disponibles sur le territoire */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Ce que nous installons{" "}

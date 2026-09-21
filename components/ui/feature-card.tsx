@@ -24,26 +24,26 @@ export function FeatureCard({
   const variantStyles = {
     primary: {
       border: "from-red-primary via-red-500 to-blue-marine",
-      iconBg: "from-red-100 via-red-50 to-white",
+      iconBg: "from-red-primary-100 via-red-primary-50 to-white",
       iconColor: "text-red-primary",
       glowBg: "from-red-400 to-red-500",
-      badgeBg: "bg-red-50 text-red-primary",
+      badgeBg: "bg-red-primary-50 text-red-primary",
       patternColor: "%23E53E3E"
     },
     secondary: {
       border: "from-gray-800 via-gray-600 to-gray-500",
-      iconBg: "from-gray-100 via-gray-50 to-white",
+      iconBg: "from-ui-surface-2 via-ui-surface to-white",
       iconColor: "text-gray-dark",
       glowBg: "from-gray-400 to-gray-500",
-      badgeBg: "bg-gray-100 text-gray-dark",
+      badgeBg: "bg-ui-surface-2 text-gray-dark",
       patternColor: "%232D3848"
     },
     accent: {
       border: "from-gray-800 via-red-primary to-gray-500",
-      iconBg: "from-red-50 via-gray-50 to-white",
+      iconBg: "from-red-primary-50 via-ui-surface to-white",
       iconColor: "text-red-primary",
       glowBg: "from-red-400 to-gray-500",
-      badgeBg: "bg-red-50 text-red-primary",
+      badgeBg: "bg-red-primary-50 text-red-primary",
       patternColor: "%232D3848"
     }
   };

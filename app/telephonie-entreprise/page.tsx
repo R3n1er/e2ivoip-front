@@ -97,7 +97,7 @@ export default function TelephonieDentreprise() {
                 className="grid lg:grid-cols-2 gap-12 items-center"
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                  <div className="bg-red-primary-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
                     <solution.Icon size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-dark mb-4">
@@ -134,7 +134,7 @@ export default function TelephonieDentreprise() {
         </section>
 
         {/* Sub-navigation */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-ui-surface">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-center text-gray-dark mb-12">
               Nos solutions <span className="text-red-primary">spécialisées</span>
@@ -180,7 +180,7 @@ export default function TelephonieDentreprise() {
           </div>
         </section>
         {/* Territory phone links -- D-09 */}
-        <section className="bg-gray-50 py-8">
+        <section className="bg-ui-surface py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
               APPELEZ-NOUS DIRECTEMENT

@@ -82,7 +82,7 @@ export function OptimizedImage({
         ref={imageRef}
         data-testid="image-error"
         className={cn(
-          "flex items-center justify-center bg-gray-200 text-ui-muted",
+          "flex items-center justify-center bg-ui-border text-ui-muted",
           className
         )}
         style={{ width: fill ? "100%" : width, height: fill ? "100%" : height }}
@@ -97,7 +97,7 @@ export function OptimizedImage({
       <div
         ref={imageRef}
         data-testid="image-placeholder"
-        className={cn("bg-gray-200 animate-pulse", className)}
+        className={cn("bg-ui-border animate-pulse", className)}
         style={{ width: fill ? "100%" : width, height: fill ? "100%" : height }}
       />
     );
@@ -109,7 +109,7 @@ export function OptimizedImage({
       data-testid="image-container"
       className={cn(
         "relative overflow-hidden",
-        !isLoaded && "bg-gray-200 animate-pulse",
+        !isLoaded && "bg-ui-border animate-pulse",
         className
       )}
     >

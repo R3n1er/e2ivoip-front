@@ -53,7 +53,7 @@ export function TestimonialsSectionSimple({ testimonials = DEFAULT_TESTIMONIALS 
   if (!testimonials || testimonials.length === 0) return null
 
   return (
-    <section id="temoignages" className="py-20 bg-gray-50">
+    <section id="temoignages" className="py-20 bg-ui-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

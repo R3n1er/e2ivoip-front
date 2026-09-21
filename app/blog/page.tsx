@@ -146,7 +146,7 @@ export default async function BlogPage() {
           </div>
         </section>
 
-        <section className="bg-gray-50 py-16">
+        <section className="bg-ui-surface py-16">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="mb-4 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
               Besoin d&apos;expertise en téléphonie IP ?

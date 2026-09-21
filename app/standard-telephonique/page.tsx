@@ -37,7 +37,7 @@ export default function StandardTelephoniquePage() {
     <div className="min-h-screen bg-white">
       <main className="pt-20">
         {/* Hero — le sujet expliqué à un acheteur, pas à un technicien */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 md:py-20 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary/10 border border-red-primary/20 text-red-primary text-sm font-medium mb-6">
@@ -131,7 +131,7 @@ export default function StandardTelephoniquePage() {
         </section>
 
         {/* Ce qu'on installe — traduction des termes techniques en usage */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Ce que nous installons,{" "}
@@ -358,7 +358,7 @@ export default function StandardTelephoniquePage() {
         </section>
 
         {/* Déclinaisons territoriales — maillage interne, pas pages satellites */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
               Où nous{" "}

@@ -7,7 +7,7 @@ export function MacBookTest() {
   const breakpoint = useMacBookBreakpoint()
   
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
+    <div className="p-8 bg-ui-surface min-h-screen">
       <div className="max-w-7xl mx-auto">
         <AnimatedText className="mb-8">
           <h1 className="text-4xl font-bold text-gray-dark mb-4">

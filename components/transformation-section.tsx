@@ -54,7 +54,7 @@ export function TransformationSection() {
             </div>
 
             {/* Points clés */}
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 p-6 rounded-xl">
+            <div className="bg-gradient-to-br from-blue-marine-50 to-red-primary-50 p-6 rounded-xl">
               <h3 className="text-xl font-bold text-gray-dark mb-4">
                 Vos avantages avec E2I VoIP
               </h3>

@@ -213,7 +213,7 @@ function StudioDevisForm() {
 
   if (status === "success") {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-ui-surface flex items-center justify-center p-4">
         <Card className="max-w-lg w-full text-center border-green-200">
           <CardContent className="p-8">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -241,7 +241,7 @@ function StudioDevisForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 md:py-16">
+    <div className="min-h-screen bg-ui-surface py-8 md:py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-3">
@@ -264,7 +264,7 @@ function StudioDevisForm() {
                 <div key={title} className="flex flex-col items-center flex-1">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-1
-                      ${done ? "bg-green-500 text-white" : active ? "bg-red-primary text-white" : "bg-gray-200 text-ui-muted"}`}
+                      ${done ? "bg-green-500 text-white" : active ? "bg-red-primary text-white" : "bg-ui-border text-ui-muted"}`}
                     aria-current={active ? "step" : undefined}
                   >
                     {done ? <Check size={16} /> : num}
@@ -278,7 +278,7 @@ function StudioDevisForm() {
               );
             })}
           </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-2 bg-ui-border rounded-full overflow-hidden">
             <div
               className="h-full bg-red-primary transition-all duration-300"
               style={{ width: `${(step / 5) * 100}%` }}
@@ -309,7 +309,7 @@ function StudioDevisForm() {
                       }}
                       className={`text-left p-4 rounded-xl border-2 transition-all
                         ${category === opt.value
-                          ? "border-red-primary bg-red-50"
+                          ? "border-red-primary bg-red-primary-50"
                           : "border-ui-border hover:border-red-primary/50"}`}
                     >
                       <span className="font-semibold text-gray-dark">
@@ -340,7 +340,7 @@ function StudioDevisForm() {
                 </h2>
 
                 {filteredDemos.length === 0 && (
-                  <p className="text-sm text-ui-muted bg-gray-50 border border-ui-border rounded-xl p-4">
+                  <p className="text-sm text-ui-muted bg-ui-surface border border-ui-border rounded-xl p-4">
                     Aucun modèle enregistré pour cette catégorie&nbsp;: rédigez
                     votre texte ci-dessous, notre studio vous accompagnera dans
                     sa mise en forme.
@@ -362,7 +362,7 @@ function StudioDevisForm() {
                         }}
                         className={`w-full text-left p-4 rounded-xl border-2 transition-all
                           ${demoId === demo.id
-                            ? "border-red-primary bg-red-50"
+                            ? "border-red-primary bg-red-primary-50"
                             : "border-ui-border hover:border-red-primary/50"}`}
                       >
                         <div className="flex items-start gap-3">
@@ -730,7 +730,7 @@ export default function StudioDevisPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="min-h-screen bg-ui-surface flex items-center justify-center">
           <Card className="max-w-lg w-full text-center">
             <CardContent className="p-8">
               <p className="text-ui-muted">Chargement du formulaire…</p>

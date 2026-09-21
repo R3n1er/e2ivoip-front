@@ -138,7 +138,7 @@ export default function TrunkSipAgentsIARevendeurs() {
                   key={title}
                   className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-primary-50">
                     <Icon size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-gray-dark">

@@ -101,7 +101,7 @@ export default function Smb3CXMutualisee() {
 
               <div className="rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col p-8">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <div className="w-16 h-16 bg-ui-surface-2 rounded-full flex items-center justify-center mb-4 mx-auto">
                     <Timer size={32} className="text-gray-dark" aria-hidden="true" />
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
@@ -271,7 +271,7 @@ export default function Smb3CXMutualisee() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-blue-marine-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <DeviceMobile size={24} className="text-blue-marine" aria-hidden="true" />
                   </div>
                   <div>
@@ -295,7 +295,7 @@ export default function Smb3CXMutualisee() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-blue-marine-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Desktop size={24} className="text-blue-marine" aria-hidden="true" />
                   </div>
                   <div>
