@@ -139,7 +139,7 @@ export default function DevisEnLignePage() {
       </section>
 
       {/* Section Boutons de Devis */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-lg text-gray-dark max-w-3xl mx-auto">
@@ -195,7 +195,7 @@ export default function DevisEnLignePage() {
 
           {/* Contact urgent */}
           <div className="text-center mt-16">
-            <p className="text-lg text-[#1d3557] font-medium mb-4">
+            <p className="text-lg text-blue-marine font-medium mb-4">
               Un projet urgent ? Contactez directement notre équipe commerciale.
             </p>
             <a
@@ -234,7 +234,7 @@ export default function DevisEnLignePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <FaqSection items={DEVIS_FAQ} title="Questions fréquentes" />
       </section>
 
@@ -246,7 +246,7 @@ export default function DevisEnLignePage() {
       </section>
 
       {/* Certification */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
             Nous sommes certifiés !

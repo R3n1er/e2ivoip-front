@@ -262,19 +262,84 @@ tromper n'est pas un garde-fou.
 bénéficiait du seuil WCAG 3:1. C'est faux — le palier « grand texte » commence
 à 24px, ou 18,66px en gras.
 
-### Dette restante — vague 2 (non traitée)
+### Vague 2 traitée (2026-09-21)
 
-**~359 occurrences**, qui demandent toutes un arbitrage de marque :
+**193 substitutions sur 51 fichiers**, plus **3 fichiers morts supprimés**
+(529 lignes). La charte de marque passe de **5 à 9 couleurs**, avec l'accord
+explicite d'Alban (règle absolue n°3).
+
+**Quatre teintes dérivées ajoutées**, aux valeurs de §9.1 ci-dessous :
+
+```
+bg-red-50   (24) → bg-red-primary-50    #FDECEC
+bg-red-100   (7) → bg-red-primary-100   #FAD4D4
+bg-blue-50   (6) → bg-blue-marine-50    #EEF1F5
+bg-blue-100  (6) → bg-blue-marine-100   #D8DEE7
+```
+
+Écart RGB de 6 à 23 sur 43 pastilles : perceptible à la pipette, pas à l'œil.
+Mesure Playwright avant/après, 4 pages : 0,15 % à 2,24 % de pixels touchés,
+écart RGB maximal constaté **23**. Les fonds couvrent des surfaces, d'où un
+pourcentage plus élevé qu'en vague 1 (0,09 à 0,58 %) où seuls des glyphes
+changeaient.
+**Contraste — par couple texte/fond, pas de statut général.** La première
+rédaction affirmait « contraste préservé partout » ; c'était faux, et la
+relecture Codex du 2026-09-21 l'a relevé. Le détail :
+
+| Texte sur `red-primary-50` (#FDECEC) | Ratio | AA |
+|---|---|---|
+| `gray-dark` #1F2937 | 12,85:1 | ✅ |
+| `blue-marine` #2D3848 | 10,38:1 | ✅ |
+| `red-700` #B91C1C | 5,66:1 | ✅ |
+| `red-600` #DC2626 | 4,23:1 | ❌ |
+| `red-primary` #E53E3E | 3,61:1 | ❌ |
+
+Cinq badges portaient `text-red-primary` sur ce fond : **3,77:1 avant, 3,61:1
+après** — un défaut AA antérieur à ce chantier, que la substitution aggravait.
+Corrigés en `text-red-700` (5,66:1), ils deviennent conformes. Le rouge est
+conservé, la lisibilité aussi.
+
+Leçon : j'avais vérifié `gray-dark` sur les nouveaux fonds (rassurant) sans
+jamais tester le couple rouge-sur-rouge. Vérifier la combinaison qu'on attend
+ne remplace pas vérifier celle qui pose problème.
+
+**Deux surfaces neutres**, à valeur identique donc invisibles :
+
+```
+bg-gray-50  (63) → bg-ui-surface    #F9FAFB
+bg-gray-100 (18) → bg-ui-surface-2  #F3F4F6
+bg-gray-200 (20) → bg-ui-border     #E5E7EB
+```
+
+**Le texte rouge est conservé.** `text-red-600` (#DC2626) vaut 4,83:1 et passe
+AA ; `red-primary` (#E53E3E) vaut 4,13:1 et échoue. Substituer dégraderait
+l'accessibilité — c'est la faute corrigée en PR #72, qu'on ne rejoue pas. Les
+24 occurrences sont documentées comme exception dans `CHARTE_GRAPHIQUE.md`.
+
+**Code mort supprimé** : `hubspot-contact-form.tsx`, `hubspot-form.tsx` et
+`hubspot-forms.tsx` n'étaient importés nulle part. Mettre en charte du code
+qui ne s'affiche jamais n'a pas de sens.
+
+> **À trancher un jour** — `hubspot-contact-form-global.tsx` est *mocké par
+> deux tests mais rendu par aucune page*. La présence de tests donne l'illusion
+> qu'il est vivant. Hors périmètre d'un chantier de couleurs.
+
+### Dette restante après vague 2
+
+**172 occurrences**, très fragmentées : après les cinq premières classes, ce
+sont presque toutes des occurrences uniques.
 
 | Famille | Volume | Question ouverte |
 |---|---|---|
-| Fonds neutres | `bg-gray-50` (53), `bg-gray-100/200` (37) | Officialiser `gray-50` comme token ? DESIGN.md §9.1 le propose déjà. |
-| Accents rouges | `text-red-600` (24), `bg-red-50` (23), `bg-red-100` | Dérivées de `red-primary` à créer, ou basculer sur le token existant ? |
-| Accents bleus | `text-blue-600/700/800` (23), `bg-blue-50/100` (12) | Aucun équivalent en charte : `blue-marine` est structurel, pas décoratif. |
-| Gris clairs fond sombre | 4 | Token de texte clair à créer (la charte suppose un fond blanc). |
-| Bordure survolée | 6 | Second token de bordure pour l'état `hover`. |
+| Texte rouge | 24 + 3 | **Décidé** : conservé pour l'accessibilité |
+| Fonds soutenus | `bg-red-600` (12), `bg-red-700` (5), `bg-gray-800` | Boutons et sections sombres. Un token d'accent plein reste à définir. |
+| Dégradés sombres | `from-gray-800` (11), `to-gray-500` (8), `via-*` | Fonds de section dégradés, chacun sur mesure. |
+| Texte bleu | `text-blue-600/700/800` (23) | §9.6 dit « 1 seule couleur d'accent : le rouge ». Ces liens bleus devraient peut-être disparaître plutôt que changer de teinte. |
+| Sémantiques | `green-*` (10), `orange-*` (2) | Succès et avertissement. §9.2 les propose déjà comme tokens. |
+| Queue longue | ~60 | Occurrences uniques, à traiter au fil des retouches. |
 
-Contrairement à la vague 1, aucune de ces familles ne se traite mécaniquement.
+Le gros du travail mécanique est fait : ce qui reste demande soit une décision
+de design, soit un passage au cas par cas.
 
 ---
 

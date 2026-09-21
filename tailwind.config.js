@@ -22,6 +22,18 @@ module.exports = {
         "gray-dark": "#1F2937", // Gris foncé - Texte, header non scrolled
         white: "#FFFFFF", // Blanc - Fond clair, inversions
 
+        // ── Teintes dérivées de la marque (charte étendue le 2026-09-21) ──
+        // Ajoutées avec l'accord explicite d'Alban (règle absolue n°3), aux
+        // valeurs proposées par DESIGN.md §9.1. Elles remplacent les fonds
+        // Tailwind des pastilles d'icônes et des badges.
+        //
+        // Ce sont des FONDS uniquement : trop claires pour porter du texte.
+        // L'accent reste `red-primary`, le marine reste structurel.
+        "red-primary-50": "#FDECEC", // Fonds de badges et callouts
+        "red-primary-100": "#FAD4D4", // Fonds d'icônes (pastilles rondes)
+        "blue-marine-50": "#EEF1F5", // Fonds de sections alternées
+        "blue-marine-100": "#D8DEE7", // Fonds d'icônes, bordures douces
+
         // ── Gris d'interface (fonctionnels, PAS des couleurs de marque) ──
         // Même rampe bleutée que `gray-dark`, qui est déjà le `gray-800` de
         // Tailwind : la charte a donc déjà adopté ce procédé. Ces deux tokens
@@ -32,6 +44,8 @@ module.exports = {
         // règle « 1 seule couleur d'accent par écran, le rouge » reste entière.
         "ui-muted": "#4B5563", // 7,56:1 sur blanc — AA texte. Navigation niv. 2-3, chevrons
         "ui-border": "#E5E7EB", // 1,24:1 — séparateurs et bordures, jamais du texte
+        "ui-surface": "#F9FAFB", // Fond de section alterné au blanc (= gray-50)
+        "ui-surface-2": "#F3F4F6", // Fond de section plus marqué (= gray-100)
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

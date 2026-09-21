@@ -26,7 +26,7 @@ const SUPPORT = [
 
 export function GeographicAdvantage({ locations }: GeographicAdvantageProps) {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-ui-surface py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">

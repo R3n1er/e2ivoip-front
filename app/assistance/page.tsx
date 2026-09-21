@@ -80,7 +80,7 @@ export default function AssistancePage() {
               <p className="text-lg text-ui-muted mb-4">
                 Lundi - Vendredi : 8h - 18h
               </p>
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-100 text-red-800 font-medium">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-primary-100 text-red-800 font-medium">
                 Support prioritaire selon contrat client
               </div>
             </CardContent>
@@ -89,7 +89,7 @@ export default function AssistancePage() {
       </section>
 
       {/* Chat intégré désactivé (Tawk.to) */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-ui-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-4">
@@ -129,7 +129,7 @@ export default function AssistancePage() {
       </section>
 
       {/* Territory phone links -- D-09 */}
-      <section className="bg-gray-50 py-8">
+      <section className="bg-ui-surface py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-black uppercase tracking-[0.3em] text-gray-secondary mb-4 text-center">
             APPELEZ-NOUS DIRECTEMENT

@@ -86,7 +86,7 @@ export interface HubSpotFormProps {
  */
 function DefaultError({ message }: { message?: string }) {
   return (
-    <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 mb-4">
+    <div className="p-4 rounded-lg bg-red-primary-50 border border-red-200 text-red-800 mb-4">
       <p className="font-semibold mb-1">Erreur de chargement</p>
       <p className="text-sm">
         {message ||

@@ -216,8 +216,19 @@ describe("tokens — les gris d'interface sont déclarés", () => {
   );
 
   it.each([
+    // Vague 1 — gris d'interface.
     ["ui-muted", "#4B5563"],
     ["ui-border", "#E5E7EB"],
+    // Vague 2 — surfaces neutres (valeurs identiques aux gray-50/100).
+    ["ui-surface", "#F9FAFB"],
+    ["ui-surface-2", "#F3F4F6"],
+    // Vague 2 — teintes dérivées de la marque, ajoutées à la charte le
+    // 2026-09-21 avec l'accord explicite d'Alban (règle absolue n°3), aux
+    // valeurs proposées par DESIGN.md §9.1.
+    ["red-primary-50", "#FDECEC"],
+    ["red-primary-100", "#FAD4D4"],
+    ["blue-marine-50", "#EEF1F5"],
+    ["blue-marine-100", "#D8DEE7"],
   ])("déclare %s = %s", (token, valeur) => {
     expect(config).toMatch(
       new RegExp(`["']${token}["']\\s*:\\s*["']${valeur}["']`, "i"),

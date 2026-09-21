@@ -242,7 +242,7 @@ export default function TrunkSipAgentsIA() {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-20 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
@@ -284,7 +284,7 @@ export default function TrunkSipAgentsIA() {
                 <p className="text-ui-muted leading-relaxed">
                   Votre numéro local E2I redirige vers le numéro de la
                   plateforme choisie au format{" "}
-                  <code className="text-sm bg-gray-100 px-2 py-0.5 rounded">
+                  <code className="text-sm bg-ui-surface-2 px-2 py-0.5 rounded">
                     E.164
                   </code>
                   . Idéal pour POC rapides ou flux entrant uniquement.
@@ -311,7 +311,7 @@ export default function TrunkSipAgentsIA() {
               {platforms.map((platform) => (
                 <div
                   key={platform.name}
-                  className={`flex h-full flex-col bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
+                  className={`flex h-full flex-col bg-gradient-to-br from-ui-surface to-white rounded-xl p-6 border hover:shadow-md transition-shadow duration-300 ${
                     platform.status === "validated"
                       ? "border-green-500/40"
                       : "border-ui-border"
@@ -340,7 +340,7 @@ export default function TrunkSipAgentsIA() {
                           ? "bg-green-100 text-green-700"
                           : platform.status === "in-progress"
                           ? "bg-orange-100 text-orange-700"
-                          : "bg-gray-100 text-ui-muted"
+                          : "bg-ui-surface-2 text-ui-muted"
                       }`}
                     >
                       {platform.statusLabel}
@@ -364,7 +364,7 @@ export default function TrunkSipAgentsIA() {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-20 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
@@ -411,7 +411,7 @@ export default function TrunkSipAgentsIA() {
             </div>
 
             {/* Étape préalable earlybird */}
-            <div className="mb-12 rounded-2xl border-2 border-red-primary/30 bg-red-50/60 p-6 sm:p-8">
+            <div className="mb-12 rounded-2xl border-2 border-red-primary/30 bg-red-primary-50/60 p-6 sm:p-8">
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <div className="inline-flex items-center bg-red-primary text-white rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.15em] whitespace-nowrap">
                   Earlybird
@@ -446,7 +446,7 @@ export default function TrunkSipAgentsIA() {
           </div>
         </section>
 
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-ui-surface to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-dark mb-8 text-center">
               Prérequis techniques

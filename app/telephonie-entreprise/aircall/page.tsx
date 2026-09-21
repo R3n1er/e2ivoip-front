@@ -176,7 +176,7 @@ export default function AircallPage() {
         </section>
 
         {/* Annonce partenariat */}
-        <section className="bg-gray-50 py-12">
+        <section className="bg-ui-surface py-12">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <p className="mb-6 text-sm font-black uppercase tracking-[0.2em] text-red-primary">
               Nouveau partenariat
@@ -244,7 +244,7 @@ export default function AircallPage() {
         </section>
 
         {/* Intégrations CRM */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-ui-surface py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -297,7 +297,7 @@ export default function AircallPage() {
                   key={title}
                   className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-primary-50">
                     <Icon size={24} className="text-red-primary" aria-hidden="true" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-gray-dark">
@@ -350,7 +350,7 @@ export default function AircallPage() {
         </section>
 
         {/* Pour qui ? */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-ui-surface py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -400,7 +400,7 @@ export default function AircallPage() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl border border-ui-border bg-gray-50 p-6 text-center"
+                  className="rounded-xl border border-ui-border bg-ui-surface p-6 text-center"
                 >
                   <div className="text-3xl font-black font-mono tabular-nums text-red-primary md:text-4xl">
                     {stat.value}
@@ -416,7 +416,7 @@ export default function AircallPage() {
         </section>
 
         {/* Pourquoi E2I VoIP */}
-        <section className="bg-gray-50 py-16">
+        <section className="bg-ui-surface py-16">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
               Pourquoi déployer Aircall avec{" "}

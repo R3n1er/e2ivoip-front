@@ -74,7 +74,7 @@ export function FaqSection({
               {/* <summary> n'accepte que du phrasing content ou un heading
                   unique : la question est un <h3> et le chevron un <span>
                   décoratif, tous deux enfants directs. */}
-              <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors motion-reduce:transition-none hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
+              <summary className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer transition-colors motion-reduce:transition-none hover:bg-ui-surface focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2 list-none">
                 <h3 className="font-semibold text-gray-dark pr-4 text-base">
                   {item.question}
                 </h3>
@@ -98,7 +98,7 @@ export function FaqSection({
                 </span>
               </summary>
 
-              <div className="border-t border-ui-border bg-gray-50">
+              <div className="border-t border-ui-border bg-ui-surface">
                 <div className="px-6 py-6 text-ui-muted">
                   {typeof item.answer === "string" ? (
                     <p>{item.answer}</p>

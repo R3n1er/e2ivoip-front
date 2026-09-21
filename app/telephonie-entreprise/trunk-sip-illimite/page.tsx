@@ -147,7 +147,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-marine-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <MapTrifold size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
@@ -176,7 +176,7 @@ export default function TrunkSIPIllimite() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-marine-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Shield size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
@@ -196,7 +196,7 @@ export default function TrunkSIPIllimite() {
 
               <div>
                 {/* Tableau des forfaits */}
-                <div className="bg-gradient-to-br from-blue-50 to-red-50 p-8 rounded-2xl">
+                <div className="bg-gradient-to-br from-blue-marine-50 to-red-primary-50 p-8 rounded-2xl">
                   <div className="text-center mb-6">
                     <h3 className="text-2xl font-bold text-gray-dark mb-2">
                       Nos forfaits illimités
@@ -243,7 +243,7 @@ export default function TrunkSIPIllimite() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="mt-6 p-4 bg-blue-marine-50 rounded-lg border border-blue-200">
                     <div className="flex items-start space-x-2">
                       <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
                       <div className="text-sm text-blue-800">
@@ -301,7 +301,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-ui-surface-2 via-ui-surface to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <Calculator size={24} className="text-3xl text-gray-dark" aria-hidden="true" />
                     </div>
                   </div>
@@ -328,7 +328,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-gray-100 via-gray-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-ui-surface-2 via-ui-surface to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <Globe size={24} className="text-3xl text-gray-secondary" aria-hidden="true" />
                     </div>
                   </div>
@@ -361,7 +361,7 @@ export default function TrunkSIPIllimite() {
                 <div className="relative p-8">
                   {/* Icon with enhanced styling - Couleurs de la charte */}
                   <div className="relative mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-red-100 via-red-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-red-primary-100 via-red-primary-50 to-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                       <TrendUp size={24} className="text-3xl text-red-primary" aria-hidden="true" />
                     </div>
                   </div>
@@ -461,7 +461,7 @@ export default function TrunkSIPIllimite() {
             <div className="bg-white rounded-2xl shadow-sm border border-ui-border overflow-hidden">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-ui-border">
+                  <tr className="bg-ui-surface border-b border-ui-border">
                     <th className="px-6 py-4 text-sm font-semibold text-gray-dark">
                       Destination
                     </th>
@@ -474,7 +474,7 @@ export default function TrunkSIPIllimite() {
                   {tarifsMobiles.map((tarif) => (
                     <tr
                       key={tarif.destination}
-                      className="border-b border-ui-border last:border-0 hover:bg-gray-50 transition-colors"
+                      className="border-b border-ui-border last:border-0 hover:bg-ui-surface transition-colors"
                     >
                       <td className="px-6 py-4 text-gray-dark">
                         {tarif.destination}
