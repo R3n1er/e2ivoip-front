@@ -355,7 +355,7 @@ export default function Telephonie3CX() {
                         <div className="bg-gradient-to-r from-gray-800 to-red-primary text-white px-4 py-3 font-bold text-sm">
                           {row.feature}
                         </div>
-                        <div className="grid grid-cols-2 divide-x divide-gray-200">
+                        <div className="grid grid-cols-2 divide-x divide-ui-border">
                           <div className="px-4 py-3 text-center">
                             <div className="text-xs font-black uppercase tracking-wider text-ui-muted mb-1">3CX PRO</div>
                             <div className="text-sm font-medium text-gray-dark flex items-center justify-center min-h-[1.5rem]">
@@ -372,7 +372,7 @@ export default function Telephonie3CX() {
                       </div>
                     ))}
                     {/* Liens vers les pages détail de chaque offre */}
-                    <div className="grid grid-cols-2 divide-x divide-gray-200 pt-2 text-center">
+                    <div className="grid grid-cols-2 divide-x divide-ui-border pt-2 text-center">
                       <NextLink href="/3cx-pro" className="px-4 py-2 text-sm font-medium text-blue-marine underline underline-offset-2 hover:text-red-primary transition-colors">
                         En savoir plus
                       </NextLink>

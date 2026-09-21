@@ -52,7 +52,21 @@ const HERO_FICHIERS_ATTENDUS = 20;
  *   text-gray-600/500/400  →  text-ui-muted    (#4B5563,  7,56:1)
  *   border-gray-200/100    →  border-ui-border (#E5E7EB)
  */
-const GRIS_INTERDITS = /\b(?:text|border)-gray-\d{2,3}(?:\/\d{1,3})?\b/g;
+/*
+ * Vague 3 — élargissement des préfixes et des familles.
+ *
+ * Relevé par la relecture Codex du 2026-09-21 : la regex ne connaissait que
+ * `text-` et `border-` sur la seule famille `gray`. Trois gris y échappaient
+ * en production — `divide-gray-200` (app/telephonie-3cx/page.tsx:358, :375) et
+ * `ring-gray-400` (app/blog/page.tsx:167) — parce qu'aucun de ces préfixes
+ * n'était listé. `border-t-gray-200` et `text-slate-600` passaient de même.
+ *
+ * Les préfixes directionnels (`border-t-`, `border-x-`…) et les familles
+ * neutres voisines de Tailwind (slate, zinc, neutral, stone) sont donc
+ * couverts : elles produisent le même gris à l'écran sous un autre nom.
+ */
+const GRIS_INTERDITS =
+  /\b(?:text|border(?:-[trblxye]{1,2})?|divide(?:-[xy])?|ring|outline|decoration|placeholder)-(?:gray|slate|zinc|neutral|stone)-\d{2,3}(?:\/\d{1,3})?\b/g;
 
 /**
  * Vague 2 (2026-09-21) — fonds neutres et fonds de marque.
@@ -86,6 +100,31 @@ const FONDS_INTERDITS =
  */
 const COULEURS_ARBITRAIRES =
   /\b(?:bg|from|via|to|text|border)-\[#[0-9a-fA-F]{3,8}\]/g;
+
+/**
+ * Vague 3 — hexadécimaux encodés en URL, dans les SVG `data:` inline.
+ *
+ * Relevé par la relecture Kimi K2.7 du 2026-09-21. Les motifs décoratifs sont
+ * écrits `style={{backgroundImage: "url(\"data:image/svg+xml,…%23ef4444…\")"}}`
+ * : la couleur n'est ni une classe, ni une notation `bg-[#hex]`, mais le `#`
+ * d'un hex encodé `%23`. Trois couleurs hors charte y vivaient — `%23ef4444`
+ * (red-500), `%23dc2626` (red-600), `%233b82f6` (blue-500) — invisibles pour
+ * les trois contrôles existants.
+ *
+ * Les garde-fous précédents vérifiaient une REPRÉSENTATION de la couleur. Une
+ * couleur reste une couleur quelle que soit son écriture : celui-ci compare la
+ * valeur elle-même à la palette déclarée dans `tailwind.config.js`.
+ */
+const HEX_ENCODES = /%23([0-9a-fA-F]{6})\b/g;
+
+/** Palette de la charte, lue à la source plutôt que recopiée. */
+const PALETTE: ReadonlySet<string> = new Set(
+  (
+    fs
+      .readFileSync(path.join(process.cwd(), "tailwind.config.js"), "utf8")
+      .match(/#[0-9a-fA-F]{6}\b/g) ?? []
+  ).map((h) => h.toUpperCase()),
+);
 
 /**
  * EXCEPTIONS — portées par l'OCCURRENCE, jamais par le fichier.
@@ -126,7 +165,11 @@ const EXCEPTIONS: ReadonlyArray<{
     classes: ["border-gray-300", "border-gray-400"],
     motif:
       "bouton secondaire dont le survol repose sur l'écart border-gray-300 → " +
-      "border-gray-400. Un token unique le rendrait inerte.",
+      "border-gray-400. Un token unique le rendrait inerte. Vague 3 ajoute " +
+      "une seconde raison, mesurée : sur blanc, border-gray-300 est à 1,47:1 " +
+      "et border-ui-border à 1,24:1. La substitution DÉGRADERAIT une bordure " +
+      "déjà sous le seuil WCAG 1.4.11 (3:1). Ces boutons demandent un token " +
+      "de bordure accessible, pas un remplacement — arbitrage ouvert.",
   },
   {
     fichier: "app/blog/categorie/[slug]/page.tsx",
@@ -155,17 +198,35 @@ function fichiers(dir: string, acc: string[] = []): string[] {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (e.name !== "node_modules") fichiers(p, acc);
-    } else if (e.name.endsWith(".tsx")) {
-      acc.push(p);
+    } else if (e.name.endsWith(".tsx") || e.name.endsWith(".ts")) {
+      // Vague 3 : les `.ts` entrent aussi. `lib/image-optimization-config.ts`
+      // stockait cinq classes de fond comme valeurs d'un objet de config —
+      // jamais dans un `className`, donc invisibles deux fois : par
+      // l'extension et par la lecture. Trois étaient interdites depuis la
+      // vague 2. Une classe Tailwind reste une classe où qu'elle soit écrite.
+      if (!e.name.endsWith(".d.ts")) acc.push(p);
     }
   }
   return acc;
 }
 
+/**
+ * Vague 3 (2026-09-21) — `lib/` entre dans le périmètre.
+ *
+ * Les vagues 1 et 2 ne balayaient que `components/` et `app/`. `lib/` était
+ * traité comme de la logique sans rendu — mais `lib/faq-data.tsx` contient du
+ * JSX de contenu, et y portait 19 gris interdits que deux vagues successives
+ * ont déclarés conformes sans jamais les regarder.
+ *
+ * Le périmètre d'un test de conformité est lui-même une décision : un
+ * garde-fou qui ne lit pas là où vit le rendu ne prouve rien. La collecte suit
+ * désormais l'extension `.tsx`, où qu'elle se trouve à la racine du projet.
+ */
 function surfaces(): string[] {
   return [
     ...fichiers(path.join(process.cwd(), "components")),
     ...fichiers(path.join(process.cwd(), "app")),
+    ...fichiers(path.join(process.cwd(), "lib")),
   ];
 }
 
@@ -199,6 +260,24 @@ function attributsDeClasse(source: string): string[] {
     // ternaires, cn(), template strings, tableaux.
     for (const [, lit] of expr.matchAll(/["'`]([^"'`]*)["'`]/g)) {
       if (/[a-z]-/.test(lit)) out.push(lit);
+    }
+  }
+
+  // Vague 3 — classes hors attribut JSX.
+  //
+  // Un objet de configuration (`fallbackColors: { cover: "bg-gray-200" }`),
+  // une map de variants, un `cva()` : la classe n'est jamais adjacente à un
+  // `className`, mais Tailwind la compile et le navigateur l'applique. On
+  // relève donc tout littéral qui ressemble à un utilitaire de couleur,
+  // partout dans le fichier. Le risque est le faux positif, pas l'angle mort :
+  // c'est le bon sens pour un garde-fou.
+  for (const [, lit] of source.matchAll(/["'`]([^"'`\n]{0,200})["'`]/g)) {
+    if (
+      /\b(?:bg|text|border|from|via|to|ring|divide|fill|stroke)-(?:gray|slate|zinc|neutral|stone|red|blue)-\d{2,3}\b/.test(
+        lit,
+      )
+    ) {
+      out.push(lit);
     }
   }
 
@@ -255,6 +334,19 @@ describe("charte graphique — gris du site entier", () => {
       // de nommer, sans qu'aucun test ne le voie.
       const source = fs.readFileSync(fichier, "utf8");
       expect([...new Set(source.match(COULEURS_ARBITRAIRES) ?? [])]).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucune couleur hors charte dans un SVG inline",
+    (_rel, fichier) => {
+      const source = fs.readFileSync(fichier, "utf8");
+      const hors = [
+        ...new Set(
+          [...source.matchAll(HEX_ENCODES)].map(([, h]) => h.toUpperCase()),
+        ),
+      ].filter((h) => !PALETTE.has(`#${h}`));
+      expect(hors).toEqual([]);
     },
   );
 });
