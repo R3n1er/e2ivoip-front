@@ -245,7 +245,7 @@ export default function HubSpotAdminPage() {
           {error && (
             <Card className="border-red-200 bg-red-primary-50">
               <CardContent className="pt-6">
-                <div className="flex items-center gap-2 text-red-700">
+                <div className="flex items-center gap-2 text-red-text-hover">
                   <XCircle size={24} aria-hidden="true" />
                   <p className="font-medium">Erreur : {error}</p>
                 </div>

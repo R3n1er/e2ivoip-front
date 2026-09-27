@@ -122,7 +122,7 @@ export function ChatFallback() {
         {FRANCE_PHONE && (
           <a
             href={`tel:${FRANCE_PHONE.tel}`}
-            className="flex items-center gap-2 rounded-lg bg-red-primary text-white px-4 py-3 font-bold hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary"
+            className="flex items-center gap-2 rounded-lg bg-red-primary text-white px-4 py-3 font-bold hover:bg-red-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary"
           >
             <span aria-hidden="true">📞</span>
             <span>
@@ -135,7 +135,7 @@ export function ChatFallback() {
         )}
         <Link
           href="/contact"
-          className="rounded-lg border border-ui-border px-4 py-3 font-semibold hover:border-red-primary hover:text-red-primary transition-colors"
+          className="rounded-lg border border-ui-border px-4 py-3 font-semibold hover:border-red-primary hover:text-red-text transition-colors"
         >
           📬 Formulaire de contact
         </Link>

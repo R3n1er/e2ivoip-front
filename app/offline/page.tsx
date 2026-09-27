@@ -13,7 +13,7 @@ export default function OfflinePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-marine-50 to-red-primary-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
         <div className="mx-auto w-20 h-20 bg-red-primary-100 rounded-full flex items-center justify-center mb-6">
-          <Question size={24} className="text-red-600" aria-hidden="true" />
+          <Question size={24} className="text-red-text" aria-hidden="true" />
         </div>
 
         <h1 className="text-2xl font-bold text-gray-dark mb-4">
@@ -28,7 +28,7 @@ export default function OfflinePage() {
         <button
           type="button"
           onClick={handleRefresh}
-          className="w-full bg-gradient-to-r from-red-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-red-700 hover:to-blue-800 transition-all duration-200 flex items-center justify-center gap-2 mb-6"
+          className="w-full bg-gradient-to-r from-red-text to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-red-text-hover hover:to-blue-800 transition-all duration-200 flex items-center justify-center gap-2 mb-6"
         >
           <ArrowsClockwise size={24} aria-hidden="true" />
           Réessayer

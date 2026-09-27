@@ -78,7 +78,7 @@ export function BlogPagination({
                 disabled={isLoading}
                 className={
                   currentPage === page
-                    ? "bg-red-primary hover:bg-red-600 border-red-primary"
+                    ? "bg-red-primary hover:bg-red-text border-red-primary"
                     : ""
                 }
               >
