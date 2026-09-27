@@ -55,7 +55,7 @@ export default function OfflinePage() {
             <SecureEmail
               address="contact"
               mode="mailto"
-              className="flex-1 bg-blue-marine-100 text-blue-700 font-medium py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="flex-1 bg-blue-marine-100 text-blue-marine font-medium py-3 px-4 rounded-lg hover:bg-blue-200 transition-colors duration-200 flex items-center justify-center gap-2"
               label="Email"
             />
           </div>

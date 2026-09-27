@@ -197,21 +197,21 @@ export function HubSpotCalendar({
               <div className="flex items-center space-x-2">
                 <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Guyane :</span>
-                <a href="tel:+594594963500" className="text-blue-600 hover:text-blue-800">
+                <a href="tel:+594594963500" className="text-blue-marine hover:text-red-700">
                   05 94 96 35 00
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Guadeloupe :</span>
-                <a href="tel:+590590173500" className="text-blue-600 hover:text-blue-800">
+                <a href="tel:+590590173500" className="text-blue-marine hover:text-red-700">
                   05 90 17 35 00
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">Martinique :</span>
-                <a href="tel:+596596313500" className="text-blue-600 hover:text-blue-800">
+                <a href="tel:+596596313500" className="text-blue-marine hover:text-red-700">
                   05 96 31 35 00
                 </a>
               </div>
@@ -220,14 +220,14 @@ export function HubSpotCalendar({
               <div className="flex items-center space-x-2">
                 <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">La Réunion :</span>
-                <a href="tel:+262263085500" className="text-blue-600 hover:text-blue-800">
+                <a href="tel:+262263085500" className="text-blue-marine hover:text-red-700">
                   02 63 08 55 00
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone size={24} className="text-red-600" aria-hidden="true" />
                 <span className="font-medium">France :</span>
-                <a href="tel:+33189560500" className="text-blue-600 hover:text-blue-800">
+                <a href="tel:+33189560500" className="text-blue-marine hover:text-red-700">
                   01 89 56 05 00
                 </a>
               </div>
