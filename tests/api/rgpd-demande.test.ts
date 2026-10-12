@@ -14,6 +14,7 @@
  */
 
 const mockSend = jest.fn();
+const mockLogError = jest.spyOn(console, "error").mockImplementation(() => {});
 
 jest.mock("resend", () => ({
   Resend: jest.fn().mockImplementation(() => ({
@@ -21,8 +22,13 @@ jest.mock("resend", () => ({
   })),
 }));
 
+jest.mock("botid/server", () => ({
+  checkBotId: jest.fn().mockResolvedValue({ isBot: false }),
+}));
+
 import { POST } from "@/app/api/rgpd/demande/route";
 import { resetRateLimits } from "@/lib/api/rate-limit";
+import { __resetRgpdTokensForTests } from "@/lib/api/rgpd-tokens";
 
 const VALID_PAYLOAD = {
   firstName: "Jean",
@@ -71,9 +77,18 @@ describe("POST /api/rgpd/demande", () => {
   const originalEnv = process.env;
 
   beforeEach(() => {
+    __resetRgpdTokensForTests();
     resetRateLimits();
     mockSend.mockReset();
     mockSend.mockResolvedValue({ id: "email-1" });
+    mockLogError.mockClear();
+
+    // Réinitialise le mock BotID pour chaque test.
+    const { checkBotId } = require("botid/server") as {
+      checkBotId: jest.Mock;
+    };
+    checkBotId.mockReset();
+    checkBotId.mockResolvedValue({ isBot: false });
 
     process.env = {
       ...originalEnv,
@@ -161,40 +176,34 @@ describe("POST /api/rgpd/demande", () => {
     expect(mockSend).not.toHaveBeenCalled();
   });
 
-  it("accepte une demande valide et envoie les deux emails", async () => {
+  it("accepte une demande valide et n'envoie qu'un email de confirmation", async () => {
     const res = await POST(buildRequest(VALID_PAYLOAD));
 
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toEqual({ ok: true });
-    expect(mockSend).toHaveBeenCalledTimes(2);
-    expect(internalEmail()).toBeDefined();
+    // Seul le mail de confirmation est envoyé au stade du POST.
+    // Le mail interne ne part qu'après clic sur le lien de confirmation.
+    expect(mockSend).toHaveBeenCalledTimes(1);
     expect(acknowledgementEmail()).toBeDefined();
+    expect(internalEmail()).toBeUndefined();
   });
 
-  it("adresse la notification interne à la boîte RGPD, pas à la boîte commerciale", async () => {
-    process.env.STUDIO_EMAIL_TO = "commerciaux@e2i-voip.com";
+  it("inclut un lien de confirmation pointant vers /api/rgpd/confirm", async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.e2i-voip.com";
 
-    await POST(buildRequest(VALID_PAYLOAD));
-
-    const destinataires = mockSend.mock.calls.map((call) => call[0].to);
-    expect(destinataires).toContain("rgpd@e2i-voip.com");
-    expect(destinataires).not.toContain("commerciaux@e2i-voip.com");
-  });
-
-  it("rappelle le délai légal d'un mois dans l'accusé de réception", async () => {
     await POST(buildRequest(VALID_PAYLOAD));
 
     const ack = acknowledgementEmail();
-    expect(ack.subject).toMatch(/demande/i);
-    expect(ack.text).toMatch(/un mois/i);
+    expect(ack.html).toMatch(/\/api\/rgpd\/confirm\?token=/);
+    expect(ack.text).toMatch(/\/api\/rgpd\/confirm\?token=/);
   });
 
-  it("liste les droits demandés en clair dans la notification interne", async () => {
+  it("rappelle le délai légal d'un mois dans le mail de confirmation", async () => {
     await POST(buildRequest(VALID_PAYLOAD));
 
-    const { text } = internalEmail();
-    expect(text).toMatch(/Droit d’accès/);
-    expect(text).toMatch(/Droit à l’effacement/);
+    const ack = acknowledgementEmail();
+    expect(ack.subject).toMatch(/confirmez/i);
+    expect(ack.text).toMatch(/un mois/i);
   });
 
   it("refuse une demande sans identité", async () => {
@@ -249,7 +258,7 @@ describe("POST /api/rgpd/demande", () => {
     expect(mockSend).not.toHaveBeenCalled();
   });
 
-  it("valide le jeton Turnstile avant d'envoyer les emails", async () => {
+  it("valide le jeton Turnstile avant d'envoyer le mail de confirmation", async () => {
     process.env.TURNSTILE_SECRET_KEY = "turnstile-secret";
     const fetchMock = jest
       .spyOn(global, "fetch")
@@ -266,7 +275,7 @@ describe("POST /api/rgpd/demande", () => {
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       expect.objectContaining({ method: "POST" })
     );
-    expect(mockSend).toHaveBeenCalledTimes(2);
+    expect(mockSend).toHaveBeenCalledTimes(1);
     fetchMock.mockRestore();
   });
 
@@ -288,16 +297,21 @@ describe("POST /api/rgpd/demande", () => {
       })
     );
 
-    const { html } = internalEmail();
-    expect(html).not.toContain("<img src=x");
-    expect(html).not.toContain('<a href="https://phishing.example"');
-    expect(html).toContain("&lt;img src=x");
+    // Le mail de confirmation renvoie ces valeurs à l'utilisateur : le HTML
+    // y est également assaini pour ne pas servir de vecteur si un tiers
+    // usurpait l'adresse de l'expéditeur.
+    const { html: ackHtml, text: ackText } = acknowledgementEmail();
+    expect(ackHtml).not.toContain("<img src=x");
+    expect(ackHtml).not.toContain('<a href="https://phishing.example"');
+    expect(ackHtml).toContain("&lt;img src=x");
+    // En texte brut on garde la version brute mais bornée.
+    expect(ackText).toContain('<img src=x');
   });
 
   it("tronque un champ démesuré avant l'envoi", async () => {
     await POST(buildRequest({ ...VALID_PAYLOAD, details: "a".repeat(2500) }));
 
-    const { text } = internalEmail();
+    const { text } = acknowledgementEmail();
     expect(text).toContain("a".repeat(2000));
     expect(text).not.toContain("a".repeat(2001));
   });
@@ -310,7 +324,7 @@ describe("POST /api/rgpd/demande", () => {
       })
     );
 
-    expect(internalEmail().subject).not.toMatch(/[\r\n]/);
+    expect(acknowledgementEmail().subject).not.toMatch(/[\r\n]/);
   });
 
   it("bloque au-delà du quota par adresse IP", async () => {
@@ -324,21 +338,17 @@ describe("POST /api/rgpd/demande", () => {
     expect(res.headers.get("Retry-After")).toBeTruthy();
   });
 
-  it("confirme la demande même si l'accusé de réception échoue", async () => {
-    mockSend.mockImplementation(async (mail: { to: string }) => {
-      if (mail.to === VALID_PAYLOAD.email) throw new Error("boîte pleine");
-      return { id: "email-1" };
-    });
+  it("confirme la demande même si le mail de confirmation échoue", async () => {
+    mockSend.mockRejectedValue(new Error("boîte pleine"));
     const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
     const res = await POST(buildRequest(VALID_PAYLOAD));
 
-    expect(res.status).toBe(200);
-    expect(errorSpy).toHaveBeenCalled();
+    expect(res.status).toBe(500);
     errorSpy.mockRestore();
   });
 
-  it("signale une erreur si la notification interne échoue", async () => {
+  it("signale une erreur si l'envoi du mail échoue", async () => {
     mockSend.mockRejectedValue(new Error("Resend down"));
     const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
@@ -346,5 +356,29 @@ describe("POST /api/rgpd/demande", () => {
 
     expect(res.status).toBe(500);
     errorSpy.mockRestore();
+  });
+
+  it("détecte un bot via BotID et refuse la demande (statut 403)", async () => {
+    const { checkBotId } = require("botid/server") as {
+      checkBotId: jest.Mock;
+    };
+    checkBotId.mockResolvedValueOnce({ isBot: true });
+
+    const res = await POST(buildRequest(VALID_PAYLOAD));
+
+    expect(res.status).toBe(403);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("laisse passer une requête humaine via BotID (statut 200)", async () => {
+    const { checkBotId } = require("botid/server") as {
+      checkBotId: jest.Mock;
+    };
+    checkBotId.mockResolvedValueOnce({ isBot: false });
+
+    const res = await POST(buildRequest(VALID_PAYLOAD));
+
+    expect(res.status).toBe(200);
+    expect(mockSend).toHaveBeenCalledTimes(1);
   });
 });
