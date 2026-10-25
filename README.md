@@ -128,9 +128,11 @@ npm run install:all
 3. **Configurer les variables d'environnement**
 
 ```bash
-cp env.example .env.local
-# Éditer .env.local avec vos clés API
+vercel link                 # projet r3n1rs-projects/e2ivoip
+vercel env pull .env.local  # récupère les variables de l'environnement Development
 ```
+
+Voir [Variables d'Environnement](#variables-denvironnement) pour la règle multi-postes.
 
 4. **Vérifier la configuration**
 
@@ -206,24 +208,35 @@ e2ivoip-front/
 
 ### Variables d'Environnement
 
-Copiez `env.example` vers `.env.local` et configurez :
+**Source de vérité : Vercel.** Le `.env.local` de chaque poste est une copie de
+l'environnement **Development** de Vercel, obtenue par `vercel env pull`. On ne
+copie jamais de secrets à la main d'un ordinateur à l'autre.
 
-```env
-# Blog HubSpot (obligatoire) — Private App, scopes cms.blog.read + cms.blog_posts.read
-HUBSPOT_ACCESS_TOKEN=your_hubspot_private_app_token
+| Variable | Rôle | Prod | Preview | Dev |
+|---|---|:-:|:-:|:-:|
+| `HUBSPOT_ACCESS_TOKEN` | Blog + API HubSpot (Private App `pat-eu1-…`) | ✅ | ✅ | ✅ |
+| `RESEND_API_KEY` | Envoi des mails (studio, contact, RGPD) | ✅ | ✅ | ✅ |
+| `RESEND_FROM_EMAIL` | Expéditeur des mails | ✅ | ✅ | ✅ |
+| `STUDIO_EMAIL_TO` | Destinataire des devis studio | ✅ | ✅ | ✅ |
+| `RGPD_EMAIL_TO` | Destinataire des demandes RGPD | ✅ | ✅ | ✅ |
+| `NEXT_PUBLIC_POSTHOG_HOST` / `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` | Analytics PostHog | ✅ | ✅ | ✅ |
+| `NEXT_PUBLIC_BASE_URL` | URL absolue du site | ✅ | — | — |
 
-# OAuth admin HubSpot (optionnel — /admin/hubspot uniquement)
-# HUBSPOT_CLIENT_ID=...
-# HUBSPOT_CLIENT_SECRET=...
-# HUBSPOT_REDIRECT_URI=http://localhost:3000/api/hubspot/callback
+Optionnelles, non configurées : `HUBSPOT_CLIENT_*` (OAuth `/admin/hubspot`),
+`TURNSTILE_*` (BotID suffit), `URLR_*`, `NEXT_PUBLIC_SITE_URL`.
 
-# Tally Configuration
-TALLY_API_KEY=your_tally_api_key
+#### Règles pour les agents
 
-# Tawk.to Configuration
-NEXT_PUBLIC_TAWK_TO_ID=688d3cc109ef001928d4773f
-NEXT_PUBLIC_TAWK_TO_WIDGET_ID=1j1jrald3
-```
+1. **Nouvelle variable** → l'ajouter sur Vercel dans **les 3 environnements**,
+   Development compris (`vercel env add NOM development`). Sinon elle disparaît
+   du poste suivant au prochain pull.
+2. Development n'accepte pas le type *Sensitive* : c'est normal, la valeur y
+   reste chiffrée.
+3. `vercel env pull .env.local` **écrase** le fichier : vérifier d'abord que
+   Development contient tout ce qu'il y a en local.
+4. Ne jamais afficher une valeur de secret dans le terminal, un commit ou une PR :
+   comparer par empreinte (`shasum`) si besoin.
+5. Mettre à jour le tableau ci-dessus à chaque ajout ou retrait.
 
 ## 🧪 Tests
 
