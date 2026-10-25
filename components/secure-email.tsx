@@ -30,7 +30,7 @@ export function SecureEmail({
     return (
       <Link
         href={EMAIL_CONTACT_PAGE}
-        className={`hover:text-red-primary transition-colors ${className}`}
+        className={`hover:text-red-text transition-colors ${className}`}
         title="Page contact"
       >
         {display}
@@ -46,7 +46,7 @@ export function SecureEmail({
     <button
       type="button"
       onClick={handleMailto}
-      className={`cursor-pointer bg-transparent border-0 p-0 text-inherit hover:text-red-primary transition-colors ${className}`}
+      className={`cursor-pointer bg-transparent border-0 p-0 text-inherit hover:text-red-text transition-colors ${className}`}
       title="Ouvrir votre client mail"
     >
       {display}

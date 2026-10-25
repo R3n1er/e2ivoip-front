@@ -230,7 +230,7 @@ function StudioDevisForm() {
               <Button asChild variant="outline">
                 <a href="/studio-attente">Retour au studio</a>
               </Button>
-              <Button asChild className="bg-red-primary hover:bg-red-700 text-white">
+              <Button asChild className="bg-red-primary hover:bg-red-text-hover text-white">
                 <a href="/">Retour à l’accueil</a>
               </Button>
             </div>
@@ -322,7 +322,7 @@ function StudioDevisForm() {
                   ))}
                 </div>
                 {errors.category && (
-                  <p className="text-sm text-red-600 flex items-center gap-1">
+                  <p className="text-sm text-red-text flex items-center gap-1">
                     <Warning size={16} /> {errors.category}
                   </p>
                 )}
@@ -417,7 +417,7 @@ function StudioDevisForm() {
                   />
                 </div>
                 {errors.script && (
-                  <p className="text-sm text-red-600 flex items-center gap-1">
+                  <p className="text-sm text-red-text flex items-center gap-1">
                     <Warning size={16} /> {errors.script}
                   </p>
                 )}
@@ -472,7 +472,7 @@ function StudioDevisForm() {
                         </option>
                       ))}
                     </select>
-                    {errors.tone && <p className="text-xs text-red-600">{errors.tone}</p>}
+                    {errors.tone && <p className="text-xs text-red-text">{errors.tone}</p>}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="voice" className="block text-sm font-medium text-gray-dark">Voix</label>
@@ -488,7 +488,7 @@ function StudioDevisForm() {
                         </option>
                       ))}
                     </select>
-                    {errors.voice && <p className="text-xs text-red-600">{errors.voice}</p>}
+                    {errors.voice && <p className="text-xs text-red-text">{errors.voice}</p>}
                   </div>
                 </div>
 
@@ -507,7 +507,7 @@ function StudioDevisForm() {
                         </option>
                       ))}
                     </select>
-                    {errors.language && <p className="text-xs text-red-600">{errors.language}</p>}
+                    {errors.language && <p className="text-xs text-red-text">{errors.language}</p>}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="music" className="block text-sm font-medium text-gray-dark">Musique</label>
@@ -523,7 +523,7 @@ function StudioDevisForm() {
                         </option>
                       ))}
                     </select>
-                    {errors.music && <p className="text-xs text-red-600">{errors.music}</p>}
+                    {errors.music && <p className="text-xs text-red-text">{errors.music}</p>}
                   </div>
                 </div>
 
@@ -562,7 +562,7 @@ function StudioDevisForm() {
                         setErrors((e2) => ({ ...e2, firstName: "" }));
                       }}
                     />
-                    {errors.firstName && <p className="text-xs text-red-600">{errors.firstName}</p>}
+                    {errors.firstName && <p className="text-xs text-red-text">{errors.firstName}</p>}
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="lastName" className="block text-sm font-medium text-gray-dark">
@@ -576,7 +576,7 @@ function StudioDevisForm() {
                         setErrors((e2) => ({ ...e2, lastName: "" }));
                       }}
                     />
-                    {errors.lastName && <p className="text-xs text-red-600">{errors.lastName}</p>}
+                    {errors.lastName && <p className="text-xs text-red-text">{errors.lastName}</p>}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -592,7 +592,7 @@ function StudioDevisForm() {
                       setErrors((e2) => ({ ...e2, email: "" }));
                     }}
                   />
-                  {errors.email && <p className="text-xs text-red-600">{errors.email}</p>}
+                  {errors.email && <p className="text-xs text-red-text">{errors.email}</p>}
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-dark">
@@ -665,7 +665,7 @@ function StudioDevisForm() {
                 </dl>
 
                 {errors.submit && (
-                  <p className="text-sm text-red-600 flex items-center gap-1">
+                  <p className="text-sm text-red-text flex items-center gap-1">
                     <Warning size={16} /> {errors.submit}
                   </p>
                 )}
@@ -688,7 +688,7 @@ function StudioDevisForm() {
                 <Button
                   type="button"
                   onClick={goNext}
-                  className="bg-red-primary hover:bg-red-700 text-white"
+                  className="bg-red-primary hover:bg-red-text-hover text-white"
                   disabled={status === "loading"}
                 >
                   Suivant
@@ -698,7 +698,7 @@ function StudioDevisForm() {
                 <Button
                   type="button"
                   onClick={handleSubmit}
-                  className="bg-red-primary hover:bg-red-700 text-white"
+                  className="bg-red-primary hover:bg-red-text-hover text-white"
                   disabled={status === "loading"}
                 >
                   {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande"}

@@ -128,7 +128,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/devis-en-ligne"
-                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-8 py-3 bg-red-primary hover:bg-red-text text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 Demander un devis
               </a>

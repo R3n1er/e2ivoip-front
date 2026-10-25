@@ -399,6 +399,61 @@ différents (le gradient protégé pèse 102 classes réparties sur 34 chaînes 
 et non reproductible** ; le nombre de fichiers porteurs du gradient, lui, reste
 verrouillé par `HERO_FICHIERS_ATTENDUS`.
 
+### Vague 5 traitée (2026-09-21) — le rouge de texte nommé
+
+Deuxième vague d'arbitrage. Elle ne change quasiment aucune couleur à l'écran :
+elle **nomme une règle qui existait déjà en fait**.
+
+**Le constat.** `red-primary` (#E53E3E) donne 4,13:1 sur blanc — sous le seuil
+AA (4,5:1) pour du texte normal, et sous le seuil pour du texte blanc sur aplat
+rouge. Le code contournait le problème **~53 fois** avec `text-red-600`,
+`bg-red-600`, `red-700`. Une règle appliquée partout, nommée nulle part, donc
+impossible à faire respecter : rien n'empêchait d'écrire `text-red-primary` sur
+un paragraphe.
+
+**La charte s'est dotée de deux tokens** (accord d'Alban, règle absolue n°3) :
+
+| Token | Hex | Contraste | Usage |
+|---|---|---|---|
+| `red-primary` | #E53E3E | 4,13:1 | Logo, titres 18px+, aplats décoratifs |
+| `red-text` | #DC2626 | **4,83:1** | Texte courant, liens, fonds à texte blanc |
+| `red-text-hover` | #B91C1C | **6,47:1** | Survol des liens |
+
+Écart entre les deux rouges : **ΔE≈61, imperceptible**. L'identité est
+préservée, la lisibilité gagnée. Les valeurs substituées sont **identiques** —
+`text-red-600` et `text-red-text` sont tous deux #DC2626. Seul le nom change.
+
+### Ce que la règle a révélé
+
+Une règle bien posée met au jour la dette qu'on ne voyait pas :
+
+- **62 `hover:text-red-primary`** existants. 19 sur titres/gras (conformes en
+  AA large, laissés), **43 sur du texte courant** — corrigés.
+- **6 dégradés** en rouge brut, dont un `from-red-primary to-red-600` qui
+  mêlait les deux rouges. Substitués à valeur identique.
+- **Un conflit de règles** : le test du header (vague 1) exigeait
+  `hover:text-red-primary` au nom de la charte stricte, alors que la navigation
+  est en `text-sm`. Les deux règles étaient légitimes, écrites à des moments
+  différents. Arbitrage d'Alban : **l'accessibilité l'emporte**, le test a été
+  mis à jour en documentant pourquoi.
+
+Les bleus de ces dégradés (`from-blue-600`, `to-blue-700`) n'ont PAS été
+substitués : ΔE de 248 à 288, le changement serait visible. Hors périmètre.
+
+### Le principe
+
+> La conformité ne prime pas sur la lisibilité : un texte conforme et illisible
+> est un défaut, pas une réussite.
+
+C'est pourquoi la charte se dote d'un second rouge plutôt que d'imposer le
+premier partout — et pourquoi, face au conflit du header, c'est l'accessibilité
+qui a tranché.
+
+Garde-fou : 870 → **932 assertions**. Deux mutations vérifiées, dont l'altération
+du gradient hero (règle absolue n°2).
+
+---
+
 ### Dette connue, non traitée par la vague 3
 
 Signalée par les relecteurs, hors périmètre faute d'arbitrage ou de valeur :
