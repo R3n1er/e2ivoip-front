@@ -70,6 +70,18 @@ Les décisions structurantes qui en sortent sont reportées dans `docs/ADR.md`.
 `trusted` dans `~/.codex/config.toml`. En cas d'échec d'un round sur une erreur de modèle,
 retirer la ligne `model = "..."` de `~/.codex/config.toml`.
 
+### Revue de code par Codex (`codex review`)
+
+Distinct de Claudex-Loop (qui relit un **plan**) : ici Codex relit le **diff** d'une branche.
+
+- `--base`, `--commit` et `--uncommitted` sont **incompatibles avec un prompt** :
+  `codex review --base dev "consignes"` échoue aussitôt (exit 2).
+- Revue générique : `codex review --base dev` (sans prompt).
+- Revue avec consignes : se placer sur la branche (idéalement un worktree dédié), puis
+  `echo "$PROMPT" | codex review -`, le périmètre écrit dans le prompt
+  (« uniquement `git diff origin/dev...HEAD` »).
+- Avant d'annoncer un résultat : vérifier le code de sortie et la taille de la sortie.
+
 ## Permissions
 
 - Auto (sans demander) : `app/`, `components/`, `lib/`, `tests/`, configs
