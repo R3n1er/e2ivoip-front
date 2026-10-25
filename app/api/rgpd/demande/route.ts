@@ -9,15 +9,27 @@ import {
   sanitizeHeader,
 } from "@/lib/api/email-safety";
 import { RGPD_RIGHTS, getRightById, type RgpdRight } from "@/lib/rgpd/rights";
+import { createRgpdToken } from "@/lib/api/rgpd-tokens";
+import { checkBotId } from "botid/server";
 
 /**
- * Réception des demandes d'exercice de droits RGPD.
+ * Réception des demandes d'exercice de droits RGPD — étape 1/2.
  *
- * Deux envois de statut différent :
- *  - la notification interne est bloquante — si elle échoue, la demande n'a
- *    atteint personne et le visiteur doit le savoir pour recommencer ;
- *  - l'accusé de réception au demandeur est best-effort — son échec ne doit
- *    pas laisser croire que la demande est perdue alors qu'elle est arrivée.
+ * Le POST ne déclenche plus immédiatement la notification interne : il
+ * crée un jeton de confirmation, envoie un mail au demandeur contenant un
+ * lien /api/rgpd/confirm?token=..., et c'est le clic sur ce lien qui
+ * consommera le jeton et enverra la notification à l'équipe.
+ *
+ * Trois raisons à ce double opt-in :
+ *  - un bot qui ne contrôle pas la boîte mail qu'il a fournie ne peut
+ *    jamais aboutir à un mail interne ;
+ *  - le délai légal d'un mois part de la confirmation, ce qui est plus
+ *    protecteur pour le demandeur ;
+ *  - une adresse invalide ou usurpée est détectée plus tôt (Resend
+ *    remonte les bounces).
+ *
+ * BotID (Vercel) bloque les requêtes automatisées avant tout envoi de
+ * mail — invisible pour l'utilisateur.
  */
 
 // Une demande d'exercice de droits est un acte rare : un quota serré suffit
@@ -162,11 +174,6 @@ async function verifyTurnstileToken(
   }
 }
 
-/**
- * Convertit les identifiants reçus en droits connus.
- * Retourne `null` dès qu'un identifiant est inconnu : mieux vaut refuser la
- * demande que d'en traiter une version amputée à l'insu du demandeur.
- */
 function resolveRights(value: unknown): RgpdRight[] | null {
   if (!Array.isArray(value) || value.length === 0) return null;
   if (value.length > MAX_REQUEST_TYPES) return null;
@@ -181,8 +188,31 @@ function resolveRights(value: unknown): RgpdRight[] | null {
   return rights;
 }
 
+/**
+ * Construit l'URL absolue du lien de confirmation. En production, on s'appuie
+ * sur NEXT_PUBLIC_SITE_URL ; en test/dev, on déduit depuis l'origine de la
+ * requête — mais celle-ci peut être 'null' pour des appels Next en interne.
+ */
+function buildConfirmationLink(token: string, request: Request): string {
+  const base =
+    process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin;
+  return `${base.replace(/\/$/, "")}/api/rgpd/confirm?token=${encodeURIComponent(token)}`;
+}
+
 export async function POST(request: Request) {
   try {
+    // 1. BotID (Vercel). Invisible pour l'utilisateur, géré côté serveur.
+    //    En l'absence de déploiement Vercel (tests, dev local), la fonction
+    //    peut renvoyer { isBot: false } par défaut : on n'ajoute pas de
+    //    bypass explicite — c'est au mock de test d'en décider.
+    const botCheck = await checkBotId();
+    if (botCheck.isBot) {
+      return json(
+        { error: "Activité suspecte détectée. Réessayez." },
+        { status: 403 }
+      );
+    }
+
     if (!hasSameOriginSignal(request) || !hasFormIntentHeader(request)) {
       return json(
         { error: "La demande ne peut être envoyée que depuis le formulaire." },
@@ -245,7 +275,7 @@ export async function POST(request: Request) {
 
     if (company || !hasHumanTimingSignal(body.formStartedAt)) {
       return json(
-        { error: "Votre demande n’a pas pu être validée. Réessayez." },
+        { error: "Votre demande n'a pas pu être validée. Réessayez." },
         { status: 400 }
       );
     }
@@ -259,7 +289,7 @@ export async function POST(request: Request) {
 
     if (!isValidEmail(email)) {
       return json(
-        { error: "L’adresse email n’est pas valide." },
+        { error: "L'adresse email n'est pas valide." },
         { status: 400 }
       );
     }
@@ -282,117 +312,110 @@ export async function POST(request: Request) {
 
     const resend = new Resend(requireEnv("RESEND_API_KEY"));
     const from = requireEnv("RESEND_FROM_EMAIL");
-    const to = requireEnv("RGPD_EMAIL_TO");
 
-    const receivedAt = new Date();
+    // Crée le jeton de confirmation : c'est cet identifiant qui sera inséré
+    // dans le mail, jamais la donnée brute.
+    const { token, expiresAt } = createRgpdToken({
+      firstName,
+      lastName,
+      email,
+      phone,
+      requestTypes: rights.map((r) => r.id),
+      details,
+      pageUrl,
+    });
+
+    const confirmationLink = buildConfirmationLink(token, request);
+    const expiresAtFormatted = new Date(expiresAt).toLocaleString("fr-FR");
     const rightsList = rights.map((r) => `${r.label} (${r.article})`);
-    const identite = `${firstName} ${lastName}`;
 
-    const internalSubject = sanitizeHeader(
-      `[RGPD] Demande d’exercice de droits — ${identite}`
+    const ackSubject = sanitizeHeader(
+      "Confirmez votre demande d'exercice de droits — E2I VoIP"
     );
 
-    const internalHtml = `
-      <h2>Demande d’exercice de droits RGPD</h2>
-      <p><strong>Demandeur :</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
-      <p><strong>Email :</strong> ${escapeHtml(email)}</p>
-      <p><strong>Téléphone :</strong> ${escapeHtml(phone) || "non renseigné"}</p>
-      <p><strong>Reçue le :</strong> ${receivedAt.toLocaleString("fr-FR")}</p>
+    const ackHtml = `
+      <h2>Confirmez votre demande d'exercice de droits</h2>
+      <p>Bonjour ${escapeHtml(firstName)},</p>
+      <p>Pour que votre demande d'exercice de droits soit enregistrée
+      et transmise à notre équipe, merci de cliquer sur le lien ci-dessous.
+      Ce lien expire le ${escapeHtml(expiresAtFormatted)}.</p>
+      <p style="margin: 24px 0;">
+        <a href="${escapeHtml(confirmationLink)}"
+           style="display:inline-block;background:#dc2626;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;">
+          Confirmer ma demande
+        </a>
+      </p>
+      <p>Si le bouton ne fonctionne pas, copiez-collez ce lien dans votre
+      navigateur :</p>
+      <p style="word-break:break-all;font-family:monospace;font-size:12px;">
+        ${escapeHtml(confirmationLink)}
+      </p>
+      <p>Cette confirmation garantit que vous êtes bien à l'origine de la
+      démarche. Sans elle, nous ne pouvons pas traiter votre demande.</p>
+      <p>Conformément au RGPD, une réponse vous sera adressée dans un délai
+      d'${DELAI_LEGAL} à compter de la réception de votre confirmation.
+      Nous pouvons être amenés à vous demander un justificatif d'identité
+      avant de vous communiquer des données personnelles.</p>
+      <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont
+      pas respectés, vous pouvez saisir la CNIL (www.cnil.fr).</p>
       <hr />
-      <p><strong>Droits invoqués :</strong></p>
+      <p><strong>Rappel de votre demande :</strong></p>
       <ul>
         ${rightsList.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}
       </ul>
       ${details ? `<p><strong>Précisions :</strong><br />${escapeHtmlMultiline(details)}</p>` : ""}
-      <hr />
-      <p><strong>Source :</strong> ${escapeHtml(pageUrl) || "exercer-mes-droits"}</p>
-      <p><em>Délai de réponse légal : ${DELAI_LEGAL} à compter de la réception.
-      Vérifiez l’identité du demandeur avant toute communication de données.</em></p>
-    `;
-
-    const internalText = `
-Demande d’exercice de droits RGPD
-
-Demandeur : ${firstName} ${lastName}
-Email : ${email}
-Téléphone : ${phone || "non renseigné"}
-Reçue le : ${receivedAt.toLocaleString("fr-FR")}
-
-Droits invoqués :
-${rightsList.map((r) => `- ${r}`).join("\n")}
-${details ? `\nPrécisions :\n${details}\n` : ""}
-Source : ${pageUrl || "exercer-mes-droits"}
-
-Délai de réponse légal : ${DELAI_LEGAL} à compter de la réception.
-Vérifiez l’identité du demandeur avant toute communication de données.
-    `.trim();
-
-    const ackSubject = sanitizeHeader(
-      "Votre demande d’exercice de droits — E2I VoIP"
-    );
-
-    const ackHtml = `
-      <h2>Nous avons bien reçu votre demande</h2>
-      <p>Bonjour ${escapeHtml(firstName)},</p>
-      <p>Votre demande d’exercice de droits a été enregistrée le
-      ${escapeHtml(receivedAt.toLocaleDateString("fr-FR"))}. Elle porte sur :</p>
-      <ul>
-        ${rightsList.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}
-      </ul>
-      <p>Conformément au RGPD, une réponse vous sera adressée dans un délai
-      d’${DELAI_LEGAL} à compter de cette date. Nous pouvons être amenés à
-      vous demander un justificatif d’identité avant de vous communiquer des
-      données personnelles.</p>
-      <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont
-      pas respectés, vous pouvez saisir la CNIL (www.cnil.fr).</p>
       <p>E2I ASSISTANCE</p>
     `;
 
     const ackText = `
-Nous avons bien reçu votre demande
+Confirmez votre demande d'exercice de droits
 
 Bonjour ${firstName},
 
-Votre demande d’exercice de droits a été enregistrée le ${receivedAt.toLocaleDateString("fr-FR")}. Elle porte sur :
+Pour que votre demande soit enregistrée et transmise à notre équipe, merci
+de cliquer sur le lien ci-dessous. Il expire le ${expiresAtFormatted}.
+
+${confirmationLink}
+
+Cette confirmation garantit que vous êtes bien à l'origine de la démarche.
+Sans elle, nous ne pouvons pas traiter votre demande.
+
+Conformément au RGPD, une réponse vous sera adressée dans un délai
+d'${DELAI_LEGAL} à compter de la réception de votre confirmation.
+Nous pouvons être amenés à vous demander un justificatif d'identité
+avant de vous communiquer des données personnelles.
+
+Si vous estimez, après nous avoir contactés, que vos droits ne sont pas
+respectés, vous pouvez saisir la CNIL (www.cnil.fr).
+
+Rappel de votre demande :
 ${rightsList.map((r) => `- ${r}`).join("\n")}
-
-Conformément au RGPD, une réponse vous sera adressée dans un délai d’${DELAI_LEGAL} à compter de cette date. Nous pouvons être amenés à vous demander un justificatif d’identité avant de vous communiquer des données personnelles.
-
-Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (www.cnil.fr).
+${details ? `\nPrécisions :\n${details}\n` : ""}
 
 E2I ASSISTANCE
     `.trim();
 
-    const [internalResult, ackResult] = await Promise.allSettled([
-      resend.emails.send({
-        from,
-        to,
-        replyTo: email,
-        subject: internalSubject,
-        html: internalHtml,
-        text: internalText,
-      }),
-      resend.emails.send({
+    // Le mail interne ne part plus ici : il attend la confirmation explicite
+    // (étape 2 traitée par /api/rgpd/confirm).
+    // En cas d'échec du mail de confirmation, on renvoie 500 — sans mail
+    // reçu, le demandeur ne peut pas confirmer et la demande n'aboutit pas.
+    try {
+      await resend.emails.send({
         from,
         to: email,
         subject: ackSubject,
         html: ackHtml,
         text: ackText,
-      }),
-    ]);
-
-    if (internalResult.status === "rejected") {
-      console.error("[rgpd/demande] Resend (interne) failed:", internalResult.reason);
+      });
+    } catch (e) {
+      console.error(
+        "[rgpd/demande] mail de confirmation échoué:",
+        e instanceof Error ? e.message : e
+      );
       return json(
-        { error: "L’envoi de votre demande a échoué. Veuillez réessayer." },
+        { error: "L'envoi de votre demande a échoué. Veuillez réessayer." },
         { status: 500 }
       );
-    }
-
-    if (ackResult.status === "rejected") {
-      // La demande est bien arrivée : on confirme au visiteur, mais l'absence
-      // d'accusé de réception doit rester visible en logs.
-      console.error("[rgpd/demande] Resend (accusé) failed:", ackResult.reason);
     }
 
     return json({ ok: true });

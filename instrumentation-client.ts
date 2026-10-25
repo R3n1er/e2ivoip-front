@@ -3,10 +3,27 @@
 // d'amorçage de l'analytics — voir lib/analytics/track-event.ts pour l'envoi
 // d'événements custom (cta_click, phone_click, form_submit).
 import posthog from 'posthog-js'
+import { initBotId } from 'botid/client/core'
 import { hasAcceptedCookies } from '@/lib/analytics/consent'
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://eu.i.posthog.com'
+
+// Vercel BotID : protection invisible du formulaire d'exercice des droits
+// RGPD. Le widget côté client charge les challenges et transmet le verdict
+// au serveur via checkBotId(). Sans protection, le formulaire était
+// spammé par des bots qui ne contrôlaient pas la boîte mail du
+// destinataire — le double opt-in bloque les confirmations.
+try {
+  initBotId({
+    protect: [
+      { path: '/api/rgpd/demande', method: 'POST' },
+      { path: '/api/rgpd/confirm', method: 'GET' },
+    ],
+  })
+} catch {
+  // BotID peut ne pas être disponible en dehors de Vercel ; l'app continue.
+}
 
 // Sans token (ex. preview, CI), on n'initialise pas : capture() restera silencieux.
 if (token) {

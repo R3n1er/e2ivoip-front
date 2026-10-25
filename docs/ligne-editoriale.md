@@ -227,8 +227,11 @@ Ces règles sont verrouillées par `tests/specs-produit-3cx.test.ts`.
 - Trunk SIP agents IA
 - Carrier SIP DOM
 - BYOC SIP DOM
+- Numéro local DOM Twilio
 - Interconnexion VAPI / Rounded / ElevenLabs / Jambonz
 - Numéros locaux DOM pour agents vocaux IA
+- SBC téléphonie entreprise DOM
+- Passerelle SBC Twilio
 - Communications unifiées
 - Standard virtuel intelligent
 
@@ -255,6 +258,21 @@ Ces règles sont verrouillées par `tests/specs-produit-3cx.test.ts`.
 - **Commerce/Distribution** : Multi-sites, statistiques d'appels, centre d'appels virtuel
 - **Collectivités** : Budget maîtrisé, conformité RGPD, support local
 
+### PME et entreprises déjà équipées d'une plateforme cloud (Twilio et compatibles)
+
+> Cible ajoutée au canon le 2026-09-24, après mise en service du SBC propre.
+> Distincte de la cible « Intégrateurs et agences IA » ci-dessus : ici, le
+> lecteur n'est pas un constructeur, c'est une **entreprise utilisatrice**.
+
+- **Profil** : PME, cabinets, commerces et services de proximité (3 à 50 utilisateurs) installés dans les DOM, ou entreprises domiennes ayant adopté une plateforme de téléphonie cloud internationale (Twilio, ou toute plateforme acceptant une interconnexion BYOC).
+- **Message** : « Votre plateforme est en place. Il lui manque un numéro que vos clients reconnaissent. »
+- **Angle** : le blocage n'est pas la plateforme, c'est l'accès aux numéros géographiques locaux. Les acteurs cloud internationaux n'ont pas de numéros géographiques DOM à leur catalogue — ce n'est pas un défaut de leur offre, c'est une question de couverture territoriale.
+- **Ce que nous apportons** : le numéro local (création ou portabilité) et la passerelle SBC qui renvoie l'appel vers la plateforme du client en BYOC. Le client ne change rien à son architecture applicative.
+- **Vocabulaire** : accessible, orienté usage réel (accueil téléphonique, prise de rendez-vous, service client). Vulgariser « SBC » et « BYOC » à la première occurrence — le lecteur PME n'est pas technicien.
+- **À ne pas promettre** : que la plateforme du client doit être remplacée ; qu'E2I VoIP héberge ou opère les outils applicatifs du client ; un volume d'appels ou une qualité non contractualisés.
+- **Opinion de marque assumée** : dans les DOM, l'échec commercial d'un projet de téléphonie cloud vient rarement de la technique, presque toujours du numéro affiché. C'est l'angle différenciant de cette cible.
+- **CTA recommandé** : « Parler à un expert DOM », « Créez votre numéro local ».
+
 ### Intégrateurs et agences IA
 
 - Message : "Déployez vos agents vocaux IA avec des numéros locaux DOM et une interconnexion SIP fiable"
@@ -271,7 +289,11 @@ Ces règles sont verrouillées par `tests/specs-produit-3cx.test.ts`.
 
 **Positionnement validé — Agrégateur certifié**
 
-E2I VoIP se positionne en **agrégateur certifié**, pas en opérateur d'infrastructure propriétaire en V1. Ne pas mentionner de SBC propre en phase de communication. Le pitch est centré sur :
+E2I VoIP se positionne en **agrégateur certifié doublé d'un opérateur d'infrastructure**. Un SBC (Session Border Controller) propre est **opérationnel depuis le 24 septembre 2026** et validé en conditions réelles (appel entrant de bout en bout, du réseau téléphonique public jusqu'à la plateforme de destination du client). La communication publique sur cette infrastructure est donc **autorisée**.
+
+Historique de la règle : jusqu'en V1, le service était rendu via l'infrastructure d'un partenaire et le canon interdisait toute mention d'un SBC propre, faute d'infrastructure réellement en service. Cette interdiction est **levée** — voir aussi la section « Trunk SIP agents IA ».
+
+Le pitch est centré sur :
 
 - Expertise d'intégration plateformes agents vocaux IA + trunks SIP
 - Certification et validation préalable des plateformes IA
@@ -322,7 +344,7 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 
 **Formulations à éviter (revendeur)**
 
-- ❌ "Infrastructure SBC propriétaire E2I VoIP" (non vrai en V1)
+- ✅ "Infrastructure SBC opérationnelle depuis 2026" — le SBC propre est en service et validé en conditions réelles (interdit jusqu'au 24/09/2026, **désormais autorisé**)
 - ❌ Mentionner Telcoz publiquement comme opérateur sous-jacent
 - ❌ "Opérateur télécom certifié Rounded/VAPI" (c'est E2I VoIP qui certifie, pas l'inverse)
 - ❌ Promettre une mise en service en moins de 5 jours sans validation Telcoz
@@ -401,6 +423,7 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 - **Accroche** : "Numéros locaux Antilles-Guyane-Réunion et interconnexion SIP pour VAPI, Rounded, ElevenLabs et Jambonz"
 - **Positionnement** : E2I VoIP est le carrier SIP DOM et le partenaire télécom d'intégration, pas l'éditeur de l'agent IA
 - **Promesse** : permettre aux intégrateurs de déployer des agents vocaux IA avec des numéros locaux rassurants dans les DOM
+- **Infrastructure** : le SBC propre est **opérationnel depuis le 24/09/2026** et validé de bout en bout. Il porte la numérotation géographique locale et renvoie les appels vers la plateforme destinataire en BYOC. La mention est **autorisée** (elle ne l'était pas en V1 — voir section Revendeurs).
 - **Offres à présenter** :
   - Trunk SIP bidirectionnel pour production et volumes récurrents
   - Redirection SIP pour POC rapides ou flux entrants uniquement
