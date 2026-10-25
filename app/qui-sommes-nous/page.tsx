@@ -480,7 +480,7 @@ export default function QuiSommesNous() {
                     href="https://www.fanvil.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-blue-marine hover:text-red-700 text-sm font-medium"
                   >
                     Visiter le site officiel →
                   </a>
@@ -512,7 +512,7 @@ export default function QuiSommesNous() {
                     href="https://www.yealink.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-blue-marine hover:text-red-700 text-sm font-medium"
                   >
                     Visiter le site officiel →
                   </a>

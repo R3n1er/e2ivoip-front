@@ -246,7 +246,7 @@ export default function TrunkSIPIllimite() {
                   <div className="mt-6 p-4 bg-blue-marine-50 rounded-lg border border-blue-200">
                     <div className="flex items-start space-x-2">
                       <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
-                      <div className="text-sm text-blue-800">
+                      <div className="text-sm text-blue-marine">
                         <p>
                           <strong>Fixes illimités :</strong> France + DOM, numéros
                           géographiques, support technique réactif.
@@ -432,7 +432,7 @@ export default function TrunkSIPIllimite() {
             <div className="mt-10 text-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-blue-marine hover:text-blue-800 font-medium"
+                className="inline-flex items-center gap-2 text-blue-marine hover:text-red-700 font-medium"
               >
                 <MapPin size={20} aria-hidden="true" />
                 <span>Toutes nos coordonnées (Martinique, Réunion…)</span>
