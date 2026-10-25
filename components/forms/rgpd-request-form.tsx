@@ -103,27 +103,33 @@ export function RgpdRequestForm() {
   }
 
   if (status === "success") {
-    return (
-      <div
-        role="status"
-        className="rounded-2xl border border-ui-border bg-white p-8 shadow-lg"
-      >
-        <h2 className="mb-4 text-2xl font-bold text-gray-dark">
-          Votre demande est enregistrée
-        </h2>
-        <p className="mb-4 text-ui-muted">
-          Un accusé de réception vient de vous être envoyé à l&rsquo;adresse{" "}
-          <strong>{email}</strong>. Conservez-le : il atteste de votre
-          démarche.
-        </p>
-        <p className="text-ui-muted">
-          Nous vous répondrons dans un délai d&rsquo;un mois à compter de
-          aujourd&rsquo;hui. Un justificatif d&rsquo;identité pourra vous être
-          demandé avant toute communication de données personnelles.
-        </p>
-      </div>
-    );
-  }
+      return (
+        <div
+          role="status"
+          className="rounded-2xl border border-ui-border bg-white p-8 shadow-lg"
+          data-testid="rgpd-form-success"
+        >
+          <h2 className="mb-4 text-2xl font-bold text-gray-dark">
+            Consultez votre boîte mail pour confirmer votre demande
+          </h2>
+          <p className="mb-4 text-ui-muted">
+            Un mail vient d'être envoyé à l'adresse{" "}
+            <strong>{email}</strong>. Il contient un lien de confirmation
+            valable 24 heures.
+          </p>
+          <p className="mb-4 text-ui-muted">
+            Cliquez sur ce lien pour que votre demande soit enregistrée et
+            transmise à notre équipe. Sans cette confirmation, nous ne pouvons
+            pas traiter votre demande.
+          </p>
+          <p className="text-ui-muted">
+            Une fois confirmée, nous vous répondrons dans un délai d'un mois.
+            Un justificatif d'identité pourra vous être demandé avant toute
+            communication de données personnelles.
+          </p>
+        </div>
+      );
+    }
 
   return (
     <form

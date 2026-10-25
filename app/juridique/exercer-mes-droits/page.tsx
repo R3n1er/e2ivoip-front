@@ -8,13 +8,27 @@ import { LegalBreadcrumb } from "@/components/legal/breadcrumb";
 export const metadata: Metadata = pageMetadata({
   title: "Exercer mes droits RGPD | E2I VoIP",
   description:
-    "Formulaire d’exercice des droits RGPD d’E2I ASSISTANCE : accès, rectification, effacement, limitation, portabilité, opposition. Réponse sous un mois.",
+    "Formulaire d'exercice des droits RGPD d'E2I ASSISTANCE : accès, rectification, effacement, limitation, portabilité, opposition. Réponse sous un mois.",
   keywords:
-    "exercer mes droits, RGPD, droit d’accès, droit à l’effacement, portabilité, E2I VoIP",
+    "exercer mes droits, RGPD, droit d'accès, droit à l'effacement, portabilité, E2I VoIP",
   path: "/juridique/exercer-mes-droits",
 });
 
-export default function ExercerMesDroitsPage() {
+import { RgpdStatusBanner } from "@/components/forms/rgpd-status-banner";
+
+export default async function ExercerMesDroitsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const params = await searchParams;
+  const status = (params.status ?? null) as
+    | "confirmed"
+    | "expired"
+    | "invalid"
+    | "already"
+    | null;
+
   return (
     <>
       <LegalBreadcrumb current="Exercer mes droits" />
@@ -26,7 +40,7 @@ export default function ExercerMesDroitsPage() {
               Exercer mes droits
             </h1>
             <p className="mx-auto max-w-3xl text-xl leading-relaxed text-white/90">
-              Vous disposez de droits sur les données personnelles qu&rsquo;E2I
+              Vous disposez de droits sur les données personnelles qu'E2I
               ASSISTANCE détient à votre sujet. Ce formulaire les déclenche
               directement, sans passer par un service commercial.
             </p>
@@ -36,6 +50,8 @@ export default function ExercerMesDroitsPage() {
 
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <RgpdStatusBanner status={status} />
+
           <h2 className="mb-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
             Comment <span className="text-red-primary">ça se passe</span>
           </h2>
