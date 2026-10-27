@@ -21,6 +21,9 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 - **Conséquences** :
   - Plus aucun script `MeetingsEmbedCode.js` chargé sur le site.
   - La page concurrente `RDVCommercialE2IVOIP@…` (sans le « 1 ») est encore publiée : ne jamais la réutiliser, la dépublier côté Bookings.
+  - L'iframe n'est rendue qu'après hydratation : rendue côté serveur, elle pouvait finir de charger avant que React ne branche `onLoad`, laissant le message de chargement indéfiniment par-dessus le calendrier (relevé par la relecture Codex, reproduit en test).
+  - Lien de secours placé **avant** le cadre, en `text-red-600` souligné (4,83:1, AA) ; hauteur du cadre plafonnée à `85svh` pour éviter le double défilement sur mobile.
+  - Les tests Playwright simulent Bookings : ils ne dépendent pas du réseau Microsoft.
 - **Tests associés** : `tests/playwright/bookings-calendar.spec.ts` (remplace `hubspot-calendar.spec.ts`).
 
 ### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
