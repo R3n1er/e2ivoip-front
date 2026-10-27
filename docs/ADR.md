@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
+
+- **Contexte** : après la PR #86, `npm audit` signalait encore 4 vulnérabilités modérées (`postcss-selector-parser` < 7.1.6, CPU DoS). Elles viennent de `@tailwindcss/typography@0.5.20`, dernière version publiée, qui dépend **en dur** de `postcss-selector-parser@6.0.10`, et de `tailwindcss@3`. Passer à Tailwind 4 ne réglait donc pas la faille (relecture Codex, plan `docs/superpowers/plans/2026-10-24-migration-tailwind-4.md`).
+- **Décision** : forcer `postcss-selector-parser@^7.1.6` via `overrides` dans `package.json`, en restant sur Tailwind 3. La migration Tailwind 4 (volet B du plan) reste un chantier de modernisation, sans urgence.
+- **Raisonnement** : le CSS compilé est identique octet par octet avant et après. Les API v7 utilisées par Tailwind 3 et typography ont été vérifiées compatibles par Codex.
+- **Conséquences** :
+  - Override majeur hors des plages déclarées par les paquets : risque résiduel faible, couvert par le lockfile et `npm run validate`.
+  - **À retirer** dès que `@tailwindcss/typography` publie une version qui dépend de `postcss-selector-parser` ≥ 7.1.6, ou lors de la migration Tailwind 4.
+- **Tests associés** : `npm audit` → 0 vulnérabilité ; `npm run validate` ✅ exit 0 (97 suites Jest, 120 Playwright).
+
 ### 2026-09-19 — Section /standard-telephonique : hub + pilote Guyane
 
 - **Contexte** : « standard téléphonique » est le vocabulaire de l'acheteur, « IPBX » et « Trunk SIP » celui du technicien — or le site n'avait **aucune page** servant cette requête (`/standard-telephonique` → 404, relevé du 19/09/2026). Le terme n'apparaissait qu'**une fois** dans les 2,4 Mo de HTML de `/telephonie-3cx`, et zéro fois sur la home et `/nos-services`. Sur la SERP (`standard téléphonique <territoire>`), E2I ressortait 7e en Guadeloupe et 6e en Martinique — **via sa seule home** — derrière des acteurs à page dédiée (Proximus-VoIP, 2iibm, GADE, IPTE, IPER Telecom).
