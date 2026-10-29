@@ -10,6 +10,22 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-10-27 — Prise de RDV commercial : Microsoft Bookings remplace HubSpot Meetings
+
+- **Contexte** : la section CTA de `/3cx-pro` intégrait le calendrier HubSpot Meetings (`meetings-eu1.hubspot.com/alban-renier`). Depuis le 13/10/2026, la référence pour un RDV commercial est la page Microsoft Bookings partagée Valérie LOPES / Alban RENIER (`RDVcommercialE2IVOIP1@e2i-voip.com`), consignée dans le cerveau E2I VOIP (`lien-prise-de-rdv-commercial`).
+- **Décision** : intégrer la page Bookings en iframe (`components/bookings-calendar.tsx`), avec un lien de secours **toujours visible** qui l'ouvre dans un nouvel onglet. Les URL sont centralisées dans `lib/constants/bookings.ts`. Le composant `components/hubspot/legacy/hubspot-calendar.tsx` est supprimé.
+- **Raisonnement** :
+  - Bookings accepte l'intégration (aucun `X-Frame-Options` ni `frame-ancestors`, vérifié en navigateur le 27/10/2026). Le `X-Frame-Options: DENY` du site ne concerne que l'intégration du site chez un tiers.
+  - Un échec de chargement d'une iframe cross-origin n'est pas détectable de façon fiable côté page (`onLoad` se déclenche même sur une page d'erreur) : un repli conditionnel resterait muet. Le lien permanent ne dépend d'aucune détection.
+  - L'iframe reprend la source du code d'intégration Bookings (`?ismsaljsauthenabled`, évite une redirection dans le cadre) ; le lien de secours garde la forme courte, celle qui fait foi.
+- **Conséquences** :
+  - Plus aucun script `MeetingsEmbedCode.js` chargé sur le site.
+  - La page concurrente `RDVCommercialE2IVOIP@…` (sans le « 1 ») est encore publiée : ne jamais la réutiliser, la dépublier côté Bookings.
+  - L'iframe n'est rendue qu'après hydratation : rendue côté serveur, elle pouvait finir de charger avant que React ne branche `onLoad`, laissant le message de chargement indéfiniment par-dessus le calendrier (relevé par la relecture Codex, reproduit en test).
+  - Lien de secours placé **avant** le cadre, en `text-red-600` souligné (4,83:1, AA) ; hauteur du cadre plafonnée à `85svh` pour éviter le double défilement sur mobile.
+  - Les tests Playwright simulent Bookings : ils ne dépendent pas du réseau Microsoft.
+- **Tests associés** : `tests/playwright/bookings-calendar.spec.ts` (remplace `hubspot-calendar.spec.ts`).
+
 ### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
 
 - **Contexte** : après la PR #86, `npm audit` signalait encore 4 vulnérabilités modérées (`postcss-selector-parser` < 7.1.6, CPU DoS). Elles viennent de `@tailwindcss/typography@0.5.20`, dernière version publiée, qui dépend **en dur** de `postcss-selector-parser@6.0.10`, et de `tailwindcss@3`. Passer à Tailwind 4 ne réglait donc pas la faille (relecture Codex, plan `docs/superpowers/plans/2026-10-24-migration-tailwind-4.md`).

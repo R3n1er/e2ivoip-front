@@ -1,6 +1,6 @@
 "use client";
 
-import { HubSpotCalendar } from "@/components/hubspot/legacy/hubspot-calendar";
+import { BookingsCalendar } from "@/components/bookings-calendar";
 
 export function CTACalendarSection() {
   return (
@@ -15,13 +15,7 @@ export function CTACalendarSection() {
           </p>
         </div>
 
-        <HubSpotCalendar
-          meetingUrl="https://meetings-eu1.hubspot.com/alban-renier"
-          title=""
-          description=""
-          height={650}
-          showContactInfo={false}
-        />
+        <BookingsCalendar height={800} />
       </div>
     </section>
   );
