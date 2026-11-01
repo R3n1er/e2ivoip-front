@@ -4,7 +4,7 @@ import { BookingsCalendar } from "@/components/bookings-calendar";
 
 export function CTACalendarSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-ui-surface-2 py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <h2 className="text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
@@ -15,7 +15,7 @@ export function CTACalendarSection() {
           </p>
         </div>
 
-        <BookingsCalendar height={800} />
+        <BookingsCalendar />
       </div>
     </section>
   );

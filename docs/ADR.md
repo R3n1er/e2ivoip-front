@@ -22,7 +22,8 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Plus aucun script `MeetingsEmbedCode.js` chargé sur le site.
   - La page concurrente `RDVCommercialE2IVOIP@…` (sans le « 1 ») est encore publiée : ne jamais la réutiliser, la dépublier côté Bookings.
   - L'iframe n'est rendue qu'après hydratation : rendue côté serveur, elle pouvait finir de charger avant que React ne branche `onLoad`, laissant le message de chargement indéfiniment par-dessus le calendrier (relevé par la relecture Codex, reproduit en test).
-  - Lien de secours placé **avant** le cadre, en `text-red-600` souligné (4,83:1, AA) ; hauteur du cadre plafonnée à `85svh` pour éviter le double défilement sur mobile.
+  - Lien de secours placé **avant** le cadre, en `text-red-700` souligné (≈ 5,9:1 sur `ui-surface-2`, AA ; `text-red-600` tombait à ≈ 4,4:1 sur ce fond).
+  - **Révision du 01/11/2026 (demande d'Alban) : calendrier en pleine hauteur, sans ascenseur, indiscernable d'une iframe.** Bookings, cross-origin, ne transmet pas sa hauteur : le cadre prend une hauteur fixe de 2 450 px (`scrolling="no"`), qui couvre toute la page Bookings (≈ 2 350 px mesurés, bouton « Réserver » à ≈ 2 055 px, identique de 375 à 960 px de large) plus une marge pour une journée chargée en créneaux. Ni cadre, ni ombre, ni coins arrondis ; la section passe en `ui-surface-2` (#F3F4F6), quasi identique au fond de Bookings (#F4F4F4). Le plafond `85svh` est supprimé : la page défile, plus l'iframe. À re-mesurer si Microsoft change la mise en page ou si des champs sont ajoutés au formulaire Bookings.
   - Les tests Playwright simulent Bookings : ils ne dépendent pas du réseau Microsoft.
 - **Tests associés** : `tests/playwright/bookings-calendar.spec.ts` (remplace `hubspot-calendar.spec.ts`).
 

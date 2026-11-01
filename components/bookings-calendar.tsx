@@ -16,7 +16,10 @@ interface BookingsCalendarProps {
    */
   bookingUrl?: string;
   /**
-   * Hauteur maximale de l'iframe (en pixels), plafonnée à 85 % de l'écran
+   * Hauteur fixe de l'iframe (en pixels). Bookings, cross-origin, ne transmet
+   * pas sa hauteur : la valeur doit couvrir toute la page Bookings (≈ 2 350 px
+   * mesurés le 2026-11-01, bouton « Réserver » à ≈ 2 055 px) plus une marge
+   * pour une journée chargée en créneaux.
    */
   height?: number;
   /**
@@ -28,7 +31,7 @@ interface BookingsCalendarProps {
 export function BookingsCalendar({
   embedUrl = BOOKINGS_COMMERCIAL_EMBED_URL,
   bookingUrl = BOOKINGS_COMMERCIAL_URL,
-  height = 700,
+  height = 2450,
   className = "",
 }: BookingsCalendarProps) {
   const [mounted, setMounted] = useState(false);
@@ -38,9 +41,6 @@ export function BookingsCalendar({
   // peut finir de charger avant que React ne branche `onLoad`, et le message
   // de chargement resterait alors indéfiniment par-dessus le calendrier.
   useEffect(() => setMounted(true), []);
-
-  // Sur mobile, un cadre plus haut que l'écran crée un double défilement.
-  const frameHeight = `min(${height}px, 85svh)`;
 
   return (
     <div className={className} data-testid="bookings-calendar">
@@ -53,20 +53,19 @@ export function BookingsCalendar({
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-red-600 underline underline-offset-2 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+          className="font-semibold text-red-700 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
           data-testid="bookings-calendar-fallback"
         >
           Ouvrir la prise de rendez-vous dans un nouvel onglet
         </a>
       </p>
 
-      <div
-        className="relative overflow-hidden rounded-xl bg-white shadow-lg"
-        style={{ height: frameHeight }}
-      >
+      {/* Ni cadre ni ombre : posé sur un fond `ui-surface-2`, quasi identique
+          au fond de Bookings (#F4F4F4), le calendrier se fond dans la page. */}
+      <div className="relative overflow-hidden" style={{ height }}>
         {!loaded && (
           <div
-            className="absolute inset-0 flex items-center justify-center bg-ui-surface"
+            className="absolute inset-0 flex items-start justify-center bg-ui-surface-2 pt-24"
             data-testid="bookings-calendar-loading"
           >
             <div className="text-center">
@@ -84,7 +83,7 @@ export function BookingsCalendar({
           <iframe
             src={embedUrl}
             title="Prendre rendez-vous avec un commercial E2I VOIP"
-            scrolling="yes"
+            scrolling="no"
             loading="lazy"
             className="block h-full w-full border-0"
             onLoad={() => setLoaded(true)}

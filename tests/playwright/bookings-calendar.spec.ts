@@ -84,7 +84,7 @@ test.describe("Calendrier Bookings — prise de rendez-vous commercial", () => {
     await expect(link).toHaveAttribute("target", "_blank");
   });
 
-  test("sur mobile, le lien de secours précède le calendrier et le cadre tient dans l'écran", async ({
+  test("sur mobile, le lien de secours précède le calendrier", async ({
     page,
   }) => {
     await mockBookings(page);
@@ -100,7 +100,46 @@ test.describe("Calendrier Bookings — prise de rendez-vous commercial", () => {
     const iframeBox = await container.locator("iframe").boundingBox();
     expect(linkBox && iframeBox).toBeTruthy();
     expect(linkBox!.y).toBeLessThan(iframeBox!.y);
+  });
 
-    expect(iframeBox!.height).toBeLessThanOrEqual(667);
+  // Bookings ne communique pas sa hauteur (iframe cross-origin) : le cadre
+  // prend une hauteur fixe qui couvre toute la page Bookings, jusqu'au bouton
+  // « Réserver » (≈ 2 055 px mesurés le 2026-11-01, page totale ≈ 2 350 px).
+  for (const viewport of [
+    { width: 1280, height: 800 },
+    { width: 375, height: 667 },
+  ]) {
+    test(`affiche Bookings en pleine hauteur, sans défilement interne (${viewport.width} px)`, async ({
+      page,
+    }) => {
+      await mockBookings(page);
+      await page.setViewportSize(viewport);
+      await page.goto(PAGE);
+
+      const iframe = page.getByTestId("bookings-calendar").locator("iframe");
+      await iframe.scrollIntoViewIfNeeded();
+
+      await expect(iframe).toHaveAttribute("scrolling", "no");
+      const box = await iframe.boundingBox();
+      expect(box!.height).toBeGreaterThanOrEqual(2300);
+    });
+  }
+
+  test("se fond dans la page : ni cadre ni ombre, fond de section assorti à Bookings", async ({
+    page,
+  }) => {
+    await mockBookings(page);
+    await page.goto(PAGE);
+
+    const container = page.getByTestId("bookings-calendar");
+    await container.scrollIntoViewIfNeeded();
+
+    const frame = container.locator("iframe").locator("..");
+    await expect(frame).toHaveCSS("box-shadow", "none");
+    await expect(frame).toHaveCSS("border-radius", "0px");
+
+    // Fond de Bookings : #F4F4F4 ; `ui-surface-2` (#F3F4F6) s'y confond.
+    const section = page.locator("section", { has: container });
+    await expect(section).toHaveCSS("background-color", "rgb(243, 244, 246)");
   });
 });
