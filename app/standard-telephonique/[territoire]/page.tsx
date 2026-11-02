@@ -6,6 +6,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { ContactSectionSimple } from "@/components/contact-section-simple";
 import { FaqSection } from "@/components/faq-section";
+import { GuideTrunkOuHeberge } from "@/components/territoires/guide-trunk-ou-heberge";
+import { MigrationOperateurs } from "@/components/territoires/migration-operateurs";
 import { PhoneLink } from "@/components/ui/phone-link";
 import { buildTerritoryFaq } from "@/lib/faq-data";
 import {
@@ -410,6 +412,12 @@ export default async function StandardTelephoniqueTerritoirePage({
             </div>
           </div>
         </section>
+
+        {/* Guide de choix puis migration : seule section du site où des
+            concurrents sont nommés, comme opérateurs d'origine (cadre du
+            2026-11-02, voir lib/territoires/standard-telephonique.ts). */}
+        <GuideTrunkOuHeberge territory={t} />
+        <MigrationOperateurs territory={t} />
 
         <FaqSection
           items={faq}
