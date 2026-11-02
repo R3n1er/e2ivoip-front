@@ -16,16 +16,16 @@ export function GuideTrunkOuHeberge({
 }) {
   const cartes = [
     {
-      titre: "Petite équipe, pas de standard à conserver",
-      texte: `Une dizaine de personnes au plus, un standard ancien à remplacer ou des collaborateurs souvent en déplacement : le standard hébergé évite d'acheter du matériel. Numéros ${t.indicatif}, accueil, renvois, messagerie et application mobile.`,
+      titre: "Votre petite équipe a besoin d'un nouveau standard",
+      texte: `Vous êtes une dizaine de personnes au plus ? Votre ancien standard doit être remplacé ou vos collaborateurs se déplacent souvent ? Le standard hébergé évite l'achat de matériel. Vous disposez de numéros locaux ${t.indicatif}, de l'accueil téléphonique, des renvois d'appels, de la messagerie et d'une application mobile.`,
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
-      lien: "Voir le standard hébergé",
+      lien: "Découvrir le standard hébergé pour votre équipe",
     },
     {
-      titre: "Un PABX récent déjà en place",
-      texte: `Votre standard fonctionne et vos équipes le connaissent : nous le raccordons en trunk SIP, nous portons vos numéros ${t.indicatif} et vous gardez vos postes. Facturation au canal d'appel simultané.`,
+      titre: "Votre standard récent fonctionne : vous le gardez",
+      texte: `Votre standard téléphonique (PABX) est récent et vos équipes le connaissent. Nous le raccordons à notre réseau avec un trunk SIP et transférons vos numéros ${t.indicatif} chez E2I VoIP. Vous gardez vos postes. La facturation se fait par canal, c'est-à-dire par appel pouvant être passé ou reçu en même temps.`,
       href: "/telephonie-entreprise/trunk-sip-compteur",
-      lien: "Voir le trunk SIP",
+      lien: "Découvrir le raccordement trunk SIP",
     },
   ];
 
@@ -40,18 +40,20 @@ export function GuideTrunkOuHeberge({
           className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6"
         >
           Trunk SIP ou standard hébergé :{" "}
-          <span className="text-red-primary">que choisir selon votre équipe</span>
+          <span className="text-red-primary">quel choix pour votre entreprise ?</span>
         </h2>
         <div className="max-w-4xl space-y-4 text-lg text-ui-muted leading-relaxed">
           <p>
-            Deux architectures couvrent l&apos;essentiel des besoins{" "}
-            {t.preposition} {t.label}. Le <strong>trunk SIP</strong> raccorde
-            le standard que vous avez déjà (Alcatel, Mitel, Panasonic, Avaya,
-            3CX…) à notre réseau : postes, groupes d&apos;appels et plan de
-            numérotation ne bougent pas. Le <strong>standard hébergé</strong>{" "}
-            remplace le matériel : plus de serveur dans vos locaux, des postes
-            sur smartphone, ordinateur ou navigateur. Les deux passent par
-            votre accès internet actuel.
+            Pour votre standard téléphonique {t.preposition} {t.label}, deux
+            solutions couvrent l&apos;essentiel des besoins. Le{" "}
+            <strong>trunk SIP</strong> est le lien qui raccorde votre standard
+            existant à notre réseau téléphonique. Avec votre standard Alcatel,
+            Mitel, Panasonic, Avaya ou 3CX, vous conservez vos postes, vos
+            groupes d&apos;appels et votre plan de numérotation. Le{" "}
+            <strong>standard hébergé</strong> remplace le matériel : vous
+            n&apos;avez plus de serveur dans vos locaux et utilisez des postes
+            sur smartphone, ordinateur ou navigateur. Les deux solutions
+            utilisent votre connexion internet actuelle.
           </p>
         </div>
 
@@ -74,12 +76,13 @@ export function GuideTrunkOuHeberge({
         </div>
 
         <p className="mt-8 max-w-4xl text-lg text-ui-muted leading-relaxed">
-          Le bon critère, c&apos;est le coût de la bascule. Un standard en bon
-          état : le trunk SIP allège la facture sans changer les habitudes de
-          vos équipes. Un standard en fin de vie, des recrutements à distance
-          ou un local technique exposé à la chaleur et aux coupures : le
-          standard hébergé évite de racheter du matériel. Dans les deux cas,
-          E2I VoIP reste votre opérateur voix.
+          Pour décider, regardez le coût du changement. Si votre standard est
+          en bon état, le trunk SIP allège la facture et préserve les habitudes
+          de vos équipes. Si votre standard arrive en fin de vie, si vous
+          recrutez à distance ou si votre local technique est exposé à la
+          chaleur et aux coupures, le standard hébergé évite de racheter du
+          matériel. Dans les deux cas, E2I VoIP reste votre opérateur pour les
+          appels.
         </p>
       </div>
     </section>
