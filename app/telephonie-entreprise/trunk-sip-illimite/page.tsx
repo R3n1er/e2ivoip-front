@@ -38,9 +38,9 @@ export default function TrunkSIPIllimite() {
   const tarifsMobiles = [
     { destination: "Mobile France métropolitaine", prix: "0,0700 €" },
     { destination: "Mobile Guadeloupe, Saint-Martin, Saint-Barthélemy", prix: "0,0600 €" },
-    { destination: "Mobile Martinique", prix: "0,0180 €" },
+    { destination: "Mobile Martinique", prix: "0,0600 €" },
     { destination: "Mobile Guyane", prix: "0,0600 €" },
-    { destination: "Mobile La Réunion", prix: "0,0180 €" },
+    { destination: "Mobile La Réunion", prix: "0,0600 €" },
     { destination: "Mobile Mayotte", prix: "0,3600 €" },
   ];
 
