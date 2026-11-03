@@ -64,6 +64,12 @@ describe("Offre 3CX Free — données de référence", () => {
     expect(porta?.prix).toMatch(/90 € HT/);
   });
 
+  it("numéro supplémentaire : 50 € HT de création, puis 2 € HT par mois (catalogue)", () => {
+    const sda = HORS_FORFAIT.find((h) => /numéro supplémentaire|création/i.test(h.libelle));
+    expect(sda?.prix).toMatch(/50 € HT/);
+    expect(sda?.prix).toMatch(/2 € HT par mois/);
+  });
+
   it("annonce les limites de la licence : postes IP, files d'attente", () => {
     const texte = LIMITES_3CX_FREE.join(" ");
     expect(texte).toMatch(/postes? (IP|de bureau)/i);

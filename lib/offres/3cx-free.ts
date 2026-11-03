@@ -86,6 +86,7 @@ export const HEBERGEMENT_INCLUS = [
 export const HORS_FORFAIT = [
   { libelle: "Maintenance : modifications au-delà de celle incluse chaque mois, selon le périmètre du devis", prix: "49 € HT/mois" },
   { libelle: "Formation des utilisateurs", prix: "250 € HT par session" },
+  { libelle: "Numéro supplémentaire : création d'un numéro SDA France et DOM", prix: "50 € HT de création, puis 2 € HT par mois et par numéro" },
   { libelle: "Portabilité : conservation de vos numéros", prix: "60 € HT pour un numéro, 90 € HT par tranche de 10 numéros consécutifs" },
 ] as const;
 
