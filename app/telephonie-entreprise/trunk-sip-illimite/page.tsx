@@ -76,12 +76,14 @@ export default function TrunkSIPIllimite() {
                 Trunk SIP <span className="text-white">Illimité</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-4">
-                <strong>Appels illimités</strong> vers les fixes
-                France métropolitaine & DOM
+                <strong>Appels illimités</strong> vers les fixes de France
+                métropolitaine et des DOM. Le trunk SIP relie votre standard
+                téléphonique au réseau téléphonique via Internet.
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                <strong>4, 8 ou 16 appels simultanés</strong> •
-                Forfait avec politique fair use • Mobiles facturés au compteur
+                <strong>4, 8 ou 16 appels simultanés</strong> : un canal permet
+                un appel à la fois. Le fair use réserve le forfait à un usage
+                professionnel normal. Les mobiles sont facturés au compteur.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/80">
                 <div className="flex items-center gap-2">
@@ -121,13 +123,15 @@ export default function TrunkSIPIllimite() {
                   Solution forfaitaire
                 </div>
                 <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-gray-dark mb-6">
-                  <span className="text-red-primary">L'illimité</span> pour
-                  votre téléphonie d'entreprise
+                  <span className="text-red-primary">L&apos;illimité</span> pour
+                  votre téléphonie d&apos;entreprise
                 </h2>
                 <p className="text-xl text-ui-muted mb-8">
-                  Notre <strong>Trunk SIP Illimité</strong> est la solution idéale
-                  pour les entreprises avec un volume d'appels important. 
-                  Maîtrisez votre budget télécom avec un forfait tout inclus.
+                  Vous appelez souvent des numéros fixes ? Notre
+                  <strong> Trunk SIP Illimité</strong> répond aux volumes
+                  d&apos;appels importants. Le forfait tout inclus vous aide à
+                  maîtriser votre budget télécom. Les appels
+                  vers les mobiles restent facturés au compteur.
                 </p>
 
                 <div className="space-y-6">
@@ -140,9 +144,9 @@ export default function TrunkSIPIllimite() {
                         Fixes illimités France métropolitaine
                       </h3>
                       <p className="text-ui-muted">
-                        <strong>Numéros fixes</strong> en illimité vers la France
-                        métropolitaine. Appelez sans compter sur les fixes ; les
-                        appels vers mobiles sont facturés au compteur.
+                        Appelez les <strong>numéros fixes</strong> de France
+                        métropolitaine en illimité. Les appels vers les mobiles
+                        restent facturés au compteur.
                       </p>
                     </div>
                   </div>
@@ -155,7 +159,7 @@ export default function TrunkSIPIllimite() {
                         Fixes illimités vers les DOM
                       </h3>
                       <p className="text-ui-muted">
-                        <strong>Guadeloupe, Martinique, Guyane, Réunion</strong> :
+                        <strong>Guadeloupe, Martinique, Guyane, La Réunion</strong> :
                         appelez les fixes des DOM en illimité.
                       </p>
                     </div>
@@ -169,9 +173,9 @@ export default function TrunkSIPIllimite() {
                         3 paliers : 4, 8 ou 16 appels simultanés
                       </h3>
                       <p className="text-ui-muted">
-                        Choisissez le forfait adapté à votre volume d'appels.
-                        <strong> Évolutif à tout moment</strong> pour
-                        accompagner votre croissance.
+                        Choisissez selon le nombre d&apos;appels à gérer en même
+                        temps. Vous pouvez <strong>faire évoluer votre forfait
+                        à tout moment</strong> pour accompagner votre croissance.
                       </p>
                     </div>
                   </div>
@@ -181,12 +185,13 @@ export default function TrunkSIPIllimite() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-dark mb-2">
-                        Politique Fair Use transparente
+                        Fair use : des conditions transparentes
                       </h3>
                       <p className="text-ui-muted">
-                        Usage professionnel normal, sans usage intensif d'appels
-                        entrants et sortants (type centre d'appels).
-                        <strong> Pas de frais cachés</strong>, pas de mauvaise
+                        Le forfait est réservé à un usage professionnel normal.
+                        Il exclut les usages intensifs d&apos;appels entrants et
+                        sortants, comme ceux d&apos;un centre d&apos;appels.
+                        <strong> Pas de frais cachés</strong> ni de mauvaise
                         surprise.
                       </p>
                     </div>
@@ -202,7 +207,7 @@ export default function TrunkSIPIllimite() {
                       Nos forfaits illimités
                     </h3>
                     <p className="text-ui-muted">
-                      Choisissez selon vos besoins en appels simultanés
+                      Choisissez le nombre d&apos;appels à gérer en même temps
                     </p>
                   </div>
                   <div className="space-y-4">
@@ -248,21 +253,23 @@ export default function TrunkSIPIllimite() {
                       <Info size={24} className="text-blue-marine mt-0.5" aria-hidden="true" />
                       <div className="text-sm text-blue-800">
                         <p>
-                          <strong>Fixes illimités :</strong> France + DOM, numéros
-                          géographiques, support technique réactif.
+                          <strong>Services inclus :</strong> appels fixes illimités
+                          vers la France métropolitaine et les DOM, numéros
+                          géographiques (liés à une zone locale) et support
+                          technique réactif.
                         </p>
                         <p className="mt-1">
                           <strong>Mobiles au compteur :</strong> les appels vers
                           mobiles sont facturés à la minute (voir grille ci-dessous).
                         </p>
                         <p className="mt-1">
-                          <strong>Fair Use :</strong> Usage professionnel normal,
-                          sans usage intensif d'appels entrants et sortants
-                          (type centre d'appels).
+                          <strong>Fair use :</strong> usage professionnel normal.
+                          Les usages intensifs d&apos;appels entrants et sortants
+                          (type centre d&apos;appels) sont exclus.
                         </p>
                         <p className="mt-1">
                           <strong>Bon à savoir :</strong> au-delà de
-                          ~200 min/mois sur les fixes, l'illimité devient plus
+                          ~200 min/mois sur les fixes, l&apos;illimité devient plus
                           avantageux que la facturation à la minute.
                         </p>
                       </div>
@@ -283,7 +290,8 @@ export default function TrunkSIPIllimite() {
                 <span className="text-red-primary">Trunk SIP Illimité</span> ?
               </h2>
               <p className="text-xl text-ui-muted max-w-3xl mx-auto">
-                Une solution complète pour maîtriser vos coûts télécom
+                Un forfait fixe, des appels vers la métropole et les DOM,
+                une capacité qui évolue avec votre activité
               </p>
             </div>
 
@@ -310,7 +318,9 @@ export default function TrunkSIPIllimite() {
                     Budget maîtrisé
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Un forfait mensuel fixe, pas de surprise. Idéal pour la gestion budgétaire de votre entreprise.
+                    Le forfait mensuel est fixe : vous pouvez prévoir votre
+                    budget télécom sans surprise. Les appels vers les mobiles
+                    sont facturés en plus, au compteur.
                   </p>
                 </div>
               </div>
@@ -337,7 +347,8 @@ export default function TrunkSIPIllimite() {
                     Couverture France + DOM
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Appelez les fixes sans limite vers la métropole et tous les départements d'outre-mer.
+                    Vos appels vers les fixes de métropole et de tous les
+                    départements d&apos;outre-mer sont illimités.
                   </p>
                   
                   {/* Bottom accent - Bleu marine */}
@@ -370,13 +381,14 @@ export default function TrunkSIPIllimite() {
                     Solution évolutive
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Ajustez le nombre d'appels simultanés selon l'évolution de votre activité.
+                    Votre activité évolue ? Ajustez le nombre d&apos;appels que
+                    votre entreprise peut gérer en même temps.
                   </p>
                   
                   {/* Bottom accent - Rouge principal */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
                     <Rocket size={16} className="mr-2" aria-hidden="true" />
-                    <span>Croissance flexible</span>
+                    <span>Capacité ajustable</span>
                   </div>
                 </div>
               </div>
@@ -397,8 +409,8 @@ export default function TrunkSIPIllimite() {
                 Parlons de votre <span className="text-red-primary">projet</span>
               </h2>
               <p className="text-xl text-ui-muted max-w-2xl mx-auto">
-                Contactez notre service commercial pour obtenir un devis et plus
-                d'informations. Un numéro dédié selon votre région :
+                Obtenez un devis et les informations utiles auprès de notre
+                service commercial. Appelez le numéro dédié à votre région :
               </p>
             </div>
 
@@ -453,8 +465,8 @@ export default function TrunkSIPIllimite() {
                 Tarifs des <span className="text-red-primary">appels vers mobiles</span>
               </h2>
               <p className="text-xl text-ui-muted max-w-2xl mx-auto">
-                Les fixes sont en illimité. Les appels vers les mobiles sont
-                facturés au compteur, à la minute.
+                Les appels vers les fixes sont illimités. Les appels vers les
+                mobiles sont facturés en plus, à la minute, selon la destination.
               </p>
             </div>
 
@@ -480,7 +492,7 @@ export default function TrunkSIPIllimite() {
                         {tarif.destination}
                       </td>
                       <td className="px-6 py-4 text-right font-semibold text-red-primary">
-                        {tarif.prix}
+                        {tarif.prix} HT
                       </td>
                     </tr>
                   ))}
@@ -489,7 +501,8 @@ export default function TrunkSIPIllimite() {
             </div>
 
             <p className="text-sm text-ui-muted text-center mt-4">
-              Tarifs HT à la minute, hors taxes. Tarification en vigueur, susceptible d'évolution.
+              Tarifs en vigueur par minute, hors taxes (HT). Ils sont susceptibles
+              d&apos;évoluer.
             </p>
           </div>
         </section>
@@ -498,11 +511,12 @@ export default function TrunkSIPIllimite() {
         <section className="py-20 bg-gradient-to-r from-red-primary to-blue-marine">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-black tracking-[-0.04em] text-white mb-6">
-              Passez à <span className="text-white">l'illimité</span> dès maintenant
+              Passez à <span className="text-white">l&apos;illimité</span> dès maintenant
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Rejoignez les entreprises qui ont choisi la simplicité et la
-              tranquillité avec notre Trunk SIP Illimité
+              Des entreprises ont déjà choisi notre Trunk SIP Illimité pour
+              simplifier leur téléphonie et gagner en tranquillité.
+              Faites le point sur vos besoins avec un conseiller.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
