@@ -72,3 +72,13 @@ describe("Trunk SIP illimité — pas de promesse « tout inclus »", () => {
     },
   );
 });
+
+/**
+ * Arbitrage Alban (2026-11-02) : « DOM-TOM » est abandonné depuis 2003 et
+ * suggère une couverture des COM que l'illimité n'offre pas.
+ */
+describe("Trunk SIP illimité — couverture exacte", () => {
+  it("n'emploie pas « DOM-TOM »", () => {
+    expect(source).not.toMatch(/DOM-TOM/);
+  });
+});

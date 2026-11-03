@@ -350,7 +350,7 @@ export default function TrunkSIPIllimite() {
                   {/* Bottom accent - Bleu marine */}
                   <div className="flex items-center text-gray-dark font-medium text-sm">
                     <MapPin size={16} className="mr-2" aria-hidden="true" />
-                    <span>National & DOM-TOM</span>
+                    <span>Métropole & DOM</span>
                   </div>
                 </div>
               </div>
