@@ -13,8 +13,7 @@ type Cle = keyof ReponsesChoix3cx;
 /**
  * Trois questions au plus. L'ordre est délibéré : la question « avancée »
  * vient d'abord parce qu'un « oui » mène à PRO sans autre question — le
- * visiteur qui a besoin de files d'attente ou de téléphones de bureau ne
- * répond qu'une fois. Même
+ * visiteur qui a besoin de files d'attente ne répond qu'une fois. Même
  * logique pour « plus de 8 utilisateurs », qui mène aussi à PRO (seuil de
  * recommandation E2I).
  */
@@ -22,8 +21,8 @@ const QUESTIONS: { cle: Cle; texte: string; aide: string }[] = [
   {
     cle: "avance",
     texte:
-      "Avez-vous besoin de téléphones de bureau, de files d'attente, d'enregistrer vos appels ou de connecter votre outil de suivi client (CRM) ?",
-    aide: "Les téléphones de bureau comprennent les postes IP et les téléphones sans fil DECT. Dans une file d'attente, l'appelant patiente jusqu'à ce qu'un collaborateur soit disponible.",
+      "Avez-vous besoin de files d'attente, d'enregistrer vos appels ou de connecter votre outil de suivi client (CRM) ?",
+    aide: "Dans une file d'attente, l'appelant patiente jusqu'à ce qu'un collaborateur soit disponible.",
   },
   {
     cle: "plusDe8Utilisateurs",
@@ -31,9 +30,10 @@ const QUESTIONS: { cle: Cle; texte: string; aide: string }[] = [
     aide: "Comptez toutes les personnes qui doivent recevoir ou passer des appels.",
   },
   {
-    cle: "plusDe4Appels",
-    texte: "Aurez-vous besoin de plus de 4 appels en même temps ?",
-    aide: "Avec 3CX Free, 4 appels au plus sont possibles en même temps, entrants et sortants confondus.",
+    cle: "postesOuPlusDe4Appels",
+    texte:
+      "Voulez-vous des téléphones de bureau (postes IP ou DECT), ou plus de 4 appels en même temps ?",
+    aide: "Avec 3CX Free, chacun utilise l'application mobile 3CX ou le client web, et 4 appels au plus sont possibles en même temps.",
   },
 ];
 
@@ -52,7 +52,7 @@ export function ChoixVersion3cx() {
     ? recommanderVersion3cx({
         avance: reponses.avance ?? false,
         plusDe8Utilisateurs: reponses.plusDe8Utilisateurs ?? false,
-        plusDe4Appels: reponses.plusDe4Appels ?? false,
+        postesOuPlusDe4Appels: reponses.postesOuPlusDe4Appels ?? false,
       })
     : null;
   const question = termine ? null : QUESTIONS[etape];

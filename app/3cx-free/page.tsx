@@ -68,7 +68,7 @@ export default function ThreeCXFreePage() {
           <div className="absolute inset-0">
             <Image
               src="/images/photos/3CX-On-Premise-Solution.webp"
-              alt="Standard 3CX utilisé sur smartphone et ordinateur"
+              alt="Standard 3CX Free utilisé avec l’application mobile et le client web"
               fill
               priority
               sizes="100vw"

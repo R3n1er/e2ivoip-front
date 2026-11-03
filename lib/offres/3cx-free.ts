@@ -92,7 +92,7 @@ export const HORS_FORFAIT = [
 /** Fonctions incluses dans la licence 3CX Free (matrice officielle 3CX). */
 export const FONCTIONS_3CX_FREE = [
   "Jusqu'à 10 utilisateurs et 4 appels simultanés, c'est-à-dire en même temps",
-  "Applications 3CX pour iPhone, Android, Windows et navigateur web",
+  "Application mobile 3CX (iPhone, Android) et client web (navigateur)",
   "Accueil personnalisé et serveur vocal interactif (SVI) : menus de choix à plusieurs niveaux",
   "Groupes d'appels : les collaborateurs sont appelés en même temps ou à tour de rôle",
   "Gestion des horaires d'ouverture, de fermeture et des jours fériés",
@@ -101,7 +101,7 @@ export const FONCTIONS_3CX_FREE = [
 
 /** Ce que la licence 3CX Free ne fait pas. */
 export const LIMITES_3CX_FREE = [
-  "Pas de postes IP de bureau ni de téléphones sans fil DECT : vous utilisez uniquement les applications 3CX",
+  "Pas de postes IP de bureau ni de téléphones sans fil DECT : vous utilisez uniquement l’application mobile 3CX et le client web",
   "Pas de files d'attente : un groupe d'appels ne met pas l'appelant en attente jusqu'à ce qu'un collaborateur se libère",
   "Pas d'enregistrement des conversations",
   "Pas de connexion à votre outil de suivi client (CRM), d'interface avec d'autres logiciels (API) ni d'agent d'intelligence artificielle (IA)",
@@ -119,12 +119,12 @@ export const FAIR_USE_3CX_FREE = [
 // ── Encart « Quelle version 3CX ? » ──────────────────────────────────────────
 
 export interface ReponsesChoix3cx {
-  /** Files d'attente, enregistrement, CRM, ou téléphones IP de bureau / DECT (→ PRO, décision 2026-11-03). */
+  /** Files d'attente, enregistrement des appels ou intégration CRM. */
   avance: boolean;
   /** Plus de 8 utilisateurs : seuil de recommandation E2I vers PRO (validé le 2026-11-03). */
   plusDe8Utilisateurs: boolean;
-  /** Plus de 4 appels simultanés (limite de la licence gratuite). */
-  plusDe4Appels: boolean;
+  /** Téléphones de bureau (postes IP / DECT, refusés par 3CX Free) ou plus de 4 appels simultanés. */
+  postesOuPlusDe4Appels: boolean;
 }
 
 export interface Recommandation3cx {
@@ -138,11 +138,11 @@ export interface Recommandation3cx {
 /**
  * Logique de l'encart.
  * - PRO : seule édition avec files d'attente, enregistrement et CRM ;
- *   recommandée par E2I pour les téléphones IP de bureau et au-delà de
- *   8 utilisateurs (la licence gratuite accepte techniquement 10 utilisateurs).
- * - SMB : plus de 4 appels simultanés (licence payante à partir de 8 appels),
- *   de 3 à 8 utilisateurs, sur smartphone et ordinateur.
- * - Sinon 3CX Free.
+ *   recommandée par E2I au-delà de 8 utilisateurs (la licence gratuite
+ *   accepte techniquement 10 utilisateurs).
+ * - SMB : téléphones de bureau, ou plus de 4 appels simultanés (licence
+ *   payante à partir de 8 appels), de 3 à 8 utilisateurs.
+ * - Sinon 3CX Free (application mobile 3CX et client web uniquement).
  */
 export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
   if (r.avance || r.plusDe8Utilisateurs) {
@@ -150,18 +150,18 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
       version: "pro",
       titre: "3CX PRO",
       raison: r.avance
-        ? "Pour les téléphones de bureau, les files d'attente, l'enregistrement des appels ou la connexion à votre outil de suivi client (CRM), nous recommandons 3CX PRO sur une instance dédiée."
+        ? "Pour les files d'attente, l'enregistrement des appels ou la connexion à votre outil de suivi client (CRM), nous recommandons 3CX PRO sur une instance dédiée."
         : "Au-delà de 8 utilisateurs, nous recommandons 3CX PRO sur une instance dédiée. Sa capacité dépend du nombre d'appels simultanés dont vous avez besoin.",
       href: "/3cx-pro",
       lien: "Voir 3CX PRO",
     };
   }
-  if (r.plusDe4Appels) {
+  if (r.postesOuPlusDe4Appels) {
     return {
       version: "smb",
       titre: "3CX SMB",
       raison:
-        "Pour 3 à 8 utilisateurs, nous recommandons 3CX SMB avec une licence mensuelle à partir de 8 appels simultanés. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur.",
+        "Pour 3 à 8 utilisateurs, nous recommandons 3CX SMB avec une licence mensuelle à partir de 8 appels simultanés. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles.",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       lien: "Voir 3CX SMB",
     };
@@ -170,7 +170,7 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
     version: "free",
     titre: "3CX Free",
     raison:
-      "Pour votre petite équipe sur smartphone et ordinateur, sans file d'attente, 3CX Free répond aux besoins indiqués. La licence est gratuite. Vous payez l'hébergement géré, le trunk SIP et le numéro.",
+      "Avec l’application mobile 3CX et le client web, sans téléphone de bureau ni file d’attente, 3CX Free répond aux besoins indiqués. La licence est gratuite. Vous payez l'hébergement géré, le trunk SIP et le numéro.",
     href: "/3cx-free",
     lien: "Voir les formules 3CX Free",
   };

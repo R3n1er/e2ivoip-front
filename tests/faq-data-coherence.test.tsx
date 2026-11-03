@@ -69,14 +69,22 @@ describe("Cohérence commerciale des réponses FAQ", () => {
     });
   });
 
-  test("3CX SMB mutualisée : 3 à 8 utilisateurs, sans téléphone IP de bureau", () => {
-    // Décision Alban 2026-11-03 : SMB de 3 à 8 utilisateurs, téléphones IP → PRO.
+  test("3CX SMB mutualisée : 3 à 8 utilisateurs", () => {
+    // Décision Alban 2026-11-03 : SMB de 3 à 8 utilisateurs (téléphones de bureau acceptés).
     FAQ_SMB_MUTUALISEE.forEach((item) => {
       const visible = renderAnswerText(item);
       [item.answerText, visible].forEach((text) => {
         expect(text).not.toMatch(/3 à 10 utilisateurs/i);
-        expect(text).not.toMatch(/téléphones? IP|postes? IP/i);
       });
+    });
+  });
+
+  test("3CX Free : téléphones de bureau → 3CX SMB, usage limité au mobile et au web", () => {
+    const item = FAQ_3CX_FREE.find((i) => /téléphones de bureau/i.test(i.question));
+    expect(item).toBeDefined();
+    [item!.answerText, renderAnswerText(item!)].forEach((text) => {
+      expect(text).toMatch(/3CX SMB/);
+      expect(text).not.toMatch(/ordinateur|Windows/i);
     });
   });
 

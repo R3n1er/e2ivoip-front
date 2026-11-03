@@ -747,14 +747,14 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur. E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.",
+      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.",
     answer: (
       <div className="space-y-3">
         <p>
           <strong>3CX SMB mutualisée</strong> est une solution de téléphonie hébergée pour 3 à 8 utilisateurs.
         </p>
         <p>
-          Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur. <strong>E2I gère le serveur.</strong>
+          Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). <strong>E2I gère le serveur.</strong>
         </p>
         <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.</p>
       </div>
@@ -763,7 +763,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits ; applications sur smartphone, ordinateur et navigateur. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits ; applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -772,7 +772,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
         <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li>licence mensuelle ;</li>
           <li>frais de mise en service réduits ;</li>
-          <li>applications sur smartphone, ordinateur et navigateur.</li>
+          <li>applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles.</li>
         </ul>
         <p>
           Avec <strong>3CX PRO dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
@@ -785,7 +785,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "À qui s'adresse la solution 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 8 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels avec les applications 3CX sur smartphone, ordinateur ou navigateur.",
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 8 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -794,7 +794,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
         </p>
         <p>
           Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels
-          avec les applications 3CX sur smartphone, ordinateur ou navigateur.
+          avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.
         </p>
       </div>
     ),
@@ -955,14 +955,14 @@ export const FAQ_3CX_FREE: RichFaqItem[] = [
   {
     question: "Peut-on utiliser des téléphones de bureau avec 3CX Free ?",
     answerText:
-      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application 3CX sur smartphone, ordinateur ou navigateur web. Pour utiliser des téléphones de bureau, E2I recommande 3CX PRO.",
+      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application mobile 3CX et le client web (navigateur). Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application 3CX sur smartphone, ordinateur ou navigateur web.
+          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application mobile 3CX et le client web (navigateur).
         </p>
         <p>
-          Pour utiliser des téléphones de bureau, E2I recommande 3CX PRO.
+          Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.
         </p>
       </div>
     ),

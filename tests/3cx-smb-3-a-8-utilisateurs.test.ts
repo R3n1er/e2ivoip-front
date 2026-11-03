@@ -3,8 +3,9 @@ import path from "node:path";
 
 /**
  * Décision Alban 2026-11-03 : l'offre 3CX SMB mutualisée couvre 3 à 8
- * utilisateurs (au-delà : 3CX PRO), sans téléphones IP de bureau (→ PRO),
- * avec une licence mensuelle et des frais de mise en service réduits.
+ * utilisateurs (au-delà : 3CX PRO), avec une licence mensuelle et des frais
+ * de mise en service réduits. Les téléphones de bureau y sont acceptés
+ * (seule la licence 3CX Free les refuse).
  */
 const lire = (f: string) => fs.readFileSync(path.join(process.cwd(), f), "utf8");
 
@@ -34,8 +35,8 @@ describe("3CX SMB — 3 à 8 utilisateurs", () => {
     expect(page).toMatch(/mise en service[^.]{0,60}(réduit|allégé|diminu)/i);
   });
 
-  it("la page SMB ne promet pas de téléphones IP de bureau", () => {
-    expect(lire(FICHIERS_SMB[0])).not.toMatch(/téléphones? IP|postes? IP|DECT/i);
+  it("la page SMB indique que les téléphones de bureau sont compatibles", () => {
+    expect(lire(FICHIERS_SMB[0])).toMatch(/téléphones? (SIP|IP|de bureau)/i);
   });
 
   it("le comparatif /telephonie-3cx affiche 3 à 8 pour SMB", () => {

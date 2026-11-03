@@ -14,7 +14,7 @@ const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 export const metadata: Metadata = pageMetadata({
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
-    "3CX SMB mutualisée de 3 à 8 utilisateurs : licence mensuelle et frais de mise en service réduits. Applications sur smartphone, ordinateur et navigateur. 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus) ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités, mobiles au compteur.",
+    "3CX SMB mutualisée de 3 à 8 utilisateurs : licence mensuelle et frais de mise en service réduits. Applications 3CX et téléphones de bureau compatibles. 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus) ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités, mobiles au compteur.",
   keywords:
     "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
   path: "/telephonie-entreprise/3cx-smb-mutualisee",
@@ -80,7 +80,7 @@ export default function Smb3CXMutualisee() {
               </h2>
               <p className="text-xl text-ui-muted leading-relaxed max-w-4xl mx-auto">
                 Notre offre <strong>3CX SMB mutualisée</strong> accompagne les équipes de 3 à 8 utilisateurs.
-                Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur.
+                Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles.
                 Vous bénéficiez d’une licence mensuelle et de frais de mise en service réduits.
               </p>
             </div>
@@ -299,9 +299,9 @@ export default function Smb3CXMutualisee() {
                     <Desktop size={24} className="text-blue-marine" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-dark mb-1">Application 3CX sur ordinateur</h3>
+                    <h3 className="font-semibold text-gray-dark mb-1">Téléphones SIP compatibles</h3>
                     <p className="text-ui-muted text-sm">
-                      Passez et recevez vos appels depuis votre ordinateur avec l’application 3CX.
+                      Connectez vos téléphones SIP compatibles, notamment Fanvil et Yealink, ainsi que vos téléphones sans fil DECT.
                     </p>
                   </div>
                 </div>

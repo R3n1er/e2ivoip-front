@@ -123,13 +123,14 @@ describe("Encart « Quelle version 3CX ? »", () => {
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
   });
 
-  it("la première question couvre les téléphones de bureau (orientés vers PRO)", () => {
+  it("oriente vers 3CX SMB pour des téléphones de bureau ou plus de 4 appels", async () => {
+    const user = userEvent.setup();
     render(<ChoixVersion3cx />);
+    for (const r of ["Non", "Non"] as const) {
+      await user.click(within(screen.getByRole("group")).getByRole("button", { name: r }));
+    }
     expect(screen.getByRole("group")).toHaveTextContent(/téléphones de bureau/i);
-  });
-
-  it("oriente vers 3CX SMB au-delà de 4 appels simultanés", async () => {
-    await repondre(["Non", "Non", "Oui"]);
+    await user.click(within(screen.getByRole("group")).getByRole("button", { name: "Oui" }));
     expect(screen.getByRole("status")).toHaveTextContent(/3CX SMB/);
     expect(screen.getByRole("status")).toHaveTextContent(/8 appels simultanés/);
   });
