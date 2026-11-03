@@ -58,3 +58,17 @@ describe("Trunk SIP illimité — pas de seuil de rentabilité invérifiable", (
     expect(source).not.toMatch(/min\/mois/);
   });
 });
+
+/**
+ * Arbitrage Alban (2026-11-02) : « tout inclus », « pas de frais cachés » et
+ * « sans surprise » sont contredits par les mobiles au compteur et les frais
+ * de mise en service. Interdits sur la page.
+ */
+describe("Trunk SIP illimité — pas de promesse « tout inclus »", () => {
+  it.each([/tout inclus/i, /frais cachés/i, /sans surprise/i, /mauvaise\s+surprise/i])(
+    "n'utilise pas %s",
+    (motif) => {
+      expect(source.replace(/\s+/g, " ")).not.toMatch(motif);
+    },
+  );
+});

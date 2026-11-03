@@ -129,8 +129,8 @@ export default function TrunkSIPIllimite() {
                 <p className="text-xl text-ui-muted mb-8">
                   Vous appelez souvent des numéros fixes ? Notre
                   <strong> Trunk SIP Illimité</strong> répond aux volumes
-                  d&apos;appels importants. Le forfait tout inclus vous aide à
-                  maîtriser votre budget télécom. Les appels
+                  d&apos;appels importants. Le forfait couvre tous vos appels vers
+                  les fixes : votre budget est plus facile à prévoir. Les appels
                   vers les mobiles restent facturés au compteur.
                 </p>
 
@@ -191,8 +191,9 @@ export default function TrunkSIPIllimite() {
                         Le forfait est réservé à un usage professionnel normal.
                         Il exclut les usages intensifs d&apos;appels entrants et
                         sortants, comme ceux d&apos;un centre d&apos;appels.
-                        <strong> Pas de frais cachés</strong> ni de mauvaise
-                        surprise.
+                        <strong> Tout est écrit à l&apos;avance</strong> : la grille
+                        des mobiles est publiée ci-dessous, les frais de mise en
+                        service figurent sur votre devis.
                       </p>
                     </div>
                   </div>
@@ -313,8 +314,8 @@ export default function TrunkSIPIllimite() {
                     Budget maîtrisé
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Le forfait mensuel est fixe : vous pouvez prévoir votre
-                    budget télécom sans surprise. Les appels vers les mobiles
+                    Le forfait mensuel est fixe : la part fixe de votre budget
+                    télécom est connue à l&apos;avance. Les appels vers les mobiles
                     sont facturés en plus, au compteur.
                   </p>
                 </div>
