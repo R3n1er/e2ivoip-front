@@ -65,29 +65,38 @@ describe("Offre 3CX Free — données de référence", () => {
 });
 
 describe("recommanderVersion3cx — encart de choix (3 questions max)", () => {
-  const cas: Array<
-    [string, Parameters<typeof recommanderVersion3cx>[0], string]
-  > = [
-    ["besoin simple", { avance: false, postesBureau: false, auDela4Appels: false }, "free"],
-    ["postes de bureau", { avance: false, postesBureau: true, auDela4Appels: false }, "smb"],
-    ["plus de 4 appels", { avance: false, postesBureau: false, auDela4Appels: true }, "smb"],
-    ["files d'attente / CRM", { avance: true, postesBureau: false, auDela4Appels: false }, "pro"],
-    ["avancé l'emporte", { avance: true, postesBureau: true, auDela4Appels: true }, "pro"],
+  type R = Parameters<typeof recommanderVersion3cx>[0];
+  const r = (avance: boolean, plusDe10Utilisateurs: boolean, postesOuPlusDe4Appels: boolean): R => ({
+    avance,
+    plusDe10Utilisateurs,
+    postesOuPlusDe4Appels,
+  });
+  const cas: Array<[string, R, string]> = [
+    ["besoin simple", r(false, false, false), "free"],
+    ["postes de bureau ou plus de 4 appels, 10 utilisateurs au plus", r(false, false, true), "smb"],
+    // La page SMB annonce 3 à 10 utilisateurs : au-delà, seule PRO convient.
+    ["plus de 10 utilisateurs", r(false, true, false), "pro"],
+    ["plus de 10 utilisateurs avec postes", r(false, true, true), "pro"],
+    ["files d'attente / CRM", r(true, false, false), "pro"],
   ];
 
   it.each(cas)("%s → %s", (_nom, reponses, attendu) => {
     expect(recommanderVersion3cx(reponses).version).toBe(attendu);
   });
 
-  it("chaque recommandation renvoie vers une page existante", () => {
-    const hrefs = cas.map(([, r]) => recommanderVersion3cx(r).href);
-    expect(new Set(hrefs)).toEqual(
-      new Set(["/3cx-free", "/telephonie-entreprise/3cx-smb-mutualisee", "/3cx-pro"]),
-    );
+  it("chaque recommandation renvoie vers une route qui existe", () => {
+    const fs = jest.requireActual<typeof import("node:fs")>("node:fs");
+    for (const [, reponses] of cas) {
+      const href = recommanderVersion3cx(reponses).href;
+      expect(fs.existsSync(`${process.cwd()}/app${href}/page.tsx`)).toBe(true);
+    }
   });
 
   it("au-delà de 4 appels, la licence payante démarre à 8 appels simultanés", () => {
-    const r = recommanderVersion3cx({ avance: false, postesBureau: false, auDela4Appels: true });
-    expect(r.raison).toMatch(/8 appels simultanés/);
+    expect(recommanderVersion3cx(r(false, false, true)).raison).toMatch(/8 appels simultanés/);
+  });
+
+  it("au-delà de 10 utilisateurs, la raison le dit", () => {
+    expect(recommanderVersion3cx(r(false, true, false)).raison).toMatch(/10 utilisateurs/);
   });
 });

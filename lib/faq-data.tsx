@@ -940,7 +940,7 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
  */
 export const FAQ_3CX_FREE: RichFaqItem[] = [
   {
-    question: "3CX Free : la licence est-elle vraiment gratuite ?",
+    question: "3CX gratuit : que payez-vous vraiment ?",
     answerText:
       "La licence 3CX Free est gratuite. E2I VoIP facture l'hébergement géré, le trunk SIP et votre numéro, à partir de 76 € HT par mois pour toute l'entreprise, jusqu'à 10 utilisateurs. La mise en service coûte 199 € HT. L'engagement est de 12 mois.",
     answer: (
@@ -1017,14 +1017,14 @@ export const FAQ_3CX_FREE: RichFaqItem[] = [
   {
     question: "Que comprend l'illimité et quelles sont ses limites ?",
     answerText:
-      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM sont inclus, ainsi que les appels reçus. Des plafonds mensuels d'usage s'appliquent. Au-delà des plafonds, les minutes sont facturées selon la grille au compteur. Les appels vers Mayotte, l'international et les numéros spéciaux sont aussi au compteur. Les centres d'appels sont exclus.",
+      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d'usage s'appliquent. Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l'international et les numéros spéciaux. Les centres d'appels sont exclus.",
     answer: (
       <div className="space-y-3">
         <p>
-          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et des DOM sont inclus, ainsi que les appels reçus. Des plafonds mensuels d&apos;usage s&apos;appliquent.
+          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d&apos;usage s&apos;appliquent.
         </p>
         <p>
-          Au-delà des plafonds, les minutes sont facturées selon la grille au compteur. Les appels vers Mayotte, l&apos;international et les numéros spéciaux sont aussi au compteur. Les centres d&apos;appels sont exclus.
+          Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l&apos;international et les numéros spéciaux. Les centres d&apos;appels sont exclus.
         </p>
       </div>
     ),

@@ -24,9 +24,9 @@ import { ArrowRight, CheckCircle, Warning } from "@/lib/icons";
 const PATH = "/3cx-free";
 
 export const metadata: Metadata = pageMetadata({
-  title: "3CX Free : licence gratuite, hébergement et trunk SIP",
+  title: "3CX Free : licence gratuite, standard hébergé",
   description:
-    "3CX Free hébergé et géré par E2I VoIP, avec trunk SIP et numéro local : dès 76 € HT/mois pour toute l'entreprise, jusqu'à 10 utilisateurs et 4 appels simultanés.",
+    "3CX Free hébergé et géré, avec trunk SIP et numéro local : dès 76 € HT/mois par entreprise pour 2 appels simultanés, jusqu'à 10 utilisateurs.",
   keywords:
     "3CX Free, 3CX gratuit, licence 3CX gratuite, standard téléphonique TPE, 3CX hébergé, trunk SIP 3CX, téléphonie DOM",
   path: PATH,
@@ -45,7 +45,7 @@ function LignesFormule({ f }: { f: Formule3cxFree }) {
   }
   return (
     <ul className="space-y-2 text-sm text-ui-muted">
-      <li>Appels vers les fixes et mobiles de France métropolitaine et des DOM, appels reçus compris</li>
+      <li>Appels vers les fixes et mobiles de France métropolitaine et des DOM (hors Mayotte), appels reçus compris</li>
       <li>
         Jusqu&apos;à <span className="font-mono tabular-nums">{nf(f.plafond.fixes)}</span> min
         vers les fixes,{" "}
@@ -62,7 +62,7 @@ export default function ThreeCXFreePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <main>
+      <div>
         {/* Hero */}
         <section className="relative overflow-hidden py-20">
           <div className="absolute inset-0">
@@ -79,7 +79,10 @@ export default function ThreeCXFreePage() {
           <div className="relative z-20 mx-auto max-w-7xl px-4 text-center text-white sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl">
               <h1 className="mb-6 text-5xl font-bold leading-tight md:text-7xl">
-                3CX <span className="text-red-400">Free</span>
+                3CX Free
+                <span className="mt-2 block text-2xl font-bold md:text-3xl">
+                  le standard téléphonique des TPE
+                </span>
               </h1>
               <p className="mb-4 text-2xl font-bold md:text-3xl">
                 Votre standard téléphonique TPE, avec une licence gratuite
@@ -93,8 +96,8 @@ export default function ThreeCXFreePage() {
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <CTAButton href="/contact">Parler de votre téléphonie</CTAButton>
-                <CTAButtonMarine href="/devis-en-ligne?service=3cx-free" icon="ArrowRight">
-                  Demander un devis
+                <CTAButtonMarine href="#rendez-vous" icon="ArrowRight">
+                  Prendre rendez-vous
                 </CTAButtonMarine>
               </div>
             </div>
@@ -285,8 +288,10 @@ export default function ThreeCXFreePage() {
           <FaqSection items={FAQ_3CX_FREE} title="Questions fréquentes sur 3CX Free" />
         </section>
 
-        <CTACalendarSection />
-      </main>
+        <div id="rendez-vous">
+          <CTACalendarSection />
+        </div>
+      </div>
 
       <JsonLd
         data={serviceSchema({

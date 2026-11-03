@@ -17,14 +17,47 @@ describe("Page /3cx-free", () => {
     expect(String(metadata.alternates?.canonical)).toMatch(/\/3cx-free$/);
   });
 
-  it("affiche les quatre prix mensuels en HT", () => {
+  it("affiche chaque prix mensuel HT dans sa propre carte de formule", () => {
+    render(<ThreeCXFreePage />);
+    const cartes = within(screen.getByRole("region", { name: /formules/i })).getAllByRole("article");
+    expect(cartes).toHaveLength(4);
+    const attendus = [
+      ["Compteur 2 appels", "76"],
+      ["Compteur 4 appels", "96"],
+      ["Illimité 2 appels", "139"],
+      ["Illimité 4 appels", "219"],
+    ];
+    cartes.forEach((carte, i) => {
+      const [nom, prix] = attendus[i];
+      expect(within(carte).getByRole("heading", { level: 3 })).toHaveTextContent(nom);
+      expect(carte.textContent?.replace(/\s+/g, " ")).toMatch(new RegExp(`${prix}\\s*€\\s*HT`));
+    });
+  });
+
+  it("affiche la mise en service et l'engagement", () => {
     const { container } = render(<ThreeCXFreePage />);
-    const texte = container.textContent ?? "";
-    for (const prix of ["76", "96", "139", "219"]) {
-      expect(texte).toMatch(new RegExp(`${prix}\\s*€\\s*HT`));
-    }
+    const texte = (container.textContent ?? "").replace(/\s+/g, " ");
     expect(texte).toMatch(/199\s*€\s*HT/);
     expect(texte).toMatch(/12 mois/);
+  });
+
+  it("n'imbrique pas de second landmark main (le layout en fournit un)", () => {
+    const { container } = render(<ThreeCXFreePage />);
+    expect(container.querySelector("main")).toBeNull();
+  });
+
+  it("le hero n'utilise que des couleurs de la charte", () => {
+    expect(read("app/3cx-free/page.tsx")).not.toMatch(/red-400/);
+  });
+
+  it("aucun CTA ne pointe vers un parcours de devis sans option 3CX Free", () => {
+    expect(read("app/3cx-free/page.tsx")).not.toMatch(/service=3cx-free/);
+  });
+
+  it("la meta description associe 76 € à 2 appels, pas à 4", () => {
+    const d = String(metadata.description);
+    expect(d.length).toBeLessThanOrEqual(160);
+    expect(d).not.toMatch(/76[^.]*4 appels/);
   });
 
   it("explique les limites : ni postes IP, ni files d'attente", () => {
@@ -68,12 +101,12 @@ describe("Encart « Quelle version 3CX ? »", () => {
     const user = userEvent.setup();
     render(<ChoixVersion3cx />);
     for (const r of reponses) {
-      const question = screen.getByRole("group");
-      await user.click(within(question).getByRole("button", { name: r }));
+      await user.click(within(screen.getByRole("group")).getByRole("button", { name: r }));
     }
+    return user;
   }
 
-  it("pose au plus trois questions et recommande 3CX Free pour un besoin simple", async () => {
+  it("recommande 3CX Free pour un besoin simple, en trois réponses", async () => {
     await repondre(["Non", "Non", "Non"]);
     expect(screen.getByRole("status")).toHaveTextContent(/3CX Free/);
   });
@@ -84,23 +117,42 @@ describe("Encart « Quelle version 3CX ? »", () => {
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
   });
 
-  it("oriente vers 3CX SMB pour des postes de bureau, sans 3e question", async () => {
+  it("oriente vers 3CX PRO au-delà de 10 utilisateurs, sans 3e question", async () => {
     await repondre(["Non", "Oui"]);
-    expect(screen.getByRole("status")).toHaveTextContent(/3CX SMB/);
+    expect(screen.getByRole("status")).toHaveTextContent(/3CX PRO/);
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
   });
 
-  it("oriente vers 3CX SMB au-delà de 4 appels", async () => {
+  it("oriente vers 3CX SMB pour des postes de bureau ou plus de 4 appels", async () => {
     await repondre(["Non", "Non", "Oui"]);
     expect(screen.getByRole("status")).toHaveTextContent(/3CX SMB/);
     expect(screen.getByRole("status")).toHaveTextContent(/8 appels simultanés/);
   });
 
-  it("permet de recommencer", async () => {
+  it("déplace le focus sur chaque nouvelle question puis sur le résultat", async () => {
     const user = userEvent.setup();
-    await repondre(["Oui"]);
+    render(<ChoixVersion3cx />);
+    await user.click(screen.getByRole("button", { name: "Non" }));
+    expect(document.activeElement).toHaveTextContent(/10 utilisateurs/);
+    await user.click(screen.getByRole("button", { name: "Oui" }));
+    expect(document.activeElement).toHaveTextContent(/3CX PRO/);
+  });
+
+  it("ne vole pas le focus au chargement", () => {
+    render(<ChoixVersion3cx />);
+    expect(document.activeElement).toBe(document.body);
+  });
+
+  it("recommencer efface le résultat, revient à la question 1 et permet un second parcours", async () => {
+    const user = await repondre(["Oui"]);
     await user.click(screen.getByRole("button", { name: /recommencer/i }));
-    expect(screen.getByRole("group")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent("");
+    expect(screen.getByRole("group")).toHaveTextContent(/files d'attente/);
+    expect(document.activeElement).toHaveTextContent(/files d'attente/);
+    for (const rep of ["Non", "Non", "Non"]) {
+      await user.click(within(screen.getByRole("group")).getByRole("button", { name: rep }));
+    }
+    expect(screen.getByRole("status")).toHaveTextContent(/3CX Free/);
   });
 });
 

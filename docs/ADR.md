@@ -10,6 +10,21 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-02 — Offre 3CX Free : prix par entreprise, plafonds d'usage, page dédiée
+
+- **Contexte** : l'édition 3CX « 4SC Basic Free » (10 utilisateurs, 4 appels simultanés) ne peut pas être hébergée par 3CX. E2I VoIP l'héberge sur une VM par client et la vend avec son trunk SIP. Un concurrent local annonce un « standard 3CX gratuit » sans prix.
+- **Décision** (arbitrages Alban du 2026-11-02) :
+  - prix **par entreprise** et non par utilisateur : 76 / 96 € HT au compteur (2 / 4 appels), 139 / 219 € HT en illimité fixes et mobiles France et DOM hors Mayotte, entrants compris ;
+  - **coefficient ×2 minimum sur chaque coût**, entrants compris (0,0075 €/min chez le grossiste) ; les plafonds d'usage (1 500 / 1 000 / 3 000 min et 3 000 / 2 000 / 6 000 min) gardent l'offre rentable jusqu'au plafond (coefficient d'environ 1,5) ;
+  - mise en service 199 € HT, engagement 12 mois, hébergement géré de 29 € HT inclus ;
+  - page `/3cx-free` avec son propre canonical (offre distincte de `/telephonie-3cx`). Les limites (ni postes IP, ni files d'attente) sont affichées en tête. Un encart de 3 questions oriente vers Free, SMB (postes de bureau ou plus de 4 appels, dès 8 appels payants) ou PRO (files d'attente, CRM, plus de 10 utilisateurs).
+- **Raisonnement** : à coefficient ×2, l'illimité ne peut pas s'aligner sur un opérateur qui dispose de son propre transit. Le prix par entreprise devient l'argument, et le client fait lui-même la comparaison. On n'écrit jamais « moins cher que ».
+- **Conséquences** :
+  - `lib/offres/3cx-free.ts` est la source unique des prix et des limites ; la FAQ et `llms.txt` doivent rester alignés.
+  - Publication en production **après le pilote** qui valide le trunk E2I sur 3CX Free (handoff cerveau-e2ivoip du 2026-11-02).
+  - Rédaction confiée à Codex, puis revue rédactionnelle et revue de code par Codex en lecture seule.
+- **Tests associés** : `tests/3cx-free-offre.test.ts`, `tests/3cx-free-page.test.tsx`, `tests/e2e/3cx-free.spec.ts`.
+
 ### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
 
 - **Contexte** : après la PR #86, `npm audit` signalait encore 4 vulnérabilités modérées (`postcss-selector-parser` < 7.1.6, CPU DoS). Elles viennent de `@tailwindcss/typography@0.5.20`, dernière version publiée, qui dépend **en dur** de `postcss-selector-parser@6.0.10`, et de `tailwindcss@3`. Passer à Tailwind 4 ne réglait donc pas la faille (relecture Codex, plan `docs/superpowers/plans/2026-10-24-migration-tailwind-4.md`).

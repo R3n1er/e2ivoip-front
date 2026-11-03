@@ -84,7 +84,7 @@ export const HEBERGEMENT_INCLUS = [
 
 /** Prestations facturées en plus (catalogue existant). */
 export const HORS_FORFAIT = [
-  { libelle: "Maintenance si vous demandez des modifications fréquentes", prix: "49 € HT/mois" },
+  { libelle: "Maintenance : modifications au-delà de celle incluse chaque mois, selon le périmètre du devis", prix: "49 € HT/mois" },
   { libelle: "Formation des utilisateurs", prix: "250 € HT par session" },
   { libelle: "Portabilité : conservation de vos numéros", prix: "90 € HT par tranche de 10" },
 ] as const;
@@ -111,7 +111,7 @@ export const LIMITES_3CX_FREE = [
 /** Conditions d'usage raisonnable de l'illimité. */
 export const FAIR_USE_3CX_FREE = [
   "Réservé aux appels entre personnes : pas de centre d'appels, d'automate ni de renvoi permanent vers un mobile",
-  "Les appels vers Mayotte, l'international et les numéros spéciaux sont facturés selon la grille au compteur",
+  "Mayotte n'est pas comprise dans l'illimité : ses appels, comme l'international et les numéros spéciaux, sont facturés selon la grille au compteur",
   "Au-delà de chaque plafond mensuel, les minutes sont facturées selon la grille au compteur",
   "Plafond dépassé deux mois de suite : nous vous proposons la formule supérieure, ou une licence payante si vous êtes déjà en Illimité 4 appels",
 ] as const;
@@ -121,10 +121,10 @@ export const FAIR_USE_3CX_FREE = [
 export interface ReponsesChoix3cx {
   /** Files d'attente, enregistrement des appels ou intégration CRM. */
   avance: boolean;
-  /** Postes IP de bureau ou téléphones DECT. */
-  postesBureau: boolean;
-  /** Plus de 4 appels simultanés ou plus de 10 utilisateurs. */
-  auDela4Appels: boolean;
+  /** Plus de 10 utilisateurs : au-delà de la licence gratuite ET de l'offre SMB (3 à 10). */
+  plusDe10Utilisateurs: boolean;
+  /** Postes IP de bureau / DECT, ou plus de 4 appels simultanés. */
+  postesOuPlusDe4Appels: boolean;
 }
 
 export interface Recommandation3cx {
@@ -136,28 +136,32 @@ export interface Recommandation3cx {
 }
 
 /**
- * Logique de l'encart. PRO l'emporte (seule édition avec files d'attente,
- * enregistrement et CRM) ; SMB couvre les postes de bureau et les besoins
- * au-delà de 4 appels ; sinon 3CX Free suffit.
+ * Logique de l'encart.
+ * - PRO : seule édition avec files d'attente, enregistrement et CRM, et
+ *   seule offre du site au-delà de 10 utilisateurs (la page SMB annonce
+ *   3 à 10 utilisateurs).
+ * - SMB : postes de bureau, ou plus de 4 appels simultanés (licence payante
+ *   à partir de 8 appels), jusqu'à 10 utilisateurs.
+ * - Sinon 3CX Free.
  */
 export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
-  if (r.avance) {
+  if (r.avance || r.plusDe10Utilisateurs) {
     return {
       version: "pro",
       titre: "3CX PRO",
-      raison:
-        "Files d'attente, enregistrement des appels et intégration CRM ne sont disponibles qu'avec 3CX PRO, sur une instance dédiée.",
+      raison: r.avance
+        ? "Files d'attente, enregistrement des appels et intégration CRM ne sont disponibles qu'avec 3CX PRO, sur une instance dédiée."
+        : "Au-delà de 10 utilisateurs, ni la licence gratuite ni l'offre 3CX SMB ne conviennent : 3CX PRO se dimensionne selon vos appels simultanés, sur une instance dédiée.",
       href: "/3cx-pro",
       lien: "Voir 3CX PRO",
     };
   }
-  if (r.postesBureau || r.auDela4Appels) {
+  if (r.postesOuPlusDe4Appels) {
     return {
       version: "smb",
       titre: "3CX SMB",
-      raison: r.auDela4Appels
-        ? "La licence gratuite s'arrête à 4 appels simultanés et 10 utilisateurs. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB y répond, postes de bureau compris."
-        : "3CX SMB accepte les postes IP de bureau et les téléphones DECT, que la licence gratuite n'accepte pas. Licence payante à partir de 8 appels simultanés.",
+      raison:
+        "3CX SMB accepte les postes IP de bureau et les téléphones DECT, et dépasse les 4 appels simultanés de la licence gratuite. Licence payante à partir de 8 appels simultanés, jusqu'à 10 utilisateurs.",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       lien: "Voir 3CX SMB",
     };
