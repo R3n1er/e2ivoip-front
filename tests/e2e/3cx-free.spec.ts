@@ -20,9 +20,9 @@ test.describe("Page 3CX Free", () => {
     await encart.getByRole("button", { name: "Non" }).focus();
     await page.keyboard.press("Enter");
     // Le focus suit la nouvelle question.
-    await expect(page.locator(":focus")).toContainText(/10 utilisateurs/);
+    await expect(page.locator(":focus")).toContainText(/8 utilisateurs/);
     await page.keyboard.press("Tab");
-    await page.keyboard.press("Enter"); // « Oui » : plus de 10 utilisateurs
+    await page.keyboard.press("Enter"); // « Oui » : plus de 8 utilisateurs
     await expect(encart.getByRole("status")).toContainText(/3CX PRO/);
     await expect(page.locator(":focus")).toContainText(/3CX PRO/);
   });

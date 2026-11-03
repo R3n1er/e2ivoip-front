@@ -117,7 +117,7 @@ describe("Encart « Quelle version 3CX ? »", () => {
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
   });
 
-  it("oriente vers 3CX PRO au-delà de 10 utilisateurs, sans 3e question", async () => {
+  it("oriente vers 3CX PRO au-delà de 8 utilisateurs, sans 3e question", async () => {
     await repondre(["Non", "Oui"]);
     expect(screen.getByRole("status")).toHaveTextContent(/3CX PRO/);
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
@@ -133,7 +133,7 @@ describe("Encart « Quelle version 3CX ? »", () => {
     const user = userEvent.setup();
     render(<ChoixVersion3cx />);
     await user.click(screen.getByRole("button", { name: "Non" }));
-    expect(document.activeElement).toHaveTextContent(/10 utilisateurs/);
+    expect(document.activeElement).toHaveTextContent(/8 utilisateurs/);
     await user.click(screen.getByRole("button", { name: "Oui" }));
     expect(document.activeElement).toHaveTextContent(/3CX PRO/);
   });

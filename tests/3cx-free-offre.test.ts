@@ -66,17 +66,17 @@ describe("Offre 3CX Free — données de référence", () => {
 
 describe("recommanderVersion3cx — encart de choix (3 questions max)", () => {
   type R = Parameters<typeof recommanderVersion3cx>[0];
-  const r = (avance: boolean, plusDe10Utilisateurs: boolean, postesOuPlusDe4Appels: boolean): R => ({
+  const r = (avance: boolean, plusDe8Utilisateurs: boolean, postesOuPlusDe4Appels: boolean): R => ({
     avance,
-    plusDe10Utilisateurs,
+    plusDe8Utilisateurs,
     postesOuPlusDe4Appels,
   });
   const cas: Array<[string, R, string]> = [
     ["besoin simple", r(false, false, false), "free"],
-    ["postes de bureau ou plus de 4 appels, 10 utilisateurs au plus", r(false, false, true), "smb"],
-    // La page SMB annonce 3 à 10 utilisateurs : au-delà, seule PRO convient.
-    ["plus de 10 utilisateurs", r(false, true, false), "pro"],
-    ["plus de 10 utilisateurs avec postes", r(false, true, true), "pro"],
+    ["postes de bureau ou plus de 4 appels, 8 utilisateurs au plus", r(false, false, true), "smb"],
+    // Recommandation E2I : au-delà de 8 utilisateurs, PRO (validé par Alban le 2026-11-03).
+    ["plus de 8 utilisateurs", r(false, true, false), "pro"],
+    ["plus de 8 utilisateurs avec postes", r(false, true, true), "pro"],
     ["files d'attente / CRM", r(true, false, false), "pro"],
   ];
 
@@ -96,7 +96,7 @@ describe("recommanderVersion3cx — encart de choix (3 questions max)", () => {
     expect(recommanderVersion3cx(r(false, false, true)).raison).toMatch(/8 appels simultanés/);
   });
 
-  it("au-delà de 10 utilisateurs, la raison le dit", () => {
-    expect(recommanderVersion3cx(r(false, true, false)).raison).toMatch(/10 utilisateurs/);
+  it("au-delà de 8 utilisateurs, la raison le dit", () => {
+    expect(recommanderVersion3cx(r(false, true, false)).raison).toMatch(/8 utilisateurs/);
   });
 });

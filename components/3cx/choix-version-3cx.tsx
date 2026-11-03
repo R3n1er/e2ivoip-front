@@ -14,8 +14,8 @@ type Cle = keyof ReponsesChoix3cx;
  * Trois questions au plus. L'ordre est délibéré : la question « avancée »
  * vient d'abord parce qu'un « oui » mène à PRO sans autre question — le
  * visiteur qui a besoin de files d'attente ne répond qu'une fois. Même
- * logique pour « plus de 10 utilisateurs », qui mène aussi à PRO (l'offre
- * SMB s'arrête à 10 utilisateurs).
+ * logique pour « plus de 8 utilisateurs », qui mène aussi à PRO (seuil de
+ * recommandation E2I).
  */
 const QUESTIONS: { cle: Cle; texte: string; aide: string }[] = [
   {
@@ -25,8 +25,8 @@ const QUESTIONS: { cle: Cle; texte: string; aide: string }[] = [
     aide: "Dans une file d'attente, l'appelant patiente jusqu'à ce qu'un collaborateur soit disponible.",
   },
   {
-    cle: "plusDe10Utilisateurs",
-    texte: "Serez-vous plus de 10 utilisateurs ?",
+    cle: "plusDe8Utilisateurs",
+    texte: "Serez-vous plus de 8 utilisateurs ?",
     aide: "Comptez toutes les personnes qui doivent recevoir ou passer des appels.",
   },
   {
@@ -47,11 +47,11 @@ export function ChoixVersion3cx() {
   // Un « oui » qui fixe déjà la réponse arrête le questionnaire : PRO dès la
   // question 1, SMB dès la question 2 (la 3e ne changerait rien).
   const termine =
-    reponses.avance === true || reponses.plusDe10Utilisateurs === true || etape === -1;
+    reponses.avance === true || reponses.plusDe8Utilisateurs === true || etape === -1;
   const resultat = termine
     ? recommanderVersion3cx({
         avance: reponses.avance ?? false,
-        plusDe10Utilisateurs: reponses.plusDe10Utilisateurs ?? false,
+        plusDe8Utilisateurs: reponses.plusDe8Utilisateurs ?? false,
         postesOuPlusDe4Appels: reponses.postesOuPlusDe4Appels ?? false,
       })
     : null;

@@ -121,8 +121,8 @@ export const FAIR_USE_3CX_FREE = [
 export interface ReponsesChoix3cx {
   /** Files d'attente, enregistrement des appels ou intégration CRM. */
   avance: boolean;
-  /** Plus de 10 utilisateurs : au-delà de la licence gratuite ET de l'offre SMB (3 à 10). */
-  plusDe10Utilisateurs: boolean;
+  /** Plus de 8 utilisateurs : seuil de recommandation E2I vers PRO (validé le 2026-11-03). */
+  plusDe8Utilisateurs: boolean;
   /** Postes IP de bureau / DECT, ou plus de 4 appels simultanés. */
   postesOuPlusDe4Appels: boolean;
 }
@@ -138,20 +138,20 @@ export interface Recommandation3cx {
 /**
  * Logique de l'encart.
  * - PRO : seule édition avec files d'attente, enregistrement et CRM, et
- *   seule offre du site au-delà de 10 utilisateurs (la page SMB annonce
- *   3 à 10 utilisateurs).
+ *   recommandée par E2I au-delà de 8 utilisateurs (la licence gratuite
+ *   accepte techniquement 10 utilisateurs).
  * - SMB : postes de bureau, ou plus de 4 appels simultanés (licence payante
- *   à partir de 8 appels), jusqu'à 10 utilisateurs.
+ *   à partir de 8 appels), jusqu'à 8 utilisateurs.
  * - Sinon 3CX Free.
  */
 export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
-  if (r.avance || r.plusDe10Utilisateurs) {
+  if (r.avance || r.plusDe8Utilisateurs) {
     return {
       version: "pro",
       titre: "3CX PRO",
       raison: r.avance
         ? "Files d'attente, enregistrement des appels et intégration CRM ne sont disponibles qu'avec 3CX PRO, sur une instance dédiée."
-        : "Au-delà de 10 utilisateurs, ni la licence gratuite ni l'offre 3CX SMB ne conviennent : 3CX PRO se dimensionne selon vos appels simultanés, sur une instance dédiée.",
+        : "Au-delà de 8 utilisateurs, nous recommandons 3CX PRO : il se dimensionne selon vos appels simultanés, sur une instance dédiée.",
       href: "/3cx-pro",
       lien: "Voir 3CX PRO",
     };
@@ -161,7 +161,7 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
       version: "smb",
       titre: "3CX SMB",
       raison:
-        "3CX SMB accepte les postes IP de bureau et les téléphones DECT, et dépasse les 4 appels simultanés de la licence gratuite. Licence payante à partir de 8 appels simultanés, jusqu'à 10 utilisateurs.",
+        "3CX SMB accepte les postes IP de bureau et les téléphones DECT, et dépasse les 4 appels simultanés de la licence gratuite. Licence payante à partir de 8 appels simultanés, jusqu'à 8 utilisateurs.",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       lien: "Voir 3CX SMB",
     };
