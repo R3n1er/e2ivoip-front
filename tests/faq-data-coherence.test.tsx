@@ -9,6 +9,7 @@ import {
   DEVIS_FAQ,
   FAQ_3CX,
   FAQ_TELEPHONIE_ENTREPRISE,
+  FAQ_3CX_FREE,
   RichFaqItem,
 } from "@/lib/faq-data";
 
@@ -22,6 +23,7 @@ const ALL_FAQ_SETS: Array<[string, RichFaqItem[]]> = [
   ["FAQ_TRUNK_ILLIMITE", FAQ_TRUNK_ILLIMITE],
   ["FAQ_SMB_MUTUALISEE", FAQ_SMB_MUTUALISEE],
   ["FAQ_PBX_YEASTAR", FAQ_PBX_YEASTAR],
+  ["FAQ_3CX_FREE", FAQ_3CX_FREE],
 ];
 
 /** Rend le JSX d'une réponse et renvoie son texte brut. */
