@@ -20,17 +20,17 @@ const QUESTIONS: { cle: Cle; texte: string; aide: string }[] = [
   {
     cle: "avance",
     texte:
-      "Avez-vous besoin de files d'attente, d'enregistrer les appels ou de relier votre CRM ?",
-    aide: "File d'attente : l'appelant patiente jusqu'à ce qu'un collaborateur se libère.",
+      "Avez-vous besoin de files d'attente, d'enregistrer les appels ou de connecter votre outil de suivi client (CRM) ?",
+    aide: "Dans une file d'attente, l'appelant patiente jusqu'à ce qu'un collaborateur soit disponible.",
   },
   {
     cle: "postesBureau",
     texte: "Voulez-vous des téléphones de bureau (postes IP) ou des téléphones sans fil DECT ?",
-    aide: "Sans poste physique, chacun répond depuis l'application 3CX sur smartphone ou ordinateur.",
+    aide: "Avec 3CX Free, chacun utilise uniquement l'application 3CX sur smartphone ou ordinateur.",
   },
   {
     cle: "auDela4Appels",
-    texte: "Plus de 4 appels en même temps, ou plus de 10 utilisateurs ?",
+    texte: "Avez-vous besoin de plus de 4 appels en même temps, ou de plus de 10 utilisateurs ?",
     aide: "Comptez les appels passés et reçus au même moment, aux heures les plus chargées.",
   },
 ];
@@ -63,7 +63,7 @@ export function ChoixVersion3cx() {
       >
         Quelle version 3CX pour votre entreprise ?
       </h2>
-      <p className="mt-2 text-ui-muted">Trois questions au plus.</p>
+      <p className="mt-2 text-ui-muted">Répondez à trois questions au plus pour trouver la version adaptée à vos besoins.</p>
 
       {question && (
         <div role="group" aria-labelledby={`q-${question.cle}`} className="mt-6">

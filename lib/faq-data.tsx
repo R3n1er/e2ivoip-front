@@ -940,98 +940,91 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
  */
 export const FAQ_3CX_FREE: RichFaqItem[] = [
   {
-    question: "3CX Free est-il vraiment gratuit ?",
+    question: "3CX Free : la licence est-elle vraiment gratuite ?",
     answerText:
-      "La licence 3CX Free est gratuite. Vous payez l'hébergement géré, le trunk SIP et votre numéro, à partir de 76 € HT par mois pour toute l'entreprise, jusqu'à 10 utilisateurs. La mise en service est facturée 199 € HT, avec un engagement de 12 mois.",
+      "La licence 3CX Free est gratuite. E2I VoIP facture l'hébergement géré, le trunk SIP et votre numéro, à partir de 76 € HT par mois pour toute l'entreprise, jusqu'à 10 utilisateurs. La mise en service coûte 199 € HT. L'engagement est de 12 mois.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>La licence est gratuite.</strong> Vous payez l&apos;hébergement géré, le trunk
-          SIP et votre numéro, à partir de <strong>76 € HT par mois</strong> pour toute
-          l&apos;entreprise, jusqu&apos;à 10 utilisateurs.
-        </p>
-        <p>La mise en service est facturée 199 € HT, avec un engagement de 12 mois.</p>
-      </div>
-    ),
-  },
-  {
-    question: "Peut-on brancher des téléphones de bureau sur 3CX Free ?",
-    answerText:
-      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones DECT : chacun répond depuis l'application 3CX sur smartphone, ordinateur ou navigateur. Pour des postes physiques, il faut une licence payante, 3CX SMB ou 3CX PRO.",
-    answer: (
-      <div className="space-y-3">
-        <p>
-          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni
-          téléphones DECT : chacun répond depuis l&apos;application 3CX sur smartphone,
-          ordinateur ou navigateur.
-        </p>
-        <p>Pour des postes physiques, il faut une licence payante : 3CX SMB ou 3CX PRO.</p>
-      </div>
-    ),
-  },
-  {
-    question: "3CX Free gère-t-il les files d'attente ?",
-    answerText:
-      "Non. 3CX Free propose des groupes d'appels qui font sonner plusieurs collaborateurs, mais pas de file d'attente où l'appelant patiente jusqu'à ce que quelqu'un se libère. Les files d'attente, l'enregistrement et le CRM demandent 3CX PRO.",
-    answer: (
-      <div className="space-y-3">
-        <p>
-          <strong>Non.</strong> 3CX Free propose des groupes d&apos;appels qui font sonner
-          plusieurs collaborateurs, mais pas de file d&apos;attente où l&apos;appelant patiente
-          jusqu&apos;à ce que quelqu&apos;un se libère.
-        </p>
-        <p>Files d&apos;attente, enregistrement des appels et CRM demandent 3CX PRO.</p>
-      </div>
-    ),
-  },
-  {
-    question: "Que faire au-delà de 4 appels simultanés ?",
-    answerText:
-      "La licence gratuite est limitée à 4 appels simultanés, sans extension possible. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d'attente.",
-    answer: (
-      <div className="space-y-3">
-        <p>
-          La licence gratuite est <strong>limitée à 4 appels simultanés</strong>, sans extension
-          possible.
+          <strong>La licence 3CX Free est gratuite.</strong> E2I VoIP facture l&apos;hébergement géré, le trunk SIP et votre numéro, à partir de <strong>76 € HT par mois</strong> pour toute l&apos;entreprise, jusqu&apos;à 10 utilisateurs.
         </p>
         <p>
-          Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou
-          3CX PRO si vous avez besoin de files d&apos;attente.
+          La mise en service coûte 199 € HT. L&apos;engagement est de 12 mois.
         </p>
       </div>
     ),
   },
   {
-    question: "Peut-on installer et gérer 3CX Free soi-même ?",
+    question: "Peut-on utiliser des téléphones de bureau avec 3CX Free ?",
     answerText:
-      "Oui. Vous installez 3CX Free sur votre serveur ou votre cloud et vous l'administrez. E2I VoIP fournit alors le trunk SIP au compteur et vos numéros ; notre support couvre le trunk, pas l'administration de votre 3CX.",
+      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application 3CX sur smartphone, ordinateur ou navigateur web. Pour utiliser des téléphones de bureau, il faut une licence payante : 3CX SMB ou 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Oui.</strong> Vous installez 3CX Free sur votre serveur ou votre cloud et vous
-          l&apos;administrez.
+          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application 3CX sur smartphone, ordinateur ou navigateur web.
         </p>
         <p>
-          E2I VoIP fournit alors le trunk SIP au compteur et vos numéros ; notre support couvre le
-          trunk, pas l&apos;administration de votre 3CX.
+          Pour utiliser des téléphones de bureau, il faut une licence payante : 3CX SMB ou 3CX PRO.
         </p>
       </div>
     ),
   },
   {
-    question: "Que comprend la formule illimitée ?",
+    question: "3CX Free permet-il de mettre les appelants en file d'attente ?",
     answerText:
-      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM, ainsi que les appels entrants, dans la limite d'un plafond mensuel d'usage. Au-delà du plafond, et pour Mayotte, l'international et les numéros spéciaux, les minutes sont facturées à la grille au compteur. Les centres d'appels sont exclus.",
+      "Non. Les groupes d'appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l'appelant dans une file d'attente jusqu'à ce que quelqu'un soit disponible. Les files d'attente, l'enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
-          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et
-          des DOM, ainsi que les appels entrants, dans la limite d&apos;un plafond mensuel
-          d&apos;usage.
+          <strong>Non.</strong> Les groupes d&apos;appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l&apos;appelant dans une file d&apos;attente jusqu&apos;à ce que quelqu&apos;un soit disponible.
         </p>
         <p>
-          Au-delà du plafond, et pour Mayotte, l&apos;international et les numéros spéciaux, les
-          minutes sont facturées à la grille au compteur. Les centres d&apos;appels sont exclus.
+          Les files d&apos;attente, l&apos;enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que faire si vous dépassez 4 appels simultanés ?",
+    answerText:
+      "La licence gratuite est limitée à 4 appels simultanés, c'est-à-dire en même temps. Cette limite ne peut pas être étendue. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d'attente.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          La licence gratuite est <strong>limitée à 4 appels simultanés</strong>, c&apos;est-à-dire en même temps. Cette limite ne peut pas être étendue.
+        </p>
+        <p>
+          Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d&apos;attente.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Pouvez-vous installer et gérer 3CX Free vous-même ?",
+    answerText:
+      "Oui. Vous installez 3CX Free sur votre serveur ou votre cloud et vous l'administrez. E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l'administration de votre 3CX.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> Vous installez 3CX Free sur votre serveur ou votre cloud et vous l&apos;administrez.
+        </p>
+        <p>
+          E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l&apos;administration de votre 3CX.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que comprend l'illimité et quelles sont ses limites ?",
+    answerText:
+      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM sont inclus, ainsi que les appels reçus. Des plafonds mensuels d'usage s'appliquent. Au-delà des plafonds, les minutes sont facturées selon la grille au compteur. Les appels vers Mayotte, l'international et les numéros spéciaux sont aussi au compteur. Les centres d'appels sont exclus.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et des DOM sont inclus, ainsi que les appels reçus. Des plafonds mensuels d&apos;usage s&apos;appliquent.
+        </p>
+        <p>
+          Au-delà des plafonds, les minutes sont facturées selon la grille au compteur. Les appels vers Mayotte, l&apos;international et les numéros spéciaux sont aussi au compteur. Les centres d&apos;appels sont exclus.
         </p>
       </div>
     ),

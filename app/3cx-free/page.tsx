@@ -38,14 +38,14 @@ function LignesFormule({ f }: { f: Formule3cxFree }) {
   if (!f.plafond) {
     return (
       <ul className="space-y-2 text-sm text-ui-muted">
-        <li>Appels facturés à la minute, selon la grille au compteur</li>
-        <li>Appels entrants au compteur</li>
+        <li>Appels sortants facturés à la minute, selon la grille au compteur</li>
+        <li>Appels reçus facturés au compteur</li>
       </ul>
     );
   }
   return (
     <ul className="space-y-2 text-sm text-ui-muted">
-      <li>Fixes et mobiles France métropolitaine et DOM, appels entrants compris</li>
+      <li>Appels vers les fixes et mobiles de France métropolitaine et des DOM, appels reçus compris</li>
       <li>
         Jusqu&apos;à <span className="font-mono tabular-nums">{nf(f.plafond.fixes)}</span> min
         vers les fixes,{" "}
@@ -82,15 +82,17 @@ export default function ThreeCXFreePage() {
                 3CX <span className="text-red-400">Free</span>
               </h1>
               <p className="mb-4 text-2xl font-bold md:text-3xl">
-                La licence gratuite, hébergée et gérée pour vous
+                Votre standard téléphonique TPE, avec une licence gratuite
               </p>
               <p className="mx-auto mb-8 max-w-3xl text-xl font-medium opacity-90">
-                Standard 3CX, trunk SIP et numéro local : un prix pour toute l&apos;entreprise,
+                En Guyane, Martinique, Guadeloupe et à La Réunion, E2I VoIP héberge et gère votre
+                3CX Free. Vous payez l&apos;hébergement, le trunk SIP — la liaison pour passer
+                et recevoir vos appels — et le numéro local. Un prix pour toute l&apos;entreprise,
                 jusqu&apos;à {c.utilisateursMax} utilisateurs et {c.appelsSimultanesMax} appels
-                simultanés.
+                simultanés, c&apos;est-à-dire en même temps.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <CTAButton href="/contact">Parler à un expert</CTAButton>
+                <CTAButton href="/contact">Parler de votre téléphonie</CTAButton>
                 <CTAButtonMarine href="/devis-en-ligne?service=3cx-free" icon="ArrowRight">
                   Demander un devis
                 </CTAButtonMarine>
@@ -104,7 +106,7 @@ export default function ThreeCXFreePage() {
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
             <section aria-labelledby="free-fait" className="rounded-xl border border-ui-border p-8">
               <h2 id="free-fait" className="mb-6 text-2xl font-black tracking-[-0.04em] text-gray-dark md:text-3xl">
-                Ce que fait 3CX Free
+                Les fonctions incluses dans 3CX Free
               </h2>
               <ul className="space-y-3">
                 {FONCTIONS_3CX_FREE.map((f) => (
@@ -131,11 +133,11 @@ export default function ThreeCXFreePage() {
                 ))}
               </ul>
               <p className="mt-6 text-sm text-ui-muted">
-                Besoin de postes de bureau ou de files d&apos;attente ? Voyez{" "}
+                Pour des postes de bureau, consultez{" "}
                 <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="font-medium text-red-600 hover:text-red-700">
                   3CX SMB
                 </NextLink>{" "}
-                ou{" "}
+                ; pour des files d&apos;attente, consultez{" "}
                 <NextLink href="/3cx-pro" className="font-medium text-red-600 hover:text-red-700">
                   3CX PRO
                 </NextLink>
@@ -152,16 +154,18 @@ export default function ThreeCXFreePage() {
               Quatre formules, <span className="text-red-primary">un prix par entreprise</span>
             </h2>
             <p className="mb-10 max-w-3xl text-lg text-ui-muted">
-              Chaque formule comprend l&apos;hébergement géré, le trunk SIP et un numéro local. Le
-              prix ne dépend pas du nombre d&apos;utilisateurs, jusqu&apos;à {c.utilisateursMax}.
+              Chaque formule inclut l&apos;hébergement géré, le trunk SIP et un numéro local.
+              Choisissez selon le nombre d&apos;appels à passer ou recevoir en même temps,
+              puis entre le compteur et l&apos;illimité avec plafonds mensuels. Le prix reste
+              le même jusqu&apos;à {c.utilisateursMax} utilisateurs.
             </p>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {FORMULES_3CX_FREE.map((f) => (
                 <article key={f.id} className="flex flex-col rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                   <h3 className="text-xl font-bold text-gray-dark">{f.nom}</h3>
                   <p className="mt-1 text-sm text-ui-muted">
-                    <span className="font-mono tabular-nums">{f.appels}</span> appels simultanés vers
-                    l&apos;extérieur
+                    <span className="font-mono tabular-nums">{f.appels}</span> appels avec l&apos;extérieur
+                    en même temps
                   </p>
                   <p className="my-4 text-gray-dark">
                     <span className="font-mono text-4xl font-bold tabular-nums">{f.prixMensuelHT}&nbsp;€</span>{" "}
@@ -207,7 +211,7 @@ export default function ThreeCXFreePage() {
               </ul>
             </div>
             <div className="rounded-xl border border-ui-border bg-ui-surface p-6">
-              <h3 className="mb-4 text-xl font-bold text-gray-dark">En option</h3>
+              <h3 className="mb-4 text-xl font-bold text-gray-dark">Prestations facturées en plus</h3>
               <ul className="space-y-3 text-sm">
                 {HORS_FORFAIT.map((o) => (
                   <li key={o.libelle} className="flex justify-between gap-4 text-gray-dark">
@@ -230,16 +234,17 @@ export default function ThreeCXFreePage() {
               <article className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                 <h3 className="mb-2 text-xl font-bold text-gray-dark">E2I VoIP gère votre 3CX</h3>
                 <p className="text-sm leading-relaxed text-ui-muted">
-                  Nous installons votre serveur, configurons l&apos;accueil et les horaires, raccordons
-                  le trunk SIP et suivons les mises à jour et la licence. C&apos;est l&apos;une des
-                  quatre formules ci-dessus.
+                  Avec les quatre formules ci-dessus, nous installons votre serveur, configurons
+                  l&apos;accueil et les horaires, puis raccordons le trunk SIP. Nous gérons
+                  les mises à jour et le renouvellement de la licence.
                 </p>
               </article>
               <article className="rounded-xl border border-ui-border bg-white p-6 shadow-sm">
                 <h3 className="mb-2 text-xl font-bold text-gray-dark">Vous gérez votre 3CX</h3>
                 <p className="mb-4 text-sm leading-relaxed text-ui-muted">
-                  Vous installez 3CX Free sur votre serveur ou votre cloud. Nous fournissons le trunk
-                  SIP au compteur et vos numéros ; notre support couvre le trunk.
+                  Vous installez et administrez 3CX Free sur votre serveur ou votre cloud.
+                  E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support
+                  couvre le trunk, pas l&apos;administration de votre 3CX.
                 </p>
                 <NextLink
                   href="/telephonie-entreprise/trunk-sip-compteur"
@@ -263,7 +268,7 @@ export default function ThreeCXFreePage() {
         <section aria-labelledby="fair-use" className="bg-gradient-to-br from-ui-surface to-white py-16">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 id="fair-use" className="mb-6 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
-              L&apos;illimité, avec un usage raisonnable
+              Illimité : les plafonds et les exclusions à connaître
             </h2>
             <ul className="space-y-3">
               {FAIR_USE_3CX_FREE.map((r) => (

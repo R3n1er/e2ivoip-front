@@ -73,47 +73,47 @@ export const CONDITIONS_3CX_FREE = {
 /** Ce que couvre l'hébergement géré (29 € HT/mois, inclus dans les formules). */
 export const HEBERGEMENT_INCLUS = [
   "Serveur dédié à votre entreprise, adresse IP fixe et certificat de sécurité",
-  "Mises à jour de 3CX et du système, sur une plage planifiée",
+  "Mises à jour de 3CX et du système sur un créneau prévu à l'avance",
   "Renouvellement annuel de la licence gratuite, géré par E2I VoIP",
   "Sauvegarde quotidienne conservée 7 jours et sauvegarde hebdomadaire hors serveur",
-  "Envoi des e-mails du standard (messagerie, notifications)",
+  "Envoi des e-mails du standard : messagerie et notifications",
   "Surveillance du serveur et alerte en cas de panne",
-  "Support panne aux heures ouvrées",
+  "Assistance en cas de panne aux heures ouvrées",
   "Une modification simple par mois : utilisateur, horaires ou message d'accueil",
 ] as const;
 
 /** Prestations facturées en plus (catalogue existant). */
 export const HORS_FORFAIT = [
-  { libelle: "Maintenance pour modifications fréquentes", prix: "49 € HT/mois" },
+  { libelle: "Maintenance si vous demandez des modifications fréquentes", prix: "49 € HT/mois" },
   { libelle: "Formation des utilisateurs", prix: "250 € HT par session" },
-  { libelle: "Portabilité de vos numéros", prix: "90 € HT par tranche de 10" },
+  { libelle: "Portabilité : conservation de vos numéros", prix: "90 € HT par tranche de 10" },
 ] as const;
 
 /** Fonctions incluses dans la licence 3CX Free (matrice officielle 3CX). */
 export const FONCTIONS_3CX_FREE = [
-  "Jusqu'à 10 utilisateurs et 4 appels simultanés",
+  "Jusqu'à 10 utilisateurs et 4 appels simultanés, c'est-à-dire en même temps",
   "Applications 3CX pour iPhone, Android, Windows et navigateur web",
-  "Accueil personnalisé et serveur vocal (SVI) à plusieurs niveaux",
-  "Groupes d'appels : sonnerie simultanée ou à tour de rôle",
-  "Horaires d'ouverture, fermeture et jours fériés",
-  "Transferts, parcage et journaux d'appels",
+  "Accueil personnalisé et serveur vocal interactif (SVI) : menus de choix à plusieurs niveaux",
+  "Groupes d'appels : les collaborateurs sont appelés en même temps ou à tour de rôle",
+  "Gestion des horaires d'ouverture, de fermeture et des jours fériés",
+  "Transferts, parcage (mise en attente pour reprendre l'appel ailleurs) et journaux d'appels (historique)",
 ] as const;
 
 /** Ce que la licence 3CX Free ne fait pas. */
 export const LIMITES_3CX_FREE = [
-  "Pas de postes IP de bureau ni de téléphones DECT : uniquement les applications 3CX",
+  "Pas de postes IP de bureau ni de téléphones sans fil DECT : vous utilisez uniquement les applications 3CX",
   "Pas de files d'attente : un groupe d'appels ne met pas l'appelant en attente jusqu'à ce qu'un collaborateur se libère",
   "Pas d'enregistrement des conversations",
-  "Pas d'intégration CRM, d'API ni d'agent IA",
-  "Pas plus de 4 appels simultanés : au-delà, il faut une licence payante à partir de 8 appels",
+  "Pas de connexion à votre outil de suivi client (CRM), d'interface avec d'autres logiciels (API) ni d'agent d'intelligence artificielle (IA)",
+  "Pas plus de 4 appels simultanés, sans extension possible : au-delà, il faut une licence payante à partir de 8 appels",
 ] as const;
 
 /** Conditions d'usage raisonnable de l'illimité. */
 export const FAIR_USE_3CX_FREE = [
-  "Usage humain : pas de centre d'appels, d'automate ni de renvoi permanent vers un mobile",
-  "Mayotte, l'international et les numéros spéciaux sont facturés à la grille au compteur",
-  "Au-delà du plafond, les minutes sont facturées à la grille au compteur",
-  "Plafond dépassé deux mois de suite : nous vous proposons la formule supérieure",
+  "Réservé aux appels entre personnes : pas de centre d'appels, d'automate ni de renvoi permanent vers un mobile",
+  "Les appels vers Mayotte, l'international et les numéros spéciaux sont facturés selon la grille au compteur",
+  "Au-delà de chaque plafond mensuel, les minutes sont facturées selon la grille au compteur",
+  "Plafond dépassé deux mois de suite : nous vous proposons la formule supérieure, ou une licence payante si vous êtes déjà en Illimité 4 appels",
 ] as const;
 
 // ── Encart « Quelle version 3CX ? » ──────────────────────────────────────────
@@ -156,7 +156,7 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
       version: "smb",
       titre: "3CX SMB",
       raison: r.auDela4Appels
-        ? "La licence gratuite s'arrête à 4 appels simultanés. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB y répond, postes de bureau compris."
+        ? "La licence gratuite s'arrête à 4 appels simultanés et 10 utilisateurs. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB y répond, postes de bureau compris."
         : "3CX SMB accepte les postes IP de bureau et les téléphones DECT, que la licence gratuite n'accepte pas. Licence payante à partir de 8 appels simultanés.",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       lien: "Voir 3CX SMB",
@@ -166,7 +166,7 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
     version: "free",
     titre: "3CX Free",
     raison:
-      "Une petite équipe sur smartphone et ordinateur, sans file d'attente : la licence gratuite suffit. Vous payez l'hébergement et le trunk SIP, pas la licence.",
+      "Pour votre petite équipe sur smartphone et ordinateur, sans file d'attente, 3CX Free répond aux besoins indiqués. La licence est gratuite. Vous payez l'hébergement géré, le trunk SIP et le numéro.",
     href: "/3cx-free",
     lien: "Voir les formules 3CX Free",
   };
