@@ -252,7 +252,7 @@ export default function Telephonie3CX() {
                       <CheckCircle size={24} className="text-red-primary mt-0.5" aria-hidden="true" />
                       <div>
                         <p className="font-semibold text-gray-dark">
-                          De 3 à 10 utilisateurs
+                          De 3 à 8 utilisateurs
                         </p>
                         <p className="text-sm text-ui-muted">
                           Parfait pour les TPE/PME
@@ -329,7 +329,7 @@ export default function Telephonie3CX() {
               // Source unique de données — alimente la vue cartes (mobile) ET le tableau (desktop)
               const rows = [
                 { feature: "Type d'hébergement", pro: "Instance dédiée AWS", smb: "Mutualisé multi-tenant" },
-                { feature: "Nombre d'utilisateurs", pro: "8 à 1024", smb: "3 à 10" },
+                { feature: "Nombre d'utilisateurs", pro: "8 à 1024", smb: "3 à 8" },
                 { feature: "Appels simultanés", pro: "Illimités", smb: "Selon forfait" },
                 { feature: "Personnalisation", pro: true, smb: false },
                 { feature: "Support prioritaire", pro: true, smb: false },

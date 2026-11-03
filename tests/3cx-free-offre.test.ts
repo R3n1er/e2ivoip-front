@@ -66,18 +66,19 @@ describe("Offre 3CX Free — données de référence", () => {
 
 describe("recommanderVersion3cx — encart de choix (3 questions max)", () => {
   type R = Parameters<typeof recommanderVersion3cx>[0];
-  const r = (avance: boolean, plusDe8Utilisateurs: boolean, postesOuPlusDe4Appels: boolean): R => ({
+  const r = (avance: boolean, plusDe8Utilisateurs: boolean, plusDe4Appels: boolean): R => ({
     avance,
     plusDe8Utilisateurs,
-    postesOuPlusDe4Appels,
+    plusDe4Appels,
   });
   const cas: Array<[string, R, string]> = [
     ["besoin simple", r(false, false, false), "free"],
-    ["postes de bureau ou plus de 4 appels, 8 utilisateurs au plus", r(false, false, true), "smb"],
+    ["plus de 4 appels, 8 utilisateurs au plus, sans téléphone de bureau", r(false, false, true), "smb"],
     // Recommandation E2I : au-delà de 8 utilisateurs, PRO (validé par Alban le 2026-11-03).
     ["plus de 8 utilisateurs", r(false, true, false), "pro"],
-    ["plus de 8 utilisateurs avec postes", r(false, true, true), "pro"],
-    ["files d'attente / CRM", r(true, false, false), "pro"],
+    ["plus de 8 utilisateurs et plus de 4 appels", r(false, true, true), "pro"],
+    // Décision Alban 2026-11-03 : téléphones IP de bureau → 3CX PRO.
+    ["files d'attente, CRM ou téléphones de bureau", r(true, false, false), "pro"],
   ];
 
   it.each(cas)("%s → %s", (_nom, reponses, attendu) => {
@@ -94,6 +95,11 @@ describe("recommanderVersion3cx — encart de choix (3 questions max)", () => {
 
   it("au-delà de 4 appels, la licence payante démarre à 8 appels simultanés", () => {
     expect(recommanderVersion3cx(r(false, false, true)).raison).toMatch(/8 appels simultanés/);
+  });
+
+  it("3CX SMB ne promet pas de téléphones de bureau : ils relèvent de PRO", () => {
+    expect(recommanderVersion3cx(r(false, false, true)).raison).not.toMatch(/postes? IP|DECT|téléphones? de bureau/i);
+    expect(recommanderVersion3cx(r(true, false, false)).raison).toMatch(/téléphones? de bureau|postes? IP/i);
   });
 
   it("au-delà de 8 utilisateurs, la raison le dit", () => {

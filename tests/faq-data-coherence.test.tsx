@@ -69,8 +69,18 @@ describe("Cohérence commerciale des réponses FAQ", () => {
     });
   });
 
-  test("3CX SMB mutualisée : annonce bien 3 à 10 utilisateurs", () => {
-    // La page vend explicitement « De 3 à 10 utilisateurs » à 29 €/user/mois.
+  test("3CX SMB mutualisée : 3 à 8 utilisateurs, sans téléphone IP de bureau", () => {
+    // Décision Alban 2026-11-03 : SMB de 3 à 8 utilisateurs, téléphones IP → PRO.
+    FAQ_SMB_MUTUALISEE.forEach((item) => {
+      const visible = renderAnswerText(item);
+      [item.answerText, visible].forEach((text) => {
+        expect(text).not.toMatch(/3 à 10 utilisateurs/i);
+        expect(text).not.toMatch(/téléphones? IP|postes? IP/i);
+      });
+    });
+  });
+
+  test("3CX SMB mutualisée : pas de fourchette de postes obsolète", () => {
     FAQ_SMB_MUTUALISEE.forEach((item) => {
       const visible = renderAnswerText(item);
 

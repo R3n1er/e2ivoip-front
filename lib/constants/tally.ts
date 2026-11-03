@@ -18,7 +18,7 @@ export const TALLY_FORMS = {
   PORTABILITE: `${TALLY_BASE}/w5r7rM`,
   /** Devis 3CX PRO (dédié) et IA */
   VOIP_3CX_PRO: `${TALLY_BASE}/EkALv4`,
-  /** Devis 3CX SMB (mutualisé, 3 à 10 utilisateurs) */
+  /** Devis 3CX SMB (mutualisé, 3 à 8 utilisateurs) */
   VOIP_3CX_SMB: `${TALLY_BASE}/44Gprk`,
   /** Projet d'intégration d'un PBX existant */
   PROJET_PBX: `${TALLY_BASE}/mJgNo7`,

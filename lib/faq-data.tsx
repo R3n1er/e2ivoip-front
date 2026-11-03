@@ -747,56 +747,54 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée est une solution de téléphonie IP hébergée sur une infrastructure mutualisée. Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) sans héberger le serveur chez vous. E2I gère l'infrastructure, vous ne gérez que vos postes. Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.",
+      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur. E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie IP hébergée sur une
-          infrastructure mutualisée.
+          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie hébergée pour 3 à 8 utilisateurs.
         </p>
         <p>
-          Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) <strong>sans héberger le serveur
-          chez vous</strong>. E2I gère l'infrastructure, vous ne gérez que vos postes.
+          Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur. <strong>E2I gère le serveur.</strong>
         </p>
-        <p>Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.</p>
+        <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.</p>
       </div>
     ),
   },
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits ; applications sur smartphone, ordinateur et navigateur. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
           Avec <strong>3CX SMB mutualisée</strong>, l'infrastructure est partagée entre plusieurs clients :
         </p>
         <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
-          <li>Coût réduit</li>
-          <li>Mise en service rapide</li>
-          <li>Maintenance incluse</li>
+          <li>licence mensuelle ;</li>
+          <li>frais de mise en service réduits ;</li>
+          <li>applications sur smartphone, ordinateur et navigateur.</li>
         </ul>
         <p>
-          Avec <strong>3CX dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
+          Avec <strong>3CX PRO dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
           avancée, capacité supérieure.
         </p>
-        <p>La mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.</p>
+        <p>La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.</p>
       </div>
     ),
   },
   {
-    question: "Pour qui est destinée la solution 3CX SMB mutualisée ?",
+    question: "À qui s'adresse la solution 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 10 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 8 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels avec les applications 3CX sur smartphone, ordinateur ou navigateur.",
     answer: (
       <div className="space-y-3">
         <p>
-          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 10 utilisateurs) qui veulent une
+          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 8 utilisateurs) qui veulent une
           téléphonie professionnelle sans gérer de serveur.
         </p>
         <p>
-          Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels
-          depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.
+          Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels
+          avec les applications 3CX sur smartphone, ordinateur ou navigateur.
         </p>
       </div>
     ),
@@ -957,14 +955,14 @@ export const FAQ_3CX_FREE: RichFaqItem[] = [
   {
     question: "Peut-on utiliser des téléphones de bureau avec 3CX Free ?",
     answerText:
-      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application 3CX sur smartphone, ordinateur ou navigateur web. Pour utiliser des téléphones de bureau, il faut une licence payante : 3CX SMB ou 3CX PRO.",
+      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application 3CX sur smartphone, ordinateur ou navigateur web. Pour utiliser des téléphones de bureau, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
           <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application 3CX sur smartphone, ordinateur ou navigateur web.
         </p>
         <p>
-          Pour utiliser des téléphones de bureau, il faut une licence payante : 3CX SMB ou 3CX PRO.
+          Pour utiliser des téléphones de bureau, E2I recommande 3CX PRO.
         </p>
       </div>
     ),

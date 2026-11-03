@@ -257,7 +257,7 @@ export default function QuiSommesNous() {
                       3CX : IPBX cloud nouvelle génération
                     </h3>
                     <p className="text-ui-muted">
-                      <strong>3CX SMB :</strong> De 3 à 10 utilisateurs, sur
+                      <strong>3CX SMB :</strong> De 3 à 8 utilisateurs, sur
                       devis.{" "}
                       <strong>3CX PRO :</strong> Instance dédiée de 4 à 64
                       appels simultanés, intégrations CRM/M365. Formation

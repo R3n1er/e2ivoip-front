@@ -119,12 +119,12 @@ export const FAIR_USE_3CX_FREE = [
 // ── Encart « Quelle version 3CX ? » ──────────────────────────────────────────
 
 export interface ReponsesChoix3cx {
-  /** Files d'attente, enregistrement des appels ou intégration CRM. */
+  /** Files d'attente, enregistrement, CRM, ou téléphones IP de bureau / DECT (→ PRO, décision 2026-11-03). */
   avance: boolean;
   /** Plus de 8 utilisateurs : seuil de recommandation E2I vers PRO (validé le 2026-11-03). */
   plusDe8Utilisateurs: boolean;
-  /** Postes IP de bureau / DECT, ou plus de 4 appels simultanés. */
-  postesOuPlusDe4Appels: boolean;
+  /** Plus de 4 appels simultanés (limite de la licence gratuite). */
+  plusDe4Appels: boolean;
 }
 
 export interface Recommandation3cx {
@@ -137,11 +137,11 @@ export interface Recommandation3cx {
 
 /**
  * Logique de l'encart.
- * - PRO : seule édition avec files d'attente, enregistrement et CRM, et
- *   recommandée par E2I au-delà de 8 utilisateurs (la licence gratuite
- *   accepte techniquement 10 utilisateurs).
- * - SMB : postes de bureau, ou plus de 4 appels simultanés (licence payante
- *   à partir de 8 appels), jusqu'à 8 utilisateurs.
+ * - PRO : seule édition avec files d'attente, enregistrement et CRM ;
+ *   recommandée par E2I pour les téléphones IP de bureau et au-delà de
+ *   8 utilisateurs (la licence gratuite accepte techniquement 10 utilisateurs).
+ * - SMB : plus de 4 appels simultanés (licence payante à partir de 8 appels),
+ *   de 3 à 8 utilisateurs, sur smartphone et ordinateur.
  * - Sinon 3CX Free.
  */
 export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
@@ -150,18 +150,18 @@ export function recommanderVersion3cx(r: ReponsesChoix3cx): Recommandation3cx {
       version: "pro",
       titre: "3CX PRO",
       raison: r.avance
-        ? "Files d'attente, enregistrement des appels et intégration CRM ne sont disponibles qu'avec 3CX PRO, sur une instance dédiée."
-        : "Au-delà de 8 utilisateurs, nous recommandons 3CX PRO : il se dimensionne selon vos appels simultanés, sur une instance dédiée.",
+        ? "Pour les téléphones de bureau, les files d'attente, l'enregistrement des appels ou la connexion à votre outil de suivi client (CRM), nous recommandons 3CX PRO sur une instance dédiée."
+        : "Au-delà de 8 utilisateurs, nous recommandons 3CX PRO sur une instance dédiée. Sa capacité dépend du nombre d'appels simultanés dont vous avez besoin.",
       href: "/3cx-pro",
       lien: "Voir 3CX PRO",
     };
   }
-  if (r.postesOuPlusDe4Appels) {
+  if (r.plusDe4Appels) {
     return {
       version: "smb",
       titre: "3CX SMB",
       raison:
-        "3CX SMB accepte les postes IP de bureau et les téléphones DECT, et dépasse les 4 appels simultanés de la licence gratuite. Licence payante à partir de 8 appels simultanés, jusqu'à 8 utilisateurs.",
+        "Pour 3 à 8 utilisateurs, nous recommandons 3CX SMB avec une licence mensuelle à partir de 8 appels simultanés. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur.",
       href: "/telephonie-entreprise/3cx-smb-mutualisee",
       lien: "Voir 3CX SMB",
     };

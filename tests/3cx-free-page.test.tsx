@@ -123,7 +123,12 @@ describe("Encart « Quelle version 3CX ? »", () => {
     expect(screen.queryByRole("group")).not.toBeInTheDocument();
   });
 
-  it("oriente vers 3CX SMB pour des postes de bureau ou plus de 4 appels", async () => {
+  it("la première question couvre les téléphones de bureau (orientés vers PRO)", () => {
+    render(<ChoixVersion3cx />);
+    expect(screen.getByRole("group")).toHaveTextContent(/téléphones de bureau/i);
+  });
+
+  it("oriente vers 3CX SMB au-delà de 4 appels simultanés", async () => {
     await repondre(["Non", "Non", "Oui"]);
     expect(screen.getByRole("status")).toHaveTextContent(/3CX SMB/);
     expect(screen.getByRole("status")).toHaveTextContent(/8 appels simultanés/);
