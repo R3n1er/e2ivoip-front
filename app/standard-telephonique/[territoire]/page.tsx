@@ -372,7 +372,7 @@ export default async function StandardTelephoniqueTerritoirePage({
                 },
                 {
                   title: "Raccordement au réseau",
-                  text: `Le lien vers le réseau public, facturé au canal d'appel simultané. Numéros ${t.indicatif} locaux et portabilité gratuite.`,
+                  text: `Le lien vers le réseau public, facturé au canal d'appel simultané. Numéros ${t.indicatif} locaux et portabilité de vos numéros.`,
                   href: "/telephonie-entreprise/trunk-sip-compteur",
                   linkLabel: "Voir les raccordements",
                 },

@@ -197,7 +197,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "Guyane",
     title: "Standard téléphonique en Guyane",
     description:
-      "Standard téléphonique en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité incluse. Le cuivre ferme déjà — vérifions votre commune.",
+      "Standard téléphonique en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité de vos numéros. Le cuivre ferme déjà — vérifions votre commune.",
     indicatif: "0594",
     phone: phoneFor("Guyane"),
     copper: {

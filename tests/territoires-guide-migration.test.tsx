@@ -1,3 +1,4 @@
+import { PORTABILITE_TARIF_TEXTE } from "@/lib/offres/portabilite";
 import fs from "node:fs";
 import path from "node:path";
 import { render, screen, within } from "@testing-library/react";
@@ -100,7 +101,9 @@ describe("Section migration / portabilité", () => {
   it("ne porte ni jugement ni comparaison de prix", () => {
     const { container } = render(<MigrationOperateurs territory={mq} />);
     const texte = container.textContent ?? "";
-    expect(texte).not.toMatch(/€/);
+    // Seuls prix admis : nos frais de portabilité (décision 2026-11-03).
+    expect(texte.replace(PORTABILITE_TARIF_TEXTE, "")).not.toMatch(/€/);
+    expect(texte).toContain(PORTABILITE_TARIF_TEXTE);
     expect(texte).not.toMatch(/moins cher|plus cher|meilleur|mauvais|bons? accès/i);
   });
 });

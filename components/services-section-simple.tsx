@@ -36,7 +36,7 @@ export function ServicesSectionSimple() {
       // première puce que Google reprend pour composer l'encart de marque.
       features: [
         "Numéros locaux Guadeloupe, Martinique, Guyane et La Réunion",
-        "Portabilité gratuite de vos numéros existants",
+        "Portabilité de vos numéros existants",
         "Autant d'appels simultanés que nécessaire",
         "Support technique local",
         "Économies jusqu'à 20%",

@@ -1,3 +1,4 @@
+import { PORTABILITE_TARIF_TEXTE } from "@/lib/offres/portabilite";
 import {
   enumererFr,
   type StandardTerritory,
@@ -12,8 +13,8 @@ import {
  * (`migrationOperators`), jamais écrits en dur ici.
  *
  * Aucun délai chiffré n'est annoncé tant qu'il n'est pas confirmé côté
- * grossiste ; aucun prix non plus (la grille et la FAQ divergent encore sur
- * la gratuité de la portabilité).
+ * grossiste. Les frais uniques HT de portabilité suivent le catalogue
+ * HubSpot du 2026-10-07, conformément à la décision du 2026-11-03.
  */
 export function MigrationOperateurs({
   territory: t,
@@ -53,7 +54,8 @@ export function MigrationOperateurs({
             demande. Préparez trois pièces : votre mandat de portabilité signé,
             votre RIO et votre dernière facture. Vous ne connaissez pas tous
             les numéros rattachés à votre ligne ? Une vérification, appelée
-            fiabilisation, permet de les recenser avant la demande.
+            fiabilisation, permet de les recenser avant la demande.{" "}
+            La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
           </p>
           <p>
             Vous pouvez demander la portabilité même si votre engagement
