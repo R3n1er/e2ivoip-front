@@ -3,6 +3,7 @@ import {
   FONCTIONS_3CX_FREE,
   FORMULES_3CX_FREE,
   HEBERGEMENT_INCLUS,
+  HORS_FORFAIT,
   LIMITES_3CX_FREE,
   recommanderVersion3cx,
 } from "@/lib/offres/3cx-free";
@@ -55,6 +56,12 @@ describe("Offre 3CX Free — données de référence", () => {
     const texte = HEBERGEMENT_INCLUS.join(" ");
     expect(texte).toMatch(/renouvellement/i);
     expect(texte).toMatch(/sauvegarde/i);
+  });
+
+  it("portabilité : tarifs du catalogue (60 € HT un numéro, 90 € HT la tranche de 10)", () => {
+    const porta = HORS_FORFAIT.find((h) => /portabilit/i.test(h.libelle));
+    expect(porta?.prix).toMatch(/60 € HT/);
+    expect(porta?.prix).toMatch(/90 € HT/);
   });
 
   it("annonce les limites de la licence : postes IP, files d'attente", () => {
