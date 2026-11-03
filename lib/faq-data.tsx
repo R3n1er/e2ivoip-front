@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import {
+  CREATION_NUMERO_TARIF_TEXTE,
   PORTABILITE_TARIF_TEXTE,
+  TARIFS_CREATION_NUMERO,
   TARIFS_PORTABILITE,
 } from "@/lib/offres/portabilite";
 import type { FaqItem } from "@/lib/structured-data";
@@ -161,31 +163,26 @@ export const GENERAL_FAQ: RichFaqItem[] = [
     question:
       "Est-il possible de créer de nouveaux numéros en zone locale pour ma nouvelle passerelle SIP ?",
     answerText:
-      "Oui. Avec notre service de Trunk SIP, il est possible de créer un nouveau numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou la Réunion. Contactez-nous pour un devis.",
+      `Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui, avec notre service de Trunk SIP, il est tout à fait possible de
-        créer un nouveau numéro en zone locale pour la Guadeloupe, La
-        Martinique, La Guyane ou La Réunion. Contactez-nous pour un devis{" "}
-        <a
-          href="/devis-en-ligne"
-          className="text-red-primary hover:underline font-semibold"
-        >
-          en cliquant ici
-        </a>
-        .
+        Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone
+        locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un
+        numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}. Les frais de
+        création sont uniques.
       </p>
     ),
   },
   {
-    question: "Est-il possible d'avoir un numéro de téléphone personnalisé ?",
+    question: "Peut-on créer un numéro de téléphone personnalisé avec une suite logique ?",
     answerText:
-      "Oui, nous pouvons créer un numéro de téléphone respectant une suite logique. Consultez-nous par mail. Ce service est facturé 50 €/mois.",
+      `Oui. Nous pouvons créer un numéro de téléphone respectant une suite logique. Ce service est facturé ${TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT en frais uniques. La redevance est de ${TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.`,
     answer: (
       <p>
-        Oui nous pouvons bien sûr vous créer un numéro de téléphone respectant
-        une suite logique. Consultez-nous par mail et nous vous répondrons. Ce
-        service est facturé 50€/mois.
+        Oui. Nous pouvons créer un numéro de téléphone respectant une suite
+        logique. Ce service est facturé {TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT
+        en frais uniques. La redevance est de{" "}
+        {TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.
       </p>
     ),
   },
@@ -252,13 +249,15 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je garder mes numéros actuels ?",
     answerText:
-      `Oui. Nous gérons la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane). La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
+      `Oui. Nous gérons la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane). La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
         <strong>Oui.</strong> Nous gérons la portabilité de vos numéros existants et pouvons créer
         de nouveaux numéros géographiques dans votre zone DOM
         (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).{" "}
-        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },
@@ -391,10 +390,12 @@ export const AIRCALL_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je avoir des numéros locaux dans les DOM avec Aircall ?",
     answerText:
-      "Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.",
+      `Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.
+        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },

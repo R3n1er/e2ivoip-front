@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { render } from "@testing-library/react";
-import { TARIFS_PORTABILITE } from "@/lib/offres/portabilite";
+import { TARIFS_CREATION_NUMERO, TARIFS_PORTABILITE } from "@/lib/offres/portabilite";
 import {
   buildTerritoryFaq,
   COMPTEUR_FAQ,
@@ -54,5 +54,37 @@ describe("Portabilité payante", () => {
         expect(t).toMatch(/90 € HT/);
       }
     }
+  });
+});
+
+describe("Création de numéro SDA France et DOM", () => {
+  it("tarifs alignés sur le catalogue", () => {
+    expect(TARIFS_CREATION_NUMERO).toEqual({ creationSdaHT: 50, redevanceMensuelleHT: 2, suiteLogiqueHT: 50 });
+  });
+
+  const toutesFaq = Object.values(require("@/lib/faq-data") as Record<string, unknown>)
+    .filter((v): v is RichFaqItem[] => Array.isArray(v))
+    .flat()
+    .filter((i) => i && typeof i === "object" && "question" in i);
+
+  it("chaque FAQ sur la création de numéro affiche 50 € HT et 2 € HT par mois", () => {
+    const items = toutesFaq.filter((i) => /cr[ée]er|cr[ée]ation|nouveaux? num|suite logique/i.test(i.question));
+    expect(items.length).toBeGreaterThanOrEqual(2);
+    for (const item of items) {
+      for (const t of texte(item)) {
+        expect(t).toMatch(/50 € HT/);
+      }
+    }
+  });
+
+  it("la suite logique n'est plus annoncée « 50 €/mois » (c'est un frais unique)", () => {
+    for (const item of toutesFaq) {
+      expect(item.answerText).not.toMatch(/50 ?€ ?(HT ?)?\/ ?mois/);
+    }
+  });
+
+  it("la création standard annonce la redevance de 2 € HT par mois", () => {
+    const item = toutesFaq.find((i) => /créer de nouveaux numéros/i.test(i.question));
+    for (const t of texte(item!)) expect(t).toMatch(/2 € HT par mois/);
   });
 });

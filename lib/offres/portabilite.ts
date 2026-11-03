@@ -15,5 +15,18 @@ export const TARIFS_PORTABILITE = {
   fiabilisationHT: 60,
 } as const;
 
+/**
+ * Création de numéro — même catalogue (« Création Numero SDA France et DOM »
+ * 50 € ponctuel, « Redevance mensuelle numero SDA » 2 €/mois). Le numéro
+ * personnalisé avec suite logique est aussi à 50 € en frais unique.
+ */
+export const TARIFS_CREATION_NUMERO = {
+  creationSdaHT: 50,
+  redevanceMensuelleHT: 2,
+  suiteLogiqueHT: 50,
+} as const;
+
+export const CREATION_NUMERO_TARIF_TEXTE = `${TARIFS_CREATION_NUMERO.creationSdaHT} € HT de création, puis ${TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro`;
+
 /** Phrase courte réutilisable dans les textes du site. */
 export const PORTABILITE_TARIF_TEXTE = `${TARIFS_PORTABILITE.numeroUniqueHT} € HT pour un numéro, ${TARIFS_PORTABILITE.trancheDe10HT} € HT par tranche de 10 numéros consécutifs`;
