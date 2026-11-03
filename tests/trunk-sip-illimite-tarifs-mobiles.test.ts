@@ -82,3 +82,32 @@ describe("Trunk SIP illimité — couverture exacte", () => {
     expect(source).not.toMatch(/DOM-TOM/);
   });
 });
+
+/**
+ * Arbitrage Alban (2026-11-02) : engagement 12 mois ; en cours de contrat,
+ * le client peut seulement MONTER de palier. Aucune promesse sans
+ * condition (délai d'activation, « garantie qualité »).
+ */
+describe("Trunk SIP illimité — conditions contractuelles exactes", () => {
+  const texte = source.replace(/\s+/g, " ");
+
+  it("affiche un engagement de 12 mois", () => {
+    expect(texte).toContain("Engagement 12 mois");
+    expect(texte).not.toMatch(/36 mois/);
+  });
+
+  it("ne promet pas une évolution « à tout moment »", () => {
+    expect(texte).not.toMatch(/à tout moment/);
+    expect(texte).toMatch(/palier supérieur/);
+  });
+
+  it.each([/Activation rapide/, /Garantie qualité/])("n'affiche pas %s", (motif) => {
+    expect(texte).not.toMatch(motif);
+  });
+});
+
+describe("Trunk SIP illimité — montée de palier uniquement", () => {
+  it("ne suggère pas une baisse de capacité en cours de contrat", () => {
+    expect(source).not.toMatch(/Ajustez|ajustable/);
+  });
+});

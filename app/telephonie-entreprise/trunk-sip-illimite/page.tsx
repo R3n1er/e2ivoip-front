@@ -174,8 +174,8 @@ export default function TrunkSIPIllimite() {
                       </h3>
                       <p className="text-ui-muted">
                         Choisissez selon le nombre d&apos;appels à gérer en même
-                        temps. Vous pouvez <strong>faire évoluer votre forfait
-                        à tout moment</strong> pour accompagner votre croissance.
+                        temps. En cours de contrat, vous pouvez <strong>passer au
+                        palier supérieur</strong> pour accompagner votre croissance.
                       </p>
                     </div>
                   </div>
@@ -377,14 +377,14 @@ export default function TrunkSIPIllimite() {
                     Solution évolutive
                   </h3>
                   <p className="text-gray-secondary leading-relaxed mb-4">
-                    Votre activité évolue ? Ajustez le nombre d&apos;appels que
-                    votre entreprise peut gérer en même temps.
+                    Votre activité grandit ? Passez au palier supérieur pour gérer
+                    plus d&apos;appels en même temps.
                   </p>
                   
                   {/* Bottom accent - Rouge principal */}
                   <div className="flex items-center text-red-primary font-medium text-sm">
                     <Rocket size={16} className="mr-2" aria-hidden="true" />
-                    <span>Capacité ajustable</span>
+                    <span>Capacité extensible</span>
                   </div>
                 </div>
               </div>
@@ -518,15 +518,15 @@ export default function TrunkSIPIllimite() {
             <div className="grid md:grid-cols-3 gap-6 mb-8 text-white/90">
               <div className="flex items-center justify-center space-x-2">
                 <CheckCircle size={24} className="text-white" aria-hidden="true" />
-                <span className="text-sm">Activation rapide</span>
+                <span className="text-sm">Activation après validation du devis</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Timer size={24} className="text-white" aria-hidden="true" />
-                <span className="text-sm">Engagement 36 mois</span>
+                <span className="text-sm">Engagement 12 mois</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Shield size={24} className="text-white" aria-hidden="true" />
-                <span className="text-sm">Garantie qualité</span>
+                <span className="text-sm">Support technique local</span>
               </div>
             </div>
 
