@@ -29,3 +29,21 @@ describe("Trunk SIP illimité — tarifs mobiles DOM", () => {
     expect(source).not.toContain("0,0180 €");
   });
 });
+
+/**
+ * Arbitrage Alban (2026-11-02) : l'illimité est interdit aux centres
+ * d'appels (fair use). La page ne peut citer les centres d'appels que pour
+ * les EXCLURE, jamais comme cible.
+ */
+describe("Trunk SIP illimité — centres d'appels exclus", () => {
+  it("ne présente jamais les centres d'appels comme cible", () => {
+    const phrases = source
+      .replace(/&apos;/g, "'")
+      .split(/[.\n"]/)
+      .filter((p) => /centres? d'appels/i.test(p));
+    expect(phrases.length).toBeGreaterThan(0);
+    for (const p of phrases) {
+      expect(p).toMatch(/exclu|comme ceux/i);
+    }
+  });
+});

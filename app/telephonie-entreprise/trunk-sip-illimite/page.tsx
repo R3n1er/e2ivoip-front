@@ -10,7 +10,7 @@ import { Chat, Phone, Infinity, CheckCircle, Globe, Users, MapTrifold, Shield, I
 export const metadata: Metadata = pageMetadata({
   title: "Trunk SIP Illimité DOM - E2I VoIP | Appels Fixes Illimités France & DOM",
   description:
-    "Trunk SIP illimité vers les fixes France métropolitaine et DOM. De 4 à 16 appels simultanés. Forfait avec fair use. Appels vers mobiles facturés au compteur. Idéal entreprises et centres d'appels.",
+    "Trunk SIP illimité vers les fixes de France métropolitaine et des DOM, de 4 à 16 appels simultanés. Mobiles au compteur. Fair use : centres d'appels exclus.",
   keywords:
     "trunk SIP illimité, appels fixes illimités DOM, forfait téléphonie entreprise, 16 appels simultanés, VoIP illimité Guadeloupe Martinique Guyane Réunion, trunk SIP fair use",
   path: "/telephonie-entreprise/trunk-sip-illimite",
@@ -30,7 +30,7 @@ export default function TrunkSIPIllimite() {
     },
     {
       appels: 16,
-      ideal: "Grandes structures et centres d'appels",
+      ideal: "Grandes structures et entreprises multi-sites",
       popular: false,
     },
   ];
