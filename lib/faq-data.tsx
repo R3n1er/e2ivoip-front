@@ -237,12 +237,12 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
     question:
       "Quelle est la différence entre Trunk SIP au compteur et illimité ?",
     answerText:
-      "Le Trunk SIP au compteur facture uniquement vos appels émis à la seconde (idéal pour un faible volume, moins de 200 min/mois). L'offre illimitée propose un forfait fixe mensuel pour des appels illimités vers la France et les DOM (recommandée au-delà de 200 minutes/mois).",
+      "Le Trunk SIP au compteur facture vos appels émis à la seconde : il convient aux faibles volumes. L'offre illimitée propose un forfait mensuel par appel simultané, avec les appels vers les fixes France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.",
     answer: (
       <p>
-        Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois),
-        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM
-        (recommandé pour plus de 200 minutes/mois).
+        Le <strong>Trunk SIP au compteur</strong> facture vos appels émis à la seconde : il convient aux faibles volumes.
+        L&apos;offre <strong>illimitée</strong> propose un forfait mensuel par appel simultané, avec les appels vers les fixes
+        France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.
       </p>
     ),
   },

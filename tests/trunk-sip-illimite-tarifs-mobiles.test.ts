@@ -57,6 +57,14 @@ describe("Trunk SIP illimité — pas de seuil de rentabilité invérifiable", (
   it("n'annonce aucun seuil en minutes par mois", () => {
     expect(source).not.toMatch(/min\/mois/);
   });
+
+  it.each(["lib/faq-data.tsx", "public/llms.txt"])(
+    "%s n'annonce plus le seuil « 200 min/mois » entre compteur et illimité",
+    (f) => {
+      const t = fs.readFileSync(path.join(process.cwd(), f), "utf8");
+      expect(t).not.toMatch(/200 ?min(utes)?\/mois/i);
+    },
+  );
 });
 
 /**
