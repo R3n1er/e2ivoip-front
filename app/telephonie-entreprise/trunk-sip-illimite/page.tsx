@@ -267,11 +267,6 @@ export default function TrunkSIPIllimite() {
                           Les usages intensifs d&apos;appels entrants et sortants
                           (type centre d&apos;appels) sont exclus.
                         </p>
-                        <p className="mt-1">
-                          <strong>Bon à savoir :</strong> au-delà de
-                          ~200 min/mois sur les fixes, l&apos;illimité devient plus
-                          avantageux que la facturation à la minute.
-                        </p>
                       </div>
                     </div>
                   </div>

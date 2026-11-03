@@ -47,3 +47,14 @@ describe("Trunk SIP illimité — centres d'appels exclus", () => {
     }
   });
 });
+
+/**
+ * Arbitrage Alban (2026-11-02) : le seuil « ~200 min/mois » était
+ * invérifiable (200 min de fixes coûtent 3 à 5 € HT au compteur). Aucun
+ * seuil de rentabilité chiffré sans calcul publié.
+ */
+describe("Trunk SIP illimité — pas de seuil de rentabilité invérifiable", () => {
+  it("n'annonce aucun seuil en minutes par mois", () => {
+    expect(source).not.toMatch(/min\/mois/);
+  });
+});
