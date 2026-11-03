@@ -81,7 +81,8 @@ export default function Smb3CXMutualisee() {
               <p className="text-xl text-ui-muted leading-relaxed max-w-4xl mx-auto">
                 Notre offre <strong>3CX SMB mutualisée</strong> accompagne les équipes de 3 à 8 utilisateurs.
                 Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles.
-                Vous bénéficiez d’une licence mensuelle et de frais de mise en service réduits.
+                Vous bénéficiez d’une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur.
+                Ces frais font l’objet d’un paiement unique à la mise en service.
               </p>
             </div>
 

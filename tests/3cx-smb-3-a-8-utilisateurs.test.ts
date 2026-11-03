@@ -42,4 +42,12 @@ describe("3CX SMB — 3 à 8 utilisateurs", () => {
   it("le comparatif /telephonie-3cx affiche 3 à 8 pour SMB", () => {
     expect(lire("app/telephonie-3cx/page.tsx")).toMatch(/smb: "3 à 8"/);
   });
+
+  // Décision Alban 2026-11-03 : 150 € HT de frais d'infrastructure mutualisée
+  // + 90 € HT par utilisateur, à la mise en service.
+  it.each([FICHIERS_SMB[0], "public/llms.txt"])("%s affiche les frais de mise en service SMB", (f) => {
+    const t = lire(f).replace(/\s+/g, " ");
+    expect(t).toMatch(/150 €( |&nbsp;)?HT/);
+    expect(t).toMatch(/90 €( |&nbsp;)?HT[^.]{0,30}utilisateur/);
+  });
 });

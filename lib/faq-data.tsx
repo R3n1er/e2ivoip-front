@@ -747,7 +747,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.",
+      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -756,14 +756,14 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
         <p>
           Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). <strong>E2I gère le serveur.</strong>
         </p>
-        <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits.</p>
+        <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.</p>
       </div>
     ),
   },
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits ; applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ; applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -771,7 +771,7 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
         </p>
         <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
           <li>licence mensuelle ;</li>
-          <li>frais de mise en service réduits ;</li>
+          <li>frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ;</li>
           <li>applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles.</li>
         </ul>
         <p>
