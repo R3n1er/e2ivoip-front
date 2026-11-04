@@ -128,7 +128,7 @@ describe("POST /api/3cx-free/devis", () => {
 
       const accuse = mailA(PAYLOAD.email);
       expect(accuse).toBeDefined();
-      expect(accuse.html).toContain("Marie");
+      expect(accuse.subject).toMatch(/3CX Free/);
     });
 
     it("transmet à n8n le contact, le besoin, le message, le consentement horodaté et le SIRET vérifié", async () => {
@@ -265,6 +265,30 @@ describe("POST /api/3cx-free/devis", () => {
       const res = await POST(requete(PAYLOAD));
       expect(res.status).toBe(200);
       expect(appelWebhook()).toBeDefined();
+    });
+  });
+
+  describe("pas de relais d'e-mails (adresse client non vérifiée)", () => {
+    it("l'accusé ne reprend aucun texte libre saisi par l'expéditeur", async () => {
+      const piege = "Cliquez ici http://phishing.example";
+      await POST(
+        requete({ ...PAYLOAD, message: piege, societe: piege, prenom: piege, nom: piege }),
+      );
+      const accuse = mailA(PAYLOAD.email);
+      expect(accuse).toBeDefined();
+      for (const champ of [accuse.subject, accuse.html, accuse.text]) {
+        expect(champ).not.toContain("phishing");
+      }
+    });
+
+    it("une pageUrl hors du site n'est pas transmise", async () => {
+      await POST(requete({ ...PAYLOAD, pageUrl: "https://phishing.example/x" }));
+      expect(corpsWebhook().pageUrl).toBe("");
+    });
+
+    it("une pageUrl du site est transmise", async () => {
+      await POST(requete({ ...PAYLOAD, pageUrl: "https://e2i-voip.com/3cx-free" }));
+      expect(corpsWebhook().pageUrl).toBe("https://e2i-voip.com/3cx-free");
     });
   });
 });

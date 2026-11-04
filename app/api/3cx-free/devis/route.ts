@@ -5,7 +5,6 @@ import { checkRateLimit, getClientIdentifier } from "@/lib/api/rate-limit";
 import {
   sanitize,
   escapeHtml,
-  escapeHtmlMultiline,
   isValidEmail,
   sanitizeHeader,
 } from "@/lib/api/email-safety";
@@ -93,6 +92,21 @@ async function lireCorps(request: Request): Promise<Record<string, unknown> | "t
   }
 }
 
+const HOTES_SITE = new Set(["e2i-voip.com", "www.e2i-voip.com"]);
+
+/** Ne garde une pageUrl que si elle pointe vers le site lui-même. */
+function pageUrlDuSite(valeur: string, request: Request): string {
+  if (!valeur) return "";
+  try {
+    const url = new URL(valeur);
+    const hoteRequete = new URL(request.url).hostname;
+    const hoteAutorise = HOTES_SITE.has(url.hostname) || url.hostname === hoteRequete;
+    return (url.protocol === "https:" || url.protocol === "http:") && hoteAutorise ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
 function lireNombreNumeros(v: unknown): number | null {
   if (v === undefined || v === null || v === "") return null;
   const n = Number(v);
@@ -177,33 +191,32 @@ function texteLead(lead: LeadDevis3cxFree): string {
   ].join("\n");
 }
 
+/**
+ * Accusé neutre : l'adresse du client n'est pas vérifiée, donc l'accusé ne
+ * reprend AUCUN texte libre saisi (prénom, société, message). Sinon le
+ * formulaire servirait à envoyer depuis notre domaine un texte choisi par
+ * un tiers à n'importe quelle adresse. Seuls des libellés contrôlés par le
+ * site (besoin en numéros, nombre entier validé) y figurent.
+ */
 function accuseReception(lead: LeadDevis3cxFree) {
-  const c = lead.contact;
-  const besoin = libelleBesoin(lead.besoin.numeros);
+  const besoin = `${libelleBesoin(lead.besoin.numeros)}${lead.besoin.nombreNumeros ? ` (${lead.besoin.nombreNumeros})` : ""}`;
   const subject = sanitizeHeader("E2I VoIP — Votre demande 3CX Free a bien été reçue");
   const html = `
-    <p>Bonjour ${escapeHtml(c.prenom)},</p>
-    <p>Nous avons bien reçu votre demande de devis 3CX Free pour ${escapeHtml(c.societe)}.
+    <p>Bonjour,</p>
+    <p>Nous avons bien reçu votre demande de devis 3CX Free.
     Un conseiller E2I VoIP vous contactera pour faire le point sur vos besoins en téléphonie et préparer votre devis.</p>
-    <p><strong>Votre besoin en téléphonie :</strong></p>
-    <ul>
-      <li>Numéros de téléphone : ${escapeHtml(besoin)}${lead.besoin.nombreNumeros ? ` (${lead.besoin.nombreNumeros})` : ""}</li>
-      <li>Téléphone mobile : ${escapeHtml(c.telephoneMobile)}</li>
-    </ul>
-    <p><strong>Votre message :</strong><br />${escapeHtmlMultiline(lead.message)}</p>
+    <p><strong>Votre besoin en numéros de téléphone :</strong> ${escapeHtml(besoin)}</p>
+    <p>Si vous n’êtes pas à l’origine de cette demande, ignorez ce message.</p>
     <p>E2I VoIP</p>
   `;
-  const text = `Bonjour ${c.prenom},
+  const text = `Bonjour,
 
-Nous avons bien reçu votre demande de devis 3CX Free pour ${c.societe}.
+Nous avons bien reçu votre demande de devis 3CX Free.
 Un conseiller E2I VoIP vous contactera pour faire le point sur vos besoins en téléphonie et préparer votre devis.
 
-Votre besoin en téléphonie :
-- Numéros de téléphone : ${besoin}${lead.besoin.nombreNumeros ? ` (${lead.besoin.nombreNumeros})` : ""}
-- Téléphone mobile : ${c.telephoneMobile}
+Votre besoin en numéros de téléphone : ${besoin}
 
-Votre message :
-${lead.message}
+Si vous n’êtes pas à l’origine de cette demande, ignorez ce message.
 
 E2I VoIP`;
   return { subject, html, text };
@@ -260,7 +273,7 @@ export async function POST(request: Request) {
     const telephoneMobile = sanitize(corps.telephoneMobile, LIMITES.telephone);
     const email = sanitize(corps.email, LIMITES.email);
     const message = sanitize(corps.message, LIMITES.message);
-    const pageUrl = sanitize(corps.pageUrl, LIMITES.pageUrl);
+    const pageUrl = pageUrlDuSite(sanitize(corps.pageUrl, LIMITES.pageUrl), request);
 
     if (!nom || !prenom || !societe || !telephoneMobile || !email || !message) {
       return json(
