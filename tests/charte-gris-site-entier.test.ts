@@ -88,6 +88,41 @@ const FONDS_INTERDITS =
   /\b(?:bg|from|via|to)-(?:gray|red|blue)-(?:50|100|200)(?:\/\d{1,3})?\b/g;
 
 /**
+ * Vague 4 (2026-09-21) — le bleu vif de Tailwind, arbitré.
+ *
+ * `text-blue-600` (#2563EB) n'est pas une nuance du bleu de charte : c'est un
+ * bleu VIF, quand `blue-marine` (#2D3848) est un bleu-gris sombre. L'écart
+ * perçu est énorme (ΔE≈288) et le bleu vif contraste MOINS (5,17:1 contre
+ * 11,86:1 sur blanc). Il était employé pour les liens et des icônes
+ * décoratives — deux usages où la charte a désormais une réponse.
+ *
+ * Décision d'Alban du 2026-09-21 : les liens passent en `text-blue-marine`
+ * avec `hover:text-red-700`, les icônes décoratives en `text-blue-marine`.
+ *
+ * Le survol emploie `red-700` (6,47:1) et non `red-primary` (#E53E3E, 4,13:1)
+ * qui est sous le seuil AA — même arbitrage qu'en vague 2 pour les badges.
+ *
+ * Le gradient hero est neutralisé en amont : ses `from-blue-900`/`via-blue-800`
+ * relèvent de la règle absolue n°2, pas de cette garde.
+ */
+const BLEU_VIF_INTERDIT =
+  /\b(?:text|bg|border|ring|divide)-blue-(?:400|500|600|700|800|900)(?:\/\d{1,3})?\b/g;
+
+/**
+ * Logos de marques tierces — l'exception porte sur l'OCCURRENCE.
+ *
+ * Repeindre le logo Microsoft Teams au bleu marine de E2I dénaturerait la
+ * marque citée. Une charte régit SA propre identité, pas celle des autres.
+ */
+const LOGOS_TIERS: ReadonlyArray<{ fichier: string; classes: readonly string[] }> =
+  [
+    {
+      fichier: "app/telephonie-entreprise/pbx-yeastar/page.tsx",
+      classes: ["text-blue-600"], // <MicrosoftTeamsLogo /> — bleu de marque
+    },
+  ];
+
+/**
  * Couleurs arbitraires — `bg-[#FEF2F2]`, `from-[#F9FAFB]`…
  *
  * Relevé par la relecture Codex du 2026-09-21 : réécrire `bg-ui-surface` en
@@ -347,6 +382,24 @@ describe("charte graphique — gris du site entier", () => {
         ),
       ].filter((h) => !PALETTE.has(`#${h}`));
       expect(hors).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucun bleu vif Tailwind",
+    (rel, fichier) => {
+      // Le gradient hero est neutralisé : ses blue-900/blue-800 relèvent de la
+      // règle absolue n°2, pas de cet arbitrage.
+      const source = fs
+        .readFileSync(fichier, "utf8")
+        .split(HERO_GRADIENT)
+        .join("");
+      const permis =
+        LOGOS_TIERS.find((l) => l.fichier === rel)?.classes ?? [];
+      const trouves = [
+        ...new Set(source.match(BLEU_VIF_INTERDIT) ?? []),
+      ].filter((c) => !permis.includes(c));
+      expect(trouves).toEqual([]);
     },
   );
 });
