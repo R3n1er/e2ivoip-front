@@ -6,6 +6,9 @@
 
 export const EN_TETE_FORMULAIRE = "devis-3cx-free";
 
+/** Longueur maximale du message libre (formulaire et route). */
+export const LONGUEUR_MAX_MESSAGE = 5000;
+
 export const BESOINS_NUMEROS = [
   { valeur: "creation", libelle: "Créer de nouveaux numéros" },
   { valeur: "portabilite", libelle: "Conserver mes numéros actuels (portabilité)" },

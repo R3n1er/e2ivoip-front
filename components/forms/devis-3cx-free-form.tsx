@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   BESOINS_NUMEROS,
   EN_TETE_FORMULAIRE,
+  LONGUEUR_MAX_MESSAGE,
   TEXTE_CONSENTEMENT_RGPD,
   type BesoinNumeros,
 } from "@/lib/devis-3cx-free/formulaire";
@@ -158,7 +159,7 @@ export function Devis3cxFreeForm() {
 
       <div className="mb-6">
         <Champ id="devis-message" libelle="Message" requis>
-          <Textarea id="devis-message" rows={5} value={champs.message} onChange={maj("message")} maxLength={3000} required />
+          <Textarea id="devis-message" rows={5} value={champs.message} onChange={maj("message")} maxLength={LONGUEUR_MAX_MESSAGE} required />
         </Champ>
       </div>
 

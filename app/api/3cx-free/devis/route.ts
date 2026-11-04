@@ -14,6 +14,7 @@ import {
 } from "@/lib/devis-3cx-free/siret";
 import {
   EN_TETE_FORMULAIRE,
+  LONGUEUR_MAX_MESSAGE,
   TEXTE_CONSENTEMENT_RGPD,
   estBesoinNumeros,
   libelleBesoin,
@@ -40,7 +41,8 @@ import {
 
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
-const MAX_BODY_BYTES = 16 * 1024;
+// Message de 5 000 caractères (jusqu'à 3 octets chacun en UTF-8) + autres champs.
+const MAX_BODY_BYTES = 32 * 1024;
 const MIN_SUBMIT_DELAY_MS = 2500;
 const WEBHOOK_TIMEOUT_MS = 8000;
 const MAX_NOMBRE_NUMEROS = 999;
@@ -52,7 +54,7 @@ const LIMITES = {
   siret: 20,
   telephone: 30,
   email: 254,
-  message: 3000,
+  message: LONGUEUR_MAX_MESSAGE,
   pageUrl: 500,
   website: 200,
 } as const;
