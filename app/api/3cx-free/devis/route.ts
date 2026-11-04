@@ -118,6 +118,10 @@ const ANOMALIE_SIRET: Partial<Record<VerificationSiret["statut"], string>> = {
 };
 
 export interface LeadDevis3cxFree {
+  /** Version du contrat de données (docs/n8n/lead-devis-3cx-free.schema.json). */
+  version: 1;
+  /** Identifiant unique : permet à n8n d'écarter un doublon (secours + webhook lent). */
+  leadId: string;
   source: "site-e2ivoip/3cx-free";
   soumisLe: string;
   contact: {
@@ -219,6 +223,7 @@ function texteLead(lead: LeadDevis3cxFree): string {
   return [
     "Nouvelle demande de devis 3CX Free (n8n indisponible : lead transmis par mail de secours)",
     "",
+    `Identifiant du lead : ${lead.leadId}`,
     `Société : ${c.societe}`,
     `Contact : ${c.prenom} ${c.nom}`,
     `E-mail : ${c.email}`,
@@ -347,6 +352,8 @@ export async function POST(request: Request) {
     const maintenant = new Date().toISOString();
 
     const lead: LeadDevis3cxFree = {
+      version: 1,
+      leadId: crypto.randomUUID(),
       source: "site-e2ivoip/3cx-free",
       soumisLe: maintenant,
       contact: { nom, prenom, societe, telephoneFixe, telephoneMobile, email },

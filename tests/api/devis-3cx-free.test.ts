@@ -135,6 +135,8 @@ describe("POST /api/3cx-free/devis", () => {
       await POST(requete(PAYLOAD));
       const lead = corpsWebhook();
       expect(lead.source).toBe("site-e2ivoip/3cx-free");
+      expect(lead.version).toBe(1);
+      expect(lead.leadId).toMatch(/^[0-9a-f-]{36}$/);
       expect(lead.contact).toMatchObject({
         nom: "Dupont",
         prenom: "Marie",
@@ -335,6 +337,48 @@ describe("POST /api/3cx-free/devis", () => {
       const res = await POST(requete({ ...PAYLOAD, message: "a".repeat(5001) }));
       expect(res.status).toBe(400);
       expect(fetchMock).not.toHaveBeenCalled();
+    });
+  });
+
+  it("chaque lead a un identifiant unique, repris dans le mail de secours", async () => {
+    await POST(requete(PAYLOAD, "5.5.5.1"));
+    const premier = corpsWebhook().leadId;
+    fetchMock.mockClear();
+    await POST(requete(PAYLOAD, "5.5.5.2"));
+    expect(corpsWebhook().leadId).not.toBe(premier);
+
+    fetchMock.mockResolvedValue({ ok: false, status: 502 });
+    await POST(requete(PAYLOAD, "5.5.5.3"));
+    const idSecours = JSON.parse(fetchMock.mock.calls.at(-1)![1].body).leadId;
+    expect(mailA(EMAIL_COMMERCIAL).text).toContain(idSecours);
+  });
+
+  describe("contrat n8n : docs/n8n/lead-devis-3cx-free.schema.json", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const schema = require("../../docs/n8n/lead-devis-3cx-free.schema.json");
+
+    function clesTriees(o: object) {
+      return Object.keys(o).sort();
+    }
+
+    it("le lead envoyé a exactement les champs déclarés dans le schéma", async () => {
+      await POST(requete(PAYLOAD));
+      const lead = corpsWebhook();
+      expect(clesTriees(lead)).toEqual([...schema.required].sort());
+      for (const bloc of ["contact", "besoin", "consentementRgpd"]) {
+        expect(clesTriees(lead[bloc])).toEqual([...schema.properties[bloc].required].sort());
+      }
+      expect(Object.keys(schema.properties.siret.properties)).toEqual(
+        expect.arrayContaining(Object.keys(lead.siret)),
+      );
+    });
+
+    it("les valeurs énumérées du schéma suivent le code", () => {
+      const { BESOINS_NUMEROS, LONGUEUR_MAX_MESSAGE } = jest.requireActual("@/lib/devis-3cx-free/formulaire");
+      expect(schema.properties.besoin.properties.numeros.enum).toEqual(
+        BESOINS_NUMEROS.map((b: { valeur: string }) => b.valeur),
+      );
+      expect(schema.properties.message.maxLength).toBe(LONGUEUR_MAX_MESSAGE);
     });
   });
 });
