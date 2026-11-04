@@ -131,18 +131,18 @@ export default function ThreeCXFreePage() {
               <ul className="space-y-3">
                 {LIMITES_3CX_FREE.map((l) => (
                   <li key={l} className="flex items-start gap-3 text-gray-dark">
-                    <Warning size={20} className="mt-0.5 shrink-0 text-red-600" aria-hidden="true" />
+                    <Warning size={20} className="mt-0.5 shrink-0 text-red-text" aria-hidden="true" />
                     {l}
                   </li>
                 ))}
               </ul>
               <p className="mt-6 text-sm text-ui-muted">
                 Pour des postes de bureau, consultez{" "}
-                <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="font-medium text-red-600 hover:text-red-700">
+                <NextLink href="/telephonie-entreprise/3cx-smb-mutualisee" className="font-medium text-red-text hover:text-red-text-hover">
                   3CX SMB
                 </NextLink>{" "}
                 ; pour des files d&apos;attente, consultez{" "}
-                <NextLink href="/3cx-pro" className="font-medium text-red-600 hover:text-red-700">
+                <NextLink href="/3cx-pro" className="font-medium text-red-text hover:text-red-text-hover">
                   3CX PRO
                 </NextLink>
                 .
@@ -190,7 +190,7 @@ export default function ThreeCXFreePage() {
                 Hébergement géré inclus (<span className="font-mono tabular-nums">{c.hebergementMensuelHT} €</span> HT/mois)
               </li>
               <li>
-                <NextLink href="/telephonie-entreprise/trunk-sip-compteur" className="font-medium text-red-600 hover:text-red-700">
+                <NextLink href="/telephonie-entreprise/trunk-sip-compteur" className="font-medium text-red-text hover:text-red-text-hover">
                   Voir la grille au compteur
                 </NextLink>
               </li>
@@ -252,7 +252,7 @@ export default function ThreeCXFreePage() {
                 </p>
                 <NextLink
                   href="/telephonie-entreprise/trunk-sip-compteur"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-red-600 hover:text-red-700"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-red-text hover:text-red-text-hover"
                 >
                   Voir le trunk SIP au compteur <ArrowRight size={14} aria-hidden="true" />
                 </NextLink>

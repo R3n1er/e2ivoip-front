@@ -127,7 +127,7 @@ export function ChoixVersion3cx() {
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <NextLink
                 href={resultat.href}
-                className="inline-flex items-center gap-1 font-medium text-red-600 hover:text-red-700"
+                className="inline-flex items-center gap-1 font-medium text-red-text hover:text-red-text-hover"
               >
                 {resultat.lien} <ArrowRight size={14} aria-hidden="true" />
               </NextLink>
