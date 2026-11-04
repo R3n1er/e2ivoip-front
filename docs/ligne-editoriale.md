@@ -118,6 +118,30 @@ Les caractéristiques techniques chiffrées sont encouragées — elles donnent 
 matière technique qu'un acheteur cherche avant de parler prix. Elles doivent
 être exactes et cohérentes sur toutes les pages (voir « Specs produit »).
 
+### Citer un concurrent
+
+Arbitrage Alban du 2026-11-02. Un concurrent peut être **nommé**, dans un
+seul cas : comme **opérateur d'origine d'une portabilité** (« vous venez de
+X : vos numéros vous suivent »).
+
+- ✅ Autorisé : le nom, dans la section migration des pages territoriales,
+  depuis la liste `CONCURRENTS_CITABLES` du registre
+  `lib/territoires/standard-telephonique.ts`.
+- ❌ Interdit : tout jugement (« bons accès », « meilleur », « moins cher »),
+  toute comparaison de prix ou de qualité, tout logo de concurrent, et le
+  nom d'un concurrent hors de la section migration.
+- Les opérateurs cités sont déclarés **par territoire** (`migrationOperators`) :
+  Dauphin Telecom n'est pas cité en Guyane, les opérateurs Caraïbe pas à
+  La Réunion.
+- Orange reste citable comme pilote du plan de fermeture du cuivre (source
+  Arcep), usage factuel antérieur à ce cadre.
+
+Pourquoi ce cadre étroit : hors de ce contexte, le dénigrement est constitué
+même si les propos sont exacts dès lors qu'ils sont publics (Cass. com.
+7 janvier 2026, n° 24-18.085). Un test
+(`tests/territoires-guide-migration.test.tsx`) refuse tout nom de concurrent
+écrit en dur ailleurs dans `app/`, `components/` ou `lib/`.
+
 ## 📅 Calendrier de fermeture du cuivre
 
 Vérifié le 2026-08-30 auprès de l'Arcep et d'Orange. **L'échéance n'est pas la

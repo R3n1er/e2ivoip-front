@@ -11,11 +11,15 @@ import { Calculator, Phone, CheckCircle, Users, CaretDown, Wallet, TreeStructure
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { COMPTEUR_FAQ } from "@/lib/faq-data";
+import {
+  CREATION_NUMERO_TARIF_TEXTE,
+  PORTABILITE_TARIF_TEXTE,
+} from "@/lib/offres/portabilite";
 
 export const metadata: Metadata = pageMetadata({
   title: "Trunk SIP au Compteur DOM - E2I VoIP | Passerelle SIP Antilles-Guyane-Réunion",
   description:
-    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Numéros locaux gratuits. Économisez jusqu'à 20%.",
+    "Trunk SIP au compteur DOM : payez uniquement vos consommations réelles. Connexions SIP locales Antilles-Guyane-Réunion. Création et portabilité de numéros locaux. Économisez jusqu'à 20%.",
   keywords:
     "trunk SIP compteur DOM, passerelle SIP Antilles, VoIP Guadeloupe Martinique Guyane Réunion, connexion SIP locale, numéros géographiques DOM, opérateur télécom local",
   path: "/telephonie-entreprise/trunk-sip-compteur",
@@ -94,7 +98,7 @@ export default function TrunkSIPCompteur() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone size={24} className="text-white" aria-hidden="true" />
-                  <span className="text-sm">Numéros locaux gratuits</span>
+                  <span className="text-sm">Numéros locaux DOM</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users size={24} className="text-white" aria-hidden="true" />
@@ -196,7 +200,9 @@ export default function TrunkSIPCompteur() {
                       <p className="text-ui-muted">
                         <strong>Création et portabilité</strong> de numéros
                         géographiques Antilles-Guyane-Réunion pour renforcer
-                        votre image locale.
+                        votre image locale. Création SDA France et DOM :{" "}
+                        {CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.{" "}
+                        Portabilité : {PORTABILITE_TARIF_TEXTE}, en frais uniques.
                       </p>
                     </div>
                   </div>

@@ -228,7 +228,7 @@ export default function QuiSommesNous() {
               <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
-                locaux incluses.{" "}
+                locaux.{" "}
                 <strong>Économisez jusqu'à 20&nbsp;%</strong> par rapport à la
                 téléphonie traditionnelle.
               </p>
