@@ -194,6 +194,13 @@ describe("Inscriptions de /3cx-free", () => {
       expect(within(section as HTMLElement).getByRole("heading", { level: 2 })).toBeInTheDocument();
     });
 
+    it("les ancres #devis et #rendez-vous ne passent pas sous la barre de navigation fixe", () => {
+      const { container } = render(<ThreeCXFreePage />);
+      for (const id of ["devis", "rendez-vous"]) {
+        expect(container.querySelector(`#${id}`)?.className).toMatch(/\bscroll-mt-24\b/);
+      }
+    });
+
     it("le CTA principal du hero mène au formulaire, pas à /contact", () => {
       render(<ThreeCXFreePage />);
       const liens = screen.getAllByRole("link").map((l) => l.getAttribute("href"));
