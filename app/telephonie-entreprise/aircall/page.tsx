@@ -206,7 +206,7 @@ export default function AircallPage() {
                     href="https://aircall.io/"
                     target="_blank"
                     rel="noopener"
-                    className="font-semibold text-blue-marine underline decoration-blue-marine/30 underline-offset-2 hover:text-red-primary"
+                    className="font-semibold text-blue-marine underline decoration-blue-marine/30 underline-offset-2 hover:text-red-text"
                   >
                     Aircall
                   </a>{" "}

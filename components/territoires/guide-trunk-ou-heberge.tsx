@@ -67,7 +67,7 @@ export function GuideTrunkOuHeberge({
               <p className="text-ui-muted mb-4 text-sm leading-relaxed">{c.texte}</p>
               <NextLink
                 href={c.href}
-                className="inline-flex items-center gap-1 text-sm font-medium text-red-600 hover:text-red-700 hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1 text-sm font-medium text-red-text hover:text-red-text-hover hover:gap-2 transition-all"
               >
                 {c.lien} <ArrowRight size={14} aria-hidden="true" />
               </NextLink>
