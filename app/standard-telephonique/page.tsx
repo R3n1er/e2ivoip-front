@@ -265,7 +265,7 @@ export default function StandardTelephoniquePage() {
                       className="text-red-primary shrink-0 mt-0.5"
                       aria-hidden="true"
                     />
-                    Numéros locaux et portabilité incluses
+                    Numéros locaux et portabilité de vos numéros
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle

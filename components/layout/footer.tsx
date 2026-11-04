@@ -89,7 +89,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/standard-telephonique"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Standard téléphonique
                 </Link>
@@ -97,7 +97,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-compteur"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Trunk SIP au compteur
                 </Link>
@@ -105,7 +105,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-illimite"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Trunk SIP illimité
                 </Link>
@@ -113,7 +113,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-3cx"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Téléphonie 3CX
                 </Link>
@@ -121,7 +121,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/pbx-yeastar"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   PBX Yeastar
                 </Link>
@@ -129,7 +129,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/telephonie-entreprise/trunk-sip-agents-ia"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Trunk SIP agents IA
                 </Link>
@@ -137,7 +137,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/studio-attente"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Studio attente téléphonique
                 </Link>
@@ -151,7 +151,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-gray-secondary">
               <li>
                 {/*
-                  EXCEPTION CHARTE ASSUMÉE — `hover:text-red-700` (#B91C1C).
+                  EXCEPTION CHARTE ASSUMÉE — `hover:text-red-text-hover` (#B91C1C).
                   `red-primary` vaut 4,13:1 sur blanc, sous le seuil AA de
                   4,5:1 : à 14px (`text-sm`), même en `font-black`, WCAG classe
                   ce libellé en texte normal — le seuil « grand texte » exige
@@ -165,7 +165,7 @@ export function Footer() {
                   href="https://espace-client.e2i-voip.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block py-1 text-red-primary font-black hover:text-red-700 transition-colors"
+                  className="inline-block py-1 text-red-primary font-black hover:text-red-text-hover transition-colors"
                 >
                   Espace client
                 </a>
@@ -173,7 +173,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/assistance"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Documentation
                 </Link>
@@ -181,7 +181,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/assistance"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   FAQ
                 </Link>
@@ -191,7 +191,7 @@ export function Footer() {
                   href="https://espace-client.e2i-voip.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 py-1 hover:text-red-primary transition-colors"
+                  className="inline-flex items-center gap-2 py-1 hover:text-red-text transition-colors"
                 >
                   <Headphones size={18} className="text-red-primary" />
                   Support technique
@@ -200,7 +200,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/devis-en-ligne"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Devis en ligne
                 </Link>
@@ -217,7 +217,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/qui-sommes-nous"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   À propos
                 </Link>
@@ -225,7 +225,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Blog
                 </Link>
@@ -233,7 +233,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/juridique/conditions-generales-de-vente"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Conditions générales de vente
                 </Link>
@@ -241,7 +241,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/juridique/mentions-legales"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Mentions légales
                 </Link>
@@ -249,7 +249,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/juridique/exercer-mes-droits"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Exercer mes droits
                 </Link>
@@ -261,7 +261,7 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={() => resetConsent()}
-                  className="inline-block py-1 text-left hover:text-red-primary transition-colors"
+                  className="inline-block py-1 text-left hover:text-red-text transition-colors"
                 >
                   Gérer mes cookies
                 </button>
@@ -269,7 +269,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="inline-block py-1 hover:text-red-primary transition-colors"
+                  className="inline-block py-1 hover:text-red-text transition-colors"
                 >
                   Contact
                 </Link>
@@ -288,7 +288,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
-                className="text-gray-secondary hover:text-red-primary transition-colors"
+                className="text-gray-secondary hover:text-red-text transition-colors"
               >
                 <LinkedinLogo size={22} weight="fill" />
               </a>

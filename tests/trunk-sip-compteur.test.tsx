@@ -61,7 +61,7 @@ describe("Page Trunk SIP au Compteur", () => {
     );
     expect(facturationElements.length).toBeGreaterThan(0);
 
-    expect(screen.getByText(/Numéros locaux gratuits/i)).toBeInTheDocument();
+    expect(screen.getByText(/^Numéros locaux DOM$/i)).toBeInTheDocument();
 
     const supportElements = screen.getAllByText(/Support technique local/i);
     expect(supportElements.length).toBeGreaterThan(0);

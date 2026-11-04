@@ -228,7 +228,7 @@ export default function QuiSommesNous() {
               <p className="text-lg text-ui-muted mb-6 leading-relaxed">
                 <strong>Trunk SIP éligibles DOM</strong> : Au compteur ou
                 illimité, dès 2 utilisateurs. Création et portabilité de numéros
-                locaux incluses.{" "}
+                locaux.{" "}
                 <strong>Économisez jusqu'à 20&nbsp;%</strong> par rapport à la
                 téléphonie traditionnelle.
               </p>
@@ -480,7 +480,7 @@ export default function QuiSommesNous() {
                     href="https://www.fanvil.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-blue-marine hover:text-red-text-hover text-sm font-medium"
                   >
                     Visiter le site officiel →
                   </a>
@@ -512,7 +512,7 @@ export default function QuiSommesNous() {
                     href="https://www.yealink.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-marine hover:text-blue-700 text-sm font-medium"
+                    className="text-blue-marine hover:text-red-text-hover text-sm font-medium"
                   >
                     Visiter le site officiel →
                   </a>

@@ -118,7 +118,7 @@ export function HeaderSimple() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 text-gray-dark hover:text-red-primary"
+                    className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 text-gray-dark hover:text-red-text"
                   >
                     {item.name}
                     {item.submenu && (
@@ -126,7 +126,7 @@ export function HeaderSimple() {
                     )}
                   </Link>
                 ) : (
-                  <span className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer text-gray-dark hover:text-red-primary">
+                  <span className="font-medium transition-colors duration-200 flex items-center text-sm whitespace-nowrap py-2 cursor-pointer text-gray-dark hover:text-red-text">
                     {item.name}
                     {item.submenu && (
                       <CaretDown size={16} className="ml-1 transition-transform duration-200 text-ui-muted group-hover:rotate-180" />
@@ -142,7 +142,7 @@ export function HeaderSimple() {
                         <div key={subItem.name} className="relative group/sub">
                           <Link
                             href={subItem.href ?? "#"}
-                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-dark hover:bg-red-primary/5 hover:text-red-primary transition-colors duration-200"
+                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-dark hover:bg-red-primary/5 hover:text-red-text transition-colors duration-200"
                           >
                             {subItem.name}
                             {subItem.submenu && (
@@ -158,7 +158,7 @@ export function HeaderSimple() {
                                   <Link
                                     key={leaf.name}
                                     href={leaf.href ?? "#"}
-                                    className="block px-4 py-3 text-sm text-gray-dark hover:bg-red-primary/5 hover:text-red-primary transition-colors duration-200"
+                                    className="block px-4 py-3 text-sm text-gray-dark hover:bg-red-primary/5 hover:text-red-text transition-colors duration-200"
                                   >
                                     {leaf.name}
                                   </Link>
@@ -213,7 +213,7 @@ export function HeaderSimple() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className="text-base font-medium text-gray-dark hover:text-red-primary transition-colors block py-2"
+                        className="text-base font-medium text-gray-dark hover:text-red-text transition-colors block py-2"
                         onClick={() => setIsOpen(false)}
                       >
                         {item.name}
@@ -229,7 +229,7 @@ export function HeaderSimple() {
                           <div key={subItem.name}>
                             <Link
                               href={subItem.href ?? "#"}
-                              className="block text-sm text-ui-muted hover:text-red-primary transition-colors py-1"
+                              className="block text-sm text-ui-muted hover:text-red-text transition-colors py-1"
                               onClick={() => setIsOpen(false)}
                             >
                               {subItem.name}
@@ -240,7 +240,7 @@ export function HeaderSimple() {
                                   <Link
                                     key={leaf.name}
                                     href={leaf.href ?? "#"}
-                                    className="block text-sm text-ui-muted hover:text-red-primary transition-colors py-1"
+                                    className="block text-sm text-ui-muted hover:text-red-text transition-colors py-1"
                                     onClick={() => setIsOpen(false)}
                                   >
                                     {leaf.name}

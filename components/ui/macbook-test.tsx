@@ -14,7 +14,7 @@ export function MacBookTest() {
             Test d'optimisation MacBook Pro
           </h1>
           <p className="text-lg text-ui-muted">
-            Breakpoint détecté : <span className="font-semibold text-red-600">{breakpoint}</span>
+            Breakpoint détecté : <span className="font-semibold text-red-text">{breakpoint}</span>
           </p>
         </AnimatedText>
         

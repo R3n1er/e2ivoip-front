@@ -60,7 +60,7 @@ export default function NosServices() {
       features: [
         "Éligibilité Trunk SIP DOM",
         "Numéros locaux DOM",
-        "Portabilité gratuite",
+        "Portabilité de vos numéros",
         "Canaux dimensionnés à votre trafic",
       ],
       badge: "Populaire",

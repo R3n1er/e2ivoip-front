@@ -111,7 +111,7 @@ export function StudioDemoSection() {
         <div className="text-center">
           <Button
             asChild
-            className="bg-red-primary hover:bg-red-700 text-white px-8 py-3 text-base"
+            className="bg-red-primary hover:bg-red-text-hover text-white px-8 py-3 text-base"
           >
             <a href="/studio-attente/devis">
               Construire ma demande de devis

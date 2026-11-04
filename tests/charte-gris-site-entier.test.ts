@@ -90,6 +90,61 @@ const FONDS_INTERDITS =
   /\b(?:bg|from|via|to)-(?:gray|red|blue)-(?:50|100|200)(?:\/\d{1,3})?\b/g;
 
 /**
+ * Vague 4 (2026-09-21) — le bleu vif de Tailwind, arbitré.
+ *
+ * `text-blue-600` (#2563EB) n'est pas une nuance du bleu de charte : c'est un
+ * bleu VIF, quand `blue-marine` (#2D3848) est un bleu-gris sombre. L'écart
+ * perçu est énorme (ΔE≈288) et le bleu vif contraste MOINS (5,17:1 contre
+ * 11,86:1 sur blanc). Il était employé pour les liens et des icônes
+ * décoratives — deux usages où la charte a désormais une réponse.
+ *
+ * Décision d'Alban du 2026-09-21 : les liens passent en `text-blue-marine`
+ * avec `hover:text-red-700`, les icônes décoratives en `text-blue-marine`.
+ *
+ * Le survol emploie `red-700` (6,47:1) et non `red-primary` (#E53E3E, 4,13:1)
+ * qui est sous le seuil AA — même arbitrage qu'en vague 2 pour les badges.
+ *
+ * Le gradient hero est neutralisé en amont : ses `from-blue-900`/`via-blue-800`
+ * relèvent de la règle absolue n°2, pas de cette garde.
+ */
+const BLEU_VIF_INTERDIT =
+  /\b(?:text|bg|border|ring|divide)-blue-(?:400|500|600|700|800|900)(?:\/\d{1,3})?\b/g;
+
+/**
+ * Logos de marques tierces — l'exception porte sur l'OCCURRENCE.
+ *
+ * Repeindre le logo Microsoft Teams au bleu marine de E2I dénaturerait la
+ * marque citée. Une charte régit SA propre identité, pas celle des autres.
+ */
+const LOGOS_TIERS: ReadonlyArray<{ fichier: string; classes: readonly string[] }> =
+  [
+    {
+      fichier: "app/telephonie-entreprise/pbx-yeastar/page.tsx",
+      classes: ["text-blue-600"], // <MicrosoftTeamsLogo /> — bleu de marque
+    },
+  ];
+
+/**
+ * Vague 5 (2026-09-21) — les rouges Tailwind bruts, remplacés par des tokens.
+ *
+ * `red-primary` (#E53E3E) donne 4,13:1 sur blanc : sous le seuil AA pour du
+ * texte normal ET pour du texte blanc sur aplat rouge. Le code contournait
+ * déjà le problème ~53 fois avec `text-red-600`/`bg-red-600`/`red-700` — une
+ * règle appliquée partout, nommée nulle part, donc impossible à faire
+ * respecter.
+ *
+ * La charte s'est dotée de deux tokens (accord d'Alban, règle absolue n°3) :
+ *
+ *   text-red-600 / bg-red-600 → red-text       (#DC2626, 4,83:1)
+ *   text-red-700 / bg-red-700 → red-text-hover (#B91C1C, 6,47:1)
+ *
+ * Les valeurs sont IDENTIQUES : seul le nom change. Une couleur qui mérite
+ * d'exister mérite un token — c'est le même principe que pour les gris.
+ */
+const ROUGES_BRUTS_INTERDITS =
+  /\b(?:text|bg|border|ring|divide|from|via|to)-red-(?:600|700)(?:\/\d{1,3})?\b/g;
+
+/**
  * Couleurs arbitraires — `bg-[#FEF2F2]`, `from-[#F9FAFB]`…
  *
  * Relevé par la relecture Codex du 2026-09-21 : réécrire `bg-ui-surface` en
@@ -349,6 +404,39 @@ describe("charte graphique — gris du site entier", () => {
         ),
       ].filter((h) => !PALETTE.has(`#${h}`));
       expect(hors).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucun bleu vif Tailwind",
+    (rel, fichier) => {
+      // Le gradient hero est neutralisé : ses blue-900/blue-800 relèvent de la
+      // règle absolue n°2, pas de cet arbitrage.
+      const source = fs
+        .readFileSync(fichier, "utf8")
+        .split(HERO_GRADIENT)
+        .join("");
+      const permis =
+        LOGOS_TIERS.find((l) => l.fichier === rel)?.classes ?? [];
+      const trouves = [
+        ...new Set(source.match(BLEU_VIF_INTERDIT) ?? []),
+      ].filter((c) => !permis.includes(c));
+      expect(trouves).toEqual([]);
+    },
+  );
+
+  it.each(surfaces().map((p) => [relatif(p), p]))(
+    "%s n'emploie aucun rouge Tailwind brut",
+    (_rel, fichier) => {
+      // Le gradient hero porte `to-red-600/85` : règle absolue n°2, neutralisé
+      // en amont comme pour toutes les autres gardes.
+      const source = fs
+        .readFileSync(fichier, "utf8")
+        .split(HERO_GRADIENT)
+        .join("");
+      expect([
+        ...new Set(source.match(ROUGES_BRUTS_INTERDITS) ?? []),
+      ]).toEqual([]);
     },
   );
 });
