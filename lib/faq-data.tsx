@@ -1,4 +1,10 @@
 import type { ReactNode } from "react";
+import {
+  CREATION_NUMERO_TARIF_TEXTE,
+  PORTABILITE_TARIF_TEXTE,
+  TARIFS_CREATION_NUMERO,
+  TARIFS_PORTABILITE,
+} from "@/lib/offres/portabilite";
 import type { FaqItem } from "@/lib/structured-data";
 
 /**
@@ -142,15 +148,14 @@ export const GENERAL_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je conserver le numéro actuel de mon entreprise ?",
     answerText:
-      "Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels. La demande nécessite votre dernière facture opérateur et votre numéro RIO. Si vous ne connaissez pas tous les numéros existants sur votre ligne, nous pouvons effectuer une demande de fiabilisation de ligne, facturée 50 € HT.",
+      `Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels. La demande nécessite votre dernière facture opérateur et votre numéro RIO. Si vous ne connaissez pas tous les numéros de votre ligne, nous les recensons par une fiabilisation, facturée ${TARIFS_PORTABILITE.fiabilisationHT} € HT. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <p>
-        Oui ! Nous pouvons lancer la portabilité de tous vos numéros actuels.
-        Lors de la demande de portabilité, il est nécessaire de fournir votre
-        dernière facture opérateur et votre numéro RIO. Si vous ne connaissez
-        pas tous les numéros existants sur votre ligne support, nous pouvons
-        effectuer une demande de fiabilisation de ligne. Ce service est facturé
-        50€ HT.
+        Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels.
+        La demande nécessite votre dernière facture opérateur et votre numéro RIO.
+        Si vous ne connaissez pas tous les numéros de votre ligne, nous les recensons par une fiabilisation,
+        facturée {TARIFS_PORTABILITE.fiabilisationHT} € HT.{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
       </p>
     ),
   },
@@ -158,31 +163,26 @@ export const GENERAL_FAQ: RichFaqItem[] = [
     question:
       "Est-il possible de créer de nouveaux numéros en zone locale pour ma nouvelle passerelle SIP ?",
     answerText:
-      "Oui. Avec notre service de Trunk SIP, il est possible de créer un nouveau numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou la Réunion. Contactez-nous pour un devis.",
+      `Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui, avec notre service de Trunk SIP, il est tout à fait possible de
-        créer un nouveau numéro en zone locale pour la Guadeloupe, La
-        Martinique, La Guyane ou La Réunion. Contactez-nous pour un devis{" "}
-        <a
-          href="/devis-en-ligne"
-          className="text-red-primary hover:underline font-semibold"
-        >
-          en cliquant ici
-        </a>
-        .
+        Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone
+        locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un
+        numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}. Les frais de
+        création sont uniques.
       </p>
     ),
   },
   {
-    question: "Est-il possible d'avoir un numéro de téléphone personnalisé ?",
+    question: "Peut-on créer un numéro de téléphone personnalisé avec une suite logique ?",
     answerText:
-      "Oui, nous pouvons créer un numéro de téléphone respectant une suite logique. Consultez-nous par mail. Ce service est facturé 50 €/mois.",
+      `Oui. Nous pouvons créer un numéro de téléphone respectant une suite logique. Ce service est facturé ${TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT en frais uniques. La redevance est de ${TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.`,
     answer: (
       <p>
-        Oui nous pouvons bien sûr vous créer un numéro de téléphone respectant
-        une suite logique. Consultez-nous par mail et nous vous répondrons. Ce
-        service est facturé 50€/mois.
+        Oui. Nous pouvons créer un numéro de téléphone respectant une suite
+        logique. Ce service est facturé {TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT
+        en frais uniques. La redevance est de{" "}
+        {TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.
       </p>
     ),
   },
@@ -237,24 +237,27 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
     question:
       "Quelle est la différence entre Trunk SIP au compteur et illimité ?",
     answerText:
-      "Le Trunk SIP au compteur facture uniquement vos appels émis à la seconde (idéal pour un faible volume, moins de 200 min/mois). L'offre illimitée propose un forfait fixe mensuel pour des appels illimités vers la France et les DOM (recommandée au-delà de 200 minutes/mois).",
+      "Le Trunk SIP au compteur facture vos appels émis à la seconde : il convient aux faibles volumes. L'offre illimitée propose un forfait mensuel par appel simultané, avec les appels vers les fixes France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.",
     answer: (
       <p>
-        Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois),
-        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM
-        (recommandé pour plus de 200 minutes/mois).
+        Le <strong>Trunk SIP au compteur</strong> facture vos appels émis à la seconde : il convient aux faibles volumes.
+        L&apos;offre <strong>illimitée</strong> propose un forfait mensuel par appel simultané, avec les appels vers les fixes
+        France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.
       </p>
     ),
   },
   {
     question: "Puis-je garder mes numéros actuels ?",
     answerText:
-      "Oui. Nous gérons gratuitement la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).",
+      `Oui. Nous gérons la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane). La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants.
-        Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM
-        (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
+        <strong>Oui.</strong> Nous gérons la portabilité de vos numéros existants et pouvons créer
+        de nouveaux numéros géographiques dans votre zone DOM
+        (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },
@@ -319,7 +322,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
   {
     question: "Comment fonctionne la facturation à la seconde ?",
     answerText:
-      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits ; seuls les appels sortants sont facturés. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0275 € (83 s × 0,02 €/min ÷ 60).",
+      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits sur un trunk classique ; sur l'offre BYOC, la minute entrante est facturée 0,0040 €. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0332 € (83 s × 0,0240 €/min ÷ 60).",
     answer: (
       <div className="space-y-3">
         <p>
@@ -340,12 +343,12 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
           </li>
           <li className="flex items-start">
             <span className="mr-2 mt-1">✓</span>
-            <span><strong>Appels entrants gratuits</strong> (seuls les appels sortants sont facturés)</span>
+            <span><strong>Appels entrants gratuits sur un trunk classique</strong> — 0,0040 €/min sur l'offre BYOC</span>
           </li>
         </ul>
         <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-dark">
           <strong>Exemple concret :</strong> Un appel de 1 minute 23 secondes vers un fixe DOM
-          vous coûtera exactement 0,0275€ (83 secondes × 0,02€/minute ÷ 60).
+          vous coûtera exactement 0,0332 € (83 secondes × 0,0240 €/minute ÷ 60).
         </p>
       </div>
     ),
@@ -387,10 +390,12 @@ export const AIRCALL_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je avoir des numéros locaux dans les DOM avec Aircall ?",
     answerText:
-      "Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.",
+      `Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.
+        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },
@@ -436,12 +441,13 @@ export const DEVIS_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je conserver mes numéros actuels avec votre solution ?",
     answerText:
-      "Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous proposons des solutions flexibles adaptées à votre infrastructure existante.",
+      `Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous proposons des solutions flexibles adaptées à votre infrastructure existante. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <p>
         Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et
         dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous
-        proposons des solutions flexibles adaptées à votre infrastructure existante.
+        proposons des solutions flexibles adaptées à votre infrastructure existante.{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
       </p>
     ),
   },
@@ -464,7 +470,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX et pourquoi choisir cette solution ?",
     answerText:
-      "3CX est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud. Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP. E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.",
+      `3CX est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud. Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP. E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -499,7 +505,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Combien de temps faut-il pour installer 3CX ?",
     answerText:
-      "L'installation d'un système 3CX prend généralement entre 1 et 3 jours selon le nombre de postes et la complexité de votre configuration (groupes d'appels, files d'attente, IVR). E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros et formation de vos équipes.",
+      `L'installation d'un système 3CX prend généralement entre 1 et 3 jours selon le nombre de postes et la complexité de votre configuration (groupes d'appels, files d'attente, IVR). E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros et formation de vos équipes.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -516,7 +522,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Puis-je garder mes numéros actuels avec 3CX ?",
     answerText:
-      "Oui, nous prenons en charge la portabilité de vos numéros fixes et mobiles en France métropolitaine et dans les DOM-TOM. Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans interruption de service.",
+      `Oui, nous prenons en charge la portabilité de vos numéros fixes et mobiles en France métropolitaine et dans les DOM-TOM. Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans interruption de service. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -525,7 +531,8 @@ export const FAQ_3CX: RichFaqItem[] = [
         </p>
         <p>
           Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans
-          interruption de service.
+          interruption de service.{" "}
+          La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
         </p>
       </div>
     ),
@@ -636,7 +643,7 @@ export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
   {
     question: "E2I est-elle compatible avec mon opérateur actuel ?",
     answerText:
-      "Oui. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs proposant un service SIP. Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros fixes et mobiles sans interruption.",
+      `Oui. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs proposant un service SIP. Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros fixes et mobiles sans interruption.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -747,56 +754,54 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée est une solution de téléphonie IP hébergée sur une infrastructure mutualisée. Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) sans héberger le serveur chez vous. E2I gère l'infrastructure, vous ne gérez que vos postes. Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.",
+      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie IP hébergée sur une
-          infrastructure mutualisée.
+          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie hébergée pour 3 à 8 utilisateurs.
         </p>
         <p>
-          Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) <strong>sans héberger le serveur
-          chez vous</strong>. E2I gère l'infrastructure, vous ne gérez que vos postes.
+          Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). <strong>E2I gère le serveur.</strong>
         </p>
-        <p>Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.</p>
+        <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.</p>
       </div>
     ),
   },
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ; applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
           Avec <strong>3CX SMB mutualisée</strong>, l'infrastructure est partagée entre plusieurs clients :
         </p>
         <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
-          <li>Coût réduit</li>
-          <li>Mise en service rapide</li>
-          <li>Maintenance incluse</li>
+          <li>licence mensuelle ;</li>
+          <li>frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ;</li>
+          <li>applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles.</li>
         </ul>
         <p>
-          Avec <strong>3CX dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
+          Avec <strong>3CX PRO dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
           avancée, capacité supérieure.
         </p>
-        <p>La mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.</p>
+        <p>La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.</p>
       </div>
     ),
   },
   {
-    question: "Pour qui est destinée la solution 3CX SMB mutualisée ?",
+    question: "À qui s'adresse la solution 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 10 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 8 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.",
     answer: (
       <div className="space-y-3">
         <p>
-          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 10 utilisateurs) qui veulent une
+          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 8 utilisateurs) qui veulent une
           téléphonie professionnelle sans gérer de serveur.
         </p>
         <p>
-          Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels
-          depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.
+          Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels
+          avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.
         </p>
       </div>
     ),
@@ -934,6 +939,103 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
   },
 ];
 
+/**
+ * FAQ de /3cx-free. Prix et limites repris de lib/offres/3cx-free.ts
+ * (offre validée le 2026-11-02) : garder les deux synchronisés.
+ */
+export const FAQ_3CX_FREE: RichFaqItem[] = [
+  {
+    question: "3CX gratuit : que payez-vous vraiment ?",
+    answerText:
+      "La licence 3CX Free est gratuite. E2I VoIP facture l'hébergement géré, le trunk SIP et votre numéro, à partir de 76 € HT par mois pour toute l'entreprise, jusqu'à 10 utilisateurs. La mise en service coûte 199 € HT. L'engagement est de 12 mois.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>La licence 3CX Free est gratuite.</strong> E2I VoIP facture l&apos;hébergement géré, le trunk SIP et votre numéro, à partir de <strong>76 € HT par mois</strong> pour toute l&apos;entreprise, jusqu&apos;à 10 utilisateurs.
+        </p>
+        <p>
+          La mise en service coûte 199 € HT. L&apos;engagement est de 12 mois.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Peut-on utiliser des téléphones de bureau avec 3CX Free ?",
+    answerText:
+      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application mobile 3CX et le client web (navigateur). Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application mobile 3CX et le client web (navigateur).
+        </p>
+        <p>
+          Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "3CX Free permet-il de mettre les appelants en file d'attente ?",
+    answerText:
+      "Non. Les groupes d'appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l'appelant dans une file d'attente jusqu'à ce que quelqu'un soit disponible. Les files d'attente, l'enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> Les groupes d&apos;appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l&apos;appelant dans une file d&apos;attente jusqu&apos;à ce que quelqu&apos;un soit disponible.
+        </p>
+        <p>
+          Les files d&apos;attente, l&apos;enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que faire si vous dépassez 4 appels simultanés ?",
+    answerText:
+      "La licence gratuite est limitée à 4 appels simultanés, c'est-à-dire en même temps. Cette limite ne peut pas être étendue. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d'attente.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          La licence gratuite est <strong>limitée à 4 appels simultanés</strong>, c&apos;est-à-dire en même temps. Cette limite ne peut pas être étendue.
+        </p>
+        <p>
+          Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d&apos;attente.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Pouvez-vous installer et gérer 3CX Free vous-même ?",
+    answerText:
+      "Oui. Vous installez 3CX Free sur votre serveur ou votre cloud et vous l'administrez. E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l'administration de votre 3CX.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> Vous installez 3CX Free sur votre serveur ou votre cloud et vous l&apos;administrez.
+        </p>
+        <p>
+          E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l&apos;administration de votre 3CX.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que comprend l'illimité et quelles sont ses limites ?",
+    answerText:
+      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d'usage s'appliquent. Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l'international et les numéros spéciaux. Les centres d'appels sont exclus.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d&apos;usage s&apos;appliquent.
+        </p>
+        <p>
+          Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l&apos;international et les numéros spéciaux. Les centres d&apos;appels sont exclus.
+        </p>
+      </div>
+    ),
+  },
+];
+
 /** Extrait les paires Q/R en texte brut pour le JSON-LD FAQPage. */
 export function toFaqSchemaItems(items: RichFaqItem[]): FaqItem[] {
   return items.map(({ question, answerText }) => ({
@@ -1009,17 +1111,18 @@ export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
   {
     question: "Peut-on garder son numéro actuel en changeant de standard ?",
     answerText:
-      "Oui. La portabilité de vos numéros existants est prise en charge et gratuite, y compris pour les numéros géographiques 0590, 0596, 0594 et 0262. Vos clients continuent de vous joindre sur le même numéro après la bascule : aucun changement à communiquer.",
+      `Oui. La portabilité de vos numéros existants est prise en charge, y compris pour les numéros géographiques 0590, 0596, 0594 et 0262. Vos clients continuent de vous joindre sur le même numéro après la bascule : aucun changement à communiquer. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Oui.</strong> La portabilité de vos numéros existants est prise en charge
-          et gratuite, y compris pour les numéros géographiques{" "}
+          <strong>Oui.</strong> La portabilité de vos numéros existants est prise en charge,
+          y compris pour les numéros géographiques{" "}
           <strong>0590, 0596, 0594 et 0262</strong>.
         </p>
         <p>
           Vos clients continuent de vous joindre sur le même numéro après la bascule :
-          aucun changement à communiquer.
+          aucun changement à communiquer.{" "}
+          La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
         </p>
       </div>
     ),
@@ -1047,7 +1150,7 @@ export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
   {
     question: "Combien de temps prend le remplacement d'un standard ?",
     answerText:
-      "Comptez quelques jours entre la validation de la configuration et la bascule pour une installation simple, davantage si le câblage ou les postes physiques sont à revoir. La continuité est assurée : les numéros sont portés et l'ancien standard reste actif jusqu'au basculement.",
+      `Comptez quelques jours entre la validation de la configuration et la bascule pour une installation simple, davantage si le câblage ou les postes physiques sont à revoir. La continuité est assurée : les numéros sont portés et l'ancien standard reste actif jusqu'au basculement.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -1163,16 +1266,18 @@ export function buildTerritoryFaq(territory: TerritoryFaqInput): RichFaqItem[] {
     },
     {
       question: `Peut-on garder ses numéros ${territory.indicatif} en changeant de standard ?`,
-      answerText: `Oui. La portabilité des numéros ${territory.indicatif} est prise en charge et gratuite. Vos correspondants continuent de vous joindre sur le même numéro après la migration vers un standard hébergé, sans interruption de service ni changement de coordonnées à communiquer.`,
+      answerText: `Oui. La portabilité des numéros ${territory.indicatif} est prise en charge. Vos correspondants continuent de vous joindre sur le même numéro après la migration vers un standard hébergé, sans interruption de service ni changement de coordonnées à communiquer. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
       answer: (
         <div className="space-y-3">
           <p>
             <strong>Oui.</strong> La portabilité des numéros {territory.indicatif} est
-            prise en charge et <strong>gratuite</strong>.
+            prise en charge.
           </p>
           <p>
             Vos correspondants continuent de vous joindre sur le même numéro après la
-            migration vers un standard hébergé, sans interruption de service.
+            migration vers un standard hébergé, sans interruption de service ni changement
+            de coordonnées à communiquer.{" "}
+            La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
           </p>
         </div>
       ),

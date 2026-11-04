@@ -14,7 +14,7 @@ const TALLY_3CX_SMB_URL = TALLY_FORMS.VOIP_3CX_SMB;
 export const metadata: Metadata = pageMetadata({
   title: "3CX SMB PRO Mutualisé - Solution économique TPE/PME",
   description:
-    "Solution 3CX hébergée mutualisée pour TPE et PME. De 3 à 10 utilisateurs : 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus) ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités, mobiles au compteur.",
+    "3CX SMB mutualisée de 3 à 8 utilisateurs : licence mensuelle et frais de mise en service réduits. Applications 3CX et téléphones de bureau compatibles. 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus) ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités, mobiles au compteur.",
   keywords:
     "3CX SMB PRO, 3CX mutualisé, téléphonie TPE, téléphonie PME, VoIP économique, 3CX multi-tenant",
   path: "/telephonie-entreprise/3cx-smb-mutualisee",
@@ -54,7 +54,7 @@ export default function Smb3CXMutualisee() {
                 <strong>Solution économique</strong> pour TPE et PME
               </p>
               <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-                De <strong>3 à 10 utilisateurs</strong> •
+                De <strong>3 à 8 utilisateurs</strong> •
                 à partir de <strong>15 € HT/utilisateur/mois</strong>
               </p>
 
@@ -79,9 +79,10 @@ export default function Smb3CXMutualisee() {
                 La solution <span className="text-red-primary">3CX économique</span> pour les petites entreprises
               </h2>
               <p className="text-xl text-ui-muted leading-relaxed max-w-4xl mx-auto">
-                Notre offre <strong>3CX SMB mutualisée</strong> vous permet de bénéficier de toutes les 
-                fonctionnalités 3CX sans les coûts d'une infrastructure dédiée. Parfait pour les TPE 
-                et PME de 3 à 10 utilisateurs recherchant une solution professionnelle et économique.
+                Notre offre <strong>3CX SMB mutualisée</strong> accompagne les équipes de 3 à 8 utilisateurs.
+                Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles.
+                Vous bénéficiez d’une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur.
+                Ces frais font l’objet d’un paiement unique à la mise en service.
               </p>
             </div>
 
@@ -94,7 +95,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Économique</h3>
                   <p className="text-ui-muted text-center">
-                    À partir de 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus), ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités — mobiles au compteur — sans frais d&apos;infrastructure
+                    À partir de 15 € HT/utilisateur/mois au compteur (Trunk SIP en sus), ou 29 € HT/utilisateur/mois avec les fixes France et DOM illimités — mobiles au compteur
                   </p>
                 </div>
               </div>
@@ -106,7 +107,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Activation rapide</h3>
                   <p className="text-ui-muted text-center">
-                    Mise en service rapide, configuration pré-établie
+                    Votre configuration est préparée pour la mise en service.
                   </p>
                 </div>
               </div>
@@ -118,7 +119,7 @@ export default function Smb3CXMutualisee() {
                   </div>
                   <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-dark justify-center">Évolutif</h3>
                   <p className="text-ui-muted text-center">
-                    De 3 à 10 utilisateurs, ajustable selon vos besoins
+                    De 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.
                   </p>
                 </div>
               </div>
@@ -127,7 +128,7 @@ export default function Smb3CXMutualisee() {
             {/* Fonctionnalités incluses */}
             <div className="mt-16 bg-base-200 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-dark mb-6 text-center">
-                Toutes les fonctionnalités 3CX incluses
+                Vos fonctionnalités 3CX au quotidien
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-3">
@@ -144,7 +145,7 @@ export default function Smb3CXMutualisee() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
-                  <span className="text-gray-dark">Chat d'équipe et collaboration</span>
+                  <span className="text-gray-dark">Messagerie d'équipe et collaboration</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle size={24} className="text-red-primary" aria-hidden="true" />
@@ -212,7 +213,7 @@ export default function Smb3CXMutualisee() {
                 <span className="absolute top-4 right-4 bg-blue-marine text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                   Recommandée
                 </span>
-                <div className="bg-gradient-to-r from-blue-900/95 to-red-600/90 px-8 py-8 text-center text-white">
+                <div className="bg-gradient-to-r from-blue-900/95 to-red-text/90 px-8 py-8 text-center text-white">
                   <div className="font-mono tabular-nums text-5xl font-black">
                     29 €
                     <span className="font-sans text-xl font-medium text-white"> HT / utilisateur / mois</span>
@@ -246,7 +247,7 @@ export default function Smb3CXMutualisee() {
 
             <p className="mt-6 text-center text-ui-muted">
               Le Trunk SIP se dimensionne <strong>au niveau de l&apos;instance</strong>, jamais par
-              utilisateur : c&apos;est le nombre d&apos;appels simultanés qui compte, pas le nombre de postes.
+              utilisateur : c&apos;est le nombre d&apos;appels simultanés qui compte, pas le nombre d’utilisateurs.
             </p>
 
             <div className="bg-white rounded-2xl shadow-sm border border-ui-border overflow-hidden mt-10">
@@ -275,9 +276,9 @@ export default function Smb3CXMutualisee() {
                     <DeviceMobile size={24} className="text-blue-marine" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-dark mb-1">Application mobile 3CX incluse</h3>
+                    <h3 className="font-semibold text-gray-dark mb-1">Applications 3CX incluses</h3>
                     <p className="text-ui-muted text-sm">
-                      Utilisable sur smartphone, PC et navigateur web.
+                      Utilisables sur smartphone, ordinateur et navigateur.
                     </p>
                   </div>
                 </div>
@@ -301,7 +302,7 @@ export default function Smb3CXMutualisee() {
                   <div>
                     <h3 className="font-semibold text-gray-dark mb-1">Téléphones SIP compatibles</h3>
                     <p className="text-ui-muted text-sm">
-                      Connectez vos téléphones SIP compatibles, notamment Fanvil et Yealink.
+                      Connectez vos téléphones SIP compatibles, notamment Fanvil et Yealink, ainsi que vos téléphones sans fil DECT.
                     </p>
                   </div>
                 </div>

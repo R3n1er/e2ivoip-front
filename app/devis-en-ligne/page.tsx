@@ -50,7 +50,7 @@ const devisGroups = [
       },
       {
         title: "Devis 3CX SMB",
-        description: "Offre mutualisée, de 3 à 10 utilisateurs",
+        description: "Offre mutualisée, de 3 à 8 utilisateurs",
         href: TALLY_FORMS.VOIP_3CX_SMB,
         variant: "secondary" as const,
       },
@@ -177,7 +177,7 @@ export default function DevisEnLignePage() {
                         motion-reduce:transform-none motion-reduce:transition-none
                         ${
                           item.variant === "primary"
-                            ? "bg-red-primary hover:bg-red-600 focus-visible:ring-red-primary"
+                            ? "bg-red-primary hover:bg-red-text focus-visible:ring-red-primary"
                             : "bg-blue-marine hover:bg-blue-marine/90 focus-visible:ring-blue-marine"
                         }
                       `}

@@ -85,6 +85,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // 3CX (page unique : présente les offres SMB mutualisée et PRO dédiée)
     { path: "/telephonie-3cx", changeFrequency: "monthly", priority: 0.9 },
+    // 3CX Free : offre propre (licence gratuite + hébergement + trunk), canonical distinct.
+    { path: "/3cx-free", changeFrequency: "monthly", priority: 0.8 },
 
     // Standard téléphonique (phase 3 SEO) — hub + déclinaisons territoriales.
     // Les déclinaisons proviennent du registre : une page non publiée

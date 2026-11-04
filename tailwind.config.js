@@ -34,6 +34,24 @@ module.exports = {
         "blue-marine-50": "#EEF1F5", // Fonds de sections alternées
         "blue-marine-100": "#D8DEE7", // Fonds d'icônes, bordures douces
 
+        // ── Rouge de TEXTE (charte étendue le 2026-09-21, vague 5) ──
+        // Ajouté avec l'accord explicite d'Alban (règle absolue n°3).
+        //
+        // `red-primary` (#E53E3E) donne 4,13:1 sur blanc : sous le seuil AA
+        // (4,5:1) pour du texte normal, et sous le seuil pour du texte blanc
+        // posé sur un aplat rouge. Le code contournait déjà le problème ~53
+        // fois avec les classes Tailwind brutes red-600/red-700 — une règle
+        // de fait, appliquée partout mais nommée nulle part.
+        //
+        // Ce token la nomme. L'écart avec le rouge de marque est ΔE≈61,
+        // imperceptible en usage réel : l'identité est préservée, la
+        // lisibilité gagnée.
+        //
+        //   red-primary (#E53E3E) → logo, titres 18px+, aplats décoratifs
+        //   red-text    (#DC2626) → texte courant, liens, fonds à texte blanc
+        "red-text": "#DC2626", // 4,83:1 sur blanc — AA texte normal
+        "red-text-hover": "#B91C1C", // 6,47:1 — survol des liens
+
         // ── Gris d'interface (fonctionnels, PAS des couleurs de marque) ──
         // Même rampe bleutée que `gray-dark`, qui est déjà le `gray-800` de
         // Tailwind : la charte a donc déjà adopté ce procédé. Ces deux tokens

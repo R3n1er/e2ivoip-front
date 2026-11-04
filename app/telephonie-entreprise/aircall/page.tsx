@@ -206,7 +206,7 @@ export default function AircallPage() {
                     href="https://aircall.io/"
                     target="_blank"
                     rel="noopener"
-                    className="font-semibold text-blue-marine underline decoration-blue-marine/30 underline-offset-2 hover:text-red-primary"
+                    className="font-semibold text-blue-marine underline decoration-blue-marine/30 underline-offset-2 hover:text-red-text"
                   >
                     Aircall
                   </a>{" "}
@@ -364,7 +364,7 @@ export default function AircallPage() {
                   key={title}
                   className="rounded-2xl border border-ui-border bg-white p-8 shadow-sm"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-900/10">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-marine/10">
                     <Icon size={28} className="text-blue-marine" aria-hidden="true" />
                   </div>
                   <h3 className="mt-4 text-xl font-bold text-gray-dark">

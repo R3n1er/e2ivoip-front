@@ -251,7 +251,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Link href="/nos-services">
                   <Button
                     variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-red-primary"
+                    className="border-white text-white hover:bg-white hover:text-red-text"
                   >
                     Découvrir nos services
                   </Button>
@@ -282,7 +282,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <h3 className="font-semibold text-gray-dark mb-2">
                       <Link
                         href={`/blog/${relatedPost.slug}`}
-                        className="hover:text-red-primary transition-colors"
+                        className="hover:text-red-text transition-colors"
                       >
                         {relatedPost.title}
                       </Link>

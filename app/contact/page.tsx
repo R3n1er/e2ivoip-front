@@ -206,7 +206,7 @@ export default function ContactPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="Page LinkedIn d'E2I VoIP (nouvelle fenêtre)"
-                          className="inline-flex items-center gap-2 text-blue-marine font-semibold hover:text-red-primary transition-colors duration-200"
+                          className="inline-flex items-center gap-2 text-blue-marine font-semibold hover:text-red-text transition-colors duration-200"
                           data-testid="social-linkedin-link"
                         >
                           <LinkedinLogo size={20} weight="fill" aria-hidden="true" />

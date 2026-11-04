@@ -10,6 +10,21 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-02 — Offre 3CX Free : prix par entreprise, plafonds d'usage, page dédiée
+
+- **Contexte** : l'édition 3CX « 4SC Basic Free » (10 utilisateurs, 4 appels simultanés) ne peut pas être hébergée par 3CX. E2I VoIP l'héberge sur une VM par client et la vend avec son trunk SIP. Un concurrent local annonce un « standard 3CX gratuit » sans prix.
+- **Décision** (arbitrages Alban du 2026-11-02) :
+  - prix **par entreprise** et non par utilisateur : 76 / 96 € HT au compteur (2 / 4 appels), 139 / 219 € HT en illimité fixes et mobiles France et DOM hors Mayotte, entrants compris ;
+  - **coefficient ×2 minimum sur chaque coût**, entrants compris (0,0075 €/min chez le grossiste) ; les plafonds d'usage (1 500 / 1 000 / 3 000 min et 3 000 / 2 000 / 6 000 min) gardent l'offre rentable jusqu'au plafond (coefficient d'environ 1,5) ;
+  - mise en service 199 € HT, engagement 12 mois, hébergement géré de 29 € HT inclus ;
+  - page `/3cx-free` avec son propre canonical (offre distincte de `/telephonie-3cx`). Les limites (ni postes IP, ni files d'attente) sont affichées en tête. Un encart de 3 questions oriente vers Free, SMB (téléphones de bureau ou plus de 4 appels, dès 8 appels payants, 3 à 8 utilisateurs) ou PRO (files d'attente, CRM, plus de 8 utilisateurs). Décision du 2026-11-03 : l'offre SMB passe de « 3 à 10 » à « 3 à 8 utilisateurs » (téléphones de bureau acceptés), avec licence mensuelle et mise en service réduite. 3CX Free : application mobile 3CX et client web uniquement.
+- **Raisonnement** : à coefficient ×2, l'illimité ne peut pas s'aligner sur un opérateur qui dispose de son propre transit. Le prix par entreprise devient l'argument, et le client fait lui-même la comparaison. On n'écrit jamais « moins cher que ».
+- **Conséquences** :
+  - `lib/offres/3cx-free.ts` est la source unique des prix et des limites ; la FAQ et `llms.txt` doivent rester alignés.
+  - Publication en production **après le pilote** qui valide le trunk E2I sur 3CX Free (handoff cerveau-e2ivoip du 2026-11-02).
+  - Rédaction confiée à Codex, puis revue rédactionnelle et revue de code par Codex en lecture seule.
+- **Tests associés** : `tests/3cx-free-offre.test.ts`, `tests/3cx-free-page.test.tsx`, `tests/e2e/3cx-free.spec.ts`.
+
 ### 2026-11-03 — Formulaire de devis 3CX Free : site → Resend + webhook n8n, sans Tally
 
 - **Contexte** : la page 3CX Free (PR #97) n'avait pas de formulaire de devis ; son bouton menait au rendez-vous Bookings. Alban ne veut pas de Tally pour ce formulaire et demande une protection anti-spam.
@@ -21,6 +36,23 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Si n8n ne répond pas, le lead part par mail de secours à `DEVIS_COMMERCIAL_EMAIL`. Si les deux échouent, le client reçoit une erreur 500 et peut réessayer : aucune demande perdue en silence.
 - **Conséquences** : 3 variables Vercel à créer : `N8N_DEVIS_3CX_FREE_WEBHOOK_URL`, `N8N_DEVIS_3CX_FREE_WEBHOOK_SECRET`, `DEVIS_COMMERCIAL_EMAIL`. Le formulaire sera monté sur la page 3CX Free une fois la PR #97 fusionnée.
 - **Tests associés** : `tests/devis-3cx-free-siret.test.ts` (12), `tests/api/devis-3cx-free.test.ts` (24), `tests/devis-3cx-free-form.test.tsx` (13).
+
+### 2026-10-27 — Prise de RDV commercial : Microsoft Bookings remplace HubSpot Meetings
+
+- **Contexte** : la section CTA de `/3cx-pro` intégrait le calendrier HubSpot Meetings (`meetings-eu1.hubspot.com/alban-renier`). Depuis le 13/10/2026, la référence pour un RDV commercial est la page Microsoft Bookings partagée Valérie LOPES / Alban RENIER (`RDVcommercialE2IVOIP1@e2i-voip.com`), consignée dans le cerveau E2I VOIP (`lien-prise-de-rdv-commercial`).
+- **Décision** : intégrer la page Bookings en iframe (`components/bookings-calendar.tsx`), avec un lien de secours **toujours visible** qui l'ouvre dans un nouvel onglet. Les URL sont centralisées dans `lib/constants/bookings.ts`. Le composant `components/hubspot/legacy/hubspot-calendar.tsx` est supprimé.
+- **Raisonnement** :
+  - Bookings accepte l'intégration (aucun `X-Frame-Options` ni `frame-ancestors`, vérifié en navigateur le 27/10/2026). Le `X-Frame-Options: DENY` du site ne concerne que l'intégration du site chez un tiers.
+  - Un échec de chargement d'une iframe cross-origin n'est pas détectable de façon fiable côté page (`onLoad` se déclenche même sur une page d'erreur) : un repli conditionnel resterait muet. Le lien permanent ne dépend d'aucune détection.
+  - L'iframe reprend la source du code d'intégration Bookings (`?ismsaljsauthenabled`, évite une redirection dans le cadre) ; le lien de secours garde la forme courte, celle qui fait foi.
+- **Conséquences** :
+  - Plus aucun script `MeetingsEmbedCode.js` chargé sur le site.
+  - La page concurrente `RDVCommercialE2IVOIP@…` (sans le « 1 ») est encore publiée : ne jamais la réutiliser, la dépublier côté Bookings.
+  - L'iframe n'est rendue qu'après hydratation : rendue côté serveur, elle pouvait finir de charger avant que React ne branche `onLoad`, laissant le message de chargement indéfiniment par-dessus le calendrier (relevé par la relecture Codex, reproduit en test).
+  - Lien de secours placé **avant** le cadre, en `text-red-700` souligné (≈ 5,9:1 sur `ui-surface-2`, AA ; `text-red-600` tombait à ≈ 4,4:1 sur ce fond).
+  - **Révision du 01/11/2026 (demande d'Alban) : calendrier en pleine hauteur, sans ascenseur, indiscernable d'une iframe.** Bookings, cross-origin, ne transmet pas sa hauteur : le cadre prend une hauteur fixe de 2 450 px (`scrolling="no"`), qui couvre toute la page Bookings (≈ 2 350 px mesurés, bouton « Réserver » à ≈ 2 055 px, identique de 375 à 960 px de large) plus une marge pour une journée chargée en créneaux. Ni cadre, ni ombre, ni coins arrondis ; la section passe en `ui-surface-2` (#F3F4F6), quasi identique au fond de Bookings (#F4F4F4). Le plafond `85svh` est supprimé : la page défile, plus l'iframe. À re-mesurer si Microsoft change la mise en page ou si des champs sont ajoutés au formulaire Bookings.
+  - Les tests Playwright simulent Bookings : ils ne dépendent pas du réseau Microsoft.
+- **Tests associés** : `tests/playwright/bookings-calendar.spec.ts` (remplace `hubspot-calendar.spec.ts`).
 
 ### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
 

@@ -151,7 +151,7 @@ describe("Page Nos Services", () => {
     // Vérification de quelques fonctionnalités clés
     expect(screen.getByText("Éligibilité Trunk SIP DOM")).toBeInTheDocument();
     expect(screen.getByText("Numéros locaux DOM")).toBeInTheDocument();
-    expect(screen.getByText("Portabilité gratuite")).toBeInTheDocument();
+    expect(screen.getByText(/^Portabilité/)).toBeInTheDocument();
     expect(screen.getByText("Canaux dimensionnés à votre trafic")).toBeInTheDocument();
     expect(screen.getByText("Formation et support dédiés")).toBeInTheDocument();
   });

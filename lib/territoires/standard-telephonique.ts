@@ -19,10 +19,29 @@
  * - Pas de `LocalBusiness` avec une adresse hors Guyane : le code légal ne
  *   connaît qu'une adresse, à Cayenne. Déclarer un établissement fictif est
  *   risqué. Voir `organizationSchema()` dans lib/structured-data.ts.
- * - Ne jamais nommer un concurrent : le dénigrement est constitué même si les
- *   propos sont exacts dès lors qu'ils sont publics (Cass. com. 7 janvier 2026,
- *   n° 24-18.085).
+ * - Un concurrent ne se nomme QUE comme opérateur d'origine d'une portabilité
+ *   (`migrationOperators`), de façon factuelle : ni jugement, ni comparaison de
+ *   prix ou de qualité, ni logo. Hors de ce cadre, le dénigrement est constitué
+ *   même si les propos sont exacts dès lors qu'ils sont publics (Cass. com.
+ *   7 janvier 2026, n° 24-18.085). Cadre arbitré par Alban le 2026-11-02 ;
+ *   voir docs/ligne-editoriale.md § « Citer un concurrent ».
  */
+
+/**
+ * Seuls noms de concurrents autorisés sur le site, et seulement dans la
+ * section migration des pages territoriales. Un test refuse tout autre
+ * emplacement (tests/territoires-guide-migration.test.tsx).
+ */
+export const CONCURRENTS_CITABLES = [
+  "Orange",
+  "SFR Caraïbe",
+  "SFR Réunion",
+  "Dauphin Telecom",
+  "Digicel",
+  "Ringover",
+] as const;
+
+export type ConcurrentCitable = (typeof CONCURRENTS_CITABLES)[number];
 
 import { TERRITORY_PHONES } from "@/lib/constants/phone-numbers";
 
@@ -136,6 +155,12 @@ export interface StandardTerritory {
    * elle était recopiée depuis la page guyanaise.
    */
   supportTimezone: string;
+  /**
+   * Opérateurs depuis lesquels un client du territoire porte ses numéros.
+   * Déclarés par territoire parce qu'ils ne se déduisent pas : Dauphin
+   * Telecom n'opère pas en Guyane, les opérateurs Caraïbe pas à La Réunion.
+   */
+  migrationOperators: readonly ConcurrentCitable[];
   /** Page publiée ? Voir « règle de publication » en tête de fichier. */
   published: boolean;
 }
@@ -172,7 +197,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     longLabel: "Guyane",
     title: "Standard téléphonique en Guyane",
     description:
-      "Standard téléphonique en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité incluse. Le cuivre ferme déjà — vérifions votre commune.",
+      "Standard téléphonique en Guyane : opérateur établi à Cayenne, ligne locale 0594, portabilité de vos numéros. Le cuivre ferme déjà — vérifions votre commune.",
     indicatif: "0594",
     phone: phoneFor("Guyane"),
     copper: {
@@ -219,6 +244,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     ],
     presence: "established",
     supportTimezone: "heure de Guyane (UTC−3)",
+    migrationOperators: ["Orange", "SFR Caraïbe", "Digicel", "Ringover"],
     context:
       "Le tissu économique guyanais combine structures médico-sociales, collectivités, sous-traitants du spatial à Kourou et commerces de Cayenne. Beaucoup de ces sites ont été raccordés en cuivre et basculent au 31 janvier 2027 : le standard doit être migré avant la coupure, pas après.",
     published: true,
@@ -255,6 +281,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     ],
     presence: "served",
     supportTimezone: "heure des Antilles (UTC−4)",
+    migrationOperators: ["Orange", "SFR Caraïbe", "Dauphin Telecom", "Digicel", "Ringover"],
     context:
       "La Martinique concentre son activité tertiaire autour de Fort-de-France et de la zone d'activité du Lamentin. Les parcs installés y sont souvent des PABX constructeur arrivés en fin de commercialisation : c'est le moment de basculer vers un standard hébergé.",
     // Publié le 2026-09-19 : contenu propre vérifié — calendrier cuivre
@@ -309,6 +336,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     ],
     presence: "served",
     supportTimezone: "heure des Antilles (UTC−4)",
+    migrationOperators: ["Orange", "SFR Caraïbe", "Dauphin Telecom", "Digicel", "Ringover"],
     context:
       "La zone industrielle de Jarry à Baie-Mahault concentre une part importante de l'activité économique de l'archipel, avec des sites multi-bâtiments où le routage des appels entre services est le premier irritant. Le commerce de centre commercial pose une autre contrainte : un réseau de boutiques a besoin d'un numéro unique qui distribue vers le bon point de vente, et d'un accueil qui tienne aux heures d'ouverture.",
     // Publié le 2026-09-19 : calendrier distinct (Petit-Bourg coupée,
@@ -357,6 +385,7 @@ export const STANDARD_TELEPHONE_TERRITORIES: readonly StandardTerritory[] = [
     ],
     presence: "served",
     supportTimezone: "heure de La Réunion (UTC+4)",
+    migrationOperators: ["Orange", "SFR Réunion", "Ringover"],
     context:
       "À La Réunion, la fermeture technique relève du lot 5 : la coupure intervient en 2029, plus tard qu'aux Antilles-Guyane. L'échéance reste à préparer, notamment pour les sites qui utilisent encore fax, alarmes ou terminaux de paiement sur paire de cuivre. C'est aussi le territoire qui pose la question du standard multi-sites : une entreprise présente aux Antilles et à La Réunion travaille sur deux fuseaux distants de huit heures, et son accueil téléphonique doit suivre.",
     // Publiée le 2026-09-19 sans preuve client ; la référence Groupe Lang a

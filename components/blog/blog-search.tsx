@@ -142,7 +142,7 @@ export function BlogSearch({
                   className={cn(
                     "text-xs",
                     filters.sortBy === key &&
-                      "bg-red-primary hover:bg-red-600 border-red-primary"
+                      "bg-red-primary hover:bg-red-text border-red-primary"
                   )}
                   disabled={isLoading}
                 >
@@ -215,7 +215,7 @@ export function BlogSearch({
                   className={cn(
                     "text-xs",
                     !filters.author &&
-                      "bg-red-primary hover:bg-red-600 border-red-primary"
+                      "bg-red-primary hover:bg-red-text border-red-primary"
                   )}
                   disabled={isLoading}
                 >
@@ -230,7 +230,7 @@ export function BlogSearch({
                     className={cn(
                       "text-xs",
                       filters.author === author &&
-                        "bg-red-primary hover:bg-red-600 border-red-primary"
+                        "bg-red-primary hover:bg-red-text border-red-primary"
                     )}
                     disabled={isLoading}
                   >
@@ -253,7 +253,7 @@ export function BlogSearch({
                   className={cn(
                     "text-xs",
                     !filters.year &&
-                      "bg-red-primary hover:bg-red-600 border-red-primary"
+                      "bg-red-primary hover:bg-red-text border-red-primary"
                   )}
                   disabled={isLoading}
                 >
@@ -270,7 +270,7 @@ export function BlogSearch({
                       className={cn(
                         "text-xs",
                         filters.year === year &&
-                          "bg-red-primary hover:bg-red-600 border-red-primary"
+                          "bg-red-primary hover:bg-red-text border-red-primary"
                       )}
                       disabled={isLoading}
                     >
@@ -295,7 +295,7 @@ export function BlogSearch({
                     className={cn(
                       "text-xs",
                       filters.tags.includes(tag) &&
-                        "bg-red-primary hover:bg-red-600 border-red-primary"
+                        "bg-red-primary hover:bg-red-text border-red-primary"
                     )}
                     disabled={isLoading}
                   >
@@ -317,7 +317,7 @@ export function BlogSearch({
               {filters.author}
               <button
                 onClick={() => handleAuthorChange("")}
-                className="ml-1 hover:text-red-600 transition-colors"
+                className="ml-1 hover:text-red-text transition-colors"
                 disabled={isLoading}
               >
                 ×
@@ -330,7 +330,7 @@ export function BlogSearch({
               {filters.year}
               <button
                 onClick={() => handleYearChange(null)}
-                className="ml-1 hover:text-red-600 transition-colors"
+                className="ml-1 hover:text-red-text transition-colors"
                 disabled={isLoading}
               >
                 ×
@@ -347,7 +347,7 @@ export function BlogSearch({
               {tag}
               <button
                 onClick={() => handleTagToggle(tag)}
-                className="ml-1 hover:text-red-600 transition-colors"
+                className="ml-1 hover:text-red-text transition-colors"
                 disabled={isLoading}
               >
                 ×

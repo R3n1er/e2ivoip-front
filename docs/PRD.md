@@ -508,44 +508,39 @@ ci-dessus).
 
 ## Nouveaux Composants de Conversion - Page 3CX Cloud
 
-### HubSpot Calendar Component
+### BookingsCalendar Component
 
-Composant React pour intégrer le calendrier de rendez-vous HubSpot avec optimisations pour la conversion :
+Composant React qui intègre la page Microsoft Bookings de prise de rendez-vous
+commercial (créneau partagé Valérie LOPES / Alban RENIER, 30 min). Remplace
+l'embed HubSpot Meetings depuis le 27/10/2026 (cf. `docs/ADR.md`).
 
-**Localisation** : `/components/hubspot-calendar.tsx`
+**Localisation** : `/components/bookings-calendar.tsx`
+**URL** : `lib/constants/bookings.ts` — ne jamais coder l'URL en dur.
 
 **Fonctionnalités** :
 
-- Intégration du script HubSpot Meetings Embed
-- Gestion du chargement asynchrone et des erreurs
-- Interface personnalisable (titre, description, hauteur)
-- Placeholder de chargement avec spinner
-- Informations de contact alternatives pour tous les DOM-TOM
-- Support des numéros de téléphone cliquables
+- Iframe Bookings, rendue après hydratation (sans quoi le message de chargement
+  peut rester affiché par-dessus le calendrier)
+- Message de chargement jusqu'à l'événement `onLoad` de l'iframe
+- Lien de secours **toujours visible**, placé avant le cadre, ouvrant Bookings
+  dans un nouvel onglet
+- Hauteur plafonnée à `85svh` (pas de double défilement sur mobile)
 
-**Script HubSpot intégré** :
+**Liens** :
 
-```html
-<!-- Start of Meetings Embed Script -->
-<div
-  class="meetings-iframe-container"
-  data-src="https://www.e2i-voip.com/meetings/alban-renier?embed=true"
-></div>
-<script
-  type="text/javascript"
-  src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
-></script>
-<!-- End of Meetings Embed Script -->
-```
+- Iframe : `https://bookings.cloud.microsoft/book/RDVcommercialE2IVOIP1@e2i-voip.com/?ismsaljsauthenabled`
+  (source du code d'intégration Bookings)
+- Lien de secours : `https://bookings.cloud.microsoft/book/RDVcommercialE2IVOIP1@e2i-voip.com/`
+  (forme courte, celle qui fait foi)
+- Ne jamais utiliser `RDVCommercialE2IVOIP@e2i-voip.com` (sans le « 1 ») : page
+  concurrente, à dépublier.
 
 **Props disponibles** :
 
-- `meetingUrl` : URL du calendrier HubSpot
-- `title` : Titre affiché au-dessus du calendrier
-- `description` : Description sous le titre
-- `height` : Hauteur du calendrier en pixels
-- `className` : Classes CSS personnalisées
-- `showContactInfo` : Afficher les contacts alternatifs
+- `embedUrl` : source de l'iframe
+- `bookingUrl` : URL du lien de secours
+- `height` : hauteur maximale du cadre en pixels
+- `className` : classes CSS personnalisées
 
 ### ProblemSolutionSection Component
 
@@ -613,7 +608,7 @@ Section Call-to-Action principale avec intégration calendrier :
 
 - Titre et sous-titre personnalisables
 - Liste des bénéfices de la démonstration
-- Intégration du HubSpotCalendar component
+- Intégration du BookingsCalendar component
 - Section urgence avec 3 raisons d'agir maintenant
 - Contacts alternatifs (email + devis en ligne)
 - Ancre `#calendrier` pour navigation directe
@@ -667,12 +662,10 @@ Section Call-to-Action principale avec intégration calendrier :
 
 ### Intégrations de Conversion
 
-**HubSpot Calendar** :
+**Prise de rendez-vous commercial (Microsoft Bookings)** :
 
-- URL : `https://www.e2i-voip.com/meetings/alban-renier`
-- Embed automatique avec paramètre `?embed=true`
-- Titre : "Réservez votre démonstration gratuite"
-- Description : "Échangeons 15 minutes pour comprendre vos enjeux"
+- Composant `BookingsCalendar`, URL dans `lib/constants/bookings.ts`
+- Service : « Votre Projet de Telephonie IP x E2I VOIP - 30 minutes »
 
 **Contacts régionaux intégrés** :
 

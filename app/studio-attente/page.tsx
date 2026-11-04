@@ -226,7 +226,7 @@ export default function StudioAttente() {
                     <Button
                       className={
                         option.highlight
-                          ? "w-full bg-red-primary text-white hover:bg-red-700"
+                          ? "w-full bg-red-primary text-white hover:bg-red-text-hover"
                           : "w-full border border-blue-marine bg-transparent text-blue-marine hover:bg-blue-marine hover:text-white"
                       }
                       asChild
@@ -427,7 +427,7 @@ export default function StudioAttente() {
                         href="https://entreprendre.service-public.gouv.fr/vosdroits/F3094"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline hover:text-red-primary"
+                        className="underline hover:text-red-text"
                       >
                         service-public.gouv.fr
                       </a>
