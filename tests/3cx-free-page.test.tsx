@@ -182,4 +182,23 @@ describe("Inscriptions de /3cx-free", () => {
   it("est référencée dans llms.txt", () => {
     expect(read("public/llms.txt")).toContain("/3cx-free)");
   });
+
+  describe("formulaire de devis", () => {
+    it("monte le formulaire de devis 3CX Free dans une section #devis", () => {
+      const { container } = render(<ThreeCXFreePage />);
+      const section = container.querySelector("section#devis");
+      expect(section).not.toBeNull();
+      expect(
+        within(section as HTMLElement).getByRole("form", { name: "Demande de devis 3CX Free" }),
+      ).toBeInTheDocument();
+      expect(within(section as HTMLElement).getByRole("heading", { level: 2 })).toBeInTheDocument();
+    });
+
+    it("le CTA principal du hero mène au formulaire, pas à /contact", () => {
+      render(<ThreeCXFreePage />);
+      const liens = screen.getAllByRole("link").map((l) => l.getAttribute("href"));
+      expect(liens).toContain("#devis");
+      expect(read("app/3cx-free/page.tsx")).not.toMatch(/CTAButton href="\/contact"/);
+    });
+  });
 });

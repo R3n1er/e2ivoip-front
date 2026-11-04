@@ -8,6 +8,7 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { CTACalendarSection } from "@/components/cta-calendar-section";
 import { FaqSection } from "@/components/faq-section";
 import { ChoixVersion3cx } from "@/components/3cx/choix-version-3cx";
+import { Devis3cxFreeForm } from "@/components/forms/devis-3cx-free-form";
 import { FAQ_3CX_FREE } from "@/lib/faq-data";
 import {
   CONDITIONS_3CX_FREE,
@@ -95,7 +96,7 @@ export default function ThreeCXFreePage() {
                 simultanés, c&apos;est-à-dire en même temps.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <CTAButton href="/contact">Parler de votre téléphonie</CTAButton>
+                <CTAButton href="#devis">Parler de votre téléphonie</CTAButton>
                 <CTAButtonMarine href="#rendez-vous" icon="ArrowRight">
                   Prendre rendez-vous
                 </CTAButtonMarine>
@@ -284,7 +285,21 @@ export default function ThreeCXFreePage() {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        {/* Formulaire de devis */}
+        <section id="devis" aria-labelledby="devis-titre" className="scroll-mt-24 bg-white py-16">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <h2 id="devis-titre" className="mb-4 text-3xl font-black tracking-[-0.04em] text-gray-dark md:text-4xl">
+              Parlons de votre projet 3CX Free
+            </h2>
+            <p className="mb-8 text-lg text-gray-dark">
+              Après l&apos;envoi, un conseiller étudie votre demande et revient vers vous avec un
+              devis adapté à vos besoins. Votre SIRET, facultatif, nous aide à préparer ce devis.
+            </p>
+            <Devis3cxFreeForm />
+          </div>
+        </section>
+
+        <section className="bg-gradient-to-br from-ui-surface to-white py-16">
           <FaqSection items={FAQ_3CX_FREE} title="Questions fréquentes sur 3CX Free" />
         </section>
 
