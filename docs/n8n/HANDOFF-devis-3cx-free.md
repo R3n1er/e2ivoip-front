@@ -89,7 +89,7 @@ Site (POST + en-tête secret)
 
 | Champ | Valeur |
 |---|---|
-| À | **à confirmer par Alban** (par défaut `commerciaux@e2i-voip.com`) |
+| À | `commerciaux@e2i-voip.com` (validé par Alban le 2026-11-03) |
 | Répondre à | `contact.email` |
 | Objet | `[3CX Free][{priorite}] {contact.societe} — {offreSuggeree}` |
 | Envoi | Resend (même credential *Header Auth* que le workflow `tally-tarifs-trunk-sip`) |
@@ -157,6 +157,6 @@ curl -i -X POST "https://<n8n>/webhook/devis-3cx-free" \
 
 ## 7. Points à trancher par Alban
 
-- **Q1** : l'adresse de destination du mail commercial.
+- ~~**Q1** : adresse du mail commercial~~ → `commerciaux@e2i-voip.com` (validé le 2026-11-03).
 - **Q2** : faut-il aussi créer le contact dans HubSpot, comme le fait le workflow `tally-tarifs-trunk-sip` ? Ce n'est pas prévu à ce stade.
 - **Q3** : le nom exact du modèle clef sur Ollama Cloud.
