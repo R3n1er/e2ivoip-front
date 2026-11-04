@@ -10,6 +10,18 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-03 — Formulaire de devis 3CX Free : site → Resend + webhook n8n, sans Tally
+
+- **Contexte** : la page 3CX Free (PR #97) n'avait pas de formulaire de devis ; son bouton menait au rendez-vous Bookings. Alban ne veut pas de Tally pour ce formulaire et demande une protection anti-spam.
+- **Décision** :
+  - Route `app/api/3cx-free/devis/route.ts` + composant `components/forms/devis-3cx-free-form.tsx`.
+  - Anti-spam **invisible** : Vercel BotID (déjà en place sur le formulaire RGPD), limite d'envois (5 / 15 min par IP), champ piège `website`, délai minimal de saisie. Pas de captcha visible ; Cloudflare Turnstile reste l'option de repli.
+  - Le **site** vérifie le SIRET (API publique Recherche d'entreprises, base Sirene) et envoie l'**accusé Resend** au client. Un SIRET fermé, introuvable, mal formé ou non vérifié **ne bloque pas** : il est signalé dans `anomalies`.
+  - Le lead part vers un **webhook n8n** (en-tête `X-E2I-Webhook-Secret`). n8n trie avec le modèle **clef** (Ollama Cloud) et prévient l'équipe commerciale. Le choix du modèle se règle dans n8n, pas dans le site.
+  - Si n8n ne répond pas, le lead part par mail de secours à `DEVIS_COMMERCIAL_EMAIL`. Si les deux échouent, le client reçoit une erreur 500 et peut réessayer : aucune demande perdue en silence.
+- **Conséquences** : 3 variables Vercel à créer : `N8N_DEVIS_3CX_FREE_WEBHOOK_URL`, `N8N_DEVIS_3CX_FREE_WEBHOOK_SECRET`, `DEVIS_COMMERCIAL_EMAIL`. Le formulaire sera monté sur la page 3CX Free une fois la PR #97 fusionnée.
+- **Tests associés** : `tests/devis-3cx-free-siret.test.ts` (12), `tests/api/devis-3cx-free.test.ts` (24), `tests/devis-3cx-free-form.test.tsx` (13).
+
 ### 2026-10-26 — Override npm de `postcss-selector-parser` plutôt que migration Tailwind 4
 
 - **Contexte** : après la PR #86, `npm audit` signalait encore 4 vulnérabilités modérées (`postcss-selector-parser` < 7.1.6, CPU DoS). Elles viennent de `@tailwindcss/typography@0.5.20`, dernière version publiée, qui dépend **en dur** de `postcss-selector-parser@6.0.10`, et de `tailwindcss@3`. Passer à Tailwind 4 ne réglait donc pas la faille (relecture Codex, plan `docs/superpowers/plans/2026-10-24-migration-tailwind-4.md`).
