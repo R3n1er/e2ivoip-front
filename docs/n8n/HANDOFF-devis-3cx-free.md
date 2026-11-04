@@ -241,4 +241,4 @@ curl -i -X POST "https://<n8n>/webhook/devis-3cx-free" \
 
 - ~~**Q1** : adresse du mail commercial~~ → `commerciaux@e2i-voip.com` (validé le 2026-11-03).
 - ~~**Q2** : HubSpot~~ → oui : contact, entreprise et transaction, avec extraction par DeepSeek (validé le 2026-11-03).
-- **Q3** : les tags exacts des modèles clef et DeepSeek sur Ollama Cloud.
+- ~~**Q3** : répartition des modèles~~ → deux modèles : DeepSeek extrait, clef trie (validé le 2026-11-03). **Hermes relève lui-même les tags exacts** dans le compte Ollama Cloud.
