@@ -1,4 +1,10 @@
 import type { ReactNode } from "react";
+import {
+  CREATION_NUMERO_TARIF_TEXTE,
+  PORTABILITE_TARIF_TEXTE,
+  TARIFS_CREATION_NUMERO,
+  TARIFS_PORTABILITE,
+} from "@/lib/offres/portabilite";
 import type { FaqItem } from "@/lib/structured-data";
 
 /**
@@ -142,15 +148,14 @@ export const GENERAL_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je conserver le numéro actuel de mon entreprise ?",
     answerText:
-      "Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels. La demande nécessite votre dernière facture opérateur et votre numéro RIO. Si vous ne connaissez pas tous les numéros existants sur votre ligne, nous pouvons effectuer une demande de fiabilisation de ligne, facturée 50 € HT.",
+      `Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels. La demande nécessite votre dernière facture opérateur et votre numéro RIO. Si vous ne connaissez pas tous les numéros de votre ligne, nous les recensons par une fiabilisation, facturée ${TARIFS_PORTABILITE.fiabilisationHT} € HT. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <p>
-        Oui ! Nous pouvons lancer la portabilité de tous vos numéros actuels.
-        Lors de la demande de portabilité, il est nécessaire de fournir votre
-        dernière facture opérateur et votre numéro RIO. Si vous ne connaissez
-        pas tous les numéros existants sur votre ligne support, nous pouvons
-        effectuer une demande de fiabilisation de ligne. Ce service est facturé
-        50€ HT.
+        Oui. Nous pouvons lancer la portabilité de tous vos numéros actuels.
+        La demande nécessite votre dernière facture opérateur et votre numéro RIO.
+        Si vous ne connaissez pas tous les numéros de votre ligne, nous les recensons par une fiabilisation,
+        facturée {TARIFS_PORTABILITE.fiabilisationHT} € HT.{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
       </p>
     ),
   },
@@ -158,31 +163,26 @@ export const GENERAL_FAQ: RichFaqItem[] = [
     question:
       "Est-il possible de créer de nouveaux numéros en zone locale pour ma nouvelle passerelle SIP ?",
     answerText:
-      "Oui. Avec notre service de Trunk SIP, il est possible de créer un nouveau numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou la Réunion. Contactez-nous pour un devis.",
+      `Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui, avec notre service de Trunk SIP, il est tout à fait possible de
-        créer un nouveau numéro en zone locale pour la Guadeloupe, La
-        Martinique, La Guyane ou La Réunion. Contactez-nous pour un devis{" "}
-        <a
-          href="/devis-en-ligne"
-          className="text-red-primary hover:underline font-semibold"
-        >
-          en cliquant ici
-        </a>
-        .
+        Oui. Avec notre service de Trunk SIP, vous pouvez créer un numéro en zone
+        locale pour la Guadeloupe, la Martinique, la Guyane ou La Réunion. Pour un
+        numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}. Les frais de
+        création sont uniques.
       </p>
     ),
   },
   {
-    question: "Est-il possible d'avoir un numéro de téléphone personnalisé ?",
+    question: "Peut-on créer un numéro de téléphone personnalisé avec une suite logique ?",
     answerText:
-      "Oui, nous pouvons créer un numéro de téléphone respectant une suite logique. Consultez-nous par mail. Ce service est facturé 50 €/mois.",
+      `Oui. Nous pouvons créer un numéro de téléphone respectant une suite logique. Ce service est facturé ${TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT en frais uniques. La redevance est de ${TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.`,
     answer: (
       <p>
-        Oui nous pouvons bien sûr vous créer un numéro de téléphone respectant
-        une suite logique. Consultez-nous par mail et nous vous répondrons. Ce
-        service est facturé 50€/mois.
+        Oui. Nous pouvons créer un numéro de téléphone respectant une suite
+        logique. Ce service est facturé {TARIFS_CREATION_NUMERO.suiteLogiqueHT} € HT
+        en frais uniques. La redevance est de{" "}
+        {TARIFS_CREATION_NUMERO.redevanceMensuelleHT} € HT par mois et par numéro.
       </p>
     ),
   },
@@ -237,24 +237,27 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
     question:
       "Quelle est la différence entre Trunk SIP au compteur et illimité ?",
     answerText:
-      "Le Trunk SIP au compteur facture uniquement vos appels émis à la seconde (idéal pour un faible volume, moins de 200 min/mois). L'offre illimitée propose un forfait fixe mensuel pour des appels illimités vers la France et les DOM (recommandée au-delà de 200 minutes/mois).",
+      "Le Trunk SIP au compteur facture vos appels émis à la seconde : il convient aux faibles volumes. L'offre illimitée propose un forfait mensuel par appel simultané, avec les appels vers les fixes France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.",
     answer: (
       <p>
-        Le <strong>Trunk SIP au compteur</strong> facture uniquement vos appels émis à la seconde (idéal pour faible volume &lt; 200 min/mois),
-        tandis que <strong>l'illimité</strong> propose un forfait fixe mensuel pour des appels illimités vers France + DOM
-        (recommandé pour plus de 200 minutes/mois).
+        Le <strong>Trunk SIP au compteur</strong> facture vos appels émis à la seconde : il convient aux faibles volumes.
+        L&apos;offre <strong>illimitée</strong> propose un forfait mensuel par appel simultané, avec les appels vers les fixes
+        France et DOM inclus et les mobiles facturés au compteur. Nous comparons les deux formules à partir de vos factures actuelles.
       </p>
     ),
   },
   {
     question: "Puis-je garder mes numéros actuels ?",
     answerText:
-      "Oui. Nous gérons gratuitement la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).",
+      `Oui. Nous gérons la portabilité de vos numéros existants et pouvons créer de nouveaux numéros géographiques dans votre zone DOM (0590 Guadeloupe, 0596 Martinique, 0594 Guyane). La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        <strong>Oui, absolument !</strong> Nous gérons gratuitement la portabilité de vos numéros existants.
-        Nous pouvons également créer de nouveaux numéros géographiques dans votre zone DOM
-        (ex: 0590 pour Guadeloupe, 0596 pour Martinique, 0594 pour Guyane).
+        <strong>Oui.</strong> Nous gérons la portabilité de vos numéros existants et pouvons créer
+        de nouveaux numéros géographiques dans votre zone DOM
+        (0590 Guadeloupe, 0596 Martinique, 0594 Guyane).{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },
@@ -387,10 +390,12 @@ export const AIRCALL_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je avoir des numéros locaux dans les DOM avec Aircall ?",
     answerText:
-      "Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.",
+      `Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins. Pour un nouveau numéro SDA France et DOM : ${CREATION_NUMERO_TARIF_TEXTE}. Les frais de création sont uniques.`,
     answer: (
       <p>
-        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.
+        Oui. Nous mettons en place des numéros géographiques adaptés à votre zone (Guadeloupe, Martinique, Guyane, La Réunion) ainsi que des numéros internationaux selon vos besoins.{" "}
+        Pour un nouveau numéro SDA France et DOM : {CREATION_NUMERO_TARIF_TEXTE}.
+        Les frais de création sont uniques.
       </p>
     ),
   },
@@ -436,12 +441,13 @@ export const DEVIS_FAQ: RichFaqItem[] = [
   {
     question: "Puis-je conserver mes numéros actuels avec votre solution ?",
     answerText:
-      "Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous proposons des solutions flexibles adaptées à votre infrastructure existante.",
+      `Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous proposons des solutions flexibles adaptées à votre infrastructure existante. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <p>
         Oui, nous prenons en charge la portabilité de vos numéros fixes en France métropolitaine et
         dans les DOM TOM. Vous devez nous communiquer votre numéro RIO pour cela. Par ailleurs, nous
-        proposons des solutions flexibles adaptées à votre infrastructure existante.
+        proposons des solutions flexibles adaptées à votre infrastructure existante.{" "}
+        La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
       </p>
     ),
   },
@@ -464,7 +470,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX et pourquoi choisir cette solution ?",
     answerText:
-      "3CX est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud. Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP. E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.",
+      `3CX est un système de téléphonie IP (IPBX) logiciel qui remplace votre standard téléphonique traditionnel. Il s'installe sur Windows, Linux ou dans le cloud. Vous gardez vos numéros actuels, vos collaborateurs utilisent leur PC, smartphone ou téléphone IP. E2I installe et configure 3CX pour vous, avec un support local en Martinique, Guadeloupe et Guyane.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -499,7 +505,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Combien de temps faut-il pour installer 3CX ?",
     answerText:
-      "L'installation d'un système 3CX prend généralement entre 1 et 3 jours selon le nombre de postes et la complexité de votre configuration (groupes d'appels, files d'attente, IVR). E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros et formation de vos équipes.",
+      `L'installation d'un système 3CX prend généralement entre 1 et 3 jours selon le nombre de postes et la complexité de votre configuration (groupes d'appels, files d'attente, IVR). E2I gère toute la mise en service : installation, configuration des postes, portabilité des numéros et formation de vos équipes.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -516,7 +522,7 @@ export const FAQ_3CX: RichFaqItem[] = [
   {
     question: "Puis-je garder mes numéros actuels avec 3CX ?",
     answerText:
-      "Oui, nous prenons en charge la portabilité de vos numéros fixes et mobiles en France métropolitaine et dans les DOM-TOM. Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans interruption de service.",
+      `Oui, nous prenons en charge la portabilité de vos numéros fixes et mobiles en France métropolitaine et dans les DOM-TOM. Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans interruption de service. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -525,7 +531,8 @@ export const FAQ_3CX: RichFaqItem[] = [
         </p>
         <p>
           Vous nous communiquez votre numéro RIO et nous gérons toute la procédure de portabilité sans
-          interruption de service.
+          interruption de service.{" "}
+          La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
         </p>
       </div>
     ),
@@ -636,7 +643,7 @@ export const FAQ_TELEPHONIE_ENTREPRISE: RichFaqItem[] = [
   {
     question: "E2I est-elle compatible avec mon opérateur actuel ?",
     answerText:
-      "Oui. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs proposant un service SIP. Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros fixes et mobiles sans interruption.",
+      `Oui. Nos solutions de téléphonie IP sont compatibles avec tous les opérateurs proposant un service SIP. Nous portons vos numéros actuels vers notre Trunk SIP via la portabilité. Vous gardez vos numéros fixes et mobiles sans interruption.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -1009,17 +1016,18 @@ export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
   {
     question: "Peut-on garder son numéro actuel en changeant de standard ?",
     answerText:
-      "Oui. La portabilité de vos numéros existants est prise en charge et gratuite, y compris pour les numéros géographiques 0590, 0596, 0594 et 0262. Vos clients continuent de vous joindre sur le même numéro après la bascule : aucun changement à communiquer.",
+      `Oui. La portabilité de vos numéros existants est prise en charge, y compris pour les numéros géographiques 0590, 0596, 0594 et 0262. Vos clients continuent de vous joindre sur le même numéro après la bascule : aucun changement à communiquer. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Oui.</strong> La portabilité de vos numéros existants est prise en charge
-          et gratuite, y compris pour les numéros géographiques{" "}
+          <strong>Oui.</strong> La portabilité de vos numéros existants est prise en charge,
+          y compris pour les numéros géographiques{" "}
           <strong>0590, 0596, 0594 et 0262</strong>.
         </p>
         <p>
           Vos clients continuent de vous joindre sur le même numéro après la bascule :
-          aucun changement à communiquer.
+          aucun changement à communiquer.{" "}
+          La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
         </p>
       </div>
     ),
@@ -1047,7 +1055,7 @@ export const FAQ_STANDARD_TELEPHONIQUE: RichFaqItem[] = [
   {
     question: "Combien de temps prend le remplacement d'un standard ?",
     answerText:
-      "Comptez quelques jours entre la validation de la configuration et la bascule pour une installation simple, davantage si le câblage ou les postes physiques sont à revoir. La continuité est assurée : les numéros sont portés et l'ancien standard reste actif jusqu'au basculement.",
+      `Comptez quelques jours entre la validation de la configuration et la bascule pour une installation simple, davantage si le câblage ou les postes physiques sont à revoir. La continuité est assurée : les numéros sont portés et l'ancien standard reste actif jusqu'au basculement.`,
     answer: (
       <div className="space-y-3">
         <p>
@@ -1163,16 +1171,18 @@ export function buildTerritoryFaq(territory: TerritoryFaqInput): RichFaqItem[] {
     },
     {
       question: `Peut-on garder ses numéros ${territory.indicatif} en changeant de standard ?`,
-      answerText: `Oui. La portabilité des numéros ${territory.indicatif} est prise en charge et gratuite. Vos correspondants continuent de vous joindre sur le même numéro après la migration vers un standard hébergé, sans interruption de service ni changement de coordonnées à communiquer.`,
+      answerText: `Oui. La portabilité des numéros ${territory.indicatif} est prise en charge. Vos correspondants continuent de vous joindre sur le même numéro après la migration vers un standard hébergé, sans interruption de service ni changement de coordonnées à communiquer. La portabilité est facturée : ${PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.`,
       answer: (
         <div className="space-y-3">
           <p>
             <strong>Oui.</strong> La portabilité des numéros {territory.indicatif} est
-            prise en charge et <strong>gratuite</strong>.
+            prise en charge.
           </p>
           <p>
             Vos correspondants continuent de vous joindre sur le même numéro après la
-            migration vers un standard hébergé, sans interruption de service.
+            migration vers un standard hébergé, sans interruption de service ni changement
+            de coordonnées à communiquer.{" "}
+            La portabilité est facturée : {PORTABILITE_TARIF_TEXTE}. Ces frais sont uniques.
           </p>
         </div>
       ),

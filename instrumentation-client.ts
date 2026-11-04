@@ -19,6 +19,7 @@ try {
     protect: [
       { path: '/api/rgpd/demande', method: 'POST' },
       { path: '/api/rgpd/confirm', method: 'GET' },
+      { path: '/api/3cx-free/devis', method: 'POST' },
     ],
   })
 } catch {
