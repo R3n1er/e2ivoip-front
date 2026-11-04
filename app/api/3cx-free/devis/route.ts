@@ -57,12 +57,6 @@ const LIMITES = {
   website: 200,
 } as const;
 
-function requireEnv(name: string): string {
-  const v = process.env[name];
-  if (!v) throw new Error(`${name} is required`);
-  return v;
-}
-
 function json(body: Record<string, unknown>, init?: { status?: number; headers?: HeadersInit }) {
   return NextResponse.json(body, {
     ...init,
@@ -163,6 +157,55 @@ async function envoyerAN8n(lead: LeadDevis3cxFree): Promise<boolean> {
     return res.ok;
   } catch (e) {
     console.error("[3cx-free/devis] n8n injoignable:", e instanceof Error ? e.message : e);
+    return false;
+  } finally {
+    clearTimeout(minuteur);
+  }
+}
+
+const RESEND_TIMEOUT_MS = 8000;
+
+interface MailSortant {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+  replyTo?: string;
+}
+
+/**
+ * Envoi Resend borné dans le temps. Renvoie true seulement si Resend a
+ * accepté le mail : le SDK signale la plupart des échecs par `{ error }`,
+ * sans lever d'exception. Ne lève jamais.
+ */
+async function envoyerMail(contexte: string, mail: MailSortant): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL;
+  if (!apiKey || !from) {
+    console.error(`[3cx-free/devis] ${contexte} : Resend non configuré`);
+    return false;
+  }
+  let minuteur: ReturnType<typeof setTimeout> | undefined;
+  const expiration = new Promise<"expire">((resolve) => {
+    minuteur = setTimeout(() => resolve("expire"), RESEND_TIMEOUT_MS);
+  });
+  try {
+    const resultat = await Promise.race([
+      new Resend(apiKey).emails.send({ from, ...mail }),
+      expiration,
+    ]);
+    if (resultat === "expire") {
+      console.error(`[3cx-free/devis] ${contexte} : délai Resend dépassé`);
+      return false;
+    }
+    const { error } = (resultat ?? {}) as { error?: { message?: string } | null };
+    if (error) {
+      console.error(`[3cx-free/devis] ${contexte} échoué:`, error.message ?? error);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error(`[3cx-free/devis] ${contexte} échoué:`, e instanceof Error ? e.message : e);
     return false;
   } finally {
     clearTimeout(minuteur);
@@ -307,35 +350,26 @@ export async function POST(request: Request) {
       pageUrl,
     };
 
-    const resend = new Resend(requireEnv("RESEND_API_KEY"));
-    const from = requireEnv("RESEND_FROM_EMAIL");
-
     // 1. Le lead d'abord : c'est lui qui ne doit jamais être perdu.
+    //    n8n ne dépend pas de la configuration Resend.
     let leadTransmis = await envoyerAN8n(lead);
     if (!leadTransmis) {
-      try {
-        await resend.emails.send({
-          from,
-          to: requireEnv("DEVIS_COMMERCIAL_EMAIL"),
-          replyTo: email,
-          subject: sanitizeHeader(`[Secours n8n] Devis 3CX Free — ${societe}`),
-          text: texteLead(lead),
-        });
-        leadTransmis = true;
-      } catch (e) {
-        console.error("[3cx-free/devis] mail de secours échoué:", e instanceof Error ? e.message : e);
-      }
+      const destinataire = process.env.DEVIS_COMMERCIAL_EMAIL;
+      leadTransmis = destinataire
+        ? await envoyerMail("mail de secours", {
+            to: destinataire,
+            replyTo: email,
+            subject: sanitizeHeader(`[Secours n8n] Devis 3CX Free — ${societe}`),
+            text: texteLead(lead),
+          })
+        : false;
     }
     if (!leadTransmis) {
       return json({ error: "Votre demande n’a pas pu être envoyée. Veuillez réessayer." }, { status: 500 });
     }
 
     // 2. L'accusé client : utile mais non bloquant, le lead est déjà parti.
-    try {
-      await resend.emails.send({ from, to: email, ...accuseReception(lead) });
-    } catch (e) {
-      console.error("[3cx-free/devis] accusé client échoué:", e instanceof Error ? e.message : e);
-    }
+    await envoyerMail("accusé client", { to: email, ...accuseReception(lead) });
 
     return json({ ok: true });
   } catch (e) {

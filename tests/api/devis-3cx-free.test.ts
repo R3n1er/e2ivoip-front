@@ -291,4 +291,36 @@ describe("POST /api/3cx-free/devis", () => {
       expect(corpsWebhook().pageUrl).toBe("https://e2i-voip.com/3cx-free");
     });
   });
+
+  describe("robustesse Resend (relecture Codex)", () => {
+    it("n8n en panne et Resend renvoie une erreur sans exception → 500", async () => {
+      fetchMock.mockResolvedValue({ ok: false, status: 502 });
+      mockSend.mockResolvedValue({ data: null, error: { message: "domain not verified" } });
+      const res = await POST(requete(PAYLOAD));
+      expect(res.status).toBe(500);
+    });
+
+    it.each(["RESEND_API_KEY", "RESEND_FROM_EMAIL"])(
+      "%s absente mais n8n disponible → le lead part, réponse 200",
+      async (variable) => {
+        delete process.env[variable];
+        const res = await POST(requete(PAYLOAD));
+        expect(res.status).toBe(200);
+        expect(appelWebhook()).toBeDefined();
+      },
+    );
+
+    it("accusé client bloqué indéfiniment → réponse 200 malgré tout", async () => {
+      jest.useFakeTimers();
+      try {
+        mockSend.mockImplementation(() => new Promise(() => {}));
+        const promesse = POST(requete(PAYLOAD));
+        await jest.advanceTimersByTimeAsync(20_000);
+        const res = await promesse;
+        expect(res.status).toBe(200);
+      } finally {
+        jest.useRealTimers();
+      }
+    });
+  });
 });
