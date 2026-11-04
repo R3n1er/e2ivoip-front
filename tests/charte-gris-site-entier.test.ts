@@ -42,8 +42,10 @@ const HERO_GRADIENT = "from-blue-900/85 via-blue-800/80 to-red-600/85";
  * fichiers sur 20 passait au vert. Ce compte exact est volontairement rigide —
  * s'il bouge, c'est soit une page ajoutée (mettre à jour ce nombre), soit une
  * substitution fautive (règle absolue n°2 violée). Les deux méritent un regard.
+ *
+ * 2026-11-02 : 21 — ajout de app/3cx-free/page.tsx (page ajoutée).
  */
-const HERO_FICHIERS_ATTENDUS = 20;
+const HERO_FICHIERS_ATTENDUS = 21;
 
 /**
  * Gris de texte et de bordure. Tokens de remplacement, arrêtés le 2026-09-20 :

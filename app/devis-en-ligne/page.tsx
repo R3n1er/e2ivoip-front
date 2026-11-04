@@ -50,7 +50,7 @@ const devisGroups = [
       },
       {
         title: "Devis 3CX SMB",
-        description: "Offre mutualisée, de 3 à 10 utilisateurs",
+        description: "Offre mutualisée, de 3 à 8 utilisateurs",
         href: TALLY_FORMS.VOIP_3CX_SMB,
         variant: "secondary" as const,
       },

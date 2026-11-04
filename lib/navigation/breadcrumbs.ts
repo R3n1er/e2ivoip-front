@@ -64,6 +64,10 @@ export const PAGE_BREADCRUMBS: Record<string, BreadcrumbItem[]> = {
     BREADCRUMB_HOME,
     { label: "3CX PRO" },
   ],
+  "/3cx-free": [
+    BREADCRUMB_HOME,
+    { label: "3CX Free" },
+  ],
   "/studio-attente": [
     BREADCRUMB_HOME,
     { label: "Studio d'attente téléphonique" },

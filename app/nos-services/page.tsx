@@ -36,10 +36,10 @@ export default function NosServices() {
       Icon: Users,
       title: "Standard téléphonique 3CX",
       description:
-        "Votre standard téléphonique 3CX : IPBX cloud mutualisé de 3 à 10 utilisateurs, ou instance dédiée pour les structures multisites. Compatible Trunk SIP — le raccordement est à souscrire.",
+        "Votre standard téléphonique 3CX : IPBX cloud mutualisé de 3 à 8 utilisateurs, ou instance dédiée pour les structures multisites. Compatible Trunk SIP — le raccordement est à souscrire.",
       features: [
         "Cloud mutualisé ou instance dédiée",
-        "3 à 10 utilisateurs (mutualisé)",
+        "3 à 8 utilisateurs (mutualisé)",
         "4 à 64 appels simultanés (dédié)",
         "Formation et support dédiés",
       ],

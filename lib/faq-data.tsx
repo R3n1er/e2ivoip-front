@@ -754,56 +754,54 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   {
     question: "Qu'est-ce que 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée est une solution de téléphonie IP hébergée sur une infrastructure mutualisée. Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) sans héberger le serveur chez vous. E2I gère l'infrastructure, vous ne gérez que vos postes. Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.",
+      "3CX SMB mutualisée est une solution de téléphonie hébergée pour 3 à 8 utilisateurs. Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). E2I gère le serveur. Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie IP hébergée sur une
-          infrastructure mutualisée.
+          <strong>3CX SMB mutualisée</strong> est une solution de téléphonie hébergée pour 3 à 8 utilisateurs.
         </p>
         <p>
-          Vous bénéficiez des fonctionnalités 3CX (softphone, transfert, IVR) <strong>sans héberger le serveur
-          chez vous</strong>. E2I gère l'infrastructure, vous ne gérez que vos postes.
+          Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles (téléphone IP ou DECT). <strong>E2I gère le serveur.</strong>
         </p>
-        <p>Idéal pour les TPE qui veulent une solution professionnelle sans investissement matériel.</p>
+        <p>Vous bénéficiez d'une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur. Ces frais font l’objet d’un paiement unique à la mise en service.</p>
       </div>
     ),
   },
   {
     question: "Quelle différence entre 3CX SMB mutualisée et 3CX dédié ?",
     answerText:
-      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients — coût réduit, mise en service rapide, maintenance incluse. Avec 3CX dédié, vous avez votre propre instance — contrôle total, personnalisation avancée, capacité supérieure. La solution mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.",
+      "Avec 3CX SMB mutualisée, l'infrastructure est partagée entre plusieurs clients : licence mensuelle ; frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ; applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles. Avec 3CX PRO dédié, vous avez votre propre instance : contrôle total, personnalisation avancée, capacité supérieure. La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.",
     answer: (
       <div className="space-y-3">
         <p>
           Avec <strong>3CX SMB mutualisée</strong>, l'infrastructure est partagée entre plusieurs clients :
         </p>
         <ul className="list-disc list-inside space-y-1 text-ui-muted ml-4">
-          <li>Coût réduit</li>
-          <li>Mise en service rapide</li>
-          <li>Maintenance incluse</li>
+          <li>licence mensuelle ;</li>
+          <li>frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur, avec un paiement unique à la mise en service ;</li>
+          <li>applications sur smartphone, ordinateur et navigateur, et téléphones de bureau compatibles.</li>
         </ul>
         <p>
-          Avec <strong>3CX dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
+          Avec <strong>3CX PRO dédié</strong>, vous avez votre propre instance : contrôle total, personnalisation
           avancée, capacité supérieure.
         </p>
-        <p>La mutualisée est idéale de 3 à 10 utilisateurs, le dédié au-delà.</p>
+        <p>La mutualisée convient aux équipes de 3 à 8 utilisateurs. Au-delà de 8 utilisateurs, E2I recommande 3CX PRO.</p>
       </div>
     ),
   },
   {
-    question: "Pour qui est destinée la solution 3CX SMB mutualisée ?",
+    question: "À qui s'adresse la solution 3CX SMB mutualisée ?",
     answerText:
-      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 10 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.",
+      "3CX SMB mutualisée s'adresse aux TPE et petites PME (3 à 8 utilisateurs) qui veulent une téléphonie professionnelle sans gérer de serveur. Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.",
     answer: (
       <div className="space-y-3">
         <p>
-          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 10 utilisateurs) qui veulent une
+          3CX SMB mutualisée s'adresse aux <strong>TPE et petites PME</strong> (3 à 8 utilisateurs) qui veulent une
           téléphonie professionnelle sans gérer de serveur.
         </p>
         <p>
-          Parfaite pour les commerçants, artisans, professions libérales, startups. Vous accédez à vos appels
-          depuis un softphone sur PC, mobile ou téléphone IP, avec un coût mensuel prévisible.
+          Elle convient aux commerçants, artisans, professions libérales et jeunes entreprises. Vous accédez à vos appels
+          avec les applications 3CX sur smartphone, ordinateur ou navigateur, ou avec un téléphone IP de bureau ou DECT.
         </p>
       </div>
     ),
@@ -936,6 +934,103 @@ export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
           Support <strong>local</strong> en Martinique, Guadeloupe et Guyane, du lundi au vendredi de 8h à 18h.
         </p>
         <p>Nous gérons à distance votre PBX et assurons les évolutions de firmware.</p>
+      </div>
+    ),
+  },
+];
+
+/**
+ * FAQ de /3cx-free. Prix et limites repris de lib/offres/3cx-free.ts
+ * (offre validée le 2026-11-02) : garder les deux synchronisés.
+ */
+export const FAQ_3CX_FREE: RichFaqItem[] = [
+  {
+    question: "3CX gratuit : que payez-vous vraiment ?",
+    answerText:
+      "La licence 3CX Free est gratuite. E2I VoIP facture l'hébergement géré, le trunk SIP et votre numéro, à partir de 76 € HT par mois pour toute l'entreprise, jusqu'à 10 utilisateurs. La mise en service coûte 199 € HT. L'engagement est de 12 mois.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>La licence 3CX Free est gratuite.</strong> E2I VoIP facture l&apos;hébergement géré, le trunk SIP et votre numéro, à partir de <strong>76 € HT par mois</strong> pour toute l&apos;entreprise, jusqu&apos;à 10 utilisateurs.
+        </p>
+        <p>
+          La mise en service coûte 199 € HT. L&apos;engagement est de 12 mois.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Peut-on utiliser des téléphones de bureau avec 3CX Free ?",
+    answerText:
+      "Non. La licence gratuite n'accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l'application mobile 3CX et le client web (navigateur). Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> La licence gratuite n&apos;accepte ni postes IP de bureau ni téléphones sans fil DECT. Vous utilisez uniquement l&apos;application mobile 3CX et le client web (navigateur).
+        </p>
+        <p>
+          Pour utiliser des téléphones de bureau, E2I recommande 3CX SMB (jusqu'à 8 utilisateurs) ou 3CX PRO.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "3CX Free permet-il de mettre les appelants en file d'attente ?",
+    answerText:
+      "Non. Les groupes d'appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l'appelant dans une file d'attente jusqu'à ce que quelqu'un soit disponible. Les files d'attente, l'enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> Les groupes d&apos;appels de 3CX Free font sonner plusieurs collaborateurs. Ils ne placent pas l&apos;appelant dans une file d&apos;attente jusqu&apos;à ce que quelqu&apos;un soit disponible.
+        </p>
+        <p>
+          Les files d&apos;attente, l&apos;enregistrement des appels et la connexion à votre outil de suivi client (CRM) nécessitent 3CX PRO.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que faire si vous dépassez 4 appels simultanés ?",
+    answerText:
+      "La licence gratuite est limitée à 4 appels simultanés, c'est-à-dire en même temps. Cette limite ne peut pas être étendue. Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d'attente.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          La licence gratuite est <strong>limitée à 4 appels simultanés</strong>, c&apos;est-à-dire en même temps. Cette limite ne peut pas être étendue.
+        </p>
+        <p>
+          Au-delà, il faut une licence payante, à partir de 8 appels simultanés : 3CX SMB, ou 3CX PRO si vous avez besoin de files d&apos;attente.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Pouvez-vous installer et gérer 3CX Free vous-même ?",
+    answerText:
+      "Oui. Vous installez 3CX Free sur votre serveur ou votre cloud et vous l'administrez. E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l'administration de votre 3CX.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> Vous installez 3CX Free sur votre serveur ou votre cloud et vous l&apos;administrez.
+        </p>
+        <p>
+          E2I VoIP fournit le trunk SIP au compteur et vos numéros. Notre support couvre le trunk, pas l&apos;administration de votre 3CX.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que comprend l'illimité et quelles sont ses limites ?",
+    answerText:
+      "Les appels vers les fixes et les mobiles de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d'usage s'appliquent. Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l'international et les numéros spéciaux. Les centres d'appels sont exclus.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          Les appels vers les <strong>fixes et les mobiles</strong> de France métropolitaine et des DOM, hors Mayotte, sont inclus, ainsi que les appels reçus. Des plafonds mensuels d&apos;usage s&apos;appliquent.
+        </p>
+        <p>
+          Au-delà des plafonds, les minutes sont facturées selon la grille au compteur, comme les appels vers Mayotte, l&apos;international et les numéros spéciaux. Les centres d&apos;appels sont exclus.
+        </p>
       </div>
     ),
   },
