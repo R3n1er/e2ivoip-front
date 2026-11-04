@@ -39,6 +39,11 @@ describe("Devis3cxFreeForm", () => {
     expect(caseRgpd).toBeRequired();
   });
 
+  it("limite le message à 3 000 caractères", () => {
+    render(<Devis3cxFreeForm />);
+    expect(screen.getByLabelText(/^Message/)).toHaveAttribute("maxLength", "3000");
+  });
+
   it("contient un champ piège caché aux humains", () => {
     const { container } = render(<Devis3cxFreeForm />);
     const piege = container.querySelector('input[name="website"]');

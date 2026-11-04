@@ -158,7 +158,7 @@ export function Devis3cxFreeForm() {
 
       <div className="mb-6">
         <Champ id="devis-message" libelle="Message" requis>
-          <Textarea id="devis-message" rows={5} value={champs.message} onChange={maj("message")} required />
+          <Textarea id="devis-message" rows={5} value={champs.message} onChange={maj("message")} maxLength={3000} required />
         </Champ>
       </div>
 

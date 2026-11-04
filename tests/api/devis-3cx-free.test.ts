@@ -323,4 +323,18 @@ describe("POST /api/3cx-free/devis", () => {
       }
     });
   });
+
+  describe("longueur du message", () => {
+    it("3 000 caractères acceptés", async () => {
+      const res = await POST(requete({ ...PAYLOAD, message: "a".repeat(3000) }));
+      expect(res.status).toBe(200);
+      expect(corpsWebhook().message).toHaveLength(3000);
+    });
+
+    it("au-delà de 3 000 caractères → 400, pas de troncature silencieuse", async () => {
+      const res = await POST(requete({ ...PAYLOAD, message: "a".repeat(3001) }));
+      expect(res.status).toBe(400);
+      expect(fetchMock).not.toHaveBeenCalled();
+    });
+  });
 });

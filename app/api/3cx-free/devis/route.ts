@@ -324,6 +324,12 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+    if (typeof corps.message === "string" && corps.message.trim().length > LIMITES.message) {
+      return json(
+        { error: `Votre message dépasse ${LIMITES.message} caractères. Veuillez le raccourcir.` },
+        { status: 400 },
+      );
+    }
     if (!isValidEmail(email)) {
       return json({ error: "Veuillez saisir une adresse e-mail valide." }, { status: 400 });
     }
