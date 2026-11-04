@@ -49,7 +49,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="hover:text-red-primary transition-colors"
+                  className="hover:text-red-text transition-colors"
                 >
                   {item.label}
                 </Link>

@@ -174,7 +174,7 @@ export default function PBXYeastar() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-900/10">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-marine/10">
                       <Shield size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
@@ -247,7 +247,7 @@ export default function PBXYeastar() {
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2">
               <div className="overflow-hidden rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-red-primary to-red-600 p-6 text-white">
+                <div className="bg-gradient-to-r from-red-primary to-red-text p-6 text-white">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold">Yeastar Cloud</h3>
                     <span className="rounded-full bg-white/20 px-3 py-1 text-sm font-medium">
@@ -374,7 +374,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-text-hover">
                   <Desktop size={16} className="mr-2" aria-hidden="true" />
                   Interface unifiée
                 </div>
@@ -487,7 +487,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-marine/10">
                   <Headphones size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -525,7 +525,7 @@ export default function PBXYeastar() {
               </div>
 
               <div className="rounded-xl border border-ui-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-900/10">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-marine/10">
                   <Database size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-dark">
@@ -576,7 +576,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-marine">
                   <WhatsappLogo size={16} className="mr-2" aria-hidden="true" />
                   Relation client simplifiée
                 </div>
@@ -641,7 +641,7 @@ export default function PBXYeastar() {
                 </div>
               </div>
               <div>
-                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-700">
+                <div className="inline-flex items-center rounded-full bg-blue-marine-100 px-4 py-2 text-sm font-medium text-blue-marine">
                   <Headphones size={16} className="mr-2" aria-hidden="true" />
                   Performance opérationnelle
                 </div>
@@ -672,7 +672,7 @@ export default function PBXYeastar() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-900/10">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-marine/10">
                       <TrendUp size={24} className="text-blue-marine" aria-hidden="true" />
                     </div>
                     <div>
@@ -710,7 +710,7 @@ export default function PBXYeastar() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-700">
+                <div className="inline-flex items-center rounded-full bg-red-primary-50 px-4 py-2 text-sm font-medium text-red-text-hover">
                   <PlugCharging size={16} className="mr-2" aria-hidden="true" />
                   Connectivité étendue
                 </div>
@@ -738,7 +738,7 @@ export default function PBXYeastar() {
                     </span>
                   </div>
                   <div className="flex items-center gap-3 rounded-xl border border-ui-border bg-white p-4 shadow-sm">
-                    <Chat size={32} className="text-blue-500" aria-hidden="true" />
+                    <Chat size={32} className="text-blue-marine" aria-hidden="true" />
                     <span className="font-semibold text-gray-dark">
                       Slack / Teams
                     </span>
@@ -840,7 +840,7 @@ export default function PBXYeastar() {
             </div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-3">
-              <div className="rounded-2xl border border-blue-900/20 bg-blue-marine-50 p-6 shadow-sm">
+              <div className="rounded-2xl border border-blue-marine/20 bg-blue-marine-50 p-6 shadow-sm">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-marine-100">
                   <HeartbeatIcon size={32} className="text-blue-marine" aria-hidden="true" />
                 </div>

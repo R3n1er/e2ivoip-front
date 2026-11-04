@@ -53,7 +53,7 @@ export function BookingsCalendar({
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-red-700 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
+          className="font-semibold text-red-text-hover underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-primary focus-visible:ring-offset-2"
           data-testid="bookings-calendar-fallback"
         >
           Ouvrir la prise de rendez-vous dans un nouvel onglet

@@ -212,7 +212,7 @@ export default function Smb3CXMutualisee() {
                 <span className="absolute top-4 right-4 bg-blue-marine text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                   Recommandée
                 </span>
-                <div className="bg-gradient-to-r from-blue-900/95 to-red-600/90 px-8 py-8 text-center text-white">
+                <div className="bg-gradient-to-r from-blue-900/95 to-red-text/90 px-8 py-8 text-center text-white">
                   <div className="font-mono tabular-nums text-5xl font-black">
                     29 €
                     <span className="font-sans text-xl font-medium text-white"> HT / utilisateur / mois</span>

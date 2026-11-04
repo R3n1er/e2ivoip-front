@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: HOME_PAGE_TITLE,
     description:
-      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité gratuite.",
+      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité de vos numéros.",
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: HOME_PAGE_TITLE,
     description:
-      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité gratuite.",
+      "Opérateur et intégrateur télécom en Guyane, Antilles et Réunion : standard téléphonique 3CX ou Yeastar, Trunk SIP, numéros locaux et portabilité de vos numéros.",
     images: ["/images/e2i-voip-partage.png"],
   },
   robots: {

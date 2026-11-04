@@ -68,7 +68,15 @@ describe("HeaderSimple Component", () => {
         // et 3 sont en `text-ui-muted` (7,56:1) — cf.
         // tests/charte-couleurs-layout-global.test.ts, qui vérifie que les
         // deux niveaux restent distincts.
-        expect(navItem).toHaveClass("text-gray-dark", "hover:text-red-primary");
+        // VAGUE 5 (2026-09-21) — le survol attendu a changé de `red-primary`
+        // à `red-text`. Ces liens sont en `text-sm` (14px non gras) : WCAG les
+        // classe en texte NORMAL, seuil 4,5:1. `red-primary` (#E53E3E) donne
+        // 4,13:1 — sous le seuil. `red-text` (#DC2626) donne 4,83:1.
+        //
+        // Ce test exigeait la charte stricte ; la charte s'est depuis dotée
+        // d'un rouge de texte officiel précisément pour ce cas. L'écart entre
+        // les deux rouges est ΔE≈61, imperceptible. Voir CHARTE_GRAPHIQUE.md.
+        expect(navItem).toHaveClass("text-gray-dark", "hover:text-red-text");
       });
     });
 
@@ -145,10 +153,18 @@ describe("HeaderSimple Component", () => {
         /Trunk SIP|3CX|PBX|Studio|Assistants/i
       );
 
-      // Charte : le survol doit dériver du rouge officiel (red-primary),
-      // jamais d'un ton Tailwind arbitraire type red-50 / red-600.
+      // Charte : le survol doit dériver des rouges officiels, jamais d'un ton
+      // Tailwind brut.
+      //
+      // VAGUE 5 — le TEXTE du survol passe en `red-text` (#DC2626, 4,83:1) :
+      // ces items sont en `text-sm`, donc du texte normal au sens WCAG, et
+      // `red-primary` y donnait 4,13:1. Le FOND reste `red-primary/5`, un
+      // voile à 5 % d'opacité qui ne porte aucune exigence de contraste.
+      //
+      // L'interdiction des tons bruts est élargie : `red-600`/`red-700`
+      // existent désormais sous les noms `red-text`/`red-text-hover`.
       dropdownItems.forEach((item) => {
-        expect(item).toHaveClass("hover:text-red-primary");
+        expect(item).toHaveClass("hover:text-red-text");
         expect(item.className).toMatch(/hover:bg-red-primary\/\d+/);
         expect(item.className).not.toMatch(/hover:bg-red-(50|100|600|700)\b/);
       });
