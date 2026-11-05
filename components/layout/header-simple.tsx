@@ -51,6 +51,10 @@ export function HeaderSimple() {
               href: "/telephonie-entreprise/3cx-smb-mutualisee",
             },
             {
+              name: "3CX SMB SOLO",
+              href: "/telephonie-entreprise/3cx-smb-solo",
+            },
+            {
               name: "3CX FREE",
               href: "/3cx-free",
             },

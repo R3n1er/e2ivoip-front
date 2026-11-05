@@ -8,7 +8,7 @@ import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { CTACalendarSection } from "@/components/cta-calendar-section";
 import { FaqSection } from "@/components/faq-section";
 import { FAQ_SMB_SOLO } from "@/lib/faq-data";
-import { TALLY_FORMS } from "@/lib/constants/tally";
+import { DevisSmbSoloForm } from "@/components/forms/devis-smb-solo-form";
 import {
   FORMULES_SMB_SOLO,
   CONDITIONS_SMB_SOLO,
@@ -183,7 +183,7 @@ export default function SmbSoloPage() {
                 communications incluses. Aucun matériel n&apos;est obligatoire.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <CTAButton href={TALLY_FORMS.VOIP_3CX_SMB} icon="Calculator" external>
+                <CTAButton href="#devis" icon="Calculator">
                   Demander un devis
                 </CTAButton>
                 <CTAButtonMarine href="#rendez-vous" icon="ArrowRight">
@@ -470,10 +470,8 @@ export default function SmbSoloPage() {
               avec un devis chiffré sous deux à trois jours ouvrés, sans engagement de votre part à
               ce stade.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <CTAButton href={TALLY_FORMS.VOIP_3CX_SMB} icon="Calculator" external>
-                Demander un devis
-              </CTAButton>
+            <DevisSmbSoloForm />
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <CTAButtonMarine href="tel:+33594963500" icon="Phone" external>
                 05 94 96 35 00
               </CTAButtonMarine>
