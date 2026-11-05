@@ -5,7 +5,7 @@ import { SafeImage as Image } from "@/components/ui/safe-image";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
 import { FaqSection } from "@/components/faq-section";
 import { FAQ_SMB_MUTUALISEE } from "@/lib/faq-data";
-import { Calculator, Phone, Rocket, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe, Info } from '@/lib/icons';
+import { Calculator, Phone, Users, Timer, TrendUp, CheckCircle, DeviceMobile, Desktop, Globe, Info } from '@/lib/icons';
 import { TALLY_FORMS } from "@/lib/constants/tally";
 
 // Formulaire Tally dédié à l'offre 3CX SMB PRO Mutualisé (tunnel devis).
@@ -82,7 +82,14 @@ export default function Smb3CXMutualisee() {
                 Notre offre <strong>3CX SMB mutualisée</strong> accompagne les équipes de 3 à 8 utilisateurs.
                 Vous utilisez les applications 3CX sur smartphone, ordinateur ou navigateur, ainsi que les téléphones de bureau compatibles.
                 Vous bénéficiez d’une licence mensuelle et de frais de mise en service réduits : 150 € HT de frais d’infrastructure mutualisée, une fois par entreprise, et 90 € HT par utilisateur.
-                Ces frais font l’objet d’un paiement unique à la mise en service.
+                Ces frais font l&apos;objet d&apos;un paiement unique à la mise en service.
+              </p>
+              <p className="mx-auto mt-4 max-w-4xl text-lg text-ui-muted">
+                Vous travaillez seul, sans salarié ? L&apos;offre{" "}
+                <Link href="/telephonie-entreprise/3cx-smb-solo" className="font-medium text-red-text hover:text-red-text-hover">
+                  3CX SMB SOLO
+                </Link>{" "}
+                est faite pour un seul utilisateur, à 39,99 € HT par mois, communications incluses.
               </p>
             </div>
 
