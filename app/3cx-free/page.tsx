@@ -303,7 +303,7 @@ export default function ThreeCXFreePage() {
           <FaqSection items={FAQ_3CX_FREE} title="Questions fréquentes sur 3CX Free" />
         </section>
 
-        <div id="rendez-vous">
+        <div id="rendez-vous" className="scroll-mt-24">
           <CTACalendarSection />
         </div>
       </div>
