@@ -841,6 +841,116 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
   },
 ];
 
+/** FAQ 3CX SMB SOLO — page /telephonie-entreprise/3cx-smb-solo */
+export const FAQ_SMB_SOLO: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce que 3CX SMB SOLO ?",
+    answerText:
+      "3CX SMB SOLO est un standard téléphonique hébergé pour une seule personne : indépendant, auto-entrepreneur, profession libérale ou artisan sans salarié. Vous disposez d'un numéro géographique local, de deux appels simultanés et de l'application 3CX sur votre mobile, pour 39,99 € HT par mois avec 3 h d'appels entrants et 3 h d'appels sortants incluses. Aucun matériel n'est obligatoire.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>3CX SMB SOLO</strong> est un standard téléphonique hébergé pour une seule
+          personne : indépendant, auto-entrepreneur, profession libérale ou artisan sans salarié.
+        </p>
+        <p>
+          Vous disposez d&apos;un numéro géographique local, de deux appels simultanés et de
+          l&apos;application 3CX sur votre mobile, pour <strong>39,99 € HT par mois</strong> avec
+          3 h d&apos;appels entrants et 3 h d&apos;appels sortants incluses. Aucun matériel
+          n&apos;est obligatoire.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "À quoi correspondent 3 h d'appels entrants et 3 h d'appels sortants ?",
+    answerText:
+      "3 h représentent 180 minutes, soit environ 60 appels de 3 minutes par mois, ou encore 3 appels entrants et 4 appels sortants par jour ouvré. La formule Advanced double ce volume à 5 h + 5 h pour 49,99 € HT par mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au tarif en vigueur.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          3 h représentent 180 minutes, soit environ <strong>60 appels de 3 minutes</strong> par
+          mois, ou encore 3 appels entrants et 4 appels sortants par jour ouvré.
+        </p>
+        <p>
+          La formule <strong>Advanced</strong> double ce volume à 5 h + 5 h pour 49,99 € HT par
+          mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au
+          tarif en vigueur.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Faut-il acheter un téléphone pour utiliser 3CX SMB SOLO ?",
+    answerText:
+      "Non. L'application 3CX sur votre smartphone suffit, en wifi ou en 4G/5G : elle reçoit les appels, gère le chat, la messagerie vocale et les transferts. Le client web permet aussi de téléphoner depuis un navigateur, sur PC ou Mac. Un téléphone IP de bureau (Fanvil, Yealink, Snom) peut être ajouté si vous préférez le combiné, mais il reste optionnel.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> L&apos;application 3CX sur votre smartphone suffit, en wifi ou en
+          4G/5G : elle reçoit les appels, gère le chat, la messagerie vocale et les transferts.
+        </p>
+        <p>
+          Le client web permet aussi de téléphoner depuis un navigateur, sur PC ou Mac. Un
+          téléphone IP de bureau (Fanvil, Yealink, Snom) peut être ajouté si vous préférez le
+          combiné, mais il reste optionnel.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Puis-je garder mon numéro actuel avec 3CX SMB SOLO ?",
+    answerText:
+      "Oui. Nous portons votre numéro existant, fixe ou mobile, vers 3CX SMB SOLO, sans interruption de service. Vous gardez le même numéro. La portabilité est facturée 60 € HT pour un numéro. Si vous préférez un nouveau numéro géographique local, la création coûte 50 € HT.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> Nous portons votre numéro existant, fixe ou mobile, vers 3CX SMB
+          SOLO, sans interruption de service. Vous gardez le même numéro.
+        </p>
+        <p>
+          La portabilité est facturée <strong>60 € HT</strong> pour un numéro. Si vous préférez un
+          nouveau numéro géographique local, la création coûte <strong>50 € HT</strong>.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que se passe-t-il si je dépasse mes heures d'appels ?",
+    answerText:
+      "Aucune coupure : la ligne reste active. Vous payez uniquement ce que vous dépassez, facturé à la seconde, au tarif en vigueur. Vous connaissez donc votre coût fixe à l'avance et ne découvrez pas de mauvaise surprise en fin de mois.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Aucune coupure</strong> : la ligne reste active. Vous payez uniquement ce que
+          vous dépassez, facturé à la seconde, au tarif en vigueur.
+        </p>
+        <p>
+          Vous connaissez donc votre coût fixe à l&apos;avance et ne découvrez pas de mauvaise
+          surprise en fin de mois.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Pourquoi un engagement de 12 mois sur 3CX SMB SOLO ?",
+    answerText:
+      "L'engagement initial est de 12 mois, le temps d'amortir la mise en service et la portabilité du numéro. À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons vers l'opérateur de votre choix. Aucun matériel n'est à racheter.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          L&apos;engagement initial est de <strong>12 mois</strong>, le temps d&apos;amortir la
+          mise en service et la portabilité du numéro.
+        </p>
+        <p>
+          À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons
+          vers l&apos;opérateur de votre choix. Aucun matériel n&apos;est à racheter.
+        </p>
+      </div>
+    ),
+  },
+];
+
 /** FAQ PBX Yeastar — page /telephonie-entreprise/pbx-yeastar */
 export const FAQ_PBX_YEASTAR: RichFaqItem[] = [
   {
