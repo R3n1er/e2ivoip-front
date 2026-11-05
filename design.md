@@ -8,7 +8,7 @@
 **Consolidation :** 2026-08-09 — blocs normatifs remontés depuis `docs/DESIGN.md` (v1.0, 2026-05-23)
 
 **Précédence :** `docs/CHARTE_GRAPHIQUE.md` > ce document > `docs/DESIGN.md` > guides génériques.
-Ce fichier est celui que lisent les agents (résolution racine). `docs/DESIGN.md` reste la spécification versionnée de référence pour Stitch et `agents.md`.
+Ce fichier est celui que lisent les agents (résolution racine). `docs/DESIGN.md` reste la spécification versionnée de référence pour Stitch et `AGENTS.md`.
 
 ---
 

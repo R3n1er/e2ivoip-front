@@ -1,7 +1,7 @@
 # ME.md — Profil utilisateur
 
 > Qui je suis, comment je travaille, et ce que j'attends d'un assistant sur ce projet.
-> **Source de vérité du profil** : `claude.md` et `agents.md` renvoient ici plutôt que de dupliquer.
+> **Source de vérité du profil** : `claude.md` et `AGENTS.md` renvoient ici plutôt que de dupliquer.
 > Dernière mise à jour : 2026-08-15
 
 ---
@@ -93,7 +93,7 @@ Ne pas pousser si un seul de ces quatre points échoue. Vérifier localement plu
 
 | Sujet | Fichier |
 |---|---|
-| Règles de collaboration IA | `claude.md`, `agents.md`, `.agents.md` |
+| Règles de collaboration IA | `claude.md`, `AGENTS.md`, `.agents.md` |
 | Décisions et contexte projet | `memory.md` |
 | Décisions d'architecture | `docs/ADR.md` |
 | Charte graphique (règle absolue) | `docs/CHARTE_GRAPHIQUE.md` |
