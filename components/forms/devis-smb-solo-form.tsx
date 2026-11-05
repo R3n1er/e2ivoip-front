@@ -163,6 +163,7 @@ export function DevisSmbSoloForm() {
                 value={b.valeur}
                 checked={besoinNumeros === b.valeur}
                 onChange={() => setBesoinNumeros(b.valeur)}
+                required
                 className="accent-red-primary"
               />
               {b.libelle}
@@ -184,6 +185,7 @@ export function DevisSmbSoloForm() {
                 value={f.valeur}
                 checked={formule === f.valeur}
                 onChange={() => setFormule(f.valeur)}
+                required
                 className="accent-red-primary"
               />
               {f.libelle}

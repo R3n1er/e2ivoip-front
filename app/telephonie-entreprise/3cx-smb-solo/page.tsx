@@ -70,7 +70,7 @@ const CANAUX: readonly {
     largeur: 910,
     hauteur: 1670,
     texte:
-      "Votre bureau dans la poche : appels, chat, visioconférence, transferts et messagerie vocale. Une seule application, deux lignes : la professionnelle et la personnelle.",
+      "Votre bureau dans la poche : appels, chat, visioconférence, transferts et messagerie vocale. Une seule application : vous appelez et décrochez avec votre numéro professionnel.",
     detail: "Fonctionne en wifi comme en 4G/5G.",
     badge: "Inclus",
     optionnel: false,
@@ -111,7 +111,7 @@ function CarteFormule({ formule }: { formule: FormuleSmbSolo }) {
     >
       {formule.vedette && (
         <span className="absolute right-4 top-4 rounded-full bg-blue-marine px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-          Volume doublé
+          10 h incluses
         </span>
       )}
       <h3 className="text-xl font-bold text-gray-dark">{formule.nom}</h3>
@@ -326,7 +326,7 @@ export default function SmbSoloPage() {
                     </tr>
                   ))}
                   <tr className="border-t border-ui-border bg-ui-surface">
-                    <td className="px-4 py-3 text-sm text-ui-muted sm:px-6">Soit par jour ouvré</td>
+                    <td className="px-4 py-3 text-sm text-ui-muted sm:px-6">Soit par jour ouvré (appels de 3 min)</td>
                     {FORMULES_SMB_SOLO.map((f) => {
                       const r = repereAppels(f);
                       return (
@@ -451,9 +451,8 @@ export default function SmbSoloPage() {
               </ul>
               <p className="mt-4 flex items-start gap-2 text-sm text-ui-muted">
                 <Info size={18} className="mt-0.5 shrink-0 text-blue-marine" aria-hidden="true" />
-                Les appels entre utilisateurs d&apos;une même entreprise sont gratuits. Aucun frais
-                d&apos;installation, aucun matériel n&apos;est obligatoire : l&apos;application mobile
-                suffit pour démarrer.
+                Aucun matériel n&apos;est obligatoire : l&apos;application mobile suffit pour
+                démarrer. La mise en service est chiffrée dans le devis, avant signature.
               </p>
             </div>
           </div>

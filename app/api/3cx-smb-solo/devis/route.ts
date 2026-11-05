@@ -42,7 +42,10 @@ const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const MAX_BODY_BYTES = 32 * 1024;
 const MIN_SUBMIT_DELAY_MS = 2500;
-const WEBHOOK_TIMEOUT_MS = 8000;
+// Le workflow enchaîne deux appels de modèle et quatre appels HubSpot : 8 s
+// suffisaient à couper une exécution pourtant en cours, et le mail de secours
+// partait alors en doublon. 15 s couvre la latence observée en production.
+const WEBHOOK_TIMEOUT_MS = 15000;
 const RESEND_TIMEOUT_MS = 8000;
 
 const LIMITES = {
@@ -337,6 +340,11 @@ export async function POST(request: Request) {
     }
     if (!isValidEmail(email)) {
       return json({ error: "Veuillez saisir une adresse e-mail valide." }, { status: 400 });
+    }
+    // Un numéro de rappel doit contenir au moins 6 chiffres : « 0 » ou « à venir »
+    // ne permet pas de rappeler un prospect, et pollue ensuite la fiche HubSpot.
+    if ((telephoneMobile.match(/\d/g) ?? []).length < 6) {
+      return json({ error: "Veuillez saisir un numéro de téléphone mobile valide." }, { status: 400 });
     }
     if (corps.consentementRgpd !== true) {
       return json({ error: "Pour envoyer votre demande, acceptez le traitement de vos données." }, { status: 400 });

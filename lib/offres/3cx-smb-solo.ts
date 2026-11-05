@@ -45,7 +45,7 @@ export const FORMULES_SMB_SOLO: readonly FormuleSmbSolo[] = [
     heuresEntrantes: 5,
     heuresSortantes: 5,
     vedette: true,
-    usage: "Le double de volume, pour 10 € de plus.",
+    usage: "4 h de communications en plus, pour 10 € de plus.",
   },
 ];
 
