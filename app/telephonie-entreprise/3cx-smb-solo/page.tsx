@@ -39,7 +39,7 @@ const SITUATIONS: readonly string[] = [
   "Vous donnez votre numéro personnel à vos clients. Ils vous appellent le dimanche, et vous ne pouvez plus décrocher.",
   "Vous voulez un numéro fixe crédible et local, mais un standard d'entreprise coûte plus cher que ce que vous facturez, et suppose plusieurs utilisateurs.",
   "Vous comptez vos minutes au compteur. Chaque appel devient une décision.",
-  "Vous voulez tester la ligne un samedi matin, sans rendez-vous, avant de vous engager.",
+  "Vous voulez une ligne qui sonne même quand vous êtes sur un chantier ou en rendez-vous.",
 ];
 
 /** Tableau « Aujourd'hui → Avec 3CX SMB SOLO ». */
@@ -47,7 +47,7 @@ const AVANT_APRES: readonly { avant: string; apres: string }[] = [
   { avant: "Votre mobile sert de ligne pro", apres: "Un numéro géographique dédié, qui sonne sur votre mobile" },
   { avant: "Numéro personnel exposé", apres: "Vos clients ne voient que le numéro fixe professionnel" },
   { avant: "Un appel à la fois, sinon occupé", apres: "2 canaux simultanés : le second appelant n'est plus perdu" },
-  { avant: "Des minutes à surveiller", apres: "Des heures incluses : vous ne comptez plus" },
+  { avant: "Des minutes à surveiller", apres: "Des heures incluses : vous ne surveillez plus votre compteur" },
   { avant: "Ni serveur, ni licence, ni technicien", apres: "Hébergé cloud, supervisé et sauvegardé par E2I VoIP" },
 ];
 
@@ -466,8 +466,8 @@ export default function SmbSoloPage() {
             </h2>
             <p className="mb-6 text-lg text-gray-dark">
               Décrivez votre activité et le numéro que vous voulez garder. Nous revenons vers vous
-              avec un devis chiffré sous deux à trois jours ouvrés, sans engagement de votre part à
-              ce stade.
+              avec un devis chiffré sous deux à trois jours ouvrés. Vous restez libre de donner
+              suite.
             </p>
             <DevisSmbSoloForm />
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">

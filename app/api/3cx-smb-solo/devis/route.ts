@@ -42,9 +42,10 @@ const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const MAX_BODY_BYTES = 32 * 1024;
 const MIN_SUBMIT_DELAY_MS = 2500;
-// Le workflow enchaîne deux appels de modèle et quatre appels HubSpot : 8 s
-// suffisaient à couper une exécution pourtant en cours, et le mail de secours
-// partait alors en doublon. 15 s couvre la latence observée en production.
+// n8n accuse réception AVANT de traiter (responseMode « onReceived ») : ce
+// délai ne borne donc pas la durée du workflow, seulement celle de la réponse
+// réseau. Il est volontairement large, car une réponse perdue au-delà du délai
+// déclenche le mail de secours alors que n8n continue de son côté.
 const WEBHOOK_TIMEOUT_MS = 15000;
 const RESEND_TIMEOUT_MS = 8000;
 
@@ -80,6 +81,9 @@ function origineAutorisee(request: Request): boolean {
 
 async function lireCorps(request: Request): Promise<Record<string, unknown> | "trop-gros" | null> {
   try {
+    // Refuser avant de lire : `request.text()` charge tout le corps en mémoire.
+    const annonce = Number(request.headers.get("content-length") ?? 0);
+    if (Number.isFinite(annonce) && annonce > MAX_BODY_BYTES) return "trop-gros";
     const brut = await request.text();
     if (new TextEncoder().encode(brut).byteLength > MAX_BODY_BYTES) return "trop-gros";
     const parsed = JSON.parse(brut);

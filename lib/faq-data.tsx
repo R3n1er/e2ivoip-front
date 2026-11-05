@@ -865,17 +865,17 @@ export const FAQ_SMB_SOLO: RichFaqItem[] = [
   {
     question: "À quoi correspondent 3 h d'appels entrants et 3 h d'appels sortants ?",
     answerText:
-      "3 h représentent 180 minutes, soit environ 60 appels de 3 minutes par mois, ou encore 3 appels entrants et 4 appels sortants par jour ouvré. La formule Advanced double ce volume à 5 h + 5 h pour 49,99 € HT par mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au tarif en vigueur.",
+      "3 h représentent 180 minutes, soit environ 60 appels de 3 minutes par mois, ou encore 3 appels entrants et 3 appels sortants par jour ouvré. La formule Advanced porte ce volume à 5 h + 5 h pour 49,99 € HT par mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au tarif en vigueur communiqué dans votre devis.",
     answer: (
       <div className="space-y-3">
         <p>
           3 h représentent 180 minutes, soit environ <strong>60 appels de 3 minutes</strong> par
-          mois, ou encore 3 appels entrants et 4 appels sortants par jour ouvré.
+          mois, ou encore 3 appels entrants et 3 appels sortants par jour ouvré.
         </p>
         <p>
-          La formule <strong>Advanced</strong> double ce volume à 5 h + 5 h pour 49,99 € HT par
+          La formule <strong>Advanced</strong> porte ce volume à 5 h + 5 h pour 49,99 € HT par
           mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au
-          tarif en vigueur.
+          tarif en vigueur communiqué dans votre devis.
         </p>
       </div>
     ),
@@ -901,12 +901,12 @@ export const FAQ_SMB_SOLO: RichFaqItem[] = [
   {
     question: "Puis-je garder mon numéro actuel avec 3CX SMB SOLO ?",
     answerText:
-      "Oui. Nous portons votre numéro existant, fixe ou mobile, vers 3CX SMB SOLO, sans interruption de service. Vous gardez le même numéro. La portabilité est facturée 60 € HT pour un numéro. Si vous préférez un nouveau numéro géographique local, la création coûte 50 € HT.",
+      "Oui. Nous portons votre numéro fixe existant vers 3CX SMB SOLO, sans interruption de service. Vous gardez le même numéro. La portabilité est facturée 60 € HT pour un numéro. Si vous préférez un nouveau numéro géographique local, la création coûte 50 € HT.",
     answer: (
       <div className="space-y-3">
         <p>
-          <strong>Oui.</strong> Nous portons votre numéro existant, fixe ou mobile, vers 3CX SMB
-          SOLO, sans interruption de service. Vous gardez le même numéro.
+          <strong>Oui.</strong> Nous portons votre numéro fixe existant vers 3CX SMB SOLO, sans
+                    interruption de service. Vous gardez le même numéro.
         </p>
         <p>
           La portabilité est facturée <strong>60 € HT</strong> pour un numéro. Si vous préférez un
@@ -935,7 +935,7 @@ export const FAQ_SMB_SOLO: RichFaqItem[] = [
   {
     question: "Pourquoi un engagement de 12 mois sur 3CX SMB SOLO ?",
     answerText:
-      "L'engagement initial est de 12 mois, le temps d'amortir la mise en service et la portabilité du numéro. À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons vers l'opérateur de votre choix. Aucun matériel n'est à racheter.",
+      "L'engagement initial est de 12 mois, le temps d'amortir la mise en service et la portabilité du numéro. À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons vers l'opérateur de votre choix. Les conditions de poursuite et de résiliation à l'échéance figurent dans votre devis et dans les conditions générales de vente. Aucun matériel n'est à racheter.",
     answer: (
       <div className="space-y-3">
         <p>
@@ -944,7 +944,9 @@ export const FAQ_SMB_SOLO: RichFaqItem[] = [
         </p>
         <p>
           À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons
-          vers l&apos;opérateur de votre choix. Aucun matériel n&apos;est à racheter.
+          vers l&apos;opérateur de votre choix. Les conditions de poursuite et de résiliation à
+          l&apos;échéance figurent dans votre devis et dans les conditions générales de vente.
+          Aucun matériel n&apos;est à racheter.
         </p>
       </div>
     ),
