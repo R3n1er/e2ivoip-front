@@ -343,7 +343,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
           </li>
           <li className="flex items-start">
             <span className="mr-2 mt-1">✓</span>
-            <span><strong>Appels entrants</strong> : gratuits vers un numéro métropole, 0,0150 €/min vers un numéro DOM, 0,0300 €/min sur tout l'entrant de l'offre BYOC</span>
+            <span><strong>Appels entrants</strong> : gratuits vers un numéro métropole, 0,0150 €/min vers un numéro DOM ; 0,0300 €/min sur tout l'entrant de l'offre BYOC</span>
           </li>
         </ul>
         <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-dark">
