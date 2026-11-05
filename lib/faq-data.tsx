@@ -322,7 +322,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
   {
     question: "Comment fonctionne la facturation à la seconde ?",
     answerText:
-      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits sur un trunk classique ; sur l'offre BYOC, la minute entrante est facturée 0,0040 €. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0332 € (83 s × 0,0240 €/min ÷ 60).",
+      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits vers un numéro de France métropolitaine et facturés 0,0150 €/min vers un numéro DOM ; sur l'offre BYOC, tout appel entrant est facturé 0,0150 €/min. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0332 € (83 s × 0,0240 €/min ÷ 60).",
     answer: (
       <div className="space-y-3">
         <p>
@@ -343,7 +343,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
           </li>
           <li className="flex items-start">
             <span className="mr-2 mt-1">✓</span>
-            <span><strong>Appels entrants gratuits sur un trunk classique</strong> — 0,0040 €/min sur l'offre BYOC</span>
+            <span><strong>Appels entrants</strong> : gratuits vers un numéro métropole, 0,0150 €/min vers un numéro DOM et sur tout l'entrant de l'offre BYOC</span>
           </li>
         </ul>
         <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-dark">

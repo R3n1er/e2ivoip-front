@@ -4,7 +4,9 @@
  * Prix confirmés par Alban le 2026-11-04 (grille en vigueur depuis le
  * 24/10/2026) :
  *   - sortant vers un fixe DOM : 0,0240 €/min ;
- *   - entrant en BYOC : 0,0040 €/min (gratuit sur un trunk classique).
+ *   - entrant : 0,0150 €/min vers un numéro DOM, gratuit vers un numéro
+ *     métropole ; en BYOC, 0,0150 €/min sur tout l'entrant (décision d'Alban
+ *     du 2026-11-05 : deux fois le coût d'achat de l'entrant DOM).
  *
  * Le texte visible et `answerText` (JSON-LD FAQPage) doivent annoncer les
  * mêmes chiffres : Google lit l'un, le prospect lit l'autre.
@@ -39,11 +41,14 @@ describe("FAQ compteur — facturation à la seconde, grille du 24/10/2026", () 
   it.each([
     ["texte visible", () => texteVisible()],
     ["answerText (JSON-LD)", () => item?.answerText ?? ""],
-  ])("%s : entrant gratuit sur trunk classique, 0,0040 €/min en BYOC", (_nom, lire) => {
+  ])("%s : entrant 0,0150 €/min vers un DOM et en BYOC, gratuit vers la métropole", (_nom, lire) => {
     const t = lire();
-    expect(t).toMatch(/trunk classique/);
-    expect(t).toMatch(/0,0040\s*€/);
+    expect(t).toMatch(/0,0150\s*€\s*\/\s*min/);
+    expect(t).toMatch(/num[ée]ro DOM/);
+    expect(t).toMatch(/gratuits? vers un num[ée]ro (de France )?m[ée]tropol/);
     expect(t).toMatch(/BYOC/);
+    // 0,0040 €/min se vendait sous le coût d'achat : il ne doit plus apparaître.
+    expect(t).not.toMatch(/0,0040/);
   });
 
   it.each([
