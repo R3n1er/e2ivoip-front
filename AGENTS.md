@@ -25,7 +25,7 @@ Toujours répondre en français à l'utilisateur.
 
 **Toute modification du site passe obligatoirement par une Pull Request GitHub. Aucun commit direct sur `dev` ni sur `main`.**
 
-Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merge sur demande d'Alban → `dev` → `main` (également sur demande d'Alban).
+Flux imposé : `branche dédiée` → **PR vers `dev`** → merge par l'agent dès que les checks CI sont verts → `dev` → `main` (**uniquement sur demande d'Alban**).
 
 1. Créer une branche dédiée depuis `dev` à jour :
    `git switch dev && git pull && git switch -c <type>/<sujet-court>`
@@ -36,12 +36,12 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merg
    `git push -u origin <branche>`
    `gh pr create --base dev --title "<titre>" --body "<corps>"`
 5. Le corps de PR doit contenir : objectif, liste des changements, résultat des tests (Jest + Playwright), entrée ADR associée, points de vigilance / risques.
-6. Rendre la main à Alban avec l'URL de la PR, puis **s'arrêter**.
+6. Attendre les checks CI (`gh pr checks <n> --watch`), merger la PR vers `dev` s'ils sont verts, puis donner à Alban l'URL de la PR et le commit de merge.
 
-**Merge** : l'agent ne merge jamais de sa propre initiative. Sur demande explicite d'Alban :
-- Vérifier d'abord que les checks CI sont verts (`gh pr view <n> --json statusCheckRollup`) et la PR `MERGEABLE`.
-- Vers `dev` : `gh pr merge <n> --squash --delete-branch`.
-- `dev → main` : annoncer l'écart de commits (`git log origin/main..origin/dev`), puis `gh pr merge <n> --merge` — le merge classique évite de faire diverger `dev` et `main`.
+**Merge** :
+- Toujours vérifier d'abord que les checks CI sont verts (`gh pr view <n> --json statusCheckRollup`) et la PR `MERGEABLE`. Check rouge ou conflit : ne pas merger, signaler à Alban.
+- Vers `dev` : **l'agent merge sans demander d'accord** (décision d'Alban, 2026-11-05) — `gh pr merge <n> --squash --delete-branch`.
+- `dev → main` (mise en production) : **uniquement sur demande explicite d'Alban**. Annoncer l'écart de commits (`git log origin/main..origin/dev`), puis `gh pr merge <n> --merge` — le merge classique évite de faire diverger `dev` et `main`.
 - Vérifier le déploiement en production après un merge vers `main`.
 
 **Interdictions strictes pour l'agent** :
