@@ -1,7 +1,7 @@
 # Design System — E2I VoIP
 
 **Version :** 1.1 (2026-08-09 — corrections ponctuelles ; base v1.0 du 2026-05-23)  
-**Statut :** Spécification normative pour Stitch, `agents.md` et le développement UI  
+**Statut :** Spécification normative pour Stitch, `AGENTS.md` et le développement UI  
 **Précédence :** `docs/CHARTE_GRAPHIQUE.md` > `DESIGN.md` (racine) > ce document > guides génériques  
 **Audit source :** `docs/DESIGN-AUDIT.md` (phase 1)
 

@@ -58,6 +58,35 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merg
 - Démarrage local : `npm run dev` (Turbopack, port 3000)
 - Redémarrage : `Ctrl+C`, libérer le port 3000 si besoin, puis `npm run dev`
 
+## Discipline de session (leçons apprises)
+
+### État réel avant toute modification
+
+- **Lancer `npm run validate` en début de session**, avant de toucher au code, pour connaître l'état réel du dépôt. Un échec constaté à ce moment-là n'est pas causé par la session en cours.
+- Si des tests sont **obsolètes** (ils testent un comportement volontairement changé), les mettre à jour dans un **commit séparé** (`test: …`), distinct du commit de la fonctionnalité. La revue reste lisible et on peut annuler un commit sans l'autre.
+
+### Revue de code par Codex (`codex review`)
+
+`--base`, `--commit` et `--uncommitted` sont **incompatibles avec un prompt** : c'est **soit `--base`, soit des instructions, jamais les deux**.
+
+| Besoin | Commande qui fonctionne |
+|---|---|
+| Revue générique du diff | `codex review --base dev` (sans prompt) |
+| Revue avec consignes | depuis la branche (idéalement un worktree) : `echo "$PROMPT" \| codex review -`, le périmètre écrit dans le prompt (« uniquement `git diff origin/dev...HEAD` ») |
+| ❌ À ne pas faire | `codex review --base dev "consignes"` → échoue aussitôt (exit 2) |
+
+Avant d'annoncer un résultat : vérifier le **code de sortie** et la **taille de la sortie**.
+
+### Surveillance d'un déploiement Vercel
+
+- Suivre l'**état du déploiement** (`get_deployment` via le MCP Vercel, ou `vercel inspect <url>`) : `READY`, `ERROR` ou `CANCELED` donnent un verdict fiable.
+- Ne pas déduire le résultat d'un **filtre sur les logs** : un log absent ou mal filtré ne prouve rien. Les logs servent seulement à diagnostiquer après un `ERROR`.
+
+### Longs brainstorms de spec
+
+- **Regrouper les éditions par document en une seule passe** une fois la section validée, au lieu de modifier le fichier à chaque échange. Les étapes déjà validées ne sont ainsi ni sautées ni réécrites.
+- Si un hook de lecture avant édition ralentit la phase de conception, il peut être allégé **pendant cette phase uniquement**, avec l'accord d'Alban, puis rétabli avant le code.
+
 ## Notes
 
 - Ces règles condensent les directives décrites sur https://agents.md/ et https://agentsmd.net/.
