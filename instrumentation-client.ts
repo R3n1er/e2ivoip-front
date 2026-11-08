@@ -20,6 +20,7 @@ try {
       { path: '/api/rgpd/demande', method: 'POST' },
       { path: '/api/rgpd/confirm', method: 'GET' },
       { path: '/api/3cx-free/devis', method: 'POST' },
+      { path: '/api/3cx-smb-solo/devis', method: 'POST' },
     ],
   })
 } catch {

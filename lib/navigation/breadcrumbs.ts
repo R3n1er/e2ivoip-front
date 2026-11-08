@@ -96,6 +96,11 @@ export const PAGE_BREADCRUMBS: Record<string, BreadcrumbItem[]> = {
     { label: "Téléphonie d'entreprise", href: "/telephonie-entreprise" },
     { label: "3CX SMB mutualisée" },
   ],
+  "/telephonie-entreprise/3cx-smb-solo": [
+    BREADCRUMB_HOME,
+    { label: "Téléphonie d'entreprise", href: "/telephonie-entreprise" },
+    { label: "3CX SMB SOLO" },
+  ],
   "/telephonie-entreprise/pbx-yeastar": [
     BREADCRUMB_HOME,
     { label: "Téléphonie d'entreprise", href: "/telephonie-entreprise" },
