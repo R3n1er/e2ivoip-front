@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceSchema } from "@/lib/structured-data";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { CTACalendarSection } from "@/components/cta-calendar-section";
+import { CTAContactSection } from "@/components/cta-contact-section";
 import { FaqSection } from "@/components/faq-section";
 import { ChoixVersion3cx } from "@/components/3cx/choix-version-3cx";
 import { Devis3cxFreeForm } from "@/components/forms/devis-3cx-free-form";
@@ -304,7 +304,7 @@ export default function ThreeCXFreePage() {
         </section>
 
         <div id="rendez-vous" className="scroll-mt-24">
-          <CTACalendarSection />
+          <CTAContactSection />
         </div>
       </div>
 
