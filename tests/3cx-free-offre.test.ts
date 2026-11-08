@@ -11,7 +11,7 @@ import {
 /**
  * Offre 3CX Free validée par Alban le 2026-11-02 (handoff cerveau-e2ivoip
  * 30-handoffs/2026-11-02-3cx-4as-licence-gratuite.md + arbitrages de session).
- * Règle de prix : marge ×2 minimum sur tout coût, entrants compris.
+ * Règle de prix : marge ×2 minimum sur tout coût facturé.
  */
 describe("Offre 3CX Free — données de référence", () => {
   it("propose exactement les quatre formules validées", () => {
@@ -28,8 +28,8 @@ describe("Offre 3CX Free — données de référence", () => {
   it("borne l'illimité par les plafonds d'usage validés", () => {
     const illimites = FORMULES_3CX_FREE.filter((f) => f.mode === "illimite");
     expect(illimites.map((f) => f.plafond)).toEqual([
-      { fixes: 1500, mobiles: 1000, entrants: 3000 },
-      { fixes: 3000, mobiles: 2000, entrants: 6000 },
+      { fixes: 1500, mobiles: 1000 },
+      { fixes: 3000, mobiles: 2000 },
     ]);
     for (const f of FORMULES_3CX_FREE.filter((x) => x.mode === "compteur")) {
       expect(f.plafond).toBeNull();

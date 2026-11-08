@@ -3,7 +3,7 @@
  *
  * Validée par Alban le 2026-11-02. Base : handoff cerveau-e2ivoip
  * 30-handoffs/2026-11-02-3cx-4as-licence-gratuite.md, puis arbitrages :
- * - marge ×2 minimum sur tout coût, appels entrants compris ;
+ * - marge ×2 minimum sur tout coût facturé ;
  * - prix par ENTREPRISE (une instance), jamais par utilisateur ;
  * - hors plafond d'usage : grille au compteur (déjà margée ×2 au moins).
  *
@@ -24,8 +24,6 @@ export interface PlafondUsage {
   fixes: number;
   /** Minutes sortantes vers les mobiles France métropolitaine + DOM, par mois. */
   mobiles: number;
-  /** Minutes entrantes, par mois. */
-  entrants: number;
 }
 
 export interface Formule3cxFree {
@@ -49,7 +47,7 @@ export const FORMULES_3CX_FREE: readonly Formule3cxFree[] = [
     mode: "illimite",
     appels: 2,
     prixMensuelHT: 139,
-    plafond: { fixes: 1500, mobiles: 1000, entrants: 3000 },
+    plafond: { fixes: 1500, mobiles: 1000 },
   },
   {
     id: "illimite-4",
@@ -57,7 +55,7 @@ export const FORMULES_3CX_FREE: readonly Formule3cxFree[] = [
     mode: "illimite",
     appels: 4,
     prixMensuelHT: 219,
-    plafond: { fixes: 3000, mobiles: 2000, entrants: 6000 },
+    plafond: { fixes: 3000, mobiles: 2000 },
   },
 ] as const;
 
