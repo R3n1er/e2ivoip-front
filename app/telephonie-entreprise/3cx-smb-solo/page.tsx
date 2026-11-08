@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 import { JsonLd } from "@/components/seo/json-ld";
 import { serviceSchema } from "@/lib/structured-data";
 import { CTAButton, CTAButtonMarine } from "@/components/ui/cta-button";
-import { CTACalendarSection } from "@/components/cta-calendar-section";
+import { CTAContactSection } from "@/components/cta-contact-section";
 import { FaqSection } from "@/components/faq-section";
 import { FAQ_SMB_SOLO } from "@/lib/faq-data";
 import { DevisSmbSoloForm } from "@/components/forms/devis-smb-solo-form";
@@ -511,7 +511,7 @@ export default function SmbSoloPage() {
         </section>
 
         <div id="rendez-vous">
-          <CTACalendarSection />
+          <CTAContactSection />
         </div>
       </div>
 
