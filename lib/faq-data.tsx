@@ -322,7 +322,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
   {
     question: "Comment fonctionne la facturation à la seconde ?",
     answerText:
-      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits sur un trunk classique ; sur l'offre BYOC, la minute entrante est facturée 0,0040 €. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0332 € (83 s × 0,0240 €/min ÷ 60).",
+      "Avec le Trunk SIP au compteur, vous payez uniquement vos communications réelles : facturation dès la première seconde, sans minimum ni paliers de 30 secondes, avec une facture détaillée par appel. Les appels entrants sont gratuits vers un numéro de France métropolitaine et facturés 0,0150 €/min vers un numéro DOM ; sur l'offre BYOC, tout appel entrant est facturé 0,0300 €/min. Exemple : un appel de 1 min 23 s vers un fixe DOM coûte 0,0332 € (83 s × 0,0240 €/min ÷ 60).",
     answer: (
       <div className="space-y-3">
         <p>
@@ -343,7 +343,7 @@ export const COMPTEUR_FAQ: RichFaqItem[] = [
           </li>
           <li className="flex items-start">
             <span className="mr-2 mt-1">✓</span>
-            <span><strong>Appels entrants gratuits sur un trunk classique</strong> — 0,0040 €/min sur l'offre BYOC</span>
+            <span><strong>Appels entrants</strong> : gratuits vers un numéro métropole, 0,0150 €/min vers un numéro DOM ; 0,0300 €/min sur tout l'entrant de l'offre BYOC</span>
           </li>
         </ul>
         <p className="rounded-lg border border-red-primary/20 bg-red-primary/5 p-3 text-sm text-gray-dark">
@@ -836,6 +836,118 @@ export const FAQ_SMB_MUTUALISEE: RichFaqItem[] = [
           dédiée, bascule des canaux SIP.
         </p>
         <p>C'est une évolution naturelle quand votre entreprise grandit.</p>
+      </div>
+    ),
+  },
+];
+
+/** FAQ 3CX SMB SOLO — page /telephonie-entreprise/3cx-smb-solo */
+export const FAQ_SMB_SOLO: RichFaqItem[] = [
+  {
+    question: "Qu'est-ce que 3CX SMB SOLO ?",
+    answerText:
+      "3CX SMB SOLO est un standard téléphonique hébergé pour une seule personne : indépendant, auto-entrepreneur, profession libérale ou artisan sans salarié. Vous disposez d'un numéro géographique local, de deux appels simultanés et de l'application 3CX sur votre mobile, pour 39,99 € HT par mois avec 3 h d'appels entrants et 3 h d'appels sortants incluses. Aucun matériel n'est obligatoire.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>3CX SMB SOLO</strong> est un standard téléphonique hébergé pour une seule
+          personne : indépendant, auto-entrepreneur, profession libérale ou artisan sans salarié.
+        </p>
+        <p>
+          Vous disposez d&apos;un numéro géographique local, de deux appels simultanés et de
+          l&apos;application 3CX sur votre mobile, pour <strong>39,99 € HT par mois</strong> avec
+          3 h d&apos;appels entrants et 3 h d&apos;appels sortants incluses. Aucun matériel
+          n&apos;est obligatoire.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "À quoi correspondent 3 h d'appels entrants et 3 h d'appels sortants ?",
+    answerText:
+      "3 h représentent 180 minutes, soit environ 60 appels de 3 minutes par mois, ou encore 3 appels entrants et 3 appels sortants par jour ouvré. La formule Advanced porte ce volume à 5 h + 5 h pour 49,99 € HT par mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au tarif en vigueur communiqué dans votre devis.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          3 h représentent 180 minutes, soit environ <strong>60 appels de 3 minutes</strong> par
+          mois, ou encore 3 appels entrants et 3 appels sortants par jour ouvré.
+        </p>
+        <p>
+          La formule <strong>Advanced</strong> porte ce volume à 5 h + 5 h pour 49,99 € HT par
+          mois. Les dépassements ne coupent pas la ligne : ils sont facturés à la seconde, au
+          tarif en vigueur communiqué dans votre devis.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Faut-il acheter un téléphone pour utiliser 3CX SMB SOLO ?",
+    answerText:
+      "Non. L'application 3CX sur votre smartphone suffit, en wifi ou en 4G/5G : elle reçoit les appels, gère le chat, la messagerie vocale et les transferts. Le client web permet aussi de téléphoner depuis un navigateur, sur PC ou Mac. Un téléphone IP de bureau (Fanvil, Yealink, Snom) peut être ajouté si vous préférez le combiné, mais il reste optionnel.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Non.</strong> L&apos;application 3CX sur votre smartphone suffit, en wifi ou en
+          4G/5G : elle reçoit les appels, gère le chat, la messagerie vocale et les transferts.
+        </p>
+        <p>
+          Le client web permet aussi de téléphoner depuis un navigateur, sur PC ou Mac. Un
+          téléphone IP de bureau (Fanvil, Yealink, Snom) peut être ajouté si vous préférez le
+          combiné, mais il reste optionnel.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Puis-je garder mon numéro actuel avec 3CX SMB SOLO ?",
+    answerText:
+      "Oui. Nous portons votre numéro fixe existant vers 3CX SMB SOLO, sans interruption de service. Vous gardez le même numéro. La portabilité est facturée 60 € HT pour un numéro. Si vous préférez un nouveau numéro géographique local, la création coûte 50 € HT.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Oui.</strong> Nous portons votre numéro fixe existant vers 3CX SMB SOLO, sans
+                    interruption de service. Vous gardez le même numéro.
+        </p>
+        <p>
+          La portabilité est facturée <strong>60 € HT</strong> pour un numéro. Si vous préférez un
+          nouveau numéro géographique local, la création coûte <strong>50 € HT</strong>.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Que se passe-t-il si je dépasse mes heures d'appels ?",
+    answerText:
+      "Aucune coupure : la ligne reste active. Vous payez uniquement ce que vous dépassez, facturé à la seconde, au tarif en vigueur. Vous connaissez donc votre coût fixe à l'avance et ne découvrez pas de mauvaise surprise en fin de mois.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          <strong>Aucune coupure</strong> : la ligne reste active. Vous payez uniquement ce que
+          vous dépassez, facturé à la seconde, au tarif en vigueur.
+        </p>
+        <p>
+          Vous connaissez donc votre coût fixe à l&apos;avance et ne découvrez pas de mauvaise
+          surprise en fin de mois.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "Pourquoi un engagement de 12 mois sur 3CX SMB SOLO ?",
+    answerText:
+      "L'engagement initial est de 12 mois, le temps d'amortir la mise en service et la portabilité du numéro. À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons vers l'opérateur de votre choix. Les conditions de poursuite et de résiliation à l'échéance figurent dans votre devis et dans les conditions générales de vente. Aucun matériel n'est à racheter.",
+    answer: (
+      <div className="space-y-3">
+        <p>
+          L&apos;engagement initial est de <strong>12 mois</strong>, le temps d&apos;amortir la
+          mise en service et la portabilité du numéro.
+        </p>
+        <p>
+          À son terme, vous repartez avec votre numéro : il vous appartient, et nous le portons
+          vers l&apos;opérateur de votre choix. Les conditions de poursuite et de résiliation à
+          l&apos;échéance figurent dans votre devis et dans les conditions générales de vente.
+          Aucun matériel n&apos;est à racheter.
+        </p>
       </div>
     ),
   },

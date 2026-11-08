@@ -25,7 +25,7 @@ Toujours répondre en français à l'utilisateur.
 
 **Toute modification du site passe obligatoirement par une Pull Request GitHub. Aucun commit direct sur `dev` ni sur `main`.**
 
-Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merge sur demande d'Alban → `dev` → `main` (également sur demande d'Alban).
+Flux imposé : `branche dédiée` → **PR vers `dev`** → merge par l'agent dès que les checks CI sont verts → `dev` → `main` (**uniquement sur demande d'Alban**).
 
 1. Créer une branche dédiée depuis `dev` à jour :
    `git switch dev && git pull && git switch -c <type>/<sujet-court>`
@@ -36,12 +36,12 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merg
    `git push -u origin <branche>`
    `gh pr create --base dev --title "<titre>" --body "<corps>"`
 5. Le corps de PR doit contenir : objectif, liste des changements, résultat des tests (Jest + Playwright), entrée ADR associée, points de vigilance / risques.
-6. Rendre la main à Alban avec l'URL de la PR, puis **s'arrêter**.
+6. Attendre les checks CI (`gh pr checks <n> --watch`), merger la PR vers `dev` s'ils sont verts, puis donner à Alban l'URL de la PR et le commit de merge.
 
-**Merge** : l'agent ne merge jamais de sa propre initiative. Sur demande explicite d'Alban :
-- Vérifier d'abord que les checks CI sont verts (`gh pr view <n> --json statusCheckRollup`) et la PR `MERGEABLE`.
-- Vers `dev` : `gh pr merge <n> --squash --delete-branch`.
-- `dev → main` : annoncer l'écart de commits (`git log origin/main..origin/dev`), puis `gh pr merge <n> --merge` — le merge classique évite de faire diverger `dev` et `main`.
+**Merge** :
+- Toujours vérifier d'abord que les checks CI sont verts (`gh pr view <n> --json statusCheckRollup`) et la PR `MERGEABLE`. Check rouge ou conflit : ne pas merger, signaler à Alban.
+- Vers `dev` : **l'agent merge sans demander d'accord** (décision d'Alban, 2026-11-05) — `gh pr merge <n> --squash --delete-branch`.
+- `dev → main` (mise en production) : **uniquement sur demande explicite d'Alban**. Annoncer l'écart de commits (`git log origin/main..origin/dev`), puis `gh pr merge <n> --merge` — le merge classique évite de faire diverger `dev` et `main`.
 - Vérifier le déploiement en production après un merge vers `main`.
 
 **Interdictions strictes pour l'agent** :
@@ -57,6 +57,35 @@ Flux imposé : `branche dédiée` → **PR vers `dev`** → relecture, puis merg
 - `npx playwright test`
 - Démarrage local : `npm run dev` (Turbopack, port 3000)
 - Redémarrage : `Ctrl+C`, libérer le port 3000 si besoin, puis `npm run dev`
+
+## Discipline de session (leçons apprises)
+
+### État réel avant toute modification
+
+- **Lancer `npm run validate` en début de session**, avant de toucher au code, pour connaître l'état réel du dépôt. Un échec constaté à ce moment-là n'est pas causé par la session en cours.
+- Si des tests sont **obsolètes** (ils testent un comportement volontairement changé), les mettre à jour dans un **commit séparé** (`test: …`), distinct du commit de la fonctionnalité. La revue reste lisible et on peut annuler un commit sans l'autre.
+
+### Revue de code par Codex (`codex review`)
+
+`--base`, `--commit` et `--uncommitted` sont **incompatibles avec un prompt** : c'est **soit `--base`, soit des instructions, jamais les deux**.
+
+| Besoin | Commande qui fonctionne |
+|---|---|
+| Revue générique du diff | `codex review --base dev` (sans prompt) |
+| Revue avec consignes | depuis la branche (idéalement un worktree) : `echo "$PROMPT" \| codex review -`, le périmètre écrit dans le prompt (« uniquement `git diff origin/dev...HEAD` ») |
+| ❌ À ne pas faire | `codex review --base dev "consignes"` → échoue aussitôt (exit 2) |
+
+Avant d'annoncer un résultat : vérifier le **code de sortie** et la **taille de la sortie**.
+
+### Surveillance d'un déploiement Vercel
+
+- Suivre l'**état du déploiement** (`get_deployment` via le MCP Vercel, ou `vercel inspect <url>`) : `READY`, `ERROR` ou `CANCELED` donnent un verdict fiable.
+- Ne pas déduire le résultat d'un **filtre sur les logs** : un log absent ou mal filtré ne prouve rien. Les logs servent seulement à diagnostiquer après un `ERROR`.
+
+### Longs brainstorms de spec
+
+- **Regrouper les éditions par document en une seule passe** une fois la section validée, au lieu de modifier le fichier à chaque échange. Les étapes déjà validées ne sont ainsi ni sautées ni réécrites.
+- Si un hook de lecture avant édition ralentit la phase de conception, il peut être allégé **pendant cette phase uniquement**, avec l'accord d'Alban, puis rétabli avant le code.
 
 ## Notes
 
@@ -144,7 +173,7 @@ semgrep --config=auto
 
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 

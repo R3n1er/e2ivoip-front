@@ -82,6 +82,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/telephonie-entreprise/trunk-sip-compteur", changeFrequency: "monthly", priority: 0.8 },
     { path: "/telephonie-entreprise/trunk-sip-illimite", changeFrequency: "monthly", priority: 0.8 },
     { path: "/telephonie-entreprise/pbx-yeastar", changeFrequency: "monthly", priority: 0.8 },
+    // 3CX SMB SOLO : offre mono-utilisateur, distincte de la SMB mutualisée (3 à 8).
+    { path: "/telephonie-entreprise/3cx-smb-solo", changeFrequency: "monthly", priority: 0.8 },
 
     // 3CX (page unique : présente les offres SMB mutualisée et PRO dédiée)
     { path: "/telephonie-3cx", changeFrequency: "monthly", priority: 0.9 },

@@ -9,7 +9,7 @@ Bienvenue ! Ce document synthétise l’essentiel pour être opérationnel rapi
 - **Références internes :**
   - `docs/PRD.md` : Product Requirement Document.
   - `docs/ligne-editoriale.md` : ton éditorial.
-  - `agents.md` : check-list de livraison à respecter.
+  - `AGENTS.md` : check-list de livraison à respecter.
 
 ## 2. Pré-requis & installation
 1. Node.js 22.12.0 (via `.nvmrc`).
@@ -34,7 +34,7 @@ e2ivoip-front/
 ├── tests/               # Suites Jest/Testing Library + Playwright
 ├── tailwind.config.js   # Config Tailwind + DaisyUI
 ├── next.config.ts       # Config Next (images…)
-└── agents.md            # Procédure de livraison
+└── AGENTS.md            # Procédure de livraison
 ```
 
 ## 4. Layout & navigation
@@ -88,7 +88,7 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 - **Unitaires/Jest** : `npm test` lance `jest` (configs `jest.config.js`). Tests dans `tests/` (composants, pages, intégrations). Certains tests restent placeholders → à renforcer.
 - **Playwright** : `npm run test:e2e`. Suites dans `tests/e2e` ou `tests/playwright/`.
 - **Hydratation CSS** : lancer `npm run dev` et surveiller la console (warnings hydration, collisions Tailwind).
-- Pipeline de livraison : suivre `agents.md` (tests unitaires → Playwright → restart serveur → commit/push).
+- Pipeline de livraison : suivre `AGENTS.md` (tests unitaires → Playwright → restart serveur → commit/push).
 
 ## 10. Conventions de code
 - **Langue** : contenu marketing en français ; code/commentaires en anglais lorsque nécessaire.
@@ -121,7 +121,7 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 
 ## 12. Suivi & documentation
 - Noter les décisions structurantes dans `docs/` (PRD, ligne éditoriale, ce document).
-- Pour toute règle pérenne, mettre à jour `agents.md` (procédure) ou ce document (onboarding).
+- Pour toute règle pérenne, mettre à jour `AGENTS.md` (procédure) ou ce document (onboarding).
 - Utiliser issues/PR GitHub avec checklist tests (`npm test`, `npx playwright test`, restart `npm run dev`).
 
 ## 13. Ressources complémentaires
@@ -130,4 +130,4 @@ Exécuter via `node scripts/<script>` ou `npm run extract:blog`.
 - [HubSpot CMS Blog API](https://developers.hubspot.com/docs/api/cms/blog) – source unique des articles.
 - [Playwright](https://playwright.dev/docs/test-intro) – tests E2E affichage.
 
-Bienvenue encore ! Une fois prêt, prenez une tâche, suivez le mémo `agents.md` et gardez ce guide ouvert pour naviguer dans le codebase.
+Bienvenue encore ! Une fois prêt, prenez une tâche, suivez le mémo `AGENTS.md` et gardez ce guide ouvert pour naviguer dans le codebase.

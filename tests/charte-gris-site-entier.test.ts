@@ -44,8 +44,9 @@ const HERO_GRADIENT = "from-blue-900/85 via-blue-800/80 to-red-600/85";
  * substitution fautive (règle absolue n°2 violée). Les deux méritent un regard.
  *
  * 2026-11-02 : 21 — ajout de app/3cx-free/page.tsx (page ajoutée).
+ * 2026-11-05 : 22 — ajout de app/telephonie-entreprise/3cx-smb-solo/page.tsx.
  */
-const HERO_FICHIERS_ATTENDUS = 21;
+const HERO_FICHIERS_ATTENDUS = 22;
 
 /**
  * Gris de texte et de bordure. Tokens de remplacement, arrêtés le 2026-09-20 :

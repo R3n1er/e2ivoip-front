@@ -2,7 +2,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CTACalendarSection } from "@/components/cta-calendar-section";
+import { CTAContactSection } from "@/components/cta-contact-section";
 import { GeographicAdvantage } from "@/components/geographic-advantage";
 import { PricingTiers } from "@/components/pricing-tiers";
 import { ProblemSolutionSection } from "@/components/problem-solution-section";
@@ -248,7 +248,7 @@ export default function ThreeCXProPage() {
       <GeographicAdvantage locations={locations} />
 
       <div id="calendrier">
-        <CTACalendarSection />
+        <CTAContactSection />
       </div>
     </div>
   );
