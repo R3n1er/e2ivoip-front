@@ -40,19 +40,16 @@ function LignesFormule({ f }: { f: Formule3cxFree }) {
     return (
       <ul className="space-y-2 text-sm text-ui-muted">
         <li>Appels sortants facturés à la minute, selon la grille au compteur</li>
-        <li>Appels reçus facturés au compteur</li>
       </ul>
     );
   }
   return (
     <ul className="space-y-2 text-sm text-ui-muted">
-      <li>Appels vers les fixes et mobiles de France métropolitaine et des DOM (hors Mayotte), appels reçus compris</li>
+      <li>Appels vers les fixes et mobiles de France métropolitaine et des DOM (hors Mayotte)</li>
       <li>
-        Jusqu&apos;à <span className="font-mono tabular-nums">{nf(f.plafond.fixes)}</span> min
-        vers les fixes,{" "}
-        <span className="font-mono tabular-nums">{nf(f.plafond.mobiles)}</span> min vers les
-        mobiles et <span className="font-mono tabular-nums">{nf(f.plafond.entrants)}</span> min
-        entrantes par mois
+        Jusqu&apos;à <span className="font-mono tabular-nums">{nf(f.plafond.fixes)}</span> min vers
+        les fixes et <span className="font-mono tabular-nums">{nf(f.plafond.mobiles)}</span> min
+        vers les mobiles par mois
       </li>
     </ul>
   );
