@@ -93,23 +93,14 @@ describe("Page Contact - DaisyUI Migration", () => {
     expect(screen.getByTestId("hotline-phone")).toHaveTextContent("0189 560 500");
   });
 
-  test("La carte WhatsApp utilise le style canonique avec une icône Phosphor", () => {
-    render(<ContactPage />);
+  test("Aucun numéro WhatsApp n'est affiché (réservé au service technique)", () => {
+    const { container } = render(<ContactPage />);
 
-    // Vérifier la carte WhatsApp
-    const whatsappCard = screen.getByTestId("whatsapp-card");
-    expect(whatsappCard).toHaveClass("rounded-xl", "bg-white", "hover:shadow-md");
-
-    // Icône Phosphor (SVG) et non emoji — cf. DESIGN.md §11
-    expect(whatsappCard.querySelector("svg")).toBeInTheDocument();
-    expect(screen.queryByText("💬")).toBeNull();
-
-    // Vérifier les informations WhatsApp
-    expect(screen.getByTestId("whatsapp-title")).toHaveTextContent("WhatsApp Business");
-    expect(screen.getByTestId("whatsapp-phone")).toHaveTextContent("+33 7 57 02 36 01");
-
-    // Vérifier le lien wa.me
-    expect(whatsappCard).toHaveAttribute("href", "https://wa.me/33757023601");
+    // Les demandes commerciales passent par les formulaires de contact
+    expect(screen.queryByTestId("whatsapp-card")).toBeNull();
+    expect(screen.queryByText(/WhatsApp/i)).toBeNull();
+    expect(screen.queryByText(/57 02 36 01/)).toBeNull();
+    expect(container.querySelector('a[href*="wa.me"]')).toBeNull();
   });
 
   test("Les cartes d'implantations utilisent le style canonique avec une icône Phosphor", () => {
@@ -152,9 +143,6 @@ describe("Page Contact - DaisyUI Migration", () => {
     // Vérifier les classes de transition
     const hotlineCard = screen.getByTestId("hotline-card");
     expect(hotlineCard).toHaveClass("transition-shadow");
-    
-    const whatsappCard = screen.getByTestId("whatsapp-card");
-    expect(whatsappCard).toHaveClass("transition-shadow");
   });
 
   test("Aucun emoji dans l'UI : les icônes sont décoratives et masquées aux lecteurs d'écran", () => {
