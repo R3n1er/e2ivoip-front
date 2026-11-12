@@ -4,7 +4,7 @@ import { SafeImage as Image } from "@/components/ui/safe-image";
 import { FaqSection } from "@/components/faq-section";
 import { GENERAL_FAQ } from "@/lib/faq-data";
 import { InlineContactForm } from "@/components/hubspot";
-import { LinkedinLogo, Phone, WhatsappLogo, MapPin } from "@/lib/icons";
+import { LinkedinLogo, Phone, MapPin } from "@/lib/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact | Experts téléphonie IP France & DOM",
@@ -139,41 +139,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-
-                {/* WhatsApp */}
-                <a
-                  href="https://wa.me/33757023601"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Contacter E2I VoIP sur WhatsApp (nouvelle fenêtre)"
-                  className="block rounded-xl border border-ui-border bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
-                  data-testid="whatsapp-card"
-                >
-                  <div className="flex flex-col p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-blue-marine/10 p-3 rounded-lg">
-                        <WhatsappLogo size={24} className="text-white" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <h3
-                          className="text-lg font-semibold text-gray-dark mb-1"
-                          data-testid="whatsapp-title"
-                        >
-                          WhatsApp Business
-                        </h3>
-                        <p
-                          className="text-gray-dark font-medium mb-1"
-                          data-testid="whatsapp-phone"
-                        >
-                          +33 7 57 02 36 01
-                        </p>
-                        <p className="text-sm text-ui-muted">
-                          Réponse rapide • Support commercial et technique
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
 
                 {/* Réseaux sociaux */}
                 <div
