@@ -22,11 +22,9 @@ test.describe("Page de contact", () => {
 
   test("met en avant les canaux de contact", async ({ page }) => {
     await expect(page.getByTestId("hotline-phone")).toHaveText(/0189 560 500/);
-    await expect(page.getByTestId("whatsapp-phone")).toHaveText(/\+33 7 57 02 36 01/);
-    await expect(page.getByTestId("whatsapp-card")).toHaveAttribute(
-      "href",
-      "https://wa.me/33757023601"
-    );
+    // WhatsApp réservé au service technique : non affiché sur la page contact
+    await expect(page.getByTestId("whatsapp-card")).toHaveCount(0);
+    await expect(page.locator('a[href*="wa.me"]')).toHaveCount(0);
 
     const implantations = [
       "France",
