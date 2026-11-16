@@ -274,7 +274,7 @@ export default function QuiSommesNous() {
                     </h3>
                     <p className="text-ui-muted">
                       <strong>Trunk SIP agents IA</strong> pour interconnexion
-                      plateformes VAPI, Rounded, ElevenLabs.{" "}
+                      plateformes VAPI, Rounded, ElevenLabs, Retell AI.{" "}
                       <strong>Intégrations</strong> WhatsApp, Teams, CRM.{" "}
                       <strong>Collaboration unifiée</strong> pour vos équipes.
                       Studio d'enregistrement pour messages professionnels.

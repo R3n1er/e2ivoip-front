@@ -49,7 +49,7 @@ export function ServicesSectionSimple() {
       Icon: Network,
       title: "Trunk SIP agents IA",
       description:
-        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Jambonz",
+        "Numéros locaux DOM et interconnexion SIP pour VAPI, Rounded, ElevenLabs, Retell AI, Jambonz",
       features: [
         "Numéros +596, +590, +594, +262",
         "BYOC compatible",

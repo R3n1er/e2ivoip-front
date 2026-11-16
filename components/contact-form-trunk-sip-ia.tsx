@@ -22,7 +22,7 @@ export function ContactFormTrunkSipIA() {
           </h2>
           <p className="text-lg text-ui-muted max-w-2xl mx-auto">
             Intégrateurs et agences IA : décrivez votre plateforme (VAPI,
-            Rounded, ElevenLabs, Jambonz&hellip;) et vos besoins en numéros
+            Rounded, ElevenLabs, Retell AI, Jambonz&hellip;) et vos besoins en numéros
             locaux DOM. Un commercial vous recontacte rapidement.
           </p>
         </div>
