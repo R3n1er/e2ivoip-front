@@ -8,6 +8,8 @@
  * faudrait alors un store partagé (Redis) ou Vercel BotID.
  */
 
+import { isIP } from "node:net";
+
 interface Bucket {
   count: number;
   resetAt: number;
@@ -57,8 +59,14 @@ export function checkRateLimit(
 }
 
 /**
- * Identifie l'appelant via les en-têtes de proxy. `x-forwarded-for` peut
- * contenir une chaîne d'adresses : la première est celle du client.
+ * Identifie l'appelant via les en-têtes de proxy.
+ *
+ * `x-real-ip` passe en premier : sur Vercel, la plateforme le pose elle-même
+ * et le client ne peut pas le choisir. `x-forwarded-for` n'est qu'un repli
+ * (développement local, autre hébergeur) : le client peut le forger, et le
+ * lire en premier laissait un script inventer une adresse par requête pour
+ * repartir d'un quota neuf (vuln-0001, scan Strix 2026-08-20). Toute valeur
+ * qui n'est pas une adresse IP est écartée.
  *
  * Ne dépend que de la lecture des en-têtes, ce qui accepte aussi bien un
  * `Request` standard qu'un objet équivalent en test.
@@ -66,9 +74,14 @@ export function checkRateLimit(
 export function getClientIdentifier(request: {
   headers: { get(name: string): string | null };
 }): string {
+  const realIp = request.headers.get("x-real-ip")?.trim();
+  if (realIp && isIP(realIp)) return realIp;
+
   const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0].trim();
-  return request.headers.get("x-real-ip") ?? "unknown";
+  const firstForwarded = forwarded?.split(",")[0].trim();
+  if (firstForwarded && isIP(firstForwarded)) return firstForwarded;
+
+  return "unknown";
 }
 
 /** Réinitialise l'état — réservé aux tests. */

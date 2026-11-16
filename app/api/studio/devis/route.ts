@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { checkRateLimit, getClientIdentifier } from "@/lib/api/rate-limit";
+import { formatHubSpotNoteBody } from "@/lib/api/hubspot-note";
 import {
   sanitize,
   escapeHtml,
@@ -104,7 +105,7 @@ async function createNoteForContact(
     },
     body: JSON.stringify({
       properties: {
-        hs_note_body: `**${title}**\n\n${body}`,
+        hs_note_body: formatHubSpotNoteBody(title, body),
         hs_timestamp: new Date().toISOString(),
       },
     }),

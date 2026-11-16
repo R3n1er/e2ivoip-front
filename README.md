@@ -221,6 +221,7 @@ copie jamais de secrets à la main d'un ordinateur à l'autre.
 | `RGPD_EMAIL_TO` | Destinataire des demandes RGPD | ✅ | ✅ | ✅ |
 | `NEXT_PUBLIC_POSTHOG_HOST` / `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` | Analytics PostHog | ✅ | ✅ | ✅ |
 | `NEXT_PUBLIC_BASE_URL` | URL absolue du site | ✅ | — | — |
+| `ADMIN_PASSWORD` | Mot de passe de `/admin/hubspot` (authentification Basic, `proxy.ts`). Absent = admin fermé | ✅ | ✅ | ✅ |
 
 Optionnelles, non configurées : `HUBSPOT_CLIENT_*` (OAuth `/admin/hubspot`),
 `TURNSTILE_*` (BotID suffit), `URLR_*`, `NEXT_PUBLIC_SITE_URL`.
