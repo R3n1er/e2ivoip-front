@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { exchangeCodeForToken } from "@/lib/hubspot-blog";
+import { SITE_URL } from "@/lib/site";
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,14 +11,14 @@ export async function GET(request: NextRequest) {
     if (error) {
       console.error("Erreur OAuth HubSpot:", error);
       return NextResponse.redirect(
-        new URL("/?error=hubspot_oauth_error", request.url)
+        new URL("/?error=hubspot_oauth_error", SITE_URL)
       );
     }
 
     if (!code) {
       console.error("Code d'autorisation manquant");
       return NextResponse.redirect(
-        new URL("/?error=missing_auth_code", request.url)
+        new URL("/?error=missing_auth_code", SITE_URL)
       );
     }
 
@@ -28,12 +29,12 @@ export async function GET(request: NextRequest) {
 
     // Rediriger vers la page d'accueil avec un message de succès
     return NextResponse.redirect(
-      new URL("/?success=hubspot_connected", request.url)
+      new URL("/?success=hubspot_connected", SITE_URL)
     );
   } catch (error) {
     console.error("Erreur lors de l'échange du code OAuth:", error);
     return NextResponse.redirect(
-      new URL("/?error=token_exchange_failed", request.url)
+      new URL("/?error=token_exchange_failed", SITE_URL)
     );
   }
 }
