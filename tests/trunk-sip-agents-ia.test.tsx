@@ -93,6 +93,22 @@ describe("Page Trunk SIP agents IA", () => {
     expect(screen.getByText("Rounded")).toBeInTheDocument();
     expect(screen.getByText("ElevenLabs Agents")).toBeInTheDocument();
     expect(screen.getByText("Jambonz")).toBeInTheDocument();
+    expect(screen.getByText("Retell AI")).toBeInTheDocument();
+  });
+
+  it("affiche le statut de validation de chaque plateforme", () => {
+    render(<TrunkSipAgentsIA />);
+    const statutDe = (nom: string) =>
+      screen.getByRole("heading", { level: 3, name: nom }).parentElement
+        ?.textContent;
+
+    for (const nom of ["Rounded", "VAPI", "ElevenLabs Agents", "Retell AI"]) {
+      expect(statutDe(nom)).toContain("Validé");
+    }
+    for (const nom of ["Jambonz", "Airagent"]) {
+      expect(statutDe(nom)).toContain("En évaluation");
+    }
+    expect(screen.queryByText(/Compatibilité en finalisation/)).toBeNull();
   });
 
   it("affiche les cas d'usage déployés", () => {

@@ -10,6 +10,31 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-16 — VAPI, ElevenLabs et Retell AI passent au statut « Validé »
+
+- **Contexte** : l'interconnexion SIP BYOC d'E2I VoIP est désormais validée avec VAPI, ElevenLabs Agents et Retell AI (décision d'Alban du 2026-11-16). Le site affichait encore VAPI « Compatibilité en finalisation », ElevenLabs « En évaluation », et ne citait Retell AI qu'en passant (« même pattern BYOC SIP »).
+- **Décision** :
+  - Page `/telephonie-entreprise/trunk-sip-agents-ia` : VAPI et ElevenLabs Agents passent en `validated`. Ajout d'une carte Retell AI validée (logo officiel `logo-retell.svg`, doc « custom telephony » / Elastic SIP trunking). Jambonz et Airagent restent « En évaluation ».
+  - Grille des plateformes : 3 colonnes au lieu de 5 en grand écran, pour 6 cartes sur 2 lignes complètes.
+  - Données structurées `Service` : « validée pour Rounded, VAPI, ElevenLabs et Retell AI ». Jambonz, encore en évaluation, n'y figure plus.
+  - Retell AI ajouté aux listes de plateformes du site : métadonnées et textes de la page trunk SIP, `/nos-services`, section services de l'accueil, `/devis-en-ligne`, `/qui-sommes-nous`, page revendeurs, formulaire de contact trunk SIP.
+  - `docs/ligne-editoriale.md` : tableau des statuts mis à jour.
+- **Conséquences** : le statut « in-progress » n'est plus utilisé par aucune plateforme ; son style reste disponible pour une future plateforme en finalisation. La règle de la ligne éditoriale sur les logos tiers (accord formel) s'applique aussi au logo Retell AI.
+- **Tests associés** : `tests/trunk-sip-agents-ia.test.tsx` (nouveau test : statut de chaque plateforme, absence de « Compatibilité en finalisation ») ; `tests/e2e/trunk-sip-agents-ia.spec.ts` (Retell AI visible).
+
+### 2026-11-16 — Correctifs sécurité du scan Strix (rate-limit, notes HubSpot, admin, callback OAuth)
+
+- **Contexte** : le scan Strix white-box du 2026-08-20 a relevé plusieurs failles encore présentes au 2026-11-16. Le plan de remédiation détaillé vit hors du dépôt, qui est public.
+- **Décision** :
+  - **Rate-limit** : `getClientIdentifier()` lit `x-real-ip` en premier (posé par Vercel), puis `x-forwarded-for` en repli. Toute valeur qui n'est pas une adresse IP est écartée (`unknown`).
+  - **Notes HubSpot** : HubSpot affiche `hs_note_body` en HTML. Les routes du chat (`ingest-conversation`) et du studio devis passent par `formatHubSpotNoteBody()` (`lib/api/hubspot-note.ts`), qui échappe le titre et le corps.
+  - **Admin HubSpot** : `proxy.ts` (Next.js 16, ex-`middleware.ts`) protège `/admin/*`, `/api/hubspot/test-connection`, `/api/hubspot/auth-url` et `/api/hubspot/callback` par une authentification HTTP Basic. Le mot de passe vient de `ADMIN_PASSWORD`, comparé à temps constant. Sans cette variable, l'accès reste fermé.
+  - **Callback OAuth** : les redirections visent `SITE_URL` au lieu de `request.url`, qui dépend de l'en-tête `Host`.
+- **Conséquences** :
+  - Définir `ADMIN_PASSWORD` sur Vercel pour accéder à `/admin/hubspot`. Le nom d'utilisateur demandé par le navigateur est libre.
+  - La rotation du jeton HubSpot reste une action manuelle d'Alban, hors de cette décision.
+- **Tests associés** : `tests/api/rate-limit-identifier.test.ts`, `tests/api/hubspot-note.test.ts`, `tests/api/ingest-conversation.test.ts`, `tests/api/studio-devis.test.ts`, `tests/proxy-admin-auth.test.ts`, `tests/api/hubspot-callback.test.ts`.
+
 ### 2026-11-02 — Offre 3CX Free : prix par entreprise, plafonds d'usage, page dédiée
 
 - **Contexte** : l'édition 3CX « 4SC Basic Free » (10 utilisateurs, 4 appels simultanés) ne peut pas être hébergée par 3CX. E2I VoIP l'héberge sur une VM par client et la vend avec son trunk SIP. Un concurrent local annonce un « standard 3CX gratuit » sans prix.

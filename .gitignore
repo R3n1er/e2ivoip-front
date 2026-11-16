@@ -157,3 +157,6 @@ PLAN-REVIEW-LOG.md
 
 # Généré par Next.js à chaque build/dev, oscille entre .next/types et .next/dev/types
 next-env.d.ts
+
+# Rapports de scan Strix (contiennent des secrets en clair)
+strix_runs/

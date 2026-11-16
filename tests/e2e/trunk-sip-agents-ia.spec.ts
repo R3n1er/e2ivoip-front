@@ -62,7 +62,7 @@ test.describe("Page Trunk SIP agents IA", () => {
       })
     ).toBeVisible();
 
-    for (const platform of ["VAPI", "Rounded", "ElevenLabs Agents", "Jambonz"]) {
+    for (const platform of ["VAPI", "Rounded", "ElevenLabs Agents", "Retell AI", "Jambonz"]) {
       await expect(page.getByText(platform, { exact: true })).toBeVisible();
     }
   });

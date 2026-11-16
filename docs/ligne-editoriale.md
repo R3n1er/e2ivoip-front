@@ -303,7 +303,7 @@ Ces règles sont verrouillées par `tests/specs-produit-3cx.test.ts`.
 - Focus : trunk SIP BYOC, redirection SIP, numéros +596 / +590 / +594 / +262, support technique d'intégration
 - Vocabulaire : précis, B2B, orienté compatibilité plateforme et mise en production
 - À ne pas promettre : E2I VoIP ne conçoit pas les workflows IA, ne fournit pas de LLM/STT/TTS et ne vend pas d'assistant vocal clé en main
-- Plateformes à citer naturellement : VAPI, Rounded, ElevenLabs, Jambonz ; Retell AI et Bland AI peuvent être mentionnés comme plateformes compatibles sur le même modèle BYOC
+- Plateformes à citer naturellement : VAPI, Rounded, ElevenLabs, Retell AI, Jambonz ; Bland AI peut être mentionné comme plateforme compatible sur le même modèle BYOC
 
 ### Revendeurs (Programme Early Access)
 
@@ -332,9 +332,11 @@ Le pitch est centré sur :
 | Plateforme | Statut à communiquer |
 |---|---|
 | Rounded | Validé |
-| VAPI | "Compatibilité en finalisation" |
-| ElevenLabs | "En évaluation" |
+| VAPI | Validé (depuis le 2026-11-16) |
+| ElevenLabs | Validé (depuis le 2026-11-16) |
+| Retell AI | Validé (depuis le 2026-11-16) |
 | Jambonz | "En évaluation" |
+| Airagent | "En évaluation" |
 
 Ne jamais affirmer qu'une plateforme est validée si elle est en évaluation. Mettre à jour ce tableau dès qu'un statut change.
 
