@@ -31,7 +31,7 @@ const devisGroups = [
       },
       {
         title: "Trunk SIP pour agents IA",
-        description: "Intégrateurs VAPI, ElevenLabs, Rounded, Jambonz",
+        description: "Intégrateurs VAPI, ElevenLabs, Retell AI, Rounded, Jambonz",
         href: TALLY_FORMS.AGENTS_IA,
         variant: "secondary" as const,
       },

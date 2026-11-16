@@ -10,20 +10,32 @@ import { serviceSchema, breadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = pageMetadata({
   title: "Trunk SIP pour agents vocaux IA en zones DOM",
   description:
-    "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs et Jambonz. Antilles, Guyane, Réunion.",
+    "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP BYOC pour VAPI, Rounded, ElevenLabs, Retell AI et Jambonz. Antilles, Guyane, Réunion.",
   keywords:
-    "trunk SIP agents IA, carrier SIP DOM, BYOC VAPI, Rounded SIP, ElevenLabs SIP trunk, Jambonz, agent vocal IA DOM, numéro local Antilles Guyane Réunion",
+    "trunk SIP agents IA, carrier SIP DOM, BYOC VAPI, Rounded SIP, ElevenLabs SIP trunk, Retell AI SIP trunk, Jambonz, agent vocal IA DOM, numéro local Antilles Guyane Réunion",
   path: "/telephonie-entreprise/trunk-sip-agents-ia",
 });
 
-const platforms = [
+type PlatformStatus = "validated" | "in-progress" | "evaluating";
+
+type Platform = {
+  name: string;
+  logo: string;
+  logoClassName?: string;
+  description: string;
+  docUrl: string;
+  status: PlatformStatus;
+  statusLabel: string;
+};
+
+const platforms: Platform[] = [
   {
     name: "Rounded",
     logo: "/images/logos-ia-agent/logo-rounded.jpg",
     description:
       "Trunk SIP custom. Origination sip:sip.callrounded.com — numéro E.164 + URI de termination.",
     docUrl: "https://docs.callrounded.com/documentation/telephony/sip-trunk",
-    status: "validated" as const,
+    status: "validated",
     statusLabel: "Validé",
   },
   {
@@ -32,8 +44,8 @@ const platforms = [
     description:
       "BYO SIP Trunk et numéro BYO. Credential byo-sip-trunk, routage entrant vers sip.vapi.ai.",
     docUrl: "https://docs.vapi.ai/advanced/sip/sip-trunk",
-    status: "in-progress" as const,
-    statusLabel: "Compatibilité en finalisation",
+    status: "validated",
+    statusLabel: "Validé",
   },
   {
     name: "ElevenLabs Agents",
@@ -42,8 +54,18 @@ const platforms = [
       "SIP Trunking BYOC. Auth digest ou ACL IP, TLS/SRTP pour agents conversationnels.",
     docUrl:
       "https://elevenlabs.io/docs/eleven-agents/phone-numbers/sip-trunking",
-    status: "evaluating" as const,
-    statusLabel: "En évaluation",
+    status: "validated",
+    statusLabel: "Validé",
+  },
+  {
+    name: "Retell AI",
+    logo: "/images/logos-ia-agent/logo-retell.svg",
+    logoClassName: "max-h-9 max-w-[140px]",
+    description:
+      "Elastic SIP trunking. Import du numéro E.164 et routage entrant vers la plateforme Retell, transport UDP, TCP ou TLS.",
+    docUrl: "https://docs.retellai.com/deploy/custom-telephony",
+    status: "validated",
+    statusLabel: "Validé",
   },
   {
     name: "Jambonz",
@@ -53,7 +75,7 @@ const platforms = [
       "CPaaS open-source. Trunks IP, auth ou registration — idéal pour intégrateurs self-hosted.",
     docUrl:
       "https://docs.jambonz.org/guides/using-the-jambonz-portal/basic-concepts/creating-carriers",
-    status: "evaluating" as const,
+    status: "evaluating",
     statusLabel: "En évaluation",
   },
   {
@@ -63,7 +85,7 @@ const platforms = [
     description:
       "Plateforme française d'agents vocaux IA. Interconnexion SIP pour numéros locaux DOM.",
     docUrl: "https://airagent.fr",
-    status: "evaluating" as const,
+    status: "evaluating",
     statusLabel: "En évaluation",
   },
 ];
@@ -134,7 +156,7 @@ export default function TrunkSipAgentsIA() {
         data={serviceSchema({
           name: "Trunk SIP pour agents vocaux IA en zones DOM",
           description:
-            "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP (BYOC) validée pour VAPI, Rounded, ElevenLabs et Jambonz.",
+            "Carrier SIP DOM pour intégrateurs d'agents vocaux IA : numéros locaux +596, +590, +594, +262 et interconnexion SIP (BYOC) validée pour Rounded, VAPI, ElevenLabs et Retell AI.",
           path: "/telephonie-entreprise/trunk-sip-agents-ia",
         })}
       />
@@ -178,7 +200,7 @@ export default function TrunkSipAgentsIA() {
               </h1>
               <p className="text-xl text-white/95 mb-4 max-w-4xl mx-auto leading-relaxed">
                 Numéros locaux +596, +590, +594, +262 et trunk SIP BYOC
-                pour VAPI, Rounded, ElevenLabs, Jambonz
+                pour VAPI, Rounded, ElevenLabs, Retell AI, Jambonz
               </p>
               <p className="text-lg text-white/90 mb-10 max-w-3xl mx-auto">
                 E2I VoIP fournit la couche télécom DOM. Vous gardez votre stack
@@ -208,7 +230,7 @@ export default function TrunkSipAgentsIA() {
                   <span className="text-red-primary">zone DOM</span>
                 </h2>
                 <p className="text-lg text-ui-muted mb-6 leading-relaxed">
-                  VAPI, Rounded, ElevenLabs et Jambonz s&apos;appuient sur le
+                  VAPI, Rounded, ElevenLabs, Retell AI et Jambonz s&apos;appuient sur le
                   modèle BYOC (Bring Your Own Carrier). En pratique, Twilio,
                   Telnyx ou Plivo ne proposent pas de numéros géographiques
                   locaux en Martinique, Guadeloupe, Guyane ou Réunion.
@@ -303,11 +325,11 @@ export default function TrunkSipAgentsIA() {
               </h2>
               <p className="text-lg text-ui-muted max-w-3xl mx-auto">
                 Interconnexion testée avec les principales plateformes d&apos;agents
-                vocaux IA. Retell AI et Bland AI : même pattern BYOC SIP.
+                vocaux IA. Bland AI : même pattern BYOC SIP.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {platforms.map((platform) => (
                 <div
                   key={platform.name}
@@ -324,7 +346,7 @@ export default function TrunkSipAgentsIA() {
                       width={240}
                       height={80}
                       className={`w-auto object-contain ${
-                        "logoClassName" in platform && platform.logoClassName
+                        platform.logoClassName
                           ? platform.logoClassName
                           : "max-h-16 max-w-[200px]"
                       }`}
@@ -506,7 +528,7 @@ export default function TrunkSipAgentsIA() {
               Déployez vos agents IA avec des numéros locaux DOM
             </h2>
             <p className="text-xl text-white/90 mb-6 max-w-2xl mx-auto">
-              Intégrateurs : connectez VAPI, Rounded, ElevenLabs ou Jambonz au
+              Intégrateurs : connectez VAPI, Rounded, ElevenLabs, Retell AI ou Jambonz au
               réseau téléphonique Antilles-Guyane-Réunion avec E2I VoIP.
             </p>
             <p className="text-base text-white/75 mb-10 max-w-2xl mx-auto">

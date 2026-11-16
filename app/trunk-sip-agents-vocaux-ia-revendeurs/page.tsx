@@ -155,7 +155,7 @@ export default function TrunkSipAgentsIARevendeurs() {
               </h3>
               <ul className="space-y-3">
                 {[
-                  "Intégrateurs et agences déployant des agents vocaux IA (VAPI, Rounded, ElevenLabs, Jambonz…)",
+                  "Intégrateurs et agences déployant des agents vocaux IA (VAPI, Rounded, ElevenLabs, Retell AI, Jambonz…)",
                   "Prestataires souhaitant proposer des numéros locaux DOM à leurs clients",
                   "Revendeurs cherchant un guichet unique télécom pour les Antilles, la Guyane et La Réunion",
                 ].map((item) => (

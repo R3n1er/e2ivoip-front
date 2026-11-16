@@ -22,7 +22,7 @@ brand
 
 **Secteurs sur-représentés :** santé et médico-social (cliniques, EHPAD, maisons de santé), juridique et expertise (avocats, experts-comptables, bureaux d'études), commerce et distribution multisites, collectivités et administrations, hôtellerie-restauration, BTP, industrie.
 
-**Cible secondaire — intégrateurs et agences d'agents vocaux IA.** Agences, freelances et builders (1 à 15 personnes), maturité technique intermédiaire à senior, métropole ou DOM. Ils cherchent du trunk SIP BYOC et des numéros locaux DOM (+590, +594, +596, +262) pour brancher VAPI, Rounded, ElevenLabs ou Jambonz. Profil technique : vocabulaire précis, orienté compatibilité plateforme et mise en production. Ce segment ne partage ni le niveau de vulgarisation ni les objections de la cible principale.
+**Cible secondaire — intégrateurs et agences d'agents vocaux IA.** Agences, freelances et builders (1 à 15 personnes), maturité technique intermédiaire à senior, métropole ou DOM. Ils cherchent du trunk SIP BYOC et des numéros locaux DOM (+590, +594, +596, +262) pour brancher VAPI, Rounded, ElevenLabs, Retell AI ou Jambonz. Profil technique : vocabulaire précis, orienté compatibilité plateforme et mise en production. Ce segment ne partage ni le niveau de vulgarisation ni les objections de la cible principale.
 
 ## Product Purpose
 
