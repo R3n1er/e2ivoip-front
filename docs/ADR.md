@@ -10,6 +10,19 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-16 — Correctifs sécurité du scan Strix (rate-limit, notes HubSpot, admin, callback OAuth)
+
+- **Contexte** : le scan Strix white-box du 2026-08-20 a relevé plusieurs failles encore présentes au 2026-11-16. Le plan de remédiation détaillé vit hors du dépôt, qui est public.
+- **Décision** :
+  - **Rate-limit** : `getClientIdentifier()` lit `x-real-ip` en premier (posé par Vercel), puis `x-forwarded-for` en repli. Toute valeur qui n'est pas une adresse IP est écartée (`unknown`).
+  - **Notes HubSpot** : HubSpot affiche `hs_note_body` en HTML. Les routes du chat (`ingest-conversation`) et du studio devis passent par `formatHubSpotNoteBody()` (`lib/api/hubspot-note.ts`), qui échappe le titre et le corps.
+  - **Admin HubSpot** : `proxy.ts` (Next.js 16, ex-`middleware.ts`) protège `/admin/*`, `/api/hubspot/test-connection`, `/api/hubspot/auth-url` et `/api/hubspot/callback` par une authentification HTTP Basic. Le mot de passe vient de `ADMIN_PASSWORD`, comparé à temps constant. Sans cette variable, l'accès reste fermé.
+  - **Callback OAuth** : les redirections visent `SITE_URL` au lieu de `request.url`, qui dépend de l'en-tête `Host`.
+- **Conséquences** :
+  - Définir `ADMIN_PASSWORD` sur Vercel pour accéder à `/admin/hubspot`. Le nom d'utilisateur demandé par le navigateur est libre.
+  - La rotation du jeton HubSpot reste une action manuelle d'Alban, hors de cette décision.
+- **Tests associés** : `tests/api/rate-limit-identifier.test.ts`, `tests/api/hubspot-note.test.ts`, `tests/api/ingest-conversation.test.ts`, `tests/api/studio-devis.test.ts`, `tests/proxy-admin-auth.test.ts`, `tests/api/hubspot-callback.test.ts`.
+
 ### 2026-11-02 — Offre 3CX Free : prix par entreprise, plafonds d'usage, page dédiée
 
 - **Contexte** : l'édition 3CX « 4SC Basic Free » (10 utilisateurs, 4 appels simultanés) ne peut pas être hébergée par 3CX. E2I VoIP l'héberge sur une VM par client et la vend avec son trunk SIP. Un concurrent local annonce un « standard 3CX gratuit » sans prix.
