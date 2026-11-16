@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIdentifier } from "@/lib/api/rate-limit";
+import { formatHubSpotNoteBody } from "@/lib/api/hubspot-note";
 
 const HS_BASE = "https://api.hubapi.com";
 
@@ -70,7 +71,7 @@ async function createNoteForContact(
     },
     body: JSON.stringify({
       properties: {
-        hs_note_body: `**${title}**\n\n${body}`,
+        hs_note_body: formatHubSpotNoteBody(title, body),
         hs_timestamp: new Date().toISOString(),
       },
     }),

@@ -123,6 +123,30 @@ describe("POST /api/studio/devis", () => {
     expect(html).toContain("&lt;a href=");
   });
 
+  // vuln-0007 (scan Strix 2026-08-20) : la note HubSpot est rendue en HTML
+  // dans le CRM, elle doit être échappée comme l'email.
+  it("échappe le HTML injecté dans la note HubSpot", async () => {
+    await POST(
+      buildRequest({
+        ...VALID_PAYLOAD,
+        finalScript: '<a href="https://phishing.example">Validez ici</a>',
+        notes: '<img src=x onerror="alert(1)">',
+      })
+    );
+
+    const fetchMock = global.fetch as unknown as jest.Mock;
+    const noteCall = fetchMock.mock.calls.find(([url]) =>
+      String(url).endsWith("/crm/v3/objects/notes")
+    );
+    expect(noteCall).toBeDefined();
+    const note: string = JSON.parse(String(noteCall[1].body)).properties
+      .hs_note_body;
+    expect(note).not.toContain('<a href="https://phishing.example"');
+    expect(note).not.toContain("<img");
+    expect(note).toContain("&lt;a href=");
+    expect(note).toContain("&lt;img src=x");
+  });
+
   it("préserve les retours ligne du message tout en échappant le contenu", async () => {
     await POST(
       buildRequest({
