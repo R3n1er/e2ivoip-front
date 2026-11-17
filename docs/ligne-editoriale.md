@@ -374,7 +374,7 @@ Transparence tarifaire partielle en public : afficher le Forfait Service (49 €
 - ❌ Mentionner Telcoz publiquement comme opérateur sous-jacent
 - ❌ "Opérateur télécom certifié Rounded/VAPI" (c'est E2I VoIP qui certifie, pas l'inverse)
 - ❌ Promettre une mise en service en moins de 5 jours sans validation Telcoz
-- ❌ Afficher les logos Rounded, VAPI, ElevenLabs, Jambonz sans accord formel
+- ✅ Afficher les logos des plateformes agents vocaux IA (Rounded, VAPI, ElevenLabs, Retell AI, Jambonz, Airagent…) — aucun accord préalable à demander (règle levée par Alban le 2026-11-17)
 
 **Hypothèses non encore validées (ne pas affirmer comme faits)**
 
