@@ -52,7 +52,7 @@ export default function AccordSousTraitanceRgpdPage() {
               de traitement).
             </p>
             <p className="mt-4 text-sm text-white/80">
-              Version 1.2 · entrée en vigueur le 30 août 2026
+              Version 1.3 · entrée en vigueur le 15 novembre 2026
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function AccordSousTraitanceRgpdPage() {
                     <Clock size={24} className="text-red-primary" aria-hidden="true" />
                     <h3 className="font-semibold text-gray-dark">Entrée en vigueur</h3>
                   </div>
-                  <p className="text-gray-dark">30 août 2026</p>
+                  <p className="text-gray-dark">15 novembre 2026</p>
                 </CardContent>
               </Card>
               <Card className="shadow hover:shadow-lg transition-shadow">

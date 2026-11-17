@@ -123,7 +123,7 @@ export const LEGAL_PDFS: readonly LegalPdfDoc[] = [
     shortTitle: "DPA RGPD",
     href: "/documents/dpa-rgpd.pdf",
     pages: 11,
-    version: "v1.2",
+    version: "v1.3",
     requiredAcceptance: false,
     category: "rgpd",
     onlinePageSlug: "accord-sous-traitance-rgpd",
