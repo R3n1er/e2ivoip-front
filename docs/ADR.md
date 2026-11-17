@@ -19,7 +19,7 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
   - Données structurées `Service` : « validée pour Rounded, VAPI, ElevenLabs et Retell AI ». Jambonz, encore en évaluation, n'y figure plus.
   - Retell AI ajouté aux listes de plateformes du site : métadonnées et textes de la page trunk SIP, `/nos-services`, section services de l'accueil, `/devis-en-ligne`, `/qui-sommes-nous`, page revendeurs, formulaire de contact trunk SIP.
   - `docs/ligne-editoriale.md` : tableau des statuts mis à jour.
-- **Conséquences** : le statut « in-progress » n'est plus utilisé par aucune plateforme ; son style reste disponible pour une future plateforme en finalisation. La règle de la ligne éditoriale sur les logos tiers (accord formel) s'applique aussi au logo Retell AI.
+- **Conséquences** : le statut « in-progress » n'est plus utilisé par aucune plateforme ; son style reste disponible pour une future plateforme en finalisation. L'affichage des logos des plateformes IA ne demande plus d'accord préalable (ligne éditoriale mise à jour le 2026-11-17).
 - **Tests associés** : `tests/trunk-sip-agents-ia.test.tsx` (nouveau test : statut de chaque plateforme, absence de « Compatibilité en finalisation ») ; `tests/e2e/trunk-sip-agents-ia.spec.ts` (Retell AI visible).
 
 ### 2026-11-16 — Correctifs sécurité du scan Strix (rate-limit, notes HubSpot, admin, callback OAuth)
