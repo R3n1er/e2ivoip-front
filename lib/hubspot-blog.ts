@@ -100,6 +100,63 @@ async function resolveTagNames(
   return tagIds.map((id) => cache.get(String(id)) || String(id));
 }
 
+// Cache des auteurs HubSpot : { authorId -> nom affiché }.
+// Même TTL que les tags : un auteur renommé dans HubSpot apparaît sans redéploiement,
+// et l'article n'affiche jamais l'identifiant numérique (`blogAuthorId`) comme signature.
+const AUTHOR_CACHE_TTL_MS = 10 * 60 * 1000;
+let authorCache: Map<string, string> | null = null;
+let authorCacheTimestamp = 0;
+
+async function ensureAuthorCache(): Promise<Map<string, string>> {
+  if (authorCache && Date.now() - authorCacheTimestamp < AUTHOR_CACHE_TTL_MS) {
+    return authorCache;
+  }
+
+  const map = new Map<string, string>();
+  try {
+    const accessToken = getHubSpotAccessToken();
+
+    let after: string | undefined = undefined;
+    do {
+      const url = new URL("https://api.hubapi.com/cms/v3/blogs/authors");
+      url.searchParams.set("limit", "500");
+      if (after) url.searchParams.set("after", after);
+
+      const response = await fetch(url.toString(), {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        cache: "no-store",
+      });
+
+      if (!response.ok) break;
+
+      const data = await response.json();
+      for (const author of data.results || []) {
+        if (author?.id && author?.name) {
+          map.set(String(author.id), String(author.name));
+        }
+      }
+
+      after = data.paging?.next?.after;
+    } while (after);
+  } catch {
+    // API auteurs indisponible : on retombe sur le libellé générique, jamais sur l'id.
+  }
+
+  authorCache = map;
+  authorCacheTimestamp = Date.now();
+  return map;
+}
+
+/** Convertit un `blogAuthorId` en nom lisible, avec repli sur « E2I VoIP ». */
+async function resolveAuthorName(authorId: string | undefined): Promise<string> {
+  if (!authorId) return "E2I VoIP";
+  const cache = await ensureAuthorCache();
+  return cache.get(String(authorId)) || "E2I VoIP";
+}
+
 // Configuration de l'application HubSpot via variables d'environnement
 const getHubSpotConfig = () => {
   const clientId = process.env.HUBSPOT_CLIENT_ID;
@@ -144,7 +201,10 @@ const getHubSpotAccessToken = () => {
 };
 
 async function mapHubSpotPost(post: HubSpotBlogPost): Promise<BlogPost> {
-  const tags = await resolveTagNames(post.tagIds, post.tags);
+  const [tags, author] = await Promise.all([
+    resolveTagNames(post.tagIds, post.tags),
+    resolveAuthorName(post.blogAuthorId),
+  ]);
   return {
     id: post.id || "",
     title: post.name || "",
@@ -152,7 +212,7 @@ async function mapHubSpotPost(post: HubSpotBlogPost): Promise<BlogPost> {
     content: post.postBody || "",
     publishDate: post.publishDate || "",
     modifiedDate: post.updated || "",
-    author: post.blogAuthorId || "E2I VoIP",
+    author,
     authorId: post.blogAuthorId || "",
     tags,
     categories: [],
@@ -432,7 +492,7 @@ export async function getHubSpotBlogMetadata(): Promise<{
     // Utiliser les noms résolus plutôt que les IDs bruts
     const resolvedTags = await resolveTagNames(post.tagIds, post.tags);
     resolvedTags.forEach((t) => t && tags.add(t));
-    if (post.blogAuthorId) authors.add(post.blogAuthorId);
+    if (post.blogAuthorId) authors.add(await resolveAuthorName(post.blogAuthorId));
     if (post.publishDate) years.add(new Date(post.publishDate).getFullYear());
   }
 
