@@ -10,6 +10,16 @@ Ce fichier centralise les décisions importantes prises sur le projet. Chaque en
 
 ## Historique
 
+### 2026-11-20 — Image de couverture dans les « Articles liés » du blog
+
+- **Contexte** : en bas d'un article (`/blog/[slug]`), les cartes « Articles liés » n'affichaient que le titre, l'extrait et la date, alors que le listing `/blog` montre déjà l'image de couverture de chaque article. Les cartes paraissaient vides et moins incitatives au clic.
+- **Décision** :
+  - La section est extraite de la page dans un composant serveur dédié, `components/blog/related-posts.tsx`, testable seul avec Jest (la page est un Server Component async, non rendu directement par Jest).
+  - Chaque carte affiche l'image de couverture en tête, au format 16/9, avec le même zoom au survol que la grille du listing. Source : `featuredImageUrl`, à défaut `featuredImage` (déjà localisées par `localizeBlogImage`). Sans image, la carte reste comme avant.
+  - Accessibilité : l'image est décorative (`alt=""`) et son lien est retiré de l'ordre de tabulation et de l'arbre d'accessibilité (`tabIndex={-1}`, `aria-hidden`). Le titre reste le seul lien annoncé de la carte.
+- **Conséquences** : aucun appel HubSpot en plus, les données étaient déjà chargées. La page `app/blog/[slug]/page.tsx` perd ~45 lignes de JSX.
+- **Tests associés** : `tests/components/related-posts.test.tsx` (image affichée, repli sur `featuredImage`, carte sans image, un seul lien accessible) ; `tests/playwright/blog-related-posts.spec.ts` (sur un vrai article, les couvertures sont visibles et réellement chargées).
+
 ### 2026-11-16 — VAPI, ElevenLabs et Retell AI passent au statut « Validé »
 
 - **Contexte** : l'interconnexion SIP BYOC d'E2I VoIP est désormais validée avec VAPI, ElevenLabs Agents et Retell AI (décision d'Alban du 2026-11-16). Le site affichait encore VAPI « Compatibilité en finalisation », ElevenLabs « En évaluation », et ne citait Retell AI qu'en passant (« même pattern BYOC SIP »).
