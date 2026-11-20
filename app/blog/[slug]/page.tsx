@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-source";
 import { JsonLd } from "@/components/seo/json-ld";
+import { RelatedPosts } from "@/components/blog/related-posts";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { SITE_URL } from "@/lib/site";
 import { ArrowLeft, ShareNetwork, UserCircle, Calendar, Timer } from '@/lib/icons';
@@ -261,53 +262,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Card>
         </article>
 
-        {/* Articles liés */}
-        {relatedPosts.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-ui-surface">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-dark mb-2">
-                Articles liés
-              </h2>
-              <p className="text-ui-muted">
-                Découvrez d&apos;autres articles sur des sujets similaires
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedPosts.map((relatedPost) => (
-                <Card
-                  key={relatedPost.slug}
-                  className="hover:shadow-lg transition-shadow"
-                >
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold text-gray-dark mb-2">
-                      <Link
-                        href={`/blog/${relatedPost.slug}`}
-                        className="hover:text-red-text transition-colors"
-                      >
-                        {relatedPost.title}
-                      </Link>
-                    </h3>
-                    <p className="text-ui-muted text-sm line-clamp-2 mb-3">
-                      {relatedPost.excerpt}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-ui-muted">
-                      <Calendar size={16} aria-hidden="true" />
-                      <span>
-                        {new Date(
-                          relatedPost.publishDate || ""
-                        ).toLocaleDateString("fr-FR", {
-                          day: "numeric",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
+        <RelatedPosts posts={relatedPosts} />
       </main>
     </div>
   );
